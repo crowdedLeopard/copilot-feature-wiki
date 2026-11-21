@@ -31,11 +31,17 @@ sources:
   - title: "Configure the Copilot new tab page"
     url: "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page"
     kind: "learn"
+  - title: "Get started with configuration policies"
+    url: "https://learn.microsoft.com/deployedge/microsoft-edge-management-service"
+    kind: "learn"
   - title: "CopilotNewTabPageEnabled"
     url: "https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotnewtabpageenabled"
     kind: "learn"
   - title: "Work IQ overview"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/"
+    kind: "learn"
+  - title: "Work IQ API overview"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview"
     kind: "learn"
   - title: "Enable your tenant for Work IQ"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq"
@@ -58,25 +64,19 @@ controls:
   - governs: "Whether Commercial Journeys (Get things done) is available to users"
     scope: "group"
     ui:
-      surface: "Edge management service (Microsoft 365 admin center)"
-      path: "Edge management service > Copilot"
+      surface: "Microsoft 365 admin center"
+      path: "Settings > Microsoft Edge > Copilot"
       docs: "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys"
-    api:
-      kind: "other"
-      call: "Edge policy CommercialJourneysGetThingsDoneEnabled = Enabled"
-      docs: "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys"
-    note: "Learn calls this a hidden policy reached through the Copilot tab address and gives no setting label. Feature is in Canary, subject to change before Stable."
+    api: null
+    note: "Hidden policy CommercialJourneysGetThingsDoneEnabled, reached at https://admin.cloud.microsoft/#/Edge/Copilot; Learn gives no setting label. Feature is in Canary, subject to change before Stable."
   - governs: "Whether the Copilot new tab page, which hosts the task cards, is on for a user or group"
     scope: "group"
     ui:
-      surface: "Edge management service (Microsoft 365 admin center)"
-      path: "Edge management service > Copilot > Copilot new tab page"
+      surface: "Microsoft 365 admin center"
+      path: "Settings > Microsoft Edge > Copilot > Copilot new tab page"
       docs: "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page"
-    api:
-      kind: "other"
-      call: "Edge policy CopilotNewTabPageEnabled = Enabled"
-      docs: "https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotnewtabpageenabled"
-    note: "A prerequisite listed on the Commercial Journeys page. Global admin or Edge admin sign-in. Applies only to Microsoft Entra ID profiles."
+    api: null
+    note: "Prerequisite on the Commercial Journeys page. Global admin or Edge admin sign-in. Entra ID profiles only. Windows registry: SOFTWARE\\Policies\\Microsoft\\Edge, CopilotNewTabPageEnabled, REG_DWORD 0x00000001; no command printed."
   - governs: "Spending on Work IQ API usage, a prerequisite of this feature"
     scope: "tenant"
     ui:
@@ -108,19 +108,23 @@ changes:
     note: "First briefing: Learn says Get things done is off by default, needs a Premium licence, the Copilot new tab page and Work IQ usage-based billing; the roadmap targets January CY2027."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 61 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected the Edge management service path to Settings > Microsoft Edge in the Microsoft 365 admin center, removed two unsupported policy 'commands', and dropped the Work IQ setup step from the pre-rollout checklist."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 80 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 56
-  unconfirmed: 2
-  contradicted: 3
-  attempts: 1
-  hash: "97be2f6768b37537f87639f3a2b9cae8"
+  claims: 80
+  confirmed: 79
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 0
+  hash: "1f8e06002a1f333f2d956fcab003eb2a"
 ---
 
 ## What's changing
@@ -180,7 +184,7 @@ Because Learn says the feature is off until the policy is enabled, nothing reach
 
 ### Before rollout
 - Check which users hold a Microsoft 365 Copilot (Premium) licence or higher, and assign licences to a pilot group in Microsoft 365 admin center > Billing > Licenses (License or User Administrator).
-- Agree with finance whether Work IQ API usage-based billing is acceptable, and have a Global Administrator complete the one-time Work IQ setup only if it is.
+- Agree with finance whether Work IQ API usage-based billing is acceptable.
 - Confirm the Copilot new tab page is enabled for the pilot group through the Edge management service, because enabling the Commercial Journeys policy does not enable it.
 - Tell pilot users they can turn off Get things done in Microsoft Edge settings.
 
@@ -200,8 +204,8 @@ Because Learn says the feature is off until the policy is enabled, nothing reach
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Commercial Journeys (Get things done) is available to users</strong><br><small>Group</small><br><small class="controls__note">Learn calls this a hidden policy reached through the Copilot tab address and gives no setting label. Feature is in Canary, subject to change before Stable.</small></td><td data-label="Admin UI"><strong>Edge management service (Microsoft 365 admin center)</strong><br>Edge management service › Copilot <a href="https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Edge policy CommercialJourneysGetThingsDoneEnabled = Enabled</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether the Copilot new tab page, which hosts the task cards, is on for a user or group</strong><br><small>Group</small><br><small class="controls__note">A prerequisite listed on the Commercial Journeys page. Global admin or Edge admin sign-in. Applies only to Microsoft Entra ID profiles.</small></td><td data-label="Admin UI"><strong>Edge management service (Microsoft 365 admin center)</strong><br>Edge management service › Copilot › Copilot new tab page <a href="https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Edge policy CopilotNewTabPageEnabled = Enabled</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotnewtabpageenabled" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Commercial Journeys (Get things done) is available to users</strong><br><small>Group</small><br><small class="controls__note">Hidden policy CommercialJourneysGetThingsDoneEnabled, reached at https://admin.cloud.microsoft/#/Edge/Copilot; Learn gives no setting label. Feature is in Canary, subject to change before Stable.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Microsoft Edge › Copilot <a href="https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether the Copilot new tab page, which hosts the task cards, is on for a user or group</strong><br><small>Group</small><br><small class="controls__note">Prerequisite on the Commercial Journeys page. Global admin or Edge admin sign-in. Entra ID profiles only. Windows registry: SOFTWARE\Policies\Microsoft\Edge, CopilotNewTabPageEnabled, REG_DWORD 0x00000001; no command printed.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Microsoft Edge › Copilot › Copilot new tab page <a href="https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Spending on Work IQ API usage, a prerequisite of this feature</strong><br><small>Tenant</small><br><small class="controls__note">Beta API. The request body can update periodLimit, perUserLimit and billingMethods. The pages name Work IQ API, not Commercial Journeys.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost management <a href="https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which users hold the Microsoft 365 Copilot (Premium) licence the feature requires</strong><br><small>User</small><br><small class="controls__note">At least License Administrator or User Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Licenses › product › Assign licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -226,16 +230,8 @@ cost: Variable. Users need a Microsoft 365 Copilot (Premium) licence or higher, 
 impact: Low. Learn says the feature is off by default, and it reaches only users with a Premium licence or higher whose tenant also has the Copilot new tab page and Work IQ access in place.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui / admin-path: The admin navigation route is Edge management service > Copilot. | Found: In the main left navigation bar, go to Settings > Microsoft Edge. | Fix: Set the surface to 'Microsoft 365 admin center' and the path to 'Settings > Microsoft Edge > Copilot'. Cite https://learn.microsoft.com/deployedge/microsoft-edge-management-service for the entry route and retain the Commercial Journeys docs link for its hidden policy. The feature page gives https://admin.cloud.microsoft/#/Edge/Copilot as the direct address; retain that address in the note. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-management-service
-- [unsupported, blocker] controls[0].api / command: Edge policy CommercialJourneysGetThingsDoneEnabled = Enabled is the automation call that enables Commercial Journeys. | Found: Searched: 'CommercialJourneysGetThingsDoneEnabled policy reference automation group Edge management'; opened Commercial Journeys and the Edge policy index. The feature page names a hidden policy but gives no executable command or API operation. | Fix: Set controls[0].api to null. Keep 'CommercialJourneysGetThingsDoneEnabled' in the note as the documented hidden policy name, not as an automation call. The feature page at https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys documents enabling the policy through the Copilot tab but publishes no scripting operation.
-- [contradicted, blocker] controls[1].ui / admin-path: The admin navigation route is Edge management service > Copilot > Copilot new tab page. | Found: In the main left navigation bar, go to Settings > Microsoft Edge. | Fix: Set the surface to 'Microsoft 365 admin center' and the path to 'Settings > Microsoft Edge > Copilot > Copilot new tab page'. Add https://learn.microsoft.com/deployedge/microsoft-edge-management-service to sources for the entry route; retain the current docs link, which documents switching to Copilot and selecting the Copilot new tab page dropdown. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-management-service
-- [unsupported, blocker] controls[1].api / command: Edge policy CopilotNewTabPageEnabled = Enabled is an executable automation call. | Found: Searched: 'CopilotNewTabPageEnabled automation command set Edge policy registry' and 'CopilotNewTabPageEnabled HKEY_LOCAL_MACHINE HKLM reg add'; opened its policy reference and reg add. The printed expression is not a command on either reference. | Fix: Remove the pseudo-command from controls[1].api. Retain the documented configuration in the row note instead: 'The Windows policy reference documents the mandatory registry path SOFTWARE\Policies\Microsoft\Edge, value CopilotNewTabPageEnabled, type REG_DWORD, enabled value 0x00000001; it does not print a runnable command.' If the API side is null, qualify that side as the absence of a published callable operation, not the absence of registry configuration. Retain https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotnewtabpageenabled as the configuration reference.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters / behaviour: Work IQ can supply mailbox, file and meeting data. | Found: Work IQ can reason over: Email messages; Meetings and calendar data; Documents in OneDrive and SharePoint | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview to sources for the named data categories. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview
-- [supported, minor] Risk assessment: Security & identity / applicability: Existing sensitivity labels and access permissions continue to govern the Work IQ data access used by this feature. | Found: Microsoft 365 permissions, sensitivity labels, and compliance policies are enforced automatically. | Fix: Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview for sensitivity-label enforcement. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview
-- [supported, minor] controls[0].scope; controls[1].scope; Governance guidance: At rollout / applicability: Edge management service configuration policies can target groups rather than the whole tenant. | Found: Each configuration policy can be assigned to multiple Microsoft Entra groups, and a group can be assigned to multiple configuration policies. | Fix: Add https://learn.microsoft.com/deployedge/microsoft-edge-management-service to sources for the general group-assignment scope. Keep the Commercial Journeys hidden-policy qualification; do not invent feature-specific assignment screens. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-management-service
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks administrators to complete one-time Work IQ enablement, but that control has no corresponding table row. | Found: have a Global Administrator complete the one-time Work IQ setup only if it is. The table lists Journeys availability, new tab availability, spending and licence assignment only. | Fix: Remove 'and have a Global Administrator complete the one-time Work IQ setup only if it is' from the Before rollout checklist. Retain the existing factual setup description in Cost and licensing and Risk assessment; no additional controls row is requested.
+- [unsupported, major] Why it matters / behaviour: The Copilot new tab page is the page users see most often. | Found: Searched: Commercial Journeys most often review administrator approval. Opened Commercial Journeys and Configure the Copilot new tab page. They identify the new tab surface but provide no comparison establishing that users see it more often than any other page. | Fix: Replace 'on the page users see most often' with 'on the Copilot new tab page' in the first sentence of Why it matters.
 -->

@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published: no licence is named for the cmdlet or for the brand fonts library on the pages read. Learn says any font used in Microsoft 365 applications needs a font licence covering its intended use."
+  model: "included"
+  notes: "SharePoint's service description says users accessing SharePoint need an assigned licence that includes SharePoint. No licence specific to Remove-SPOFontFile is published at the time of writing (November 2026). Fonts used in Microsoft 365 applications need their own font licence."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["sharepoint","brand-center","powershell","public-cdn"]
 sources:
@@ -27,6 +27,9 @@ sources:
     kind: "learn"
   - title: "Remove-SPOFontPackage"
     url: "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/remove-spofontpackage?view=sharepoint-ps"
+    kind: "learn"
+  - title: "Get-SPOFontPackage"
+    url: "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/get-spofontpackage?view=sharepoint-ps"
     kind: "learn"
   - title: "Brand Fonts"
     url: "https://learn.microsoft.com/sharepoint/brand-fonts"
@@ -42,6 +45,9 @@ sources:
     kind: "learn"
   - title: "Get started with SharePoint Online Management Shell"
     url: "https://learn.microsoft.com/powershell/sharepoint/sharepoint-online/connect-sharepoint-online"
+    kind: "learn"
+  - title: "SharePoint service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description"
     kind: "learn"
   - title: "SharePoint: PowerShell support for brand fonts deletion"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=569720"
@@ -82,19 +88,23 @@ changes:
     note: "New briefing: the Remove-SPOFontFile cmdlet for deleting brand font files, with its Learn reference already published while the roadmap item is In development."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 53 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected the Before rollout checklist (font files in the brand center app, font packages via Get-SPOFontPackage; dropped the Public CDN check) and set the licence model to included, citing the SharePoint service description."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 55 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 53
-  confirmed: 51
+  claims: 55
+  confirmed: 53
   unconfirmed: 1
   contradicted: 1
-  attempts: 1
-  hash: "29cb14670264891675b0f9ee0c6bf98f"
+  attempts: 0
+  hash: "1be08a2bf69934bcbba999db8b100dd3"
 ---
 
 ## What's changing
@@ -129,7 +139,7 @@ Microsoft has not stated what happens on arrival, so no source says existing beh
 
 ## Cost and licensing
 
-Microsoft Learn's pages for the cmdlet and for Brand Fonts name no licence and no meter for removing a brand font file, and the brand center overview names no licence for the brand center itself. The licence model for this feature is therefore Not yet published. The only cost the sources show is administrator time.
+Microsoft Learn's pages for the cmdlet and for Brand Fonts name no licence and no meter for removing a brand font file, and the brand center overview names no licence for the brand center itself. SharePoint's service description says users accessing SharePoint need an assigned licence that includes SharePoint; no licence specific to `Remove-SPOFontFile` is published at the time of writing (November 2026). The only cost the sources show is administrator time.
 
 Two existing rules apply to the surrounding setup. The brand center overview says brand fonts require Public CDN, and that a Global Administrator must enable it before brand managers can add fonts. The font licensing page says any font used in Microsoft 365 applications requires a font licence that covers the intended use, and that for fonts Microsoft did not supply you need to review the licence agreements yourself. Removing a font does not change those obligations.
 
@@ -142,8 +152,8 @@ The cmdlet is in the Microsoft.Online.SharePoint.PowerShell module (SharePoint O
 ## Governance guidance
 
 ### Before rollout
-- Confirm that brand fonts are in use: check whether Public CDN was enabled when the brand center was set up (Microsoft 365 admin center > Settings > Org settings > Brand center > Public CDN (optional)).
-- Identify which font files and font packages in the Brand Fonts library are no longer approved, using the brand center app and `Get-SPOFontPackage`.
+- Confirm with brand managers whether custom brand fonts are in use.
+- Identify font files in the Brand Fonts library that are no longer approved, using the brand center app, and inspect custom font packages with `Get-SPOFontPackage`.
 - Agree with brand managers which administrator account runs the cmdlet and which role it needs, because the reference page names none.
 - Decide how to handle font packages that reference a file you plan to delete.
 
@@ -188,12 +198,10 @@ cost: Low. The only cost the sources show is administrator time; no licence or m
 impact: Low. Administrators and brand managers use it; readers of pages that use a deleted font would see the Microsoft-defined fallback font.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Governance guidance: Before rollout, second bullet / admin-path: Administrators can find font packages, as well as font files, in the Brand Fonts library. | Found: Searched: "font packages" "Brand Fonts library" stored. Read Brand Fonts, Font packages and Get-SPOFontPackage; the library contains uploaded font files, but no passage directs readers there to find package records. | Fix: Replace the bullet with: 'Identify font files in the Brand Fonts library that are no longer approved, using the brand center app, and inspect custom font packages with Get-SPOFontPackage.' The documented file location is https://learn.microsoft.com/sharepoint/brand-fonts and the package command is https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/get-spofontpackage?view=sharepoint-ps.
+- [unsupported, major] Governance guidance: After rollout / behaviour: Viva Connections experiences using the deleted font now show the Microsoft-defined fallback font. | Found: Searched: Viva Connections removed font fallback Remove-SPOFontFile. Read Remove-SPOFontFile, Brand Fonts and Font packages; they establish page fallback and Viva font usage, but do not explicitly state the deletion fallback for Viva Connections experiences. | Fix: Replace the first After rollout bullet with 'Review sites that used the deleted font, whose pages now show the Microsoft-defined fallback font.' The page fallback is documented at https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/remove-spofontfile?view=sharepoint-ps.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model and notes; Cost and licensing / licensing: The licence model is unknown because no licence specific to the deletion cmdlet is published. | Found: To access SharePoint, users in your organization need to be assigned a license that includes SharePoint. | Fix: Set licensing.model to included. Replace the explanation of the unknown model with: 'SharePoint's service description says users accessing SharePoint need an assigned licence that includes SharePoint. No licence specific to Remove-SPOFontFile is published at the time of writing (November 2026).' Cite https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description and retain the separate font-licence requirement. | Source: https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description
-- [supported, minor] Governance guidance: Before rollout, second bullet / command: Get-SPOFontPackage can be used to inspect the tenant's custom font packages. | Found: This cmdlet retrieves one or more custom font packages in the tenant. Get-SPOFontPackage This example returns all font packages in the tenant. | Fix: Add https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/get-spofontpackage?view=sharepoint-ps to sources for the existing Get-SPOFontPackage recommendation. | Source: https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/get-spofontpackage?view=sharepoint-ps
-- [contradicted, minor] Governance guidance: Before rollout, first bullet; Governance controls / consistency: The checklist's Public CDN control has no corresponding controls-table row. | Found: Checklist: 'check whether Public CDN was enabled when the brand center was set up'. Table rows govern deleting a font file, a font file's Visible property, and removing a font package; none governs Public CDN. | Fix: Remove the parenthetical Public CDN path and the instruction to check that setting from the first Before rollout bullet. Replace that bullet with: 'Confirm with brand managers whether custom brand fonts are in use.' Do not add a control row.
+- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The checklist names package inspection and editing operations that have no corresponding controls-table row. | Found: Checklist: "inspect custom font packages with Get-SPOFontPackage"; "Remove or edit font packages". Table: file deletion, file Visible and package removal only. | Fix: Remove 'and inspect custom font packages with `Get-SPOFontPackage`' from the Before rollout bullet, and change 'Remove or edit font packages' to 'Remove font packages' in the After rollout bullet; these checklist operations have no table row. Do not add rows.
 -->

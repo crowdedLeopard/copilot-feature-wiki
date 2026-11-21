@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "review"
 licensing:
   model: "included"
-  notes: "Learn says Insider Risk Management is offered as part of a wide selection of Microsoft 365 licensing subscriptions and needs a supported subscription; some indicators need pay-as-you-go billing. A licence or meter specific to priority content is not yet published."
+  notes: "Insider Risk Management is included with Microsoft 365 G5, per the Microsoft Purview service description; Learn says it needs a supported subscription, and some indicators need pay-as-you-go billing. A licence or meter specific to priority content is not yet published."
 audiences: ["compliance","security"]
 tags: ["insider-risk-management","purview","sensitive-information-types","sensitivity-labels","classifiers","adaptive-protection","ai","gcc","gcc-high","dod"]
 sources:
@@ -43,6 +43,9 @@ sources:
   - title: "Add-RoleGroupMember"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember"
     kind: "learn"
+  - title: "Microsoft Purview service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
+    kind: "learn"
 videos: []
 related: ["microsoft-purview-insider-risk-management-insider-risk-management-for-agents","sensitive-information-types","sensitivity-labels","microsoft-purview-unified-classification-management-experience"]
 controls:
@@ -50,7 +53,7 @@ controls:
     scope: "other"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Insider Risk Management > Policies > Create policy > Policy template > Risky AI usage > Content to prioritize > I want to prioritize content"
+      path: "Insider Risk Management > Policies > Create policy > Policy template > policy category > Risky AI usage > Content to prioritize > I want to prioritize content"
       docs: "https://learn.microsoft.com/purview/insider-risk-management-configure"
     api: null
     note: "Detail pages then take the SITs, sensitivity labels and trainable classifiers. Learn does not name the template's category on the Policy template page. Existing policies are edited with Edit policy."
@@ -58,7 +61,7 @@ controls:
     scope: "other"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Insider Risk Management > Policies > Create policy > Policy template > Risky AI usage > Content to prioritize > I want to prioritize content > Scoring > Get alerts only for activity that includes priority content"
+      path: "Insider Risk Management > Policies > Create policy > Policy template > policy category > Risky AI usage > Content to prioritize > I want to prioritize content > Scoring > Get alerts only for activity that includes priority content"
       docs: "https://learn.microsoft.com/purview/insider-risk-management-configure"
     api: null
     note: "The alternative on the same page is Get alerts for all activity. Cumulative exfiltration activity is always scored."
@@ -82,19 +85,23 @@ changes:
     note: "First briefing for this roadmap item: priority content for the Risky AI usage template, with the Learn workflow path and the open question on GCC, GCC High and DoD availability."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 62 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected: the admin path now includes the policy category step; removed an unsupported licensing gap and the browser-extension check from the checklist; named the Microsoft 365 G5 entitlement."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 68 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 58
+  claims: 68
+  confirmed: 68
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "f4ab843896248f4e5f104f66d30a1e17"
+  contradicted: 0
+  attempts: 0
+  hash: "c905e5c740b45203b095a152d1ab06a5"
 ---
 
 ## What's changing
@@ -131,9 +138,9 @@ Microsoft has not stated what happens to existing Risky AI usage policies on arr
 
 ## Cost and licensing
 
-Learn names no licence or meter specific to priority content on the Risky AI usage template at the time of writing (November 2026). The Insider Risk Management licensing rules apply to the product: Learn says Microsoft offers Insider Risk Management as part of a wide selection of Microsoft 365 licensing subscriptions, and that administrators need a supported subscription and the appropriate licences assigned to users. The plans are listed on the comparison table Learn links, not on the pages read here.
+Learn names no licence or meter specific to priority content on the Risky AI usage template at the time of writing (November 2026). The Insider Risk Management licensing rules apply to the product: Learn says Microsoft offers Insider Risk Management as part of a wide selection of Microsoft 365 licensing subscriptions, and that administrators need a supported subscription and the appropriate licences assigned to users. The Microsoft Purview service description says Insider Risk Management is included with Microsoft 365 G5.
 
-Learn also says some Insider Risk Management indicators are only available if you enable the pay-as-you-go billing model, and that Insider Risk Management uses pay-as-you-go billing or per-user licensing or both, with a Usage center in the Microsoft Purview portal. Which, if either, applies to priority content is not stated.
+Learn also says some Insider Risk Management indicators are only available if you enable the pay-as-you-go billing model, and that Insider Risk Management uses pay-as-you-go billing or per-user licensing or both, with a Usage center in the Microsoft Purview portal.
 
 Indirect cost is analyst and admin time to choose and test priority content, and the browser extension deployment the template already needs. A licence or meter specific to priority content is not yet published.
 
@@ -148,7 +155,7 @@ Prerequisites for the template, per Learn: the Microsoft Insider risk extension 
 ## Governance guidance
 
 ### Before rollout
-- List your existing Risky AI usage policies in Insider Risk Management > Policies, and confirm the browser extension and browsing-indicator prerequisites are met on the devices they cover.
+- List your existing Risky AI usage policies in Insider Risk Management > Policies.
 - Agree with your information protection owners which SITs, trainable classifiers (up to 5) and sensitivity labels count as priority content. See [Sensitive information types](/concepts/sensitive-information-types/) and [Sensitivity labels](/concepts/sensitivity-labels/).
 - Confirm who is in the Insider Risk Management and Insider Risk Management Admins role groups, and keep at least one member in each role group you rely on.
 - Plan against the roadmap's January CY2027 target and treat the Learn page as general guidance, because it states no cloud scope.
@@ -170,8 +177,8 @@ Prerequisites for the template, per Learn: the Microsoft Insider risk extension 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which content is treated as priority in a Risky AI usage policy</strong><br><small class="controls__note">Detail pages then take the SITs, sensitivity labels and trainable classifiers. Learn does not name the template's category on the Policy template page. Existing policies are edited with Edit policy.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Policies › Create policy › Policy template › Risky AI usage › Content to prioritize › I want to prioritize content <a href="https://learn.microsoft.com/purview/insider-risk-management-configure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether a Risky AI usage policy scores and alerts on all activity or only on priority content</strong><br><small class="controls__note">The alternative on the same page is Get alerts for all activity. Cumulative exfiltration activity is always scored.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Policies › Create policy › Policy template › Risky AI usage › Content to prioritize › I want to prioritize content › Scoring › Get alerts only for activity that includes priority content <a href="https://learn.microsoft.com/purview/insider-risk-management-configure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which content is treated as priority in a Risky AI usage policy</strong><br><small class="controls__note">Detail pages then take the SITs, sensitivity labels and trainable classifiers. Learn does not name the template's category on the Policy template page. Existing policies are edited with Edit policy.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Policies › Create policy › Policy template › policy category › Risky AI usage › Content to prioritize › I want to prioritize content <a href="https://learn.microsoft.com/purview/insider-risk-management-configure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether a Risky AI usage policy scores and alerts on all activity or only on priority content</strong><br><small class="controls__note">The alternative on the same page is Get alerts for all activity. Cumulative exfiltration activity is always scored.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Policies › Create policy › Policy template › policy category › Risky AI usage › Content to prioritize › I want to prioritize content › Scoring › Get alerts only for activity that includes priority content <a href="https://learn.microsoft.com/purview/insider-risk-management-configure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Who can configure Insider Risk Management policies and settings</strong><br><small>Tenant</small><br><small class="controls__note">The permissions page documents the portal route; the cmdlet page lists Security &amp; Compliance for -Identity and -Member. Insider Risk Management Admins also configure policies.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and groups › Roles groups › Insider Risk Management › Edit › Choose users <a href="https://learn.microsoft.com/purview/insider-risk-management-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -195,13 +202,11 @@ cost: Low. Learn names no charge specific to priority content; the known cost is
 impact: Low. Insider Risk Management administrators and analysts who configure or review Risky AI usage policies notice it; the sources describe nothing that end users see.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: The priority-content route goes directly from Policy template to Risky AI usage without selecting a policy category. | Found: On the Policy template page, choose a policy category and then select the template for the new policy. | Fix: Replace controls[0].ui.path with 'Insider Risk Management > Policies > Create policy > Policy template > policy category > Risky AI usage > Content to prioritize > I want to prioritize content'. Here 'policy category' is a placeholder for the category the administrator chooses, not an invented category label. Keep the existing note that Learn does not name this template's category. The configure page documents the workflow; the cited policies page documents Risky AI usage priority-content support. | Source: https://learn.microsoft.com/purview/insider-risk-management-configure
-- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: The priority-only-scoring route goes directly from Policy template to Risky AI usage without selecting a policy category. | Found: On the Policy template page, choose a policy category and then select the template for the new policy. | Fix: Replace controls[1].ui.path with 'Insider Risk Management > Policies > Create policy > Policy template > policy category > Risky AI usage > Content to prioritize > I want to prioritize content > Scoring > Get alerts only for activity that includes priority content'. Use 'policy category' as a chosen-category placeholder, not as a literal label. The configure page documents the workflow and scoring choice, while the cited policies page establishes applicability to Risky AI usage. | Source: https://learn.microsoft.com/purview/insider-risk-management-configure
-- [contradicted, blocker] Cost and licensing: second paragraph / absence: Which, if either, of pay-as-you-go billing or per-user licensing applies to priority content is not stated. | Found: | Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, and Microsoft 365 E5/A5/F5/G5 Insider Risk Management | ... | Insider Risk Management | Included | | Fix: Remove 'Which, if either, applies to priority content is not stated.' The supported narrower gap is already stated elsewhere: no licence or meter specific to priority content is published. Do not question the applicability of the documented product subscription requirement to an option inside Insider Risk Management. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost / licensing: Priority content is an option inside licensed Insider Risk Management, whose entitlement is included in supported Microsoft 365 subscriptions. | Found: | Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, and Microsoft 365 E5/A5/F5/G5 Insider Risk Management | ... | Insider Risk Management | Included | | Fix: Keep licensing.model as 'included', name a supported subscription in licensing.notes and Cost and licensing with the sentence 'Insider Risk Management is included with Microsoft 365 G5', and cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description. Preserve the narrower statement that no separate priority-content licence is published. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks administrators to confirm browser-extension and browsing-indicator configuration, but neither control has a table row. | Found: confirm the browser extension and browsing-indicator prerequisites are met on the devices they cover. ... Which content is treated as priority in a Risky AI usage policy ... Who can configure Insider Risk Management policies and settings | Fix: The first Before rollout bullet names browser-extension deployment and browsing-indicator selection without corresponding control rows. Remove that configuration-check clause from the checklist; keep the verified prerequisites in Scope. Do not add control rows as part of this correction.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The priority-content route is Microsoft Purview portal > Insider Risk Management > Policies > Create policy > Policy template > policy category > Risky AI usage > Content to prioritize > I want to prioritize content. | Found: On the Policy template page, choose a policy category and then select the template for the new policy. ... On the Content to prioritize page ... I want to prioritize content | Fix: Keep the route, which reaches the priority-content option. Append to controls[0].note: 'On the subsequent detail pages, select Sensitive info type > Add sensitive info type, Sensitivity labels > Add sensitivity label, or Trainable classifiers > Add trainable classifier to choose the content.' These last steps are documented at https://learn.microsoft.com/purview/insider-risk-management-configure; the Risky AI usage template's applicability is documented at the already-cited https://learn.microsoft.com/purview/insider-risk-management-policies. | Source: https://learn.microsoft.com/purview/insider-risk-management-configure
+- [supported, minor] Governance controls: final paragraph / behaviour: SIT definitions are managed elsewhere in Purview, outside this policy's priority-content selection. | Found: Sign in to the Microsoft Purview portal > Information Protection > Classifiers > Sensitive info types and choose the sensitive information type from the list that you want to modify. | Fix: Add https://learn.microsoft.com/purview/sit-manage-custom-sits-compliance-center to sources to support the statement that SITs are managed elsewhere; no additional control row is needed. | Source: https://learn.microsoft.com/purview/sit-manage-custom-sits-compliance-center
+- [supported, minor] Governance controls: final paragraph / behaviour: Sensitivity labels themselves are managed elsewhere in Purview. | Found: When you have published sensitivity labels from the Microsoft Purview portal, they start to appear in Office apps for users to classify and protect data as it's created or edited. | Fix: Add https://learn.microsoft.com/purview/sensitivity-labels-office-apps to sources to support the statement about labels being managed elsewhere; do not add a new control row. | Source: https://learn.microsoft.com/purview/sensitivity-labels-office-apps
+- [supported, minor] Governance controls: final paragraph / behaviour: Classifiers themselves are managed elsewhere in Purview. | Found: The Classifiers page brings classification types together in one experience where you can discover, create, inspect, and manage classifiers. ... In the Microsoft Purview portal, you can access Classifiers under Information Protection, Data Loss Prevention, or DSPM | Fix: Add https://learn.microsoft.com/purview/data-classification-overview to sources to support the statement about classifiers being managed elsewhere; no additional control row is needed. | Source: https://learn.microsoft.com/purview/data-classification-overview
 -->

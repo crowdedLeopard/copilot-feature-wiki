@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "review"
 licensing:
   model: "included"
-  notes: "Microsoft Learn says it offers Insider Risk Management as part of a wide selection of Microsoft 365 licensing subscriptions and that administrators must assign the appropriate licenses. A licence or price specific to this filter is not yet published."
+  notes: "Microsoft Learn names Microsoft 365 Enterprise E5 as a plan for trying Insider Risk Management; verify the supported subscription and assign appropriate user licenses. A licence or price specific to this filter is not yet published."
 audiences: ["compliance","security"]
 tags: ["insider-risk-management","purview","gcc","gcc-high","dod"]
 sources:
@@ -43,6 +43,12 @@ sources:
   - title: "Learn about Insider Risk Management settings"
     url: "https://learn.microsoft.com/purview/insider-risk-management-settings"
     kind: "learn"
+  - title: "Limits in Insider Risk Management"
+    url: "https://learn.microsoft.com/purview/insider-risk-management-limits"
+    kind: "learn"
+  - title: "Configure policy indicators in Insider Risk Management"
+    url: "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators"
+    kind: "learn"
 videos: []
 related: []
 controls:
@@ -53,7 +59,7 @@ controls:
       path: "Settings > Insider Risk Management > Insider risk settings > Global exclusions"
       docs: "https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions"
     api: null
-    note: "Existing alternative, not a control over the new filter. Choose File paths, File types or Keywords in the Type panel. Up to 500 entries per list."
+    note: "Existing alternative, not a control over the new filter. Entries: File paths > Individual file paths > Add file paths to exclude; File types > Individual file types > Add file type; Keywords > Individual keywords. Up to 500 per list."
   - governs: "Switch or scope for the built-in temporary file name filter"
     scope: "tenant"
     ui: null
@@ -68,19 +74,23 @@ changes:
     note: "New briefing for roadmap item 560601, based on the roadmap record and Learn's existing global exclusions pages."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 53 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Correction: no longer says global exclusions are the only noise-tuning setting; added the Microsoft 365 Enterprise E5 trial plan, the 500-item limits page and the exclusion entry routes."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 47 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 53
-  confirmed: 52
+  claims: 47
+  confirmed: 47
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "01f64661e68b3083860d855709e0f8b8"
+  contradicted: 0
+  attempts: 0
+  hash: "69aa64a49f7328a0f0929ab22f613d08"
 ---
 
 ## What's changing
@@ -116,11 +126,11 @@ Microsoft has not stated what happens on arrival, so no source says existing beh
 **Change & support**
 
 - Alert and activity volumes should drop, which can look like a fault to analysts who tuned thresholds against the old volume. Tell them before the preview reaches you.
-- Documented controls for this filter are not yet published, so existing global exclusions remain the only exclusion setting Microsoft documents for tuning noise.
+- A dedicated control for this filter is not yet documented; existing Global exclusions is one documented option for tuning noise.
 
 ## Cost and licensing
 
-Microsoft Learn says Microsoft offers Insider Risk Management as part of a wide selection of Microsoft 365 licensing subscriptions, and that administrators must confirm a supported subscription and assign the appropriate licenses to users (https://learn.microsoft.com/purview/insider-risk-management-configure). The roadmap item names no separate licence for this filter, and a licence or price specific to it is not yet published.
+Microsoft Learn says Microsoft offers Insider Risk Management as part of a wide selection of Microsoft 365 licensing subscriptions, and that administrators must confirm a supported subscription and assign the appropriate licenses to users (https://learn.microsoft.com/purview/insider-risk-management-configure). Microsoft Learn names Microsoft 365 Enterprise E5 as a plan for trying Insider Risk Management (https://learn.microsoft.com/purview/insider-risk-management-plan). The roadmap item names no separate licence for this filter, and a licence or price specific to it is not yet published.
 
 No meter for this filter is documented at the time of writing (November 2026). The indirect cost is admin and analyst time to review alert volumes and existing exclusions after the filter arrives.
 
@@ -155,14 +165,14 @@ Microsoft Learn documents the Insider Risk Management and Insider Risk Managemen
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which file types, keywords and file paths Insider Risk Management policies ignore</strong><br><small>Tenant</small><br><small class="controls__note">Existing alternative, not a control over the new filter. Choose File paths, File types or Keywords in the Type panel. Up to 500 entries per list.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Insider Risk Management › Insider risk settings › Global exclusions <a href="https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which file types, keywords and file paths Insider Risk Management policies ignore</strong><br><small>Tenant</small><br><small class="controls__note">Existing alternative, not a control over the new filter. Entries: File paths &gt; Individual file paths &gt; Add file paths to exclude; File types &gt; Individual file types &gt; Add file type; Keywords &gt; Individual keywords. Up to 500 per list.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Insider Risk Management › Insider risk settings › Global exclusions <a href="https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Switch or scope for the built-in temporary file name filter</strong><br><small>Tenant</small><br><small class="controls__note">No setting is documented at the time of writing (November 2026); the roadmap item describes the filter but no control.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The documented control for tuning IRM noise today is Global exclusions, which Microsoft describes as excluding items from being scored by Insider Risk Management policies. It does not target temporary file name patterns specifically, which is the gap the roadmap item describes. Global exclusions include a default file path exclusion for \Users\*\AppData\Local\Temp, which you can cancel to enable scoring in that location.
+One documented control for tuning IRM noise today is Global exclusions, which Microsoft describes as excluding items from being scored by Insider Risk Management policies. The roadmap item says some temporary file naming patterns are not easily captured with current exclusions, which is the gap it describes. Global exclusions include a default file path exclusion for \Users\*\AppData\Local\Temp, which you can cancel to enable scoring in that location.
 
-The second row records that no switch, setting or automation for the built-in filter is documented yet. Each global exclusion list holds up to 500 entries; the Learn page gives the limit for file paths and keywords.
+The second row records that no switch, setting or automation for the built-in filter is documented yet. Microsoft's limits page gives a maximum of 500 items in each global exclusion list, file types included (https://learn.microsoft.com/purview/insider-risk-management-limits).
 
 ## Open questions
 
@@ -178,13 +188,9 @@ cost: Low. Insider Risk Management already needs a supported Microsoft 365 subsc
 impact: Low. Insider Risk Management administrators and analysts notice it, as fewer low-signal Endpoint events appear in activity explorer and scoring. Other users see no change in the roadmap description.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Change & support / absence: Existing global exclusions remain the only exclusion setting Microsoft documents for tuning noise. | Found: A variant inherits all the properties of the built-in indicator. You can modify the variant with exclusions or inclusions. | Fix: Replace the sentence with: 'A dedicated control for this filter is not yet documented; existing Global exclusions is one documented option for tuning noise.' Do not claim it is the only exclusion setting. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Global exclusions is reached in Microsoft Purview portal through Settings > Insider Risk Management > Insider risk settings > Global exclusions. | Found: Select Settings in the upper-right corner of the page, then select Insider Risk Management to go to the Insider Risk Management settings. Under Insider risk settings, select Global exclusions. | Fix: The route correctly reaches the exclusions page but stops before an individual control. Keep it and expand the note with: 'For individual entries, select File paths > Individual file paths > Add file paths to exclude; File types > Individual file types > Add file type; or Keywords > Individual keywords > Exclude these keywords.' These routes are given at https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions
-- [supported, minor] controls[0].note; Governance controls / behaviour: The file-type global exclusion list also supports up to 500 entries. | Found: Maximum number of items in each global exclusion list (Domains, SharePoint sites, File paths, Keywords, and File types). | 500 for each list | Fix: Add https://learn.microsoft.com/purview/insider-risk-management-limits to sources and cite it after the 500-entry statement in Governance controls; the existing exclusions page does not state the file-type limit. | Source: https://learn.microsoft.com/purview/insider-risk-management-limits
-- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost / licensing: The licensing model is included within the product's existing supported Microsoft 365 subscription requirement. | Found: Microsoft offers Insider Risk Management as part of a wide selection of Microsoft 365 licensing subscriptions. If you don't have an existing Microsoft 365 Enterprise E5 plan and want to try Insider Risk Management | Fix: Keep model included and name a documented plan in the notes and Cost and licensing: 'Microsoft Learn names Microsoft 365 Enterprise E5 as a plan for trying Insider Risk Management; verify the supported subscription and assign appropriate user licenses. A licence or price specific to this filter is not yet published.' Cite https://learn.microsoft.com/purview/insider-risk-management-plan and the existing configure link. | Source: https://learn.microsoft.com/purview/insider-risk-management-plan
-- [supported, minor] Governance controls / behaviour: Global exclusions does not target temporary file name patterns specifically, which is the roadmap's stated gap. | Found: some temporary file naming patterns are not easily captured with the current exclusions | Fix: Narrow the sentence to the record's wording: 'The roadmap item says some temporary file naming patterns are not easily captured with current exclusions.' Existing keyword exclusions can already match terms in file names; avoid implying that no temporary naming pattern can be targeted.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Global exclusions is reached in Microsoft Purview portal at Settings > Insider Risk Management > Insider risk settings > Global exclusions. | Found: Select Settings in the upper-right corner of the page, then select Insider Risk Management to go to the Insider Risk Management settings. Under Insider risk settings, select Global exclusions. | Fix: The route reaches the correct page but stops before choosing an exclusion. Retain it and give the complete routes in the note: 'Settings > Insider Risk Management > Insider risk settings > Global exclusions > Type > File paths > Individual file paths > Add file paths to exclude'; 'Settings > Insider Risk Management > Insider risk settings > Global exclusions > Type > File types > Individual file types > Add file type'; 'Settings > Insider Risk Management > Insider risk settings > Global exclusions > Type > Keywords > Individual keywords > Exclude these keywords'. Source: https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions
+- [supported, minor] controls[0].note; Governance controls table / admin-path: Keyword entries use Keywords > Individual keywords within Global exclusions. | Found: Individual keywords. To add keywords one at a time, enter a keyword in the Exclude these keywords field, then press Enter. | Fix: Replace 'Keywords > Individual keywords' with 'Keywords > Individual keywords > Exclude these keywords' in the note and rendered table, as documented at https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions
 -->

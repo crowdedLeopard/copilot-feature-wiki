@@ -47,7 +47,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > + Add cloud apps > Adaptive app scopes > app scope"
+      path: "Data loss prevention > Policies > + Create policy > Inline web traffic > Categories > Custom > Regulations > Custom policy > + Add cloud apps > Adaptive app scopes > app scope"
       docs: "https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security"
     api: null
     note: "Documents today's choices (catalog apps, adaptive app scopes). The all-websites option is not yet documented."
@@ -55,7 +55,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > + Add cloud apps > Adaptive app scopes > app scope > Choose where to enforce the policy > Network and non-Microsoft secure browsers"
+      path: "Data loss prevention > Policies > + Create policy > Inline web traffic > Categories > Custom > Regulations > Custom policy > Choose where to enforce the policy > Network and non-Microsoft secure browsers"
       docs: "https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security"
     api:
       kind: "powershell"
@@ -66,7 +66,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Entra admin center"
-      path: "Global Secure Access > Secure > Content policies > + Create Policy > Rules"
+      path: "Global Secure Access > Secure > Content policies > + Create Policy > Basics > Rules > rule > Action > Scan with Purview"
       docs: "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering"
     api: null
     note: "Needs the Global Secure Access Administrator role. On Rules, add a new rule, then select Action > Scan with Purview. Learn's content policy page gives portal steps only."
@@ -83,19 +83,23 @@ changes:
     note: "Correction: default state is now unknown, the Entra Scan with Purview path ends at Rules with the rule step in the note, the Purview paths include the app scope step, and the checklist and licensing notes are narrowed to documented facts."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 63 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-21"
+    note: "Correction: removed the claim that an all-websites policy does nothing outside the Entra ID joined device chain, removed the After rollout monitoring bullet, and expanded the Purview and Entra control paths to the steps Learn lists."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 61 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
+  claims: 61
   confirmed: 61
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "587514c5047a81dbfed3bb48fc1a326b"
+  contradicted: 0
+  attempts: 0
+  hash: "479c1ff0114f42961f7a95d4f8ba68c8"
 ---
 
 ## What's changing
@@ -120,7 +124,7 @@ Microsoft has not stated whether existing policies change scope on arrival; no s
 - Learn says Purview network data security policies don't apply to B2B guest users.
 
 **Security & identity**
-- Learn lists prerequisites for the GSA integration: an Entra ID joined device, a Transport Layer Security (TLS) inspection policy and a GSA Internet Access content policy. A site only reaches Purview through that chain, so an all-websites DLP policy does nothing for devices outside it.
+- Learn lists prerequisites for the GSA integration: an Entra ID joined device, a Transport Layer Security (TLS) inspection policy and a GSA Internet Access content policy.
 - Two role sets are involved: Global Secure Access Administrator for the content policy, and a Purview role such as DLP Compliance Management or Information Protection Admin for the DLP policy.
 
 **Autonomy & actions**
@@ -160,7 +164,6 @@ Learn places the following prerequisites on the GSA integration: the device must
 - Pilot the policy before broader deployment.
 
 ### After rollout
-- Investigate user reports with the documented Purview and GSA monitoring tools.
 - Re-read the Learn page for network data security policies when the preview starts, and update your scope and exceptions to match what it documents.
 
 ## Governance controls
@@ -170,9 +173,9 @@ Learn places the following prerequisites on the GSA integration: the device must
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which cloud apps and websites a network DLP policy covers</strong><br><small>Tenant</small><br><small class="controls__note">Documents today's choices (catalog apps, adaptive app scopes). The all-websites option is not yet documented.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Inline web traffic › Custom › Custom policy › + Add cloud apps › Adaptive app scopes › app scope <a href="https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether a DLP policy is enforced on network traffic</strong><br><small>Tenant</small><br><small class="controls__note">The cmdlet creates the policy; the reference lists Network as a valid value without describing it. Security &amp; Compliance PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Inline web traffic › Custom › Custom policy › + Add cloud apps › Adaptive app scopes › app scope › Choose where to enforce the policy › Network and non-Microsoft secure browsers <a href="https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -EnforcementPlanes @(&quot;Network&quot;)</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether Global Secure Access sends content to Purview for inspection</strong><br><small>Tenant</small><br><small class="controls__note">Needs the Global Secure Access Administrator role. On Rules, add a new rule, then select Action &gt; Scan with Purview. Learn's content policy page gives portal steps only.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Global Secure Access › Secure › Content policies › + Create Policy › Rules <a href="https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which cloud apps and websites a network DLP policy covers</strong><br><small>Tenant</small><br><small class="controls__note">Documents today's choices (catalog apps, adaptive app scopes). The all-websites option is not yet documented.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Inline web traffic › Categories › Custom › Regulations › Custom policy › + Add cloud apps › Adaptive app scopes › app scope <a href="https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether a DLP policy is enforced on network traffic</strong><br><small>Tenant</small><br><small class="controls__note">The cmdlet creates the policy; the reference lists Network as a valid value without describing it. Security &amp; Compliance PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Inline web traffic › Categories › Custom › Regulations › Custom policy › Choose where to enforce the policy › Network and non-Microsoft secure browsers <a href="https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -EnforcementPlanes @(&quot;Network&quot;)</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Global Secure Access sends content to Purview for inspection</strong><br><small>Tenant</small><br><small class="controls__note">Needs the Global Secure Access Administrator role. On Rules, add a new rule, then select Action &gt; Scan with Purview. Learn's content policy page gives portal steps only.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Global Secure Access › Secure › Content policies › + Create Policy › Basics › Rules › rule › Action › Scan with Purview <a href="https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -194,14 +197,8 @@ cost: Medium. Network data security through Global Secure Access needs Microsoft
 impact: Medium. Users whose traffic routes through the Global Secure Access client and falls in the policy scope notice blocks and alerts; admins in Purview and Entra do the configuring.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity, first bullet / applicability: A site only reaches Purview through the stated Entra ID joined device chain, so an all-websites DLP policy does nothing for devices outside it. | Found: The Global Secure Access client requires a device (or virtual machine) that is either Microsoft Entra ID joined or Microsoft Entra ID Hybrid joined. | Fix: Remove 'A site only reaches Purview through that chain, so an all-websites DLP policy does nothing for devices outside it.' Retain Scope's distinction between the walkthrough's Entra ID joined requirement and the content-policy page's joined-or-hybrid-joined requirement. | Source: https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing / cost: The network data security overview says pay-as-you-go setup is not required for GSA integration. | Found: Pay-as-you-go is not required to be set up for integration with Microsoft Entra Global Secure Access. | Fix: Keep the GSA-specific statement, but add: 'The general Purview billing-models table also lists Network Data Security under pay-as-you-go without distinguishing integrations; the network data security overview explicitly exempts GSA from pay-as-you-go setup.' Cite https://learn.microsoft.com/purview/purview-billing-models. | Source: https://learn.microsoft.com/purview/dlp-network-data-security-learn
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The Purview path shown reaches the adaptive app scope selection for a network DLP policy. | Found: Select Data loss prevention > Policies > + Create policy. ... Select Custom from the Categories list and then select Custom policy from the Regulations list. ... Select + Add cloud apps. Select the Adaptive app scopes tab, then choose All unmanaged AI apps | Fix: Expand controls[0].ui.path and its rendered row to 'Data loss prevention > Policies > + Create policy > Inline web traffic > Categories > Custom > Regulations > Custom policy > + Add cloud apps > Adaptive app scopes > app scope'. Categories and Regulations are omitted headings, not wrong choices. | Source: https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security
-- [supported, minor] controls[1].ui; Governance controls table; Governance guidance: At rollout / admin-path: The Purview path shown reaches Network and non-Microsoft secure browsers enforcement. | Found: Select Custom from the Categories list and then select Custom policy from the Regulations list. ... On the Choose where to enforce the policy page, ensure Network and non-Microsoft secure browsers is On | Fix: Expand controls[1].ui.path and its rendered row to 'Data loss prevention > Policies > + Create policy > Inline web traffic > Categories > Custom > Regulations > Custom policy > + Add cloud apps > Adaptive app scopes > app scope > Choose where to enforce the policy > Network and non-Microsoft secure browsers'. | Source: https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security
-- [supported, minor] controls[2].ui; controls[2].note; Governance controls table; Governance guidance: At rollout / admin-path: The Entra path reaches the Rules page, where a new rule's Action can be set to Scan with Purview. | Found: Browse to Global Secure Access > Secure > Content policies. ... Select + Create Policy. ... On the Rules tab: Add a new rule. ... To use data policies configured in Microsoft Purview, select Scan with Purview. | Fix: Expand controls[2].ui.path and its rendered row to 'Global Secure Access > Secure > Content policies > + Create Policy > Basics > Rules > rule > Action > Scan with Purview'. Retain the note explaining that the rule is added on Rules. The current path stops on the correct page but not at the action. | Source: https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist tells readers to investigate with Purview and GSA monitoring tools, but neither monitoring control appears in the controls table. | Found: After rollout: 'Investigate user reports with the documented Purview and GSA monitoring tools.' Controls table: app scope, network enforcement, and sending content for inspection only. | Fix: Remove the After rollout checklist bullet 'Investigate user reports with the documented Purview and GSA monitoring tools.' The verified monitoring advice can remain in Risk assessment; do not add control rows during this correction.
+- [supported, minor] Cost and licensing / licensing: The network data security overview says pay-as-you-go setup is not required for GSA integration. | Found: Pay-as-you-go is not required to be set up for integration with Microsoft Entra Global Secure Access. | Fix: After this sentence add: 'The Microsoft Purview service description describes network DLP more generally as pay-as-you-go capabilities without stating this GSA exception; the network data security overview explicitly gives the exception.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description. | Source: https://learn.microsoft.com/purview/dlp-network-data-security-learn
 -->

@@ -37,17 +37,26 @@ sources:
   - title: "Microsoft services that support auditing"
     url: "https://learn.microsoft.com/purview/audit-supported-services"
     kind: "learn"
+  - title: "Manage audit log retention policies"
+    url: "https://learn.microsoft.com/purview/audit-log-retention-policies"
+    kind: "learn"
   - title: "Get access to Universal Print"
     url: "https://learn.microsoft.com/universal-print/get-access-to-universal-print"
     kind: "learn"
   - title: "Configure tenant-wide settings using Azure Portal"
     url: "https://learn.microsoft.com/universal-print/reference/portal/settings"
     kind: "learn"
+  - title: "auditLogRecord resource type"
+    url: "https://learn.microsoft.com/graph/api/resources/security-auditlogrecord?view=graph-rest-1.0"
+    kind: "learn"
   - title: "universalPrintManagementAuditRecord resource type"
     url: "https://learn.microsoft.com/graph/api/resources/security-universalprintmanagementauditrecord?view=graph-rest-1.0"
     kind: "learn"
   - title: "universalPrintPrintJobAuditRecord resource type"
     url: "https://learn.microsoft.com/graph/api/resources/security-universalprintprintjobauditrecord?view=graph-rest-1.0"
+    kind: "learn"
+  - title: "Office 365 Management Activity API schema"
+    url: "https://learn.microsoft.com/office/office-365-management-api/office-365-management-activity-api-schema"
     kind: "learn"
   - title: "Search-UnifiedAuditLog"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog"
@@ -91,19 +100,23 @@ changes:
     note: "New briefing: Universal Print audit records for the Purview unified audit log, with the activities Learn already lists and the audit controls that apply."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Correction: record fields narrowed to the Universal Print-specific fields in auditData.dynamicProperties, with common auditLogRecord fields stated; retention wording clarified; two Before rollout checklist steps removed or narrowed."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 68 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 57
+  claims: 68
+  confirmed: 66
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "100eed421d04ac5495c67154ee31c317"
+  contradicted: 2
+  attempts: 2
+  hash: "3b852e19102cd978ac6108e7ae5f2d38"
 ---
 
 ## What's changing
@@ -112,7 +125,7 @@ The roadmap item describes audit records of key administrator and user activitie
 
 Microsoft Learn already documents the activities. Its Audit log activities page lists Universal Print management activities (printers, connectors, printer shares, pull-print printers and tenant-level settings) and Universal Print print job activities. Examples are `PrinterRegistered`, `TenantPrintSettingsModified` and `PrintJobCreated`. Microsoft Graph also documents two record types, `universalPrintManagementAuditRecord` and `universalPrintPrintJobAuditRecord`, each returned as the auditData property of an auditLogRecord.
 
-So the roadmap says In development while Learn describes the activities as recorded; this page does not decide which is current. Neither source says when records start to appear in a tenant or whether they appear by default. The Learn tables give each activity's name and a one-line description, and the Graph pages list only an inherited dynamicProperties property, so the fields inside a record are not described.
+So the roadmap says In development while Learn describes the activities as recorded; this page does not decide which is current. Neither source says when records start to appear in a tenant or whether they appear by default. The Learn tables give each activity's name and a one-line description, and the Graph pages list only an inherited dynamicProperties property, so the Universal Print-specific fields inside auditData.dynamicProperties are not described on the two Graph payload pages. The enclosing auditLogRecord documents common fields including operation, objectId, userId and userPrincipalName ([auditLogRecord resource type](https://learn.microsoft.com/graph/api/resources/security-auditlogrecord?view=graph-rest-1.0)).
 
 ## Why it matters
 
@@ -124,7 +137,7 @@ Microsoft has not stated what happens on arrival, and no source says existing pr
 
 **Data exposure**
 
-- Print-job activities such as `PrintJobCreated`, `PrintJobDocumentUploaded` and `PrintJobDocumentFetched` are listed for the unified audit log. Learn does not describe the fields in these records, so run a test search and read a record before deciding who gets the Audit Logs or View-Only Audit Logs roles that searching requires.
+- Print-job activities such as `PrintJobCreated`, `PrintJobDocumentUploaded` and `PrintJobDocumentFetched` are listed for the unified audit log. The Universal Print-specific fields inside auditData.dynamicProperties are not described on the two Graph payload pages, so run a test search and read a record before deciding who gets the Audit Logs or View-Only Audit Logs roles that searching requires.
 - Restricted admins (those assigned administrative units) can search and export user-generated audit logs only within their units; unrestricted admins reach all audit logs. Check which kind of admin your auditors are.
 
 **Security & identity**
@@ -138,7 +151,7 @@ Microsoft has not stated what happens on arrival, and no source says existing pr
 
 **Change & support**
 
-- Retention follows the audit licence: 180 days for users on non-E5 licences, and one year by default for Microsoft Entra ID, Exchange and SharePoint activity for E5 users. Other services need an audit log retention policy, up to one year. Universal Print is not named among the one-year defaults, so confirm what applies before promising long-term record-keeping.
+- Retention follows the audit licence: 180 days for users on non-E5 licences, and one year by default for Microsoft Entra ID, Exchange and SharePoint activity for E5 users. For retention beyond 180 days and up to one year in other services, an audit log retention policy and an Office 365 E5, Microsoft 365 E5, Microsoft Purview Suite or E5 eDiscovery and Audit add-on licence for the user generating the record are required ([Manage audit log retention policies](https://learn.microsoft.com/purview/audit-log-retention-policies)). Universal Print is not named among the one-year defaults, so confirm what applies before promising long-term record-keeping.
 - Export is limited to 50,000 rows for Audit (Standard) and 1,000,000 rows for Audit (Premium). Print-job activity may need narrow searches by operation name.
 
 ## Cost and licensing
@@ -162,8 +175,7 @@ Microsoft has not stated what happens on arrival, and no source says existing pr
 ### Before rollout
 
 - Run `Get-AdminAuditLogConfig | Format-List UnifiedAuditLogIngestionEnabled` in Exchange Online PowerShell and confirm the value is `True`; turn auditing on if it is not (controls table, row 2).
-- Assign the Audit Logs or View-Only Audit Logs role to the compliance and security staff who will search Universal Print records, and record whether they are restricted or unrestricted admins.
-- Check which licences your print users hold and what audit retention they give, then decide whether a retention policy is needed for Universal Print records.
+- Check which licences your print users hold and what default audit retention they give.
 
 ### At rollout
 
@@ -195,8 +207,8 @@ Searching through the portal needs the Audit Logs or View-Only Audit Logs role; 
 ## Open questions
 
 - When will Universal Print audit records appear in tenants, and are they on by default? The roadmap says In development with a January CY2027 target while Learn already lists the activities. Watch the roadmap item and Message center.
-- Which fields does each record carry, for example printer, user and document details? The Learn tables and Graph pages do not say. Watch the Audit log activities page.
-- Which Record types entry selects these records in Audit > Search? The Microsoft services that support auditing page lists no Universal Print record type, while Graph documents two. Watch that page.
+- Which Universal Print-specific printer and document fields are carried inside auditData.dynamicProperties? The Learn tables and the two Graph payload pages do not say. Watch the Audit log activities page.
+- Which Record types entry selects these records in Audit > Search? The services summary omits Universal Print, but the Office 365 Management Activity API schema lists UniversalPrintPrintJob (377) and UniversalPrintManagement (427); their availability in the portal dropdown is not stated ([Office 365 Management Activity API schema](https://learn.microsoft.com/office/office-365-management-api/office-365-management-activity-api-schema)).
 - Do Universal Print records fall under the 180-day default or the one-year default, and does a retention policy cover them? Watch the Manage audit log retention policies page.
 
 <!-- rationale
@@ -208,10 +220,6 @@ impact: Low. Compliance and security administrators who search the audit log not
 <!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing; Risk assessment: Data exposure; Open questions: record fields / absence: The fields inside a Universal Print audit record, including user details, are not described. | Found: userId | String | The identifier of the user, system account, service, or application that performed the activity. userPrincipalName | String | The user principal name of the user who performed the activity. | Fix: Replace the broad field-absence statements with 'The Universal Print-specific fields inside auditData.dynamicProperties are not described on the two Graph payload pages. The enclosing auditLogRecord documents common fields including operation, objectId, userId and userPrincipalName.' Cite https://learn.microsoft.com/graph/api/resources/security-auditlogrecord?view=graph-rest-1.0. Narrow the Open questions item to 'Which Universal Print-specific printer and document fields are carried inside auditData.dynamicProperties?' | Source: https://learn.microsoft.com/graph/api/resources/security-auditlogrecord?view=graph-rest-1.0
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Open questions: Record types / absence: The Microsoft services that support auditing page lists no Universal Print record type. | Found: Searched: 'Universal Print audit record fields schema UniversalPrintManagement UniversalPrintPrintJob'. Opened Microsoft services that support auditing and searched Office 365 Management Activity API schema; the former has no Universal Print row, but the latter names both record types. | Fix: Keep the uncertainty about portal dropdown availability, but replace the supporting explanation with 'The services summary omits Universal Print, but the Office 365 Management Activity API schema lists UniversalPrintPrintJob (377) and UniversalPrintManagement (427); their availability in the portal dropdown is not stated.' Cite https://learn.microsoft.com/office/office-365-management-api/office-365-management-activity-api-schema.
-- [supported, minor] Risk assessment: Change & support; Cost and licensing: Audit retention / licensing: An audit log retention policy permits retention of activities in other services for up to one year under the E5 retention provision. | Found: Organizations can also create audit log retention policies to retain audit records for activities in other services for up to one year. | Fix: Clarify 'Other services need an audit log retention policy, up to one year' as 'For retention beyond 180 days and up to one year in other services, an audit log retention policy and an Office 365 E5, Microsoft 365 E5, Microsoft Purview Suite or E5 eDiscovery and Audit add-on licence for the user generating the record are required.' Cite https://learn.microsoft.com/purview/audit-log-retention-policies. This is not an absolute one-year maximum: that page also documents longer retention with the 10-year add-on. | Source: https://learn.microsoft.com/purview/audit-search
-- [contradicted, minor] Governance guidance: Before rollout, role-assignment step / consistency: The checklist instructs the reader to assign audit-search roles and check administrative-unit restrictions without a controls-table row for that control. | Found: Assign the Audit Logs or View-Only Audit Logs role to the compliance and security staff ... record whether they are restricted or unrestricted admins. Table rows: Searching records; unified audit ingestion; separate Universal Print switch. | Fix: The role-assignment and administrative-unit check in Before rollout has no corresponding role/access configuration row. Remove that checklist bullet; retain the verified role prerequisites in Scope and the existing control notes.
-- [contradicted, minor] Governance guidance: Before rollout, retention step / consistency: The checklist asks readers to assess whether a retention policy is needed without a retention-policy row in the controls table. | Found: Check which licences your print users hold and what audit retention they give, then decide whether a retention policy is needed for Universal Print records. The controls table has search, ingestion and separate-switch rows, but no retention-policy row. | Fix: The retention-policy decision in Before rollout has no corresponding control row. Narrow that bullet to 'Check which licences your print users hold and what default audit retention they give.' Do not add an unverified control row.
+- [contradicted, blocker] Open questions: retention; Risk assessment: Change & support / absence: Whether Universal Print unified audit records receive the 180-day or one-year default remains unpublished. | Found: This default policy retains audit records that contain the value of AzureActiveDirectory, Exchange, OneDrive, and SharePoint for the Workload property ... Audit records for all other activities are retained for 180 days by default | Fix: Replace the final Open questions bullet with 'Universal Print unified audit records fall outside the listed one-year workload defaults and are retained for 180 days by default, unless a custom retention policy changes the duration.' Replace 'Universal Print is not named among the one-year defaults, so confirm what applies before promising long-term record-keeping' with that same sentence. Cite https://learn.microsoft.com/purview/audit-log-retention-policies. | Source: https://learn.microsoft.com/purview/audit-log-retention-policies
+- [contradicted, blocker] Open questions: retention; Why it matters / absence: Whether an audit retention policy can cover Universal Print unified audit records remains undocumented. | Found: Record type: The audit record type the policy applies to. If you leave this property blank, the policy applies to all record types. | Fix: Remove 'and does a retention policy cover them?' from the final Open questions bullet. The existing Why it matters statement that the unified audit retention regime covers these records is supported: the cited retention page states that a policy with Record type left blank applies to all record types. Do not add a control row. | Source: https://learn.microsoft.com/purview/audit-log-retention-policies
 -->

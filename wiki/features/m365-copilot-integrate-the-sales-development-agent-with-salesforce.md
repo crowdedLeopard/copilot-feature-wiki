@@ -96,19 +96,23 @@ changes:
     note: "Corrected after the independent check: cost is now variable, with Copilot Credit billing published from December 1, 2026; removed an unsupported data-exposure claim and checklist items that had no controls-table row."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 79 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-21"
+    note: "Corrected after the independent check: the organisation-wide block is now described as restricting access to the agent, not as a way to stop a running agent."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 97 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 79
-  confirmed: 78
-  unconfirmed: 1
+  claims: 97
+  confirmed: 97
+  unconfirmed: 0
   contradicted: 0
-  attempts: 2
-  hash: "931e81838ba24f402d1e058676103828"
+  attempts: 0
+  hash: "938daa4956d8bae291a354ecda7832a8"
 ---
 
 ## What's changing
@@ -139,7 +143,7 @@ Nothing in the sources says the integration connects on its own. The agent has t
 
 **Autonomy & actions**
 
-- The agent writes to Salesforce: it changes `Lead.Status`, reassigns `Lead.OwnerId` and creates Task records. Learn lists human oversight as "Once launched, runs autonomously until stopped", so the controls are stopping the agent (see the controls table) and limiting the Salesforce permissions it holds.
+- The agent writes to Salesforce: it changes `Lead.Status`, reassigns `Lead.OwnerId` and creates Task records. Learn lists human oversight as "Once launched, runs autonomously until stopped".
 - Learn warns that if the agent cannot access the Email Opt Out field it might contact the lead. Confirm the agent user has field access to Email Opt Out on Lead and Contact before outreach starts.
 
 **Change & support**
@@ -178,7 +182,7 @@ Nothing in the sources says the integration connects on its own. The agent has t
 ### After rollout
 
 - Check Salesforce Lead records for unexpected status, owner and Task changes made by the agent user, and check that leads with Email Opt Out set are not contacted.
-- Keep the stop option ready: block the agent for the organisation (second row of the controls table).
+- Keep the organisation-wide access restriction ready: block the agent for the organisation (second row of the controls table).
 
 ## Governance controls
 
@@ -209,10 +213,4 @@ The Graph package calls need a Microsoft Agent 365 licence and are beta APIs. Th
 risk: High. The agent runs autonomously once launched and, through the Salesforce MCP server, can change Lead status and owner and create Task records; the integration is documented as a preview.
 cost: Variable. Microsoft publishes Copilot Credit billing for Sales Development Agent resources beginning December 1, 2026, including 100 Copilot Credits per agent per month plus consumption billing for agent activity; Salesforce licensing is also required.
 impact: Low. Only the sales managers who create agent instances and the Salesforce users who authorise the connection work with it directly; admins notice it through activation and blocking.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Risk assessment: Autonomy & actions; Governance guidance: After rollout / applicability: The organisation-wide agent block in the controls table is a stop option for the agent's ongoing autonomous actions. | Found: Searched: Sales Development Frontier copilot packages activate block agent template running instances stop; Sales Development block stop agent instances organisation. Read agent-actions, manage-agent-instances and copilotpackage-block. Only instance blocking explicitly stops ongoing actions. | Fix: Remove the inference 'so the controls are stopping the agent (see the controls table) and limiting the Salesforce permissions it holds' after the human-oversight quote. Replace 'Keep the stop option ready: block the agent for the organisation (second row of the controls table)' with 'Keep the organisation-wide access restriction ready: block the agent for the organisation (second row of the controls table).' The cited row documents restricting user access, not stopping running instances; https://learn.microsoft.com/microsoft-agent-365/admin/manage-agent-instances explicitly documents stopping through instance blocking.
 -->

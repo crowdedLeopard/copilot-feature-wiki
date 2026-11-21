@@ -4,10 +4,10 @@
   "title": "Microsoft Purview DLP: rules to auto-resolve and tag alerts",
   "status": "held",
   "date": "2026-11-21",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,36 +16,36 @@
     "reason": "failed",
     "since": "2026-11-21",
     "reasons": [
-      "1 blocking finding (claim 41)"
+      "1 blocking finding (claim 35)"
     ]
   },
   "counts": {
-    "claims": 45,
-    "confirmed": 43,
+    "claims": 53,
+    "confirmed": 52,
     "unconfirmed": 0,
-    "contradicted": 2,
+    "contradicted": 1,
     "blocker": 1,
     "major": 0,
-    "minor": 5
+    "minor": 0
   },
-  "summary": "Hold: the statement that existing alert controls are manual overlooks Microsoft's documented automatic alert tuning. The roadmap details match the record, and searches found no documentation identifying the planned tagging and auto-resolution feature itself. The background licensing and Defender investigation guidance also need narrower qualifications.",
+  "summary": "The role requirement needs to be narrowed to the Purview DLP alert management dashboard: Defender documents different permissions for investigating DLP alerts. The roadmap dates and planned behaviour match the record, and the searches confirm the gaps concerning the new rules.",
   "claims": [
     {
       "n": 1,
-      "where": "title; front matter: products; What's changing",
+      "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "The planned capability belongs to Microsoft Purview Data Loss Prevention.",
+      "claim": "Microsoft plans DLP rules for handling predictable alerts in advance.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Microsoft Purview: Data Loss Prevention - Rule-based tagging and auto-resolution of alerts based on business needs of the customer.",
+      "quote": "Alert auto-resolution & tagging rules let you tell DLP, in advance, how to handle predictable alerts.",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "summary; What's changing; Why it matters; Risk assessment",
+      "where": "What's changing; Why it matters; Risk assessment",
       "type": "record",
-      "claim": "Microsoft plans rules that automatically resolve predictable alerts so they do not reach the triage queue.",
+      "claim": "Planned resolving rules keep unwanted alerts from reaching the triage queue.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Resolve alerts you don't need to see - e.g., Low-severity alerts for mail sent only to your trusted partner domains, so they never reach your triage queue.",
@@ -54,9 +54,9 @@
     },
     {
       "n": 3,
-      "where": "title; summary; What's changing; Why it matters; Governance guidance",
+      "where": "What's changing; Why it matters",
       "type": "record",
-      "claim": "Microsoft plans rules that tag alerts so they can be found and routed.",
+      "claim": "Planned tagging rules let alerts be found and routed.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Tag alerts so you can find and route them",
@@ -87,17 +87,28 @@
     },
     {
       "n": 6,
-      "where": "What's changing; Risk assessment: Autonomy & actions; Scope",
+      "where": "What's changing",
       "type": "record",
-      "claim": "A rule is defined once and DLP then applies it automatically to every new alert.",
+      "claim": "A planned rule is defined once.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "You define a rule once, and from then on DLP applies it automatically to every new alert",
+      "quote": "You define a rule once",
       "severity": null,
       "fix": null
     },
     {
       "n": 7,
+      "where": "What's changing; Scope; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "DLP then automatically applies the defined rule to every new alert, without per-alert approval.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "and from then on DLP applies it automatically to every new alert",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
       "where": "front matter: status; What's changing; controls[0].note",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -108,10 +119,10 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 9,
       "where": "front matter: previewDate; summary; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap preview target is December CY2026.",
+      "claim": "Preview is targeted for December CY2026, not committed for that month.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": \"December CY2026\"",
@@ -119,10 +130,10 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 10,
       "where": "front matter: targetDate; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap general availability target is February CY2027.",
+      "claim": "General availability is targeted for February CY2027.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"February CY2027\"",
@@ -130,10 +141,10 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 11,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the listed cloud; no US Government cloud is listed.",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant) as the cloud.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -141,10 +152,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 12,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "Web is the listed platform.",
+      "claim": "The record lists Web as the platform.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -152,10 +163,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 13,
       "where": "front matter: releasePhase; Scope",
       "type": "record",
-      "claim": "The listed release phases are General Availability and Preview.",
+      "claim": "The record lists General Availability and Preview as release phases.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -163,10 +174,21 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 14,
+      "where": "Scope",
+      "type": "record",
+      "claim": "No US Government cloud is listed in the record, without establishing unavailability there.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap record was modified at 2026-10-12T23:01:05.",
+      "claim": "The roadmap modification timestamp is 2026-10-12T23:01:05.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-10-12T23:01:05\"",
@@ -174,175 +196,131 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "summary; What's changing; front matter: confidence; changes",
-      "type": "absence",
-      "claim": "Microsoft Learn does not yet describe the particular planned business-needs tagging and auto-resolution feature.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"DLP\" \"auto-resolution\" \"tagging\" rules; Microsoft Purview DLP alert auto-resolution tagging rules configuration default roles licensing retention PowerShell API. Opened Purview alerts, dashboard and investigation pages and Defender investigate-alerts; no page identifies this planned feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "controls[0].ui and .api; rendered controls row; Governance controls",
-      "type": "absence",
-      "claim": "No UI or API is documented for the particular planned business-needs tagging and auto-resolution rules.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview DLP alert resolution tagging rules Security Compliance PowerShell Microsoft Graph API. Opened DLP dashboard, Set-DlpComplianceRule, Graph security-alert-update and Defender investigate-alerts. Existing tuning and individual-alert updates do not identify the planned tagging feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 16,
-      "where": "What's changing; Governance guidance: After rollout",
-      "type": "absence",
-      "claim": "The supported conditions for this planned feature are not documented beyond the roadmap examples.",
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The roadmap description describes alert handling rather than new data access.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: DLP alert auto resolution rules supported conditions resolved alerts search retention custom tags. Opened Purview alerts and dashboard, Defender investigate-alerts and dlp-investigate-alerts-defender. Existing evidence-based tuning does not document these planned business-needs conditions.",
+      "source": "roadmap record",
+      "quote": "Alert auto-resolution & tagging rules let you tell DLP, in advance, how to handle predictable alerts.",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "where": "summary; What's changing; front matter: confidence",
       "type": "absence",
-      "claim": "How the new tags are named and whether they are the same as existing Defender incident custom tags are not documented.",
+      "claim": "Microsoft Learn does not yet describe the planned business-needs auto-resolution and tagging feature.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"DLP\" \"auto-resolution\" \"tagging\" rules; DLP alert auto resolution rules supported conditions resolved alerts search retention custom tags. Opened Purview investigation and Defender investigation pages; they describe existing tags, not their relationship to this roadmap feature.",
+      "quote": "Searched: \"DLP\" \"auto-resolution\" \"tagging\" rules; Purview DLP alert auto-resolution tagging rules business process default roles licensing PowerShell. Opened dlp-alerts-get-started, dlp-alerts-dashboard-get-started and dlp-alert-investigation-learn; no feature procedure found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
-      "where": "What's changing; Risk assessment: Autonomy & actions; Open questions",
+      "where": "What's changing",
       "type": "absence",
-      "claim": "Visibility, searchability and retention of alerts automatically resolved by this planned feature are not documented.",
+      "claim": "Microsoft has not documented the supported conditions for the new alert-handling rules.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: DLP alert auto resolution rules supported conditions resolved alerts search retention custom tags. Opened Purview dashboard and investigation, Defender investigation and DLP investigation pages. Existing dashboard retention and Defender tuning are documented, not this feature's retention.",
+      "quote": "Searched: Purview DLP alert tagging auto resolution default roles permissions conditions resolved alerts retention. Read DLP policy reference search excerpts and the DLP alerts pages; policy-match conditions do not document the new alert-handling rule conditions.",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
-      "where": "front matter: defaultState; Why it matters; Open questions; rationale: risk",
-      "type": "default",
-      "claim": "The default state of the planned feature, including whether rules exist on arrival, is not stated.",
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft has not documented how the planned alert tags are named.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview DLP auto-resolution tagging rules audit logs prerequisites rollout default role permissions. Read roadmap description and opened DLP alerts, dashboard and investigation pages. None states an arrival default for the planned feature; Defender's existing built-in tuning is separate.",
+      "quote": "Searched: \"DLP\" \"auto-resolution\" \"tagging\" rules; Purview DLP alert tagging auto resolution default roles permissions conditions resolved alerts retention. Opened DLP investigation and Defender DLP investigation pages; custom incident tags are documented, not naming rules for this feature.",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "Risk assessment: Security & identity; Scope; Open questions",
+      "where": "What's changing; Risk assessment: Autonomy & actions; Open questions",
       "type": "absence",
-      "claim": "Roles that create or edit the planned auto-resolution and tagging rules are not documented.",
+      "claim": "Visibility, searchability and retention of alerts automatically resolved by the new rules are not documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview DLP auto-resolution tagging rules audit logs prerequisites rollout default role permissions. Read Purview permissions search excerpts and opened DLP alerts and dashboard. Their dashboard-access and policy-configuration permissions do not name the planned feature's rule authors.",
+      "quote": "Searched: Purview DLP alert tagging auto resolution default roles permissions conditions resolved alerts retention. Opened dlp-alert-investigation-learn and dlp-alerts-dashboard-get-started; they give existing dashboard retention, not the fate of alerts resolved by these new rules.",
       "severity": null,
       "fix": null
     },
     {
       "n": 21,
-      "where": "Scope",
-      "type": "absence",
-      "claim": "Which DLP workloads the planned rules cover is not stated.",
+      "where": "front matter: defaultState; Why it matters; Open questions; rationale: risk",
+      "type": "default",
+      "claim": "The new rules' arrival behaviour and any default rules are not stated, so defaultState is unknown.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Purview DLP alert auto-resolution tagging rules configuration default roles licensing retention PowerShell API. Read roadmap and opened Purview alerts, dashboard and investigation pages; no feature-specific workload list was found.",
+      "quote": "Searched: Purview DLP alert tagging auto resolution default roles permissions conditions resolved alerts retention. Read the roadmap and the DLP alerts and Defender investigation pages; default policy and Defender tuning documentation do not state the default of this planned feature.",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "Scope",
+      "where": "controls[0].ui and controls[0].api; Governance controls",
       "type": "absence",
-      "claim": "Prerequisites specific to the planned rules are not documented.",
+      "claim": "No admin UI or API for creating the planned auto-resolution and tagging rules is documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview DLP auto-resolution tagging rules audit logs prerequisites rollout default role permissions. Opened DLP alerts, dashboard and Defender DLP investigation pages; prerequisites describe existing alert configuration or investigation, not this planned feature.",
+      "quote": "Searched: \"DLP\" \"auto-resolution\" \"tagging\" rules; Purview DLP alert auto resolution tagging rules PowerShell Graph API create rules. Opened DLP dashboard, Defender investigation, Set-DlpComplianceRule and Graph Update alert; read New-DlpComplianceRule syntax; none documents these rules.",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "Scope",
+      "where": "Risk assessment: Security & identity; Scope",
       "type": "absence",
-      "claim": "Rollout mechanics beyond the roadmap's target months are not documented.",
+      "claim": "Roles for creating or editing the new auto-resolution and tagging rules are not documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview DLP auto-resolution tagging rules audit logs prerequisites rollout default role permissions. Read roadmap and opened DLP alerts and dashboard; no feature-specific rollout mechanism was found. No Message Center post was supplied.",
+      "quote": "Searched: Purview DLP alert tagging auto resolution default roles permissions conditions resolved alerts retention. Read Purview permissions search excerpts, DLP alerts prerequisites and Defender investigation roles; none identifies permissions for creating the planned alert-handling rules.",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "front matter: licensing.model and notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The licensing model is unknown because no licence specific to auto-resolution and tagging rules is published.",
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The workloads covered by the new rules are not specified.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-billing-models",
-      "quote": "The per-user licensing model is the familiar Microsoft 365 E3/E5/A5/F5/G5 model. It remains unchanged. This licensing model enables you to apply Microsoft Purview controls and protections to Microsoft 365 and Windows/macOS endpoint-based assets.",
-      "severity": "minor",
-      "fix": "Set licensing.model to included. Replace the notes with: 'Microsoft Purview controls for Microsoft 365 and Windows/macOS endpoint assets use the Microsoft 365 E3/E5/A5/F5/G5 per-user licensing model. A requirement specific to alert auto-resolution and tagging rules is not yet published.' Cite https://learn.microsoft.com/purview/purview-billing-models. Keep the existing alert-configuration licensing qualifications."
+      "source": null,
+      "quote": "Searched: Purview DLP alert auto-resolution tagging rules business process default roles licensing PowerShell; \"DLP\" \"auto-resolution\" \"tagging\" rules. Read roadmap and opened DLP dashboard page; its workload list describes existing alerts, not the new rules' workload coverage.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 25,
-      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "where": "Scope",
       "type": "absence",
-      "claim": "Microsoft has not published a licence requirement specific to the planned alert auto-resolution and tagging feature.",
+      "claim": "Prerequisites specific to the new rules are not documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview DLP alert auto resolution tagging rules licensing price default permissions retention; Microsoft Purview service description data loss prevention licensing alert management. Opened DLP alerts, Purview service description and billing models; no feature-specific entitlement found.",
+      "quote": "Searched: Purview DLP alert tagging auto resolution default roles permissions conditions resolved alerts retention. Opened dlp-alerts-get-started, dlp-alerts-dashboard-get-started and Defender DLP investigation prerequisites; none describes prerequisites for the planned rules.",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "Cost and licensing; rationale: cost",
+      "where": "Scope",
       "type": "absence",
-      "claim": "No meter specific to planned alert auto-resolution and tagging rules is published.",
+      "claim": "Rollout mechanics beyond the roadmap targets are not documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview billing meters alert auto-resolution tagging rules price. Opened purview-billing-models and searched the Purview service description for alert, meter, tagging and auto-resolution; no meter for this planned feature found.",
+      "quote": "Searched: Purview DLP alert auto-resolution tagging rules business process default roles licensing PowerShell; Purview DLP alert tagging auto resolution default roles permissions conditions resolved alerts retention. Read roadmap and opened DLP alerts pages; no new-rule rollout procedure found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "No price specific to planned alert auto-resolution and tagging rules is published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview billing meters alert auto-resolution tagging rules price; Purview DLP alert auto resolution tagging rules licensing price default permissions retention. Opened Purview billing models and service description; no feature-specific price found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "Cost and licensing",
-      "type": "record",
-      "claim": "The roadmap item names no licence requirement, meter or price.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Alert auto-resolution & tagging rules let you tell DLP, in advance, how to handle predictable alerts. You define a rule once, and from then on DLP applies it automatically to every new alert",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
       "where": "What's changing; Governance controls",
       "type": "behaviour",
-      "claim": "Existing alerts are configured in DLP policy rules.",
+      "claim": "Existing DLP alerts are configured in DLP policy rules.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
       "quote": "Alerts are configured in DLP policy rules.",
@@ -350,21 +328,10 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "What's changing: existing alert handling",
+      "n": 28,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "The Defender XDR dashboard is the recommended location for investigating and managing DLP alerts.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
-      "quote": "The Microsoft Defender XDR dashboard is the recommended location for investigating and managing DLP alerts.",
-      "severity": "minor",
-      "fix": "Add to the existing context paragraph: 'The Defender DLP investigation page says its built-in DLP alert tuning rule, effective in early October 2026, converts DLP signals to behaviors; disable that rule to continue seeing them as alerts in Defender XDR.' Cite https://learn.microsoft.com/defender-xdr/dlp-investigate-alerts-defender. That page qualifies the older Purview guidance."
-    },
-    {
-      "n": 31,
-      "where": "What's changing: existing alert handling",
-      "type": "behaviour",
-      "claim": "DLP alerts can also be investigated and managed in the Microsoft Purview portal.",
+      "claim": "Existing DLP alerts can be investigated in the Microsoft Purview portal.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
       "quote": "DLP alerts can be investigated and managed in the Microsoft Defender XDR dashboard and in the Microsoft Purview portal.",
@@ -372,7 +339,29 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 29,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Existing DLP alerts can be investigated in Defender XDR, with the built-in DLP alert tuning rule disabled as explained in the paragraph.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/dlp-investigate-alerts-defender",
+      "quote": "When the built-in DLP alert tuning rule is disabled, you can manage and respond to Microsoft Purview Data Loss Prevention (DLP) alerts and incidents in the Microsoft Defender portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft recommends Defender XDR for investigating and managing DLP alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "The Microsoft Defender XDR dashboard is the recommended location for investigating and managing DLP alerts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
       "where": "What's changing; controls[0].note; Governance controls",
       "type": "behaviour",
       "claim": "The documented Purview dashboard procedure has an analyst set Status to Resolved after taking the required action.",
@@ -383,32 +372,65 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
-      "type": "role",
-      "claim": "DLP dashboard access requires Manage alerts and either DLP Compliance Management or View-Only DLP Compliance Management.",
+      "n": 32,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The built-in Defender DLP alert tuning rule took effect in early October 2026.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-alerts-dashboard-get-started",
-      "quote": "To access the DLP alert management dashboard, you need the Manage alerts role and either of these two roles: DLP Compliance Management; View-Only DLP Compliance Management",
+      "source": "https://learn.microsoft.com/defender-xdr/dlp-investigate-alerts-defender",
+      "quote": "A built-in alert tuning rule for DLP signals took effect in early October 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The built-in Defender rule converts DLP signals to behaviors rather than alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/dlp-investigate-alerts-defender",
+      "quote": "In Microsoft Defender XDR, the rule sets these signals as behaviors instead of alerts, so they don't generate alerts or appear in the incident queue.",
       "severity": null,
       "fix": null
     },
     {
       "n": 34,
-      "where": "Risk assessment: Autonomy & actions",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Microsoft Learn says the DLP alert management dashboard retains alerts for 30 days.",
+      "claim": "Disabling the built-in Defender rule allows DLP signals to continue appearing as alerts.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-alert-investigation-learn",
-      "quote": "The Microsoft Defender portal retains incidents for six months. The DLP alert management dashboard retains alerts for 30 days.",
+      "source": "https://learn.microsoft.com/defender-xdr/dlp-investigate-alerts-defender",
+      "quote": "To continue seeing DLP signals as alerts in Microsoft Defender XDR, disable the rule in Settings > Microsoft Defender XDR > Alert tuning.",
       "severity": null,
       "fix": null
     },
     {
       "n": 35,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "DLP alert management requires Manage alerts plus either DLP Compliance Management or View-Only DLP Compliance Management.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/defender-xdr/dlp-investigate-alerts-defender",
+      "quote": "Permission | Defender Alert Access: Manage Alerts | DLP + Security; View-Only Manage Alerts | DLP + Security; Information Protection Analyst | DLP only; DLP Compliance Management | DLP only; View-Only DLP Compliance Management | DLP only.",
+      "severity": "blocker",
+      "fix": "Replace the sentence with: \"Microsoft Learn documents that access to the Microsoft Purview DLP alert management dashboard requires the Manage alerts role plus either DLP Compliance Management or View-Only DLP Compliance Management.\" This is the scope stated at https://learn.microsoft.com/purview/dlp-alerts-dashboard-get-started; do not apply this combined requirement to Defender alert management."
+    },
+    {
+      "n": 36,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Microsoft Learn says audit log retention policy configuration controls how long an alert remains visible in the console.",
+      "claim": "Microsoft Learn states that the existing DLP alert management dashboard retains alerts for 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alert-investigation-learn",
+      "quote": "The DLP alert management dashboard retains alerts for 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "applicability",
+      "claim": "Microsoft Learn also says audit log retention policy configuration controls how long an alert remains visible in the console.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-alerts-dashboard-get-started",
       "quote": "Your organization's audit log retention policy configuration controls how long an alert remains visible in the console.",
@@ -416,10 +438,10 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Risk assessment: Change & support; Open questions",
+      "n": 38,
+      "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Existing Defender functionality associates custom tags with DLP incidents.",
+      "claim": "The Microsoft Defender portal already supports associating custom tags with DLP incidents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-alert-investigation-learn",
       "quote": "Associate custom tags to DLP incidents and filter by them.",
@@ -427,10 +449,87 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 39,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented whether the planned alert tags are the existing Defender incident tags.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"DLP\" \"auto-resolution\" \"tagging\" rules; Purview DLP alert tagging auto resolution default roles permissions conditions resolved alerts retention. Opened DLP investigation and Defender DLP investigation pages; they document incident tags but do not equate them to the planned tags.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is included within the product's existing licensing, with feature-specific requirements unpublished.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "The per-user licensing model is the familiar Microsoft 365 E3/E5/A5/F5/G5 model. It remains unchanged. This licensing model enables you to apply Microsoft Purview controls and protections to Microsoft 365 and Windows/macOS endpoint-based assets.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Purview controls for Microsoft 365 and Windows/macOS endpoint assets use the Microsoft 365 E3/E5/A5/F5/G5 per-user model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "The per-user licensing model is the familiar Microsoft 365 E3/E5/A5/F5/G5 model. It remains unchanged. This licensing model enables you to apply Microsoft Purview controls and protections to Microsoft 365 and Windows/macOS endpoint-based assets.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A licence requirement specific to the planned alert-handling rules is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview alert auto-resolution tagging rules licensing price meter. Opened purview-billing-models and dlp-alerts-get-started; read licensing search results. General Purview and alert-generation entitlements are stated, but no entitlement specific to the planned rules was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to the planned auto-resolution and tagging rules is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview alert auto-resolution tagging rules licensing price meter. Opened purview-billing-models and read its pay-as-you-go capability tables; read DLP alert configuration licensing. No meter for these planned alert-handling rules is named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No price specific to the planned auto-resolution and tagging rules is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview alert auto-resolution tagging rules licensing price meter. Opened purview-billing-models and dlp-alerts-get-started; search results concern other Purview pricing or existing alert generation, not a price for these new rules.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap item names no licence, meter or price.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Alert auto-resolution & tagging rules let you tell DLP, in advance, how to handle predictable alerts. You define a rule once, and from then on DLP applies it automatically to every new alert:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Single-event alert configuration is available to organisations with the DLP subscriptions listed as E1, E3, E5, F1, G1, E3, G3, E5 and G5.",
+      "claim": "The single-event alert configuration page lists DLP subscriptions E1, E3, E5, F1, G1, E3, G3, E5 and G5.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
       "quote": "Single-event alert configuration: All organizations with a DLP subscription (E1, E3, E5, F1, G1, E3, G3, E5, G5) can configure policies to generate an alert for every time a triggering activity occurs.",
@@ -438,98 +537,87 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Cost and licensing; Open questions",
+      "n": 47,
+      "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Aggregated alert configuration requires A5, E5 or G5, or E1, F1, G1, E3 or G3 with one of the listed qualifying add-ons.",
+      "claim": "An A5, E5 or G5 subscription is one route to aggregated alert configuration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
-      "quote": "An A5 subscription; An E5 or G5 subscription; An E1, F1, or G1 subscription or an E3 or G3 subscription that includes one of the following features: Office 365 Advanced Threat Protection Plan 2; Microsoft Purview Suite; Microsoft 365 eDiscovery and Audit add-on license",
+      "quote": "To configure aggregate alert policies based on a threshold, you must have either of the following configurations: An A5 subscription; An E5 or G5 subscription",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
+      "n": 48,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "An E1, F1, G1, E3 or G3 subscription with a listed additional feature is another route to aggregated alert configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "An E1, F1, or G1 subscription or an E3 or G3 subscription that includes one of the following features: Office 365 Advanced Threat Protection Plan 2; Microsoft Purview Suite (formerly known as Microsoft 365 E5 Compliance); Microsoft 365 eDiscovery and Audit add-on license",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The quoted single-event and aggregated licensing requirements concern generating alerts, not entitlement to the planned alert-handling rules.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "Licensing for alert configuration options: The following licensing requirements apply to each alert configuration option",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The cited Graph Update alert reference updates properties of an existing alert object identified by its id.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-alert-update?view=graph-rest-1.0",
+      "quote": "Update the properties of an alert object in an organization based on the specified alert id property.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Updating an existing alert's status is a different operation from defining a rule that handles future alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-alert-update?view=graph-rest-1.0",
+      "quote": "Update the properties of an alert object in an organization based on the specified alert id property. status: The status of the alert. The possible values are: new, inProgress, resolved, unknownFutureValue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Microsoft documentation does not link existing alert-update calls to configuring the planned future-alert rules.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview DLP alert auto resolution tagging rules PowerShell Graph API create rules. Opened Graph Update alert, Defender DLP investigation and Set-DlpComplianceRule; read New-DlpComplianceRule syntax. No linkage to configuration of these planned rules was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
       "where": "Scope",
       "type": "behaviour",
-      "claim": "The Purview dashboard lists alerts from Exchange, SharePoint, OneDrive, Teams, devices, instances, on-premises repositories, and Fabric and Power BI.",
+      "claim": "The existing dashboard shows alerts from Exchange, SharePoint, OneDrive, Teams, devices, instances, on-premises repositories, Fabric and Power BI.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-alerts-dashboard-get-started",
       "quote": "Microsoft Purview portal shows alerts for DLP policies that are enforced on the following workloads: Exchange email; SharePoint sites; OneDrive accounts; Teams chat and channel messages; Devices; Instances; On-premises repositories; Fabric and Power BI",
       "severity": null,
       "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Governance guidance: Before rollout",
-      "type": "admin-path",
-      "claim": "Microsoft Purview portal > Data loss prevention > Alerts opens the DLP Alerts dashboard.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-alerts-dashboard-get-started",
-      "quote": "Sign in to the Microsoft Purview portal > Data loss prevention. Select Alerts to view the DLP Alerts dashboard.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Governance controls: Until the feature ships",
-      "type": "behaviour",
-      "claim": "Until the planned feature ships, existing alert controls are manual.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/defender-xdr/investigate-alerts",
-      "quote": "Alert tuning (previously alert suppression) lets you hide or resolve alerts automatically when expected organizational behavior occurs and rule conditions are met.",
-      "severity": "blocker",
-      "fix": "Replace 'Until the feature ships, the existing alert controls are manual:' with 'In the documented Purview dashboard procedure,'. Keep the following analyst-resolution and policy-rule facts. Existing Defender alert tuning and Graph alert updates must not be described as manual-only controls."
-    },
-    {
-      "n": 42,
-      "where": "Governance controls: Microsoft Graph or Defender call",
-      "type": "behaviour",
-      "claim": "Updating an existing alert's status with an API is a different operation from defining a rule for arriving alerts.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/security-alert-update?view=graph-rest-1.0",
-      "quote": "Update the properties of an alert object in an organization based on the specified alert id property.",
-      "severity": "minor",
-      "fix": "Cite https://learn.microsoft.com/graph/api/security-alert-update?view=graph-rest-1.0 for the existing-alert API distinction; the briefing currently cites no reference for that operation."
-    },
-    {
-      "n": 43,
-      "where": "Governance guidance: Before rollout; Governance controls",
-      "type": "consistency",
-      "claim": "Every existing control the checklist asks the reader to review or take stock of appears in the controls table.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Review the current volume and mix of DLP alerts in the DLP Alerts dashboard; Confirm who holds the Manage alerts role and the DLP Compliance Management roles today. The only table row is Rules that automatically resolve or tag DLP alerts.",
-      "severity": "minor",
-      "fix": "The Before rollout steps reviewing the existing DLP Alerts dashboard and taking stock of existing role assignments have no controls rows. Remove those two checklist steps; do not add unverified control rows."
-    },
-    {
-      "n": 44,
-      "where": "Why it matters: before preview opens",
-      "type": "date",
-      "claim": "Preview opens in December CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"previewDate\": \"December CY2026\"",
-      "severity": "minor",
-      "fix": "Replace 'before preview opens in December CY2026' with 'ahead of the roadmap's December CY2026 preview target'."
-    },
-    {
-      "n": 45,
-      "where": "Risk assessment: Data exposure",
-      "type": "record",
-      "claim": "The roadmap item describes no new data access.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Alert auto-resolution & tagging rules let you tell DLP, in advance, how to handle predictable alerts. You define a rule once, and from then on DLP applies it automatically to every new alert",
-      "severity": null,
-      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-21T06:57:07.560Z",
+    "at": "2026-11-21T07:45:18.089Z",
     "summary": {
-      "links": 5,
+      "links": 8,
       "unreachable": 0,
       "uiPaths": 0,
       "uiPathsWithMissingWords": 0,
@@ -559,6 +647,21 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/purview/purview-billing-models",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/defender-xdr/dlp-investigate-alerts-defender",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/security-alert-update?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://www.microsoft.com/microsoft-365/roadmap?id=568371",
         "ok": true,
         "status": 200
@@ -567,5 +670,12 @@
     "controlChecks": [],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-21",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

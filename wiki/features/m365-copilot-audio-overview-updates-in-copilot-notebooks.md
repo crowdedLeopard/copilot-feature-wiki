@@ -15,7 +15,7 @@ risk: "medium"
 cost: "low"
 impact: "medium"
 defaultState: "unknown"
-action: "review"
+action: "prepare"
 licensing:
   model: "included"
   notes: "Learn's requirements page says Copilot Notebooks users \"need the Microsoft Copilot or Copilot Chat license\". The preview TCM reference instead says Copilot Notebooks also require a Microsoft 365 Copilot license. No licence or price specific to the audio overview updates is published."
@@ -42,6 +42,9 @@ sources:
     kind: "learn"
   - title: "Learn about sensitivity labels"
     url: "https://learn.microsoft.com/purview/sensitivity-labels"
+    kind: "learn"
+  - title: "Use Microsoft Purview to manage data security & compliance for Microsoft 365 Copilot & Microsoft 365 Copilot Chat"
+    url: "https://learn.microsoft.com/purview/ai-m365-copilot"
     kind: "learn"
   - title: "Learn about retention for SharePoint and OneDrive"
     url: "https://learn.microsoft.com/purview/retention-policies-sharepoint"
@@ -87,19 +90,23 @@ changes:
     note: "Corrected after the independent check: added the preview Graph call for the Notebooks creation setting, the source-label and retention behaviour Learn documents, and the OneDrive storage details; removed the audit-search step."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 75 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-21"
+    note: "Corrected after the independent check: removed the claim that no source says existing behaviour changes, cited Purview's label inheritance page, and moved the action from review to prepare."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 76 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 73
+  claims: 76
+  confirmed: 76
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "d8a5357086b685c1e6b7685c06becc67"
+  contradicted: 0
+  attempts: 0
+  hash: "63e62ce01c00f5b26ff6863bfcc998c6"
 ---
 
 ## What's changing
@@ -112,9 +119,9 @@ The roadmap record lists the status as In development, with a preview date and t
 
 ## Why it matters
 
-The label support is the part administrators should watch. Audio overview turns notebook content into a spoken summary, and a notebook can hold files that carry sensitivity labels. The roadmap promises label support, but Learn's compliance summary says sensitivity labels are available for Copilot Pages and that Copilot Notebooks don't have container sensitivity labels. Microsoft documents that Copilot checks users' usage rights for source items encrypted by sensitivity labels and returns their data only when the user has the EXTRACT right (https://learn.microsoft.com/purview/sensitivity-labels). Audio overview output label inheritance for these updates is not yet documented, so confirm it in a test tenant before relying on it.
+The label support is the part administrators should watch. Audio overview turns notebook content into a spoken summary, and a notebook can hold files that carry sensitivity labels. The roadmap promises label support, but Learn's compliance summary says sensitivity labels are available for Copilot Pages and that Copilot Notebooks don't have container sensitivity labels. Microsoft documents that Copilot checks users' usage rights for source items encrypted by sensitivity labels and returns their data only when the user has the EXTRACT right (https://learn.microsoft.com/purview/sensitivity-labels). Microsoft Purview documents sensitivity label inheritance for Copilot in Word, PowerPoint and Outlook (https://learn.microsoft.com/purview/ai-m365-copilot); that page does not mention audio overview output at the time of writing (November 2026), so confirm the behaviour in a test tenant before relying on it.
 
-Microsoft has not stated what happens on arrival, so base planning on the fact that no source says existing Notebooks behaviour changes, and do not assume users must opt in. The practical effect is a decision for you: whether to leave Copilot Notebooks available as they are, or restrict them with the existing Cloud Policy setting until the label behaviour is documented.
+Microsoft has not stated what happens on arrival; do not assume users must opt in. The practical effect is a decision for you: whether to leave Copilot Notebooks available as they are, or restrict them with the existing Cloud Policy setting until the label behaviour is documented.
 
 ## Risk assessment
 
@@ -196,11 +203,8 @@ cost: Low. Learn says Copilot Notebooks need a Microsoft Copilot or Copilot Chat
 impact: Medium. Users who build notebooks and listen to audio overviews will notice new formats and episodes; the roadmap lists Desktop and Web, and admins notice only through label and governance questions.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters / absence: No source says existing Notebooks behaviour changes. | Found: make it easier to navigate longer content with topic-based episodes, new audio formats such as Critique and Debate ... expand audio overview context to more content types | Fix: Replace 'Microsoft has not stated what happens on arrival, so base planning on the fact that no source says existing Notebooks behaviour changes, and do not assume users must opt in.' with 'Microsoft has not stated what happens on arrival; do not assume users must opt in.' The roadmap describes changes to an existing audio overview experience even though it does not establish their arrival default.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters; Data exposure; Governance controls; Open questions / absence: Audio overview output label inheritance for these updates is not yet documented. | Found: Searched: Copilot audio overview sensitivity label inheritance; "audio overview" "inherit". Read sensitivity-labels, ai-m365-copilot and audio support; Purview names Word, PowerPoint and Outlook, not audio. July 2026 release-note excerpts describe generated-file inheritance generally. | Fix: Replace the first occurrence with 'Purview documents label inheritance for Copilot in Word, PowerPoint and Outlook, while the July 2026 Copilot release notes describe inheritance for generated files generally; neither explains audio overview output inheritance for these updates.' Cite https://learn.microsoft.com/purview/ai-m365-copilot and https://learn.microsoft.com/microsoft-365/copilot/release-notes#july-01,-2026.
-- [contradicted, minor] front matter: action; Why it matters; Governance guidance / consistency: The review rating treats the change as purely optional despite the roadmap describing updates to existing audio overview behaviour. | Found: action: "review"; "Microsoft plans four updates to audio overview in Copilot Notebooks"; "whether to leave Copilot Notebooks available as they are, or restrict them with the existing Cloud Policy setting" | Fix: Set action to prepare: this is an update to an existing audio overview experience that the briefing says needs label testing and communication, rather than a new capability that changes nothing until selected. Keep defaultState unknown; do not infer automatic enablement or a committed rollout date.
+- [supported, minor] controls[0].api; controls[0].note; Governance controls table / command: POST /beta/admin/configurationManagement/configurationMonitors can apply the Notebooks setting through a preview applyOnce baseline. | Found: POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors ... mode ... The possible values are: monitorOnly, applyOnce, unknownFutureValue. | Fix: In controls[0].note and the rendered row note, replace 'API: preview TCM applyOnce, resourceType microsoft.copilot.copilotpagesnotebooks, value 0 or 1.' with 'API: preview TCM; request body sets mode to applyOnce and baseline.resources[].resourceType to microsoft.copilot.copilotpagesnotebooks, resourceVersion to 1, and properties.value to the string 0 (disable) or 1 (enable).' Keep the call unchanged. References: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta and https://learn.microsoft.com/graph/utcm-copilot-resources. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
 -->

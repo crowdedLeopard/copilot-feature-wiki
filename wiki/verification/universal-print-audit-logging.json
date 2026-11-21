@@ -4,10 +4,10 @@
   "title": "Universal Print: audit records in the Microsoft Purview unified audit log",
   "status": "held",
   "date": "2026-11-21",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,25 +16,36 @@
     "reason": "failed",
     "since": "2026-11-21",
     "reasons": [
-      "1 blocking finding (claim 26)"
+      "2 blocking findings (claims 67, 68)"
     ]
   },
   "counts": {
-    "claims": 60,
-    "confirmed": 57,
+    "claims": 68,
+    "confirmed": 66,
     "unconfirmed": 0,
-    "contradicted": 3,
-    "blocker": 1,
+    "contradicted": 2,
+    "blocker": 2,
     "major": 0,
-    "minor": 4
+    "minor": 0
   },
-  "summary": "Hold: the statement that audit-record fields are undocumented is too broad. Microsoft documents the enclosing record's user, activity and object fields; the remaining gap is the Universal Print-specific payload. The roadmap facts and listed audit controls are supported.",
+  "summary": "Hold: the briefing leaves retention and retention-policy coverage unresolved even though Microsoft's unified audit log documentation covers these records. The roadmap facts, audit operations, licensing and control paths are supported.",
   "claims": [
     {
       "n": 1,
+      "where": "title; front matter: products",
+      "type": "record",
+      "claim": "This roadmap change concerns Universal Print audit logging.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Universal Print: audit logging",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
       "where": "summary; What's changing",
       "type": "record",
-      "claim": "Microsoft plans Universal Print audit records for administrator changes and user activities including print submissions and printer registrations.",
+      "claim": "Microsoft plans audit records of administrator and user activities including print job submissions, configuration changes and printer registrations.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "I can access Universal Print audit records of key administrator and user activities, such as print job submissions, configuration changes, and printer registrations.",
@@ -42,10 +53,10 @@
       "fix": null
     },
     {
-      "n": 2,
+      "n": 3,
       "where": "What's changing; Why it matters",
       "type": "record",
-      "claim": "The planned records will be available in the Purview unified audit log for compliance and long-term record-keeping.",
+      "claim": "The planned records are available in the Microsoft Purview unified audit log for compliance and long-term record-keeping.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Audit records will be available in Microsoft Purview’s Unified Audit Log for compliance and long-term record-keeping.",
@@ -53,7 +64,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 4,
       "where": "front matter: status; What's changing; Open questions",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -64,10 +75,10 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
       "where": "front matter: targetDate; summary; What's changing; Open questions",
       "type": "record",
-      "claim": "The general availability target is January CY2027, not a commitment.",
+      "claim": "General availability is targeted for January CY2027 rather than committed for that month.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"January CY2027\"",
@@ -75,7 +86,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The preview target is June CY2026.",
@@ -86,7 +97,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
@@ -97,10 +108,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 8,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Desktop, Mac and Web.",
+      "claim": "The roadmap lists Desktop, Mac and Web platforms.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Desktop\", \"Mac\", \"Web\"]",
@@ -108,10 +119,10 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 9,
       "where": "front matter: releasePhase; Scope",
       "type": "record",
-      "claim": "The roadmap release phases are General Availability and Preview.",
+      "claim": "The release phases are General Availability and Preview.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -119,7 +130,7 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 10,
       "where": "front matter: roadmapModified",
       "type": "record",
       "claim": "The roadmap record was modified at 2026-08-28T21:59:29.",
@@ -130,43 +141,10 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters; Open questions",
-      "type": "absence",
-      "claim": "The sources do not state what Universal Print audit logging does on arrival, including whether records appear by default.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Universal Print audit logging enable disable default tenant settings Graph print settings'; '\"Universal Print\" \"audit\" \"default\"'. Read roadmap, Audit log activities, Turn auditing on or off, Universal Print tenant settings and both Graph record pages; no feature arrival default.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 11,
-      "where": "What's changing; Scope",
-      "type": "absence",
-      "claim": "Rollout mechanics, when the records first appear in tenants and per-user rollout scope are not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: '\"Universal Print\" \"audit\" \"rollout\"'. Read roadmap, Audit log activities, both Graph record pages and What's new excerpt; none states tenant rollout mechanics, per-user scope or the first appearance date for these Purview records.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "Why it matters; Risk assessment: Autonomy & actions; rationale: risk and impact",
-      "type": "record",
-      "claim": "The roadmap describes recording existing activity and states no change to printing behaviour, user printing screens or actions taken on printers.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "I can access Universal Print audit records of key administrator and user activities, such as print job submissions, configuration changes, and printer registrations.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
       "where": "summary; What's changing; Why it matters",
       "type": "behaviour",
-      "claim": "Learn already lists Universal Print management activities for printers, connectors, shares, pull-print printers and tenant settings as recorded in the Microsoft 365 audit log.",
+      "claim": "Learn already lists recorded Universal Print management activities for printers, connectors, printer shares, pull-print printers and tenant settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/audit-log-activities",
       "quote": "The following table lists the activities recorded in the Microsoft 365 audit log when actions are performed on printers, connectors, printer shares, and tenant-level settings using the Universal Print service.",
@@ -174,21 +152,10 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing; Why it matters; Risk assessment",
-      "type": "behaviour",
-      "claim": "Learn already lists Universal Print print job activities as recorded in the Microsoft 365 audit log.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-log-activities",
-      "quote": "The following table lists the activities recorded in the Microsoft 365 audit log when actions are performed on print jobs using the Universal Print service.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
+      "n": 12,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "PrinterRegistered is a documented Universal Print audit activity.",
+      "claim": "PrinterRegistered is a documented Universal Print audit operation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/audit-log-activities",
       "quote": "Registered printer | PrinterRegistered | A printer is registered with Universal Print, making it available for cloud-based printing.",
@@ -196,10 +163,10 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 13,
       "where": "What's changing; Risk assessment; Governance guidance",
       "type": "behaviour",
-      "claim": "TenantPrintSettingsModified records updates to tenant-level print settings.",
+      "claim": "TenantPrintSettingsModified records changes to tenant-level Universal Print settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/audit-log-activities",
       "quote": "Modified tenant print settings | TenantPrintSettingsModified | Tenant-level print settings are updated in Universal Print.",
@@ -207,10 +174,10 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "What's changing; Risk assessment; controls[0].api; Governance guidance",
+      "n": 14,
+      "where": "What's changing; Risk assessment; Governance guidance; controls[0].note",
       "type": "behaviour",
-      "claim": "PrintJobCreated records submission of a print job.",
+      "claim": "PrintJobCreated is the documented operation for a print job submission.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/audit-log-activities",
       "quote": "Submitted print job | PrintJobCreated | The print job is submitted to the print queue, indicating the start of the printing process.",
@@ -218,32 +185,10 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "PrintJobDocumentUploaded is a documented print-job audit activity.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-log-activities",
-      "quote": "Uploaded print job document | PrintJobDocumentUploaded | A print job document is successfully uploaded to Universal Print.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "PrintJobDocumentFetched is a documented print-job audit activity.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-log-activities",
-      "quote": "Fetched print job document | PrintJobDocumentFetched | A print job document is retrieved by the printer or the Universal Print connector.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
+      "n": 15,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "ShareAccessControlAllowAllEnabled records allowing all users access to a printer share.",
+      "claim": "ShareAccessControlAllowAllEnabled records enabling access to a printer share for all users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/audit-log-activities",
       "quote": "Enabled allow-all access for printer share | ShareAccessControlAllowAllEnabled | All users are allowed access to the printer share.",
@@ -251,10 +196,10 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 16,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "ConnectorRegistered is a documented administrator audit activity.",
+      "claim": "ConnectorRegistered is a documented Universal Print management audit operation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/audit-log-activities",
       "quote": "Registered connector | ConnectorRegistered | The connector is registered with Universal Print, enabling communication between printers and the cloud service.",
@@ -262,24 +207,79 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What's changing; Open questions",
+      "n": 17,
+      "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Graph documents universalPrintManagementAuditRecord as auditData returned inside an auditLogRecord for unified audit log management events.",
+      "claim": "PrintJobDocumentUploaded is listed among unified audit log activities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "Uploaded print job document | PrintJobDocumentUploaded | A print job document is successfully uploaded to Universal Print.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "PrintJobDocumentFetched is listed among unified audit log activities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "Fetched print job document | PrintJobDocumentFetched | A print job document is retrieved by the printer or the Universal Print connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "Graph documents universalPrintManagementAuditRecord as an auditData payload, not a configuration operation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/resources/security-universalprintmanagementauditrecord?view=graph-rest-1.0",
-      "quote": "Represents an audit record for Universal Print management events. This resource captures information about these activities as part of the Microsoft 365 unified audit log.",
+      "quote": "Methods\n\nNone. This resource is returned as the auditData property in an auditLogRecord.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "Graph documents universalPrintPrintJobAuditRecord as an auditData payload, not a configuration operation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/security-universalprintprintjobauditrecord?view=graph-rest-1.0",
+      "quote": "Methods\n\nNone. This resource is returned as the auditData property in an auditLogRecord.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The enclosing auditLogRecord documents an operation field.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/security-auditlogrecord?view=graph-rest-1.0",
+      "quote": "operation | String | The name of the activity that was performed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The enclosing auditLogRecord documents an objectId field.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/security-auditlogrecord?view=graph-rest-1.0",
+      "quote": "objectId | String | The identifier of the object that was affected by the activity.",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "What's changing; Open questions",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Graph documents universalPrintPrintJobAuditRecord as auditData returned inside an auditLogRecord for unified audit log print-job events.",
+      "claim": "The enclosing auditLogRecord documents a userId field.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/resources/security-universalprintprintjobauditrecord?view=graph-rest-1.0",
-      "quote": "The audit data for this record type is returned as the auditData property in an auditLogRecord.",
+      "source": "https://learn.microsoft.com/graph/api/resources/security-auditlogrecord?view=graph-rest-1.0",
+      "quote": "userId | String | The identifier of the user, system account, service, or application that performed the activity.",
       "severity": null,
       "fix": null
     },
@@ -287,51 +287,62 @@
       "n": 24,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The Graph management payload page lists only the inherited dynamicProperties property.",
+      "claim": "The enclosing auditLogRecord documents a userPrincipalName field.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/resources/security-universalprintmanagementauditrecord?view=graph-rest-1.0",
-      "quote": "dynamicProperties | microsoft.graph.security.auditRecordTypeDictionary | Inherited from auditData.",
+      "source": "https://learn.microsoft.com/graph/api/resources/security-auditlogrecord?view=graph-rest-1.0",
+      "quote": "userPrincipalName | String | The user principal name of the user who performed the activity.",
       "severity": null,
       "fix": null
     },
     {
       "n": 25,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The Graph print-job payload page lists only the inherited dynamicProperties property.",
+      "where": "What's changing; Risk assessment; Open questions",
+      "type": "absence",
+      "claim": "The two Graph payload pages and Learn activity tables do not describe Universal Print-specific fields inside auditData.dynamicProperties.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/resources/security-universalprintprintjobauditrecord?view=graph-rest-1.0",
-      "quote": "dynamicProperties | microsoft.graph.security.auditRecordTypeDictionary | Inherited from auditData.",
+      "source": null,
+      "quote": "Searched: Universal Print auditData dynamicProperties schema fields; read both universalPrintManagementAuditRecord and universalPrintPrintJobAuditRecord v1.0 pages and Universal Print activity tables. Only inherited dynamicProperties is listed; activity tables give names, operations and descriptions.",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "What's changing; Risk assessment: Data exposure; Open questions: record fields",
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Open questions",
       "type": "absence",
-      "claim": "The fields inside a Universal Print audit record, including user details, are not described.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/graph/api/resources/security-auditlogrecord?view=graph-rest-1.0",
-      "quote": "userId | String | The identifier of the user, system account, service, or application that performed the activity.\nuserPrincipalName | String | The user principal name of the user who performed the activity.",
-      "severity": "blocker",
-      "fix": "Replace the broad field-absence statements with 'The Universal Print-specific fields inside auditData.dynamicProperties are not described on the two Graph payload pages. The enclosing auditLogRecord documents common fields including operation, objectId, userId and userPrincipalName.' Cite https://learn.microsoft.com/graph/api/resources/security-auditlogrecord?view=graph-rest-1.0. Narrow the Open questions item to 'Which Universal Print-specific printer and document fields are carried inside auditData.dynamicProperties?'"
+      "claim": "Microsoft has not stated the feature-specific default on arrival, so defaultState is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Universal Print audit logging default rollout; Universal Print audit logging enabled default separate disable audit settings PowerShell. Read roadmap, Universal Print activity tables, both Graph payloads and audit-log-enable-disable; only general tenant auditing defaults are stated.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 27,
-      "where": "Open questions: Record types",
+      "where": "What's changing; Scope; Open questions",
       "type": "absence",
-      "claim": "The Microsoft services that support auditing page lists no Universal Print record type.",
+      "claim": "Feature-specific record arrival timing, rollout mechanics and per-user rollout scope are not stated.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Universal Print audit record fields schema UniversalPrintManagement UniversalPrintPrintJob'. Opened Microsoft services that support auditing and searched Office 365 Management Activity API schema; the former has no Universal Print row, but the latter names both record types.",
-      "severity": "minor",
-      "fix": "Keep the uncertainty about portal dropdown availability, but replace the supporting explanation with 'The services summary omits Universal Print, but the Office 365 Management Activity API schema lists UniversalPrintPrintJob (377) and UniversalPrintManagement (427); their availability in the portal dropdown is not stated.' Cite https://learn.microsoft.com/office/office-365-management-api/office-365-management-activity-api-schema."
+      "quote": "Searched: Universal Print audit logging default rollout; Universal Print auditData dynamicProperties schema fields Audit Search record types dropdown rollout. Read roadmap, audit-search, Universal Print activity tables and Graph payload pages; no tenant rollout or per-user rollout details.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 28,
-      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "where": "Why it matters; Risk assessment: Autonomy & actions; rationale: risk and impact",
+      "type": "record",
+      "claim": "The roadmap describes recording activity, without describing changes to printing behaviour, user experience or autonomous actions on printers and jobs.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "I can access Universal Print audit records of key administrator and user activities, such as print job submissions, configuration changes, and printer registrations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "The licensing model is included because all Universal Print features are included with every eligible licence.",
+      "claim": "The included licensing model rests on Learn saying all Universal Print features are included with every eligible licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/universal-print/get-access-to-universal-print",
       "quote": "All Universal Print features are included with every eligible license.",
@@ -339,10 +350,43 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "Cost and licensing: Licence",
+      "n": 30,
+      "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Universal Print is included in Commercial, Education and Government Microsoft 365 and Windows 10/11 Enterprise subscriptions, and is also sold standalone.",
+      "claim": "Microsoft 365 Enterprise E3, E5 and F3 are eligible commercial Universal Print subscriptions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/universal-print/get-access-to-universal-print",
+      "quote": "Commercial Subscriptions\nMicrosoft 365 Enterprise E3, E5, F3",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Windows 10/11 Enterprise E3 and E5 are eligible commercial Universal Print subscriptions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/universal-print/get-access-to-universal-print",
+      "quote": "Windows 10/11 Enterprise E3, E5",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.notes; Why it matters; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 Business Premium is an eligible Universal Print subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/universal-print/get-access-to-universal-print",
+      "quote": "Microsoft 365 Business Premium",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Universal Print can also be purchased standalone.",
       "status": "supported",
       "source": "https://learn.microsoft.com/universal-print/get-access-to-universal-print",
       "quote": "Universal Print is included with Commercial, Education, and Government Microsoft 365 and Windows 10/11 Enterprise subscriptions, but it can also be purchased as a standalone subscription.",
@@ -350,21 +394,21 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "front matter: licensing.notes; Cost and licensing: Licence",
+      "n": 34,
+      "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Commercial eligible subscriptions are Microsoft 365 Enterprise E3, E5 and F3, Windows 10/11 Enterprise E3 and E5, Microsoft 365 Business Premium and Universal Print standalone.",
+      "claim": "Learn describes Universal Print entitlement within Commercial, Education and Government Microsoft 365 and Windows 10/11 Enterprise subscriptions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/universal-print/get-access-to-universal-print",
-      "quote": "Microsoft 365 Enterprise E3, E5, F3\nWindows 10/11 Enterprise E3, E5\nMicrosoft 365 Business Premium\nUniversal Print (standalone)",
+      "quote": "Universal Print is included with Commercial, Education, and Government Microsoft 365 and Windows 10/11 Enterprise subscriptions",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
+      "n": 35,
       "where": "Scope: Licences",
       "type": "licensing",
-      "claim": "Users and administrators need a Universal Print eligible licence to print and manage printing.",
+      "claim": "Both users and administrators need an eligible Universal Print licence to print and manage printing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/universal-print/get-access-to-universal-print",
       "quote": "Both end users and IT administrators need one of the below Universal Print eligible licenses to print and manage printing.",
@@ -372,21 +416,21 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "front matter: licensing.notes; Cost and licensing: Not yet published; rationale: cost",
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "No price or licence specific to these Universal Print audit records is published on the Universal Print licensing page.",
+      "claim": "The Universal Print licensing page publishes no separate price or licence specific to these Purview audit records.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Universal Print audit logging licensing price retention policy'. Read Get access to Universal Print and retention policies. The Universal Print licensing page gives entitlement and print-volume prices, not an audit-record price; Azure Logs and Alerting is a different feature.",
+      "quote": "Searched: Universal Print audit logging license price audit records retention policy UniversalPrintPrintJob UniversalPrintManagement. Read get-access-to-universal-print and audit retention policies. Print-volume prices and audit-retention entitlements are stated, not a separate Universal Print audit price.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
+      "n": 37,
       "where": "controls[0].note; Risk assessment; Scope; Governance controls",
       "type": "role",
-      "claim": "Searching through the Purview portal requires Audit Logs or View-Only Audit Logs roles in that portal.",
+      "claim": "Portal audit searches require the Audit Logs or View-Only Audit Logs role in Microsoft Purview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/audit-search",
       "quote": "You must be assigned the Audit Logs or View-Only Audit Logs roles in the Microsoft Purview portal to search the audit log.",
@@ -394,10 +438,10 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "Scope: Licences",
+      "n": 38,
+      "where": "Scope: Licences; controls[0].note",
       "type": "role",
-      "claim": "Access to audit cmdlets requires Audit Logs or View-Only Audit Logs roles in the Exchange admin center.",
+      "claim": "Audit cmdlets require the Audit Logs or View-Only Audit Logs roles in the Exchange admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/audit-search",
       "quote": "To access audit cmdlets, you must be assigned the Audit Logs or View-Only Audit Logs roles in the Exchange admin center.",
@@ -405,10 +449,10 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 39,
       "where": "Risk assessment: Data exposure",
       "type": "role",
-      "claim": "Restricted administrators assigned administrative units can search and export user-generated logs only within those units.",
+      "claim": "Restricted administrators can search and export user-generated audit logs only within their assigned administrative units.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/audit-search",
       "quote": "A restricted admin can only search and export user-generated audit logs within the scope of their assigned administrative units.",
@@ -416,10 +460,10 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 40,
       "where": "Risk assessment: Data exposure",
       "type": "role",
-      "claim": "Unrestricted administrators have access to all audit logs.",
+      "claim": "Unrestricted administrators can access all audit logs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/audit-search",
       "quote": "An unrestricted admin has access to all audit logs, including logs generated by non-user and system accounts.",
@@ -427,65 +471,10 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "Risk assessment: Change & support; Cost and licensing",
-      "type": "licensing",
-      "claim": "The documented retention for users assigned non-E5 Office 365 or Microsoft 365 licences is 180 days.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-search",
-      "quote": "For users assigned any other (non-E5) Office 365 or Microsoft 365 license, the system retains audit records for 180 days.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Risk assessment: Change & support",
-      "type": "licensing",
-      "claim": "E5 users get one-year default retention for Microsoft Entra ID, Exchange and SharePoint activities, and Universal Print is not named in that default list.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-search",
-      "quote": "the system retains audit records for Microsoft Entra ID, Exchange, and SharePoint activity for one year by default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Risk assessment: Change & support; Cost and licensing: Audit retention",
-      "type": "licensing",
-      "claim": "An audit log retention policy permits retention of activities in other services for up to one year under the E5 retention provision.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-search",
-      "quote": "Organizations can also create audit log retention policies to retain audit records for activities in other services for up to one year.",
-      "severity": "minor",
-      "fix": "Clarify 'Other services need an audit log retention policy, up to one year' as 'For retention beyond 180 days and up to one year in other services, an audit log retention policy and an Office 365 E5, Microsoft 365 E5, Microsoft Purview Suite or E5 eDiscovery and Audit add-on licence for the user generating the record are required.' Cite https://learn.microsoft.com/purview/audit-log-retention-policies. This is not an absolute one-year maximum: that page also documents longer retention with the 10-year add-on."
-    },
-    {
-      "n": 40,
-      "where": "Risk assessment: Change & support; Governance guidance",
-      "type": "behaviour",
-      "claim": "Portal export supports up to 50,000 rows for Audit (Standard).",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-search",
-      "quote": "Export supports results up to 50,000 rows for Audit (Standard) and up to 1,000,000 rows for Audit (Premium).",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 41,
-      "where": "Risk assessment: Change & support; Governance guidance",
-      "type": "behaviour",
-      "claim": "Portal export supports up to 1,000,000 rows for Audit (Premium).",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-search",
-      "quote": "Export supports results up to 50,000 rows for Audit (Standard) and up to 1,000,000 rows for Audit (Premium).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Audit search results show the user account that performed the activity.",
+      "claim": "Audit search results display the user account that performed an activity.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/audit-search",
       "quote": "User: The user account that performed the activity.",
@@ -493,18 +482,18 @@
       "fix": null
     },
     {
-      "n": 43,
-      "where": "Scope: Prerequisite",
-      "type": "default",
-      "claim": "Audit log search is enabled by default for Microsoft 365 and Office 365 enterprise organisations.",
+      "n": 42,
+      "where": "Risk assessment: Security & identity; Scope: Prerequisite; Governance controls",
+      "type": "behaviour",
+      "claim": "When unified auditing is off, portal searches and Search-UnifiedAuditLog return no results.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-search",
-      "quote": "Audit log search is turned on by default for Microsoft 365 and Office 365 enterprise organizations.",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "When you turn off auditing, searches of the audit log in Microsoft Purview return no results. Running the Search-UnifiedAuditLog cmdlet in Exchange Online PowerShell also returns no results.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
+      "n": 43,
       "where": "Why it matters; Risk assessment: Security & identity",
       "type": "default",
       "claim": "Auditing is not enabled by default for SMB licences, including Microsoft 365 Business Premium.",
@@ -515,43 +504,131 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "controls[0].ui; Governance controls table; Governance guidance",
-      "type": "admin-path",
-      "claim": "Microsoft Purview portal > Audit > Search reaches the audit search page.",
+      "n": 44,
+      "where": "Scope: Prerequisite",
+      "type": "default",
+      "claim": "Audit log search is on by default for Microsoft 365 and Office 365 enterprise organisations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/audit-search",
-      "quote": "Select the Audit solution card. If the Audit solution card isn't displayed, select View all solutions and then select Audit from the Core section.\nOn the Search page, configure the following search criteria as applicable:",
+      "quote": "Audit log search is turned on by default for Microsoft 365 and Office 365 enterprise organizations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support; Cost and licensing: Audit retention",
+      "type": "licensing",
+      "claim": "How long audit records remain searchable depends on the licence assigned to the users generating them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "The length of time that an audit record is retained (and searchable in the audit log) depends on your Office 365 or Microsoft 365 Enterprise subscription, and specifically the type of the license that is assigned to specific users.",
       "severity": null,
       "fix": null
     },
     {
       "n": 46,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "Search-UnifiedAuditLog -StartDate <start> -EndDate <end> -Operations PrintJobCreated searches these records in Exchange Online PowerShell.",
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The standard retention for users on non-E5 Microsoft 365 or Office 365 licences is 180 days.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog",
-      "quote": "Search-UnifiedAuditLog\n    -EndDate <ExDateTime>\n    -StartDate <ExDateTime>\n    [-Operations <String[]>]\nThe Operations parameter filters the log entries by operation.",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "For users assigned any other (non-E5) Office 365 or Microsoft 365 license, the system retains audit records for 180 days.",
       "severity": null,
       "fix": null
     },
     {
       "n": 47,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Microsoft Purview portal > Audit > Start recording user and admin activity turns auditing on through the banner.",
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Microsoft Entra ID, Exchange and SharePoint activities have one-year default retention for eligible E5 users; Universal Print is not named in that default.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
-      "quote": "Select the Audit solution card.\nIf auditing isn't turned on for your organization, a banner is displayed prompting you to start recording user and admin activity.\nSelect the Start recording user and admin activity banner.",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "For users assigned an Office 365 E5 or Microsoft 365 E5 license ... the system retains audit records for Microsoft Entra ID, Exchange, and SharePoint activity for one year by default.",
       "severity": null,
       "fix": null
     },
     {
       "n": 48,
+      "where": "Risk assessment: Change & support; Cost and licensing",
+      "type": "applicability",
+      "claim": "Retention policies can retain records in services outside the one-year defaults for up to one year.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Organizations can also create audit log retention policies to retain audit records for activities in other services for up to one year.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Change & support; Cost and licensing",
+      "type": "licensing",
+      "claim": "Retention beyond 180 days and up to one year requires Office 365 E5, Microsoft 365 E5, Microsoft Purview Suite or E5 eDiscovery and Audit add-on entitlement for the user generating the record.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-retention-policies",
+      "quote": "the user who generates the audit log (by performing an audited activity) must have an Office 365 E5 or Microsoft 365 E5 license or a Microsoft Purview Suite (formerly known as Microsoft 365 E5 Compliance) or E5 eDiscovery and Audit add-on license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Audit (Standard) export supports up to 50,000 rows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Export supports results up to 50,000 rows for Audit (Standard) and up to 1,000,000 rows for Audit (Premium).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Audit (Premium) export supports up to 1,000,000 rows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Export supports results up to 50,000 rows for Audit (Standard) and up to 1,000,000 rows for Audit (Premium).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[0].ui; Governance controls table; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Audit > Search reaches the search page for searching by operation name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Select the Audit solution card. ... On the Search page, configure the following search criteria as applicable: ... Activities - operations names: Enter the exact operation names to search for audited activities",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].api; Governance controls table; controls[0].note",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog -StartDate <start> -EndDate <end> -Operations PrintJobCreated is a documented Exchange Online PowerShell audit search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog",
+      "quote": "Search-UnifiedAuditLog\n    -EndDate <ExDateTime>\n    -StartDate <ExDateTime>\n    [-Operations <String[]>]\nThe Operations parameter filters the log entries by operation. ... For a list of the available values for this parameter, see Audited activities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[1].ui; Governance controls table; controls[1].note",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Audit > Start recording user and admin activity turns auditing on when the banner is displayed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Select the Audit solution card. ... If auditing isn't turned on for your organization, a banner is displayed prompting you to start recording user and admin activity. ... Select the Start recording user and admin activity banner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
       "where": "controls[1].api; Governance controls table",
       "type": "command",
-      "claim": "Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true turns auditing on in Exchange Online PowerShell.",
+      "claim": "Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true enables auditing using Exchange Online PowerShell.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
       "quote": "Run the following PowerShell command to turn on auditing.\nSet-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true",
@@ -559,21 +636,10 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "controls[2].ui; controls[2].api; controls[2].note; Governance controls",
-      "type": "absence",
-      "claim": "No separate UI or API switch for Universal Print records in the unified audit log is documented as of November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: '\"Universal Print\" \"audit\" \"enable\" \"disable\"'; 'Universal Print audit logging enable disable default tenant settings Graph print settings'. Read tenant settings and Graph printSettings excerpt; no audit switch. Logs and Alerting's switch sends different telemetry to Azure Monitor.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
+      "n": 56,
       "where": "controls[1].note; Governance controls",
       "type": "role",
-      "claim": "Turning unified auditing on or off requires the Audit Logs role in Exchange Online.",
+      "claim": "Turning auditing on or off requires the Audit Logs role in Exchange Online.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
       "quote": "You must be assigned the Audit Logs role in Exchange Online to turn auditing on or off.",
@@ -581,10 +647,21 @@
       "fix": null
     },
     {
-      "n": 51,
+      "n": 57,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Microsoft directs administrators to Exchange Online PowerShell to turn auditing off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Turn off auditing\n\nUse Exchange Online PowerShell to turn off auditing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
       "where": "Governance guidance: Before rollout",
       "type": "command",
-      "claim": "Get-AdminAuditLogConfig | Format-List UnifiedAuditLogIngestionEnabled in Exchange Online PowerShell verifies auditing, with True indicating it is on.",
+      "claim": "Get-AdminAuditLogConfig | Format-List UnifiedAuditLogIngestionEnabled in Exchange Online PowerShell checks auditing, with True meaning on.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
       "quote": "Get-AdminAuditLogConfig | Format-List UnifiedAuditLogIngestionEnabled\nA value of True for the UnifiedAuditLogIngestionEnabled property indicates that auditing is turned on.",
@@ -592,109 +669,120 @@
       "fix": null
     },
     {
-      "n": 52,
-      "where": "controls[1].note; Governance controls",
-      "type": "behaviour",
-      "claim": "Learn instructs administrators to use Exchange Online PowerShell to turn auditing off.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
-      "quote": "Use Exchange Online PowerShell to turn off auditing.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Risk assessment: Security & identity; Scope: Prerequisite; Governance controls",
-      "type": "behaviour",
-      "claim": "If auditing is off, Purview audit searches return no results, making unified auditing a prerequisite.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
-      "quote": "When you turn off auditing, searches of the audit log in Microsoft Purview return no results.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Search-UnifiedAuditLog also returns no results when auditing is turned off.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
-      "quote": "Running the Search-UnifiedAuditLog cmdlet in Exchange Online PowerShell also returns no results.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Turning auditing off prevents Office 365 Management Activity API access to the organisation's auditing data.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
-      "quote": "If you turn off auditing in Microsoft 365, you can't use the Office 365 Management Activity API or Microsoft Sentinel to access auditing data or logs for your organization.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Turning auditing off prevents Microsoft Sentinel access to the organisation's auditing data.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
-      "quote": "If you turn off auditing in Microsoft 365, you can't use the Office 365 Management Activity API or Microsoft Sentinel to access auditing data or logs for your organization.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "controls[0].governs; controls[1].governs; Why it matters; Governance controls",
-      "type": "applicability",
-      "claim": "The tenant's unified audit search and ingestion controls govern these records rather than Universal Print alone.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-search",
-      "quote": "When a user or admin performs an audited activity, the system generates an audit record and stores it in the audit log for your organization.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The two Graph payload resource types describe data rather than providing configuration controls.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/resources/security-universalprintmanagementauditrecord?view=graph-rest-1.0",
-      "quote": "Methods\nNone. This resource is returned as the auditData property in an auditLogRecord.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 59,
-      "where": "Governance guidance: Before rollout, role-assignment step",
-      "type": "consistency",
-      "claim": "The checklist instructs the reader to assign audit-search roles and check administrative-unit restrictions without a controls-table row for that control.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Assign the Audit Logs or View-Only Audit Logs role to the compliance and security staff ... record whether they are restricted or unrestricted admins.\nTable rows: Searching records; unified audit ingestion; separate Universal Print switch.",
-      "severity": "minor",
-      "fix": "The role-assignment and administrative-unit check in Before rollout has no corresponding role/access configuration row. Remove that checklist bullet; retain the verified role prerequisites in Scope and the existing control notes."
+      "where": "controls[0].scope; controls[1].scope and governs; Why it matters; Governance controls",
+      "type": "applicability",
+      "claim": "The audit search and ingestion controls are tenant-wide unified audit log controls rather than controls specific to Universal Print.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "When you turn on auditing in the Microsoft Purview portal, the audit log records user and admin activity from your organization and automatically retains it for 180 days.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 60,
-      "where": "Governance guidance: Before rollout, retention step",
-      "type": "consistency",
-      "claim": "The checklist asks readers to assess whether a retention policy is needed without a retention-policy row in the controls table.",
+      "where": "controls[2].ui and api; controls[2].note; Governance controls",
+      "type": "absence",
+      "claim": "No separate UI or API switch for Universal Print records in the unified audit log is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Universal Print audit enable disable; Universal Print audit logging enabled default separate disable audit settings PowerShell. Read tenant portal settings, Graph printSettings, UniversalPrintManagement module and Purview ingestion docs; Azure Logs and Alerting is a different telemetry feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Office 365 Management Activity API cannot access organisation audit data when auditing is off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "If you turn off auditing in Microsoft 365, you can't use the Office 365 Management Activity API or Microsoft Sentinel to access auditing data or logs for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Microsoft Sentinel cannot access organisation audit data when auditing is off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "If you turn off auditing in Microsoft 365, you can't use the Office 365 Management Activity API or Microsoft Sentinel to access auditing data or logs for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Open questions: Record types",
+      "type": "absence",
+      "claim": "The Microsoft services that support auditing summary table omits Universal Print.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: UniversalPrintPrintJob Record types Search. Read the complete audit-supported-services table; no Universal Print entry, and the page directs readers to the Management Activity API schema for a more complete list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Open questions: Record types",
+      "type": "behaviour",
+      "claim": "The Office 365 Management Activity API schema lists UniversalPrintPrintJob as record type 377.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office/office-365-management-api/office-365-management-activity-api-schema",
+      "quote": "377 | UniversalPrintPrintJob | Audit events related to Print Jobs in Microsoft Universal Print.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Open questions: Record types",
+      "type": "behaviour",
+      "claim": "The Office 365 Management Activity API schema lists UniversalPrintManagement as record type 427.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office/office-365-management-api/office-365-management-activity-api-schema",
+      "quote": "427 | UniversalPrintManagement | Audit events related to Management events in Microsoft Universal Print.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Open questions: Record types",
+      "type": "absence",
+      "claim": "Availability of the Universal Print record types in the portal's Record types dropdown is not explicitly stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: UniversalPrintPrintJob Record types Search; Universal Print auditData dynamicProperties schema fields Audit Search record types dropdown rollout. Read audit-search, audit-supported-services and the API schema; none explicitly identifies a Universal Print dropdown entry.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Open questions: retention; Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "Whether Universal Print unified audit records receive the 180-day or one-year default remains unpublished.",
       "status": "contradicted",
-      "source": "page",
-      "quote": "Check which licences your print users hold and what audit retention they give, then decide whether a retention policy is needed for Universal Print records.\nThe controls table has search, ingestion and separate-switch rows, but no retention-policy row.",
-      "severity": "minor",
-      "fix": "The retention-policy decision in Before rollout has no corresponding control row. Narrow that bullet to 'Check which licences your print users hold and what default audit retention they give.' Do not add an unverified control row."
+      "source": "https://learn.microsoft.com/purview/audit-log-retention-policies",
+      "quote": "This default policy retains audit records that contain the value of AzureActiveDirectory, Exchange, OneDrive, and SharePoint for the Workload property ... Audit records for all other activities are retained for 180 days by default",
+      "severity": "blocker",
+      "fix": "Replace the final Open questions bullet with 'Universal Print unified audit records fall outside the listed one-year workload defaults and are retained for 180 days by default, unless a custom retention policy changes the duration.' Replace 'Universal Print is not named among the one-year defaults, so confirm what applies before promising long-term record-keeping' with that same sentence. Cite https://learn.microsoft.com/purview/audit-log-retention-policies."
+    },
+    {
+      "n": 68,
+      "where": "Open questions: retention; Why it matters",
+      "type": "absence",
+      "claim": "Whether an audit retention policy can cover Universal Print unified audit records remains undocumented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/audit-log-retention-policies",
+      "quote": "Record type: The audit record type the policy applies to. If you leave this property blank, the policy applies to all record types.",
+      "severity": "blocker",
+      "fix": "Remove 'and does a retention policy cover them?' from the final Open questions bullet. The existing Why it matters statement that the unified audit retention regime covers these records is supported: the cited retention page states that a policy with Record type left blank applies to all record types. Do not add a control row."
     }
   ],
   "precheck": {
-    "at": "2026-11-21T06:57:12.978Z",
+    "at": "2026-11-21T07:45:21.763Z",
     "summary": {
-      "links": 10,
+      "links": 13,
       "unreachable": 0,
       "uiPaths": 2,
       "uiPathsWithMissingWords": 0,
@@ -729,6 +817,11 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/purview/audit-log-retention-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://learn.microsoft.com/universal-print/get-access-to-universal-print",
         "ok": true,
         "status": 200
@@ -739,12 +832,22 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/graph/api/resources/security-auditlogrecord?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://learn.microsoft.com/graph/api/resources/security-universalprintmanagementauditrecord?view=graph-rest-1.0",
         "ok": true,
         "status": 200
       },
       {
         "url": "https://learn.microsoft.com/graph/api/resources/security-universalprintprintjobauditrecord?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office/office-365-management-api/office-365-management-activity-api-schema",
         "ok": true,
         "status": 200
       },
@@ -800,5 +903,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-21",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

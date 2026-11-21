@@ -46,8 +46,11 @@ sources:
   - title: "Get-AllM365TeamsApps"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/get-allm365teamsapps"
     kind: "learn"
+  - title: "Release notes for Microsoft Teams"
+    url: "https://learn.microsoft.com/officeupdates/teams-admin"
+    kind: "learn"
 videos: []
-related: ["microsoft-teams-m365-admin-centers-manage-teams-apps-that-work-on-outlook-and-m365-app"]
+related: []
 controls:
   - governs: "Which custom apps are listed as needing updates for private and shared channels"
     scope: "tenant"
@@ -85,19 +88,23 @@ changes:
     note: "Corrected the Allow or Block guidance: until a tenant is migrated to unified app management, blocked apps must be kept synchronized between Teams admin center and Microsoft 365 admin center."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 54 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-21"
+    note: "Corrected: Microsoft Learn's Teams admin release notes do confirm the list; layout and incompatibility criteria remain undocumented."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 59 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 53
+  claims: 59
+  confirmed: 58
   unconfirmed: 0
   contradicted: 1
-  attempts: 3
-  hash: "675ea6b8e060cad4653679cfa9564ed2"
+  attempts: 0
+  hash: "5c83b9f57a502df2dffc96c33f56f2a7"
 ---
 
 ## What's changing
@@ -106,7 +113,7 @@ Teams admin center now lists the custom line-of-business (LOB) apps in a tenant 
 
 Microsoft's notice MC1459131 says admins can view a list of custom LOB apps that are not compatible with private and shared channels in the Teams admin center under Teams apps > Manage apps. The notice gives a Worldwide rollout window of mid-September 2026 (previously early September) to late September 2026. Its end date is 2026-11-30, and it sets no act-by date.
 
-The roadmap record lists the item as Launched, with a target of September CY2026, General Availability, on Web, for Worldwide (Standard Multi-Tenant) and GCC. The notice gives a window for Worldwide only. No Microsoft Learn page found describes the admin list itself, so what it shows and how it decides an app is incompatible rests on the roadmap and the notice.
+The roadmap record lists the item as Launched, with a target of September CY2026, General Availability, on Web, for Worldwide (Standard Multi-Tenant) and GCC. The notice gives a window for Worldwide only. Microsoft Learn's Teams admin release notes also confirm the list, but its layout and incompatibility criteria are not yet documented.
 
 The fix sits with developers. Microsoft's developer page says most apps can support shared and private channels with a simple manifest update. In app manifest v1.25 and later, `supportsChannelFeatures` replaces `supportedChannelTypes`. An app that does not use channel or team membership to determine message delivery, task assignment or permissions, access or manage files stored in Teams or SharePoint, combine or share data across multiple channels or teams, or customize the experience based on internal, guest or external users needs only `supportsChannelFeatures: tier1` added to its manifest and verification and testing across channels.
 
@@ -171,7 +178,7 @@ The list covers custom LOB apps, per the notice, and is read by administrators i
 </tbody>
 </table>
 
-The list is documented only in the roadmap item and MC1459131, which place it under Teams apps > Manage apps. Microsoft Learn documents no switch for it and no scripting surface for it at the time of writing (November 2026), so the first row shows no API.
+The roadmap, MC1459131 and Teams admin release notes document the list; MC1459131 places it under Teams apps > Manage apps. Microsoft Learn documents no switch for it and no scripting surface for it at the time of writing (November 2026), so the first row shows no API.
 
 The Allow or Block row is an existing control for apps in general, not for this feature. It decides whether an app is available in the organisation and does not change whether the app supports private and shared channels. Until your tenant is migrated to unified app management, keep blocked-app settings synchronized in Teams admin center and under Integrated apps in Microsoft 365 admin center. The Teams admin center needs a Teams Administrator role per the Manage apps page.
 
@@ -188,8 +195,8 @@ cost: Low. The only cost the sources show is admin and developer time to find an
 impact: Medium. Teams administrators see the list, app developers must act on it, and users of affected custom apps in team channels notice if an app is not updated.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing; Governance controls / absence: No Microsoft Learn page describes the admin list itself, which is documented only in the roadmap and MC1459131. | Found: Admins can now view custom apps in the Teams admin center that need updates to work in private and shared channels, helping them identify apps that require developer action. | Fix: Replace the What's changing sentence with 'Microsoft Learn's Teams admin release notes also confirm the list, but its layout and incompatibility criteria are not yet documented.' Replace the first Governance controls sentence with 'The roadmap, MC1459131 and Teams admin release notes document the list; MC1459131 places it under Teams apps > Manage apps.' Add https://learn.microsoft.com/officeupdates/teams-admin to sources. Retain the narrower gaps about layout, detection criteria and automation. | Source: https://learn.microsoft.com/officeupdates/teams-admin#october-07,-2026
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [contradicted, minor] Governance guidance: After rollout; controls / consistency: The checklist tells administrators to synchronize blocked-app settings under Integrated apps in Microsoft 365 admin center, but the controls table has no row for that surface. | Found: keep blocked-app settings synchronized in Teams admin center and under Integrated apps in Microsoft 365 admin center. ... controls[1].ui.surface: Teams admin center | Fix: The After rollout instruction to synchronize blocked-app settings under Integrated apps in Microsoft 365 admin center has no corresponding control row. Retain the necessary synchronization qualification; this finding does not request an additional row.
 -->
