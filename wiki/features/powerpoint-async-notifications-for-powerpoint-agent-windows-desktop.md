@@ -17,7 +17,7 @@ impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "add-on"
+  model: "unknown"
   notes: "The Learn page for Word, Excel, and PowerPoint Agents says they need a paid Microsoft 365 Copilot licence. Nothing specific to this notification capability is published, and the roadmap item names no licence."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["powerpoint","m365-copilot","agents","microsoft-365-apps"]
@@ -47,7 +47,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Settings > User access > AI providers operating as Microsoft subprocessors > Disable Anthropic as a Microsoft subprocessor"
+      path: "Copilot > Settings > User access > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Disable Anthropic as a Microsoft subprocessor"
       docs: "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor"
     api: null
     note: "Role: AI Administrator or Global Administrator. Applies to the PowerPoint Agents page; whether it governs this item's agent is not stated. Disabling affects all Claude use."
@@ -76,19 +76,23 @@ changes:
     note: "New briefing: roadmap-only description of agent notifications for PowerPoint on Windows desktop; no Learn page, setting or price for it yet."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 52 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after verification: licensing model set to unknown, impact and cost rationales and one sentence in Why it matters reworded, Anthropic path completed, Before rollout checklist adjusted."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 63 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 48
-  unconfirmed: 3
-  contradicted: 1
-  attempts: 1
-  hash: "ee64c791ed4030ad43a7d2cf061861cb"
+  claims: 63
+  confirmed: 63
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "48e55f46af083a5c5ddf02723563dd33"
 ---
 
 ## What's changing
@@ -101,7 +105,7 @@ The roadmap record lists the status as In development, with a target of October 
 
 ## Why it matters
 
-For a service owner this is a change in how people work with a long-running agent, not a change in what it can reach. Users who expect a notification may close PowerPoint or stop checking, so notification delivery becomes something your service desk is asked about. Microsoft has not stated what happens on arrival or whether an admin switch exists, so base plans on no source saying existing behaviour changes.
+For a service owner this is a change in how people work with a long-running agent; the roadmap describes no change to what it can reach. Users who expect a notification may close PowerPoint or stop checking, so notification delivery becomes something your service desk is asked about. Microsoft has not stated what happens on arrival or whether an admin switch exists, so base plans on no source saying existing behaviour changes.
 
 The controls that matter today sit around the agent, not the notification: who holds the Copilot licence, and whether the Anthropic models that the PowerPoint Agents page says those agents need are enabled. Both are rows in the controls table.
 
@@ -135,8 +139,8 @@ For the related PowerPoint Agents page, Anthropic models must be enabled for the
 
 ### Before rollout
 - Confirm with your Microsoft account team or in Message center whether the desktop PowerPoint agent in this item is the agent described on the Word, Excel, and PowerPoint Agents page.
-- Check which users hold the Microsoft 365 Copilot licence (Users > Active users > Licenses and Apps) so you know who could see the agent.
-- Check whether Anthropic is enabled under AI providers operating as Microsoft subprocessors, and which users or groups can use it.
+- Check which users hold the Microsoft 365 Copilot licence (Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses) as background for the separately documented PowerPoint Agents.
+- Check whether Anthropic is enabled under AI providers operating as Microsoft subprocessors.
 
 ### At rollout
 - Watch Message center and the roadmap entry for a status change from In development, and for any notice that gives a rollout window or an admin setting.
@@ -153,7 +157,7 @@ For the related PowerPoint Agents page, Anthropic models must be enabled for the
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Anthropic models, which the PowerPoint Agents page says those agents need, are available</strong><br><small>Tenant</small><br><small class="controls__note">Role: AI Administrator or Global Administrator. Applies to the PowerPoint Agents page; whether it governs this item's agent is not stated. Disabling affects all Claude use.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › User access › AI providers operating as Microsoft subprocessors › Disable Anthropic as a Microsoft subprocessor <a href="https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether Anthropic models, which the PowerPoint Agents page says those agents need, are available</strong><br><small>Tenant</small><br><small class="controls__note">Role: AI Administrator or Global Administrator. Applies to the PowerPoint Agents page; whether it governs this item's agent is not stated. Disabling affects all Claude use.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › User access › AI providers operating as Microsoft subprocessors › Available subprocessors for your organization › Disable Anthropic as a Microsoft subprocessor <a href="https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which users hold the Microsoft 365 Copilot licence the PowerPoint Agents page requires</strong><br><small>User</small><br><small class="controls__note">Role: at least License Administrator or User Administrator. Assigns any licence; the SkuId is the Copilot add-on's.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Users › Active users › user › Licenses and Apps › Licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether agent notifications can be turned on or off, or limited to users or devices</strong><br><small>Tenant</small><br><small class="controls__note">No tenant, user or API setting for this feature is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
@@ -173,18 +177,6 @@ Changing Anthropic availability needs the AI Administrator or Global Administrat
 
 <!-- rationale
 risk: Low. The roadmap describes notifications only, and no new data access or action is described; the default state and any notification content are not stated, so rating rests on today's behaviour continuing.
-cost: Low. The only cost the sources show is the paid Microsoft 365 Copilot licence that the related PowerPoint Agents page requires; no charge or meter specific to notifications is published.
-impact: Low. Only licensed users who run the PowerPoint agent in Windows desktop PowerPoint would notice; the roadmap lists Desktop as the only platform.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: licensing.model / licensing: This notification capability has an add-on licensing model. | Found: Searched: "PowerPoint agent" "notifications" license credits; "PowerPoint" "agent" "Windows" licence notifications. Read wordexcelppt-agents and copilot-overview; neither establishes an add-on requirement for this item, and the overview also documents in-app access without the add-on. | Fix: Set licensing.model to "unknown". Keep the existing notes and Cost and licensing paragraph describing the paid licence as background for the separate Word, Excel, and PowerPoint Agents. Replace the cost rationale with "Low. Plan for pilot checks and support communications; licensing and any charge or meter specific to notifications are not yet published."
-- [unsupported, major] Why it matters / behaviour: The notification change does not change what the agent can reach. | Found: Searched: PowerPoint agent notifications delivery device offline account content approval. Read roadmap and wordexcelppt-agents; the record describes notifications but does not state unchanged data access, and the agents page is explicitly treated as background. | Fix: Replace the first sentence of Why it matters with "For a service owner this is a change in how people work with a long-running agent; the roadmap describes no change to what it can reach."
-- [unsupported, blocker] rationale: impact; Governance guidance: Before rollout / licensing: Only licensed users who run the desktop PowerPoint agent would notice this feature. | Found: Searched: "PowerPoint agent" "notifications" license credits; "PowerPoint" "agent" "Windows" licence notifications. Read roadmap, wordexcelppt-agents and copilot-overview; no source establishes this notification feature's licensed-user audience. | Fix: Replace the impact rationale with "Low. The change concerns users who run the PowerPoint agent on Windows desktop; its licensing and default are not stated, and the roadmap lists Desktop as the only platform." In Before rollout, replace "so you know who could see the agent" with "as background for the separately documented PowerPoint Agents".
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Anthropic can be disabled at Microsoft 365 admin center > Copilot > Settings > User access > AI providers operating as Microsoft subprocessors > Disable Anthropic as a Microsoft subprocessor. | Found: On the AI providers operating as Microsoft subprocessors page, under Available subprocessors for your organization, select Disable Anthropic as a Microsoft subprocessor. | Fix: Use the full path "Copilot > Settings > User access > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Disable Anthropic as a Microsoft subprocessor" in controls[0].ui.path and the rendered table. The omitted step is a heading, not a navigation choice. | Source: https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor
-- [supported, minor] controls[1].ui; Governance guidance: Before rollout; Governance controls table / admin-path: A user's licences are managed at Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses. | Found: Select the row of the user that you want to assign a license to. In the right pane, select Licenses and Apps. Expand the Licenses section, select the boxes for the licenses that you want to assign, then select Save changes. | Fix: The control row is correct. Expand the abbreviated Before rollout path to "Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses" so the checklist carries the same complete route. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users
-- [contradicted, minor] Governance guidance: Before rollout; controls[0] / consistency: The checklist asks readers to check Anthropic user and group access, but the table's Anthropic row only gives the provider availability control. | Found: Checklist: "Check whether Anthropic is enabled ... and which users or groups can use it." Table path ends at "Disable Anthropic as a Microsoft subprocessor", not the user or group access selection. | Fix: Remove "and which users or groups can use it" from the Before rollout Anthropic checklist item; do not add another control row.
+cost: Low. Plan for pilot checks and support communications; licensing and any charge or meter specific to notifications are not yet published.
+impact: Low. The change concerns users who run the PowerPoint agent on Windows desktop; its licensing and default are not stated, and the roadmap lists Desktop as the only platform.
 -->

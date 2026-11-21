@@ -1,0 +1,862 @@
+{
+  "slug": "microsoft-edge-commercial-journeys-ai-powered-task-completion-for-m365-copilot-users",
+  "roadmapId": 561040,
+  "title": "Microsoft Edge: Commercial Journeys (Get things done) task cards on the Copilot new tab page",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "4 blocking findings (claims 1, 2, 3, 4)"
+    ]
+  },
+  "counts": {
+    "claims": 61,
+    "confirmed": 56,
+    "unconfirmed": 2,
+    "contradicted": 3,
+    "blocker": 4,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: the Edge automation entries are policy descriptions, not documented executable commands or API operations. The Edge navigation also needs the actual Microsoft 365 admin center labels. The roadmap dates, administrator opt-in default, licence prerequisites and local retention period are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The admin navigation route is Edge management service > Copilot.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+      "quote": "In the main left navigation bar, go to Settings > Microsoft Edge.",
+      "severity": "blocker",
+      "fix": "Set the surface to 'Microsoft 365 admin center' and the path to 'Settings > Microsoft Edge > Copilot'. Cite https://learn.microsoft.com/deployedge/microsoft-edge-management-service for the entry route and retain the Commercial Journeys docs link for its hidden policy. The feature page gives https://admin.cloud.microsoft/#/Edge/Copilot as the direct address; retain that address in the note."
+    },
+    {
+      "n": 2,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "Edge policy CommercialJourneysGetThingsDoneEnabled = Enabled is the automation call that enables Commercial Journeys.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'CommercialJourneysGetThingsDoneEnabled policy reference automation group Edge management'; opened Commercial Journeys and the Edge policy index. The feature page names a hidden policy but gives no executable command or API operation.",
+      "severity": "blocker",
+      "fix": "Set controls[0].api to null. Keep 'CommercialJourneysGetThingsDoneEnabled' in the note as the documented hidden policy name, not as an automation call. The feature page at https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys documents enabling the policy through the Copilot tab but publishes no scripting operation."
+    },
+    {
+      "n": 3,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The admin navigation route is Edge management service > Copilot > Copilot new tab page.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+      "quote": "In the main left navigation bar, go to Settings > Microsoft Edge.",
+      "severity": "blocker",
+      "fix": "Set the surface to 'Microsoft 365 admin center' and the path to 'Settings > Microsoft Edge > Copilot > Copilot new tab page'. Add https://learn.microsoft.com/deployedge/microsoft-edge-management-service to sources for the entry route; retain the current docs link, which documents switching to Copilot and selecting the Copilot new tab page dropdown."
+    },
+    {
+      "n": 4,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Edge policy CopilotNewTabPageEnabled = Enabled is an executable automation call.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'CopilotNewTabPageEnabled automation command set Edge policy registry' and 'CopilotNewTabPageEnabled HKEY_LOCAL_MACHINE HKLM reg add'; opened its policy reference and reg add. The printed expression is not a command on either reference.",
+      "severity": "blocker",
+      "fix": "Remove the pseudo-command from controls[1].api. Retain the documented configuration in the row note instead: 'The Windows policy reference documents the mandatory registry path SOFTWARE\\Policies\\Microsoft\\Edge, value CopilotNewTabPageEnabled, type REG_DWORD, enabled value 0x00000001; it does not print a runnable command.' If the API side is null, qualify that side as the absence of a published callable operation, not the absence of registry configuration. Retain https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotnewtabpageenabled as the configuration reference."
+    },
+    {
+      "n": 5,
+      "where": "controls[2].ui; Cost and licensing; Governance guidance",
+      "type": "admin-path",
+      "claim": "Copilot > Cost management in the Microsoft 365 admin center monitors and manages spending for supported Work IQ API usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits",
+      "quote": "In the Microsoft admin center, Copilot > Cost management, admins can monitor Copilot Credit consumption and manage spending associated with the supported services such as Cowork, running apps hosted on the Copilot Managed Runtime, and Work IQ API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "PATCH /beta/copilot/costManagement/spendingPolicies/{id} updates spending policies, including periodLimit, perUserLimit and billingMethods.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/3f9e2c1a-0000-0000-0000-00000000c21b ... The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "controls[3].ui; Governance guidance",
+      "type": "admin-path",
+      "claim": "Billing > Licenses > product > Assign licenses is the licence assignment route.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "In the admin center, go to the Billing > Licenses page. 2. Select a product. 3. On the product details page, select Assign licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @() assigns a licence with Microsoft Graph PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "To assign a license to a user, use the following command in PowerShell. Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk and impact",
+      "type": "default",
+      "claim": "Commercial Journeys is administrator opt-in and does not reach users until an administrator enables its policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+      "quote": "Commercial Journeys is off by default if the administrator doesn’t enable the policy. An administrator must explicitly enable the Commercial Journeys policy CommercialJourneysGetThingsDoneEnabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Entitlement is mixed: a Copilot premium licence or higher plus access to usage-billed Work IQ API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+      "quote": "Microsoft 365 Copilot premium license or a higher tier. ... Work IQ API access to be available to the user. Work IQ requires usage-based billing and one-time tenant setup by an administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: targetDate; What's changing; Scope; changes; Open questions",
+      "type": "record",
+      "claim": "The roadmap targets January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: previewDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap preview date is November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The record concerns Microsoft Edge and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Edge\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans AI-generated cards for unfinished, new and recurring tasks on the Copilot new tab page in Edge.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Powered by AI, it proactively surfaces unfinished, new, and recurring tasks on the Copilot new tab page",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says cards explain why each task matters now.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "with context-rich cards that explain why each task matters now.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "One click opens a guided flow producing ready-to-use outputs such as emails, documents and presentations.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "One click opens a guided execution flow that delivers ready-to-use outputs (emails, documents, presentations, and more)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "title; What's changing; controls[0].note",
+      "type": "behaviour",
+      "claim": "Commercial Journeys is shown to users as Get things done.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+      "quote": "Commercial Journeys, shown to users as Get things done",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The cards are generated from Microsoft 365 work data available to the user through Work IQ.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+      "quote": "Commercial Journeys uses Microsoft 365 work data available to the user through Work IQ to generate personalized task cards.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment: Data exposure and Security & identity; rationale: risk",
+      "type": "applicability",
+      "claim": "Work IQ applies the user's existing Microsoft 365 permissions and organisational controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+      "quote": "Work IQ applies the user's existing Microsoft 365 permissions and organizational controls when accessing this data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "Opening a task card starts a guided experience in Microsoft 365 Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+      "quote": "When a user opens a task card, Commercial Journeys starts a guided experience in Microsoft 365 Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Users remain in control of reviewing and refining the result.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+      "quote": "Users remain in control of reviewing and refining the result.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Generated Journey and task card data is stored locally in Microsoft Edge for up to 14 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+      "quote": "generated Journey and task card data is stored locally in Microsoft Edge for up to 14 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "default",
+      "claim": "After enablement and availability of dependencies, eligible users get the feature without an additional user consent step.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+      "quote": "When the policy is enabled and its dependencies are available: Commercial Journeys becomes available to eligible users without an additional user consent step.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Users can turn off Get things done in Microsoft Edge settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+      "quote": "Users can turn off Get things done from Microsoft Edge settings if they don't want to use the feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "behaviour",
+      "claim": "Turning the feature off for a user prevents task cards being shown to that user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+      "quote": "Turning off the feature prevents task cards from being shown to that user",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "behaviour",
+      "claim": "Turning the feature off deletes the generated card data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+      "quote": "Turning off the feature prevents task cards from being shown to that user and delete the data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Disabling the Commercial Journeys policy turns the feature off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+      "quote": "If the administrator disables the policy, Commercial Journeys (Get things done) is turned off and isn't shown.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Enabling the Commercial Journeys policy does not enable the new tab page, configure Work IQ or grant Work IQ access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+      "quote": "Enabling the Commercial Journeys policy doesn't automatically enable the Copilot New Tab Page, configure Work IQ, or grant Work IQ access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing; Scope; controls[3].governs; rationale: cost and impact",
+      "type": "licensing",
+      "claim": "The feature requires a Microsoft 365 Copilot premium licence or a higher tier.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+      "quote": "Prerequisites: Microsoft 365 Copilot premium license or a higher tier.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope; controls[1].note; Risk assessment: Change & support; rationale: impact",
+      "type": "behaviour",
+      "claim": "The Copilot new tab page must be enabled before users can access Commercial Journeys.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+      "quote": "Prerequisites: ... The Copilot new tab page to be enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope; Cost and licensing; controls[2].governs; rationale: cost and impact",
+      "type": "behaviour",
+      "claim": "Work IQ API access must be available to the user for Commercial Journeys.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+      "quote": "Work IQ API access to be available to the user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "summary; front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The feature's Work IQ prerequisite requires usage-based billing and one-time administrator tenant setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+      "quote": "Work IQ requires usage-based billing and one-time tenant setup by an administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Security & identity; Cost and licensing; Scope; Governance guidance",
+      "type": "role",
+      "claim": "The one-time Work IQ setup requires a user with the Global Administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+      "quote": "A user with Global Administrator role for the one-time Work IQ setup",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Work IQ setup creates the organisation's Work IQ service principal so applications can request tokens for it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+      "quote": "This section creates the Work IQ service principal in your organization, which provisions the Work IQ resource so your applications can request tokens for it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Work IQ setup requires a Copilot Studio usage-based billing plan with an Azure subscription and resource group assigned.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+      "quote": "A usage-based billing plan set up in Copilot Studio with an Azure subscription and resource group assigned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing; Scope; controls[0].note; Open questions",
+      "type": "availability",
+      "claim": "Learn documents current availability in Microsoft Edge Canary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+      "quote": "The feature is now available in the Microsoft Edge Canary channel.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Learn describes Commercial Journeys as coming soon to Microsoft Edge for Business.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+      "quote": "Commercial Journeys (Get things done) is coming soon to Microsoft Edge for Business.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What's changing; controls[0].note; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "The documented availability, requirements and functionality are subject to change before Stable release.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+      "quote": "Availability, requirements, and functionality described on this page are subject to change before Stable release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].note; Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "Learn calls CommercialJourneysGetThingsDoneEnabled a hidden policy accessible at the Edge Copilot tab address.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+      "quote": "CommercialJourneysGetThingsDoneEnabled (now a hidden policy, accessible through https://admin.cloud.microsoft/#/Edge/Copilot)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "The Commercial Journeys article gives no visible setting label beyond the policy name and direct address.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'CommercialJourneysGetThingsDoneEnabled policy reference automation group Edge management'; read the full Commercial Journeys article. Its Admin and user controls section names the hidden policy and direct address, but gives no visible setting label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The Edge policy reference has no CommercialJourneysGetThingsDoneEnabled page at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'CommercialJourneysGetThingsDoneEnabled policy reference automation group Edge management'; fetched the Edge policy index and searched its full text for CommercialJourneys and Get things done: no matches. The feature article still identifies the policy as hidden.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].note; Scope",
+      "type": "applicability",
+      "claim": "CopilotNewTabPageEnabled applies only to Microsoft Entra ID profiles, not Microsoft account profiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotnewtabpageenabled",
+      "quote": "This policy applies only to Microsoft Entra ID profiles ... This policy does not apply to the Copilot new tab page on MSA profiles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "Signing in to the Edge management service to configure the Copilot tab requires Global admin or Edge admin privileges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
+      "quote": "Navigate to the Edge management service inside the Microsoft 365 Admin Center ... and sign in with an account that has Global admin or Edge admin privileges.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[3].note; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Assigning licences requires at least a License Administrator or User Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "You must be at least a License or User Administrator to assign licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Work IQ API usage consumes Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ API usage consumes Copilot Credits shared with other eligible services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The Copilot Credits consumed by Work IQ API are shared with other eligible services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ API usage consumes Copilot Credits shared with other eligible services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "front matter: cost; Cost and licensing; Why it matters; rationale: cost",
+      "type": "cost",
+      "claim": "The known Work IQ dependency has variable usage-based cost managed in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ cost is variable based on usage and can be managed in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Work IQ is available to Copilot licensed users in all Microsoft 365 Copilot experiences and agents, with usage-based billing for custom and third-party agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "For Microsoft 365 Copilot licensed users, Work IQ is available in all Microsoft 365 Copilot experiences and agents. It is subject to usage-based billing for custom and third-party agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "A Copilot Credit rate specific to Commercial Journeys is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Commercial Journeys Get things done Copilot Credits pricing rate guided flow spending policy' and 'Work IQ licensing Commercial Journeys Get things done Copilot Credits rate'; read feature, Work IQ overview, API overview and billing overview: no feature-specific rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "Learn does not state whether generating these task cards or running their guided Copilot Chat flow consumes credits.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Commercial Journeys Get things done Copilot Credits pricing rate guided flow spending policy'; read Commercial Journeys, Work IQ overview, API overview and billing overview. Work IQ billing is stated, but no passage specifies card-generation or guided-flow credit consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing; controls[2].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Learn does not expressly identify Commercial Journeys usage as covered by a spending policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Commercial Journeys Get things done Copilot Credits pricing rate guided flow spending policy'; read feature and billing overview. The latter lists Work IQ API for custom apps and agents; neither explicitly classifies Commercial Journeys or its guided flow under spending policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Work IQ can supply mailbox, file and meeting data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Work IQ can reason over: Email messages; Meetings and calendar data; Documents in OneDrive and SharePoint",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview to sources for the named data categories."
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Existing sensitivity labels and access permissions continue to govern the Work IQ data access used by this feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Microsoft 365 permissions, sensitivity labels, and compliance policies are enforced automatically.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview for sensitivity-label enforcement."
+    },
+    {
+      "n": 58,
+      "where": "controls[0].scope; controls[1].scope; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Edge management service configuration policies can target groups rather than the whole tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+      "quote": "Each configuration policy can be assigned to multiple Microsoft Entra groups, and a group can be assigned to multiple configuration policies.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/deployedge/microsoft-edge-management-service to sources for the general group-assignment scope. Keep the Commercial Journeys hidden-policy qualification; do not invent feature-specific assignment screens."
+    },
+    {
+      "n": 59,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist asks administrators to complete one-time Work IQ enablement, but that control has no corresponding table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "have a Global Administrator complete the one-time Work IQ setup only if it is. The table lists Journeys availability, new tab availability, spending and licence assignment only.",
+      "severity": "minor",
+      "fix": "Remove 'and have a Global Administrator complete the one-time Work IQ setup only if it is' from the Before rollout checklist. Retain the existing factual setup description in Cost and licensing and Risk assessment; no additional controls row is requested."
+    },
+    {
+      "n": 60,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-02T22:01:21.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-02T22:01:21\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Task cards do not change permissions or provide access to content the user could not otherwise access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+      "quote": "They don't change the user's permissions or provide access to content the user couldn't otherwise access.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T06:57:12.269Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 4,
+      "apiCallsNotOnPage": 2,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=561040",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotnewtabpageenabled",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether Commercial Journeys (Get things done) is available to users",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+        "reachable": true,
+        "segments": [
+          "Edge management service",
+          "Copilot"
+        ],
+        "missing": [
+          "Edge management service"
+        ]
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether Commercial Journeys (Get things done) is available to users",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-management-commercial-journeys",
+        "reachable": true,
+        "token": "Edge policy",
+        "found": false
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether the Copilot new tab page, which hosts the task cards, is on for a user or group",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
+        "reachable": true,
+        "segments": [
+          "Edge management service",
+          "Copilot",
+          "Copilot new tab page"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether the Copilot new tab page, which hosts the task cards, is on for a user or group",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotnewtabpageenabled",
+        "reachable": true,
+        "token": "Edge policy",
+        "found": false
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Spending on Work IQ API usage, a prerequisite of this feature",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost management"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Spending on Work IQ API usage, a prerequisite of this feature",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+        "reachable": true,
+        "token": "/beta/copilot/costManagement",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Which users hold the Microsoft 365 Copilot (Premium) licence the feature requires",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "reachable": true,
+        "segments": [
+          "Billing",
+          "Licenses",
+          "product",
+          "Assign licenses"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Which users hold the Microsoft 365 Copilot (Premium) licence the feature requires",
+        "docs": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "reachable": true,
+        "token": "Set-MgUserLicense",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

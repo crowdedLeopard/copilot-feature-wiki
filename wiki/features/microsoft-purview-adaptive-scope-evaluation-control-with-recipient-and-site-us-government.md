@@ -79,24 +79,28 @@ changes:
     note: "New briefing on the planned lifecycle status controls for Purview adaptive scopes in GCC, GCC High and DoD, targeted January CY2027; Learn does not yet describe the control."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 41 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected the policy applicability: communication compliance policies do not support SharePoint sites or OneDrive accounts in adaptive scopes."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 47 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 41
-  confirmed: 40
+  claims: 47
+  confirmed: 46
   unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "96bc2aa60cb3ae35392f6f6ffaad78ba"
+  attempts: 0
+  hash: "6ea38ff4479db65b555863376e337550"
 ---
 
 ## What's changing
 
-Microsoft plans to give administrators explicit control over lifecycle-state evaluation for recipients and site owners in Microsoft Purview adaptive scopes. An adaptive scope is a query that defines a changing set of users, Microsoft 365 groups or sites, which a communication compliance, retention or auto-labeling policy can then target. The roadmap description says the control is meant to keep policy targeting and scope membership aligned with organisational requirements.
+Microsoft plans to give administrators explicit control over lifecycle-state evaluation for recipients and site owners in Microsoft Purview adaptive scopes. An adaptive scope is a query that defines a changing set of users, Microsoft 365 groups or sites, which a communication compliance, retention or auto-labeling policy can then target. For communication compliance policies, SharePoint sites and OneDrive accounts are not supported. The roadmap description says the control is meant to keep policy targeting and scope membership aligned with organisational requirements.
 
 This roadmap item (572676) lists GCC, GCC High and DoD on the Web, with general availability targeted for January CY2027 and no preview date. The status is In development. Microsoft lists the same feature under a second roadmap item, 568785, for Worldwide (Standard Multi-Tenant), which has its own dates; see [the briefing for that item](/features/microsoft-purview-adaptive-scope-evaluation-control-with-recipient-and-site-owner-lifecycl/).
 
@@ -104,7 +108,7 @@ Microsoft Learn does not describe this control yet, so what follows about its be
 
 ## Why it matters
 
-A policy reaches the people and sites that its adaptive scopes contain, so a change to how a scope evaluates lifecycle state changes who a retention, auto-labeling or communication compliance policy covers. Learn says users without a valid licence for adaptive scopes do not have the policy settings applied to them, so scope membership and policy coverage are already two different lists.
+Changing scope membership can change policy coverage; communication compliance policies do not support SharePoint sites or OneDrive accounts. Learn says users without a valid licence for adaptive scopes do not have the policy settings applied to them, so scope membership and policy coverage are already two different lists.
 
 Microsoft has not stated what happens on arrival, so plan on no existing scope changing until a source says otherwise. The useful preparation is to know which of your policies depend on scope membership for former or inactive accounts and sites, so you can judge the new control against them once Microsoft documents it.
 
@@ -189,8 +193,8 @@ cost: Low. The only cost the sources show is administrator time to review scope 
 impact: Low. Purview administrators who create adaptive scopes would notice; the roadmap item describes no change for end users.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing: first paragraph; Why it matters: first paragraph / applicability: Communication compliance, retention and auto-labeling policies can target the described adaptive sets of users, groups or sites, without a policy-specific qualification. | Found: For communication compliance policies: SharePoint sites and OneDrive accounts aren't supported. Excluded users and Microsoft 365 groups are supported. | Fix: Add immediately after the adaptive scope definition: 'For communication compliance policies, SharePoint sites and OneDrive accounts are not supported.' In Why it matters, replace the first sentence with: 'Changing scope membership can change policy coverage; communication compliance policies do not support SharePoint sites or OneDrive accounts.' Source: https://learn.microsoft.com/purview/purview-adaptive-scopes. | Source: https://learn.microsoft.com/purview/purview-adaptive-scopes
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [contradicted, minor] Governance guidance: Before rollout, third bullet / consistency: The checklist asks readers to confirm Scope Manager role assignments, but no controls-table row represents role-assignment review. | Found: Confirm who holds the Scope Manager role ... Controls: Whether a scope evaluates recipient and site owner lifecycle status; Scope query, including excluding or targeting inactive mailboxes today; Scope membership review, including added and removed members. | Fix: Replace the third Before rollout bullet with: "Decide which team will own the new setting once Microsoft names the role that manages it." This removes the checklist control that has no table row without adding an unverified control.
 -->

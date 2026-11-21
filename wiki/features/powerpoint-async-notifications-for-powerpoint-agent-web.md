@@ -40,7 +40,7 @@ sources:
   - title: "Get started with Word, Excel, and PowerPoint Agents in Microsoft Copilot"
     url: "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents"
     kind: "learn"
-  - title: "Microsoft 365 Copilot release notes"
+  - title: "Release Notes for Microsoft 365 Copilot"
     url: "https://learn.microsoft.com/microsoft-365/copilot/release-notes"
     kind: "learn"
 videos: []
@@ -71,19 +71,23 @@ changes:
     note: "New briefing: the roadmap describes asynchronous notifications for the PowerPoint agent on the web; Microsoft Learn documents no setting, default or licence tier for them yet."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 51 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected the Scope section: the feature-specific rollout window is not stated, and Microsoft's release notes describe a gradual safe deployment model for Copilot features."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 50 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 50
-  unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "ee473d04f0de7a45d977828027c79557"
+  claims: 50
+  confirmed: 49
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 0
+  hash: "43bf449da34c949707769cb7724a9e56"
 ---
 
 ## What's changing
@@ -126,7 +130,7 @@ A separate Learn page for Word, Excel and PowerPoint Agents in the Microsoft Cop
 
 The roadmap record lists the PowerPoint agent notifications for the Web platform only, in the Worldwide (Standard Multi-Tenant) cloud, with release phase General Availability. It does not list GCC, GCC High or DoD; that is a record fact, not a statement that the feature is unavailable there.
 
-Which users get it, which roles configure it and what rollout mechanism applies are not stated. Users need a Copilot experience that includes Copilot in PowerPoint, per the licence comparison in Microsoft Copilot overview; the tier this feature needs is not yet published.
+Which users get it, which roles configure it and the feature-specific rollout window are not stated. Microsoft 365 Copilot release notes describe a safe deployment model for Copilot features, gradually rolling out to a subset of users within a tenant before expanding across the organization. Users need a Copilot experience that includes Copilot in PowerPoint, per the licence comparison in Microsoft Copilot overview; the tier this feature needs is not yet published.
 
 ## Governance guidance
 
@@ -174,8 +178,8 @@ cost: Low. The only cost the sources show is admin and communication time; no me
 impact: Medium. Users of the PowerPoint agent on the web would notice it; the roadmap gives no sign that other apps or users are affected.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope / absence: What rollout mechanism applies is not stated. | Found: Copilot features are introduced using a safe deployment model, gradually rolling out to a subset of users within a tenant before expanding across the organization. | Fix: Replace 'what rollout mechanism applies' in the first sentence with 'the feature-specific rollout window'. Add: 'Microsoft 365 Copilot release notes describe a safe deployment model for Copilot features, gradually rolling out to a subset of users within a tenant before expanding across the organization.' Cite https://learn.microsoft.com/microsoft-365/copilot/release-notes. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes
+- [unsupported, major] Why it matters / behaviour: These notifications can reach users outside the PowerPoint tab. | Found: Searched: 'PowerPoint Copilot agent notifications content delivery complete requires attention waiting user away'; 'PowerPoint notifications completion Copilot'. Read roadmap, release notes and agent documentation; leaving PowerPoint is planned, but no delivery surface is specified. | Fix: Replace 'It matters to a service owner mainly because notifications can reach users outside the PowerPoint tab, and Microsoft has not yet said where or with what content.' with 'It matters to a service owner mainly because the roadmap aims to let users leave PowerPoint while awaiting a notification, and Microsoft has not yet said where that notification appears or what it contains.'
 -->

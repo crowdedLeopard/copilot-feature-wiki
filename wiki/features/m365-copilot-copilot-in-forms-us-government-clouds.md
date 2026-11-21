@@ -17,7 +17,7 @@ impact: "medium"
 defaultState: "unknown"
 action: "prepare"
 licensing:
-  model: "mixed"
+  model: "unknown"
   notes: "Microsoft Learn calls Microsoft 365 Copilot an add-on plan and lists Forms question drafting among the in-app features of Microsoft 365 Copilot (Basic). The licence for each feature in GCC, GCC High and DoD is not yet published."
 audiences: ["m365-admin","service-owner","compliance","change-adoption"]
 tags: ["microsoft-forms","m365-copilot","copilot","ai","licensing","gcc","gcc-high","dod"]
@@ -66,19 +66,23 @@ changes:
     note: "First briefing for Copilot in Forms in the US Government clouds; licence, default state and an admin switch are not yet published."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 52 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after the independent check: licensing model set to not yet published, the government-cloud data-boundary statement no longer caveated, and the unwanted-use sentence now says no separate Copilot off switch is documented."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 52 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 52
-  confirmed: 48
-  unconfirmed: 2
-  contradicted: 2
-  attempts: 1
-  hash: "b810193cca61e5faf9c6a5b53262e880"
+  confirmed: 52
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "362bea1054dc00b850c55e7d57834a53"
 ---
 
 ## What's changing
@@ -99,7 +103,7 @@ Microsoft has not stated whether the features switch on for users automatically 
 
 **Data exposure**
 - Copilot Insights is described by the roadmap item as analysing results, so form responses become input to Copilot. Identify forms that collect personal or sensitive answers before staff use Insights on them.
-- Microsoft Learn states that Microsoft Copilot in the US Government clouds operates within the customer's government cloud tenant and that prompts, responses and generated content stay in the government cloud. That page describes Microsoft Copilot in general and does not mention Forms, so confirm it covers these features.
+- Microsoft Learn states that Microsoft Copilot in the US Government clouds operates within the customer's government cloud tenant and that prompts, responses and generated content stay in the government cloud.
 
 **Security & identity**
 - No change is documented to how users sign in to Forms. Microsoft Learn documents Forms access control through Microsoft Entra Conditional Access applied to the Microsoft Forms cloud app; this is an existing control and not specific to Copilot.
@@ -108,7 +112,7 @@ Microsoft has not stated whether the features switch on for users automatically 
 - The roadmap item lists distribution and monitoring among the features, and the Learn release notes describe drafting and sending invitations in a separate commercial roadmap item (553136). Whether Copilot in Forms in the US Government clouds sends anything without a person confirming it is not yet documented.
 
 **Change & support**
-- No documented admin switch turns Copilot in Forms off, so the support route for unwanted use is user guidance, not a setting. Brief the service desk before the rollout reaches users.
+- Microsoft Learn documents no separate Copilot in Forms off switch at the time of writing (November 2026). Brief the service desk before the rollout reaches users.
 
 ## Cost and licensing
 
@@ -160,24 +164,18 @@ A Microsoft Q&A moderator answer states that Microsoft Forms has no user-facing 
 
 - Which Microsoft 365 Copilot licence, if any, does each Copilot in Forms feature need in GCC, GCC High and DoD? Watch the Microsoft Copilot service description and Message center.
 - Are the features on by default for eligible users, and can an administrator turn them off for a tenant or group, or by script? Watch Message center and the Forms admin documentation.
-- Does the Copilot data-boundary statement for the US Government clouds apply to Draft with Copilot and Copilot Insights in Forms?
 - Does the rollout differ between GCC, GCC High and DoD, given that Microsoft says feature availability aligns with each environment's boundaries?
 
 <!-- rationale
 risk: Medium. Copilot in Forms covers form drafting and the analysis of responses, and Microsoft Learn documents no admin switch for it at the time of writing (November 2026).
 cost: Low. The only cost the sources show is admin time and licence checking; which Microsoft 365 Copilot licence covers each Copilot in Forms feature in the US Government clouds is not yet published.
-impact: Medium. Anyone who builds or sends forms, such as survey owners, HR and communications teams, will see new Copilot options in Forms; Microsoft has not stated who is licensed for them.
+impact: Medium. Form owners, such as survey owners, HR and communications teams, are the potential audience for the new options; Microsoft has not stated the government-cloud eligibility or arrival default.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: licensing.model / licensing: The government-cloud feature has a mixed licensing model. | Found: Searched: Microsoft Forms Copilot government licensing GCC 561485; Copilot in Forms government GCC licensing prerequisites default. Read Copilot overview, service description and license options; none establishes a mixed entitlement split for this government-cloud feature. | Fix: Replace licensing.model 'mixed' with 'unknown' for the government-cloud per-feature entitlement split; retain the notes distinguishing the published general Copilot licensing from the unpublished government-cloud split. Do not infer mixed entitlement from commercial feature documentation.
-- [contradicted, blocker] Risk assessment: Data exposure; Open questions / applicability: The government-cloud Copilot data-boundary statement is unconfirmed for Copilot in Forms because the overview does not name Forms. | Found: Microsoft Copilot is available in GCC, GCC High, and DoD, and operates entirely within the customer's U.S. government cloud tenant. ... Prompts, responses, and generated content stay in the government cloud. | Fix: Delete 'That page describes Microsoft Copilot in general and does not mention Forms, so confirm it covers these features' and the corresponding data-boundary open question. Retain the preceding general government-cloud Copilot statement and its citation; the stated reach includes this Copilot capability. | Source: https://learn.microsoft.com/copilot/plan/gov-overview
-- [contradicted, blocker] Risk assessment: Change & support / applicability: The response to unwanted Copilot use is user guidance rather than any setting. | Found: When you turn off Microsoft Forms for a user, that person can't use Microsoft Forms. ... You can also choose to turn off or turn on Microsoft Forms for your entire organization. | Fix: Replace the sentence with 'Microsoft Learn documents no separate Copilot in Forms off switch at the time of writing (November 2026).' Remove 'so the support route for unwanted use is user guidance, not a setting'; blocking Forms itself remains a documented broader control. | Source: https://learn.microsoft.com/microsoft-forms/administrator-settings-microsoft-forms
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters / behaviour: Forms drafting works from user-entered prompts. | Found: Use natural language to describe the form you need, and Copilot will generate it for you. | Fix: Cite https://learn.microsoft.com/microsoft-365/copilot/release-notes-archive#february,-2024 for the statement that drafting uses user-entered descriptions. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes-archive#february,-2024
-- [supported, minor] Why it matters / behaviour: Forms drafting can use material the user references. | Found: When creating a form with Copilot, users can now reference existing documents such as Word, Excel, and PowerPoint. Users can also reference an existing form by pasting the form's URL into the prompt box. | Fix: Cite https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#may-29,-2025 for reference-based drafting, and introduce this sentence with 'Microsoft documents Forms drafting generally as follows' rather than presenting it as government-specific documentation. | Source: https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#may-29,-2025
-- [supported, minor] Why it matters; Risk assessment: Data exposure / behaviour: Forms Copilot insights analyse the collected form responses. | Found: When your form data is ready, Copilot can help you analyze and arrive at insights for your form. From the responses page, Copilot can provide early insights to help you get a quick overview. | Fix: Cite https://techcommunity.microsoft.com/blog/microsoftformsblog/introducing-new-agentic-features-for-copilot-in-forms-%E2%80%93-create-refine-and-share-/4406237 for the factual premise that insights use collected responses. | Source: https://techcommunity.microsoft.com/blog/microsoftformsblog/introducing-new-agentic-features-for-copilot-in-forms-%E2%80%93-create-refine-and-share-/4406237
-- [unsupported, minor] rationale: impact / availability: Anyone who builds or sends forms will see the new Copilot options. | Found: Searched: Copilot Forms GCC GCC High DoD license default admin disable Copilot Insights; Microsoft Forms Copilot government licensing GCC 561485. Read roadmap, Copilot overview and service description; none promises availability to every form builder or sender. | Fix: Replace the impact rationale with 'Medium. Form owners, such as survey owners, HR and communications teams, are the potential audience for the new options; Microsoft has not stated the government-cloud eligibility or arrival default.'
+- [supported, minor] Why it matters / behaviour: Drafting works from what a user types. | Found: Users can also reference an existing form by pasting the form's URL into the prompt box. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#may-29,-2025 to sources for the drafting-input description. | Source: https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#may-29,-2025
+- [supported, minor] Why it matters / behaviour: Drafting can use material the user references. | Found: When creating a form with Copilot, users can now reference existing documents such as Word, Excel, and PowerPoint. Users can also reference an existing form by pasting the form's URL into the prompt box. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#may-29,-2025 to sources for the referenced-input description. | Source: https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#may-29,-2025
+- [supported, minor] Why it matters; Risk assessment: Data exposure / behaviour: Copilot's results analysis uses the responses collected by a form. | Found: Copilot works alongside your form to deliver tailored suggestions and refinements, help configure settings, prepare your form for distribution, and turn responses into clear, actionable insights | Fix: Add https://techcommunity.microsoft.com/blog/microsoftformsblog/evolving-the-copilot-experience-in-microsoft-forms/4534667 to sources for the description of responses used in results analysis. | Source: https://techcommunity.microsoft.com/blog/microsoftformsblog/evolving-the-copilot-experience-in-microsoft-forms/4534667
 -->

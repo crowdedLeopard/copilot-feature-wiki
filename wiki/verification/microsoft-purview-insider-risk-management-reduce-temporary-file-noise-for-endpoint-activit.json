@@ -1,0 +1,684 @@
+{
+  "slug": "microsoft-purview-insider-risk-management-reduce-temporary-file-noise-for-endpoint-activit",
+  "roadmapId": 560601,
+  "title": "Microsoft Purview Insider Risk Management: built-in filter for temporary file noise on endpoints",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "1 blocking finding (claim 51)"
+    ]
+  },
+  "counts": {
+    "claims": 53,
+    "confirmed": 52,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: Global exclusions is not the only documented exclusion setting for tuning Insider Risk Management noise; Microsoft also documents exclusions in indicator variants. The roadmap dates and existing portal path are supported, and searches found no published default or dedicated control for the planned temporary-file filter.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; front matter: products; What's changing",
+      "type": "record",
+      "claim": "The planned feature belongs to Microsoft Purview Insider Risk Management.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview: Insider Risk Management – Reduce temporary file noise for Endpoint activities in IRM",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "General availability is targeted for May CY2027, not committed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"May CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing; Governance guidance",
+      "type": "record",
+      "claim": "Preview is targeted for March CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"March CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The listed release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"Worldwide (Standard Multi-Tenant)\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"GCC\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC High.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"GCC High\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"DoD\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap was modified at 2026-10-12T23:01:05.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-12T23:01:05\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap describes Windows, Office and browsers creating, renaming and deleting temporary files when files are opened.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When files are opened in Windows, the operating system, and applications (for example, Microsoft Office and browsers) can create, rename, and delete temporary files as part of normal behavior.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope; Risk assessment",
+      "type": "record",
+      "claim": "The Endpoint client audits these temporary-file operations.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The Endpoint client audits these activities",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "These audited operations generate high-volume, low-signal events for IRM customers.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "resulting in high-volume, low-signal events that appear as “noise” for Insider Risk Management (IRM) customers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; What's changing; Scope",
+      "type": "record",
+      "claim": "Microsoft plans built-in filtering for well-known temporary file name patterns.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature introduces built-in filtering for well-known temporary file name patterns",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "summary; What's changing; Risk assessment; Scope; rationale: impact",
+      "type": "record",
+      "claim": "Matching Endpoint file operations are planned to be excluded from IRM activity explorer, preventing review there.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "so that Endpoint file operations are excluded from IRM activity explorer and scoring",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "summary; What's changing; Why it matters; Scope; rationale: impact",
+      "type": "record",
+      "claim": "Matching Endpoint file operations are planned to be excluded from IRM scoring.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "so that Endpoint file operations are excluded from IRM activity explorer and scoring",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Some temporary file naming patterns are difficult to capture with existing exclusions without over-excluding.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "some temporary file naming patterns are not easily captured with the current exclusions, leaving customers without a practical way to reduce noise without over-excluding.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe the new built-in temporary-file-name filter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management built-in temporary file name patterns Endpoint filtering default setting prerequisites rollout obfuscation 560601; \"temporary file\" \"Insider Risk Management\" filtering patterns switch. Read global exclusions, settings and policies; no new filter description found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Open questions; rationale: risk",
+      "type": "default",
+      "claim": "The new filter's default state and what happens without admin action on arrival are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management built-in temporary file name patterns Endpoint filtering default setting prerequisites rollout obfuscation 560601. Read roadmap description, global exclusions and settings; none states the planned filter's default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "summary; What's changing; Risk assessment; Open questions",
+      "type": "absence",
+      "claim": "The new filter's list of temporary file name patterns is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"temporary file\" \"Insider Risk Management\" filtering patterns switch; Insider Risk Management built-in temporary file name patterns Endpoint filtering. Read global exclusions and settings; no pattern list for the new filter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "summary",
+      "type": "record",
+      "claim": "The roadmap states no required administrator action for the new filter.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature introduces built-in filtering for well-known temporary file name patterns so that Endpoint file operations are excluded from IRM activity explorer and scoring",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Global exclusions is reached in Microsoft Purview portal through Settings > Insider Risk Management > Insider risk settings > Global exclusions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions",
+      "quote": "Select Settings in the upper-right corner of the page, then select Insider Risk Management to go to the Insider Risk Management settings.\nUnder Insider risk settings, select Global exclusions.",
+      "severity": "minor",
+      "fix": "The route correctly reaches the exclusions page but stops before an individual control. Keep it and expand the note with: 'For individual entries, select File paths > Individual file paths > Add file paths to exclude; File types > Individual file types > Add file type; or Keywords > Individual keywords > Exclude these keywords.' These routes are given at https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions."
+    },
+    {
+      "n": 24,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "No documented API or PowerShell operation sets IRM Global exclusions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management global exclusions PowerShell Security Compliance Set-InsiderRiskManagementSettings Microsoft Graph API file types file paths keywords; \"global exclusions\" \"PowerShell\" \"Insider\". Read exclusions and settings; results showed no IRM setting operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[1].ui; controls[1].api; Risk assessment; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No documented UI setting or automation switches or scopes the new built-in temporary-file-name filter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management built-in temporary file name patterns Endpoint filtering default setting prerequisites rollout obfuscation 560601; \"temporary file\" \"Insider Risk Management\" filtering patterns switch. Read global exclusions and settings; no dedicated UI or API control found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].scope; Governance controls table",
+      "type": "applicability",
+      "claim": "Global exclusions has tenant-wide scope across IRM policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings",
+      "quote": "Insider Risk Management settings apply to all Insider Risk Management policies, regardless of the template you choose when creating a policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[0].governs; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "File-type exclusions cause IRM policies to ignore the selected extensions for risk scoring.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions",
+      "quote": "Files with that extension are ignored for risk scoring by all Insider Risk Management policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].governs; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Keyword exclusions can suppress activities involving matching file names, file paths or email subjects.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions",
+      "quote": "You can configure exclusions for keywords that appear in file names, file paths, or email message subject lines.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].governs; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "File-path exclusions suppress policy alerts for corresponding indicator activities in those locations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions",
+      "quote": "When you exclude file paths, user activities that map to specific indicators and that occur in those file path locations don't generate policy alerts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].note; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Type panel offers File paths, File types and Keywords.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions",
+      "quote": "In the Type panel to the right, select File paths.\nIn the Type panel to the right, select File types.\nIn the Type panel to the right, select Keywords.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "A file-path exclusion list supports up to 500 entries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions",
+      "quote": "You can enter up to 500 file paths for exclusion.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "A keyword exclusion list supports up to 500 entries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions",
+      "quote": "You can exclude up to 500 keywords.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The file-type global exclusion list also supports up to 500 entries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-limits",
+      "quote": "Maximum number of items in each global exclusion list (Domains, SharePoint sites, File paths, Keywords, and File types). | 500 for each list",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/purview/insider-risk-management-limits to sources and cite it after the 500-entry statement in Governance controls; the existing exclusions page does not state the file-type limit."
+    },
+    {
+      "n": 34,
+      "where": "Governance controls",
+      "type": "default",
+      "claim": "Existing default file-path exclusions include \\Users\\*\\AppData\\Local\\Temp.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions",
+      "quote": "By default, the system automatically excludes several file paths from generating policy alerts.\nThe default file path exclusions are:\n\\Users\\*\\AppData\\Local\\Temp",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "An administrator can deselect default file-path exclusions to enable scoring in those locations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions",
+      "quote": "If needed, you can cancel the selection for these default file path exclusions to enable risk scoring for activities in these locations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "behaviour",
+      "claim": "An event excluded by existing risk-scoring settings can still be included in a sequence because of obfuscation activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+      "quote": "if an event that's excluded from risk scoring is part of a sequence due to an obfuscation activity, the event is included in the sequence since it might be interesting in the context of the sequence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Whether the new built-in filter preserves obfuscation sequence events in the same way is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management built-in temporary file name patterns Endpoint filtering default setting prerequisites rollout obfuscation 560601. Read policies' sequence passage and global exclusions; no passage places the planned filter in the existing settings-based exception.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "The Insider Risk Management role group can configure policies and settings, including existing global exclusions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Configure policies and settings | Yes | Yes | No | No | No | No\nConfigure global settings | Unrestricted | Unrestricted | Never allowed | Never allowed | Never allowed",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "The Insider Risk Management Admins role group can configure policies and settings, including existing global exclusions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Configure policies and settings | Yes | Yes | No | No | No | No\nConfigure global settings | Unrestricted | Unrestricted | Never allowed | Never allowed | Never allowed",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing model is included within the product's existing supported Microsoft 365 subscription requirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-plan",
+      "quote": "Microsoft offers Insider Risk Management as part of a wide selection of Microsoft 365 licensing subscriptions.\nIf you don't have an existing Microsoft 365 Enterprise E5 plan and want to try Insider Risk Management",
+      "severity": "minor",
+      "fix": "Keep model included and name a documented plan in the notes and Cost and licensing: 'Microsoft Learn names Microsoft 365 Enterprise E5 as a plan for trying Insider Risk Management; verify the supported subscription and assign appropriate user licenses. A licence or price specific to this filter is not yet published.' Cite https://learn.microsoft.com/purview/insider-risk-management-plan and the existing configure link."
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft offers Insider Risk Management as part of a wide selection of Microsoft 365 licensing subscriptions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-plan",
+      "quote": "Microsoft offers Insider Risk Management as part of a wide selection of Microsoft 365 licensing subscriptions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Administrators must verify a supported subscription and assign appropriate licenses to users to access and use IRM.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "To access and use Insider Risk Management, administrators need to verify their organization has a supported subscription and assign the appropriate licenses to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap item names no separate license for this filter.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature introduces built-in filtering for well-known temporary file name patterns so that Endpoint file operations are excluded from IRM activity explorer and scoring",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A license requirement specific to this filter beyond IRM itself is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management temporary file noise filter licensing price meter Microsoft 365. Read plan, configure and Purview billing models; they state product and endpoint licensing but no requirement specific to this filter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "A price specific to this filter is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management temporary file noise filter licensing price meter Microsoft 365. Read plan, configure and Purview billing models; none publishes a price for temporary-file filtering.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter for this filter is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management temporary file noise filter licensing price meter Microsoft 365. Read Purview billing models and configure; IRM metering is documented for non-Microsoft 365 Cloud and generative AI indicators, not this Windows temporary-file filter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "Prerequisites specific to the new filter are not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management built-in temporary file name patterns Endpoint filtering default setting prerequisites rollout obfuscation 560601. Read configure, plan, settings and global exclusions; no filter-specific prerequisite found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The rollout mechanism for the new filter is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management built-in temporary file name patterns Endpoint filtering default setting prerequisites rollout obfuscation 560601. Read roadmap, settings and global exclusions; targets are given, but no rollout mechanism.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap describes no new permission or identity requirement.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Built with privacy by design, users are pseudonymized by default, and role-based access controls and audit logs are in place to help ensure user-level privacy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Data exposure; Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes filtering existing audited events, not new data collection or autonomous actions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The Endpoint client audits these activities\nThis feature introduces built-in filtering for well-known temporary file name patterns so that Endpoint file operations are excluded from IRM activity explorer and scoring",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "Existing global exclusions remain the only exclusion setting Microsoft documents for tuning noise.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "A variant inherits all the properties of the built-in indicator. You can modify the variant with exclusions or inclusions.",
+      "severity": "blocker",
+      "fix": "Replace the sentence with: 'A dedicated control for this filter is not yet documented; existing Global exclusions is one documented option for tuning noise.' Do not claim it is the only exclusion setting."
+    },
+    {
+      "n": 52,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Global exclusions does not target temporary file name patterns specifically, which is the roadmap's stated gap.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "some temporary file naming patterns are not easily captured with the current exclusions",
+      "severity": "minor",
+      "fix": "Narrow the sentence to the record's wording: 'The roadmap item says some temporary file naming patterns are not easily captured with current exclusions.' Existing keyword exclusions can already match terms in file names; avoid implying that no temporary naming pattern can be targeted."
+    },
+    {
+      "n": 53,
+      "where": "rationale: impact",
+      "type": "record",
+      "claim": "The roadmap description identifies no change to other users' visible experience.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Endpoint file operations are excluded from IRM activity explorer and scoring reducing noise allowing customers to focus on the most relevant alerts.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T06:57:11.197Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=560601",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-plan",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-settings",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which file types, keywords and file paths Insider Risk Management policies ignore",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Insider Risk Management",
+          "Insider risk settings",
+          "Global exclusions"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

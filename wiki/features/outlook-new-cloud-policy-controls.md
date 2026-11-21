@@ -47,7 +47,7 @@ controls:
     scope: "group"
     ui:
       surface: "Microsoft 365 Apps admin center"
-      path: "Customization > Policy Management > Policy configurations > Create > Configure Settings"
+      path: "Customization > Policy Management > Policy configurations > Create > Choose the scope > specific groups > Configure Settings"
       docs: "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy"
     api: null
     note: "Route into the policy wizard. The settings this roadmap item adds are not yet listed in Learn."
@@ -55,15 +55,15 @@ controls:
     scope: "group"
     ui:
       surface: "Microsoft 365 Apps admin center"
-      path: "Customization > Policy Management > policy configuration > Configure Settings > Show All Accounts view for users with multiple accounts in Outlook for Windows"
+      path: "Customization > Policy Management > policy configuration > Configure Settings > Show All Accounts view for users with multiple accounts in Outlook for Windows > Configuration setting"
       docs: "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view"
     api: null
-    note: "Existing setting shown for the default-plus-override pattern; set Configure the unified inbox view and Allow user to override this setting. Not confirmed to be part of this roadmap item."
+    note: "Set Configuration setting to Enabled first, then set Configure the unified inbox view and Allow user to override this setting. Not confirmed to be part of this roadmap item."
   - governs: "Outlook on the web feature availability through mailbox policies (today's alternative)"
     scope: "user"
     ui:
       surface: "Exchange admin center"
-      path: "Roles > Outlook web app policies > policy > Manage Features > User experience > Email signature"
+      path: "Roles > Outlook web app policies > policy > Features > Manage Features > User experience > Email signature"
       docs: "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/policy-management"
     api:
       kind: "powershell"
@@ -79,19 +79,23 @@ changes:
     note: "New briefing: Cloud Policy support planned for Outlook on the web and new Outlook for Windows; roadmap target October CY2026 has passed with status still In development."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 50 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected: All Accounts example now says to set Configuration setting to Enabled first; control paths completed; audit-log bullet removed to match the controls table."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 46 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 48
+  claims: 46
+  confirmed: 46
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "62b52f091d093f25bfeae67adab20f42"
+  contradicted: 0
+  attempts: 0
+  hash: "0591575570c2fca6597e592835997a14"
 ---
 
 ## What's changing
@@ -152,7 +156,6 @@ Cloud Policy is configured in the Microsoft 365 Apps admin center and targets Mi
 
 ### After rollout
 - Compare what pilot users see in Outlook on the web and new Outlook for Windows with what the policy sets, and with any mailbox policy that touches the same setting.
-- Search the Microsoft Purview audit log for changes to policy configurations, settings and priority order, which Learn says Cloud Policy records when auditing is enabled.
 - Brief the service desk on which settings are locked and which users can still change.
 
 ## Governance controls
@@ -162,9 +165,9 @@ Cloud Policy is configured in the Microsoft 365 Apps admin center and targets Mi
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Default values for Outlook settings and whether users can change them (Cloud Policy)</strong><br><small>Group</small><br><small class="controls__note">Route into the policy wizard. The settings this roadmap item adds are not yet listed in Learn.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Configure Settings <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Existing Cloud Policy example: default view and user override for All Accounts in new Outlook for Windows</strong><br><small>Group</small><br><small class="controls__note">Existing setting shown for the default-plus-override pattern; set Configure the unified inbox view and Allow user to override this setting. Not confirmed to be part of this roadmap item.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Configure Settings › Show All Accounts view for users with multiple accounts in Outlook for Windows <a href="https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Outlook on the web feature availability through mailbox policies (today's alternative)</strong><br><small>User</small><br><small class="controls__note">Email signature is one example. Learn says these mailbox policies also affect new Outlook for Windows. This does not set Cloud Policy defaults.</small></td><td data-label="Admin UI"><strong>Exchange admin center</strong><br>Roles › Outlook web app policies › policy › Manage Features › User experience › Email signature <a href="https://learn.microsoft.com/microsoft-365-apps/outlook/manage/policy-management" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-OwaMailboxPolicy -SignaturesEnabled $false</code> <a href="https://learn.microsoft.com/microsoft-365-apps/outlook/manage/policy-management" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Default values for Outlook settings and whether users can change them (Cloud Policy)</strong><br><small>Group</small><br><small class="controls__note">Route into the policy wizard. The settings this roadmap item adds are not yet listed in Learn.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Choose the scope › specific groups › Configure Settings <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Existing Cloud Policy example: default view and user override for All Accounts in new Outlook for Windows</strong><br><small>Group</small><br><small class="controls__note">Set Configuration setting to Enabled first, then set Configure the unified inbox view and Allow user to override this setting. Not confirmed to be part of this roadmap item.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Configure Settings › Show All Accounts view for users with multiple accounts in Outlook for Windows › Configuration setting <a href="https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Outlook on the web feature availability through mailbox policies (today's alternative)</strong><br><small>User</small><br><small class="controls__note">Email signature is one example. Learn says these mailbox policies also affect new Outlook for Windows. This does not set Cloud Policy defaults.</small></td><td data-label="Admin UI"><strong>Exchange admin center</strong><br>Roles › Outlook web app policies › policy › Features › Manage Features › User experience › Email signature <a href="https://learn.microsoft.com/microsoft-365-apps/outlook/manage/policy-management" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-OwaMailboxPolicy -SignaturesEnabled $false</code> <a href="https://learn.microsoft.com/microsoft-365-apps/outlook/manage/policy-management" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -186,13 +189,8 @@ cost: Low. Admin time to design and test policies is the only cost the sources s
 impact: Low. Admins configure it; users notice only the Outlook settings an admin chooses to set or lock for their group, and Microsoft has not yet said which settings are covered.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].note; Governance controls table / behaviour: The All Accounts example tells administrators to set Configure the unified inbox view and Allow user to override this setting without stating that the policy must first be Enabled. | Found: Open the policy and set Configuration setting to Enabled. This activates the policy; the additional settings below determine the view and whether users can change it. | Fix: Replace the note's instruction with 'Set Configuration setting to Enabled first, then set Configure the unified inbox view and Allow user to override this setting.' Keep the existing caveat that the setting is not confirmed as part of this roadmap item. Apply the same replacement in the rendered table. See https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view. | Source: https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui / admin-path: Microsoft 365 Apps admin center > Customization > Policy Management > Policy configurations > Create > Configure Settings reaches the Cloud Policy settings wizard. | Found: Under Customization, select Policy Management. ... On the Choose the scope page, determine whether the policy configuration applies to all users, specific groups ... On the Configure Settings page, select the policies | Fix: Complete the wizard route as 'Customization > Policy Management > Policy configurations > Create > Choose the scope > specific groups > Configure Settings', retaining the note that this roadmap item's settings are not yet listed. The omitted scope selection is documented at https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
-- [supported, minor] controls[1].ui / admin-path: The All Accounts path reaches its named Cloud Policy on Configure Settings. | Found: Under Customization, select Policy Management. ... On Configure Settings, search for Show All Accounts view for users with multiple accounts in Outlook for Windows. Open the policy and set Configuration setting to Enabled. | Fix: Extend the path to 'Customization > Policy Management > policy configuration > Configure Settings > Show All Accounts view for users with multiple accounts in Outlook for Windows > Configuration setting'. The current route stops on the right policy but before its activation control. See https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view. | Source: https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view
-- [supported, minor] controls[2].ui; Governance guidance: Before rollout / admin-path: Exchange admin center > Roles > Outlook web app policies > policy > Manage Features > User experience > Email signature reaches the signature control. | Found: click on the name of the policy > select Manage Features in the Features section > expand the User experience section > uncheck Email signature | Fix: Use 'Roles > Outlook web app policies > policy > Features > Manage Features > User experience > Email signature' in the row and table. The missing Features heading is on the cited page; the Roles entry is independently supported by the already-cited https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-on-the-web/create-outlook-web-app-mailbox-policy, so the pre-check's missing word is not a blocker. | Source: https://learn.microsoft.com/microsoft-365-apps/outlook/manage/policy-management
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The governance checklist asks readers to search the Microsoft Purview audit log, but the controls table has no audit row. | Found: Search the Microsoft Purview audit log for changes to policy configurations, settings and priority order ... The table contains only Cloud Policy defaults, All Accounts view and Exchange mailbox feature controls. | Fix: Remove the audit-log search bullet from 'After rollout' so the checklist agrees with the existing controls table; do not add a control row as part of this correction.
+- [supported, minor] controls[0].ui; Governance controls / admin-path: Microsoft 365 Apps admin center > Customization > Policy Management > Policy configurations > Create > Choose the scope > specific groups > Configure Settings reaches the general Cloud Policy settings wizard. | Found: Under Customization, select Policy Management. On the Policy configurations page, select Create. On the Choose the scope page, determine whether the policy configuration applies to all users, specific groups | Fix: Complete controls[0].ui.path as 'Customization > Policy Management > Policy configurations > Create > Choose the scope > specific groups > Add Groups > groups > Configure Settings'. Keep the note that this is the general wizard and the item's new settings are not yet listed. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
 -->

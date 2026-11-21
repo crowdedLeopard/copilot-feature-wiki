@@ -4,10 +4,10 @@
   "title": "Microsoft Teams: admin list of custom apps that need updates for private and shared channels",
   "status": "held",
   "date": "2026-11-21",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
+  "attempts": 3,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,44 +16,33 @@
     "reason": "failed",
     "since": "2026-11-21",
     "reasons": [
-      "1 blocking finding (claim 50)"
+      "1 blocking finding (claim 20)"
     ]
   },
   "counts": {
-    "claims": 51,
-    "confirmed": 50,
+    "claims": 54,
+    "confirmed": 53,
     "unconfirmed": 0,
     "contradicted": 1,
     "blocker": 1,
     "major": 0,
     "minor": 0
   },
-  "summary": "Hold: the app-withdrawal guidance omits Microsoft's requirement to keep blocking settings synchronized across both admin centres until the tenant migrates to unified app management. The roadmap details, manifest guidance, licensing statement and documented Teams paths and command otherwise check out.",
+  "summary": "Hold: the briefing incorrectly says Microsoft Learn does not describe the compatibility list and that it is documented only in the roadmap and Message Center notice. The Teams admin release notes confirm the list; the narrower gaps about its layout, detection criteria, default and automation remain unfilled. The roadmap facts, manifest guidance, licensing and Allow or Block controls are supported.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; Scope",
+      "where": "front matter: products; title",
       "type": "record",
-      "claim": "Teams admin center lists custom apps in the tenant that need updates to work in private and shared channels.",
+      "claim": "The change belongs to Microsoft Teams.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Admins will be able to view in Teams Admin Center a list of custom apps in their tenant that need to be updated to work in private and shared channels.",
+      "quote": "\"products\": [\"Microsoft Teams\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "summary; What's changing",
-      "type": "record",
-      "claim": "The list helps administrators identify impacted apps, understand developer action and coordinate updates.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "This experience will help admins identify impacted apps, understand which apps require developer action, and coordinate updates so users can continue using custom apps across all supported channel types.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
       "where": "front matter: status; summary; What's changing",
       "type": "record",
       "claim": "The roadmap status is Launched.",
@@ -64,7 +53,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 3,
       "where": "front matter: targetDate; summary; What's changing",
       "type": "record",
       "claim": "The roadmap target is September CY2026.",
@@ -75,10 +64,21 @@
       "fix": null
     },
     {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 5,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The release phase is General Availability.",
+      "claim": "The roadmap release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\"]",
@@ -100,7 +100,7 @@
       "n": 7,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap platform is Web.",
+      "claim": "The roadmap lists the Web platform.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -109,20 +109,9 @@
     },
     {
       "n": 8,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap gives no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap record was modified at 2026-10-06T22:56:31.",
+      "claim": "The roadmap modification timestamp is 2026-10-06T22:56:31.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-10-06T22:56:31\"",
@@ -130,10 +119,10 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "controls[0].ui; What's changing; Governance guidance; Governance controls",
-      "type": "admin-path",
-      "claim": "The incompatible custom LOB app list is under Teams admin center > Teams apps > Manage apps.",
+      "n": 9,
+      "where": "title; summary; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "Teams admin center lists tenant custom LOB apps needing updates for private and shared channels.",
       "status": "supported",
       "source": "Message Center post MC1459131",
       "quote": "Admins will be able to view a list of custom LOB apps that are not compatible with private and shared channels in the Teams admin center under Teams apps > Manage apps.",
@@ -141,13 +130,24 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing; Scope",
+      "n": 10,
+      "where": "What's changing",
       "type": "record",
-      "claim": "MC1459131 gives a Worldwide rollout window from mid-September 2026 to late September 2026.",
+      "claim": "The roadmap says the list helps admins identify impacted apps.",
       "status": "supported",
-      "source": "Message Center post MC1459131",
-      "quote": "General Availability (Worldwide): We will begin rolling out mid-September 2026 (previously early September) and expect to complete by late September 2026.",
+      "source": "roadmap record",
+      "quote": "This experience will help admins identify impacted apps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap says the list identifies apps requiring developer action.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "understand which apps require developer action",
       "severity": null,
       "fix": null
     },
@@ -155,7 +155,40 @@
       "n": 12,
       "where": "What's changing",
       "type": "record",
-      "claim": "The notice previously gave early September as the rollout start.",
+      "claim": "The roadmap says the list helps admins coordinate app updates.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "coordinate updates so users can continue using custom apps across all supported channel types.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0].ui; What's changing; Governance guidance; Governance controls",
+      "type": "admin-path",
+      "claim": "The tenant compatibility list is reached in Teams admin center under Teams apps > Manage apps.",
+      "status": "supported",
+      "source": "Message Center post MC1459131",
+      "quote": "Admins will be able to view a list of custom LOB apps that are not compatible with private and shared channels in the Teams admin center under Teams apps > Manage apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice gives an expected Worldwide rollout start of mid-September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1459131",
+      "quote": "General Availability (Worldwide): We will begin rolling out mid-September 2026 (previously early September) and expect to complete by late September 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice says the rollout start was previously early September.",
       "status": "supported",
       "source": "Message Center post MC1459131",
       "quote": "mid-September 2026 (previously early September)",
@@ -163,7 +196,18 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 16,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice gives expected Worldwide rollout completion by late September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1459131",
+      "quote": "expect to complete by late September 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
       "where": "What's changing",
       "type": "record",
       "claim": "The notice's end date is 2026-11-30.",
@@ -174,10 +218,10 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 18,
       "where": "What's changing",
       "type": "record",
-      "claim": "MC1459131 sets no act-by date.",
+      "claim": "The notice sets no act-by date.",
       "status": "supported",
       "source": "Message Center post MC1459131",
       "quote": "Act by: none",
@@ -185,109 +229,32 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 19,
       "where": "What's changing; Scope; Open questions",
       "type": "record",
-      "claim": "The notice gives rollout timing for Worldwide only, not GCC.",
+      "claim": "The notice's rollout schedule covers Worldwide only and gives no GCC timing.",
       "status": "supported",
       "source": "Message Center post MC1459131",
-      "quote": "[Rollout Schedule:] General Availability (Worldwide): We will begin rolling out mid-September 2026 (previously early September) and expect to complete by late September 2026.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing; Why it matters; rationale: impact",
-      "type": "record",
-      "claim": "Custom LOB app developers perform the required compatibility updates.",
-      "status": "supported",
-      "source": "Message Center post MC1459131",
-      "quote": "Guidance is available now, enabling organizations to work with custom LOB app developers to plan and complete the required updates. Developers can review the documented requirements, update their apps, and validate supported scenarios.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing; controls[0].note; Governance guidance; Governance controls",
-      "type": "absence",
-      "claim": "Microsoft Learn does not describe the admin list's layout or incompatibility-detection mechanism.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams admin center custom apps private shared channels incompatible list Manage apps enable default 569019; read manage-apps, teams-custom-app-policies-and-settings and build-apps-for-shared-private-channels. No list layout or detection mechanism found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "front matter: defaultState; Open questions",
-      "type": "default",
-      "claim": "Microsoft has not stated the default state of this admin list.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams admin center custom apps private shared channels incompatible list Manage apps enable default 569019; read roadmap, MC1459131, manage-apps and teams-custom-app-policies-and-settings. No default for the list stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "summary; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Microsoft Learn documents no admin switch for the list as of November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams admin center custom app compatibility list supportsChannelFeatures admin switch automatic action; read manage-apps and teams-custom-app-policies-and-settings. General app-access controls exist; no switch for the compatibility list found.",
+      "quote": "General Availability (Worldwide): We will begin rolling out mid-September 2026 (previously early September) and expect to complete by late September 2026.",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "controls[0].api; Governance controls",
+      "where": "What's changing; Governance controls",
       "type": "absence",
-      "claim": "No scripting surface is documented for this incompatible-app list as of November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams PowerShell Get-AllM365TeamsApps incompatible apps private shared channels compatibility report Graph API; read Get-AllM365TeamsApps, Update-M365TeamsApp and Graph enabledApps search excerpts. No equivalent compatibility report found.",
-      "severity": null,
-      "fix": null
+      "claim": "No Microsoft Learn page describes the admin list itself, which is documented only in the roadmap and MC1459131.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/officeupdates/teams-admin#october-07,-2026",
+      "quote": "Admins can now view custom apps in the Teams admin center that need updates to work in private and shared channels, helping them identify apps that require developer action.",
+      "severity": "blocker",
+      "fix": "Replace the What's changing sentence with 'Microsoft Learn's Teams admin release notes also confirm the list, but its layout and incompatibility criteria are not yet documented.' Replace the first Governance controls sentence with 'The roadmap, MC1459131 and Teams admin release notes document the list; MC1459131 places it under Teams apps > Manage apps.' Add https://learn.microsoft.com/officeupdates/teams-admin to sources. Retain the narrower gaps about layout, detection criteria and automation."
     },
     {
       "n": 21,
-      "where": "Risk assessment: Data exposure",
-      "type": "absence",
-      "claim": "The sources describe no new data access by the list.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams admin center custom apps private shared channels incompatible list Manage apps enable default 569019; read roadmap, MC1459131 and manage-apps. They describe viewing app information, not new data access by the list.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "Risk assessment: Autonomy & actions; controls[0].note; rationale: risk",
-      "type": "absence",
-      "claim": "The sources describe the list as a view and do not describe automatic action on apps.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams admin center custom app compatibility list supportsChannelFeatures admin switch automatic action; read roadmap, MC1459131 and manage-apps. The notice assigns updates to developers, with no automatic app action described for the list.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "Why it matters",
-      "type": "absence",
-      "claim": "Microsoft has not stated that introducing the list changes existing apps if administrators do nothing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams admin center custom app compatibility list supportsChannelFeatures admin switch automatic action; read roadmap, MC1459131 and manage-apps. No change to existing apps caused by the list is stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Most apps can support shared and private channels with a simple manifest update.",
+      "claim": "Microsoft's developer page says most apps can support shared and private channels with a simple manifest update.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/platform/build-apps-for-shared-private-channels",
       "quote": "Most apps can support shared and private channels with a simple manifest update.",
@@ -295,40 +262,29 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 22,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Manifest v1.25 and later use supportsChannelFeatures instead of supportedChannelTypes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/platform/build-apps-for-shared-private-channels",
+      "quote": "Replace `supportedChannelTypes` with `supportsChannelFeatures` when you update your app manifest to v1.25 or later.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "In manifest v1.25 and later, supportsChannelFeatures replaces supportedChannelTypes.",
+      "claim": "Apps with none of the four documented dependencies on membership, Teams or SharePoint files, cross-channel data or user-type customization need only supportsChannelFeatures: tier1 and verification and testing across channels.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/platform/build-apps-for-shared-private-channels",
-      "quote": "In app manifest v1.25 and later, use `supportsChannelFeatures` instead of `supportedChannelTypes`.",
+      "quote": "If your app doesn’t: ... Access or manage files stored in Teams or SharePoint ... Then, you only need to: 1. Add `supportsChannelFeatures`: `tier1` to your app manifest 2. Verify expected behavior, and test your app across channels",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Apps with none of the four listed membership, file, cross-channel-data or user-type dependencies need only the tier1 declaration and verification and testing across channels.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/platform/build-apps-for-shared-private-channels",
-      "quote": "Then, you only need to: 1. Add `supportsChannelFeatures`: `tier1` to your app manifest 2. Verify expected behavior, and test your app across channels",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Apps already published with an earlier manifest version continue to work.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/platform/build-apps-for-shared-private-channels",
-      "quote": "Apps already published with an earlier app manifest version continue to work.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
+      "n": 24,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "A v1.25-or-later manifest declaring supportedChannelTypes cannot be uploaded or submitted.",
@@ -339,32 +295,21 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 25,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Developers moving their manifest to v1.25 or later must migrate supportedChannelTypes.",
+      "claim": "Apps already published with an earlier app manifest version continue to work.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/platform/build-apps-for-shared-private-channels",
-      "quote": "Replace `supportedChannelTypes` with `supportsChannelFeatures` when you update your app manifest to v1.25 or later.",
+      "quote": "Apps already published with an earlier app manifest version continue to work.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
-      "where": "Why it matters; Risk assessment: Change & support; Governance guidance; rationales",
-      "type": "record",
-      "claim": "Users may be unable to access custom app experiences in private and shared channels until the required updates are completed.",
-      "status": "supported",
-      "source": "Message Center post MC1459131",
-      "quote": "If apps are not updated to support private and shared channels, users may be unable to access those app experiences in these channels until the required updates are completed.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
+      "n": 26,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Custom apps can be developed within the organisation or commissioned from outside developers.",
+      "claim": "Custom apps are developed within the organisation or commissioned from outside developers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-custom-app-policies-and-settings",
       "quote": "Your organization can commission the creation of custom apps for your org-specific requirements. Custom apps can be developed within your organization or by app developers outside the organization.",
@@ -372,10 +317,21 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 27,
+      "where": "Why it matters; Risk assessment: Change & support; Governance guidance; rationales: risk and impact",
+      "type": "record",
+      "claim": "Users may be unable to access affected custom apps in private and shared channels until required updates are completed.",
+      "status": "supported",
+      "source": "Message Center post MC1459131",
+      "quote": "If apps are not updated to support private and shared channels, users may be unable to access those app experiences in these channels until the required updates are completed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
       "where": "Why it matters",
       "type": "record",
-      "claim": "The notice recommends reviewing custom apps used in team and channel scenarios.",
+      "claim": "Microsoft's notice recommends reviewing custom apps used in team and channel scenarios.",
       "status": "supported",
       "source": "Message Center post MC1459131",
       "quote": "Review custom apps used in team and channel scenarios across your organization.",
@@ -383,10 +339,10 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 29,
       "where": "Why it matters; Governance guidance",
       "type": "record",
-      "claim": "The notice recommends asking developers to complete the required private/shared-channel updates.",
+      "claim": "Microsoft's notice asks app developers to complete required private and shared channel updates.",
       "status": "supported",
       "source": "Message Center post MC1459131",
       "quote": "Ask your app developers to complete the required updates for private/shared channel scenarios.",
@@ -394,10 +350,10 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "Governance guidance: At rollout",
+      "n": 30,
+      "where": "Governance guidance",
       "type": "record",
-      "claim": "Microsoft's notice calls for validating updated apps against the scenarios users rely on.",
+      "claim": "Microsoft's notice recommends validating that updated apps continue supporting users' scenarios.",
       "status": "supported",
       "source": "Message Center post MC1459131",
       "quote": "Validate that updated apps continue to support the scenarios your users rely on.",
@@ -405,7 +361,40 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 31,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "Microsoft has not stated that arrival of the compatibility list changes existing app behaviour when nobody acts.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams custom apps private shared channel compatibility list automatic action existing apps supportsChannelFeatures admin center; read roadmap, MC1459131, Manage apps, custom app management, developer guidance and Teams admin release notes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "The sources describe no new data access introduced by the compatibility list.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams custom apps private shared channel compatibility list automatic action existing apps supportsChannelFeatures admin center; read roadmap, MC1459131, Manage apps, developer guidance and Teams admin release notes; no new list-related data access described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The developer page warns that ignoring channel-specific membership, storage or privacy can cause unintended data exposure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/platform/build-apps-for-shared-private-channels",
+      "quote": "Ensure that you understand how different channels determine app functionality, membership, storage, or privacy. Otherwise, you might encounter broken functionality or unintended data exposure:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
       "where": "Risk assessment: Data exposure; Governance guidance",
       "type": "behaviour",
       "claim": "Private and shared channels have their own SharePoint sites.",
@@ -416,21 +405,10 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "The developer page warns that ignoring channel functionality and privacy boundaries risks unintended data exposure.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/platform/build-apps-for-shared-private-channels",
-      "quote": "Ensure that you understand how different channels determine app functionality, membership, storage, or privacy. Otherwise, you might encounter broken functionality or unintended data exposure:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
+      "n": 35,
       "where": "Risk assessment: Security & identity; Governance guidance",
       "type": "behaviour",
-      "claim": "Channel members may include guests and cross-tenant users.",
+      "claim": "Channel members can include guests and cross-tenant users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/platform/build-apps-for-shared-private-channels",
       "quote": "Channel members might include in-tenant users, guests, or cross-tenant users (external users from other tenants).",
@@ -438,10 +416,10 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 36,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Apps needing to distinguish users for access, data visibility or feature availability must validate user roles and tenant IDs before granting permissions.",
+      "claim": "Apps needing to distinguish user types for access, data visibility or feature availability must validate roles and tenant IDs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/platform/build-apps-for-shared-private-channels",
       "quote": "If your app needs to distinguish between various users to manage access, data visibility, and feature availability, then you must validate user roles and tenant IDs before granting permissions.",
@@ -449,10 +427,32 @@
       "fix": null
     },
     {
+      "n": 37,
+      "where": "Risk assessment: Autonomy & actions; controls[0].note; rationale: risk",
+      "type": "absence",
+      "claim": "The sources describe the list as a view and do not describe automatic actions it performs on apps.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams custom apps private shared channel compatibility list automatic action existing apps supportsChannelFeatures admin center; read roadmap, MC1459131, Manage apps, developer guidance and Teams admin release notes; no automatic action by the list described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Each organisational user needs a Teams license to use Teams except when joining meetings anonymously.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-access",
+      "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 39,
       "where": "front matter: licensing.model",
       "type": "licensing",
-      "claim": "The list is treated as an included option in the Teams-licensed product, with no separately published feature entitlement.",
+      "claim": "The list is an included view inside the product already requiring a Teams license, with no published feature-specific requirement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/user-access",
       "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
@@ -461,53 +461,20 @@
     },
     {
       "n": 40,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Each organisational user requires a Teams license except for joining Teams meetings anonymously.",
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No licence requirement specific to the compatibility list is published.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/user-access",
-      "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
+      "source": null,
+      "quote": "Searched: Teams admin center identify custom apps need updates private shared channels license pricing meter; read Manage Teams licenses, Manage apps, custom app management, developer guidance and Teams admin release notes; no list-specific licence requirement found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 41,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "Microsoft has not published a licence requirement specific to this admin list.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams admin center incompatible custom apps private shared channels list license pricing meter; read user-access, manage-apps, teams-custom-app-policies-and-settings and developer guidance. General Teams licensing is stated; no list-specific licence found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No meter is documented for the list as of November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams admin center incompatible custom apps private shared channels list license pricing meter; read user-access, manage-apps and developer guidance, plus purchase-third-party-apps search excerpts. No meter for the admin list found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "The developer page gives no price or estimate for the development work.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams admin center incompatible custom apps private shared channels list license pricing meter; searched the full fetched build-apps-for-shared-private-channels text for price, pricing, meter, cost and estimate. No work price or estimate found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
       "where": "front matter: licensing.notes; controls[0].note; Cost and licensing; Scope; Governance controls",
       "type": "role",
-      "claim": "The Manage apps page names Teams Administrator as the role required to use Teams admin center.",
+      "claim": "The Manage apps page names the Teams Administrator role as the requirement for using Teams admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
       "quote": "To use Teams admin center, you must have a Teams Administrator role. Some admins with a higher privilege role can accomplish agent and app governance tasks but we recommend using the lower privilege role where possible.",
@@ -515,10 +482,32 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 42,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to the list is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams admin center identify custom apps need updates private shared channels license pricing meter; read Manage Teams licenses, Manage apps, custom app management, developer guidance and Teams admin release notes; no list-specific meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The developer page gives no price or estimate for updating, testing and redeploying custom apps.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams admin center identify custom apps need updates private shared channels license pricing meter; opened build-apps-for-shared-private-channels and searched its full text for licence, price and meter; no price or work estimate found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
       "where": "Scope",
       "type": "behaviour",
-      "claim": "Message-extension-only apps operating exclusively in personal scope do not require updates for availability in shared and private channels.",
+      "claim": "Message extension-only apps operating exclusively in personal scope do not require updates for users in shared and private channels.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/platform/build-apps-for-shared-private-channels",
       "quote": "Message extension–only apps that operate exclusively in personal scope do not require updates to be available for users in Shared and Private channels.",
@@ -526,21 +515,21 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 45,
       "where": "Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "An app's details page provides developer contact or website information for support and update enquiries.",
+      "claim": "App details pages provide developer support or contact information.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
-      "quote": "For direct support requests and inquiry about agent or app updates, contact the app developer at their website address available at the following two places: • App details page of the app in Manage apps page in Teams admin center.",
+      "quote": "contact the app developer at their website address available at the following two places: ... App details page of the app in Manage apps page in Teams admin center.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
+      "n": 46,
       "where": "Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "The developer guidance calls for testing the app in standard, private and shared channels.",
+      "claim": "Microsoft's developer guidance calls for testing in standard, private and shared channels.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/platform/build-apps-for-shared-private-channels",
       "quote": "Test your app in a standard channel, a private channel, and a shared channel.",
@@ -548,10 +537,10 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 47,
       "where": "controls[1].ui; Governance guidance: After rollout; Governance controls",
       "type": "admin-path",
-      "claim": "Teams admin center > Teams apps > Manage apps > app > Allow or Block is the existing app-state control.",
+      "claim": "An app can be allowed or blocked in Teams admin center at Teams apps > Manage apps > app > Allow or Block.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
       "quote": "Sign in to the Teams admin center and access Teams apps > Manage apps. Select the app on the Manage apps page and select Allow or Block option.",
@@ -559,41 +548,85 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "controls[1].api",
+      "n": 48,
+      "where": "controls[1].api; Governance controls table",
       "type": "command",
-      "claim": "MicrosoftTeams PowerShell provides Update-M365TeamsApp -Id <app-id> -IsBlocked <Boolean> to modify app state.",
+      "claim": "MicrosoftTeams PowerShell provides Update-M365TeamsApp -Id <app-id> -IsBlocked <Boolean> to change an app's tenant state.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
-      "quote": "This cmdlet updates app state and app available values for the Microsoft Teams app. Update-M365TeamsApp -Id <String> [-IsBlocked <Boolean>] ... -Id: Application ID of Microsoft Teams app. -IsBlocked: The state of the app in the tenant.",
+      "quote": "Module: MicrosoftTeams PowerShell module. This cmdlet updates app state and app available values for the Microsoft Teams app. -Id: Application ID of Microsoft Teams app. -IsBlocked: The state of the app in the tenant. Type: Boolean.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].note; Governance guidance: After rollout; Governance controls",
+      "type": "applicability",
+      "claim": "Until migration to unified app management, blocked-app settings must stay synchronized between Teams admin center and Integrated apps in Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "If your organization isn't migrated to unified app management, allow or block the agent or app in Teams admin center and under the Integrated apps page in Microsoft 365 admin center.",
       "severity": null,
       "fix": null
     },
     {
       "n": 50,
-      "where": "controls[1].note; Governance guidance: After rollout; Governance controls",
+      "where": "controls[1].governs; controls[1].note; Governance controls",
       "type": "applicability",
-      "claim": "The Teams Allow or Block control is sufficient to withdraw an app for the organisation, without a qualification about unified app management.",
-      "status": "contradicted",
+      "claim": "Allow or Block controls app availability in the organisation rather than declaring channel compatibility.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
-      "quote": "Until your tenant is migrated to unified app management, ensure that the settings in both admin centers, such as blocked apps or org-wide app settings, remain synchronized.",
-      "severity": "blocker",
-      "fix": "Add to controls[1].note and the After rollout withdrawal bullet: 'Until your tenant is migrated to unified app management, keep blocked-app settings synchronized in Teams admin center and under Integrated apps in Microsoft 365 admin center.' This qualification is documented at https://learn.microsoft.com/microsoftteams/manage-apps#allow-or-block."
+      "quote": "You can allow or block specific agents and apps on either the Manage apps page or in the app details page. The Manage apps page displays all the available agents and apps and the current org-level app status.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 51,
-      "where": "controls[1].note; Governance controls",
+      "where": "controls[0].api; Governance controls",
       "type": "absence",
-      "claim": "The general Allow or Block control does not update the app's private/shared-channel compatibility declaration.",
+      "claim": "No scripting surface for the compatibility list is documented as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams admin center custom app compatibility list supportsChannelFeatures admin switch automatic action; read manage-apps, all Update-M365TeamsApp parameters and the developer manifest guidance. Blocking controls app state; no manifest compatibility update is documented for it.",
+      "quote": "Searched: custom app private shared channel compatibility report PowerShell; Get-M365TeamsApp channel compatibility properties; teamsAppDefinition supportsChannelFeatures. Read Get-AllM365TeamsApps, Get-M365TeamsApp, Update-M365TeamsApp and Graph beta teamsApp/teamsAppDefinition.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "summary; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No admin switch for the compatibility list is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams admin center custom apps private shared channels compatibility list Manage apps default setting PowerShell Graph 569019; read Manage apps, custom app management, developer guidance, Teams admin release notes, roadmap and MC1459131; no list switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: defaultState; Open questions",
+      "type": "default",
+      "claim": "The compatibility list's default state is not explicitly stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams admin center custom apps private shared channels compatibility list Manage apps default setting PowerShell Graph 569019; read roadmap, MC1459131, Manage apps and Teams admin release notes; none explicitly states the list's default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].note; What's changing; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn does not describe the list's layout or how it determines incompatibility, including whether detection uses supportsChannelFeatures.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams admin center custom apps private shared channels compatibility list Manage apps default setting PowerShell Graph 569019; Teams custom apps compatibility list supportsChannelFeatures; read Manage apps, developer guidance and Teams admin release notes; no layout or detection rule found.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-21T06:06:19.102Z",
+    "at": "2026-11-21T06:57:04.750Z",
     "summary": {
       "links": 8,
       "unreachable": 0,
@@ -688,6 +721,12 @@
       "date": "2026-11-21",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-21",
+      "status": "held",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

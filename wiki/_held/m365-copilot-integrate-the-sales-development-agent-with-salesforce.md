@@ -12,13 +12,13 @@ platforms: ["Web"]
 targetDate: "October CY2026"
 previewDate: null
 risk: "high"
-cost: "medium"
+cost: "variable"
 impact: "low"
 defaultState: "admin-opt-in"
 action: "review"
 licensing:
   model: "mixed"
-  notes: "Learn requires the subscriptions and licences for Microsoft 365, Microsoft 365 Copilot and Microsoft Teams, and says the agent user needs a Salesforce licence. A price or meter specific to the Sales Development agent is not yet published."
+  notes: "Learn requires the subscriptions and licences for Microsoft 365, Microsoft 365 Copilot and Microsoft Teams, and says the agent user needs a Salesforce licence. Microsoft publishes Copilot Credit billing for the agent's resources from December 1, 2026: 100 Copilot Credits per agent per month plus consumption billing for agent activity."
 audiences: ["m365-admin","service-owner","security"]
 tags: ["sales-development-agent","salesforce","mcp","mcp-server","agent-365","frontier-program","autonomous-agents","write-actions","outreach-email","integration"]
 sources:
@@ -33,6 +33,12 @@ sources:
     kind: "learn"
   - title: "Activate Sales Development agent (preview)"
     url: "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent"
+    kind: "learn"
+  - title: "Create a Sales Development agent instance (preview)"
+    url: "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/create-instance"
+    kind: "learn"
+  - title: "Microsoft 365 Resources for Agents"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents"
     kind: "learn"
   - title: "Sales Development agent architecture"
     url: "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/architecture"
@@ -86,19 +92,23 @@ changes:
     note: "New briefing: the Sales Development agent can use Salesforce as its CRM through the Salesforce MCP server; Learn documents the set-up as preview."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 79 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after the independent check: cost is now variable, with Copilot Credit billing published from December 1, 2026; removed an unsupported data-exposure claim and checklist items that had no controls-table row."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 79 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 79
-  confirmed: 75
+  confirmed: 78
   unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "9c94df4ce2780afdd4862fba2ba180fe"
+  contradicted: 0
+  attempts: 2
+  hash: "931e81838ba24f402d1e058676103828"
 ---
 
 ## What's changing
@@ -119,7 +129,7 @@ Nothing in the sources says the integration connects on its own. The agent has t
 
 **Data exposure**
 
-- The agent user and the user who authorises the connection both need Lead object Read, Create and Edit, Task object Create, and User object Read, plus API access on the profile. Grant the agent user no more than the permissions Learn lists, because anything it holds in Salesforce is reachable through the MCP server.
+- The agent user and the user who authorises the connection both need Lead object Read, Create and Edit, Task object Create, and User object Read, plus API access on the profile. Grant the agent user no more than the permissions Learn lists.
 - Learn says the connection is stored as a secure connection record in the organisation's Microsoft Compliant Container (MCC) and that the agent communicates with Salesforce through a managed server that handles authentication on its behalf.
 
 **Security & identity**
@@ -143,7 +153,7 @@ Nothing in the sources says the integration connects on its own. The agent has t
 
 **Salesforce.** The integration page says that, like other users, the agent user needs a licence to access Salesforce, and that the Salesforce organisation needs API access, which it says is typically available with Enterprise and Unlimited editions, or with Professional edition and the API add-on. That is a cost on the Salesforce side.
 
-**Meter.** Microsoft's consumption billing page for Dynamics 365 Sales names Sales Qualification Agent, Sales Opportunity Agent, Sales Close Agent and Recommended Actions Agent as the sales agents whose consumption you can monitor. A meter, credit rate or price specific to the Sales Development agent is not yet published.
+**Meter.** Microsoft's consumption billing page for Dynamics 365 Sales names Sales Qualification Agent, Sales Opportunity Agent, Sales Close Agent and Recommended Actions Agent as the sales agents whose consumption you can monitor. Microsoft publishes Copilot Credit billing for Sales Development Agent resources in Frontier Public beginning December 1, 2026: 100 Copilot Credits per agent per month for the agent account, email address and persistent Microsoft 365 resources, plus consumption billing for agent activity. The person responsible for the agent must have consumption billing enabled ([Microsoft 365 Resources for Agents](https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents)). The $0 Agent 365 SKU above is the activation page's preview guidance; the Copilot Credit charges are dated from December 1, 2026.
 
 ## Scope
 
@@ -159,20 +169,16 @@ Nothing in the sources says the integration connects on its own. The agent has t
 
 - Decide whether a preview agent may write to production Salesforce data, and if not, point a Salesforce sandbox or test users at the first instance.
 - Review who should be able to create instances, and plan the users or groups for the activation step (first row of the controls table).
-- Ask the Salesforce administrator to create a profile or permission set for the agent user with only Lead Read, Create and Edit, Task Create, User Read and API access, plus field access to Email Opt Out.
 - Check whether your Salesforce organisation uses custom `Lead.Status` values, because custom picklist mapping is not supported.
 
 ### At rollout
 
 - Activate Sales Development (Frontier) only for the users or groups that will run it, using an AI Administrator or Global Administrator account (first row of the controls table).
-- Confirm that the Microsoft 365 admin center Copilot > Settings > Copilot Frontier setting and the user's Frontier access are in place for the people creating instances.
-- Have the agent manager share the Salesforce connection with the agent instance and confirm the Can use role is assigned.
 
 ### After rollout
 
 - Check Salesforce Lead records for unexpected status, owner and Task changes made by the agent user, and check that leads with Email Opt Out set are not contacted.
-- Keep the stop option ready: block the agent for the organisation (second row of the controls table) or block a single instance from its Instances tab in the Microsoft 365 admin center.
-- Disconnect Salesforce by asking the agent in Teams if the integration should end.
+- Keep the stop option ready: block the agent for the organisation (second row of the controls table).
 
 ## Governance controls
 
@@ -188,33 +194,25 @@ Nothing in the sources says the integration connects on its own. The agent has t
 
 The activation and block actions are Microsoft 365 admin center controls over the agent, not over the Salesforce connection. Learn says approving or blocking an agent does not necessarily grant or revoke connected-service permissions or credentials, so a blocked agent can still leave a Salesforce connection in place; review that connection separately.
 
-To stop one instance rather than the whole agent, the instance page says to go to Agents > All Agents, select the agent, open the Details tab then the Instances tab, select an instance and choose Block, and that blocking an instance stops it and any actions it's performing ([Manage agent instances](https://learn.microsoft.com/microsoft-agent-365/admin/manage-agent-instances)). The Salesforce-side permissions (profile, permission set, field access) are set in Salesforce, which this site does not document.
+The Salesforce-side permissions (profile, permission set, field access) are set in Salesforce, which this site does not document.
 
-The Graph package calls need a Microsoft Agent 365 licence and are beta APIs.
+The Graph package calls need a Microsoft Agent 365 licence and are beta APIs. The activate reference describes a reviewed beta contract and says availability depends on the matching schema and backend release.
 
 ## Open questions
 
-- Which licence and meter will cover the Sales Development agent after the preview, and will the $0 Agent 365 SKU remain? Watch the Learn activation page and Message center.
+- Which licence will cover the Sales Development agent after the preview, and will the $0 Agent 365 SKU remain? Watch the Learn activation page and Message center.
 - Whose Salesforce permissions apply when the agent acts: the authorising user's or the agent user's? Learn lists the same permissions for both but does not say which is used at runtime.
 - Does the Graph package block or activate call apply to the Sales Development (Frontier) agent? The API pages describe Copilot packages and do not name this agent.
 - When will the integration leave preview, and will custom Salesforce Lead.Status picklist mapping be supported? Watch the integration page on Microsoft Learn.
 
 <!-- rationale
 risk: High. The agent runs autonomously once launched and, through the Salesforce MCP server, can change Lead status and owner and create Task records; the integration is documented as a preview.
-cost: Medium. Learn lists Microsoft 365 Copilot and Teams licences as prerequisites and says the agent user needs a Salesforce licence; a meter specific to this agent is not yet published.
+cost: Variable. Microsoft publishes Copilot Credit billing for Sales Development Agent resources beginning December 1, 2026, including 100 Copilot Credits per agent per month plus consumption billing for agent activity; Salesforce licensing is also required.
 impact: Low. Only the sales managers who create agent instances and the Salesforce users who authorise the connection work with it directly; admins notice it through activation and blocking.
 -->
 
 <!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] licensing.notes; Cost and licensing: Meter; rationale: cost / absence: A meter, credit rate or price specific to the Sales Development agent is not yet published. | Found: Sales Development Agent and Service Agent ... December 1, 2026 ... Consumption billing begins when each product becomes available. ... a recurring charge of 100 Copilot Credits per agent per month. | Fix: Replace the unpublished-meter statements with: 'Microsoft publishes Copilot Credit billing for Sales Development Agent resources in Frontier Public beginning December 1, 2026: 100 Copilot Credits per agent per month for the agent account, email address and persistent Microsoft 365 resources, plus consumption billing for agent activity. The person responsible for the agent must have consumption billing enabled.' Cite https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents. Retain the activation page's $0 SKU description as that page's preview guidance; do not imply that the December charges are already active on November 21. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents
-- [unsupported, blocker] Risk assessment: Data exposure / applicability: Anything the agent user holds in Salesforce is reachable through this MCP server. | Found: Searched: "Sales Development agent" "Salesforce" "MCP" "permissions" all objects. Opened Salesforce integration, overview and architecture; they give required permissions and particular actions, not unrestricted reach across everything the agent user can access. | Fix: Remove ', because anything it holds in Salesforce is reachable through the MCP server'. Keep the least-privilege advice, the documented permission list and the separate open question about whose Salesforce permissions apply at runtime.
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: The medium cost rating describes the documented cost of this capability. | Found: Page: cost: medium; 'a meter specific to this agent is not yet published.' Microsoft: 'All charges are billed consumptively via Copilot Credits'; Sales Development Agent public preview: December 1, 2026. | Fix: Set cost to variable under the standard's metered-cost definition. Replace the rationale with: 'Variable. Microsoft publishes Copilot Credit billing for Sales Development Agent resources beginning December 1, 2026, including 100 Copilot Credits per agent per month plus consumption billing for agent activity; Salesforce licensing is also required.' Cite the Microsoft 365 Resources for Agents page and distinguish this upcoming billing from the activation page's $0 preview SKU. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Microsoft 365 admin center > Agents > All Agents > Sales Development (Frontier) > Activate leads to activation. | Found: In the Microsoft 365 admin center, go to Agents > All Agents. Search for Sales Development (Frontier), and then select Activate. Choose the users or groups that can create Sales Development agent instances. | Fix: Keep the path, but add to controls[0].note: 'After selecting Activate, choose the users or groups that can create instances and apply a policy template that allows agent instance creation.' The path stops at the start of the documented activation workflow. | Source: https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent
-- [supported, minor] controls[0].api; Governance controls table / command: POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/activate sets the manager audience through agentManagerScope. | Found: POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/activate agentManagerScope ... Required. The users or groups allowed to create instances from this template. | Fix: Keep the call and agentManagerScope note, and add: 'This is a reviewed beta contract; availability depends on the matching schema and backend release.' The reference explicitly distinguishes its reviewed contract from deployed availability. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate
-- [supported, minor] front matter: defaultState; What's changing; Why it matters / default: The integration is admin-opt-in: administrator activation precedes instance creation and Salesforce needs a configured connection. | Found: An administrator must activate the Sales Development agent in the Microsoft 365 admin center before you can create an instance. | Fix: Retain admin-opt-in and cite https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/create-instance in sources for the explicit administrator-activation prerequisite. The existing Salesforce integration source supplies the connection and sharing steps. | Source: https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/create-instance
-- [supported, minor] front matter: licensing.model / licensing: The licensing model is mixed. | Found: charges are billed consumptively via Copilot Credits. ... Public Preview requires enrollment in the Frontier program, which requires the tenant to have at least one Microsoft 365 Copilot or E7 license. | Fix: Keep mixed, add https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents to sources, and include its published consumption billing beginning December 1, 2026 in licensing.notes. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: Every control that the governance checklist instructs readers to configure or check appears in the controls table. | Found: Checklist: 'Copilot > Settings > Copilot Frontier'; 'Can use role'; Salesforce profile and field permissions; 'block a single instance'; 'Disconnect Salesforce'. Table: creation audience and organisation-wide blocking only. | Fix: Remove the checklist instructions to set Salesforce profile/field permissions, check Copilot Frontier and user Frontier access, share the connection/check Can use, block an individual instance, and disconnect Salesforce from Governance guidance. These controls have no table rows; their already documented descriptive guidance can remain elsewhere. Do not add new control rows as part of this correction.
+- [unsupported, blocker] Risk assessment: Autonomy & actions; Governance guidance: After rollout / applicability: The organisation-wide agent block in the controls table is a stop option for the agent's ongoing autonomous actions. | Found: Searched: Sales Development Frontier copilot packages activate block agent template running instances stop; Sales Development block stop agent instances organisation. Read agent-actions, manage-agent-instances and copilotpackage-block. Only instance blocking explicitly stops ongoing actions. | Fix: Remove the inference 'so the controls are stopping the agent (see the controls table) and limiting the Salesforce permissions it holds' after the human-oversight quote. Replace 'Keep the stop option ready: block the agent for the organisation (second row of the controls table)' with 'Keep the organisation-wide access restriction ready: block the agent for the organisation (second row of the controls table).' The cited row documents restricting user access, not stopping running instances; https://learn.microsoft.com/microsoft-agent-365/admin/manage-agent-instances explicitly documents stopping through instance blocking.
 -->

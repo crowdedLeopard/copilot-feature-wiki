@@ -52,7 +52,10 @@ controls:
       surface: "Microsoft Purview portal"
       path: "Data Loss Prevention > Policies > + Create policy > Custom > Custom policy > Admin units"
       docs: "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about"
-    api: null
+    api:
+      kind: "powershell"
+      call: "New-DlpCompliancePolicy -Name <policy-name> -PolicyRBACScopes <administrative-unit-GUIDs>"
+      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy"
     note: "Preview and rolling out per Learn. Restricted administrators see only their assigned units; unrestricted administrators can keep Full directory."
   - governs: "Which administrative units a role-group member is assigned to"
     scope: "user"
@@ -61,7 +64,7 @@ controls:
       path: "Settings > Roles and scopes > Role groups > role group > Edit > Choose users > Assign admin units"
       docs: "https://learn.microsoft.com/purview/purview-permissions"
     api: null
-    note: "Requires an account assigned the Role management role. Assigning units makes the member a restricted administrator."
+    note: "Requires the Role management role. Units make the member a restricted administrator; for overlapping capabilities an Entra role takes precedence and leaves access unscoped."
 confidence: "high"
 created: "2026-11-21"
 updated: "2026-11-21"
@@ -71,19 +74,23 @@ changes:
     note: "New briefing: administrative unit scoping for Copilot, Copilot Chat and Cowork DLP policies, with its Purview portal paths and prerequisites."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 50 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after verification: added the New-DlpCompliancePolicy -PolicyRBACScopes call, fixed the Purview licence list, qualified Entra role precedence and removed unsupported statements."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 56 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 44
-  unconfirmed: 1
-  contradicted: 5
-  attempts: 1
-  hash: "385c4a27db92946d6e4081dd14a32b5b"
+  claims: 56
+  confirmed: 55
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 2
+  hash: "76b6c3a974e8b8afaba08afde2b6fed2"
 ---
 
 ## What's changing
@@ -100,7 +107,7 @@ The roadmap item is In development, with a preview target of October CY2026 and 
 
 This lets a global or multi-division organisation hand Copilot DLP policy ownership to regional or departmental compliance teams, instead of keeping every Copilot policy with a few tenant-wide administrators. It supports the regional, departmental and regulatory boundaries the roadmap item names.
 
-Microsoft has not stated a default behaviour beyond saying that existing tenant-wide policies continue to apply and that unit scoping is optional. If nobody acts, the sources give no sign that existing policies change. The decision for service owners is who should hold restricted-administrator rights, because a restricted administrator's reach is set by role-group membership and unit assignment.
+Using administrative units is optional; unrestricted administrators can keep the default of the entire directory, and existing tenant-wide policies continue to apply. If nobody acts, the sources give no sign that existing policies change. The decision for service owners is who should hold restricted-administrator rights, because effective reach depends on Purview role-group membership, unit assignment and any overriding Entra role.
 
 ## Risk assessment
 
@@ -109,11 +116,11 @@ Microsoft has not stated a default behaviour beyond saying that existing tenant-
 - Learn's example shows a Finance-scoped policy applying to Finance users even when they read content owned by others, so scope tracks the person, not the content owner.
 
 **Security & identity**
-- Restricted administrators are created by assigning administrative units to role-group members in the Microsoft Purview portal. Learn says administrators still need the DLP permissions required to create and manage policies, so the units narrow scope and do not grant DLP rights by themselves.
+- Restricted administrators are created by assigning administrative units to role-group members in the Microsoft Purview portal. Learn says administrators still need the DLP permissions required to create and manage policies, so the units narrow scope and do not grant DLP rights by themselves. For overlapping capabilities, an Entra role takes precedence over a scoped Purview role-group assignment and leaves effective access unscoped.
 - Learn states that once units are assigned, restricted administrators cannot see or edit existing policies and cannot see historical alerts and Activity explorer data; these stay visible to unrestricted administrators. Expect support questions from newly restricted admins.
 
 **Autonomy & actions**
-- No change in autonomy: the feature governs who manages a DLP policy, not what Copilot or Cowork can do. The policy actions themselves, such as preventing Copilot from processing prompts, are unchanged.
+- Administrative units narrow who manages a policy and whose alerts and Activity explorer data an administrator can investigate.
 
 **Change & support**
 - The location is documented as in preview and rolling out, so the Admin units page may be missing in some tenants. Plan pilots, not production dependence, until Microsoft's status changes.
@@ -123,7 +130,7 @@ Microsoft has not stated a default behaviour beyond saying that existing tenant-
 
 Microsoft's page for this feature does not name a licence of its own. The Copilot DLP page's Licensing section points to the Microsoft 365 Enterprise Plans page and the Microsoft 365 security and compliance licensing guidance.
 
-The administrative units page lists these prerequisites before configuring units for Purview solutions: Microsoft Entra ID P1 or P2, and one of several Purview subscriptions, including Microsoft 365 E5/A5/G5, the E5/A5/G5/F5 Compliance or Security & Compliance add-ons, or E5/A5/G5/F5 Information Protection & Governance.
+The administrative units page lists these prerequisites before configuring units for Purview solutions: Microsoft Entra ID P1 or P2, and one of several Purview subscriptions, including Microsoft 365 E5/A5/G5, Microsoft 365 E5/A5/G5/F5 Compliance or F5 Security & Compliance, or Microsoft 365 E5/A5/G5/F5 Information Protection & Governance.
 
 No meter, credit rate or separate charge for administrative-unit scoping of Copilot DLP is published at the time of writing (November 2026). Indirect cost is admin time: designing units in Microsoft Entra, assigning role-group members, and reviewing policies per unit.
 
@@ -143,7 +150,6 @@ No meter, credit rate or separate charge for administrative-unit scoping of Copi
 
 ### Before rollout
 - Confirm the Microsoft Entra ID P1 or P2 and Purview licences listed on the administrative units page cover the administrators and users you plan to scope.
-- Define the administrative units in Microsoft Entra ID (regions or departments) and agree who owns each.
 - List existing tenant-wide Copilot DLP policies and decide which stay unit-free as your baseline.
 - Name the unrestricted administrators who keep cross-unit visibility of policies, alerts and Activity explorer.
 
@@ -153,9 +159,7 @@ No meter, credit rate or separate charge for administrative-unit scoping of Copi
 - Pilot one unit-scoped policy with a restricted administrator before delegating more.
 
 ### After rollout
-- Review alerts and Activity explorer as both a restricted and an unrestricted administrator to confirm each sees only what you intended.
 - Re-check the roadmap item and the Copilot DLP Learn page for changes to preview status and availability.
-- Revisit unit membership when users change department, since scope follows the user who submits the prompt.
 
 ## Governance controls
 
@@ -164,19 +168,18 @@ No meter, credit rate or separate charge for administrative-unit scoping of Copi
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which administrative units a Copilot, Copilot Chat and Cowork DLP policy is scoped to</strong><br><small>Tenant</small><br><small class="controls__note">Preview and rolling out per Learn. Restricted administrators see only their assigned units; unrestricted administrators can keep Full directory.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Loss Prevention › Policies › + Create policy › Custom › Custom policy › Admin units <a href="https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which administrative units a role-group member is assigned to</strong><br><small>User</small><br><small class="controls__note">Requires an account assigned the Role management role. Assigning units makes the member a restricted administrator.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › role group › Edit › Choose users › Assign admin units <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which administrative units a Copilot, Copilot Chat and Cowork DLP policy is scoped to</strong><br><small>Tenant</small><br><small class="controls__note">Preview and rolling out per Learn. Restricted administrators see only their assigned units; unrestricted administrators can keep Full directory.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Loss Prevention › Policies › + Create policy › Custom › Custom policy › Admin units <a href="https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -Name &lt;policy-name&gt; -PolicyRBACScopes &lt;administrative-unit-GUIDs&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which administrative units a role-group member is assigned to</strong><br><small>User</small><br><small class="controls__note">Requires the Role management role. Units make the member a restricted administrator; for overlapping capabilities an Entra role takes precedence and leaves access unscoped.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › role group › Edit › Choose users › Assign admin units <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-Administrative units narrow who manages a policy and who sees its alerts; they do not change what a Copilot DLP rule does. Restricted administrators still need the same DLP role or role group as unrestricted administrators. Learn states that once units are assigned to a role-group member, that administrator cannot see or edit existing policies or historical alerts, while unrestricted administrators still can.
+Administrative units narrow who manages a policy and who sees its alerts. Restricted administrators still need the same DLP role or role group as unrestricted administrators. Learn states that once units are assigned to a role-group member, that administrator cannot see or edit existing policies or historical alerts, while unrestricted administrators still can.
 
-The unit-scoping step is documented in the Purview portal only. Microsoft Learn documents no PowerShell parameter for it at the time of writing (November 2026): the New-DlpCompliancePolicy and Add-RoleGroupMember references list no administrative unit parameter. Where units are defined in Microsoft Entra ID is covered on the linked administrative units pages.
+Security & Compliance PowerShell documents New-DlpCompliancePolicy -PolicyRBACScopes for assigning administrative units to a DLP policy; values are Entra object GUIDs, separated by commas. Where units are defined in Microsoft Entra ID is covered on the linked administrative units pages.
 
 ## Open questions
 
 - When does administrative unit support for the Copilot DLP location leave preview, and will it match the roadmap's November CY2026 target? Watch the roadmap item and the Copilot DLP Learn page.
-- Is any PowerShell or API equivalent planned for unit-scoped Copilot DLP policies? Watch the New-DlpCompliancePolicy reference.
 - Does any licence beyond those listed for administrative units apply to this feature? Watch the Microsoft 365 security and compliance licensing guidance.
 - Will Message center carry a notice for this item? None was supplied with the roadmap record.
 
@@ -189,12 +192,7 @@ impact: Low. Only Purview and Entra administrators see the change; users notice 
 <!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls table and prose; Open questions / absence: No automation or PowerShell administrative-unit parameter is documented for scoping a Copilot DLP policy. | Found: The PolicyRBACScopes parameter specifies the administrative units to assign to the policy. A valid value is the Microsoft Entra ObjectID (GUID value) of the administrative unit. | Fix: Set controls[0].api to kind 'powershell', call 'New-DlpCompliancePolicy -Name <policy-name> -PolicyRBACScopes <administrative-unit-GUIDs>', docs 'https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy'. Replace the portal-only and missing-parameter prose with 'Security & Compliance PowerShell documents New-DlpCompliancePolicy -PolicyRBACScopes for assigning administrative units to a DLP policy; values are Entra object GUIDs, separated by commas.' Remove the open question asking whether any PowerShell equivalent is planned. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy
-- [contradicted, blocker] Cost and licensing: second paragraph / licensing: The prerequisites include E5/A5/G5/F5 Compliance or Security & Compliance add-ons, and E5/A5/G5/F5 Information Protection & Governance. | Found: Microsoft 365 E5/A5/G5/F5 Compliance or F5 Security & Compliance; Microsoft 365 E5/A5/G5/F5 Information Protection & Governance | Fix: Replace 'the E5/A5/G5/F5 Compliance or Security & Compliance add-ons, or E5/A5/G5/F5 Information Protection & Governance' with 'Microsoft 365 E5/A5/G5/F5 Compliance or F5 Security & Compliance, or Microsoft 365 E5/A5/G5/F5 Information Protection & Governance'. Security & Compliance is listed specifically as F5, not E5/A5/G5/F5. | Source: https://learn.microsoft.com/purview/purview-admin-units
-- [contradicted, blocker] Why it matters; controls[1].note; Risk assessment: Security & identity / role: Assigning units makes a member restricted, with effective reach determined by Purview role-group membership and unit assignment. | Found: If you assign both an Entra role and a scoped Microsoft Purview role group assignment ... the Entra role takes precedence at runtime. As a result, the user's effective permissions are unscoped | Fix: Qualify the categorical assignment and reach statements, including controls[1].note, with: 'For overlapping capabilities, an Entra role takes precedence over a scoped Purview role-group assignment and leaves effective access unscoped.' Replace the last clause in Why it matters with 'because effective reach depends on Purview role-group membership, unit assignment and any overriding Entra role.' Cite https://learn.microsoft.com/purview/purview-permissions. | Source: https://learn.microsoft.com/purview/purview-permissions
-- [unsupported, major] Risk assessment: Autonomy & actions; Governance controls / behaviour: The new unit-scoping feature leaves Copilot DLP rule actions unchanged. | Found: Searched: Copilot administrative unit DLP default optional existing policies unchanged actions. Opened Copilot DLP learn-about, purview-admin-units and dlp-policy-reference; sources describe scoping and continued existing policies, not an explicit guarantee that rule actions are unchanged. | Fix: Remove 'The policy actions themselves, such as preventing Copilot from processing prompts, are unchanged' and 'they do not change what a Copilot DLP rule does'. Keep the documented description that administrative units narrow policy management and investigation scope.
-- [contradicted, blocker] Why it matters: second paragraph / absence: Microsoft has not stated default behaviour beyond existing tenant-wide policies continuing and scoping being optional. | Found: Unrestricted administrators don't have to select administrative units as part of the policy configuration. They can keep the default of the entire directory or select one or more administrative units. | Fix: Replace the first sentence of the second paragraph in Why it matters with 'Using administrative units is optional; unrestricted administrators can keep the default of the entire directory, and existing tenant-wide policies continue to apply.' This agrees with admin-opt-in without asserting an undocumented default gap. | Source: https://learn.microsoft.com/purview/purview-admin-units
+- [contradicted, blocker] Risk assessment: Change & support / role: Incident handling needs an unrestricted administrator for cross-unit views. | Found: These administrators, referred to as restricted administrators, can select one or more of their assigned administrative units ... Going forward, restricted administrators can see this related data for their assigned administrative units only. | Fix: Replace the bullet with 'Alerts and Activity explorer visibility follow each administrator's assigned units and permissions; use an unrestricted administrator for organisation-wide incident views.' Restricted administrators can investigate across multiple assigned units; unrestricted administrators can see all policy alerts and events, as documented at https://learn.microsoft.com/purview/purview-admin-units and https://learn.microsoft.com/purview/dlp-policy-reference. | Source: https://learn.microsoft.com/purview/purview-admin-units
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Role-group member unit assignment is at Settings > Roles and scopes > Role groups > role group > Edit > Choose users > Assign admin units. | Found: On Edit members of the role group, select Choose users or Choose groups. ... Select Select. ... select the users or groups and select Assign admin units. | Fix: The printed labels are correct but omit the intermediate member-selection sequence. Keep the path and add to its note: 'After Choose users, select the users, select Select, then select those members and choose Assign admin units.' | Source: https://learn.microsoft.com/purview/purview-permissions
-- [contradicted, minor] Governance guidance versus Governance controls / consistency: Every control the governance checklist tells administrators to configure or review has a controls-table row. | Found: Define the administrative units in Microsoft Entra ID ... Review alerts and Activity explorer ... Revisit unit membership ... Table rows cover policy scoping and role-group member assignment only. | Fix: The checklist's Entra unit creation/membership and alerts/Activity explorer review steps have no matching table rows. To keep the correction within existing rows, remove those three checklist bullets rather than add new controls.
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Unit assignment is at Microsoft Purview portal > Settings > Roles and scopes > Role groups > role group > Edit > Choose users > Assign admin units. | Found: On Edit members of the role group, select Choose users or Choose groups. ... If the selected users or groups need to be assigned to administrative units, select the users or groups and select Assign admin units. | Fix: Expand controls[1].ui.path and its rendered table path to 'Settings > Roles and scopes > Role groups > role group > Edit > Edit members of the role group > Choose users > Assign admin units', as documented at https://learn.microsoft.com/purview/purview-permissions. The omitted wizard-page heading does not change the destination. | Source: https://learn.microsoft.com/purview/purview-permissions
 -->
