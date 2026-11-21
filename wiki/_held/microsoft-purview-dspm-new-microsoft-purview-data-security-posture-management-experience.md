@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "prepare"
 licensing:
   model: "mixed"
-  notes: "The DSPM prerequisites page asks for 'a supporting license' without naming one. The Posture Agent page requires Microsoft 365 E5 with SCUs provisioned, under per-seat and pay-as-you-go models. A rate for the agent's SCU use is not yet published."
+  notes: "The DSPM prerequisites name no licence ('a supporting license'). The Posture Agent page requires Microsoft 365 E5 with SCUs provisioned (per-seat plus pay-as-you-go); the Security Copilot inclusion page says eligible E5 customers get included SCU capacity for core Purview agentic scenarios. Agent SCU rate: not yet published."
 audiences: ["security","compliance","m365-admin"]
 tags: ["dspm","purview","oversharing","security-copilot","microsoft-fabric","sharepoint","dlp","gcc","gcc-high","dod"]
 sources:
@@ -49,6 +49,12 @@ sources:
   - title: "Microsoft Purview service description"
     url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
     kind: "learn"
+  - title: "Application card: Microsoft Purview Data Security Posture Management"
+    url: "https://learn.microsoft.com/purview/data-security-posture-management-application-card"
+    kind: "learn"
+  - title: "Learn about Security Copilot for Microsoft 365 E5 and E7 included customers"
+    url: "https://learn.microsoft.com/copilot/security/security-copilot-inclusion"
+    kind: "learn"
 videos: []
 related: ["microsoft-purview-dspm-copilot-readiness-and-data-explorer","microsoft-purview-compliance-portal-data-loss-prevention-restrict-access-action-support-fo","microsoft-purview-data-loss-prevention-data-security-triage-agent-summaries-and-categoriza","sensitivity-labels","auditing"]
 controls:
@@ -72,7 +78,7 @@ controls:
     scope: "agent"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Agents > Explore agents > View agent > Deactivate agent"
+      path: "Agents > Explore agents > View agent > ellipsis next to Edit agent > Deactivate agent"
       docs: "https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started"
     api: null
     note: "Deactivate agent is under the ellipsis next to Edit agent. Preview feature."
@@ -93,19 +99,23 @@ changes:
     note: "New briefing: the roadmap's new DSPM experience compared with the current Learn documentation, including agents, partner signals and Fabric and item-level data risk assessments."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 89 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after verification: Fabric and Graph permission wording, audit wording narrowed to AI agent actions, E5 SCU inclusion noted, first-use timing, agent deactivation path."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 112 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 89
-  confirmed: 86
-  unconfirmed: 2
+  claims: 112
+  confirmed: 111
+  unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "0ab2a69dd627a076c1a14d76275705b4"
+  attempts: 2
+  hash: "cdb8773dca727b11ab593e52fef336db"
 ---
 
 ## What's changing
@@ -122,7 +132,7 @@ Learn also says AI agents can take direct action on detected risks, such as remo
 
 This is a redesign of a tool your security team may already use, so the practical risk is a gap between the page they know and the one the roadmap describes. Microsoft has not stated what happens to existing tenants on arrival, so plan from what the roadmap and Learn say rather than assuming nothing changes.
 
-The cost and exposure sit in the new options. The posture agent consumes SCUs each time it runs, Fabric and item-level scanning need an app registration with broad Graph permissions, and remediation actions can cut off legitimate access to files. Decide who may use these before January CY2027, not after the first assessment runs.
+The cost and exposure sit in the new options. The posture agent consumes SCUs each time it runs, Fabric scanning needs an Entra app with Fabric admin API access, Microsoft 365 item-level scanning needs an Entra app with broad Microsoft Graph application permissions, and remediation actions can cut off legitimate access to files. Decide who may use these before January CY2027, not after the first assessment runs.
 
 ## Risk assessment
 
@@ -146,14 +156,14 @@ The cost and exposure sit in the new options. The posture agent consumes SCUs ea
 **Change & support**
 
 - Item-level scanning is limited to 10 SharePoint sites at present.
-- Microsoft pauses refresh of Microsoft 365 data in DSPM when a tenant has not opened it for more than 60 days, and results take a day or so to appear after first use.
+- Microsoft pauses refresh of Microsoft 365 data in DSPM when a tenant has not opened it for more than 60 days, and results take a day or so to appear after first use. The DSPM application card allows up to three days for initial processing; the oversharing page specifies a four-day delay for the first default SharePoint assessment.
 - Restricted administrators in administrative units cannot create one-click policies.
 
 ## Cost and licensing
 
 **Licence.** The DSPM prerequisites say you need 'a supporting license for this Microsoft Purview solution' and a supported region, and point to the Microsoft Purview service description. They name no licence for DSPM itself. The service description's DSPM line refers to the licensing section of the DSPM for AI (classic) considerations page.
 
-**Meters.** The Data Security Posture Agent (preview) requires both per-seat licensing and pay-as-you-go billing: Microsoft 365 E5 with SCUs provisioned. It consumes SCUs every time it runs, based on the complexity of its analysis, and consumption can be tracked in the Security Copilot usage monitoring tool. The setup page says some options need pay-as-you-go billing for data storage, shown in the UI where they apply, and suggests the Usage center for tracking.
+**Meters.** The Data Security Posture Agent (preview) requires both per-seat licensing and pay-as-you-go billing: Microsoft 365 E5 with SCUs provisioned. It consumes SCUs every time it runs, based on the complexity of its analysis, and consumption can be tracked in the Security Copilot usage monitoring tool. The Security Copilot inclusion page says eligible Microsoft 365 E5 customers receive included SCU capacity covering core Purview agentic scenarios without separate provisioning; this differs from the agent page's pay-as-you-go wording. The setup page says some options need pay-as-you-go billing for data storage, shown in the UI where they apply, and suggests the Usage center for tracking.
 
 **Indirect cost.** Admin time for the Entra app and Fabric admin portal setup, plus site owners' time handling item-level notifications.
 
@@ -173,22 +183,22 @@ The cost and exposure sit in the new options. The posture agent consumes SCUs ea
 
 ### Before rollout
 
-- Assign the Compliance Administrator role or role group to the few people who will create assessments, and view-only roles to analysts.
-- Ask an Application Administrator, Cloud Application Administrator or Privileged Role Administrator to prepare the Entra app, and a Fabric administrator to prepare the Admin API settings, only if you plan Fabric or item-level scans.
+- Plan which few people will hold the Compliance Administrator role or role group to create assessments, with view-only roles for analysts.
+- Identify who would prepare the Entra app (Application Administrator, Cloud Application Administrator or Privileged Role Administrator) and the Fabric Admin API settings (a Fabric administrator), if you plan Fabric or item-level scans.
 - Decide whether to use the Data Security Posture Agent (preview), and confirm Microsoft 365 E5 and SCU provisioning with your finance owner first.
 - List which administrators sit in administrative units, because restricted administrators cannot create one-click policies.
 
 ### At rollout
 
-- Open Solutions > DSPM in the Microsoft Purview portal, accept the setup tasks that apply, and allow a day or so before expecting data.
+- Open Solutions > DSPM in the Microsoft Purview portal, accept the setup tasks that apply, and allow a day or so before expecting data; the DSPM application card allows up to three days for initial processing, and the oversharing page specifies a four-day delay for the first default SharePoint assessment.
 - Review the weekly default data risk assessment results for SharePoint and, if configured, Fabric.
 - Limit custom item-level assessments to the SharePoint sites you intend to remediate, and agree with site owners before using **Remove sharing link**.
 - Treat the partner integration setup task as preview and test it with one partner first.
 
 ### After rollout
 
-- Check [audit](/concepts/auditing/) records of actions taken by AI agents and by admins in DSPM.
-- Track SCU consumption for the Posture Agent against the budget you agreed.
+- Check audit records of automated actions taken by AI agents in DSPM.
+- Compare the Posture Agent's SCU consumption with the budget you agreed.
 - Return to DSPM at least every 60 days so data refresh is not paused.
 - Watch Message center and the DSPM Learn page for the rollout date, cloud availability and licence statement.
 
@@ -201,7 +211,7 @@ The cost and exposure sit in the new options. The posture agent consumes SCUs ea
 <tbody>
 <tr><td data-label="Control"><strong>Connecting Fabric workspaces to data risk assessments</strong><br><small>Tenant</small><br><small class="controls__note">Needs an Entra app and Fabric Admin API settings first; Fabric administrator and an Entra application role are involved.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>DSPM › Discover › Data risk assessments › Fabric › Set config <a href="https://learn.microsoft.com/purview/data-security-posture-management-oversharing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Item-level scanning for custom Microsoft 365 assessments</strong><br><small>Tenant</small><br><small class="controls__note">Select Authenticate to enter the Entra app. SharePoint sites only, up to 10 sites.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>DSPM › Discover › Data risk assessments › Create custom assessment › Scan level › Item-level <a href="https://learn.microsoft.com/purview/data-security-posture-management-oversharing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether the Data Security Posture Agent is active</strong><br><small>Agent</small><br><small class="controls__note">Deactivate agent is under the ellipsis next to Edit agent. Preview feature.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Agents › Explore agents › View agent › Deactivate agent <a href="https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether the Data Security Posture Agent is active</strong><br><small>Agent</small><br><small class="controls__note">Deactivate agent is under the ellipsis next to Edit agent. Preview feature.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Agents › Explore agents › View agent › ellipsis next to Edit agent › Deactivate agent <a href="https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Partner solution integration through Microsoft Sentinel data lake</strong><br><small>Tenant</small><br><small class="controls__note">Preview. Connect to the Microsoft Sentinel content hub first.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>DSPM › Actions › Setup tasks › Integrate with partner solutions <a href="https://learn.microsoft.com/purview/data-security-posture-management-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -219,7 +229,7 @@ Deactivating the Posture Agent makes it inactive but does not uninstall it. The 
 - What data do partner integrations pass through Microsoft Sentinel data lake, and who can see it?
 
 <!-- rationale
-risk: Medium. The documented DSPM can remove sharing links and run AI agents on detected risks, and item-level scans need an Entra app with Files.ReadWrite.All and Sites.ReadWrite.All, but each step is admin-configured and audited.
+risk: Medium. The documented DSPM can remove sharing links and run AI agents on detected risks, and item-level scans need an Entra app with Files.ReadWrite.All and Sites.ReadWrite.All, but the setup is admin-configured and automated AI agent actions are audited.
 cost: Variable. The Data Security Posture Agent (preview) needs Microsoft 365 E5 plus provisioned security compute units (SCUs), a metered consumption; the licence for DSPM itself is only described as 'a supporting license'.
 impact: Medium. Security and compliance teams meet a new DSPM experience, and SharePoint site owners can receive item-level notifications; most end users do not notice it.
 -->
@@ -227,11 +237,7 @@ impact: Medium. Security and compliance teams meet a new DSPM experience, and Sh
 <!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Why it matters / applicability: Fabric scanning, as well as item-level scanning, requires broad Microsoft Graph permissions. | Found: Searched: "Fabric data risk assessments" "Graph" permissions. Read current oversharing, classic prerequisites and Fabric enable-service-principal-admin-apis. Graph permissions are specified for Microsoft 365 item-level scanning; Fabric setup specifies Fabric admin API access. | Fix: Replace 'Fabric and item-level scanning need an app registration with broad Graph permissions' with 'Fabric scanning needs an Entra app with Fabric admin API access; Microsoft 365 item-level scanning needs an Entra app with broad Microsoft Graph application permissions.'
-- [unsupported, blocker] rationale: risk; Governance guidance: After rollout / applicability: Every configuration and remediation step in DSPM is audited, including all administrator actions. | Found: Searched: "Data Security Posture Management" "audit" assessments configuration actions; "Data Security Posture Management" "audit" "item-level" "Remove sharing link". Read overview, application card, oversharing and audit activity excerpts. No guarantee covers every configuration step. | Fix: Replace 'but each step is admin-configured and audited' with 'but the setup is admin-configured and automated AI agent actions are audited'. Narrow the after-rollout checklist to 'Check audit records of automated actions taken by AI agents in DSPM.'
+- [contradicted, blocker] What's changing: second paragraph / absence: Learn does not say when the new version reaches any tenant or cloud. | Found: General availability (GA): The new version of Data Security Posture Management is now generally available. Partner solutions for non-Microsoft data sources remain in preview, as does the Data Security Posture Agent. | Fix: Replace the final sentence of the second paragraph with: 'Microsoft Learn's May 2026 update announces general availability of the current DSPM version, while partner solutions and the Posture Agent remain in preview. Roadmap item 561036 remains In development, targeted for January CY2027 in GCC, GCC High and DoD; Learn does not give tenant-level rollout dates for those government clouds.' Cite https://learn.microsoft.com/purview/whats-new#may-2026. | Source: https://learn.microsoft.com/purview/whats-new#may-2026
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Change & support; Governance guidance: At rollout / behaviour: First-use data starts appearing after a day or so. | Found: Allow a day or so before you start to see data from your tenant that you can take action on. | Fix: Keep the general first-use guidance but add: 'The DSPM application card allows up to three days for initial processing; the oversharing page specifies a four-day delay for the first default SharePoint assessment.' Cite https://learn.microsoft.com/purview/data-security-posture-management-application-card and the already cited oversharing page. | Source: https://learn.microsoft.com/purview/data-security-posture-management-learn-about
-- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost / licensing: Licensing is mixed because the Posture Agent documentation requires per-seat and pay-as-you-go models. | Found: This agent requires both the standard per seat licensing model and the pay-as-you-go billing model. | Fix: Keep the agent-page requirement, but add: 'The Security Copilot inclusion page says eligible Microsoft 365 E5 customers receive included SCU capacity covering core Purview agentic scenarios without separate provisioning; this differs from the agent page's pay-as-you-go wording.' Cite https://learn.microsoft.com/copilot/security/security-copilot-inclusion. | Source: https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started
-- [supported, minor] controls[2].ui; Governance controls table / admin-path: Posture Agent deactivation is reached at Microsoft Purview portal > Agents > Explore agents > View agent > Deactivate agent. | Found: select Agents ... Select Explore agents ... Select View agent ... select the ellipsis (three dots) next to the Edit agent button ... Select Deactivate agent. | Fix: Set controls[2].ui.path to 'Agents > Explore agents > View agent > ellipsis next to Edit agent > Deactivate agent', matching the deactivation procedure. The current note already identifies the omitted button. | Source: https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started
-- [contradicted, minor] Governance guidance; Governance controls / consistency: The checklist directs readers to review controls absent from the controls table. | Found: Assign the Compliance Administrator role ... prepare the Entra app ... Check audit ... Track SCU consumption ... The table contains only Fabric connection, item-level scanning, agent deactivation and partner integration. | Fix: Remove the checklist directions to assign roles, configure Entra/Fabric prerequisite access, check audit records and track SCU consumption, or restate them as planning advice without directing readers to set or review controls. Keep their factual descriptions elsewhere; do not add control rows.
+- [supported, minor] Cost and licensing: Licence / licensing: The service description redirects DSPM licensing information to the DSPM for AI (classic) considerations page. | Found: For information about licensing about Microsoft Purview Data Security Posture Management for AI, see Considerations for deploying Microsoft Purview Data Security Posture Management for AI & data security and compliance protections for Microsoft Copilot and other generative AI apps | Microsoft Learn. | Fix: Replace the last sentence of Licence with: 'The service description's DSPM for AI licensing pointer links to the DSPM for AI (classic) considerations page.' The link targets the article, not a licensing section, and the article has no section with that name. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
 -->

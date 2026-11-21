@@ -1,0 +1,560 @@
+{
+  "slug": "microsoft-teams-front-of-room-view-control-for-webinars-and-structured-meetings-in-teams-r",
+  "roadmapId": 559602,
+  "title": "Microsoft Teams Rooms on Android: front-of-room display defaults to attendee view in webinars and structured meetings",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "1 blocking finding (claim 41)"
+    ]
+  },
+  "counts": {
+    "claims": 44,
+    "confirmed": 41,
+    "unconfirmed": 2,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 2,
+    "minor": 0
+  },
+  "summary": "The default display behaviour, Teams Rooms Pro requirement and rollout details are supported by Microsoft's notice and documentation. The cost rating needs correction: it describes indirect costs only while its rationale also includes purchasing Pro licences for rooms that lack them.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Android.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Teams.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Teams\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-06-23T23:15:39.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-06-23T23:15:39\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Governance controls",
+      "type": "default",
+      "claim": "The feature is on by default without administrator action.",
+      "status": "supported",
+      "source": "Message Center post MC1316231",
+      "quote": "The feature is enabled by default and requires no configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "title; summary; What's changing; Scope; rationale: impact",
+      "type": "behaviour",
+      "claim": "An Android Teams Room invited as a presenter in a webinar or structured meeting defaults its front-of-room display to attendee view.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+      "quote": "When a Teams Rooms on Android device is invited as a presenter in a Webinar or Structured Meeting, the front-of-room display defaults to the attendee view.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "In-room audiences in attendee view do not see presenter tools such as Green Room or backstage controls.",
+      "status": "supported",
+      "source": "Message Center post MC1316231",
+      "quote": "In-room audiences will not see presenter tools such as Green Room or backstage controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; controls[0].note",
+      "type": "behaviour",
+      "claim": "Presenters retain full control of green room management from the console.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+      "quote": "Presenters always have full control from the console, including green room and off-stage management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Presenters retain off-stage participant management from the console.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+      "quote": "Presenters always have full control from the console, including green room and off-stage management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Presenters can switch the front-of-room display to presenter view without affecting attendees.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+      "quote": "can switch the front-of-room display to presenter view without impacting attendees.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Governance guidance: At rollout; Governance controls",
+      "type": "admin-path",
+      "claim": "The room console has a Switch to presenter view button that changes the front-of-room display.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/office/host-or-attend-an-event-from-a-microsoft-teams-room-mtr-d7ff15e0-6516-4ebc-ae03-a2bdf58a4478",
+      "quote": "To switch views, select Switch to presenter view or Switch to attendee view on the MTR console.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Governance controls",
+      "type": "admin-path",
+      "claim": "The room console has a Switch to attendee view button.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/office/host-or-attend-an-event-from-a-microsoft-teams-room-mtr-d7ff15e0-6516-4ebc-ae03-a2bdf58a4478",
+      "quote": "To switch views, select Switch to presenter view or Switch to attendee view on the MTR console.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Presenter view adds the Manage screen queue to the front-of-room display.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/office/host-or-attend-an-event-from-a-microsoft-teams-room-mtr-d7ff15e0-6516-4ebc-ae03-a2bdf58a4478",
+      "quote": "In presenter view, the front-of-room display will show the live event feed, the event chat, and meeting controls. It will also show the Manage screen queue where presenters are brought on and off screen",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Presenter view displays a red square around the live feed to indicate what attendees currently see.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/office/host-or-attend-an-event-from-a-microsoft-teams-room-mtr-d7ff15e0-6516-4ebc-ae03-a2bdf58a4478",
+      "quote": "as well as a red square around the live feed to indicate what attendees are currently seeing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Governance controls",
+      "type": "record",
+      "claim": "Microsoft says no configuration is required to enable the feature.",
+      "status": "supported",
+      "source": "Message Center post MC1316231",
+      "quote": "The feature is enabled by default and requires no configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "Microsoft says remote attendees and their experience are unaffected.",
+      "status": "supported",
+      "source": "Message Center post MC1316231",
+      "quote": "There is no impact to remote attendees or their experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Scope; Governance guidance: Before rollout",
+      "type": "availability",
+      "claim": "The Android release notes introduce the feature in build 1449/1.0.96.2026129709, June 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+      "quote": "1449/1.0.96.2026129709 (June 2026)\nIntroduced in this update:\n- Front-of-room view control for Webinar and Structured Meetings in Teams Rooms on Android",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "availability",
+      "claim": "Availability can lag Microsoft's release for a particular device make and model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+      "quote": "There can be a delay between when features are released by Microsoft and when they become available on a device make and model. If an update isn't available on your device, check with your device manufacturer for information on when it might become available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: changes; What's changing",
+      "type": "record",
+      "claim": "MC1316231 was last updated on 22 September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1316231",
+      "quote": "Published 2026-05-19; last updated 2026-09-22; Microsoft's end date 2026-11-30",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "Microsoft's notice gives Worldwide rollout from mid-June 2026 to expected completion by the end of October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1316231",
+      "quote": "General Availability (Worldwide): We will begin rolling out in mid-June 2026 (previously early June) and expect to complete by end of October 2026 (previously mid-September).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Microsoft gives GCC, GCC High and DoD the same mid-June to end-of-October 2026 rollout window.",
+      "status": "supported",
+      "source": "Message Center post MC1316231",
+      "quote": "General Availability (GCC, GCC High, DoD): We will begin rolling out in mid-June 2026 and expect to complete by end of October 2026 (previously mid-September).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice's end date is 30 November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1316231",
+      "quote": "Microsoft's end date 2026-11-30",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1316231 sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1316231",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].note; Why it matters; Risk assessment: Security & identity; rationale: risk",
+      "type": "record",
+      "claim": "MC1316231 says existing Teams Rooms functionality and policies remain unchanged.",
+      "status": "supported",
+      "source": "Message Center post MC1316231",
+      "quote": "Existing Teams Rooms functionality and policies remain unchanged.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "Microsoft identifies no compliance considerations in MC1316231.",
+      "status": "supported",
+      "source": "Message Center post MC1316231",
+      "quote": "No compliance considerations identified, review as appropriate for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Presenters can bring presenters on or off screen from the room console.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/office/host-or-attend-an-event-from-a-microsoft-teams-room-mtr-d7ff15e0-6516-4ebc-ae03-a2bdf58a4478",
+      "quote": "Bring presenters on and off screen directly from the MTR console during the event.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "summary; licensing.notes; Cost and licensing; Scope; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "Teams Rooms Pro is needed to use this feature.",
+      "status": "supported",
+      "source": "Message Center post MC1316231",
+      "quote": "A Teams Rooms Pro license is needed to use this feature",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The feature is included in the named Teams Rooms Pro licence rather than separately licensed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+      "quote": "Features with ![](../media/mtr-pro-icon.png) are only available with Teams Rooms Pro license.\nFront-of-room view control for Webinar and Structured Meetings in Teams Rooms on Android![](../media/mtr-pro-icon.png)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "An Android Teams Rooms device with a touch console is a Teams Rooms system licensable with Basic or Pro.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
+      "quote": "A Teams Rooms on Android device and touch console connected via either an IP-based or USB connection\nTeams Rooms devices should only be assigned Teams Rooms Basic or Teams Rooms Pro licenses (Teams Rooms legacy licenses are also valid).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Teams Rooms Pro licences can be purchased through the Microsoft 365 admin center or a preferred sales channel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
+      "quote": "Teams Rooms Pro licenses can be purchased through the Microsoft 365 admin center or your preferred sales channel.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate feature price, meter or credit rate is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Android front-of-room view webinar feature price meter credit rate Pro license; opened rooms-licensing, rooms-release-note and the MTR event help page; read MC1316231. These document Pro entitlement, not a separate feature price, meter or credit rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].ui and controls[0].api; summary; Governance controls",
+      "type": "absence",
+      "claim": "No tenant admin UI or automation control for the default front-of-room webinar and structured-meeting view is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Android front-of-room default attendee view admin policy configuration PowerShell API. Read rooms-release-note, rooms-licensing, mtr-home-refresh search excerpts and MTR event help; found presenter console buttons, not a tenant default-view setting or API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft advises ensuring Teams Rooms on Android devices are updated.",
+      "status": "supported",
+      "source": "Message Center post MC1316231",
+      "quote": "Verify device readiness: Ensure Teams Rooms on Android devices are updated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance guidance: After rollout",
+      "type": "record",
+      "claim": "Microsoft has already revised the rollout timeline.",
+      "status": "supported",
+      "source": "Message Center post MC1316231",
+      "quote": "Updated September 22, 2026: We have updated the timeline. Thank you for your patience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "The event organiser can add the room as a presenter when adding it to the event.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/office/host-or-attend-an-event-from-a-microsoft-teams-room-mtr-d7ff15e0-6516-4ebc-ae03-a2bdf58a4478",
+      "quote": "When you add an MTR to an event, you can either add it as a presenter or an attendee.\nIn Setup > Details section, add the MTR in the Presenters from your org field.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Why it matters; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends attendee view to hide presenter controls when presenters and attendees share the room.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/office/host-or-attend-an-event-from-a-microsoft-teams-room-mtr-d7ff15e0-6516-4ebc-ae03-a2bdf58a4478",
+      "quote": "If you're in an MTR where both presenters and attendees are present, switch to Attendee view to hide the presenter controls on the front display.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: cost; rationale: cost",
+      "type": "consistency",
+      "claim": "The low cost rating represents indirect cost only, but its rationale also includes purchasing Pro licences.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "cost: \"low\"\nLow. Microsoft's notice MC1316231 says a Teams Rooms Pro licence is needed to use the feature, and no separate meter is documented; the cost is admin and communication time, plus a Pro licence for any Android room that lacks one.",
+      "severity": "blocker",
+      "fix": "Keep cost low only for rooms already licensed with Pro. Replace its rationale with: 'Low. For Android rooms already licensed with Teams Rooms Pro, the cost is admin and communication time; no separate meter is documented.' Keep the body warning that rooms without Pro need that licence."
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "No autonomous action is described for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Android front-of-room view webinars structured meetings autonomous actions automatic presenter management. Read MC1316231, rooms-release-note and MTR event help; they describe the automatic initial view and presenter-operated controls, not autonomous actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The feature rollout is staged.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Android device manufacturers updates own schedule staged rollout; Teams Android devices updates staged rollout manufacturers release schedule firmware. Read MC1316231 and rooms-release-note; they give a rollout window and device delays, not feature rollout stages.",
+      "severity": "major",
+      "fix": "Remove 'The rollout is staged and' from this bullet. Microsoft gives a rollout window but does not describe stages for this feature."
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Device makers release updates on their own schedule.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Teams Android devices updates staged rollout manufacturers release schedule firmware. Read rooms-release-note and android-version-support search excerpt; Microsoft documents device availability delays and OEM firmware certification, not independent OEM release schedules.",
+      "severity": "major",
+      "fix": "Replace the device-maker scheduling assertion with: 'There can be a delay between Microsoft's feature release and availability on a device make and model, so some rooms may behave differently for a while.' Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T08:52:35.384Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=559602",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1316231",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://support.microsoft.com/office/host-or-attend-an-event-from-a-microsoft-teams-room-mtr-d7ff15e0-6516-4ebc-ae03-a2bdf58a4478",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [],
+    "roadmapDrift": []
+  },
+  "history": []
+}

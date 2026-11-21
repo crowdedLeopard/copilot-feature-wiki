@@ -4,10 +4,10 @@
   "title": "Microsoft Teams Rooms on Android: modernised Gallery view prioritises video on stage",
   "status": "held",
   "date": "2026-11-21",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,25 +16,25 @@
     "reason": "failed",
     "since": "2026-11-21",
     "reasons": [
-      "1 blocking finding (claim 42)"
+      "1 blocking finding (claim 36)"
     ]
   },
   "counts": {
-    "claims": 50,
-    "confirmed": 47,
-    "unconfirmed": 1,
-    "contradicted": 2,
+    "claims": 52,
+    "confirmed": 51,
+    "unconfirmed": 0,
+    "contradicted": 1,
     "blocker": 1,
-    "major": 1,
+    "major": 0,
     "minor": 3
   },
-  "summary": "The briefing accurately reports the rollout, default layout and general device-settings route. It needs correction because its open questions present the Pro licence requirement for remote configuration as unresolved, although both its licensing section and Microsoft's comparison table settle that requirement.",
+  "summary": "Hold: the licensing requirement omits Microsoft's explicit allowance for valid legacy Teams Rooms licences, which could lead administrators to replace licences unnecessarily. The rollout, default behaviour and portal route are supported; the abbreviated route and conflicting cloud documentation need minor clarification.",
   "claims": [
     {
       "n": 1,
       "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "The modernised Gallery view changes Teams Rooms on Android to prioritise video participants on stage.",
+      "claim": "Microsoft is modernising Gallery view on Teams Rooms on Android to prioritise video participants on stage.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "The updated Gallery view in Teams Rooms on Android prioritizes video on the meeting stage",
@@ -43,116 +43,6 @@
     },
     {
       "n": 2,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "Participant tiles use consistent aspect ratios.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "arranges participants in consistent aspect ratios",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "Participant tiles move less on stage.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "minimizes movement of participant tiles on stage",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "MC1446797 names 16:9, 4:3 and 1:1 aspect ratios.",
-      "status": "supported",
-      "source": "Message Center post MC1446797",
-      "quote": "Participant tiles will be displayed using more consistent aspect ratios, including 16:9, 4:3, and 1:1 layouts.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The change aligns the experience more closely with Teams Rooms on Windows.",
-      "status": "supported",
-      "source": "Message Center post MC1446797",
-      "quote": "This update aligns the experience more closely with Teams Rooms on Windows",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: impact",
-      "type": "default",
-      "claim": "Video prioritisation is on by default and changes the stage layout without an administrator enabling it.",
-      "status": "supported",
-      "source": "Message Center post MC1446797",
-      "quote": "After this rollout: - Gallery view will prioritize video participants on the meeting stage by default",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "What's changing; Why it matters; Risk assessment",
-      "type": "record",
-      "claim": "Audio participants are deprioritised when video prioritisation is enabled to help display more video participants.",
-      "status": "supported",
-      "source": "Message Center post MC1446797",
-      "quote": "Audio participants will be deprioritized when video participant prioritization is enabled, helping display more video participants on screen.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "summary; What's changing; Risk assessment; Governance controls",
-      "type": "record",
-      "claim": "Meeting participants can hide the room self-preview video for a meeting.",
-      "status": "supported",
-      "source": "Message Center post MC1446797",
-      "quote": "Meeting participants will be able to: - Hide the room self-preview video for a meeting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "What's changing; Risk assessment; Governance controls",
-      "type": "record",
-      "claim": "Meeting participants can choose to display audio and video participants equally.",
-      "status": "supported",
-      "source": "Message Center post MC1446797",
-      "quote": "Display audio and video participants equally instead of prioritizing video participants.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "What's changing; Cost and licensing; Governance controls",
-      "type": "record",
-      "claim": "Administrators can choose the default Gallery behaviour using local device settings.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Admins can choose the default behavior using local device settings and the Pro Management portal.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "summary; What's changing; controls[0].note; Governance controls",
-      "type": "applicability",
-      "claim": "Administrators can choose the Gallery default in the Teams Rooms Pro Management portal.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
-      "quote": "Admins can choose the default behavior using local device settings and the Pro Management portal.",
-      "severity": "minor",
-      "fix": "Add to controls[0].note: 'The Pro Management service overview lists supported clouds as all Microsoft clouds except DoD and Office 365 operated by 21Vianet, although MC1446797 announces the Gallery feature for DoD too.' Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-management. Keep the roadmap's feature cloud list unchanged."
-    },
-    {
-      "n": 12,
       "where": "front matter: status; summary; What's changing; Open questions",
       "type": "record",
       "claim": "The roadmap status is Rolling out.",
@@ -163,7 +53,7 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 3,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target date is August CY2026.",
@@ -174,10 +64,10 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 4,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap provides no preview date.",
+      "claim": "The roadmap gives no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -185,10 +75,10 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 5,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The release phase is General Availability.",
+      "claim": "The roadmap lists General Availability as the release phase.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\"]",
@@ -196,7 +86,7 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 6,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
@@ -207,13 +97,123 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 7,
       "where": "front matter: platforms; Scope",
       "type": "record",
-      "claim": "The listed platforms are Android and Teams and Surface Devices.",
+      "claim": "The roadmap lists Android and Teams and Surface Devices as platforms.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Android\", \"Teams and Surface Devices\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes consistent participant-tile aspect ratios.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "arranges participants in consistent aspect ratios",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes reduced movement of participant tiles on stage.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "minimizes movement of participant tiles on stage",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1446797 gives the aspect ratios as 16:9, 4:3 and 1:1.",
+      "status": "supported",
+      "source": "Message Center post MC1446797",
+      "quote": "Participant tiles will be displayed using more consistent aspect ratios, including 16:9, 4:3, and 1:1 layouts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1446797 says the update aligns the Android experience more closely with Teams Rooms on Windows.",
+      "status": "supported",
+      "source": "Message Center post MC1446797",
+      "quote": "This update aligns the experience more closely with Teams Rooms on Windows by improving participant visibility, creating more consistent layouts, and providing additional meeting display controls",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Open questions",
+      "type": "default",
+      "claim": "Video prioritisation is on by default, so room users see the changed layout without administrator action.",
+      "status": "supported",
+      "source": "Message Center post MC1446797",
+      "quote": "Gallery view will prioritize video participants on the meeting stage by default",
+      "severity": "minor",
+      "fix": "In the first Open questions bullet, remove 'and what is its default?'; end the question after 'on the device?'. MC1446797 already states that video prioritisation is the default."
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Why it matters; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "Audio participants are deprioritised while video prioritisation is enabled, allowing more video participants on screen.",
+      "status": "supported",
+      "source": "Message Center post MC1446797",
+      "quote": "Audio participants will be deprioritized when video participant prioritization is enabled, helping display more video participants on screen.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing; Risk assessment; Governance guidance; Governance controls",
+      "type": "record",
+      "claim": "Meeting participants can hide the room self-preview video for a meeting.",
+      "status": "supported",
+      "source": "Message Center post MC1446797",
+      "quote": "Meeting participants will be able to: Hide the room self-preview video for a meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment; Governance guidance; Governance controls",
+      "type": "record",
+      "claim": "Meeting participants can display audio and video participants equally instead of prioritising video.",
+      "status": "supported",
+      "source": "Message Center post MC1446797",
+      "quote": "Display audio and video participants equally instead of prioritizing video participants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Cost and licensing; Governance controls",
+      "type": "record",
+      "claim": "Administrators can configure the default Gallery behaviour using local device settings.",
+      "status": "supported",
+      "source": "Message Center post MC1446797",
+      "quote": "Administrators can configure the default Gallery view behavior through local device settings and the Teams Rooms Pro Management portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "summary; What's changing; Why it matters; controls[0].governs; Governance controls",
+      "type": "record",
+      "claim": "Administrators can configure the default Gallery behaviour using the Teams Rooms Pro Management portal.",
+      "status": "supported",
+      "source": "Message Center post MC1446797",
+      "quote": "Administrators can configure the default Gallery view behavior through local device settings and the Teams Rooms Pro Management portal.",
       "severity": null,
       "fix": null
     },
@@ -230,42 +230,64 @@
     },
     {
       "n": 19,
-      "where": "What's changing; Open questions",
+      "where": "What's changing; Scope: Rollout",
       "type": "record",
-      "claim": "Worldwide and GCC rollout begins in mid-August 2026 and is expected to complete by late October 2026, previously mid-August.",
+      "claim": "Worldwide and GCC rollout begins in mid-August 2026.",
       "status": "supported",
       "source": "Message Center post MC1446797",
-      "quote": "General Availability (Worldwide, GCC): Beginning in mid-August 2026 and is expected to complete by late October 2026 (previously mid-August)",
+      "quote": "General Availability (Worldwide, GCC): Beginning in mid-August 2026",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "What's changing; Open questions",
+      "where": "What's changing; Scope: Rollout; Open questions",
       "type": "record",
-      "claim": "GCC High and DoD rollout begins in early September 2026 and is expected to complete in late October 2026, previously late September.",
+      "claim": "Worldwide and GCC rollout is expected to complete by late October 2026, previously mid-August.",
       "status": "supported",
       "source": "Message Center post MC1446797",
-      "quote": "General Availability (GCC High and DoD): Beginning in early September 2026 and expected to complete in late October 2026 (previously late September)",
+      "quote": "is expected to complete by late October 2026 (previously mid-August)",
       "severity": null,
       "fix": null
     },
     {
       "n": 21,
-      "where": "What's changing; Governance guidance: At rollout",
-      "type": "date",
-      "claim": "The release notes list the feature under Android build 1449/1.0.96.2026249711, September 2026.",
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "GCC High and DoD rollout begins in early September 2026.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
-      "quote": "### 1449/1.0.96.2026249711 (September 2026)\nIntroduced in this update:\n- **Modernized Gallery view:**",
+      "source": "Message Center post MC1446797",
+      "quote": "General Availability (GCC High and DoD): Beginning in early September 2026",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
+      "where": "What's changing; Scope: Rollout; Open questions",
+      "type": "record",
+      "claim": "GCC High and DoD rollout is expected to complete in late October 2026, previously late September.",
+      "status": "supported",
+      "source": "Message Center post MC1446797",
+      "quote": "expected to complete in late October 2026 (previously late September)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "date",
+      "claim": "The release notes list Modernized Gallery view under Android build 1449/1.0.96.2026249711, September 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+      "quote": "### 1449/1.0.96.2026249711 (September 2026)\nIntroduced in this update:\nModernized Gallery view:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
       "where": "What's changing; Scope: Rollout",
       "type": "availability",
-      "claim": "Features can reach a device make and model later than Microsoft's release, and Microsoft advises checking with the manufacturer.",
+      "claim": "Features can reach a device make and model after Microsoft's release, and Microsoft advises checking with the manufacturer.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
       "quote": "There can be a delay between when features are released by Microsoft and when they become available on a device make and model. If an update isn't available on your device, check with your device manufacturer for information on when it might become available.",
@@ -273,18 +295,18 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "Why it matters; Scope; rationale: impact",
+      "n": 25,
+      "where": "Why it matters; Scope: Who and what; rationale: impact",
       "type": "record",
       "claim": "MC1446797 identifies organisations using Teams Rooms on Android devices as affected.",
       "status": "supported",
       "source": "Message Center post MC1446797",
-      "quote": "Who is affected - Organizations using Microsoft Teams Rooms on Android devices.",
+      "quote": "Who is affected: Organizations using Microsoft Teams Rooms on Android devices.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 24,
+      "n": 26,
       "where": "summary; Why it matters; rationale: risk",
       "type": "record",
       "claim": "Microsoft says no action is required before rollout.",
@@ -295,10 +317,10 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 27,
       "where": "Why it matters; Governance guidance: Before rollout",
       "type": "record",
-      "claim": "Microsoft recommends communicating the visual changes if the organisation provides training or adoption materials.",
+      "claim": "Microsoft recommends communicating the visual changes when an organisation provides end-user training or adoption materials.",
       "status": "supported",
       "source": "Message Center post MC1446797",
       "quote": "Communicate these visual changes to Teams Rooms users if your organization provides end-user training or adoption materials.",
@@ -306,43 +328,65 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "Risk assessment: Data exposure; rationale: risk",
+      "n": 28,
+      "where": "Risk assessment: Data exposure",
       "type": "record",
-      "claim": "The notice states that no compliance considerations were identified.",
+      "claim": "Neither the roadmap description nor the supplied notice describes new data collection or storage.",
       "status": "supported",
       "source": "Message Center post MC1446797",
-      "quote": "[Compliance considerations] No compliance considerations identified.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "Risk assessment: Data exposure, Security & identity, Autonomy & actions",
-      "type": "record",
-      "claim": "The supplied feature description describes display changes, not new collection, storage, identity, sign-in or autonomous actions.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Users can hide the room self-preview video and choose to see audio and video participants equally on stage, instead of prioritizing video participants. Admins can choose the default behavior using local device settings and the Pro Management portal.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "controls[0].note; Risk assessment; Scope: Admin prerequisites",
-      "type": "role",
-      "claim": "Portal device-setting changes require Rooms Management RBAC permissions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
-      "quote": "provided you have the necessary role-based access control permissions for Rooms Management",
+      "quote": "This update aligns the experience more closely with Teams Rooms on Windows by improving participant visibility, creating more consistent layouts, and providing additional meeting display controls for users and administrators.",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
-      "where": "controls[0].note; Risk assessment; Scope; Governance guidance",
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "MC1446797 states that no compliance considerations were identified.",
+      "status": "supported",
+      "source": "Message Center post MC1446797",
+      "quote": "No compliance considerations identified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The supplied description and notice describe no identity, permission or sign-in change in this feature.",
+      "status": "supported",
+      "source": "Message Center post MC1446797",
+      "quote": "This update aligns the experience more closely with Teams Rooms on Windows by improving participant visibility, creating more consistent layouts, and providing additional meeting display controls for users and administrators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The supplied description and notice describe layout changes and participant display choices, not autonomous actions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users can hide the room self-preview video and choose to see audio and video participants equally on stage, instead of prioritizing video participants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Changing device settings in the Pro Management portal requires Rooms Management role-based access control permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+      "quote": "you can configure settings for Microsoft Teams devices (Teams Rooms on Windows, Teams Rooms on Android, Teams Panels and Teams Phones), provided you have the necessary role-based access control permissions for Rooms Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope; Governance guidance",
       "type": "applicability",
-      "claim": "Portal settings management is available only for signed-in devices.",
+      "claim": "Portal settings management applies only to signed-in devices.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
       "quote": "Settings management is available only for signed-in devices. Ensure that the device is signed in for settings changes from the Teams Rooms Pro management portal to be applied successfully.",
@@ -350,32 +394,21 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 34,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Video prioritisation makes the room display show fewer audio-only attendees.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Teams Rooms Android modernized Gallery default video prioritization local device settings setting name. Read rooms-release-note and MC1446797: they say audio participants are deprioritised and more video participants fit, not that fewer audio attendees are displayed.",
-      "severity": "major",
-      "fix": "Replace 'so in meetings with many audio-only attendees the room display shows fewer of them' with 'helping display more video participants on screen', as MC1446797 states."
-    },
-    {
-      "n": 31,
-      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Apply Now restarts the device as soon as possible.",
+      "claim": "Apply Now queues the settings change and restarts the device as soon as possible.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
-      "quote": "Apply Now - Queues a job to apply the setting and restarts the device as soon as possible to apply the setting changes.",
+      "quote": "Apply Now - Queues a job to apply the setting and restarts the device as soon as possible to apply the setting changes. This process can take several minutes.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 32,
+      "n": 35,
       "where": "Risk assessment: Change & support; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Schedule Later applies changes during the nightly maintenance window to avoid disrupting meetings.",
+      "claim": "Schedule Later schedules the change for the nightly maintenance window to avoid disrupting scheduled meetings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
       "quote": "Schedule Later - Schedules the settings change to be applied during the nightly maintenance window to avoid disrupting scheduled meetings during business hours.",
@@ -383,153 +416,32 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "front matter: licensing.model and notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The Gallery is included in Teams Rooms Basic and Pro.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
-      "quote": "Teams Rooms devices should only be assigned Teams Rooms Basic or Teams Rooms Pro licenses (Teams Rooms legacy licenses are also valid).\n| **Teams video gallery with multiple layout options** | ✔ | ✔ |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
+      "n": 36,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "The modernised Gallery release-note entry has no Pro marker.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
-      "quote": "Features with ![](../media/mtr-pro-icon.png) are only available with Teams Rooms Pro license.\n- **Modernized Gallery view:** The updated Gallery view in Teams Rooms on Android prioritizes video on the meeting stage",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance: Before rollout",
-      "type": "licensing",
-      "claim": "Remote configuration through Pro Management requires the Pro licence rather than Basic.",
-      "status": "supported",
+      "claim": "Teams Rooms on Android devices need a Teams Rooms Basic or Pro licence.",
+      "status": "contradicted",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
-      "quote": "| - | Microsoft Teams Rooms Basic | Microsoft Teams Rooms Pro |\n| **Remote configuration** |  | ✔ |\nIf a feature isn't available for a license, that feature can't be used on Teams Rooms devices that have been assigned that license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Cost and licensing; licensing.notes; rationale: cost",
-      "type": "absence",
-      "claim": "No modernised-Gallery-specific price, meter or separate licence is published as of November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams Rooms Android modernized Gallery view licensing price meter Basic Pro. Read rooms-licensing and the modernised Gallery entry in rooms-release-note; results describe Basic/Pro entitlement, with no modernised-Gallery-specific charge or meter.",
-      "severity": null,
-      "fix": null
+      "quote": "Teams Rooms devices should only be assigned Teams Rooms Basic or Teams Rooms Pro licenses (Teams Rooms legacy licenses are also valid).",
+      "severity": "blocker",
+      "fix": "Replace the Basic-or-Pro requirement in licensing.notes and the first Cost and licensing sentence with: 'Teams Rooms on Android devices require a Teams Rooms licence; Basic, Pro and valid legacy Teams Rooms licences are supported.' Keep the separate Pro requirement for remote configuration. Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing."
     },
     {
       "n": 37,
-      "where": "controls[0].ui; Governance controls",
-      "type": "admin-path",
-      "claim": "The device Settings tab is reached in Teams Rooms Pro Management via Rooms / Phones > device > Settings.",
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The video gallery is included in the product's existing licensing, with multiple layout options listed under both Basic and Pro.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
-      "quote": "Go to Rooms/ Phones in the left navigation and click the device you want to configure.\nSelect the Settings tab in the device panel.",
-      "severity": "minor",
-      "fix": "Retain the documented path prefix and append to the note: 'After Settings, browse the relevant settings category and modify the desired form field. Microsoft has not yet published the Gallery-specific category or label.' Do not invent a Gallery setting label. The pre-check's spacing mismatch is cosmetic."
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
+      "quote": "The following tables compare the Teams Rooms Basic and Teams Rooms Pro licenses and show what features are available with each.\n| Teams video gallery with multiple layout options | ✔ | ✔ |",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 38,
-      "where": "controls[0].api; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No API, Graph or PowerShell operation for configuring portal device settings or the Android Gallery default is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams Rooms Pro Management portal device settings API Graph PowerShell Gallery defaults automation; Teams PowerShell Android device configuration Gallery; Graph API Teams Rooms settings update. Read pro-portal-settings; no configuration operation found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "controls[0].note; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Microsoft Learn does not publish the Android Gallery default's local path, portal category or setting label.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams Rooms Android modernized Gallery default local device settings setting name; \"Teams Rooms\" \"Android\" \"Gallery\" \"Admin settings\" prioritization. Read device-settings-available Android tab and rooms-release-note. Android tab says 'The full settings list documentation is coming soon.'",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Settings changed directly on the device synchronise back to the portal.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
-      "quote": "Any setting changes made directly on the device are synchronized back to the Teams Rooms Pro Management portal and reflected in the Settings tab of the device panel",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Governance controls",
-      "type": "admin-path",
-      "claim": "Bulk settings jobs are under Settings > Device Settings > Jobs.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
-      "quote": "go to Settings > Device Settings.\nSelect the Jobs tab.\nNavigate to: Settings > Device settings page > Templates (Preview) tab",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Open questions: portal licence; Cost and licensing",
-      "type": "consistency",
-      "claim": "Whether the portal setting needs Pro is an open licensing question.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Setting the Gallery default centrally in the Pro Management portal therefore depends on that licence.\nDoes the portal setting need a Teams Rooms Pro licence, or can Basic-licensed devices set the default on the device only?",
-      "severity": "blocker",
-      "fix": "Remove the third Open questions bullet. The existing licensing section already states the confirmed requirement: remote configuration is Pro-only in https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing. Do not present that requirement as unpublished."
-    },
-    {
-      "n": 43,
-      "where": "Governance guidance: After rollout; controls",
-      "type": "consistency",
-      "claim": "The checklist tells administrators to review Settings Job History for Completed with Errors or Failed jobs, without a corresponding controls row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Review Settings Job History for Completed with Errors or Failed jobs on devices you changed.\nDefault Gallery view behaviour on a Teams Rooms on Android device",
-      "severity": "minor",
-      "fix": "Remove the After rollout bullet that instructs readers to review Settings Job History: this monitoring control has no controls-table row. Do not add a row during this correction."
-    },
-    {
-      "n": 44,
-      "where": "Governance controls",
-      "type": "admin-path",
-      "claim": "Reusable settings templates are under Settings > Device settings > Templates (Preview).",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
-      "quote": "Navigate to: Settings > Device settings page > Templates (Preview) tab",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Teams Rooms Basic and Pro license Teams Rooms on Android systems.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
-      "quote": "Microsoft offers two licenses for Teams Rooms systems that participate in Teams meetings and calls:\nA Teams Rooms system can be one of the following:\n- A Teams Rooms on Android device and touch console connected via either an IP-based or USB connection",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Features marked with the Pro icon in the release notes are available only with Teams Rooms Pro.",
+      "claim": "The Android release notes say features bearing the Pro icon are available only with Teams Rooms Pro.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
       "quote": "Features with ![](../media/mtr-pro-icon.png) are only available with Teams Rooms Pro license.",
@@ -537,21 +449,98 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The device panel lists settings categories including About, Account, Meetings, Device and Network.",
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Modernized Gallery view release-note entry carries no Pro icon.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
-      "quote": "Use the left navigation in the device panels to browse settings categories (About, Account, Meetings, Device, Network, etc.).",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+      "quote": "- **Modernized Gallery view:** The updated Gallery view in Teams Rooms on Android prioritizes video on the meeting stage, arranges participants in consistent aspect ratios, and minimizes movement of participant tiles on stage.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance: Before rollout",
+      "type": "licensing",
+      "claim": "Remote configuration is listed as a Pro feature, making central default configuration dependent on that entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
+      "quote": "| - | Microsoft Teams Rooms Basic | Microsoft Teams Rooms Pro |\n| Remote configuration |  | ✔ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no separate price for this Gallery update at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Android modernized Gallery view separate price meter licensing. Read rooms-licensing and rooms-release-note; neither gives a separate Gallery-update price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft publishes no meter for this Gallery update at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Android modernized Gallery view separate price meter licensing. Read rooms-licensing and rooms-release-note; neither documents a meter for this Gallery update.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No separate feature-specific licence is published for the modernised Gallery update.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Android modernized Gallery view separate price meter licensing. Read rooms-licensing and the Modernized Gallery view release-note entry; general Gallery entitlement is listed, but no separate update-specific licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].ui; rendered controls table; Governance controls",
+      "type": "admin-path",
+      "claim": "The portal route is Rooms / Phones > device > Settings, ending on the device settings page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+      "quote": "Go to Rooms/ Phones in the left navigation and click the device you want to configure. Select the Settings tab in the device panel. Use the left navigation in the device panels to browse settings categories (About, Account, Meetings, Device, Network, etc.).",
+      "severity": "minor",
+      "fix": "Extend the generic route to 'Rooms / Phones > device > Settings > settings category > setting', retaining the note that the Gallery-specific category and field label are not published. The cited page says to browse a settings category and modify the desired form field; 'Rooms / Phones' is a cosmetic spacing difference, not an incorrect navigation label."
+    },
+    {
+      "n": 45,
+      "where": "controls[0].api; rendered controls table; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No documented API or PowerShell operation sets the Gallery default through portal device settings.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Pro Management device settings API Graph PowerShell; MicrosoftTeams Gallery Android PowerShell default. Read pro-portal-settings, Graph teamworkDevice/configuration and Update-MgBetaTeamworkDevice; no Gallery setter. Graph device APIs are unsupported after November 2025.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].note; Governance controls; Governance guidance: After rollout; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn does not publish the Gallery-specific Android portal setting label or category.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Android gallery prioritize video hide self preview default local device settings setting name; Teams Rooms Gallery Prioritize settings Android. Read pro-portal-settings and device-settings-available Android tab; no Gallery label or category.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "The Android tab of the settings list says the full list documentation is coming soon.",
+      "claim": "The Android tab of the settings list says its full documentation is coming soon.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/device-settings-available",
       "quote": "# [Teams Android Devices](#tab/Android)\nThe full settings list documentation is coming soon.",
@@ -559,32 +548,65 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "Governance guidance: After rollout",
+      "n": 48,
+      "where": "Governance controls",
       "type": "admin-path",
-      "claim": "Settings Job History provides the status of device-settings changes.",
+      "claim": "The portal provides Settings > Device Settings > Jobs for bulk device-settings changes.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
-      "quote": "there's a Settings Job History activity under the Activity tab on the Rooms detail panel. This indicates the stage of settings change.",
+      "quote": "In the left navigation of the Microsoft Teams Rooms Pro Management portal, go to Settings > Device Settings. Select the Jobs tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "Reusable settings templates are under Settings > Device settings > Templates (Preview).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+      "quote": "Settings templates let you define a named, reusable configuration that is assigned to specific devices or device groups.\nNavigate to: Settings > Device settings page > Templates (Preview) tab",
       "severity": null,
       "fix": null
     },
     {
       "n": 50,
-      "where": "Governance guidance: After rollout",
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Settings jobs can have Completed with Errors or Failed status.",
+      "claim": "Settings changes made directly on the device synchronise back to the portal.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
-      "quote": "Status | Contains one of the following values: Submitted, Running, Completed, Completed with errors, Canceled, or Failed.",
+      "quote": "Any setting changes made directly on the device are synchronized back to the Teams Rooms Pro Management portal and reflected in the Settings tab of the device panel",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn does not document the local-device path for the Gallery default setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Android gallery prioritize video hide self preview default local device settings setting name; Teams Rooms Gallery Prioritize settings Android. Read rooms-release-note and results for mtr-home-refresh; local Gallery default is named without its route.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[0].note; rendered controls table",
+      "type": "availability",
+      "claim": "The Pro Management overview lists all Microsoft clouds except DoD and 21Vianet, whereas MC1446797 announces this feature for DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-management",
+      "quote": "| Supported clouds | All Microsoft clouds except DoD and Office 365 operated by 21Vianet. |",
+      "severity": "minor",
+      "fix": "Replace the cloud sentences in controls[0].note with: 'The Pro Management overview excludes DoD, but the Android-management transition page lists individual Android device settings management in DoD as completed in October 2026; MC1446797 also announces the Gallery feature for DoD.' Add https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1 to sources; its Specific feature availability table gives that DoD completion."
     }
   ],
   "precheck": {
-    "at": "2026-11-21T07:45:17.622Z",
+    "at": "2026-11-21T08:52:35.759Z",
     "summary": {
-      "links": 6,
+      "links": 7,
       "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 1,
@@ -622,6 +644,11 @@
         "url": "https://learn.microsoft.com/microsoftteams/rooms/device-settings-available",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-management",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -643,5 +670,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-21",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

@@ -1,0 +1,886 @@
+{
+  "slug": "microsoft-purview-data-lifecycle-management-ensure-regulatory-compliance-by-deleting-inact",
+  "roadmapId": 569721,
+  "title": "Microsoft Purview: delete inactive OneDrives and mailboxes for departed users (GCC, GCC High and DoD)",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "3 blocking findings (claims 25, 32, 57)"
+    ]
+  },
+  "counts": {
+    "claims": 66,
+    "confirmed": 63,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 3,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: turning off the priority cleanup tenant switch prevents new policies but does not stop existing policies from deleting content. The briefing also labels the new capability's licensing as included without establishing an entitlement, and incorrectly says the roadmap does not identify the users or accounts in scope.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; front matter: products; What's changing",
+      "type": "record",
+      "claim": "The planned capability belongs to Microsoft Purview Data Lifecycle Management.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview: Data Lifecycle Management – Ensure regulatory compliance by deleting inactive OneDrives and mailboxes for departing employees",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap plans to let administrators delete both content and containers for departed users.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enables admins to delete both content and containers for departed users at scale thereby keeping your tenant compliant without any manual effort.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes deletion at scale.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "delete both content and containers for departed users at scale",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes keeping the tenant compliant without any manual effort.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "thereby keeping your tenant compliant without any manual effort.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "title; What's changing; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap title identifies inactive OneDrives and mailboxes for departing employees.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Ensure regulatory compliance by deleting inactive OneDrives and mailboxes for departing employees",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "title; summary; front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "This roadmap item lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap preview target is November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap general availability target is December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-10-01T23:00:07.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-01T23:00:07\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope; front matter: changes",
+      "type": "record",
+      "claim": "Roadmap item 566527 describes the same capability in a separate entry.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "566527: Enables admins to delete both content and containers for departed users at scale thereby keeping your tenant compliant without any manual effort.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Scope; front matter: changes",
+      "type": "record",
+      "claim": "Roadmap item 566527 lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "566527: \"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The Worldwide item has the same In development status.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "566527: \"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The Worldwide item has the same November CY2026 preview target.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "566527: \"previewDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The Worldwide item has the same December CY2026 general availability target.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "566527: \"targetDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap gives no deletion mechanism.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enables admins to delete both content and containers for departed users at scale thereby keeping your tenant compliant without any manual effort.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap does not state the feature's default state.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enables admins to delete both content and containers for departed users at scale thereby keeping your tenant compliant without any manual effort.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap does not name a licence.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enables admins to delete both content and containers for departed users at scale thereby keeping your tenant compliant without any manual effort.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap does not give an admin path.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"moreInfoLink\": null; \"description\": \"Enables admins to delete both content and containers for departed users at scale thereby keeping your tenant compliant without any manual effort.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap does not say whether the new feature builds on priority cleanup or inactive mailbox deletion.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enables admins to delete both content and containers for departed users at scale thereby keeping your tenant compliant without any manual effort.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap does not state role requirements.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enables admins to delete both content and containers for departed users at scale thereby keeping your tenant compliant without any manual effort.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap does not state prerequisites.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enables admins to delete both content and containers for departed users at scale thereby keeping your tenant compliant without any manual effort.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The users or accounts in scope are not stated in the roadmap record.",
+      "status": "contradicted",
+      "source": "roadmap record",
+      "quote": "Ensure regulatory compliance by deleting inactive OneDrives and mailboxes for departing employees; delete both content and containers for departed users",
+      "severity": "blocker",
+      "fix": "Replace the sentence with: 'The roadmap identifies inactive OneDrives and mailboxes for departing employees, but does not state detailed eligibility criteria, roles, prerequisites or exclusions.'"
+    },
+    {
+      "n": 26,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap does not state exclusions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enables admins to delete both content and containers for departed users at scale thereby keeping your tenant compliant without any manual effort.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "summary; What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe this specific capability to delete departed users' content and containers at scale.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Data Lifecycle Management delete inactive OneDrives mailboxes departed users containers 569721 566527'; read data-lifecycle-management, get-started-with-data-lifecycle-management, priority-cleanup-onedrive-sharepoint and delete-an-inactive-mailbox. No matching feature documentation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: defaultState; Why it matters; Open questions; rationale: risk",
+      "type": "default",
+      "claim": "The default state of this new capability is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview delete departed users content containers at scale inactive OneDrive mailbox default automatic prerequisites safeguards audit controls'; read roadmap, data-lifecycle-management, priority-cleanup-onedrive-sharepoint and delete-an-inactive-mailbox. No feature default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No licence or choice between the retention-policy and priority-cleanup entitlement lists is published for this specific feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview deleting inactive OneDrives mailboxes departing employees Data Lifecycle Management licence pricing meter'; read Microsoft Purview service description and manage-data-governance licensing requirements. Neither assigns this capability to an entitlement list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to this feature is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview deleting inactive OneDrives mailboxes departing employees Data Lifecycle Management licence pricing meter'; read Microsoft Purview service description, data-lifecycle-management and get-started-with-data-lifecycle-management. No meter for this capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No price specific to this feature is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview deleting inactive OneDrives mailboxes departing employees Data Lifecycle Management licence pricing meter'; read Microsoft Purview service description, data-lifecycle-management and get-started-with-data-lifecycle-management. No price for this capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "This new capability is included in a licence the product already needs.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Purview Data Lifecycle Management licensing all capabilities prerequisites delete inactive accounts containers'; read service description and manage-data-governance. Found feature-level retention-policy and priority-cleanup licences, not blanket entitlement or this feature's inclusion.",
+      "severity": "blocker",
+      "fix": "Set licensing.model to 'unknown'. Keep the existing explanation that neither published entitlement list is confirmed to cover this feature; the cited service description does not establish a general licence covering every new Data Lifecycle Management capability."
+    },
+    {
+      "n": 33,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The service description lists Microsoft 365 E5/A5/G5/E3/A3/G3 and Business Premium among licences providing retention-policy user rights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "For organization-wide, location-wide, or include/exclude retention policies, the following licenses provide user rights: Microsoft 365 E5/A5/G5/E3/A3/G3, Business Premium",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The service description has a separate priority-cleanup entitlement list beginning with Microsoft 365 E5/A5/G5.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "To use the Priority cleanup policy to apply labels that bypass existing retention or eDiscovery holds, the following licenses provide user rights: Microsoft 365 E5/A5/G5",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Why it matters; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Retention settings can continue to retain a departed user's OneDrive files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-policies-sharepoint",
+      "quote": "If a user leaves your organization, any files that are subject to a retention policy or has a retention label will remain subject to the retention settings for the duration of the retention period specified in the policy or label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Why it matters; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "A user's OneDrive site cannot be deleted while Preservation Hold library items have an unexpired retention period.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
+      "quote": "When one or more items in a Preservation Hold library have an unexpired retention period, the OneDrive site for the user can't be deleted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Why it matters; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "An inactive mailbox can be permanently deleted by removing all its holds.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/delete-an-inactive-mailbox",
+      "quote": "When you no longer need to keep the contents of an inactive mailbox, you can permanently delete the mailbox by removing all holds on it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "After the final hold is removed, an inactive mailbox is permanently deleted after the 30-day soft-deleted mailbox retention period.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/delete-an-inactive-mailbox",
+      "quote": "Be aware that if you remove the final hold from an inactive mailbox the mailbox will be permanently deleted after the 30-day soft-deleted mailbox retention period expires.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "An inactive mailbox cannot be recovered after permanent deletion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/delete-an-inactive-mailbox",
+      "quote": "After the inactive mailbox is permanently deleted, it can't be recovered.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "Managing priority cleanup and its tenant switch requires the Priority Cleanup Admin role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
+      "quote": "you must have the Priority Cleanup Admin role. For SharePoint and OneDrive, this role is required to create and manage priority cleanup policies, and enable or disable the feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity; controls[1].note",
+      "type": "behaviour",
+      "claim": "Priority cleanup requires another person's approval in addition to the policy creator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
+      "quote": "each item subject to priority cleanup always requires at least one other person to approve the deletion in addition to the person who created the priority cleanup policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].note; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Priority cleanup for SharePoint and OneDrive must initially run in simulation mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
+      "quote": "Running the policy in simulation mode is required to initially set up priority cleanup for SharePoint and OneDrive locations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[3].note; Scope",
+      "type": "behaviour",
+      "claim": "Priority cleanup requires auditing enabled at least one day before the first policy runs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
+      "quote": "Make sure that auditing is enabled at least one day before you create and run the first priority cleanup policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance controls",
+      "type": "default",
+      "claim": "Priority cleanup itself is enabled by default at the tenant level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
+      "quote": "Because of the built-in safeguards, the feature itself is enabled by default at the tenant level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "The priority cleanup tenant switch applies to Exchange as well as SharePoint and OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/priority-cleanup-exchange",
+      "quote": "When you turn off priority cleanup, you're turning it off for SharePoint and OneDrive as well as for Exchange. Priority cleanup is rolling out in preview and subject to change.",
+      "severity": "minor",
+      "fix": "Add to controls[0].note: 'Exchange priority cleanup is rolling out in preview and is subject to change.' The cited Exchange page explicitly flags preview."
+    },
+    {
+      "n": 46,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The tenant creation switch is at Microsoft Purview portal > Solutions > Data Lifecycle Management > Priority cleanup settings > Configuration > control for priority cleanup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
+      "quote": "Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management. From the top right, select Priority cleanup settings. From the Configuration page, turn off the control for priority cleanup, and select Save.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "No PowerShell or API equivalent of the priority cleanup tenant switch is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'priority cleanup tenant enable disable configuration PowerShell Set PriorityCleanup API'; read tenant-switch sections of priority-cleanup-onedrive-sharepoint and priority-cleanup-exchange, plus New-RetentionCompliancePolicy and Set-ComplianceTag references. No tenant-switch operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The priority cleanup creation route is Microsoft Purview portal > Solutions > Data Lifecycle Management > Priority cleanup > + Create a priority cleanup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
+      "quote": "Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Priority cleanup, and then select + Create a priority cleanup.",
+      "severity": "minor",
+      "fix": "The route correctly opens the wizard but stops early. For the documented static OneDrive route, extend it to 'Solutions > Data Lifecycle Management > Priority cleanup > + Create a priority cleanup > Choose the type of priority cleanup > Static > Policy for SharePoint/OneDrive > Tell us what you're looking for > Choose when content should be deleted > Assign who'll approve what gets deleted > Choose the policy mode > simulation mode'. Keep query, locations, deletion settings and approver values as wizard inputs rather than invented labels."
+    },
+    {
+      "n": 49,
+      "where": "controls[1].api; controls[1].note; Governance controls table",
+      "type": "command",
+      "claim": "Security & Compliance PowerShell can create a priority cleanup policy using New-RetentionCompliancePolicy -Name <policy name> -PriorityCleanup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy",
+      "quote": "This cmdlet is available only in Security & Compliance PowerShell. The Name parameter specifies the unique name of the retention policy. The PriorityCleanup switch specifies whether to create a Priority cleanup policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "absence",
+      "claim": "No admin UI is documented for the row's whole-location, older-location inactive mailbox retention-policy hold exclusion.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'delete inactive mailbox remove retention policy hold admin portal UI ExcludeFromAllOrgHolds'; read delete-an-inactive-mailbox and inactive-mailboxes-in-office-365. The row's static whole-location procedure is PowerShell; adaptive-scope UI is a different procedure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[2].api; controls[2].note; Governance controls table",
+      "type": "command",
+      "claim": "Set-Mailbox <identity of inactive mailbox> -ExcludeFromAllOrgHolds excludes the mailbox from whole-location retention policies using older retention locations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/delete-an-inactive-mailbox",
+      "quote": "Static scope: How to remove an inactive mailbox from a retention policy that's configured for the entire location; For retention policies that use the older retention locations: Set-Mailbox <identity of inactive mailbox> -ExcludeFromAllOrgHolds",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[2].note; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "An inactive mailbox cannot be removed from a retention policy with Preservation Lock.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/delete-an-inactive-mailbox",
+      "quote": "You won't be able to remove an inactive mailbox if the retention policy has Preservation Lock applied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[3].note; Governance controls",
+      "type": "role",
+      "claim": "Turning auditing on or off requires the Audit Logs role in Exchange Online.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "You must be assigned the Audit Logs role in Exchange Online to turn auditing on or off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Auditing is enabled at Microsoft Purview portal > Audit > Start recording user and admin activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Sign in to the Microsoft Purview portal. Select the Audit solution card. If auditing isn't turned on for your organization, a banner is displayed prompting you to start recording user and admin activity. Select the Start recording user and admin activity banner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[3].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true turns on unified auditing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Connect to Exchange Online PowerShell. Run the following PowerShell command to turn on auditing. Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "PriorityCleanupFileRecycled is an audit operation for deletion of SharePoint or OneDrive items by priority cleanup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
+      "quote": "Operation name of PriorityCleanupFileRecycled: The deletion of an item in SharePoint or OneDrive by priority cleanup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Turning off priority cleanup at tenant level turns it off for Exchange, SharePoint and OneDrive.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
+      "quote": "If priority cleanup policies are already created when you turn off the control: Existing priority cleanup policies continue to function; Existing priority cleanup policies can be deleted; Existing priority cleanup policies can't be modified",
+      "severity": "blocker",
+      "fix": "Replace the first sentence after the controls table with: 'Turning off the tenant priority cleanup control prevents creation of new policies for Exchange, SharePoint and OneDrive; existing policies continue to function and can be deleted, but cannot be modified.' Replace the At rollout bullet with: 'Decide whether to prevent creation of new priority cleanup policies at tenant level if your regulations require it; existing policies continue to function when this switch is off.'"
+    },
+    {
+      "n": 58,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Learn says priority cleanup can override Preservation Lock when retention settings are delete-only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
+      "quote": "the deletion from priority cleanup can override existing holds and even Preservation Lock when the retention settings are for delete-only; Limitations: These items are not actually in scope for priority cleanup outside simulation mode.",
+      "severity": "minor",
+      "fix": "Remove the clause 'priority cleanup can override Preservation Lock when retention settings are delete-only, and that'. The same page's Limitations section says preservation-locked items with delete-only retention settings are not actually in scope outside simulation, conflicting with its introduction and comparison table."
+    },
+    {
+      "n": 59,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Removing holds from an inactive mailbox needs Exchange Online PowerShell, with commands depending on the hold type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/delete-an-inactive-mailbox",
+      "quote": "You must use Exchange Online PowerShell to remove holds from an inactive mailbox. You can't use the Exchange admin center (EAC), or the Microsoft Purview portal for these procedures.",
+      "severity": "minor",
+      "fix": "Replace the sentence with: 'For the static-scope retention-policy exclusions shown here, use the PowerShell command documented for the policy's retention location.' The separately read https://learn.microsoft.com/purview/inactive-mailboxes-in-office-365#inactive-mailboxes-and-microsoft-365-retention also documents removal by configuring an adaptive scope to exclude the mailbox, rather than PowerShell."
+    },
+    {
+      "n": 60,
+      "where": "controls[0].note; Governance controls; summary",
+      "type": "absence",
+      "claim": "The controls shown govern existing neighbouring capabilities, not documented configuration of the new combined content-and-container deletion feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview Data Lifecycle Management delete inactive OneDrives mailboxes departed users containers 569721 566527 default roles approvals licensing'; read priority-cleanup-onedrive-sharepoint, delete-an-inactive-mailbox and data-lifecycle-management. No linkage to this roadmap capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No source states that this new capability changes existing behaviour on arrival.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview delete departed users content containers at scale inactive OneDrive mailbox default automatic prerequisites safeguards audit controls'; read roadmap and Data Lifecycle Management overview, getting-started and current cleanup pages. No arrival behaviour for this capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "rationale: risk; Risk assessment; Open questions",
+      "type": "absence",
+      "claim": "Approvals for this specific new feature have not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview Data Lifecycle Management delete inactive OneDrives mailboxes departed users containers 569721 566527 default roles approvals licensing'; read roadmap, priority-cleanup-onedrive-sharepoint and priority-cleanup-exchange. No approvals for this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "rationale: risk; Risk assessment; Open questions",
+      "type": "absence",
+      "claim": "Safeguards and exceptions for this specific new feature have not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview delete departed users content containers at scale inactive OneDrive mailbox default automatic prerequisites safeguards audit controls'; read roadmap, both priority-cleanup pages and delete-an-inactive-mailbox. No safeguards for the new feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "rationale: impact",
+      "type": "absence",
+      "claim": "No source states an end-user-facing change for this capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview delete departed users content containers at scale inactive OneDrive mailbox default automatic prerequisites safeguards audit controls'; read roadmap and Data Lifecycle Management overview and current cleanup pages. No end-user experience documented for this new capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Priority cleanup cannot delete items marked as records or regulatory records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
+      "quote": "You can't use priority cleanup for items that are marked as a record or regulatory record.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Priority cleanup cannot delete data already copied to an eDiscovery review set.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
+      "quote": "Although priority cleanup can override eDiscovery holds, the data might already be copied to an eDiscovery review set where it can't be deleted by priority cleanup.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T08:52:35.536Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=569721",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/priority-cleanup-exchange",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/delete-an-inactive-mailbox",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/retention-policies-sharepoint",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether priority cleanup policies can be created in the tenant",
+        "docs": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Data Lifecycle Management",
+          "Priority cleanup settings",
+          "Configuration",
+          "control for priority cleanup"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Creating a priority cleanup policy that overrides holds on OneDrive files",
+        "docs": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Data Lifecycle Management",
+          "Priority cleanup",
+          "+ Create a priority cleanup"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Creating a priority cleanup policy that overrides holds on OneDrive files",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy",
+        "reachable": true,
+        "token": "New-RetentionCompliancePolicy",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Deleting an inactive mailbox by removing its retention policy hold",
+        "docs": "https://learn.microsoft.com/purview/delete-an-inactive-mailbox",
+        "reachable": true,
+        "token": "Set-Mailbox",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Whether the unified audit log records activity for the organisation",
+        "docs": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Start recording user and admin activity"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Whether the unified audit log records activity for the organisation",
+        "docs": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "reachable": true,
+        "token": "Set-AdminAuditLogConfig",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

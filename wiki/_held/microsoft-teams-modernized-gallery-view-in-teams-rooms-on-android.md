@@ -40,6 +40,9 @@ sources:
   - title: "Settings available for remote management in Teams Rooms Pro management portal"
     url: "https://learn.microsoft.com/microsoftteams/rooms/device-settings-available"
     kind: "learn"
+  - title: "Microsoft Teams Rooms Pro Management"
+    url: "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-management"
+    kind: "learn"
 videos: []
 related: ["microsoft-teams-one-stop-admin-portal-for-teams-devices-with-teams-rooms-pro-management","microsoft-teams-breakout-room-support-on-teams-rooms-on-android"]
 controls:
@@ -50,7 +53,7 @@ controls:
       path: "Rooms / Phones > device > Settings"
       docs: "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings"
     api: null
-    note: "Needs Rooms Management permissions and a signed-in device. The Gallery setting's label is not yet documented; the path ends at the Settings tab."
+    note: "Needs Rooms Management permissions and a signed-in device. Gallery category and label not yet published. Pro Management lists supported clouds as all except DoD and 21Vianet; MC1446797 announces this feature for DoD."
 confidence: "medium"
 created: "2026-11-21"
 updated: "2026-11-21"
@@ -60,19 +63,23 @@ changes:
     note: "New briefing: the modernised Gallery view for Teams Rooms on Android, with its rollout window, licensing basis and the Pro Management portal route to set the default."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 50 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after the independent check: the audio-participant wording now follows MC1446797, a licensing question and a monitoring step were removed, and the Pro Management cloud and Settings-category notes were added."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 52 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 47
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "e02a148d91bc95bd3c8c43e218cdb39e"
+  claims: 52
+  confirmed: 51
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 2
+  hash: "cf3cf278256d2fb0050371447c644906"
 ---
 
 ## What's changing
@@ -101,7 +108,7 @@ Microsoft's notice says no action is required before the rollout and recommends 
 - No autonomous behaviour is described: the feature changes how participants are arranged and lets users choose between two display modes.
 
 **Change & support**
-- Audio participants are deprioritised while video prioritisation is on, so in meetings with many audio-only attendees the room display shows fewer of them. Users can switch to equal display, and the default can be set by an admin.
+- Audio participants are deprioritised while video prioritisation is on, helping display more video participants on screen. Users can switch to equal display, and the default can be set by an admin.
 - Applying a setting with Apply Now in the portal restarts the device, which interrupts a room. Schedule Later applies the change in the nightly maintenance window.
 
 ## Cost and licensing
@@ -133,7 +140,6 @@ The licences page lists "Remote configuration" as a Pro feature. Setting the Gal
 
 ### After rollout
 - Ask users in rooms with many audio-only attendees whether the default suits them, and adjust the default if it does not.
-- Review Settings Job History for Completed with Errors or Failed jobs on devices you changed.
 - Recheck the Android settings list in Microsoft Learn for the Gallery setting once it is published.
 
 ## Governance controls
@@ -143,11 +149,11 @@ The licences page lists "Remote configuration" as a Pro feature. Setting the Gal
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Default Gallery view behaviour on a Teams Rooms on Android device</strong><br><small class="controls__note">Needs Rooms Management permissions and a signed-in device. The Gallery setting's label is not yet documented; the path ends at the Settings tab.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Rooms / Phones › device › Settings <a href="https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Default Gallery view behaviour on a Teams Rooms on Android device</strong><br><small class="controls__note">Needs Rooms Management permissions and a signed-in device. Gallery category and label not yet published. Pro Management lists supported clouds as all except DoD and 21Vianet; MC1446797 announces this feature for DoD.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Rooms / Phones › device › Settings <a href="https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The Gallery default is a device setting reached through the Pro Management portal. Microsoft Learn's Android settings list there says its full list is coming soon, so the name of the Gallery setting and its place among the settings categories (About, Account, Meetings, Device, Network) are not yet documented. The row above therefore ends at the device's Settings tab.
+The Gallery default is a device setting reached through the Pro Management portal. Microsoft Learn's Android settings list there says its full list is coming soon, so the name of the Gallery setting and its place among the settings categories (About, Account, Meetings, Device, Network) are not yet documented. The row above therefore ends at the device's Settings tab, after which the page says to browse the relevant settings category and modify the desired form field.
 
 To change settings for many devices at once, the same page describes Settings > Device Settings > Jobs, and reusable templates under the Templates (Preview) tab. Settings changed directly on a device are synchronised back to the portal. The release notes also name local device settings as a way to choose the default; Learn does not document a path for that setting at the time of writing (November 2026). No API or PowerShell call for portal device settings is documented either. Each user's hide-self-preview and equal-display choices are made in the meeting, not by an admin control.
 
@@ -155,7 +161,6 @@ To change settings for many devices at once, the same page describes Settings > 
 
 - What is the Gallery view setting called, where does it sit in the Pro Management portal and on the device, and what is its default? Watch the Android tab of the portal's settings list on Microsoft Learn.
 - Is any API, PowerShell cmdlet or Graph call documented for setting device defaults in the portal, so that it can be scripted across many rooms?
-- Does the portal setting need a Teams Rooms Pro licence, or can Basic-licensed devices set the default on the device only? Watch the Teams Rooms licences page.
 - The notice expected completion by late October 2026, but the roadmap still shows Rolling out: when will it complete for each cloud? Watch MC1446797 in Message center.
 
 <!-- rationale
@@ -167,10 +172,9 @@ impact: Medium. Microsoft's notice names organisations using Teams Rooms on Andr
 <!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Change & support / behaviour: Video prioritisation makes the room display show fewer audio-only attendees. | Found: Searched: Teams Rooms Android modernized Gallery default video prioritization local device settings setting name. Read rooms-release-note and MC1446797: they say audio participants are deprioritised and more video participants fit, not that fewer audio attendees are displayed. | Fix: Replace 'so in meetings with many audio-only attendees the room display shows fewer of them' with 'helping display more video participants on screen', as MC1446797 states.
-- [contradicted, blocker] Open questions: portal licence; Cost and licensing / consistency: Whether the portal setting needs Pro is an open licensing question. | Found: Setting the Gallery default centrally in the Pro Management portal therefore depends on that licence. Does the portal setting need a Teams Rooms Pro licence, or can Basic-licensed devices set the default on the device only? | Fix: Remove the third Open questions bullet. The existing licensing section already states the confirmed requirement: remote configuration is Pro-only in https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing. Do not present that requirement as unpublished.
+- [contradicted, blocker] front matter: licensing.notes; Cost and licensing / licensing: Teams Rooms on Android devices need a Teams Rooms Basic or Pro licence. | Found: Teams Rooms devices should only be assigned Teams Rooms Basic or Teams Rooms Pro licenses (Teams Rooms legacy licenses are also valid). | Fix: Replace the Basic-or-Pro requirement in licensing.notes and the first Cost and licensing sentence with: 'Teams Rooms on Android devices require a Teams Rooms licence; Basic, Pro and valid legacy Teams Rooms licences are supported.' Keep the separate Pro requirement for remote configuration. Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary; What's changing; controls[0].note; Governance controls / applicability: Administrators can choose the Gallery default in the Teams Rooms Pro Management portal. | Found: Admins can choose the default behavior using local device settings and the Pro Management portal. | Fix: Add to controls[0].note: 'The Pro Management service overview lists supported clouds as all Microsoft clouds except DoD and Office 365 operated by 21Vianet, although MC1446797 announces the Gallery feature for DoD too.' Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-management. Keep the roadmap's feature cloud list unchanged. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note
-- [supported, minor] controls[0].ui; Governance controls / admin-path: The device Settings tab is reached in Teams Rooms Pro Management via Rooms / Phones > device > Settings. | Found: Go to Rooms/ Phones in the left navigation and click the device you want to configure. Select the Settings tab in the device panel. | Fix: Retain the documented path prefix and append to the note: 'After Settings, browse the relevant settings category and modify the desired form field. Microsoft has not yet published the Gallery-specific category or label.' Do not invent a Gallery setting label. The pre-check's spacing mismatch is cosmetic. | Source: https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings
-- [contradicted, minor] Governance guidance: After rollout; controls / consistency: The checklist tells administrators to review Settings Job History for Completed with Errors or Failed jobs, without a corresponding controls row. | Found: Review Settings Job History for Completed with Errors or Failed jobs on devices you changed. Default Gallery view behaviour on a Teams Rooms on Android device | Fix: Remove the After rollout bullet that instructs readers to review Settings Job History: this monitoring control has no controls-table row. Do not add a row during this correction.
+- [supported, minor] front matter: defaultState; summary; What's changing; Why it matters; Open questions / default: Video prioritisation is on by default, so room users see the changed layout without administrator action. | Found: Gallery view will prioritize video participants on the meeting stage by default | Fix: In the first Open questions bullet, remove 'and what is its default?'; end the question after 'on the device?'. MC1446797 already states that video prioritisation is the default.
+- [supported, minor] controls[0].ui; rendered controls table; Governance controls / admin-path: The portal route is Rooms / Phones > device > Settings, ending on the device settings page. | Found: Go to Rooms/ Phones in the left navigation and click the device you want to configure. Select the Settings tab in the device panel. Use the left navigation in the device panels to browse settings categories (About, Account, Meetings, Device, Network, etc.). | Fix: Extend the generic route to 'Rooms / Phones > device > Settings > settings category > setting', retaining the note that the Gallery-specific category and field label are not published. The cited page says to browse a settings category and modify the desired form field; 'Rooms / Phones' is a cosmetic spacing difference, not an incorrect navigation label. | Source: https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings
+- [supported, minor] controls[0].note; rendered controls table / availability: The Pro Management overview lists all Microsoft clouds except DoD and 21Vianet, whereas MC1446797 announces this feature for DoD. | Found: | Supported clouds | All Microsoft clouds except DoD and Office 365 operated by 21Vianet. | | Fix: Replace the cloud sentences in controls[0].note with: 'The Pro Management overview excludes DoD, but the Android-management transition page lists individual Android device settings management in DoD as completed in October 2026; MC1446797 also announces the Gallery feature for DoD.' Add https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1 to sources; its Specific feature availability table gives that DoD completion. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-management
 -->

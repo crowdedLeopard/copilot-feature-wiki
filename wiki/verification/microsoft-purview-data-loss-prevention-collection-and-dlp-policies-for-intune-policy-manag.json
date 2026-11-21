@@ -1,0 +1,680 @@
+{
+  "slug": "microsoft-purview-data-loss-prevention-collection-and-dlp-policies-for-intune-policy-manag",
+  "roadmapId": 567311,
+  "title": "Microsoft Purview: DLP and collection policies for Intune-protected mobile apps",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 46: severity blocker on a rationale: risk rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "1 blocking finding (claim 44)"
+    ]
+  },
+  "counts": {
+    "claims": 48,
+    "confirmed": 45,
+    "unconfirmed": 2,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 1,
+    "minor": 4
+  },
+  "summary": "Hold pending correction of the licensing statement and the risk rationale's assumption about unconfigured mobile DLP. The cited Intune documentation does publish licensing requirements, while the roadmap does not establish what happens before an administrator configures the new capability.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "Microsoft plans integrated Purview DLP for Intune MAM-protected mobile apps.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We are introducing a new integrated Microsoft Purview Data Loss Prevention (DLP) capability for Intune Mobile Application Management (MAM)-protected mobile apps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Risk assessment; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap plans evaluation of managed mobile app clipboard actions against Purview DLP policies before sharing is allowed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This integration ensures that clipboard actions in managed mobile apps are evaluated against Purview DLP policies before sharing is allowed",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap says collection policies can govern how sensitive data is handled in mobile apps.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Additionally, Microsoft Purview Collection policies can be used to govern how sensitive data is being handled in mobile apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate; What's changing; Scope",
+      "type": "record",
+      "claim": "Preview is targeted for January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: targetDate; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "General availability is targeted for February CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"February CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Risk assessment; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms; What's changing; Risk assessment; Scope; Open questions",
+      "type": "record",
+      "claim": "The record's platform is Web despite its description concerning mobile apps.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The record lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap was modified on 2026-10-06T22:56:31.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-06T22:56:31\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Cost and licensing; changes",
+      "type": "absence",
+      "claim": "Learn does not yet describe this specific Purview DLP integration for Intune-protected mobile apps.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Purview\" \"mobile apps\" \"Intune\" DLP policy. Opened DLP overview, Intune protection overview and collection policy reference; results describe existing mobile MAM or Windows Edge, not this integration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The collection policy reference lists Devices, Copilot experiences, Enterprise AI, Unmanaged cloud apps and Adaptive app scopes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-policy-reference",
+      "quote": "The following data sources are supported: ... Devices ... Copilot experiences ... Enterprise AI ... Unmanaged cloud apps ... Adaptive app scopes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; controls[1].note",
+      "type": "absence",
+      "claim": "The collection policy reference does not list a mobile managed-app data source.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Purview\" \"mobile apps\" \"Intune\" DLP policy. Opened collection policy reference: Devices is Windows; other sources are Copilot experiences, Enterprise AI, Unmanaged cloud apps and Adaptive app scopes; no managed mobile app source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The DLP overview's location list has no Intune-managed mobile app entry.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview DLP Intune mobile apps New-DlpCompliancePolicy Microsoft Graph policy location MAM. Opened and searched DLP overview for Intune, mobile and MAM; none appears in its locations. Devices are Windows 10, Windows 11 and macOS.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Intune route to clipboard controls is Apps > Protection > Create policy > iOS/iPadOS > Data protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/app-management/protection/create-policy",
+      "quote": "Select Apps > Protection. ... Select Create policy and select either iOS/iPadOS or Android. ... Click Next to display the Data protection page. ... including cut, copy, paste, and save-as restrictions.",
+      "severity": "minor",
+      "fix": "Complete the route as 'Apps > Protection > Create policy > iOS/iPadOS > Basics > Apps > Data protection > Restrict cut, copy and paste between other apps'. The Basics fields and app targeting are pass-through or scope selections, not blockers. The final setting label is documented at https://learn.microsoft.com/intune/app-management/protection/ref-settings-ios."
+    },
+    {
+      "n": 16,
+      "where": "controls[0].note; What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Intune's Restrict cut, copy and paste between other apps setting controls clipboard sharing for protected apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/app-management/protection/ref-settings-ios",
+      "quote": "Restrict cut, copy and paste between other apps | Specify when cut, copy, and paste actions can be used with this app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].api; controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "POST /v1.0/deviceAppManagement/iosManagedAppProtections creates an iOS policy whose allowedOutboundClipboardSharingLevel sets clipboard sharing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/intune-mam-iosmanagedappprotection-create",
+      "quote": "POST https://graph.microsoft.com/v1.0/deviceAppManagement/iosManagedAppProtections ... allowedOutboundClipboardSharingLevel ... The level to which the clipboard may be shared between apps on the managed device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].note; What's changing; Governance controls",
+      "type": "absence",
+      "claim": "The existing Intune control is not documented as configuring the new Purview capability, or as being read or overridden by it.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Intune mobile DLP clipboard no policy configured default enforcement identity evaluation precedence. Opened Intune create-policy, overview, iOS settings and Purview Graph overview; no text connects the clipboard setting to this integration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[1].governs; Risk assessment; Governance controls",
+      "type": "behaviour",
+      "claim": "Collection policies filter which events Purview ingests from supported data sources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-solution-overview",
+      "quote": "They let you filter which events from both untrusted and trusted sources are ingested into Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment; Governance controls",
+      "type": "behaviour",
+      "claim": "Collection policies provide discovery rather than enforcement, so a collection policy alone does not block an action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Collection Policies are designed to streamline discovery of relevant information rather than to apply enforcement on that information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Collection policies are at Microsoft Purview portal > Solutions > Data Loss Prevention > Classifiers > Collection policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-solution-overview",
+      "quote": "In the Microsoft Purview portal, select Solutions > Data Loss Prevention > Classifiers > Collection policies.",
+      "severity": "minor",
+      "fix": "The path correctly reaches the policy list. Qualify the row note with 'This route opens the collection policy list; use + Create policy to configure a policy, then + Add activities to choose activities to detect', as documented at the already cited https://learn.microsoft.com/purview/collection-policies-create-deploy-policy."
+    },
+    {
+      "n": 22,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No API or cmdlet for creating or changing these event collection policies is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview collection policies create update API PowerShell New collection policy; \"collection policies\" \"PowerShell\" event collection filtering. Opened collection create/deploy and Graph security overview. Results show UI creation, scope evaluation or unrelated Data Map metadata RBAC.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[2].ui; controls[2].api; controls[2].note; Governance controls",
+      "type": "absence",
+      "claim": "A Purview portal location or automation operation for DLP on Intune MAM-protected mobile apps is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview DLP Intune mobile apps New-DlpCompliancePolicy Microsoft Graph policy location MAM. Opened DLP overview, Graph security overview and New-DlpCompliancePolicy; searched the reference for Intune, Mobile and MAM without a match.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "default",
+      "claim": "Microsoft has not stated the new control's default or what happens on arrival.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Intune mobile DLP clipboard no policy configured default enforcement identity evaluation precedence. Read roadmap description, DLP overview, Intune overview and Graph security overview; no default for this integration. Existing Edge and Windows endpoint defaults are different scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Licensing for the new Purview mobile DLP capability is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Purview\" \"MAM\" \"licensing\" mobile. Read Purview service description and billing-model search excerpt; neither identifies this mobile DLP entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A meter for the new mobile DLP capability is not yet published, and the roadmap names none.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Purview\" \"MAM\" \"licensing\" mobile. Read roadmap, collection policy reference and Purview service description; billing-model search excerpt covers Windows/macOS and other sources, not this integration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "There is no licensing requirement to apply collection policies themselves.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "There are no licensing requirements to apply collection policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The workload governed by a collection policy must be licensed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Instead, you must be licensed for the workload for which you're creating the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Copilot experiences, Enterprise AI and unmanaged cloud app activity detected through non-Microsoft SASE and secure enterprise browser integrations are pay-as-you-go collection sources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-policy-reference",
+      "quote": "Copilot experiences ... Enterprise AI ... Unmanaged cloud app activity detected through non-Microsoft SASE and secure enterprise browser integrations via Microsoft Purview network data security",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Pay-as-you-go collection sources require an Azure subscription to be linked before policy creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-policy-reference",
+      "quote": "Some collection policy data sources and features are pay-as-you-go and require an Azure subscription to be linked before creating a policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "Whether these pay-as-you-go collection arrangements apply to the planned mobile data source is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Purview\" \"MAM\" \"licensing\" mobile. Read collection reference, create/deploy and service description; none identifies the planned managed mobile app source in its billing scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].note; Risk assessment; Scope",
+      "type": "role",
+      "claim": "DLP Compliance Management is an applicable collection policy role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
+      "quote": "Here's a list of applicable roles. - DLP Compliance Management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Organization Management is an applicable collection policy role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
+      "quote": "Here's a list of applicable role groups. - Organization Management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Compliance Administrator is an applicable collection policy role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
+      "quote": "Here's a list of applicable role groups. ... Compliance Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Insider Risk Management Admin is an applicable collection policy role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
+      "quote": "Here's a list of applicable role groups. ... Insider Risk Management Admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Information Protection Admins is an applicable collection policy role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
+      "quote": "Here's a list of applicable role groups. ... Information Protection Admins",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Data Security Viewers provides read-only support for collection policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
+      "quote": "Data Security Viewers (read-only support)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The identity used to evaluate the new mobile DLP capability is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Intune mobile DLP clipboard no policy configured default enforcement identity evaluation precedence. Opened Intune overview, Purview Graph security overview and DLP overview; none specifies the identity used by this mobile integration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "absence",
+      "claim": "Roles for managing the new mobile DLP scenario are not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview Intune MAM protected mobile apps DLP licensing prerequisites supported apps default policy precedence clipboard role. Opened collection create/deploy, DLP overview and Intune overview; no mobile DLP management scenario is described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Change & support; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "Precedence between Intune clipboard restrictions and the new Purview mobile DLP rules is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Intune mobile DLP clipboard no policy configured default enforcement identity evaluation precedence. Opened Intune overview, iOS protection settings and Purview Graph security overview. Edge work-profile and Windows device results do not state precedence for this mobile integration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "Specific supported apps, mobile OS versions and user scope for the new integration are not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview Intune MAM protected mobile apps DLP licensing prerequisites supported apps default policy precedence clipboard role. Opened Intune overview, DLP overview and collection reference; none defines this integration's supported apps or versions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Prerequisites specific to the new Purview mobile integration are not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview Intune MAM protected mobile apps DLP licensing prerequisites supported apps default policy precedence clipboard role. Read roadmap, Intune overview, DLP overview and collection reference; they give existing product prerequisites but none for this planned integration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The existing Intune protection route targets apps integrated with the Intune SDK.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/app-management/protection/create-policy",
+      "quote": "All Apps includes all Microsoft and partner apps that have integrated the Intune SDK.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing: final paragraph",
+      "type": "licensing",
+      "claim": "The cited pages do not cover licensing for Intune app protection policies.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/intune/app-management/protection/overview",
+      "quote": "User requirements to use app protection policies ... The user must have a license for Microsoft Intune assigned to their Microsoft Entra account.",
+      "severity": "blocker",
+      "fix": "Replace 'The Intune app protection policy path is separate and its licensing is not covered by these pages' with 'The existing Intune app protection policy is separate. The App Protection Policies Overview says users must have a Microsoft Intune licence assigned to their Microsoft Entra account.' Keep the absence of licensing specific to the new Purview integration distinct."
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes clipboard action evaluation and does not describe autonomous actions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "clipboard actions in managed mobile apps are evaluated against Purview DLP policies before sharing is allowed",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "rationale: risk",
+      "type": "default",
+      "claim": "If the new checks remain unconfigured, existing Intune clipboard settings keep governing, and the roadmap says Purview governs once policies exist.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Purview Intune mobile DLP clipboard no policy configured default enforcement identity evaluation precedence. Read roadmap and Purview Graph security overview; neither states this integration requires newly configured policies or excludes automatic use of existing or default policies.",
+      "severity": "minor",
+      "fix": "Replace the risk rationale with 'Medium. Microsoft has not stated the new control's default; this assessment assumes today's mobile data protection behaviour continues, rather than asserting what happens on arrival. The roadmap plans content-aware evaluation of clipboard actions against Purview DLP policies.'"
+    },
+    {
+      "n": 47,
+      "where": "Governance controls: first paragraph",
+      "type": "behaviour",
+      "claim": "The two existing controls in the table are the only controls Learn documents today.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Purview\" \"mobile apps\" \"Intune\" DLP policy. Opened Intune create-policy, iOS settings, collection overview and collection create/deploy; these establish the two selected controls, not an exhaustive inventory of all documented controls.",
+      "severity": "major",
+      "fix": "Replace 'Two existing controls are the only ones Learn documents today' with 'The table shows two documented existing controls, distinct from the planned mobile DLP capability.'"
+    },
+    {
+      "n": 48,
+      "where": "Open questions: default-state question",
+      "type": "date",
+      "claim": "The capability reaches preview in January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"previewDate\": \"January CY2027\"",
+      "severity": "minor",
+      "fix": "Replace 'when the capability reaches preview in January CY2027' with 'if the capability reaches its January CY2027 preview target'."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T08:52:36.022Z",
+    "summary": {
+      "links": 12,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=567311",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/intune/app-management/protection/create-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/intune/app-management/protection/ref-settings-ios",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/intune/app-management/protection/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/intune-mam-iosmanagedappprotection-create",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/collection-policies-solution-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/collection-policies-policy-reference",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-learn-about-dlp",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/security-datasecurityandgovernance-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Clipboard sharing between apps under Intune app protection",
+        "docs": "https://learn.microsoft.com/intune/app-management/protection/create-policy",
+        "reachable": true,
+        "segments": [
+          "Apps",
+          "Protection",
+          "Create policy",
+          "iOS/iPadOS",
+          "Data protection"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Clipboard sharing between apps under Intune app protection",
+        "docs": "https://learn.microsoft.com/graph/api/intune-mam-iosmanagedappprotection-create",
+        "reachable": true,
+        "token": "/v1.0/deviceAppManagement/iosManagedAppProtections",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which events Purview collects from supported data sources",
+        "docs": "https://learn.microsoft.com/purview/collection-policies-solution-overview",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Data Loss Prevention",
+          "Classifiers",
+          "Collection policies"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

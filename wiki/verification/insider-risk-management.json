@@ -1,0 +1,1480 @@
+{
+  "slug": "insider-risk-management",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "Microsoft Purview Insider Risk Management: what does it detect, who sees it and what does it cost?",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "3 blocking findings (claims 20, 61, 108)"
+    ]
+  },
+  "counts": {
+    "claims": 109,
+    "confirmed": 105,
+    "unconfirmed": 0,
+    "contradicted": 4,
+    "blocker": 3,
+    "major": 0,
+    "minor": 11
+  },
+  "summary": "Hold: role-group membership has documented PowerShell automation, contrary to the table's stated gap. The page also describes every template as capped despite the documented unlimited forensic-evidence template, and treats the published privacy default as an open question. Most policy, licensing, privacy and audit claims are supported, with several qualifications and preview labels needing clarification.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The policy creation route is Microsoft Purview portal > Insider Risk Management > Policies > Create policy > Policy template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "Select Policies in the left navigation.\n4. Select Create policy to open the policy workflow.\n5. On the Policy template page, choose a policy category and then select the template for the new policy.",
+      "severity": "minor",
+      "fix": "The printed route correctly reaches template selection but not user and indicator selection. Narrow this row's governs to 'Which template a new insider risk policy uses'; preserve the printed path."
+    },
+    {
+      "n": 2,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Policy indicators are configured at Microsoft Purview portal > Insider Risk Management > Settings > Policy indicators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "In the Microsoft Purview portal, go to Insider Risk Management > Settings > Policy indicators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Choose apps to monitor is under Insider Risk Management > Settings > Policy indicators > Generative AI apps indicators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "In the Microsoft Purview portal, go to Insider Risk Management > Settings > Policy indicators.\n2. Expand Generative AI apps indicators.\n3. For Microsoft Copilot experiences and Enterprise AI apps, select Choose apps to monitor.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Global exclusions are reached through Settings > Insider Risk Management > Insider risk settings > Global exclusions in the Microsoft Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions",
+      "quote": "Select Settings in the upper-right corner of the page, then select Insider Risk Management to go to the Insider Risk Management settings.\n3. Under Insider risk settings, select Global exclusions.",
+      "severity": "minor",
+      "fix": "The path stops on the correct page. Append ' > Type > exclusion type', using a lower-case placeholder for the selected type; retain the note telling readers to choose the type."
+    },
+    {
+      "n": 5,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "Username privacy is configured at Microsoft Purview portal > Settings > Insider Risk Management > Privacy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-privacy",
+      "quote": "Select Settings in the upper-right corner of the page.\n3. Select Insider Risk Management to go to the Insider Risk Management settings.\n4. Select Privacy.\n5. Select the option you want, to show anonymized names or not.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "controls[5].ui",
+      "type": "admin-path",
+      "claim": "The alert-severity sharing setting is under Settings > Insider Risk Management > Data sharing > Sharing data with other Microsoft security solutions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-share-data",
+      "quote": "In Insider Risk Management settings, select the Data sharing setting.\n2. Under the Sharing data with other Microsoft security solutions section, turn on the setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "controls[6].ui",
+      "type": "admin-path",
+      "claim": "Adaptive Protection can be turned on or off at Insider Risk Management > Adaptive protection > Adaptive Protection settings > Adaptive Protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection",
+      "quote": "Select Adaptive protection in the left navigation, then select Insider risk levels.\nTo enable Adaptive Protection, select the Adaptive Protection settings tab, and then turn Adaptive Protection to On.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "controls[7].ui",
+      "type": "admin-path",
+      "claim": "Analytics is reached through Microsoft Purview portal > Settings > Insider Risk Management > Insider risk settings > Analytics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-analytics",
+      "quote": "Select Settings in the upper-right corner of the page.\n3. Select Insider Risk Management to go to the Insider Risk Management settings.\n4. Under Insider risk settings, select Analytics, and then turn off the setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "controls[8].ui",
+      "type": "admin-path",
+      "claim": "Role-group membership is edited at Settings > Roles and groups > Roles groups > Insider Risk Management > Edit > Choose users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Select Settings in the upper-right corner of the page, select Roles and groups, then select Roles groups in the left navigation pane.\n3. Select the Insider Risk Management role group, then select Edit.\n4. Select Choose users",
+      "severity": "minor",
+      "fix": "The cited IRM page supports this route, but https://learn.microsoft.com/purview/purview-permissions instead gives 'Settings > Roles and scopes > Role groups > role group > Edit > Choose users'. Add a note reporting that alternative navigation rather than silently choosing between the two pages."
+    },
+    {
+      "n": 10,
+      "where": "controls[9].ui",
+      "type": "admin-path",
+      "claim": "Auditing can be enabled through Microsoft Purview portal > Audit > Start recording user and admin activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Select the Audit solution card. If the Audit solution card isn't displayed, select View all solutions and then select Audit from the Core section.\nSelect the Start recording user and admin activity banner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[9].api",
+      "type": "command",
+      "claim": "Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true enables auditing in Exchange Online PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Connect to Exchange Online PowerShell.\n2. Run the following PowerShell command to turn on auditing.\n\nSet-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].api",
+      "type": "absence",
+      "claim": "Microsoft has not documented a command or API to configure Insider Risk Management policies.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management policy create update PowerShell cmdlet Microsoft Graph' and 'site:learn.microsoft.com/powershell \"insider risk\" policies settings indicators privacy analytics'; opened IRM configure, policies and settings; no policy-setting operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "Microsoft has not documented automation for selecting Insider Risk Management policy indicators.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management policy indicators Choose apps to monitor PowerShell Graph API configure' and workload PowerShell search; opened learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators and configure; no indicator-setting operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "Microsoft has not documented automation for choosing generative AI apps to monitor.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management policy indicators Choose apps to monitor PowerShell Graph API configure'; opened learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators, including Select generative AI apps to monitor; no app-selection operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[3].api",
+      "type": "absence",
+      "claim": "Microsoft has not documented automation for configuring Insider Risk Management global exclusions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management global exclusions privacy anonymized usernames PowerShell cmdlet API' and workload PowerShell search; opened learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions and settings; no exclusion-setting operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[4].api",
+      "type": "absence",
+      "claim": "Microsoft has not documented automation for the Insider Risk Management username privacy setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management global exclusions privacy anonymized usernames PowerShell cmdlet API' and workload PowerShell search; opened learn.microsoft.com/purview/insider-risk-management-settings-privacy and settings; no privacy-setting operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[5].api",
+      "type": "absence",
+      "claim": "Microsoft has not documented an API or command that enables Insider Risk Management alert-severity data sharing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management Data sharing Adaptive Protection enable disable PowerShell API'; opened learn.microsoft.com/purview/insider-risk-management-settings-share-data and settings. Export/read APIs were documented, but no operation setting the sharing switch was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[6].api",
+      "type": "absence",
+      "claim": "Microsoft has not documented an API or command that turns Insider Risk Management Adaptive Protection on or off.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management Data sharing Adaptive Protection enable disable PowerShell API'; opened learn.microsoft.com/purview/insider-risk-management-adaptive-protection and settings; no operation setting the Adaptive Protection switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[7].api",
+      "type": "absence",
+      "claim": "Microsoft has not documented automation for enabling Insider Risk Management analytics scans.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management analytics enable scan tenant activity PowerShell API' and workload PowerShell search; opened learn.microsoft.com/purview/insider-risk-management-settings-analytics and configure; no scan-setting operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[8].api",
+      "type": "absence",
+      "claim": "Microsoft has not documented automation for Insider Risk Management role-group membership.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group.\nThe Identity parameter specifies the role group to add a member to.\nThe Member parameter specifies who you want to add to the role group.",
+      "severity": "blocker",
+      "fix": "Set controls[8].api to kind 'powershell', call 'Add-RoleGroupMember -Identity \"Insider Risk Management\" -Member <user>', docs 'https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember'. Add 'Run in Security & Compliance PowerShell' to its note. Narrow the prose and Open questions automation gaps to policies and settings, removing role-group membership. https://learn.microsoft.com/entra/identity/role-based-access-control/m365-workload-docs#microsoft-365 explicitly lists Add-RoleGroupMember for Purview-specific roles."
+    },
+    {
+      "n": 21,
+      "where": "title; What it is",
+      "type": "behaviour",
+      "claim": "Microsoft Purview Insider Risk Management detects, investigates and acts on malicious and inadvertent insider activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management",
+      "quote": "Microsoft Purview Insider Risk Management is a compliance solution that helps minimize internal risks by enabling you to detect, investigate, and act on malicious and inadvertent activities in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "Insider risk policies determine which users and risk indicators are monitored.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+      "quote": "Insider Risk Management policies determine which users are in scope and which types of risk indicators are configured for alerts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "Policy activity is risk-scored and can generate alerts for analysts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+      "quote": "By using templates, you can select specific risk indicators and customize event thresholds for policy indicators, effectively customizing risk scores, and level and frequency of alerts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What it is: Signals",
+      "type": "behaviour",
+      "claim": "Policies use logs from Microsoft 365 and Microsoft Graph.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management",
+      "quote": "By using logs from Microsoft 365 and Microsoft Graph, Insider Risk Management enables you to define specific policies to identify risk indicators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What it is: Signals; Risks and limits",
+      "type": "applicability",
+      "claim": "The Microsoft 365 audit log is a prerequisite used by policies and analytics scans to detect risk activities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "Step 2 (required): Enable the Microsoft 365 audit log\nInsider Risk Management uses Microsoft 365 audit logs for user insights and risk management activities identified in policies and analytics insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What it is: Policies",
+      "type": "behaviour",
+      "claim": "Insider risk policies are built from templates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management",
+      "quote": "You create Insider Risk Management policies by using predefined templates and policy conditions that define which triggering events and risk indicators to examine in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What it is: Policies",
+      "type": "default",
+      "claim": "All global indicators are disabled by default and one or more must be selected to configure a policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings",
+      "quote": "All global indicators are disabled by default; you must select one or more indicators to configure an Insider Risk Management policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What it is: Policies",
+      "type": "behaviour",
+      "claim": "Potentially risky activity cannot trigger policy alerts until a policy is configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "Before potentially risky activities can trigger alerts, you must configure a policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What it is: Policies",
+      "type": "behaviour",
+      "claim": "The policy dashboard separates user policies and agent policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+      "quote": "Your policies are separated into two categories: User policy and Agent policy. Switch between the two to locate relevant policy details.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What it is: Policies",
+      "type": "applicability",
+      "claim": "Agent policies cover Microsoft Copilot Studio and Microsoft Foundry agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+      "quote": "Agent policy covers agents from Microsoft Copilot Studio and Microsoft Foundry.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What it is: Triage and cases",
+      "type": "behaviour",
+      "claim": "New alerts receive Needs review status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management",
+      "quote": "New user activities that need investigation automatically generate alerts and assign them a Needs review status.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What it is: Triage and cases",
+      "type": "behaviour",
+      "claim": "Reviewers can resolve an alert by opening a new case, assigning it to an existing case or dismissing it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management",
+      "quote": "Resolve alerts by opening a new case, assigning the alert to an existing case, or dismissing the alert.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What it is: Triage and cases",
+      "type": "behaviour",
+      "claim": "Cases can be escalated to Microsoft Purview eDiscovery (Premium).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management",
+      "quote": "Escalating a case for investigation allows you to transfer data and management of the case to Microsoft Purview eDiscovery (Premium).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What it is: Analytics; controls[7]",
+      "type": "behaviour",
+      "claim": "Analytics evaluates potential insider risk without configuring policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management",
+      "quote": "Insider risk analytics enables you to evaluate potential insider risks in your organization without configuring any insider risk policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What it is: Neighbours; controls[6]",
+      "type": "applicability",
+      "claim": "Adaptive Protection uses insider risk levels to dynamically apply DLP, data lifecycle management and Conditional Access policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection",
+      "quote": "Microsoft Purview Data Loss Prevention (DLP)\nMicrosoft Purview Data Lifecycle Management (preview)\nMicrosoft Entra Conditional Access (preview)",
+      "severity": "minor",
+      "fix": "Change the Neighbours sentence to 'Adaptive Protection uses insider risk levels to drive data loss prevention, data lifecycle management (preview) and Conditional Access (preview) policies.' Preserve those preview qualifications wherever these integrations are described as available."
+    },
+    {
+      "n": 36,
+      "where": "What it is: Neighbours; controls[5]",
+      "type": "applicability",
+      "claim": "The Data sharing setting shares alert severity with Microsoft Defender XDR, Communication Compliance and DLP.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-share-data",
+      "quote": "You can share alert severity levels from Insider Risk Management to bring unique user context to alert investigation experiences in the following Microsoft security solutions:\nMicrosoft Defender XDR\nMicrosoft Purview Communication Compliance\nMicrosoft Purview Data Loss Prevention (DLP)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Why it matters",
+      "type": "applicability",
+      "claim": "Some templates have HR connector prerequisites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-plan",
+      "quote": "For the Data theft by departing users template, configure a Microsoft 365 HR connector to periodically import resignation and termination date information for users in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters",
+      "type": "applicability",
+      "claim": "Some template detections require a DLP policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-plan",
+      "quote": "For the Data leaks template, configure at least one Microsoft Purview Data Loss Prevention (DLP) policy to define sensitive information in your organization and to receive insider risk alerts for High Severity DLP policy alerts.",
+      "severity": "minor",
+      "fix": "Replace 'a DLP policy' in the prerequisites parenthesis with 'a DLP policy when using high-severity DLP alerts as the trigger'. The cited Get started page says a DLP policy is optional for Data leaks and Data leaks by priority users."
+    },
+    {
+      "n": 39,
+      "where": "Why it matters",
+      "type": "applicability",
+      "claim": "Security policy violation templates require Microsoft Defender for Endpoint integration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-plan",
+      "quote": "For the Security policy violation template, enable Microsoft Defender for Endpoint for Insider Risk Management integration in the Defender Security Center to import security violation alerts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Why it matters",
+      "type": "licensing",
+      "claim": "Security policy violation policies do not assign risk scores until a Microsoft Defender for Endpoint subscription is added.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+      "quote": "An active Microsoft Defender for Endpoint subscription wasn't detected for your organization. Until a Microsoft Defender for Endpoint subscription is added, these policies won't assign risk scores to user activity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Why it matters; Open questions",
+      "type": "default",
+      "claim": "Microsoft describes users as pseudonymised by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-privacy",
+      "quote": "Built with privacy by design, users are pseudonymized by default, and role-based access controls and audit logs are in place to help ensure user-level privacy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Why it matters; controls[4]",
+      "type": "behaviour",
+      "claim": "The Privacy setting determines whether analysts see usernames or anonymised versions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-privacy",
+      "quote": "The solution anonymizes the names of users to prevent admins, data investigators, and reviewers from seeing who is associated with policy alerts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft says customers are solely responsible for lawful use of Insider Risk Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "Customers are solely responsible for using the Insider Risk Management service, and any associated feature or service in compliance with all applicable laws, including laws relating to individual user identification and any remediation actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft's planning page asks organisations to identify stakeholders for acting on alerts and cases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-plan",
+      "quote": "Identify the appropriate stakeholders in your organization to collaborate for taking actions on Insider Risk Management alerts and cases.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Insider Risk Management is included in Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW, Microsoft Defender + Purview Suite FLW and Microsoft 365 E5/A5/F5/G5 Insider Risk Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, and Microsoft 365 E5/A5/F5/G5 Insider Risk Management |\n| --- | --- |\n| Insider Risk Management | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "A user needs the required licence when a Purview policy or feature operates on their mailbox, OneDrive account, Teams chats or devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Exchange user mailboxes, OneDrive accounts, Teams chats, and devices are associated with a user account, so the user must have the required license assigned when a Purview policy or feature is used in these locations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing",
+      "type": "availability",
+      "claim": "Microsoft documents availability in tenant regions supported by Azure service dependencies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "Insider Risk Management is currently available in tenants hosted in geographical regions and countries supported by Azure service dependencies.",
+      "severity": "minor",
+      "fix": "Add: 'The Adaptive Protection page additionally says Insider Risk Management is available for commercial clouds but not US Government cloud programs, while the planning page describes migration between government and commercial clouds.' Both pages are already cited; report this documentation discrepancy without resolving it by inference."
+    },
+    {
+      "n": 48,
+      "where": "summary; Cost and licensing; controls[1].note",
+      "type": "cost",
+      "claim": "Some Insider Risk Management indicators require pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "Some indicators included in Insider Risk Management are only available if you enable the pay-as-you-go billing model for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "The Microsoft Purview portal has a Usage center for understanding and managing usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "To help you understand and manage your usage, Microsoft Purview provides a Usage center in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing",
+      "type": "default",
+      "claim": "All available Microsoft Copilot experiences and Enterprise AI apps are selected for monitoring by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "For Microsoft Copilot experiences and Enterprise AI apps, you can select which specific generative AI apps you want to monitor. By default, all available apps are selected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing; controls[2].note",
+      "type": "behaviour",
+      "claim": "Signals from a deselected generative AI app are not processed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "When an app is deselected, signals from that app aren't processed and no cost is incurred.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "No monitoring cost is incurred for a deselected app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "When an app is deselected, signals from that app aren't processed and no cost is incurred.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[2].note",
+      "type": "applicability",
+      "claim": "App selection applies only to Microsoft Copilot experiences and Enterprise AI apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "For Microsoft Copilot experiences and Enterprise AI apps only, you can review and deselect apps to optimize costs and reduce alert noise.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Forensic evidence is an opt-in capacity add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Forensic evidence is an opt-in, capacity add-on feature in Microsoft Purview Insider Risk Management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Forensic evidence capacity is sold in units of 100 GB per month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Customers can purchase the forensic evidence add-on in units of 100 GB per month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Forensic evidence capacity is metered on tenant-level ingestion for users scoped in forensic evidence policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "The purchased capacity will be metered based on forensic evidence ingestion at the tenant level for the users scoped in forensic evidence policies configured by admins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The Get started page does not state a price rate for pay-as-you-go indicators or forensic evidence.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: price, rate, $, pay-as-you-go and forensic evidence in the fetched learn.microsoft.com/purview/insider-risk-management-configure page; read its billing and forensic sections. They link elsewhere without publishing a numeric price rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risks and limits: Auditing",
+      "type": "default",
+      "claim": "Auditing is not enabled by default for Small and Medium Business licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Auditing isn't enabled by default for Small and Medium Business (SMB) licenses, including Microsoft 365 Business Basic, Business Standard, and Business Premium.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Risks and limits: Auditing",
+      "type": "behaviour",
+      "claim": "An administrator may have disabled auditing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "If auditing is disabled for your organization, it might be because another administrator has turned it off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Risks and limits: Auditing",
+      "type": "behaviour",
+      "claim": "The Insider Risk Management audit log and Microsoft 365 audit log are independent systems.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-audit-log",
+      "quote": "The Insider Risk Management audit log isn't associated with the Microsoft 365 audit log. They're independent auditing systems that capture information on separate areas. Disabling Microsoft 365 auditing doesn't impact activity auditing within Insider Risk Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Risks and limits: User limits",
+      "type": "behaviour",
+      "claim": "Each template caps the number of users in scope.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-limits",
+      "quote": "| Forensic evidence | Unlimited |",
+      "severity": "blocker",
+      "fix": "Replace 'Each template caps users in scope' with 'Most templates have maximum user-in-scope limits'. Forensic evidence is explicitly unlimited in the cited limits table; do not describe all templates as capped."
+    },
+    {
+      "n": 62,
+      "where": "Risks and limits: User limits",
+      "type": "behaviour",
+      "claim": "Data leaks by priority users has a 1,000-user scope limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-limits",
+      "quote": "| Data leaks by priority users | 1,000 |",
+      "severity": "minor",
+      "fix": "Add 'across all policies using a given template' to the sentence giving the 1,000 and 15,000 examples. https://learn.microsoft.com/purview/insider-risk-management-policy-templates says these maximum limits apply across all policies using a given policy template, not independently to each policy."
+    },
+    {
+      "n": 63,
+      "where": "Risks and limits: User limits",
+      "type": "behaviour",
+      "claim": "Data leaks has a 15,000-user scope limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-limits",
+      "quote": "| Data leaks | 15,000 |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Risks and limits: User limits",
+      "type": "behaviour",
+      "claim": "Policy performance reduces when the template user limit is approached or exceeded.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policy-templates",
+      "quote": "If the number of users for a policy template type nears or exceeds the user limit, the policy performance reduces.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Risks and limits: User limits",
+      "type": "behaviour",
+      "claim": "The limit counts users brought into scope by a triggering event, not the number added to a policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-limits",
+      "quote": "You can add any number of users to a policy. The limit applies to users in scope of a policy template (users brought in scope after a triggering event).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Risks and limits: Anonymisation",
+      "type": "behaviour",
+      "claim": "Names in activity metadata and Content explorer file metadata and content are not anonymised.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-privacy",
+      "quote": "However, names of users that appear in the metadata of an activity, in the metadata of files in Content explorer, and within content of files in Content explorer aren't anonymized.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Risks and limits: Anonymisation",
+      "type": "behaviour",
+      "claim": "Alerts exported using the exporting API or to eDiscovery show usernames.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-privacy",
+      "quote": "anonymization of usernames isn't preserved for exported alerts when using the exporting API or when exporting to Microsoft Purview eDiscovery solutions. Exported alerts display usernames for each alert in this case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Risks and limits: Anonymisation",
+      "type": "behaviour",
+      "claim": "Data risk graph cannot be used while username anonymisation is on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-privacy",
+      "quote": "With the anonymized versions of usernames setting enabled, you cannot use data risk graph.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Risks and limits: Anonymisation",
+      "type": "behaviour",
+      "claim": "The Triage Agent dashboard shows usernames even when anonymisation is enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-privacy",
+      "quote": "user names in prioritized alerts aren't anonymized in the Triage Agent dashboard if Show anonymized versions of usernames is enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Risks and limits: Administrative units",
+      "type": "role",
+      "claim": "Restricted administrators cannot see alerts for users assigned through security or distribution groups in administrative units.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Restricted administrators can't access alerts for the users assigned to them through security groups or distribution groups added in administrative units.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Risks and limits: Exclusions",
+      "type": "behaviour",
+      "claim": "An excluded event involved in an obfuscation sequence is still included in that sequence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+      "quote": "if an event that's excluded from risk scoring is part of a sequence due to an obfuscation activity, the event is included in the sequence since it might be interesting in the context of the sequence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Risks and limits: Adaptive Protection",
+      "type": "behaviour",
+      "claim": "Disabling Adaptive Protection stops assigning and sharing insider risk levels with DLP, data lifecycle management and Conditional Access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection",
+      "quote": "If you turn off Adaptive Protection after it's been on and active, the system stops assigning insider risk levels to users and stops sharing them with data loss prevention, data lifecycle management, and Conditional Access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Risks and limits: Adaptive Protection",
+      "type": "behaviour",
+      "claim": "Disabling Adaptive Protection resets existing insider risk levels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection",
+      "quote": "All existing insider risk levels for users are reset.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Risks and limits: Adaptive Protection",
+      "type": "behaviour",
+      "claim": "Alert severity levels are Low, Medium and High, distinct from Adaptive Protection insider risk levels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-share-data",
+      "quote": "Alert severity levels in Insider Risk Management are different from insider risk levels that are defined in Adaptive Protection.\nAlert severity levels (Low, Medium, or High)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Risks and limits: Adaptive Protection",
+      "type": "behaviour",
+      "claim": "Adaptive Protection insider risk levels are Elevated, Moderate and Minor.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-share-data",
+      "quote": "Insider risk levels (Elevated, Moderate, or Minor) in Adaptive Protection measure risk determined by admin-defined conditions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Risks and limits: Cloud migration",
+      "type": "behaviour",
+      "claim": "Active alerts and cases do not migrate between Microsoft 365 US Government Cloud and the commercial cloud.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-plan",
+      "quote": "If you migrate your organization from the Microsoft 365 US Government Cloud to the worldwide commercial cloud or from the worldwide commercial cloud to the Government Cloud, active cases and alerts don't migrate. Close any alerts and cases before starting the migration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "controls[3].governs",
+      "type": "behaviour",
+      "claim": "Global exclusions decide which sensitive info types policies ignore.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions",
+      "quote": "The system treats these excluded types as non-sensitive info types. If a file contains any sensitive info type you identify in this section, the system risk scores the file but doesn't show activities involving content related to sensitive info types.",
+      "severity": "minor",
+      "fix": "Clarify the row note: 'Sensitive info type exclusions are preview and treat the excluded types as non-sensitive; files still receive risk scores, but activities involving the excluded sensitive content are not shown.' This distinguishes type exclusion from excluding the file itself."
+    },
+    {
+      "n": 78,
+      "where": "Governance controls: role groups",
+      "type": "role",
+      "claim": "Six Insider Risk Management role groups divide configuration and investigation work.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Use six role groups to configure Insider Risk Management features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Governance controls: role groups",
+      "type": "role",
+      "claim": "The Insider Risk Management role group has every solution action in the documented permission matrix.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "| Access & investigate alerts | Yes | No | Yes | Yes | No | No |\n| Configure policies and settings | Yes | Yes | No | No | No | No |\n| View & export audit logs | Yes | No | No | No | Yes | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "The Insider Risk Management and Insider Risk Management Admins groups can configure policies and settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "| Configure policies and settings | Yes | Yes | No | No | No | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Governance controls: role groups",
+      "type": "role",
+      "claim": "Insider Risk Management Admins cannot investigate alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "| Access & investigate alerts | Yes | No | Yes | Yes | No | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Governance controls: role groups",
+      "type": "role",
+      "claim": "Analysts, Investigators, Auditors and Approvers have narrower action sets than the Insider Risk Management group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "| Configure policies and settings | Yes | Yes | No | No | No | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Governance controls: role assignment",
+      "type": "role",
+      "claim": "Entra Global Administrator and Compliance Administrator, and Purview Organization Management and Compliance Administrator, can assign users to these role groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Members of the following roles can assign users to Insider Risk Management role groups\nMicrosoft Entra ID Global Administrator\nMicrosoft Entra ID Compliance Administrator\nMicrosoft Purview Organization Management\nMicrosoft Purview Compliance Administrator",
+      "severity": "minor",
+      "fix": "Add: 'The general Purview permissions page instead requires Global Administrator or the Role Management role to view and modify role groups.' Cite https://learn.microsoft.com/purview/purview-permissions alongside the solution-specific permissions page; do not silently resolve their different role guidance."
+    },
+    {
+      "n": 84,
+      "where": "controls[8].note; Governance controls",
+      "type": "role",
+      "claim": "Role-group permission changes can take up to 30 minutes to apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "After configuring your role groups, it might take up to 30 minutes for the role group permissions to apply to assigned users across your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "Governance controls; What to check",
+      "type": "role",
+      "claim": "Microsoft asks organisations to retain at least one member in Insider Risk Management or Insider Risk Management Admins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Make sure you always have at least one user in the built-in Insider Risk Management or Insider Risk Management Admins role groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "controls[8].note",
+      "type": "applicability",
+      "claim": "Administrative units can scope Insider Risk Management user permissions to a region or department.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "You can use administrative units in Insider Risk Management to scope user permissions to a particular geography or department.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "Governance controls: administrative units",
+      "type": "role",
+      "claim": "Assigning administrative units makes role-group members restricted administrators with limited access to settings, policies and user data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "After you assign admin units to members of role groups, those members become restricted administrators and have limited access to Insider Risk Management settings, policies, and user data in the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Creating quick policies requires an unrestricted administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+      "quote": "You must be an unrestricted administrator to create quick policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 89,
+      "where": "Governance controls: audit log",
+      "type": "behaviour",
+      "claim": "The Insider Risk Management audit log records actions on policies, cases, alerts, settings, users and notice templates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-audit-log",
+      "quote": "Areas in identified risk activity detection include:\nPolicies\nCases\nAlerts\nSettings\nUsers\nNotice templates",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "Governance controls: audit log",
+      "type": "behaviour",
+      "claim": "The Insider Risk Management audit log retains information for 180 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-audit-log",
+      "quote": "The audit log keeps information for 180 days (about six months). After 180 days, the log permanently deletes data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 91,
+      "where": "Governance controls: audit log",
+      "type": "behaviour",
+      "claim": "The Insider Risk Management audit log cannot be disabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-audit-log",
+      "quote": "Your organization automatically enables the Insider Risk Management audit log and you can't disable it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 92,
+      "where": "Governance controls: audit log",
+      "type": "role",
+      "claim": "The Insider Risk Management or Insider Risk Management Auditors role groups can read the insider risk audit log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-audit-log",
+      "quote": "To view and export data from the audit log, assign users to the Insider Risk Management or Insider Risk Management Auditors role groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 93,
+      "where": "Governance controls: Export alerts",
+      "type": "default",
+      "claim": "Export alerts is disabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-share-data",
+      "quote": "Select Export alerts. By default, this setting is disabled for your Microsoft 365 organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 94,
+      "where": "Governance controls: Export alerts",
+      "type": "behaviour",
+      "claim": "When Export alerts is enabled, alerts are available through the Office 365 Management Activity API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-share-data",
+      "quote": "You can export Microsoft Purview Insider Risk Management alert information to security information and event management (SIEM) and security orchestration automated response (SOAR) solutions by using the Office 365 Management Activity API schema.",
+      "severity": "minor",
+      "fix": "Add: 'The Insider Risk Management overview labels Office 365 Management APIs integration as preview, while the data-sharing page documents it without that label.' Both pages are already cited."
+    },
+    {
+      "n": 95,
+      "where": "Governance controls: Export alerts",
+      "type": "behaviour",
+      "claim": "Exported insider risk alerts are available under SecurityComplianceAlerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-share-data",
+      "quote": "Filter the common Office 365 audit activities by SecurityComplianceAlerts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 96,
+      "where": "Governance controls: Export alerts",
+      "type": "behaviour",
+      "claim": "The exported alert category is InsiderRiskManagement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-share-data",
+      "quote": "Filter SecurityComplianceAlerts by the InsiderRiskManagement category.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 97,
+      "where": "What to check: auditing",
+      "type": "command",
+      "claim": "Get-AdminAuditLogConfig | Format-List UnifiedAuditLogIngestionEnabled checks the auditing status in Exchange Online PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "To verify that auditing is turned on for your organization, run the following command in Exchange Online PowerShell:\nGet-AdminAuditLogConfig | Format-List UnifiedAuditLogIngestionEnabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 98,
+      "where": "What to check: policies",
+      "type": "behaviour",
+      "claim": "The Status column on the Policies tab shows policy warnings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+      "quote": "The Status column on the Policies tab alerts you to policy issues that might prevent user activity from being reported or explain why the number of activity alerts is unusual.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 99,
+      "where": "What to check: policies",
+      "type": "behaviour",
+      "claim": "Users in scope shows the number of included users for a policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-limits",
+      "quote": "The Users in scope column on the Policies tab shows the number of included users for a policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 100,
+      "where": "controls[4].note",
+      "type": "applicability",
+      "claim": "Username anonymisation applies to all policies and current and past policy matches.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-privacy",
+      "quote": "Choosing this setting anonymizes all users with current and past policy matches and applies to all policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 101,
+      "where": "controls[6].note",
+      "type": "behaviour",
+      "claim": "Insider risk levels can take up to 36 hours to appear after Adaptive Protection is enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection",
+      "quote": "It might take up to 36 hours before you can expect to see Adaptive Protection insider risk levels and data loss prevention, data lifecycle management, and Conditional Access actions applied to applicable user activities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 102,
+      "where": "controls[9].note",
+      "type": "role",
+      "claim": "Turning auditing on or off requires the Audit Logs role in Exchange Online.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "You must be assigned the Audit Logs role in Exchange Online to turn auditing on or off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 103,
+      "where": "controls[9].note",
+      "type": "behaviour",
+      "claim": "The Start recording user and admin activity banner appears when auditing is off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "If auditing isn't turned on for your organization, a banner is displayed prompting you to start recording user and admin activity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 104,
+      "where": "controls[3].note",
+      "type": "admin-path",
+      "claim": "The exclusion type is selected in the Type panel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions",
+      "quote": "In the Type panel to the right, select File types.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 105,
+      "where": "controls[7].note",
+      "type": "role",
+      "claim": "Membership in Insider Risk Management, Insider Risk Management Admins or Microsoft 365 Global admin permits enabling analytics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "To enable insider risk analytics, you must be a member of the Insider Risk Management, Insider Risk Management Admins, or Microsoft 365 Global admin role group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 106,
+      "where": "controls[7].note",
+      "type": "admin-path",
+      "claim": "The analytics scanning setting is named Scan your tenant's user activity to identify potential insider risks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "You can also turn on scanning by going to Insider risk settings > Analytics and enabling Scan your tenant's user activity to identify potential insider risks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 107,
+      "where": "Open questions: Privacy",
+      "type": "behaviour",
+      "claim": "The planning page tells administrators to keep anonymisation enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-plan",
+      "quote": "Keep the anonymization feature in policy settings enabled to anonymize user display names in the Insider Risk Management console during this testing to maintain privacy within the tool.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 108,
+      "where": "Open questions: Privacy",
+      "type": "absence",
+      "claim": "Whether a new tenant starts with Privacy on remains undocumented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+      "quote": "With privacy on by default, insider risk indicators help identify unusual levels of risk activities when evaluated daily for users that are in-scope for insider risk policies.",
+      "severity": "blocker",
+      "fix": "Remove the final Open questions bullet. The cited policies page expressly says privacy is on by default, and the cited privacy page says users are pseudonymized by default; the planning recommendation to keep it enabled does not contradict that default."
+    },
+    {
+      "n": 109,
+      "where": "sources",
+      "type": "consistency",
+      "claim": "Every Microsoft page needed to support the page's controls and resolve documentation discrepancies is cited.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-analytics",
+      "quote": "Select Settings in the upper-right corner of the page.\n3. Select Insider Risk Management to go to the Insider Risk Management settings.\n4. Under Insider risk settings, select Analytics, and then turn off the setting.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/purview/insider-risk-management-settings-analytics and https://learn.microsoft.com/purview/purview-permissions to sources. For the corrected membership automation, also cite https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember and https://learn.microsoft.com/entra/identity/role-based-access-control/m365-workload-docs#microsoft-365. These are the additional Microsoft pages used in this verification."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T08:52:33.762Z",
+    "summary": {
+      "links": 16,
+      "unreachable": 0,
+      "uiPaths": 10,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-plan",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-settings-privacy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-settings-share-data",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-audit-log",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-policy-templates",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-limits",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users, templates and indicators a policy detects on",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+        "reachable": true,
+        "segments": [
+          "Insider Risk Management",
+          "Policies",
+          "Create policy",
+          "Policy template"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which risk indicators policies can score",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+        "reachable": true,
+        "segments": [
+          "Insider Risk Management",
+          "Settings",
+          "Policy indicators"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which generative AI apps the indicators monitor",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+        "reachable": true,
+        "segments": [
+          "Insider Risk Management",
+          "Settings",
+          "Policy indicators",
+          "Generative AI apps indicators",
+          "Choose apps to monitor"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Which file types, keywords, file paths and sensitive info types policies ignore",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-settings-global-exclusions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Insider Risk Management",
+          "Insider risk settings",
+          "Global exclusions"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Whether analysts see usernames or anonymised versions",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-settings-privacy",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Insider Risk Management",
+          "Privacy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 5,
+        "side": "ui",
+        "governs": "Whether alert severity is shared with Microsoft Defender XDR, DLP and Communication Compliance",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-settings-share-data",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Insider Risk Management",
+          "Data sharing",
+          "Sharing data with other Microsoft security solutions"
+        ],
+        "missing": []
+      },
+      {
+        "index": 6,
+        "side": "ui",
+        "governs": "Whether Adaptive Protection assigns insider risk levels and shares them with other policy engines",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection",
+        "reachable": true,
+        "segments": [
+          "Insider Risk Management",
+          "Adaptive protection",
+          "Adaptive Protection settings",
+          "Adaptive Protection"
+        ],
+        "missing": []
+      },
+      {
+        "index": 7,
+        "side": "ui",
+        "governs": "Whether analytics scans tenant user activity without policies",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Insider Risk Management",
+          "Insider risk settings",
+          "Analytics"
+        ],
+        "missing": []
+      },
+      {
+        "index": 8,
+        "side": "ui",
+        "governs": "Who is in the Insider Risk Management role groups",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and groups",
+          "Roles groups",
+          "Insider Risk Management",
+          "Edit",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 9,
+        "side": "ui",
+        "governs": "Whether the Microsoft 365 audit log records the activity policies read",
+        "docs": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Start recording user and admin activity"
+        ],
+        "missing": []
+      },
+      {
+        "index": 9,
+        "side": "api",
+        "governs": "Whether the Microsoft 365 audit log records the activity policies read",
+        "docs": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "reachable": true,
+        "token": "Set-AdminAuditLogConfig",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

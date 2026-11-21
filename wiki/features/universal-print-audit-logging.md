@@ -104,19 +104,23 @@ changes:
     note: "Correction: record fields narrowed to the Universal Print-specific fields in auditData.dynamicProperties, with common auditLogRecord fields stated; retention wording clarified; two Before rollout checklist steps removed or narrowed."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 68 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-21"
+    note: "Correction: Universal Print audit records are now stated to fall outside the one-year workload defaults and keep the 180-day default unless a custom retention policy changes it; the retention-policy coverage question is removed."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 78 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 66
+  claims: 78
+  confirmed: 78
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "3b852e19102cd978ac6108e7ae5f2d38"
+  contradicted: 0
+  attempts: 0
+  hash: "11172435709dc938de46eee0c4cadcd4"
 ---
 
 ## What's changing
@@ -151,7 +155,7 @@ Microsoft has not stated what happens on arrival, and no source says existing pr
 
 **Change & support**
 
-- Retention follows the audit licence: 180 days for users on non-E5 licences, and one year by default for Microsoft Entra ID, Exchange and SharePoint activity for E5 users. For retention beyond 180 days and up to one year in other services, an audit log retention policy and an Office 365 E5, Microsoft 365 E5, Microsoft Purview Suite or E5 eDiscovery and Audit add-on licence for the user generating the record are required ([Manage audit log retention policies](https://learn.microsoft.com/purview/audit-log-retention-policies)). Universal Print is not named among the one-year defaults, so confirm what applies before promising long-term record-keeping.
+- Retention follows the audit licence: 180 days for users on non-E5 licences, and one year by default for Microsoft Entra ID, Exchange and SharePoint activity for E5 users. For retention beyond 180 days and up to one year in other services, an audit log retention policy and an Office 365 E5, Microsoft 365 E5, Microsoft Purview Suite or E5 eDiscovery and Audit add-on licence for the user generating the record are required ([Manage audit log retention policies](https://learn.microsoft.com/purview/audit-log-retention-policies)). Universal Print unified audit records fall outside the listed one-year workload defaults and are retained for 180 days by default, unless a custom retention policy changes the duration.
 - Export is limited to 50,000 rows for Audit (Standard) and 1,000,000 rows for Audit (Premium). Print-job activity may need narrow searches by operation name.
 
 ## Cost and licensing
@@ -209,17 +213,10 @@ Searching through the portal needs the Audit Logs or View-Only Audit Logs role; 
 - When will Universal Print audit records appear in tenants, and are they on by default? The roadmap says In development with a January CY2027 target while Learn already lists the activities. Watch the roadmap item and Message center.
 - Which Universal Print-specific printer and document fields are carried inside auditData.dynamicProperties? The Learn tables and the two Graph payload pages do not say. Watch the Audit log activities page.
 - Which Record types entry selects these records in Audit > Search? The services summary omits Universal Print, but the Office 365 Management Activity API schema lists UniversalPrintPrintJob (377) and UniversalPrintManagement (427); their availability in the portal dropdown is not stated ([Office 365 Management Activity API schema](https://learn.microsoft.com/office/office-365-management-api/office-365-management-activity-api-schema)).
-- Do Universal Print records fall under the 180-day default or the one-year default, and does a retention policy cover them? Watch the Manage audit log retention policies page.
+- Universal Print unified audit records fall outside the listed one-year workload defaults and are retained for 180 days by default, unless a custom retention policy changes the duration ([Manage audit log retention policies](https://learn.microsoft.com/purview/audit-log-retention-policies)).
 
 <!-- rationale
 risk: Low. The roadmap item describes audit records of existing Universal Print activity and states no change to how printing works; the open points are what each record contains and how long records are kept.
 cost: Low. The only cost the sources show is admin time and any audit licensing already held; Universal Print's licensing page says all features are included with every eligible licence and publishes no separate audit charge.
 impact: Low. Compliance and security administrators who search the audit log notice it; the roadmap item describes no change to what users see when they print.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Open questions: retention; Risk assessment: Change & support / absence: Whether Universal Print unified audit records receive the 180-day or one-year default remains unpublished. | Found: This default policy retains audit records that contain the value of AzureActiveDirectory, Exchange, OneDrive, and SharePoint for the Workload property ... Audit records for all other activities are retained for 180 days by default | Fix: Replace the final Open questions bullet with 'Universal Print unified audit records fall outside the listed one-year workload defaults and are retained for 180 days by default, unless a custom retention policy changes the duration.' Replace 'Universal Print is not named among the one-year defaults, so confirm what applies before promising long-term record-keeping' with that same sentence. Cite https://learn.microsoft.com/purview/audit-log-retention-policies. | Source: https://learn.microsoft.com/purview/audit-log-retention-policies
-- [contradicted, blocker] Open questions: retention; Why it matters / absence: Whether an audit retention policy can cover Universal Print unified audit records remains undocumented. | Found: Record type: The audit record type the policy applies to. If you leave this property blank, the policy applies to all record types. | Fix: Remove 'and does a retention policy cover them?' from the final Open questions bullet. The existing Why it matters statement that the unified audit retention regime covers these records is supported: the cited retention page states that a policy with Record type left blank applies to all record types. Do not add a control row. | Source: https://learn.microsoft.com/purview/audit-log-retention-policies
 -->

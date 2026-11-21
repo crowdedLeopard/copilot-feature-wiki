@@ -1,0 +1,775 @@
+{
+  "slug": "m365-copilot-copilot-extensibility-users-in-gcc-m-will-able-to-use-custom-engine-agents",
+  "roadmapId": 501111,
+  "title": "Microsoft 365 Copilot: custom engine agents for GCC users",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "2 blocking findings (claims 59, 60)"
+    ]
+  },
+  "counts": {
+    "claims": 60,
+    "confirmed": 58,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "The roadmap facts and the documented block path and API are accurate. Hold the briefing because its indirect-only cost rating conflicts with documented hosting and service consumption costs, and it leaves GCC availability of the governance Graph API unresolved although Microsoft lists it as unavailable.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap says GCC-M users will be able to use custom engine agents.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users in GCC-M will be able to use custom engine agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; summary; What's changing; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is August CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The record has no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: products; What's changing",
+      "type": "record",
+      "claim": "The listed product is Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists GCC as the cloud.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The record has no more-info link.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"moreInfoLink\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-09-14T23:03:47.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-14T23:03:47\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "Custom engine agents let developers bring their own orchestration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "Unlike declarative agents, they give developers the flexibility to bring their own orchestration and AI services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "Custom engine agents give builders control over AI models and services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "Flexible AI models – Choose from foundation models, fine-tuned models, or industry-specific AI to suit your use case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Build routes include Copilot Studio, Microsoft 365 Agents SDK, Teams SDK and Microsoft Foundry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "These agents can be created using Copilot Studio, the Microsoft 365 Agents SDK, Teams SDK or Microsoft Foundry, depending on your preferred development approach and hosting environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Pro-code custom engine development requires builder-provided orchestration and hosting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "For pro-code custom engine development, choose a supported SDK and provide your own orchestration and hosting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Copilot Studio is a fully managed SaaS platform for the low-code route.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "Because Copilot Studio is a fully managed SaaS platform that simplifies building custom engine agents, you can focus on crafting effective agent experiences without worrying about infrastructure, hosting, or governance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "summary; What's changing",
+      "type": "absence",
+      "claim": "Learn does not provide a GCC-specific custom engine agent feature page confirming this release.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"custom engine agents\" \"GCC\" rollout availability; \"custom engine agents\" \"GCC\" \"default\". Read overview, prerequisites, known issues and Microsoft Copilot service description; results give general agents guidance, not a GCC-specific release page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "The Microsoft Copilot service description lists declarative agents for GCC.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "| Declarative agents | Yes | Yes | Yes⁸ | Not currently available |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "The Microsoft Copilot service description lists Agent Builder for GCC.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "| Agent Builder | Yes | Yes | Yes | Not currently available |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment; Governance guidance; Open questions; changes",
+      "type": "absence",
+      "claim": "The Microsoft Copilot service description feature table has no custom engine agents row.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"custom engine agents\" \"GCC\" rollout availability. Read the complete Microsoft Copilot service description table: Agents & extensibility lists Declarative agents, Agent Builder, Microsoft 365 Copilot Connectors and Power Platform Connectors, not custom engine agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: defaultState; Why it matters; Scope; Open questions; rationale: risk",
+      "type": "default",
+      "claim": "Microsoft has not stated whether this GCC capability arrives on, off or requiring administrator enablement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"custom engine agents\" \"GCC\" \"default\"; custom engine agents GCC default enabled rollout licensing meter availability. Read roadmap, overview, prerequisites, known issues and government guidance; no default for this GCC release was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Microsoft has not stated how this GCC rollout is staged.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"custom engine agents\" \"GCC\" rollout availability. Read roadmap, overview, prerequisites and service description; results include general GA history but no GCC staging schedule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Third-party services integrated through connectors or Azure Bot Service skills are outside Copilot Studio US Government compliance and data protection commitments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-licensing-gcc",
+      "quote": "As a result, these third-party applications and services aren't covered by the Copilot Studio US Government compliance and data protection commitments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Prompts to pro-code custom engine agents reach builder-controlled processing services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/custom-engine-agent-architecture",
+      "quote": "This model allows you to use the Microsoft client and catalog infrastructure while keeping full control over orchestrator, language model, and API components. Components within your control enable prompt routing to multiple language models through multiple processing loops",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/custom-engine-agent-architecture to sources for the statement about prompts reaching builder-controlled processing."
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Custom engine agent prompts and responses in Copilot Chat and Teams are stored under Microsoft 365 product terms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "Custom engine agent prompts and responses in Copilot Chat and Teams are stored in compliance with Microsoft 365 product terms and conditions and are managed as per the customer's instructions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Administrators can use Content Search or Microsoft Purview to view and manage the stored prompts and responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "To view and manage this stored data, admins can use Content Search or Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure; Scope",
+      "type": "availability",
+      "claim": "Agents grounded in shared tenant work data are not currently available in GCC, GCCH or DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "Agents grounded in shared tenant work data aren't currently available in Microsoft 365 Government Community Cloud (GCC), Government Community Cloud High (GCCH), or Department of Defense (DoD) environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "availability",
+      "claim": "Publishing custom engine agents via Microsoft 365 Agents Toolkit is unsupported in Microsoft 365 Government tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/m365-agents-sdk",
+      "quote": "Publishing agents via the Microsoft 365 Agents Toolkit isn't supported in Microsoft 365 Government tenants.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/m365-agents-sdk to sources; it explicitly confirms the Government publishing restriction for the custom engine development route, whereas the cited known-issues notice sits under Declarative agents."
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment; Scope; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "The custom engine known-issues table applies to agents built with Microsoft 365 Agents Toolkit and Microsoft 365 Agents SDK.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues",
+      "quote": "These issues apply to custom engine agents built using the Microsoft 365 Agents Toolkit and the Microsoft 365 Agents SDK.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Sensitivity labels are unsupported for the agents covered by the custom engine known-issues table.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues",
+      "quote": "| Sensitivity labels | Sensitivity labels aren't supported. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Custom engine agents can programmatically trigger workflows and take actions across enterprise applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "Proactive automation – Programmatically trigger workflows and take actions across enterprise applications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "availability",
+      "claim": "Copilot Studio Triggers / Autonomous Agents are not available in GCC.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-licensing-gcc",
+      "quote": "| Triggers / Autonomous Agents | No | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Proactive notifications are unsupported for Agents Toolkit and Agents SDK custom engine agents in Microsoft 365 Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues",
+      "quote": "| Proactive notifications | Proactive notifications aren't supported. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "File and image attachments are unsupported in chats with the custom engine agents covered by the known-issues table.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues",
+      "quote": "Custom engine agents don't support file or image attachments in agent chats. Images uploaded in chat aren't passed to the agent for processing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "availability",
+      "claim": "The known-issues page lists the scoped custom engine agents as unsupported in Outlook, Word, Excel, PowerPoint and Edge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues",
+      "quote": "Custom engine agents aren't supported in Outlook, Word, Excel, PowerPoint, and the Microsoft Edge browser.",
+      "severity": "minor",
+      "fix": "Add after this sentence: 'Learn's general agent comparison instead lists custom engine agents as able to run in Teams, Word, Excel and Edge; confirm host support for your build route.' Cite https://learn.microsoft.com/plugins/agents-overview, whose Channels bullet says 'Can run in Microsoft 365 Copilot and Microsoft 365 apps like Teams, Word, Excel, and Edge.'"
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "The prerequisites table lists custom engine agents for Copilot Chat users without and with usage billing and for licensed Microsoft 365 Copilot users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "| Capability | Copilot Chat (no usage-based billing)* | Copilot Chat (usage-based billing)** | Microsoft 365 Copilot (licensed) |\n| Custom engine agents | ✅ | ✅ | ✅ |\n* Usage limits apply to all included features.",
+      "severity": "minor",
+      "fix": "Append 'Usage limits apply to all included features.' to the sentence describing the prerequisites table, preserving its existing GCC usage-billing qualification."
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "availability",
+      "claim": "The prerequisites page describes Copilot Chat as available to all Microsoft 365 users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "Microsoft 365 Copilot Chat is a broadly accessible AI chat interface that is available to all Microsoft 365 users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The prerequisites page says usage-based billing is unsupported in GCC and GCCH, excluding that table column for GCC.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "Usage-based billing isn't supported in Microsoft 365 Government Community Cloud High (GCCH) and Government Community Cloud (GCC) environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Custom engine agents have a mixed entitlement model encompassing Copilot Chat and licensed Microsoft 365 Copilot access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "| Capability | Copilot Chat (no usage-based billing)* | Copilot Chat (usage-based billing)** | Microsoft 365 Copilot (licensed) |\n| Custom engine agents | ✅ | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No licence or meter specific to this GCC release is published beyond the documented general requirements.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"custom engine agents\" \"GCC\" licensing costs. Read prerequisites, overview, US Government licensing, Plan licensing and cost, and FAQ licensing excerpts; these describe general access and service costs, not a separate GCC-release licence or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap record names no licence or meter.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"description\": \"Users in GCC-M will be able to use custom engine agents.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The custom engine overview tells builders to consider licensing, consumption and hosting costs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "Consider licensing, consumption, and hosting costs associated with your custom engine agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The custom engine overview itself publishes no figures for licensing, consumption or hosting costs.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"custom engine agents\" \"GCC\" licensing costs. Read the complete overview Cost considerations section and its linked Plan licensing and cost page; the overview names cost categories and links onward without publishing a figure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Copilot Studio US Government licensing is the same as public-cloud licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-licensing-gcc",
+      "quote": "Licensing for Copilot Studio US Government plans is the same as for public cloud.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Custom engine agents are supported in app manifest version 1.21 and later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "Custom engine agents are supported in app manifest version 1.21 and later versions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The agent governance page says GCCH and GCCM support publishing agents to the organization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Microsoft 365 for government Community Cloud High (GCCH) and Government Community Cloud Moderate (GCCM) environments support publishing agents to the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].ui; Governance controls; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "An agent is blocked in Microsoft 365 admin center through Agents > All agents > agent > Block > Block agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select Agents > All agents. ... select an agent from the list of agents. ... select Block or Unblock. ... select either Block agent or Unblock agent, and then select Save.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package to prevent usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage.\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].governs; controls[0].scope; Governance controls; Governance guidance",
+      "type": "applicability",
+      "claim": "The general Block action restricts access to the selected agent across the organization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "These actions apply to the selected agent. ... Block and unblock | Restrict access to an agent across the organization, preventing any user from using it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Blocking Agent Builder or Copilot Studio agents affects Copilot and other hosts such as Outlook and Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Blocking or unblocking an agent that you created by using Microsoft Copilot Agent Builder and Microsoft Copilot Studio affects its availability and functionality in Microsoft Copilot. It also affects availability and functionality in other host products",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Blocking SharePoint or Foundry agents affects only Microsoft Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "However, blocking an agent that you created by using SharePoint or Microsoft Foundry only impacts its availability in Microsoft Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "The agent actions page does not specifically describe Block for Agents SDK or Teams SDK builds.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: custom engine agents Microsoft 365 admin center Block Agents SDK Teams SDK GCC. Read agent-actions and searched its full text for SDK and custom engine; its Block section explicitly names Agent Builder, Copilot Studio, SharePoint and Foundry, not either SDK.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The documented Graph block call uses a beta API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].note; Governance controls",
+      "type": "licensing",
+      "claim": "Access to the Graph Package Management API requires a Microsoft Agent 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The Graph block call needs delegated CopilotPackages.ReadWrite.All permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "| Delegated (work or school account) | CopilotPackages.ReadWrite.All | Not available. |\n| Application | Not available. | Not available. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "availability",
+      "claim": "The block reference lists the Global service as available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "| Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet |\n| ✅ | ❌ | ❌ | ❌ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[0].note; Governance controls",
+      "type": "availability",
+      "claim": "The Graph block API is unavailable in US Government L4 and L5.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "| Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet |\n| ✅ | ❌ | ❌ | ❌ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The block API reference's national-cloud table has no GCC column.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: custom engine agents Microsoft 365 admin center Block Agents SDK Teams SDK GCC. Read copilotPackage: block; its table columns are Global service, US Government L4, US Government L5 (DOD) and China operated by 21Vianet, with no GCC column.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls: final paragraph",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed whether the governance Graph API is available for GCC.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365",
+      "quote": "| Feature Description | Product Surface | Core capability included with Microsoft cloud subscription | Premium capability | GCC Availability |\n| Graph API provides access to agent registry, basic metadata and governance actions | Microsoft 365 admin center | No | Yes | No |",
+      "severity": "blocker",
+      "fix": "Replace 'it has no GCC column, so treat it as a reference until Microsoft confirms it for GCC' with 'the block reference has no GCC column, but the Microsoft Agent 365 service description lists the Graph API for agent registry and governance actions as unavailable in GCC.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365."
+    },
+    {
+      "n": 60,
+      "where": "front matter: cost; rationale: cost",
+      "type": "consistency",
+      "claim": "Cost is low, meaning indirect cost only, despite the rationale acknowledging builder hosting and licensing costs.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "cost: \"low\"\nLow. Learn lists custom engine agents for Copilot Chat users and licensed Microsoft 365 Copilot users and says usage-based billing is not supported in GCC; builders still bear hosting and licensing costs that Learn does not price.",
+      "severity": "blocker",
+      "fix": "Set cost to 'variable' and replace its rationale with 'Variable. Pro-code custom engine agents incur hosting and Azure service consumption costs; no separate GCC-release licence or meter is published.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/faq: 'You don't need a Microsoft 365 Copilot license to build custom engine agents by using Teams SDK. Instead, the cost depends on the Azure services consumed in the app.' The GCC restriction on Copilot usage billing does not remove external hosting costs."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T08:52:35.641Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=501111",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-licensing-gcc",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether an agent is available to anyone in the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Block",
+          "Block agent"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether an agent is available to anyone in the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

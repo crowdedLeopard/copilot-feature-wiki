@@ -18,7 +18,7 @@ defaultState: "admin-opt-in"
 action: "review"
 licensing:
   model: "consumption"
-  notes: "Learn says OCR requires Microsoft Syntex pay-as-you-go billing in Azure, with no other setup or licensing requirement for the Compliance admin. Rates for the US Government clouds are not yet published."
+  notes: "Learn says OCR requires Microsoft Syntex pay-as-you-go billing in Azure, with no other setup or licensing requirement for the Compliance admin. Learn says pay-as-you-go licensing is not yet available for GCC. Rates for the US Government clouds are not yet published."
 audiences: ["security","compliance","finops","m365-admin"]
 tags: ["dlp","endpoint-dlp","purview","sensitive-information-types","pay-as-you-go","information-protection","gcc","gcc-high","dod"]
 sources:
@@ -40,6 +40,18 @@ sources:
   - title: "Plan for Microsoft Purview compliance and risk management solutions – GCC High deployments"
     url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/plan-for-microsoft-purview-gcc-high-deployments"
     kind: "learn"
+  - title: "Set up pay-as-you-go billing for document processing"
+    url: "https://learn.microsoft.com/microsoft-365/syntex/syntex-azure-billing"
+    kind: "learn"
+  - title: "Licensing for document processing for Microsoft 365"
+    url: "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-licensing"
+    kind: "learn"
+  - title: "Protect data with Microsoft Purview"
+    url: "https://learn.microsoft.com/purview/zero-trust-purview-protect-data"
+    kind: "learn"
+  - title: "ocrSettings resource type"
+    url: "https://learn.microsoft.com/graph/api/resources/security-ocrsettings?view=graph-rest-1.0"
+    kind: "docs"
 videos: []
 related: ["endpoint-dlp","sensitive-information-types"]
 controls:
@@ -50,7 +62,7 @@ controls:
       path: "Settings > Optical character recognition (OCR)"
       docs: "https://learn.microsoft.com/purview/ocr-learn-about"
     api: null
-    note: "Learn lists Compliance administrator, Compliance data administrator, Global administrator, Information Protection and Information Protection Admin. Billing is set up first by a Global or SharePoint admin."
+    note: "Learn lists five roles, including Compliance administrator and Global administrator. Billing: Global or SharePoint admin with owner or contributor rights to the Azure subscription."
   - governs: "Daily bandwidth each device may use for cloud classification, including OCR"
     scope: "tenant"
     ui:
@@ -76,19 +88,23 @@ changes:
     note: "First briefing for the roadmap item on OCR support in Endpoint DLP for GCC, GCC High and DoD."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 6 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected billing roles (Azure owner or contributor rights), bandwidth-limit resume wording, the Endpoint cost estimator Windows Update prerequisite, GCC pay-as-you-go availability and the Windows KB requirements."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 71 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 55
+  claims: 71
+  confirmed: 69
   unconfirmed: 0
-  contradicted: 6
-  attempts: 1
-  hash: "07e0f27096da485ede201b5ed653d016"
+  contradicted: 2
+  attempts: 2
+  hash: "13861ae7286343f23854e411e943fe3c"
 ---
 
 ## What's changing
@@ -115,7 +131,7 @@ The change brings a cost decision with it. Learn says OCR is billed per image or
 
 **Security & identity**
 
-- Learn lists the role groups that can create and deploy policies for OCR: Compliance administrator, Compliance data administrator, Global administrator, Information Protection and Information Protection Admin. Set up pay-as-you-go billing needs a Global or SharePoint admin. Review who holds these roles.
+- Learn lists the role groups that can create and deploy policies for OCR: Compliance administrator, Compliance data administrator, Global administrator, Information Protection and Information Protection Admin. Setting up pay-as-you-go billing needs a Global or SharePoint admin, who also needs owner or contributor rights to the Azure subscription. Review who holds these roles.
 - Learn says that for an Endpoint device, network settings must not obstruct OCR and a wildcard should allow blob.core.windows.net endpoints. Confirm what your government-cloud firewall rules allow before relying on image scanning.
 
 **Autonomy & actions**
@@ -124,33 +140,33 @@ The change brings a cost decision with it. Learn says OCR is billed per image or
 
 **Change & support**
 
-- Learn says OCR stops scanning images once the per-device daily bandwidth limit is reached (default 1,024 MB of data per device per day). Images after that point go unscanned until the limit resets or you raise it; expect support questions about inconsistent matches.
+- Learn says OCR stops scanning images once the per-device daily bandwidth limit is reached (default 1,024 MB of data per device per day). Images after that point go unscanned until cumulative bandwidth usage drops below the rolling 24-hour limit or you increase the limit; expect support questions about inconsistent matches.
 - Learn says OCR settings take effect about an hour after you turn them on.
 
 ## Cost and licensing
 
-Learn says OCR is an optional feature and that your Global admin must set up pay-as-you-go billing to enable it, by adding a subscription as described in its Microsoft Syntex billing instructions. It adds that you do not need to set up Microsoft Syntex itself, and that after billing is entered the Compliance admin can configure OCR in the Microsoft Purview portal without extra setup or licensing requirements (https://learn.microsoft.com/purview/ocr-learn-about).
+Learn says OCR is an optional feature and that your Global admin must set up pay-as-you-go billing to enable it, by adding a subscription as described in its Microsoft Syntex billing instructions. It adds that you do not need to set up Microsoft Syntex itself, and that after billing is entered the Compliance admin can configure OCR in the Microsoft Purview portal without extra setup or licensing requirements (https://learn.microsoft.com/purview/ocr-learn-about). The billing set-up page says you must be a SharePoint Administrator or Global Administrator to set up the service, and that you must have owner or contributor rights to the Azure subscription you use for billing (https://learn.microsoft.com/microsoft-365/syntex/syntex-azure-billing).
 
 The meter is one transaction per scanned image. Each stand-alone image counts once and each page of a PDF is charged separately, so a 10-page PDF counts as 10 scans. The Microsoft 365 pay-as-you-go pricing page lists optical character recognition at $0.001/transaction. Each scanned image can be used in any number of policies across DLP, insider risk management, auto-labeling and records management at no extra charge. For Endpoint, Learn says the cache is maintained for 30 days, held locally on each device, to reduce repeat charges.
 
-The OCR cost estimator (preview) can project OCR scanning cost for locations including Endpoint before you enable OCR. A rate specific to GCC, GCC High or DoD is not yet published, and Learn does not say whether the Syntex billing set-up is available in those clouds. Indirect costs are the admin time to set up billing and tune bandwidth and exclusions.
+The OCR cost estimator (preview) can project OCR scanning cost for locations including Endpoint before you enable OCR. For Endpoint, first install the latest Windows Update released on February 29, 2024 or later (https://learn.microsoft.com/purview/ocr-cost-estimator).
+
+Microsoft's document-processing licensing page says pay-as-you-go licensing and the services that require it are not yet available for GCC (https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-licensing). The roadmap still targets Endpoint OCR for GCC, GCC High and DoD in March CY2027; how that planned release will be billed remains unconfirmed, and a rate specific to GCC, GCC High or DoD is not yet published. Indirect costs are the admin time to set up billing and tune bandwidth and exclusions.
 
 ## Scope
 
 The record lists the clouds as GCC, GCC High and DoD, the release phase as General Availability and the platform as Web, although the description is about Windows endpoint devices. Learn documents OCR for Windows and macOS devices; the roadmap item covers Windows endpoint devices only.
 
-File types for Windows endpoints are JPEG, JPG, PNG, BMP, TIFF and PDF (image only), with a 50 MB maximum file size and an image resolution between 50 × 50 px and 16,000 × 16,000 px. Learn lists the Windows versions that support advanced classification scanning and protection: all Windows 11 versions, Windows 10 versions 20H1/21H1 or higher (KB 5006738) and Windows 10 RS5 (KB 5006744). Learn's OCR page lists no Windows version requirement of its own.
+File types for Windows endpoints are JPEG, JPG, PNG, BMP, TIFF and PDF (image only), with a 50 MB maximum file size and an image resolution between 50 × 50 px and 16,000 × 16,000 px. Learn lists the Windows versions that support advanced classification scanning and protection: all Windows 11 versions, Windows 10 versions 20H1/21H1 or higher (KB 5006738) and Windows 10 RS5 (KB 5006744). The same page also requires KB5016688 for Windows 10 and KB5016691 for Windows 11 to use advanced classification. Learn's OCR page lists no Windows version requirement of its own.
 
-Prerequisites in Learn are an Azure pay-as-you-go subscription, Syntex pay-as-you-go billing set up by a Global or SharePoint admin, and OCR enabled at the tenant level by the Compliance admin.
+Prerequisites in Learn are an Azure pay-as-you-go subscription, Syntex pay-as-you-go billing set up by a Global or SharePoint admin who has owner or contributor rights to the Azure subscription, and OCR enabled at the tenant level by the Compliance admin.
 
 ## Governance guidance
 
 ### Before rollout
 
-- Ask the Global admin to confirm an Azure pay-as-you-go subscription exists for the tenant, and confirm with Microsoft that Syntex billing is offered in your government cloud.
-- Run the OCR cost estimator for the Endpoint location in the Microsoft Purview portal to project the transaction count before enabling OCR.
+- Ask the Global admin to confirm an Azure pay-as-you-go subscription exists for the tenant, and confirm with Microsoft how Syntex billing will apply in your government cloud, since Learn says pay-as-you-go licensing is not yet available for GCC.
 - Review the Endpoint DLP file path exclusions, because OCR does not scan images in excluded folders.
-- Check that firewall and proxy rules on your devices allow blob.core.windows.net endpoints, as Learn requires for Endpoint devices.
 
 ### At rollout
 
@@ -161,7 +177,6 @@ Prerequisites in Learn are an Azure pay-as-you-go subscription, Syntex pay-as-yo
 ### After rollout
 
 - Compare actual OCR charges against the estimate and watch the device bandwidth limit for images that go unscanned.
-- Review who holds the Compliance administrator, Information Protection and Global administrator roles that can change OCR settings.
 - Watch the roadmap item and Message center for the confirmed government-cloud availability date.
 
 ## Governance controls
@@ -171,7 +186,7 @@ Prerequisites in Learn are an Azure pay-as-you-go subscription, Syntex pay-as-yo
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether OCR scans images, and for which locations and groups</strong><br><small>Tenant</small><br><small class="controls__note">Learn lists Compliance administrator, Compliance data administrator, Global administrator, Information Protection and Information Protection Admin. Billing is set up first by a Global or SharePoint admin.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Optical character recognition (OCR) <a href="https://learn.microsoft.com/purview/ocr-learn-about" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether OCR scans images, and for which locations and groups</strong><br><small>Tenant</small><br><small class="controls__note">Learn lists five roles, including Compliance administrator and Global administrator. Billing: Global or SharePoint admin with owner or contributor rights to the Azure subscription.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Optical character recognition (OCR) <a href="https://learn.microsoft.com/purview/ocr-learn-about" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Daily bandwidth each device may use for cloud classification, including OCR</strong><br><small>Tenant</small><br><small class="controls__note">Learn gives the OCR default as 1,024 MB of data per device per day and says OCR stops scanning images once it is reached.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Overview › Data loss prevention settings › Endpoint settings › Advanced classification scanning and protection <a href="https://learn.microsoft.com/purview/dlp-configure-endpoint-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Folders on Windows devices that Endpoint DLP, and so OCR, does not scan</strong><br><small>Tenant</small><br><small class="controls__note">Existing control, not specific to OCR. Excluded files are not audited and are not subject to DLP policy enforcement.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Overview › Data loss prevention settings › Endpoint settings › File path exclusions for Windows <a href="https://learn.microsoft.com/purview/dlp-configure-endpoint-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
@@ -179,32 +194,27 @@ Prerequisites in Learn are an Azure pay-as-you-go subscription, Syntex pay-as-yo
 
 OCR is a tenant-level setting that applies across the Purview stack; the Endpoint DLP settings are separate and apply to all DLP policies for devices. The OCR location selection and your existing DLP rules together decide what is scanned and acted on.
 
-When the bandwidth limit is reached, Learn says OCR stops scanning images until you raise the limit or the daily limit resets, and file path exclusions also remove those paths from DLP audit and enforcement. At the time of writing (November 2026) Microsoft Learn documents no PowerShell cmdlet, Microsoft Graph or other API for the tenant OCR settings or for these Endpoint DLP settings; the Graph ocrSettings resource documented for eDiscovery applies to an eDiscovery case.
+When the bandwidth limit is reached, Learn says OCR stops scanning images until cumulative bandwidth usage drops below the rolling 24-hour limit or you increase the limit, and file path exclusions also remove those paths from DLP audit and enforcement. At the time of writing (November 2026) Microsoft Learn documents no PowerShell cmdlet, Microsoft Graph or other API for the tenant OCR settings or for these Endpoint DLP settings; the Graph ocrSettings resource documented for eDiscovery applies to an eDiscovery case.
 
 ## Open questions
 
 - Is OCR for Windows endpoints available in GCC, GCC High and DoD at the roadmap's March CY2027 target, and will Learn's OCR page say which clouds it covers? Watch the roadmap item and the OCR Learn page.
-- Is Syntex pay-as-you-go billing, and the $0.001 per transaction rate, offered unchanged in the US Government clouds? Watch the pay-as-you-go pricing page.
+- How will the planned government-cloud Endpoint OCR release be billed, given that Learn currently says Syntex pay-as-you-go licensing is unavailable for GCC? Watch the pay-as-you-go pricing and licensing pages.
 - Does the Windows version support list for advanced classification apply to OCR on endpoints? Watch the Endpoint DLP settings page.
 - Will an API or PowerShell cmdlet be documented for tenant OCR settings and the Endpoint DLP bandwidth limit? Watch the Purview PowerShell reference.
 
 <!-- rationale
 risk: Low. Learn describes OCR as an optional feature that must be enabled at the tenant level, so nothing changes for users until an administrator turns it on; once on, devices send images to the cloud for scanning.
-cost: Variable. Learn says OCR needs Microsoft Syntex pay-as-you-go billing and counts each image, or each PDF page, as one transaction. Whether that meter applies unchanged in GCC, GCC High and DoD is not stated.
+cost: Variable. Learn says OCR needs Microsoft Syntex pay-as-you-go billing and counts each image, or each PDF page, as one transaction. Learn says pay-as-you-go licensing is not yet available for GCC; how the government-cloud release will be billed is not stated.
 impact: Low. Administrators decide whether to enable OCR; users on onboarded Windows devices would notice only where an existing Endpoint DLP rule matches sensitive text found in an image.
 -->
 
 <!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].note; Risk assessment: Security & identity; Cost and licensing; Scope / role: A Global or SharePoint admin can set up the required pay-as-you-go billing, without stating an Azure permissions requirement. | Found: You must be a SharePoint Administrator or Global Administrator to be able to access the Microsoft 365 admin center and set up the service. You must have owner or contributor rights to the Azure subscription that you want to use for pay-as-you-go billing. | Fix: Add to the billing-role statement and controls[0].note: 'The billing administrator also needs owner or contributor rights to the Azure subscription.' Cite https://learn.microsoft.com/microsoft-365/syntex/syntex-azure-billing. | Source: https://learn.microsoft.com/microsoft-365/syntex/syntex-azure-billing
-- [contradicted, blocker] Risk assessment: Change & support; Governance controls / behaviour: After reaching the limit, OCR remains stopped until a daily reset or the administrator raises the limit. | Found: When the cumulative bandwidth usage drops below the rolling 24-hour limit, communication with the cloud services resumes. | Fix: Replace 'until the limit resets or you raise it' and 'until you raise the limit or the daily limit resets' with 'until cumulative bandwidth usage drops below the rolling 24-hour limit or you increase the limit'. | Source: https://learn.microsoft.com/purview/dlp-configure-endpoint-settings
-- [contradicted, blocker] Cost and licensing; Governance guidance: Before rollout / behaviour: Administrators can run the preview OCR cost estimator for Endpoint before enabling OCR, without a Windows update prerequisite being stated. | Found: To enable the OCR cost estimator tool on Endpoint, you must first install the latest Windows Update released on February 29, 2024 or later. | Fix: Qualify the Endpoint estimator instruction with: 'For Endpoint, first install the latest Windows Update released on February 29, 2024 or later.' Retain the preview label and cite https://learn.microsoft.com/purview/ocr-cost-estimator. | Source: https://learn.microsoft.com/purview/ocr-cost-estimator
-- [contradicted, blocker] Cost and licensing; Governance guidance: Before rollout; Open questions / absence: Learn does not say whether Syntex pay-as-you-go billing is available in the government clouds. | Found: For Government Community Cloud (GCC) organizations, pay-as-you-go licensing-and the services that require pay-as-you-go licensing-aren't yet available. | Fix: Replace the blanket billing absence with: 'Microsoft's document-processing licensing page says pay-as-you-go licensing and services requiring it are not yet available for GCC. The roadmap still targets Endpoint OCR for GCC, GCC High and DoD in March CY2027; how that planned release will be billed remains unconfirmed.' Cite https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-licensing. Replace the government billing question with: 'How will the planned government-cloud Endpoint OCR release be billed, given that Learn currently says Syntex pay-as-you-go licensing is unavailable for GCC?' | Source: https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-licensing
-- [contradicted, blocker] Scope / availability: The listed Windows 11 and Windows 10 versions support advanced classification, without additional required updates being stated. | Found: To use advanced classification for Windows 10 devices, you must install KB5016688. To use advanced classification for Windows 11 devices, you must install KB5016691 on those Windows 11 devices. | Fix: Append to the advanced-classification Windows support sentence: 'The same page also requires KB5016688 for Windows 10 and KB5016691 for Windows 11 to use advanced classification.' Keep the separate uncertainty about OCR-specific Windows requirements. | Source: https://learn.microsoft.com/purview/dlp-configure-endpoint-settings
+- [contradicted, blocker] controls[2].api; Governance controls table and prose / absence: Microsoft documents no automation for Endpoint DLP Windows file path exclusions. | Found: The EndpointDlpGlobalSettings parameter specifies the global endpoints. This parameter uses the following syntax: @(@{"Setting"="<Setting>"; "Value"="<Value>"},...). ... Example values: @{"Setting"="PathExclusion"; "Value"="C:\Windows";} | Fix: Replace controls[2].api with kind 'powershell', call 'Set-PolicyConfig -EndpointDlpGlobalSettings @(@{"Setting"="PathExclusion"; "Value"="<folder>"})', and docs 'https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig?view=exchange-ps'; update its rendered automation cell and cite that reference. Replace the final automation-absence sentence with: 'At the time of writing (November 2026), Microsoft Learn documents no PowerShell cmdlet, Microsoft Graph or other API for tenant OCR settings or the Endpoint DLP bandwidth limit. Windows file path exclusions can be configured in Security & Compliance PowerShell with Set-PolicyConfig -EndpointDlpGlobalSettings using Setting="PathExclusion" and Value for the folder path; the Graph ocrSettings resource applies to an eDiscovery case.' | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig?view=exchange-ps
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Microsoft Purview portal > Settings > Optical character recognition (OCR) reaches tenant OCR configuration for locations and groups. | Found: Select Settings. Select Optical character recognition (OCR) to enter your OCR configuration settings. Select the locations where you want to scan images. Select the groups that you want included or excluded from OCR scans. | Fix: Keep the path, which reaches the correct configuration page, and add to its note: 'Select the locations to scan and the groups to include or exclude.' | Source: https://learn.microsoft.com/purview/ocr-learn-about
-- [supported, minor] Why it matters / behaviour: Without OCR, text-based sensitive-information detection cannot read image-based documents or screenshots. | Found: Without OCR, DLP policies, and auto-labeling policies can't scan image-based content, scanned documents, screenshots, and invoices, leaving sensitive data in images unprotected. | Fix: Add https://learn.microsoft.com/purview/zero-trust-purview-protect-data to sources for the statement about image-based content without OCR. | Source: https://learn.microsoft.com/purview/zero-trust-purview-protect-data
-- [supported, minor] Governance controls / applicability: The Microsoft Graph ocrSettings resource represents eDiscovery case OCR settings, not tenant DLP OCR configuration. | Found: Represents the Optical Character Recognition (OCR) settings for an eDiscovery case. | Fix: Add https://learn.microsoft.com/graph/api/resources/security-ocrsettings?view=graph-rest-1.0 to sources for the Graph resource scope statement. | Source: https://learn.microsoft.com/graph/api/resources/security-ocrsettings?view=graph-rest-1.0
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: Every control that the governance checklist tells readers to use or review appears in the controls table. | Found: Run the OCR cost estimator ... Check that firewall and proxy rules ... Review who holds ... roles. The controls table contains only OCR configuration, bandwidth and file path exclusions. | Fix: The estimator, firewall/proxy controls and role-membership review steps have no matching table row. Remove those checklist instructions, retaining their verified prerequisites and advice in the existing cost and risk prose; do not add control rows in this correction.
+- [supported, minor] What's changing; Risk assessment: Autonomy & actions; Governance controls / behaviour: OCR applies existing DLP policies to images as well as text-based content. | Found: When you configure the OCR settings, Microsoft Purview applies your existing policies for data loss prevention (DLP), records management, and insider risk management (IRM) to images and text-based content. | Fix: Add: 'The Communication Compliance policy documentation still describes the shared Purview OCR settings as preview, although the OCR overview does not label them preview.' Cite https://learn.microsoft.com/purview/communication-compliance-policies#policy-settings, which says 'Microsoft Purview includes OCR (preview) settings' for DLP and related solutions. | Source: https://learn.microsoft.com/purview/ocr-learn-about
+- [supported, minor] Why it matters; Cost and licensing; rationale: cost / cost: The Purview OCR overview counts each scanned stand-alone image as one transaction. | Found: Each image scanned counts as one transaction. This pricing means that stand-alone images (JPEG, JPG, PNG, BMP, or TIFF) each count as a single transaction. | Fix: Add after the image-transaction sentence: 'The document-processing pricing page instead describes TIF and TIFF usage per page and says processing occurs each time a file is edited; its wording differs from the Purview overview.' Cite https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-pay-as-you-go-services, which states 'the number of pages processed for PDF, TIF, or TIFF' and 'Processing occurs every time the file is edited.' | Source: https://learn.microsoft.com/purview/ocr-learn-about
+- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist instructs readers to test an existing DLP rule, but the controls table has no DLP-rule row. | Found: Test an existing DLP rule that uses a sensitive information type against a sample image before widening its scope. | Table rows cover OCR configuration, daily bandwidth and Windows file path exclusions, not DLP rules. | Fix: Remove the At rollout bullet 'Test an existing DLP rule that uses a sensitive information type against a sample image before widening its scope.' It names a checklist control with no row; do not add an unverified control row during correction.
 -->

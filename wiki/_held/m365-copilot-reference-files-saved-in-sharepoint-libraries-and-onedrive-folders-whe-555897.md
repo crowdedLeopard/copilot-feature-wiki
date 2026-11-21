@@ -77,19 +77,23 @@ changes:
     note: "First briefing for roadmap item 555897, the Mac entry for referencing SharePoint and OneDrive files in Copilot prompts in PowerPoint."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 47 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected the licence-assignment note: it governs the add-on tier, not all Copilot in PowerPoint access. Removed the permissions-review wording that had no matching controls row."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 54 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 45
+  claims: 54
+  confirmed: 53
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "16fd281ad0f678c87bb7b23cc6cd01d0"
+  contradicted: 1
+  attempts: 2
+  hash: "13caf02fd228f1d1a4cd05dc619abd90"
 ---
 
 ## What's changing
@@ -145,8 +149,8 @@ Microsoft has not stated what happens on arrival, so base planning on no source 
 ## Governance guidance
 
 ### Before rollout
-- Review which SharePoint sites hold overshared content and apply Restricted Content Discovery to those that need a permissions review before Copilot can discover them (SharePoint admin center, see the controls table).
-- Plan separately for OneDrive: Restricted Content Discovery is not supported for OneDrive sites, so rely on fixing permissions there.
+- Apply Restricted Content Discovery to the SharePoint sites that need a permissions review before Copilot can discover them (SharePoint admin center, see the controls table).
+- Plan separately for OneDrive: Restricted Content Discovery is not supported for OneDrive sites.
 - Check with the SharePoint administrators that the Restricted Content Discovery prerequisites are met, including SharePoint Advanced Management.
 
 ### At rollout
@@ -169,7 +173,7 @@ Microsoft has not stated what happens on arrival, so base planning on no source 
 </tbody>
 </table>
 
-No setting specific to this feature is documented at the time of writing (November 2026): both rows below are existing Copilot controls, and neither is described as governing implicit file references. Only the Microsoft 365 admin center licence assignment changes who can use Copilot in PowerPoint; the Learn page says users with Microsoft 365 Copilot (Basic) can also use it, so removing the add-on does not by itself remove access.
+No setting specific to this feature is documented at the time of writing (November 2026): both rows below are existing Copilot controls, and neither is described as governing implicit file references. The licence-assignment row governs the add-on tier, not all Copilot in PowerPoint access; Microsoft 365 Copilot (Basic) users can also use Copilot in PowerPoint without the add-on.
 
 Restricted Content Discovery works at site level, changes discoverability and not permissions, and by default can be managed only by SharePoint administrators, per its page.
 
@@ -189,7 +193,7 @@ impact: Low. Only people who create presentations with Copilot in PowerPoint on 
 <!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls / applicability: Only Microsoft 365 admin center licence assignment changes who can use Copilot in PowerPoint. | Found: If you turn off connected experiences that analyze your content ... Microsoft Copilot features won't be available ... PowerPoint ... This applies ... Windows, Mac, iOS, or Android devices. | Fix: Replace the sentence with: 'The licence-assignment row governs the add-on tier, not all Copilot in PowerPoint access; Microsoft 365 Copilot (Basic) users can also use Copilot in PowerPoint without the add-on.' Remove 'Only'; the cited privacy page also documents connected-experience controls affecting PowerPoint on Mac. | Source: https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy
+- [contradicted, blocker] Why it matters; Open questions: arrival / absence: Microsoft has not stated what happens on arrival, leaving staged rollout as an open question. | Found: Copilot features are introduced using a safe deployment model, gradually rolling out to a subset of users within a tenant before expanding across the organization. | Fix: Replace 'Microsoft has not stated what happens on arrival' with 'The release notes describe gradual rollout to a subset of users within a tenant before expansion across the organization; this entry does not specify the feature-specific default state.' Replace the arrival question with 'What is the feature-specific default state? Watch Message center and the release notes.' | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist's SharePoint and OneDrive permissions-review instructions have corresponding controls-table rows. | Found: Checklist: 'Review which SharePoint sites hold overshared content'; 'rely on fixing permissions there'. Table rows: Restricted Content Discovery and Copilot add-on licence assignment; neither changes permissions. | Fix: The Before rollout instructions to review overshared SharePoint content and fix OneDrive permissions name permissions controls with no corresponding table row. Restricted Content Discovery is not that row because it does not change permissions.
+- [supported, minor] controls[0].governs; Risk assessment: Data exposure; Governance guidance / applicability: Restricted Content Discovery limits discovery of selected SharePoint sites in organization-wide search and Microsoft Copilot responses. | Found: Restricted Content Discovery helps you limit discovery of content from specific SharePoint sites, including recently interacted files, in organization-wide search results and Microsoft Copilot responses | Fix: Add: 'Microsoft pages differ on recently interacted content: the Restricted Content Discovery page includes recently interacted files in its scope, while https://learn.microsoft.com/copilot/manage/copilot-search-manage#manage-access-to-files-and-sites says sites are excluded unless the user owns or has recently interacted with their content.' Cite that second page. | Source: https://learn.microsoft.com/sharepoint/restricted-content-discovery
 -->

@@ -1,0 +1,875 @@
+{
+  "slug": "m365-copilot-copilot-extensibility-users-in-dod-will-be-able-to-use-custom-engine-agents",
+  "roadmapId": 503772,
+  "title": "Microsoft 365 Copilot: custom engine agents for DoD users",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 67: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "10 blocking findings (claims 13, 28, 33, 34, 35, 36, 37, 38, 65, 66)"
+    ]
+  },
+  "counts": {
+    "claims": 69,
+    "confirmed": 57,
+    "unconfirmed": 1,
+    "contradicted": 11,
+    "blocker": 10,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold: the briefing promises that nothing reaches users before a developer builds an agent, although its default state is not documented. It also understates direct hosting and model costs, leaves a documented DoD Toolkit restriction open, and presents SDK-specific limitations as applying to every custom engine agent.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap item says DoD users will be able to use custom engine agents.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users in DoD will be able to use custom engine agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: platforms; summary; What's changing; Scope; Governance guidance",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target date is August CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified; Scope",
+      "type": "record",
+      "claim": "The record was last modified on September 21, 2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-21T23:04:49\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The record's single-sentence description gives no default state.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"description\": \"Users in DoD will be able to use custom engine agents.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The record's description gives no rollout window.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"description\": \"Users in DoD will be able to use custom engine agents.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The record's description gives no administrator action.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"description\": \"Users in DoD will be able to use custom engine agents.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState; Why it matters; rationale: impact",
+      "type": "absence",
+      "claim": "Microsoft has not stated the default arrival behavior of this DoD change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: custom engine agents DoD default deployment automatically available; custom engine agents available automatically deployed default new agents DoD tenant. Read roadmap, overview, prerequisites, agent actions and search results; none states this change's DoD arrival default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; front matter: defaultState; Why it matters",
+      "type": "consistency",
+      "claim": "Nothing reaches users until a developer builds an agent.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Summary: \"Nothing reaches users until a developer builds an agent\"; defaultState: \"unknown\"; Why it matters: \"Microsoft has not stated what happens on arrival in a DoD tenant\".",
+      "severity": "blocker",
+      "fix": "Replace the summary's second sentence with: 'Microsoft has not stated what happens on arrival in a DoD tenant; admins should check which controls apply in DoD and what Learn lists as unsupported.'"
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Why it matters; Risk assessment: Security & identity; rationale: risk",
+      "type": "behaviour",
+      "claim": "Custom engine agents give developers control over orchestration rather than using Copilot's standard orchestration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "Unlike declarative agents, they give developers the flexibility to bring their own orchestration and AI services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Security & identity; rationale: risk",
+      "type": "behaviour",
+      "claim": "Custom engine agents allow developers to choose AI models.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "Flexible AI models – Choose from foundation models, fine-tuned models, or industry-specific AI to suit your use case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Custom engine agents let builders control data integrations and connections to external systems.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "Custom orchestration – Define tailored workflows and connect to external systems to incorporate more knowledge or invoke actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Copilot Studio is a documented tool for creating custom engine agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "These agents can be created using Copilot Studio, the Microsoft 365 Agents SDK, Teams SDK or Microsoft Foundry, depending on your preferred development approach and hosting environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The Microsoft 365 Agents SDK is a documented tool for creating custom engine agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "These agents can be created using Copilot Studio, the Microsoft 365 Agents SDK, Teams SDK or Microsoft Foundry, depending on your preferred development approach and hosting environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Teams SDK is a documented tool for creating custom engine agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "These agents can be created using Copilot Studio, the Microsoft 365 Agents SDK, Teams SDK or Microsoft Foundry, depending on your preferred development approach and hosting environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Microsoft Foundry is a documented tool for creating custom engine agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "These agents can be created using Copilot Studio, the Microsoft 365 Agents SDK, Teams SDK or Microsoft Foundry, depending on your preferred development approach and hosting environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Custom engine agents require app manifest version 1.21 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "Custom engine agents are supported in app manifest version 1.21 and later versions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "There is no dedicated Microsoft Learn page for custom engine agents in DoD at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: custom engine agents DoD government Microsoft 365 Copilot availability Department of Defense; Microsoft 365 Government DoD custom engine agents publishing Agents Toolkit authenticated custom actions limitations. Read overview, service description, Known issues and government overview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Governance guidance: After rollout; Open questions",
+      "type": "availability",
+      "claim": "The Microsoft Copilot service description lists Declarative agents as not currently available in DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "| Declarative agents | Yes | Yes | Yes^8^ | Not currently available |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Governance guidance: After rollout; Open questions",
+      "type": "availability",
+      "claim": "The Microsoft Copilot service description lists Agent Builder as not currently available in DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "| Agent Builder | Yes | Yes | Yes | Not currently available |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "The service description's feature table has no separate custom engine agents row.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: custom engine agents DoD government Microsoft 365 Copilot availability Department of Defense. Read the service description table: it lists Declarative agents, Agent Builder, Copilot Connectors and Power Platform Connectors, with no custom engine agents row.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "availability",
+      "claim": "Learn says agents grounded in shared tenant work data are not currently available in DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "Agents grounded in shared tenant work data aren't currently available in Microsoft 365 Government Community Cloud (GCC), Government Community Cloud High (GCCH), or Department of Defense (DoD) environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Open questions",
+      "type": "availability",
+      "claim": "Known issues lists publishing agents through Microsoft 365 Agents Toolkit as unsupported in Microsoft 365 Government tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues",
+      "quote": "The following features aren't currently supported in Microsoft 365 Government tenants: ... Support for publishing agents via the Microsoft 365 Agents Toolkit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Open questions: Agents Toolkit publishing",
+      "type": "absence",
+      "claim": "It is not documented whether the Government Agents Toolkit publishing restriction applies to DoD.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/platform/toolkit/agents-toolkit-fundamentals",
+      "quote": "Support for GCC High and DoD environments is not yet available, but both are on our roadmap. Updates will be shared as soon as they are ready.",
+      "severity": "blocker",
+      "fix": "Replace this open question with: 'Which supported publishing route should a DoD developer use? Microsoft 365 Agents Toolkit documentation explicitly says support for GCC High and DoD is not yet available.' Cite https://learn.microsoft.com/microsoftteams/platform/toolkit/agents-toolkit-fundamentals."
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity",
+      "type": "availability",
+      "claim": "Known issues lists authenticated custom actions as unsupported in Microsoft 365 Government tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues",
+      "quote": "The following features aren't currently supported in Microsoft 365 Government tenants: ... Authenticated custom actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing",
+      "type": "availability",
+      "claim": "Known issues lists usage billing for extensibility features as unsupported in Microsoft 365 Government tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues",
+      "quote": "The following features aren't currently supported in Microsoft 365 Government tenants: ... Support for usage billing for extensibility features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "availability",
+      "claim": "The prerequisites page says usage-based billing is unsupported in GCC and GCC High.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "Usage-based billing isn't supported in Microsoft 365 Government Community Cloud High (GCCH) and Government Community Cloud (GCC) environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "Neither the prerequisites usage-billing note nor the Known issues Government billing statement names DoD separately.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: custom engine agents Department of Defense DoD licensing pricing meter usage based billing government. Read prerequisites and Known issues in full: the billing note names GCC/GCCH; the other statement names Microsoft 365 Government tenants without separately spelling out DoD.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing; Open questions: usage-based billing",
+      "type": "absence",
+      "claim": "Whether the documented Government usage-billing restriction applies to DoD remains unpublished.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues",
+      "quote": "The following features aren't currently supported in Microsoft 365 Government tenants: ... Support for usage billing for extensibility features.",
+      "severity": "blocker",
+      "fix": "Replace 'Neither names DoD separately, so confirm ... Copilot Credits meter' with: 'The Known issues restriction covers Microsoft 365 Government tenants; Microsoft identifies DoD as one of its Microsoft 365 government cloud environments.' Remove the open question about whether the restriction applies to DoD. Retain the narrower statement that the prerequisites billing note names GCC and GCC High. Cite https://learn.microsoft.com/copilot/plan/gov-overview alongside Known issues."
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "type": "applicability",
+      "claim": "The Known issues sensitivity-label limitation applies to custom engine agents generally.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues",
+      "quote": "These issues apply to custom engine agents built using the Microsoft 365 Agents Toolkit and the Microsoft 365 Agents SDK. ... Sensitivity labels aren't supported.",
+      "severity": "blocker",
+      "fix": "Qualify each use of this limitation as applying to 'custom engine agents built using Microsoft 365 Agents Toolkit or Microsoft 365 Agents SDK that run in Microsoft 365 Copilot.' In Why it matters and the risk rationale, apply the sensitivity-label warning to those agents rather than every custom engine agent. The cited Known issues page explicitly gives this scope."
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Risk assessment: Change & support; Scope; Governance guidance",
+      "type": "availability",
+      "claim": "Custom engine agents generally are unsupported in Outlook, Word, Excel, PowerPoint and Microsoft Edge.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues",
+      "quote": "These issues apply to custom engine agents built using the Microsoft 365 Agents Toolkit and the Microsoft 365 Agents SDK. ... Custom engine agents aren't supported in Outlook, Word, Excel, PowerPoint, and the Microsoft Edge browser.",
+      "severity": "blocker",
+      "fix": "Qualify this limitation wherever repeated with 'For custom engine agents built using Microsoft 365 Agents Toolkit or Microsoft 365 Agents SDK that run in Microsoft 365 Copilot'. Also report the documented disagreement: 'The comparison page describes custom engine agents as able to run in Teams, Word, Excel and Edge, while Known issues lists Word, Excel and Edge as unsupported for these SDK-built agents.' Cite https://learn.microsoft.com/plugins/agents-overview for that comparison."
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "The no-file-attachments limitation applies to custom engine agents generally.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues",
+      "quote": "These issues apply to custom engine agents built using the Microsoft 365 Agents Toolkit and the Microsoft 365 Agents SDK. ... Custom engine agents don't support file or image attachments in agent chats.",
+      "severity": "blocker",
+      "fix": "Qualify the file-attachment limitation in the risk and governance lists as applying to custom engine agents built using Microsoft 365 Agents Toolkit or Microsoft 365 Agents SDK that run in Microsoft 365 Copilot, as stated at https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues."
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "The no-file-downloads limitation applies to custom engine agents without a channel qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues",
+      "quote": "File downloads aren't supported for custom engine agents in Microsoft 365 Copilot. ... The same agent renders the file correctly in Microsoft Teams and in the Copilot Studio test panel.",
+      "severity": "blocker",
+      "fix": "Replace 'no file downloads' with 'no file downloads in the Microsoft 365 Copilot channel for custom engine agents built using Microsoft 365 Agents Toolkit or Microsoft 365 Agents SDK'. Do not imply a limitation in Teams or the Copilot Studio test panel; the cited Known issues page explicitly distinguishes those channels."
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "applicability",
+      "claim": "Proactive notifications are unsupported for custom engine agents in Microsoft 365 Copilot generally.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues",
+      "quote": "These issues apply to custom engine agents built using the Microsoft 365 Agents Toolkit and the Microsoft 365 Agents SDK. ... Proactive notifications aren't supported.",
+      "severity": "blocker",
+      "fix": "Replace that sentence with: 'Known issues lists proactive notifications as unsupported for custom engine agents built using Microsoft 365 Agents Toolkit or Microsoft 365 Agents SDK that run in Microsoft 365 Copilot.' Retain the advice to test actual tenant behavior."
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The overview describes proactive automation as programmatically triggering workflows and actions across enterprise applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "Proactive automation – Programmatically trigger workflows and take actions across enterprise applications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Custom engine agent prompts in Copilot Chat and Teams are stored under Microsoft 365 product terms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "Custom engine agent prompts and responses in Copilot Chat and Teams are stored in compliance with Microsoft 365 product terms and conditions and are managed as per the customer's instructions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Custom engine agent responses in Copilot Chat and Teams are stored under Microsoft 365 product terms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "Custom engine agent prompts and responses in Copilot Chat and Teams are stored in compliance with Microsoft 365 product terms and conditions and are managed as per the customer's instructions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Administrators can use Content Search to view and manage the stored agent data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "To view and manage this stored data, admins can use Content Search or Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Administrators can use Microsoft Purview to view and manage the stored agent data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "To view and manage this stored data, admins can use Content Search or Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
+      "type": "cost",
+      "claim": "Learn tells custom engine agent builders to budget for their own orchestration, models and hosting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/cost-considerations",
+      "quote": "If you're building a custom engine app or agent, follow the app development path and budget for your own orchestration, models, and hosting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The cost page links to Azure AI Foundry, App Service and Azure AI Bot Service pricing resources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/cost-considerations",
+      "quote": "Existing service pricing resources include Azure AI Foundry pricing, App Service pricing, and Azure AI Bot Service pricing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "front matter: licensing.notes; What's changing; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing table marks custom engine agents available in Copilot Chat without usage-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "| Capability | Copilot Chat (no usage-based billing)* | Copilot Chat (usage-based billing)** | Microsoft 365 Copilot (licensed) | ... | Custom engine agents | ✅ | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: licensing.notes; What's changing; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing table marks custom engine agents available in Copilot Chat with usage-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "| Capability | Copilot Chat (no usage-based billing)* | Copilot Chat (usage-based billing)** | Microsoft 365 Copilot (licensed) | ... | Custom engine agents | ✅ | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: licensing.notes; What's changing; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing table marks custom engine agents available to Microsoft 365 Copilot licensed users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "| Capability | Copilot Chat (no usage-based billing)* | Copilot Chat (usage-based billing)** | Microsoft 365 Copilot (licensed) | ... | Custom engine agents | ✅ | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The table's footnote says usage limits apply to all included features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "* Usage limits apply to all included features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Custom engine agent entitlement uses a mixed licensing model in the general extensibility documentation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "Agents for Copilot are available through multiple licensing models, each offering different levels of functionality: ... Usage-based billing (pay-as-you-go) ... Microsoft 365 without a Copilot add-on license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Microsoft Copilot service description calls Microsoft 365 Copilot an add-on plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A DoD-specific custom engine agent price or meter is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: custom engine agents Department of Defense DoD licensing pricing meter usage based billing government; Copilot pay as you go usage billing not available DoD government tenants. Read cost considerations, prerequisites, Known issues and meter excerpts; no DoD-specific rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].ui; Governance controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "The documented Microsoft 365 admin center path is Agents > All agents > agent > Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select Agents > All agents. ... select an agent from the list of agents. ... immediately under the agent's name, select Block or Unblock.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].governs; Governance controls",
+      "type": "behaviour",
+      "claim": "Block restricts access to the selected agent across the organization, preventing users from using it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Block and unblock | Restrict access to an agent across the organization, preventing any user from using it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Blocking an Agent Builder agent affects availability in Copilot and other hosts such as Outlook and Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Blocking or unblocking an agent that you created by using Microsoft Copilot Agent Builder and Microsoft Copilot Studio affects its availability and functionality in Microsoft Copilot. It also affects availability and functionality in other host products, such as Microsoft Outlook, Microsoft Teams",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Blocking a Copilot Studio agent affects availability in Copilot and other hosts such as Outlook and Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Blocking or unblocking an agent that you created by using Microsoft Copilot Agent Builder and Microsoft Copilot Studio affects its availability and functionality in Microsoft Copilot. It also affects availability and functionality in other host products, such as Microsoft Outlook, Microsoft Teams",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Blocking a SharePoint-created agent affects availability in Copilot Chat only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "However, blocking an agent that you created by using SharePoint or Microsoft Foundry only impacts its availability in Microsoft Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Blocking a Foundry-created agent affects availability in Copilot Chat only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "However, blocking an agent that you created by using SharePoint or Microsoft Foundry only impacts its availability in Microsoft Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance guidance: Before rollout; Governance controls; Open questions",
+      "type": "behaviour",
+      "claim": "The agent actions page's government note names GCC High and GCC Moderate rather than DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Microsoft 365 for government Community Cloud High (GCCH) and Government Community Cloud Moderate (GCCM) environments support publishing agents to the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[0].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The agent actions page does not explicitly name Microsoft 365 Agents SDK or Teams SDK agents in its Block section.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 admin center Agents All agents DoD Microsoft 365 Agents SDK block. Read agent-actions Block section and search results; the section names Agent Builder, Copilot Studio, SharePoint and Foundry, not Microsoft 365 Agents SDK or Teams SDK.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage. ... POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": "minor",
+      "fix": "Add to controls[0].note and the corresponding prose: 'This is a beta API; Microsoft does not support beta APIs in production applications.' The cited reference explicitly states that qualification. Retain the existing DoD-unavailability warning."
+    },
+    {
+      "n": 62,
+      "where": "controls[0].note; Governance controls",
+      "type": "availability",
+      "claim": "The Graph block API is unavailable in US Government L5 (DOD).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "| Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet | ... | ✅ | ❌ | ❌ | ❌ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[0].note; Governance controls",
+      "type": "licensing",
+      "claim": "The Package Management API requires a Microsoft Agent 365 license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance controls; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "The cited UI documentation does not explicitly confirm the Agents > All agents Block action for DoD.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 admin center Agents All agents DoD Microsoft 365 Agents SDK block; custom engine agents DoD default deployment automatically available. Read agent actions and management excerpts; general controls are documented, but no explicit DoD UI statement was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The roadmap item and service description disagree about DoD availability of neighboring agent types.",
+      "status": "contradicted",
+      "source": "roadmap record",
+      "quote": "\"description\": \"Users in DoD will be able to use custom engine agents.\"",
+      "severity": "blocker",
+      "fix": "Replace the disagreement sentence with: 'The roadmap item covers custom engine agents, while the service description lists Declarative agents and Agent Builder as not currently available in DoD; these are different agent types.' In What's changing, replace 'the two pages that disagree about government clouds' with 'general extensibility pages and government-cloud availability notes'. Remove the instruction to choose one of these sources as authoritative over the other."
+    },
+    {
+      "n": 66,
+      "where": "front matter: cost; rationale: cost",
+      "type": "consistency",
+      "claim": "Cost is low, although the deciding costs are the builder's orchestration, models and hosting.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "cost: \"low\"; rationale: \"the cost it names is the builder's own orchestration, models and hosting\". The standard defines low as \"indirect cost only: admin time, communications, training\", not paid hosting or model consumption.",
+      "severity": "blocker",
+      "fix": "Set cost to 'variable'. Replace the cost rationale with: 'Variable. Builders must budget for their own orchestration, models and hosting, with costs depending on the selected Azure AI Foundry, App Service or Azure AI Bot Service resources. A DoD-specific price is not yet published.' Keep the cost page citation and do not invent a DoD credit rate."
+    },
+    {
+      "n": 67,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "Only developers who build an agent and the users they share it with notice this change.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: custom engine agents available automatically deployed default new agents DoD tenant. Read overview, comparison, agent-installation and agent-actions excerpts; none limits everyone affected to builders and their sharing recipients, and organizational/store distribution is documented.",
+      "severity": "minor",
+      "fix": "Replace the impact rationale with: 'Low. The likely impact is a small group choosing to build or use an agent; Microsoft has not stated that an agent appears in DoD tenants on its own.' This expresses the rating as analysis without asserting an exhaustive affected-user list."
+    },
+    {
+      "n": 68,
+      "where": "Governance guidance: After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The governance checklist tells readers to review stored prompts and responses through Content Search or Purview, but the table has no corresponding control.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "After rollout: \"Review stored prompts and responses with Content Search or Microsoft Purview\". The controls table has only the agent Block action.",
+      "severity": "minor",
+      "fix": "Remove the After rollout checklist step 'Review stored prompts and responses with Content Search or Microsoft Purview, the route Learn gives for custom engine agent data.' Retain the supported background statement in Risk assessment; do not add an unverified control row."
+    },
+    {
+      "n": 69,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No source found says this DoD roadmap change alters existing tenant behavior automatically.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: custom engine agents DoD default deployment automatically available; custom engine agents available automatically deployed default new agents DoD tenant. Read roadmap, overview, prerequisites and deployment/installation excerpts; no automatic existing-behavior change stated for DoD.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T08:52:35.011Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=503772",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/cost-considerations",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether an agent is available to anyone in the organisation (block or unblock)",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether an agent is available to anyone in the organisation (block or unblock)",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

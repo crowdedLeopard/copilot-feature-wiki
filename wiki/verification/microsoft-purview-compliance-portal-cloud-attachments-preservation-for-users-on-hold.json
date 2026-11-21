@@ -1,0 +1,722 @@
+{
+  "slug": "microsoft-purview-compliance-portal-cloud-attachments-preservation-for-users-on-hold",
+  "roadmapId": 493752,
+  "title": "Microsoft Purview: preserve shared cloud attachment versions for users on hold",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "1 blocking finding (claim 47)"
+    ]
+  },
+  "counts": {
+    "claims": 56,
+    "confirmed": 54,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "The roadmap facts and the narrowly stated documentation gaps are supported. The instruction for reviewing holds starts inside a case without explaining how to reach it; the existing label-policy guidance also needs a fuller route and the PowerShell parameter's preview qualification.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "Microsoft plans cloud attachment preservation for users put on infinite hold.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enables cloud attachment preservation for users put on infinite hold",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The planned capability preserves shared file versions across any OneDrive or SharePoint site.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "so that file versions shared are preserved across any OneDrive or SharePoint site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Why it matters; controls[0].note; Governance controls",
+      "type": "record",
+      "claim": "The roadmap describes a new capability different from the existing retention-label option.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This is a new capability which is different from the existing capability of applying label to cloud attachments and links",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes the existing option as labeling OneDrive and SharePoint cloud attachments and links shared in Exchange, Teams, Viva Engage and Copilot.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "applying label to cloud attachments and links present in OneDrive and SharePoint and shared in Exchange, Teams, Viva Engage and Copilot",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "General availability is targeted for May CY2027, not committed for that month.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"May CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate; What's changing; Why it matters; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Preview is targeted for March CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"March CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed, without an assertion that other clouds are excluded.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Web is the listed platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The record identifies Microsoft Purview as the product.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "A cloud attachment links to a live file stored in SharePoint or OneDrive rather than embedding a copy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-cloud-attachments",
+      "quote": "Cloud attachments are links to files stored in SharePoint or OneDrive rather than embedded copies. Because a cloud attachment points to a live file stored in Microsoft 365 services that you can modify after sharing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "default",
+      "claim": "By default, eDiscovery collects the most current cloud attachment version for a review set or export.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-cloud-attachments",
+      "quote": "By default, the eDiscovery workflow for collecting cloud attachments only includes adding the most current version of a cloud attachment to a review set or for export.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The collected current version can differ from the shared version and no longer contain content present at sharing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-cloud-attachments",
+      "quote": "So, content that was present in the cloud attachment at the time it was shared might be removed and doesn't exist in the current version that's added to the review set or exported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; controls[1].governs; Governance controls",
+      "type": "behaviour",
+      "claim": "The existing cloud attachment retention-label configuration creates and labels a copy of the file at sharing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-retention-labels-automatically",
+      "quote": "When you choose the option to apply a retention label to cloud attachments, for compliance purposes, a copy of that file is created at the time of sharing. Your selected retention label is then applied to the copy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "The labeled copy is stored in the Preservation Hold library.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-retention-labels-automatically",
+      "quote": "Users aren't aware of the copy that is stored in the Preservation Hold library.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The cloud attachment retention label is not applied to the message.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-retention-labels-automatically",
+      "quote": "The retention label isn't applied to the message itself, or to the original file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The cloud attachment retention label is not applied to the original file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-retention-labels-automatically",
+      "quote": "The retention label isn't applied to the message itself, or to the original file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn defines an infinite eDiscovery hold as holding all content in the specified locations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-create",
+      "quote": "Create an infinite hold where all content in the specified locations is placed on hold.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Scope; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not identified which hold types the new capability's term infinite hold covers.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"cloud attachments\" \"infinite hold\"; \"cloud attachments\" \"users on hold\" preservation licensing default storage permissions. Read roadmap, edisc-hold-create, edisc-cloud-attachments and retention-policies-sharepoint search excerpts; no feature-specific hold-type definition.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "summary; What's changing; front matter: confidence",
+      "type": "absence",
+      "claim": "Learn documents the surrounding features but does not yet describe this hold-based preservation capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"cloud attachments\" \"infinite hold\"; \"cloud attachments\" \"users on hold\" preservation licensing default storage permissions. Opened edisc-cloud-attachments, edisc-hold-create and apply-retention-labels-automatically; results describe collection and label-based retention.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: defaultState; Why it matters; rationale: risk; Open questions",
+      "type": "absence",
+      "claim": "The new capability's default state and effect on arrival are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview cloud attachments preservation users infinite hold 493752 default permissions storage licensing; \"cloud attachments\" \"users on hold\" preservation licensing default storage permissions. Read roadmap, edisc-cloud-attachments and edisc-hold-create; no new-capability default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].ui; controls[0].api; controls[0].note; Scope; Governance controls",
+      "type": "absence",
+      "claim": "No admin setting or automation for the hold-based cloud attachment preservation capability is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: cloud attachments preservation users on hold PowerShell New-CaseHoldPolicy RetainCloudAttachment API setting. Opened edisc-hold-create, New-CaseHoldPolicy and New-RetentionCompliancePolicy; the documented RetainCloudAttachment operation creates the different label-based policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Scope; rationale: cost",
+      "type": "absence",
+      "claim": "No Microsoft page states which license covers this new capability, so its licensing model is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview cloud attachments preservation users infinite hold 493752 default permissions storage licensing. Read the Purview service description's retention-label licensing and eDiscovery sections and edisc-hold-create; no entitlement for this new capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Cost and licensing; rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "No meter specific to this capability is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: cloud attachments preservation infinite hold storage price meter permissions service identity. Read service description, edisc-cloud-attachments and retention-policies-sharepoint excerpts; no meter for hold-based cloud attachment preservation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Cost and licensing; rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "No storage charge specific to this capability is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: cloud attachments preservation infinite hold storage price meter permissions service identity. Read service description, edisc-cloud-attachments and retention-policies-sharepoint excerpts; no hold-based preservation storage charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No price for this capability is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: cloud attachments preservation infinite hold storage price meter permissions service identity. Read service description and edisc-cloud-attachments; no price for this roadmap capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated where this capability stores preserved versions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: cloud attachments preservation infinite hold storage price meter permissions service identity. Read roadmap, edisc-cloud-attachments, edisc-hold-create and label-retention documentation; no new-capability storage location.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Access to the new capability's preserved versions has not been described.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: cloud attachments preservation infinite hold storage price meter permissions service identity. Read edisc-cloud-attachments and Purview permissions excerpts; no feature-specific preserved-version access model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Microsoft has not described the account or service performing the new preservation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: cloud attachments preservation infinite hold storage price meter permissions service identity. Read edisc-cloud-attachments, edisc-hold-create and retention documentation; none identifies an executing identity for this capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The new capability's required preservation permissions are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: cloud attachments preservation infinite hold storage price meter permissions service identity. Read edisc-hold-create and Purview permissions excerpts; no new-capability preservation permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Learn has not described rollout mechanics for the new capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview cloud attachments preservation users infinite hold 493752 default permissions storage licensing; \"cloud attachments\" \"infinite hold\". Read roadmap, edisc-cloud-attachments and edisc-hold-create; dates are roadmap targets, with no documented new-feature rollout mechanics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Learn has not described prerequisites for the new capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"cloud attachments\" \"users on hold\" preservation licensing default storage permissions; \"cloud attachments\" \"infinite hold\". Read edisc-cloud-attachments, edisc-hold-create, apply-retention-labels-automatically and service description; prerequisites found concern existing features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether the new capability shares the existing label option's limitations.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"cloud attachments\" \"infinite hold\"; \"cloud attachments\" \"users on hold\" preservation licensing default storage permissions. Read apply-retention-labels-automatically and edisc-cloud-attachments; their limitations do not describe the new hold-based capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "A matching parent message retrieves its linked cloud attachments even when the files do not match the search condition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-cloud-attachments",
+      "quote": "Cloud attachments are treated as part of the parent's message, not separate entities. If an email or Teams message matches the condition of a search, its linked cloud attachments are retrieved - even if the file doesn't meet the condition of the search.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "eDiscovery holds require an eligible license on every user whose content is preserved.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-create",
+      "quote": "eDiscovery holds require an eligible license on every user whose content you preserve.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Office 365 F1 does not include the rights to be the target of an eDiscovery hold.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-create",
+      "quote": "Frontline subscriptions such as Office 365 F1 and F3 don't include the rights required to be the target of an eDiscovery hold.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Office 365 F3 does not include the rights to be the target of an eDiscovery hold.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-create",
+      "quote": "Frontline subscriptions such as Office 365 F1 and F3 don't include the rights required to be the target of an eDiscovery hold.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Purview service description publishes retention-label and retention-label-policy licensing under Data Lifecycle & Records Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft Purview Data Lifecycle & Records Management; Licensing for retention labels; For retention label creation, the following licenses provide user rights:; Licensing for retention label policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Solutions > Data Lifecycle Management > Policies > Label policies > Auto-apply a label is the route for the existing cloud attachment label policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-retention-labels-automatically",
+      "quote": "If you're using data lifecycle management: Solutions > Data Lifecycle Management > Policies > Label policies > Auto-apply a label",
+      "severity": "minor",
+      "fix": "The printed route correctly reaches the wizard but stops before its cloud-attachment choice. Extend it to 'Solutions > Data Lifecycle Management > Policies > Label policies > Auto-apply a label > Choose the type of content you want to apply this label to > Apply label to cloud attachments and links shared in Exchange, Teams, Viva Engage, and Copilot'. The wizard page is documented at https://learn.microsoft.com/purview/apply-retention-labels-automatically and the option's full label is stated at https://learn.microsoft.com/purview/ai-m365-copilot#capabilities-supported; cite the latter for that label."
+    },
+    {
+      "n": 41,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "New-RetentionCompliancePolicy with -Name, -SharePointLocation <site URL> and -RetainCloudAttachment $true creates the existing cloud attachment auto-apply label policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy",
+      "quote": "This example creates a new auto-apply label policy targeted to cloud attachments named Marketing Department with the specified details. Note: This parameter is currently in Preview, is not available in all organizations, and is subject to change.",
+      "severity": "minor",
+      "fix": "Keep the call and its policy-creation qualification. Add to controls[1].note: 'The PowerShell RetainCloudAttachment parameter is currently in Preview, is not available in all organizations, and is subject to change.' This qualification is in https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy#-retaincloudattachment."
+    },
+    {
+      "n": 42,
+      "where": "controls[1].note; Governance controls table",
+      "type": "admin-path",
+      "claim": "Records Management has an equivalent route to Auto-apply a label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-retention-labels-automatically",
+      "quote": "If you're using records management: Solutions > Records Management > Policies > Label policies > Auto-apply a label",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "After creating the cloud attachment policy, New-RetentionComplianceRule adds a retention label to it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy",
+      "quote": "The next step is to use the New-RetentionComplianceRule cmdlet to add a retention label to the retention label policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The existing label option does not support cloud attachments in encrypted emails or messages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-retention-labels-automatically",
+      "quote": "Cloud attachments and links in encrypted emails or encrypted messages aren't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The label selected for cloud attachment auto-labeling should start retention When items were labeled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-retention-labels-automatically",
+      "quote": "When you select a label to use for auto-applying retention labels for cloud attachments, ensure that the label retention setting Start the retention period based on is When items were labeled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "The existing label policy targets shared files rather than selecting users by their hold status, and is not documented as a switch for the new capability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-retention-labels-automatically",
+      "quote": "Or, you can automatically apply retention labels to newly shared cloud attachments. When you configure the locations for this option, you can select: SharePoint classic and communication sites; Microsoft 365 Groups; OneDrive accounts",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance guidance: Before rollout, first bullet",
+      "type": "admin-path",
+      "claim": "The instruction to inventory existing holds gives the case Hold policies tab in the Microsoft Purview portal as the route.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-create",
+      "quote": "Select the eDiscovery solution card and then select Cases in the left navigation. Select a case, and then select the Hold policies tab.",
+      "severity": "blocker",
+      "fix": "Replace the first Before rollout bullet with: 'Inventory which users are on eDiscovery holds today and note which are infinite holds, using Microsoft Purview portal > eDiscovery > Cases > case > Hold policies.' The documented route is at https://learn.microsoft.com/purview/edisc-hold-create#create-a-hold; the current instruction starts inside a case without the navigation needed to reach it."
+    },
+    {
+      "n": 48,
+      "where": "Governance guidance: After rollout, first bullet",
+      "type": "behaviour",
+      "claim": "Selecting Access links (cloud attachments) in messages enables linked content collection for review-set or export workflows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-cloud-attachments",
+      "quote": "To enable the collection of cloud attachments, select the Access links (cloud attachments) in messages option so linked content is included in Add to review set and export workflows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: Before rollout, second bullet",
+      "type": "applicability",
+      "claim": "The existing cloud attachment label policy can cover SharePoint sites, Microsoft 365 Groups and OneDrive accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-retention-labels-automatically",
+      "quote": "When you configure the locations for this option, you can select: SharePoint classic and communication sites; Microsoft 365 Groups; OneDrive accounts",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance; controls",
+      "type": "consistency",
+      "claim": "The checklist names hold review, cloud attachment collection and audit/storage review controls without corresponding table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'using the case Hold policies tab'; 'Access links (cloud attachments) in messages'; 'Review the audit log and Preservation Hold library storage'. Table: only the preservation gap and retention-label policy.",
+      "severity": "minor",
+      "fix": "The Before rollout hold-inventory step, the After rollout Access links collection step, and the After rollout audit/storage review step have no corresponding controls-table rows. This is a checklist/table coverage finding, not a request to add rows during correction."
+    },
+    {
+      "n": 51,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated how long this capability keeps preserved versions, including after hold release.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: cloud attachments preservation infinite hold storage price meter permissions service identity; \"cloud attachments\" \"infinite hold\". Read roadmap, edisc-hold-create and label-retention documentation; no retention duration for the new capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-05T23:03:05.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-05T23:03:05\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The roles that configure the new capability are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview cloud attachments preservation users infinite hold 493752 default permissions storage licensing. Read edisc-hold-create and Purview permissions search excerpts; these document surrounding solutions but not a role for this new capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed whether the published eDiscovery-hold license requirements cover this new hold-based preservation capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"cloud attachments\" \"users on hold\" preservation licensing default storage permissions. Read roadmap, edisc-hold-create and Purview service description; the record does not identify the hold type and no page assigns this capability to an eDiscovery license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Autonomy & actions; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap describes preservation for held users, without describing new actions users or agents can perform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enables cloud attachment preservation for users put on infinite hold so that file versions shared are preserved across any OneDrive or SharePoint site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap record names no license for the capability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enables cloud attachment preservation for users put on infinite hold so that file versions shared are preserved across any OneDrive or SharePoint site.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T08:52:32.841Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=493752",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-cloud-attachments",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/apply-retention-labels-automatically",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-hold-create",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Existing alternative: retention label policy that labels a copy of each shared cloud attachment",
+        "docs": "https://learn.microsoft.com/purview/apply-retention-labels-automatically",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Data Lifecycle Management",
+          "Policies",
+          "Label policies",
+          "Auto-apply a label"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Existing alternative: retention label policy that labels a copy of each shared cloud attachment",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy",
+        "reachable": true,
+        "token": "New-RetentionCompliancePolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

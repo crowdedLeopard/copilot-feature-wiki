@@ -14,7 +14,7 @@ previewDate: null
 risk: "low"
 cost: "low"
 impact: "low"
-defaultState: "unknown"
+defaultState: "user-opt-in"
 action: "review"
 licensing:
   model: "included"
@@ -33,6 +33,9 @@ sources:
     kind: "learn"
   - title: "Microsoft Copilot requirements"
     url: "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements"
+    kind: "learn"
+  - title: "Data, Privacy, and Security for Microsoft Copilot"
+    url: "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy"
     kind: "learn"
   - title: "Configure Microsoft Copilot settings in the Microsoft 365 admin center"
     url: "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center"
@@ -66,19 +69,23 @@ changes:
     note: "First briefing for the Mac roadmap item; Microsoft lists the feature under three roadmap ids and Learn has only release-note coverage."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 50 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after verification: default state is now user-opt-in, rollout text cites the release notes' safe deployment model, and connected-experiences privacy controls are described as documented."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 52 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 45
+  claims: 52
+  confirmed: 52
   unconfirmed: 0
-  contradicted: 5
-  attempts: 1
-  hash: "d7fc469f9fbdaa5d7b70a1271491a3b2"
+  contradicted: 0
+  attempts: 0
+  hash: "6cea7e67fb896787add318df6a70d5a7"
 ---
 
 ## What's changing
@@ -93,7 +100,7 @@ The roadmap record shows status Launched with a target of April CY2026. The rele
 
 ## Why it matters
 
-For a service owner this is a small change in what users can feed to Copilot: an image they choose to attach now becomes input for presentation creation on Mac. Microsoft has not stated whether the capability is on by default or can be switched off separately, so assume Mac users who already have Copilot in PowerPoint may use it.
+For a service owner this is a small change in what users can feed to Copilot: an image they choose to attach now becomes input for presentation creation on Mac. Users choose an image to attach in the Copilot pane; no image-specific admin switch is documented as of November 2026, so assume Mac users who already have Copilot in PowerPoint may use it.
 
 The practical effect is mostly on support and expectations. Users may ask why image referencing works on one platform and not another, and may attach images that contain customer or internal material. Brief them on what they should and should not attach until Microsoft documents how attached images are handled.
 
@@ -121,7 +128,7 @@ The practical effect is mostly on support and expectations. Users may ask why im
 
 Microsoft's Copilot overview compares licence tiers. It says users with the Microsoft 365 Copilot add-on licence have access to the full experience of Copilot in Word, Excel, PowerPoint and OneNote, and that some users without the add-on can use Copilot in PowerPoint under the Microsoft 365 Copilot (Basic) licence. It also says users with only the Copilot Chat (Basic) licence do not have access to Copilot in PowerPoint. Source: [Microsoft Copilot overview](https://learn.microsoft.com/copilot/plan/copilot-overview).
 
-Which of those tiers covers image referencing in Agent Mode specifically is not yet published. The release notes entry names no licence, price or meter, and the overview page shows usage-based billing only for Copilot Cowork, Copilot Code and Autopilot. A credit rate or charge specific to this feature is not yet published.
+Which of those tiers covers image referencing in Agent Mode specifically is not yet published. The release notes entry names no licence, price or meter, and the overview page names usage-based billing for Copilot Cowork, Copilot Code and Autopilot. A credit rate or charge specific to this feature is not yet published.
 
 Indirect cost is admin time to confirm licence assignment and to brief Mac users on what to attach.
 
@@ -131,13 +138,13 @@ Indirect cost is admin time to confirm licence assignment and to brief Mac users
 - **Cloud:** the roadmap lists Worldwide (Standard Multi-Tenant) only.
 - **Release phase and status:** General Availability, status Launched, target April CY2026 on this item. The release notes entry for the change is dated October 27, 2026.
 - **Users:** people with access to Copilot in PowerPoint under the licensing described above. Microsoft has not published a prerequisite specific to image referencing.
-- **Rollout:** Microsoft has not stated a rollout mechanism or default for this feature.
+- **Rollout:** the Copilot release notes describe a safe deployment model: features gradually roll out to a subset of users within a tenant before expanding across the organisation ([release notes](https://learn.microsoft.com/microsoft-365/copilot/release-notes)).
 
 ## Governance guidance
 
 ### Before rollout
 
-- Confirm which Mac users hold the Microsoft 365 Copilot add-on licence in the Microsoft 365 admin center (Users > Active users), so you know who can use Copilot in PowerPoint.
+- Confirm which Mac users hold the Microsoft 365 Copilot add-on licence in the Microsoft 365 admin center (Users > Active users > user > Licenses and Apps > Licenses), so you know who can use Copilot in PowerPoint.
 - Decide what guidance to give users on attaching images that contain customer, personal or confidential content.
 - Check the Microsoft 365 Copilot release notes for any change to platform availability before announcing the feature.
 
@@ -162,13 +169,13 @@ Indirect cost is admin time to confirm licence assignment and to brief Mac users
 </tbody>
 </table>
 
-The only control Microsoft documents that decides who can use Copilot in PowerPoint is licence assignment, which needs at least the License Administrator or User Administrator role. It governs the whole of Copilot in PowerPoint, not image referencing alone.
+Licence assignment is one documented control over the licensed Copilot in PowerPoint experience, and it needs at least the License Administrator or User Administrator role. It governs the whole of Copilot in PowerPoint, not image referencing alone.
 
-Microsoft Learn documents no switch specific to attaching images in Agent Mode at the time of writing (November 2026). Microsoft's Copilot requirements page says the privacy controls for connected experiences can affect the availability of Copilot features, and links to its page on those controls. Whether they govern this capability is not stated.
+Microsoft Learn documents no switch specific to attaching images in Agent Mode at the time of writing (November 2026). Microsoft's Copilot requirements page says the privacy controls for connected experiences can affect the availability of Copilot features, and links to its page on those controls. Microsoft's [privacy page](https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy) says turning off connected experiences that analyse content makes Copilot features unavailable in PowerPoint, including on Mac when running the most current app version; turning off all connected experiences also makes those features unavailable.
 
 ## Open questions
 
-- Is image referencing on by default for Mac users who already have Copilot in PowerPoint, and can an administrator turn it off separately? Watch Message center and the Microsoft 365 Copilot release notes.
+- Can an administrator turn image referencing off separately from the rest of Copilot in PowerPoint? Watch Message center and the Microsoft 365 Copilot release notes.
 - How are attached images processed and stored when Copilot creates a presentation, and do sensitivity labels or retention apply to them? Watch the Copilot privacy and Agent Mode pages on Microsoft Learn.
 - Which licence tier, Microsoft 365 Copilot (Basic) or the add-on, includes image referencing in Agent Mode?
 - Why does this item show a target of April CY2026 while the release notes entry is dated October 27, 2026 and the sibling items target July CY2026?
@@ -177,16 +184,4 @@ Microsoft Learn documents no switch specific to attaching images in Agent Mode a
 risk: Low. Microsoft's release note says the update does not alter security or privacy controls, and the image is something the user chooses to attach in a prompt.
 cost: Low. Microsoft documents no separate charge or meter for this capability; the only known cost is the Microsoft 365 Copilot licensing that Copilot in PowerPoint already needs, plus admin and communication time.
 impact: Low. This roadmap item covers the Mac platform only, so the people who notice are Copilot users creating presentations in PowerPoint on Mac.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: defaultState; Why it matters; Scope; Open questions / default: The feature's default classification is unknown. | Found: You can now reference an image when creating a presentation with Copilot in PowerPoint. Use the Copilot pane to enter a prompt and attach an image you want to use in your presentation. | Fix: Set defaultState to user-opt-in under the standard's definition of an available capability each user chooses to use: the release notes give the user attachment steps and targeted searches found no image-specific admin switch. Replace default-unknown prose with 'Users choose an image to attach in the Copilot pane; no image-specific admin switch is documented as of November 2026.' Keep the narrower question about a separate switch, not whether users must opt into using an image. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes
-- [contradicted, blocker] Cost and licensing / cost: The overview page shows usage-based billing only for Copilot Cowork, Copilot Code and Autopilot. | Found: Includes access to Cowork, Code, Autopilot, and other agents that use web and work data (Microsoft Graph and Work IQ). Usage is billed based on consumption. | Fix: Replace 'the overview page shows usage-based billing only for Copilot Cowork, Copilot Code and Autopilot' with 'the overview page names usage-based billing for Copilot Cowork, Copilot Code and Autopilot'. Removing 'only' avoids implying other agents cannot incur consumption charges. | Source: https://learn.microsoft.com/copilot/plan/copilot-overview
-- [contradicted, blocker] Scope: Rollout / absence: Microsoft has not stated a rollout mechanism for this feature. | Found: Copilot features are introduced using a safe deployment model, gradually rolling out to a subset of users within a tenant before expanding across the organization. | Fix: Replace the rollout-mechanism absence with 'The Copilot release notes describe a safe deployment model: features gradually roll out to a subset of users within a tenant before expanding across the organisation.' Cite https://learn.microsoft.com/microsoft-365/copilot/release-notes. Do not infer a tenant-specific completion date. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes
-- [contradicted, blocker] Governance controls: first paragraph / applicability: Licence assignment is the only documented control deciding who can use Copilot in PowerPoint. | Found: If you turn off connected experiences that analyze your content on devices in your organization, Microsoft Copilot features won't be available to your users in the following apps: Excel OneNote Outlook PowerPoint Word | Fix: Replace 'The only control Microsoft documents that decides who can use Copilot in PowerPoint is licence assignment' with 'Licence assignment is one documented control over the licensed Copilot in PowerPoint experience'. Keep the already verified role qualification. The privacy-control applicability correction addresses the other documented control without adding a table row. | Source: https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy
-- [contradicted, blocker] Governance controls: 'Whether they govern this capability is not stated.' / absence: Microsoft has not stated whether connected-experience privacy controls govern this Copilot in PowerPoint capability. | Found: Microsoft Copilot features won't be available to your users in the following apps: Excel OneNote Outlook PowerPoint Word This applies to when you're running the most current version of these apps on Windows, Mac, iOS, or Android devices. | Fix: Replace 'Whether they govern this capability is not stated' with 'Microsoft says turning off connected experiences that analyse content makes Copilot features unavailable in PowerPoint, including on Mac when running the most current app version; turning off all connected experiences also makes those features unavailable.' Cite https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy. This describes the documented product-wide reach, not an image-specific switch. | Source: https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: Before rollout, first bullet / admin-path: Microsoft 365 admin center > Users > Active users is where administrators start checking individual users' Copilot licence assignments. | Found: In the admin center, go to the Users > Active users page. Select the row of the user that you want to assign a license to. In the right pane, select Licenses and Apps. | Fix: Expand the checklist's parenthetical path to 'Users > Active users > user > Licenses and Apps > Licenses', matching the existing controls row. The current path stops on the correct user-list page but omits the remaining route. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users
 -->

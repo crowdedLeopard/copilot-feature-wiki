@@ -67,19 +67,23 @@ changes:
     note: "Correction: existing alert handling is no longer described as manual-only; licensing now cites the per-user Purview model; two existing-control checklist steps removed; Defender alert tuning note and Graph reference added."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 53 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-21"
+    note: "Corrected the role statement: the Manage alerts plus DLP Compliance Management requirement is now stated for the Purview DLP alert management dashboard only."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 56 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 53
-  confirmed: 52
+  claims: 56
+  confirmed: 56
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "a174237779d81f9cedcdb3bd1d2288c0"
+  contradicted: 0
+  attempts: 0
+  hash: "0e53cee08ea94f266e18a13198d8d8de"
 ---
 
 ## What's changing
@@ -105,7 +109,7 @@ The trade-off is that an automatic resolution is a decision made before anyone s
 - The roadmap's own example (Low-severity alerts for mail sent to trusted partner domains) shows the kind of condition that needs careful scoping, because a trusted domain list is only as accurate as its upkeep.
 
 **Security & identity**
-- Microsoft Learn documents that DLP alert management requires the Manage alerts role plus either DLP Compliance Management or View-Only DLP Compliance Management. Which role will create or edit auto-resolution and tagging rules is not yet documented.
+- Microsoft Learn documents that access to the Microsoft Purview DLP alert management dashboard requires the Manage alerts role plus either DLP Compliance Management or View-Only DLP Compliance Management. Which role will create or edit auto-resolution and tagging rules is not yet documented.
 
 **Autonomy & actions**
 - The roadmap says DLP applies a rule automatically to every new alert. That is an action taken without a person approving it each time, so rule changes deserve the same review as a policy change.
@@ -173,10 +177,4 @@ A Microsoft Graph or Defender call that updates an existing alert's status is a 
 risk: Low. No source says current alert behaviour changes on arrival, so the exposure rests on rules an admin later writes: a rule that is too broad could resolve genuine alerts before anyone triages them.
 cost: Low. The only cost the sources show is admin time to design and review rules; a licence or meter for this feature is not yet published.
 impact: Low. The people who notice are the compliance and security staff who triage DLP alerts; end users are not described as affected.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity / role: DLP alert management requires Manage alerts plus either DLP Compliance Management or View-Only DLP Compliance Management. | Found: Permission | Defender Alert Access: Manage Alerts | DLP + Security; View-Only Manage Alerts | DLP + Security; Information Protection Analyst | DLP only; DLP Compliance Management | DLP only; View-Only DLP Compliance Management | DLP only. | Fix: Replace the sentence with: "Microsoft Learn documents that access to the Microsoft Purview DLP alert management dashboard requires the Manage alerts role plus either DLP Compliance Management or View-Only DLP Compliance Management." This is the scope stated at https://learn.microsoft.com/purview/dlp-alerts-dashboard-get-started; do not apply this combined requirement to Defender alert management. | Source: https://learn.microsoft.com/defender-xdr/dlp-investigate-alerts-defender
 -->
