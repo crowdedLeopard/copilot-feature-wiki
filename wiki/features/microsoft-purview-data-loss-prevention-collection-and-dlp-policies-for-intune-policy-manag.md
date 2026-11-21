@@ -46,6 +46,9 @@ sources:
   - title: "Create and deploy collection policies"
     url: "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy"
     kind: "learn"
+  - title: "Create and deploy data loss prevention policies"
+    url: "https://learn.microsoft.com/purview/dlp-create-deploy-policy"
+    kind: "learn"
   - title: "Learn about data loss prevention"
     url: "https://learn.microsoft.com/purview/dlp-learn-about-dlp"
     kind: "learn"
@@ -98,19 +101,23 @@ changes:
     note: "Correction: stated the Intune licence requirement for existing app protection policies, reworded the controls note, completed the Intune path, and made the risk rationale and preview-date wording match the record."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 51 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-21"
+    note: "Correction: replaced the claim that roles for DLP policies are undocumented with the general DLP role groups, and removed an After rollout step that had no matching controls row."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 49
+  claims: 53
+  confirmed: 53
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "bca4a0c879880c92258855644109fc2b"
+  contradicted: 0
+  attempts: 0
+  hash: "9d5ccd5e314a33eaf06ea99ccb878d5b"
 ---
 
 ## What's changing
@@ -136,7 +143,7 @@ Microsoft has not stated what happens on arrival. No source says existing mobile
 - Collection policies decide which events are collected. Microsoft's service description says they are designed to streamline discovery of relevant information rather than to apply enforcement, so a collection policy alone does not block anything.
 
 **Security & identity**
-- No change documented: Learn does not describe the identity used to evaluate DLP in the app or the role needed for the mobile scenario. Collection policies list the DLP Compliance Management role and several role groups as applicable.
+- No change documented: Learn does not describe the identity used to evaluate DLP in the app. Microsoft's general DLP guidance requires the account creating and deploying policies to belong to Compliance administrator, Compliance data administrator, Information Protection, Information Protection Admin or Security administrator. Additional permissions specific to the mobile integration are not yet documented. Collection policies list the DLP Compliance Management role and several role groups as applicable.
 
 **Autonomy & actions**
 - No change documented: the roadmap describes evaluation of user clipboard actions and no autonomous actions.
@@ -155,7 +162,7 @@ Indirect cost is admin time to write and test two sets of policies and to explai
 
 ## Scope
 
-Who: the roadmap says the capability applies to Intune MAM-protected mobile apps; the user and licence scope is not yet published. Roles: collection policies list the DLP Compliance Management role and the Organization Management, Compliance Administrator, Insider Risk Management Admin and Information Protection Admins role groups as applicable, with Data Security Viewers for read-only support. Which roles manage the mobile DLP policy is not yet documented.
+Who: the roadmap says the capability applies to Intune MAM-protected mobile apps; the user and licence scope is not yet published. Roles: Microsoft's general DLP guidance requires the account creating and deploying policies to belong to Compliance administrator, Compliance data administrator, Information Protection, Information Protection Admin or Security administrator ([Create and deploy data loss prevention policies](https://learn.microsoft.com/purview/dlp-create-deploy-policy)). Additional permissions specific to the mobile integration are not yet documented. Collection policies list the DLP Compliance Management role and the Organization Management, Compliance Administrator, Insider Risk Management Admin and Information Protection Admins role groups as applicable, with Data Security Viewers for read-only support.
 
 Clouds and platforms: the record lists Worldwide (Standard Multi-Tenant) and the platform Web. Rollout: preview targeted for January CY2027 and general availability for February CY2027, per the roadmap record. Prerequisites are not yet published; the Intune app protection policy documentation describes how policies target apps that are integrated with the Intune SDK, which is the existing route to protected apps.
 
@@ -173,7 +180,6 @@ Clouds and platforms: the record lists Worldwide (Standard Multi-Tenant) and the
 - Tell pilot users what a blocked paste looks like once Microsoft documents the experience.
 
 ### After rollout
-- Review DLP and collection results in the Purview portal and compare them with Intune app protection reports.
 - Re-check the Learn pages behind the controls table, because the mobile DLP surface is not documented yet.
 
 ## Governance controls
@@ -207,12 +213,8 @@ cost: Low. The only cost the sources show is admin time; the licence and any met
 impact: Medium. People who use Intune MAM-protected apps on mobile devices would notice clipboard actions being evaluated; admins in Purview and Intune configure it. Roughly who is affected depends on policy scope.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity; Scope / absence: The roles needed to manage the mobile DLP policy are not documented. | Found: The account you use to create and deploy policies must be a member of one of these role groups: Compliance administrator; Compliance data administrator; Information Protection; Information Protection Admin; Security administrator | Fix: Replace the role-absence wording in Risk assessment and Scope with: 'Microsoft's general DLP guidance requires the account creating and deploying policies to belong to Compliance administrator, Compliance data administrator, Information Protection, Information Protection Admin or Security administrator. Additional permissions specific to the mobile integration are not yet documented.' Cite https://learn.microsoft.com/purview/dlp-create-deploy-policy. Keep the separate absence concerning the integration's evaluation identity. | Source: https://learn.microsoft.com/purview/dlp-create-deploy-policy
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; controls[1].note; Governance controls table / admin-path: Solutions > Data Loss Prevention > Classifiers > Collection policies opens the Purview collection policy list, with + Create policy and + Add activities used for configuration. | Found: In the Microsoft Purview portal, select Solutions > Data Loss Prevention > Classifiers > Collection policies. | Fix: The printed route correctly reaches the policy list but stops before the activity control. Extend it to 'Solutions > Data Loss Prevention > Classifiers > Collection policies > + Create policy > + Add activities'; retain the list-versus-configuration distinction in the note. The creation and activity steps are at https://learn.microsoft.com/purview/collection-policies-create-deploy-policy; conditions are optional per https://learn.microsoft.com/purview/collection-policies-policy-reference. | Source: https://learn.microsoft.com/purview/collection-policies-solution-overview
-- [supported, minor] Governance guidance: After rollout / behaviour: Intune app protection reports can be reviewed. | Found: You can monitor the status of the app protection policies that you applied to users from the Intune app protection pane in Intune. Additionally, you can find information about the users affected by app protection policies, policy compliance status, and any issues | Fix: Cite https://learn.microsoft.com/intune/app-management/protection/monitor-policies for the recommendation to compare results with Intune app protection reports. | Source: https://learn.microsoft.com/intune/app-management/protection/monitor-policies
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist names monitoring controls that have no corresponding controls-table row. | Found: Review DLP and collection results in the Purview portal and compare them with Intune app protection reports. / Table rows: Clipboard sharing between apps; Which events Purview collects; Purview DLP policy for Intune MAM-protected mobile apps. | Fix: The After rollout step naming Purview results and Intune app protection reports has no monitoring row. Remove that checklist step rather than adding unverified control rows.
+- [supported, minor] controls[1].ui; controls[1].note; Governance controls table / admin-path: Solutions > Data Loss Prevention > Classifiers > Collection policies opens the collection policy list, where creation proceeds through + Create policy and + Add activities. | Found: In the Microsoft Purview portal, select Solutions > Data Loss Prevention > Classifiers > Collection policies. | Fix: Extend controls[1].ui.path to 'Solutions > Data Loss Prevention > Classifiers > Collection policies > + Create policy > + Add activities'. Replace the note's last sentence with 'Select + Create policy, supply a name and any optional conditions, then select + Add activities.' The steps are at https://learn.microsoft.com/purview/collection-policies-create-deploy-policy, already cited. | Source: https://learn.microsoft.com/purview/collection-policies-solution-overview
 -->

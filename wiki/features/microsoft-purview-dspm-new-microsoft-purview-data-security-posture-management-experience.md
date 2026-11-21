@@ -58,6 +58,9 @@ sources:
   - title: "What's new in Microsoft Purview"
     url: "https://learn.microsoft.com/purview/whats-new"
     kind: "learn"
+  - title: "The Advanced Security Information Model (ASIM) asset entity schema reference"
+    url: "https://learn.microsoft.com/azure/sentinel/normalization-schema-asset"
+    kind: "learn"
 videos: []
 related: ["microsoft-purview-dspm-copilot-readiness-and-data-explorer","microsoft-purview-compliance-portal-data-loss-prevention-restrict-access-action-support-fo","microsoft-purview-data-loss-prevention-data-security-triage-agent-summaries-and-categoriza","sensitivity-labels","auditing"]
 controls:
@@ -110,19 +113,23 @@ changes:
     note: "Corrected after verification: the current DSPM version is generally available per Learn's May 2026 update, with partner solutions and the Posture Agent still in preview; licensing pointer wording fixed."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 118 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-21"
+    note: "Corrected after verification: replaced the claim that Learn does not describe partner data with the documented asset schema fields, narrowed the related open question, and marked two checklist steps as outside the controls table."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 114 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 118
-  confirmed: 116
+  claims: 114
+  confirmed: 112
   unconfirmed: 0
   contradicted: 2
-  attempts: 3
-  hash: "cf332ed520de1a6ea9e251c94ab14191"
+  attempts: 0
+  hash: "bbd9cfa031876ba4cd4bd2ca8426d6d0"
 ---
 
 ## What's changing
@@ -147,7 +154,7 @@ The cost and exposure sit in the new options. The posture agent consumes SCUs ea
 
 - Item-level scanning of Microsoft 365 uses an Entra app with Graph application permissions that include Files.ReadWrite.All and Sites.ReadWrite.All, with admin consent. Limit who can create the app and who holds its secret.
 - Fabric data risk assessments need an Entra app in a security group named in the Fabric admin portal's Admin API settings.
-- Partner signals arrive through Microsoft Sentinel data lake (preview). Learn does not describe what data each partner sends or receives.
+- Partner signals arrive through Microsoft Sentinel data lake (preview). Microsoft documents a common partner asset schema for DSPM that includes ownership, permissions, sensitivity classifications and risk indicators; confirm the exact fields exchanged by your selected partner.
 
 **Security & identity**
 
@@ -204,8 +211,8 @@ The cost and exposure sit in the new options. The posture agent consumes SCUs ea
 
 ### After rollout
 
-- Check audit records of automated actions taken by AI agents in DSPM.
-- Compare the Posture Agent's SCU consumption with the budget you agreed.
+- Check audit records of automated actions taken by AI agents in DSPM (guidance outside the controls table, which has no audit row).
+- Compare the Posture Agent's SCU consumption with the budget you agreed (guidance outside the controls table, which has no SCU monitoring row).
 - Return to DSPM at least every 60 days so data refresh is not paused.
 - Watch Message center and the DSPM Learn page for the rollout date, cloud availability and licence statement.
 
@@ -233,7 +240,7 @@ Deactivating the Posture Agent makes it inactive but does not uninstall it. The 
 - Is the new experience, including the agents and partner integrations, available in GCC, GCC High and DoD as the roadmap lists? Watch the DSPM Learn pages and the Purview government planning pages.
 - Which licence covers DSPM itself, and what is the SCU rate for the Posture Agent?
 - How will bulk disabling of overshared SharePoint links work: which role, which scope and which audit events? Watch the data risk assessments page.
-- What data do partner integrations pass through Microsoft Sentinel data lake, and who can see it?
+- Which fields does our selected partner exchange through Microsoft Sentinel data lake, and who can see them?
 
 <!-- rationale
 risk: Medium. The documented DSPM can remove sharing links and run AI agents on detected risks, and item-level scans need an Entra app with Files.ReadWrite.All and Sites.ReadWrite.All, but the setup is admin-configured and automated AI agent actions are audited.
@@ -241,10 +248,9 @@ cost: Variable. The Data Security Posture Agent (preview) needs Microsoft 365 E5
 impact: Medium. Security and compliance teams meet a new DSPM experience, and SharePoint site owners can receive item-level notifications; most end users do not notice it.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure; Open questions / absence: Learn does not describe what data each partner sends or receives. | Found: Each asset carries security-relevant metadata including ownership, permissions, sensitivity classifications, and risk indicators. Usage of the schema allows Microsoft Purview DSPM to manage data security posture across Microsoft and partner platforms. | Fix: Remove 'Learn does not describe what data each partner sends or receives.' Replace it with: 'Microsoft documents a common partner asset schema for DSPM that includes ownership, permissions, sensitivity classifications and risk indicators; confirm the exact fields exchanged by your selected partner.' Cite https://learn.microsoft.com/azure/sentinel/normalization-schema-asset. Narrow the final open question to: 'Which fields does our selected partner exchange through Microsoft Sentinel data lake, and who can see them?' | Source: https://learn.microsoft.com/azure/sentinel/normalization-schema-asset
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The governance checklist's audit and SCU monitoring controls have corresponding controls-table rows. | Found: Check audit records of automated actions taken by AI agents in DSPM. Compare the Posture Agent's SCU consumption with the budget you agreed. Table rows: Fabric connection, item-level scanning, agent activation, partner integration. | Fix: The 'Check audit records' and 'Compare the Posture Agent's SCU consumption' checklist steps have no corresponding monitoring rows in the controls table. Qualify those two bullets as guidance outside the controls table; do not add control rows during this correction.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The audit-record checklist instruction has no corresponding control row, despite the standard requiring one. | Found: Check audit records of automated actions taken by AI agents in DSPM (guidance outside the controls table, which has no audit row). | Fix: Remove the After rollout bullet beginning 'Check audit records of automated actions taken by AI agents in DSPM': labelling it outside the table does not satisfy the checklist-to-controls rule. The table has no audit row; this correction should not add one.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The SCU-consumption checklist instruction has no corresponding control row, despite the standard requiring one. | Found: Compare the Posture Agent's SCU consumption with the budget you agreed (guidance outside the controls table, which has no SCU monitoring row). | Fix: Remove the After rollout bullet beginning 'Compare the Posture Agent's SCU consumption with the budget you agreed': labelling it outside the table does not satisfy the checklist-to-controls rule. The table has no SCU monitoring row; this correction should not add one.
 -->

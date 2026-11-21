@@ -22,7 +22,7 @@ licensing:
 audiences: ["security","compliance","finops","m365-admin"]
 tags: ["purview","information-protection","classifiers","sensitive-information-types","sensitivity-labels","sharepoint","onedrive","pay-as-you-go","dlp","gcc","gcc-high","dod"]
 sources:
-  - title: "Microsoft 365 Roadmap item 499076"
+  - title: "Microsoft 365 Roadmap 499076"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=499076"
     kind: "roadmap"
   - title: "Create and analyze an on-demand classification scan"
@@ -58,7 +58,7 @@ controls:
       path: "Usage center > Pay-as-you-go"
       docs: "https://learn.microsoft.com/purview/purview-billing-usage"
     api: null
-    note: "Usage center is in preview. Viewing the page needs Global Reader, Security Reader or Global Admin."
+    note: "Usage center is in preview. Viewing the page needs Global Reader, Security Reader or Global Admin. On the Pay-as-you-go page, toggle On-Demand Classification between paused and active."
 confidence: "medium"
 created: "2026-11-21"
 updated: "2026-11-21"
@@ -68,19 +68,23 @@ changes:
     note: "First briefing for this item: matched to Learn's on-demand classification scan, its pay-as-you-go meter and one PowerShell cmdlet; US Government availability remains unconfirmed."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 85 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after verification: reworded the opening of Why it matters, narrowed the billing-skips sentence to Learn's wording, added the pause toggle to the Usage center row note and removed two checklist steps that had no controls row."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 82 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 85
-  confirmed: 80
-  unconfirmed: 2
-  contradicted: 3
-  attempts: 1
-  hash: "132117630bd97835523fa9a99b9d6bc0"
+  claims: 82
+  confirmed: 82
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "a436d4b1125b9e29a5aad35aa56eaaa3"
 ---
 
 ## What's changing
@@ -95,7 +99,7 @@ Learn states that on-demand classification updates classification results and th
 
 ## Why it matters
 
-Files that were never classified, or were classified long ago, are the ones that existing labelling, DLP and retention policies cannot yet act on. A scan gives the compliance team a way to bring that older content under those policies on a schedule they choose. Learn also says the capability helps reduce the risk of AI tools surfacing unlabelled or unprotected information.
+On-demand classification extends coverage to files that have never been classified or need updated classification. A scan gives the compliance team a way to update classification of that older content on a schedule they choose. Learn also says the capability helps reduce the risk of AI tools surfacing unlabelled or unprotected information.
 
 The cost is that each scan is metered and its results can trigger policies. Microsoft has not stated what happens on arrival in the US Government clouds, so plan on no existing behaviour changing and decide who will own the first scan, its scope and its budget before the March CY2027 target.
 
@@ -122,7 +126,7 @@ Learn's scan page says the feature "uses pay-as-you-go billing or per-user licen
 
 Pay-as-you-go billing is Azure based: the billing models page says you must associate the Microsoft 365 tenant with an active Azure subscription, and an Azure bill is generated at the end of the month. Usage is visible in the Usage center in the Microsoft Purview portal.
 
-The estimation shows an estimated cost before you start. The scan page says the billed amount may be lower, because empty files, cancelled scans and locations skipped while another scan runs on them are not billed. It adds that classifier selection changes the number of files in scope, not a per-classifier charge, and that tenants using EDM classifiers should expect scans to rescan previously classified files, which can raise cost.
+The estimation shows an estimated cost before you start. The scan page says the billed amount may be lower, because items or locations can be skipped, including empty files, items skipped if the scan is cancelled, and locations already being scanned. It adds that classifier selection changes the number of files in scope, not a per-classifier charge, and that tenants using EDM classifiers should expect scans to rescan previously classified files, which can raise cost.
 
 A rate or licence statement specific to GCC, GCC High and DoD is not yet published on the pages read. Each scan can process up to 150,000 locations and 100 million files.
 
@@ -137,13 +141,11 @@ Per Learn, a scan can cover all SharePoint sites and OneDrive accounts, specific
 ### Before rollout
 - Confirm with Microsoft's roadmap and Message center whether this item is the US Government release of on-demand classification, and whether the Learn page applies to your cloud.
 - Name the compliance owner who will run scans and the finance owner who will approve the Azure subscription that pay-as-you-go billing needs.
-- List the DLP, Information Protection, Data Lifecycle Management and Insider Risk Management policies that are active on SharePoint and OneDrive, because a scan can trigger them.
 - Decide the first scan's scope, date range and classifiers so that the estimate is small enough to review.
 
 ### At rollout
 - Create the first scan with a narrow scope using the scan locations row in the controls table, then review the estimation overview before selecting Start classification.
 - Check the estimated cost against budget, and edit and rerun the estimation if the scope is wider than intended.
-- Exclude the EDM classifier from the first scan if you use EDM classifiers, as Learn notes it rescans previously classified files.
 
 ### After rollout
 - Review the Items for review tab and the policy actions the scan triggered, and export the list if the compliance team needs a record.
@@ -158,7 +160,7 @@ Per Learn, a scan can cover all SharePoint sites and OneDrive accounts, specific
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Which SharePoint sites and OneDrive accounts an on-demand scan covers</strong><br><small>Tenant</small><br><small class="controls__note">Compliance Administrator role group runs scans. The portal also offers Data loss prevention &gt; Classifiers as a way in. The cmdlet runs only in Security &amp; Compliance PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Information Protection › Classifiers › On-demand classification › New scan <a href="https://learn.microsoft.com/purview/on-demand-classification" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-SensitiveInformationScan -Name &quot;&lt;scan name&gt;&quot; -SharePointLocation All</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-sensitiveinformationscan" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether On-Demand Classification pay-as-you-go usage is paused or active</strong><br><small>Tenant</small><br><small class="controls__note">Usage center is in preview. Viewing the page needs Global Reader, Security Reader or Global Admin.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Usage center › Pay-as-you-go <a href="https://learn.microsoft.com/purview/purview-billing-usage" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether On-Demand Classification pay-as-you-go usage is paused or active</strong><br><small>Tenant</small><br><small class="controls__note">Usage center is in preview. Viewing the page needs Global Reader, Security Reader or Global Admin. On the Pay-as-you-go page, toggle On-Demand Classification between paused and active.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Usage center › Pay-as-you-go <a href="https://learn.microsoft.com/purview/purview-billing-usage" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -181,14 +183,9 @@ cost: Variable. Learn lists on-demand classification as a pay-as-you-go capabili
 impact: Medium. Admins run the scan, but file owners notice if matching DLP, labelling, retention or insider risk policies then act on their files.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters / applicability: Existing labelling policies cannot yet act on files that were never classified or were classified long ago. | Found: An older file can match a new policy because classification results are already available for it. ... The file can match the policy without being edited or freshly classified. | Fix: Replace the paragraph's first sentence with 'On-demand classification extends coverage to files that have never been classified or need updated classification.' This wording is supported by https://learn.microsoft.com/purview/on-demand-classification and does not imply that old classifications prevent policy matches. | Source: https://learn.microsoft.com/purview/auto-label-classification-simulation
-- [unsupported, blocker] Why it matters / applicability: Existing DLP policies cannot yet act on files that were never classified or were classified long ago. | Found: Searched: Purview DLP retention policies existing files old classification cannot act unclassified files. Read on-demand-classification, auto-label-classification-simulation and grounding-data protection excerpts; none states this blanket restriction on DLP. | Fix: Remove the blanket statement that existing DLP policies cannot act on these files; use 'On-demand classification extends coverage to files that have never been classified or need updated classification' from https://learn.microsoft.com/purview/on-demand-classification.
-- [contradicted, blocker] Why it matters / applicability: Existing retention policies cannot yet act on files that were never classified or were classified long ago. | Found: For each location, you can leave it at the default to apply the policy to the entire location, or specify includes and excludes. ... You can create a retention policy that just retains content without deleting | Fix: Remove the statement that existing retention policies cannot act on these files. Replace the shared sentence with 'On-demand classification extends coverage to files that have never been classified or need updated classification' from https://learn.microsoft.com/purview/on-demand-classification. | Source: https://learn.microsoft.com/purview/create-retention-policies
-- [unsupported, blocker] Cost and licensing / cost: Cancelled scans are not billed. | Found: Searched: on-demand classification canceled billing files processed. Opened scan Billing and Azure Purview pricing; read endpoint billing excerpts. Scan Billing says cancellation can skip items and lower the bill, not that an entire cancelled scan is unbilled. | Fix: Replace 'empty files, cancelled scans and locations skipped while another scan runs on them are not billed' with 'items or locations can be skipped, including empty files, items skipped if the scan is cancelled, and locations already being scanned'. Retain 'the billed amount may be lower', as stated at https://learn.microsoft.com/purview/on-demand-classification.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Microsoft Purview portal > Usage center > Pay-as-you-go reaches the page where On-Demand Classification can be paused or activated. | Found: To access the Usage center > Pay-as-you-go ... pages ... The pay-as-you-go usage page also lets you toggle the features listed between paused and active states. | Fix: Keep the documented route 'Microsoft Purview portal > Usage center > Pay-as-you-go' and add to the row note: 'On the Pay-as-you-go page, toggle On-Demand Classification between paused and active.' The current route stops at the correct page rather than naming the feature toggle. | Source: https://learn.microsoft.com/purview/purview-billing-usage
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: The checklist asks administrators to inventory active protection policies and exclude EDM classifiers without corresponding controls rows. | Found: List the DLP, Information Protection, Data Lifecycle Management and Insider Risk Management policies ... Exclude the EDM classifier ... Table rows: scan locations; Usage center pause/active. | Fix: The Before rollout step beginning 'List the DLP, Information Protection, Data Lifecycle Management and Insider Risk Management policies' and the At rollout step beginning 'Exclude the EDM classifier' have no corresponding controls-table rows.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Microsoft Purview portal > Information Protection > Classifiers > On-demand classification > New scan reaches the wizard for scan location scope. | Found: Go to ... Information Protection > Classifiers > On-demand classification. Select New scan. Follow the instructions in the wizard. ... Scope and location | Fix: Extend controls[0].ui.path and the rendered table path to 'Information Protection > Classifiers > On-demand classification > New scan > Scope and location', using https://learn.microsoft.com/purview/on-demand-classification. | Source: https://learn.microsoft.com/purview/on-demand-classification
+- [supported, minor] controls[1].ui; controls[1].note; Governance controls table / admin-path: Microsoft Purview portal > Usage center > Pay-as-you-go reaches the page with the On-Demand Classification paused/active toggle. | Found: To access the Usage center > Pay-as-you-go ... pages ... The pay-as-you-go usage page also lets you toggle the features listed between paused and active states. ... On-Demand Classification | Yes | Yes | Fix: Extend controls[1].ui.path and the rendered table path to 'Usage center > Pay-as-you-go > On-Demand Classification', retaining the note that its toggle selects paused or active, as documented at https://learn.microsoft.com/purview/purview-billing-usage. | Source: https://learn.microsoft.com/purview/purview-billing-usage
 -->

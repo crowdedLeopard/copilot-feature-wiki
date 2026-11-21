@@ -46,6 +46,9 @@ sources:
   - title: "Require multifactor authentication strength for external users"
     url: "https://learn.microsoft.com/entra/identity/conditional-access/policy-guests-mfa-strength"
     kind: "learn"
+  - title: "What is Microsoft Entra B2B collaboration?"
+    url: "https://learn.microsoft.com/entra/external-id/what-is-b2b"
+    kind: "learn"
 videos: []
 related: []
 controls:
@@ -53,7 +56,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Entra admin center"
-      path: "Entra ID > Security > Authentication methods > Policies > Passkey (FIDO2) > Enable and Target"
+      path: "Entra ID > Security > Authentication methods > Policies > Passkey (FIDO2) > Enable and Target > Add target > target > passkey profiles"
       docs: "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2"
     api:
       kind: "graph"
@@ -64,24 +67,24 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Entra admin center"
-      path: "Entra ID > Authentication methods > Registration campaign"
+      path: "Entra ID > Authentication methods > Registration campaign > Edit > State > Enabled > Authentication method > Passkey"
       docs: "https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign"
     api:
       kind: "graph"
       call: "PATCH /v1.0/policies/authenticationmethodspolicy"
       docs: "https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign"
-    note: "The request body carries only the updated registrationEnforcement section. Learn currently says guests are not nudged in a passkey campaign."
-  - governs: "Whether guests and external users must use passkeys to reach a resource, through a custom authentication strength"
+    note: "The request body carries only the updated registrationEnforcement section. Select included or excluded users and groups on this page. Learn currently says guests are not nudged in a passkey campaign."
+  - governs: "Which authentication methods a custom authentication strength permits"
     scope: "tenant"
     ui:
       surface: "Microsoft Entra admin center"
-      path: "Entra ID > Authentication methods > Authentication strengths > New authentication strength"
+      path: "Entra ID > Authentication methods > Authentication strengths > New authentication strength > Passkeys (FIDO2)"
       docs: "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2"
     api:
       kind: "graph"
       call: "POST /v1.0/policies/authenticationStrengthPolicies"
       docs: "https://learn.microsoft.com/graph/api/authenticationstrengthroot-post-policies?view=graph-rest-1.0"
-    note: "Creates a custom strength only; a Conditional Access policy must apply it. Applies to external users who authenticate with Microsoft Entra ID."
+    note: "The request body sets allowedCombinations to [\"fido2\"]. Creates a custom strength only; a Conditional Access policy must apply it. Applies to external users who authenticate with Microsoft Entra ID."
 confidence: "medium"
 created: "2026-11-21"
 updated: "2026-11-21"
@@ -91,19 +94,23 @@ changes:
     note: "First briefing for this item; Learn still lists guest passkey registration as unsupported, so the page flags the roadmap and Learn disagreement."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 50 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Correction: the third control row now governs which authentication methods a custom authentication strength permits; control paths extended; the guest Conditional Access review step removed; B2B overview page added as a source."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 48
+  claims: 60
+  confirmed: 59
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "124004c86962357a2a268aaf67a6a941"
+  contradicted: 1
+  attempts: 0
+  hash: "c1df8cd90c632788820a798a4d485ab3"
 ---
 
 ## What's changing
@@ -165,7 +172,7 @@ The indirect costs are admin time to review targeting and policies, partner comm
 - Review who the Passkey (FIDO2) policy targets, including any "All users" target, since the roadmap says guests already in scope are enabled automatically (Entra ID > Security > Authentication methods > Policies).
 - Check each passkey profile's attestation, passkey type and key restriction settings for the groups that contain guests, and decide whether guests should be allowed synced passkeys.
 - Check whether a passkey registration campaign targets guests, and exclude guest groups if you do not want them prompted.
-- Review which Conditional Access policies and authentication strengths apply to guests and external users, and note that authentication strength currently applies only to external users who authenticate with Microsoft Entra ID.
+- Review which authentication strengths apply to guests and external users, and note that authentication strength currently applies only to external users who authenticate with Microsoft Entra ID.
 
 ### At rollout
 - Watch the Microsoft 365 Roadmap item and Message center for a rollout notice and any admin action Microsoft sets.
@@ -184,13 +191,15 @@ The indirect costs are admin time to review targeting and policies, partner comm
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users and groups can register and use passkeys (FIDO2), and under which passkey profile</strong><br><small>Tenant</small><br><small class="controls__note">Authentication Policy Administrator is the least privileged role for the Graph call.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Security › Authentication methods › Policies › Passkey (FIDO2) › Enable and Target <a href="https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /v1.0/policies/authenticationMethodsPolicy/authenticationMethodConfigurations/fido2</code> <a href="https://learn.microsoft.com/graph/api/fido2authenticationmethodconfiguration-update?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether a registration campaign nudges users to register a passkey, and who is included or excluded</strong><br><small>Tenant</small><br><small class="controls__note">The request body carries only the updated registrationEnforcement section. Learn currently says guests are not nudged in a passkey campaign.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Authentication methods › Registration campaign <a href="https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /v1.0/policies/authenticationmethodspolicy</code> <a href="https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether guests and external users must use passkeys to reach a resource, through a custom authentication strength</strong><br><small>Tenant</small><br><small class="controls__note">Creates a custom strength only; a Conditional Access policy must apply it. Applies to external users who authenticate with Microsoft Entra ID.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Authentication methods › Authentication strengths › New authentication strength <a href="https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/policies/authenticationStrengthPolicies</code> <a href="https://learn.microsoft.com/graph/api/authenticationstrengthroot-post-policies?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users and groups can register and use passkeys (FIDO2), and under which passkey profile</strong><br><small>Tenant</small><br><small class="controls__note">Authentication Policy Administrator is the least privileged role for the Graph call.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Security › Authentication methods › Policies › Passkey (FIDO2) › Enable and Target › Add target › target › passkey profiles <a href="https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /v1.0/policies/authenticationMethodsPolicy/authenticationMethodConfigurations/fido2</code> <a href="https://learn.microsoft.com/graph/api/fido2authenticationmethodconfiguration-update?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether a registration campaign nudges users to register a passkey, and who is included or excluded</strong><br><small>Tenant</small><br><small class="controls__note">The request body carries only the updated registrationEnforcement section. Select included or excluded users and groups on this page. Learn currently says guests are not nudged in a passkey campaign.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Authentication methods › Registration campaign › Edit › State › Enabled › Authentication method › Passkey <a href="https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /v1.0/policies/authenticationmethodspolicy</code> <a href="https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which authentication methods a custom authentication strength permits</strong><br><small>Tenant</small><br><small class="controls__note">The request body sets allowedCombinations to [&quot;fido2&quot;]. Creates a custom strength only; a Conditional Access policy must apply it. Applies to external users who authenticate with Microsoft Entra ID.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Authentication methods › Authentication strengths › New authentication strength › Passkeys (FIDO2) <a href="https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/policies/authenticationStrengthPolicies</code> <a href="https://learn.microsoft.com/graph/api/authenticationstrengthroot-post-policies?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The roadmap names four places to review: the Authentication methods policy, the passkey registration campaign, Conditional Access policies and user scoping. The first three are rows above; user scoping is the Include and Exclude targeting inside the first two.
+The roadmap names four places to review: the Authentication methods policy, the passkey registration campaign, Conditional Access policies and user scoping. The Authentication methods policy and registration campaign are rows above; the third row creates an authentication strength, not a Conditional Access policy. User scoping is the Include and Exclude targeting inside the first two.
+
+In the first row, passkey profiles must first be enabled through the opt-in link in the banner on the Passkey (FIDO2) page if the tenant has not enabled them. The Graph update request uses includeTargets and excludeTargets for targeting, includeTargets[].allowedPasskeyProfiles for profile assignment, and passkeyProfiles for profile configuration.
 
 A user in an excluded group of the Passkeys (FIDO2) policy is blocked from FIDO2 passkey registration and sign-in entirely, and this takes precedence over included groups. The roadmap item names these existing controls and no separate B2B passkey switch. Role: at least Authentication Policy Administrator for the first two rows, at least Conditional Access Administrator for authentication strengths.
 
@@ -208,15 +217,12 @@ cost: Low. Learn says passkeys (FIDO2) need no extra licences in any Entra ID ed
 impact: Medium. Guest and external users in the resource tenant see new passkey prompts at My Security Info, during proof-up or in a registration campaign; members are not the target.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[2].api and governs; Governance controls table and following paragraph / command: POST /v1.0/policies/authenticationStrengthPolicies implements the row's control over whether guests must use passkeys to reach a resource. | Found: Create a new custom authenticationStrengthPolicy object. POST /policies/authenticationStrengthPolicies. allowedCombinations: The authentication method combinations allowed by this authentication strength policy. | Fix: Keep the documented call, but narrow controls[2].governs and its table label to 'Which authentication methods a custom authentication strength permits'. Set its note to 'The request body sets allowedCombinations to ["fido2"]. Creates a custom strength only; a Conditional Access policy must apply it. Applies to external users who authenticate with Microsoft Entra ID.' Replace 'The first three are rows above' with 'The Authentication methods policy and registration campaign are rows above; the third row creates an authentication strength, not a Conditional Access policy.' | Source: https://learn.microsoft.com/graph/api/authenticationstrengthroot-post-policies?view=graph-rest-1.0
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table; Governance guidance: Before rollout / admin-path: Passkey user/group targeting and profile assignment are reached through Entra ID > Security > Authentication methods > Policies > Passkey (FIDO2) > Enable and Target. | Found: Browse to Entra ID > Security > Authentication methods > Policies. Select Passkey (FIDO2). Select Enable and Target. Select Add target, and then choose All users or Select targets to choose specific groups. | Fix: The route reaches the correct tab but stops before profile assignment. Extend it to 'Entra ID > Security > Authentication methods > Policies > Passkey (FIDO2) > Enable and Target > Add target > target > passkey profiles', using the cited page. State that passkey profiles must first be enabled through the banner opt-in link if the tenant has not enabled them. | Source: https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2
-- [supported, minor] controls[0].api; Governance controls table / command: PATCH /v1.0/policies/authenticationMethodsPolicy/authenticationMethodConfigurations/fido2 updates the tenant's passkey targeting and profiles. | Found: PATCH https://graph.microsoft.com/v1.0/policies/authenticationMethodsPolicy/authenticationMethodConfigurations/fido2; "includeTargets"; "allowedPasskeyProfiles"; "excludeTargets"; "passkeyProfiles" | Fix: Keep the call. Add to controls[0].note: 'The request body uses includeTargets and excludeTargets for targeting, includeTargets[].allowedPasskeyProfiles for profile assignment, and passkeyProfiles for profile configuration.' These properties appear in the cited v1.0 update example. | Source: https://learn.microsoft.com/graph/api/fido2authenticationmethodconfiguration-update?view=graph-rest-1.0
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Entra ID > Authentication methods > Registration campaign reaches the campaign configuration page. | Found: Browse to Entra ID > Authentication methods > Registration campaign, and select Edit. For State: Select Enabled to enable and configure the registration campaign. | Fix: Extend the path to 'Entra ID > Authentication methods > Registration campaign > Edit > State > Enabled > Authentication method > Passkey'. Add to the note: 'Select included or excluded users and groups on this page.' The cited page gives these remaining steps. | Source: https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign
-- [supported, minor] controls[2].ui; Governance controls table / admin-path: Entra ID > Authentication methods > Authentication strengths > New authentication strength reaches custom-strength creation. | Found: Browse to Entra ID > Authentication methods > Authentication strengths. Select New authentication strength. Provide a Name for your new authentication strength. ... Select Passkeys (FIDO2). | Fix: Extend the path to 'Entra ID > Authentication methods > Authentication strengths > New authentication strength > Passkeys (FIDO2)', as given on the cited page. This selects the method in a custom strength; it does not apply a Conditional Access policy. | Source: https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2
-- [supported, minor] Risk assessment: Data exposure / applicability: Guest resource access remains governed by permissions and Conditional Access policies rather than merely by an authentication credential. | Found: Assign guest users to apps or groups. ... You can use authentication and authorization policies to protect your corporate content. Conditional Access policies, such as multifactor authentication, can be enforced | Fix: Cite https://learn.microsoft.com/entra/external-id/what-is-b2b in sources for the statement about guest permissions and authentication/authorization policies. | Source: https://learn.microsoft.com/entra/external-id/what-is-b2b#easily-invite-guest-users-from-the-microsoft-entra-admin-center
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks readers to review guest Conditional Access policies, but no control row configures or applies a Conditional Access policy. | Found: Review which Conditional Access policies and authentication strengths apply to guests and external users. ... Creates a custom strength only; a Conditional Access policy must apply it. | Fix: The checklist's instruction to review guest Conditional Access policies has no corresponding policy-control row; the third row covers custom-strength creation only. Remove that checklist instruction, retaining 'Review which authentication strengths apply to guests and external users, and note that authentication strength currently applies only to external users who authenticate with Microsoft Entra ID.'
+- [supported, minor] controls[0].api; Governance controls table / command: PATCH /v1.0/policies/authenticationMethodsPolicy/authenticationMethodConfigurations/fido2 updates passkey targeting and profiles. | Found: PATCH https://graph.microsoft.com/v1.0/policies/authenticationMethodsPolicy/authenticationMethodConfigurations/fido2 | Fix: Keep the call. Add to controls[0].note the already documented explanation from Governance controls: 'The request body uses includeTargets and excludeTargets for targeting, includeTargets[].allowedPasskeyProfiles for profile assignment, and passkeyProfiles for profile configuration.' | Source: https://learn.microsoft.com/graph/api/fido2authenticationmethodconfiguration-update?view=graph-rest-1.0
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: The campaign path reaches Enabled and Passkey on the page that also contains included and excluded targets. | Found: Browse to Entra ID > Authentication methods > Registration campaign, and select Edit. For State: Select Enabled to enable and configure the registration campaign. For Authentication method, select the method to target: Passkey | Fix: For the targeting portion of this row, extend its path to 'Entra ID > Authentication methods > Registration campaign > Edit > State > Enabled > Authentication method > Passkey > users or groups to include or exclude', as the cited page instructs. Keep the existing note explaining target selection. | Source: https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign
+- [supported, minor] controls[1].api; controls[1].note; Governance controls table / command: PATCH /v1.0/policies/authenticationmethodspolicy with registrationEnforcement configures the registration campaign. | Found: To update the policy, perform a PATCH on the authentication methods policy with only the updated registrationEnforcement section: PATCH https://graph.microsoft.com/v1.0/policies/authenticationmethodspolicy | Fix: Keep the call. Expand controls[1].note to say: 'Within registrationEnforcement.authenticationMethodsRegistrationCampaign, state enables or disables the campaign, includeTargets[].targetedAuthenticationMethod is fido2 for passkeys, and includeTargets and excludeTargets set targeting.' Retain the current guest-support caveat. | Source: https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign
+- [supported, minor] Governance guidance: Before rollout, first bullet / admin-path: Entra ID > Security > Authentication methods > Policies is the starting page for reviewing Passkey (FIDO2) targeting. | Found: Browse to Entra ID > Security > Authentication methods > Policies. Select Passkey (FIDO2). | Fix: Replace the abbreviated parenthetical path with 'Entra ID > Security > Authentication methods > Policies > Passkey (FIDO2) > Enable and Target', reaching the targeting page described by the cited instructions. | Source: https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2
+- [contradicted, minor] Governance guidance: Before rollout, fourth bullet; After rollout, first bullet / consistency: Every control the governance checklist asks readers to review is represented in the controls table. | Found: Review which authentication strengths apply to guests and external users. Review guest sign-ins and registered authentication methods. The third row creates an authentication strength, not a Conditional Access policy. | Fix: Remove 'Review which authentication strengths apply to guests and external users' from the Before rollout bullet, retaining its verified applicability caveat. Remove the After rollout bullet 'Review guest sign-ins and registered authentication methods to see how many guests registered passkeys.' The table has no controls for inspecting policy assignments, guest sign-ins or registered methods; do not add rows as part of this correction.
 -->

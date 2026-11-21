@@ -81,19 +81,23 @@ changes:
     note: "Corrected the Anthropic setting path (terms acknowledgement step), replaced the claim about Claude in Edit with Copilot with what the GCC page documents, and qualified the data-boundary and PowerShell permission statements."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 50 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-21"
+    note: "Corrected the data-exposure statement and risk rationale to state Microsoft's documented government-cloud boundary and the Anthropic exception."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 39 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 49
+  claims: 39
+  confirmed: 39
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "0cf99832a2a83fa26cef982720f605a7"
+  contradicted: 0
+  attempts: 0
+  hash: "52e8a85e35f57b5479cdf535b20a3587"
 ---
 
 ## What's changing
@@ -114,7 +118,7 @@ Because Microsoft has not stated the default, base advice on no source saying ex
 
 **Data exposure**
 
-- The roadmap says Copilot works "directly in your document", so it acts on the document a user has open. Microsoft Learn's government overview says Copilot operates entirely within the customer's U.S. government cloud tenant and that prompts, responses and generated content stay in the government cloud; that statement is about Microsoft Copilot in general, so confirm it for this capability when documentation appears. The GCC-specific Anthropic documentation gives an exception: when enabled, those models process Customer Data outside Microsoft's FedRAMP-authorized U.S. Government cloud.
+- The roadmap says Copilot works "directly in your document", so it acts on the document a user has open. Microsoft Learn's government overview says Copilot operates entirely within the customer's U.S. government cloud tenant and that prompts, responses and generated content stay in the government cloud. The GCC-specific Anthropic documentation gives an exception: when enabled, those models process Customer Data outside Microsoft's FedRAMP-authorized U.S. Government cloud.
 
 **Security & identity**
 
@@ -189,16 +193,14 @@ The second row is a general Claude-access control, not a control over Edit with 
 - Are Copilot's edits tracked and reversible in the GCC version, and which audit events record them?
 
 <!-- rationale
-risk: Medium. Copilot would work directly in documents held in a government tenant, subject to existing Copilot licensing; the GCC editing data boundary is not yet confirmed, and Microsoft has not stated whether it arrives on by default.
+risk: Medium. Copilot would work directly in documents held in a government tenant, subject to existing Copilot licensing; Microsoft documents a government-cloud boundary for Copilot and an exception for enabled Anthropic models, and has not stated whether it arrives on by default.
 cost: Medium. The service description says a Microsoft 365 Copilot licence, an add-on plan, is required for this feature; a price for it is not yet published.
 impact: Medium. Users who hold a Microsoft 365 Copilot licence and work in Word on the web in a government tenant would notice it; unlicensed users would not.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure; rationale: risk / absence: The GCC editing data boundary is not yet confirmed despite the government overview's general Copilot rule. | Found: Microsoft Copilot ... operates entirely within the customer's U.S. government cloud tenant. ... Prompts, responses, and generated content stay in the government cloud. | Fix: Remove '; that statement is about Microsoft Copilot in general, so confirm it for this capability when documentation appears' from Data exposure. In the risk rationale replace 'the GCC editing data boundary is not yet confirmed' with 'Microsoft documents a government-cloud boundary for Copilot and an exception for enabled Anthropic models'. Keep the existing Anthropic exception and its GCC-specific citation; do not imply Anthropic is available in GCC Word editing. | Source: https://learn.microsoft.com/copilot/plan/gov-overview
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model; Cost and licensing; rationale: cost / licensing: Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites. | Found: Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites. | Fix: Keep the cited add-on statement, but append 'Microsoft's government plans page also lists Microsoft 365 Government G7 for GCC as including Copilot.' Cite https://www.microsoft.com/en-us/microsoft-365/enterprise/government-plans-and-pricing, which says 'Includes Microsoft 365 G5, Copilot, Agent 365, and Microsoft Entra Suite.' The service description and licence-options page do not mention that government bundle. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot
-- [supported, minor] controls[1].ui / admin-path: The Anthropic path goes through Copilot > Settings > View all, the subprocessor page, Anthropic, terms acknowledgement and user access selection. | Found: Review the information in the Terms and conditions section, and if they're acceptable, select the I acknowledge and agree to the above terms checkbox. ... Under Choose which users can access Anthropic models | Fix: Use 'Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Terms and conditions > I acknowledge and agree to the above terms > Choose which users can access Anthropic models'. The omitted Terms and conditions is a heading, not a blocking navigation choice. Keep the GCC-specific citation; the general connect-to-ai-subprocessor page uses a different generic user-access label and omits the GCC acknowledgement step. | Source: https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc
+- [supported, minor] controls[0].ui; Risk assessment: Security & identity; rendered controls table / admin-path: Microsoft 365 admin center > Billing > Licenses > product > Assign licenses reaches licence assignment; the prose also abbreviates the route to Billing > Licenses. | Found: In the admin center, go to the Billing > Licenses page. Select a product. On the product details page, select Assign licenses. | Fix: Keep controls[0].ui unchanged. Replace '(Billing > Licenses)' in Risk assessment with '(Microsoft 365 admin center > Billing > Licenses > product > Assign licenses; to remove access, select the user or group and Unassign licenses)', as documented at https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users
+- [supported, minor] controls[1].ui; rendered controls table / admin-path: The printed Anthropic route follows the GCC-specific page through the terms acknowledgement and user-access section. | Found: Review the information in the Terms and conditions section, and if they're acceptable, select the I acknowledge and agree to the above terms checkbox. Under Choose which users can access Anthropic models, select All users, or specify users and groups, and then select Save. | Fix: Set controls[1].ui.path and the rendered route to 'Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Terms and conditions > I acknowledge and agree to the above terms > Choose which users can access Anthropic models > All users or users and groups', matching https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc. | Source: https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc
 -->

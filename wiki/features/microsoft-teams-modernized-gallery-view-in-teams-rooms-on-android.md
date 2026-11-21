@@ -13,7 +13,7 @@ targetDate: "August CY2026"
 previewDate: null
 risk: "low"
 cost: "low"
-impact: "medium"
+impact: "high"
 defaultState: "on"
 action: "prepare"
 licensing:
@@ -46,6 +46,9 @@ sources:
   - title: "Transitioning Teams Android Device Management from Teams Admin Center to the Teams Rooms Pro Management Portal"
     url: "https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1"
     kind: "learn"
+  - title: "Enrolling a device into the Pro Management Portal"
+    url: "https://learn.microsoft.com/microsoftteams/rooms/enroll-a-device"
+    kind: "learn"
 videos: []
 related: ["microsoft-teams-one-stop-admin-portal-for-teams-devices-with-teams-rooms-pro-management","microsoft-teams-breakout-room-support-on-teams-rooms-on-android"]
 controls:
@@ -74,19 +77,23 @@ changes:
     note: "Corrected the licence statement to say Teams Rooms Basic, Pro and valid legacy licences are supported, extended the portal path, and updated the DoD note."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 63 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-21"
+    note: "Corrected after the independent check: removed the sentence tying the Gallery default to a Pro licence, raised impact to high, and added the enrolment page as a source."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 66 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 61
+  claims: 66
+  confirmed: 66
   unconfirmed: 0
-  contradicted: 2
-  attempts: 3
-  hash: "ac7aa5fd71df39afb3c550f9c2fd8b4f"
+  contradicted: 0
+  attempts: 0
+  hash: "a1517b23bdb8f6d61d7a9a848c95df09"
 ---
 
 ## What's changing
@@ -122,7 +129,7 @@ Microsoft's notice says no action is required before the rollout and recommends 
 
 Teams Rooms on Android devices require a Teams Rooms licence; Basic, Pro and valid legacy Teams Rooms licences are supported, per the Teams Rooms licences page. That page lists "Teams video gallery with multiple layout options" under both Basic and Pro. In the release notes, features marked with the Pro icon are only available with a Teams Rooms Pro licence, and the entry for the modernised Gallery view carries no such marker.
 
-The licences page lists "Remote configuration" as a Pro feature. Setting the Gallery default centrally in the Pro Management portal therefore depends on that licence, while the on-device setting is described only in the release notes. No meter, price or feature-specific licence for this feature is published at the time of writing (November 2026). The only indirect cost the sources show is admin time and user communication.
+The licences page lists "Remote configuration" as a Pro feature. No meter, price or feature-specific licence for this feature is published at the time of writing (November 2026). The only indirect cost the sources show is admin time and user communication.
 
 ## Scope
 
@@ -173,14 +180,5 @@ To change settings for many devices at once, the same page describes Settings > 
 <!-- rationale
 risk: Low. This changes how participants are laid out on a room display; Microsoft's notice lists no compliance considerations and says no action is required before the rollout.
 cost: Low. The only cost the sources show is admin time and user communication; the Teams Rooms licences page lists the Teams video gallery under both Basic and Pro, and no feature-specific price is published.
-impact: Medium. Microsoft's notice names organisations using Teams Rooms on Android devices as affected, and room participants see a different default stage layout; the notice describes no change elsewhere.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: Setting the Gallery default centrally / licensing: Setting the Gallery default centrally in the Pro Management portal depends on a Teams Rooms Pro licence. | Found: Starting October 2, 2023 all devices without Pro or Premium licenses assigned to them will lose access to the pro management capabilities until valid licenses are assigned to them. | Fix: Remove the sentence 'Setting the Gallery default centrally in the Pro Management portal therefore depends on that licence, while the on-device setting is described only in the release notes.' Keep the preceding comparison-table statement: 'The licences page lists "Remote configuration" as a Pro feature.' This avoids excluding valid legacy Premium licences that the same page permits for Pro management capabilities. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: Before rollout, confirm enrollment / applicability: Teams Rooms on Android devices managed centrally must be enrolled in the Pro Management portal. | Found: For Teams Rooms on Android devices or Teams panels, the admin agent included on the device automatically connects to the Pro Management Portal. Devices once signed into Teams automatically enrolls and appears in the Teams Rooms Pro Management Portal. | Fix: Add 'Enrolling a device into the Pro Management Portal', https://learn.microsoft.com/microsoftteams/rooms/enroll-a-device, to sources to support the enrollment prerequisite. | Source: https://learn.microsoft.com/microsoftteams/rooms/enroll-a-device
-- [contradicted, minor] front matter: impact; rationale: impact / consistency: A medium impact rating fits this change to the default room stage layout. | Found: impact: "medium"; "room participants see a different default stage layout". The assessment scale defines high as "most users, or a change to default behaviour". | Fix: Set impact to 'high' and replace the impact rationale with: 'High. Room participants see a different default stage layout: video participants are prioritised without administrator action.'
+impact: High. Room participants see a different default stage layout: video participants are prioritised without administrator action.
 -->

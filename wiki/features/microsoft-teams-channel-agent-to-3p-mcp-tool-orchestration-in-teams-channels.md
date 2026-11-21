@@ -18,7 +18,7 @@ defaultState: "admin-opt-in"
 action: "review"
 licensing:
   model: "add-on"
-  notes: "Microsoft's notice MC1182703 says a Microsoft 365 Copilot licence is required. The Channel Agent Learn page lists a Microsoft Copilot licence, a Teams licence and a Microsoft 365 base licence as prerequisites. No price or meter for this feature is stated."
+  notes: "Microsoft's notice MC1182703 says a Microsoft 365 Copilot licence is required. The Channel Agent Learn page lists a Microsoft Copilot licence, a Teams licence and a Microsoft 365 base licence as prerequisites. No price or meter for this feature is stated. Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible subscription plans."
 audiences: ["m365-admin","service-owner","security","change-adoption"]
 tags: ["teams","channels","agents","mcp","m365-copilot","github","app-management","admin-controls"]
 sources:
@@ -33,6 +33,12 @@ sources:
     kind: "learn"
   - title: "Use Microsoft Purview to manage data security & compliance for Channel Agent in Teams"
     url: "https://learn.microsoft.com/purview/ai-teams-channel-agent"
+    kind: "learn"
+  - title: "Considerations for Microsoft Purview to manage Microsoft 365 Copilot and Channel Agent in Teams for security and compliance"
+    url: "https://learn.microsoft.com/purview/ai-m365-copilot-considerations"
+    kind: "learn"
+  - title: "License Options for Microsoft Copilot"
+    url: "https://learn.microsoft.com/copilot/plan/copilot-license-options"
     kind: "learn"
   - title: "Use app centric management to manage access to apps"
     url: "https://learn.microsoft.com/microsoftteams/app-centric-management"
@@ -79,32 +85,36 @@ changes:
     note: "First briefing for this item; reflects Microsoft's notice that the rollout is paused (update dated August 20, 2026)."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 77 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Correction: noted that Channel Agent auto-creation is off by default for EDU tenants, described the Targeted Release dates as the notice's window, added the Copilot licence source and the Purview DLP caveat, and removed the audit-log checklist step."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 82 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 77
-  confirmed: 75
+  claims: 82
+  confirmed: 82
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "3daefe8a519b1d626ffa5db1fb348777"
+  contradicted: 0
+  attempts: 0
+  hash: "a5c41ccd048d20deb8ad820e0bfbe855"
 ---
 
 ## What's changing
 
 Microsoft plans to let Channel Agent, the agent that Teams can attach to a channel, work with selected third-party Model Context Protocol (MCP) servers, named as GitHub, Asana and Atlassian (Jira). The roadmap item says that when a user asks Channel Agent a question, it can use these tools to gather information or complete tasks, and it shows each step of its reasoning.
 
-The roadmap record gives the status as Rolling out with a target of November CY2025, for Worldwide (Standard Multi-Tenant), on Desktop, in the General Availability and Targeted Release phases. Microsoft's notice [MC1182703](https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1182703) (published 2025-11-04, last updated 2026-10-12) says Targeted Release began in mid-November 2025 and was expected to complete by the end of July 2026 (previously late January). It says the feature will be available in preview and requires admin enablement. An update dated August 20, 2026 says Microsoft has paused the rollout and will announce in Message center when it proceeds, and that General Availability timing will also be communicated there. The notice is the later statement, so treat the roadmap's Rolling out status as superseded for rollout timing.
+The roadmap record gives the status as Rolling out with a target of November CY2025, for Worldwide (Standard Multi-Tenant), on Desktop, in the General Availability and Targeted Release phases. Microsoft's notice [MC1182703](https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1182703) (published 2025-11-04, last updated 2026-10-12) gives a Targeted Release window beginning in mid-November 2025 and expected to complete by the end of July 2026 (previously late January). It says the feature will be available in preview and requires admin enablement. An update dated August 20, 2026 says Microsoft has paused the rollout and will announce in Message center when it proceeds, and that General Availability timing will also be communicated there. The notice is the later statement, so treat the roadmap's Rolling out status as superseded for rollout timing.
 
 The Channel Agent Learn page is marked public preview and describes the agent, its knowledge sources and its admin controls. It does not describe MCP orchestration, so what this briefing says about the MCP behaviour comes from the roadmap description and the notice.
 
 ## Why it matters
 
-The decision for an administrator is whether a channel-scoped agent may reach tools that hold source code and work tracking. Channel Agent is allowed by default, and by default a Channel Agent is added automatically to any new channel an eligible user creates, so the agent may already be present in many teams before MCP is switched on. The MCP capability would extend what that existing agent can reach.
+The decision for an administrator is whether a channel-scoped agent may reach tools that hold source code and work tracking. Channel Agent is allowed by default, and by default a Channel Agent is added automatically to any new channel an eligible user creates, so the agent may already be present in many teams before MCP is switched on. For EDU tenants, however, auto-creation is off by default. The MCP capability would extend what that existing agent can reach.
 
 Microsoft's notice says there is no impact unless tenant admins enable the feature, so with the rollout paused nothing needs doing in a hurry. The reasonable view is to prepare the decision now: know who has Channel Agent, who holds a Microsoft 365 Copilot licence and which teams use GitHub, Asana or Jira, so that the resumption notice finds you ready.
 
@@ -113,7 +123,7 @@ Microsoft's notice says there is no impact unless tenant admins enable the featu
 **Data exposure**
 
 - Channel Agent already draws on a channel's messages, its SharePoint files, channel and standard meetings, and meeting transcripts. Microsoft has not described which of that content would be sent to GitHub, Asana or Atlassian servers when the agent calls them; confirm this before enabling.
-- For files it reads, Learn says the agent checks the requesting user's access and does not use files whose sensitivity labels prevent extraction or files with DLP policies that prevent AI use. Whether those checks also cover what is sent to a third-party server is not documented.
+- For files it reads, Learn says the agent checks the requesting user's access and does not use files whose sensitivity labels prevent extraction or files with DLP policies that prevent AI use. Microsoft's Purview considerations page gives different guidance: it says you can't prevent Channel Agent from summarizing labeled files that are identified by a Microsoft Purview Data Loss Protection policy. Whether those checks also cover what is sent to a third-party server is not documented.
 - The Channel Agent page lists that processing data from previews can happen outside the EU Data Boundaries. The notice describes this feature as preview.
 
 **Security & identity**
@@ -142,7 +152,7 @@ The indirect costs are admin time to decide who may use Channel Agent, a pilot g
 
 - **Users:** people who meet the Channel Agent prerequisites, including a Microsoft Copilot licence, and who are enabled for Channel Agent. Learn says users who aren't enabled can view the agent's presence and messages but can't interact with it.
 - **Clouds and platforms:** the roadmap record lists Worldwide (Standard Multi-Tenant) and Desktop. It lists no other cloud or platform.
-- **Rollout:** Targeted Release began in mid-November 2025 per the notice; it is now paused, with no General Availability date given.
+- **Rollout:** the notice gives a Targeted Release window beginning in mid-November 2025; rollout is now paused, with no General Availability date given.
 - **Learn limitations for Channel Agent:** one Channel Agent per channel, no support in private channels, no support in tenants that use Customer Key, and Channel Agents with external users aren't functional.
 - **Prerequisite:** Loop experiences in Teams must be turned on for Channel Agents to be used in meetings.
 
@@ -163,7 +173,6 @@ The indirect costs are admin time to decide who may use Channel Agent, a pilot g
 
 ### After rollout
 
-- Search the Microsoft Purview Audit log for Channel Agent interactions, which Learn says are captured in the unified audit log.
 - Review the pilot's labelled content: Learn says responses show the sensitivity label but do not inherit the label's controls.
 - Update helpdesk guidance, as the notice advises, once the behaviour is confirmed.
 
@@ -184,7 +193,7 @@ Blocking the Channel Agent app in the Teams admin center turns off Channel Agent
 
 The third row states a gap: Microsoft Learn documents no admin setting or Teams PowerShell parameter specific to third-party MCP servers in Channel Agent at the time of writing (November 2026). Microsoft's notice asks administrators to allow apps that integrate with MCP servers, without naming a setting.
 
-The Channel Agent page also describes a Teams apps > Agent settings toggle for automatic creation of Channel Agents in new channels; that governs creation, not MCP use.
+The Channel Agent page also describes a toggle at Teams admin center > Teams apps > Agent settings > auto-creation for automatic creation of Channel Agents in new channels; that governs creation, not MCP use.
 
 ## Open questions
 
@@ -198,16 +207,4 @@ The Channel Agent page also describes a Teams apps > Agent settings toggle for a
 risk: Medium. Channel Agent would call third-party servers (GitHub, Asana, Atlassian) and Learn documents no setting specific to that; the notice says nothing changes unless admins enable it.
 cost: Medium. Microsoft's notice MC1182703 requires a Microsoft 365 Copilot licence for each user; no separate meter or price for this feature is stated.
 impact: Low. Microsoft's notice says there is no impact unless tenant admins enable it, and rollout is paused, so only an opted-in group of Copilot-licensed users would notice.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters / default: By default a Channel Agent is automatically added to any new channel an eligible user creates. | Found: Auto-creation will be default Off for EDU tenants. If you would like to have auto-creation, follow the steps above and toggle auto-creation from Off to On. | Fix: Add immediately after the automatic-creation statement: 'For EDU tenants, however, auto-creation is off by default.' The existing statement omits an exception that changes the default an education administrator should expect. | Source: https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Scope: Rollout / record: The notice says Targeted Release began in mid-November 2025. | Found: Targeted Release (Worldwide): Begins in mid-November 2025 and is expected to complete by end of July 2026 (previously late January). | Fix: Replace 'Targeted Release began in mid-November 2025' in both sections with 'The notice gives a Targeted Release window beginning in mid-November 2025'. The notice supplies a rollout window, not confirmation that deployment began.
-- [supported, minor] front matter: licensing.model / licensing: The Microsoft Copilot entitlement is available as an add-on. | Found: Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans. | Fix: Keep the add-on model, cite https://learn.microsoft.com/copilot/plan/copilot-license-options and append to licensing.notes: 'Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible subscription plans.' This supplies the uncited entitlement source and preserves its included-plan qualification. | Source: https://learn.microsoft.com/copilot/plan/copilot-license-options
-- [supported, minor] Risk assessment: Data exposure / applicability: The setup page says Channel Agent does not use files with DLP policies that prevent AI use. | Found: It won't use ... files with DLP policies that prevent AI-usage. | Fix: Add after this statement: 'Microsoft's Purview considerations page gives different guidance: it says administrators cannot prevent Channel Agent from summarising labelled files identified by a Microsoft Purview Data Loss Protection policy.' Cite https://learn.microsoft.com/purview/ai-m365-copilot-considerations#information-protection-considerations-for-channel-agent-in-teams. Its text says: 'You can't prevent Channel Agent from summarizing labeled files that are identified by a Microsoft Purview Data Loss Protection policy.' | Source: https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams
-- [supported, minor] Governance controls: automatic creation / admin-path: Teams admin center > Teams apps > Agent settings holds a toggle governing automatic Channel Agent creation, not MCP use. | Found: Manage automatically created Channel Agents (optional) ... In the left rail navigation, select Teams apps > Agent settings. Toggle auto-creation to On or Off. | Fix: Replace the abbreviated path with 'Teams admin center > Teams apps > Agent settings > auto-creation' so the route ends at the documented control. | Source: https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist instructs readers to search Purview Audit for Channel Agent interactions, but the controls table has no audit row. | Found: Search the Microsoft Purview Audit log for Channel Agent interactions ... Controls rows: whether Channel Agent is allowed or blocked; which users and groups can use it; third-party MCP server access. | Fix: Remove the 'Search the Microsoft Purview Audit log for Channel Agent interactions' checklist bullet, which names a control without a table row. Do not add a control row as part of this correction.
 -->

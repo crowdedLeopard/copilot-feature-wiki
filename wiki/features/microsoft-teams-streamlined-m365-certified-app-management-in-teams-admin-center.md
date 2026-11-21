@@ -52,6 +52,12 @@ sources:
   - title: "teamsAppSettings resource type"
     url: "https://learn.microsoft.com/graph/api/resources/teamsappsettings"
     kind: "learn"
+  - title: "Grant and manage consent to Teams app permissions"
+    url: "https://learn.microsoft.com/microsoftteams/manage-consent-app-permissions"
+    kind: "learn"
+  - title: "Understand the permissions and information accessed by Teams apps"
+    url: "https://learn.microsoft.com/microsoftteams/app-permissions"
+    kind: "learn"
 videos: []
 related: ["microsoft-teams-unified-agent-and-app-availability-management-across-m365-and-teams-admin","microsoft-teams-m365-admin-centers-manage-teams-apps-that-work-on-outlook-and-m365-app"]
 controls:
@@ -83,19 +89,23 @@ changes:
     note: "First briefing for this item: Microsoft's notice MC796790 says certified app management through org-wide third-party settings is fully rolled out, while the roadmap shows Rolling out."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 50 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after verification: the Third-party apps control exempts individually saved and blocked apps; removed checklist steps with no controls row; added two consent and permissions sources."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 54 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 48
+  claims: 54
+  confirmed: 54
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "677cb6d38a248fe68709522be94b4f2c"
+  contradicted: 0
+  attempts: 0
+  hash: "403f618f1260f15c59e897ff3d3413ee"
 ---
 
 ## What's changing
@@ -112,12 +122,12 @@ The roadmap record lists Worldwide (Standard Multi-Tenant), General Availability
 
 This change is aimed at the approval workload: the roadmap says it reduces approval overhead while keeping governance. In practice an admin gets a way to see which apps carry Microsoft 365 certification and to allow them without reviewing every app from scratch.
 
-If nobody acts, Microsoft's notice says no changes are applied to org-wide or app-level settings for this phase without administrator action. Your current third-party app posture therefore stays as it is. The risk is the opposite one: switching the Third-party apps control on makes all new and existing third-party apps available, not only certified ones, so a certification-based policy has to be applied app by app unless Microsoft documents a narrower option.
+If nobody acts, Microsoft's notice says no changes are applied to org-wide or app-level settings for this phase without administrator action. Your current third-party app posture therefore stays as it is. The risk is the opposite one: the Third-party apps control changes the default availability of new apps and existing apps whose availability you have not individually configured; it is not limited to certified apps. Individually saved availability settings and blocked apps are exempt. A certification-based policy therefore has to be applied app by app unless Microsoft documents a narrower option.
 
 ## Risk assessment
 
 **Data exposure**
-- The Third-party apps control governs bulk availability of all new and existing third-party apps. Turning it on to reach certified apps also makes uncertified apps available to users, who can then share data with them. Mitigate by managing apps individually in Manage apps.
+- The Third-party apps control changes the default availability of new apps and existing apps whose availability you have not individually configured; it is not limited to certified apps. Individually saved availability settings and blocked apps are exempt. Turning it on to reach certified apps can therefore also make uncertified apps available to users, who can then share data with them. Mitigate by managing apps individually in Manage apps.
 - Certification is vendor-attested and audited against industry frameworks; it does not replace your own review of what data an app reads. Each app's Security and Compliance tab and privacy policy link are the places to check.
 
 **Security & identity**
@@ -149,18 +159,14 @@ Indirect costs are admin time to review the Apps to consider allowing tile and e
 ## Governance guidance
 
 ### Before rollout
-- Open Teams admin center > Teams apps > Manage apps and export the app catalogue as CSV to record which third-party apps are allowed now.
 - Record the current state of the Third-party apps control in Org-wide app settings so you can restore it.
-- Review the Apps to consider allowing tile and the Security and Compliance tab of any app you plan to allow, including its certification status and privacy policy.
 
 ### At rollout
-- Allow certified apps one by one on the Manage apps page rather than flipping the bulk Third-party apps control, unless you intend to open all third-party apps.
-- Check each app's availability (Everyone, Specific users or groups, or No one) in app-centric management before telling users.
+- Allow certified apps one by one on the Manage apps page rather than flipping the bulk Third-party apps control, unless you intend to enable third-party apps governed by the org-wide default.
 - Allow a few hours for saved org-wide settings to take effect before testing as a user.
 
 ### After rollout
 - Compare the Manage apps list against your approved set and block anything unapproved.
-- Check user requests for apps you have not allowed, which arrive as notifications to admins.
 - Re-read MC796790 and the Learn page for the unified management phases, which Microsoft says will bring further changes with at least 60 days' notice.
 
 ## Governance controls
@@ -175,7 +181,7 @@ Indirect costs are admin time to review the Apps to consider allowing tile and e
 </tbody>
 </table>
 
-Learn says that to allow an app you must set both the org-wide setting and the app-level setting, while any one blocks it. So the org-wide Third-party apps control is a bulk default, and the per-app allow or block row is the finer control.
+The Manage apps page says both org-wide and user-level availability settings must allow an app. The app-centric management page qualifies this: org-wide defaults do not apply to individually saved app availability or blocked apps.
 
 The **Third-party apps** control does not override app-level configurations, per the app-centric management page. The Teams app permission policies are described by Learn as deprecated for tenants on app-centric management, so do not rely on them. Microsoft Learn documents no PowerShell or Microsoft Graph setting for the org-wide Third-party apps control at the time of writing (November 2026); the Graph teamsAppSettings resource lists two other properties. The per-app row does have a cmdlet.
 
@@ -192,13 +198,9 @@ cost: Low. The only cost the sources show is admin time to review apps; a Teams 
 impact: Low. Teams administrators notice first; users see a change only when an admin alters which third-party apps are available.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters; Risk assessment: Data exposure; Governance guidance: At rollout / applicability: Turning on the bulk control makes all new and existing third-party apps available, including all uncertified apps. | Found: The Org-wide app settings don’t apply to: All apps that have user assignment set to Specific users and groups and saved by you. All apps that were assigned to Everyone or to No one and saved individually. Any blocked apps. | Fix: Replace the blanket all-app statements with: 'The Third-party apps control changes the default availability of new apps and existing apps whose availability you have not individually configured; it is not limited to certified apps. Individually saved availability settings and blocked apps are exempt.' In At rollout, replace 'unless you intend to open all third-party apps' with 'unless you intend to enable third-party apps governed by the org-wide default'. Keep the app-centric-management citation. | Source: https://learn.microsoft.com/microsoftteams/app-centric-management
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity / behaviour: Consent to app permissions is distinct from allowing the app, and permissions still need review. | Found: Once you decide to approve the use of an app, ensure that the app adoption is smooth for the users. A crucial part of the process is granting consent to the permissions that an app needs to work. | Fix: Add https://learn.microsoft.com/microsoftteams/manage-consent-app-permissions to sources for the separate consent and permissions-review claim. | Source: https://learn.microsoft.com/microsoftteams/manage-consent-app-permissions
-- [supported, minor] Governance controls: first paragraph / behaviour: Learn says both org-wide and app-level settings must allow an app, while either can block it. | Found: To allow an agent or app, you must do all of the following settings. To block an agent or app, use any one of the following settings: Org-wide app settings; App centric managemen. | Fix: Replace this paragraph with: 'The Manage apps page says both org-wide and user-level availability settings must allow an app. The app-centric management page qualifies this: org-wide defaults do not apply to individually saved app availability or blocked apps.' Cite https://learn.microsoft.com/microsoftteams/manage-apps and https://learn.microsoft.com/microsoftteams/app-centric-management. | Source: https://learn.microsoft.com/microsoftteams/manage-apps
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: The checklist asks administrators to review controls that have no corresponding table row. | Found: Checklist: 'export the app catalogue as CSV', 'Review the Apps to consider allowing tile and the Security and Compliance tab', 'Check each app's availability', 'Check user requests'. Table rows: bulk availability and per-app allow/block only. | Fix: The checklist's CSV export, certification/compliance review, app-centric Everyone/Specific users or groups/No one availability review, and user-request review have no corresponding controls-table rows. Remove those checklist bullets to reconcile the checklist with the existing table; do not add rows in this correction.
-- [supported, minor] Risk assessment: Data exposure / behaviour: Users of available apps can share data with them. | Found: When you add the app to Teams, it gains access to some basic capabilities that might include access to basic information. When you grant consent, the app receives access to some data of user and organization or both, based on app permissions that it requested consent for. | Fix: Add https://learn.microsoft.com/microsoftteams/app-permissions to sources for the app data-access premise. | Source: https://learn.microsoft.com/microsoftteams/app-permissions
+- [supported, minor] front matter: licensing.notes; Cost and licensing; rationale: cost / licensing: Each user needs a Teams licence before using Teams. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Qualify the licensing sentence and repeated notes as: 'Except for joining Teams meetings anonymously, each user in your organization needs a Teams licence before using Teams.' The exception does not change the licence needed to use the apps discussed here. Source: https://learn.microsoft.com/microsoftteams/user-access. | Source: https://learn.microsoft.com/microsoftteams/user-access
+- [supported, minor] Governance guidance: After rollout / record: Microsoft promises at least 60 days' notice for further unified-management changes. | Found: 3. Phase 3 – Automatic Unification (Future) ... We will inform customers of the timeline and additional details at least 60 days in advance before this phase begins. | Fix: Replace the last After rollout bullet with: 'Re-read MC796790 and the Learn page for the unified management phases; Microsoft says it will announce the timeline and additional details for Phase 3 automatic availability unification at least 60 days before that phase begins.'
 -->

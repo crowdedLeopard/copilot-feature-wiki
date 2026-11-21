@@ -1,0 +1,643 @@
+{
+  "slug": "m365-copilot-attach-and-reference-an-image-when-creating-a-presentation-with-copilo-555882",
+  "roadmapId": 555882,
+  "title": "PowerPoint on the web: attach and reference an image when creating a presentation with Copilot Agent Mode",
+  "status": "verified-with-gaps",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 49,
+    "confirmed": 48,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "The roadmap facts, image-attachment workflow, licence assignment path and PowerShell call are supported. Minor corrections should preserve the privacy documentation's current-version qualification, acknowledge Microsoft's separate guidance on web connected-experience controls, and reconcile the browser-policy checklist with the controls table.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes referencing an image when creating a presentation with Copilot using Agent Mode in PowerPoint.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You can now reference an image when creating a presentation with Copilot using Agent Mode in PowerPoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; summary; What's changing; Why it matters; Scope",
+      "type": "record",
+      "claim": "Roadmap item 555882 is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "title; front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Item 555882 covers the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-08-19T22:58:06.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-08-19T22:58:06\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The record associates the feature with PowerPoint and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"PowerPoint\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Why it matters; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Copilot in PowerPoint can use an attached image during presentation creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Copilot in PowerPoint now allows users to reference attached images during presentation creation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The release notes list this feature under October 27, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#october-27,-2026",
+      "quote": "## October 27, 2026\nAttach and reference an image when creating a presentation with Copilot in PowerPoint",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "The release note lists Windows, Web and Mac for image referencing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Attach and reference an image when creating a presentation with Copilot in PowerPoint [Windows, Web, Mac]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The release note says image referencing was previously unsupported and presentation-creation content was limited to text.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Previously, image referencing was not supported, limiting content to text only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance: At rollout; rationale: risk",
+      "type": "behaviour",
+      "claim": "Users enter a prompt and choose an image to attach in the Copilot pane.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Use the Copilot pane to enter a prompt and attach an image you want to use in your presentation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Microsoft's workflow asks users to review generated slides incorporating the referenced image.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Review the generated slides that incorporate the referenced image.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The release note says the update does not alter security or privacy controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "This update improves content integration without altering security or privacy controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Open questions",
+      "type": "absence",
+      "claim": "The release note entry for image referencing does not mention Agent Mode.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: PowerPoint Copilot Agent Mode attach reference image administrator disable policy Graph license image referencing; opened release-notes and read the complete image-referencing entry, which names the Copilot pane but not Agent Mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Microsoft associates this release-note feature with roadmap items 555890, 555881 and 555882.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Roadmap ID: 555890; 555881; 555882",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope; front matter: changes",
+      "type": "record",
+      "claim": "Roadmap item 555881 covers Desktop.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Item 555881: \"platforms\": [\"Desktop\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "Roadmap item 555881 targets July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Item 555881: \"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 555881 is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Item 555881: \"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 555881 lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Item 555881: \"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 555881 has release phase General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Item 555881: \"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Scope; front matter: changes",
+      "type": "record",
+      "claim": "Roadmap item 555890 covers Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Item 555890: \"platforms\": [\"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "Roadmap item 555890 targets April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Item 555890: \"targetDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 555890 is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Item 555890: \"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 555890 lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Item 555890: \"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 555890 has release phase General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Item 555890: \"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: defaultState; rationale: risk and impact",
+      "type": "default",
+      "claim": "Image attachment is a user-opt-in capability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Use the Copilot pane to enter a prompt and attach an image you want to use in your presentation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "summary; Governance controls; Open questions; defaultState",
+      "type": "absence",
+      "claim": "No feature-specific administrator setting for attaching an image is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: PowerPoint Copilot Agent Mode attach reference image administrator disable policy Graph license image referencing; PowerPoint image attachment admin Copilot Graph. Read release-notes, copilot-overview and returned brand-image/agent-control guidance; no image-attachment switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters; rationale: impact",
+      "type": "absence",
+      "claim": "No source found states that this update changes existing behaviour for users who do not attach an image.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: PowerPoint Copilot Agent Mode attach reference image administrator disable policy Graph license image referencing; PowerPoint Copilot attach reference image Basic Premium license pricing meter Agent Mode. Read release-notes image entry and copilot-overview; no such change stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The release note describes no new permission, identity or sign-in step for attaching an image.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: PowerPoint Copilot Agent Mode attach reference image administrator disable policy Graph license image referencing. Read the complete release-notes image entry: its steps open a presentation, attach an image in the Copilot pane and review slides; no new identity or permission step.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "No documentation found explains an additional Agent Mode mechanism for this attached-image feature beyond the release-note workflow.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: PowerPoint Agent Mode image licensing controls; PowerPoint Copilot Agent Mode attach reference image administrator disable policy Graph license image referencing. Read release-notes and returned Word/Excel/PowerPoint Agents guidance, which concerns separate agents in the Copilot app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "The Microsoft 365 Copilot add-on licence gives access to the full Copilot experience in PowerPoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "You have the Microsoft 365 Copilot add-on license with access to the full experience of Copilot in Word, Excel, PowerPoint, and OneNote.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "Microsoft 365 Copilot (Basic) users can use Copilot in PowerPoint without the add-on licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "You don't have the Microsoft 365 Copilot add-on license but can use Copilot in Word, Excel, PowerPoint, and OneNote.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Chat experiences in PowerPoint vary with the user's licence and tenant configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Chat experiences in Word, Excel, and PowerPoint vary depending on the user's license and tenant configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is included within the existing Copilot-in-PowerPoint licence experience, rather than a documented separate image-reference entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "You have the Microsoft 365 Copilot add-on license with access to the full experience of Copilot in Word, Excel, PowerPoint, and OneNote.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "A licence-tier rule specific to attached-image referencing is not yet published in the documentation found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: PowerPoint Copilot attach reference image Basic Premium license pricing meter Agent Mode; PowerPoint Agent Mode image licensing controls. Read copilot-overview, microsoft-copilot-requirements and release-notes; none assigns this image-reference feature to a specific tier.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate price or meter for this image-referencing feature was found, and the roadmap and release-note entry name neither.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: PowerPoint Copilot attach reference image Basic Premium license pricing meter Agent Mode. Read roadmap record, release-notes image entry, copilot-overview and microsoft-copilot-requirements; no image-reference-specific price or meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Billing > Licenses > product > Assign licenses reaches licence assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "In the admin center, go to the Billing > Licenses page. Select a product. On the product details page, select Assign licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @() assigns a licence using Microsoft Graph PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "To assign a license to a user, use the following command in PowerShell.\nSet-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Licence assignment requires at least License Administrator or User Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "You must be at least a License or User Administrator to assign licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].governs and note; Governance controls",
+      "type": "applicability",
+      "claim": "The user-scoped licence assignment control gives Copilot-in-PowerPoint entitlement, not a separate image-attachment switch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "You have the Microsoft 365 Copilot add-on license with access to the full experience of Copilot in Word, Excel, PowerPoint, and OneNote.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Third-party cookies must be enabled for Copilot to work in PowerPoint for the web.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "For Copilot to work in Word for the web, Excel for the web, and PowerPoint for the web, third-party cookies must be enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The roadmap record and image-referencing release-note entry state no administrator role for using the feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: PowerPoint Copilot Agent Mode attach reference image administrator disable policy Graph license image referencing. Read the roadmap record and complete release-notes image entry; neither names an administrator role for the user workflow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Turning off connected experiences that analyze content makes Copilot unavailable in PowerPoint and the other named apps on the documented devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+      "quote": "If you turn off connected experiences that analyze your content on devices in your organization, Microsoft Copilot features won't be available to your users in the following apps: Excel; OneNote; Outlook; PowerPoint; Word.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance controls",
+      "type": "availability",
+      "claim": "The privacy page names Windows, Mac, iOS and Android for this connected-experience control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+      "quote": "This applies to when you're running the most current version of these apps on Windows, Mac, iOS, or Android devices.",
+      "severity": "minor",
+      "fix": "Replace 'and it names Windows, Mac, iOS and Android devices' with 'and says this applies when running the most current version of these apps on Windows, Mac, iOS or Android devices'."
+    },
+    {
+      "n": 48,
+      "where": "Governance controls; Open questions: connected experiences",
+      "type": "absence",
+      "claim": "The cited privacy page's analyze-content sentence does not name the web.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+      "quote": "This applies to when you're running the most current version of these apps on Windows, Mac, iOS, or Android devices.",
+      "severity": "minor",
+      "fix": "Keep the accurate observation about the cited sentence, but replace the final Open questions bullet with: 'Microsoft's sensitive and regulated customer guidance says Copilot requires the Analyze Content connected experience category and that web experiences are controlled exclusively by Cloud Policy.' Cite and add to sources https://learn.microsoft.com/compliance/anz/blueprint-copilot-reqconfig#connected-experiences. That page states: 'The web experiences and modern apps are controlled exclusively by the Cloud Policy.'"
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to check browser policy, but the controls table has no corresponding browser-policy row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check that browser policy allows third-party cookies for PowerPoint for the web. The table's sole row governs which users hold the Microsoft 365 Copilot licence.",
+      "severity": "minor",
+      "fix": "Replace the Before rollout browser-policy bullet with 'Confirm that Copilot works in PowerPoint for the web before communicating the feature.' Retain the documented third-party-cookie prerequisite in Scope; do not add an unverified control row."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T20:02:36.187Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=555882",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users hold the Microsoft 365 Copilot licence that gives access to Copilot in PowerPoint",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "reachable": true,
+        "segments": [
+          "Billing",
+          "Licenses",
+          "product",
+          "Assign licenses"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which users hold the Microsoft 365 Copilot licence that gives access to Copilot in PowerPoint",
+        "docs": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "reachable": true,
+        "token": "Set-MgUserLicense",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

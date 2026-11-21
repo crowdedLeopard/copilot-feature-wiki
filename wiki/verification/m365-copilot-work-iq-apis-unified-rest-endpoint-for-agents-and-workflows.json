@@ -1,0 +1,1094 @@
+{
+  "slug": "m365-copilot-work-iq-apis-unified-rest-endpoint-for-agents-and-workflows",
+  "roadmapId": 559021,
+  "title": "Microsoft 365 Copilot: Work IQ REST API for custom apps, billed in Copilot Credits",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "2 blocking findings (claims 68, 77)"
+    ]
+  },
+  "counts": {
+    "claims": 84,
+    "confirmed": 78,
+    "unconfirmed": 0,
+    "contradicted": 6,
+    "blocker": 2,
+    "major": 0,
+    "minor": 7
+  },
+  "summary": "Hold for corrections to governance guidance. The service-removal instructions omit the restriction against disabling a policy's last enabled service, and the blanket statement that MCP policies have no documented REST applicability overlooks Microsoft's connector governance documentation.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; front matter: products",
+      "type": "record",
+      "claim": "This change belongs to Microsoft Copilot (Microsoft 365) and concerns Work IQ APIs.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Copilot (Microsoft 365): Work IQ APIs – Unified REST Endpoint for Agents and Workflows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap general availability target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview target is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant) only, with no US Government clouds listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists the Developer platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Developer\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The record lists General Availability and Preview as release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\", \"Preview\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes a new unified REST entry point for invoking agents and workflows.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Introduces a new REST endpoint for Work IQ that serves as a unified entry point for invoking agents and workflows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The roadmap describes a consistent, scalable alternative to legacy Copilot Chat endpoints.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "providing a consistent, scalable alternative to legacy Copilot Chat endpoints.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "type": "record",
+      "claim": "The record does not name the legacy Copilot Chat endpoints.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Introduces a new REST endpoint for Work IQ that serves as a unified entry point for invoking agents and workflows, providing a consistent, scalable alternative to legacy Copilot Chat endpoints.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Work IQ API provides A2A, MCP and REST protocols.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Work IQ provides multiple protocols to interact with agents - Agent-to-Agent (A2A), Model Context Protocol (MCP), and REST",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "The Work IQ REST Chat API lets custom applications create and continue multi-turn conversations with Microsoft 365 Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/rest/copilotconversation-chat",
+      "quote": "The Work IQ Chat API allows you to create and continue multi-turn conversations with Microsoft 365 Copilot, while respecting the defined access controls within the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "command",
+      "claim": "The production chat operation is POST https://workiq.svc.cloud.microsoft/rest/conversations/{conversationId}/chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/rest/copilotconversation-chat",
+      "quote": "POST https://workiq.svc.cloud.microsoft/rest/conversations/{conversationId}/chat",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The chat reference documents production and beta versions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/rest/copilotconversation-chat",
+      "quote": "::: zone pivot=\"work-iq-rest-prod\"\nPOST https://workiq.svc.cloud.microsoft/rest/conversations/{conversationId}/chat\n::: zone pivot=\"work-iq-rest-beta\"\nPOST https://workiq.svc.cloud.microsoft/rest/beta/conversations/{conversationId}/chat",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn says beta APIs are not supported in production applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/rest/copilotconversation-chat",
+      "quote": "APIs under the `/beta` version are subject to change. Use of these APIs in production applications isn't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The licensing announcement is dated 2 June 2026.",
+      "status": "supported",
+      "source": "https://www.microsoft.com/en-us/licensing/news/work-iq-general-availability",
+      "quote": "June 2, 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The licensing announcement gives 16 June 2026 as Work IQ API's general availability date.",
+      "status": "supported",
+      "source": "https://www.microsoft.com/en-us/licensing/news/work-iq-general-availability",
+      "quote": "Microsoft Work IQ general availability: elease details and features (June 16, 2026)\nOn June 16, Work IQ API reaches general availability",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "summary; What's changing; Why it matters; rationale: impact",
+      "type": "absence",
+      "claim": "No change to existing end-user behaviour is described for this REST endpoint.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ REST API invoke agents workflows legacy Copilot Chat endpoints migration; read roadmap, API and REST overviews, chat reference, licensing announcement and release-notes search excerpt. They describe programmatic integrations, not an automatic end-user experience change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "The REST endpoint's tenant state on arrival is not stated, so defaultState is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ REST API tenant enable default administrator disable block endpoint policy; \"Work IQ\" \"REST\" \"default\" billing enable. Read record, REST/API overviews, enablement, billing and MCP pages; setup and first-use provisioning do not state a REST rollout default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: licensing.model and cost; summary; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Work IQ API uses consumption-based billing in Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "There is no separate Work IQ API subscription.",
+      "status": "supported",
+      "source": "https://www.microsoft.com/en-us/licensing/news/work-iq-general-availability",
+      "quote": "There is no separate Work IQ API subscription, SKU, or per-user license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "There is no separate Work IQ API SKU.",
+      "status": "supported",
+      "source": "https://www.microsoft.com/en-us/licensing/news/work-iq-general-availability",
+      "quote": "There is no separate Work IQ API subscription, SKU, or per-user license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "There is no separate Work IQ API per-user licence.",
+      "status": "supported",
+      "source": "https://www.microsoft.com/en-us/licensing/news/work-iq-general-availability",
+      "quote": "There is no separate Work IQ API subscription, SKU, or per-user license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Work IQ API access is independent of Microsoft 365 Copilot licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ API access is independent of Microsoft 365 Copilot licensing and available through usage-based billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters; Cost and licensing; Governance guidance",
+      "type": "cost",
+      "claim": "Work IQ API consumes a tenant pool of Copilot Credits shared with other eligible services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/cost-considerations",
+      "quote": "Copilot Cowork, Copilot Studio agents, and Work IQ API can consume Copilot credits from a shared tenant pool.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "The REST API uses enterprise search grounding by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/rest/overview",
+      "quote": "The REST API uses both enterprise search grounding and web search grounding by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "The REST API uses web search grounding by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/rest/overview",
+      "quote": "The REST API uses both enterprise search grounding and web search grounding by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The REST API can take OneDrive files as context.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/rest/overview",
+      "quote": "the REST API allows you to provide your OneDrive and SharePoint files as context and toggle web search grounding.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The REST API can take SharePoint files as context.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/rest/overview",
+      "quote": "the REST API allows you to provide your OneDrive and SharePoint files as context and toggle web search grounding.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "applicability",
+      "claim": "Microsoft 365 permissions restrict REST results to content the individual is allowed to access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/rest/overview",
+      "quote": "Within an organization, the permissions model in Microsoft 365 ensures that individuals can only get results from the content they're allowed to access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Disabling web grounding is a single-turn action that must be repeated for each applicable chat message.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/rest/overview",
+      "quote": "Toggling off web search grounding is a single-turn action. You must toggle off web search grounding for each chat message where it isn't required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Copilot Connector sources are reachable through Work IQ APIs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Work IQ can reason over:\nData from connected enterprise systems through Copilot Connectors",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Existing Microsoft 365 admin center controls allowing or blocking Copilot Connectors also apply through Work IQ APIs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Existing administrator controls in the Microsoft 365 admin center to allow or block Copilot Connectors also apply when Connectors are accessed through Work IQ APIs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "behaviour",
+      "claim": "Work IQ uses Microsoft Entra ID delegated authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Work IQ uses Microsoft Entra ID delegated authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "behaviour",
+      "claim": "Work IQ does not support application-only authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Application-only authentication isn't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity; Scope; rationale: risk",
+      "type": "behaviour",
+      "claim": "Work IQ requests run in the context of the signed-in user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Requests run in the context of the signed-in user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Security & identity; rationale: risk",
+      "type": "role",
+      "claim": "The Chat API lists WorkIQAgent.Ask as its delegated work or school account permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/rest/copilotconversation-chat",
+      "quote": "| Delegated (work or school account) | WorkIQAgent.Ask | Not available. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity; rationale: risk",
+      "type": "behaviour",
+      "claim": "The Claude walkthrough describes WorkIQAgent.Ask as including read and write access to resources accessible to the agents and user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/claude",
+      "quote": "Ask Work IQ agents questions and receive responses on behalf of the signed-in user, including read and write access to Microsoft 365 resources accessible to those agents and the user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The REST API does not support action or content generation skills such as creating files, sending emails or scheduling meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/rest/overview",
+      "quote": "The REST API doesn't support action or content generation skills like creating files, sending emails, or scheduling meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The REST API returns text-only responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/rest/overview",
+      "quote": "The REST API only responds with textual responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Learn describes A2A as collaboration and delegation where agents operate autonomously.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Use A2A for agent collaboration and delegation, where agents operate autonomously and exchange structured tasks instead of simple API calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "A Work IQ chat request can return QuotaExhausted even when the tenant has prepaid credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/cost-considerations",
+      "quote": "A Work IQ chat request can fail with `QuotaExhausted` and the message \"No AI credits are currently available for this user. Please request more credits from your admin.\" This error can happen even when the tenant has prepaid credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support; Cost and licensing; controls[1].note; Governance guidance",
+      "type": "cost",
+      "claim": "Spending policies control access and limits but do not reserve or allocate credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/cost-considerations",
+      "quote": "Spending policies control access and spending limits; they don't reserve or allocate credits for a workload, user, or group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Work IQ API is licensed under the agreement governing Microsoft Online Services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Work IQ API is licensed under your agreement governing use of Microsoft Online Services, including the Microsoft Product Terms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 Copilot licensed users get Work IQ in Microsoft 365 Copilot experiences and agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "For Microsoft 365 Copilot licensed users, Work IQ is available in all Microsoft 365 Copilot experiences and agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Work IQ use in custom and third-party agents remains subject to usage-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "It is subject to usage-based billing for custom and third-party agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Users without a Microsoft 365 Copilot licence are billed based on usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Users without a Microsoft 365 Copilot license are billed based on usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "A Microsoft 365 Copilot licence does not replenish the Work IQ API credit balance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/cost-considerations",
+      "quote": "A Microsoft 365 Copilot license doesn't replenish the Work IQ API credit balance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing; Open questions",
+      "type": "cost",
+      "claim": "The announcement describes Chat API and Context API consumption as variable by scenario.",
+      "status": "supported",
+      "source": "https://www.microsoft.com/en-us/licensing/news/work-iq-general-availability",
+      "quote": "| Variable | Work IQ Chat API or Work IQ Context API | Variable (Scenarios Below) |\nPrices will vary based on the complexity of the scenario (inclusive of both Chat and Context scenarios).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Work IQ Tool API consumption is 0.1 Copilot Credits per API call.",
+      "status": "supported",
+      "source": "https://www.microsoft.com/en-us/licensing/news/work-iq-general-availability",
+      "quote": "| Static | Work IQ Tool API | 0.1 Copilot Credits per API call |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The announcement labels its examples and prices illustrative.",
+      "status": "supported",
+      "source": "https://www.microsoft.com/en-us/licensing/news/work-iq-general-availability",
+      "quote": "These examples and prices are illustrative.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A fixed per-request credit rate for the Work IQ Chat API is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ Chat API Copilot Credits fixed rate licensing consumption pricing. Read licensing announcement, Work IQ overview, API licensing and cost-considerations pages, and pricing search results; Chat/Context are variable by scenario, not a fixed per-request rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing",
+      "type": "admin-path",
+      "claim": "Administrators can monitor Work IQ API consumption and spending at Microsoft 365 admin center > Copilot > Cost management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits",
+      "quote": "In the Microsoft admin center, Copilot > Cost management, admins can monitor Copilot Credit consumption and manage spending associated with the supported services such as Cowork, running apps hosted on the Copilot Managed Runtime, and Work IQ API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Users hitting their policy limit lose access to agents and services until credits reset on the first of the month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "When users hit the limit, they lose access to agents and services for the rest of the month until credits reset on the first of the month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing",
+      "type": "role",
+      "claim": "Creating a spending policy requires Billing Administrator or Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+      "quote": "Creating a spending policy also requires the Billing Administrator or Global Administrator directory role at runtime.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing; Governance guidance: At rollout",
+      "type": "cost",
+      "claim": "The policy page asks for at least 2,000 credits per user per month as the monthly user budget limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "Monthly budget limit for users: Set at least 2,000 credits per user per month",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope; Governance controls",
+      "type": "behaviour",
+      "claim": "A tenant is enabled once by creating the Work IQ service principal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+      "quote": "one-time per organization.\nThis section creates the Work IQ service principal in your organization, which provisions the Work IQ resource so your applications can request tokens for it.",
+      "severity": "minor",
+      "fix": "Replace the mandatory-manual-setup wording in Scope and Governance controls with: 'The enablement page documents one-time manual provisioning of the Work IQ service principal. The MCP overview also says that this principal is created automatically on first use and manual provisioning can be needed before that.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview, which states 'The Work IQ service principal is created automatically in the tenant when you use Work IQ for the first time.'"
+    },
+    {
+      "n": 58,
+      "where": "Scope; Governance controls",
+      "type": "role",
+      "claim": "The documented one-time Work IQ setup requires a Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+      "quote": "A user with Global Administrator role for the one-time Work IQ setup",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Scope; Governance guidance: Before rollout",
+      "type": "licensing",
+      "claim": "The enablement page lists a usage-based billing plan with an Azure subscription and resource group as a prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+      "quote": "A usage-based billing plan set up in Copilot Studio with an Azure subscription and resource group assigned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Scope",
+      "type": "applicability",
+      "claim": "The Claude integration requires an identity-based spending policy covering the users and selecting Work IQ API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/claude",
+      "quote": "After configuring usage-based billing, create or update an identity-based spending policy covering the approved users and the Work IQ API for custom apps and agents service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance guidance: Before rollout",
+      "type": "default",
+      "claim": "Auto-apply new services is enabled by default for spending policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits",
+      "quote": "The Auto-apply new services setting is enabled by default for spending policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Identity-based policies can target an approved security group and selected services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "To target this rule to a subset of users, switch to Specific groups and select the directory group.\nSelect the agents and services that users and groups in this policy can access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "The Consumption tab supports analysis by service, user and group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits",
+      "quote": "The Consumption tab enables detailed analysis by spending policy, user, group, agent, or service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[0].ui; Governance controls table; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Service selection is at Microsoft 365 admin center > Copilot > Cost Management > Configuration > spending policy > Agents and services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "go to Copilot > Cost Management.\nSelect the Configuration tab.\nSelect the spending policy you want to edit.\nThe spending policy details fly-out opens, where you can modify its settings. This includes:\nScope\nAgents and services",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "PATCH /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings/{serviceId} updates a policy's service setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-update",
+      "quote": "Update a spendingPolicyServiceSetting object.\nPATCH /copilot/costManagement/spendingPolicies/{id}/serviceSettings/{serviceId}\nPATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/3f9e2c1a-0000-0000-0000-00000000c21b/serviceSettings/cowork",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Credit limits are at Microsoft 365 admin center > Copilot > Cost Management > Configuration > spending policy > Spending limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "go to Copilot > Cost Management.\nSelect the Configuration tab.\nSelect the spending policy you want to edit.\nThe spending policy details fly-out opens, where you can modify its settings. This includes:\nSpending limits",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "PATCH /beta/copilot/costManagement/spendingPolicies/{id} updates a spending policy's limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "PATCH /copilot/costManagement/spendingPolicies/{id}\nThe following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.\nPATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/3f9e2c1a-0000-0000-0000-00000000c21b",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[0].note; Governance controls table; Governance guidance: At rollout",
+      "type": "command",
+      "claim": "Setting state to disabled removes a service from a policy, without stating the last-enabled-service restriction.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-update",
+      "quote": "Setting state to disabled is the removal semantic; the entry is retained in that state, and the collection has no DELETE. Disabling the last enabled service is refused with a 409 atLeastOneServiceRequired response.",
+      "severity": "blocker",
+      "fix": "Replace 'The request body sets state; disabled removes a service.' in controls[0].note and its rendered copy with 'The request body sets state; disabled removes a service unless it is the policy's last enabled service, which returns 409 atLeastOneServiceRequired.' Add 'The API refuses to disable a policy's last enabled service.' to the At rollout service-exclusion bullet. Keep the documented PATCH call unchanged."
+    },
+    {
+      "n": 69,
+      "where": "controls[0].note; controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "Both Graph update calls are beta and delegated-only, with no application permission support.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "APIs under the /beta version are subject to change.\nDelegated (work or school account) | CopilotCostManagement-Policy.ReadWrite.All | Not supported.\nApplication | Not supported. | Not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[0].note; controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Both Graph updates require delegated CopilotCostManagement-Policy.ReadWrite.All.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-update",
+      "quote": "| Delegated (work or school account) | CopilotCostManagement-Policy.ReadWrite.All | Not supported. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "The service-setting operation applies to a particular policy, not to all tenant policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-update",
+      "quote": "PATCH /copilot/costManagement/spendingPolicies/{id}/serviceSettings/{serviceId}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "controls[1].note; Governance controls table",
+      "type": "command",
+      "claim": "The policy update request body can set periodLimit and perUserLimit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Excluding Work IQ API from one spending policy does not exclude it from other applicable policies, including the default policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/cost-considerations",
+      "quote": "Review all applicable policies, including the default policy. Excluding a service from one policy doesn't exclude it from other policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Spending-policy controls govern who can consume credits and how much, rather than blocking the REST endpoint itself.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/cost-considerations",
+      "quote": "Include Cowork and exclude Work IQ API from a policy when its users shouldn't consume credits through Work IQ API.\nLimit monthly consumption for selected user groups and the services covered by their policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The Microsoft 365 admin center has documented Work IQ MCP tenant-policy controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "In the Microsoft 365 admin center, tenant administrators can turn Work IQ MCP policy on or off for the tenant.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp to sources for the statement about MCP policy controls."
+    },
+    {
+      "n": 76,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Work IQ MCP can be blocked tenant-wide.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/migrate-retrieval-api",
+      "quote": "Block Work IQ MCP tenant-wide only when you intend to stop it for the entire tenant.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/migrate-retrieval-api to sources for the MCP blocking statement."
+    },
+    {
+      "n": 77,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn does not document applicability of Work IQ MCP policy controls to the REST API.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-in-work-iq-apis",
+      "quote": "Work IQ MCP provides Rego-based policy governance to control access to connectors through Work IQ APIs. Connector access is enabled by default. Administrators can explicitly enable or disable connector participation in Work IQ paths through tenant-level policies.",
+      "severity": "blocker",
+      "fix": "Remove 'Microsoft Learn pages read for this briefing do not apply them to the REST API (see Open questions).' The connector documentation explicitly describes tenant policies controlling connector participation through Work IQ APIs and includes a Work IQ REST API section. Do not replace it with a claim that all MCP controls or the MCP server block govern REST."
+    },
+    {
+      "n": 78,
+      "where": "Open questions: tenant control blocking the REST API itself",
+      "type": "absence",
+      "claim": "A feature-specific tenant control blocking the REST endpoint itself remains undocumented, distinct from spending and connector controls.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ REST API tenant enable default administrator disable block endpoint policy; Work IQ MCP admin center block policy REST API governance; \"Work IQ MCP\" \"Block\" \"Tools\". Read policy, MCP, connector, enablement and cost pages; none names a REST endpoint-wide block.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "What's changing; Open questions: REST operations invoking agents and workflows",
+      "type": "absence",
+      "claim": "The REST references read do not give workflow-invocation operations beyond the documented multi-turn chat.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ REST API invoke agents workflows legacy Copilot Chat endpoints migration. Read REST overview, chat reference and API overview; release-notes excerpt repeats workflow invocation but supplies no method/path for it. A2A agent invocation is not a REST workflow operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "rationale: risk",
+      "type": "behaviour",
+      "claim": "REST use requires an application making authenticated calls with the delegated permission, rather than the endpoint itself initiating activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/rest/copilotconversation-chat",
+      "quote": "Use the Chat API to continue synchronous conversations with Microsoft 365 Copilot.\nDelegated (work or school account) | WorkIQAgent.Ask\nAuthorization | Bearer {token}. Required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Open questions; Governance guidance: Before rollout",
+      "type": "consistency",
+      "claim": "The question treats automatic addition to existing spending policies as unanswered despite stating the documented default Auto-apply new services behaviour.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Learn says Auto-apply new services is enabled by default.\nIs Work IQ API for custom apps and agents added automatically to existing spending policies",
+      "severity": "minor",
+      "fix": "Replace that Open questions bullet with 'What is the state on arrival for a tenant that has not configured billing?' Remove the already-answered question about automatic addition to spending policies."
+    },
+    {
+      "n": 82,
+      "where": "Governance guidance: Before rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to check billing-plan configuration, but no controls row covers that control.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm that a usage-based billing plan with an Azure subscription and resource group exists, as the enablement page requires.\nWhether a spending policy covers Work IQ API for custom apps and agents\nMonthly policy limit and per-user limit for credits",
+      "severity": "minor",
+      "fix": "The Before rollout billing-plan check has no controls-table row. Remove that checklist bullet; retain the verified prerequisite in Scope."
+    },
+    {
+      "n": 83,
+      "where": "Governance guidance: At rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist instructs administrators to configure the policy's security-group scope, but the table has no scope-setting row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Create or edit an identity-based spending policy that names an approved security group and selects the Work IQ API service\nWhether a spending policy covers Work IQ API for custom apps and agents\nMonthly policy limit and per-user limit for credits",
+      "severity": "minor",
+      "fix": "The policy security-group scope instruction has no controls-table row. Replace the At rollout bullet with 'Create or edit an identity-based spending policy to select the Work IQ API service, and exclude the service from policies whose users should not consume credits through it. The API refuses to disable a policy's last enabled service.' This also incorporates the service-removal qualification."
+    },
+    {
+      "n": 84,
+      "where": "Governance guidance: After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to review the Consumption reporting control, but no table row covers it.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review the Consumption tab by service, user and group each month to see Work IQ API spend against the shared credit pool.\nWhether a spending policy covers Work IQ API for custom apps and agents\nMonthly policy limit and per-user limit for credits",
+      "severity": "minor",
+      "fix": "The Consumption-tab review has no controls-table row. Remove that After rollout checklist bullet; retain the verified consumption-monitoring location in Cost and licensing."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T20:02:42.295Z",
+    "summary": {
+      "links": 14,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=559021",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/rest/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/rest/copilotconversation-chat",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/claude",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/plugins/cost-considerations",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/en-us/licensing/news/work-iq-general-availability",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-update",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a spending policy covers Work IQ API for custom apps and agents",
+        "docs": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost Management",
+          "Configuration",
+          "spending policy",
+          "Agents and services"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether a spending policy covers Work IQ API for custom apps and agents",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-update",
+        "reachable": true,
+        "token": "/beta/copilot/costManagement",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Monthly policy limit and per-user limit for credits",
+        "docs": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost Management",
+          "Configuration",
+          "spending policy",
+          "Spending limits"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Monthly policy limit and per-user limit for credits",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+        "reachable": true,
+        "token": "/beta/copilot/costManagement",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
