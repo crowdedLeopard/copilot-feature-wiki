@@ -49,6 +49,9 @@ sources:
   - title: "List packages"
     url: "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackages-list"
     kind: "learn"
+  - title: "copilotPackage: activate"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate"
+    kind: "learn"
   - title: "Graph API for agent registry and agent details"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/graph-api"
     kind: "learn"
@@ -82,21 +85,24 @@ controls:
       surface: "Microsoft 365 admin center"
       path: "Agents > All Agents > Sales Development (Frontier) > Activate"
       docs: "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent"
-    api: null
-    note: "Preview. AI Administrator or Global Administrator role. Step 3 chooses the users or groups; step 4 applies a policy template."
+    api:
+      kind: "graph"
+      call: "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/activate"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate"
+    note: "Preview; AI Administrator or Global Administrator. API is a reviewed beta contract; availability depends on release. agentManagerScope selects who can create instances; policyTemplateId selects a policy template. Needs Agent 365."
   - governs: "Which users can reach Frontier preview features, including the Sales Development agent"
     scope: "user"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Settings > Copilot Frontier"
-      docs: "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent"
+      path: "Copilot > Settings > View all > Copilot Frontier > Turn on Frontier"
+      docs: "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier"
     api: null
-    note: "Learn lists this as a prerequisite for the preview. The Frontier administration guide gives the existing experience as Copilot > Settings > View all > Copilot Frontier."
+    note: "Learn lists this as a prerequisite for the preview. The Sales Development activation page gives the shorter path Copilot > Settings > Copilot Frontier."
   - governs: "Whether supported third-party model providers such as Anthropic can serve requests"
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Settings > View all > AI providers operating as Microsoft subprocessors"
+      path: "Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Anthropic > Choose who can access Anthropic models for Copilot and generative AI experiences"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/connect-to-ai-subprocessor"
     api: null
     note: "General control for Anthropic. The overview says disabling supported model providers may affect the agent in some regions. AI Administrator or Global Administrator role."
@@ -113,7 +119,7 @@ controls:
     note: "Registry shows instance counts for activated template agents; select the agent, then See details. The package-list API reference does not document returning Sales Development agent instances. API: Agent 365 licence."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-21"
 roadmapModified: "2026-10-21T23:02:10"
 changes:
   - date: "2026-11-18"
@@ -126,19 +132,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 93 statements not yet confirmed"
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 104 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-21"
+    note: "Corrected after verification: added the beta Graph activation call to the activation row, completed the Frontier and AI-provider admin paths, and noted that the send-time settings have no row in the controls table."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 122 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 104
-  confirmed: 102
+  claims: 122
+  confirmed: 121
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "1847ac2e42f1c61673bb176855ad9f04"
+  contradicted: 1
+  attempts: 0
+  hash: "df9c2a168b60643e19230195864c1814"
 ---
 
 ## What's changing
@@ -213,16 +223,20 @@ Learn's overview limitations table says Teams chat supports only 1:1 chats betwe
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether the Sales Development agent is activated and which users or groups can create instances</strong><br><small>Tenant</small><br><small class="controls__note">Preview. AI Administrator or Global Administrator role. Step 3 chooses the users or groups; step 4 applies a policy template.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All Agents › Sales Development (Frontier) › Activate <a href="https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which users can reach Frontier preview features, including the Sales Development agent</strong><br><small>User</small><br><small class="controls__note">Learn lists this as a prerequisite for the preview. The Frontier administration guide gives the existing experience as Copilot &gt; Settings &gt; View all &gt; Copilot Frontier.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › Copilot Frontier <a href="https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether supported third-party model providers such as Anthropic can serve requests</strong><br><small>Tenant</small><br><small class="controls__note">General control for Anthropic. The overview says disabling supported model providers may affect the agent in some regions. AI Administrator or Global Administrator role.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › AI providers operating as Microsoft subprocessors <a href="https://learn.microsoft.com/microsoft-365/copilot/connect-to-ai-subprocessor" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether the Sales Development agent is activated and which users or groups can create instances</strong><br><small>Tenant</small><br><small class="controls__note">Preview; AI Administrator or Global Administrator. API is a reviewed beta contract; availability depends on release. agentManagerScope selects who can create instances; policyTemplateId selects a policy template. Needs Agent 365.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All Agents › Sales Development (Frontier) › Activate <a href="https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/activate</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users can reach Frontier preview features, including the Sales Development agent</strong><br><small>User</small><br><small class="controls__note">Learn lists this as a prerequisite for the preview. The Sales Development activation page gives the shorter path Copilot &gt; Settings &gt; Copilot Frontier.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › Copilot Frontier › Turn on Frontier <a href="https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether supported third-party model providers such as Anthropic can serve requests</strong><br><small>Tenant</small><br><small class="controls__note">General control for Anthropic. The overview says disabling supported model providers may affect the agent in some regions. AI Administrator or Global Administrator role.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › AI providers operating as Microsoft subprocessors › Anthropic › Choose who can access Anthropic models for Copilot and generative AI experiences <a href="https://learn.microsoft.com/microsoft-365/copilot/connect-to-ai-subprocessor" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Inventory of agents in the tenant, for review of new instances</strong><br><small>Tenant</small><br><small class="controls__note">Registry shows instance counts for activated template agents; select the agent, then See details. The package-list API reference does not document returning Sales Development agent instances. API: Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Overview › Explore All agents › Registry <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-agents" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET https://graph.microsoft.com/v1.0/copilot/admin/catalog/packages</code> <a href="https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackages-list" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-Microsoft Learn documents no API for activating the Sales Development agent, for the Copilot Frontier setting or for the AI providers setting at the time of writing (November 2026), so those rows show "Not yet documented" on the API side. Role: the Learn pages name the AI Administrator or Global Administrator role for activation and for the AI providers setting.
+Microsoft Learn documents no API for the Copilot Frontier setting or for the AI providers setting at the time of writing (November 2026), so those rows show "Not yet documented" on the API side. Role: the Learn pages name the AI Administrator or Global Administrator role for activation and for the AI providers setting.
+
+On the activation row, after **Activate**, the Learn page has the administrator choose the users or groups that can create instances, then apply a policy template that allows agent instance creation. The Package Management API reference for activation is a beta contract and says availability depends on the matching schema and backend release; it requires a Microsoft Agent 365 licence and does not grant consent to the agent's requested permissions.
 
 The agent inventory row is a general control for agents in the tenant. Learn's instance-management page documents instance counts and instance details for activated template agents in the registry, and the package-list API reference does not document returning individual Sales Development agent instances. The Graph package API requires a Microsoft Agent 365 licence.
+
+The send-time settings that the Before rollout checklist refers to are documented on their own Learn page and have no row in this table.
 
 ## Open questions
 
@@ -238,13 +252,9 @@ cost: Variable. Microsoft publishes Copilot Credit billing for the agent's resou
 impact: Medium. Sales managers who create instances and the prospects who receive outreach notice it; admins choose which users or groups can create instances.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls / absence: Microsoft has not documented automation for activating the template and choosing who can create instances. | Found: Activate an already-onboarded agent template for the users or groups allowed to create instances from it, and apply the selected policy template. | Fix: Replace controls[0].api null with kind graph, call 'POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/activate', and docs https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate. Add to the note: 'Reviewed beta contract; availability depends on the matching schema and backend release. agentManagerScope selects allowed creators; policyTemplateId selects an existing policy template. Requires Agent 365 and a signed-in AI Administrator or Global Administrator; does not grant permission consent.' Cite that reference. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls / admin-path: Activation and creator access are reached through Microsoft 365 admin center > Agents > All Agents > Sales Development (Frontier) > Activate. | Found: Search for Sales Development (Frontier), and then select Activate. ... Choose the users or groups that can create Sales Development agent instances. | Fix: Keep the documented entry path, but make the note explicit: 'After Activate, choose the users or groups that can create instances, then apply a policy template that allows agent instance creation.' The path ends at the entrance to that configuration. | Source: https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent
-- [supported, minor] controls[1].ui; controls[1].note; Governance controls / admin-path: The activation page gives Microsoft 365 admin center > Copilot > Settings > Copilot Frontier, while the Frontier guide includes View all. | Found: Copilot Frontier is enabled in the Microsoft 365 admin center: Copilot > Settings > Copilot Frontier. | Fix: Use 'Copilot > Settings > View all > Copilot Frontier > Turn on Frontier' for controls[1].ui.path and https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier for its docs, retaining the note that the activation page gives the shorter path. The cited Frontier guide documents the selectable View all tab and the final toggle. | Source: https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent
-- [supported, minor] controls[2].ui; Governance controls / admin-path: The AI-provider control is at Microsoft 365 admin center > Copilot > Settings > View all > AI providers operating as Microsoft subprocessors. | Found: Select Copilot > Settings > View all. ... Select AI providers operating as Microsoft subprocessors. ... select Anthropic ... select your users or groups | Fix: For the opt-in route, complete controls[2].ui.path as 'Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Anthropic > Choose who can access Anthropic models for Copilot and generative AI experiences'. The current path stops on the correct page before the provider and audience controls. | Source: https://learn.microsoft.com/microsoft-365/copilot/connect-to-ai-subprocessor
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The controls table covers every control the governance checklist asks the reader to consider. | Found: Agree with sales leaders the outreach rules to apply ... configurable days and hours ... The controls table covers activation, Frontier access, AI providers and inventory, not the send-window control. | Fix: The Before rollout outreach-rules step refers to the send-window control, which has no row in the controls table. Record this checklist/table gap; do not add a control row as part of this correction.
+- [supported, minor] controls[2].ui; controls[2].note; Governance controls / admin-path: The printed Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Anthropic > Choose who can access Anthropic models for Copilot and generative AI experiences path reaches the provider audience control. | Found: under Available subprocessors for your organization, select Anthropic ... Under Choose who can access Anthropic models for Copilot and generative AI experiences, select your users or groups | Fix: Include the omitted heading: Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Choose who can access Anthropic models for Copilot and generative AI experiences. The cited page also confirms AI Administrator or Global Administrator. | Source: https://learn.microsoft.com/microsoft-365/copilot/connect-to-ai-subprocessor
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist refers to send-time settings that have no controls-table row, as the prose acknowledges. | Found: Agree with sales leaders the outreach rules to apply ... the send-time guide documents configurable days and hours ... The send-time settings that the Before rollout checklist refers to ... have no row in this table. | Fix: Remove the Before rollout bullet beginning 'Agree with sales leaders the outreach rules to apply' and the final Governance controls sentence about its missing row. Keep the verified send-time comparison in Risk assessment; do not add a control row.
 -->

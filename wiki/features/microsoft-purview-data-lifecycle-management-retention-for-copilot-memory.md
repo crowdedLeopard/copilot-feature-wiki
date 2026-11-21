@@ -17,7 +17,7 @@ impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "mixed"
+  model: "unknown"
   notes: "The Purview service description lists Microsoft 365 E3/E5 plus Microsoft 365 Copilot (and two other combinations) for retention policies that apply to Copilot interactions. Nothing specific to memory retention is published."
 audiences: ["compliance","security","m365-admin"]
 tags: ["purview","data-lifecycle-management","retention","memory","m365-copilot","exchange","ediscovery"]
@@ -74,19 +74,23 @@ changes:
     note: "New briefing: the roadmap lists retention for Copilot memory as launched, while Learn still says Purview retention does not apply to memory."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 56 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected licensing model to not yet published, narrowed the Enhanced personalization statement to saved memories, and removed two unsupported risk statements and the eDiscovery roles checklist step."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 51
-  unconfirmed: 1
-  contradicted: 4
-  attempts: 1
-  hash: "b73c797dec91035d77a63cc2b7214775"
+  claims: 50
+  confirmed: 49
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "87c7fc80d78c3143a2e5885d17b4c58f"
 ---
 
 ## What's changing
@@ -106,10 +110,10 @@ Microsoft has not stated what happens on arrival, so no source says existing beh
 ## Risk assessment
 
 **Data exposure**
-- Memory items are stored in the user's Exchange mailbox in a hidden folder, and Learn says admins can find them with Purview eDiscovery or Content Search by searching item class IPM.Contact. Preserving historical versions would keep older inferred details about users available to anyone with eDiscovery access, so review who holds eDiscovery roles (see /concepts/ediscovery/).
+- Memory items are stored in the user's Exchange mailbox in a hidden folder, and Learn says admins can find them with Purview eDiscovery or Content Search by searching item class IPM.Contact. Preserving historical versions would retain older inferred details about users, so review who holds eDiscovery roles (see /concepts/ediscovery/).
 
 **Security & identity**
-- Learn states that memory and personalisation actions don't generate audit log entries in Purview, so changes to memory cannot be reconstructed from the audit log. Retained versions would be the only history, if the roadmap capability works as described. See /concepts/auditing/.
+- Learn states that memory and personalisation actions don't generate audit log entries in Purview, so changes to memory cannot be reconstructed from the audit log. See /concepts/auditing/.
 
 **Autonomy & actions**
 - No change documented: the roadmap says active memory continues to be managed by the Copilot experience, and Learn says admins can't restrict what information is added to memory.
@@ -130,14 +134,13 @@ Indirect cost is admin time to test retention behaviour and any extra mailbox st
 
 The roadmap lists Microsoft Purview, Worldwide (Standard Multi-Tenant), General Availability and the Web platform. It does not list US Government clouds; that is a record fact, not a statement that the feature is unavailable there.
 
-Memory belongs to users of Copilot Chat and Microsoft 365 Copilot, and Learn says it is stored in each user's Exchange mailbox. The Enhanced personalization control is on by default, according to Learn, and when it is turned off Copilot stops applying memory but doesn't remove it. Roles needed to configure memory retention are not yet published; for ordinary retention policies, Learn points to the data lifecycle management permissions page.
+Memory belongs to users of Copilot Chat and Microsoft 365 Copilot, and Learn says it is stored in each user's Exchange mailbox. The Enhanced personalization control is on by default, according to Learn, and when it is turned off Copilot stops applying saved memories but does not remove those saved memories. Roles needed to configure memory retention are not yet published; for ordinary retention policies, Learn points to the data lifecycle management permissions page.
 
 ## Governance guidance
 
 ### Before rollout
 - Ask Microsoft support or read Message center to confirm which Purview setting, if any, controls retention of Copilot memory, since the Learn page on memory says none applies.
 - List which existing retention policies include the **Microsoft Copilot experiences** location and record that Learn says they do not delete memories.
-- Review who holds eDiscovery roles, because memory is searchable through eDiscovery and Content Search.
 
 ### At rollout
 - Test with a pilot user: create a memory, apply the retention configuration you are evaluating, and check whether versions of inactive memory items appear in an eDiscovery search for item class IPM.Contact.
@@ -176,14 +179,9 @@ cost: Low. The only cost the sources show is admin time and the existing Purview
 impact: Low. Compliance and security administrators notice it. The roadmap describes retention of inactive memory items while the Copilot experience keeps managing active memory, so end users are not described as changed.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model / consistency: The memory-retention feature has a mixed licensing model. | Found: model: "mixed"; "Nothing specific to memory retention is published."; "Whether a memory retention capability uses these licences is not yet published." | Fix: Set licensing.model to 'unknown'. Keep the qualified licensing notes about Copilot interactions; the researched sources do not establish entitlement to memory retention.
-- [contradicted, blocker] Scope / behaviour: Turning Enhanced personalization off stops Copilot applying memory but does not remove memory. | Found: If the Enhanced personalization control is turned off at the admin-level, or if the Chat history control is turned off at the end-user level, then all details from chat history are deleted after 30 days. | Fix: Replace 'when it is turned off Copilot stops applying memory but doesn't remove it' with 'when it is turned off Copilot stops applying saved memories but does not remove those saved memories'. This narrows the statement to the Saved memories passage at https://learn.microsoft.com/copilot/manage/copilot-personalization-memory. | Source: https://learn.microsoft.com/copilot/manage/copilot-personalization-memory
-- [contradicted, blocker] Risk assessment: Data exposure / role: Preserved historical memory details would be available to anyone with eDiscovery access. | Found: eDiscovery Managers can only access and manage the cases they create. They can't access or manage cases created by other eDiscovery Managers. | Fix: Remove 'available to anyone with eDiscovery access' and write 'Preserving historical versions would retain older inferred details about users, so review who holds eDiscovery roles.' This retains the risk analysis without asserting universal access or an undocumented historical-version retrieval mechanism. | Source: https://learn.microsoft.com/purview/edisc-permissions
-- [unsupported, major] Risk assessment: Security & identity / behaviour: Retained memory versions would be the only history if the roadmap capability works as described. | Found: Searched: Microsoft 365 Copilot memory retention historical versions only history audit eDiscovery access permissions. Read memory and retention pages and roadmap; none establishes retained versions as the only historical evidence. | Fix: Remove 'Retained versions would be the only history, if the roadmap capability works as described.' The absence of memory audit events does not establish that no other historical evidence exists.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The retention-policy UI route is Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy. | Found: Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies. Select New retention policy to start the Create retention policy configuration | Fix: The route stops at the creation wizard. For this row's static policy, extend it to 'Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Assign admin units > Full directory > Choose the type of retention policy to create > Static > Choose locations to apply the policy > Microsoft Copilot experiences > Decide if you want to retain content, delete it, or both', as documented at https://learn.microsoft.com/purview/create-retention-policies. | Source: https://learn.microsoft.com/purview/create-retention-policies
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks readers to review eDiscovery roles, but that control has no controls-table row. | Found: "Review who holds eDiscovery roles"; controls lists only a retention policy and Enhanced personalization. | Fix: The 'Review who holds eDiscovery roles' checklist step has no corresponding controls-table row. Remove that checklist bullet; keep the risk section's existing link to the eDiscovery concept page.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The Purview route Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy starts the retention-policy wizard. | Found: Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies. ... Select New retention policy to start the Create retention policy configuration | Fix: For a static policy, extend the path to 'Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Choose the type of retention policy to create > Static > Choose locations to apply the policy > Microsoft Copilot experiences > Decide if you want to retain content, delete it, or both', as documented at https://learn.microsoft.com/purview/create-retention-policies. | Source: https://learn.microsoft.com/purview/create-retention-policies
+- [contradicted, minor] Governance guidance: At rollout / consistency: The pilot checklist instructs readers to check an eDiscovery search, but the controls table has no corresponding search row. | Found: check whether versions of inactive memory items appear in an eDiscovery search for item class IPM.Contact. ... Table rows: Retention policy for Microsoft Copilot experiences; Whether Copilot memory can be used (Enhanced personalization control). | Fix: Remove the eDiscovery-search step from the pilot checklist; it names a control that has no row in the controls table. Do not add a row as part of this correction.
 -->

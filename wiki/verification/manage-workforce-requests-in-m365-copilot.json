@@ -1,0 +1,798 @@
+{
+  "slug": "manage-workforce-requests-in-m365-copilot",
+  "roadmapId": 581992,
+  "title": "Dynamics 365 Customer Service: manage workforce requests from Microsoft 365 Copilot chat",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "1 blocking finding (claim 58)"
+    ]
+  },
+  "counts": {
+    "claims": 62,
+    "confirmed": 61,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold: security roles are not the only documented control over the conversational experience. Microsoft also documents Service app deployment and blocking, while the briefing's admin path and Dataverse role-assignment call are valid. The licensing field should acknowledge published product-level requirements without claiming a WEM-specific entitlement is known.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "WEM integrates with Microsoft 365 Copilot through MCP tools for workforce requests.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Dynamics 365 Workforce Engagement Management (WEM) integrates with Microsoft 365 Copilot through Model Context Protocol (MCP) tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: products; Cost and licensing",
+      "type": "record",
+      "claim": "The listed products are Microsoft Copilot (Microsoft 365) and Dynamics 365 Customer Service.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Customer Service\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-11-21T02:55:45.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-21T02:55:45\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The documented WEM catalog contains list_wem_requests, get_wem_request_details and decide_wem_time_off_request.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/workforce-mcp-tools-overview-service-agent",
+      "quote": "The following WEM tools support workforce request scenarios. ... `list_wem_requests` ... `get_wem_request_details` ... `decide_wem_time_off_request`",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing: Representatives and supervisors do not call the tools directly",
+      "type": "behaviour",
+      "claim": "Representatives and supervisors interact with the conversational experience rather than calling tools directly.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/workforce-mcp-tools-overview-service-agent",
+      "quote": "Customer service representatives and supervisors don't typically use MCP tools directly. Instead, they interact with Service Agent.",
+      "severity": "minor",
+      "fix": "Replace 'Representatives and supervisors do not call the tools directly.' with 'Representatives and supervisors do not typically use the tools directly.' This preserves Learn's qualification rather than making the normal interaction pattern categorical."
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Service Agent selects and invokes tools in the background and presents results in the conversation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/workforce-mcp-tools-overview-service-agent",
+      "quote": "Service Agent determines which tool to use, invokes it in the background, and presents the result in the conversation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The Learn overview names Service Agent as an example conversational experience, whereas the roadmap names Microsoft 365 Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/workforce-mcp-tools-overview-service-agent",
+      "quote": "These tools connect a conversational experience, such as Service Agent, with Dynamics 365 Customer Service and Dataverse so users can complete workforce management tasks through natural language.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "list_wem_requests is read-only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/list_wem_requests",
+      "quote": "No, listing requests doesn't change data. The request list is read-only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; summary",
+      "type": "behaviour",
+      "claim": "list_wem_requests displays an interactive list in chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/list_wem_requests",
+      "quote": "The assistant displays an interactive request list as an app-in-chat component.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "get_wem_request_details is read-only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/get_wem_request_details",
+      "quote": "No, viewing a request doesn't change data. The request form is a read-only view of the request's details.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; summary",
+      "type": "behaviour",
+      "claim": "get_wem_request_details opens a single request in an interactive chat card.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/get_wem_request_details",
+      "quote": "The assistant opens a detailed card for a single WEM request. ... The assistant displays an interactive request card as an app-in-chat component.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; summary; Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "Supervisors can approve or reject pending time-off requests from chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/decide_wem_time_off_request",
+      "quote": "Use this capability when you're a supervisor deciding a pending Workforce Engagement Management (WEM) time-off request and want to approve or reject it directly in chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment: Security & identity; rationale: risk",
+      "type": "role",
+      "claim": "Approval or rejection requires reviewer permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/workforce-mcp-tools-overview-service-agent",
+      "quote": "Approving or rejecting a time-off request changes data and requires reviewer permission.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A rejection requires a reason.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/decide_wem_time_off_request",
+      "quote": "A rejection reason is required to reject a request. The assistant asks for one if you don't provide it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The rejection reason is saved as the reviewer note.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/decide_wem_time_off_request",
+      "quote": "When you reject a request, you provide a short reason that's saved as the reviewer note.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The decision records the user as reviewer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/decide_wem_time_off_request",
+      "quote": "The assistant updates a single WEM time-off request to approved or rejected and records you as the reviewer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "The decision tool writes data by updating the Dynamics 365 request status to approved or rejected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/decide_wem_time_off_request",
+      "quote": "Yes, this changes data. The time-off request's status is updated to approved or rejected in Dynamics 365, and you are recorded as the reviewer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The decision tool returns a text confirmation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/decide_wem_time_off_request",
+      "quote": "The assistant confirms the decision with a text response ... No interactive component is displayed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The decision tool does not overwrite an existing reviewer decision.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/decide_wem_time_off_request",
+      "quote": "It never overwrites a decision another reviewer already made",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Shift-swap and shift-bid requests can be listed and opened but cannot be decided by these tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/decide_wem_time_off_request",
+      "quote": "This tool decides time-off requests only. For shift-bid or shift-swap requests, use the request list and detail views to review them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "summary; What's changing; Scope; rationale: impact",
+      "type": "behaviour",
+      "claim": "Representatives can list their own requests, check status and open request details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/workforce-mcp-tools-overview-service-agent",
+      "quote": "They can ask for their time-off, shift swap, or shift bid requests, check a request's status, and retrieve details about a specific submission.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Risk assessment: Security & identity; Scope; rationale: impact",
+      "type": "applicability",
+      "claim": "Supervisors' request access is limited to their authorized planning group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/workforce-mcp-tools-overview-service-agent",
+      "quote": "Supervisors can access records within their authorized planning group, and customer service representatives can access only their own records.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Representatives' request access is limited to their own records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/workforce-mcp-tools-overview-service-agent",
+      "quote": "customer service representatives can access only their own records.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "summary; controls[0].governs; Why it matters; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Existing Dynamics 365 and Dataverse security governs access to WEM tools, records and actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/workforce-mcp-tools-overview-service-agent",
+      "quote": "Dynamics 365 and Dataverse security govern access to WEM MCP tools. Tool responses are limited to the records and actions the signed-in user is authorized to access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters; Governance controls",
+      "type": "record",
+      "claim": "The roadmap says organizations do not need a separate permissions framework.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The integration uses the existing permission model, so organizations don't need to configure a separate permissions framework for these tools",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn warns that tool names, parameters and response formats can change over time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/decide_wem_time_off_request",
+      "quote": "Tool names, descriptions, parameters, response formats, and available functionality can change over time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "list_wem_requests defaults to team scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/list_wem_requests",
+      "quote": "`scope` | `self` or `team`. Defaults to `team`—everything you can access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Without filters the list covers accessible requests of all types, dates and statuses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/list_wem_requests",
+      "quote": "By default, it shows all requests you can access, of every type, across all dates and statuses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "The default maximum result count is 25.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/list_wem_requests",
+      "quote": "`top` | Integer maximum number of requests to return. Defaults to 25, capped at 200.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The result count is capped at 200.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/list_wem_requests",
+      "quote": "Integer maximum number of requests to return. Defaults to 25, capped at 200.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Team scope relies on Dataverse and WEM security to return only readable rows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/list_wem_requests",
+      "quote": "for the default `scope: team`, it relies on Dataverse and WEM security to return only rows the caller can read.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Time-off request details can include notes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/get_wem_request_details",
+      "quote": "Time-off requests—time-off type, whether it's a full day, the start and end of the time off, hours, and notes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Request details can include review information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/get_wem_request_details",
+      "quote": "Shift-bid requests—the request's status, dates, and review information. Shift-swap requests—the request's status, dates, and review information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Time-off details include the time-off window.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/get_wem_request_details",
+      "quote": "the time-off window for a time-off request, or status, dates, and review information for a bid or swap.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "An ambiguous name or agent reference returns matching pending requests instead of guessing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/decide_wem_time_off_request",
+      "quote": "if your reference matches more than one pending request, it lists the matches and asks you to be more specific instead of guessing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; Governance guidance: Before rollout",
+      "type": "availability",
+      "claim": "The WEM tools require Workforce Engagement Management to be enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/decide_wem_time_off_request",
+      "quote": "Workforce Engagement Management enabled in the environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope",
+      "type": "role",
+      "claim": "Listing and opening requests require the signed-in user to have read access to WEM requests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/get_wem_request_details",
+      "quote": "Workforce Engagement Management must be enabled, and the signed-in user must have read access to WEM requests.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope",
+      "type": "role",
+      "claim": "Deciding requests requires supervisor or reviewer access to WEM time-off requests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/decide_wem_time_off_request",
+      "quote": "Supervisor or reviewer access to Workforce Engagement Management time-off requests.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].note; Risk assessment: Security & identity; Governance controls",
+      "type": "availability",
+      "claim": "The WEM security roles page describes preview roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/workforce-management-security-roles",
+      "quote": "This is a preview feature. ... The following tables list each role's privileges in preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "The WEM roles page says its roles apply only within the WEM app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/workforce-management-security-roles",
+      "quote": "These roles apply only within the Workforce Engagement Management app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "The preview WFM Administrator role has Approve or decline a time-off request.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/workforce-management-security-roles",
+      "quote": "Privilege | WFM Administrator | WFM Forecaster | WFM Scheduler | WFM Intraday Analyst | WFM Service Rep ... Approve or decline a time-off request | Yes | No | Yes | No | No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "The preview WFM Scheduler role has Approve or decline a time-off request.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/workforce-management-security-roles",
+      "quote": "Privilege | WFM Administrator | WFM Forecaster | WFM Scheduler | WFM Intraday Analyst | WFM Service Rep ... Approve or decline a time-off request | Yes | No | Yes | No | No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "WEM request records are stored in the Dataverse msdyn_wemrequest table.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/get_wem_request_details",
+      "quote": "Opens the full detail view of a single Dataverse `msdyn_wemrequest` record.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing; Scope; Governance guidance: Before rollout",
+      "type": "availability",
+      "claim": "The Workforce Management for Customer Service package must be installed before workforce features can be enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/workforce-management-package-installation",
+      "quote": "Before you can enable the features to manage your workforce, you must install the Workforce Management for Customer Service package.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "User security roles are managed in Power Platform admin center at Environments > environment > Settings > Users + permissions > Users > user > Manage security roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/workforce-management-security-roles",
+      "quote": "select Environments, and then select your environment. Select Settings > Users + permissions > Users. Select the user to update, and then select Manage security roles.",
+      "severity": "minor",
+      "fix": "Append '> workforce management role' to controls[0].ui.path and the rendered path: 'Environments > environment > Settings > Users + permissions > Users > user > Manage security roles > workforce management role'. The cited page continues with selecting the role to assign; Save is not part of the path."
+    },
+    {
+      "n": 52,
+      "where": "controls[0].api; controls[0].note; Governance controls table",
+      "type": "command",
+      "claim": "The printed v9.0 POST systemuserroles_association/$ref call assigns a user security role with @odata.id identifying the role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team",
+      "quote": "POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref ... \"@odata.id\":\"[Organization URI]/api/data/v9.0/roles(<role ID>)\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].ui and .api; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft has not documented a switch specifically disabling only the WEM request tools.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Workforce Engagement Management MCP enable disable default tools settings; WEM MCP Agent 365 gateway disable. Opened WEM overview, tool references, Manage Service app and Manage plugins/skills/MCP servers; no WEM-specific switch or confirmed WEM granular-toggle support.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "The sources do not state the arrival/default state of the WEM request capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Workforce Engagement Management MCP enable disable default tools settings; Dynamics 365 CX MCP Server WEM prerequisites configure enable. Read roadmap, WEM overview, tool references and Configure Service Agent; host auto-installation does not specify WEM tool arrival defaults.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Feature-specific licensing is not published, so the briefing labels the licensing model unknown.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-microsoft-365-copilot",
+      "quote": "To use the Microsoft Copilot feature in a Dynamics 365 app, users must have a Dynamics 365 Enterprise or Premium license. However, to get the full capabilities of Work IQ, beyond Dataverse grounding, a Microsoft 365 Copilot license is required.",
+      "severity": "minor",
+      "fix": "Set licensing.model to 'included' and replace licensing.notes with: 'For Microsoft Copilot in a Dynamics 365 app, users need a Dynamics 365 Enterprise or Premium license; full Work IQ capabilities beyond Dataverse grounding require a Microsoft 365 Copilot license. A licence or meter specific to the WEM tools is not yet published.' Cite https://learn.microsoft.com/dynamics365/customer-service/use/use-microsoft-365-copilot and repeat this qualification in Cost and licensing. Keep the low cost rating and unpublished feature-specific pricing caveat."
+    },
+    {
+      "n": 56,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance: Before rollout; rationale: cost",
+      "type": "absence",
+      "claim": "The WEM overview and three tool pages name no licence or meter, and no separate WEM-tool charge was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: WEM MCP license licensing pricing meter; WEM Service Agent licensing Copilot; Dynamics 365 Customer Service licensing Workforce management Enterprise Premium. Opened overview, all three tools and Use Microsoft 365 Copilot; only broader product requirements were found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Security & identity; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The WEM tool documentation does not identify the named security role implementing reviewer permission.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: decide_wem_time_off_request reviewer security role permission. Read decision reference, WEM overview and WEM security roles; the first two specify reviewer access without a named role and the roles page does not map roles to MCP reviewer checks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls: The only control Learn documents",
+      "type": "absence",
+      "claim": "The existing Dynamics 365 and Dataverse security model is the only documented control for these tools.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
+      "quote": "The Service app packages Service Agent and Customer Service plugins for supported Copilot experiences. ... Service app assignment and Microsoft Entra groups ... Determines who receives the app and who is allowed to install or use it.",
+      "severity": "blocker",
+      "fix": "Replace 'The only control Learn documents for these tools is the existing Dynamics 365 and Dataverse security model' with 'Dynamics 365 and Dataverse security govern access to WEM tools and requests. For the Service Agent experience, Service app deployment, availability and blocking are additional app-level controls; they do not target only WEM tools.' Cite https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app. Keep the narrower WEM-only switch gap; do not add control rows."
+    },
+    {
+      "n": 59,
+      "where": "Governance controls: Administrators who want the tools unavailable",
+      "type": "applicability",
+      "claim": "Removing a person's WEM request access through role changes removes their ability to access those requests through the tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/workforce-mcp-tools-overview-service-agent",
+      "quote": "Dynamics 365 and Dataverse security govern access to WEM MCP tools. Tool responses are limited to the records and actions the signed-in user is authorized to access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap record does not specify which licence covers the tools.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Searched: licence, license, licensing and entitlement in the supplied roadmap record; its description addresses tools, request scenarios and permissions, but gives no licensing requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No source states that this WEM request integration replaces or changes existing behaviour on arrival.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Workforce Engagement Management MCP enable disable default tools settings; Dynamics 365 CX MCP Server WEM prerequisites configure enable. Read roadmap, WEM overview, tool references and Configure Service Agent; none states an automatic replacement of existing WEM behaviour.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls: WFM Service Rep users",
+      "type": "role",
+      "claim": "WFM Service Rep is the representative self-service role for accessing their schedule and requests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/workforce-management-security-roles",
+      "quote": "WFM Service Rep | Customer service representatives (service representatives or representatives) who view their own schedules and submit their own requests. ... A user assigned only WFM Service Rep can access their schedule calendar, shift summary, and requests",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T04:18:50.465Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=581992",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-service/develop/workforce-mcp-tools-overview-service-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/decide_wem_time_off_request",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/list_wem_requests",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/get_wem_request_details",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/contact-center/administer/workforce-management-security-roles",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/contact-center/administer/workforce-management-package-installation",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who can read WEM requests and who can approve or decline time-off requests",
+        "docs": "https://learn.microsoft.com/dynamics365/contact-center/administer/workforce-management-security-roles",
+        "reachable": true,
+        "segments": [
+          "Environments",
+          "Settings",
+          "Users + permissions",
+          "Users",
+          "Manage security roles"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Who can read WEM requests and who can approve or decline time-off requests",
+        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team",
+        "reachable": true,
+        "token": "POST /api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

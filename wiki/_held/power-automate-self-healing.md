@@ -101,18 +101,20 @@ changes:
     note: "Corrected the EU Data Boundary statement to the documented exclusion for Claude models, and added the supported-error screen detail and the alternative admin paths."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 74 statements not yet confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 83 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-21"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 74
-  confirmed: 74
-  unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  claims: 83
+  confirmed: 81
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 1
   hash: "e65a497963765905afb07ef8ad6a2178"
 ---
 
@@ -222,8 +224,15 @@ cost: Low. The preview page says self-healing is available for organization prem
 impact: Low. Makers choose it action by action in the designer, so the people who notice are desktop flow makers and the administrators who set the AI model prerequisites.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[3].api; Governance controls: row 4 / absence: Automation for the environment Move data across regions control is not yet documented. | Found: Set-PowerPlatformGenerativeAiSettings -EnvironmentName <String> [-CrossGeoDataMovement <Boolean>] ... -CrossGeoDataMovement ... Enables or disables cross-geo data movement. | Fix: Replace controls[3].api null and the rendered automation cell with kind 'powershell', call 'Set-PowerPlatformGenerativeAiSettings -EnvironmentName <environment-id> -CrossGeoDataMovement $true', and docs 'https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-powerplatformgenerativeaisettings?view=pa-ps-latest'. Cite that reference; the command is in Microsoft.PowerApps.Administration.PowerShell and sets the environment cross-region data-movement control. | Source: https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-powerplatformgenerativeaisettings?view=pa-ps-latest
+- [unsupported, major] Why it matters / behaviour: Self-healing sends information from the machine running the flow to AI models to fix a broken selector. | Found: Searched: Power Automate self-healing screenshot image sent language models data privacy; Power Automate self-healing screenshots data retention storage. Read Self-healing (preview) and provider guidance; capture and model use are stated, but the machine-to-model transfer mechanism is not. | Fix: Replace the first sentence of Why it matters with: 'Self-healing captures information from the desktop when it is invoked to fix a broken selector, so it is a data-handling decision as well as a reliability feature.' The following sentence already identifies the captured information and the models.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / applicability: The dedicated self-healing page lists Element not found and Window not found as supported errors. | Found: Applies only to Element not found and Window not found errors. | Fix: After the supported-error sentence, add: 'The general error-handling article still lists only Element not found errors, whereas the dedicated self-healing page lists both.' Cite https://learn.microsoft.com/power-automate/desktop-flows/errors#configure-error-handling-functionality, which says 'applies only to Element not found errors'. | Source: https://learn.microsoft.com/power-automate/desktop-flows/self-healing
+- [supported, minor] controls[0].ui; Governance controls: row 1 / admin-path: Microsoft 365 admin center > Copilot > Settings > AI providers operating as Microsoft subprocessors locates the tenant Anthropic provider control. | Found: In Microsoft 365 admin center, go to Copilot > Settings, and then select AI providers operating as Microsoft subprocessors. Enable the Anthropic provider as a subprocessor for your organization. | Fix: The path reaches the page holding the provider control but stops before selecting Anthropic. Extend controls[0].ui.path and the rendered row to 'Copilot > Settings > AI providers operating as Microsoft subprocessors > Anthropic'; retain the existing note giving the alternative View all route. | Source: https://learn.microsoft.com/power-automate/desktop-flows/self-healing
+- [supported, minor] controls[1].ui; Governance controls: row 2 / admin-path: Power Platform admin center > Copilot > Settings > Power Platform > External models locates the environment Anthropic control. | Found: In Power Platform admin center, go to Copilot > Settings, and then under the Power Platform section, expand External models and enable Anthropic as a subprocessor at environment or environment group level. | Fix: The path reaches the section holding the control but stops before Anthropic. Extend controls[1].ui.path and the rendered row to 'Copilot > Settings > Power Platform > External models > Anthropic'; retain the note giving the alternative environment Features route. | Source: https://learn.microsoft.com/power-automate/desktop-flows/self-healing
+- [supported, minor] What's changing / applicability: The dedicated preview page lists Element not found and Window not found as supported errors. | Found: Applies only to Element not found and Window not found errors. | Fix: After the supported-errors sentence, add: 'The general error-handling article still lists only Element not found errors, whereas the dedicated self-healing page lists both.' Cite https://learn.microsoft.com/power-automate/desktop-flows/errors#configure-error-handling-functionality, which says 'applies only to Element not found errors'. | Source: https://learn.microsoft.com/power-automate/desktop-flows/self-healing
+- [supported, minor] Scope / applicability: The dedicated preview page says self-healing does not apply to window or screen handling actions. | Found: Doesn't apply to window or screen handling actions | Fix: After the exclusion sentence, add: 'The desktop build 2608 release notes instead say self-healing is now also supported for window manipulation actions in UI automation.' Cite https://learn.microsoft.com/power-platform/released-versions/power-automate-desktop/2608, which states 'Self-healing is now also supported for window manipulation actions in UI automation.' | Source: https://learn.microsoft.com/power-automate/desktop-flows/self-healing
+- [supported, minor] controls[4].note; Governance controls / applicability: Copilot in Power Automate is a general Copilot control rather than a self-healing-specific control. | Found: Enable or disable Copilot in Power Automate ... If a region has GPUs (UK, Australia, US, India), Microsoft turns on Copilot by default. | Fix: Add https://learn.microsoft.com/power-automate/copilot-overview to sources for the statement that Copilot in Power Automate is a general product control, not a self-healing-specific control. | Source: https://learn.microsoft.com/power-automate/copilot-overview
 -->

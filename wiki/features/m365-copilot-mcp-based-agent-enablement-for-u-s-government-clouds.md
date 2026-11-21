@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "review"
 licensing:
   model: "included"
-  notes: "Learn's general agent licensing table includes custom actions in Copilot Chat without usage-based billing and in licensed Microsoft 365 Copilot. Government-cloud support remains subject to the conflicting availability statements described above; MCP-specific government licensing terms are not separately published."
+  notes: "Learn's general agent licensing table includes custom actions in Copilot Chat without usage-based billing and in licensed Microsoft 365 Copilot. Usage limits apply to all included features in Copilot Chat without usage-based billing. MCP-specific government licensing terms are not separately published."
 audiences: ["m365-admin","service-owner","security"]
 tags: ["mcp","m365-copilot","agents","declarative-agents","extensibility","plugins","admin-controls","gcc","gcc-high","dod"]
 sources:
@@ -80,7 +80,7 @@ controls:
     note: "Blocks the selected agent, not necessarily a shared MCP server or its connected-service permissions or credentials. API is preview, needs an Agent 365 licence and is listed as unavailable in US Government L4 and L5."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-19"
+updated: "2026-11-21"
 roadmapModified: "2026-11-11T00:52:46"
 changes:
   - date: "2026-11-18"
@@ -103,19 +103,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 67 statements confirmed"
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 66 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-21"
+    note: "Corrected the Agent 365 tool-access control statement to the service description's wording (core capability, available in GCC) and added the usage-limits qualification to the licence text."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 67 statements confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 65
+  claims: 67
+  confirmed: 67
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "33b14a4ff7a19cd83bf1f831761017c7"
+  contradicted: 0
+  attempts: 0
+  hash: "8c5555721041877010a6d0df576c38ae"
 ---
 
 ## What's changing
@@ -153,7 +157,7 @@ The unresolved differences between the roadmap, the service description and the 
 
 ## Cost and licensing
 
-Licence: Learn's general agent licensing table includes custom actions in Copilot Chat without usage-based billing and in licensed Microsoft 365 Copilot. Government-cloud support remains subject to the conflicting availability statements described above; MCP-specific government licensing terms are not separately published.
+Licence: Learn's general agent licensing table includes custom actions in Copilot Chat without usage-based billing and in licensed Microsoft 365 Copilot. Usage limits apply to all included features in Copilot Chat without usage-based billing. Government-cloud support remains subject to the conflicting availability statements described above; MCP-specific government licensing terms are not separately published.
 
 Meter: the same page says usage-based billing (Copilot Credits) is not supported in GCCH and GCC, and the known-issues page lists usage billing for extensibility features as not supported in Microsoft 365 Government tenants. The page does not mention DoD for usage-based billing.
 
@@ -198,7 +202,7 @@ The block control is Learn's general control for agents. It blocks the selected 
 
 The API side is a preview Microsoft Graph beta call. Learn says it needs a Microsoft Agent 365 licence and lists the API as not available in US Government L4 and L5, so it cannot be assumed to work in government tenants. The user-interface page has a note that publishing agents to the organisation is supported in GCCH and GCCM; it gives no equivalent statement for blocking in DoD.
 
-The Agent 365 service description lists tenant-wide control of agent access to tools, including Microsoft MCP servers, as available in GCC with Microsoft 365 E7 / G7 or Agent 365. This does not establish support in GCC High or DoD, or coverage of every MCP integration route.
+The Agent 365 service description lists tenant-wide control of which tools (Plugins, Skills, Connectors, Microsoft MCP servers) Copilot and Microsoft platform agents can access as a core capability included with a Microsoft cloud subscription and available in GCC. This does not establish support in GCC High or DoD, or coverage of every MCP integration route.
 
 ## Open questions
 
@@ -212,12 +216,4 @@ The Agent 365 service description lists tenant-wide control of agent access to t
 risk: Medium. An MCP plugin lets an agent call a separately hosted server that can create, update and delete data, and Learn lists government-cloud limits for agents that the roadmap item does not mention.
 cost: Low. The only cost the sources show is admin and developer time; Learn documents general agent entitlements but no separate MCP-specific government licensing terms, and says usage-based billing is not supported in GCC or GCCH.
 impact: Medium. Developers who build the agents and the users they share them with notice it; nothing in the sources says other users see a change.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: final paragraph / licensing: The briefing attaches Microsoft 365 E7 / G7 or Agent 365 entitlement to tenant-wide tool-access control. | Found: Core capability included with Microsoft cloud subscription ... | Control which tools (Plugins, Skills, Connectors, Microsoft MCP servers) Copilot and Microsoft platform agents can access tenant-wide | Microsoft 365 admin center | Yes | Yes | Yes | | Fix: Replace the sentence with: 'The Agent 365 service description lists tenant-wide control of which tools (Plugins, Skills, Connectors, Microsoft MCP servers) Copilot and Microsoft platform agents can access as a core capability included with a Microsoft cloud subscription and available in GCC.' Keep the following GCC High, DoD and integration-route caveat. The fetched page, independently confirmed through its live HTML, has changed; the Learn search excerpt still shows the older E7 / G7 or Agent 365 column. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model; Cost and licensing; rationale: cost / licensing: Custom actions are included under the general agent entitlements. | Found: | Custom actions | ✅ | ✅ | ✅ | ... * Usage limits apply to all included features. | Fix: Keep licensing.model as included. Add to the licensing notes and licence paragraph: 'Usage limits apply to all included features in Copilot Chat without usage-based billing.' This qualification is stated at https://learn.microsoft.com/plugins/prerequisites. | Source: https://learn.microsoft.com/plugins/prerequisites
 -->

@@ -4,10 +4,10 @@
   "title": "Microsoft Entra ID: extended 30-day backup and recovery through Microsoft 365 Backup",
   "status": "held",
   "date": "2026-11-21",
-  "version": 5,
+  "version": 6,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,33 +16,22 @@
     "reason": "failed",
     "since": "2026-11-21",
     "reasons": [
-      "17 blocking findings (claims 15, 16, 18, 19, 20, 21, 22, 23, 24, 25, 26, 28, 31, 32, 50, 88, 103)"
+      "3 blocking findings (claims 56, 57, 95)"
     ]
   },
   "counts": {
-    "claims": 103,
-    "confirmed": 85,
+    "claims": 97,
+    "confirmed": 92,
     "unconfirmed": 0,
-    "contradicted": 18,
-    "blocker": 17,
+    "contradicted": 5,
+    "blocker": 3,
     "major": 0,
-    "minor": 3
+    "minor": 6
   },
-  "summary": "Hold: Microsoft now documents the 30-day Premium plan in preview, including enablement, administrator roles, licensing and consumption pricing. The briefing still reports these as unpublished and understates direct cost; its existing recovery paths and Graph calls are supported.",
+  "summary": "Hold: the controls incorrectly describe the Entra backup and recovery experience as excluding Premium, although Microsoft documents that experience for both plans. The service-principal recovery description also omits which permission grants and app role assignments are restored. The roadmap facts, Premium default, licensing and price are supported.",
   "claims": [
     {
       "n": 1,
-      "where": "title; What's changing",
-      "type": "record",
-      "claim": "The roadmap describes extended Entra object backup and recovery through Microsoft 365 Backup.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Enable extended 30-day backup and recovery for a tenant's Entra objects via the Microsoft 365 Backup native app or M365 Backup Storage platform APIs.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
       "where": "front matter: status; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -53,21 +42,21 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "front matter: targetDate; What's changing; Scope",
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Scope; Open questions",
       "type": "record",
       "claim": "December CY2026 is the roadmap target, not a confirmed availability date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"targetDate\": \"December CY2026\"",
+      "quote": "\"targetDate\": \"December CY2026\", \"status\": \"In development\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 4,
+      "n": 3,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap has no preview date.",
+      "claim": "The roadmap supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -75,7 +64,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 4,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap release phase is General Availability.",
@@ -86,10 +75,10 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 5,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed on the roadmap.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -97,10 +86,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 6,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap platform is Web.",
+      "claim": "The roadmap lists the Web platform.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -108,10 +97,21 @@
       "fix": null
     },
     {
+      "n": 7,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-09-01T22:59:38.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-01T22:59:38\"",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 8,
       "where": "front matter: products",
       "type": "record",
-      "claim": "The record lists Microsoft 365, Microsoft 365 admin center and Microsoft Entra.",
+      "claim": "The roadmap products are Microsoft 365, Microsoft 365 admin center and Microsoft Entra.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"products\": [\"Microsoft 365\", \"Microsoft 365 admin center\", \"Microsoft Entra\"]",
@@ -120,9 +120,9 @@
     },
     {
       "n": 9,
-      "where": "summary; What's changing",
+      "where": "title; What's changing",
       "type": "record",
-      "claim": "The roadmap describes point-in-time restore to a last known good state within a rolling 30-day history.",
+      "claim": "The roadmap plans point-in-time restoration of tenant Entra objects to a last known good state within a rolling 30-day history.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This capability allows customers and ISV apps to do a point in time restore of Entra objects to a last known good state to a rolling historical 30-day point.",
@@ -133,10 +133,10 @@
       "n": 10,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap places customer recovery in the Microsoft 365 Backup native app in the Microsoft 365 admin center.",
+      "claim": "Customers would use the Microsoft 365 Backup native app in the Microsoft 365 admin center.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "some user recovery actions will be possible via the M365 Backup native app UX in the M365 Admin center.",
+      "quote": "via the Microsoft 365 Backup native app or M365 Backup Storage platform APIs",
       "severity": null,
       "fix": null
     },
@@ -144,16 +144,16 @@
       "n": 11,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "The roadmap describes ISV recovery through Microsoft 365 Backup Storage platform APIs.",
+      "claim": "The roadmap plans for ISV apps to restore Entra objects through Microsoft 365 Backup Storage platform APIs.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "via the Microsoft 365 Backup native app or M365 Backup Storage platform APIs. This capability allows customers and ISV apps to do a point in time restore",
+      "quote": "via the Microsoft 365 Backup native app or M365 Backup Storage platform APIs. This capability allows customers and ISV apps to do a point in time restore of Entra objects",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
-      "where": "What's changing; Risk assessment: Change & support",
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
       "type": "record",
       "claim": "The roadmap says advanced recovery features are currently limited to the Entra admin portal.",
       "status": "supported",
@@ -164,9 +164,9 @@
     },
     {
       "n": 13,
-      "where": "What's changing; Governance guidance: At rollout",
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance; Open questions",
       "type": "record",
-      "claim": "The roadmap says some user recovery actions will be possible in the Microsoft 365 Backup app.",
+      "claim": "The roadmap says some user recovery actions will be possible in the Microsoft 365 Backup native app.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "some user recovery actions will be possible via the M365 Backup native app UX in the M365 Admin center.",
@@ -175,9 +175,9 @@
     },
     {
       "n": 14,
-      "where": "What's changing; summary",
+      "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap says the existing seven-day P1/P2 recovery is generally available and independent of this item.",
+      "claim": "The roadmap says existing seven-day recovery with P1 or P2 is already generally available and independent of this item.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "the existing 7-day recovery that comes with a customer's P1 & P2 licenses is already generally available and is independent of this roadmap item.",
@@ -186,229 +186,31 @@
     },
     {
       "n": 15,
-      "where": "front matter: defaultState; summary; controls[0].note; Open questions",
-      "type": "default",
-      "claim": "The default state of the 30-day extension is unknown.",
-      "status": "contradicted",
+      "where": "summary; What's changing; controls[0].note; Cost and licensing",
+      "type": "availability",
+      "claim": "Microsoft Learn documents Microsoft Entra Backup and Recovery Premium in preview.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/entra/backup/backup-recovery-plans",
-      "quote": "| **Default state** | Available automatically for tenants with Microsoft Entra ID P1 or P2 licenses. | Off by default. |",
-      "severity": "blocker",
-      "fix": "Set defaultState to admin-opt-in and replace the default-state gap throughout with: 'Microsoft Entra Backup and Recovery Premium (preview) is off by default and must be turned on by an administrator in the Microsoft 365 admin center.' Cite https://learn.microsoft.com/entra/backup/backup-recovery-plans."
+      "quote": "The Premium plan is in preview and must be turned on in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 16,
-      "where": "front matter: licensing.model; summary; licensing.notes; Open questions",
-      "type": "licensing",
-      "claim": "Licensing for the 30-day extension is unknown and not yet published.",
-      "status": "contradicted",
+      "where": "summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Premium retains up to 30 days of backup history.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/entra/backup/overview",
-      "quote": "To use the Premium plan, the tenant has at least one SharePoint license or a license that includes SharePoint. Microsoft Entra ID P1 or P2 licenses aren't required.",
-      "severity": "blocker",
-      "fix": "Set licensing.model to consumption. Replace the extension licensing gap with: 'Premium (preview) requires at least one SharePoint license or a license that includes SharePoint, plus consumption billing; Microsoft Entra ID P1 or P2 licenses are not required.' Retain P1/P2 only as the Standard plan prerequisite."
+      "quote": "Premium (preview): An optional, consumption-based plan that retains up to 30 days of backup history.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 17,
-      "where": "front matter: licensing.notes; controls[1].note; Cost and licensing; Scope",
-      "type": "licensing",
-      "claim": "The existing seven-day Standard recovery requires Microsoft Entra ID P1 or P2.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/overview",
-      "quote": "To use the Standard plan, the tenant has Microsoft Entra ID P1 or P2 licenses.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
-      "type": "cost",
-      "claim": "Billing for the 30-day extension is not yet published.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
-      "quote": "Microsoft Entra Backup and Recovery Premium uses consumption-based pricing.",
-      "severity": "blocker",
-      "fix": "Replace the billing gap with: 'Microsoft Entra Backup and Recovery Premium uses consumption-based billing through Microsoft 365 Backup.'"
-    },
-    {
-      "n": 19,
-      "where": "Cost and licensing; rationale: cost; Open questions",
-      "type": "cost",
-      "claim": "The meter for the 30-day extension is not yet published.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
-      "quote": "The estimate uses the number of protected objects as its input. For commerce billing, protected-object usage is represented as GB-based billing units. These units don't indicate the amount of backup storage consumed.",
-      "severity": "blocker",
-      "fix": "Replace the meter gap with: 'Premium is metered by protected Microsoft Entra objects; usage is represented as GB-based billing units for commerce billing, not as backup storage consumed.'"
-    },
-    {
-      "n": 20,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "The rate for the 30-day extension is not yet published.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
-      "quote": "The price is $0.025 USD per protected Microsoft Entra object per month.",
-      "severity": "blocker",
-      "fix": "Replace the unpublished-rate statement with: 'Premium costs $0.025 USD per protected Microsoft Entra object per month.'"
-    },
-    {
-      "n": 21,
-      "where": "controls[0].ui; controls[0].api; controls[0].note; Governance controls",
-      "type": "absence",
-      "claim": "No switch, setting or enablement procedure for the 30-day extension is documented on either surface.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
-      "quote": "Select Settings. Select Microsoft 365 Backup from the list of products. On the Microsoft 365 Backup page, in the Entra section, select Set up policy.",
-      "severity": "blocker",
-      "fix": "Replace the existing row's UI null with surface 'Microsoft 365 admin center' and path 'Settings > Microsoft 365 Backup > Entra > Set up policy > Overview > Policy Settings > Review Entra backup policy > Create policy', with docs https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies. Replace its note with 'Premium (preview) is off by default; configure billing and create the Entra policy to enable it. The backup recovery window is fixed at 30 days.' Leave the API null; no Premium-specific enablement API was found in the targeted search."
-    },
-    {
-      "n": 22,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "Microsoft Learn does not describe the 30-day extension in November 2026.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/entra/backup/overview",
-      "quote": "Premium (preview): An optional, consumption-based plan that retains up to 30 days of backup history.",
-      "severity": "blocker",
-      "fix": "Replace the sentence with: 'The roadmap still lists In development with a December CY2026 General Availability target, while Microsoft Learn now documents the 30-day Microsoft Entra Backup and Recovery Premium plan in preview.'"
-    },
-    {
-      "n": 23,
-      "where": "summary; Risk assessment: Security & identity; Scope: Roles; Open questions; rationale: risk",
-      "type": "role",
-      "claim": "Administrator roles for the 30-day extension are not yet published.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
-      "quote": "| Global Administrator | ✓ | ✓ | ✓ | ✓ |\n| Microsoft Entra Backup Administrator |  |  |  | ✓ |",
-      "severity": "blocker",
-      "fix": "Replace the role gap with: 'The Microsoft 365 Backup role table lists Global Administrator and Microsoft Entra Backup Administrator for Entra. Microsoft Entra Backup Administrator is the least-privileged role for enabling Premium and recovering objects.' Keep the separate ISV API-permission question."
-    },
-    {
-      "n": 24,
-      "where": "Risk assessment: Security & identity",
-      "type": "role",
-      "claim": "The Microsoft 365 Backup role table covers only OneDrive, SharePoint and Exchange.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
-      "quote": "| Admin role | OneDrive | SharePoint | Exchange | Entra |",
-      "severity": "blocker",
-      "fix": "Remove 'the Microsoft 365 Backup role table covers OneDrive, SharePoint and Exchange only'; the cited table now includes Entra."
-    },
-    {
-      "n": 25,
-      "where": "Why it matters; Scope: Objects; Open questions",
-      "type": "absence",
-      "claim": "The objects and properties covered by the 30-day extension are not yet published.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/entra/backup/backup-recovery-plans",
-      "quote": "| Supported objects | All object types supported by Microsoft Entra Backup and Recovery. | The same supported object types as the Standard plan. |",
-      "severity": "blocker",
-      "fix": "Replace the coverage gap with: 'Premium supports the same object types and recovery scope as Standard, limited to the supported properties listed in Microsoft's supported-objects article.' Cite https://learn.microsoft.com/entra/backup/backup-recovery-plans."
-    },
-    {
-      "n": 26,
-      "where": "Why it matters",
-      "type": "absence",
-      "claim": "Whether the extension's window really reaches 30 days is not yet published.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
-      "quote": "Premium's backup recovery window is fixed at 30 days and isn't configurable. Available backup history accumulates after each daily backup cycle.",
-      "severity": "blocker",
-      "fix": "Replace the retention uncertainty with: 'Premium (preview) has a fixed 30-day backup recovery window; available history accumulates with daily backups rather than appearing immediately at enablement.'"
-    },
-    {
-      "n": 27,
-      "where": "Risk assessment: Data exposure",
+      "where": "summary; What's changing; Governance controls; Open questions",
       "type": "behaviour",
-      "claim": "Existing Entra backup data stays in the same geo-location as the tenant.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/overview",
-      "quote": "Backup data resides securely in the same geo-location as the Microsoft Entra tenant, determined during tenant creation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "Risk assessment: Data exposure",
-      "type": "absence",
-      "claim": "The location of data for the 30-day extension is not yet published.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/entra/fundamentals/data-residency#data-residency-across-microsoft-entra-components",
-      "quote": "Microsoft automatically takes snapshots of certain directory data at regular intervals, which are stored in Microsoft-managed Azure storage and replicated to multiple datacenters in the same region as the tenant.",
-      "severity": "blocker",
-      "fix": "Replace the location gap with: 'The Microsoft 365 Backup overview points Entra Premium geographic residency to Microsoft's Entra data-residency documentation, which states that Backup and Recovery snapshots are stored in Microsoft-managed Azure storage and replicated within the tenant's region.' Cite https://learn.microsoft.com/microsoft-365/backup/backup-overview and https://learn.microsoft.com/entra/fundamentals/data-residency#data-residency-across-microsoft-entra-components."
-    },
-    {
-      "n": 29,
-      "where": "Risk assessment: Autonomy & actions; Open questions",
-      "type": "absence",
-      "claim": "Permissions for an ISV app to perform 30-day Entra recovery through the Backup Storage platform are not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Entra Premium API permissions backup storage; Entra Premium Microsoft 365 Backup Storage API enable protection policy application permissions. Read Entra overview, Graph recoveryJob reference and Backup Storage lifecycle excerpts; none gives this ISV Premium recovery operation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "controls[3].note; Governance controls table",
-      "type": "applicability",
-      "claim": "The billing policy is a general Microsoft 365 Backup control, not confirmed for the Entra extension.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/overview",
-      "quote": "Premium charges depend on the number of protected directory objects captured in each backup. Configure billing and turn on Premium in the Microsoft 365 admin center.",
-      "severity": "minor",
-      "fix": "Replace the row's general-control caveat with: 'Premium billing is configured in the Microsoft 365 admin center; the Entra overview links to Microsoft 365 Backup setup for instructions.'"
-    },
-    {
-      "n": 31,
-      "where": "Governance controls: prose",
-      "type": "applicability",
-      "claim": "Microsoft has not confirmed how Microsoft 365 Backup billing controls apply to Entra objects.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/entra/backup/overview",
-      "quote": "Configure billing and turn on Premium in the Microsoft 365 admin center. Microsoft Entra Backup Administrator is the least-privileged role that can turn on Premium for your tenant.",
-      "severity": "blocker",
-      "fix": "Replace the prose billing caveat with: 'Microsoft directs administrators to Microsoft 365 Backup setup to configure billing and turn on Entra Premium; Standard remains included with Entra ID P1 or P2.'"
-    },
-    {
-      "n": 32,
-      "where": "Governance controls: prose",
-      "type": "behaviour",
-      "claim": "No user or application can turn off, delete or modify the tenant's Entra backups, so governance is access to restore rather than enablement.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/entra/backup/overview",
-      "quote": "No signed-in user or application, even with the highest admin privileges, can turn off, delete, or modify Standard plan backups in the tenant.",
-      "severity": "blocker",
-      "fix": "Narrow the sentence to: 'No signed-in user or application, even with the highest admin privileges, can turn off, delete or modify Standard plan backups. Premium requires administrator enablement.' Remove the conclusion that enablement is not a governance task."
-    },
-    {
-      "n": 33,
-      "where": "What's changing; Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Existing backups capture supported directory objects and properties.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations",
-      "quote": "Only the supported properties listed for each object type are included in backup, difference reports, and recovery.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The existing Standard plan takes backups automatically once a day.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/overview",
-      "quote": "The Standard plan takes backups of supported objects automatically, once a day",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "What's changing; controls[1].note",
-      "type": "behaviour",
-      "claim": "The existing Standard plan retains up to seven days of backup history.",
+      "claim": "Standard retains up to seven days of backup history.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/backup/overview",
       "quote": "The Standard plan takes backups of supported objects automatically, once a day, and retains up to seven days of backup history.",
@@ -416,7 +218,73 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 18,
+      "where": "front matter: defaultState; summary; Why it matters; controls[0].note; rationale: risk",
+      "type": "default",
+      "claim": "Premium is off by default and requires administrator enablement, so without action Premium stays off and Standard continues.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/backup/backup-recovery-plans",
+      "quote": "The Premium plan is in preview and must be turned on in the Microsoft 365 admin center. ... Default state | Available automatically for tenants with Microsoft Entra ID P1 or P2 licenses. | Off by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: licensing.model; What's changing; Cost and licensing",
+      "type": "licensing",
+      "claim": "Premium is optional and licensed through consumption-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/backup/overview",
+      "quote": "Premium (preview): An optional, consumption-based plan that retains up to 30 days of backup history.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Premium requires at least one SharePoint license or a license that includes SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/backup/overview",
+      "quote": "To use the Premium plan, the tenant has at least one SharePoint license or a license that includes SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Premium does not require Microsoft Entra ID P1 or P2 licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/backup/overview",
+      "quote": "Microsoft Entra ID P1 or P2 licenses aren't required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: licensing.notes; controls[1].note; Cost and licensing; Scope; Governance guidance",
+      "type": "licensing",
+      "claim": "Existing Standard recovery is included with and requires Microsoft Entra ID P1 or P2 licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/backup/overview",
+      "quote": "The Standard plan is included with Microsoft Entra ID P1 and P2 licenses. To use the Standard plan, the tenant has Microsoft Entra ID P1 or P2 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Supported objects are backed up automatically once a day.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/backup/backup-recovery-plans",
+      "quote": "Backup frequency | Once a day. | Once a day.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Administrators can view available backups.",
@@ -427,18 +295,18 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 25,
       "where": "What's changing; Governance guidance",
       "type": "behaviour",
-      "claim": "Difference reports compare a backup with the current tenant.",
+      "claim": "Administrators can create difference reports comparing a backup with the current tenant.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/backup-difference-report-recovery-model",
-      "quote": "Create a difference report to compare the current state of your tenant with a selected backup.",
+      "source": "https://learn.microsoft.com/entra/backup/overview",
+      "quote": "Create difference reports: Before recovering objects to a previous state, compare the current state of your tenant with a backup and review changed attributes and links.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
+      "n": 26,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Administrators can recover supported objects.",
@@ -449,10 +317,10 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 27,
       "where": "What's changing; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Administrators can review completed and in-progress recovery operations.",
+      "claim": "Administrators can review recovery history.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/backup/overview",
       "quote": "Review recovery history: View completed and in-progress recovery operations for your tenant.",
@@ -460,10 +328,10 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "What's changing",
+      "n": 28,
+      "where": "What's changing; Why it matters; Scope",
       "type": "behaviour",
-      "claim": "Users are supported recovery objects.",
+      "claim": "Users and their supported properties are in scope.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations",
       "quote": "Recovery for user objects supports these properties:",
@@ -471,10 +339,10 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "What's changing",
+      "n": 29,
+      "where": "What's changing; Why it matters; Scope",
       "type": "behaviour",
-      "claim": "Groups are supported recovery objects.",
+      "claim": "Groups and their supported properties are in scope.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations",
       "quote": "Recovery for group objects supports these properties:",
@@ -482,10 +350,10 @@
       "fix": null
     },
     {
-      "n": 42,
-      "where": "What's changing",
+      "n": 30,
+      "where": "What's changing; Why it matters; Scope",
       "type": "behaviour",
-      "claim": "Applications are supported recovery objects.",
+      "claim": "Applications and their supported properties are in scope.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations",
       "quote": "Recovery for application objects supports these properties:",
@@ -493,10 +361,10 @@
       "fix": null
     },
     {
-      "n": 43,
-      "where": "What's changing",
+      "n": 31,
+      "where": "What's changing; Why it matters; Scope",
       "type": "behaviour",
-      "claim": "Service principals are supported recovery objects.",
+      "claim": "Service principals and their supported properties are in scope.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations",
       "quote": "Recovery for service principal objects supports these properties:",
@@ -504,10 +372,10 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 32,
       "where": "What's changing; Why it matters; Governance guidance",
       "type": "behaviour",
-      "claim": "Conditional Access policies are supported recovery objects.",
+      "claim": "Conditional Access policies are in scope.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations",
       "quote": "All properties of conditional access policies are in scope.",
@@ -515,10 +383,10 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 33,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Named locations are supported recovery objects.",
+      "claim": "Named locations are in scope.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations",
       "quote": "All properties of named location policies are in scope.",
@@ -526,32 +394,32 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 34,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Selected authentication method policy properties are recoverable.",
+      "claim": "Selected authentication method policies are in scope.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations",
-      "quote": "Recovery supports these authentication method policies: Email one-time password (OTP); FIDO2 passkey; Authenticator app; Voice call; SMS; Third-party software OATH; Temporary Access Pass; Certificate-based authentication",
+      "quote": "Recovery supports these authentication method policies: Email one-time password (OTP) FIDO2 passkey Authenticator app Voice call SMS Third-party software OATH Temporary Access Pass Certificate-based authentication",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
+      "n": 35,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Selected authorization policy properties are recoverable.",
+      "claim": "Selected properties of the authorization policy are in scope.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations",
-      "quote": "Recovery for authorization policy objects supports these properties: blockMsolPowerShell; guestUserRoleId",
+      "quote": "Recovery for authorization policy objects supports these properties: blockMsolPowerShell guestUserRoleId",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
+      "n": 36,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Agent ID is covered through underlying user and service principal objects.",
+      "claim": "Agent ID is covered through underlying user and service principal directory objects.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations",
       "quote": "An agent's user account is a user object. An agent identity blueprint is an application object. Agent identities and agent identity blueprint principals are service principal objects.",
@@ -559,10 +427,10 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 37,
       "where": "What's changing; Open questions",
       "type": "behaviour",
-      "claim": "The Graph backup overview says five days of Entra snapshot history, unlike the Entra overview's seven days.",
+      "claim": "The Microsoft Graph backup overview says five days of history, unlike the Entra overview's seven.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/resources/tenants-backup-recovery-overview?view=graph-rest-1.0",
       "quote": "Microsoft Entra automatically creates one backup snapshot per day and retains up to five days of history.",
@@ -570,21 +438,10 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 38,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The 30-day window in Entra documentation is soft deletion, not backup retention.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/entra/backup/overview",
-      "quote": "Premium (preview): An optional, consumption-based plan that retains up to 30 days of backup history.",
-      "severity": "blocker",
-      "fix": "Replace the sentence with: 'The 30-day soft-deletion retention window is distinct from Premium's up-to-30-day backup history; Standard retains up to seven days of backups.'"
-    },
-    {
-      "n": 51,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Soft-deleted users, Microsoft 365 Groups, cloud security groups, application registrations and service principals can be restored for 30 days.",
+      "claim": "Soft-deleted users, Microsoft 365 Groups, cloud security groups, application registrations and service principals can be restored for 30 days, separately from backup-history retention.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/backup/overview",
       "quote": "Soft-deleted users, Microsoft 365 Groups, cloud security groups, application registrations, and service principals can be restored for 30 days.",
@@ -592,7 +449,7 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 39,
       "where": "What's changing",
       "type": "availability",
       "claim": "Soft delete and restore for cloud security groups is in preview.",
@@ -603,10 +460,10 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 40,
       "where": "What's changing",
       "type": "availability",
-      "claim": "Cloud security group soft delete and restore is available only in public clouds.",
+      "claim": "Soft delete and restore for cloud security groups is available only in public clouds.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/users/groups-restore-deleted",
       "quote": "Soft delete and restore for cloud security groups is in preview and available only in public clouds.",
@@ -614,10 +471,10 @@
       "fix": null
     },
     {
-      "n": 54,
+      "n": 41,
       "where": "What's changing",
       "type": "availability",
-      "claim": "Security-group soft delete is not supported for EDU tenants using OneDrive for Business storage.",
+      "claim": "Security-group soft delete is unsupported for EDU tenants using OneDrive for Business storage.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/users/groups-restore-deleted",
       "quote": "Soft delete for security groups isn't supported in the following scenarios: EDU tenants using OneDrive for Business (OBD) storage",
@@ -625,98 +482,186 @@
       "fix": null
     },
     {
-      "n": 55,
+      "n": 42,
       "where": "What's changing",
       "type": "availability",
-      "claim": "Security-group soft delete is not supported for audience targeting with classic web parts.",
+      "claim": "Security-group soft delete is unsupported for audience targeting with classic web parts.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/users/groups-restore-deleted",
-      "quote": "Soft delete for security groups isn't supported in the following scenarios: Audience targeting with classic web parts (all tenancies)",
+      "quote": "Audience targeting with classic web parts (all tenancies)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Why it matters; controls[0].note",
+      "type": "behaviour",
+      "claim": "Premium's backup recovery window is fixed at 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "Premium's backup recovery window is fixed at 30 days and isn't configurable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Premium history accumulates after daily backup cycles rather than immediately providing 30 days at enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "Premium backup history accumulates after each daily backup cycle; enabling Premium doesn't immediately provide 30 days of history.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Why it matters; Scope",
+      "type": "behaviour",
+      "claim": "Premium supports the same object types as Standard, limited to documented supported properties.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/backup/backup-recovery-plans",
+      "quote": "Supported objects | All object types supported by Microsoft Entra Backup and Recovery. | The same supported object types as the Standard plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Why it matters; Scope",
+      "type": "behaviour",
+      "claim": "Premium supports the same recovery scope as Standard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/backup/backup-recovery-plans",
+      "quote": "Recovery scope | Recover all supported objects, selected object types, or specific object IDs. | The same recovery scope as the Standard plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Backups contain directory data for supported objects and properties.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations",
+      "quote": "Only the supported properties listed for each object type are included in backup, difference reports, and recovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Existing backup data remains in the same geo-location as the Entra tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/backup/overview",
+      "quote": "Backup data resides securely in the same geo-location as the Microsoft Entra tenant, determined during tenant creation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The Microsoft 365 Backup overview directs Entra Premium geographic residency to Entra data-residency documentation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "| Feature | OneDrive | SharePoint | Exchange Online | Entra Premium (preview) | ... Geographic residency ... https://learn.microsoft.com/entra/fundamentals/data-residency",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Entra Backup and Recovery snapshots are stored in Microsoft-managed Azure storage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/fundamentals/data-residency",
+      "quote": "Microsoft automatically takes snapshots of certain directory data at regular intervals, which are stored in Microsoft-managed Azure storage",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Snapshots are replicated to multiple datacenters in the tenant's region.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/fundamentals/data-residency",
+      "quote": "replicated to multiple datacenters in the same region as the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Restoring a soft-deleted user reinstates their attributes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/backup/recover-user-secrets",
+      "quote": "If the user was soft-deleted, restoring them reinstates their attributes, group memberships, licenses, and assignments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Security & identity; rationale: risk",
+      "type": "behaviour",
+      "claim": "Restoring a soft-deleted user reinstates their group memberships.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/backup/recover-user-secrets",
+      "quote": "If the user was soft-deleted, restoring them reinstates their attributes, group memberships, licenses, and assignments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Restoring a soft-deleted user reinstates their licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/backup/recover-user-secrets",
+      "quote": "If the user was soft-deleted, restoring them reinstates their attributes, group memberships, licenses, and assignments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Security & identity; rationale: risk",
+      "type": "behaviour",
+      "claim": "Restoring a soft-deleted user reinstates their assignments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/backup/recover-user-secrets",
+      "quote": "If the user was soft-deleted, restoring them reinstates their attributes, group memberships, licenses, and assignments.",
       "severity": null,
       "fix": null
     },
     {
       "n": 56,
-      "where": "Why it matters",
+      "where": "Risk assessment: Security & identity; rationale: risk",
       "type": "behaviour",
-      "claim": "Soft-delete restoration alone does not recover a wrongly modified object that still exists.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/soft-deletion",
-      "quote": "Soft delete: Object is retained in a deleted state for a limited time. Yes, within the retention window.",
-      "severity": null,
-      "fix": null
+      "claim": "Recovering a service principal restores its OAuth2 permission grants without qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations",
+      "quote": "When a service principal is recovered, Microsoft Entra Backup and Recovery also restores: OAuth2 permission grants where the recovered service principal is the target object",
+      "severity": "blocker",
+      "fix": "Replace 'also restores its OAuth2 permission grants and app role assignments' with 'also restores OAuth2 permission grants and app role assignments where the recovered service principal is the target object', matching https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations. Keep this target-object qualification in the risk rationale if it names service-principal grants."
     },
     {
       "n": 57,
-      "where": "Risk assessment: Security & identity",
+      "where": "Risk assessment: Security & identity; rationale: risk",
       "type": "behaviour",
-      "claim": "Restoring a soft-deleted user reinstates its attributes.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/recover-user-secrets",
-      "quote": "If the user was soft-deleted, restoring them reinstates their attributes, group memberships, licenses, and assignments.",
-      "severity": null,
-      "fix": null
+      "claim": "Recovering a service principal restores its app role assignments without qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations",
+      "quote": "App role assignments where the recovered service principal is the target object",
+      "severity": "blocker",
+      "fix": "Use 'also restores OAuth2 permission grants and app role assignments where the recovered service principal is the target object' in the service-principal recovery sentence, as stated at https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations."
     },
     {
       "n": 58,
-      "where": "Risk assessment: Security & identity; rationale: risk",
-      "type": "behaviour",
-      "claim": "Restoring a soft-deleted user reinstates group memberships.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/recover-user-secrets",
-      "quote": "If the user was soft-deleted, restoring them reinstates their attributes, group memberships, licenses, and assignments.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "Restoring a soft-deleted user reinstates licenses.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/recover-user-secrets",
-      "quote": "If the user was soft-deleted, restoring them reinstates their attributes, group memberships, licenses, and assignments.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "Risk assessment: Security & identity; rationale: risk",
-      "type": "behaviour",
-      "claim": "Restoring a soft-deleted user reinstates assignments.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/recover-user-secrets",
-      "quote": "If the user was soft-deleted, restoring them reinstates their attributes, group memberships, licenses, and assignments.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
-      "where": "Risk assessment: Security & identity; rationale: risk",
-      "type": "behaviour",
-      "claim": "Recovering a service principal restores its OAuth2 permission grants.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations",
-      "quote": "When a service principal is recovered, Microsoft Entra Backup and Recovery also restores: OAuth2 permission grants where the recovered service principal is the target object",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 62,
-      "where": "Risk assessment: Security & identity; rationale: risk",
-      "type": "behaviour",
-      "claim": "Recovering a service principal restores its app role assignments.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations",
-      "quote": "When a service principal is recovered, Microsoft Entra Backup and Recovery also restores: App role assignments where the recovered service principal is the target object",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
-      "where": "Risk assessment: Security & identity; Scope; controls[2].note",
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance",
       "type": "role",
-      "claim": "Microsoft Entra Backup Administrator is required to trigger existing recovery.",
+      "claim": "Existing object recovery requires Microsoft Entra Backup Administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/backup/recover-objects",
       "quote": "To recover objects, you need the Microsoft Entra Backup Administrator role.",
@@ -724,7 +669,7 @@
       "fix": null
     },
     {
-      "n": 64,
+      "n": 59,
       "where": "Risk assessment: Security & identity",
       "type": "role",
       "claim": "Global Administrator includes all Microsoft Entra Backup Administrator permissions.",
@@ -735,73 +680,84 @@
       "fix": null
     },
     {
-      "n": 65,
-      "where": "Scope: Roles; controls[1].note",
+      "n": 60,
+      "where": "Risk assessment: Security & identity; Scope",
       "type": "role",
-      "claim": "Microsoft Entra Backup Reader can view backups.",
+      "claim": "The Microsoft 365 Backup role table lists Global Administrator for Entra management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "| Admin role | OneDrive | SharePoint | Exchange | Entra | ... | Global Administrator | ✓ | ✓ | ✓ | ✓ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "The Microsoft 365 Backup role table lists Microsoft Entra Backup Administrator for Entra management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "| Microsoft Entra Backup Administrator |  |  |  | ✓ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "Microsoft Entra Backup Administrator is the least-privileged role for enabling Premium.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/backup/overview",
-      "quote": "Microsoft Entra Backup Reader: Can view backups",
+      "quote": "Microsoft Entra Backup Administrator is the least-privileged role that can turn on Premium for your tenant.",
+      "severity": "minor",
+      "fix": "Add to this role sentence: 'The Microsoft 365 Backup setup article separately says a SharePoint Administrator or Global Administrator is required to access the Microsoft 365 admin center and set up Microsoft 365 Backup.' Both pages are already cited: https://learn.microsoft.com/entra/backup/overview and https://learn.microsoft.com/microsoft-365/backup/backup-setup."
+    },
+    {
+      "n": 63,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Recovery soft-deletes in-scope objects added since the selected backup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/backup/backup-difference-report-recovery-model",
+      "quote": "Object was added | Backup and Recovery soft-deletes the object",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Recovery updates supported changed properties to their backup values.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/backup/backup-difference-report-recovery-model",
+      "quote": "Object was updated | Backup and Recovery updates the object to the backup value",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Recovery can be scoped by object type or object ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/backup/backup-difference-report-recovery-model",
+      "quote": "By object type: Recover only objects of a certain type ... By object ID: Supply the object type and object ID to recover a specific object.",
       "severity": null,
       "fix": null
     },
     {
       "n": 66,
-      "where": "Scope: Roles",
-      "type": "role",
-      "claim": "Microsoft Entra Backup Reader can view comparisons.",
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "absence",
+      "claim": "Permissions for the roadmap's ISV Entra-restoration scenario through Backup Storage platform APIs are not yet published.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/overview",
-      "quote": "Can view backups, view comparisons of changed objects between the backup state and the current state, and review recovery history.",
+      "source": null,
+      "quote": "Searched: Microsoft Entra backup Premium ISV Backup Storage restore permissions application. Opened Backup overview, backupRestoreRoot and recoveryJobs reference; Backup Storage covers other workloads, and recoveryJobs disallows application access. No permission for the planned Entra ISV route stated.",
       "severity": null,
       "fix": null
     },
     {
       "n": 67,
-      "where": "Scope: Roles",
-      "type": "role",
-      "claim": "Microsoft Entra Backup Reader can review recovery history.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/overview",
-      "quote": "Can view backups, view comparisons of changed objects between the backup state and the current state, and review recovery history.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
-      "where": "Scope: Roles; controls[1].note",
-      "type": "role",
-      "claim": "Microsoft Entra Backup Administrator can initiate difference reports.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/overview",
-      "quote": "Microsoft Entra Backup Administrator: Has all the permissions of Microsoft Entra Backup Reader, plus can initiate difference reports",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Recovery soft-deletes in-scope objects added since the backup.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/backup-difference-report-recovery-model",
-      "quote": "| Object was added | Backup and Recovery soft-deletes the object |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 70,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Recovery reverts supported updated values to their backup values.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/backup-difference-report-recovery-model",
-      "quote": "| Object was updated | Backup and Recovery updates the object to the backup value |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 71,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "Hard-deleted objects cannot be recovered.",
@@ -812,21 +768,21 @@
       "fix": null
     },
     {
-      "n": 72,
+      "n": 68,
       "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
       "type": "behaviour",
       "claim": "Changes to on-premises synced objects, except group memberships, are excluded from recovery.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations",
       "quote": "Any changes made to on-premises synced objects (except group memberships) appear in difference reports, but are automatically excluded from recovery.",
-      "severity": null,
-      "fix": null
+      "severity": "minor",
+      "fix": "Add to this sentence: 'The backup, difference report, and recovery model article instead says on-premises synchronized objects cannot be recovered, without stating this group-membership exception.' Cite the already-listed https://learn.microsoft.com/entra/backup/backup-difference-report-recovery-model alongside https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations."
     },
     {
-      "n": 73,
+      "n": 69,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Manager changes are out of recovery scope.",
+      "claim": "Manager changes are outside recovery scope.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations",
       "quote": "Manager and sponsor changes aren't in scope.",
@@ -834,10 +790,10 @@
       "fix": null
     },
     {
-      "n": 74,
+      "n": 70,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Sponsor changes are out of recovery scope.",
+      "claim": "Sponsor changes are outside recovery scope.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations",
       "quote": "Manager and sponsor changes aren't in scope.",
@@ -845,10 +801,10 @@
       "fix": null
     },
     {
-      "n": 75,
+      "n": 71,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Group ownership changes are out of recovery scope.",
+      "claim": "Group ownership changes are outside recovery scope.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations",
       "quote": "Group ownership changes aren't in scope.",
@@ -856,10 +812,10 @@
       "fix": null
     },
     {
-      "n": 76,
+      "n": 72,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Only one difference-report or recovery job can run at a time.",
+      "claim": "Only one job, including difference-report and recovery jobs, can run at a time.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/backup/backup-difference-report-recovery-model",
       "quote": "Only one job can run at a time, including difference reports and recovery jobs.",
@@ -867,197 +823,10 @@
       "fix": null
     },
     {
-      "n": 77,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Recovery can be scoped by object type.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/backup-difference-report-recovery-model",
-      "quote": "By object type: Recover only objects of a certain type, such as users, groups, applications, service principals, or Conditional Access policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 78,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Recovery can be scoped by object ID.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/backup-difference-report-recovery-model",
-      "quote": "By object ID: Supply the object type and object ID to recover a specific object.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 79,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Existing backups are viewed at Microsoft Entra admin center > Backup and recovery > Backups.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/overview",
-      "quote": "browse to the Microsoft Entra admin center and select Backup and recovery in the left navigation pane. These pages are available: Backups: Browse available backups.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 80,
-      "where": "controls[1].api; Governance controls table",
-      "type": "command",
-      "claim": "GET /v1.0/directory/recovery/snapshots lists tenant backups.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/entrarecoveryservices-recovery-list-snapshots?view=graph-rest-1.0",
-      "quote": "Get a list of available backup snapshot objects for the tenant.\nGET https://graph.microsoft.com/v1.0/directory/recovery/snapshots",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 81,
-      "where": "controls[2].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Recovery begins at Microsoft Entra admin center > Backup and recovery > Backups > backup > Recover backup.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/recover-objects",
-      "quote": "Sign in to the Microsoft Entra admin center as at least a Microsoft Entra Backup Administrator. Go to Backup and recovery > Backups. Select a backup and select Recover backup.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 82,
-      "where": "controls[2].api; Governance controls table",
-      "type": "command",
-      "claim": "POST /v1.0/directory/recovery/snapshots/{snapshot-id}/recoveryJobs starts recovery.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/entrarecoveryservices-snapshot-post-recoveryjobs?view=graph-rest-1.0",
-      "quote": "Create a new recoveryJob object to restore the tenant's directory objects to a specific snapshot state.\nPOST https://graph.microsoft.com/v1.0/directory/recovery/snapshots/MjAyNC0wOC0yNlQwMjozMDowMFo=/recoveryJobs",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 83,
-      "where": "controls[2].note",
-      "type": "role",
-      "claim": "Entra Backup Administrator is the least-privileged role for the recoveryJob API.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/entrarecoveryservices-snapshot-post-recoveryjobs?view=graph-rest-1.0",
-      "quote": "Entra Backup Administrator is the least privileged role supported for this operation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 84,
-      "where": "controls[2].note; Governance controls table",
-      "type": "admin-path",
-      "claim": "Backup and recovery > Recovery History is used to cancel a running job, not to start recovery.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/recover-objects",
-      "quote": "Cancel a recovery: Go to Backup and recovery > Recovery History. Select the in-progress recovery job, and then select Cancel.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 85,
-      "where": "controls[3].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Billing policies are created at Microsoft 365 admin center > Billing > Pay-as-you-go > Billing policies > Add a billing policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
-      "quote": "Sign in to the Microsoft 365 admin center, and then go to Billing > Pay-as-you-go. On the Billing policies tab, select Add a billing policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 86,
-      "where": "controls[3].api; Governance controls table",
-      "type": "absence",
-      "claim": "No API equivalent is documented for creating the tenant billing policy shown in this Billing-node row.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft 365 Backup pay as you go billing policy create Azure subscription API Graph PowerShell Billing policies. Read Billing-node and Backup setup; third-party billing excerpts describe New-SPOAppBillingPolicy for an ISV application, not this tenant Billing-node policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 87,
-      "where": "controls[3].note; Governance controls table and prose",
-      "type": "applicability",
-      "claim": "The cited Billing-node instructions are for GCC and new Backup customers and direct existing customers to Setup.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
-      "quote": "Government Community Cloud (GCC) and new Microsoft 365 Backup customers only: Existing backup customers must use the Setup node to set up pay-as-you-go billing.",
-      "severity": "minor",
-      "fix": "Keep this attribution, but append: 'The separately cited Microsoft 365 Backup setup article documents optional migration of existing customers to the new Billing experience.'"
-    },
-    {
-      "n": 88,
-      "where": "front matter: cost; rationale: cost; Cost and licensing",
-      "type": "consistency",
-      "claim": "Cost is low because admin time is the only known cost for the extension.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
-      "quote": "Page: 'The only cost the sources show is admin time'. Microsoft: 'Microsoft Entra Backup and Recovery Premium uses consumption-based pricing. The price is $0.025 USD per protected Microsoft Entra object per month.'",
-      "severity": "blocker",
-      "fix": "Set cost to variable and replace the cost rationale with: 'Variable. Premium is metered at $0.025 USD per protected Microsoft Entra object per month; restore planning and testing also take administrator time.'"
-    },
-    {
-      "n": 89,
-      "where": "Governance guidance: Before rollout; Governance controls",
-      "type": "consistency",
-      "claim": "The role-assignment and reviewed-difference-report checklist steps are represented by the referenced controls.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Checklist: 'assign Microsoft Entra Backup Reader ... and Microsoft Entra Backup Administrator' and 'require a reviewed difference report first'. Rows: extension switch, viewing snapshots, starting recovery, billing; no role-assignment or difference-report row.",
-      "severity": "minor",
-      "fix": "Remove '(see the first two controls)' from the role-assignment step: those rows do not document assigning roles. The role-assignment and reviewed-difference-report checklist controls have no corresponding rows; no new rows are requested."
-    },
-    {
-      "n": 90,
-      "where": "Governance controls: prose",
-      "type": "availability",
-      "claim": "The Graph backup overview labels Entra recovery APIs beta-only despite the v1.0 snapshot reference.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/resources/tenants-backup-recovery-overview?view=graph-rest-1.0",
-      "quote": "Microsoft Entra Backup and Recovery\nAvailable on beta only.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 91,
-      "where": "Cost and licensing",
+      "n": 73,
+      "where": "summary; Cost and licensing; front matter: cost; rationale: cost",
       "type": "cost",
-      "claim": "Microsoft 365 Backup is a pay-as-you-go service.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
-      "quote": "The Microsoft 365 Backup service, offered through the Microsoft 365 admin center, is a pay-as-you-go consumption-based service.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 92,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "The list price for protected SharePoint, OneDrive and Exchange content is $0.15/GiB/month.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
-      "quote": "The list price is $0.15/GiB/month of protected content.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 93,
-      "where": "Cost and licensing; Governance controls",
-      "type": "behaviour",
-      "claim": "The Graph Microsoft 365 Backup Storage overview describes SharePoint, OneDrive and Exchange content.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/resources/tenants-backup-recovery-overview?view=graph-rest-1.0",
-      "quote": "The Microsoft 365 Backup Storage APIs let you build applications to protect and restore content in SharePoint sites, OneDrive accounts, and Exchange mailboxes.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 94,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Microsoft has not said that the $0.15/GiB/month protected-content meter applies to Entra objects.",
+      "claim": "Premium has variable consumption cost at $0.025 USD per protected Microsoft Entra object per month through Microsoft 365 Backup.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
       "quote": "Microsoft Entra Backup and Recovery Premium uses consumption-based pricing. The price is $0.025 USD per protected Microsoft Entra object per month.",
@@ -1065,10 +834,32 @@
       "fix": null
     },
     {
-      "n": 95,
+      "n": 74,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "An ISV solution built on Microsoft 365 Backup Storage bills the customer for its application.",
+      "claim": "Protected-object usage is represented as GB-based commerce billing units, not backup storage consumed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "For commerce billing, protected-object usage is represented as GB-based billing units. These units don't indicate the amount of backup storage consumed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "SharePoint, OneDrive and Exchange backup is charged separately at a list price of $0.15/GiB/month of protected content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "The list price is $0.15/GiB/month of protected content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "An ISV solution built on Backup Storage charges the customer through the partner for its application.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
       "quote": "If you're using a partner (ISV) solution built on the Microsoft 365 Backup Storage platform, you'll be charged solely by them for their application.",
@@ -1076,10 +867,10 @@
       "fix": null
     },
     {
-      "n": 96,
+      "n": 77,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Customers using such an ISV solution receive no separate Microsoft Backup Storage consumption bill.",
+      "claim": "The customer receives no separate Microsoft bill for Backup Storage consumption under that ISV solution.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
       "quote": "You won't receive a separate bill or charge directly from Microsoft for the Backup Storage consumption.",
@@ -1087,89 +878,232 @@
       "fix": null
     },
     {
-      "n": 97,
-      "where": "Scope: Existing recovery",
+      "n": 78,
+      "where": "Scope",
       "type": "availability",
-      "claim": "Existing Entra Backup and Recovery is supported for workforce tenants only.",
+      "claim": "Existing recovery supports workforce tenants, not External ID or Azure AD B2C tenants.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/backup/overview",
-      "quote": "The tenant is a workforce tenant.",
+      "quote": "The tenant is a workforce tenant. External ID and Azure AD B2C tenants aren't supported.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 98,
-      "where": "Scope: Existing recovery",
-      "type": "availability",
-      "claim": "External ID tenants are not supported.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/overview",
-      "quote": "External ID and Azure AD B2C tenants aren't supported.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 99,
-      "where": "Scope: Existing recovery",
-      "type": "availability",
-      "claim": "Azure AD B2C tenants are not supported.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/overview",
-      "quote": "External ID and Azure AD B2C tenants aren't supported.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 100,
-      "where": "Why it matters",
-      "type": "default",
-      "claim": "No change to existing recovery is documented if administrators do nothing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/backup/backup-recovery-plans",
-      "quote": "Default state: Standard plan: Available automatically for tenants with Microsoft Entra ID P1 or P2 licenses. Premium plan (preview): Off by default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 101,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap record was last modified at 2026-09-01T22:59:38.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-09-01T22:59:38\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 102,
-      "where": "Scope: Roles; controls[1].note",
+      "n": 79,
+      "where": "controls[1].note; Scope; Governance guidance: Before rollout",
       "type": "role",
-      "claim": "Microsoft Entra Backup Administrator has all Microsoft Entra Backup Reader permissions.",
+      "claim": "Microsoft Entra Backup Reader can view backups, comparisons and recovery history.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/backup/overview",
-      "quote": "Microsoft Entra Backup Administrator: Has all the permissions of Microsoft Entra Backup Reader",
+      "quote": "Microsoft Entra Backup Reader: Can view backups, view comparisons of changed objects between the backup state and the current state, and review recovery history.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 103,
-      "where": "Governance controls: prose",
+      "n": 80,
+      "where": "Scope; controls[1].note",
+      "type": "role",
+      "claim": "Microsoft Entra Backup Administrator has Reader permissions and can initiate difference reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/backup/overview",
+      "quote": "Microsoft Entra Backup Administrator: Has all the permissions of Microsoft Entra Backup Reader, plus can initiate difference reports, trigger recovery for changed objects, and set up the Premium plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "No signed-in user or application, even with the highest admin privileges, can turn off, delete or modify Standard backups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/backup/overview",
+      "quote": "No signed-in user or application, even with the highest admin privileges, can turn off, delete, or modify Standard plan backups in the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Governance controls",
+      "type": "availability",
+      "claim": "The Graph backup overview labels Entra recovery APIs as beta-only, although the snapshot reference documents v1.0.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/tenants-backup-recovery-overview?view=graph-rest-1.0",
+      "quote": "Microsoft Entra Backup and Recovery ... Available on beta only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Premium policy creation is under Microsoft 365 admin center > Settings > Microsoft 365 Backup > Entra > Set up policy > Overview > Policy Settings > Review Entra backup policy > Create policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "Select Settings. Select Microsoft 365 Backup ... in the Entra section, select Set up policy. ... Overview ... Policy Settings ... On the Review Entra backup policy page ... select Create policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "controls[0].api; Governance controls prose and table",
       "type": "absence",
-      "claim": "Microsoft 365 Backup policy documentation does not yet cover Entra objects.",
-      "status": "contradicted",
+      "claim": "Microsoft Learn documents no Premium-specific enablement API at the time of writing in November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Entra Premium backup enable create protection policy API Microsoft Graph backupRestoreRoot. Opened backupRestoreRoot and policy setup; read enable API search excerpts. Generic Backup Storage enablement is documented, but no operation enabling an Entra Premium policy is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Available backups are at Microsoft Entra admin center > Backup and recovery > Backups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/backup/overview",
+      "quote": "browse to the Microsoft Entra admin center and select Backup and recovery in the left navigation pane. ... Backups: Browse available backups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "GET /v1.0/directory/recovery/snapshots lists available tenant backup snapshots.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/entrarecoveryservices-recovery-list-snapshots?view=graph-rest-1.0",
+      "quote": "Get a list of available backup snapshot objects for the tenant. ... GET https://graph.microsoft.com/v1.0/directory/recovery/snapshots",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Starting recovery is at Microsoft Entra admin center > Backup and recovery > Backups > backup > Recover backup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/backup/recover-objects",
+      "quote": "Go to Backup and recovery > Backups. Select a backup and select Recover backup. ... Select Recover to start the recovery job.",
+      "severity": "minor",
+      "fix": "Complete the route with the final action: 'Backup and recovery > Backups > backup > Recover backup > Recover'. The current path reaches the correct recovery dialog but stops before starting the job; scoping filters are optional. Source: https://learn.microsoft.com/entra/backup/recover-objects."
+    },
+    {
+      "n": 88,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "POST /v1.0/directory/recovery/snapshots/{snapshot-id}/recoveryJobs creates a job restoring directory objects to the selected snapshot state.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/entrarecoveryservices-snapshot-post-recoveryjobs?view=graph-rest-1.0",
+      "quote": "Create a new recoveryJob object to restore the tenant's directory objects to a specific snapshot state. ... POST https://graph.microsoft.com/v1.0/directory/recovery/snapshots/MjAyNC0wOC0yNlQwMjozMDowMFo=/recoveryJobs",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 89,
+      "where": "controls[2].note; Governance controls table",
+      "type": "role",
+      "claim": "Entra Backup Administrator is the least-privileged role supported by the recovery-job API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/entrarecoveryservices-snapshot-post-recoveryjobs?view=graph-rest-1.0",
+      "quote": "Entra Backup Administrator is the least privileged role supported for this operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "controls[2].note; Governance controls table",
+      "type": "admin-path",
+      "claim": "Backup and recovery > Recovery History is where an administrator cancels a running job, rather than starts recovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/backup/recover-objects",
+      "quote": "Cancel a recovery ... Go to Backup and recovery > Recovery History. Select the in-progress recovery job, and then select Cancel.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 91,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Native Microsoft 365 Backup billing policy creation is under Billing > Pay-as-you-go > Billing policies > Add a billing policy in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "go to Billing > Pay-as-you-go. On the Billing policies tab, select Add a billing policy.",
+      "severity": "minor",
+      "fix": "Complete the billing-policy creation route as 'Billing > Pay-as-you-go > Billing policies > Add a billing policy > Billing details > Choose users > Budget (optional) > Review and create policy > Create policy', from https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node. The printed route reaches the correct wizard but stops early."
+    },
+    {
+      "n": 92,
+      "where": "controls[3].api; Governance controls table",
+      "type": "absence",
+      "claim": "No API equivalent for the native admin-center pay-as-you-go billing-policy control is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Backup pay as you go billing policy create API PowerShell Azure billing policies. Opened Billing-node and Backup setup pages; read third-party billing excerpts. New-SPOAppBillingPolicy covers a partner application in its owner's tenant, not this native billing-policy control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 93,
+      "where": "controls[3].note; Governance controls prose and table",
+      "type": "applicability",
+      "claim": "The Billing-node instructions are for GCC and new Backup customers; existing customers are directed to the Setup node.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "Government Community Cloud (GCC) and new Microsoft 365 Backup customers only: Existing backup customers must use the Setup node to set up pay-as-you-go billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 94,
+      "where": "controls[3].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "Existing Backup customers can optionally migrate their billing management from Setup to the new Billing experience.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
-      "quote": "Create backup policies for OneDrive, SharePoint, Exchange, or Entra.",
+      "quote": "Existing customers who onboarded to Backup before April 1, 2026 who are interested in splitting Microsoft 365 Backup consumption into multiple Azure subscriptions can now migrate their billing management from Setup tab",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 95,
+      "where": "controls[1].note; controls[2].note; Governance controls prose and table",
+      "type": "applicability",
+      "claim": "The two Entra viewing and recovery rows govern existing seven-day recovery, not the 30-day extension.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/entra/backup/overview",
+      "quote": "Backups: Browse available backups. The Standard plan retains up to 7 days of backup history, and the Premium plan retains up to 30 days.",
       "severity": "blocker",
-      "fix": "Remove the limiting clause 'the Learn pages describe OneDrive, SharePoint and Exchange policies'; the setup article now links to policy creation for Entra as well."
+      "fix": "Replace controls[1].note with 'Microsoft Entra Backup Reader or Microsoft Entra Backup Administrator can view backups. Standard requires Entra ID P1 or P2; Premium (preview) requires at least one SharePoint license or a license that includes SharePoint, plus consumption billing.' Remove 'Existing recovery.' from controls[2].note. Replace 'The two Entra rows govern existing seven-day recovery' with 'The Entra admin center viewing and recovery paths apply to retained Standard and Premium backups; the Graph references document listing snapshots and starting recovery jobs.' Use https://learn.microsoft.com/entra/backup/overview, https://learn.microsoft.com/entra/backup/backup-recovery-plans and https://learn.microsoft.com/entra/backup/recover-objects, already cited."
+    },
+    {
+      "n": 96,
+      "where": "front matter: risk; rationale: risk",
+      "type": "consistency",
+      "claim": "A medium risk rating based on post-enablement recovery exposure fits the standard for this off-by-default capability.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "risk: \"medium\"; rationale: 'Premium is documented as off by default, so that exposure arises once an administrator turns it on.' Standard: low includes 'nothing happens until an admin opts in'.",
+      "severity": "minor",
+      "fix": "Set risk to 'low' and replace its rationale with 'Low. Premium is off by default, so existing behaviour continues until an administrator enables it; review recovery changes before restoring objects.' Keep the documented post-enablement recovery risks in the body."
+    },
+    {
+      "n": 97,
+      "where": "Governance guidance: Before rollout and After rollout; controls",
+      "type": "consistency",
+      "claim": "Every control that the governance checklist asks administrators to set or review appears in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'assign Microsoft Entra Backup Reader ... Microsoft Entra Backup Administrator'; 'require a reviewed difference report first'; 'Review Recovery History after each restore'. Table: enablement, viewing backups, starting recovery, billing.",
+      "severity": "minor",
+      "fix": "The role-assignment instruction, difference-report review instruction and Recovery History review instruction have no corresponding controls-table rows. Remove those checklist instructions, retaining their already-documented role and recovery advice in the body; do not add unverified control rows."
     }
   ],
   "precheck": {
-    "at": "2026-11-21T03:13:43.411Z",
+    "at": "2026-11-21T04:18:41.305Z",
     "summary": {
-      "links": 14,
+      "links": 19,
       "unreachable": 0,
-      "uiPaths": 3,
+      "uiPaths": 4,
       "uiPathsWithMissingWords": 0,
       "apiCalls": 2,
       "apiCallsNotOnPage": 0,
@@ -1183,6 +1117,11 @@
       },
       {
         "url": "https://learn.microsoft.com/entra/backup/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/backup/backup-recovery-plans",
         "ok": true,
         "status": 200
       },
@@ -1212,12 +1151,32 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/graph/api/resources/backuprestoreroot",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
         "ok": true,
         "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/fundamentals/data-residency",
         "ok": true,
         "status": 200
       },
@@ -1248,6 +1207,24 @@
       }
     ],
     "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Switch or setting for the 30-day extension",
+        "docs": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Microsoft 365 Backup",
+          "Entra",
+          "Set up policy",
+          "Overview",
+          "Policy Settings",
+          "Review Entra backup policy",
+          "Create policy"
+        ],
+        "missing": []
+      },
       {
         "index": 1,
         "side": "ui",
@@ -1331,6 +1308,12 @@
     {
       "date": "2026-11-17",
       "status": "verified-with-gaps",
+      "version": 5,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-21",
+      "status": "held",
       "version": 5,
       "model": "gpt-6.1-sol"
     }

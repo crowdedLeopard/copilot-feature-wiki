@@ -62,19 +62,23 @@ changes:
     note: "First briefing on HVE external sending: roadmap plan, today's HVE billing and billing-policy controls, and the enabling cmdlet not yet documented."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 46 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after verification: removed the claim that the billing policy is the only documented control, and dropped a usage-monitoring checklist step that had no controls row."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 51 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 46
-  confirmed: 44
+  claims: 51
+  confirmed: 51
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "7243ed30b70a3cc36ddd04047443d319"
+  contradicted: 0
+  attempts: 0
+  hash: "d2fda50b11fff9859775e71b49eaacc2"
 ---
 
 ## What's changing
@@ -131,7 +135,6 @@ External sending is enabled per HVE account, according to the roadmap. Prerequis
 - Test with a small set of external recipients before moving production traffic.
 
 ### After rollout
-- Watch recipient counts and bills for each enabled account and compare them with what the application should send.
 - Re-read Microsoft's documentation when the preview opens, to confirm throttling, quota and suppression behaviour.
 
 ## Governance controls
@@ -146,7 +149,7 @@ External sending is enabled per HVE account, according to the roadmap. Prerequis
 </tbody>
 </table>
 
-Microsoft Learn documents no setting, in the Exchange admin center or in the Exchange PowerShell reference, that turns external sending on for an HVE account; the roadmap says a cmdlet will do it. Until it is documented, the billing policy is the only documented control that decides whether an HVE account can send at all: an account without a valid billing policy cannot send email, and that applies to the HVE service as documented today. It does not restrict recipients.
+Microsoft Learn documents no setting, in the Exchange admin center or in the Exchange PowerShell reference, that turns external sending on for an HVE account; the roadmap says a cmdlet will do it. For HVE as documented today, an account without a valid billing policy cannot send email.
 
 Set-HVEAccountSettings is documented with only a Reply-To parameter at the time of writing (November 2026), so it should not be assumed to be the enabling cmdlet.
 
@@ -164,11 +167,8 @@ cost: Variable. The roadmap says billing will be per external recipient; HVE is 
 impact: Low. Admins and the owners of the apps and devices that send through HVE accounts notice it; ordinary users see no change.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls / applicability: Until external enablement is documented, billing policy is the only documented control that decides whether an HVE account can send at all. | Found: To prevent authentication policies from blocking HVE traffic, ensure that the authentication settings applied to the HVE account allow the selected authentication method (OAuth or basic authentication). You can apply custom authentication policies specifically to HVE accounts as needed. | Fix: Replace the sentence beginning 'Until it is documented' with 'For HVE as documented today, an account without a valid billing policy cannot send email.' This preserves the documented billing requirement without falsely excluding authentication controls; source: https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365. | Source: https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Exchange admin center > Mail flow > High Volume Email > account > Billing policies reaches the HVE billing-policy assignment page. | Found: In the left navigation, select Mail flow, and then select High Volume Email. ... Select an HVE account from the list to open the account details. ... two tabs are available – General and Billing policies. | Fix: The path correctly reaches the assignment page but stops before selecting the policy. Extend it to 'Mail flow > High Volume Email > account > Billing policies > billing policy'; the final step means selecting a different policy from the drop-down menu documented at https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365. | Source: https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365
-- [contradicted, minor] Governance guidance: After rollout; controls / consistency: The checklist asks readers to watch per-account recipient counts, but the controls table has no usage-report row. | Found: Watch recipient counts and bills for each enabled account and compare them with what the application should send. ... The controls table contains only external-sending enablement and billing-policy assignment. | Fix: Remove the 'Watch recipient counts and bills for each enabled account and compare them with what the application should send' checklist bullet, which names a monitoring control with no table row. Do not add a control row as part of this correction.
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Exchange admin center > Mail flow > High Volume Email > account > Billing policies reaches the billing-policy assignment page. | Found: In the left navigation, select Mail flow, and then select High Volume Email. Select an HVE account from the list to open the account details. When you open an account, two tabs are available – General and Billing policies. | Fix: Keep the documented path and add to controls[1].note: 'On the Billing policies tab, select a different billing policy from the drop-down menu.' Apply the same addition to the rendered row note, as documented at https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365. | Source: https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365
 -->

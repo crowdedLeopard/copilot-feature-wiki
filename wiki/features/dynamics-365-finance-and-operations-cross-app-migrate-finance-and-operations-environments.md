@@ -12,13 +12,13 @@ platforms: ["Web"]
 targetDate: "December CY2026"
 previewDate: "September CY2026"
 risk: "medium"
-cost: "low"
+cost: "medium"
 impact: "medium"
 defaultState: "admin-opt-in"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published: the Learn page names no licence and publishes no migration price. After migration the environment consumes capacity under the Power Platform capacity model."
+  model: "included"
+  notes: "Finance and operations apps require appropriate product subscription licences, such as Dynamics 365 Finance or Dynamics 365 Supply Chain Management. No migration-specific licence or migration price is published as of November 2026. After migration the environment consumes Power Platform capacity."
 audiences: ["power-platform-admin","service-owner","change-adoption"]
 tags: ["dynamics-365","finance-and-operations","lifecycle-services","migration","power-platform-admin-center","power-platform"]
 sources:
@@ -36,6 +36,9 @@ sources:
     kind: "learn"
   - title: "Enable Power Platform integration"
     url: "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/power-platform/enable-power-platform-integration"
+    kind: "learn"
+  - title: "Stay compliant with user licensing requirements"
+    url: "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/sysadmin/stay-compliant-user-license-requirement"
     kind: "learn"
 videos: []
 related: []
@@ -69,7 +72,7 @@ controls:
     note: "The Dataverse call verifies Power Platform integration status; it is not a migration control."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-21"
 roadmapModified: "2026-10-01T23:00:07"
 changes:
   - date: "2026-11-17"
@@ -82,19 +85,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 65 statements confirmed"
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 74 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-21"
+    note: "Corrected the cost rating to medium and the licensing model to included, citing the finance and operations user licensing page and the capacity effect."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 69 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 74
-  confirmed: 73
+  claims: 69
+  confirmed: 68
   unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "a06afeaf0616e14f75a0fa7aa2021b11"
+  attempts: 0
+  hash: "a3b6d3888f32b5723aefaebfef6f57dc"
 ---
 
 ## What's changing
@@ -136,7 +143,7 @@ The cost of getting the order wrong falls on the team that runs deployments. Aft
 
 ## Cost and licensing
 
-The Learn migration page lists no licence among its prerequisites and does not publish a migration price. Treat the migration price and licence as not yet published, and rely on the documented capacity effects below.
+Finance and operations apps require appropriate product subscription licences, such as Dynamics 365 Finance or Dynamics 365 Supply Chain Management, as the [user licensing requirements page](https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/sysadmin/stay-compliant-user-license-requirement) states. The Learn migration page lists no licence among its prerequisites. No migration-specific licence or migration price is published as of November 2026. After migration the environment consumes Power Platform capacity.
 
 After migration the environment consumes capacity under the Power Platform capacity model, and available database capacity is validated before migration, so a Power Platform storage capacity deficit has to be resolved first. The capacity page says to delete unneeded environments and data or buy more capacity if you have a deficit, and that exceeding storage entitlements currently does not affect the availability of the service. The migration page also says the Lifecycle Services environment slot is not returned or made available for another environment, and that future provisioning is based on available Power Platform capacity instead of Lifecycle Services slots.
 
@@ -191,18 +198,16 @@ Microsoft Learn documents no API for starting the migration or for the finance a
 - What will general availability look like: does Microsoft lift the sandbox-first and no-production recommendation, and will the Commerce restriction go? Watch the Learn migration page and the roadmap item for the December CY2026 target.
 - Will the prerequisite check come to detect Commerce usage, so an unsupported environment is blocked rather than left to the administrator?
 - Which Lifecycle Services project role is needed to see and start the migration, beyond being an administrator of the linked Power Platform environment?
-- Will the migration carry any licence or price once it reaches general availability? Watch Message center and the Learn page.
+- Will Microsoft introduce a separate migration licence or price once the feature reaches general availability? Watch Message center and the Learn page.
 
 <!-- rationale
 risk: Medium. Migration starts only when an administrator chooses it, but it is one-way, takes the environment offline for about 15 minutes per AOS instance, and Learn does not recommend production use during public preview.
-cost: Low. The Learn page lists no licence and publishes no migration price; the known costs are admin time, downtime and capacity, because the migrated environment consumes capacity under the Power Platform capacity model.
+cost: Medium. The migrated environment consumes Power Platform capacity, and a storage deficit must be cleared by freeing or purchasing capacity before migration. Admin time and downtime are indirect costs; a separate migration price is not yet published.
 impact: Medium. Environment administrators and developers change from Lifecycle Services to Power Platform admin center and Azure Pipelines, and users of a migrated environment notice the downtime window.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: A low cost rating accurately represents the documented costs of this change. | Found: cost: low; Low. ... the known costs are admin time, downtime and capacity ... consumes capacity under the Power Platform capacity model. Standard: low means indirect cost only; medium includes predictable consumption. | Fix: Set cost to medium. Replace the cost rationale with: 'Medium. The migrated environment consumes Power Platform capacity, and a storage deficit must be cleared by freeing or purchasing capacity before migration. Admin time and downtime are indirect costs; a separate migration price is not yet published.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; Open questions / licensing: Licensing is unknown because no migration-specific licence is published. | Found: Customers must acquire and assign appropriate subscription licenses for their users ... Example: Dynamics 365 Commerce, Dynamics 365 Finance, Dynamics 365 Supply Chain Management, Dynamics 365 Team Members, and more. | Fix: Set licensing.model to included. Replace the licensing notes and the sentence treating the licence as unpublished with: 'Finance and operations apps require appropriate product subscription licences, such as Dynamics 365 Finance or Dynamics 365 Supply Chain Management. No migration-specific licence or migration price is published as of November 2026. After migration the environment consumes Power Platform capacity.' Add https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/sysadmin/stay-compliant-user-license-requirement to sources. Narrow the final Open questions bullet to ask whether a separate migration licence or price will be introduced. | Source: https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/sysadmin/stay-compliant-user-license-requirement#assign-licenses-to-users
+- [contradicted, minor] Risk assessment: Security & identity; Governance guidance: Before rollout / consistency: The guidance tells readers to review administrator access, but the controls table has no administrator-access management row. | Found: review who holds that role before migration day; agree who will be the administrator of that linked environment. The table has migration initiation, storage reporting and integration-status checks, but no access-management control. | Fix: The instruction to review who holds the linked-environment administrator role has no corresponding controls-table row. Remove 'so review who holds that role before migration day' and narrow the checklist clause to 'confirm the person starting migration is an administrator of the linked environment'; do not add a new control row.
 -->

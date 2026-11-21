@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "user-opt-in"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published. Microsoft's notice MC1562278 and the roadmap record name no licence for this feature, and the Teams Premium licensing page does not mention it."
+  model: "included"
+  notes: "Each user in the organisation must have a Teams licence before they can use Teams, except for joining meetings anonymously. No licence requirement specific to Markdown compose mode is published as of November 2026."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["teams","user-experience","markdown","gcc","gcc-high","dod"]
 sources:
@@ -37,6 +37,9 @@ sources:
   - title: "Microsoft Teams Premium licensing"
     url: "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams"
     kind: "learn"
+  - title: "Manage Teams licenses"
+    url: "https://learn.microsoft.com/microsoftteams/user-access"
+    kind: "learn"
 videos: []
 related: []
 controls:
@@ -54,19 +57,23 @@ changes:
     note: "First briefing for this item, based on Message Center post MC1562278 and the roadmap record."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 46 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after the independent check: reworded the policy-pilot and messaging-policy statements, and the Preview message menu location; licensing now cites the general Teams licence requirement."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 46 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 46
-  confirmed: 43
-  unconfirmed: 2
-  contradicted: 1
-  attempts: 1
-  hash: "a5ec4573145a14da3ff5e01720cf9459"
+  confirmed: 46
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "551b324674114f79b2418167e164e1e2"
 ---
 
 ## What's changing
@@ -96,11 +103,11 @@ The practical effects are on support and training: users who switch on Markdown 
 
 **Change & support**
 - The compose mode is remembered across chats and channels until the user switches modes, so a user can leave Markdown mode on without noticing and write in syntax everywhere. Prepare a one-line answer for the service desk: use **Format in rich text** in the **Actions and apps (+)** menu to switch back.
-- No messaging policy setting for this feature is documented, so you cannot confine the mode to a pilot group by policy at the time of writing (November 2026).
+- No Markdown-specific messaging policy setting is documented at the time of writing (November 2026), so a policy-scoped pilot of this mode is not documented.
 
 ## Cost and licensing
 
-Microsoft has not published a licence requirement or a meter specific to this feature. The notice MC1562278 and the roadmap record name no licence, and the Teams Premium licensing page does not mention Markdown or the compose box. The licence entitlement for this feature is therefore not yet published.
+Microsoft has not published a licence requirement or a meter specific to this feature. The notice MC1562278 and the roadmap record name no licence, and the Teams Premium licensing page does not mention Markdown or the compose box. Each user in the organisation must have a Teams licence before they can use Teams, except for joining meetings anonymously ([Manage Teams licenses](https://learn.microsoft.com/microsoftteams/user-access)). No licence requirement specific to Markdown compose mode is published as of November 2026.
 
 The cost the sources show is indirect: communicating the change, updating user help and handling service desk questions.
 
@@ -117,7 +124,7 @@ The cost the sources show is indirect: communicating the change, updating user h
 ## Governance guidance
 
 ### Before rollout
-- Brief the service desk and Teams champions on **Format in Markdown**, **Preview message** and **Format in rich text** in the compose box's **Actions and apps (+)** menu, as described in MC1562278.
+- Brief the service desk and Teams champions on selecting **Format in Markdown** and **Format in rich text** from the compose box's **Actions and apps (+)** menu, and on using **Preview message** to see rendered formatting before sending, as described in MC1562278.
 - Read MC1562278 in your Message center and record that Microsoft states no admin action is required and no compliance considerations were identified.
 - Assign someone to send test messages in both modes from a pilot account and compare how they look to a recipient on desktop, Mac and web.
 
@@ -140,7 +147,7 @@ The cost the sources show is indirect: communicating the change, updating user h
 </tbody>
 </table>
 
-The table has one row because Microsoft documents no setting for this feature. The Teams messaging policy settings page lists chat settings such as **Edit sent messages**, **Use Giphy in conversations** and **URL previews**, and none of them governs Markdown mode. Existing messaging policy settings therefore do not stand in for a switch over this feature, and you cannot rely on them to restrict it.
+The table has one row because Microsoft documents no setting for this feature. The Teams messaging policy settings page lists chat settings such as **Edit sent messages**, **Use Giphy in conversations** and **URL previews**, but it lists no setting that switches Markdown mode separately from other messaging capabilities.
 
 Because the notice describes the mode as a user's choice from the compose box, the practical control is communication and support readiness.
 
@@ -148,7 +155,7 @@ Because the notice describes the mode as a user's choice from the compose box, t
 
 - Will Microsoft add a messaging policy setting or tenant control for the Markdown compose mode? Watch Message center and the Teams messaging policies page on Microsoft Learn.
 - How do messages composed in Markdown mode appear in retention, eDiscovery, data loss prevention and communication compliance review: as rendered text or as the Markdown source? Microsoft has not said.
-- Does the feature require a licence beyond the Teams entitlement users already hold? Microsoft has not published a licence statement for it.
+- Does the feature require a licence beyond the Teams licence users already need? Microsoft has not published a licence requirement specific to it.
 - The roadmap record lists Desktop, Mac and Web and the notice names Windows, Mac and web: how will recipients on other clients see messages composed in Markdown mode? Microsoft has not said.
 - The roadmap record lists the item as In development while the notice gives a rollout beginning in early December 2026: will the status change before then?
 
@@ -156,14 +163,4 @@ Because the notice describes the mode as a user's choice from the compose box, t
 risk: Low. Users choose the mode themselves in the compose box, Microsoft's notice MC1562278 identifies no compliance considerations, and the feature adds no new data source or autonomous action.
 cost: Low. The only cost the sources show is admin and service desk time; no licence or meter specific to this feature is yet published.
 impact: Low. Nothing changes for a user until they select Format in Markdown, so mainly people who already write in Markdown will notice; the setting is then remembered across chats and channels.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Risk assessment: Change & support / applicability: Because no messaging policy setting for this feature is documented, administrators cannot confine the mode to a pilot group by policy. | Found: Searched: Teams Markdown messaging policy Set-CsTeamsMessagingPolicy compose admin setting; Teams Markdown tenant disable compose mode. Read messaging policy settings and the full cmdlet reference; no text establishes this categorical impossibility. | Fix: Replace the bullet with 'No Markdown-specific messaging policy setting is documented at the time of writing (November 2026), so a policy-scoped pilot of this mode is not documented.' This reports the verified documentation gap without asserting that policy restriction is impossible.
-- [contradicted, blocker] Governance controls / applicability: Existing messaging policy settings do not govern or restrict use of this feature. | Found: Determines whether a user is allowed to chat. Set this to TRUE to allow a user to chat across private chat, group chat and in meetings. Set this to FALSE to prohibit all chat. | Fix: Replace 'and none of them governs Markdown mode. Existing messaging policy settings therefore do not stand in for a switch over this feature, and you cannot rely on them to restrict it' with 'but it lists no setting that switches Markdown mode separately from other messaging capabilities.' General chat restrictions remain documented; the verified gap is a separate mode switch, not the absence of all restrictions. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingpolicy
-- [unsupported, blocker] Governance guidance: Before rollout, first bullet / admin-path: Preview message is in the compose box's Actions and apps (+) menu, as described in MC1562278. | Found: Searched: Teams Preview message Actions and apps Markdown; Teams Format in Markdown. Read MC1562278 and Learn search excerpts. The notice places the two Format options in that menu but states no menu location for Preview message. | Fix: Replace the bullet with 'Brief the service desk and Teams champions on selecting Format in Markdown and Format in rich text from the compose box's Actions and apps (+) menu, and on using Preview message to see rendered formatting before sending, as described in MC1562278.'
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model and notes; Cost and licensing; Open questions / licensing: The licensing model is unknown because no licence statement specific to this compose feature is published. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to included. Replace the notes and the sentence 'The licence entitlement for this feature is therefore not yet published' with 'Each user in the organisation must have a Teams licence before they can use Teams, except for joining meetings anonymously. No licence requirement specific to Markdown compose mode is published as of November 2026.' Cite https://learn.microsoft.com/microsoftteams/user-access. Keep the open question narrowly about any requirement beyond the existing Teams entitlement. | Source: https://learn.microsoft.com/microsoftteams/user-access
 -->

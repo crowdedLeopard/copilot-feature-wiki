@@ -28,11 +28,17 @@ sources:
   - title: "Work IQ overview"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/"
     kind: "learn"
+  - title: "Work IQ API overview"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview"
+    kind: "learn"
   - title: "Enable your tenant for Work IQ"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq"
     kind: "learn"
   - title: "Policy governance for Work IQ MCP"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp"
+    kind: "learn"
+  - title: "Work IQ MCP tool reference"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference"
     kind: "learn"
   - title: "Manage AI experience access to Business Applications in Work IQ"
     url: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access"
@@ -42,6 +48,9 @@ sources:
     kind: "learn"
   - title: "Update spendingPolicy"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
+    kind: "learn"
+  - title: "Plan licensing and cost"
+    url: "https://learn.microsoft.com/plugins/cost-considerations"
     kind: "learn"
   - title: "June 2026 announcements"
     url: "https://learn.microsoft.com/partner-center/announcements/2026-june"
@@ -67,7 +76,7 @@ controls:
       path: "Agents > Tools > Work IQ MCP > Policy"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp"
     api: null
-    note: "On or off for the tenant; can take up to 24 hours to apply. Policy cannot grant access beyond the user's own."
+    note: "On or off for the tenant; can take up to 24 hours to apply. Policy cannot grant access beyond the user's own. The Policy tab is shown when available; review the current policy state there, then turn policy on or off as needed."
   - governs: "Copilot Credit spending and consumption for Work IQ API"
     scope: "tenant"
     ui:
@@ -78,7 +87,7 @@ controls:
       kind: "graph"
       call: "PATCH /beta/copilot/costManagement/spendingPolicies/{id}"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
-    note: "Beta, delegated only. The request body can update periodLimit, perUserLimit and billingMethods."
+    note: "Beta, delegated only. The request body can update periodLimit, perUserLimit and billingMethods. Adding pay-as-you-go funding also needs a complete billingInstrument (billingSubscriptionId, billingResourceGroup, billingRegion)."
   - governs: "Tenant switch to turn Work IQ Listen on"
     scope: "tenant"
     ui: null
@@ -93,19 +102,23 @@ changes:
     note: "New briefing: roadmap item for Work IQ Listen, with the public-preview guide's event catalogue, Copilot Credit billing and the Work IQ MCP controls."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 109 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected the Work IQ MCP policy caveat for creating Listen subscriptions and the spending-limit statement; added the Policy tab and billingInstrument notes and three sources."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 116 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 109
-  confirmed: 108
+  claims: 116
+  confirmed: 115
   unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "666e1e1e56c0f0f0815230af854d8a4b"
+  attempts: 0
+  hash: "e65bd59f10431443c77f5a248ee2b664"
 ---
 
 ## What's changing
@@ -200,22 +213,21 @@ Microsoft has not stated what happens on arrival at general availability; the Le
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether the Work IQ MCP server, which Listen runs through, is available</strong><br><small>Tenant</small><br><small class="controls__note">AI Administrator role. Applies to the entire Work IQ MCP server, not to Listen alone.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Block <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Work IQ MCP tenant policy for MCP tool requests</strong><br><small>Tenant</small><br><small class="controls__note">On or off for the tenant; can take up to 24 hours to apply. Policy cannot grant access beyond the user's own.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Policy <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Copilot Credit spending and consumption for Work IQ API</strong><br><small>Tenant</small><br><small class="controls__note">Beta, delegated only. The request body can update periodLimit, perUserLimit and billingMethods.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost management <a href="https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Work IQ MCP tenant policy for MCP tool requests</strong><br><small>Tenant</small><br><small class="controls__note">On or off for the tenant; can take up to 24 hours to apply. Policy cannot grant access beyond the user's own. The Policy tab is shown when available; review the current policy state there, then turn policy on or off as needed.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Policy <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Copilot Credit spending and consumption for Work IQ API</strong><br><small>Tenant</small><br><small class="controls__note">Beta, delegated only. The request body can update periodLimit, perUserLimit and billingMethods. Adding pay-as-you-go funding also needs a complete billingInstrument (billingSubscriptionId, billingResourceGroup, billingRegion).</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost management <a href="https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tenant switch to turn Work IQ Listen on</strong><br><small>Tenant</small><br><small class="controls__note">The Listen page says Listen must be turned on for the tenant during the preview and to contact the Listen team.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 No Listen-specific switch, setting or admin API is documented, so the controls are the ones that govern the Work IQ MCP server it runs through. The Block control applies to the entire Work IQ MCP server, not to Listen alone.
 
-The tenant policy applies across the tenant and can take up to 24 hours to take effect. Policy cannot grant access beyond what the signed-in user is already allowed to access. Whether the policy's default rule on mutation operations covers the creation of a Listen subscription is not stated on the policy or Listen pages.
+The tenant policy applies across the tenant and can take up to 24 hours to take effect. Policy cannot grant access beyond what the signed-in user is already allowed to access. Listen creates subscriptions with `create_entity`. Work IQ MCP tenant policy evaluates each tool request and blocks mutation operations by default; administrators can enable supported creation requests through tenant policy. Exact policy behaviour can depend on tenant configuration.
 
-The spending policy call is a Microsoft Graph /beta/ call and supports delegated permissions only; the request body can update periodLimit and perUserLimit. Whether a limit ends Work IQ API use is not read on these pages, so do not assume a limit stops it.
+The spending policy call is a Microsoft Graph /beta/ call and supports delegated permissions only; the request body can update periodLimit and perUserLimit. A spending policy defines limits, not a reserved credit allocation; repeated retries will not resolve an exhausted spending limit.
 
 ## Open questions
 
 - Will Listen be on or off by default for tenants at general availability, and will administrators get a tenant setting for it? Watch the Listen page and Message center.
-- Does the Work IQ MCP policy's default rule on mutation operations apply to creating a Listen subscription through `create_entity`? Watch the policy governance page for Work IQ MCP.
 - What credit rate applies to the Work IQ Tool API calls Listen uses, and will notifications stay uncharged after the preview? Watch the Work IQ licensing page.
 - How are subscriptions cancelled, and can an administrator see or remove the subscriptions in a tenant? Watch the Listen page.
 - What are the challenge response format and callback authentication contract? The guide says to confirm them with the Listen team.
@@ -226,13 +238,8 @@ cost: Variable. The meter is Copilot Credits: Listen uses existing Work IQ rates
 impact: Low. In the documented preview, the people who notice are developers and admins setting it up; each subscription covers one user's own events.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: mutation caveat; Open questions: create_entity / absence: Whether the policy's default mutation restriction covers creating a Listen subscription is not stated. | Found: A separate tenant policy layer evaluates each tool request and blocks mutation operations by default. Administrators can enable supported create, update, delete, and action requests through tenant policy. | Fix: Replace the mutation caveat with: 'Listen creates subscriptions with create_entity. Work IQ MCP tenant policy evaluates each tool request and blocks mutation operations by default; administrators can enable supported creation requests through tenant policy. Exact policy behaviour can depend on tenant configuration.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference alongside the existing Listen and policy pages, and remove the corresponding Open questions bullet. This states the documented general reach without inventing a Listen-specific exception or guaranteed tenant outcome. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure / applicability: Work IQ reads enforce sensitivity labels. | Found: Microsoft 365 permissions, sensitivity labels, and compliance policies are enforced automatically. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview to sources for the statement that sensitivity labels govern Work IQ reads. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview
-- [supported, minor] controls[1].ui / admin-path: Microsoft 365 admin center > Agents > Tools > Work IQ MCP > Policy reaches tenant policy settings. | Found: In the left navigation, select Agents > Tools. In the tools registry, select Work IQ MCP. On the Work IQ MCP details pane, select the Policy tab when it's available. | Fix: Keep 'Agents > Tools > Work IQ MCP > Policy'; append to controls[1].note: 'The Policy tab is shown when available; review the current policy state there, then turn policy on or off as needed.' The cited page documents this final action but supplies no further setting label. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
-- [supported, minor] controls[2].note / command: The request body can update billingMethods. | Found: When changing stored non-pay-as-you-go funding to include pay-as-you-go, supply a complete billingInstrument; no separate billing endpoint or action is used. | Fix: Append to controls[2].note: 'Changing non-pay-as-you-go funding to include pay-as-you-go also requires a complete billingInstrument with billingSubscriptionId, billingResourceGroup and billingRegion.' Keep the method and path unchanged. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update
-- [supported, minor] Governance controls: spending limit caveat / absence: The cited billing overview and spending policy update reference do not establish whether a limit ends Work IQ API use. | Found: Searched: "Work IQ" "licensing" "Tool API" credits rate. Read billing overview and spendingPolicy update in full: no Work IQ limit enforcement rule. Search excerpts from Plan licensing and cost additionally state that retries do not resolve exhausted spending limits. | Fix: Replace 'Whether a limit ends Work IQ API use is not read on these pages, so do not assume a limit stops it' with 'A spending policy defines limits, not a reserved credit allocation; repeated retries will not resolve an exhausted spending limit.' Cite https://learn.microsoft.com/plugins/cost-considerations. The original is narrowly true about its two references but omits the additional documented Work IQ guidance.
+- [contradicted, minor] Governance guidance: Before rollout, third bullet / consistency: The checklist tells administrators to confirm the usage-based billing plan and Azure subscription, but no controls row gives the prerequisite plan's control. | Found: Confirm the usage-based billing plan and Azure subscription that Work IQ needs ... Controls rows cover MCP availability, MCP tenant policy, Copilot Credit spending and consumption, and the absent Listen switch. | Fix: Replace the third Before rollout bullet with: 'Agree who watches Copilot Credit consumption in Cost management.' Keep the billing-plan prerequisite in Cost and licensing; do not add a controls row.
 -->

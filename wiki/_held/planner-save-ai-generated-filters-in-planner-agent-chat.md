@@ -59,18 +59,21 @@ changes:
     note: "First briefing for this roadmap item; no Learn page describes saved filters yet, so controls rest on the existing Planner Agent access setting."
   - date: "2026-11-16"
     note: "Corrected after verification: removed unsupported claims about automatic availability, saved-filter data inputs and agent interpretation of filters; status and dates unchanged."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 50 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-16"
+  status: "held"
+  date: "2026-11-21"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 49
+  claims: 50
   confirmed: 49
-  unconfirmed: 0
+  unconfirmed: 1
   contradicted: 0
-  attempts: 0
+  attempts: 1
+  hash: "cf4042b6d90207bdbc068e3f5211b1dc"
 ---
 
 ## What's changing
@@ -165,4 +168,12 @@ Security group access depends on a valid group ID: Learn says that if the ID is 
 risk: Low. The roadmap describes saving a filter for reuse on plans, and Microsoft documents no new data source, action or permission for it; the existing Planner Agent access setting is the only documented control.
 cost: Low. The only cost the sources show is admin time and user communication; licensing for saved filters is not yet published, and Planner Agent already requires a Microsoft Copilot licence.
 impact: Low. Only users of Planner Agent chat would notice a convenience change inside the chat; nothing changes for other Planner users.
+-->
+
+<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, blocker] Cost and licensing / licensing: The Planner for admins page says a Planner Plan 1 licence is required to create premium plans. | Found: Searched: "Planner Plan 1" "create premium plans" license Copilot; "Planner" "create premium" "license". Read planner-for-admins and Planner service description; neither states this requirement. The custom-solutions result concerns Project for the web custom solutions. | Fix: Remove "The Planner for admins page says a Planner Plan 1 licence is required to create premium plans." The current cited page no longer states that requirement; do not replace it with an inferred premium-plan creation rule.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model and notes / licensing: Licensing is unknown for saved filters, although Planner Agent requires a Microsoft Copilot licence. | Found: Users must have the following license to access Planner Agent in Planner: A Microsoft Copilot license. | Fix: Set licensing.model to "included". Replace the notes with "Planner Agent in Planner requires a Microsoft Copilot licence. Microsoft has not published a licensing requirement specific to saved filters." Keep the cited turn-off-planner-agent source. | Source: https://learn.microsoft.com/planner/turn-off-planner-agent
 -->

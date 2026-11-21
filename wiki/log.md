@@ -528,3 +528,12 @@ Append-only record of ingests, compiles and lint passes. One line per event.
 - 2026-11-21 lint: 423 briefings ok, 0 errors (0 quarantined), 31 warnings, 422 notes; 442 checked, 0 awaiting correction, 27 held
 - 2026-11-21 index: 422 briefings, 1 archived, 19 concepts indexed
 - 2026-11-21 digest: 2026-w47 written (422 updated briefings)
+- 2026-11-21 message-center: 920 posts read (federated credential (GitHub Actions OIDC)), 657 in scope and published, 0 new, 0 changed, 241 outside the topics, 22 withheld by the tenant screen (12 targeted-wording, 4 tenant-word, 1 tenant-domain, 1 email-address, 5 guid); 668 in the ledger, 20 with an act-by date ahead (5s)
+- 2026-11-21 ingest: 2401 roadmap items fetched, 1915 in scope, 1 new, 0 changed, 1493 queued for compile (copilot-studio 8, power-platform 3, governance 307, m365-copilot 414, modern-work 761; 0 review due; 0 refresh after a Message Center post), 247 with Message Center posts, 0 duplicate listing(s) covered by another item's page, 0 archived, 0 briefed item(s) missing from the feed (1s)
+- 2026-11-21 source watch: 144 of 1705 Microsoft pages cited by 441 live pages re-read in 33s (1561 read earlier today), 32 read for the first time, 0 changed
+- 2026-11-21 compile: 21 briefings written, 0 concept pages written and 2 declined, 0 rejected by schema, 0 not reached, 23 attempted (copilot, claude-sonnet-5.5, 854 AI credits)
+- 2026-11-21 verify: 30 checked (4 verified, 11 verified with gaps, 15 held, 0 not reached, 6 live page(s) held on re-check (source-changed 6; blockers: licensing 2, admin-path 1, cost 1, absence 1, command 1)) on copilot gpt-6.1-sol; 24 page(s) held in total
+- 2026-11-21 spend: 2,290 AI credits this run (854 writing, 1,436 checking); 8,297 of 15,000 today over 3 runs; next run starts when this one finishes
+- 2026-11-21 lint: 430 briefings ok, 0 errors (0 quarantined), 37 warnings, 450 notes; 448 checked, 0 awaiting correction, 24 held
+- 2026-11-21 index: 429 briefings, 1 archived, 18 concepts indexed
+- 2026-11-21 digest: 2026-w47 written (429 updated briefings)

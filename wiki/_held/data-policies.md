@@ -97,17 +97,19 @@ changes:
     note: "Corrected the policy automation call to the listed Get-DlpPolicy cmdlet; noted the differing path sequence and Maker guidelines documentation; qualified sharing limits as applying to agents that require authentication."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 88 statements confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 92 statements contradicted, 0 unconfirmed; taken offline until corrected"
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-21"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 88
-  confirmed: 88
+  claims: 92
+  confirmed: 91
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "6e0e8b6f3ccb4f12593e953317c2bb89"
 ---
 
@@ -197,3 +199,13 @@ The tenant-wide error message with a contact email and a "Learn more" link is se
 - When Copilot Studio virtual connectors move to their own governance rules, will existing data policy settings carry over? Microsoft does not say.
 - Is there an API for **Maker guidance**? Not yet documented.
 - Is any licence or charge specific to data policies planned? Not yet published.
+
+<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[0].api; Governance controls / command: Get-DlpPolicy is the automation shown for the control deciding connector and channel Business, Non-Business or Blocked assignments. | Found: Retrieves a list of DLP policy objects. ... The Get-DlpPolicy cmdlet retrieves policy objects for the logged in admin's tenant. | Fix: Replace controls[0].api.call and the rendered call with 'Set-DlpPolicy -PolicyName <policy name> -UpdatedPolicy $UpdatedPolicy' and its docs with https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-dlppolicy. Replace 'Automation shown lists policies only' with 'Updates the policy using the policy update object'. Add that reference and https://learn.microsoft.com/power-platform/admin/data-loss-prevention-sdk to sources; the SDK documents updating a policy to move connectors across groups. Get-DlpPolicy may remain described only as a retrieval command, not as the automation that sets this control. | Source: https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance controls / admin-path: The Power Platform admin center path is Security > Data and privacy > Data policy > New Policy > Next > Add an environment > Next > Assign connectors. | Found: Select Next. The Add an environment page appears. ... Select Next. The Assign connectors page appears. ... To prevent agent makers from using the features associated with the connector, select Block. | Fix: The path reaches the correct page but stops before the blocking control. For blocking, extend it to 'Security > Data and privacy > Data policy > New Policy > Next > Add an environment > Next > Assign connectors > connector > Block'. Keep Business and Non-Business classification described as assignments on the Assign connectors page. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
+- [supported, minor] controls[2].ui; Governance controls / admin-path: Maker guidance is reached through Copilot > Settings > Copilot Studio > Maker guidance > environment or environment group > Edit setting in the Power Platform admin center. | Found: Under the Copilot Studio section, select Maker guidance. ... select the environments or environment groups ... Select Edit setting at the bottom of the panel ... A panel for configuring a custom message opens. | Fix: The environment/group placeholder is supported; the pre-check's missing literal phrase is not an error. The path stops on the configuration panel. Extend the blocked-item route to 'Copilot > Settings > Copilot Studio > Maker guidance > environment or environment group > Edit setting > Agent status > Display guidance messaging in popovers for blocked items'. | Source: https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status
+- [supported, minor] What it is / behaviour: Learn also calls these data loss prevention (DLP) policies. | Found: The policies that define how data can be shared are referred to as data loss prevention (DLP) policies. | Fix: Add https://learn.microsoft.com/power-automate/prevent-data-loss to sources for the DLP terminology. No wording change is needed. | Source: https://learn.microsoft.com/power-automate/prevent-data-loss
+-->

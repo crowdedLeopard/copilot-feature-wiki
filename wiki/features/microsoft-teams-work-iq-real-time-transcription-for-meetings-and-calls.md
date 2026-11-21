@@ -86,10 +86,12 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 68 statements not yet confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 80 statements not yet confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 80 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-21"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
@@ -195,8 +197,8 @@ cost: Variable. Learn says Work IQ API usage is billed in Copilot Credits; no ra
 impact: Low. New use requires an administrator to enable access, but existing Work IQ transcript integrations needed the setting enabled before 14 November 2026 to keep working.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing: setup-guide prerequisites; Scope: final sentence of second paragraph / role: Enabling Work IQ is described as a setup performed by a Global Administrator. | Found: A user with Global Administrator role for the one-time Work IQ setup | Fix: Keep the Cost and licensing prerequisites attributed to the setup guide. Replace Scope's final sentence in its second paragraph with: "The Work IQ setup guide describes a one-time Global Administrator setup; the MCP overview says the service principal is created automatically on first use, with manual provisioning potentially needed before first use." Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview#authentication, which says: "The Work IQ service principal is created automatically in the tenant when you use Work IQ for the first time." | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq
+- [supported, minor] Cost and licensing: setup-guide prerequisites; Scope: second paragraph / role: Enabling Work IQ is described as a setup performed by a Global Administrator. | Found: A user with Global Administrator role for the one-time Work IQ setup | Fix: Keep the prerequisites attributed to the setup guide. Replace Scope's final sentence in its second paragraph with: "The Work IQ setup guide describes a one-time Global Administrator setup; the MCP overview says the service principal is created automatically on first use, with manual provisioning potentially needed before first use." Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview#authentication, which states: "The Work IQ service principal is created automatically in the tenant when you use Work IQ for the first time." | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq
 -->

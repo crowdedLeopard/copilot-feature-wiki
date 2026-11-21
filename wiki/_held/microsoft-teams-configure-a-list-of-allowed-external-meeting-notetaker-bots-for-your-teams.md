@@ -76,19 +76,23 @@ changes:
     note: "Corrected after verification: the planned list's control scope is now 'other' with its scope marked not yet documented, and the default is stated as not stated by Microsoft."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 59 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-21"
+    note: "Corrected after verification: removed the unsupported claim that the planned list can be piloted with a targeted meeting policy or assigned to users or groups; the configuration and assignment scope are marked not yet documented."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 65 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 4
 verification:
   status: "held"
   date: "2026-11-21"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 58
+  claims: 65
+  confirmed: 64
   unconfirmed: 1
   contradicted: 0
-  attempts: 2
-  hash: "62450faff97e715a612e97b4adbe98e3"
+  attempts: 3
+  hash: "df93215962f621d2bf8efb39c6fdb36b"
 ---
 
 ## What's changing
@@ -132,7 +136,7 @@ Microsoft has not stated what happens on arrival, and no source says existing be
 
 Teams requires a Teams license for each organizational user except anonymous meeting join, per [Manage Teams licenses](https://learn.microsoft.com/microsoftteams/user-access). No licensing requirement specific to the planned allowed-bots list is published: the roadmap item names no licence or meter, and the Learn page [Manage external bots and their access to meetings hosted in your organization](https://learn.microsoft.com/microsoftteams/manage-external-bots) lists none for the existing setting.
 
-The cost the sources show is time: deciding which bots are sanctioned, building and maintaining the list, assigning a policy to the right users or groups and briefing organisers. Teams that rely on a bot left off the list bear a cost too.
+The cost the sources show is time: deciding which bots are sanctioned, building and maintaining the list and briefing organisers. Teams that rely on a bot left off the list bear a cost too.
 
 ## Scope
 
@@ -150,7 +154,7 @@ The roadmap describes controls for bots joining meetings hosted in your organisa
 ### At rollout
 
 - Confirm in the Teams admin center and on Learn that an allowed-bots control exists before planning around it; none is documented at the time of writing (November 2026).
-- Pilot with a targeted meeting policy for a small group before changing the default org-wide policy.
+- Confirm the list's documented configuration and assignment scope before deciding how to pilot it.
 - Tell organisers and regular bot users what will be allowed, blocked or sent to the lobby.
 
 ### After rollout
@@ -191,5 +195,5 @@ impact: Low. Admins who manage meeting policies see the control; organisers and 
 <!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Governance guidance: At rollout; Cost and licensing / applicability: The planned allowed-bots list can be piloted with a targeted meeting policy and assigned to users or groups before changing the default org-wide policy. | Found: Searched: Microsoft Teams external bot allowlist default policy assignment scope. Read roadmap, manage-external-bots and Set-CsTeamsMeetingPolicy; targeted/default policy configuration is documented for existing bot handling, not the new list. | Fix: Replace 'Pilot with a targeted meeting policy for a small group before changing the default org-wide policy.' with 'Confirm the list's documented configuration and assignment scope before deciding how to pilot it.' Remove 'assigning a policy to the right users or groups' from the Cost and licensing list of work for the planned list.
+- [unsupported, blocker] Risk assessment: Data exposure / applicability: What an allowed bot can hear or record in a meeting depends on the meeting policies applied. | Found: Searched: Teams allowed external bots list meeting policies restrict hear record audio third party bot. Read roadmap, external-bots guide, cmdlet reference and meeting-recording search excerpts. None states that meeting policies govern an allowed external bot's own audio capture or recording. | Fix: Replace the first sentence of Risk assessment > Data exposure with: 'Per the roadmap, an allowed bot is treated like a regular external participant, and meeting policies are enforced as appropriate.' Keep the subsequent transcript-storage caveat and advice to review each bot's data handling. The roadmap does not specify which policies restrict what the bot can hear or record.
 -->

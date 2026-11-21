@@ -12,13 +12,13 @@ platforms: ["Desktop","Web"]
 targetDate: "May CY2026"
 previewDate: null
 risk: "low"
-cost: "none"
+cost: "medium"
 impact: "medium"
 defaultState: "admin-opt-in"
 action: "review"
 licensing:
-  model: "included"
-  notes: "Available to Copilot-licensed tenants through Copilot controls in the Microsoft 365 admin center. The Microsoft Graph Package Management API requires a Microsoft Agent 365 licence."
+  model: "add-on"
+  notes: "Conditions-based lifecycle rules are a premium Microsoft Agent 365 capability. Microsoft Agent 365 is available as a stand-alone subscription with eligible Microsoft 365 subscriptions and is included with Microsoft 365 E7. The Microsoft Graph Package Management API requires a Microsoft Agent 365 licence."
 audiences: ["m365-admin","security","service-owner","compliance"]
 tags: ["m365-admin-center","agents","lifecycle","ownerless-agents","inactive-agents","copilot-control-system","agent-registry","automation"]
 sources:
@@ -37,7 +37,7 @@ sources:
   - title: "Manage agent registry in Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview"
     kind: "learn"
-  - title: "Agents admin guide for Microsoft 365"
+  - title: "Manage agents in the Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide"
     kind: "learn"
   - title: "Agent 365 Package Management API overview"
@@ -61,18 +61,6 @@ sources:
   - title: "Control how agents are shared"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits"
     kind: "learn"
-  - title: "Automated lifecycle rules for agents (Microsoft 365 admin center)"
-    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#agent-management-rules"
-    kind: "learn"
-  - title: "Manual block or unblock for an agent (Microsoft 365 admin center)"
-    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#block-or-unblock-agents"
-    kind: "learn"
-  - title: "Who may use agents (Microsoft 365 admin center)"
-    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access"
-    kind: "learn"
-  - title: "Approving or rejecting agent publish requests (Microsoft 365 admin center)"
-    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests#actions-for-requested-agents"
-    kind: "learn"
   - title: "Agents without owners (Microsoft 365 admin center)"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview#agents-without-owners"
     kind: "learn"
@@ -84,6 +72,18 @@ sources:
     kind: "learn"
   - title: "Understand Agents in Microsoft Copilot"
     url: "https://learn.microsoft.com/copilot/manage/copilot-agent-store"
+    kind: "learn"
+  - title: "Automated lifecycle rules for agents (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#agent-management-rules"
+    kind: "learn"
+  - title: "Manual block or unblock for an agent (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#block-or-unblock-agents"
+    kind: "learn"
+  - title: "Who may use agents (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access"
+    kind: "learn"
+  - title: "Approving or rejecting agent publish requests (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests#actions-for-requested-agents"
     kind: "learn"
 videos: []
 related: []
@@ -131,7 +131,7 @@ controls:
     note: "Beta, rejection only; production use unsupported. Needs Agent 365 and CopilotPackages.ReadWrite.All. Rejects a pending title submission, not an individual user request; supply the matching version."
 confidence: "high"
 created: "2026-11-13"
-updated: "2026-11-19"
+updated: "2026-11-21"
 roadmapModified: "2026-05-12T23:00:33"
 changes:
   - date: "2026-11-13"
@@ -160,19 +160,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 77 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 6
+  - date: "2026-11-21"
+    note: "Corrected licensing: lifecycle rules are a premium Agent 365 capability (add-on, medium cost); noted that Researcher and Analyst sit outside agent settings; removed the Entra manager-attribute checklist step."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 97 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 7
 verification:
   status: "held"
   date: "2026-11-21"
-  version: 6
+  version: 7
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 77
-  confirmed: 73
+  claims: 97
+  confirmed: 95
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "78c8b041ee22f25e4de9bb5ed4e5c724"
+  contradicted: 2
+  attempts: 2
+  hash: "0430fd5f9b4a01f641e3a8e217f95df1"
 ---
 
 ## What's changing
@@ -181,9 +185,9 @@ The **Agent settings** page in the Microsoft 365 admin center (**Agents** > **Se
 
 The Agent settings page currently lists five rule-based bulk actions: install Microsoft agents, reassign ownerless agents created with Agent Builder to the manager, block ownerless agents without usage, apply a template to agents, and reject agent publish requests older than a specified number of days. It lists no rule for deleting inactive agents. Microsoft's Agent 365 overview describes rules-based management that can block risky agents, but the settings page does not specify a risky-agent condition or its signals. Apply template is a one-time bulk operation, not a scheduled rule.
 
-Rules complement the manual actions available for eligible agents in the registry, depending on platform and deployment state (Install, Block, Unblock, Uninstall, Pin for users) and the **Agents without owners** card in **All agents**. Pinning requires an agent that is already deployed to some or all users. Blocking an agent built with Agent Builder or Copilot Studio removes it from Copilot and from host apps such as Teams and Outlook; blocking a SharePoint or Foundry agent affects only its availability in Copilot Chat. Microsoft's Researcher and Analyst agents can be blocked tenant-wide but not scoped to users.
+Rules complement the manual actions available for eligible agents in the registry, depending on platform and deployment state (Install, Block, Unblock, Uninstall, Pin for users) and the **Agents without owners** card in **All agents**. Pinning requires an agent that is already deployed to some or all users. Blocking an agent built with Agent Builder or Copilot Studio removes it from Copilot and from host apps such as Teams and Outlook; blocking a SharePoint or Foundry agent affects only its availability in Copilot Chat. Microsoft's Researcher and Analyst agents can be blocked tenant-wide but not scoped to users. The [agents admin guide](https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide) separately says Researcher and Analyst are part of the core Copilot chat experience and will not fall under any agent-related settings.
 
-The feature launched in May 2026 for Copilot-licensed tenants and the same page carries the Agent 365 controls (security templates, agent and plugin access by publisher, sharing, user access, tags).
+The feature launched in May 2026 as a premium Microsoft Agent 365 capability and the same page carries the Agent 365 controls (security templates, agent and plugin access by publisher, sharing, user access, tags).
 
 ## Why it matters
 
@@ -209,7 +213,7 @@ Rules let you apply a written lifecycle policy in bulk after you have reviewed t
 
 ## Cost and licensing
 
-- No additional licence for Copilot-licensed tenants. The Package Management API behind the Graph block call requires a Microsoft Agent 365 licence.
+- Conditions-based lifecycle rules require the premium Microsoft Agent 365 capability, available through a stand-alone Agent 365 subscription or Microsoft 365 E7 ([Microsoft Agent 365 service description](https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365)). The Package Management API behind the Graph block call requires a Microsoft Agent 365 licence.
 - Indirect: time to define rules and review their effects monthly.
 
 ## Scope
@@ -222,7 +226,6 @@ Rules let you apply a written lifecycle policy in bulk after you have reviewed t
 
 ### Before rollout
 - Write the lifecycle policy: when an unused agent is blocked, when a blocked agent is deleted, and who inherits ownerless agents. Check which rules your tenant offers under **Agents** > **Settings** > **Agent management rules** before relying on automatic deletion.
-- Check manager attributes in Entra for the maker population of Agent Builder agents so reassignment works.
 
 ### At rollout
 - Start with reassignment of ownerless Agent Builder agents and blocking of ownerless agents without usage; hold any deletion until the first review cycle completes.
@@ -260,17 +263,14 @@ Agents built in Copilot Studio can also be governed by sharing limits, which you
 
 <!-- rationale
 risk: Low. Reduces sprawl; main hazards are over-aggressive automation and inaccurate manager data.
-cost: None. Included in Copilot controls.
+cost: Medium. Conditions-based lifecycle rules are a premium Agent 365 capability, available through an Agent 365 subscription or Microsoft 365 E7; administrators also spend time defining and reviewing rules.
 impact: Medium. Users can lose agents; managers inherit ownership.
 -->
 
 <!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model and notes; What's changing; rationale: cost / licensing: Lifecycle rules are included with Copilot licensing through Copilot controls. | Found: | Automate agent lifecycle actions using conditions-based rules | Microsoft 365 admin center | No | Yes | Yes | | Fix: Set licensing.model to add-on and replace its entitlement statement with: 'Conditions-based lifecycle rules are a premium Microsoft Agent 365 capability. Microsoft Agent 365 is available as a stand-alone subscription with eligible Microsoft 365 subscriptions and is included with Microsoft 365 E7.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365. Replace 'for Copilot-licensed tenants' in What's changing with 'as a premium Microsoft Agent 365 capability'. Retain the separate API licence statement. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
-- [contradicted, blocker] Cost and licensing / licensing: Copilot-licensed tenants need no additional licence for lifecycle rules. | Found: Microsoft Agent 365 is available as a stand-alone subscription for use with eligible Microsoft 365 subscriptions and is also included with Microsoft 365 E7. | Fix: Replace 'No additional licence for Copilot-licensed tenants' with 'Conditions-based lifecycle rules require the premium Microsoft Agent 365 capability, available through a stand-alone Agent 365 subscription or Microsoft 365 E7.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: Cost is none because lifecycle rules are included in Copilot controls. | Found: Briefing: 'None. Included in Copilot controls.' Current service table: 'Automate agent lifecycle actions using conditions-based rules' has Core capability 'No' and Premium capability 'Yes'. | Fix: Set cost to medium and replace the cost rationale with: 'Medium. Conditions-based lifecycle rules are a premium Agent 365 capability, available through an Agent 365 subscription or Microsoft 365 E7; administrators also spend time defining and reviewing rules.' | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
+- [contradicted, blocker] controls[2].note; Governance controls table / role: The user-access API note gives delegated ConfigurationMonitoring.ReadWrite.All and AI Administrator as its permission requirements without the required TCM workload grant. | Found: For Copilot and Agent resources, grant the TCM service principal the CopilotPolicySettings.ReadWrite delegated permission on Microsoft Graph for remediation and applyOnce. | Fix: In controls[2].note and the rendered table, replace 'Needs AI Administrator and delegated ConfigurationMonitoring.ReadWrite.All.' with 'Needs AI Administrator for the signed-in user, delegated ConfigurationMonitoring.ReadWrite.All for the calling app, and delegated CopilotPolicySettings.ReadWrite on the TCM service principal with tenant-wide consent (consentType AllPrincipals).' Cite https://learn.microsoft.com/graph/utcm-authentication-setup. | Source: https://learn.microsoft.com/graph/utcm-authentication-setup
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / behaviour: Researcher and Analyst can be blocked tenant-wide. | Found: For the Researcher and Analyst agents, the Edit users panel is disabled. To manage their availability, block the agent for the entire tenant by using the Block action in the Microsoft 365 admin center. | Fix: Retain the cited agent-actions statement, but append: 'The agents admin guide separately says Researcher and Analyst are core Copilot chat experiences that will not fall under agent-related settings.' Cite https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide alongside https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions to disclose the documentation disagreement. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
-- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist tells administrators to check Entra manager attributes, but the controls table has no corresponding row. | Found: 'Check manager attributes in Entra for the maker population of Agent Builder agents so reassignment works.' The table covers lifecycle rules, block/unblock, user access and publish requests, not manager attributes. | Fix: Remove the Before rollout bullet 'Check manager attributes in Entra for the maker population of Agent Builder agents so reassignment works'; it has no controls-table row. Retain the explanation of the Microsoft Entra hierarchy dependency in Risk assessment.
+- [contradicted, minor] Governance guidance: Before rollout and At rollout; Governance controls table / consistency: The governance checklist tells readers to decide when to delete blocked agents, but the controls table contains no deletion row. | Found: when a blocked agent is deleted hold any deletion until the first review cycle completes Table: Automated lifecycle rules; Manual block or unblock; Who may use agents; Approving or rejecting agent publish requests. | Fix: The Before rollout instruction about deleting blocked agents and the At rollout instruction to hold deletion have no corresponding control row. Remove those deletion instructions from the checklist; do not add a row in this correction.
 -->

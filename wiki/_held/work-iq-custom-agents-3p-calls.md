@@ -114,18 +114,20 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 70 statements confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 77 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-21"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 75
+  claims: 77
+  confirmed: 76
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "cd2964a946f65d63488c4558cd025757"
 ---
 
@@ -227,8 +229,11 @@ cost: Variable. The Work IQ API page says use is paid through Copilot Credits; M
 impact: Low. Work IQ's A2A, MCP and REST protocols are aimed at developers building agents, so users notice it only through agents built on it. The roadmap lists the Web platform only.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Cost and licensing / licensing: The Agent 365 service description lists tenant-wide tool-access control as requiring Microsoft 365 E7 / G7 or Agent 365. | Found: Control which tools (Plugins, Skills, Connectors, Microsoft MCP servers) Copilot and Microsoft platform agents can access tenant-wide | Microsoft 365 admin center | Yes | Yes | Yes | Fix: Replace the clause beginning 'and the Agent 365 service description lists' with 'and the Agent 365 service description lists tenant-wide control of tools that Copilot and Microsoft platform agents can access as a core capability included with a Microsoft cloud subscription.' Keep the separate Agent 365 licence requirement for the Package Management API. Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[3].ui; Governance controls; Governance guidance: Before rollout / admin-path: The cited Admin agent page documents agent blocking through Microsoft 365 admin center > Agents > Registry > agent > Block. | Found: Select to Agents > Registry. Locate Microsoft 365 Admin in the registry. Use the available agent actions to Block the agent or to scope deployment to specific users or groups instead of the entire organization. | Fix: Keep the cited route and its Admin-agent qualification. Add to controls[3].note: 'The general agent-actions page instead gives Agents > All agents > agent > Block.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions, which documents that alternative route. | Source: https://learn.microsoft.com/copilot/manage/copilot-ai-admin-agent
+- [supported, minor] controls[0].ui; Governance controls; Governance guidance: Before rollout / admin-path: Work IQ MCP tenant policy is reached through Microsoft 365 admin center > Agents > Tools > Work IQ MCP > Policy. | Found: In the left navigation, select Agents > Tools. In the tools registry, select Work IQ MCP. On the Work IQ MCP details pane, select the Policy tab when it's available. | Fix: Keep the route. Append to controls[0].note: 'On the Policy tab, review the current policy state, then turn policy on or off for the tenant as needed.' The cited page documents this final control after the tab. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
+- [supported, minor] controls[3].ui; Governance controls; Governance guidance: Before rollout / admin-path: The cited Admin agent page documents blocking through Microsoft 365 admin center > Agents > Registry > agent > Block. | Found: Select to Agents > Registry. Locate Microsoft 365 Admin in the registry. Use the available agent actions to Block the agent or to scope deployment to specific users or groups instead of the entire organization. | Fix: Keep the cited route and Admin-agent qualification. Append to controls[3].note: 'The general agent-actions page instead gives Agents > All agents > agent > Block.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions for that alternative route. | Source: https://learn.microsoft.com/copilot/manage/copilot-ai-admin-agent
 -->

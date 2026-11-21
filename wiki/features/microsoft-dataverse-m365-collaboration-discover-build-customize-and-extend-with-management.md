@@ -126,15 +126,17 @@ changes:
     note: "Correction: removed the unsupported no-charge statement, corrected the New-DlpPolicy call, narrowed the data exposure bullet and preview date wording, and set action to act-now."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-21"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 63
+  claims: 64
+  confirmed: 64
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -228,8 +230,9 @@ cost: Low. Administration effort; licensing for the management server is not yet
 impact: Medium. Developers and integrators are the main users; agents built on the servers affect end users.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing / licensing: Whether premium connectors need a licence depends on the consuming product and its licence. | Found: If an instant flow has premium connectors, every user who runs the flow needs a Power Automate Premium license. In such cases, instead of licensing every user, you can license the flow with a Process license. | Fix: Add https://learn.microsoft.com/power-platform/admin/power-automate-licensing/faqs#how-do-power-automate-license-plans-work-for-flow-runs to sources for this general statement; the existing Copilot Studio billing source already documents premium connectors under its standalone subscription. | Source: https://learn.microsoft.com/power-platform/admin/power-automate-licensing/faqs#how-do-power-automate-license-plans-work-for-flow-runs
+- [supported, minor] Cost and licensing / licensing: Whether premium connectors need a licence depends on the consuming product and its licence. | Found: If an instant flow has premium connectors, every user who runs the flow needs a Power Automate Premium license. In such cases, instead of licensing every user, you can license the flow with a Process license. | Fix: Add https://learn.microsoft.com/power-platform/admin/power-automate-licensing/faqs#how-do-power-automate-license-plans-work-for-flow-runs to sources for this general statement. The cited Copilot Studio billing page separately says its standalone subscription includes premium connectors. | Source: https://learn.microsoft.com/power-platform/admin/power-automate-licensing/faqs#how-do-power-automate-license-plans-work-for-flow-runs
+- [supported, minor] controls[3].ui; Governance controls table / admin-path: Connector data policy configuration starts in Power Platform admin center at Security > Data and privacy > Data policy > New Policy. | Found: Select Security ... Data and privacy. On the Data protection and privacy page, select Data policy. Select ... New Policy ... In the Prebuilt connectors section, select a Blockable connector ... Select Configure connectors and then Connector actions. | Fix: The path reaches the correct policy wizard but stops before connector configuration. Replace it with 'Security > Data and privacy > Data policy > New Policy > Prebuilt connectors > connector > Configure connectors > Connector actions > Allow or Deny', as documented at https://learn.microsoft.com/power-platform/admin/connector-action-control. | Source: https://learn.microsoft.com/power-platform/admin/connector-action-control
 -->

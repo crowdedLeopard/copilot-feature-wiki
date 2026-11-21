@@ -97,18 +97,20 @@ changes:
     note: "Corrected after verification: cloud and channel wording, existing recovery options, roles and restore behaviour made conditional, Graph call fixed, default set to not stated, billing and notification paths separated."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 52 statements not yet confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 58 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-21"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 52
+  claims: 58
+  confirmed: 57
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "241777974256c61847da22536bb026c0"
 ---
 
@@ -196,8 +198,16 @@ cost: Variable. Pay-as-you-go per GiB; Teams rate unpublished.
 impact: Low. Admin-facing; users only notice during a restore.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: licensing.notes; Cost and licensing / cost: Existing Microsoft 365 Backup workloads are priced at $0.15 per GiB per month of protected content. | Found: Microsoft Entra Backup and Recovery Premium uses consumption-based pricing. The price is $0.025 USD per protected Microsoft Entra object per month. | Fix: In licensing.notes and Cost and licensing, replace the blanket existing-workload price with: 'OneDrive, SharePoint and Exchange backup are priced at $0.15 per GiB per month of protected content.' Keep the separate Teams-rate gap. Source: https://learn.microsoft.com/microsoft-365/backup/backup-pricing. | Source: https://learn.microsoft.com/microsoft-365/backup/backup-pricing
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: Before rollout / behaviour: Customers onboarded before April 2026 can migrate their Backup billing management to the new Billing experience. | Found: Customers onboarded before April 1, 2026 can use Migrate to move Microsoft 365 Backup pay-as-you-go billing management from Setup or Org settings into the Billing experience in the Microsoft 365 admin center. | Fix: After the migration advice, add: 'The commerce setup guide still directs existing Backup customers to the Setup node, while the Backup setup and September 2026 update document migration to Billing.' Link 'commerce setup guide' to https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node. | Source: https://learn.microsoft.com/microsoft-365/backup/backup-whats-new
+- [supported, minor] front matter: targetDate; What's changing / record: The item is listed for release in December 2026. | Found: "targetDate": "December CY2026", "status": "In development" | Fix: Replace the release-date sentence with: 'The roadmap lists Targeted Release and General Availability, targeted for December CY2026, with Worldwide (Standard Multi-Tenant) listed; other clouds are not stated.'
+- [supported, minor] Governance guidance: Before rollout / behaviour: Customers onboarded before April 2026 can migrate Backup billing to the Billing experience. | Found: Customers onboarded before April 1, 2026 can use Migrate to move Microsoft 365 Backup pay-as-you-go billing management from Setup or Org settings into the Billing experience in the Microsoft 365 admin center. | Fix: After the migration advice, add: 'The commerce setup guide still directs existing Backup customers to the Setup node, while the Backup setup guide and September 2026 update document migration to Billing.' Cite https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node for the differing guidance; both other sources are already cited. | Source: https://learn.microsoft.com/microsoft-365/backup/backup-whats-new
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Backup policies and restore points are reached through Microsoft 365 admin center > Settings > Microsoft 365 Backup. | Found: Select Settings. Select Microsoft 365 Backup from the list of products. On the Microsoft 365 Backup page, in the SharePoint section, select Set up policy. | Fix: The path reaches the correct home page but stops before policy setup. Extend the UI path to 'Settings > Microsoft 365 Backup > SharePoint > Set up policy > Choose selection method > Backup Settings' and add to the note: 'This UI route creates a SharePoint policy; Backup Settings sets its Recovery window.' Source: https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies#create-backup-policies. | Source: https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies#create-backup-policies
+- [supported, minor] controls[0].api; Governance controls table and prose / command: POST /v1.0/solutions/backupRestore/sharePointProtectionPolicies creates a SharePoint protection policy, not a Teams policy. | Found: Create a protection policy for a M365 service SharePoint. Policy will be created in inactive state. ... POST https://graph.microsoft.com/v1.0/solutions/backupRestore/sharePointProtectionPolicies | Fix: Keep the call. Add to controls[0].note: 'The request body uses siteProtectionUnits to select sites and optional retentionSettings to set the recovery window; the policy is created inactive.' Source: https://learn.microsoft.com/graph/api/backuprestoreroot-post-sharepointprotectionpolicies?view=graph-rest-1.0. | Source: https://learn.microsoft.com/graph/api/backuprestoreroot-post-sharepointprotectionpolicies?view=graph-rest-1.0
+- [supported, minor] controls[1].ui; Governance controls table; Cost and licensing / admin-path: Backup billing policies and budget alerts are configured from Microsoft 365 admin center > Billing > Pay-as-you-go > Billing policies > Add a billing policy. | Found: go to Billing > Pay-as-you-go. On the Billing policies tab, select Add a billing policy. ... On the Budget page, if you want to set a budget, select the Set a budget for this policy checkbox. | Fix: Keep the billing-policy creation path and add to controls[1].note: 'During creation, continue to Budget > Set a budget for this policy and choose alert recipients. For an existing policy: Billing > Pay-as-you-go > billing policy > Budget > Settings > Set a budget for this policy.' Source: https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node. | Source: https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node
+- [supported, minor] Governance controls: notifications paragraph / admin-path: Backup notifications are configured at Settings > Microsoft 365 Backup > Email notifications. | Found: Go to the Email notifications option on the Microsoft 365 Backup home page. ... Turn on notifications. Add users, distribution lists, or security groups (only email enabled) to the Backup Notification List. | Fix: Keep the route and append: 'On that page, turn on notifications and populate the Backup Notification List.' Source: https://learn.microsoft.com/microsoft-365/backup/backup-setup#enable-email-notifications. | Source: https://learn.microsoft.com/microsoft-365/backup/backup-setup#enable-email-notifications
+- [supported, minor] Governance controls: departmental billing paragraph / admin-path: Departmental billing is configured at Billing > Pay-as-you-go > Services > Microsoft 365 Backup > Settings. | Found: In the Services tab of Pay-as-you-go page, select Microsoft 365 Backup. To enable departmental billing, in the Settings tab of Microsoft 365 Backup page, select the checkbox for limiting management of Backup within departments. | Fix: Append to the departmental-billing sentence: ', then select the checkbox for limiting management of Backup within departments.' Source: https://learn.microsoft.com/microsoft-365/backup/backup-billing#set-up-departmental-billing. | Source: https://learn.microsoft.com/microsoft-365/backup/backup-billing#set-up-departmental-billing
 -->

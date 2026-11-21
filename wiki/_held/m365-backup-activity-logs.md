@@ -86,18 +86,20 @@ changes:
     note: "First briefing: Microsoft 365 Backup activity logs, with the admin centre route, roles, retention, the beta Graph endpoint and the Purview Audit alternative."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 78 statements confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 85 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 1
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-21"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 78
-  confirmed: 78
+  claims: 85
+  confirmed: 82
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "05ddfabd744c7bd6c2279dcf0d9d8468"
 ---
 
@@ -202,4 +204,15 @@ The Graph call needs the BackupRestore-Monitor.Read.All permission, delegated or
 risk: Low. The logs are a monitoring view over backup policy and restore activity; the sources describe viewing, searching and exporting, and no change to what is backed up or restored.
 cost: Low. Microsoft Learn documents no separate charge for activity logs at the time of writing (November 2026); Microsoft 365 Backup itself is billed pay-as-you-go, so the cost to plan for is admin time to review and export.
 impact: Low. Only administrators who manage Microsoft 365 Backup see the logs, and what each sees depends on their role; end users notice nothing.
+-->
+
+<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[0].ui; rendered table; Governance guidance: At rollout / admin-path: The complete admin-centre route is Microsoft 365 Backup > Reports > Recent activities > View more. | Found: Go to the Microsoft 365 admin center [...] Select Settings. [...] Select Microsoft 365 Backup from the list of products. | Fix: Replace controls[0].ui.path and the matching rendered-table and checklist paths with 'Settings > Microsoft 365 Backup > Reports > Recent activities > View more'. Keep the existing activity-log docs link and cite https://learn.microsoft.com/microsoft-365/backup/backup-setup for the opening navigation steps. | Source: https://learn.microsoft.com/microsoft-365/backup/backup-setup
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.notes; Cost and licensing / cost: The pricing page gives a list price of $0.15/GiB/month of protected content. | Found: The list price is $0.15/GiB/month of protected content. | Fix: Keep the quoted pricing-page rate and add: 'The Backup overview's feature table instead labels the rate $0.15 per GB per month; the pricing page specifies GiB.' Cite https://learn.microsoft.com/microsoft-365/backup/backup-overview alongside https://learn.microsoft.com/microsoft-365/backup/backup-pricing for this discrepancy. | Source: https://learn.microsoft.com/microsoft-365/backup/backup-pricing
+- [supported, minor] Governance controls; Scope; rationale: impact / role: Access follows existing administrator-role assignments rather than grants made on the activity-log page. | Found: It's important to note that your admin role determines which products you can manage with Microsoft 365 Backup. | Fix: Cite https://learn.microsoft.com/microsoft-365/backup/backup-setup for the statement that existing admin roles determine access. | Source: https://learn.microsoft.com/microsoft-365/backup/backup-setup
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks readers to review administrator-role assignments, but the controls table has no role-assignment row. | Found: Check which people hold Global Administrator, Microsoft 365 Backup Administrator, SharePoint Administrator or Exchange Administrator [...] Table rows: activity logs; Microsoft Purview Audit. | Fix: Remove the Before rollout bullet beginning 'Check which people hold Global Administrator'; this correction does not add a role-assignment control row.
+- [contradicted, minor] Governance controls / consistency: The prose states that no activity-log on/off control is documented, but the table has no row representing that absence. | Found: Learn documents roles for viewing them but no setting that turns them on or off [...] Table rows: activity logs; Microsoft Purview Audit. | Fix: Remove 'but no setting that turns them on or off' from the Governance controls paragraph; do not add a control row.
 -->

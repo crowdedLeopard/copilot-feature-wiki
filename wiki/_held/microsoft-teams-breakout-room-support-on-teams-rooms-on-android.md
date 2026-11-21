@@ -31,6 +31,9 @@ sources:
   - title: "Teams Device feature comparison (Windows, Android, & Panels)"
     url: "https://learn.microsoft.com/microsoftteams/rooms/teams-devices-feature-comparison"
     kind: "learn"
+  - title: "Release notes for Microsoft Teams Rooms"
+    url: "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note"
+    kind: "learn"
   - title: "Microsoft Teams Rooms licenses"
     url: "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing"
     kind: "learn"
@@ -53,7 +56,7 @@ controls:
     note: "Default is True. Learn describes it for breakout rooms in general; its effect on Teams Rooms on Android is not described."
 confidence: "medium"
 created: "2026-11-19"
-updated: "2026-11-19"
+updated: "2026-11-21"
 roadmapModified: "2026-11-04T00:02:09"
 changes:
   - date: "2026-11-19"
@@ -62,26 +65,30 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 45 statements confirmed"
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 49 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected: Learn now lists breakout rooms as Available on Android, and its release notes describe support in the November 2026 Android update 1449/1.0.96.2026344105."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 50 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 49
-  confirmed: 46
+  claims: 50
+  confirmed: 48
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "1a090dc6063ac165e3d4dd560ae48f37"
+  contradicted: 2
+  attempts: 2
+  hash: "937c31aec9becb48d590d9c9e4a22056"
 ---
 
 ## What's changing
 
 Microsoft plans to let meeting organisers assign Microsoft Teams Rooms on Android devices to breakout rooms and move them between breakout rooms and the main meeting room. The roadmap item describes this as the device being added to a breakout room and moved in and out of the main room to ease breakout session coordination.
 
-Microsoft's notice MC1488847 says the feature is available by default when rollout is complete, that no action is required, and that it brings Teams Rooms on Android closer to feature parity with Teams Rooms on Windows. Microsoft Learn's Teams device feature comparison currently lists 'Participate in breakout rooms' as Available on Windows and Not available on Android (Commercial tab), which is the gap this item closes. Microsoft Learn has no page describing the new behaviour itself, so what follows about how it works is the roadmap's and the notice's description.
+Microsoft's notice MC1488847 says the feature is available by default when rollout is complete, that no action is required, and that it brings Teams Rooms on Android closer to feature parity with Teams Rooms on Windows. Microsoft Learn now lists Participate in breakout rooms as Available on both Windows and Android, while the roadmap remains In development with a December CY2026 target and MC1488847 retains its early-to-mid-December 2026 Worldwide rollout window. Microsoft Learn release notes describe breakout room support in the November 2026 Android update 1449/1.0.96.2026344105: devices can join a breakout room, allowing in-room participants to stay with their group.
 
 The roadmap record shows the item as In development, with a target of December CY2026, for Worldwide (Standard Multi-Tenant) and GCC, on Android. MC1488847 was updated on 2 November 2026 with a later timeline: general availability (Worldwide) beginning in early December 2026 (previously mid-November) and expected to be complete by mid-December 2026 (previously late November). The notice gives no GCC schedule. Dates are Microsoft's targets, not commitments.
 
@@ -116,7 +123,7 @@ The costs that are known are indirect: admin time for a pilot and communication 
 
 The roadmap item targets Teams Rooms on Android devices, in Worldwide (Standard Multi-Tenant) and GCC, with release phase General Availability. MC1488847 lists the affected parties as organisations using Teams Rooms on Android and meeting organisers who use breakout rooms, and gives a Worldwide rollout schedule only.
 
-Learn's feature comparison lists breakout room participation as Not available for Android today, so Teams Rooms on Windows is the reference point for behaviour. No prerequisite, minimum app version or role is published for the Android feature at the time of writing (November 2026).
+Learn introduces breakout room support in Android app update 1449/1.0.96.2026344105 (November 2026); availability on a particular device make and model may lag Microsoft's release. No prerequisite or role is published for the Android feature at the time of writing (November 2026).
 
 ## Governance guidance
 
@@ -131,7 +138,7 @@ Learn's feature comparison lists breakout room participation as Not available fo
 
 ### After rollout
 - Collect organiser and room-user feedback on moving room devices between sessions and raise confirmed issues with Microsoft support.
-- Re-read Microsoft's Teams device feature comparison to confirm Android now lists breakout room participation as Available.
+- Check the Teams Rooms release notes to confirm the Android app build on your devices includes breakout room support.
 
 ## Governance controls
 
@@ -150,7 +157,7 @@ The documented control is the AllowBreakoutRooms parameter of the Teams meeting 
 
 - Does the AllowBreakoutRooms meeting policy parameter govern whether Teams Rooms on Android devices can be assigned to breakout rooms? Watch the Set-CsTeamsMeetingPolicy reference and MC1488847.
 - Is there a setting in the Teams admin center or on the device to turn this capability off for Teams Rooms on Android alone? Watch the Teams Rooms on Android admin documentation.
-- Does the capability need a particular Teams Rooms on Android app version or a Teams Rooms Pro licence rather than Basic? Watch the Teams Rooms licensing page.
+- Does the capability need a Teams Rooms Pro licence rather than Basic? Watch the Teams Rooms licensing page.
 - When will GCC tenants get it? The roadmap lists GCC, but MC1488847 gives a Worldwide schedule only.
 
 <!-- rationale
@@ -162,7 +169,8 @@ impact: Medium. Meeting organisers who use breakout rooms and the people in room
 <!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing; Scope / availability: The feature comparison currently lists Android breakout room participation as Not available. | Found: |  | Features | Windows | Android | ... |  | Participate in breakout rooms | Available | Available | | Fix: Replace both current 'Not available' statements with: 'Microsoft Learn now lists Participate in breakout rooms as Available on both Windows and Android, while the roadmap remains In development with a December CY2026 target and MC1488847 retains its early-to-mid-December 2026 Worldwide rollout window.' Keep the record status and targets unchanged. | Source: https://learn.microsoft.com/microsoftteams/rooms/teams-devices-feature-comparison
-- [contradicted, blocker] What's changing / absence: Microsoft Learn has no page describing the Android feature's new behaviour itself. | Found: ### 1449/1.0.96.2026344105 (November 2026) Introduced in this update: - **Breakout rooms support:** Teams Rooms on Android devices can join a breakout room, allowing in-room participants to stay with their group. | Fix: Replace the no-Learn-description sentence with: 'Microsoft Learn release notes describe breakout room support in the November 2026 Android update 1449/1.0.96.2026344105: devices can join a breakout room, allowing in-room participants to stay with their group.' Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note
-- [contradicted, blocker] Scope; Open questions / absence: No minimum Android app version is published for the feature. | Found: ### 1449/1.0.96.2026344105 (November 2026) Introduced in this update: - **Breakout rooms support:** Teams Rooms on Android devices can join a breakout room, allowing in-room participants to stay with their group. | Fix: Replace the app-version absence with: 'Learn introduces breakout room support in Android app update 1449/1.0.96.2026344105 (November 2026); availability on a particular device make and model may lag Microsoft's release.' Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note. Remove the app-version part of the corresponding open question; the release notes identify an introduction build, not a guarantee of immediate availability on every device. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note
+- [contradicted, blocker] Scope, paragraph 2 / absence: No prerequisite is published for the Android feature. | Found: ### 1449/1.0.96.2026344105 (November 2026) Introduced in this update: ... Breakout rooms support: Teams Rooms on Android devices can join a breakout room | Fix: Replace 'No prerequisite or role is published for the Android feature at the time of writing (November 2026).' with 'Microsoft has not documented additional prerequisites or an administrative role specific to Android breakout-room participation at the time of writing (November 2026).' Keep the preceding documented app-update and general licensing statements. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note
+- [contradicted, blocker] Scope, paragraph 2 / absence: No role is published for the Android feature. | Found: This update allows Teams Rooms on Android devices to be assigned to breakout rooms and moved between breakout rooms and the main meeting room by meeting organizers. | Fix: Apply the same replacement to the final sentence of Scope: 'Microsoft has not documented additional prerequisites or an administrative role specific to Android breakout-room participation at the time of writing (November 2026).' The notice already identifies meeting organisers as the actors; do not claim no role is published.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].api; Governance controls; rendered controls table / command: Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowBreakoutRooms $false disables breakout-room functionality. | Found: Module: MicrosoftTeams PowerShell module ... -AllowBreakoutRooms: Set to true to enable Breakout Rooms, set to false to disable the Breakout Rooms functionality. ... -Identity: Specify the name of the policy being created. | Fix: Keep the command. Add this sentence to Governance controls: 'Learn's Plan for Teams meetings comparison lists breakout rooms as having "No control" for admins, whereas the PowerShell reference documents AllowBreakoutRooms.' Cite https://learn.microsoft.com/microsoftteams/plan-meetings#admin-and-meeting-organizer-meeting-options. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps
 -->

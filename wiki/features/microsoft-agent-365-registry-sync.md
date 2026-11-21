@@ -17,14 +17,11 @@ impact: "low"
 defaultState: "admin-opt-in"
 action: "review"
 licensing:
-  model: "per-user"
-  notes: "Microsoft's overview says Agent 365 is licensed per user. The service description lists external-platform registry synchronisation as included with Microsoft 365 plans, and also marks it Yes under Requires Microsoft 365 E7 / G7 or Agent 365, so the entitlement is ambiguous."
+  model: "included"
+  notes: "The current service description lists Connected Platforms synchronization as a core capability included with a Microsoft cloud subscription and also available as a premium capability. The Agent 365 overview separately describes the product as licensed per user and requires at least one qualifying licensed user to enable Agent 365."
 audiences: ["m365-admin","security","service-owner"]
 tags: ["agent-365","agent-registry","agent-governance","m365-admin-center","control-plane","agents","telemetry"]
 sources:
-  - title: "Microsoft 365 Roadmap 559615"
-    url: "https://www.microsoft.com/microsoft-365/roadmap?id=559615"
-    kind: "roadmap"
   - title: "Connected platforms in Microsoft Agent 365"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms"
     kind: "learn"
@@ -52,6 +49,9 @@ sources:
   - title: "Graph API for agent registry and agent details"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/graph-api"
     kind: "learn"
+  - title: "Microsoft 365 Roadmap 559615"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=559615"
+    kind: "roadmap"
 videos: []
 related: ["m365-copilot-agent-lifecycle-management-rules","m365-copilot-agent-365-business-analytics-experience","agent-identity"]
 controls:
@@ -78,7 +78,7 @@ controls:
     note: "Microsoft Learn documents no such setting at the time of writing (November 2026); control is by whether a connection exists."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-21"
 roadmapModified: "2026-04-23T23:15:05"
 changes:
   - date: "2026-11-18"
@@ -95,19 +95,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 77 statements confirmed"
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 79 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-21"
+    note: "Corrected licensing: the service description lists Connected Platforms synchronization as a core capability included with a Microsoft cloud subscription and also as premium; removed the named-plan and E7/G7 column claims."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 81 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 79
-  confirmed: 76
+  claims: 81
+  confirmed: 80
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "5635776e16d67b3b41938e021f255b14"
+  contradicted: 1
+  attempts: 0
+  hash: "6a7c243708ff114cae3ac1b23cf43191"
 ---
 
 ## What's changing
@@ -151,7 +155,7 @@ The default state is that nothing syncs until an administrator creates a connect
 
 **Licence.** Microsoft's Agent 365 overview says the product is licensed per user, that at least one user must be licensed with a qualifying Agent 365 licence to enable Agent 365, and that it works best with Microsoft E5 as a prerequisite. It points to Microsoft's Agent 365 plans and pricing page and service description for plan details. The Connected platforms page names no separate licence or price for registry sync, and the roadmap item states none.
 
-Microsoft's [Agent 365 service description](https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365#feature-availability) lists external-platform registry synchronisation as included with Microsoft 365 Enterprise, Business, Education and Front Line Worker plans. Its same row also marks Yes under Requires Microsoft 365 E7 / G7 or Agent 365, so the table is ambiguous about the additional entitlement.
+The current [Agent 365 service description](https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365#feature-availability) lists Connected Platforms synchronization as a core capability included with a Microsoft cloud subscription and also marks it Yes as a premium capability.
 
 **Meter and indirect cost.** Learn documents no Microsoft meter for registry sync. Where observability collection is on, retrieving telemetry from the source platform might query the provider's own services (Learn gives Google BigQuery and Amazon S3 as examples) and can incur data access or query charges billed by that provider. Admin time is the other cost: creating credentials with the platform administrator, validating the connection and re-running **Sync agents**.
 
@@ -203,7 +207,7 @@ Microsoft Learn documents no API for creating connections or running **Sync agen
 
 ## Open questions
 
-- The service description marks registry synchronisation Yes both under included with Microsoft 365 plans and under Requires Microsoft 365 E7 / G7 or Agent 365. Which entitlement does a tenant need, and is there any charge separate from the per-user licence? Watch the Agent 365 service description and Microsoft's Agent 365 pricing page.
+- Is there any charge for registry sync separate from the published subscription entitlements? Watch the Agent 365 service description and Microsoft Agent 365 pricing page.
 - The roadmap item is In development with a July CY2026 target, yet Learn documents the feature and the integration-options page labels it preview. Which parts are generally available and which remain in preview? Watch the roadmap record and the Connected platforms page.
 - Will synchronisation be scheduled, and will removal from a source platform be reconciled automatically? Learn lists both as current limitations.
 - Do the Agent settings (agent and plugin access, user access, agent management rules) apply to synced agents? Watch the Agent settings page.
@@ -215,10 +219,9 @@ cost: Medium. Agent 365 is licensed per user, and the Connected platforms page n
 impact: Low. Administrators create the connections and see the synced agents in the registry; the documentation describes no change for end users.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model / licensing: The entitlement model for registry synchronization is per-user. | Found: Core capability included with Microsoft cloud subscription Synchronize 3P agents and agent metadata from external platforms not managed by Microsoft into the Agent 365 registry (Connected Platforms) | Microsoft 365 admin center | Yes | Yes | Yes | Fix: Set licensing.model to included. Replace licensing.notes with: 'The current service description lists Connected Platforms synchronization as a core capability included with a Microsoft cloud subscription and also available as a premium capability. The Agent 365 overview separately describes the product as licensed per user and requires at least one qualifying licensed user to enable Agent 365.' Keep both cited sources; do not infer that premium observability is included. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
-- [contradicted, blocker] Cost and licensing; front matter: licensing.notes / licensing: The current service-description table lists registry sync under an Included with Microsoft 365 Enterprise, Business, Education and Front Line Worker plans column. | Found: | Feature Description | Product Surface | Core capability included with Microsoft cloud subscription | Premium capability | GCC Availability | | Fix: Replace the two-sentence service-description paragraph with: 'The current Agent 365 service description lists Connected Platforms synchronization as a core capability included with a Microsoft cloud subscription and also marks it Yes as a premium capability.' Use https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365#feature-availability. Remove the obsolete named-plan-column description from licensing.notes. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
-- [contradicted, blocker] Cost and licensing; front matter: licensing.notes; Open questions / licensing: The registry-sync row also marks Yes under Requires Microsoft 365 E7 / G7 or Agent 365, making the table's entitlement ambiguous. | Found: | Feature Description | Product Surface | Core capability included with Microsoft cloud subscription | Premium capability | GCC Availability | | Fix: Remove the statement about a Requires Microsoft 365 E7 / G7 or Agent 365 column and the ambiguity attributed to that column from the body and licensing.notes. Replace the first Open questions bullet with: 'Is there any charge for registry sync separate from the published subscription entitlements? Watch the Agent 365 service description and Microsoft Agent 365 pricing page.' The current columns distinguish core inclusion from premium availability, not an additional required license. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Governance guidance: At rollout, Create the connection / admin-path: The checklist locates connection creation under Agents > All Agents > Connected platforms. | Found: In the navigation pane, select Agents > All Agents. In the Connected platforms web part, select Manage. Select + Connect a platform. | Fix: Expand the checklist route to 'Microsoft 365 admin center > Agents > All Agents > Connected platforms > Manage > + Connect a platform', as documented at https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms
+- [contradicted, minor] Governance guidance: At rollout and After rollout; Governance controls / consistency: The checklist instructs administrators to start and re-run Sync agents, but the controls table has no synchronization row. | Found: Start synchronisation ... Re-run Sync agents on a cadence you choose ... Controls: Creating, editing and deleting connections; Whether observability data is collected; Tenant-wide switch to turn registry sync off. | Fix: The 'Start synchronisation' and 'Re-run Sync agents' checklist steps have no corresponding control row. Remove these checklist instructions during correction; retain the already documented synchronization explanation in What's changing rather than adding an unchecked row.
 -->

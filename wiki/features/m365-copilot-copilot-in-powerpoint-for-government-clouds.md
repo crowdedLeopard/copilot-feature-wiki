@@ -12,7 +12,7 @@ platforms: ["Desktop","Web"]
 targetDate: "October CY2026"
 previewDate: null
 risk: "medium"
-cost: "low"
+cost: "medium"
 impact: "medium"
 defaultState: "unknown"
 action: "review"
@@ -30,6 +30,9 @@ sources:
     kind: "learn"
   - title: "Understand Microsoft U.S. government cloud environments for Microsoft 365 and Microsoft Copilot"
     url: "https://learn.microsoft.com/copilot/plan/gov-overview"
+    kind: "learn"
+  - title: "Data, Privacy, and Security for Microsoft Copilot"
+    url: "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy"
     kind: "learn"
   - title: "Configure Microsoft Copilot settings in the Microsoft 365 admin center"
     url: "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center"
@@ -72,19 +75,23 @@ changes:
     note: "First briefing for this item: roadmap says rolling out to GCC, while Microsoft's service description still lists Edit with Copilot in PowerPoint as not currently available in GCC."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 64 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after the independent check: cost raised to medium (add-on licence), source-access wording now follows Microsoft's privacy page, and two checklist items without controls-table rows were removed."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 71 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 61
+  claims: 71
+  confirmed: 71
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "c9e7ffd619dbc33330440b5e8b7e6402"
+  contradicted: 0
+  attempts: 0
+  hash: "2068d0fb58c1205497462439761c009d"
 ---
 
 ## What's changing
@@ -104,7 +111,7 @@ Microsoft has not stated what happens on arrival, so this page does not assume t
 ## Risk assessment
 
 **Data exposure**
-- The roadmap says Copilot uses users' files, meetings and emails to shape slides. Microsoft's government-cloud overview says Microsoft Copilot's prompts, responses and generated content stay in the government cloud. How access to those sources is scoped for this specific feature is not described on the pages read; confirm it in a pilot.
+- The roadmap says Copilot uses users' files, meetings and emails to shape slides. Microsoft's government-cloud overview says Microsoft Copilot's prompts, responses and generated content stay in the government cloud. Microsoft documents that Copilot only surfaces organizational data to which individual users have at least view permissions ([Data, Privacy, and Security for Microsoft Copilot](https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy)).
 - Generated slides can carry content from one source into a deck that is shared more widely. Licence assignment is the control that limits who can generate them.
 
 **Security & identity**
@@ -115,7 +122,7 @@ Microsoft has not stated what happens on arrival, so this page does not assume t
 
 **Change & support**
 - Microsoft's service description and the roadmap differ on whether editing with Copilot in PowerPoint is available in GCC. Expect support questions if a user's experience does not match the roadmap wording.
-- Brand-kit features depend on brand kits being set up by your brand managers. The brand kit pages read do not state cloud availability, so confirm they work in your GCC tenant before promising branded output.
+- Organization-wide use of official brand kits depends on authorized brand managers publishing them. The brand kit pages read do not state cloud availability, so confirm they work in your GCC tenant before promising branded output.
 
 ## Cost and licensing
 
@@ -136,7 +143,6 @@ Microsoft's feature-availability table is the place to check which Copilot featu
 ### Before rollout
 - Compare the roadmap description with the feature-availability table in Microsoft's Copilot service description, and note the differences for your help desk.
 - Review which users hold the Microsoft 365 Copilot licence, using the licence-assignment row in the controls table.
-- Ask your brand managers whether a published brand kit exists, and confirm with Microsoft that brand kits work in your GCC tenant.
 
 ### At rollout
 - Pilot with a small licensed group on Desktop and Web, and record which of the roadmap's create, edit and brand-compliance abilities they actually see.
@@ -144,7 +150,6 @@ Microsoft's feature-availability table is the place to check which Copilot featu
 
 ### After rollout
 - Re-read the service description table each month, since Microsoft says it shows availability as of its last update.
-- Review sharing on the SharePoint and OneDrive files your pilot users hold, because the roadmap says Copilot draws on their files, meetings and emails.
 
 ## Governance controls
 
@@ -166,20 +171,9 @@ Brand kit access is governed by two Microsoft 365 Apps admin center policies, En
 - Which service-description row does this roadmap item correspond to, and when will Microsoft update the GCC availability for "Edit with Copilot in PowerPoint"? Watch the Microsoft Copilot service description and Message center.
 - Does the feature arrive on for licensed users, or must an admin enable it? Microsoft has not stated a default.
 - Are brand kits and organisational image libraries available to GCC tenants, and does the brand-compliance check work there?
-- How is access to a user's files, meetings and emails scoped for this feature in GCC? Watch the Learn Copilot privacy pages.
 
 <!-- rationale
 risk: Medium. The roadmap says Copilot draws on users' files, meetings and emails to build slides, and Microsoft has not stated a default or a switch specific to this feature, so the licence is the lever.
-cost: Low. The roadmap says it is for Microsoft 365 Copilot-licensed users, and the pages read document no separate charge or meter for it; the add-on licence itself is bought separately, so the cost is admin and adoption time.
+cost: Medium. Users who do not already hold Microsoft 365 Copilot need the add-on licence; existing licensed users have admin and adoption costs. The cited pages document no separate PowerPoint-specific charge or meter.
 impact: Medium. Licensed GCC users who build decks, plus brand managers, will notice it; unlicensed users are not named as in scope by the roadmap.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure; Open questions / absence: How access to users' source files, meetings and emails is scoped for this feature is not documented. | Found: Microsoft Copilot only surfaces organizational data to which individual users have at least view permissions. | Fix: Replace the source-access absence sentence with 'Microsoft documents that Copilot only surfaces organizational data to which individual users have at least view permissions.' Cite https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy. Remove the corresponding Open questions bullet: the government-cloud overview also states that Copilot inherits the underlying environment's security and compliance controls. | Source: https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy
-- [contradicted, blocker] front matter: cost; Cost and licensing; rationale: cost / consistency: Cost is low, meaning indirect cost only, although the page also budgets an add-on licence for users who do not hold it. | Found: Treat the cost as the add-on licence for users who do not hold it, plus admin and training time. / Low. ... the add-on licence itself is bought separately, so the cost is admin and adoption time. | Fix: Set cost to 'medium' and replace the cost rationale with 'Medium. Users who do not already hold Microsoft 365 Copilot need the add-on licence; existing licensed users have admin and adoption costs. The cited pages document no separate PowerPoint-specific charge or meter.' This matches the scale for add-on licences for a subset of users rather than indirect cost only.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Change & support / behaviour: Brand-kit features depend on brand managers setting up brand kits. | Found: Enterprise Brand Manager policy | Who can publish, edit, and manage official brand kits. | Members of the brand manager mail-enabled security group specified in the policy. | Fix: Narrow the sentence to 'Organization-wide use of official brand kits depends on authorized brand managers publishing them.' The source distinguishes official kits from personal kits, which permitted users can create. | Source: https://learn.microsoft.com/copilot/implement/configure-brand-kit-governance-organizational-assets
-- [contradicted, minor] Governance guidance: Before rollout and After rollout; Governance controls / consistency: The checklist asks readers to check published brand kits and review file sharing, but neither has a controls-table row. | Found: Ask your brand managers whether a published brand kit exists ... / Review sharing on the SharePoint and OneDrive files your pilot users hold ... / The table contains only licence assignment. | Fix: Remove the checklist bullet that asks brand managers to check for a published kit and the After rollout bullet that asks readers to review SharePoint and OneDrive sharing. Those controls have no table rows; this correction does not add rows.
 -->
