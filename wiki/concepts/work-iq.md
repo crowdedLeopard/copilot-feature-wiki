@@ -176,14 +176,16 @@ changes:
     note: "Corrected: removed the unsupported 30 September 2026 start date and the November 2026 enablement for existing environments (Microsoft has deferred it), added the Dataverse Application table call for App Access, and tidied the spending-policy, service-principal and Copilot Studio rows."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 126 statements not yet confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 117 statements not yet confirmed"
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-21"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 126
-  confirmed: 126
+  claims: 117
+  confirmed: 117
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -281,9 +283,9 @@ Microsoft publishes a Work IQ Tool API rate of 0.1 Copilot Credits per API call;
 - Under which Microsoft Purview audit event names do Work IQ tool invocations appear?
 - Will Work IQ MCP policy gain per-user, per-app or per-agent scope? Microsoft says more granular controls might be added later.
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What it is; Why it matters; Risks and limits; controls[5].note; controls[6].note / availability: Business Applications in Work IQ is described as preview. | Found: Some workloads, such as Business apps (preview), are available in preview and require you to turn on preview workloads in the agent's settings. | Fix: Qualify the blanket preview description: 'The Copilot Studio page labels Business apps as preview; the Power Apps user guide says access through Work IQ MCP and Copilot Studio is generally available, while Cowork access is public preview.' Add https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq to sources; that page explicitly states those availability distinctions. | Source: https://learn.microsoft.com/microsoft-copilot-studio/use-work-iq
-- [supported, minor] Governance controls: Roles / role: The Work IQ participation page documents Power Platform Administrator for environment settings. | Found: Power Platform Administrator role to manage settings and assign other roles. | Fix: Append to the environment-role sentence: 'The general Features reference also requires the System Administrator security role or equivalent permissions to update feature settings; confirm the account has those environment permissions.' Cite the already-listed https://learn.microsoft.com/power-platform/admin/settings-features, which states that requirement. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation
+- [supported, minor] What it is; Why it matters; Risks and limits; controls[5].note; controls[6].note / availability: Business Applications in Work IQ is described as preview. | Found: Some workloads, such as Business apps (preview), are available in preview and require you to turn on preview workloads in the agent's settings. | Fix: Qualify the blanket preview wording: 'The Copilot Studio page labels Business apps as preview; the Power Apps user guide says access through Work IQ MCP and Copilot Studio is generally available, while Cowork access is public preview.' Add https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq to sources; it states: 'Access to Business Applications through Work IQ Model Context Protocol (MCP) and Microsoft Copilot Studio is generally available. Access through Cowork is available in public preview.' | Source: https://learn.microsoft.com/microsoft-copilot-studio/use-work-iq
+- [supported, minor] Governance controls: Roles / role: The Work IQ participation page documents Power Platform Administrator for managing environment settings. | Found: Power Platform Administrator role to manage settings and assign other roles. | Fix: Append to the environment-role sentence: 'The general Features reference also requires the System Administrator security role or equivalent permissions to update feature settings; confirm the account has those environment permissions.' Cite the already-listed https://learn.microsoft.com/power-platform/admin/settings-features, which states: 'Ensure you have the System Administrator security role or equivalent permissions to update the settings.' | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation
 -->

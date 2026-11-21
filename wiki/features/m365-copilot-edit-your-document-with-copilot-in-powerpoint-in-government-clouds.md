@@ -79,15 +79,17 @@ changes:
     note: "Corrected: Copilot licence assignment now described as governing the licensed Premium features, not all Copilot access; licence assign and remove steps fixed; brand-group checklist item removed."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 66 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-21"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 65
+  claims: 66
+  confirmed: 66
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -182,8 +184,8 @@ cost: Medium. Microsoft documents Microsoft Copilot as an add-on licence in DoD 
 impact: Medium. Licensed Copilot users in DoD tenants who build or revise decks will notice it; users without the add-on licence will not.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Autonomy & actions / behaviour: A single prompt can make presentation-wide or multi-slide changes to content, layouts and template styling. | Found: Complex reasoning and audience adaptation: "Update slides 4-6 for a UK audience." Ask it to reformat your presentation to match the branded template style, applying consistent colors, fonts, and layouts throughout | Fix: Cite https://support.microsoft.com/topic/008f17aa-8e5f-4cda-ba6c-0588000bdad7 after the sentence about a single prompt changing multiple slides, and add that page to sources. Keep the existing caveat that DoD availability needs confirmation. | Source: https://support.microsoft.com/topic/008f17aa-8e5f-4cda-ba6c-0588000bdad7
+- [supported, minor] Risk assessment: Autonomy & actions / behaviour: A single prompt can make multi-slide content changes and presentation-wide layout and template-style changes. | Found: Complex reasoning and audience adaptation: "Update slides 4-6 for a UK audience." Ask it to reformat your presentation to match the branded template style, applying consistent colors, fonts, and layouts throughout | Fix: Cite https://support.microsoft.com/topic/008f17aa-8e5f-4cda-ba6c-0588000bdad7 after the sentence about one prompt changing multiple slides and add it to sources. Retain the DoD availability caveat. | Source: https://support.microsoft.com/topic/008f17aa-8e5f-4cda-ba6c-0588000bdad7
 -->

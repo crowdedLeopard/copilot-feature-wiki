@@ -3,59 +3,68 @@
   "roadmapId": 569210,
   "title": "Microsoft Copilot: CSV and TSV files as knowledge sources in Copilot Notebooks",
   "status": "held",
-  "date": "2026-11-20",
-  "version": 1,
+  "date": "2026-11-21",
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
-  "notes": [
-    "claim 25: fix was 1287 characters, cut to 1200"
-  ],
+  "notes": [],
   "hold": {
     "reason": "failed",
     "since": "2026-11-20",
     "reasons": [
-      "1 blocking finding (claim 25)"
+      "1 blocking finding (claim 35)"
     ]
   },
   "counts": {
-    "claims": 51,
-    "confirmed": 49,
+    "claims": 60,
+    "confirmed": 59,
     "unconfirmed": 0,
-    "contradicted": 2,
+    "contradicted": 1,
     "blocker": 1,
     "major": 0,
-    "minor": 5
+    "minor": 0
   },
-  "summary": "The briefing incorrectly says no automation is documented for the Notebooks creation policy. Microsoft documents a preview Microsoft Graph operation that can apply that setting at tenant scope, subject to restrictions. The feature description and rollout match the roadmap and Microsoft's notice, but some citations and qualifications also need correction.",
+  "summary": "Hold: the governance prose incorrectly says Microsoft documents only one control for Notebooks, although the cited page explicitly lists two settings that Notebooks check. The roadmap, rollout notice, licensing descriptions and preview automation otherwise support the briefing.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What's changing; Why it matters; Governance guidance",
+      "where": "title; summary; What's changing; Governance guidance",
       "type": "record",
-      "claim": "Copilot Notebooks in OneNote now accept CSV and TSV files as knowledge sources alongside existing documents.",
+      "claim": "Copilot Notebooks now supports CSV and TSV files as knowledge sources.",
       "status": "supported",
-      "source": "Message Center post MC1519841",
-      "quote": "We are introducing support for using CSV and TSV files as knowledge sources in Microsoft Copilot Notebooks. This enhancement allows users to add structured lists and tabular data directly to notebooks alongside existing document types.",
+      "source": "roadmap record",
+      "quote": "Copilot Notebooks now supports CSV and TSV files as knowledge sources",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "What's changing; Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "where": "What's changing",
       "type": "record",
-      "claim": "Copilot uses CSV and TSV content together with other references to generate responses, presentations, reports and briefs.",
+      "claim": "Users can bring structured lists and tables into notebooks alongside traditional documents.",
       "status": "supported",
-      "source": "Message Center post MC1519841",
-      "quote": "Copilot can generate more relevant and informed outputs such as presentations, reports, briefs, and other content grounded in both structured and unstructured data.",
+      "source": "roadmap record",
+      "quote": "allowing users to bring structured lists and tables directly into their projects alongside traditional documents.",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "Copilot uses CSV and TSV data alongside other referenced content to generate presentations, reports, briefs and other output.",
+      "status": "supported",
+      "source": "Message Center post MC1519841",
+      "quote": "Copilot will use data contained in these files alongside other referenced content when generating responses and content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
       "where": "front matter: products; What's changing",
       "type": "record",
       "claim": "The roadmap item covers OneNote and Microsoft Copilot (Microsoft 365).",
@@ -66,10 +75,10 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "front matter: platforms; What's changing; Risk assessment; Scope; rationale: impact",
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope; Risk assessment; rationale: impact",
       "type": "record",
-      "claim": "The roadmap lists Android, Desktop, iOS and Web.",
+      "claim": "The roadmap platforms are Android, Desktop, iOS and Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Web\"]",
@@ -77,8 +86,8 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "front matter: status; What's changing",
+      "n": 6,
+      "where": "front matter: status; What's changing; changes",
       "type": "record",
       "claim": "The roadmap status is Launched.",
       "status": "supported",
@@ -88,7 +97,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target date is October CY2026.",
@@ -99,7 +108,7 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 8,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview date is September CY2026.",
@@ -110,21 +119,10 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: releasePhase",
-      "type": "record",
-      "claim": "The roadmap lists General Availability and Preview as release phases.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 9,
       "where": "front matter: clouds; What's changing; Scope; Open questions",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in this roadmap record.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -133,28 +131,17 @@
     },
     {
       "n": 10,
-      "where": "front matter: roadmapModified",
+      "where": "front matter: releasePhase",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-10-23T21:59:27.",
+      "claim": "The roadmap release phases are General Availability and Preview.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"modified\": \"2026-10-23T21:59:27\"",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 11,
-      "where": "front matter: changes",
-      "type": "record",
-      "claim": "The feature was launched in October 2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"Launched\"; \"targetDate\": \"October CY2026\"; \"modified\": \"2026-10-23T21:59:27\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
       "where": "What's changing",
       "type": "record",
       "claim": "MC1519841 was published on 2026-10-21.",
@@ -165,40 +152,7 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters; Scope; rationale: risk",
-      "type": "default",
-      "claim": "The default is on: the feature is enabled automatically for tenants that already allow Copilot to reason over CSV and TSV files.",
-      "status": "supported",
-      "source": "Message Center post MC1519841",
-      "quote": "The feature will be enabled automatically for tenants that already allow Copilot to reason over CSV and TSV files.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "Microsoft says no additional configuration is required.",
-      "status": "supported",
-      "source": "Message Center post MC1519841",
-      "quote": "No additional configuration will be required.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "summary; What's changing",
-      "type": "record",
-      "claim": "Microsoft says no action is required.",
-      "status": "supported",
-      "source": "Message Center post MC1519841",
-      "quote": "No action is required.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
+      "n": 12,
       "where": "What's changing",
       "type": "record",
       "claim": "The notice says Worldwide public preview rollout has completed.",
@@ -209,7 +163,7 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 13,
       "where": "What's changing; Scope",
       "type": "record",
       "claim": "Worldwide general availability rollout began in mid-October 2026.",
@@ -220,24 +174,68 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "What's changing; Risk assessment: Change & support; Scope; Governance guidance: At rollout",
-      "type": "date",
-      "claim": "Microsoft expected general availability rollout to complete by late October 2026.",
+      "n": 14,
+      "where": "What's changing; Scope; Risk assessment: Change & support; Governance guidance",
+      "type": "record",
+      "claim": "The notice expected general availability rollout to complete by late October 2026.",
       "status": "supported",
       "source": "Message Center post MC1519841",
-      "quote": "Rollout began in mid-October 2026 and is expected to complete by late October 2026.",
-      "severity": "minor",
-      "fix": "Keep the notice's qualification everywhere. Replace 'as general availability reaches the tenant by late October 2026' with 'under the notice's rollout, which was expected to complete by late October 2026'. Replace 'as the feature reaches them through late October 2026 under the notice's rollout' with 'under the notice's rollout, which was expected to complete by late October 2026'."
+      "quote": "is expected to complete by late October 2026.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 19,
+      "n": 15,
+      "where": "Cost and licensing; Scope; summary",
+      "type": "record",
+      "claim": "The notice identifies affected organisations as those with Microsoft 365 Copilot and access to Copilot Notebooks in OneNote.",
+      "status": "supported",
+      "source": "Message Center post MC1519841",
+      "quote": "Organizations with Microsoft 365 Copilot and access to Copilot Notebooks in OneNote.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Scope; rationale: risk",
+      "type": "default",
+      "claim": "The feature is on automatically for tenants that already allow Copilot to reason over CSV and TSV files.",
+      "status": "supported",
+      "source": "Message Center post MC1519841",
+      "quote": "The feature will be enabled automatically for tenants that already allow Copilot to reason over CSV and TSV files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
       "where": "What's changing",
       "type": "record",
-      "claim": "The supplied notice sets no act-by date.",
+      "claim": "The notice says no additional configuration is required.",
+      "status": "supported",
+      "source": "Message Center post MC1519841",
+      "quote": "No additional configuration will be required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice sets no act-by date.",
       "status": "supported",
       "source": "Message Center post MC1519841",
       "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft says no action is required.",
+      "status": "supported",
+      "source": "Message Center post MC1519841",
+      "quote": "No action is required.",
       "severity": null,
       "fix": null
     },
@@ -254,20 +252,9 @@
     },
     {
       "n": 21,
-      "where": "Cost and licensing; Scope",
+      "where": "Why it matters; Governance controls; Open questions",
       "type": "record",
-      "claim": "The notice identifies affected organizations as those with Microsoft 365 Copilot and access to Copilot Notebooks in OneNote.",
-      "status": "supported",
-      "source": "Message Center post MC1519841",
-      "quote": "Organizations with Microsoft 365 Copilot and access to Copilot Notebooks in OneNote.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "Why it matters; Governance guidance; Governance controls; Open questions",
-      "type": "record",
-      "claim": "The notice does not name the control for allowing Copilot to reason over CSV and TSV files.",
+      "claim": "The notice does not name the setting that allows Copilot to reason over CSV and TSV files.",
       "status": "supported",
       "source": "Message Center post MC1519841",
       "quote": "The feature will be enabled automatically for tenants that already allow Copilot to reason over CSV and TSV files. No additional configuration will be required.",
@@ -275,13 +262,24 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 22,
       "where": "What's changing",
       "type": "absence",
-      "claim": "No Microsoft Learn page describing CSV and TSV references in Copilot Notebooks was found.",
+      "claim": "Microsoft Learn does not yet describe CSV and TSV references in Copilot Notebooks.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: '\"Copilot Notebooks\" \"CSV\" \"TSV\"'; '\"569210\" \"CSV\" \"Notebooks\"'. Read cpcn-admin-configuration, cpcn-requirements, cpcn-storage and search excerpts for Copilot release notes and CSV connector; none described this feature.",
+      "quote": "Searched: \"Copilot Notebooks\" \"CSV\" \"TSV\"; \"Copilot Notebooks\" \"reason over\" \"CSV\". Opened cpcn-admin-configuration, cpcn-requirements, cpcn-storage and release-notes; searched release-notes for TSV (absent). Results concerned other products or other Notebook features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].governs; Governance controls; Governance guidance; Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "Create and view Copilot Pages and Copilot Notebooks governs creation and integration of Pages and Notebooks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Disabled: Copilot Pages and Copilot Notebooks creation and integration aren't available to the users.",
       "severity": null,
       "fix": null
     },
@@ -289,40 +287,29 @@
       "n": 24,
       "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "The control is in Microsoft 365 Apps admin center under Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Create and view Copilot Pages and Copilot Notebooks.",
+      "claim": "The policy is at Microsoft 365 Apps admin center > Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Create and view Copilot Pages and Copilot Notebooks.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
-      "quote": "Select Customization from the left pane. Select Policy Management. Create a new policy configuration or edit an existing one. From the Choose the scope dropdown list, choose either All users or select the group",
-      "severity": "minor",
-      "fix": "Keep the path. Add https://learn.microsoft.com/deployoffice/admincenter/overview-cloud-policy to sources: it explicitly identifies config.office.com as the Microsoft 365 Apps admin center; the cited control page supplies the remaining steps and setting."
-    },
-    {
-      "n": 25,
-      "where": "controls[0].api; Governance controls table and prose",
-      "type": "absence",
-      "claim": "Microsoft Learn documents no API for the Cloud Policy setting that controls Copilot Pages and Notebooks creation.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
-      "quote": "These resources also support remediation and applyOnce. The 20 Copilot resources are Office Cloud Policy Service (OCPS) settings. TCM supports these settings only in tenant-level policies in the Microsoft 365 Apps admin center.",
-      "severity": "blocker",
-      "fix": "Replace controls[0].api with kind 'graph', call 'POST /beta/admin/configurationManagement/configurationMonitors', docs 'https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta', and update the rendered API cell. Add to the row note: 'Preview automation uses mode=applyOnce and an inline baseline resource with resourceType=microsoft.copilot.copilotpagesnotebooks, resourceVersion=1 and properties.value=\"0\" to disable or \"1\" to enable. Global service only; tenant-level policies only, and the target setting must not be configured in any group-level policy. The calling app needs delegated ConfigurationMonitoring.ReadWrite.All, the TCM service principal needs delegated CopilotPolicySettings.ReadWrite, and the signed-in user needs AI Administrator. Microsoft Graph beta APIs are not supported for production applications.' Replace the final sentence of Governance controls with 'Microsoft documents preview Microsoft Graph TCM automation for the tenant-level Copilot Pages and Notebooks policy, subject to the restrictions in the table.' Cite the operation page, https://learn.microsoft.com/graph/utcm-copilot-resources#copilotpagesnotebooks-r…"
-    },
-    {
-      "n": 26,
-      "where": "controls[0].governs and note; Risk assessment; Governance guidance; Governance controls",
-      "type": "applicability",
-      "claim": "Create and view Copilot Pages and Copilot Notebooks governs creation and integration of Pages and Notebooks as a whole.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
-      "quote": "IT administrators can control creation and use of Copilot Pages and Copilot Notebooks through Cloud Policy settings. Disabled: Copilot Pages and Copilot Notebooks creation and integration aren't available to the users.",
+      "quote": "Select Customization from the left pane. ... Select Policy Management. ... Create a new policy configuration or edit an existing one. ... Choose the scope ... In Configure Settings ... Create and view Copilot Pages and Copilot Notebooks",
       "severity": null,
       "fix": null
     },
     {
-      "n": 27,
+      "n": 25,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "POST /beta/admin/configurationManagement/configurationMonitors can apply the policy baseline once using applyOnce mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors ... An active applyOnce monitor runs in the background on behalf of the signed-in administrator and then becomes inactive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
       "where": "controls[0].note; Governance controls table",
       "type": "default",
-      "claim": "The creation policy's default is Enabled.",
+      "claim": "The creation policy defaults to Enabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
       "quote": "Copilot Pages and Copilot Notebooks creation | Cloud Policy: Create and view Copilot Pages and Copilot Notebooks | Enabled",
@@ -330,54 +317,21 @@
       "fix": null
     },
     {
+      "n": 27,
+      "where": "controls[0].note; Governance controls; Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "The documented Notebooks Cloud Policy settings are not CSV- or TSV-specific controls.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot Notebooks\" \"reason over\" \"CSV\"; \"Copilot Notebooks\" \"CSV\" policy configuration pricing license meter. Opened cpcn-admin-configuration and utcm-copilot-resources: creation/integration and code-preview settings, no CSV/TSV-specific setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 28,
-      "where": "controls[0].scope and note; Governance controls",
-      "type": "applicability",
-      "claim": "The Cloud Policy control can target all users in the tenant or a group.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
-      "quote": "From the Choose the scope dropdown list, choose either All users or select the group for which you want to apply the policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "controls[0].note; Governance controls",
-      "type": "behaviour",
-      "claim": "A policy change takes up to 90 minutes when policy configurations already existed.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
-      "quote": "If there were existing policy configurations before the change, the change takes up to 90 minutes to be reflected.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "controls[0].note; Governance controls",
-      "type": "behaviour",
-      "claim": "A policy change takes up to 24 hours when no policy configurations previously existed.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
-      "quote": "If there were no policy configurations before the change, the change takes up to 24 hours to be reflected.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Risk assessment: Change & support; Governance controls",
-      "type": "behaviour",
-      "claim": "Disabling creation hides the Notebooks module in the Microsoft Copilot app for affected users.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
-      "quote": "The Pages module is visible in the Microsoft Copilot app, but the Notebooks module is hidden, preventing users from accessing existing Notebooks through the Copilot App.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
       "where": "Risk assessment: Data exposure; Governance controls",
       "type": "behaviour",
-      "claim": "Disabling creation does not delete existing Copilot Pages or Notebooks.",
+      "claim": "Disabling Notebooks creation does not delete existing Pages or Notebooks.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
       "quote": "Existing Copilot Pages and Notebooks aren't deleted.",
@@ -385,10 +339,10 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 29,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Files added to Notebooks remain available in their original OneDrive and SharePoint locations when creation is disabled.",
+      "claim": "Files added to Notebooks remain available in their original OneDrive and SharePoint storage locations when creation is disabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
       "quote": "Original storage locations: Files added to Notebooks remain available in OneDrive and SharePoint where they're stored",
@@ -396,10 +350,21 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 30,
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "Disabling creation hides the Notebooks module in the Microsoft Copilot app for affected users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "the Notebooks module is hidden, preventing users from accessing existing Notebooks through the Copilot App.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Sharing links to Copilot Notebooks do not work when creation is disabled by this policy.",
+      "claim": "Sharing links to Copilot Notebooks do not work when creation is disabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
       "quote": "Sharing links to Copilot Notebooks don't work when creation is disabled via the policy in this article.",
@@ -407,46 +372,79 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Risk assessment: Change & support",
-      "type": "absence",
-      "claim": "Neither of the two settings listed on the cited admin-policy page is a CSV- or TSV-specific control.",
+      "n": 32,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "A policy change takes up to 90 minutes where policy configurations already existed.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Notebooks CSV TSV files supported references licence pricing meter tenant setting. Read cpcn-admin-configuration: the settings are Create and view Copilot Pages and Copilot Notebooks, and Enable code previews for AI-generated content in Microsoft Copilot Chat and Copilot Pages.",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "If there were existing policy configurations before the change, the change takes up to 90 minutes to be reflected.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
-      "where": "controls[0].note; Governance controls",
-      "type": "absence",
-      "claim": "The documented Notebooks availability control is the general creation policy, not an individual CSV or TSV file-type setting.",
+      "n": 33,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "A policy change takes up to 24 hours where no policy configurations previously existed.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: '\"Copilot Notebooks\" \"CSV\" \"TSV\"'; Copilot Notebooks user ask Copilot questions responses reference files sign in roles connectors CSV TSV tenant setting. Read cpcn-admin-configuration and utcm-copilot-resources; no CSV/TSV-specific Notebooks switch found.",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "If there were no policy configurations before the change, the change takes up to 24 hours to be reflected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].scope; Governance controls; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Cloud Policy can scope the creation setting to all tenant users or a group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "From the Choose the scope dropdown list, choose either All users or select the group for which you want to apply the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance controls: first sentence",
+      "type": "applicability",
+      "claim": "The one control Learn documents for Notebooks is Create and view Copilot Pages and Copilot Notebooks.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Copilot Pages and Copilot Notebooks check the following Cloud Policy settings: Create and view Copilot Pages and Copilot Notebooks; Enable code previews for AI-generated content in Microsoft Copilot Chat and Copilot Pages",
+      "severity": "blocker",
+      "fix": "Replace the first sentence with 'Learn documents the Cloud Policy setting Create and view Copilot Pages and Copilot Notebooks as the creation control.' The cited page also lists a code-preview setting; do not claim this is the only documented control."
+    },
+    {
+      "n": 36,
+      "where": "licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "The requirements page says Copilot Notebooks users need the Microsoft Copilot or Copilot Chat licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements",
+      "quote": "Copilot Notebooks ... Users need the Microsoft Copilot or Copilot Chat license.",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "where": "licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Learn's requirements page says Copilot Notebooks users need the Microsoft Copilot or Copilot Chat licence.",
+      "claim": "The preview TCM resource reference instead says Copilot Notebooks also require a Microsoft 365 Copilot licence.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements",
-      "quote": "Users need the Microsoft Copilot or Copilot Chat license.",
-      "severity": "minor",
-      "fix": "Keep the attribution to the requirements page. Add: 'Microsoft's preview TCM resource reference instead says Copilot Notebooks also require a Microsoft 365 Copilot license.' Cite https://learn.microsoft.com/graph/utcm-copilot-resources#copilotpagesnotebooks-resource-type so readers can see the conflicting licensing wording."
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "Copilot Notebooks also require a Microsoft 365 Copilot license.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 38,
       "where": "front matter: licensing.model",
       "type": "licensing",
-      "claim": "The licensing model is included within the licence already required for Copilot Notebooks.",
+      "claim": "CSV and TSV references are an included option within licensed Copilot Notebooks rather than a separately documented entitlement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements",
-      "quote": "Copilot Notebooks: Users need the Microsoft Copilot or Copilot Chat license.",
+      "quote": "Copilot Notebooks ... Users need the Microsoft Copilot or Copilot Chat license.",
       "severity": null,
       "fix": null
     },
@@ -454,10 +452,10 @@
       "n": 39,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The same requirements page lists a OneDrive licence as necessary for Copilot Pages.",
+      "claim": "The requirements page lists a OneDrive licence as a prerequisite for Copilot Pages.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements",
-      "quote": "Users need a OneDrive license and an active OneDrive site.",
+      "quote": "Copilot Pages ... Users need a OneDrive license and an active OneDrive site.",
       "severity": null,
       "fix": null
     },
@@ -465,32 +463,32 @@
       "n": 40,
       "where": "Scope: Prerequisites",
       "type": "licensing",
-      "claim": "An Exchange Online mailbox is required for full functionality including @mentions.",
+      "claim": "Full functionality including @mentions requires an Exchange Online mailbox.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements",
-      "quote": "For full functionality including @mentions, users need an Exchange Online mailbox. Users with Exchange On-Premises mailboxes have limited capabilities.",
+      "quote": "For full functionality including @mentions, users need an Exchange Online mailbox.",
       "severity": null,
       "fix": null
     },
     {
       "n": 41,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "No separate licence specific to CSV and TSV references is published in the checked material.",
+      "claim": "No separate licence specific to CSV and TSV references is published at the time of writing.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Copilot Notebooks CSV TSV files supported references licence pricing meter tenant setting. Read cpcn-requirements, Microsoft Copilot license options, utcm-copilot-resources and MC1519841; found product licences but no CSV/TSV-specific licence.",
+      "quote": "Searched: \"Copilot Notebooks\" \"CSV\" \"separate\" license price meter. Opened cpcn-requirements, utcm-copilot-resources and microsoft-365-copilot-licensing (redirected to License options); read MC1519841. Only product-level licence requirements, no file-type entitlement.",
       "severity": null,
       "fix": null
     },
     {
       "n": 42,
-      "where": "front matter: licensing.notes; Cost and licensing",
+      "where": "licensing.notes; Cost and licensing",
       "type": "absence",
-      "claim": "No separate price specific to CSV and TSV references is published in the checked material.",
+      "claim": "No price specific to CSV and TSV references is published at the time of writing.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Copilot Notebooks CSV TSV files supported references licence pricing meter tenant setting. Read cpcn-requirements, Microsoft Copilot license options and MC1519841; no separate CSV/TSV-reference price was stated.",
+      "quote": "Searched: \"Copilot Notebooks\" \"CSV\" \"separate\" license price meter. Opened cpcn-requirements, utcm-copilot-resources and License options; read MC1519841 and the returned pay-as-you-go-meters excerpt. No price for CSV/TSV Notebook references.",
       "severity": null,
       "fix": null
     },
@@ -498,10 +496,10 @@
       "n": 43,
       "where": "Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "No separate meter specific to CSV and TSV references is published in the checked material.",
+      "claim": "No meter specific to CSV and TSV references is published at the time of writing.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Copilot Notebooks CSV TSV files supported references licence pricing meter tenant setting. Read cpcn-requirements, cpcn-storage, Microsoft Copilot license options and MC1519841; no CSV/TSV-reference meter was stated.",
+      "quote": "Searched: \"Copilot Notebooks\" \"CSV\" \"separate\" license price meter. Opened cpcn-requirements and License options; read MC1519841 and the pay-as-you-go-meters search excerpt (Chat agents and SharePoint agents). No CSV/TSV Notebook-reference meter.",
       "severity": null,
       "fix": null
     },
@@ -509,7 +507,7 @@
       "n": 44,
       "where": "Cost and licensing",
       "type": "date",
-      "claim": "The storage page defines legacy Notebooks as those created before November 2025.",
+      "claim": "Legacy Copilot Notebooks are those created before November 2025.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-storage",
       "quote": "Copilot Pages and Copilot Notebooks created before November 2025 continue to be stored in the user-owned SharePoint Embedded container.",
@@ -520,7 +518,7 @@
       "n": 45,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Legacy Copilot Notebooks count against the organization's SharePoint storage quota.",
+      "claim": "Legacy Copilot Notebooks count against the organisation's SharePoint storage quota.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-storage",
       "quote": "All legacy Copilot Pages and legacy Copilot Notebooks count against your organization's SharePoint storage quota.",
@@ -531,77 +529,176 @@
       "n": 46,
       "where": "Cost and licensing",
       "type": "absence",
-      "claim": "The cited storage page does not describe how CSV or TSV references affect storage.",
+      "claim": "The storage page does not say how CSV or TSV references affect storage.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: '\"Copilot Notebooks\" \"CSV\" \"TSV\"'; Copilot Notebooks CSV TSV files supported references licence pricing meter tenant setting. Read the entire cpcn-storage page; it describes general and legacy storage but no CSV/TSV reference-storage treatment.",
+      "quote": "Searched: \"Copilot Notebooks\" \"CSV\" \"TSV\"; \"Copilot Notebooks\" \"CSV\" policy configuration pricing license meter. Read cpcn-storage in full: Notebook storage locations and quotas, no CSV/TSV reference-storage mechanism.",
       "severity": null,
       "fix": null
     },
     {
       "n": 47,
-      "where": "Risk assessment: Security & identity",
-      "type": "absence",
-      "claim": "The supplied sources describe additional file types, not changes to sign-in, roles or connectors.",
+      "where": "Scope",
+      "type": "record",
+      "claim": "The supplied roadmap and notice do not state whether other clouds will follow.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Notebooks user ask Copilot questions responses reference files sign in roles connectors CSV TSV tenant setting. Read roadmap, MC1519841 and cited Learn pages; no feature-specific sign-in, role or connector change was described.",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 48,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "No autonomous behaviour is described for this CSV and TSV enhancement.",
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The source descriptions do not describe a change to sign-in, roles or connectors for the new file types.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: '\"Copilot Notebooks\" \"ask\"'; Copilot Notebooks user ask Copilot questions responses reference files sign in roles connectors CSV TSV tenant setting. Read roadmap, MC1519841 and Copilot release-note excerpts; no autonomous action for this enhancement was described.",
+      "source": "Message Center post MC1519841",
+      "quote": "We are introducing support for using CSV and TSV files as knowledge sources in Microsoft Copilot Notebooks.",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
       "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Users ask Copilot questions within a Notebook and Copilot uses its referenced context in responses.",
+      "type": "record",
+      "claim": "The notice describes user-added files used to generate responses and content, not autonomous behaviour.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#october-27,-2026",
-      "quote": "Add related chats, references, and generated content to the Notebook. Ask Copilot questions within the Notebook to use its accumulated context.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/microsoft-365/copilot/release-notes#october-27,-2026 to sources for the statement about users asking Copilot to use Notebook context."
+      "source": "Message Center post MC1519841",
+      "quote": "Users will be able to add CSV and TSV files as knowledge sources in Copilot Notebooks. ... Copilot will use data contained in these files alongside other referenced content when generating responses and content.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 50,
-      "where": "Scope; Open questions",
-      "type": "absence",
-      "claim": "The supplied sources do not announce a subsequent rollout to other clouds.",
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "TCM automation for Copilot resources is documented as preview in Microsoft Graph beta.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: '\"569210\" \"CSV\" \"Notebooks\"'; '\"Copilot Notebooks\" \"CSV\" \"TSV\"'. Read roadmap and MC1519841: only Worldwide is listed, with no future-cloud schedule. The cited Learn pages do not give a CSV/TSV rollout schedule.",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "This article lists the Copilot resource types supported in preview for monitoring and snapshots through the Tenant Configuration Management (TCM) APIs in Microsoft Graph beta. These resources also support remediation and applyOnce.",
       "severity": null,
       "fix": null
     },
     {
       "n": 51,
-      "where": "front matter: action",
-      "type": "consistency",
-      "claim": "The action rating prepare fits a launched, automatically enabled change rated medium risk with a documented availability control.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "action: \"prepare\"; risk: \"medium\"; status: \"launched\". The notice says the feature is enabled automatically, and the page documents the Notebooks creation control.",
-      "severity": "minor",
-      "fix": "Set action to 'act-now': the assessment scale includes launched changes that reach users automatically and have medium risk plus a control or governance decision. Keep the notice's separate statement that Microsoft requires no action."
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "The request's mode property accepts applyOnce to apply a baseline once.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "mode | monitorMode | The monitor mode. The possible values are: monitorOnly, applyOnce, unknownFutureValue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "The policy baseline resourceType is microsoft.copilot.copilotpagesnotebooks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "\"resourceType\": \"microsoft.copilot.copilotpagesnotebooks\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "The policy baseline uses resourceVersion 1.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "All resources on this page use resourceVersion: 1 and are singletons.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "The baseline properties.value setting uses 0 to disable and 1 to enable the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "value | Write | String | Allows or prevents creating and viewing Copilot Pages and Copilot Notebooks ... 0 disables the setting; 1 enables the setting. ... \"properties\": { \"value\": \"1\" }",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls: preview automation restrictions",
+      "type": "applicability",
+      "claim": "TCM supports these Copilot settings only in tenant-level policies in the Microsoft 365 Apps admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "TCM supports these settings only in tenant-level policies in the Microsoft 365 Apps admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls: preview automation restrictions",
+      "type": "role",
+      "claim": "The calling app needs delegated ConfigurationMonitoring.ReadWrite.All for applyOnce.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "Creating an applyOnce monitor supports delegated permissions only. In addition to the calling app's delegated ConfigurationMonitoring.ReadWrite.All permission, the TCM service principal needs delegated permissions for the target workloads",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls: preview automation restrictions",
+      "type": "role",
+      "claim": "Copilot applyOnce requires delegated CopilotPolicySettings.ReadWrite on the TCM service principal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "For remediation and applyOnce, grant it the CopilotPolicySettings.ReadWrite delegated permission.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls: final sentence",
+      "type": "behaviour",
+      "claim": "Microsoft Graph beta APIs are not supported for production applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "APIs under the /beta version in Microsoft Graph are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls: preview automation restrictions",
+      "type": "applicability",
+      "claim": "The target setting must not be configured in any group-level policy when using TCM.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "Before using TCM, ensure that the target setting isn't configured in any group-level policy in that admin center. If it is, monitoring, snapshots, remediation, and applyOnce fail for that resource.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance controls: preview automation restrictions",
+      "type": "role",
+      "claim": "AI Administrator is the least-privileged signed-in user role for Copilot applyOnce.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "AI Administrator is the least-privileged role for the signed-in user for remediation and applyOnce; don't assign that user-role requirement to the service principal.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-20T21:42:39.176Z",
+    "at": "2026-11-21T01:58:49.118Z",
     "summary": {
-      "links": 5,
+      "links": 9,
       "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
-      "apiCalls": 0,
+      "apiCalls": 1,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
@@ -630,6 +727,26 @@
         "url": "https://learn.microsoft.com/microsoft-365/loop/cpcn-storage",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployoffice/admincenter/overview-cloud-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#october-27,-2026",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -648,9 +765,25 @@
           "Create and view Copilot Pages and Copilot Notebooks"
         ],
         "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether users can create and use Copilot Pages and Copilot Notebooks",
+        "docs": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/admin/configurationManagement",
+        "found": true
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-20",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

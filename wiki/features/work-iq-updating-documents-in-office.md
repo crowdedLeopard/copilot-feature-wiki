@@ -91,15 +91,17 @@ changes:
     note: "Correction: set the default to admin opt-in because Learn says Work IQ MCP blocks mutation operations by default, scoped the Copilot Studio write statement to that experience, and removed the unsupported Tools block sentence."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 72 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-21"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 63
+  claims: 72
+  confirmed: 71
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -198,8 +200,8 @@ cost: Variable. Learn says Work IQ usage is billed through usage-based billing a
 impact: Low. The roadmap lists the Developer platform, so builders of agents and the admins who govern Work IQ notice first; no user-facing rollout is stated.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: The checklist asks the reader to review SharePoint and OneDrive access permissions, but that control has no corresponding table row. | Found: Review who can reach sensitive SharePoint and OneDrive content; controls table: Whether Work IQ MCP tools may create, update or delete data; Which Microsoft 365 workloads a Copilot Studio agent's Work IQ tool can use. | Fix: Remove the first Before rollout checklist bullet, beginning 'Review who can reach sensitive SharePoint and OneDrive content'. This removes the unmatched control-review instruction without adding an unverified controls row.
+- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency / consistency: Every control the governance checklist tells administrators to review has a corresponding controls-table row. | Found: Review who can reach sensitive SharePoint and OneDrive content; table controls: Whether Work IQ MCP tools may create, update or delete data; Which Microsoft 365 workloads a Copilot Studio agent's Work IQ tool can use. | Fix: Remove the first Before rollout checklist bullet beginning 'Review who can reach sensitive SharePoint and OneDrive content'. It asks for a permissions review without a corresponding controls-table row.
 -->

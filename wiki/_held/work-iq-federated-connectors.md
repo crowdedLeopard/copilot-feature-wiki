@@ -156,18 +156,20 @@ changes:
     note: "Correction: publisher-type access and User access now show their preview Graph applyOnce automation; the unconfirmed Work IQ MCP policy caveat and a checklist step without a control row were removed."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 56 statements not yet confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 56 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 6
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-21"
   version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 56
-  confirmed: 55
+  confirmed: 53
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "b2289f9fee5a2a2d132350e204376846"
 ---
 
@@ -252,8 +254,12 @@ cost: Variable. Work IQ API usage consumes Copilot Credits; connector-backed Mic
 impact: Medium. Affects users of Work IQ-enabled agents and admins who approve connectors.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: defaultState; What's changing / default: Microsoft has not stated what Work IQ federated connector participation does on arrival. | Found: Copilot Connectors configured in Microsoft 365 Copilot automatically participate in Work IQ APIs. ... Connector access is enabled by default. | Fix: Set defaultState to on. Replace 'Microsoft has not stated what this capability does on arrival.' with 'Microsoft documents connector access as enabled by default: configured connectors participate when available to the signed-in user and connected by that user in Copilot Chat; Work IQ must be enabled for the organisation.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-in-work-iq-apis. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-in-work-iq-apis
+- [contradicted, blocker] controls[4].ui and controls[4].api; Governance controls table / absence: Microsoft has not documented a Work IQ-specific control for federated connectors on either surface. | Found: Work IQ MCP provides Rego-based policy governance to control access to connectors through Work IQ APIs. ... Administrators can explicitly enable or disable connector participation in Work IQ paths through tenant-level policies. | Fix: Remove the both-null 'Work IQ-specific control for federated connectors' row. In the existing Work IQ MCP policy row's note, replace 'General Work IQ MCP control.' with 'Tenant policy can explicitly enable or disable connector participation in Work IQ paths.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-in-work-iq-apis; keep the verified Policy path and the null automation side. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-in-work-iq-apis
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The instruction to review each connector's write tools has a corresponding controls-table row. | Found: Checklist: Review each connector's write tools. Table: connector availability; publisher-type access; User access; Work IQ MCP policy; missing Work IQ-specific connector control. No row covers reviewing connector tools. | Fix: Remove the Before rollout bullet 'Review each connector's write tools.' It names a control review with no corresponding table row.
+- [supported, minor] What's changing / behaviour: Connector developers must enable participation in Work IQ APIs. | Found: Connector developers must enable participation in Work IQ APIs. | Fix: The Learn search excerpt supports this wording, but the opened overview now links to https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-in-work-iq-apis, which says participation is automatic. Replace the developer-enablement clause with 'Copilot Connectors configured in Microsoft 365 Copilot automatically participate in Work IQ APIs; participation may be limited by data sensitivity requirements or partner agreements.' Cite that page. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/
+- [contradicted, minor] Governance guidance: Before rollout / consistency: The instruction to review each connector's write tools has a corresponding controls-table row. | Found: Checklist: 'Review each connector's write tools.' Table: connector enable/disable/staging, publisher-type access, User access, Work IQ MCP policy and an undocumented Work IQ-specific connector control; no row covers reviewing write tools. | Fix: Remove the Before rollout bullet 'Review each connector's write tools.' It instructs a control review with no corresponding table row; do not add a row.
 -->

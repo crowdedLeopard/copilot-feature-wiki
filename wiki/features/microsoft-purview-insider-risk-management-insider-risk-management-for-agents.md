@@ -4,7 +4,7 @@ slug: "microsoft-purview-insider-risk-management-insider-risk-management-for-age
 roadmapId: 545063
 topic: "governance"
 products: ["Microsoft Purview"]
-summary: "Insider Risk Management extends to AI agents, with agent-specific indicators and a risk score. This is the GCC, GCC High and DoD roadmap item. Security and compliance teams should review who sees the alerts; no action is stated as required."
+summary: "Insider Risk Management extends to AI agents, with agent-specific indicators and a risk score. This is the GCC, GCC High and DoD roadmap item. Security and compliance teams should decide who investigates agent alerts."
 status: "launched"
 releasePhase: ["General Availability"]
 clouds: ["GCC","GCC High","DoD"]
@@ -14,8 +14,8 @@ previewDate: null
 risk: "medium"
 cost: "low"
 impact: "low"
-defaultState: "unknown"
-action: "review"
+defaultState: "on"
+action: "act-now"
 licensing:
   model: "mixed"
   notes: "Learn says Insider Risk Management needs a supported subscription, and that the feature uses pay-as-you-go billing or per-user licensing for Microsoft Purview capabilities or both. A rate or licence specific to agent monitoring is not yet published."
@@ -25,8 +25,14 @@ sources:
   - title: "Microsoft 365 Roadmap 545063"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=545063"
     kind: "roadmap"
+  - title: "Microsoft 365 Roadmap 516032"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=516032"
+    kind: "roadmap"
   - title: "Monitoring agents in Insider Risk Management"
     url: "https://learn.microsoft.com/purview/insider-risk-management-monitoring-agents"
+    kind: "learn"
+  - title: "Assign permissions in Insider Risk Management"
+    url: "https://learn.microsoft.com/purview/insider-risk-management-permissions"
     kind: "learn"
   - title: "Learn about Insider Risk Management policy templates"
     url: "https://learn.microsoft.com/purview/insider-risk-management-policy-templates"
@@ -67,26 +73,30 @@ controls:
     note: "Prerequisite, not agent-specific. Needs the Audit Logs role in Exchange Online; run in Exchange Online PowerShell."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-20"
+updated: "2026-11-21"
 roadmapModified: "2026-11-04T00:02:09"
 changes:
   - date: "2026-11-20"
     note: "New briefing for the GCC, GCC High and DoD roadmap item on Insider Risk Management for agents."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 59 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after the independent check: the Risky Agents policy is on by default per Learn, action is now act-now, and the alert-visibility sentence names unscoped users with alert-investigation permissions."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 61 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-20"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-21"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 55
+  claims: 61
+  confirmed: 59
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "465c1f6cf88de39346cfec036118133c"
+  contradicted: 2
+  attempts: 0
+  hash: "bee641d0ea47ecd4fe2ec8b1f2d2be5a"
 ---
 
 ## What's changing
@@ -99,7 +109,7 @@ The record gives status Launched, release phase General Availability, platform W
 
 ## Why it matters
 
-Agents that read SharePoint content, answer prompts and browse the web now produce signals that your insider risk analysts can be asked to triage. Learn says the Risky Agents policy is available by default to all organisations with supported licences and is automatically present and ready to generate alerts. It does not state how this behaves in GCC, GCC High or DoD, so treat the arrival default as not stated for these clouds and check your own tenant's Policies page.
+Agents that read SharePoint content, answer prompts and browse the web now produce signals that your insider risk analysts can be asked to triage. Learn says the Risky Agents policy is available by default to all organisations with supported licences and is automatically present and ready to generate alerts. Learn says the Risky Agents preview policy is automatically present and ready to generate alerts when Insider Risk Management is set up in an organisation with supported licences; it gives no separate cloud-specific rollout details.
 
 The practical decision is who will see and act on agent alerts, and whether the default policy fits your agents. Alert visibility has gaps: Learn says administrative units are not supported for agent alerts, so a scoped analyst cannot see them. Plan the analyst roles before agent alerts start to arrive.
 
@@ -117,7 +127,7 @@ The practical decision is who will see and act on agent alerts, and whether the 
 - The policy detects and alerts, and Learn's agent monitoring page describes investigation of alerts rather than any block or remediation of the agent. Plan the containment step with the owner of the Copilot Studio or Microsoft Foundry agent.
 
 **Change & support**
-- Admin units are not supported for agent alerts, so scoped analysts cannot see them; unrestricted administrators can.
+- Admin units are not supported for agent alerts, so scoped analysts cannot see them; unscoped users with alert-investigation permissions can.
 - New alert volume lands on analysts. Learn offers a custom policy if the default does not meet your requirements, which is where tuning happens.
 
 ## Cost and licensing
@@ -131,7 +141,7 @@ The setup page also says some Insider Risk Management indicators are only availa
 - **Clouds:** the roadmap item lists GCC, GCC High and DoD. Learn's Risky Agents page names no cloud, so cloud availability beyond the record is not stated there.
 - **Platform and phase:** Web; General Availability; status Launched; target date October CY2026.
 - **Agents:** Copilot Studio agents, Microsoft Foundry agents and agents built using the P4AI SDK.
-- **Prerequisites:** complete the steps in Get started with Insider Risk Management, including a supported subscription. Insider Risk Management uses the Microsoft 365 audit log, which Learn says is on by default for Microsoft 365 organisations.
+- **Prerequisites:** complete the steps in Get started with Insider Risk Management, including a supported subscription. Insider Risk Management uses the Microsoft 365 audit log, which Learn says is on by default for Microsoft 365 organisations. The auditing reference notes exceptions for Microsoft 365 Business Basic, Business Standard and Business Premium and unmanaged tenants using free enterprise trials.
 - **Roles:** to access and configure recommended actions, users must be in the Insider Risk Management or Insider Risk Management Admins role groups.
 
 ## Governance guidance
@@ -168,7 +178,7 @@ The Insider Risk Management role groups decide who can configure policies and wh
 
 ## Open questions
 
-- Does the Risky Agents policy arrive switched on in GCC, GCC High and DoD, and when does Learn drop the preview label for it? Watch the Monitoring agents in Insider Risk Management page.
+- When does Learn drop the preview label for the Risky Agents policy? Watch the Monitoring agents in Insider Risk Management page.
 - How is the insider risk score for an agent calculated and shown, given the roadmap says it is built for agents? Learn's agent pages do not describe it at the time of writing.
 - Does monitoring agents add a pay-as-you-go meter or licence beyond the Insider Risk Management subscription? Watch the Purview billing and licensing pages.
 - Can the default Risky Agents policy be turned off or scoped to specific agents, and is there an API for it?
@@ -179,15 +189,11 @@ cost: Low. The only cost Microsoft's pages show is admin and analyst time plus t
 impact: Low. Insider risk analysts, compliance administrators and the owners of monitored agents notice it; ordinary users and agent users see no change that the sources describe.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: defaultState; Why it matters; Open questions / default: The arrival default is unknown for GCC, GCC High and DoD because Learn does not name these clouds. | Found: The Risky Agents (preview) policy is available by default to all organizations with supported licenses. When the service is set up, this policy is automatically present and ready to generate alerts based on observed agent activity. | Fix: Set defaultState to 'on'. Replace the cloud-specific default caveat with: 'Learn says the Risky Agents preview policy is automatically present and ready to generate alerts when Insider Risk Management is set up in an organisation with supported licences; it gives no separate cloud-specific rollout details.' Replace the first open question with: 'When does Learn drop the preview label for the Risky Agents policy?' Keep the existing roadmap-versus-Learn maturity distinction. | Source: https://learn.microsoft.com/purview/insider-risk-management-monitoring-agents
-- [contradicted, blocker] Risk assessment: Change & support / role: Unrestricted administrators can see agent alerts. | Found: Access & investigate alerts: Insider Risk Management Yes; Insider Risk Management Admins No; Insider Risk Management Analysts Yes; Insider Risk Management Investigators Yes; Insider Risk Management Auditors No; Insider Risk Management Approvers No. | Fix: Replace 'unrestricted administrators can' with 'unscoped users with alert-investigation permissions can'. The sentence should read: 'Admin units are not supported for agent alerts, so scoped analysts cannot see them; unscoped users with alert-investigation permissions can.' Cite https://learn.microsoft.com/purview/insider-risk-management-permissions. | Source: https://learn.microsoft.com/purview/insider-risk-management-permissions
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / record: Microsoft also lists the capability as roadmap item 516032 for Worldwide (Standard Multi-Tenant). | Found: "id": 516032; "title": "Microsoft Purview: Insider Risk Management-Insider risk management for agents"; "clouds": ["Worldwide (Standard Multi-Tenant)"] | Fix: Cite https://www.microsoft.com/microsoft-365/roadmap?id=516032 for the sentence about the other roadmap item.
-- [supported, minor] Scope: Prerequisites / default: Auditing is on by default for Microsoft 365 organisations. | Found: Auditing is enabled for Microsoft 365 organizations by default. | Fix: The cited audit page qualifies the setup page's general statement. Add: 'The auditing reference notes exceptions for Microsoft 365 Business Basic, Business Standard and Business Premium and unmanaged tenants using free enterprise trials.' This qualification is stated at https://learn.microsoft.com/purview/audit-log-enable-disable. | Source: https://learn.microsoft.com/purview/insider-risk-management-configure
-- [supported, minor] Governance controls; rationale: risk / role: Insider Risk Management role groups determine access to configuration and alert investigation. | Found: Configure policies and settings: Insider Risk Management Yes; Insider Risk Management Admins Yes. Access & investigate alerts: Insider Risk Management Yes; Insider Risk Management Analysts Yes; Insider Risk Management Investigators Yes. | Fix: Add https://learn.microsoft.com/purview/insider-risk-management-permissions to sources for the division of policy configuration and alert-investigation permissions. | Source: https://learn.microsoft.com/purview/insider-risk-management-permissions
-- [contradicted, minor] Governance guidance; Governance controls / consistency: Every control the governance checklist asks readers to check or decide appears in the controls table. | Found: Checklist: 'Decide which role groups will investigate agent alerts'; 'Check the Usage center ... for any pay-as-you-go usage'. Table rows cover only agent policies and unified audit logging. The prose also reports default-policy disabling and scoping gaps without a corresponding absence row. | Fix: The Before rollout role-group decision and After rollout Usage center check have no matching controls-table row. The disabling/scoping absence in Governance controls also has no matching absence row. This finding identifies the uncovered steps; it does not request additional rows.
-- [contradicted, minor] front matter: action; summary / consistency: The review action rating treats the change as an optional capability or control that changes nothing until chosen. | Found: The Risky Agents (preview) policy is available by default to all organizations with supported licenses. When the service is set up, this policy is automatically present and ready to generate alerts based on observed agent activity. | Fix: Set action to 'act-now': the record says Launched, the briefing rates risk medium, and Microsoft describes automatic policy availability after service setup. The existing decision about who investigates alerts is therefore a current decision, not merely review of an optional capability. | Source: https://learn.microsoft.com/purview/insider-risk-management-monitoring-agents
+- [supported, minor] Cost and licensing; Governance guidance: After rollout / behaviour: The Microsoft Purview portal Usage center shows pay-as-you-go and per-user licensing usage. | Found: The Microsoft Purview Usage center feature is in preview. ... You can view your pay-as-you-go billing usage and your per-user licensing usage for Microsoft Purview capabilities. | Fix: Call it 'the preview Usage center' and cite https://learn.microsoft.com/purview/purview-billing-usage. The setup page establishes that the center exists but the usage page documents what it shows and its preview status. | Source: https://learn.microsoft.com/purview/purview-billing-usage
+- [supported, minor] controls[0].ui; Governance guidance: At rollout; Governance controls / admin-path: Microsoft Purview portal > Insider Risk Management > Policies > Agent policy reaches the agent-policy dashboard. | Found: go to Insider Risk Management > Policies ... Your policies are separated into two categories: User policy and Agent policy. Switch between the two to locate relevant policy details. | Fix: Keep the path and add to controls[0].note: 'This route ends at the agent-policy dashboard; select a policy to see its details.' The cited page says 'You can select the policy to see the health status details'; the printed route does not reach a policy-setting control. | Source: https://learn.microsoft.com/purview/insider-risk-management-policies
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks administrators to decide alert-investigation role groups, but the controls table has no permissions row. | Found: Decide which role groups will investigate agent alerts ... [The table contains only Agent policies and unified audit logging.] | Fix: Remove the checklist bullet 'Decide which role groups will investigate agent alerts, and keep scoped analysts away from this work because admin units do not support agent alerts.' Keep the existing role-planning advice in Why it matters; do not add a control row.
+- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist asks administrators to check the Usage center, but the controls table has no usage-monitoring row. | Found: Check the Usage center in the Microsoft Purview portal for any pay-as-you-go usage after agent alerts begin. [No Usage center row appears in the controls table.] | Fix: Remove the After rollout checklist bullet about checking the Usage center; retain the existing usage-checking advice in Cost and licensing. Do not add a control row.
 -->

@@ -5,7 +5,7 @@ roadmapId: 560700
 topic: "m365-copilot"
 products: ["Microsoft Teams","Microsoft Copilot (Microsoft 365)"]
 summary: "Teams Rooms on Android rooms with a Teams Rooms Pro licence get a Take notes button for Facilitator AI notes in in-person meetings. Microsoft's notice says no extra admin enablement is needed once prerequisites are met."
-status: "in-development"
+status: "rolling-out"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)","GCC"]
 platforms: ["Teams and Surface Devices"]
@@ -50,7 +50,7 @@ sources:
     url: "https://learn.microsoft.com/microsoft-365/loop/loop-components-configuration"
     kind: "learn"
 videos: []
-related: ["microsoft-teams-focus-on-the-conversation-while-facilitator-in-teams-mobile-takes-the-note","meeting-policy","microsoft-teams-one-stop-admin-portal-for-teams-devices-with-teams-rooms-pro-management","microsoft-teams-facilitator-detects-and-answers-questions"]
+related: ["microsoft-teams-ai-powered-notes-for-in-person-meetings-with-facilitator-in-teams-r-560318","microsoft-teams-focus-on-the-conversation-while-facilitator-in-teams-mobile-takes-the-note","meeting-policy","microsoft-teams-one-stop-admin-portal-for-teams-devices-with-teams-rooms-pro-management","microsoft-teams-facilitator-detects-and-answers-questions"]
 controls:
   - governs: "Take notes button on the room console home screen"
     scope: "other"
@@ -89,8 +89,8 @@ controls:
     note: "MC1307888 asks admins to verify this property. Learn says it applies to the entire tenant and cannot be set per user."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-19"
-roadmapModified: "2026-09-24T22:58:55"
+updated: "2026-11-21"
+roadmapModified: "2026-11-20T23:20:27"
 changes:
   - date: "2026-11-18"
     note: "New briefing on Facilitator AI notes for in-person meetings in Teams Rooms on Windows, covering licensing, prerequisites and controls."
@@ -156,19 +156,23 @@ changes:
     note: "Corrected the Facilitator limitations: retention labels are a general limitation, and only the eDiscovery cloud-attachment limit is specific to meetings and not confirmed for in-person notes."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 92 statements confirmed"
-version: 17
+  - date: "2026-11-21"
+    note: "Roadmap status moved from In development to Rolling out; Learn pages re-checked and unchanged on Android availability, and the Windows sibling item 560318 is now linked."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 85 statements not yet confirmed"
+version: 18
 verification:
-  status: "verified"
-  date: "2026-11-19"
-  version: 17
+  status: "verified-with-gaps"
+  date: "2026-11-21"
+  version: 18
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 92
-  confirmed: 92
+  claims: 85
+  confirmed: 84
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
-  hash: "c6ccda1600c5b189df8a77822b026200"
+  hash: "c4353397ee6614be07935fa078702aab"
 ---
 
 ## What's changing
@@ -177,7 +181,7 @@ Facilitator, the AI agent that takes notes in scheduled Teams meetings, is being
 
 Message Center post MC1307888 gives more detail. It says notes are stored in tenant-owned SharePoint Embedded storage and that no meeting data is stored or cached on the Teams Rooms device after the meeting ends. To get at the notes, a participant adds a work account with the **Access notes** button on the console; participants with access can then view and edit the notes through the meeting recap in the meeting chat on the Teams desktop client. If no participant was added during the session, the notice says the notes are deleted automatically. Learn calls the same step **Save notes**, says unsaved notes are deleted after the session ends, and says to find the notes in the Teams meeting chat titled "Meeting with [conference room name]", on the **Recap** tab under **Notes**.
 
-The roadmap item is In development, General Availability, with a target of November CY2026, for Worldwide (Standard Multi-Tenant) and GCC. MC1307888 (published 11 May 2026, updated 24 September 2026) says rollout begins in early November 2026 (previously late October) and is expected to complete by early December 2026 (previously mid-November), and sets no act-by date.
+The roadmap item is Rolling out, General Availability, with a target of November CY2026, for Worldwide (Standard Multi-Tenant) and GCC. MC1307888 (published 11 May 2026, updated 24 September 2026) says rollout begins in early November 2026 (previously late October) and is expected to complete by early December 2026 (previously mid-November), and sets no act-by date. Microsoft lists the same feature for Teams Rooms on Windows under a separate roadmap item, 560318, which has its own page.
 
 Learn's pages differ from this. The Facilitator in Teams Rooms FAQ says Facilitator is available on Teams Rooms on Windows and is projected to release on Teams Rooms on Android in a future release, and the Teams device feature comparison lists Take notes with Facilitator as Available on Windows and Not available on Android in its Commercial tab, and Not available on both in its GCC tab. The Android release notes, however, list a preview of Facilitator agent note-taking in Rooms for offline and ad hoc discussions in app version 1449/1.0.96.2025126202 (May 2025). Learn also marks in-person note-taking as preview, where the roadmap says General Availability.
 
@@ -214,7 +218,7 @@ The decisions are about whether you want it: whether the Loop and transcription 
 
 Licence: the Learn page for Facilitator in Teams Rooms says in-person note-taking is in preview and currently included with Teams Rooms Pro, and its prerequisite is a Teams Rooms Pro licence on each resource account used for your Teams Rooms devices. The roadmap item says "Available with Teams Rooms Pro", and MC1307888 names rooms licensed with Teams Rooms Pro as the affected group. The same Learn page says only the meeting organiser needs a Copilot licence for Facilitator in scheduled meetings.
 
-Learn warns that the experience and the licensing model may change before final release. The Facilitator in Teams Rooms page names no meter or separate charge for in-person notes.
+Learn warns that the experience and the licensing model may change before final release. The Facilitator in Teams Rooms page names no meter or separate charge for in-person notes, and the Teams Rooms licences page states no price for Teams Rooms Pro.
 
 Indirect costs: admin time to confirm the prerequisites on room accounts, a Teams Rooms Pro licence for any room that lacks one, and helpdesk briefing.
 
@@ -282,4 +286,11 @@ The transcription row is the general meeting policy. Learn's setup step points t
 risk: Medium. Room audio is transcribed and summarised into notes stored in tenant-owned SharePoint Embedded storage, and Microsoft's notice says the feature is available automatically once licensing and prerequisites are met.
 cost: Low. Learn says in-person note-taking is currently included with Teams Rooms Pro, so the known cost is admin time plus a Teams Rooms Pro licence for any room without one; Learn warns the licensing model may change.
 impact: Medium. People in Teams Rooms on Android rooms licensed with Teams Rooms Pro can start notes from the console, and the notes appear on the front-of-room display or touch board.
+-->
+
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Cost and licensing / licensing: The Rooms Learn page says only the meeting organiser needs a Copilot licence for Facilitator in scheduled meetings. | Found: Only the meeting organizer requires a Copilot license. | Fix: Replace the sentence with: 'For scheduled meetings, the Rooms page says only the meeting organiser requires a Copilot licence; the Set up Facilitator page separately says only licensed users can initiate Facilitator and unlicensed users cannot prompt it (https://learn.microsoft.com/microsoftteams/facilitator-teams).' Both pages are already cited. | Source: https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms
+- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: The checklist asks readers to confirm licence assignments, but no controls-table row covers licence assignment. | Found: Confirm Teams Rooms Pro licences are assigned to the resource accounts of the Android rooms you want covered. | Controls rows: Take notes button; Meeting transcription; IsLoopEnabled; IsCollabMeetingNotesFluidEnabled. | Fix: Remove the first Before rollout checklist bullet, 'Confirm Teams Rooms Pro licences are assigned to the resource accounts of the Android rooms you want covered.' Keep the verified licence prerequisite in Cost and licensing and Scope; do not add a control row.
 -->

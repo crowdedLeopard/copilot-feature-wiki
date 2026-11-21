@@ -132,16 +132,18 @@ changes:
     note: "Corrected expiry defaults (A1 users and published event recordings), removed the transcript-size open question, noted events-policy preview status, and aligned the checklist with the controls table."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 103 statements not yet confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 114 statements not yet confirmed"
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-21"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 103
-  confirmed: 103
+  claims: 114
+  confirmed: 113
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
   hash: "bd3a5b07fa7da125ffacea878c0bfa3a"
 ---
@@ -230,8 +232,13 @@ To find transcripts, use eDiscovery in the Microsoft Purview portal. To delete t
 - How does an auto-apply retention label policy interact with the expiry setting when both apply to the same transcript? Not yet documented on the pages read.
 - Which Microsoft Entra permission names allow an app to read Graph transcripts? The transcript API page points to the Entra admin centre without listing them.
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Open questions: auto-apply retention label policy and expiry / absence: The pages cited by this concept do not explain how an auto-apply retention label interacts with expiration. | Found: Searched: Teams recording expiration auto apply retention label policy expiration retention priority transcripts. Read the cited storage, expiration and sensitive-meetings pages; the explanation is instead in manage-teams-recording-compliance and Purview retention guidance. | Fix: Remove the open question beginning 'How does an auto-apply retention label policy interact with the expiry setting'. Its qualification 'on the pages read' is accurate, but the question is answered elsewhere: https://learn.microsoft.com/microsoftteams/manage-teams-recording-compliance explains retention versus expiration, and https://learn.microsoft.com/purview/retention-policies-sharepoint states that permanent deletion is suspended when the item must be retained by a retention policy or retention label. No replacement paragraph is needed.
+- [supported, minor] controls[2].api / command: Set-CsTeamsMeetingPolicy -Identity <policy name> -Copilot EnabledWithTranscriptDefaultOn defaults Copilot to use a saved transcript. | Found: To set the organizer's default Copilot option to During and after the meeting and allow them to change it, use the following script: ... Set-CsTeamsMeetingPolicy -Identity <policy name> -Copilot EnabledWithTranscriptDefaultOn | Fix: Add to controls[2].note: 'The guide documents EnabledWithTranscriptDefaultOn, but the cmdlet reference currently lists only Enabled and EnabledWithTranscript: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps.' Keep the guide-backed call. | Source: https://learn.microsoft.com/microsoftteams/copilot-teams-transcription
+- [supported, minor] Risks and limits: Participants may not know / applicability: The recording and transcription audio announcement policy does not cover PSTN users. | Found: This policy doesn't control audio announcements for PSTN users or for Teams users in 1:1 calls between Teams and PSTN. Audio announcements for these scenarios are enabled by default. | Fix: Replace the bullet's sentence with: 'The audio announcement policy for recording and transcription is Disabled by default; it does not control PSTN users or Teams users in 1:1 Teams-to-PSTN calls, where announcements are enabled by default.' | Source: https://learn.microsoft.com/microsoftteams/manage-meeting-recording-options
+- [supported, minor] Governance controls: controls not in table / command: -RecordingAndTranscriptionAudioNotification Enabled in the meeting policy enables audio announcements. | Found: For example, to enable announcements in the global meeting and calling policies, run: ... Set-CsTeamsMeetingPolicy -Identity Global -RecordingAndTranscriptionAudioNotification Enabled | Fix: Append to the audio-announcement statement: 'The sensitive-meetings guide documents this as operational, but the meeting-policy cmdlet reference says the feature is not fully released and the setting has no effect: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps#-recordingandtranscriptionaudionotification.' | Source: https://learn.microsoft.com/microsoftteams/manage-meeting-recording-options
+- [supported, minor] Open questions: retention labels and expiration / absence: The cited pages do not explain the interaction between auto-apply retention labels and transcript expiration. | Found: Searched: Teams recording transcripts auto apply retention label expiration retention priority. Read the cited storage, expiration and sensitive-meetings pages; also read manage-teams-recording-compliance and retention-policies-sharepoint, which explain retention taking precedence. | Fix: Remove the open question beginning 'How does an auto-apply retention label policy interact'. Microsoft answers it elsewhere: https://learn.microsoft.com/microsoftteams/manage-teams-recording-compliance explains retention versus expiration, and https://learn.microsoft.com/purview/retention-policies-sharepoint says permanent deletion is suspended while another retention policy or label requires retention. No replacement paragraph is needed.
+- [supported, minor] Open questions: Microsoft Entra permission names / absence: The transcript API admin page points to the Entra admin center without listing Graph permission names. | Found: Searched: Teams meeting transcript API access Microsoft Graph permission names OnlineMeetingTranscript.Read.All Entra. Read meeting-transcript-api-access and graph/api/calltranscript-get: the admin page omits names, while the Graph Permissions table lists them. | Fix: Remove the open question beginning 'Which Microsoft Entra permission names'. The permissions are documented at https://learn.microsoft.com/graph/api/calltranscript-get?view=graph-rest-1.0, including OnlineMeetingTranscript.Read.All and application permission OnlineMeetingTranscript.Read.Chat with its documented scope. No replacement paragraph is needed.
+- [contradicted, minor] What to check: OneDrive quota / consistency: The checklist asks administrators to check OneDrive quota, but the controls table has no storage quota row. | Found: Check organizers' OneDrive quota before encouraging transcription at scale. | The controls table contains transcription, events transcription, Copilot, expiration, Graph access, attribution and Work IQ access, but no OneDrive quota control. | Fix: Remove the checklist bullet 'Check organizers' OneDrive quota before encouraging transcription at scale.' Keep the supported storage quota information in Cost and licensing; do not add a controls row.
 -->

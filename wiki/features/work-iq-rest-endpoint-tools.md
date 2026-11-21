@@ -117,15 +117,17 @@ changes:
     note: "Corrected the spending-limit automation call to the documented PATCH operation, removed the tool count for Work IQ MCP, and added the plugins page as a source."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 74 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-21"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 70
+  claims: 74
+  confirmed: 74
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -230,8 +232,10 @@ cost: Low. The only established cost of this roadmap change is administrative re
 impact: Low. The roadmap lists the Developer platform, so developers and the admins who govern agent tools notice first; Microsoft has not said whether end users see any change.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui; Governance guidance / admin-path: Agents > Tools > Work IQ MCP > Policy opens Work IQ MCP policy settings in the Microsoft 365 admin center. | Found: In the left navigation, select Agents > Tools. ... In the tools registry, select Work IQ MCP. ... On the Work IQ MCP details pane, select the Policy tab when it's available. | Fix: Use 'Agents > Tools > Registry > Work IQ MCP > Policy' in controls[2].ui and its rendered table row. The Registry list tab is documented at https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers; the existing policy reference gives the remaining steps. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
+- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing: Licence; rationale: cost / licensing: Licensing is unknown because Microsoft has not published a licence specific to REST endpoint tools. | Found: Work IQ API is licensed under your agreement governing use of Microsoft Online Services, including the Microsoft Product Terms. You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits. | Fix: Set licensing.model to 'consumption' to reflect the published product-level model. Keep the existing Work IQ billing notes and the narrower caveat that Microsoft has not published a licence or rate specific to REST endpoint tools; do not infer a per-call rate for this roadmap item. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview
+- [supported, minor] controls[2].ui; Governance controls / admin-path: Agents > Tools > Work IQ MCP > Policy opens Work IQ MCP policy settings in the Microsoft 365 admin center. | Found: In the left navigation, select Agents > Tools. ... In the tools registry, select Work IQ MCP. ... On the Work IQ MCP details pane, select the Policy tab when it's available. | Fix: Replace controls[2].ui.path and its rendered path with 'Agents > Tools > Registry > Work IQ MCP > Policy'. The Registry tab is documented at https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers; the cited policy page supplies the remaining steps. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
+- [supported, minor] Governance guidance: Before rollout / admin-path: Agents > Tools opens the Tools registry for reviewing available MCP servers and tools. | Found: Select Agents > Tools, and then select the Registry tab. ... Select an MCP server from the list to open its overview pane. ... Select the Tools tab. | Fix: Change the first Before rollout bullet to 'Open the Tools registry (Agents > Tools > Registry) and note which MCP servers and tools are available today, so a new REST endpoint tool can be compared with them.' | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
 -->

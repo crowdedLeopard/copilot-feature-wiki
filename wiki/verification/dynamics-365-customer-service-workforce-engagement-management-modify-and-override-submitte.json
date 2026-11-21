@@ -2,41 +2,33 @@
   "slug": "dynamics-365-customer-service-workforce-engagement-management-modify-and-override-submitte",
   "roadmapId": 578070,
   "title": "Dynamics 365 Customer Service: supervisors can edit and override submitted quality evaluations",
-  "status": "held",
-  "date": "2026-11-20",
-  "version": 1,
+  "status": "verified-with-gaps",
+  "date": "2026-11-21",
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
-  "notes": [
-    "claim 54: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
-  ],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-20",
-    "reasons": [
-      "1 blocking finding (claim 48)"
-    ]
-  },
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
   "counts": {
-    "claims": 55,
-    "confirmed": 52,
-    "unconfirmed": 1,
-    "contradicted": 2,
-    "blocker": 1,
+    "claims": 57,
+    "confirmed": 57,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 2
+    "minor": 1
   },
-  "summary": "Hold: Microsoft documents an API for the summary-regeneration setting that the controls table reports as undocumented. The editing procedure, permissions and roadmap details are supported, but the assertion that representatives and customers see no direct change is not documented.",
+  "summary": "The documented edit workflow, permissions and both control APIs support this briefing. Clarify that the user security-role screen manages direct assignments only; the specific credit rate for edits and override audit event names remain undocumented.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; rationale: risk",
+      "where": "title; summary; What's changing",
       "type": "behaviour",
-      "claim": "Supervisors with the required permissions can edit and resubmit a completed quality evaluation.",
+      "claim": "Supervisors can reopen a submitted quality evaluation, modify answers and resubmit it.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/use/use-evaluations",
       "quote": "Edit evaluations and modify responses in an evaluation after it's submitted. When you submit an evaluation, it initially appears in a read-only view. Select Edit to update answers and then submit the changes.",
@@ -45,83 +37,6 @@
     },
     {
       "n": 2,
-      "where": "front matter: status; summary; What's changing",
-      "type": "record",
-      "claim": "The roadmap status is Launched.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"Launched\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "front matter: targetDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap target date is July CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"July CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "front matter: releasePhase; What's changing; Scope",
-      "type": "record",
-      "claim": "The release phase is General Availability.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "The record lists Worldwide (Standard Multi-Tenant) and no other cloud.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The listed platform is Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The record supplies no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "front matter: products",
-      "type": "record",
-      "claim": "The record associates the item with Microsoft Copilot (Microsoft 365) and Dynamics 365 Customer Service.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Customer Service\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
       "where": "What's changing",
       "type": "record",
       "claim": "The roadmap says completed evaluations remain read-only by default to preserve integrity.",
@@ -132,10 +47,10 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 3,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap describes Edit as a way to correct incorrect AI predictions or manual assessment errors.",
+      "claim": "The roadmap describes an Edit action for discrepancies such as incorrect AI predictions or manual assessment errors.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "supervisors can initiate an Edit action when discrepancies are identified, such as incorrect AI predictions or errors in manual assessments.",
@@ -143,10 +58,10 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "n": 4,
+      "where": "What's changing; Risk assessment; Governance guidance",
       "type": "record",
-      "claim": "The capability covers AI-assisted, AI agent-generated and manual evaluations.",
+      "claim": "The roadmap says the capability covers AI-assisted, AI agent-generated and manual evaluations.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "The capability is available across AI-assisted, AI agent-generated, and manual evaluations, providing a consistent correction experience.",
@@ -154,10 +69,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 5,
       "where": "What's changing; Open questions",
       "type": "record",
-      "claim": "The roadmap describes editing completed or expired evaluations.",
+      "claim": "The roadmap describes editing evaluations marked completed or expired.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This feature enables Quality Managers to edit and override evaluation results even after they are marked as completed or expired.",
@@ -165,10 +80,21 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "What's changing; Risk assessment: Security & identity; Open questions",
+      "n": 6,
+      "where": "Why it matters; rationale: impact",
       "type": "record",
-      "claim": "The roadmap says audit signals track who edited an evaluation and when.",
+      "claim": "An override can change a recorded evaluation score, including one produced by an AI agent or a manual evaluator.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "In edit mode, supervisors can update evaluation responses, adjust scores, and refine comments to reflect an accurate assessment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Risk assessment; Open questions",
+      "type": "record",
+      "claim": "The roadmap says audit signals track who made an edit.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "All changes are tracked through audit signals, including who made the edit and when",
@@ -176,7 +102,18 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 8,
+      "where": "What's changing; Risk assessment; Open questions",
+      "type": "record",
+      "claim": "The roadmap says audit signals track when an edit was made.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "All changes are tracked through audit signals, including who made the edit and when",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
       "where": "What's changing",
       "type": "record",
       "claim": "The roadmap says overridden evaluations are flagged.",
@@ -187,18 +124,95 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 10,
       "where": "Why it matters; rationale: impact",
       "type": "record",
-      "claim": "The roadmap presents corrected evaluation records as the final validated view used for reporting and downstream reviews.",
+      "claim": "The roadmap describes overrides as producing a final validated evaluation record for reporting and compliance reviews.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "This ensures that evaluation records represent the final, validated view of agent performance and interaction quality. ... This ensures full transparency for reporting, compliance, and downstream reviews.",
+      "quote": "This ensures that evaluation records represent the final, validated view of agent performance and interaction quality.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: status; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap provides no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and no other cloud.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap lists Microsoft Copilot (Microsoft 365) and Dynamics 365 Customer Service.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Customer Service\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
       "where": "Scope",
       "type": "record",
       "claim": "The record describes the capability as enabled by admins, makers or marketers for end users.",
@@ -209,21 +223,32 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 19,
       "where": "What's changing",
       "type": "admin-path",
-      "claim": "The edit procedure is Copilot Service workspace > Service > Evaluations > completed evaluation > Edit, followed by updating answers and Submit.",
+      "claim": "The edit route is Copilot Service workspace > Service > Evaluations > completed evaluation > Edit, followed by updating answers and Submit.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/use/use-evaluations",
-      "quote": "In the site map of Copilot Service workspace, go to Evaluations in Service. ... Select and open an evaluation with the status Completed. ... Select Edit. ... Update the answers as required. ... Select Submit to apply your changes.",
+      "quote": "In the site map of Copilot Service workspace, go to Evaluations in Service. Select and open an evaluation with the status Completed. Select Edit. Update the answers as required. Select Submit to apply your changes.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 18,
-      "where": "What's changing; Governance guidance: At rollout",
+      "n": 20,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Edited answers do not take effect until Submit.",
+      "claim": "A completed evaluation opens read-only and returns to the submitted read-only state after resubmission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/use/use-evaluations",
+      "quote": "The evaluation opens in a read-only view and indicates that it's submitted. After you submit, the evaluation returns to the submitted (read-only) state.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Changes do not take effect until the evaluator submits them.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/use/use-evaluations",
       "quote": "Select Submit to apply your changes. Your changes don't take effect until you submit.",
@@ -231,8 +256,8 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "What's changing; Governance guidance: At rollout",
+      "n": 22,
+      "where": "What's changing; Governance guidance",
       "type": "behaviour",
       "claim": "In progress evaluations cannot be edited and Edit is disabled for nonsubmitted evaluations.",
       "status": "supported",
@@ -242,10 +267,10 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 23,
       "where": "What's changing; Scope; Open questions",
       "type": "behaviour",
-      "claim": "Learn requires the evaluation to be submitted (completed) before editing.",
+      "claim": "Learn requires an evaluation to be submitted (completed) before editing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/use/use-evaluations",
       "quote": "The evaluation must be submitted (completed).",
@@ -253,54 +278,21 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing; Risk assessment: Change & support; Open questions",
-      "type": "behaviour",
-      "claim": "Learn says an evaluator can no longer open an expired evaluation, unlike the roadmap's description of overriding expired results.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/use/use-evaluations",
-      "quote": "Expired | The due date provided in the evaluation criteria expired and the evaluator can no longer open the evaluation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "What's changing; Risk assessment: Autonomy & actions; Cost and licensing; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "When evaluation responses change, the system regenerates the summary on submission.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/use/use-evaluations",
-      "quote": "As an evaluator, when you update evaluation responses, the system regenerates the summary upon submission to reflect the finalized evaluation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "What's changing; Cost and licensing",
-      "type": "behaviour",
-      "claim": "Summary regeneration is skipped if no responses changed, to optimize performance and cost.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/use/use-evaluations",
-      "quote": "If you don't make any changes, the system skips summary regeneration to optimize performance and cost.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 24,
-      "where": "What's changing; Risk assessment: Security & identity; Governance guidance: After rollout; Open questions",
-      "type": "behaviour",
-      "claim": "The Evaluation table has a Submission Overridden column indicating whether its submission has been overridden.",
+      "where": "Why it matters; Risk assessment; Scope; controls[0].note; rationale: risk",
+      "type": "role",
+      "claim": "Learn names Quality Admin as a role permitting edits to submitted evaluations.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_evaluation",
-      "quote": "Description | Indicates whether the evaluation submission has been overridden. ... DisplayName | Submission Overridden ... LogicalName | msdyn_isevaluationedited",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/use/use-evaluations",
+      "quote": "You have the Quality Admin or the Quality Manager role, or the Override submitted evaluation (Miscellaneous privilege) added to your role.",
       "severity": null,
       "fix": null
     },
     {
       "n": 25,
-      "where": "Why it matters; Risk assessment: Security & identity; Scope; controls[0].note; Governance controls",
+      "where": "summary; Why it matters; Risk assessment; Scope; controls[0].note; rationale: risk",
       "type": "role",
-      "claim": "Quality Admin, Quality Manager, or another role with Override submitted evaluation permits editing.",
+      "claim": "Learn names Quality Manager as a role permitting edits to submitted evaluations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/use/use-evaluations",
       "quote": "You have the Quality Admin or the Quality Manager role, or the Override submitted evaluation (Miscellaneous privilege) added to your role.",
@@ -309,41 +301,96 @@
     },
     {
       "n": 26,
-      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "where": "Risk assessment; Scope; controls[0].note",
       "type": "role",
-      "claim": "Override Submitted evaluation is the miscellaneous privilege prvOverrideSubmittedEval on Evaluation (msdyn_evaluation).",
+      "claim": "The alternative override permission is Override Submitted evaluation (prvOverrideSubmittedEval), a miscellaneous privilege on Evaluation (msdyn_evaluation).",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/use/use-evaluations",
-      "quote": "search for the Evaluation (msdyn_evaluation) table and the Miscellaneous privileges > Override Submitted evaluation (prvOverrideSubmittedEval) privilege.",
+      "quote": "In Power Platform admin center, search for the Evaluation (msdyn_evaluation) table and the Miscellaneous privileges > Override Submitted evaluation (prvOverrideSubmittedEval) privilege.",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "front matter: defaultState; Why it matters; Open questions",
-      "type": "default",
-      "claim": "Microsoft has not stated whether the Edit capability is enabled by default on arrival.",
+      "where": "Risk assessment; Governance guidance; controls[0].note; rationale: risk",
+      "type": "role",
+      "claim": "A role other than the named quality roles can permit overrides when it includes the override privilege.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Dynamics 365 edit submitted evaluations enable disable default switch override submitted evaluation'. Opened Use evaluations, Manage quality evaluation and Evaluation Global Config; none states the arrival default of Edit.",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/use/use-evaluations",
+      "quote": "You have the Quality Admin or the Quality Manager role, or the Override submitted evaluation (Miscellaneous privilege) added to your role.",
       "severity": null,
       "fix": null
     },
     {
       "n": 28,
-      "where": "Risk assessment: Data exposure",
-      "type": "absence",
-      "claim": "Neither the roadmap nor Learn describes a new data source for editing existing evaluation answers.",
+      "where": "What's changing; Risk assessment; Open questions",
+      "type": "behaviour",
+      "claim": "Learn describes Expired as past the evaluation due date and no longer openable by the evaluator, unlike the roadmap's completed-or-expired editing description.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Dynamics 365 edit submitted evaluations enable disable default switch override submitted evaluation'; read roadmap, Use evaluations and Manage quality evaluation. Editing is described as updating responses on an existing evaluation, with no new edit-specific data source.",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/use/use-evaluations",
+      "quote": "Expired | The due date provided in the evaluation criteria expired and the evaluator can no longer open the evaluation.",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
+      "where": "What's changing; Risk assessment; Cost and licensing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Learn says the system regenerates the evaluation summary on submission when responses have changed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/use/use-evaluations",
+      "quote": "As an evaluator, when you update evaluation responses, the system regenerates the summary upon submission to reflect the finalized evaluation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Summary regeneration is skipped when nothing changed to optimize performance and cost.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/use/use-evaluations",
+      "quote": "If you don't make any changes, the system skips summary regeneration to optimize performance and cost.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing; Risk assessment; Governance guidance; Open questions",
+      "type": "behaviour",
+      "claim": "The Evaluation table has a Submission Overridden column indicating whether the evaluation submission has been overridden.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_evaluation",
+      "quote": "Description | Indicates whether the evaluation submission has been overridden. DisplayName | Submission Overridden. LogicalName | msdyn_isevaluationedited. Type | Boolean.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not explicitly stated Edit's arrival default or a separate administrative enablement step for Edit.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Dynamics 365 quality evaluation edit submitted evaluations Edit enable default admin switch; \"submitted evaluations\" \"default\" \"enable\". Read roadmap, Use evaluations, Manage quality evaluation and Evaluation Global Config; no Edit-specific arrival default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Neither the roadmap nor the feature documentation describes a new data source introduced by editing an existing evaluation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Dynamics 365 quality evaluation edit submitted evaluations Edit enable default admin switch. Read roadmap description, Use evaluations > Edit submitted evaluations and Manage quality evaluation; editing is described as updating existing responses, not adding a data source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
       "where": "Risk assessment: Data exposure; Scope",
-      "type": "applicability",
+      "type": "behaviour",
       "claim": "Quality evaluation requests consent for potential data movement across regions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/manage-quality-evaluation-agent",
@@ -352,10 +399,10 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 35,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Service calls might be routed outside the customer's regional boundary when local capacity is temporarily unavailable.",
+      "claim": "Service calls may be routed outside the customer's regional boundary if local capacity is temporarily unavailable.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/manage-quality-evaluation-agent",
       "quote": "For optimal performance, the system might route service calls outside the customer's regional boundary if local capacity is temporarily unavailable.",
@@ -363,21 +410,10 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "Risk assessment: Security & identity; Open questions",
-      "type": "absence",
-      "claim": "Microsoft Learn does not document override-specific audit event names as of November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Dynamics 365 evaluation override audit events submitted evaluation audit history'. Read Use evaluations and Evaluation reference; results include EvaluationHistory and generic auditing, but no named override audit event.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "n": 36,
+      "where": "Risk assessment: Change & support; Governance guidance",
       "type": "behaviour",
-      "claim": "Microsoft says quality evaluation should not be used for employment decisions, including compensation, rewards, seniority or other rights.",
+      "claim": "Microsoft says quality evaluation should not determine employment decisions including compensation, rewards, seniority or other rights.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/manage-quality-evaluation-agent",
       "quote": "It isn't intended to be used, and shouldn't be used, to make decisions that affect the employment of an employee or group of employees, including compensation, rewards, seniority, or other rights or entitlements.",
@@ -385,21 +421,32 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "front matter: licensing.model; cost; licensing.notes; Cost and licensing; rationale: cost",
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
       "type": "licensing",
-      "claim": "Quality evaluation uses Copilot-credit consumption billing, supporting the consumption model and variable cost rating.",
+      "claim": "Quality evaluation lists setting up Microsoft Copilot credits as a prerequisite.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/manage-quality-evaluation-agent",
-      "quote": "Prerequisites ... Set up Microsoft Copilot credits.",
+      "quote": "Prerequisites: Assign the Quality Manager, Quality Evaluator, and Quality Administrator roles. Set up Microsoft Copilot credits.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
+      "n": 38,
+      "where": "front matter: licensing.model; front matter: cost; rationale: cost",
+      "type": "licensing",
+      "claim": "Quality evaluation uses Copilot-credit consumption, supporting the consumption licensing model and variable cost rating.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-usage-estimator",
+      "quote": "forecast their monthly Copilot credit consumption across multiple AI agents in Microsoft Dynamics 365 and Copilot Studio. Dynamics 365 Service: Case Management, Customer Intent, and Quality Evaluation Agents",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "Selected Dynamics 365 Copilot and agent capabilities charge per use.",
+      "claim": "Selected Copilot and agent capabilities in Dynamics 365 use consumption-based billing charging per use.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
       "quote": "Selected Copilot and agent capabilities in Dynamics 365 use consumption-based billing, charging per use. These capabilities use Copilot Credits for AI interactions and tasks",
@@ -407,9 +454,9 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 40,
       "where": "Cost and licensing",
-      "type": "licensing",
+      "type": "cost",
       "claim": "Dynamics 365 supports prepaid capacity and pay-as-you-go billing models.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
@@ -418,54 +465,54 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 41,
       "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Microsoft's agent usage estimator forecasts Copilot credit consumption for the Quality Evaluation Agent.",
+      "type": "behaviour",
+      "claim": "Microsoft's agent usage estimator includes the Quality Evaluation Agent among Dynamics 365 Service agents for forecasting credit consumption.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-usage-estimator",
-      "quote": "helps organizations forecast their monthly Copilot credit consumption ... Dynamics 365 Service: Case Management, Customer Intent, and Quality Evaluation Agents",
+      "quote": "It supports multiple agent types across: Dynamics 365 Service: Case Management, Customer Intent, and Quality Evaluation Agents",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
-      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance; Open questions; rationale: cost",
+      "n": 42,
+      "where": "front matter: licensing.notes; Why it matters; Cost and licensing; Governance guidance; rationale: cost",
       "type": "absence",
-      "claim": "Microsoft has not published a credit rate specific to editing a submitted evaluation.",
+      "claim": "Microsoft has not published a credit rate specific to editing a submitted quality evaluation.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Dynamics 365 quality evaluation editing regenerate summary Copilot credits rate licensing' and '\"quality evaluation\" \"summary\" \"credits\" \"rate\"'. Opened Use evaluations, Manage quality evaluation, billing and Agent usage estimator; no edit-specific rate.",
+      "quote": "Searched: Dynamics 365 Quality Evaluation Agent Copilot credits rate edit submitted regenerate summary cost. Read Use evaluations, Manage quality evaluation, setup-pay-as-you-go, Agent usage estimator and Billing rates and management; no edit-specific rate.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
+      "n": 43,
       "where": "Cost and licensing; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not stated a credit rate specific to regenerating an evaluation summary.",
+      "claim": "Microsoft has not stated a credit rate specifically for regenerating an evaluation summary.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Dynamics 365 quality evaluation editing regenerate summary Copilot credits rate licensing' and '\"quality evaluation\" \"summary\" \"credits\" \"rate\"'. Read feature pages, billing and estimator; generic billing-rate results do not identify evaluation-summary regeneration.",
+      "quote": "Searched: \"Quality Evaluation\" \"regeneration\" \"credits\" rate. Read Use evaluations, Manage quality evaluation, setup-pay-as-you-go, Agent usage estimator and Billing rates and management; no evaluation-summary regeneration rate.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
+      "n": 44,
       "where": "Cost and licensing",
       "type": "absence",
-      "claim": "The Use evaluations page lists no licence requirement beyond its prerequisites.",
+      "claim": "The Use evaluations page names no additional licence beyond its prerequisites.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/contact-center/use/use-evaluations",
-      "quote": "Prerequisites: Enable quality evaluation. Assign the required roles and privileges. Set up Microsoft Copilot credits. Provide consent for potential data movement across regions.",
+      "source": null,
+      "quote": "Searched: Dynamics 365 Quality Evaluation Agent Copilot credits rate edit submitted regenerate summary cost. Read all of Use evaluations: prerequisites are enable quality evaluation, required roles and privileges, Copilot credits and regional data consent; no further named licence appears.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
+      "n": 45,
       "where": "Scope",
       "type": "role",
-      "claim": "Quality evaluation lists assignment of Quality Manager, Quality Evaluator and Quality Administrator roles as a prerequisite.",
+      "claim": "Quality evaluation's general prerequisites list assigning Quality Manager, Quality Evaluator and Quality Administrator roles.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/manage-quality-evaluation-agent",
       "quote": "Assign the Quality Manager, Quality Evaluator, and Quality Administrator roles.",
@@ -473,10 +520,10 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 46,
       "where": "Scope",
-      "type": "applicability",
-      "claim": "Quality evaluation requires Enable AI agents to be turned on for the Dynamics 365 environment in Power Platform admin center.",
+      "type": "behaviour",
+      "claim": "Quality evaluation requires Enable AI agents turned on for the Dynamics 365 environment in Power Platform admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/manage-quality-evaluation-agent",
       "quote": "Turn on Enable AI agents for your Dynamics 365 environment in Power Platform admin center.",
@@ -484,54 +531,43 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 47,
       "where": "controls[0].scope; Governance controls",
       "type": "applicability",
-      "claim": "The documented security-role assignment is made within an environment.",
+      "claim": "Security role assignment in Power Platform admin center is made in a selected environment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
-      "quote": "In the Manage pane, select Environments, and then select an environment from the list. Select Settings. ... On the Users page select a user, and then select Manage security roles.",
+      "quote": "In the Manage pane, select Environments, and then select an environment from the list. Select Settings. Select Users + permissions, and then select Users.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
-      "where": "controls[0].ui; Governance controls table",
+      "n": 48,
+      "where": "controls[0].ui",
       "type": "admin-path",
-      "claim": "Role assignment is at Power Platform admin center > Manage > Environments > environment > Settings > Users + permissions > Users > user > Manage security roles.",
+      "claim": "Power Platform admin center > Manage > Environments > environment > Settings > Users + permissions > Users > user > Manage security roles reaches role assignment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
-      "quote": "select Manage. ... select Environments, and then select an environment ... Select Settings. ... Select Users + permissions, and then select Users. ... select a user, and then select Manage security roles.",
-      "severity": null,
-      "fix": null
+      "quote": "select Manage. select Environments, and then select an environment from the list. Select Settings. Select Users + permissions, and then select Users. On the Users page select a user, and then select Manage security roles.",
+      "severity": "minor",
+      "fix": "Keep the path. Append to controls[0].note: 'This user screen manages only direct role assignments; roles inherited through group-team membership are managed separately.' The qualification is stated at https://learn.microsoft.com/power-platform/admin/assign-security-roles."
     },
     {
-      "n": 44,
-      "where": "controls[0].api; Governance controls table",
+      "n": 49,
+      "where": "controls[0].api",
       "type": "command",
-      "claim": "POST /api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref assigns a security role.",
+      "claim": "POST /api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref assigns a role to a Microsoft Entra ID group user.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team",
-      "quote": "POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref",
+      "quote": "An administrator can assign a security role to a Microsoft Entra ID group user. POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
-      "where": "controls[0].note",
-      "type": "applicability",
-      "claim": "The cited API procedure is documented for assigning a role to a Microsoft Entra ID group user.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team",
-      "quote": "An administrator can assign a security role to a Microsoft Entra ID group user.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
+      "n": 50,
       "where": "controls[0].note",
       "type": "command",
-      "claim": "The role-assignment request body sets @odata.id to the role.",
+      "claim": "The role-assignment request body sets @odata.id to the role URI.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team",
       "quote": "\"@odata.id\":\"[Organization URI]/api/data/v9.0/roles(<role ID>)\"",
@@ -539,32 +575,43 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "controls[1].ui; Governance controls table",
+      "n": 51,
+      "where": "controls[1].ui",
       "type": "admin-path",
-      "claim": "The setting is at Copilot Service admin center > Customer Support > Quality management > Quality evaluation > Manage > Evaluation summary > Regenerate evaluation summary.",
+      "claim": "Copilot Service admin center > Customer Support > Quality management > Quality evaluation > Manage > Evaluation summary > Regenerate evaluation summary reaches the regeneration setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/manage-quality-evaluation-agent",
-      "quote": "go to Customer Support > Quality management. ... Select Manage for Quality evaluation. ... In the Evaluation summary section, turn on Regenerate evaluation summary.",
+      "quote": "In Copilot Service admin center, go to Customer Support > Quality management. Select Manage for Quality evaluation. In the Evaluation summary section, turn on Regenerate evaluation summary.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
-      "where": "controls[1].api; Governance controls table",
-      "type": "absence",
-      "claim": "Microsoft has not documented automation for the summary-regeneration setting.",
-      "status": "contradicted",
+      "n": 52,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "PATCH /msdyn_evaluationglobalconfigs(<msdyn_evaluationglobalconfigid>) updates an Evaluation Global Config record and its summary-regeneration flag.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_evaluationglobalconfig",
-      "quote": "Update ... PATCH /msdyn_evaluationglobalconfigs(msdyn_evaluationglobalconfigid) ... msdyn_enablesummaryregeneration ... Global flag to enable or disable the summary regeneration feature",
-      "severity": "blocker",
-      "fix": "Replace controls[1].api null with kind 'rest', call 'PATCH /msdyn_evaluationglobalconfigs(<msdyn_evaluationglobalconfigid>)', and docs 'https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_evaluationglobalconfig'. Add to its note: 'The request body sets msdyn_enablesummaryregeneration to true or false.' Cite that reference in sources and update the rendered API cell consistently."
+      "quote": "Update: PATCH /msdyn_evaluationglobalconfigs(msdyn_evaluationglobalconfigid). Writable columns/attributes: msdyn_enablesummaryregeneration. Description: Global flag to enable or disable the summary regeneration feature.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 49,
+      "n": 53,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "The deciding request-body property msdyn_enablesummaryregeneration is Boolean and enables or disables summary regeneration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_evaluationglobalconfig",
+      "quote": "Description | Global flag to enable or disable the summary regeneration feature. LogicalName | msdyn_enablesummaryregeneration. Type | Boolean. True Label | Yes. False Label | No.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
       "where": "controls[1].note; Governance controls",
       "type": "behaviour",
-      "claim": "Disabling Regenerate evaluation summary hides Generate Summary from evaluators.",
+      "claim": "Disabling Regenerate evaluation summary hides the Generate Summary option from evaluators.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/manage-quality-evaluation-agent",
       "quote": "If you disable the option: The Generate Summary option is hidden from evaluators.",
@@ -572,81 +619,48 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 55,
       "where": "controls[1].governs; Governance controls",
-      "type": "behaviour",
-      "claim": "The setting controls evaluators' ability to generate manual summaries and regenerate summaries for completed AI-assisted and AI agent evaluations.",
+      "type": "applicability",
+      "claim": "The regeneration setting controls evaluators' ability to generate manual summaries or regenerate completed AI-assisted and AI agent evaluation summaries.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/manage-quality-evaluation-agent",
-      "quote": "Evaluators can't generate summaries for manual evaluations or regenerate summaries for completed AI-assisted and AI agent evaluations.",
+      "quote": "If you disable the option: Evaluators can't generate summaries for manual evaluations or regenerate summaries for completed AI-assisted and AI agent evaluations.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 51,
-      "where": "controls[1].note; Risk assessment: Autonomy & actions; Governance controls; Open questions",
+      "n": 56,
+      "where": "controls[1].note; Risk assessment; Governance controls; Open questions",
       "type": "absence",
-      "claim": "Learn does not explicitly state whether disabling the setting stops automatic regeneration triggered by submitting an edit.",
+      "claim": "Learn does not explicitly distinguish whether disabling the regeneration setting also stops automatic regeneration on submission after an edit.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Dynamics 365 quality evaluation regenerate evaluation summary setting table entity reference API' and '\"Regenerate evaluation summary\" \"msdyn\"'. Read both feature pages and Evaluation Global Config; no explicit disabled-setting behavior for automatic submission regeneration.",
+      "quote": "Searched: Dynamics 365 Regenerate evaluation summary disable automatic regeneration submission msdyn_enablesummaryregeneration. Read Manage quality evaluation, Use evaluations and Evaluation Global Config; no separate statement about the automatic trigger when disabled.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 52,
-      "where": "Governance controls",
+      "n": 57,
+      "where": "Risk assessment: Security & identity; Open questions",
       "type": "absence",
-      "claim": "Microsoft Learn does not document a separate switch for disabling editing of submitted evaluations.",
+      "claim": "Microsoft Learn documents the Submission Overridden flag but no audit event names specifically for submitted-evaluation overrides.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Dynamics 365 edit submitted evaluations enable disable default switch override submitted evaluation'. Read Use evaluations, Manage quality evaluation and Evaluation Global Config; found role/privilege requirements but no separate edit-disable switch.",
+      "quote": "Searched: Dynamics 365 quality evaluation override submitted evaluation audit event prvOverrideSubmittedEval audit history. Read Use evaluations, Manage quality evaluation, Evaluation and EvaluationHistory references; no override-specific audit event names.",
       "severity": null,
       "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "Removing the qualifying roles and override privilege is the documented permission-based way to restrict who can edit.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
-      "quote": "Select or deselect security roles. ... all selected roles become the current assigned roles for the user. Unselected roles aren't assigned.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "rationale: impact",
-      "type": "behaviour",
-      "claim": "Agents and customers see nothing directly from this change.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: 'Dynamics 365 \"submitted evaluations\" \"customers\" \"representatives\"'. Read Use evaluations and Manage quality evaluation; they describe supervisor/evaluator workflows but do not state that representatives and customers see no direct change.",
-      "severity": "minor",
-      "fix": "Remove 'agents and customers see nothing directly' from the impact rationale. Use: 'Low. Supervisors and quality administrators use the Edit action; edited scores can change what reports show.'"
-    },
-    {
-      "n": 55,
-      "where": "Governance controls: separate edit switch",
-      "type": "consistency",
-      "claim": "The prose reports no separate edit-disable switch, but the controls table does not represent that absence.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Microsoft Learn documents no separate switch that turns off editing of submitted evaluations ... Controls rows: security role assignment; Regenerate evaluation summary.",
-      "severity": "minor",
-      "fix": "Remove the sentence beginning 'Microsoft Learn documents no separate switch' from Governance controls; the preceding role-permission explanation already supplies the actionable guidance. Do not add a control row."
     }
   ],
   "precheck": {
-    "at": "2026-11-20T21:42:35.012Z",
+    "at": "2026-11-21T01:58:47.564Z",
     "summary": {
-      "links": 8,
+      "links": 9,
       "unreachable": 0,
       "uiPaths": 2,
       "uiPathsWithMissingWords": 0,
-      "apiCalls": 1,
-      "apiCallsNotOnPage": 1,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -667,6 +681,11 @@
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_evaluation",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_evaluationglobalconfig",
         "ok": true,
         "status": 200
       },
@@ -732,9 +751,25 @@
           "Regenerate evaluation summary"
         ],
         "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether evaluators can regenerate evaluation summaries after modifying responses",
+        "docs": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_evaluationglobalconfig",
+        "reachable": true,
+        "token": "PATCH /msdyn_evaluationglobalconfigs(<msdyn_evaluationglobalconfigid>)",
+        "found": false
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-20",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

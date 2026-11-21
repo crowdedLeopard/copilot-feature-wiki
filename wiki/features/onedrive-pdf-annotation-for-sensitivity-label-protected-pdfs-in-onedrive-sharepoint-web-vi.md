@@ -76,7 +76,7 @@ controls:
     note: "Existing control. Encryption settings are on the label's Access control page (Assign permissions now). The label encryption settings restrict access to the content; the rights required specifically for annotation are not yet documented."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-20"
+updated: "2026-11-21"
 roadmapModified: "2026-10-15T22:47:30"
 changes:
   - date: "2026-11-20"
@@ -87,19 +87,23 @@ changes:
     note: "Corrected the controls note: label encryption settings govern access to protected files; annotation rights are not yet documented. Added the banner step to row 1's path."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 50 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-21"
+    note: "Corrected the controls note: edits to a label's encryption permissions reach existing files when users reauthenticate, not immediately for every file."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 55 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
-  date: "2026-11-20"
-  version: 2
+  status: "verified-with-gaps"
+  date: "2026-11-21"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 49
+  claims: 55
+  confirmed: 55
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "cd485b771e56923d25f8215091f082c2"
+  contradicted: 0
+  attempts: 0
+  hash: "454c4863a3edbfafc17a6b7335b087cf"
 ---
 
 ## What's changing
@@ -172,7 +176,7 @@ Prerequisites are not documented for this feature. Learn documents PDF support f
 </tbody>
 </table>
 
-Both rows are existing controls over labelled PDFs. Label encryption settings govern access to the protected content. Which usage rights annotation requires, and whether it depends on the PDF support setting in row 1, are not yet documented. Row 1 needs the SharePoint Online administrator role for the cmdlet; for Microsoft 365 Multi-Geo, Learn says to connect to each geo-location and run the command separately. Row 2 changes encryption permissions on a label, which apply to every file carrying that label, so test before editing a label in use.
+Both rows are existing controls over labelled PDFs. Label encryption settings govern access to the protected content. Which usage rights annotation requires, and whether it depends on the PDF support setting in row 1, are not yet documented. Row 1 needs the SharePoint Online administrator role for the cmdlet; for Microsoft 365 Multi-Geo, Learn says to connect to each geo-location and run the command separately. For labels configured with Assign permissions now, changes to users or permissions apply to existing encrypted items when users authenticate with the encryption service; users with an existing use licence receive the changes when it expires and they reauthenticate, so test before editing a label in use.
 
 ## Open questions
 
@@ -188,10 +192,8 @@ cost: Low. The only cost the sources show is admin time to test it; a licence or
 impact: Low. Only users who open label-protected PDFs in the OneDrive or SharePoint web viewer, and hold usage rights on them, would notice.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: final sentence / applicability: Changes to encryption permissions on a label apply to every file carrying that label. | Found: However, if users have already opened an encrypted document or email, they won't get the new settings until their use license has expired and they must reauthenticate. | Fix: Replace the final sentence with: 'For labels configured with Assign permissions now, changes to users or permissions apply to existing encrypted items when users authenticate with the encryption service; users with an existing use licence receive the changes when it expires and they reauthenticate, so test before editing a label in use.' This qualification is documented at https://learn.microsoft.com/purview/encryption-sensitivity-labels#editing-labels-to-newly-apply-encryption-or-change-existing-encryption-settings. | Source: https://learn.microsoft.com/purview/encryption-sensitivity-labels
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Solutions > Information Protection > Sensitivity labels in Microsoft Purview portal is the route printed for configuring label encryption rights. | Found: Sign in to the Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels To edit an existing label, select it, and then select the Edit label icon. | Fix: The path stops on the correct labels page. Extend it to 'Solutions > Information Protection > Sensitivity labels > label > Edit label > Choose protection settings for the types of items you selected > Control access > Access control > Configure access control settings > Assign permissions now > Assign permissions > Choose permissions'. The label must include Files & other data assets. Cite https://learn.microsoft.com/purview/encryption-sensitivity-labels alongside the existing creation page. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
+- [supported, minor] controls[1].ui; Governance controls / admin-path: Solutions > Information Protection > Sensitivity labels in the Microsoft Purview portal is the route shown for managing a label's encryption permissions. | Found: Sign in to the Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels ... To edit an existing label, select it, and then select the Edit label icon. | Fix: Extend controls[1].ui.path and the matching rendered path to 'Solutions > Information Protection > Sensitivity labels > label > Edit label > Define the scope for this label > Files & other data assets > Choose protection settings for the types of items you selected > Control access > Access control > Configure access control settings > Assign permissions now > Assign permissions > Choose permissions'. Set controls[1].ui.docs and its rendered Learn link to https://learn.microsoft.com/purview/encryption-sensitivity-labels, which documents the permission settings. Retain create-sensitivity-labels in sources for the route to editing a label. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
 -->

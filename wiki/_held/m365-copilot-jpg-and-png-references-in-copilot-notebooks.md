@@ -18,7 +18,7 @@ defaultState: "on"
 action: "prepare"
 licensing:
   model: "included"
-  notes: "Microsoft Learn says users need the Microsoft Copilot or Copilot Chat licence for Copilot Notebooks. No separate licence, price or meter for JPG and PNG references is documented at the time of writing (November 2026)."
+  notes: "Microsoft Learn says users need the Microsoft Copilot or Copilot Chat licence for Copilot Notebooks. The preview Tenant Configuration Management reference instead says Copilot Notebooks require a Microsoft 365 Copilot license. No separate licence, price or meter for JPG and PNG references is documented at the time of writing (November 2026)."
 audiences: ["m365-admin","change-adoption","security"]
 tags: ["copilot-notebooks","onenote","m365-copilot","knowledge-grounding","cloud-policy","mobile"]
 sources:
@@ -37,6 +37,15 @@ sources:
   - title: "Overview of Cloud Policy service for Microsoft 365"
     url: "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy"
     kind: "learn"
+  - title: "Supported Copilot resources for Tenant Configuration Management (preview)"
+    url: "https://learn.microsoft.com/graph/utcm-copilot-resources"
+    kind: "learn"
+  - title: "Supported resources for remediation and applyOnce (preview)"
+    url: "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources"
+    kind: "learn"
+  - title: "Create configurationMonitor"
+    url: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
+    kind: "learn"
 videos: []
 related: ["onenote-multimodal-capture-in-copilot-notebooks-windows","m365-copilot-copilot-chat-in-onenote-can-create-edit-and-refine-content"]
 controls:
@@ -46,8 +55,11 @@ controls:
       surface: "Microsoft 365 Apps admin center"
       path: "Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Create and view Copilot Pages and Copilot Notebooks"
       docs: "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration"
-    api: null
-    note: "Cloud Policy; applies to All users or a chosen group. Governs Notebooks as a whole, not image references. Existing items aren't deleted when disabled."
+    api:
+      kind: "graph"
+      call: "POST /beta/admin/configurationManagement/configurationMonitors"
+      docs: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
+    note: "Cloud Policy; governs creation and integration, not all access to existing items. Preview TCM applyOnce on tenant-level policies only; mode applyOnce, properties.value 0 or 1. Beta API, not for production."
   - governs: "Switch for JPG and PNG references in Copilot Notebooks"
     scope: "other"
     ui: null
@@ -55,26 +67,30 @@ controls:
     note: "Microsoft's notice MC1519842 says no new admin controls are introduced with this rollout."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-20"
+updated: "2026-11-21"
 roadmapModified: "2026-10-23T21:59:27"
 changes:
   - date: "2026-11-20"
     note: "First briefing: JPG and PNG files as Copilot Notebooks knowledge sources, launched, with no new admin control."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 47 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after the independent check: added the Graph beta applyOnce automation for the Cloud Policy setting, removed the claim that it is the only documented Notebooks control, and noted the preview reference's Microsoft 365 Copilot licence wording."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 64 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
-  date: "2026-11-20"
-  version: 1
+  date: "2026-11-21"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 44
-  unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "416c807118af5e407d583b8886bc00b0"
+  claims: 64
+  confirmed: 63
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 2
+  hash: "9b6bf4cda4dcae81fe6e28660dad414c"
 ---
 
 ## What's changing
@@ -102,7 +118,7 @@ The notice describes the capability as arriving automatically for organisations 
 
 **Security & identity**
 
-- The notice says no compliance considerations were identified and no new admin controls are introduced. The only documented Notebooks control is the creation policy in the controls table, which switches Notebooks on or off and does not target images.
+- The notice says no compliance considerations were identified and no new admin controls are introduced. The documented Cloud Policy setting governs Copilot Pages and Copilot Notebooks creation and integration, as the controls table shows. Microsoft Learn and the notice document no setting specific to images.
 
 **Autonomy & actions**
 
@@ -115,7 +131,7 @@ The notice describes the capability as arriving automatically for organisations 
 
 ## Cost and licensing
 
-Copilot Notebooks needs a licence: the Learn requirements page says "Users need the Microsoft Copilot or Copilot Chat license" for Copilot Notebooks. The roadmap item and Microsoft's notice name no additional licence for JPG and PNG references.
+Copilot Notebooks needs a licence: the Learn requirements page says "Users need the Microsoft Copilot or Copilot Chat license" for Copilot Notebooks. The preview Tenant Configuration Management reference instead says Copilot Notebooks require a Microsoft 365 Copilot license ([Supported Copilot resources for Tenant Configuration Management](https://learn.microsoft.com/graph/utcm-copilot-resources#copilotpagesnotebooks-resource-type)). The roadmap item and Microsoft's notice name no additional licence for JPG and PNG references.
 
 No meter, price or credit rate specific to image references is documented at the time of writing (November 2026). The indirect costs are admin and communication time. How image references count toward storage is not described on the Notebooks storage or requirements pages, so watch Learn for it.
 
@@ -150,14 +166,16 @@ The prerequisite documented on Learn is the Microsoft Copilot or Copilot Chat li
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether users can create and use Copilot Pages and Copilot Notebooks</strong><br><small>Tenant</small><br><small class="controls__note">Cloud Policy; applies to All users or a chosen group. Governs Notebooks as a whole, not image references. Existing items aren't deleted when disabled.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Create and view Copilot Pages and Copilot Notebooks <a href="https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether users can create and use Copilot Pages and Copilot Notebooks</strong><br><small>Tenant</small><br><small class="controls__note">Cloud Policy; governs creation and integration, not all access to existing items. Preview TCM applyOnce on tenant-level policies only; mode applyOnce, properties.value 0 or 1. Beta API, not for production.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Create and view Copilot Pages and Copilot Notebooks <a href="https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch for JPG and PNG references in Copilot Notebooks</strong><br><small class="controls__note">Microsoft's notice MC1519842 says no new admin controls are introduced with this rollout.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The only Notebooks control documented on Learn is a Cloud Policy setting that governs creation of Copilot Pages and Copilot Notebooks. It does not distinguish file types, so it cannot allow documents while excluding images. Policy changes take time to show: the Learn page says up to 90 minutes where policy configurations already existed and up to 24 hours where none did.
+The documented Cloud Policy setting governs Copilot Pages and Copilot Notebooks creation and integration. It does not distinguish file types, so it cannot allow documents while excluding images. Policy changes take time to show: the Learn page says up to 90 minutes where policy configurations already existed and up to 24 hours where none did.
 
 When creation is disabled, Learn says existing Pages and Notebooks aren't deleted and users can still view and edit existing items if they have permission, while the Notebooks module is hidden in the Copilot app. Microsoft Learn and the notice document no setting specific to JPG and PNG references; the second row records that gap.
+
+The automation for the Cloud Policy setting is the preview Tenant Configuration Management (TCM) API in Microsoft Graph beta. Preview TCM applyOnce: set mode to applyOnce and baseline.resources resourceType to microsoft.copilot.copilotpagesnotebooks, resourceVersion 1, properties.value to string 0 (disable) or 1 (enable). Tenant-level policies only; any group-level configuration of this setting causes failure. The calling app needs delegated ConfigurationMonitoring.ReadWrite.All, the TCM service principal delegated CopilotPolicySettings.ReadWrite, and the signed-in user the AI Administrator role. Beta APIs are not supported for production use.
 
 ## Open questions
 
@@ -172,12 +190,8 @@ cost: Low. Copilot Notebooks needs the Microsoft Copilot or Copilot Chat licence
 impact: Medium. People who use Copilot Notebooks notice it; Microsoft's notice names users with access to Copilot Notebooks as the affected group.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls table / absence: Microsoft has not documented automation for the Cloud Policy Notebooks creation setting. | Found: These resources also support remediation and applyOnce. ... The 20 Copilot resources are Office Cloud Policy Service (OCPS) settings. ... Controls whether users can create and view Copilot Pages and Copilot Notebooks | Fix: Set controls[0].api to kind graph, call 'POST /beta/admin/configurationManagement/configurationMonitors', docs https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta. Add to the note: 'Preview TCM applyOnce: set mode to applyOnce and baseline.resources resourceType to microsoft.copilot.copilotpagesnotebooks, resourceVersion 1, properties.value to string 0 (disable) or 1 (enable). Tenant-level policies only; any group-level configuration of this setting causes failure. The calling app needs delegated ConfigurationMonitoring.ReadWrite.All, the TCM service principal delegated CopilotPolicySettings.ReadWrite, and the signed-in user AI Administrator. Beta APIs are not supported for production use.' Cite https://learn.microsoft.com/graph/utcm-copilot-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. | Source: https://learn.microsoft.com/graph/utcm-copilot-resources#copilotpagesnotebooks-resource-type
-- [contradicted, blocker] Risk assessment: Security & identity; Governance controls / applicability: The creation policy is the only Notebooks control documented on Learn. | Found: Retention policies from Microsoft Purview Data Lifecycle Management configured for all SharePoint sites are enforced for all Copilot Pages and Copilot Notebooks. ... Data Loss Prevention (DLP): Rules enforced with end-user policy tip support. | Fix: Replace both exclusivity statements with: 'The documented Cloud Policy setting governs Copilot Pages and Copilot Notebooks creation and integration.' Do not call it the only documented Notebooks control. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary?view=o365-worldwide
-- [contradicted, blocker] Risk assessment: Security & identity; controls[0].note; Governance controls / applicability: The creation policy switches Notebooks on or off as a whole rather than selecting image file types. | Found: When creation is disabled, users are unable to create new Copilot Pages or Notebooks. ... Existing Copilot Pages and Notebooks aren't deleted. Users can still view and edit existing items if they have permission. | Fix: Replace 'switches Notebooks on or off' and 'Governs Notebooks as a whole' with 'governs creation and integration, not all access to existing items'. Retain the documented existing-item access explanation and the separate image-control gap. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.notes; Cost and licensing; Scope; rationale: cost / licensing: The Learn requirements page says Copilot Notebooks users need the Microsoft Copilot or Copilot Chat licence. | Found: Users need the Microsoft Copilot or Copilot Chat license. | Fix: Keep the attribution to the requirements page and add: 'The preview Tenant Configuration Management reference instead says Copilot Notebooks require a Microsoft 365 Copilot license.' Cite https://learn.microsoft.com/graph/utcm-copilot-resources#copilotpagesnotebooks-resource-type. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements
+- [unsupported, blocker] Governance controls: first paragraph / applicability: The Cloud Policy setting cannot allow documents while excluding images. | Found: Searched: "Create and view Copilot Pages and Copilot Notebooks" "file types" images documents; "Copilot Notebooks" "file types" policy image disable. Read cpcn-admin-configuration and utcm-copilot-resources; neither states this image-versus-document restriction. | Fix: Replace 'It does not distinguish file types, so it cannot allow documents while excluding images.' with 'At the time of writing (November 2026), the admin and TCM resource pages document no file-type selector for this setting.'
 -->

@@ -84,15 +84,17 @@ changes:
     note: "Corrected after the independent check: default state is now Not stated, with the Auto-apply and Anthropic-default rules; EU Data Boundary caveat narrowed; spending policy and Anthropic paths completed; watermark policy described as Learn documents it; Consumption tab step removed."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 76 statements not yet confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 91 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-21"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 76
-  confirmed: 76
+  claims: 91
+  confirmed: 91
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -209,10 +211,10 @@ cost: Variable. Microsoft's notice MC1560920 says each video and each refinement
 impact: Low. Per Microsoft's notice, users covered by a spending policy that includes the feature can create videos; Learn says Auto-apply new services can cover newly supported services automatically, so check which users your policies already reach.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].note; Risk assessment: Security & identity / role: License administrator can edit spending policies but cannot create them. | Found: AI administrator and License administrator roles can edit spending policies ... However, they can't create spending policies. / AI Reader, Global Reader, License Administrator, and other supported reader-based roles ... provide read-only access | Fix: Remove License administrator from the controls[0] note and the Security & identity sentence about editing policies. The cited setup page both permits License administrator edits and lists License Administrator among read-only roles, so it does not give consistent guidance for that role. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The spending-policy path is Copilot > Cost Management > Configuration > + Add spending policy > Define the policy scope > Identity > Select agents and services. | Found: Select the Configuration tab and then select + Add spending policy. / Define the policy scope / choose Identity as the scope. / Select agents and services / Set limits and alerts | Fix: Extend controls[0].ui.path and the rendered table path to 'Copilot > Cost Management > Configuration > + Add spending policy > Define the policy scope > Identity > Select agents and services > Set limits and alerts'. The printed route reaches service selection but stops before the row's credit limits. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The Anthropic access path is Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Anthropic. | Found: under Available subprocessors for your organization, select Anthropic, and Save. / Under Choose who can access Anthropic models for Copilot and generative AI experiences, select your users or groups and Save. | Fix: Set controls[1].ui.path and the rendered path to 'Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Choose who can access Anthropic models for Copilot and generative AI experiences'. The source gives the omitted heading and the user/group access section. | Source: https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The spending-policy path is Copilot > Cost Management > Configuration > + Add spending policy > Define the policy scope > Identity > Select agents and services. | Found: Select the Configuration tab and then select + Add spending policy. ... Define the policy scope ... choose Identity as the scope. ... Select agents and services ... Set limits and alerts | Fix: Set controls[0].ui.path and the rendered table path to 'Copilot > Cost Management > Configuration > + Add spending policy > Define the policy scope > Identity > Select agents and services > Set limits and alerts'. The existing route reaches service selection but stops before the credit-limit section. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits
+- [supported, minor] controls[0].note; Risk assessment: Security & identity; Governance controls table / role: License administrators can edit spending policies. | Found: License administrator roles can edit spending policies ... / AI Reader, Global Reader, License Administrator ... These roles provide read-only access ... and don't allow administrators to create or change spending policies | Fix: Remove License administrator from the controls[0] note, the rendered note and the Security & identity sentence about editing policies. The cited setup page both permits edits and lists License Administrator among read-only roles; retain only AI administrator in the editing statement. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: The Anthropic access path is Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Anthropic. | Found: under Available subprocessors for your organization, select Anthropic, and Save. ... Under Choose who can access Anthropic models for Copilot and generative AI experiences, select your users or groups and Save. | Fix: Set controls[1].ui.path and the rendered table path to 'Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Choose who can access Anthropic models for Copilot and generative AI experiences'. The existing steps are correct but omit the heading and stop before user/group access selection. | Source: https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor
 -->

@@ -124,15 +124,17 @@ changes:
     note: "Corrected after the independent check: replaced the EU/EFTA public-preview wording with the current two-setting route and noted that the general feature-settings reference lists the Work IQ setting default as Off."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 66 statements not yet confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 68 statements not yet confirmed"
 version: 6
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-21"
   version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 66
+  claims: 68
+  confirmed: 68
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -223,8 +225,10 @@ cost: Variable. The meter is Copilot Credits for Work IQ API and Cowork use; lic
 impact: Medium. Affects makers, process owners and users of agents that discover skills.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui; Governance controls: third row / admin-path: Allowed MCP Clients is reached through Manage > Environments > environment > Settings > Product > Features > Dataverse Model Context Protocol > Advanced Settings in Power Platform admin center. | Found: In Advanced Settings > Allowed MCP Clients, open Enterprise Copilot Platform, set Is Enabled to No, and then select Save & Close. | Fix: The path reaches the correct client list but stops before its control. In controls[2].ui.path and the rendered row, use 'Manage > Environments > environment > Settings > Product > Features > Dataverse Model Context Protocol > Go to Advanced Settings > Allowed MCP Clients > client > Is Enabled'. | Source: https://learn.microsoft.com/microsoft-sales-copilot/business-skills-dataverse#enable-business-skills-in-dataverse
+- [supported, minor] controls[1].ui; Governance controls: second row / admin-path: Tenant business-data availability is controlled at Microsoft 365 admin center > Copilot > Settings > View all > Business Applications data in Work IQ available to Copilot. | Found: select Copilot > Settings. ... select View all > Business Applications data in Work IQ available to Copilot. ... To turn off access for everyone, select No users. | Fix: The path reaches the correct settings pane but stops before the audience control. In controls[1].ui.path and the rendered row, use 'Copilot > Settings > View all > Business Applications data in Work IQ available to Copilot > No users' to show the tenant-wide off setting documented at https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings#cascading-control-settings. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings#cascading-control-settings
+- [supported, minor] controls[2].ui; Governance controls: third row / admin-path: Allowed MCP Clients is reached through Manage > Environments > environment > Settings > Product > Features > Dataverse Model Context Protocol > Advanced Settings > Allowed MCP Clients. | Found: In the Dataverse Model Context Protocol section, select Go to Advanced Settings. ... In Advanced Settings > Allowed MCP Clients, open Enterprise Copilot Platform, set Is Enabled to No | Fix: The path reaches the correct client list but stops before its control. In controls[2].ui.path and the rendered row, use 'Manage > Environments > environment > Settings > Product > Features > Dataverse Model Context Protocol > Go to Advanced Settings > Allowed MCP Clients > client > Is Enabled', as documented at https://learn.microsoft.com/microsoft-sales-copilot/business-skills-dataverse#enable-business-skills-in-dataverse. | Source: https://learn.microsoft.com/microsoft-sales-copilot/business-skills-dataverse#enable-business-skills-in-dataverse
+- [supported, minor] rationale: cost / cost: Cowork use consumes Copilot Credits. | Found: Copilot Cowork, Copilot Studio agents, and Work IQ API can consume Copilot credits from a shared tenant pool. | Fix: Add https://learn.microsoft.com/plugins/cost-considerations#manage-shared-copilot-credits to sources as 'Plan licensing and cost', kind 'learn', to support the existing rationale's Cowork Copilot Credits statement. | Source: https://learn.microsoft.com/plugins/cost-considerations#manage-shared-copilot-credits
 -->

@@ -3,11 +3,11 @@
   "roadmapId": 569211,
   "title": "Copilot Notebooks: JPG and PNG files as knowledge sources",
   "status": "held",
-  "date": "2026-11-20",
-  "version": 1,
+  "date": "2026-11-21",
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,36 +16,47 @@
     "reason": "failed",
     "since": "2026-11-20",
     "reasons": [
-      "3 blocking findings (claims 42, 44, 45)"
+      "1 blocking finding (claim 45)"
     ]
   },
   "counts": {
-    "claims": 47,
-    "confirmed": 44,
-    "unconfirmed": 0,
-    "contradicted": 3,
-    "blocker": 3,
+    "claims": 64,
+    "confirmed": 63,
+    "unconfirmed": 1,
+    "contradicted": 0,
+    "blocker": 1,
     "major": 0,
-    "minor": 1
+    "minor": 0
   },
-  "summary": "Hold: Microsoft documents preview automation for the Notebooks creation policy, contrary to the table's automation gap. The briefing also overstates that policy as switching Notebooks off completely and calls it the only documented control, although existing items can remain accessible and Microsoft documents other governance controls.",
+  "summary": "The rollout facts, licensing attribution and documented controls are supported. The statement that the Cloud Policy setting cannot allow documents while excluding images goes beyond Microsoft's documentation; describe the missing documented file-type selector instead of asserting that restriction is impossible.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; Scope; rationale: risk",
+      "where": "title; summary; What's changing; Scope",
       "type": "record",
-      "claim": "Copilot Notebooks supports JPG and PNG files as knowledge sources alongside traditional documents.",
+      "claim": "Copilot Notebooks supports JPG and PNG files as knowledge sources.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Copilot Notebooks now supports JPG and PNG files as knowledge sources, allowing users to bring images directly into their projects alongside traditional documents.",
+      "quote": "Copilot Notebooks now supports JPG and PNG files as knowledge sources",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "summary; What's changing; Why it matters; Risk assessment; Governance guidance",
+      "where": "What's changing",
       "type": "record",
-      "claim": "Copilot can use text, charts, diagrams and other visuals within referenced images as grounding context.",
+      "claim": "Users can bring images into notebooks alongside traditional documents.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "allowing users to bring images directly into their projects alongside traditional documents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "Copilot can use text, charts, diagrams and other visuals within these images as grounding context.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Copilot can use the content within these images, including text, charts, diagrams, and other visuals, as grounding context",
@@ -53,10 +64,10 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 4,
       "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
       "type": "record",
-      "claim": "The image content can ground generated presentations, reports and briefs.",
+      "claim": "Image grounding can help generate presentations, reports and briefs.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "as grounding context to help generate more relevant presentations, reports, and briefs.",
@@ -64,8 +75,8 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "front matter: status; summary; What's changing; changes",
+      "n": 5,
+      "where": "front matter: status; summary; What's changing",
       "type": "record",
       "claim": "The roadmap status is Launched.",
       "status": "supported",
@@ -75,7 +86,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is October CY2026.",
@@ -86,7 +97,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview date is September CY2026.",
@@ -97,10 +108,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 8,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The record lists Worldwide (Standard Multi-Tenant).",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -108,10 +119,10 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 9,
       "where": "front matter: platforms; What's changing; Risk assessment; Scope; Governance guidance",
       "type": "record",
-      "claim": "The record lists Android, iOS and Web.",
+      "claim": "The roadmap lists Android, iOS and Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Android\", \"iOS\", \"Web\"]",
@@ -119,10 +130,10 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 10,
       "where": "front matter: releasePhase; Scope",
       "type": "record",
-      "claim": "The record lists General Availability and Preview as release phases.",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -130,10 +141,10 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 11,
       "where": "front matter: products",
       "type": "record",
-      "claim": "The record associates this feature with OneNote and Microsoft Copilot (Microsoft 365).",
+      "claim": "The roadmap products are OneNote and Microsoft Copilot (Microsoft 365).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"products\": [\"OneNote\", \"Microsoft Copilot (Microsoft 365)\"]",
@@ -141,10 +152,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 12,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap record was modified at 2026-10-23T21:59:27.",
+      "claim": "The roadmap was modified at 2026-10-23T21:59:27.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-10-23T21:59:27\"",
@@ -152,10 +163,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 13,
       "where": "What's changing",
       "type": "record",
-      "claim": "Microsoft published MC1519842 on 2026-10-21.",
+      "claim": "MC1519842 was published on 2026-10-21.",
       "status": "supported",
       "source": "Message Center post MC1519842",
       "quote": "Published 2026-10-21; last updated 2026-10-21",
@@ -163,7 +174,7 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 14,
       "where": "What's changing; Scope; rationale: impact",
       "type": "record",
       "claim": "The notice identifies users with access to Copilot Notebooks who can use JPG and PNG grounding sources as affected.",
@@ -174,10 +185,21 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 15,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The notice names Microsoft OneNote and Copilot Notebooks as the platforms and services.",
+      "status": "supported",
+      "source": "Message Center post MC1519842",
+      "quote": "Platforms and services\n\n- Microsoft OneNote- Copilot Notebooks",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
       "where": "front matter: defaultState; What's changing; Why it matters; Risk assessment; Scope",
       "type": "default",
-      "claim": "The feature arrives automatically without admin action for organisations that already allow Copilot to reason over JPG and PNG files, supporting defaultState on.",
+      "claim": "The feature arrives automatically for organizations that already allow Copilot to reason over JPG and PNG files, supporting defaultState on.",
       "status": "supported",
       "source": "Message Center post MC1519842",
       "quote": "Organizations that already allow Copilot to reason over JPG and PNG files will receive this capability automatically.",
@@ -185,10 +207,10 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "summary; What's changing; controls[1].note; Risk assessment; Open questions; rationale: risk",
+      "n": 17,
+      "where": "summary; What's changing; Risk assessment; controls[1].note; rationale: risk",
       "type": "record",
-      "claim": "The rollout introduces no new admin controls.",
+      "claim": "The notice says no new admin controls are introduced with this rollout.",
       "status": "supported",
       "source": "Message Center post MC1519842",
       "quote": "No new admin controls or configuration changes are introduced with this rollout.",
@@ -196,10 +218,10 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 18,
       "where": "What's changing",
       "type": "record",
-      "claim": "The rollout introduces no configuration changes.",
+      "claim": "The notice says no configuration changes are introduced with this rollout.",
       "status": "supported",
       "source": "Message Center post MC1519842",
       "quote": "No new admin controls or configuration changes are introduced with this rollout.",
@@ -207,10 +229,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 19,
       "where": "summary; What's changing",
       "type": "record",
-      "claim": "Microsoft's notice says no action is required.",
+      "claim": "Microsoft says no action is required.",
       "status": "supported",
       "source": "Message Center post MC1519842",
       "quote": "No action is required.",
@@ -218,10 +240,10 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 20,
       "where": "summary; What's changing; Why it matters; Risk assessment; Governance guidance",
       "type": "record",
-      "claim": "Microsoft recommends notifying users once image knowledge sources become available in their organisation.",
+      "claim": "Microsoft recommends notifying users that images can be knowledge sources once the feature is available in their organization.",
       "status": "supported",
       "source": "Message Center post MC1519842",
       "quote": "We recommend that you notify users that image files can be used as knowledge sources in Copilot Notebooks once the feature becomes available in your organization.",
@@ -229,10 +251,10 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 21,
       "where": "What's changing",
       "type": "record",
-      "claim": "The notice says Worldwide public preview rollout has completed.",
+      "claim": "The notice says the Worldwide public preview rollout has completed.",
       "status": "supported",
       "source": "Message Center post MC1519842",
       "quote": "Public Preview (Worldwide): Rollout has completed.",
@@ -240,7 +262,7 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 22,
       "where": "What's changing; Scope",
       "type": "record",
       "claim": "The notice says Worldwide general availability rollout began in early October 2026.",
@@ -251,18 +273,18 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 23,
       "where": "What's changing; Scope",
       "type": "record",
       "claim": "The notice expected general availability rollout to complete by late October 2026.",
       "status": "supported",
       "source": "Message Center post MC1519842",
-      "quote": "and is expected to complete by late October 2026.",
+      "quote": "is expected to complete by late October 2026.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 22,
+      "n": 24,
       "where": "Risk assessment: Security & identity",
       "type": "record",
       "claim": "The notice says no compliance considerations were identified.",
@@ -273,21 +295,10 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "Scope",
-      "type": "record",
-      "claim": "The notice identifies Microsoft OneNote and Copilot Notebooks as the platforms and services concerned.",
-      "status": "supported",
-      "source": "Message Center post MC1519842",
-      "quote": "Platforms and services\n\n- Microsoft OneNote- Copilot Notebooks",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
+      "n": 25,
       "where": "Why it matters; Scope; Open questions",
       "type": "record",
-      "claim": "The notice does not name the existing image-reasoning control or describe rollout for organisations that do not allow image reasoning.",
+      "claim": "The supplied notice does not say what happens for organizations that do not already allow image reasoning.",
       "status": "supported",
       "source": "Message Center post MC1519842",
       "quote": "Organizations that already allow Copilot to reason over JPG and PNG files will receive this capability automatically.",
@@ -295,32 +306,54 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "The cited Learn administration and requirements pages do not describe JPG and PNG references.",
+      "n": 26,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap and notice describe image grounding for outputs, not a new autonomous action.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Copilot Notebooks JPG PNG image references admin control supported file types'; read cpcn-admin-configuration and cpcn-requirements in full. Neither describes JPG or PNG references.",
+      "source": "roadmap record",
+      "quote": "as grounding context to help generate more relevant presentations, reports, and briefs.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
-      "type": "licensing",
-      "claim": "The Learn requirements page says Copilot Notebooks users need the Microsoft Copilot or Copilot Chat licence.",
+      "n": 27,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The cited administration and requirements pages do not mention image references separately.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements",
-      "quote": "Users need the Microsoft Copilot or Copilot Chat license.",
-      "severity": "minor",
-      "fix": "Keep the attribution to the requirements page and add: 'The preview Tenant Configuration Management reference instead says Copilot Notebooks require a Microsoft 365 Copilot license.' Cite https://learn.microsoft.com/graph/utcm-copilot-resources#copilotpagesnotebooks-resource-type."
+      "source": null,
+      "quote": "Searched: Copilot Notebooks JPG PNG image references admin policy file types Graph PowerShell disable. Opened cpcn-admin-configuration and cpcn-requirements in full; neither describes image references.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 27,
+      "n": 28,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Learn says files added to Notebooks remain available in OneDrive and SharePoint where they are stored.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Files added to Notebooks remain available in OneDrive and SharePoint where they're stored",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "The administration page does not address image references separately from its general statement about referenced files.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Notebooks image references storage retention JPG PNG. Read cpcn-admin-configuration in full; its original-storage-locations statement does not distinguish image references.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
       "where": "front matter: licensing.model",
       "type": "licensing",
-      "claim": "Image references are a new option inside licensed Copilot Notebooks, so the licensing model is included under the standard's product-level requirement rule.",
+      "claim": "Image references are an option within licensed Copilot Notebooks, supporting the included licensing model.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements",
       "quote": "Copilot Notebooks\n\nUsers need the Microsoft Copilot or Copilot Chat license.",
@@ -328,43 +361,98 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 31,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "The requirements page says Copilot Notebooks users need the Microsoft Copilot or Copilot Chat license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements",
+      "quote": "Users need the Microsoft Copilot or Copilot Chat license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The preview TCM resource reference instead says Copilot Notebooks require a Microsoft 365 Copilot license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "Copilot Notebooks also require a Microsoft 365 Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "Neither the roadmap nor the supplied notice names an additional license for image references.",
+      "status": "supported",
+      "source": "Message Center post MC1519842",
+      "quote": "Users with access to Copilot Notebooks who can use JPG and PNG files as Copilot grounding sources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.notes; rationale: cost",
+      "type": "absence",
+      "claim": "No separate license specific to JPG and PNG references is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Notebooks JPG PNG images references license pricing meter credit rate; \"Copilot Notebooks\" \"licensing\" \"images\". Opened cpcn-requirements, utcm-copilot-resources and microsoft-365-copilot-licensing; no separate image-reference license found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No price specific to JPG and PNG references is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Notebooks JPG PNG images references license pricing meter credit rate. Opened cpcn-requirements and microsoft-365-copilot-licensing; read billing search excerpts, which concern Studio or AI Builder, not Notebooks image references.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to JPG and PNG references is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Notebooks JPG PNG images references license pricing meter credit rate. Read cpcn-requirements, microsoft-365-copilot-licensing and Studio billing search excerpts; no Notebooks image-reference meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
       "where": "Cost and licensing",
       "type": "absence",
-      "claim": "The roadmap record and notice name no additional licence specifically for JPG and PNG references.",
+      "claim": "No credit rate specific to image references is documented at the time of writing.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Copilot Notebooks JPG PNG image references additional license pricing credits meter'; read roadmap description and MC1519842 in full. Neither specifies an additional image-reference licence.",
+      "quote": "Searched: Copilot Notebooks JPG PNG images references license pricing meter credit rate. Read cpcn-requirements and search excerpts for Billing rates and management and AI Builder licensing; the published rates concern other products.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "n": 38,
+      "where": "Cost and licensing",
       "type": "absence",
-      "claim": "No separate licence, price or credit rate specifically for JPG and PNG references is documented.",
+      "claim": "The Notebooks storage and requirements pages do not separately describe how image references count toward storage.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Copilot Notebooks JPG PNG image references additional license pricing credits meter'; opened cpcn-requirements, Microsoft Copilot licensing and pay-as-you-go/meters. No image-reference-specific licence, price or rate found.",
+      "quote": "Searched: Copilot Notebooks image references storage retention JPG PNG. Opened cpcn-storage and cpcn-requirements in full; they describe general notebook quotas but no separate accounting for image references.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No meter specific to image references is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Copilot Notebooks JPG PNG image references additional license pricing credits meter'; read cpcn-requirements and pay-as-you-go/meters. The meter page covers Chat agents and SharePoint agents, not Notebooks image references.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "controls[0].ui; Governance controls table; Governance guidance",
+      "n": 39,
+      "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "The creation setting is reached in Microsoft 365 Apps admin center via Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Create and view Copilot Pages and Copilot Notebooks.",
+      "claim": "The Microsoft 365 Apps admin center path through Customization, Policy Management, a policy configuration, Choose the scope and Configure Settings reaches Create and view Copilot Pages and Copilot Notebooks.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
       "quote": "Select Customization from the left pane. Select Policy Management. Create a new policy configuration or edit an existing one. From the Choose the scope dropdown list ... In Configure Settings ... Create and view Copilot Pages and Copilot Notebooks",
@@ -372,8 +460,19 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "controls[0].governs; controls[0].note; Governance controls",
+      "n": 40,
+      "where": "controls[0].api; Governance controls table; Governance controls prose",
+      "type": "command",
+      "claim": "POST /beta/admin/configurationManagement/configurationMonitors can apply the Cloud Policy baseline once using applyOnce mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors; applies a desired-state baseline once in applyOnce mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[0].governs; controls[0].note; Risk assessment; Governance controls",
       "type": "applicability",
       "claim": "The Cloud Policy setting governs Copilot Pages and Copilot Notebooks creation and integration.",
       "status": "supported",
@@ -383,54 +482,54 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "controls[0].scope; controls[0].note; Governance controls table",
+      "n": 42,
+      "where": "controls[0].note; Governance controls table",
       "type": "applicability",
-      "claim": "The policy can be applied to all tenant users or a selected group.",
+      "claim": "The creation policy does not block all access to existing items.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
-      "quote": "From the Choose the scope dropdown list, choose either All users or select the group for which you want to apply the policy.",
+      "quote": "Existing Copilot Pages and Notebooks aren't deleted. Users can still view and edit existing items if they have permission.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
-      "where": "controls[0].note; Governance controls table; Governance controls",
-      "type": "behaviour",
-      "claim": "Disabling creation does not delete existing Pages or Notebooks.",
+      "n": 43,
+      "where": "controls[1].ui and controls[1].api; Risk assessment; Governance controls",
+      "type": "absence",
+      "claim": "No separate admin UI or automation switch specific to JPG and PNG references in Copilot Notebooks is documented.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
-      "quote": "Existing Copilot Pages and Notebooks aren't deleted.",
+      "source": null,
+      "quote": "Searched: Copilot Notebooks JPG PNG image references admin policy file types Graph PowerShell disable; \"Copilot Notebooks\" \"JPG\" \"PNG\" \"Graph\"; \"Copilot Notebooks\" \"image\" \"PowerShell\" policy. Read cpcn-admin-configuration and utcm-copilot-resources; no image switch found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
+      "n": 44,
+      "where": "Governance controls: first paragraph",
+      "type": "absence",
+      "claim": "The documented Cloud Policy setting does not describe file-type distinctions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Create and view Copilot Pages and Copilot Notebooks\" \"file types\" images documents. Read cpcn-admin-configuration and utcm-copilot-resources; the setting descriptions give enable/disable states, not file-type selections.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls: first paragraph",
+      "type": "applicability",
+      "claim": "The Cloud Policy setting cannot allow documents while excluding images.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Create and view Copilot Pages and Copilot Notebooks\" \"file types\" images documents; \"Copilot Notebooks\" \"file types\" policy image disable. Read cpcn-admin-configuration and utcm-copilot-resources; neither states this image-versus-document restriction.",
+      "severity": "blocker",
+      "fix": "Replace 'It does not distinguish file types, so it cannot allow documents while excluding images.' with 'At the time of writing (November 2026), the admin and TCM resource pages document no file-type selector for this setting.'"
+    },
+    {
+      "n": 46,
       "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Users can still view and edit existing items when creation is disabled if they have permission.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
-      "quote": "Users can still view and edit existing items if they have permission.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The Notebooks module is hidden in the Copilot app when creation is disabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
-      "quote": "the Notebooks module is hidden, preventing users from accessing existing Notebooks through the Copilot App.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Policy changes can take up to 90 minutes where policy configurations already existed.",
+      "type": "date",
+      "claim": "Policy changes take up to 90 minutes to be reflected when policy configurations already existed.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
       "quote": "If there were existing policy configurations before the change, the change takes up to 90 minutes to be reflected.",
@@ -438,10 +537,10 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 47,
       "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Policy changes can take up to 24 hours where no policy configurations previously existed.",
+      "type": "date",
+      "claim": "Policy changes take up to 24 hours to be reflected when no policy configurations existed.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
       "quote": "If there were no policy configurations before the change, the change takes up to 24 hours to be reflected.",
@@ -449,113 +548,201 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "Risk assessment: Data exposure",
+      "n": 48,
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Learn says files added to Notebooks remain available in their original OneDrive and SharePoint locations.",
+      "claim": "Disabling creation does not delete existing Pages and Notebooks.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
-      "quote": "Original storage locations: Files added to Notebooks remain available in OneDrive and SharePoint where they're stored",
+      "quote": "Existing Copilot Pages and Notebooks aren't deleted.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
-      "where": "Risk assessment: Data exposure; Open questions",
-      "type": "absence",
-      "claim": "The documentation does not separately describe where a newly added image reference is stored.",
+      "n": 49,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Learn says users can still view and edit existing items if they have permission.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Copilot Notebooks image references stored uploaded files OneDrive JPG PNG retention'; opened cpcn-admin-configuration, cpcn-requirements and cpcn-storage. They describe files and notebook storage generally, not new image-reference ingestion.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "The Notebooks storage and requirements pages do not describe storage accounting specifically for image references.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Copilot Notebooks JPG PNG references licensing price meter storage retention sensitivity labels'; read cpcn-storage and cpcn-requirements. General notebook quotas are described; separate image-reference accounting is not.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "controls[0].api; Governance controls table",
-      "type": "absence",
-      "claim": "Microsoft has not documented automation for the Cloud Policy Notebooks creation setting.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources#copilotpagesnotebooks-resource-type",
-      "quote": "These resources also support remediation and applyOnce. ... The 20 Copilot resources are Office Cloud Policy Service (OCPS) settings. ... Controls whether users can create and view Copilot Pages and Copilot Notebooks",
-      "severity": "blocker",
-      "fix": "Set controls[0].api to kind graph, call 'POST /beta/admin/configurationManagement/configurationMonitors', docs https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta. Add to the note: 'Preview TCM applyOnce: set mode to applyOnce and baseline.resources resourceType to microsoft.copilot.copilotpagesnotebooks, resourceVersion 1, properties.value to string 0 (disable) or 1 (enable). Tenant-level policies only; any group-level configuration of this setting causes failure. The calling app needs delegated ConfigurationMonitoring.ReadWrite.All, the TCM service principal delegated CopilotPolicySettings.ReadWrite, and the signed-in user AI Administrator. Beta APIs are not supported for production use.' Cite https://learn.microsoft.com/graph/utcm-copilot-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources."
-    },
-    {
-      "n": 43,
-      "where": "controls[1].ui and api; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Microsoft documents no admin UI or API setting specifically for JPG and PNG references in Copilot Notebooks.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Copilot Notebooks JPG PNG references admin image reasoning policy switch'; read cpcn-admin-configuration, copilotPolicySetting supported settings and utcm-copilot-resources. No image-reference-specific switch found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Risk assessment: Security & identity; Governance controls",
-      "type": "applicability",
-      "claim": "The creation policy is the only Notebooks control documented on Learn.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary?view=o365-worldwide",
-      "quote": "Retention policies from Microsoft Purview Data Lifecycle Management configured for all SharePoint sites are enforced for all Copilot Pages and Copilot Notebooks. ... Data Loss Prevention (DLP): Rules enforced with end-user policy tip support.",
-      "severity": "blocker",
-      "fix": "Replace both exclusivity statements with: 'The documented Cloud Policy setting governs Copilot Pages and Copilot Notebooks creation and integration.' Do not call it the only documented Notebooks control."
-    },
-    {
-      "n": 45,
-      "where": "Risk assessment: Security & identity; controls[0].note; Governance controls",
-      "type": "applicability",
-      "claim": "The creation policy switches Notebooks on or off as a whole rather than selecting image file types.",
-      "status": "contradicted",
       "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
-      "quote": "When creation is disabled, users are unable to create new Copilot Pages or Notebooks. ... Existing Copilot Pages and Notebooks aren't deleted. Users can still view and edit existing items if they have permission.",
-      "severity": "blocker",
-      "fix": "Replace 'switches Notebooks on or off' and 'Governs Notebooks as a whole' with 'governs creation and integration, not all access to existing items'. Retain the documented existing-item access explanation and the separate image-control gap."
-    },
-    {
-      "n": 46,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The roadmap and supplied notice describe image grounding and do not announce autonomous actions.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Copilot can use the content within these images, including text, charts, diagrams, and other visuals, as grounding context to help generate more relevant presentations, reports, and briefs.",
+      "quote": "Users can still view and edit existing items if they have permission.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
+      "n": 50,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Disabling creation hides the Notebooks module in the Microsoft Copilot app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "the Notebooks module is hidden, preventing users from accessing existing Notebooks through the Copilot App.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
       "where": "controls[0].note; Governance controls",
-      "type": "absence",
-      "claim": "The creation policy does not distinguish file types and does not provide an option to allow documents while excluding image references.",
+      "type": "availability",
+      "claim": "TCM applyOnce is a preview capability in Microsoft Graph beta.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Copilot Notebooks JPG PNG references admin image reasoning policy switch'; read cpcn-admin-configuration and utcm-copilot-resources. The creation policy has enabled/disabled states, not file-type choices.",
+      "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
+      "quote": "These capabilities are available in preview through Microsoft Graph beta.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The monitor mode is set to applyOnce for one-time configuration application.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "mode ... The possible values are: monitorOnly, applyOnce, unknownFutureValue. Optional; defaults to monitorOnly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls: automation paragraph",
+      "type": "command",
+      "claim": "The baseline.resources entry identifies this setting with resourceType microsoft.copilot.copilotpagesnotebooks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "\"resourceType\": \"microsoft.copilot.copilotpagesnotebooks\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls: automation paragraph",
+      "type": "command",
+      "claim": "The Copilot Pages and Notebooks baseline resource uses resourceVersion 1.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "\"resourceType\": \"microsoft.copilot.copilotpagesnotebooks\", \"resourceVersion\": 1",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The resource properties.value is string 0 to disable the setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "value | Write | String ... 0 disables the setting; 1 enables the setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The resource properties.value is string 1 to enable the setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "\"properties\": { \"value\": \"1\" }; 0 disables the setting; 1 enables the setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[0].scope and note; Governance controls",
+      "type": "applicability",
+      "claim": "TCM supports this Copilot setting only in tenant-level policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
+      "quote": "TCM supports these settings only in tenant-level policies in the Microsoft 365 Apps admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls: automation paragraph",
+      "type": "behaviour",
+      "claim": "Any group-level policy configuration of the target setting makes applyOnce fail for that resource.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
+      "quote": "ensure that the target setting isn't configured in any group-level policy ... If it is, monitoring, snapshots, remediation, and applyOnce fail for that resource.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls: automation paragraph",
+      "type": "command",
+      "claim": "The calling app needs delegated ConfigurationMonitoring.ReadWrite.All for applyOnce.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "Creating an applyOnce monitor supports delegated permissions only. In addition to the calling app's delegated ConfigurationMonitoring.ReadWrite.All permission",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance controls: automation paragraph",
+      "type": "command",
+      "claim": "The TCM service principal needs delegated CopilotPolicySettings.ReadWrite for this resource.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
+      "quote": "Resource | Delegated permission on the TCM service principal ... microsoft.copilot.copilotpagesnotebooks | CopilotPolicySettings.ReadWrite | AI Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls: automation paragraph",
+      "type": "role",
+      "claim": "The signed-in user needs the AI Administrator role for this resource's applyOnce operation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "For remediation and applyOnce, AI Administrator is the least-privileged Microsoft Entra role for the signed-in user ... applies to the user, not to the TCM service principal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[0].note; Governance controls",
+      "type": "availability",
+      "claim": "Microsoft Graph beta APIs are not supported for production use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "APIs under the /beta version in Microsoft Graph are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The low cost rating reflects communication and admin time for this change rather than a documented new image-reference charge.",
+      "status": "supported",
+      "source": "Message Center post MC1519842",
+      "quote": "No action is required. We recommend that you notify users that image files can be used as knowledge sources in Copilot Notebooks once the feature becomes available in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Open questions: first bullet",
+      "type": "record",
+      "claim": "The notice refers to organizations that already allow image reasoning without naming the control responsible.",
+      "status": "supported",
+      "source": "Message Center post MC1519842",
+      "quote": "Organizations that already allow Copilot to reason over JPG and PNG files will receive this capability automatically.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-20T21:42:41.039Z",
+    "at": "2026-11-21T01:58:50.156Z",
     "summary": {
-      "links": 5,
+      "links": 9,
       "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
-      "apiCalls": 0,
+      "apiCalls": 1,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
@@ -584,6 +771,26 @@
         "url": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/utcm-copilot-resources#copilotpagesnotebooks-resource-type",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -602,9 +809,25 @@
           "Create and view Copilot Pages and Copilot Notebooks"
         ],
         "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether users can create and use Copilot Pages and Copilot Notebooks",
+        "docs": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/admin/configurationManagement",
+        "found": true
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-20",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

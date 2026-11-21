@@ -4,7 +4,7 @@ slug: "microsoft-teams-meeting-shared-files"
 roadmapId: 570427
 topic: "m365-copilot"
 products: ["Microsoft Teams","Microsoft Copilot (Microsoft 365)"]
-summary: "Planned for January CY2027: organisers add files and links to a Teams meeting, which are shared with all participants and used by Facilitator for grounding. Default and controls are not yet documented."
+summary: "Planned for January CY2027: users add files and links to a Teams meeting, which are shared with all participants and used by Facilitator for grounding. Default and controls are not yet documented."
 status: "in-development"
 releasePhase: ["General Availability","Targeted Release"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -31,6 +31,9 @@ sources:
   - title: "Update-M365TeamsApp"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp"
     kind: "learn"
+  - title: "Use app centric management to manage access to apps"
+    url: "https://learn.microsoft.com/microsoftteams/app-centric-management"
+    kind: "learn"
 videos: []
 related: ["microsoft-teams-facilitator-in-gcc","teams-ai-generated-meeting-memory","meeting-policy","microsoft-teams-default-meeting-templates","meeting-transcripts"]
 controls:
@@ -42,9 +45,9 @@ controls:
       docs: "https://learn.microsoft.com/microsoftteams/facilitator-teams"
     api:
       kind: "powershell"
-      call: "Update-M365TeamsApp -Id <app id> -IsBlocked $true"
+      call: "Update-M365TeamsApp -Id <app id> -IsBlocked <Boolean>"
       docs: "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp"
-    note: "Governs Facilitator, not the Meeting Shared Files feature. A group can be allowed through an app permission policy."
+    note: "Governs Facilitator, not Meeting Shared Files. The reference calls IsBlocked the tenant app state, but its Example 3 describes $true as unblocking; confirm the intended state before using automation."
   - governs: "A tenant switch for Meeting Shared Files"
     scope: "tenant"
     ui: null
@@ -52,33 +55,37 @@ controls:
     note: "Microsoft Learn documents no such setting at the time of writing (November 2026); the feature is still In development."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-20"
+updated: "2026-11-21"
 roadmapModified: "2026-10-19T23:15:15"
 changes:
   - date: "2026-11-20"
     note: "New briefing: Meeting Shared Files is known only from the roadmap item (target January CY2027); Facilitator's allow or block control is the only documented lever."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 56 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after the independent check: users, not organisers, are named as adding files; removed a visibility claim; Facilitator availability is now an alternative lever, with app-centric management wording and the IsBlocked caveat."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 57 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-20"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-21"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 53
-  unconfirmed: 2
+  claims: 57
+  confirmed: 56
+  unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "3155a32c65ae971a004160a20a58e26d"
+  attempts: 0
+  hash: "99d392c801e87cc0a928614a837b6bc2"
 ---
 
 ## What's changing
 
 Meeting Shared Files lets users add files and links to a Teams meeting so they are easy to reach and are shared automatically with all meeting participants. The roadmap item also says AI in the meeting, such as the Facilitator agent, uses these files for targeted grounding (answering from a chosen set of content) to answer questions and enhance skill functionality.
 
-Microsoft Learn does not describe Meeting Shared Files yet, so what follows about its behaviour is the roadmap's description. Which file locations are supported, how sharing is granted, whether sensitivity labels or external participants are handled, and where an organiser adds the files are not stated at the time of writing (November 2026).
+Microsoft Learn does not describe Meeting Shared Files yet, so what follows about its behaviour is the roadmap's description. Which file locations are supported, how sharing is granted, whether sensitivity labels or external participants are handled, and where users add the files are not stated at the time of writing (November 2026).
 
 The roadmap item lists the status as In development, with a target of January CY2027. Release phases are General Availability and Targeted Release, platforms are Desktop, Mac and Web, and the cloud is Worldwide (Standard Multi-Tenant). These dates are targets, not commitments.
 
@@ -86,7 +93,7 @@ Facilitator itself is documented. Microsoft's Facilitator page describes it as a
 
 ## Why it matters
 
-This feature puts organiser-chosen content in front of every participant and in front of an AI agent whose answers everyone in the meeting can read. It is the organiser, not an administrator, who chooses the files, so oversharing becomes a meeting-by-meeting decision that a service owner cannot see in advance.
+This feature puts user-added content in front of every participant and in front of an AI agent whose answers everyone in the meeting can read. The roadmap says users add the content; it does not identify which meeting roles can do so.
 
 Microsoft has not stated what happens on arrival, so plan on the basis that no source says existing behaviour changes, and watch the roadmap item and Message center for the rollout notice. Decide now who in your organisation hosts meetings with sensitive material, and what you will tell them before the target month.
 
@@ -105,19 +112,19 @@ Microsoft has not stated what happens on arrival, so plan on the basis that no s
 - The roadmap describes Facilitator using the files to answer questions and to enhance skill functionality. Microsoft has not said which skills read the files or whether any write actions result.
 
 **Change & support**
-- Organisers will ask where files appear and who can see them. Microsoft has not published user guidance for the feature yet, so expect questions to the help desk once it rolls out.
+- Users will ask where files appear and who can see them. Microsoft has not published user guidance for the feature yet, so expect questions to the help desk once it rolls out.
 
 ## Cost and licensing
 
 Microsoft's Facilitator page says Facilitator is included with a Microsoft Copilot license and subject to available capacity. Its prerequisites are an eligible Microsoft 365 base licence, an eligible Teams licence and a Microsoft Copilot licence, and the page says only licensed users can initiate Facilitator; unlicensed users can see others' prompts and Facilitator's responses.
 
-A price, meter or licence specific to Meeting Shared Files is not yet published. The roadmap item names Microsoft Teams and Microsoft Copilot (Microsoft 365) as the products. The known indirect cost is admin and communication time for organisers.
+A price, meter or licence specific to Meeting Shared Files is not yet published. The roadmap item names Microsoft Teams and Microsoft Copilot (Microsoft 365) as the products. The known indirect cost is admin and communication time for users and organisers.
 
 ## Scope
 
 The roadmap item lists the Worldwide (Standard Multi-Tenant) cloud only, with Desktop, Mac and Web as platforms. It lists no other clouds; the item does not state whether the feature will be offered elsewhere.
 
-The audience is meeting organisers and participants in Teams, plus Facilitator in the meeting. The Facilitator page says users need the Facilitator licence prerequisites above, and Loop experiences in Teams for Facilitator in meetings turned on, to use Facilitator in a meeting. Whether Meeting Shared Files itself has those prerequisites is not stated.
+The roadmap describes users adding files and links, meeting participants receiving them, and Facilitator in the meeting using them. The Facilitator page says users need the Facilitator licence prerequisites above, and Loop experiences in Teams for Facilitator in meetings turned on, to use Facilitator in a meeting. Whether Meeting Shared Files itself has those prerequisites is not stated.
 
 ## Governance guidance
 
@@ -141,14 +148,14 @@ The audience is meeting organisers and participants in Teams, plus Facilitator i
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Facilitator is allowed or blocked for the organisation</strong><br><small>Tenant</small><br><small class="controls__note">Governs Facilitator, not the Meeting Shared Files feature. A group can be allowed through an app permission policy.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Facilitator › Allow or Block <a href="https://learn.microsoft.com/microsoftteams/facilitator-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app id&gt; -IsBlocked $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Facilitator is allowed or blocked for the organisation</strong><br><small>Tenant</small><br><small class="controls__note">Governs Facilitator, not Meeting Shared Files. The reference calls IsBlocked the tenant app state, but its Example 3 describes $true as unblocking; confirm the intended state before using automation.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Facilitator › Allow or Block <a href="https://learn.microsoft.com/microsoftteams/facilitator-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app id&gt; -IsBlocked &lt;Boolean&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>A tenant switch for Meeting Shared Files</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no such setting at the time of writing (November 2026); the feature is still In development.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-No setting for Meeting Shared Files itself is documented on Microsoft Learn at the time of writing (November 2026). The one documented control is Facilitator's availability, and it governs whether Facilitator is available, not whether organisers can add files to a meeting.
+No setting for Meeting Shared Files itself is documented on Microsoft Learn at the time of writing (November 2026). The table documents Facilitator's availability as an alternative lever, and it governs whether Facilitator is available, not whether users can add files to a meeting.
 
-Per the Facilitator page, Facilitator is allowed by default, and if all apps are blocked for the organisation Facilitator is also blocked. Allowing it for a group of users uses an app permission policy and app-centric management. This is today's alternative, and whether it also stops Facilitator using Meeting Shared Files is not stated.
+Per the Facilitator page, Facilitator is allowed by default, and if all apps are blocked for the organisation Facilitator is also blocked. Facilitator access for groups can be managed with app-centric management. In tenants migrated to app-centric management, app permission policies are no longer available. Whether blocking Facilitator also stops it using Meeting Shared Files is not stated.
 
 ## Open questions
 
@@ -160,16 +167,12 @@ Per the Facilitator page, Facilitator is allowed by default, and if all apps are
 <!-- rationale
 risk: Medium. The roadmap says content added to a meeting is shared automatically with all participants and used by AI in the meeting, and Microsoft Learn documents no setting for the feature yet.
 cost: Low. The only documented cost is admin time; Facilitator is included with a Microsoft Copilot licence, and licensing specific to Meeting Shared Files is not yet published.
-impact: Medium. Meeting organisers who add files and every participant who receives them notice it, and Facilitator answers in the meeting for everyone to see.
+impact: Medium. Users who add files and every participant who receives them notice it, and Facilitator answers in the meeting for everyone to see.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] summary; Why it matters; rationale: impact / role: It is the meeting organiser, not an administrator, who chooses the files. | Found: Searched: '"Meeting Shared Files" "organizer" Facilitator' and '"Meeting Shared Files" Teams Facilitator files links default sharing external participants organizer admin policy'; opened facilitator-teams. The roadmap says users; no role restriction was found. | Fix: Replace 'It is the organiser, not an administrator, who chooses the files, so oversharing becomes a meeting-by-meeting decision that a service owner cannot see in advance.' with 'The roadmap says users add the content; it does not identify which meeting roles can do so.' Use 'users' instead of 'organisers' for factual statements about who selects or adds files in the summary, Why it matters and impact rationale. Keep organiser-focused advice as advice.
-- [unsupported, major] Why it matters / behaviour: A service owner cannot see the file-selection decision in advance. | Found: Searched: '"Meeting Shared Files" "organizer" Facilitator' and '"Meeting Shared Files" Teams Facilitator files links default sharing external participants organizer admin policy'; opened facilitator-teams and ai-teams-facilitator. Neither states this visibility limitation. | Fix: Remove 'that a service owner cannot see in advance'; Microsoft has not documented that visibility limitation.
-- [contradicted, blocker] front matter: changes; Governance controls / absence: Facilitator's allow or block control is the only documented lever. | Found: Loop experiences in Teams need to be turned on in order for Facilitator to be used in meetings. ... You can manage this control using the IsCollabMeetingNotesFluidEnabled setting in PowerShell. | Fix: Replace 'Facilitator's allow or block control is the only documented lever' in changes with 'Facilitator availability is a documented alternative lever'. Replace 'The one documented control is Facilitator's availability' in Governance controls with 'The table documents Facilitator's availability as an alternative lever'. Do not claim that this is the only documented Facilitator control. | Source: https://learn.microsoft.com/microsoftteams/facilitator-teams
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].api; Governance controls table / command: Update-M365TeamsApp -Id <app id> -IsBlocked $true is a MicrosoftTeams command for changing app state in the tenant. | Found: Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true ... Unblocks Bookings app ... -IsBlocked: The state of the app in the tenant. ... Type: Boolean | Fix: Use 'Update-M365TeamsApp -Id <app id> -IsBlocked <Boolean>' and add to the row note: 'The reference describes IsBlocked as the tenant app state, but Example 3 describes $true as unblocking; confirm the intended state before using automation.' The command and parameter exist, but the reference does not consistently explain the printed value. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp
-- [supported, minor] controls[0].note; Governance controls / applicability: Groups can be allowed Facilitator using an app permission policy and app-centric management. | Found: To allow Facilitator for users, a new app policy needs to be created and then assigned to users. ... You can then assign the policy to your entire tenant or to a select group of users. | Fix: Replace the policy wording in the row note and Governance controls with 'Facilitator access for groups can be managed with app-centric management. In tenants migrated to app-centric management, app permission policies are no longer available.' Cite https://learn.microsoft.com/microsoftteams/app-centric-management, which states: 'After you switch to this feature, you can't access, edit, or use permission policies.' The Facilitator page supports the original wording but the management page qualifies it. | Source: https://learn.microsoft.com/microsoftteams/facilitator-teams
+- [supported, minor] front matter: licensing.model / licensing: The licensing model is included for this new option inside Teams, with feature-specific licensing unpublished. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Keep model 'included', but add to licensing.notes and Cost and licensing: 'Except for joining Teams meetings anonymously, each user in the organisation must have a Teams license before using Teams, according to Manage Teams licenses.' Cite https://learn.microsoft.com/microsoftteams/user-access. Retain the separate Facilitator prerequisites and the feature-specific licensing gap. | Source: https://learn.microsoft.com/microsoftteams/user-access
+- [contradicted, minor] Governance guidance: After rollout; controls[0] / consistency: The checklist recommends restricting Facilitator for groups, but the table provides only its tenant-wide Allow or Block control. | Found: After rollout: 'decide whether to restrict Facilitator for those groups.' controls[0]: 'Whether Facilitator is allowed or blocked for the organisation'; scope: 'tenant'. | Fix: Replace the After rollout bullet with 'Review support requests about files visible to the wrong participants and decide whether to allow or block Facilitator for the organisation.' This aligns the checklist with the existing tenant-level row without adding a control.
 -->

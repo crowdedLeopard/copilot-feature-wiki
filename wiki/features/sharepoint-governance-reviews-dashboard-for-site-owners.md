@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "unknown"
 action: "prepare"
 licensing:
-  model: "mixed"
-  notes: "No licence for the dashboard itself is published. The site lifecycle policies that send comparable reviews need a base Microsoft 365 subscription plus a Microsoft Copilot licence, the SharePoint Advanced Management Plan 1 add-on or Microsoft 365 E7."
+  model: "included"
+  notes: "To access SharePoint, users need a licence that includes SharePoint; requirements specific to the dashboard are not yet published. Background: the site lifecycle policies that send comparable reviews need a base Microsoft 365 subscription plus a Microsoft Copilot licence, the SharePoint Advanced Management Plan 1 add-on or Microsoft 365 E7."
 audiences: ["m365-admin","service-owner","change-adoption","compliance"]
 tags: ["sharepoint","sharepoint-advanced-management","lifecycle","governance","policy"]
 sources:
@@ -40,6 +40,9 @@ sources:
   - title: "Prerequisites for SharePoint Advanced Management"
     url: "https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites"
     kind: "learn"
+  - title: "SharePoint service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description"
+    kind: "learn"
 videos: []
 related: ["sharepoint-admin-center-data-access-governance-permission-report-for-a-given-group"]
 controls:
@@ -52,18 +55,18 @@ controls:
     scope: "site"
     ui:
       surface: "SharePoint admin center"
-      path: "Policies > Site lifecycle management > Site attestation policies > Open > Create a policy"
+      path: "Policies > Site lifecycle management > Site attestation policies > Open > Create a policy > Overview > Set policy scope"
       docs: "https://learn.microsoft.com/sharepoint/request-site-attestations"
     api: null
-    note: "Existing policy that emails review requests; not confirmed as the source of dashboard items. Steps start from a SharePoint administrator."
+    note: "Existing policy that emails review requests; not confirmed as the source of dashboard items. Steps start from a SharePoint administrator. Choose the target sites on Set policy scope."
   - governs: "Which sites owners are asked to confirm as still in use (existing inactive site policy)"
     scope: "site"
     ui:
       surface: "SharePoint admin center"
-      path: "Policies > Site lifecycle management > Inactive site policies > Open > + Create policy"
+      path: "Policies > Site lifecycle management > Inactive site policies > Open > + Create policy > Set policy scope"
       docs: "https://learn.microsoft.com/sharepoint/inactive-site-policy"
     api: null
-    note: "Existing policy that emails owners or site admins; not confirmed as the source of dashboard items."
+    note: "Existing policy that emails owners or site admins; not confirmed as the source of dashboard items. Choose the target sites on Set policy scope."
   - governs: "Which sites must meet an ownership requirement (existing site ownership policy)"
     scope: "site"
     ui:
@@ -71,29 +74,33 @@ controls:
       path: "Policies > Site lifecycle management > Site ownership policies > Open > + Create policy"
       docs: "https://learn.microsoft.com/sharepoint/site-ownership-policy"
     api: null
-    note: "Existing policy that notifies selected recipients; not confirmed as the source of dashboard items."
+    note: "Existing policy that notifies selected recipients; not confirmed as the source of dashboard items. This opens the policy creation wizard. Choose the target sites on Set policy scope, then set ownership criteria on Configure policy."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-20"
+updated: "2026-11-21"
 roadmapModified: "2026-10-09T22:04:35"
 changes:
   - date: "2026-11-20"
     note: "New briefing: roadmap-only description of the dashboard, set beside the documented site lifecycle management policies it appears to relate to."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 68 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after the independent check: licensing model now rests on the SharePoint licence requirement, removed the unsupported 'no new data' statements, and completed three policy paths."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-20"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-21"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 66
-  unconfirmed: 2
+  claims: 63
+  confirmed: 63
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "813eaf16bfcdc2dde05d9e90fb371b93"
+  attempts: 0
+  hash: "b19fcb45117fc4e877b36aab1489c63b"
 ---
 
 ## What's changing
@@ -106,7 +113,7 @@ The roadmap item is In development with a target of November CY2026, for Worldwi
 
 ## Why it matters
 
-If your tenant already runs site lifecycle management policies, site owners are the people who answer them, and unanswered reviews can end in enforcement. Learn says that after multiple notification attempts the policies can set sites to read-only mode or archive them after a configurable read-only period. A dashboard that changes where and how owners respond is therefore a support and communication matter, even though it adds no new data.
+If your tenant already runs site lifecycle management policies, site owners are the people who answer them, and unanswered reviews can end in enforcement. Learn says that after multiple notification attempts the policies can set sites to read-only mode or archive them after a configurable read-only period. A dashboard that changes where and how owners respond is therefore a support and communication matter.
 
 Microsoft has not stated what happens on arrival, or whether an administrator can switch the dashboard on or off. Treat it as something owners may start to see, and agree with your SharePoint admins who will answer owners' questions. No source says existing policy behaviour changes, so there is nothing to reconfigure yet.
 
@@ -130,7 +137,7 @@ Microsoft has not stated what happens on arrival, or whether an administrator ca
 
 ## Cost and licensing
 
-Microsoft has not published a licence or price for the Governance Reviews Dashboard. The SharePoint Advanced Management prerequisites page, which the lifecycle policy pages point to, requires a base subscription (Office 365 E3, E5 or A5; Microsoft 365 E1, E3, E5 or A5; or Microsoft 365 GCC, GCC-High or DoD). It then requires at least one user with a Microsoft Copilot licence, or a subscription that includes SharePoint K, P1 or P2 plus the SharePoint Advanced Management Plan 1 add-on, or Microsoft 365 E7.
+Microsoft has not published a licence or price for the Governance Reviews Dashboard. The SharePoint service description says that to access SharePoint, users need to be assigned a licence that includes SharePoint; requirements specific to the dashboard are not yet published. The SharePoint Advanced Management prerequisites page, which the lifecycle policy pages point to, requires a base subscription (Office 365 E3, E5 or A5; Microsoft 365 E1, E3, E5 or A5; or Microsoft 365 GCC, GCC-High or DoD). It then requires at least one user with a Microsoft Copilot licence, or a subscription that includes SharePoint K, P1 or P2 plus the SharePoint Advanced Management Plan 1 add-on, or Microsoft 365 E7.
 
 Those prerequisites cover the site lifecycle management policies. Whether the dashboard has the same requirements is not stated. The page lists no meter. The costs the sources show are indirect: admin time to review policies and owner communication.
 
@@ -166,9 +173,9 @@ To create site lifecycle policies, Learn's steps start from a SharePoint adminis
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether the Governance Reviews Dashboard is available to site owners</strong><br><small>Tenant</small><br><small class="controls__note">No setting for the dashboard is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which sites owners are asked to attest to (existing site attestation policy)</strong><br><small>Site</small><br><small class="controls__note">Existing policy that emails review requests; not confirmed as the source of dashboard items. Steps start from a SharePoint administrator.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Policies › Site lifecycle management › Site attestation policies › Open › Create a policy <a href="https://learn.microsoft.com/sharepoint/request-site-attestations" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which sites owners are asked to confirm as still in use (existing inactive site policy)</strong><br><small>Site</small><br><small class="controls__note">Existing policy that emails owners or site admins; not confirmed as the source of dashboard items.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Policies › Site lifecycle management › Inactive site policies › Open › + Create policy <a href="https://learn.microsoft.com/sharepoint/inactive-site-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which sites must meet an ownership requirement (existing site ownership policy)</strong><br><small>Site</small><br><small class="controls__note">Existing policy that notifies selected recipients; not confirmed as the source of dashboard items.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Policies › Site lifecycle management › Site ownership policies › Open › + Create policy <a href="https://learn.microsoft.com/sharepoint/site-ownership-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which sites owners are asked to attest to (existing site attestation policy)</strong><br><small>Site</small><br><small class="controls__note">Existing policy that emails review requests; not confirmed as the source of dashboard items. Steps start from a SharePoint administrator. Choose the target sites on Set policy scope.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Policies › Site lifecycle management › Site attestation policies › Open › Create a policy › Overview › Set policy scope <a href="https://learn.microsoft.com/sharepoint/request-site-attestations" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which sites owners are asked to confirm as still in use (existing inactive site policy)</strong><br><small>Site</small><br><small class="controls__note">Existing policy that emails owners or site admins; not confirmed as the source of dashboard items. Choose the target sites on Set policy scope.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Policies › Site lifecycle management › Inactive site policies › Open › + Create policy › Set policy scope <a href="https://learn.microsoft.com/sharepoint/inactive-site-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which sites must meet an ownership requirement (existing site ownership policy)</strong><br><small>Site</small><br><small class="controls__note">Existing policy that notifies selected recipients; not confirmed as the source of dashboard items. This opens the policy creation wizard. Choose the target sites on Set policy scope, then set ownership criteria on Configure policy.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Policies › Site lifecycle management › Site ownership policies › Open › + Create policy <a href="https://learn.microsoft.com/sharepoint/site-ownership-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -185,18 +192,14 @@ Learn says policies of different types notify independently, and that disabling 
 - Which actions can owners take from the dashboard, and do site administrators or co-owners see it?
 
 <!-- rationale
-risk: Low. The roadmap describes a view and action surface for reviews on sites a person already owns, with no new data access; the default is not stated, so this is rated on today's behaviour continuing.
+risk: Low. The roadmap describes a view and action surface for reviews on sites a person already owns; the default is not stated, so this is rated on today's behaviour continuing.
 cost: Low. The only cost the sources show is admin time and owner communication; a licence specific to the dashboard is not yet published, and the policies behind such reviews need the SharePoint Advanced Management prerequisites.
 impact: Medium. Site owners are the people who notice: the roadmap says the dashboard and consolidated notifications replace multiple emails with one place to act.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters; rationale: risk / behaviour: The dashboard adds no new data or data access. | Found: Searched: SharePoint Governance Reviews Dashboard no new data access permissions existing policy behavior; opened site-lifecycle-management and searched policy documentation. The roadmap specifies displayed reviews, not an assurance of unchanged data access. | Fix: Remove 'even though it adds no new data' from Why it matters and 'with no new data access' from the risk rationale. Retain the verified statement that the roadmap scopes reviews to sites the person owns.
-- [unsupported, blocker] front matter: licensing.model / licensing: The dashboard has a mixed licensing model. | Found: Searched: SharePoint Governance Reviews Dashboard licensing pricing SharePoint Advanced Management; checked SAM prerequisites, Copilot feature table and SharePoint service description. Mixed dashboard entitlement is not stated; the alternatives documented are for SAM policies. | Fix: Set licensing.model to 'included' for the published product-level requirement, not 'mixed' based on neighbouring policies. Prepend licensing.notes with 'To access SharePoint, users need a licence that includes SharePoint; requirements specific to the dashboard are not yet published.' Cite https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description, which states that SharePoint users need an assigned licence including SharePoint. Retain the existing policy prerequisites explicitly as background, not dashboard entitlement.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls: attestation row / admin-path: SharePoint admin center > Policies > Site lifecycle management > Site attestation policies > Open > Create a policy reaches creation of the existing attestation policy. | Found: In the navigation pane, expand Policies, and then select Site lifecycle management. Under Site attestation policies, select Open. Then select Create a policy. | Fix: The printed route opens the creation wizard rather than selecting its target sites. Extend the path to 'Policies > Site lifecycle management > Site attestation policies > Open > Create a policy > Overview > Set policy scope' and append to the note: 'Choose the target sites on Set policy scope.' | Source: https://learn.microsoft.com/sharepoint/request-site-attestations
-- [supported, minor] controls[2].ui; Governance controls: inactive-site row / admin-path: SharePoint admin center > Policies > Site lifecycle management > Inactive site policies > Open > + Create policy reaches creation of an existing inactive site policy. | Found: In the navigation pane, expand Policies, and then select Site lifecycle management. Under Inactive site policies, select Open. Select + Create policy. | Fix: The printed route opens the creation wizard rather than selecting its target sites. Extend the path to 'Policies > Site lifecycle management > Inactive site policies > Open > + Create policy > Set policy scope' and append to the note: 'Choose the target sites on Set policy scope.' | Source: https://learn.microsoft.com/sharepoint/inactive-site-policy
-- [supported, minor] controls[3].ui; Governance controls: ownership row / admin-path: SharePoint admin center > Policies > Site lifecycle management > Site ownership policies > Open > + Create policy reaches creation of an existing site ownership policy. | Found: In the navigation pane, expand Policies, and then select Site lifecycle management. Under Site ownership policies, select Open. Then, select + Create policy. | Fix: The printed route opens the creation wizard rather than setting ownership requirements. Keep the printed path and append to the note: 'This opens the policy creation wizard. Choose the target sites on Set policy scope, then set ownership criteria on Configure policy.' | Source: https://learn.microsoft.com/sharepoint/site-ownership-policy
+- [supported, minor] controls[2].ui; controls[2].note; Governance controls / admin-path: Inactive policy scope is reached through Policies > Site lifecycle management > Inactive site policies > Open > + Create policy > Set policy scope. | Found: Under Inactive site policies, select Open. Select + Create policy. Review the Manage inactive sites information, and then select Next. On the Set policy scope step, choose your policy scope option | Fix: Use 'Policies > Site lifecycle management > Inactive site policies > Open > + Create policy > Manage inactive sites > Set policy scope' in controls[2].ui.path and the rendered table, as documented at https://learn.microsoft.com/sharepoint/inactive-site-policy. | Source: https://learn.microsoft.com/sharepoint/inactive-site-policy
+- [supported, minor] controls[3].ui; controls[3].note; Governance controls / admin-path: Policies > Site lifecycle management > Site ownership policies > Open > + Create policy opens the ownership wizard, where scope and ownership criteria can be configured. | Found: Under Site ownership policies, select Open. Then, select + Create policy. On Manage ownership of sites ... On Set policy scope, choose your policy scope parameters ... On Configure policy, specify criteria for your policy | Fix: Complete controls[3].ui.path and the rendered table as 'Policies > Site lifecycle management > Site ownership policies > Open > + Create policy > Manage ownership of sites > Set policy scope > Configure policy', using https://learn.microsoft.com/sharepoint/site-ownership-policy. The current route is correct but stops at the wizard entrance. | Source: https://learn.microsoft.com/sharepoint/site-ownership-policy
 -->

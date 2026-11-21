@@ -95,26 +95,30 @@ controls:
     note: "No control specific to third-party coverage is documented at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-20"
+updated: "2026-11-21"
 roadmapModified: "2026-10-08T23:04:12"
 changes:
   - date: "2026-11-20"
     note: "New briefing: Agent 365 Dashboard in Viva Insights to report on third-party platform agents; Learn does not yet describe it, and its October CY2026 target has passed."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 77 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after the independent check: qualified who gets automatic leader access, removed an unsupported claim about employee records and the Connected platforms checklist step, and said admins can also read the dashboard."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 88 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-20"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-21"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 77
-  confirmed: 71
-  unconfirmed: 2
-  contradicted: 4
-  attempts: 1
-  hash: "9eab7b9db31b0aa0e9d8a758c9d8c851"
+  claims: 88
+  confirmed: 87
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 0
+  hash: "2bd0e9c8e5f8cb36c87872812370faa4"
 ---
 
 ## What's changing
@@ -129,18 +133,18 @@ Separately, Microsoft Agent 365 can connect supported third-party agent platform
 
 ## Why it matters
 
-Agent adoption figures that leaders quote will change if third-party agent activity starts to be counted alongside Microsoft agents. Active agents, sessions and the Third party creator-type counts are the numbers to expect to move, and the people reading them are senior leaders and analysts, not admins.
+Agent adoption figures that leaders quote will change if third-party agent activity starts to be counted alongside Microsoft agents. Active agents, sessions and the Third party creator-type counts are the numbers to expect to move, and senior leaders and analysts are among the people reading them.
 
 Microsoft has not stated what the expansion does on arrival. Learn does say the Agent Dashboard is on by default as part of the Viva Insights web app, so plan as though anyone who already has dashboard access could see the wider coverage without an admin acting, and use the access controls below if you want to decide that first.
 
 ## Risk assessment
 
 **Data exposure**
-- The dashboard reports adoption metrics aggregated at the user level, so third-party coverage adds records of which employees use which external agents. Learn does not say which telemetry fields the dashboard takes from third-party platforms.
+- The dashboard reports adoption metrics aggregated at the user level. Learn does not say which telemetry fields the dashboard takes from third-party platforms.
 - Group-level metrics appear only for groups that meet the minimum group size, which is 10 employees by default, and agents whose users fall below it are left out of the agent list.
 
 **Security & identity**
-- Access to the dashboard follows existing rules: senior leaders identified from the Microsoft Entra ID manager attribute can view it automatically, and the Agent Dashboard and Viva Insights web app controls decide who else can.
+- Access to the dashboard follows existing rules. Automatic leader access requires a tenant with at least 2,500 Entra ID users and a majority in one reporting line; eligible leaders must be in the top three organisational levels and have a significant portion of the organisation reporting to them. The Agent Dashboard and Viva Insights web app controls decide who else can.
 - If the coverage relies on Connected platforms, every currently supported platform needs a key-based credential such as an API key, secret or private key. Learn does not say whether the dashboard depends on those connections.
 
 **Autonomy & actions**
@@ -160,7 +164,7 @@ Not yet published: any price, meter or licence specific to the third-party cover
 
 ## Scope
 
-Who: leaders and analysts with Agent Dashboard access. Learn says senior leaders in large teams identified from Entra ID manager data can view it automatically, as can Viva Insights Analysts with global partition access and users with delegate access. Admin roles: the AI Administrator, and Microsoft 365 Global Administrators for all settings.
+Who: leaders and analysts with Agent Dashboard access. Learn says automatic leader access requires a tenant with at least 2,500 Entra ID users and a majority in one reporting line; eligible leaders must be in the top three organisational levels and have a significant portion of the organisation reporting to them. Viva Insights Analysts with global partition access and users with delegate access can also view it. Admin roles: the AI Administrator, and Microsoft 365 Global Administrators for all settings.
 
 Clouds and platforms: the roadmap lists Worldwide (Standard Multi-Tenant) and the Web platform. Learn adds that the Agent Dashboard is not currently available for national or regional clouds, including Microsoft's U.S. Government clouds and Office 365 operated by 21Vianet.
 
@@ -170,7 +174,6 @@ Prerequisites and data: the Viva Insights web app and the Agent Dashboard contro
 
 ### Before rollout
 - Confirm with your licensing owner that the tenant has at least 50 Microsoft Copilot licences assigned and Agent 365 licensing, since the **All agents** toggle does not appear without it.
-- Ask the Agent 365 AI administrator whether any third-party platforms are connected, because that decides what third-party agent activity exists to report.
 - Decide which leaders and analysts should see third-party agent adoption, using the Agent Dashboard and Viva Insights web app access controls in the table below.
 
 ### At rollout
@@ -216,14 +219,8 @@ cost: Medium. The Agent 365 view needs Agent 365 licensing, licensed per user, o
 impact: Medium. Leaders, analysts and admins with Agent Dashboard access would see third-party agent figures; most employees do not use the dashboard.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters / role: The people reading the dashboard are senior leaders and analysts, not administrators. | Found: Users who are assigned the Global administrator role also have access to the Agent Dashboard. | Fix: Replace 'and the people reading them are senior leaders and analysts, not admins' with 'and senior leaders and analysts are among the people reading them'. This also agrees with the impact rationale, which includes admins. | Source: https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard
-- [unsupported, major] Risk assessment: Data exposure / behaviour: Third-party platform coverage adds records of which employees use which external agents. | Found: Searched: Agent Dashboard third-party platforms user telemetry fields setup; Viva Insights Agent 365 Dashboard connected Third party identities telemetry. Opened agent-dashboard and third-party-agent-observability; no employee-to-external-agent record mechanism for this expansion. | Fix: Remove 'so third-party coverage adds records of which employees use which external agents'. Retain the documented statement about existing metrics and the separate gap about third-party telemetry.
-- [contradicted, blocker] Risk assessment: Security & identity; Scope / role: Senior leaders in large teams identified by the Entra manager attribute can view the dashboard automatically. | Found: Tenants must meet both of the following criteria to qualify: The majority of users in the tenant are part of a single reporting line; for example, they report to the same CEO. The tenant has at least 2,500 users with an Entra ID | Fix: Qualify both occurrences: 'Automatic leader access requires a tenant with at least 2,500 Entra ID users and a majority in one reporting line; eligible leaders must be in the top three organisational levels and have a significant portion of the organisation reporting to them.' Source: https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard. | Source: https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard
-- [unsupported, blocker] Governance guidance: Before rollout, second bullet / applicability: Whether third-party platforms are connected decides what third-party agent activity exists to report in this dashboard. | Found: Searched: Viva Insights Agent 365 Dashboard expanded coverage third-party platforms telemetry metrics connected platforms setup; Viva Insights Agent 365 Dashboard connected Third party identities telemetry. Opened agent-dashboard and connected-platforms; no dashboard dependency stated. | Fix: Remove the second Before rollout bullet: no Microsoft page states that connections determine this dashboard's third-party coverage.
-- [contradicted, blocker] Governance guidance: Before rollout; What's changing; Governance controls / consistency: The checklist asserts a connection dependency that the rest of the briefing says is not documented. | Found: 'because that decides what third-party agent activity exists to report' conflicts with 'Learn does not say whether the dashboard's new coverage draws on those connections.' | Fix: Remove the second Before rollout bullet, leaving the documented-dependency gap in What's changing and Governance controls.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist tells administrators to take stock of Connected platforms connections, but that control has no table row. | Found: 'Ask the Agent 365 AI administrator whether any third-party platforms are connected' has no matching row; the table lists dashboard access, web app access, non-public-agent visibility, and an undocumented third-party dashboard switch. | Fix: Remove the second Before rollout bullet about taking stock of Connected platforms. Do not add a control row; the dashboard's dependency on connections is unconfirmed.
+- [unsupported, minor] rationale: impact / behaviour: Most employees do not use the dashboard. | Found: Searched: "Agent Dashboard" "third-party" "default" "rollout". Read Agent Dashboard access criteria and Business Analytics Agents; limited automatic access is stated, not actual usage by most employees. | Fix: Remove the clause '; most employees do not use the dashboard' from the impact rationale. Keep 'Medium. Leaders, analysts and admins with Agent Dashboard access would see third-party agent figures.'
 -->

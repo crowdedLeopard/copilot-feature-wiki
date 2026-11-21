@@ -4,35 +4,35 @@ slug: "microsoft-teams-pop-out-sign-language-interpreter-meeting-video-for-conti
 roadmapId: 571387
 topic: "modern-work"
 products: ["Microsoft Teams"]
-summary: "Teams plans a separate, resizable window for the sign language interpreter's video that stays visible across monitors and apps. Targeted January CY2027. No admin control for it is documented yet."
+summary: "Teams users who work with sign language interpreters get a resizable pop-out window for the interpreter video. Preview is targeted for December 2026, GA for January 2027. Microsoft says there is no admin policy for it."
 status: "in-development"
-releasePhase: ["General Availability","Targeted Release"]
+releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)","GCC","GCC High","DoD"]
 platforms: ["Desktop","Mac"]
 targetDate: "January CY2027"
-previewDate: null
+previewDate: "December CY2026"
 risk: "low"
 cost: "low"
 impact: "low"
-defaultState: "unknown"
+defaultState: "user-opt-in"
 action: "review"
 licensing:
   model: "included"
-  notes: "The Teams service description says Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU. Microsoft has not published a licence, price or meter specific to this feature."
+  notes: "The Teams service description says Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU. Microsoft has not published a licence, price or meter specific to the pop-out."
 audiences: ["m365-admin","service-owner","end-user","change-adoption"]
-tags: ["teams","meeting-policy","user-experience","macos","accessibility","gcc","gcc-high","dod"]
+tags: ["teams","accessibility","user-experience","meeting-policy","macos","gcc","gcc-high","dod"]
 sources:
+  - title: "MC1559642: (Updated) Continuous interpreter visibility with pop out video in Teams"
+    url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1559642"
+    kind: "message-center"
   - title: "Accessibility guide for Microsoft Teams Admins"
     url: "https://learn.microsoft.com/microsoftteams/accessibility-guide-admin"
     kind: "learn"
-  - title: "Meeting policy settings for audio & video"
-    url: "https://learn.microsoft.com/microsoftteams/meeting-policies-audio-and-video"
+  - title: "Set-CsTeamsMeetingPolicy"
+    url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps"
     kind: "learn"
   - title: "Microsoft Teams service description"
     url: "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description"
-    kind: "learn"
-  - title: "Set-CsTeamsMeetingPolicy"
-    url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps"
     kind: "learn"
   - title: "Microsoft 365 Roadmap item 571387"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=571387"
@@ -44,7 +44,7 @@ controls:
     scope: "tenant"
     ui: null
     api: null
-    note: "Microsoft Learn documents no setting for this feature at the time of writing (November 2026)."
+    note: "Microsoft's notice MC1559642 says there is no admin policy for this feature."
   - governs: "Whether interpreters can share an IP video feed in meetings (closest documented control)"
     scope: "user"
     ui:
@@ -58,8 +58,8 @@ controls:
     note: "Existing setting that the accessibility guide ties to interpreters sharing video. Not confirmed to govern the pop-out."
 confidence: "medium"
 created: "2026-11-19"
-updated: "2026-11-19"
-roadmapModified: "2026-11-19T00:53:06"
+updated: "2026-11-21"
+roadmapModified: "2026-11-20T23:20:27"
 changes:
   - date: "2026-11-19"
     note: "First briefing for this roadmap item: planned sign language interpreter pop-out in Teams meetings, with no documented admin control yet."
@@ -73,82 +73,89 @@ changes:
     note: "Corrected: noted that Mode for IP video is not available in GCC, GCC High or DoD, and reworded the IP video check to match; spelled out the full IP video path in the governance checklist."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 47 statements confirmed"
-version: 3
+  - date: "2026-11-21"
+    note: "Added Microsoft's notice MC1559642: preview from early December 2026, GA from mid January 2027, user steps, and no admin policy. Default is now user opt-in."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+version: 4
 verification:
-  status: "verified"
-  date: "2026-11-19"
-  version: 3
+  status: "verified-with-gaps"
+  date: "2026-11-21"
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 47
+  claims: 60
+  confirmed: 60
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "433ee444b801583891dceae3a712f9a3"
+  hash: "95d0bb5c34cdbf74c1c494b55a619450"
 ---
 
 ## What's changing
 
-Microsoft plans to let people pop out a sign language interpreter's video in a Teams meeting into its own resizable window. The roadmap item says the window stays visible across monitors and apps, and keeps showing the interpreter while viewers multitask, share content or change meeting layouts. It is described as designed to support Deaf and Hard of Hearing users.
+Teams will let a user pop out the video of their paired sign language interpreters into a separate window. The window can be resized and moved anywhere on screen, including to another monitor, and stays on top of other apps. The roadmap item describes it as designed to support Deaf and Hard of Hearing users, and says the video stays visible while viewers multitask, share content or change meeting layouts.
 
-Microsoft Learn does not describe this feature yet, so what follows about its behaviour is the roadmap's description. The roadmap text reads "You can now pop out", but the status is In development, so treat it as a plan. How a viewer opens the pop-out, and how a participant is marked as the interpreter, are not described in the record.
+Microsoft's notice MC1559642 (published 2026-11-18, updated 2026-11-20) gives the user-side steps: in Teams Accessibility settings, turn on **Sign language mode** and select **I am a Signer**; select **Manage interpreters** and add the people who interpret for you; then select **View > Pop out interpreters** during a meeting. Users open the pop-out in each meeting, and can pin the **Pop out interpreters** button to the meeting toolbar. The notice says the pop-out only changes the user's own view, interpreters stay in the main meeting gallery for everyone else, and the window is not visible to other participants when the user shares their screen. It applies to Teams desktop on Windows and Mac.
 
-The record lists Desktop and Mac as platforms, and General Availability and Targeted Release as release phases. The clouds are Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD. The target date is January CY2027, and no preview date is given. The roadmap record does not say whether the pop-out is on by default.
+The notice's rollout schedule for Worldwide is: public preview beginning early December 2026 and completing by late December 2026; general availability beginning mid January 2027 and completing by late January 2027. The roadmap record lists the status as In development, with a preview date of December CY2026 and a target date of January CY2027, and General Availability and Preview as release phases. These are Microsoft's targets, not shipped behaviour. The notice sets no act-by date.
+
+Microsoft Learn documents no page for this feature at the time of writing (November 2026), so the behaviour above comes from the roadmap item and the notice.
 
 ## Why it matters
 
-For most tenants this is a small, user-facing accessibility change. If Deaf and Hard of Hearing colleagues rely on interpreters in your meetings, the pop-out affects how they follow a meeting while sharing or switching apps, so it is worth telling them and their interpreters when it arrives.
+For most tenants this is a small accessibility change that only affects people who use sign language interpretation in Teams meetings. For them, losing sight of the interpreter means losing access to the conversation, as the notice puts it, so the pop-out matters most when they present, view shared content or minimise the main meeting window.
 
-Microsoft has not stated what happens on arrival or whether an administrator can switch the pop-out off, so no source says existing behaviour changes for anyone else. Plan on the basis that you will find out through Message center and the Teams documentation closer to the target date.
+The notice says you do not need to do anything to prepare and suggests telling Deaf and Hard of Hearing users and their interpreters, and updating training and accessibility documentation. Because users turn it on themselves and Microsoft says there is no admin policy for it, the work is communication, not configuration.
 
 ## Risk assessment
 
 **Data exposure**
 
-- The roadmap describes the pop-out as a display of the interpreter's existing meeting video in a separate window. It mentions no new data being collected or stored. Microsoft has not documented where the pop-out window can be placed, so confirm whether it can be moved onto a screen that others can see.
+- The notice describes the pop-out as a change to the user's own view only: interpreters stay in the main meeting gallery for everyone else, and the window is not visible to other participants when the user shares their screen.
 
 **Security & identity**
 
-- Sign language interpreters often work for an outside organisation. Microsoft's accessibility guide says you can invite interpreters to Teams meetings by giving them guest access, so interpreter video can come from guest accounts. Microsoft has not documented any identity change for this feature.
+- Microsoft's accessibility guide says sign language interpreters and CART captioners likely do not work for your organisation and can be invited to meetings through guest access, so interpreter video may come from guest accounts. The guide does not tie guest access to the pop-out.
 
 **Autonomy & actions**
 
-- No change reported: the roadmap describes a viewing option and no automated action.
+- No change reported: the pop-out is a viewing option that the user opens in each meeting.
 
 **Change & support**
 
-- Expect help-desk questions from users who rely on interpreters if the pop-out is absent on a platform: the roadmap lists Desktop and Mac only, and Learn documents nothing about other clients.
-- The accessibility guide documents **IP video** as a meeting policy setting for interpreter video, which it says gives interpreters the ability to share an IP video feed. Microsoft also documents **Mode for IP video**, which controls both outgoing and incoming video for meetings and group calls that a user organizes or attends. Mode for IP video is not available in GCC, GCC High or DoD environments. Whether the pop-out depends on either setting is not documented, so check IP video for the policies that interpreters' hosts use; where Mode for IP video is available, check that it is set to Outgoing and incoming video enabled.
+- Expect questions from users who cannot find the option: it needs **Sign language mode**, **I am a Signer** and a list of interpreters under **Manage interpreters** before **Pop out interpreters** appears under **View**, and the notice says it applies to Teams desktop on Windows and Mac.
+- The accessibility guide documents the **IP video** meeting policy setting as what gives interpreters the ability to share an IP video feed. Whether the pop-out depends on it is not documented, so keep it turned on for the policies your interpreters' hosts hold.
 
 ## Cost and licensing
 
-Microsoft has not published a licence, price or meter for this feature. The Teams service description says Microsoft Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU, and the roadmap record names Microsoft Teams as the only product.
+Microsoft has not published a licence, price or meter specific to the pop-out. The Teams service description says Microsoft Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU, and the roadmap record names Microsoft Teams as the only product.
 
-The cost the sources show is indirect: admin time to check meeting policies and tell affected users, and any guest-access setup for external interpreters. A licence or charge specific to this feature is not yet published.
+The cost the sources show is indirect: admin time to brief affected users and interpreters, update training and accessibility documentation as the notice suggests, and check the **IP video** meeting policy. Any licence or charge specific to this feature is not yet published.
 
 ## Scope
 
-The roadmap record lists Desktop and Mac as platforms and Microsoft Teams as the product. It lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD as clouds, and General Availability and Targeted Release as release phases. The target is January CY2027.
+The notice says the feature applies to Teams desktop on Windows and Mac, and the roadmap record lists Desktop and Mac as platforms. The record lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD as clouds; the notice's rollout schedule gives dates for Worldwide only.
 
-Which users, roles or licences get the pop-out is not documented. The roadmap describes it as designed for Deaf and Hard of Hearing users, and the video it pops out is the sign language interpreter's. Microsoft's accessibility guide says interpreters may need guest access to join your meetings.
+The notice describes the users as Deaf and Hard of Hearing users and their paired interpreters. Each user turns on Sign language mode, selects I am a Signer and adds their interpreters; Microsoft's notice says there is no admin policy for the feature. Microsoft has not stated which licences or roles are required beyond Teams itself.
 
 ## Governance guidance
 
 ### Before rollout
 
-- Identify which meeting organisers and Deaf or Hard of Hearing users in your tenant work with sign language interpreters, so you know who to brief.
-- Check the **IP video** setting in the meeting policies those users hold (Teams admin center > Meetings > Meeting policies > policy > Audio & video > IP video), because Microsoft's accessibility guide ties it to interpreters sharing video.
+- Identify the Deaf and Hard of Hearing users and the sign language interpreters who work with them, so you know who to brief.
+- Draft user guidance from the notice's steps: **Sign language mode**, **I am a Signer**, **Manage interpreters**, then **View > Pop out interpreters** in each meeting.
+- Check that **IP video** is turned on in the meeting policies those users' meetings use (Teams admin center > Meetings > Meeting policies > policy > Audio & video > IP video).
 
 ### At rollout
 
-- Watch Message center and the Teams documentation for a notice or Learn page that describes the pop-out and any setting that governs it.
-- Test an interpreted meeting on Desktop and Mac clients with an interpreter account once the feature reaches your tenant.
+- Send the guidance to affected users and their interpreters, and update training and accessibility documentation, as the notice suggests.
+- Test an interpreted meeting on Teams desktop for Windows and for Mac when the preview reaches your tenant, with an interpreter who joins as a guest if that is how your interpreters attend.
 
 ### After rollout
 
-- Ask affected users whether the pop-out window stays visible across monitors and apps as the roadmap describes, and report differences to Microsoft support.
-- Record the setting or policy that governs the pop-out in your Teams runbook once Microsoft documents one.
+- Ask users whether the pop-out window stays visible across monitors and apps while they share content or change layouts, and report differences to Microsoft support.
+- Watch Message center for further updates to MC1559642, since Microsoft has already revised its timeline once.
 
 ## Governance controls
 
@@ -157,27 +164,30 @@ Which users, roles or licences get the pop-out is not documented. The roadmap de
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether the sign language interpreter pop-out is available to users</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no setting for this feature at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether the sign language interpreter pop-out is available to users</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft's notice MC1559642 says there is no admin policy for this feature.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether interpreters can share an IP video feed in meetings (closest documented control)</strong><br><small>User</small><br><small class="controls__note">Existing setting that the accessibility guide ties to interpreters sharing video. Not confirmed to govern the pop-out.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Audio &amp; video › IP video <a href="https://learn.microsoft.com/microsoftteams/accessibility-guide-admin" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -AllowIPVideo $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-Microsoft Learn documents no setting that governs the sign language pop-out itself at the time of writing (November 2026), so the first row records that gap. The second row is an existing meeting policy setting that the accessibility guide ties to interpreters sharing video. It is the closest documented control, and Microsoft has not said that it governs the pop-out.
+Microsoft's notice MC1559642 says there is no admin policy for the pop-out, so the first row records that there is no tenant switch. The second row is an existing meeting policy setting that the accessibility guide ties to interpreters sharing video; it is the closest documented control, and Microsoft has not said it governs the pop-out.
 
-The accessibility guide calls the setting IP video; the audio and video policy reference instead lists Mode for IP video and Video conferencing.
-
-Meeting policies are assigned to users, so the setting applies to the people who hold the policy. The accessibility guide describes the steps in the Teams admin center and does not name a role requirement.
+Meeting policies are assigned to users, so the IP video setting applies to the people who hold the policy. The accessibility guide describes the steps in the Teams admin center and names no role requirement.
 
 ## Open questions
 
-- Is there an admin setting or meeting policy that turns the interpreter pop-out on or off, and where will it be documented? Watch Message center and the Teams admin documentation.
-- Is the pop-out on by default when it arrives, and does Microsoft plan a Message center notice with an act-by date?
-- Does the pop-out depend on the **IP video** meeting policy setting or on a separate interpreter role in the meeting?
-- Will the pop-out reach Teams on the web and on mobile, given that the roadmap lists Desktop and Mac?
-- Is any licence beyond the Teams licence needed for the feature?
+- Does the pop-out depend on the **IP video** meeting policy setting or on any other meeting policy? Watch the Teams admin documentation and MC1559642.
+- When will the pop-out reach GCC, GCC High and DoD, which the roadmap record lists as clouds but the notice's schedule does not cover?
+- Is any licence beyond the Teams licence needed for the feature, and will Microsoft Learn publish a page for it?
+- Will the pop-out arrive for Teams on the web or on mobile? The notice names only Teams desktop on Windows and Mac.
 
 <!-- rationale
-risk: Low. The roadmap describes a viewing change for the interpreter's meeting video and mentions no new data access, and nothing in Microsoft's text suggests an admin decision is needed before it arrives.
-cost: Low. Microsoft has published no licence or meter for this feature; the only cost the sources show is admin and communication time. Teams itself is licensed through Microsoft 365 offerings or a standalone SKU.
-impact: Low. The roadmap aims the change at Deaf and Hard of Hearing users and the interpreters they work with, a small group in most tenants, on Desktop and Mac clients.
+risk: Low. Microsoft's notice says the pop-out only changes the user's own view and that interpreters stay in the main meeting gallery for everyone else, so no new data or action reaches other people.
+cost: Low. Microsoft has published no licence or meter specific to this feature; the only cost the sources show is admin time to brief Deaf and Hard of Hearing users and interpreters, and to update training material.
+impact: Low. The notice aims the feature at Deaf and Hard of Hearing users and their paired interpreters on Teams desktop for Windows and Mac, a small group in most tenants; each user turns it on for themselves.
+-->
+
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[1].ui; Governance guidance: Before rollout; Governance controls table / admin-path: The accessibility guide documents Teams admin center > Meetings > Meeting policies > policy > Audio & video > IP video. | Found: In the Teams admin center, go to Meetings, and then select Meeting policies. ... Select the policy you want to modify. ... Go to the Audio & video section. ... Check that IP video is turned On | Fix: Keep the cited path, but add: 'The accessibility guide says users of Unified Policies & Settings management find these options under Settings & Policies. The audio and video policy article calls IP video "Video conferencing": https://learn.microsoft.com/microsoftteams/meeting-policies-audio-and-video.' | Source: https://learn.microsoft.com/microsoftteams/accessibility-guide-admin
 -->

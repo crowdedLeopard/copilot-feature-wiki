@@ -93,15 +93,17 @@ changes:
     note: "Corrected the spending-policy API row: the automation call is now PATCH on spendingPolicies/{id}, with periodLimit as the body property that sets the limit."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 76 statements not yet confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 88 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-21"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 76
-  confirmed: 76
+  claims: 88
+  confirmed: 88
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -205,8 +207,8 @@ cost: Low. The known cost for this roadmap change is admin review time; licensin
 impact: Medium. Makers, developers and agent owners who build on Work IQ are most likely to notice; Microsoft has not said whether ordinary Microsoft 365 Copilot users see any change.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary / cost: The summary abbreviates the existing API billing rule as Work IQ usage being billed in Copilot Credits. | Found: For Microsoft 365 Copilot licensed users, Work IQ is available in all Microsoft 365 Copilot experiences and agents. It is subject to usage-based billing for custom and third-party agents. | Fix: Replace the summary's final clause, 'Work IQ usage is billed in Copilot Credits', with 'custom and third-party agents using Work IQ are subject to usage-based billing in Copilot Credits'. The body already states the licensing qualification. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/
+- [supported, minor] summary / cost: Work IQ usage is billed in Copilot Credits. | Found: For Microsoft 365 Copilot licensed users, Work IQ is available in all Microsoft 365 Copilot experiences and agents. It is subject to usage-based billing for custom and third-party agents. | Fix: Replace the summary's final clause, 'Work IQ usage is billed in Copilot Credits', with 'custom and third-party agents using Work IQ are subject to usage-based billing in Copilot Credits'. The body already gives the licensing qualification. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/
 -->

@@ -78,15 +78,17 @@ changes:
     note: "Corrected the workload-restriction statement to refer to the planned tenant-level granular policy controls, and attributed the mutation default to the MCP policy page alongside the Copilot Studio page."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 67 statements confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 71 statements confirmed"
 version: 3
 verification:
   status: "verified"
-  date: "2026-11-19"
+  date: "2026-11-21"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 67
+  claims: 71
+  confirmed: 71
   unconfirmed: 0
   contradicted: 0
   attempts: 0

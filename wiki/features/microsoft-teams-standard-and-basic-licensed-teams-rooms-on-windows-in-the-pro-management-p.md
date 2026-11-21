@@ -55,6 +55,9 @@ sources:
   - title: "Get started with Surface Hub running Microsoft Teams Rooms on Windows"
     url: "https://learn.microsoft.com/surface-hub/surface-hub-3-get-started"
     kind: "learn"
+  - title: "Set up and manage Teams Rooms on Windows custom backgrounds"
+    url: "https://learn.microsoft.com/microsoftteams/rooms/custom-backgrounds"
+    kind: "learn"
 videos: []
 related: ["microsoft-teams-one-stop-admin-portal-for-teams-devices-with-teams-rooms-pro-management","microsoft-teams-analytics-for-desk-utilization-on-teams-pro-management-portal","microsoft-teams-building-level-insights-on-the-pro-management-portal-recommended-actions-p"]
 controls:
@@ -79,7 +82,7 @@ controls:
     note: "Read-only view: the License Type column shows Pro, Premium, Basic, Standard, Syncing or Unlicensed. It does not assign a licence."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-20"
+updated: "2026-11-21"
 roadmapModified: "2026-10-22T22:58:40"
 changes:
   - date: "2026-11-20"
@@ -94,19 +97,23 @@ changes:
     note: "Why it matters now states that Microsoft documents automatic portal enrollment for Teams Rooms on Windows, with the uncertainty limited to licence enforcement; the licence-check path and sources were completed."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 73 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-21"
+    note: "Correction after the independent check: the Rollout line in Scope now says Microsoft documents automatic portal enrollment but has not stated the default of this licence-enforcement change; the custom backgrounds page was added as a source."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 72 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
-  date: "2026-11-20"
-  version: 3
+  status: "verified-with-gaps"
+  date: "2026-11-21"
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 73
+  claims: 72
   confirmed: 72
   unconfirmed: 0
-  contradicted: 1
-  attempts: 3
-  hash: "cb00ed9854c7a4bbdb4172ec06efb088"
+  contradicted: 0
+  attempts: 0
+  hash: "cb6eb93382eaa680050c809861c261ec"
 ---
 
 ## What's changing
@@ -153,7 +160,7 @@ Learn's licence comparison lists the Pro Management service plan under Pro only,
 
 **Clouds and platform:** the roadmap record lists Worldwide (Standard Multi-Tenant), GCC and GCC High, platform Teams and Surface Devices. Learn's licence table lists Basic segment availability as "Commercial, Education, Non-Pro" and Pro as including GCC, GCC-High and DoD, so check Basic availability in a government cloud before assuming it.
 
-**Rollout:** the roadmap status is Launched with a target of May CY2025. The roadmap and the Learn pages read for this briefing state no rollout mechanics or opt-in.
+**Rollout:** the roadmap status is Launched with a target of May CY2025. Microsoft documents automatic portal enrollment once devices are signed into Teams, but has not stated the default of this particular licence-enforcement change.
 
 ## Governance guidance
 
@@ -201,10 +208,9 @@ cost: Low. The roadmap item states no price; Learn describes Teams Rooms Basic a
 impact: Low. Room administrators see licence status in the portal; people using the rooms are not named in the roadmap item as affected.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope: Rollout / absence: The roadmap and the Learn pages read for the briefing state no rollout mechanics. | Found: For Teams Rooms on Windows devices, the Teams Rooms Pro Management agent is automatically downloaded and installed at device setup. Devices once signed into Teams automatically enrolls and appears in the Teams Rooms Pro Management Portal. | Fix: Replace 'The roadmap and the Learn pages read for this briefing state no rollout mechanics or opt-in.' with 'Microsoft documents automatic portal enrollment once devices are signed into Teams, but has not stated the default of this particular licence-enforcement change.' Cite https://learn.microsoft.com/microsoftteams/rooms/enroll-a-device. This also removes the conflict with Why it matters without changing defaultState. | Source: https://learn.microsoft.com/microsoftteams/rooms/enroll-a-device
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity / behaviour: A device's licence status is tied to the licence on its resource account. | Found: Select Planning and then Inventory and then find resource account assigned to your device. In the License Type column, you see what license is assigned | Fix: Add https://learn.microsoft.com/microsoftteams/rooms/custom-backgrounds to sources; it explicitly ties the resource account to the device's License Type column and confirms the complete Planning > Inventory licence-check route. | Source: https://learn.microsoft.com/microsoftteams/rooms/custom-backgrounds
+- [supported, minor] What's changing / availability: Microsoft's Pro Management overview says the service supports all Microsoft clouds except DoD and Office 365 operated by 21Vianet. | Found: | **Supported clouds** | All Microsoft clouds except DoD and Office 365 operated by 21Vianet. | | Fix: Append: 'The Teams Android management transition guide nevertheless lists DoD portal access at https://devices.dod.teams.microsoft.us/; these pages describe different cloud coverage.' The other statement is under 'Step 1: Access the Teams Rooms Pro Management Portal' at https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1, already in sources. Do not change this roadmap item's cloud list. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-management
+- [supported, minor] controls[1].ui; Governance controls table; Governance guidance: Before rollout / admin-path: The Pro Management portal licence inventory is reached through Planning > Inventory. | Found: Sign in to the Teams Rooms Pro Management portal. Select **Planning** then **Inventory** in the left navigation pane. | Fix: Complete controls[1].ui.path and the corresponding table path as 'Planning > Inventory > resource account > License Type', where resource account means finding the account assigned to the device, not opening another pane. Set its docs to https://learn.microsoft.com/microsoftteams/rooms/custom-backgrounds, which states this licence-specific route and is already cited. The current route stops on the correct inventory page. | Source: https://learn.microsoft.com/microsoftteams/rooms/inventory
 -->

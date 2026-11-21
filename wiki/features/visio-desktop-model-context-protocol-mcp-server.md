@@ -4,7 +4,7 @@ slug: "visio-desktop-model-context-protocol-mcp-server"
 roadmapId: 574125
 topic: "modern-work"
 products: ["Visio"]
-summary: "A planned Visio Desktop MCP server will let compatible AI clients create, read and update Visio diagrams on Windows. Preview is targeted for November 2026; no admin control or licence detail is published yet."
+summary: "A planned Visio Desktop MCP server will let AI clients edit diagrams on Windows. No Visio-specific admin control is documented yet; a licensed Visio Desktop app is required, but qualifying plans and any separate server price are not yet published."
 status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "The roadmap item says the server requires a licensed Visio Desktop application. Which Visio plans qualify, and any separate price or meter for the MCP server, is not yet published."
+  model: "included"
+  notes: "The roadmap requires a licensed Visio Desktop application. The deployment guide says the subscription desktop app comes with Visio Plan 2; MCP-eligible plans and any separate server price or meter are not yet published."
 audiences: ["m365-admin","security","service-owner"]
 tags: ["mcp","mcp-server","ai","visio","microsoft-365-apps","agent-governance","m365-admin-center"]
 sources:
@@ -30,6 +30,12 @@ sources:
     kind: "learn"
   - title: "Manage plugins, skills, and MCP servers"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers"
+    kind: "learn"
+  - title: "Model Context Protocol (MCP) on Windows"
+    url: "https://learn.microsoft.com/windows/ai/mcp/overview"
+    kind: "learn"
+  - title: "Deployment guide for Visio"
+    url: "https://learn.microsoft.com/microsoft-365-apps/deploy/deployment-guide-for-visio"
     kind: "learn"
 videos: []
 related: ["mcp"]
@@ -49,33 +55,37 @@ controls:
     note: "Existing control for registered MCP servers; not confirmed to cover the Visio server. Blocking disables all tools the server exposes."
 confidence: "low"
 created: "2026-11-20"
-updated: "2026-11-20"
+updated: "2026-11-21"
 roadmapModified: "2026-10-13T23:01:05"
 changes:
   - date: "2026-11-20"
     note: "New briefing from the roadmap record; Microsoft Learn does not yet document the Visio Desktop MCP server."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 52 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Summary now states that a licensed Visio Desktop application is required; licensing model set to included from the Visio deployment guide; MCP definition cited to Learn."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 54 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-20"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-21"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 51
+  claims: 54
+  confirmed: 54
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "35474ff6f9ca56384ba8e40b81cdb284"
+  contradicted: 0
+  attempts: 0
+  hash: "5d3ab95f9fe3ee5f5b105366ce523819"
 ---
 
 ## What's changing
 
 Microsoft plans a Visio Desktop Model Context Protocol (MCP) server. MCP is an open standard that lets AI clients call tools exposed by another application. The roadmap item says the server enables compatible AI clients to connect with the Visio Desktop application to create, read and update Visio diagrams using natural language. It runs locally on Windows and requires a licensed Visio Desktop application.
 
-Microsoft Learn does not describe this server yet, so everything above is the roadmap's description. At the time of writing (November 2026) Learn documents no Visio MCP server page, no setup steps, no list of tools and no admin setting for it. Which AI clients are "compatible", how a client connects, and what happens to a diagram an AI client has changed are all not stated.
+Microsoft Learn does not describe this server yet. The Visio server capabilities above are the roadmap's description. At the time of writing (November 2026) Learn documents no Visio MCP server page, no setup steps, no list of tools and no admin setting for it. Which AI clients are "compatible", how a client connects, and what happens to a diagram an AI client has changed are all not stated.
 
 The roadmap record shows the item as In development, with a Preview target of November CY2026 and a General Availability target of June CY2027. It lists Worldwide (Standard Multi-Tenant) as the cloud and Desktop and Developer as platforms. These are Microsoft's targets, not commitments. The record does not state whether the server is on by default.
 
@@ -102,9 +112,9 @@ Microsoft has not stated what happens on arrival, so no source says existing beh
 
 ## Cost and licensing
 
-The roadmap item says the server requires a licensed Visio Desktop application. The Visio service description points to the Microsoft 365 business and enterprise plan comparisons for the subscriptions that enable users for Visio, and does not mention the MCP server.
+The roadmap item says the server requires a licensed Visio Desktop application. The Visio service description points to the Microsoft 365 business and enterprise plan comparisons for the subscriptions that enable users for Visio, and does not mention the MCP server. The deployment guide for Visio says the Visio desktop app comes with a Visio Plan 2 subscription, and lists volume-licensed LTSC and perpetual versions as other purchase options.
 
-A price, credit rate or meter specific to the MCP server is not yet published, and Microsoft Learn documents no charge for it at the time of writing. The known cost is administrator time to assess the feature and communicate with Visio users.
+A price, credit rate or meter specific to the MCP server is not yet published, and Microsoft Learn documents no charge for it at the time of writing. Which Visio plans or versions qualify for the MCP server is not yet published. The known cost is administrator time to assess the feature and communicate with Visio users.
 
 ## Scope
 
@@ -160,14 +170,10 @@ cost: Low. The roadmap says a licensed Visio Desktop application is required; a 
 impact: Low. Only Windows users of Visio Desktop who connect an AI client are in the picture, and the roadmap record does not say the server is on by default.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] summary; front matter: licensing.notes; Cost and licensing / consistency: No licence detail is published yet. | Found: Summary: 'no admin control or licence detail is published yet.' Licensing notes: 'The roadmap item says the server requires a licensed Visio Desktop application.' | Fix: Replace the summary's final clause with 'no Visio-specific admin control is documented yet; a licensed Visio Desktop application is required, but qualifying plans and any separate server price are not yet published.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / behaviour: MCP is an open standard connecting AI applications to external tools. | Found: MCP is an open protocol designed to standardize integrations between AI apps and external tools and data sources. | Fix: Cite https://learn.microsoft.com/windows/ai/mcp/overview for the MCP definition. Replace 'so everything above is the roadmap's description' with 'The Visio server capabilities above are the roadmap's description' so the separate definition is not attributed to the record. | Source: https://learn.microsoft.com/windows/ai/mcp/overview
-- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown because feature-specific plan eligibility is unpublished. | Found: Visio desktop app that comes with a Visio Plan 2 subscription. | Fix: Set licensing.model to 'included' to reflect the known underlying product licence, without asserting MCP eligibility for any specific edition. Use notes: 'The roadmap requires a licensed Visio Desktop application. The deployment guide says the subscription desktop app comes with Visio Plan 2; MCP-eligible plans and any separate server price or meter are not yet published.' Cite https://learn.microsoft.com/microsoft-365-apps/deploy/deployment-guide-for-visio. | Source: https://learn.microsoft.com/microsoft-365-apps/deploy/deployment-guide-for-visio
-- [supported, minor] Why it matters / behaviour: Visio diagrams are used to describe networks. | Found: Download a Visio file of this architecture. The previous diagram demonstrates a typical basic or baseline networking implementation. | Fix: Cite https://learn.microsoft.com/azure/architecture/networking/networking-get-started#architecture for the network example; avoid treating 'commonly' as a measured prevalence claim. | Source: https://learn.microsoft.com/azure/architecture/networking/networking-get-started#architecture
-- [supported, minor] Why it matters / behaviour: Visio diagrams are used to describe processes. | Found: Microsoft Visio – You can associate a business process with a Visio diagram by manually uploading a Visio file. | Fix: Cite https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/using-activity-diagrams for the business-process example. | Source: https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/using-activity-diagrams
-- [supported, minor] Why it matters / behaviour: Visio diagrams are used to describe architectures. | Found: You can create a reference architecture diagram using various tools. However, we recommend Microsoft Visio because it has Azure Architecture models that you can use as a helpful starting point. | Fix: Cite https://learn.microsoft.com/partner-center/referrals/reference-architecture-diagram for the architecture example. | Source: https://learn.microsoft.com/partner-center/referrals/reference-architecture-diagram
+- [supported, minor] controls[1].note; Governance controls / behaviour: Blocking an MCP server disables all tools it exposes. | Found: Blocking an MCP server disables all the tools it exposes. ... Effects on dependent plugins and linked connectors depend on the applicable management route. Don't assume the policy applies across all products or connected components. | Fix: Replace 'Blocking disables all tools the server exposes' in the note and corresponding prose with 'Blocking disables the server's tools through the applicable management route; for BYO servers, gateway blocking does not necessarily prevent direct endpoint access.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/manage-byo-mcp-server, which states 'Don't assume blocking prevents direct access to the underlying server endpoint.' | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
+- [supported, minor] Why it matters / behaviour: Visio diagrams are used to describe networks. | Found: Basic flowcharts, organization charts, and network diagrams | Fix: Add https://www.microsoft.com/en-us/microsoft-365/visio/visio-plans-and-pricing to sources for the network and architecture diagram examples. | Source: https://www.microsoft.com/en-us/microsoft-365/visio/visio-plans-and-pricing
+- [supported, minor] Why it matters / behaviour: Visio diagrams are used to describe architectures. | Found: Cloud architecture diagrams, including Azure and Amazon Web Services (AWS) | Fix: Add https://www.microsoft.com/en-us/microsoft-365/visio/visio-plans-and-pricing to sources for the network and architecture diagram examples. | Source: https://www.microsoft.com/en-us/microsoft-365/visio/visio-plans-and-pricing
 -->

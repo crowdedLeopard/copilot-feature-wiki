@@ -156,18 +156,20 @@ changes:
     note: "Corrected the cost statement so only the per-journey credit count is unpublished (the pay-as-you-go meter price is published); added the Review and publish wording, and trimmed two API calls to the operation with the body described in the note."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 102 statements confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 102 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 5
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-21"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 102
-  confirmed: 102
+  confirmed: 100
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "0015942ee210475fc99d155aae1a1276"
 ---
 
@@ -269,4 +271,15 @@ If a published environment group rule governs **Draw from the available capacity
 risk: Medium. The agent uses Anthropic's models and the AI Hub prerequisites include moving data across regions, but nothing is published until a person approves the journey and an administrator has to enable the agent first.
 cost: Variable. Microsoft Learn says Journey Creation Agent uses Copilot credits, billed as prepaid Copilot Studio capacity or pay-as-you-go. A rate for this agent is not yet published.
 impact: Low. Administrators configure it and users with the Marketing Manager or Marketing Professional role (or equivalent permissions) build journeys with it.
+-->
+
+<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Cost and licensing; Open questions / absence: Microsoft has not established whether Copilot credit capacity governance covers Journey Creation Agent beyond a link, so that applicability remains unresolved. | Found: Steps to set up the Journey Creation Agent: ... To control agent usage, configure message consumption limits. For more information, see Manage capacity. | Fix: Replace the last two sentences of the capacity paragraph with: 'AI Hub directs administrators to Copilot Studio capacity management to control Journey Creation Agent usage.' Remove 'and does the Copilot Credits allocation and Draw from the available capacity in my tenant control cap this agent's spend?' from the second open question. Keep the verified explanation that both tenant-pool and pay-as-you-go overages must be disabled to restrict an environment to allocated prepaid credits. Source: https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub and https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity. | Source: https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub
+- [contradicted, blocker] Risk assessment: Security & identity; Open questions / absence: Whether Anthropic user or group restrictions limit Journey Creation Agent access is unconfirmed. | Found: When access is restricted by user or group assignment, only the specified users or group members can use Copilot features that rely on that AI provider. ... This enforcement applies across: ... Experiences managed through Power Platform admin center | Fix: Replace 'Confirm with Microsoft how this interacts with Journey Creation Agent' with 'Microsoft documents provider-level access enforcement for experiences managed through Power Platform admin center; Journey Creation Agent requires Anthropic access.' Change the third open question to 'What do users without assigned Anthropic access see in Journey Creation Agent? Watch the Anthropic page.' Cite https://learn.microsoft.com/microsoft-365/copilot/copilot-ai-provider-user-sec-group-access; the feature's Anthropic requirement and Power Platform management are documented at https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent and https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub. | Source: https://learn.microsoft.com/microsoft-365/copilot/copilot-ai-provider-user-sec-group-access
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[2].ui; Governance controls / admin-path: Power Platform admin center > Licensing > Products > Copilot Studio > Manage Copilot Credits > environment reaches the credit allocation and tenant-capacity controls. | Found: Under Products, select Copilot Studio, and then select Manage Copilot Credits. ... Under Allocate capacity, enter the number of Copilot Credits ... Under Capacity overages, select or clear Draw from the available capacity in my tenant | Fix: The path stops on the right pane. Extend controls[2].ui.path to 'Licensing > Products > Copilot Studio > Manage Copilot Credits > environment > Allocate capacity'; retain the note naming 'Draw from the available capacity in my tenant' under 'Capacity overages', as documented at https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
+- [supported, minor] controls[2].note / applicability: The correctly documented general credit control is accompanied by a caveat that Learn does not confirm it caps this agent. | Found: If no overage source is enabled, the environment can consume only its allocated prepaid credits. Experiences that require credits can stop working after that allocation is exhausted. | Fix: Replace 'Learn does not confirm this caps the agent' in controls[2].note and its rendered copy with 'AI Hub directs administrators to capacity management for this agent; with no overage source enabled, the environment can consume only its allocated prepaid credits.' Sources: https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub and https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity
+- [supported, minor] controls[4].ui; Governance controls / admin-path: Power Platform admin center > Manage > Environments > environment > Settings > Product > Features reaches external model-provider settings. | Found: On the Settings page, select Product > Features. On the Features page, turn each applicable model provider setting On or Off. | Fix: Extend controls[4].ui.path and its rendered copy to 'Manage > Environments > environment > Settings > Product > Features > applicable model provider setting'. The cited page gives that final control descriptively rather than a more specific individual toggle label: https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses. | Source: https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses
 -->

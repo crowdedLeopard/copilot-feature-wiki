@@ -9,7 +9,7 @@ status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
-targetDate: "November CY2026"
+targetDate: "December CY2026"
 previewDate: null
 risk: "low"
 cost: "low"
@@ -83,8 +83,8 @@ controls:
     note: "Microsoft Learn documents no such setting at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-19"
-updated: "2026-11-20"
-roadmapModified: "2026-10-30T22:08:34"
+updated: "2026-11-21"
+roadmapModified: "2026-11-20T23:20:27"
 changes:
   - date: "2026-11-19"
     note: "First briefing for this roadmap item."
@@ -94,28 +94,32 @@ changes:
     note: "Correction: the PasswordManagerBlocklist statement now follows the policy reference, the first open question asks how the menu presents blocked domains, and two control notes state each policy's documented reach."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 51 statements confirmed"
-version: 2
+  - date: "2026-11-21"
+    note: "Roadmap target moved from November to December CY2026; the release-notes entry is now cited by version only. Controls and ratings unchanged."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
+version: 3
 verification:
-  status: "verified"
-  date: "2026-11-20"
-  version: 2
+  status: "verified-with-gaps"
+  date: "2026-11-21"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 51
+  claims: 53
+  confirmed: 53
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "9677eabf9562c2045ee71b6f54df992b"
+  hash: "ed9a894287dbee4d1be0aae76e987e10"
 ---
 
 ## What's changing
 
 Microsoft Edge is adding a **Select Password** option to the right-click menu on recognised username and password fields. It gives users a manual route to their saved credentials when Edge's automatic password suggestions do not appear.
 
-The Edge Beta Channel release notes on Microsoft Learn list it as a feature update, "Select Password from the context menu", under the heading "Version 159.0.4402.7: November 17, 2026 (Linux)". They say users with saved credentials can search saved credentials by domain or username, fill credentials directly into the selected field, view credential details after completing OS authentication, and manage saved passwords through existing Edge Password Manager surfaces. They add: "No configuration is required, and existing password management policies continue to apply."
+The Edge Beta Channel release notes on Microsoft Learn list it as a feature update, "Select Password from the context menu", under Version 159.0.4402.7. They say users with saved credentials can search saved credentials by domain or username, fill credentials directly into the selected field, view credential details after completing OS authentication, and manage saved passwords through existing Edge Password Manager surfaces. They add: "No configuration is required, and existing password management policies continue to apply."
 
-The roadmap item is **In development**, targeted for **November CY2026**, release phase General Availability, platform Web, cloud Worldwide (Standard Multi-Tenant). The Learn release notes word the feature as available ("Users can now"), so treat the roadmap status as the plan until it moves to Launched. At the time of writing (November 2026), Microsoft Learn describes the option only in that release-notes entry.
+The roadmap item is **In development**, targeted for **December CY2026**, release phase General Availability, platform Web, cloud Worldwide (Standard Multi-Tenant). The Learn release notes word the feature as available ("Users can now"), so treat the roadmap status as the plan until it moves to Launched. At the time of writing (November 2026), Microsoft Learn describes the option only in that release-notes entry.
 
 ## Why it matters
 
@@ -154,7 +158,7 @@ The cost to expect is indirect: admin time to test your password policies agains
 
 **Clouds and platforms:** the roadmap record lists Worldwide (Standard Multi-Tenant) and the platform Web.
 
-**Rollout:** the roadmap targets November CY2026 and the status is In development. The Learn release notes list the feature in the Beta Channel notes; Microsoft has not stated a version for the Stable channel at the time of writing (November 2026).
+**Rollout:** the roadmap targets December CY2026 and the status is In development. The Learn release notes list the feature in the Beta Channel notes; Microsoft has not stated a version for the Stable channel at the time of writing (November 2026).
 
 ## Governance guidance
 
@@ -194,11 +198,18 @@ These rows are existing Edge password policies, set through Group Policy on Wind
 
 - How does the Select Password menu present a domain blocked by `PasswordManagerBlocklist`? Confirm the user experience in a pilot.
 - Does filling through Select Password ask for device authentication where `PrimaryPasswordSetting` is `WithDevicePassword`?
-- Which Edge version and release channel will deliver the option to most users, and does it match the roadmap's November CY2026 target?
+- Which Edge version and release channel will deliver the option to most users, and does it match the roadmap's December CY2026 target?
 - Will Microsoft add a dedicated policy to hide or turn off the option? Watch the Edge policy list and Message center.
 
 <!-- rationale
 risk: Low. The option works on credentials already saved in Edge, viewing their details needs OS authentication, and Microsoft says existing password management policies continue to apply.
 cost: Low. The only cost the sources show is admin and helpdesk time for communication and testing; a licence or meter for this option is not yet published.
 impact: Medium. Users who save passwords in Edge get a new right-click entry without admin action; administrators get no new setting for it.
+-->
+
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].note; Governance controls table / applicability: PasswordManagerEnabled is not documented as governing this option. | Found: If you disable this policy, users can't save and add new passwords, but they can still use previously saved passwords. | Fix: Remove 'Not documented as governing this option.' from controls[0].note and the matching table note. Keep the documented qualification that disabling this policy still permits use of previously saved passwords, as stated at https://learn.microsoft.com/deployedge/microsoft-edge-policies/passwordmanagerenabled. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/passwordmanagerenabled
+- [supported, minor] controls[2].governs, note; Risk assessment: Security & identity; Governance guidance / behaviour: WithDevicePassword requires device authentication before saved-password autofill. | Found: If you set this policy to 'WithDevicePassword', users have to enter their device password (or preferred mode of authentication under Windows) to prove their identity before their password is autofilled. | Fix: Add to controls[2].note and its matching table note: 'The prompt frequency defaults to Ask permission once per browsing session; users can change it to Always ask permission.' This qualification is stated at https://learn.microsoft.com/deployedge/microsoft-edge-policies/primarypasswordsetting. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/primarypasswordsetting
 -->

@@ -116,15 +116,17 @@ changes:
     note: "Corrected admin paths to start at Settings, and narrowed the first control to creation of a Full Workload Backup policy."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 98 statements confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 108 statements not yet confirmed"
 version: 5
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "verified-with-gaps"
+  date: "2026-11-21"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 98
-  confirmed: 98
+  claims: 108
+  confirmed: 108
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -227,4 +229,10 @@ The email notification control is general to Microsoft 365 Backup: Global admins
 risk: Low. Microsoft's notice says the feature needs admin configuration to enable, and existing custom backup policies stay unchanged and take precedence, so nothing is protected by it until an administrator creates the policy.
 cost: Variable. Microsoft 365 Backup is pay-as-you-go at a list price of $0.15/GiB/month of protected content, so enabling a whole workload sets the bill by that workload's size.
 impact: Low. Backup administrators notice it; the notice names admins managing Microsoft 365 Backup policies as the affected group.
+-->
+
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Risk assessment: Security & identity; Scope / role: Learn describes the Microsoft 365 Backup Administrator as able to control the entire tool. | Found: the Microsoft 365 Backup Administrator, that can control the entire tool. | Microsoft 365 Backup Administrator | ✓ | ✓ | ✓ |  | | Fix: Replace 'can control the entire tool' and 'for the whole tool' with 'can manage SharePoint, OneDrive and Exchange backups'. The current roles table at https://learn.microsoft.com/microsoft-365/backup/backup-setup leaves Entra outside this role, although its preceding prose still says 'entire tool'; this does not change access to the three workloads in this briefing. | Source: https://learn.microsoft.com/microsoft-365/backup/backup-setup
 -->

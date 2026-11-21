@@ -44,7 +44,7 @@ controls:
       kind: "powershell"
       call: "Set-AutoSensitivityLabelPolicy -Identity <policy name> -AddSharePointLocation <site URLs>"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-autosensitivitylabelpolicy"
-    note: "Security & Compliance PowerShell. OneDrive uses -AddOneDriveLocation. Narrowing locations does not change the tenant ceiling."
+    note: "OneDrive uses -AddOneDriveLocation; both add included sites when the location is not All. Edit policy is documented for policies in Off or Simulation. Narrowing locations does not change the tenant ceiling."
   - governs: "Whether an auto-labeling policy runs in simulation or enforces labels"
     scope: "tenant"
     ui:
@@ -63,26 +63,30 @@ controls:
     note: "Learn describes 500,000 files a day as a ceiling and documents no setting for it at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-20"
+updated: "2026-11-21"
 roadmapModified: "2026-11-11T00:51:09"
 changes:
   - date: "2026-11-20"
     note: "New briefing for the GCC, GCC High and DoD roadmap item; the Worldwide item 567890 has its own page."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 51 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after the independent check: removed the claim that policies receive the higher ceiling without action, removed visual markings (Learn says auto-labeling does not apply them) and trimmed the checklist."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 62 statements confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-20"
-  version: 1
+  status: "verified"
+  date: "2026-11-21"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 48
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "d4a9d372fd0627c80ee710885c8ddc01"
+  claims: 62
+  confirmed: 62
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "a4b1f35c02e3f551030604cac6932664"
 ---
 
 ## What's changing
@@ -97,7 +101,7 @@ The roadmap description adds no new setting. Microsoft has not stated whether th
 
 ## Why it matters
 
-If your tenant already has auto-labeling policies turned on, the ceiling on how many files they can label each day rises without you changing a policy. The roadmap says the aim is to label and protect more existing content sooner and so help prepare data for Microsoft 365 Copilot. In the wiki's view, any encryption in the labels those policies apply can reach files faster than before.
+For tenants with auto-labeling policies already turned on, the higher ceiling could allow more files to be labelled each day; Microsoft has not stated whether the increase requires administrator action. The roadmap says the aim is to label and protect more existing content sooner and so help prepare data for Microsoft 365 Copilot. In the wiki's view, any encryption in the labels those policies apply can reach files faster than before.
 
 Because Microsoft has not stated what happens on arrival, treat the change as arriving: review which policies are enforcing and which labels they apply before assuming the old pace limits the effect.
 
@@ -105,7 +109,7 @@ Because Microsoft has not stated what happens on arrival, treat the change as ar
 
 **Data exposure**
 
-- Policies that are on can label more files a day, so a label's markings and, where the label applies encryption, its protection reach more content sooner. Check the labels and locations of each policy (controls table, rows 1 and 2).
+- Policies that are on can label more files a day, and where a label applies encryption, its protection can reach more content sooner. Check the labels and locations of each policy (controls table, rows 1 and 2).
 
 **Security & identity**
 
@@ -143,8 +147,6 @@ Because Microsoft has not stated what happens on arrival, treat the change as ar
 ### Before rollout
 
 - List the auto-labeling policies that are turned on and the SharePoint and OneDrive locations each covers (controls table, row 1).
-- Identify which of the labels those policies apply carry encryption, and brief the owners of the affected sites.
-- Confirm who holds Compliance Administrator or Compliance Data Administrator, the roles Learn names for turning a policy on.
 
 ### At rollout
 
@@ -164,7 +166,7 @@ Because Microsoft has not stated what happens on arrival, treat the change as ar
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which SharePoint and OneDrive locations an auto-labeling policy covers</strong><br><small>Tenant</small><br><small class="controls__note">Security &amp; Compliance PowerShell. OneDrive uses -AddOneDriveLocation. Narrowing locations does not change the tenant ceiling.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Policies › Auto-labeling policies › policy › Edit policy › Choose locations where you want to apply the label <a href="https://learn.microsoft.com/purview/apply-sensitivity-label-automatically" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AutoSensitivityLabelPolicy -Identity &lt;policy name&gt; -AddSharePointLocation &lt;site URLs&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-autosensitivitylabelpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which SharePoint and OneDrive locations an auto-labeling policy covers</strong><br><small>Tenant</small><br><small class="controls__note">OneDrive uses -AddOneDriveLocation; both add included sites when the location is not All. Edit policy is documented for policies in Off or Simulation. Narrowing locations does not change the tenant ceiling.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Policies › Auto-labeling policies › policy › Edit policy › Choose locations where you want to apply the label <a href="https://learn.microsoft.com/purview/apply-sensitivity-label-automatically" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AutoSensitivityLabelPolicy -Identity &lt;policy name&gt; -AddSharePointLocation &lt;site URLs&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-autosensitivitylabelpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether an auto-labeling policy runs in simulation or enforces labels</strong><br><small>Tenant</small><br><small class="controls__note">TestWithoutNotifications is the simulation (test) value. Turning a policy on requires Compliance Administrator or Compliance Data Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Policies › Auto-labeling policies › policy › Turn on policy <a href="https://learn.microsoft.com/purview/apply-sensitivity-label-automatically" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AutoSensitivityLabelPolicy -Identity &lt;policy name&gt; -Mode Enable</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-autosensitivitylabelpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>A tenant setting for the daily auto-labeling ceiling</strong><br><small>Tenant</small><br><small class="controls__note">Learn describes 500,000 files a day as a ceiling and documents no setting for it at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
@@ -184,16 +186,5 @@ The increase applies to the aggregate across policies, so narrowing one policy's
 <!-- rationale
 risk: Medium. Auto-labeling policies already turned on can label, and where the label encrypts, protect, up to five times as many files a day, so access and support effects arrive faster than before.
 cost: Low. The Learn page ties service-side auto-labeling to E5-tier licences and lists no meter for the ceiling; the cost is admin time to review policies. A price for the increase is not yet published.
-impact: Low. Administrators and compliance teams running auto-labeling policies notice it first; users notice only where newly labelled files carry encryption or markings.
--->
-
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Why it matters: first paragraph / default: For tenants with policies already turned on, the ceiling rises without changing a policy. | Found: Searched: auto-labeling scale increase administrator 500,000; Purview auto-labeling 500,000 throughput ceiling setting administrator action default price meter. Read the roadmap and Learn auto-labeling guidance; neither states that existing policies receive the increase without administrator action. | Fix: Replace the opening sentence of Why it matters with: 'For tenants with auto-labeling policies already turned on, the higher ceiling could allow more files to be labelled each day; Microsoft has not stated whether the increase requires administrator action.' This also removes the conflict with defaultState unknown and the following paragraph.
-- [contradicted, blocker] Risk assessment: Data exposure; rationale: impact / behaviour: Service-side auto-labeling applies a label's markings to SharePoint and OneDrive documents. | Found: If the labels you select are configured to use visual markings (headers, footers, watermarks), these markings aren't applied to documents when you use auto-labeling. | Fix: Replace the first Data exposure sentence with: 'Policies that are on can label more files a day, and where a label applies encryption, its protection can reach more content sooner.' In the impact rationale, remove 'or markings'. Learn explicitly excludes document visual markings: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table row 1 / admin-path: In the Microsoft Purview portal, Solutions > Information Protection > Policies > Auto-labeling policies > policy > Edit policy > Choose locations where you want to apply the label reaches policy location configuration. | Found: For a policy in the Off section, select the Edit policy button. ... For the page Choose locations where you want to apply the label: Select and specify locations for Exchange, SharePoint, and OneDrive. | Fix: Keep the path, but add to controls[0].note: 'On Choose locations where you want to apply the label, select the links to choose specific instances to include or exclude. Edit policy is documented for policies in Off or Simulation.' The route currently stops on the right wizard page without naming these location-selection links. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
-- [supported, minor] controls[0].api; Governance controls table row 1 / command: Set-AutoSensitivityLabelPolicy -Identity <policy name> -AddSharePointLocation <site URLs> adds SharePoint locations to a policy. | Found: The AddSharePointLocation parameter specifies the SharePoint sites to add to the list of included sites when you aren't using the value All for the SharePointLocation parameter. You identify the site by its URL value. | Fix: Add to controls[0].note: 'The AddSharePointLocation and AddOneDriveLocation parameters add included sites when the corresponding location is not All.' This preserves the valid call while carrying the reference's qualification. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/set-autosensitivitylabelpolicy
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks administrators to review label encryption and role holders, but the controls table has no rows for those controls. | Found: Identify which of the labels those policies apply carry encryption ... Confirm who holds Compliance Administrator or Compliance Data Administrator ... Table rows cover policy locations, policy mode and the absent ceiling setting. | Fix: The Before rollout bullets beginning 'Identify which of the labels' and 'Confirm who holds' have no corresponding controls-table rows. Remove those two checklist bullets; retain the verified encryption and role information in the existing prose. Do not add new control rows as part of this correction.
+impact: Low. Administrators and compliance teams running auto-labeling policies notice it first; users notice only where newly labelled files carry encryption.
 -->

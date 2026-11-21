@@ -95,15 +95,17 @@ changes:
     note: "Corrected the licensing model to mixed and replaced the 'licence not yet published' statements with Work IQ's published access rules; tidied the Update package call and added the copilotPackage resource source."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-21"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 58
+  claims: 60
+  confirmed: 60
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -199,8 +201,8 @@ cost: Variable. Work IQ API usage consumes Copilot Credits per Microsoft Learn; 
 impact: Medium. Developers, makers and the users of their agents would notice different skills being applied; the roadmap lists the Developer platform.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: related business skills / behaviour: Related business skills are a Work IQ capability that supplies process instructions to agents. | Found: Business skills with Dataverse intelligence (preview) are natural-language instructions that encode your organization's processes, policies, and domain knowledge in a format agents can interpret and execute. | Fix: Change 'For business skills, a related Work IQ capability' to 'For business skills, a related Work IQ capability documented as preview'. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq#skills-and-tools
+- [supported, minor] What's changing: related business skills / behaviour: Business skills are a related Work IQ capability supplying process instructions to agents. | Found: Business skills with Dataverse intelligence (preview) are natural-language instructions that encode your organization's processes, policies, and domain knowledge in a format agents can interpret and execute. | Fix: Change 'For business skills, a related Work IQ capability' to 'For business skills, a related Work IQ capability documented as preview'. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq#skills-and-tools
 -->

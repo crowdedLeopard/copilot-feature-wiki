@@ -4,14 +4,14 @@ slug: "microsoft-purview-information-protection-apply-default-sharepoint-library
 roadmapId: 575283
 topic: "governance"
 products: ["Microsoft Purview"]
-summary: "Microsoft plans to label existing SharePoint files to match their library's default sensitivity label. This item covers GCC, GCC High and DoD. Learn documents an admin-created auto-labeling policy for this; review before December 2026."
+summary: "Microsoft plans to label existing SharePoint files to match their library's default sensitivity label. This item covers GCC, GCC High and DoD. Learn documents an admin-created auto-labeling policy for this; review ahead of the January CY2027 target."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["GCC","GCC High","DoD"]
 platforms: ["Web"]
-targetDate: "December CY2026"
+targetDate: "January CY2027"
 previewDate: null
-risk: "medium"
+risk: "low"
 cost: "medium"
 impact: "medium"
 defaultState: "admin-opt-in"
@@ -22,6 +22,9 @@ licensing:
 audiences: ["compliance","m365-admin","security","service-owner"]
 tags: ["purview","sensitivity-labels","information-protection","sharepoint","auto-labeling","gcc","gcc-high","dod"]
 sources:
+  - title: "Microsoft 365 Roadmap 575283"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=575283"
+    kind: "roadmap"
   - title: "Automatically apply a sensitivity label to Microsoft 365 data"
     url: "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically"
     kind: "learn"
@@ -52,9 +55,6 @@ sources:
   - title: "Restrict access to content by using sensitivity labels to apply encryption"
     url: "https://learn.microsoft.com/purview/encryption-sensitivity-labels"
     kind: "learn"
-  - title: "Microsoft 365 Roadmap item 575283"
-    url: "https://www.microsoft.com/microsoft-365/roadmap?id=575283"
-    kind: "roadmap"
 videos: []
 related: ["sensitivity-labels","auditing"]
 controls:
@@ -90,8 +90,8 @@ controls:
     note: "Read-only. Look for the Applied sensitivity label file event; the Learn page for library defaults says ActionScourceDetails 6 marks a library default."
 confidence: "medium"
 created: "2026-11-20"
-updated: "2026-11-20"
-roadmapModified: "2026-11-19T21:32:07"
+updated: "2026-11-21"
+roadmapModified: "2026-11-20T23:20:27"
 changes:
   - date: "2026-11-20"
     note: "First briefing for roadmap item 575283, the GCC, GCC High and DoD item; the Worldwide item is 559105."
@@ -105,19 +105,23 @@ changes:
     note: "Corrected after verification: the library default label control now lists its REST automation (DefaultSensitivityLabelForLibrary) instead of saying none is documented."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 66 statements not yet confirmed"
-version: 3
+  - date: "2026-11-21"
+    note: "Corrected after verification: risk lowered to Low because nothing happens until an admin creates the policy; target date aligned to the roadmap record (January CY2027); removed the unsupported policy checklist step."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
+version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
-  version: 3
+  date: "2026-11-21"
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
+  claims: 64
   confirmed: 64
   unconfirmed: 0
-  contradicted: 2
+  contradicted: 0
   attempts: 0
-  hash: "ea6af32d47660fc9eeeec5f463e1ff88"
+  hash: "0108c3439d6f18f968073b8915251175"
 ---
 
 ## What's changing
@@ -126,13 +130,13 @@ Microsoft plans to apply a SharePoint document library's default sensitivity lab
 
 Learn describes applying library defaults to existing files through an auto-labeling policy, while the separate library-default page still lists existing files at rest as a limitation of that library setting. That page says a default label is applied to new files uploaded to the library and to existing files that are edited, when they have no label or a lower-priority one, and lists as a limitation that the feature "Doesn't apply to existing files at rest in SharePoint". Treat the auto-labeling policy as the documented route, and the roadmap's government-cloud status and target as the plan.
 
-This roadmap item (575283) covers GCC, GCC High and DoD on the web, is In development and targets December CY2026. Microsoft lists the same feature under a second roadmap item, 559105, which covers Worldwide (Standard Multi-Tenant) and is marked Launched with an October CY2026 target. The two have separate records, so check each against your cloud.
+This roadmap item (575283) covers GCC, GCC High and DoD on the web, is In development and targets January CY2027. Microsoft lists the same feature under a second roadmap item, 559105, which covers Worldwide (Standard Multi-Tenant) and is marked Launched with an October CY2026 target. The two have separate records, so check each against your cloud.
 
 ## Why it matters
 
-The Learn page applies a library default to new and edited files, and lists existing files at rest as a limitation of that setting. Learn documents an administrator-created auto-labeling policy to extend library defaults to eligible existing files; review simulation results before turning on the policy. The roadmap still targets GCC, GCC High and DoD for December CY2026. Once such a policy runs, a label with encryption, markings or other settings could appear on many existing files.
+The Learn page applies a library default to new and edited files, and lists existing files at rest as a limitation of that setting. Learn documents an administrator-created auto-labeling policy to extend library defaults to eligible existing files; review simulation results before turning on the policy. The roadmap still targets GCC, GCC High and DoD for January CY2027. Once such a policy runs, a label with encryption, markings or other settings could appear on many existing files.
 
-Use the weeks before the December CY2026 target to find which libraries already carry a default label and what those labels do. A default chosen for new files may not suit older content, so review it before anyone creates the policy.
+Use the weeks before the January CY2027 target to find which libraries already carry a default label and what those labels do. A default chosen for new files may not suit older content, so review it before anyone creates the policy.
 
 ## Risk assessment
 
@@ -149,7 +153,7 @@ Use the weeks before the December CY2026 target to find which libraries already 
 
 **Change & support**
 - The tooltip on a file labelled this way reads "This file has been automatically labeled", and it also shows for auto-labeling policies and policy default labels, so the Sensitivity column alone does not identify the source.
-- Learn documents an auto-labeling policy and simulation review before it is turned on; it does not give a government-cloud rollout window beyond this roadmap's December CY2026 target.
+- Learn documents an auto-labeling policy and simulation review before it is turned on; it does not give a government-cloud rollout window beyond this roadmap's January CY2027 target.
 
 ## Cost and licensing
 
@@ -161,7 +165,7 @@ The indirect cost is time: finding libraries with defaults, checking label prior
 
 ## Scope
 
-The roadmap item lists GCC, GCC High and DoD, the Web platform and General Availability, with a December CY2026 target and status In development. Worldwide is covered by roadmap item 559105, not this one.
+The roadmap item lists GCC, GCC High and DoD, the Web platform and General Availability, with a January CY2027 target and status In development. Worldwide is covered by roadmap item 559105, not this one.
 
 The Learn page for library default labels sets these prerequisites: labels published with the scope **Files & other data assets**, sensitivity labels enabled for Office files in SharePoint and OneDrive, PDF support added if PDFs are to be labelled, and SharePoint Information Rights Management not enabled for the library. Site admin permissions are needed to apply and change the label. For the existing-files policy, Learn additionally requires permission to create and manage auto-labeling policies and to read the SharePoint site and library metadata used to identify libraries with default labels.
 
@@ -169,12 +173,11 @@ The Learn page for library default labels sets these prerequisites: labels publi
 
 ### Before rollout
 - List the libraries that already have a default sensitivity label, using the library settings row in the controls table, and record which label each one uses.
-- Brief site admins, who hold the permission to apply and change library defaults, that this change is planned for December CY2026.
+- Brief site admins, who hold the permission to apply and change library defaults, that this change is planned for January CY2027.
 
 ### At rollout
-- Select specific SharePoint sites and review simulation results before turning on the auto-labeling policy for existing files.
 - Run a test on a library with non-critical files first and use the audit search row to confirm which files were labelled.
-- Decide before December CY2026 whether to hold the tenant-level switch in the controls table in reserve, noting that the Learn page describes it for the existing library default feature and does not say it covers existing files.
+- Decide before January CY2027 whether to hold the tenant-level switch in the controls table in reserve, noting that the Learn page describes it for the existing library default feature and does not say it covers existing files.
 
 ### After rollout
 - Search the audit log for the **Applied sensitivity label file** event and filter on ActionScourceDetails 6 to find labelling done through library defaults.
@@ -196,23 +199,23 @@ The Learn page for library default labels sets these prerequisites: labels publi
 
 The library default label is set per library by a site admin. The Learn page documents a tenant-level switch, Set-SpoTenant with DisableDocumentLibraryDefaultLabeling, for the existing library default feature. After it is set, the page says the library's label selection remains but is deactivated, and labels already applied as a default are not removed. The page does not say whether it covers labelling of existing files, so test it before relying on it.
 
-Audit search shows the **Applied sensitivity label file** event with a ActionScourceDetails value of 6 for library defaults, and the **Updated list** event for changes to the library setting. Microsoft documents an auto-labeling policy option to apply default sensitivity labels from SharePoint document libraries to existing files. Select specific SharePoint sites and review simulation results before turning on the policy.
+Audit search shows the **Applied sensitivity label file** event with a ActionScourceDetails value of 6 for library defaults, and the **Updated list** event for changes to the library setting. Microsoft documents an auto-labeling policy option to apply default sensitivity labels from SharePoint document libraries to existing files.
 
 ## Open questions
 
 - Which override rules apply to existing files? The page's table for new and edited files says manually applied labels are not overridden; confirm that this holds for data at rest.
 - Does DisableDocumentLibraryDefaultLabeling also stop labelling of existing files?
-- Will the auto-labeling policy option for existing files be available in GCC, GCC High and DoD by the roadmap's December CY2026 target? Watch Message center and the roadmap item.
+- Will the auto-labeling policy option for existing files be available in GCC, GCC High and DoD by the roadmap's January CY2027 target? Watch Message center and the roadmap item.
 
 <!-- rationale
-risk: Medium. Labels could be applied to files that already exist, and the Learn page lists labels with encryption settings that libraries cannot use as a default; Learn documents an administrator-created auto-labeling policy, reviewed in simulation before it is turned on.
+risk: Low. Existing files are labelled only after an administrator creates and turns on an auto-labeling policy; review simulation results before enabling it.
 cost: Medium. Learn documents this as service-side auto-labeling, which requires qualifying licensing; tenants with E3 or Business Premium need an E5 / P2-tier add-on. Reviewing library defaults and simulation results also takes administrator time.
 impact: Medium. Site admins who set library defaults and people who work in those libraries could see existing files take a label, with any protection that label carries.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The governance checklist's instruction to configure and review the existing-files auto-labeling policy has no corresponding controls-table row. | Found: Checklist: Select specific SharePoint sites and review simulation results before turning on the auto-labeling policy. Table rows: library default label; tenant-level library-default switch; audit search. | Fix: The checklist step 'Select specific SharePoint sites and review simulation results before turning on the auto-labeling policy for existing files' has no corresponding row in the controls table. This is a coverage finding, not a request to add a row during correction.
-- [contradicted, minor] front matter: risk; rationale: risk / consistency: The medium risk rating does not match the scale's low category for a change that does nothing until an administrator opts in. | Found: risk: medium; defaultState: admin-opt-in. Rationale: Learn documents an administrator-created auto-labeling policy, reviewed in simulation before it is turned on. | Fix: Set risk to low and replace its rationale with: 'Low. Existing files are labelled only after an administrator creates and turns on an auto-labeling policy; review simulation results before enabling it.'
+- [supported, minor] What's changing; Scope / record: Roadmap item 559105 describes the same capability in a separate record. | Found: "id": 559105; "title": "Microsoft Purview: Information Protection - Apply default SharePoint library labels to data at rest" | Fix: Add a roadmap source titled 'Microsoft 365 Roadmap 559105' with URL https://www.microsoft.com/microsoft-365/roadmap?id=559105 for the Worldwide comparison.
+- [supported, minor] Why it matters / behaviour: An existing file could receive a label configured with markings or other settings. | Found: If the labels you select are configured to use visual markings (headers, footers, watermarks), these markings aren't applied to documents when you use auto-labeling. | Fix: Replace 'Once such a policy runs, a label with encryption, markings or other settings could appear on many existing files.' with 'Once such a policy runs, many eligible existing files could receive the library default label and its encryption. Visual markings are not applied to documents by auto-labeling.' | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
 -->

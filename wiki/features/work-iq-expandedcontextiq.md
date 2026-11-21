@@ -98,15 +98,17 @@ changes:
     note: "Corrected the licensing model to mixed, with the published Copilot Chat entitlement and agent billing rules, and reworded the package inventory API note to match the Learn pages."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 61 statements confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 71 statements confirmed"
 version: 4
 verification:
   status: "verified"
-  date: "2026-11-19"
+  date: "2026-11-21"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 61
+  claims: 71
+  confirmed: 71
   unconfirmed: 0
   contradicted: 0
   attempts: 0
