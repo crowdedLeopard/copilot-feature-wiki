@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for saved filters. Microsoft Learn says users need a Microsoft Copilot licence to access Planner Agent in Planner; it does not say whether saved filters change that."
+  model: "included"
+  notes: "Planner Agent in Planner requires a Microsoft Copilot licence. Microsoft has not published a licensing requirement specific to saved filters."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["planner","copilot","agents","powershell","user-experience"]
 sources:
@@ -52,7 +52,7 @@ controls:
     note: "No separate control documented at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-16"
+updated: "2026-11-21"
 roadmapModified: "2026-11-03T00:14:11"
 changes:
   - date: "2026-11-16"
@@ -61,19 +61,23 @@ changes:
     note: "Corrected after verification: removed unsupported claims about automatic availability, saved-filter data inputs and agent interpretation of filters; status and dates unchanged."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 50 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-21"
+    note: "Corrected after verification: removed an unsupported Planner Plan 1 licence statement; licensing now recorded as the Microsoft Copilot licence Planner Agent requires."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 45 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 49
-  unconfirmed: 1
+  claims: 45
+  confirmed: 45
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "cf4042b6d90207bdbc068e3f5211b1dc"
+  attempts: 0
+  hash: "0e43a978795df620bed4d23353b1f641"
 ---
 
 ## What's changing
@@ -113,7 +117,7 @@ Microsoft has not stated whether saved filters will become available automatical
 
 Microsoft has not published licensing or pricing for saved filters. The Learn page on restricting Planner Agent says users must have a Microsoft Copilot licence to access Planner Agent in Planner.
 
-Planner Agent chat applies to premium plans. The Planner for admins page says a Planner Plan 1 licence is required to create premium plans. Whether saved filters need anything beyond these is not yet published.
+Planner Agent chat applies to premium plans. Whether saved filters need anything beyond the Microsoft Copilot licence is not yet published.
 
 No meter or cap for this feature is documented at the time of writing (November 2026). The indirect cost is admin time to decide on the access setting and to brief users.
 
@@ -168,12 +172,4 @@ Security group access depends on a valid group ID: Learn says that if the ID is 
 risk: Low. The roadmap describes saving a filter for reuse on plans, and Microsoft documents no new data source, action or permission for it; the existing Planner Agent access setting is the only documented control.
 cost: Low. The only cost the sources show is admin time and user communication; licensing for saved filters is not yet published, and Planner Agent already requires a Microsoft Copilot licence.
 impact: Low. Only users of Planner Agent chat would notice a convenience change inside the chat; nothing changes for other Planner users.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Cost and licensing / licensing: The Planner for admins page says a Planner Plan 1 licence is required to create premium plans. | Found: Searched: "Planner Plan 1" "create premium plans" license Copilot; "Planner" "create premium" "license". Read planner-for-admins and Planner service description; neither states this requirement. The custom-solutions result concerns Project for the web custom solutions. | Fix: Remove "The Planner for admins page says a Planner Plan 1 licence is required to create premium plans." The current cited page no longer states that requirement; do not replace it with an inferred premium-plan creation rule.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model and notes / licensing: Licensing is unknown for saved filters, although Planner Agent requires a Microsoft Copilot licence. | Found: Users must have the following license to access Planner Agent in Planner: A Microsoft Copilot license. | Fix: Set licensing.model to "included". Replace the notes with "Planner Agent in Planner requires a Microsoft Copilot licence. Microsoft has not published a licensing requirement specific to saved filters." Keep the cited turn-off-planner-agent source. | Source: https://learn.microsoft.com/planner/turn-off-planner-agent
 -->

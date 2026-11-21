@@ -34,6 +34,9 @@ sources:
   - title: "Admin policies for Copilot Pages and Copilot Notebooks"
     url: "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration?view=o365-worldwide"
     kind: "learn"
+  - title: "Overview of Copilot Pages and Copilot Notebooks storage"
+    url: "https://learn.microsoft.com/microsoft-365/loop/cpcn-storage?view=o365-worldwide"
+    kind: "learn"
   - title: "Overview of Cloud Policy service for Microsoft 365"
     url: "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy"
     kind: "learn"
@@ -57,7 +60,7 @@ controls:
     ui:
       surface: "Microsoft 365 Apps admin center"
       path: "Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Create and view Copilot Pages and Copilot Notebooks"
-      docs: "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy"
+      docs: "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration?view=o365-worldwide"
     api:
       kind: "graph"
       call: "POST /beta/admin/configurationManagement/configurationMonitors"
@@ -92,19 +95,23 @@ changes:
     note: "Corrected after the independent check: removed the claim that Cloud Policy is the only documented lever, reworded the audit-filter sentence, extended the policy path to the setting, added the Graph value, removed the unsupported audit bullet, and set action to act-now."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 78 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-21"
+    note: "Corrected after the independent check: the Cloud Policy row now links the Learn page that documents the setting, and the storage and quota statements now reflect the OneDrive storage page, with legacy SharePoint Embedded items noted."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 91 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 78
-  confirmed: 77
+  claims: 91
+  confirmed: 91
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "f9b4be9d05e4b885134629d2b82535a6"
+  contradicted: 0
+  attempts: 0
+  hash: "64bc0a98c3ff0aa8595cd18e1b2c1cca"
 ---
 
 ## What's changing
@@ -125,7 +132,7 @@ If nobody acts, the notice says users who are eligible get the suggestions by de
 
 **Data exposure**
 - Suggestions use notebook references, pages and the user's Microsoft 365 context (MC1411727). The generated artifact is built from the same notebook material, so a notebook that mixes sensitive and general sources can lead to a suggested file that draws on both. Review what users add to notebooks before relying on the suggestions.
-- Copilot Notebooks are stored in a user-owned SharePoint Embedded container that appears with the application name `Loop` in the SharePoint admin center, PowerShell and Purview audit data, so there is no separate Copilot Pages or Copilot Notebooks application filter.
+- Learn's requirements page describes a user-owned SharePoint Embedded container, but its storage page says current Pages and Notebooks use OneDrive for Business and only those created before November 2025 remain in that container. The legacy container appears as Loop in admin and audit tooling.
 
 **Security & identity**
 - The notice says the feature appears available to users who already have permission to create artifacts in Copilot Notebooks. It does not describe a separate permission model for the suggestions.
@@ -141,7 +148,7 @@ If nobody acts, the notice says users who are eligible get the suggestions by de
 
 Learn's requirements page says Copilot Notebooks need the Microsoft Copilot or Copilot Chat licence; its summary table lists the Copilot Notebooks licence as a Microsoft Copilot licence. Microsoft's notice MC1411727 says the affected organisations are those licensed for Microsoft 365 Copilot (Premium) with access to Copilot Notebooks. The two pages word the licence differently; use the notice and the requirements page together when checking who is covered.
 
-The pages read name no separate licence, add-on, meter or credit rate for artifact suggestions, and the requirements page lists no meter for Copilot Notebooks. A rate specific to this feature is not yet published. Notebook files count against the organisation's SharePoint quota, because Copilot Notebooks are stored in a user-owned SharePoint Embedded container.
+The pages read name no separate licence, add-on, meter or credit rate for artifact suggestions, and the requirements page lists no meter for Copilot Notebooks. A rate specific to this feature is not yet published. Learn's requirements page says storage counts against the organisation's SharePoint quota, but its storage page says current Pages and Notebooks count against the user's OneDrive storage limit; the SharePoint quota applies to legacy items created before November 2025.
 
 The indirect costs the notice points to are user communication, help desk briefing and training updates.
 
@@ -174,7 +181,7 @@ Users need the licence described under Cost and licensing. For full Copilot Note
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether users can create and use Copilot Pages and Copilot Notebooks</strong><br><small>Group</small><br><small class="controls__note">Default Enabled; covers Notebooks as a whole. Preview API, tenant-level policies only. Set mode to applyOnce and baseline.resources[].properties.value for microsoft.copilot.copilotpagesnotebooks to &quot;0&quot; to disable or &quot;1&quot; to enable.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Start with the basics › Choose the scope › Configure Settings › Create and view Copilot Pages and Copilot Notebooks <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether users can create and use Copilot Pages and Copilot Notebooks</strong><br><small>Group</small><br><small class="controls__note">Default Enabled; covers Notebooks as a whole. Preview API, tenant-level policies only. Set mode to applyOnce and baseline.resources[].properties.value for microsoft.copilot.copilotpagesnotebooks to &quot;0&quot; to disable or &quot;1&quot; to enable.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Start with the basics › Choose the scope › Configure Settings › Create and view Copilot Pages and Copilot Notebooks <a href="https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration?view=o365-worldwide" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Who holds the licence Copilot Notebooks need</strong><br><small>User</small><br><small class="controls__note">Requires at least the License Administrator or User Administrator role. Which product to choose follows the licence named on Learn's requirements page.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Licenses › product › Assign licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>A separate switch for suggested artifacts</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft's notice MC1411727 says no new administrative controls are described.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
@@ -196,13 +203,4 @@ The Graph route is a preview Tenant Configuration Management API and works only 
 risk: Medium. The suggestions come from AI processing of notebook content and Microsoft 365 context and are on by default, while Microsoft's notice describes no new admin control; a documented Cloud Policy setting governs Copilot Notebooks creation as a whole.
 cost: Low. Learn names the Microsoft Copilot or Copilot Chat licence users need for Copilot Notebooks, and no meter or rate for artifact suggestions is documented, so the known cost is communication, training and help-desk time.
 impact: Medium. Users who can use Copilot Notebooks see new suggestions inside the notebook, and Microsoft's notice asks administrators to brief help desk teams and update training.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls: first row / admin-path: The Cloud Policy UI link documents the complete route to Create and view Copilot Pages and Copilot Notebooks. | Found: On the **Configure Settings** page, select the policies that you want to include in the policy configuration. You can search for the policy by name, or you can create a custom filter. | Fix: Keep the printed path unchanged: both cited pages together support it. Change controls[0].ui.docs and the first row's Admin UI Learn link to https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration?view=o365-worldwide, which documents the final setting on Configure Settings. The current overview link documents the wizard but not the named control. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure; Cost and licensing / behaviour: Copilot Notebooks are stored in a user-owned SharePoint Embedded container. | Found: Copilot Pages and Copilot Notebooks are stored in a user-owned SharePoint Embedded container that's also used by Loop My workspace. | Fix: Replace the storage premise in the Data exposure bullet with: "Learn's requirements page describes a user-owned SharePoint Embedded container, but its storage page says current Pages and Notebooks use OneDrive for Business and only those created before November 2025 remain in that container. The legacy container appears as Loop in admin and audit tooling." Cite https://learn.microsoft.com/microsoft-365/loop/cpcn-storage?view=o365-worldwide and add it to sources. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements?view=o365-worldwide
-- [supported, minor] Cost and licensing / cost: Notebook files count against the organisation's SharePoint quota. | Found: Storage counts against your organization's SharePoint quota. | Fix: Replace the quota sentence with: "Learn's requirements page says storage counts against the organisation's SharePoint quota, but its storage page says current Pages and Notebooks count against the user's OneDrive storage limit; the SharePoint quota applies to legacy items created before November 2025." Cite https://learn.microsoft.com/microsoft-365/loop/cpcn-storage?view=o365-worldwide and add it to sources. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements?view=o365-worldwide
 -->

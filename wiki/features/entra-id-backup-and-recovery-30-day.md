@@ -11,7 +11,7 @@ clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
 targetDate: "December CY2026"
 previewDate: null
-risk: "medium"
+risk: "low"
 cost: "variable"
 impact: "low"
 defaultState: "admin-opt-in"
@@ -100,18 +100,18 @@ controls:
       kind: "graph"
       call: "GET /v1.0/directory/recovery/snapshots"
       docs: "https://learn.microsoft.com/graph/api/entrarecoveryservices-recovery-list-snapshots?view=graph-rest-1.0"
-    note: "Existing seven-day recovery, not the 30-day extension. Entra Backup Reader or Entra Backup Administrator; Entra ID P1 or P2 required."
+    note: "Microsoft Entra Backup Reader or Microsoft Entra Backup Administrator can view backups. Standard requires Entra ID P1 or P2; Premium (preview) requires a SharePoint license (or one that includes it) plus consumption billing."
   - governs: "Starting recovery jobs on existing Entra backups"
     scope: "tenant"
     ui:
       surface: "Microsoft Entra admin center"
-      path: "Backup and recovery > Backups > backup > Recover backup"
+      path: "Backup and recovery > Backups > backup > Recover backup > Recover"
       docs: "https://learn.microsoft.com/entra/backup/recover-objects"
     api:
       kind: "graph"
       call: "POST /v1.0/directory/recovery/snapshots/{snapshot-id}/recoveryJobs"
       docs: "https://learn.microsoft.com/graph/api/entrarecoveryservices-snapshot-post-recoveryjobs?view=graph-rest-1.0"
-    note: "Existing recovery. Entra Backup Administrator is the least privileged role for the API. Backup and recovery > Recovery History is where an admin cancels a running job; it does not start restores."
+    note: "Entra Backup Administrator is the least privileged role for the API. Backup and recovery > Recovery History is where an admin cancels a running job; it does not start restores."
   - governs: "Pay-as-you-go billing policy for Microsoft 365 Backup"
     scope: "tenant"
     ui:
@@ -145,19 +145,23 @@ changes:
     note: "Corrected after verification: Premium (preview) default (off), licence, $0.025 per object price, roles, admin enablement path, data location and object coverage now come from Microsoft Learn."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 97 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 6
+  - date: "2026-11-21"
+    note: "Corrected after verification: service-principal restore now carries the target-object qualification, the Entra viewing and recovery rows apply to Standard and Premium backups, the recovery path ends at Recover, and risk is low."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 88 statements not yet confirmed"
+version: 7
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 6
+  version: 7
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 97
-  confirmed: 92
-  unconfirmed: 0
-  contradicted: 5
-  attempts: 2
-  hash: "c38b6998a256b9a7f4538ecaa1397610"
+  claims: 88
+  confirmed: 87
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 0
+  hash: "09ce06b14496ee5ef23d4d7ff730582d"
 ---
 
 ## What's changing
@@ -184,7 +188,7 @@ If nobody acts, Premium stays off and the existing recovery continues, because M
 - Backups hold directory data for the supported objects and properties. For the existing backups Microsoft states that data stays in the same geo-location as the Microsoft Entra tenant. The Microsoft 365 Backup overview points Entra Premium geographic residency to Microsoft's Entra data-residency documentation, which states that Backup and Recovery snapshots are stored in Microsoft-managed Azure storage and replicated to multiple datacenters in the same region as the tenant.
 
 **Security & identity**
-- Restoring a soft-deleted user reinstates their attributes, group memberships, licences and assignments, and recovering a service principal also restores its OAuth2 permission grants and app role assignments. A restore can therefore bring back access that was removed on purpose, such as at off-boarding. Run a difference report and review it before recovering security-relevant objects.
+- Restoring a soft-deleted user reinstates their attributes, group memberships, licences and assignments, and recovering a service principal also restores OAuth2 permission grants and app role assignments where the recovered service principal is the target object. A restore can therefore bring back access that was removed on purpose, such as at off-boarding. Run a difference report and review it before recovering security-relevant objects.
 - Existing recovery needs the Microsoft Entra Backup Administrator role (included in Global Administrator). The Microsoft 365 Backup role table lists Global Administrator and Microsoft Entra Backup Administrator for Entra. Microsoft Entra Backup Administrator is the least-privileged role for enabling Premium and recovering objects.
 
 **Autonomy & actions**
@@ -215,9 +219,9 @@ The indirect cost is admin time to define restore procedures and to test them.
 ## Governance guidance
 
 ### Before rollout
-- Confirm the tenant has Microsoft Entra ID P1 or P2 and assign Microsoft Entra Backup Reader to reviewers and Microsoft Entra Backup Administrator to the few people who may restore.
+- Confirm the tenant has Microsoft Entra ID P1 or P2 for the Standard plan.
 - Plan a separate backup for objects managed in AD DS; changes to synced objects, except group memberships, are excluded from Entra recovery.
-- Decide who approves a restore of Conditional Access policies, app registrations and privileged groups, and require a reviewed difference report first.
+- Decide who approves a restore of Conditional Access policies, app registrations and privileged groups.
 
 ### At rollout
 - Decide whether to turn on Premium (preview): configure billing and create the Entra backup policy in the Microsoft 365 admin center (see the first control).
@@ -225,7 +229,7 @@ The indirect cost is admin time to define restore procedures and to test them.
 - Record in the runbook which console to use for which restore, since the roadmap splits advanced recovery and user actions across two consoles.
 
 ### After rollout
-- Review Recovery History after each restore and confirm that objects created since the backup were not soft-deleted by mistake.
+- Confirm after each restore that objects created since the backup were not soft-deleted by mistake.
 - Re-run the test after sync changes or source-of-authority moves, and after Microsoft changes the supported-objects list.
 - Watch Microsoft Learn for Premium to move out of preview and for the details listed under Open questions.
 
@@ -237,13 +241,13 @@ The indirect cost is admin time to define restore procedures and to test them.
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Switch or setting for the 30-day extension</strong><br><small>Tenant</small><br><small class="controls__note">Premium (preview) is off by default; configure billing and create the Entra policy to enable it. The backup recovery window is fixed at 30 days.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Microsoft 365 Backup › Entra › Set up policy › Overview › Policy Settings › Review Entra backup policy › Create policy <a href="https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Viewing existing Entra backups (snapshots)</strong><br><small>Tenant</small><br><small class="controls__note">Existing seven-day recovery, not the 30-day extension. Entra Backup Reader or Entra Backup Administrator; Entra ID P1 or P2 required.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Backup and recovery › Backups <a href="https://learn.microsoft.com/entra/backup/overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET /v1.0/directory/recovery/snapshots</code> <a href="https://learn.microsoft.com/graph/api/entrarecoveryservices-recovery-list-snapshots?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Starting recovery jobs on existing Entra backups</strong><br><small>Tenant</small><br><small class="controls__note">Existing recovery. Entra Backup Administrator is the least privileged role for the API. Backup and recovery &gt; Recovery History is where an admin cancels a running job; it does not start restores.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Backup and recovery › Backups › backup › Recover backup <a href="https://learn.microsoft.com/entra/backup/recover-objects" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/directory/recovery/snapshots/{snapshot-id}/recoveryJobs</code> <a href="https://learn.microsoft.com/graph/api/entrarecoveryservices-snapshot-post-recoveryjobs?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Viewing existing Entra backups (snapshots)</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Entra Backup Reader or Microsoft Entra Backup Administrator can view backups. Standard requires Entra ID P1 or P2; Premium (preview) requires a SharePoint license (or one that includes it) plus consumption billing.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Backup and recovery › Backups <a href="https://learn.microsoft.com/entra/backup/overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET /v1.0/directory/recovery/snapshots</code> <a href="https://learn.microsoft.com/graph/api/entrarecoveryservices-recovery-list-snapshots?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Starting recovery jobs on existing Entra backups</strong><br><small>Tenant</small><br><small class="controls__note">Entra Backup Administrator is the least privileged role for the API. Backup and recovery &gt; Recovery History is where an admin cancels a running job; it does not start restores.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Backup and recovery › Backups › backup › Recover backup › Recover <a href="https://learn.microsoft.com/entra/backup/recover-objects" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/directory/recovery/snapshots/{snapshot-id}/recoveryJobs</code> <a href="https://learn.microsoft.com/graph/api/entrarecoveryservices-snapshot-post-recoveryjobs?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Pay-as-you-go billing policy for Microsoft 365 Backup</strong><br><small>Tenant</small><br><small class="controls__note">Premium billing is set up in the Microsoft 365 admin center. Billing-node steps are for GCC and new Backup customers; existing customers use the Setup node, with optional migration per the Set up Microsoft 365 Backup article.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Pay-as-you-go › Billing policies › Add a billing policy <a href="https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The first row is the Microsoft 365 admin center path for creating the Entra Premium (preview) backup policy; Microsoft Learn documents no Premium-specific enablement API at the time of writing (November 2026). The two Entra rows govern existing seven-day recovery. Microsoft directs administrators to Microsoft 365 Backup setup to configure billing and turn on Entra Premium; Standard remains included with Entra ID P1 or P2. No signed-in user or application, even with the highest admin privileges, can turn off, delete or modify Standard plan backups. Premium requires administrator enablement.
+The first row is the Microsoft 365 admin center path for creating the Entra Premium (preview) backup policy; Microsoft Learn documents no Premium-specific enablement API at the time of writing (November 2026). The Entra admin center viewing and recovery paths apply to retained Standard and Premium backups; the Graph references document listing snapshots and starting recovery jobs. Microsoft directs administrators to Microsoft 365 Backup setup to configure billing and turn on Entra Premium; Standard remains included with Entra ID P1 or P2. No signed-in user or application, even with the highest admin privileges, can turn off, delete or modify Standard plan backups. Premium requires administrator enablement.
 
 The Graph snapshot operation is documented at v1.0, while the Microsoft Graph backup overview labels the Entra recovery APIs as available on beta only. Confirm the version before scripting. The Billing-node instructions are for GCC and new Microsoft 365 Backup customers only; the cited page directs existing backup customers to the Setup node.
 
@@ -254,22 +258,16 @@ The Graph snapshot operation is documented at v1.0, while the Microsoft Graph ba
 - Is the existing backup history seven days or five days? The Entra overview and the Microsoft Graph backup overview disagree.
 
 <!-- rationale
-risk: Medium. A restore can reinstate memberships, grants and role assignments that were removed on purpose; Premium is documented as off by default, so that exposure arises once an administrator turns it on.
+risk: Low. Premium is off by default, so existing behaviour continues until an administrator enables it; review recovery changes before restoring objects.
 cost: Variable. Premium is metered at $0.025 USD per protected Microsoft Entra object per month; restore planning and testing also take administrator time.
 impact: Low. Identity, security and Microsoft 365 administrators notice it; end users see nothing unless a restore changes their account or group membership.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity; rationale: risk / behaviour: Recovering a service principal restores its OAuth2 permission grants without qualification. | Found: When a service principal is recovered, Microsoft Entra Backup and Recovery also restores: OAuth2 permission grants where the recovered service principal is the target object | Fix: Replace 'also restores its OAuth2 permission grants and app role assignments' with 'also restores OAuth2 permission grants and app role assignments where the recovered service principal is the target object', matching https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations. Keep this target-object qualification in the risk rationale if it names service-principal grants. | Source: https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations
-- [contradicted, blocker] Risk assessment: Security & identity; rationale: risk / behaviour: Recovering a service principal restores its app role assignments without qualification. | Found: App role assignments where the recovered service principal is the target object | Fix: Use 'also restores OAuth2 permission grants and app role assignments where the recovered service principal is the target object' in the service-principal recovery sentence, as stated at https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations. | Source: https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations
-- [contradicted, blocker] controls[1].note; controls[2].note; Governance controls prose and table / applicability: The two Entra viewing and recovery rows govern existing seven-day recovery, not the 30-day extension. | Found: Backups: Browse available backups. The Standard plan retains up to 7 days of backup history, and the Premium plan retains up to 30 days. | Fix: Replace controls[1].note with 'Microsoft Entra Backup Reader or Microsoft Entra Backup Administrator can view backups. Standard requires Entra ID P1 or P2; Premium (preview) requires at least one SharePoint license or a license that includes SharePoint, plus consumption billing.' Remove 'Existing recovery.' from controls[2].note. Replace 'The two Entra rows govern existing seven-day recovery' with 'The Entra admin center viewing and recovery paths apply to retained Standard and Premium backups; the Graph references document listing snapshots and starting recovery jobs.' Use https://learn.microsoft.com/entra/backup/overview, https://learn.microsoft.com/entra/backup/backup-recovery-plans and https://learn.microsoft.com/entra/backup/recover-objects, already cited. | Source: https://learn.microsoft.com/entra/backup/overview
+- [unsupported, major] Why it matters / behaviour: Every other Microsoft 365 permission depends on identity. | Found: Searched: Microsoft Entra ID Microsoft 365 permissions identity access authorization. Read Graph identity-network-access overview, Entra data-residency page and Entra fundamentals search excerpts; these describe identity and access management, not every Microsoft 365 permission. | Fix: Remove 'Identity is the layer that every other Microsoft 365 permission depends on, and' from the first sentence of Why it matters; capitalise 'Soft delete'.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity; Scope / role: Microsoft Entra Backup Administrator is the least-privileged role for enabling Premium. | Found: Microsoft Entra Backup Administrator is the least-privileged role that can turn on Premium for your tenant. | Fix: Add to this role sentence: 'The Microsoft 365 Backup setup article separately says a SharePoint Administrator or Global Administrator is required to access the Microsoft 365 admin center and set up Microsoft 365 Backup.' Both pages are already cited: https://learn.microsoft.com/entra/backup/overview and https://learn.microsoft.com/microsoft-365/backup/backup-setup. | Source: https://learn.microsoft.com/entra/backup/overview
-- [supported, minor] Risk assessment: Change & support; Governance guidance: Before rollout / behaviour: Changes to on-premises synced objects, except group memberships, are excluded from recovery. | Found: Any changes made to on-premises synced objects (except group memberships) appear in difference reports, but are automatically excluded from recovery. | Fix: Add to this sentence: 'The backup, difference report, and recovery model article instead says on-premises synchronized objects cannot be recovered, without stating this group-membership exception.' Cite the already-listed https://learn.microsoft.com/entra/backup/backup-difference-report-recovery-model alongside https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations. | Source: https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations
-- [supported, minor] controls[2].ui; Governance controls table / admin-path: Starting recovery is at Microsoft Entra admin center > Backup and recovery > Backups > backup > Recover backup. | Found: Go to Backup and recovery > Backups. Select a backup and select Recover backup. ... Select Recover to start the recovery job. | Fix: Complete the route with the final action: 'Backup and recovery > Backups > backup > Recover backup > Recover'. The current path reaches the correct recovery dialog but stops before starting the job; scoping filters are optional. Source: https://learn.microsoft.com/entra/backup/recover-objects. | Source: https://learn.microsoft.com/entra/backup/recover-objects
-- [supported, minor] controls[3].ui; Governance controls table / admin-path: Native Microsoft 365 Backup billing policy creation is under Billing > Pay-as-you-go > Billing policies > Add a billing policy in the Microsoft 365 admin center. | Found: go to Billing > Pay-as-you-go. On the Billing policies tab, select Add a billing policy. | Fix: Complete the billing-policy creation route as 'Billing > Pay-as-you-go > Billing policies > Add a billing policy > Billing details > Choose users > Budget (optional) > Review and create policy > Create policy', from https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node. The printed route reaches the correct wizard but stops early. | Source: https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node
-- [contradicted, minor] front matter: risk; rationale: risk / consistency: A medium risk rating based on post-enablement recovery exposure fits the standard for this off-by-default capability. | Found: risk: "medium"; rationale: 'Premium is documented as off by default, so that exposure arises once an administrator turns it on.' Standard: low includes 'nothing happens until an admin opts in'. | Fix: Set risk to 'low' and replace its rationale with 'Low. Premium is off by default, so existing behaviour continues until an administrator enables it; review recovery changes before restoring objects.' Keep the documented post-enablement recovery risks in the body.
-- [contradicted, minor] Governance guidance: Before rollout and After rollout; controls / consistency: Every control that the governance checklist asks administrators to set or review appears in the controls table. | Found: Checklist: 'assign Microsoft Entra Backup Reader ... Microsoft Entra Backup Administrator'; 'require a reviewed difference report first'; 'Review Recovery History after each restore'. Table: enablement, viewing backups, starting recovery, billing. | Fix: The role-assignment instruction, difference-report review instruction and Recovery History review instruction have no corresponding controls-table rows. Remove those checklist instructions, retaining their already-documented role and recovery advice in the body; do not add unverified control rows.
+- [supported, minor] Risk assessment: Change & support; Governance guidance: Before rollout / behaviour: Changes to on-premises synced objects, except group memberships, are excluded from recovery. | Found: Any changes made to on-premises synced objects (except group memberships) appear in difference reports, but are automatically excluded from recovery. | Fix: After the synced-object exclusion sentence, add: 'The recovery-model article instead says on-premises synchronized objects cannot be recovered, without stating the group-membership exception.' Cite https://learn.microsoft.com/entra/backup/backup-difference-report-recovery-model. | Source: https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations
+- [supported, minor] controls[3].ui / admin-path: Microsoft 365 admin center > Billing > Pay-as-you-go > Billing policies > Add a billing policy is the billing-policy setup route. | Found: go to Billing > Pay-as-you-go. ... On the Billing policies tab, select Add a billing policy. ... On the Review and create policy page ... select Create policy. | Fix: Extend controls[3].ui.path to 'Billing > Pay-as-you-go > Billing policies > Add a billing policy > Billing details > Choose users > Budget > Review and create policy > Create policy'. The cited page documents these wizard pages; entering a budget is optional. | Source: https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node
 -->

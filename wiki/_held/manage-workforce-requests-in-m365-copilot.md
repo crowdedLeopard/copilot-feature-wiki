@@ -46,6 +46,9 @@ sources:
   - title: "Work with Microsoft Entra ID group teams"
     url: "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team"
     kind: "learn"
+  - title: "Manage the Service app in the Microsoft 365 admin center"
+    url: "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app"
+    kind: "learn"
 videos: []
 related: ["mcp","security-roles","m365-copilot-service-agent-in-m365-your-dedicated-service-specialist"]
 controls:
@@ -74,24 +77,28 @@ changes:
     note: "New briefing: WEM MCP tools let supervisors and representatives work with workforce requests in chat; licensing and default state not yet published."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 62 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected the governance controls note: Service app deployment, availability and blocking are additional app-level controls, and tools are described as not typically used directly."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 71 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 61
+  claims: 71
+  confirmed: 69
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "ef3410fc5dc4800ac323e3ae7a93c5ff"
+  contradicted: 2
+  attempts: 2
+  hash: "427416ae7b6849210f57ae106a91714e"
 ---
 
 ## What's changing
 
-Dynamics 365 Workforce Engagement Management (WEM) now offers three Model Context Protocol (MCP) tools that let people work with workforce requests in a chat conversation: list requests, open one request, and approve or reject a time-off request. Representatives and supervisors do not call the tools directly. The Learn overview says they interact with a conversational experience, and that Service Agent "determines which tool to use, invokes it in the background, and presents the result in the conversation".
+Dynamics 365 Workforce Engagement Management (WEM) now offers three Model Context Protocol (MCP) tools that let people work with workforce requests in a chat conversation: list requests, open one request, and approve or reject a time-off request. Representatives and supervisors do not typically use the tools directly. The Learn overview says they interact with a conversational experience, and that Service Agent "determines which tool to use, invokes it in the background, and presents the result in the conversation".
 
 The roadmap item describes the integration as Microsoft 365 Copilot, while the Learn overview names Service Agent as its example experience. This briefing reports both and does not equate them.
 
@@ -163,7 +170,7 @@ Supervisors see requests within their authorised planning group, and customer se
 </tbody>
 </table>
 
-The only control Learn documents for these tools is the existing Dynamics 365 and Dataverse security model: the overview says it governs access, and the roadmap says no separate permissions framework is needed. Role assignment is therefore the lever for both visibility and approval rights.
+Dynamics 365 and Dataverse security govern access to WEM tools and requests. For the Service Agent experience, Service app deployment, availability and blocking are additional app-level controls; they do not target only WEM tools. The roadmap says no separate permissions framework is needed. Role assignment is therefore the lever for both visibility and approval rights.
 
 The preview WEM roles page says its roles apply only within the Workforce Engagement Management app and that WFM Service Rep users see their own requests. It does not say which role the MCP tools treat as the reviewer permission, so check that mapping in a test environment. The page is marked preview, so its privileges may change.
 
@@ -186,9 +193,9 @@ impact: Medium. It affects Workforce Engagement Management supervisors, who revi
 <!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: The only control Learn documents / absence: The existing Dynamics 365 and Dataverse security model is the only documented control for these tools. | Found: The Service app packages Service Agent and Customer Service plugins for supported Copilot experiences. ... Service app assignment and Microsoft Entra groups ... Determines who receives the app and who is allowed to install or use it. | Fix: Replace 'The only control Learn documents for these tools is the existing Dynamics 365 and Dataverse security model' with 'Dynamics 365 and Dataverse security govern access to WEM tools and requests. For the Service Agent experience, Service app deployment, availability and blocking are additional app-level controls; they do not target only WEM tools.' Cite https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app. Keep the narrower WEM-only switch gap; do not add control rows. | Source: https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app
+- [contradicted, blocker] controls[1].ui and api; controls[1].note; Governance controls final paragraph / absence: Microsoft documents no control that turns off only the WEM request tools. | Found: Use this capability when you want to hide or show MCP tools at the organization or profile level. Maker tools cannot be hidden. | Fix: Remove the both-null controls[1] row and the repeated no-setting assertion. Replace that assertion with 'Service Agent supports organization- and profile-level visibility overrides for individual MCP tools; a profile can restore a tool hidden at organization level.' Cite https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/save_tool_selection and https://learn.microsoft.com/dynamics365/customer-service/administer/configure-service-agent-experiences. Do not describe visibility overrides as an unoverrideable tenant-wide enforcement switch. | Source: https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/save_tool_selection
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: Representatives and supervisors do not call the tools directly / behaviour: Representatives and supervisors interact with the conversational experience rather than calling tools directly. | Found: Customer service representatives and supervisors don't typically use MCP tools directly. Instead, they interact with Service Agent. | Fix: Replace 'Representatives and supervisors do not call the tools directly.' with 'Representatives and supervisors do not typically use the tools directly.' This preserves Learn's qualification rather than making the normal interaction pattern categorical. | Source: https://learn.microsoft.com/dynamics365/customer-service/develop/workforce-mcp-tools-overview-service-agent
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: User security roles are managed in Power Platform admin center at Environments > environment > Settings > Users + permissions > Users > user > Manage security roles. | Found: select Environments, and then select your environment. Select Settings > Users + permissions > Users. Select the user to update, and then select Manage security roles. | Fix: Append '> workforce management role' to controls[0].ui.path and the rendered path: 'Environments > environment > Settings > Users + permissions > Users > user > Manage security roles > workforce management role'. The cited page continues with selecting the role to assign; Save is not part of the path. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/workforce-management-security-roles
-- [supported, minor] front matter: licensing.model and notes; Cost and licensing; rationale: cost / licensing: Feature-specific licensing is not published, so the briefing labels the licensing model unknown. | Found: To use the Microsoft Copilot feature in a Dynamics 365 app, users must have a Dynamics 365 Enterprise or Premium license. However, to get the full capabilities of Work IQ, beyond Dataverse grounding, a Microsoft 365 Copilot license is required. | Fix: Set licensing.model to 'included' and replace licensing.notes with: 'For Microsoft Copilot in a Dynamics 365 app, users need a Dynamics 365 Enterprise or Premium license; full Work IQ capabilities beyond Dataverse grounding require a Microsoft 365 Copilot license. A licence or meter specific to the WEM tools is not yet published.' Cite https://learn.microsoft.com/dynamics365/customer-service/use/use-microsoft-365-copilot and repeat this qualification in Cost and licensing. Keep the low cost rating and unpublished feature-specific pricing caveat. | Source: https://learn.microsoft.com/dynamics365/customer-service/use/use-microsoft-365-copilot
+- [supported, minor] front matter: defaultState; Why it matters; Open questions; changes / absence: Microsoft has not stated the arrival default for the new WEM request tools. | Found: Searched: WEM tools default enabled; WEM request MCP tools default enabled Service Agent. Read WEM overview, all three tool pages, configure-service-agent and Service Agent FAQ excerpts; host setup is documented, but the new WEM tools' arrival default is not. | Fix: Keep defaultState unknown, but replace the broad sentence in Why it matters with 'Microsoft has not stated the arrival default for these WEM tools. Service Agent itself requires administrator configuration.' Cite https://learn.microsoft.com/dynamics365/customer-service/use/service-agent-faq for the second sentence.
+- [supported, minor] front matter: licensing.model and notes; Cost and licensing; rationale: cost; Open questions / absence: No licence entitlement specific to these WEM request tools is published. | Found: Searched: Workforce Engagement Management MCP tools licensing license pricing; "Workforce Engagement Management" "MCP" "license". Read WEM overview, tool pages, WEM app prerequisites and Service app requirements; no WEM-tool-specific licence was named. | Fix: The product-level licence is published. Set licensing.model to included and add to its notes: 'Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible subscription plans. Licensing specific to these WEM tools is not yet published.' Cite https://learn.microsoft.com/copilot/plan/copilot-license-options. Do not assert that additional tool charges are ruled out.
+- [contradicted, minor] Governance guidance: Before rollout; controls table / consistency: The checklist asks administrators to identify enabled WEM environments and installed packages, but neither control has a table row. | Found: Identify the environments where WEM is enabled and the Workforce Management for Customer Service package is installed; table rows cover security roles and a tools-only switch. | Fix: Remove the first Before rollout checklist bullet, which asks readers to take stock of WEM enablement and package installation without corresponding control rows. Keep the prerequisites already stated in Scope; do not add rows.
 -->

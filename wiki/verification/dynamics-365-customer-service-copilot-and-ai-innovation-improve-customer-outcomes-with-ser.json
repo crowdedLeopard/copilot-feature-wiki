@@ -1,0 +1,1110 @@
+{
+  "slug": "dynamics-365-customer-service-copilot-and-ai-innovation-improve-customer-outcomes-with-ser",
+  "roadmapId": 576818,
+  "title": "Dynamics 365 Customer Service: Service Agent in Microsoft 365 Copilot Chat",
+  "status": "verified-with-gaps",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 86,
+    "confirmed": 85,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "The roadmap facts, administrator enablement, licensing prerequisites and documented Service app controls are supported. Minor corrections should complete the environment enablement path, acknowledge Microsoft's differing names for the tenant data setting, and reconcile checklist controls with the table.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target date is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap preview date is March CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"March CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap products are Microsoft Copilot (Microsoft 365) and Dynamics 365 Customer Service.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Customer Service\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap describes Microsoft 365 Copilot Chat arriving in Customer Service with service-aware grounding and workflows.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With this update, that same chat experience is available in Dynamics 365 Customer Service, with service-aware grounding and workflows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says service users can see and prioritize work.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "See and prioritize work (for example, top cases and what needs attention).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes drafting customer communications with Microsoft 365 context when relevant.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Draft customer communications and prepare next steps with Microsoft 365 context when relevant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap describes trends and operational signals across cases for supervisors and leads.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Identify trends and operational signals across cases to help supervisors and leads intervene earlier.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes discovering answers from support knowledge.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Discover answers from support knowledge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap audience includes supervisors, leads and customer service representatives.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "so supervisors, leads, and customer service representatives can get answers, summarize work, and take next steps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: defaultState; summary; Why it matters",
+      "type": "default",
+      "claim": "Service Agent requires administrator enablement, so its default state is admin-opt-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-service-agent",
+      "quote": "After an administrator enables Service Agent, you can use Copilot to retrieve case and customer interaction summaries, view workload details, and get responses from knowledge sources across Dynamics 365 and SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "licensing.notes; Cost and licensing; Scope; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "Using Microsoft Copilot in a Dynamics 365 app requires a Dynamics 365 Enterprise or Premium licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot",
+      "quote": "To use the Microsoft Copilot feature in a Dynamics 365 app, users must have a Dynamics 365 Enterprise or Premium license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "licensing.notes; Cost and licensing; Scope; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "Full Work IQ capabilities beyond Dataverse grounding require a Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot",
+      "quote": "However, to get the full capabilities of Work IQ, beyond Dataverse grounding, a Microsoft 365 Copilot license is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed, combining the Dynamics 365 entitlement with an additional licence for full Work IQ capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot",
+      "quote": "users must have a Dynamics 365 Enterprise or Premium license. However, to get the full capabilities of Work IQ, beyond Dataverse grounding, a Microsoft 365 Copilot license is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The Service Agent pages publish no separate Service Agent price, meter or credit rate at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Service Agent Dynamics 365 Customer Service licensing Copilot Credits price meter rate; \"Service Agent\" \"price\" \"meter\" licensing Customer Service. Opened configure-service-agent, use-service-agent and manage-service-app; read Copilot billing and meter search excerpts; no separate rate found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; summary; Why it matters",
+      "type": "behaviour",
+      "claim": "Service Agent is a Microsoft 365 Copilot agent that finds, summarizes and updates Customer Service information using Customer Service data and connected knowledge sources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-service-agent",
+      "quote": "Service Agent is a Microsoft 365 Copilot agent that helps customer service representatives (service representatives, representatives) find, summarize, and update customer service information by using data from Dynamics 365 Customer Service and connected knowledge sources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "Learn states that Service Agent is generally available as a Microsoft 365 Copilot agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-service-agent",
+      "quote": "Service Agent is generally available as a Microsoft 365 Copilot agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Representatives can ask Service Agent to review and prioritize cases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-service-agent",
+      "quote": "You can use Service Agent to review and prioritize cases based on relevant case information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Service Agent can summarize case details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-service-agent",
+      "quote": "You can use Service Agent to summarize information from an existing case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Service Agent summarizes recent customer interactions using data across Teams, Outlook and Customer Service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-service-agent",
+      "quote": "Use Service Agent to summarize recent customer interactions. Service Agent discovers data across Teams, Outlook, and Customer Service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Service Agent discovers knowledge answers from Dynamics 365 and SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-service-agent",
+      "quote": "Service Agent discovers answers from Dynamics 365 knowledge and SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Service Agent can draft knowledge articles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-service-agent",
+      "quote": "Use Service Agent to draft a knowledge article or a customer-ready response based on how you resolved a case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Service Agent can draft customer emails.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-service-agent",
+      "quote": "Use Service Agent to draft an email to the customer and send it after you review it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Service Agent can send a drafted customer email after the representative reviews it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-service-agent",
+      "quote": "Use Service Agent to draft an email to the customer and send it after you review it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Service Agent can add case notes when asked.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-service-agent",
+      "quote": "For example, you can ask Service Agent to: ... Add notes to this case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Service Agent can update case status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-service-agent",
+      "quote": "You can also take actions on cases, such as adding notes, updating status, and creating child cases.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Service Agent can update case priority when asked.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-service-agent",
+      "quote": "For example, you can ask Service Agent to: Update the case priority.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Service Agent can create child cases when asked.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-service-agent",
+      "quote": "Create a new child case associated with this case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Service Agent can resolve a case and record resolution details when asked.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-service-agent",
+      "quote": "Resolve this case and record the resolution details.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance",
+      "type": "behaviour",
+      "claim": "The Customer Service environment selected under Sources determines which records Service Agent accesses in the session.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-service-agent",
+      "quote": "Service Agent retrieves and updates customer service data from the Dynamics 365 Customer Service environment selected under Sources. ... The selected source determines which customer service records Service Agent can access during your session.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "In Copilot Service workspace, Service Agent can automatically use the active case or work item as context.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-service-agent",
+      "quote": "In Copilot Service workspace, Service Agent can automatically use the active case or work item as context.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "The use-service-agent page documents case tasks and next best actions but does not describe the roadmap's cross-case trend analysis for supervisors.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Service Agent configure tools administrator cross case trends supervisors default automatically enabled. Opened use-service-agent in full: case intelligence examples concern an individual case and SLA risk; no cross-case trend analysis passage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing; Scope: Roles",
+      "type": "role",
+      "claim": "A Microsoft 365 administrator manages Service app installation and assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-service-agent",
+      "quote": "A Microsoft 365 administrator manages installation and assignment of the Service app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Scope: Roles",
+      "type": "role",
+      "claim": "A Dynamics 365 administrator adds Microsoft Copilot to the Customer Service environment for the in-app experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-service-agent",
+      "quote": "A Dynamics 365 administrator adds Microsoft Copilot to the Customer Service environment for the in-app experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Installing the Service app and configuring the Customer Service environment are separate enablement tasks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-service-agent",
+      "quote": "These are separate tasks: installing the Service app doesn't configure the environment or grant users access to Customer Service records.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The Service app is automatically installed if a Customer Service licence is assigned in the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-service-agent",
+      "quote": "The app is automatically installed if a license for Customer Service is assigned in your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Connecting to other services might incur costs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-service-agent",
+      "quote": "When you connect to other services, you might incur costs",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Connecting to other services might send data outside the Dynamics 365 compliance boundary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-service-agent",
+      "quote": "data might be sent outside the Dynamics 365 compliance boundary and processed according to the applicable service terms and data handling policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Microsoft says managing data flows outside organizational compliance and geographic boundaries is the customer's responsibility.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-service-agent",
+      "quote": "It's your responsibility to manage whether your data flows outside of your organization’s compliance and geographic boundaries and any related implications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure; Scope: Prerequisites; controls[3].note",
+      "type": "applicability",
+      "claim": "The tenant must allow Dataverse data in Microsoft Copilot as a prerequisite for Microsoft Copilot in model-driven apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot",
+      "quote": "Your tenant must be set to allow Dataverse data available in Microsoft Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Data exposure; Scope: Prerequisites",
+      "type": "applicability",
+      "claim": "Dataverse Search must be Default or On for the environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot",
+      "quote": "Dataverse Search must be set to Default or On for the environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Microsoft Copilot for model-driven apps relies on Dataverse Search indexes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot",
+      "quote": "Microsoft Copilot for model-driven apps relies on Dataverse Search indexes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Enabling Microsoft Copilot for model-driven apps might increase environment Dataverse capacity consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot",
+      "quote": "Enabling this feature might increase your environment’s Dataverse capacity consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing; Governance guidance",
+      "type": "applicability",
+      "claim": "Sufficient Dataverse database capacity must be available for indexing, semantic search and Copilot operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot",
+      "quote": "Sufficient Dataverse database capacity must be available to support indexing, semantic search, and Copilot operations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Service app assignment does not grant Dynamics 365 data rights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
+      "quote": "Service app assignment and Microsoft Entra groups ... What it doesn't grant: A Microsoft 365 administrator role, host entitlement, or Dynamics 365 data rights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Security & identity; Autonomy & actions; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Dynamics 365 security roles and data access govern the environments, tools, records and actions users can access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
+      "quote": "Dynamics 365 security roles and data access | Environments, tools, records, and actions a user can access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Security & identity; Cost and licensing",
+      "type": "role",
+      "claim": "Installing Service from Microsoft Marketplace requires permissions equivalent to the tenant administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
+      "quote": "To install the Service app from Microsoft Marketplace, you need permissions equivalent to the tenant administrator and a paid license for using its capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Security & identity; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft's Service app installation prerequisites include a paid licence for using its capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
+      "quote": "To install the Service app from Microsoft Marketplace, you need permissions equivalent to the tenant administrator and a paid license for using its capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Autonomy & actions; Governance controls",
+      "type": "applicability",
+      "claim": "The Service package offers no separate administrator targeting for individual Service components.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
+      "quote": "Manage deployment at the app level. The package doesn't provide separate administrator targeting for individual Service components.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Service packages Service Agent and Customer Service plugins for multiple supported Copilot experiences, so removal can affect more than one experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
+      "quote": "The Service app packages Service Agent and Customer Service plugins for supported Copilot experiences. ... If you remove Service, it can affect more than one experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Service app installation does not establish that Chat or Cowork is enabled or available to every assigned user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
+      "quote": "The Service app installation doesn't confirm that Chat or Cowork is enabled or available to every assigned user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Microsoft Copilot is gradually replacing Copilot chat in model-driven apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot",
+      "quote": "Microsoft Copilot is gradually replacing Copilot chat in model-driven apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Makers can enable either or both chat experiences during the transition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot",
+      "quote": "During the transition period, makers can enable either one or both chat experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "When both chat experiences are available, the Copilot menu displays two entries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot",
+      "quote": "When both options are available, the Copilot dropdown menu shows the following options: Chat button opens Microsoft Copilot. App Skills button opens Copilot chat in model-driven apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Scope: Clouds and platforms",
+      "type": "availability",
+      "claim": "Microsoft Copilot for model-driven apps is unavailable in the Power Apps mobile app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot",
+      "quote": "Microsoft Copilot for model-driven apps isn't available in the Power Apps mobile app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[0].ui; Governance controls; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Service availability is managed in Microsoft 365 admin center at Agents > All agents > Registry > Service > Users > Available to; Installed to is on the same tab.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
+      "quote": "Open the Service app details in Agents > All agents > Registry, and then select Users. ... For preinstallation, edit Installed to ... Edit Available to.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "The beta Package Management API updates a package's availability and deployment with PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
+      "quote": "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The update operation accepts availableTo to specify package availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
+      "quote": "availableTo | packageAllowStatus | Enum value specifying which users or groups within the tenant can access this package. Required if updating allowedUsersAndGroups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The update operation accepts deployedTo to specify package deployment scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
+      "quote": "deployedTo | packageAcquireStatus | Enum value indicating the deployment scope of the package. Required if updating acquireUsersAndGroups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[0].note; controls[1].note; Governance controls",
+      "type": "licensing",
+      "claim": "Access to the Package Management API requires a Microsoft Agent 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[0].note; controls[1].note; Governance controls",
+      "type": "availability",
+      "claim": "Both printed Package Management API operations are beta.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[1].ui; Governance controls; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Organization-wide Service blocking is at Microsoft 365 admin center > Agents > All agents > Registry > Service > Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
+      "quote": "In the Microsoft 365 admin center, go to Agents > All agents > Registry. Locate Service ... To prevent organization-wide use, open the Service app details, select Block, and then review and confirm the action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "The beta API blocks a Copilot package with POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage. ... POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[1].governs; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Blocking Service prevents organization-wide installation and use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
+      "quote": "To prevent organization-wide use, open the Service app details, select Block ... Blocking prevents installation and use",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[1].note; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Blocking Service removes it from users who already installed it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
+      "quote": "Blocking prevents installation and use and removes the app from users who already installed it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Uninstalling is separate from blocking and does not delete Dynamics 365 records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
+      "quote": "Use Block as a separate policy control when you also need to prevent installation and use. Uninstalling Service doesn't delete Dynamics 365 records, remove host licenses, or reverse actions that already completed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[2].ui; Governance controls; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The environment enablement path is Power Platform admin center > Copilot > Settings > Power Apps > Chat Agent > Microsoft Copilot > environment > Edit Setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot",
+      "quote": "go to Copilot > Settings. Under Power Apps, expand Chat Agent and choose Microsoft Copilot. ... Select an environment group or an environment name, then select Edit Setting. ... Select On",
+      "severity": "minor",
+      "fix": "Complete controls[2].ui.path as 'Copilot > Settings > Power Apps > Chat Agent > Microsoft Copilot > environment > Edit Setting > On'. The current path stops on the correct setting pane but omits the enabling option."
+    },
+    {
+      "n": 71,
+      "where": "controls[2].api; Governance controls",
+      "type": "absence",
+      "claim": "No API operation is documented for the specific Microsoft Copilot environment or environment-group setting shown in this row.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Copilot environment API setting model-driven; Microsoft Copilot Environment Management Settings; Power Platform API pac admin PowerShell settingdefinition settingenvironmentvalue enable. Opened model-driven setup and management-settings tutorial/update reference; no matching key mapped.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "controls[2].note; Scope: Roles",
+      "type": "role",
+      "claim": "Power Platform administrators configure Microsoft Copilot at environment level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot",
+      "quote": "Power Platform administrators can set up and configure the Microsoft Copilot feature for users in their environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "controls[2].note; Scope: Roles",
+      "type": "role",
+      "claim": "Makers can enable or disable Microsoft Copilot for an individual model-driven app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot",
+      "quote": "Makers can enable or disable Microsoft Copilot for a specific model-driven app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "Makers can enable Microsoft Copilot as the default for all model-driven apps through an environment setting value.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot",
+      "quote": "Makers can enable Microsoft Copilot as the default for all model-driven apps in an environment. ... Select Enable Microsoft Copilot in model-driven apps. ... set the value to 2.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "controls[3].ui; controls[3].note; Governance controls; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The cited finance and operations page documents Microsoft 365 admin center > Copilot > Settings > Dataverse data available in Microsoft Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "Go to the Microsoft 365 Admin Center. Navigate to Copilot > Settings. Enable Dataverse data available in Microsoft Copilot.",
+      "severity": "minor",
+      "fix": "Add to controls[3].note: 'Microsoft pages disagree on the setting label: the linked Dataverse setup page gives Copilot > Settings > Business Applications data in Work IQ available to Copilot, then All users or Specific groups.' Cite https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-intelligence#enable-microsoft-365-admin-center-copilot-dataverse-settings in sources. Keep the cited ERP path attributed to that page rather than silently choosing between the two."
+    },
+    {
+      "n": 76,
+      "where": "controls[3].api; Governance controls",
+      "type": "absence",
+      "claim": "No Graph, PowerShell or REST operation is documented for the Microsoft 365 tenant setting that allows Dataverse data in Microsoft Copilot.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Dataverse data available in Microsoft Copilot\" Graph API PowerShell tenant setting; \"Dataverse data available\" API; Dataverse Copilot Set-TenantSettings Graph settings. Opened ERP setup and data-platform-intelligence; read tenant-settings excerpts; no matching operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Governance guidance: At rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Service Installed to and Available to scopes are independent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
+      "quote": "Installed to or Installed for identifies preinstallation targets. Available to controls who can install or use the app. These scopes are independent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Service preinstallation can include users outside the availability scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
+      "quote": "Preinstallation can include users outside the availability scope",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Governance controls; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Organization-wide Service installation can override a limited scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
+      "quote": "organization-wide installation can override a limited scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Changing only Available to does not narrow a broader Service deployment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
+      "quote": "Changing only Available to isn't sufficient to narrow a broader deployment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends testing with a user's regular account rather than an administrator account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
+      "quote": "Test with the user's regular account instead of an administrator account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Overlapping groups and previous or organization-wide installations can explain unexpected Service access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
+      "quote": "If access is unexpected, inspect overlapping groups and previous or organization-wide installations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Service Agent use page says specific licensing requirements apply and capabilities vary with organizational licensing and tenant configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-service-agent",
+      "quote": "Specific licensing requirements apply when you use Service Agent. The capabilities available to you can vary based on your organization's licensing and tenant configuration. Learn more in the Dynamics 365 Licensing Guide.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Service Agent tools can be configured after installation, with tool availability depending on Service Agent configuration and representative Dataverse privileges rather than individual-component app targeting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-service-agent",
+      "quote": "After installation, you can configure the tools that representatives can use. Tool availability can depend on the Service Agent configuration and the Dataverse security privileges assigned to representatives.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The configure-service-agent page itself mentions tool configuration without providing its steps.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Service Agent configure tools administrator. Opened configure-service-agent in full; its note mentions configuring tools without steps. Also opened configure-service-agent-experiences, which does supply maker-mode steps on a different page. The briefing's absence is scoped to the first page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "Governance guidance: Before rollout and After rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The governance checklist includes reviewing Dynamics 365 security roles and checking or monitoring Dataverse capacity, but neither control has a table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Review Dynamics 365 security roles for representatives' and 'Watch Dataverse capacity'. The controls table contains only Service assignment, Service blocking, environment Microsoft Copilot enablement and the tenant Dataverse setting.",
+      "severity": "minor",
+      "fix": "The checklist steps 'Review Dynamics 365 security roles for representatives', 'check Dataverse capacity before turning on Dataverse Search' and 'Watch Dataverse capacity' have no controls-table row. Remove those checklist instructions; retain the verified security and capacity discussion in the body. Do not add new control rows as part of this correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T05:13:52.573Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=576818",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-service-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-service/use/use-service-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users the Service app is installed to and available to",
+        "docs": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Registry",
+          "Service",
+          "Users",
+          "Available to"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which users the Service app is installed to and available to",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether the Service app is blocked for the organisation",
+        "docs": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Registry",
+          "Service",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether the Service app is blocked for the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether Microsoft Copilot is on in an environment or environment group",
+        "docs": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Settings",
+          "Power Apps",
+          "Chat Agent",
+          "Microsoft Copilot",
+          "Edit Setting"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Whether Dataverse data is available to Microsoft Copilot for the tenant",
+        "docs": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Settings",
+          "Dataverse data available in Microsoft Copilot"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -80,19 +80,23 @@ changes:
     note: "Corrected after verification: removed the unsupported claim that the planned list can be piloted with a targeted meeting policy or assigned to users or groups; the configuration and assignment scope are marked not yet documented."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 65 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-21"
+    note: "Corrected after verification: the Data exposure bullet now states only the roadmap's wording that an allowed bot is treated like a regular external participant with meeting policies enforced as appropriate."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
+  claims: 64
   confirmed: 64
-  unconfirmed: 1
+  unconfirmed: 0
   contradicted: 0
-  attempts: 3
-  hash: "df93215962f621d2bf8efb39c6fdb36b"
+  attempts: 0
+  hash: "5f80ab5003cd0f7321452159e3ae8ed8"
 ---
 
 ## What's changing
@@ -115,7 +119,7 @@ Microsoft has not stated what happens on arrival, and no source says existing be
 
 **Data exposure**
 
-- An allowed bot is treated like a regular external participant, per the roadmap, so what it can hear or record in a meeting depends on the meeting policies applied. The roadmap does not describe transcript-storage restrictions for allowed bots. Review each bot's data handling before listing it.
+- Per the roadmap, an allowed bot is treated like a regular external participant, and meeting policies are enforced as appropriate. The roadmap does not describe transcript-storage restrictions for allowed bots. Review each bot's data handling before listing it.
 - Learn states that some external bots may not be detected. Detection is the existing documented mechanism, and the roadmap does not say whether the new list depends on it.
 
 **Security & identity**
@@ -192,8 +196,9 @@ cost: Low. The only cost the sources show is admin time to build the list and br
 impact: Low. Admins who manage meeting policies see the control; organisers and guests notice only where a policy blocks or admits a bot, and Microsoft has not said whether it applies to anyone before an admin configures it.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Risk assessment: Data exposure / applicability: What an allowed bot can hear or record in a meeting depends on the meeting policies applied. | Found: Searched: Teams allowed external bots list meeting policies restrict hear record audio third party bot. Read roadmap, external-bots guide, cmdlet reference and meeting-recording search excerpts. None states that meeting policies govern an allowed external bot's own audio capture or recording. | Fix: Replace the first sentence of Risk assessment > Data exposure with: 'Per the roadmap, an allowed bot is treated like a regular external participant, and meeting policies are enforced as appropriate.' Keep the subsequent transcript-storage caveat and advice to review each bot's data handling. The roadmap does not specify which policies restrict what the bot can hear or record.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[1].api / command: Set-CsTeamsMeetingPolicy -Identity <policy name> -ExternalBotAccessMode RequireApprovalWhenDetected configures the existing detection-and-approval policy. | Found: RequireApprovalWhenDetected: When detected, bots will be enforced to the meeting lobby, regardless of the lobby setting of the meeting. They will require approval before getting access to the meetings. This is the default value. | Fix: Keep the call. Append to controls[1].note: 'The external-bots guide names Set-CsTeamsMeetingPolicy but its code examples use Set-CsTeamsEventsPolicy; the linked MicrosoftTeams cmdlet reference documents the meeting-policy call shown here.' | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps
+- [supported, minor] Risk assessment: Security & identity / behaviour: The Bot Identification Program lets eligible bot vendors register with Microsoft. | Found: Through this program, eligible bot providers can register with Microsoft and include a self-identification marker in their meeting join requests. The public preview has reached its current bot provider capacity. | Fix: Add after the program description: 'The public preview has reached its current bot provider capacity; Microsoft says it will publish onboarding guidance and next steps when the program becomes generally available.' Source: https://learn.microsoft.com/microsoftteams/teams-bot-identification. | Source: https://learn.microsoft.com/microsoftteams/teams-bot-identification
 -->

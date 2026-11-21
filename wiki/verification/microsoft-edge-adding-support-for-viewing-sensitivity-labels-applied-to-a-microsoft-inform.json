@@ -1,0 +1,582 @@
+{
+  "slug": "microsoft-edge-adding-support-for-viewing-sensitivity-labels-applied-to-a-microsoft-inform",
+  "roadmapId": 489232,
+  "title": "Microsoft Edge: view sensitivity labels on MIP protected PDFs in the new PDF viewer",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "5 blocking findings (claims 18, 19, 20, 37, 38)"
+    ]
+  },
+  "counts": {
+    "claims": 43,
+    "confirmed": 34,
+    "unconfirmed": 2,
+    "contradicted": 7,
+    "blocker": 5,
+    "major": 2,
+    "minor": 5
+  },
+  "summary": "Hold: Microsoft's Edge release notes already document sensitivity-label viewing, a supported version and a controlled feature rollout, contrary to the briefing's documentation gaps. The page also incorrectly says that no other adjacent control exists and that Edge settings do not affect opening protected PDFs.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap plans sensitivity-label viewing for MIP protected PDFs in Edge's new PDF viewer.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enterprise customers can view sensitivity labels applied to MIP protected PDF ... This change will be available in the new PDF viewer on Microsoft Edge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap targets enterprise customers and says label visibility helps them understand classification and handle sensitive documents.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enterprise customers can view sensitivity labels applied to MIP protected PDF to be well informed of the data classification to enable them to handle such sensitive documents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026, described as a target rather than a commitment.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the listed cloud; US Government clouds are not listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-05T23:03:05.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-05T23:03:05\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Microsoft has not explicitly stated the default state of the sensitivity-label display itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge sensitivity labels PDF new viewer default rollout version macOS GCC. Read Edge PDF reader, NewPDFReaderEnabled and Stable archive version 138 notes; rollout is documented, but an explicit label-display default is not.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Group Policy exposes NewPDFReaderEnabled at Administrative Templates > Microsoft Edge > Microsoft Edge built-in PDF reader powered by Adobe Acrobat enabled (deprecated).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newpdfreaderenabled",
+      "quote": "GP name: Microsoft Edge built-in PDF reader powered by Adobe Acrobat enabled (deprecated)\nGP path (Mandatory): Administrative Templates/Microsoft Edge",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "The Windows registry configuration uses SOFTWARE\\Policies\\Microsoft\\Edge and the NewPDFReaderEnabled REG_DWORD value.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newpdfreaderenabled",
+      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\nValue name: NewPDFReaderEnabled\nValue type: REG_DWORD",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0].governs; What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "NewPDFReaderEnabled selects the built-in PDF reader powered by Adobe Acrobat's rendering engine.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newpdfreaderenabled",
+      "quote": "The policy lets Microsoft Edge launch the new version of the built-in PDF reader that's powered by Adobe Acrobat's PDF rendering engine.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[0].note; Risk assessment: Change & support",
+      "type": "date",
+      "claim": "NewPDFReaderEnabled is deprecated starting in Edge version 156.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newpdfreaderenabled",
+      "quote": "Starting in Microsoft Edge version 156, this policy is deprecated as the built-in PDF reader experience has transitioned to the newer version.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].note; Risk assessment: Change & support; Governance guidance",
+      "type": "date",
+      "claim": "Microsoft plans to make NewPDFReaderEnabled obsolete starting in version 162.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newpdfreaderenabled",
+      "quote": "The policy will remain supported for a minimum of 6 major releases and is planned to become obsolete starting in Microsoft Edge version 162.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Once obsolete, this policy can no longer be used to opt out of the new PDF reader.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newpdfreaderenabled",
+      "quote": "Once obsolete, organizations will no longer be able to use this policy to opt out of the new PDF reader.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[1]; summary; Why it matters; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no dedicated setting to show or hide the sensitivity label in Edge's PDF viewer.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge policies sensitivity labels PDF display show hide NewPDFReaderEnabled AlwaysOpenPdfExternally. Read the policy list, NewPDFReaderEnabled, EdgeMipPdfEnabled and PDF reader; no dedicated label-display toggle was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe the sensitivity-label viewing feature, so its behaviour is known only from the roadmap.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel#version-1380335155-june-26,-2025",
+      "quote": "Adding support for viewing Sensitivity labels applied to a Microsoft Information Protection (MIP) Protected PDF ... This change is available in the new Microsoft Edge built-in PDF reader.",
+      "severity": "blocker",
+      "fix": "Replace the documentation-gap sentence with: 'The roadmap still lists In development with a November CY2026 target, but Microsoft's Stable channel release notes for version 138.0.3351.55, dated June 26, 2025, already describe sensitivity-label viewing in the new built-in PDF reader as available through a controlled feature rollout.' Cite https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel#version-1380335155-june-26,-2025. In At rollout, replace 'because Microsoft has not documented the experience yet' with 'to verify availability on your test devices'."
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not published an Edge version for sensitivity-label viewing.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel#version-1380335155-june-26,-2025",
+      "quote": "Version 138.0.3351.55: June 26, 2025 ... Adding support for viewing Sensitivity labels applied to a Microsoft Information Protection (MIP) Protected PDF",
+      "severity": "blocker",
+      "fix": "Remove the claims that the Edge version is unpublished. State: 'The Stable channel release notes document the feature under version 138.0.3351.55, dated June 26, 2025.' Cite https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel#version-1380335155-june-26,-2025. Narrow the versions-and-platforms open question to 'Is sensitivity-label display covered on macOS?'"
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "Microsoft has not stated the rollout mechanism.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel#version-1380335155-june-26,-2025",
+      "quote": "This change is available in the new Microsoft Edge built-in PDF reader. Note: This is a controlled feature rollout. If you don't see this feature, check back as we continue our rollout.",
+      "severity": "blocker",
+      "fix": "Replace each rollout-mechanism gap with: 'Microsoft's Stable channel release notes describe a controlled feature rollout; the feature might not yet be visible on every device.' Cite https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel#version-1380335155-june-26,-2025."
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Edge can view MIP protected files saved locally or in the cloud.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-pdf",
+      "quote": "With Microsoft Edge, users can view MIP protected files saved locally, or in the cloud.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Data exposure; Governance controls",
+      "type": "behaviour",
+      "claim": "A protected file opens in Edge if the signed-in profile has at least view permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-pdf",
+      "quote": "If the profile that the user is logged into Microsoft Edge with has at least view permissions to the file, the file will open in Microsoft Edge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "behaviour",
+      "claim": "The protected PDF instructions specify signing into Edge with work or school credentials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/information-protection/rms-client/protected-pdf-readers",
+      "quote": "Supported sign-in credentials | Sign in to Edge with Work or school credentials.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "behaviour",
+      "claim": "The Edge PDF reader page says protected-file viewing with consumer identities is not currently supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-pdf",
+      "quote": "Viewing files using consumer identities currently is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The Edge PDF reader documentation states that MIP requires a licence and links Microsoft 365 licensing guidance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-pdf",
+      "quote": "A license is required for MIP. For more information, see this Microsoft 365 licensing guidance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Purview requires appropriate licences for administrators configuring Information Protection and end users consuming its client functionality.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "the administrator creating and managing Information Protection features must have the appropriate licenses ... Similarly, end users also need the appropriate licenses to use the functionality in their respective client applications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The feature uses the existing licensed MIP functionality rather than a separately published feature entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Users benefit by having the ability to create, manually apply or automatically apply sensitivity labels, and consume content that has sensitivity labels applied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No licence or licence level specific to this Edge label-display feature is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Edge PDF sensitivity label display licensing price meter 489232. Read Edge PDF reader, Purview service description sensitivity labeling, Microsoft 365 Security and Stable archive version 138; no Edge label-display-specific licence was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No separate price for this Edge label-display feature is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Edge PDF sensitivity label display licensing price meter 489232. Read Edge PDF reader, Purview service description sensitivity labeling, Microsoft 365 Security and Stable archive version 138; no feature-specific price was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate meter for this Edge label-display feature is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Edge PDF sensitivity label display licensing price meter 489232. Read Edge PDF reader, Purview service description sensitivity labeling, Microsoft 365 Security and Stable archive version 138; no label-display meter was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Microsoft has not specified US Government cloud coverage for sensitivity-label display.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge sensitivity labels PDF new viewer default rollout version macOS GCC. Read Edge PDF reader and Stable archive label-display entry; sovereign-cloud protected-PDF opening is documented separately, not label-display cloud coverage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not explicitly specified macOS coverage for sensitivity-label display.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge sensitivity labels PDF new viewer default rollout version macOS GCC. Read Edge PDF reader, protected PDF readers and Stable archive label-display entry; Mac protected-PDF opening is documented, but label-display platform scope is not.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure, Autonomy & actions; rationales: risk, impact",
+      "type": "record",
+      "claim": "The roadmap describes displaying an existing label, not new data access, sharing, autonomous action or changed opening permissions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enterprise customers can view sensitivity labels applied to MIP protected PDF to be well informed of the data classification to enable them to handle such sensitive documents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The label-display feature does not itself add or change protection.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Edge sensitivity label PDF viewing display name encryption permissions protection. Read Edge PDF reader, Stable archive label-display entry and Purview encryption search passages; none explicitly states that this feature cannot change protection.",
+      "severity": "major",
+      "fix": "Replace 'It does not by itself add or change protection' with 'The roadmap describes label visibility rather than a change to protection'."
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The label's display name is shown to whoever can open the PDF.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Edge sensitivity label PDF viewing display name encryption permissions protection. Read Edge PDF reader and Stable archive label-display entry; neither specifies the displayed field or guarantees display for every reader who can open the PDF.",
+      "severity": "major",
+      "fix": "Replace 'A label's display name is shown to whoever can open the PDF' with 'The roadmap describes showing the sensitivity label to enterprise customers who view protected PDFs'. Keep the advice to avoid sensitive label names."
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "A protected PDF's usage restrictions come from the sensitivity label's encryption permissions, not merely its visible label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/encryption-sensitivity-labels#assign-permissions-now",
+      "quote": "When you choose which permissions to allow for those users or groups, you can select either: ... A predefined permissions level ... Custom permissions, where you choose one or more usage rights.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/purview/encryption-sensitivity-labels to sources for the statement about encryption permissions."
+    },
+    {
+      "n": 37,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "NewPDFReaderEnabled is the only documented control adjacent to this feature.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/alwaysopenpdfexternally#supported-versions",
+      "quote": "Disables the internal PDF viewer in Microsoft Edge. If you enable this policy Microsoft Edge treats PDF files as downloads and lets users open them with the default application.",
+      "severity": "blocker",
+      "fix": "Replace 'The only documented control adjacent to this feature is the NewPDFReaderEnabled policy' with 'The controls table includes the NewPDFReaderEnabled policy'. Do not add a control row."
+    },
+    {
+      "n": 38,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Whether a protected PDF can open in Edge is not affected by an Edge setting.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/alwaysopenpdfexternally#supported-versions",
+      "quote": "If you enable this policy Microsoft Edge treats PDF files as downloads and lets users open them with the default application. If Microsoft Edge is the default PDF reader, PDF files aren't downloaded and continue to open in Microsoft Edge.",
+      "severity": "blocker",
+      "fix": "Replace the final Governance controls paragraph with: 'The Edge PDF reader page says the signed-in profile needs at least view permissions to open a protected PDF.' Remove 'not by an Edge setting'."
+    },
+    {
+      "n": 39,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The Microsoft Purview portal can be used to inventory sensitivity-labelled content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-content-explorer#content-explorer",
+      "quote": "Content explorer shows a current snapshot of the items that have a sensitivity label, a retention label, or are classified as a sensitive information type in your organization.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/purview/data-classification-content-explorer to sources for the inventory guidance. Narrow the bullet to 'Inventory sensitivity-labelled content in the Microsoft Purview portal to identify PDFs to test'."
+    },
+    {
+      "n": 40,
+      "where": "Governance guidance: Before rollout, After rollout",
+      "type": "behaviour",
+      "claim": "Administrators can review and edit sensitivity-label names and descriptions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels#create-and-configure-sensitivity-labels",
+      "quote": "To edit an existing label, select it, and then select the Edit label icon. ... This action starts the Edit sensitivity label configuration, which lets you change all the label settings.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/purview/create-sensitivity-labels to sources for the label review and correction advice."
+    },
+    {
+      "n": 41,
+      "where": "Governance guidance; controls",
+      "type": "consistency",
+      "claim": "The checklist asks readers to inventory labelled PDFs and review or correct label names, but neither control appears in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Inventory which PDFs carry MIP protection ... Review label display names ... correct the label names or descriptions ... Controls table: NewPDFReaderEnabled; setting that shows or hides the sensitivity label.",
+      "severity": "minor",
+      "fix": "The Before rollout inventory and label-name review bullets, and After rollout label-name correction instruction, have no corresponding control rows. Record this checklist/table mismatch; do not add rows as part of this correction."
+    },
+    {
+      "n": 42,
+      "where": "front matter: action",
+      "type": "consistency",
+      "claim": "The review action rating treats this display change as something that changes nothing until an administrator or maker chooses it.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel#version-1380335155-june-26,-2025",
+      "quote": "This change is available in the new Microsoft Edge built-in PDF reader. Note: This is a controlled feature rollout. If you don't see this feature, check back as we continue our rollout.",
+      "severity": "minor",
+      "fix": "Set action to 'prepare': the documented controlled rollout brings a visible change to users, and the briefing recommends communication rather than opting into a new admin control."
+    },
+    {
+      "n": 43,
+      "where": "controls[0].note; What's changing; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The NewPDFReaderEnabled reference does not specifically state that the policy governs sensitivity-label display.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge policies sensitivity labels PDF display show hide NewPDFReaderEnabled AlwaysOpenPdfExternally. Read the full NewPDFReaderEnabled reference and Stable archive label-display entry; the policy reference describes reader selection, not a label-display setting.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T05:13:53.318Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=489232",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-pdf",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/information-protection/rms-client/protected-pdf-readers",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newpdfreaderenabled",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-365-security-compliance-licensing-guidance",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether Edge uses the new Adobe Acrobat powered PDF reader (deprecated policy)",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newpdfreaderenabled",
+        "reachable": true,
+        "segments": [
+          "Administrative Templates",
+          "Microsoft Edge",
+          "Microsoft Edge built-in PDF reader powered by Adobe Acrobat enabled"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether Edge uses the new Adobe Acrobat powered PDF reader (deprecated policy)",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newpdfreaderenabled",
+        "reachable": true,
+        "token": "Registry: SOFTWARE\\Policies\\Microsoft\\Edge,",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

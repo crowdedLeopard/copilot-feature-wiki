@@ -74,19 +74,23 @@ changes:
     note: "Initial briefing for the GCC, GCC High and DoD roadmap item: planned last-accessed retention for SharePoint and OneDrive, not yet documented on Learn."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 57 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after verification: removed 'and labels' from the inventory step, whose path covers retention policies only, and aligned the cost rationale with the storage cost in the body."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 55
+  claims: 64
+  confirmed: 64
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "9d5206a752456626072f51aec186c70e"
+  contradicted: 0
+  attempts: 0
+  hash: "94f73f8e023e0136d67be0a67c01d59f"
 ---
 
 ## What's changing
@@ -134,7 +138,7 @@ People affected are the owners of files in sites and OneDrive accounts that a re
 ## Governance guidance
 
 ### Before rollout
-- Inventory the retention policies and labels that already cover SharePoint sites and OneDrive accounts in the Microsoft Purview portal (Solutions > Data Lifecycle Management > Policies > Retention policies), so overlaps are known before a new option appears.
+- Inventory the retention policies that already cover SharePoint sites and OneDrive accounts in the Microsoft Purview portal (Solutions > Data Lifecycle Management > Policies > Retention policies), so overlaps are known before a new option appears.
 - Check your users' licences against the retention lists in the Microsoft Purview service description, including the narrower list for adaptive policy scopes if you plan to use them.
 - Decide which sites or accounts, if any, would be candidates for deletion after inactivity, and who signs off on that scope.
 
@@ -173,15 +177,14 @@ Creating or editing retention policies requires the Compliance Administrator rol
 
 <!-- rationale
 risk: Medium. Retention policies can be set to delete content, and the roadmap does not say how 'last accessed' is measured or what the default is, so a badly set policy could delete files that are still in use.
-cost: Low. The only cost the sources show is admin time; Learn lists the licences for retention policies in general, and a licence or price specific to this option is not yet published.
+cost: Low. Admin time is needed to design and test policies, and retained content can increase storage usage in the Preservation Hold library; a licence or price specific to this option is not yet published.
 impact: Low. Compliance administrators configure retention policies and labels; file owners would notice only if a policy acted on their files.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance guidance: Before rollout, first bullet / admin-path: Solutions > Data Lifecycle Management > Policies > Retention policies is where administrators can inventory retention labels. | Found: Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Retention labels. | Fix: Remove 'and labels' from the first Before rollout bullet, leaving 'Inventory the retention policies that already cover SharePoint sites and OneDrive accounts in the Microsoft Purview portal (Solutions > Data Lifecycle Management > Policies > Retention policies), so overlaps are known before a new option appears.' The existing controls row then covers the instruction without adding another row. | Source: https://learn.microsoft.com/purview/create-retention-labels-data-lifecycle-management
-- [contradicted, blocker] rationale: cost; Cost and licensing / consistency: The cost rationale says admin time is the only cost the sources show, but the body also identifies retained-content storage. | Found: Rationale: 'The only cost the sources show is admin time'. Body: 'The cost the sources show is admin time to design and test policies, plus storage in the Preservation Hold library where content is retained.' | Fix: Replace the cost rationale with 'Low. Admin time is needed to design and test policies, and retained content can increase storage usage in the Preservation Hold library; a licence or price specific to this option is not yet published.' Keep the low rating.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; rendered controls table / admin-path: The printed Microsoft Purview portal path reaches New retention policy, an entry point for choosing the retention-period start. | Found: Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies. Select New retention policy to start the Create retention policy configuration, and name your new retention policy. | Fix: The path correctly stops at the wizard entry point. Extend controls[0].ui.path for a static policy to 'Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Assign admin units > Full directory > Choose the type of retention policy to create > Static > Choose locations > Decide if you want to retain content, delete it, or both', as documented at https://learn.microsoft.com/purview/create-retention-policies. | Source: https://learn.microsoft.com/purview/create-retention-policies
+- [supported, minor] Risk assessment: Data exposure; Cost and licensing; rationale: cost / behaviour: SharePoint and OneDrive use the Preservation Hold library to store content that needs to be retained. | Found: To store content that needs to be retained, SharePoint and OneDrive create a Preservation Hold library if one doesn't exist for the site. | Fix: Add 'Learn about retention for SharePoint and OneDrive', https://learn.microsoft.com/purview/retention-policies-sharepoint, to sources. | Source: https://learn.microsoft.com/purview/retention-policies-sharepoint
+- [supported, minor] Risk assessment: Data exposure; Cost and licensing; rationale: cost / cost: Content in the Preservation Hold library counts towards the site's storage quota. | Found: For SharePoint and OneDrive, retained items are stored in the site's Preservation Hold library, which is included in the site's storage quota. | Fix: Add 'Common settings for retention policies and retention label policies', https://learn.microsoft.com/purview/retention-settings, to sources. | Source: https://learn.microsoft.com/purview/retention-settings
+- [supported, minor] controls[0].ui; rendered Governance controls table / admin-path: Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy reaches the wizard for configuring the retention-period start. | Found: Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies. ... Select New retention policy to start the Create retention policy configuration | Fix: For the documented static-policy route, extend controls[0].ui.path and its rendered counterpart to 'Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Assign admin units > Full directory > Choose the type of retention policy to create > Static > Choose locations > Decide if you want to retain content, delete it, or both'. The cited page gives these wizard steps; the current path stops at the wizard entrance. | Source: https://learn.microsoft.com/purview/create-retention-policies
 -->

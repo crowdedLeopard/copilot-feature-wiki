@@ -55,19 +55,23 @@ changes:
     note: "Correction: replaced three unsupported statements about admin levers and arrival, used the published Teams Rooms Pro price, removed the licence-inventory checklist step and reworded the impact rationale."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 42 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-21"
+    note: "Correction: reworded the January CY2027 communication step as a roadmap target, narrowed the cost rationale to admin time, and qualified the Basic and Pro price wording as the sources give it."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 41 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 42
-  confirmed: 40
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 2
-  hash: "467ee5dc0a2de797e0db5abdaceb6e1b"
+  claims: 41
+  confirmed: 41
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "5b4a5b6ceb575374453c9bd619de081f"
 ---
 
 ## What's changing
@@ -101,11 +105,11 @@ Microsoft has not stated what happens on arrival. Confirm the timer's default an
 
 ## Cost and licensing
 
-The roadmap item states: "Available with a Teams Rooms Pro license." The Teams Rooms licences page describes Teams Rooms Pro as the licence that delivers enhanced in-room meeting experiences and advanced management features, and Teams Rooms Basic as providing core meeting experiences at no additional cost ([Microsoft Teams Rooms licenses](https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing)).
+The roadmap item states: "Available with a Teams Rooms Pro license." The Teams Rooms licences page describes Teams Rooms Pro as the licence that delivers enhanced in-room meeting experiences and advanced management features, and Teams Rooms Basic as providing core meeting experiences to organisations that purchase a certified Microsoft Teams Rooms system, at no additional cost ([Microsoft Teams Rooms licenses](https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing)).
 
-That page's Basic and Pro feature comparison tables do not list a meeting timer, so whether a Basic-licensed room gets the timer is not stated beyond the roadmap's wording. That page publishes no separate meter or price for the timer. Microsoft's compare plans page lists Teams Rooms Pro at $40.00 room/month, paid yearly ([Compare Teams Rooms plans](https://www.microsoft.com/en-us/microsoft-teams/microsoft-teams-rooms/compare-rooms-plans)).
+That page's Basic and Pro feature comparison tables do not list a meeting timer, so whether a Basic-licensed room gets the timer is not stated beyond the roadmap's wording. That page publishes no separate meter or price for the timer. Microsoft's compare plans page lists Teams Rooms Pro starting at $40.00 room/month, paid yearly ([Compare Teams Rooms plans](https://www.microsoft.com/en-us/microsoft-teams/microsoft-teams-rooms/compare-rooms-plans)).
 
-Indirect cost is admin time to check which rooms hold a Pro licence, and the licence cost of moving any Basic-licensed room to Pro if you want the timer there.
+Indirect cost is admin time. Moving a Basic-licensed room to Pro would be a separate licensing purchase; Microsoft lists Pro starting at $40.00 room/month, paid yearly.
 
 ## Scope
 
@@ -117,7 +121,7 @@ The room needs a Teams Rooms Pro licence according to the roadmap. Microsoft has
 
 ### Before rollout
 - Decide whether any Basic-licensed room justifies moving to Pro for the timer, and use the published Pro licence price ([Compare Teams Rooms plans](https://www.microsoft.com/en-us/microsoft-teams/microsoft-teams-rooms/compare-rooms-plans)) or your organisation's contracted price in that decision.
-- Tell room owners and meeting organisers that a countdown may appear on the front-of-room display and in participants' views from January CY2027, at the earliest.
+- Tell room owners and meeting organisers that a shared countdown on the front-of-room display and in participants' meeting views is targeted for January CY2027 on the roadmap, not committed for that month.
 
 ### At rollout
 - Watch Message center and the roadmap item for a post that states the default, the rollout window and any admin setting.
@@ -152,16 +156,6 @@ The room's licence is the only condition the roadmap states. Treat that as a lic
 
 <!-- rationale
 risk: Low. The timer is a display feature in meetings that room users start themselves, and no source describes it reading new organisational data or acting on its own.
-cost: Low. The roadmap says it is available with a Teams Rooms Pro licence and no separate meter is documented; the cost is Pro licensing for any room not already on it, listed at $40.00 room/month, paid yearly, on Microsoft's compare plans page.
+cost: Low. For rooms already licensed with Teams Rooms Pro, the known incremental cost is admin time; no separate timer meter is documented.
 impact: Low. The roadmap describes a countdown shown on the front-of-room display and in participants' meeting views, with timer actions available from the room console.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Governance guidance: Before rollout / date: The countdown may appear from January CY2027 at the earliest. | Found: Searched: Teams Rooms Windows shared countdown meeting timer admin setting default version rollout roles audit logs licensing; "Teams Rooms" "meeting timer". Roadmap gives only a January CY2027 target; no source establishes the earliest possible availability. | Fix: Replace the bullet with: Tell room owners and meeting organisers that a shared countdown on the front-of-room display and in participants' meeting views is targeted for January CY2027 on the roadmap, not committed for that month.
-- [contradicted, blocker] front matter: cost; Cost and licensing; rationale: cost / consistency: The low cost rating is consistent with the page's stated direct Pro licensing expenditure. | Found: cost: "low"; 'the licence cost of moving any Basic-licensed room to Pro if you want the timer there'; 'the cost is Pro licensing for any room not already on it'. The standard defines low as indirect cost only. | Fix: Keep cost low but narrow the cost rationale to 'Low. For rooms already licensed with Teams Rooms Pro, the known incremental cost is admin time; no separate timer meter is documented.' In Cost and licensing, replace the last paragraph with 'Indirect cost is admin time. Moving a Basic-licensed room to Pro would be a separate licensing purchase; Microsoft lists Pro starting at $40.00 room/month, paid yearly.' This separates the existing-license feature cost from the optional product upgrade.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing / licensing: Teams Rooms Basic provides core meeting experiences at no additional cost. | Found: Microsoft Teams Rooms Basic provides core meeting experiences to organizations that purchase a certified Microsoft Teams Rooms system, at no additional cost. | Fix: Replace the Basic clause with 'Teams Rooms Basic as providing core meeting experiences to organisations that purchase a certified Microsoft Teams Rooms system, at no additional cost', preserving the source's qualification. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing
-- [supported, minor] Cost and licensing; Governance guidance; rationale: cost / cost: Microsoft's compare plans page lists Teams Rooms Pro at $40.00 room/month, paid yearly. | Found: Microsoft Teams Rooms Pro Originally starting from $40.00 now starting from $40.00 $40.00 $40.00 room/month, paid yearly | Fix: Use 'starting at $40.00 room/month, paid yearly' in Cost and licensing and the cost rationale, rather than presenting the starting price as a universal fixed price. | Source: https://www.microsoft.com/en-us/microsoft-teams/microsoft-teams-rooms/compare-rooms-plans
 -->

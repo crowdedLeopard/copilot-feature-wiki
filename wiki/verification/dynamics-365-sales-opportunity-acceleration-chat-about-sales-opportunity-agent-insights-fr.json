@@ -1,0 +1,912 @@
+{
+  "slug": "dynamics-365-sales-opportunity-acceleration-chat-about-sales-opportunity-agent-insights-fr",
+  "roadmapId": 576814,
+  "title": "Dynamics 365 Sales: ask Sales agent about opportunity research in Microsoft 365 Copilot",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "2 blocking findings (claims 12, 45)"
+    ]
+  },
+  "counts": {
+    "claims": 71,
+    "confirmed": 68,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: the briefing says the arrival state is unstated although the roadmap says administrators or makers enable the capability for end users. It also says the roadmap does not name the research agent, although the title identifies Sales Opportunity Agent insights. The access controls and most supporting product facts are documented.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Sellers can ask about opportunity research from inside Sales agent.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Ask questions in context: Ask about opportunity research from Sales agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The experience begins with concise, action-oriented insights.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Start concise, go deeper on demand: Begin with action-oriented insights",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Sellers can request deeper analysis when needed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "then request deeper analysis only when needed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "General Availability is a listed release phase.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "Preview is also listed without a phase-by-capability breakdown.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed cloud is Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap says the capability is enabled by admins/makers/marketers for end users.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enabled for:\n\nEnabled by admins/makers/marketers for end users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The arrival state is unknown because Microsoft has not stated it.",
+      "status": "contradicted",
+      "source": "roadmap record",
+      "quote": "Enabled by admins/makers/marketers for end users",
+      "severity": "blocker",
+      "fix": "Set defaultState to admin-opt-in. Replace 'Microsoft has not stated what happens on arrival for this item, so no source says existing behaviour changes' with 'The roadmap describes this capability as enabled by admins/makers/marketers for end users; it does not identify a feature-specific switch.' Keep the separately attributed background defaults for Sales agent."
+    },
+    {
+      "n": 13,
+      "where": "front matter: licensing.model and notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Licensing is mixed: Sales agent entitlement and Sales Opportunity Agent consumption capacity are relevant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-opportunity-agent",
+      "quote": "The Sales Opportunity Agent uses the capacity assigned to your tenant to process records. You can set up either prepaid capacity or pay-as-you-go capacity for the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "A Microsoft 365 Copilot licence plus Dynamics 365 Sales or Salesforce access gives CRM data and Microsoft 365 Graph grounding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/use-sales-chat",
+      "quote": "An appropriate license to access Microsoft 365 Copilot and access to Dynamics 365 Sales or Salesforce | CRM data and Microsoft 365 Graph grounding",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "Dynamics 365 Sales Enterprise or Premium access without Microsoft 365 Copilot gives CRM data only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/use-sales-chat",
+      "quote": "Dynamics 365 Sales Enterprise or Premium access, without a Microsoft 365 Copilot license | CRM data only",
+      "severity": "minor",
+      "fix": "Keep the licensing table's rule, but add: 'The Sales agent FAQ still says a Microsoft 365 Copilot licence is required, whereas the use and setup pages list the CRM-only Enterprise/Premium option.' Cite https://learn.microsoft.com/microsoft-sales-copilot/sales-m365-copilot-faq#sales-agent-in-microsoft-365-copilot."
+    },
+    {
+      "n": 16,
+      "where": "Cost and licensing; Governance guidance: Before rollout",
+      "type": "licensing",
+      "claim": "Graph-grounded data such as Outlook emails and Teams meetings requires a Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/use-sales-chat",
+      "quote": "Microsoft 365 Graph grounded data includes Outlook emails, Teams meetings, Teams messages, and people information stored in Microsoft Graph. A Microsoft 365 Copilot license is required for Sales agent to access this data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "In the Sales app in Outlook or Teams, Sales > Settings > Tenant > Access settings > Allow access to Sales agent > Microsoft 365 Copilot reaches the application access toggle.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "Under Tenant, select Access settings. Select Allow access to Sales agent. In the Sales agent pane, locate the application you want to configure: Microsoft 365 Copilot",
+      "severity": "minor",
+      "fix": "Insert the omitted pane heading: 'Sales > Settings > Tenant > Access settings > Allow access to Sales agent > Sales agent > Microsoft 365 Copilot'. The Sales > Settings entry steps are verified at the already-cited https://learn.microsoft.com/microsoft-sales-copilot/administrator-settings-sales-app."
+    },
+    {
+      "n": 18,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no API for the tenant-level Sales agent application access setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Sales agent tenant access settings API PowerShell Microsoft Graph Dataverse entity reference; Sales agent tenant access settings Graph PowerShell. Read access-settings-apps and administrator-settings-sales-app; results showed UI and distinct general Graph controls, not this setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "In the Sales app in Outlook or Teams, Sales > Settings > Environment > Access settings > Allow access to Sales Chat reaches the environment access control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings",
+      "quote": "Open the Sales agent administrator settings. Under Environment, select Access settings. Select Allow access to Sales Chat. In the Allow access to Sales Chat pane, turn on or off the toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no API for the environment-level Allow access to Sales Chat setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Sales Chat Allow access settings environment API Dataverse table entity reference Power Platform API PowerShell; Sales Chat access API setting. Read access-settings and set-up-sales-chat; table results concerned Teams chat associations, not this setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].note; Risk assessment: Security & identity; Governance controls",
+      "type": "role",
+      "claim": "Tenant access settings require Global Administrator, Exchange Administrator or Power Platform Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "You must have one of the following Microsoft Entra roles: Global Administrator; Exchange Administrator; Power Platform Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Dynamics 365 administrator settings require System Administrator or System Customizer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/administrator-settings-sales-app",
+      "quote": "Dynamics 365: You must have the System Administrator or System Customizer role. If you're using a custom security role, you might need more privileges to use the Sales agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Administrator settings are visible only to administrators signed in to Sales agent in Outlook or Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/administrator-settings-sales-app",
+      "quote": "Administrator settings are visible only when you sign in with administrator credentials to the Sales agent in Outlook or Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].note",
+      "type": "behaviour",
+      "claim": "Tenant access settings do not install the app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "These settings control access only. They don't install apps, assign licenses, connect to a CRM environment, or grant access to CRM data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].note; Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Tenant access settings do not grant CRM data access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "Tenant access settings don't grant access to CRM data and don't override licensing, environment, or security requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Tenant access does not override environment Sales Chat access, installation, licensing or CRM privileges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "Tenant access settings don't override other Sales agent requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Access is evaluated per application using Entra security groups and Restrict auto-installed users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "If the application is turned off, access is blocked. If No restrictions is selected, access is allowed. If the user received Sales agent through automatic installation and Restrict auto-installed users is selected, access is blocked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "The existing environment Sales agent access control is turned on for all users by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings",
+      "quote": "By default, Sales agent is turned on for all users. You can choose to restrict access to specific security groups or turn off the feature entirely.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; Governance guidance: Before rollout",
+      "type": "default",
+      "claim": "Auto-installed users are blocked in Microsoft 365 Copilot by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "Microsoft 365 Copilot | Auto-installed users are blocked. Other eligible users have access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Disabling a user's Microsoft 365 Copilot application access leaves installed Sales agent visible with an administrator-disabled message.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "Microsoft 365 Copilot | Sales agent remains visible but displays an administrator-disabled message.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Turning off environment Sales Chat leaves Sales visible and able to answer, but without Sales data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings",
+      "quote": "users who have Sales agent installed will still see Sales as an agent in Microsoft 365 Copilot. They can still ask questions and get responses, but the responses will not include any Sales data.",
+      "severity": "minor",
+      "fix": "Keep the access-settings description, but add: 'The Sales agent FAQ's end-user answer instead says disabling Sales Chat prevents query responses.' Cite https://learn.microsoft.com/microsoft-sales-copilot/sales-m365-copilot-faq#sales-agent-in-microsoft-365-copilot."
+    },
+    {
+      "n": 32,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Sales agent is a chat interface in Microsoft 365 Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/use-sales-chat",
+      "quote": "The Sales agent is an AI-powered chat interface that you can use to interact with your sales data by using natural language.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Users open Microsoft 365 Copilot and select Agents > Sales.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/use-sales-chat",
+      "quote": "Open Microsoft 365 Copilot. Under Agents, select Sales.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Existing Sales agent uses include account, opportunity and lead summaries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/use-sales-chat",
+      "quote": "Use the Sales agent to get a summary of an account, opportunity, or lead",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Sales agent supports catching up on past customer meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/use-sales-chat",
+      "quote": "You can use the Sales agent to get insights from past meetings to catch up on missed customer conversations, coaching, and more.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Sales agent supports CRM look-ups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/use-sales-chat",
+      "quote": "You can use the Sales agent to look up information about your customer accounts, contacts, and deals in your CRM system.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Sales Opportunity Agent was previously called Opportunity Research Agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-opportunity-agent",
+      "quote": "Sales Opportunity Agent (previously known as Opportunity Research Agent)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Sales Opportunity Agent synthesises CRM, email, meeting and web research insights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-opportunity-agent",
+      "quote": "The agent synthesizes insights from CRM, emails, meetings, and web research to give you a comprehensive view of your deal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing; Risk assessment: Data exposure and Change & support",
+      "type": "behaviour",
+      "claim": "The Opportunity research tool retrieves persisted research with deal overview, account, competitor, stakeholder, historical-pattern and custom sections when available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/get_opportunity_research",
+      "quote": "The assistant retrieves persisted opportunity research from the Sales Opportunity Agent result API, including deal overview, account, competitor, stakeholder, historical-pattern, and custom insight sections when available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "The research tool requires read access to Sales opportunities and research results in the selected environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/get_opportunity_research",
+      "quote": "This tool requires read access to Dynamics 365 Sales opportunities and Sales Opportunity Agent research results for the selected environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "The related opportunity research tool is read-only and does not modify records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/get_opportunity_research",
+      "quote": "This tool is read-only and does not modify records.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The research tool documentation suggests drafting a follow-up email as a subsequent prompt.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/get_opportunity_research",
+      "quote": "After the response appears, you can continue with prompts like: ... Draft a follow-up email",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The research tool documentation illustrates current capabilities and says tool names and behaviour can change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/get_opportunity_research",
+      "quote": "The tools and examples in this documentation illustrate current capabilities. Tool names, descriptions, parameters, response formats, and available functionality can change over time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What's changing; front matter: changes",
+      "type": "absence",
+      "claim": "There is no Learn page dedicated to this roadmap item itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Sales agent opportunity research chat licensing billing default enable; Sales agent opportunity research chat enable disable switch identity. Read use-sales-chat, sales-opportunity-agent and get_opportunity_research; found capability/background pages, not a dedicated roadmap-item page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap does not name the agent that produces the research.",
+      "status": "contradicted",
+      "source": "roadmap record",
+      "quote": "Dynamics 365 Sales: Opportunity acceleration - Chat about sales opportunity agent insights from inside Sales agent",
+      "severity": "blocker",
+      "fix": "Replace the sentence with 'The roadmap title identifies the insights as Sales Opportunity Agent insights; its description does not specify how Sales agent retrieves them.'"
+    },
+    {
+      "n": 46,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not explicitly identify get_opportunity_research as the implementation of this roadmap item.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Sales agent opportunity research chat licensing billing default enable; Sales agent opportunity research chat enable disable switch identity. Read get_opportunity_research and use-sales-chat; the tool documents its custom API but does not explicitly link its implementation to this roadmap item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The identity used by this chat capability to retrieve persisted research is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Sales agent opportunity research chat enable disable switch identity user permissions msdyn_GetOpportunityResearchResult; Sales agent opportunity research actions identity. Read get_opportunity_research, use-sales-chat and ai-agents-apps excerpts; no chat retrieval identity stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Whether this specific roadmap capability takes actions is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Sales agent opportunity research actions identity. Read roadmap, get_opportunity_research and set-up-sales-chat; general Sales agent can take actions, but no action-taking operation is stated for this specific research-question capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "front matter: licensing.notes; Why it matters; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Sales Opportunity Agent consumes assigned tenant capacity to process opportunities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-opportunity-agent",
+      "quote": "The Sales Opportunity Agent uses the capacity assigned to your tenant to process records.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Sales Opportunity Agent capacity can be prepaid or pay-as-you-go.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-opportunity-agent",
+      "quote": "You can set up either prepaid capacity or pay-as-you-go capacity for the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "After the initial run, consumption scales with the number of opportunities in scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-opportunity-agent",
+      "quote": "After the initial run, capacity consumption scales with the number of opportunities in scope",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Research refresh frequency also affects consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-opportunity-agent",
+      "quote": "and how often insights are refreshed (based on your configured refresh schedule and opportunity changes).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Narrowing opportunity scope and adjusting the agent's refresh frequency manages research usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-opportunity-agent",
+      "quote": "To manage usage, narrow the opportunity scope and adjust refresh frequency in the agent configuration settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Dynamics 365 Sales agent capabilities use Copilot Studio messages as billing units.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
+      "quote": "These capabilities use Microsoft Copilot Studio messages for AI interactions and tasks, like retrieving information and responding to prompts. Messages are the billing units that measure usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The billing page says depleted quota makes the AI capability unavailable until capacity is added.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
+      "quote": "When the quota is depleted, the AI capability is unavailable until more capacity is added.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Admins can view Copilot Studio message capacity and usage in Power Platform admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
+      "quote": "You can view Copilot Studio message capacity and usage for prepaid capacity and pay-as-you-go in the Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Prepaid agent capacity is allocated to the environment through Power Platform admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
+      "quote": "Assign prepaid capacity to the Power Platform environment using the Power Platform admin center (customer or reseller).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Sales agent uses Dataverse search for Dynamics 365 CRM queries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
+      "quote": "For Dynamics 365, Sales agent uses Dataverse search to query CRM data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Enabling Dataverse search can increase storage usage through searchable-table indexes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
+      "quote": "Enabling Dataverse search can increase storage usage because indexes are created for searchable tables.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Sales agent must be installed to use it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/use-sales-chat",
+      "quote": "To use it, you need to have the Sales agent installed",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Users must sign in to their CRM through Sales agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/use-sales-chat",
+      "quote": "and be signed in to your CRM system from the Sales agent in either Outlook or Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Risk assessment: Change & support; Scope",
+      "type": "behaviour",
+      "claim": "Sales Chat must be enabled and configured for the CRM environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "Environment-level Sales chat access | Sales chat must be enabled and configured for the CRM environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Risk assessment: Data exposure; Scope; rationale: risk",
+      "type": "applicability",
+      "claim": "Sales agent surfaces only information the user may access, with CRM security roles bounding CRM data access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "Users can access only the CRM environments, records, tables, and fields permitted by their assigned security roles and privileges.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Sales agent embedded in Outlook, Word, PowerPoint, Excel and Dynamics 365 is marked preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/use-sales-chat",
+      "quote": "The following capabilities are in preview: Sales agent is also accessible in Microsoft 365 Copilot within Outlook, Word, PowerPoint, Excel, and Dynamics 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Only conversational chat is available in those embedded experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/use-sales-chat",
+      "quote": "However, only conversational chat capabilities are available in these embedded experiences. Meeting preparation features aren't accessible in these locations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The Dynamics 365 Sales documentation describes accessing Sales agent from Sales Hub.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-sales-agent-microsoft365-copilot",
+      "quote": "Access the Sales agent in Microsoft 365 Copilot from within the Sales Hub app",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Microsoft advises clearing Restrict auto-installed users and using Allow access groups for an allow-list pilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "When you pilot Sales agent with an allow list, clear Restrict auto-installed users, and then use groups under Allow access to limit the pilot to selected users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "There is no documented switch specific to opportunity research questions in Sales agent chat.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Sales agent opportunity research chat enable disable switch identity user permissions msdyn_GetOpportunityResearchResult. Read access-settings, access-settings-apps, set-up-sales-chat and get_opportunity_research; no research-chat-specific switch documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A meter or rate specific to asking research questions in Sales agent chat is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Sales agent opportunity research questions chat Copilot Credits meter rate pricing. Read use-sales-chat, sales-opportunity-agent, copilot-consumption-based-billing and requirements-messages-management excerpts; no rate specific to these chat questions stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[1].governs",
+      "type": "applicability",
+      "claim": "The environment Sales Chat access control can restrict access to specific security groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings",
+      "quote": "If you turn on the toggle, you can choose to allow access for all users or only for specific security groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance guidance: Before rollout and After rollout",
+      "type": "consistency",
+      "claim": "The checklist asks readers to check CRM security roles, research scope and refresh settings, and capacity/usage, but these controls have no table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "'agree its opportunity scope and refresh schedule'; 'Check CRM security roles'; 'Watch Sales Opportunity Agent capacity and usage'; the table lists only tenant and environment Sales agent access.",
+      "severity": "minor",
+      "fix": "Remove those three checklist bullets, or move them outside the governance checklist as background considerations. The missing controls are CRM security roles, research scope/refresh and capacity/usage; this finding does not request additional control rows."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T05:13:54.930Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=576814",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-sales-copilot/use-sales-chat",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/sales/use-sales-agent-microsoft365-copilot",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/sales/sales-opportunity-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/developer/reference/mcp-tools/get_opportunity_research",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-sales-copilot/administrator-settings-sales-app",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users and apps can use Sales agent, including in Microsoft 365 Copilot",
+        "docs": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+        "reachable": true,
+        "segments": [
+          "Sales",
+          "Settings",
+          "Access settings",
+          "Allow access to Sales agent",
+          "Microsoft 365 Copilot"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether Sales Chat is available in a CRM environment, and to which security groups",
+        "docs": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings",
+        "reachable": true,
+        "segments": [
+          "Sales",
+          "Settings",
+          "Access settings",
+          "Allow access to Sales Chat"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

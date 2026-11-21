@@ -42,7 +42,7 @@ controls:
     ui:
       surface: "Group Policy Editor"
       path: "Computer Configuration > Policies > Administrative Templates > Microsoft Edge > Launch Microsoft Edge on Windows startup"
-      docs: "https://learn.microsoft.com/deployedge/configure-microsoft-edge"
+      docs: "https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled"
     api:
       kind: "other"
       call: "Registry: SOFTWARE\\Policies\\Microsoft\\Edge, value LaunchEdgeOnWindowsStartupEnabled (REG_DWORD)"
@@ -65,19 +65,23 @@ changes:
     note: "Corrected the Group Policy route: the Group Policy Editor path now starts at Computer Configuration > Policies, as the Edge policy configuration page gives it."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 42 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-21"
+    note: "Corrected after the independent check: the Group Policy control row now links the LaunchEdgeOnWindowsStartupEnabled policy page, which gives the setting's final label."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 44 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 42
-  confirmed: 41
-  unconfirmed: 1
+  claims: 44
+  confirmed: 44
+  unconfirmed: 0
   contradicted: 0
-  attempts: 2
-  hash: "3c0c489a40f5be8b65dce32b05fe849e"
+  attempts: 0
+  hash: "077239b3bb14c0002b2ff85cafd3682f"
 ---
 
 ## What's changing
@@ -143,7 +147,7 @@ The policy page lists Windows from Edge version 153 and not supported on macOS, 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Edge launches automatically when Windows starts</strong><br><small class="controls__note">Mandatory only; requires a browser restart; Windows only, from Edge 153. Unconfigured leaves the choice with the user.</small></td><td data-label="Admin UI"><strong>Group Policy Editor</strong><br>Computer Configuration › Policies › Administrative Templates › Microsoft Edge › Launch Microsoft Edge on Windows startup <a href="https://learn.microsoft.com/deployedge/configure-microsoft-edge" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry: SOFTWARE\Policies\Microsoft\Edge, value LaunchEdgeOnWindowsStartupEnabled (REG_DWORD)</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Edge launches automatically when Windows starts</strong><br><small class="controls__note">Mandatory only; requires a browser restart; Windows only, from Edge 153. Unconfigured leaves the choice with the user.</small></td><td data-label="Admin UI"><strong>Group Policy Editor</strong><br>Computer Configuration › Policies › Administrative Templates › Microsoft Edge › Launch Microsoft Edge on Windows startup <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry: SOFTWARE\Policies\Microsoft\Edge, value LaunchEdgeOnWindowsStartupEnabled (REG_DWORD)</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -161,10 +165,4 @@ The policy page documents no separate admin-centre switch for this item; set the
 risk: Low. With the policy not configured, the policy page says Edge does not launch at Windows start-up by default and users are only shown an opt-in banner, so the exposure is Edge starting at Windows start for users who opt in.
 cost: Low. The only cost the sources show is admin time to choose a policy value and brief users; no licence or meter for this feature is yet published.
 impact: Medium. Users on managed Windows devices are periodically shown an opt-in banner, so many people may notice it, but Edge's default launch behaviour does not change unless a user or admin enables it.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[0].ui; Governance controls table / admin-path: The UI row's configure-microsoft-edge docs link documents the control's own final step, Launch Microsoft Edge on Windows startup. | Found: Searched: LaunchEdgeOnWindowsStartupEnabled admin center. Opened https://learn.microsoft.com/deployedge/configure-microsoft-edge: gives the Microsoft Edge parent path, not the startup setting. Opened the cited LaunchEdgeOnWindowsStartupEnabled reference: it supplies the final label. | Fix: Change controls[0].ui.docs and the matching admin UI table link to https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled. Keep the existing path and retain configure-microsoft-edge in sources: together the pages document the complete route.
 -->

@@ -31,6 +31,9 @@ sources:
   - title: "Privacy, security, and compliance in Microsoft 365 Backup"
     url: "https://learn.microsoft.com/microsoft-365/backup/backup-privacy-security"
     kind: "learn"
+  - title: "Set up Microsoft 365 Backup"
+    url: "https://learn.microsoft.com/microsoft-365/backup/backup-setup"
+    kind: "learn"
   - title: "What's new in Microsoft 365 Backup"
     url: "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new"
     kind: "learn"
@@ -53,13 +56,13 @@ sources:
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog?view=exchange-ps"
     kind: "learn"
 videos: []
-related: ["m365-teams-channel-backup","entra-id-backup-and-recovery-30-day"]
+related: ["m365-create-full-workload-backup-policies-for-m365-backup","auditing"]
 controls:
   - governs: "Viewing, filtering and exporting Microsoft 365 Backup activity logs"
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Microsoft 365 Backup > Reports > Recent activities > View more"
+      path: "Settings > Microsoft 365 Backup > Reports > Recent activities > View more"
       docs: "https://learn.microsoft.com/microsoft-365/backup/backup-privacy-security"
     api:
       kind: "graph"
@@ -79,7 +82,7 @@ controls:
     note: "Existing control, separate from the in-product logs: Learn directs compliance investigations here. Needs the Audit Logs or View-Only Audit Logs role."
 confidence: "high"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-21"
 roadmapModified: "2026-10-20T23:00:34"
 changes:
   - date: "2026-11-17"
@@ -88,19 +91,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 78 statements confirmed"
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 85 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected the admin centre path to start at Settings, removed the role-assignment checklist bullet and the on/off-setting remark, and cited the set-up page for role-based access."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 104 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 85
-  confirmed: 82
+  claims: 104
+  confirmed: 103
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "05ddfabd744c7bd6c2279dcf0d9d8468"
+  contradicted: 1
+  attempts: 2
+  hash: "b437fc7138fc87e92589802ae1c19ece"
 ---
 
 ## What's changing
@@ -151,7 +158,7 @@ The indirect cost is administrator time to review the logs, to export CSV files 
 
 ## Scope
 
-- **Who sees it:** administrators who manage Microsoft 365 Backup. Learn gives roles: Global Administrators and Microsoft 365 Backup Administrators view SharePoint, OneDrive and Exchange activity; SharePoint Administrators view SharePoint and OneDrive; Exchange Administrators view Exchange.
+- **Who sees it:** administrators who manage Microsoft 365 Backup. Learn gives roles: Global Administrators and Microsoft 365 Backup Administrators view SharePoint, OneDrive and Exchange activity; SharePoint Administrators view SharePoint and OneDrive; Exchange Administrators view Exchange. The set-up page says an administrator's role determines which products they can manage with Microsoft 365 Backup.
 - **Workloads:** SharePoint, OneDrive and Exchange. The service filter offers those three.
 - **Clouds and platforms:** the roadmap record lists Worldwide (Standard Multi-Tenant) and the Web platform. The Graph list-activityLogs page lists the API as available in the global service and not in the US Government L4, US Government L5 (DOD) or China operated by 21Vianet deployments.
 - **Rollout:** the notice gives rollout beginning and completing in mid-October 2026. The roadmap record gives status Launched and release phase General Availability.
@@ -162,12 +169,11 @@ The indirect cost is administrator time to review the logs, to export CSV files 
 ### Before rollout
 
 - Tell your Microsoft 365 Backup administrators that activity monitoring is available in the product, as the notice recommends.
-- Check which people hold Global Administrator, Microsoft 365 Backup Administrator, SharePoint Administrator or Exchange Administrator, because those roles decide which workloads each person can see in the logs.
 - Decide which investigations stay in Microsoft Purview Audit and give the audit team the Backup operation names listed on the Purview audit activities page.
 
 ### At rollout
 
-- Open the activity logs from the Microsoft 365 admin center (Microsoft 365 Backup > Reports > Recent activities > View more) and confirm that your role shows the workloads you expect.
+- Open the activity logs from the Microsoft 365 admin center (Settings > Microsoft 365 Backup > Reports > Recent activities > View more) and confirm that your role shows the workloads you expect.
 - Filter on High impact to see which pause, delete, offboarding and CSV-restore actions have already been recorded.
 - Test **Export** and agree where the CSV files are stored and who may read them.
 
@@ -184,12 +190,12 @@ The indirect cost is administrator time to review the logs, to export CSV files 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Viewing, filtering and exporting Microsoft 365 Backup activity logs</strong><br><small>Tenant</small><br><small class="controls__note">Roles: Global Administrator, Microsoft 365 Backup Administrator, SharePoint Administrator or Exchange Administrator, each limited by workload. Graph is beta and needs BackupRestore-Monitor.Read.All.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Microsoft 365 Backup › Reports › Recent activities › View more <a href="https://learn.microsoft.com/microsoft-365/backup/backup-privacy-security" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET https://graph.microsoft.com/beta/solutions/backupRestore/activityLogs</code> <a href="https://learn.microsoft.com/graph/api/backuprestoreroot-list-activitylogs?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Viewing, filtering and exporting Microsoft 365 Backup activity logs</strong><br><small>Tenant</small><br><small class="controls__note">Roles: Global Administrator, Microsoft 365 Backup Administrator, SharePoint Administrator or Exchange Administrator, each limited by workload. Graph is beta and needs BackupRestore-Monitor.Read.All.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Microsoft 365 Backup › Reports › Recent activities › View more <a href="https://learn.microsoft.com/microsoft-365/backup/backup-privacy-security" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET https://graph.microsoft.com/beta/solutions/backupRestore/activityLogs</code> <a href="https://learn.microsoft.com/graph/api/backuprestoreroot-list-activitylogs?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Compliance record of Microsoft 365 Backup operations (Microsoft Purview Audit)</strong><br><small>Tenant</small><br><small class="controls__note">Existing control, separate from the in-product logs: Learn directs compliance investigations here. Needs the Audit Logs or View-Only Audit Logs role.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog -StartDate &lt;start&gt; -EndDate &lt;end&gt; -Operations BackupPolicyActivated</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The activity logs are a viewing and export surface. Learn documents roles for viewing them but no setting that turns them on or off, and states that retention is not configurable. Those roles come from your existing role assignments; the logs page does not grant access of its own.
+The activity logs are a viewing and export surface. Learn documents roles for viewing them and states that retention is not configurable. Those roles come from your existing role assignments; the logs page does not grant access of its own.
 
 The Graph call needs the BackupRestore-Monitor.Read.All permission, delegated or application, per the reference page. Microsoft Purview Audit is the control Learn points to for compliance investigations. Its search needs the Audit Logs or View-Only Audit Logs role, and its retention depends on licence: 180 days for users on non-E5 licences, and one year by default for Microsoft Entra ID, Exchange and SharePoint activity for users on E5 licences, so it is a different retention window from the 365 days of the in-product logs. The Purview audit table lists Backup operation names such as BackupPolicyActivated and RestoreTaskCompleted; confirm in your tenant that the operations you rely on appear.
 
@@ -209,10 +215,7 @@ impact: Low. Only administrators who manage Microsoft 365 Backup see the logs, a
 <!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; rendered table; Governance guidance: At rollout / admin-path: The complete admin-centre route is Microsoft 365 Backup > Reports > Recent activities > View more. | Found: Go to the Microsoft 365 admin center [...] Select Settings. [...] Select Microsoft 365 Backup from the list of products. | Fix: Replace controls[0].ui.path and the matching rendered-table and checklist paths with 'Settings > Microsoft 365 Backup > Reports > Recent activities > View more'. Keep the existing activity-log docs link and cite https://learn.microsoft.com/microsoft-365/backup/backup-setup for the opening navigation steps. | Source: https://learn.microsoft.com/microsoft-365/backup/backup-setup
+- [contradicted, blocker] Governance controls: retention paragraph / licensing: Purview audit retention is 180 days for users on non-E5 licences. | Found: For users assigned an Office 365 E5 or Microsoft 365 E5 license (or users with a Microsoft Purview Suite ... or Microsoft 365 E5 eDiscovery and Audit add-on license), the system retains audit records for Microsoft Entra ID, Exchange, and SharePoint activity for one year by default. | Fix: Replace '180 days for users on non-E5 licences' with '180 days for users with other Office 365 or Microsoft 365 licences who do not have Microsoft Purview Suite or the Microsoft 365 E5 eDiscovery and Audit add-on'. Those add-ons also qualify users for one-year default retention of Microsoft Entra ID, Exchange and SharePoint activity, as stated at https://learn.microsoft.com/purview/audit-search. | Source: https://learn.microsoft.com/purview/audit-search
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.notes; Cost and licensing / cost: The pricing page gives a list price of $0.15/GiB/month of protected content. | Found: The list price is $0.15/GiB/month of protected content. | Fix: Keep the quoted pricing-page rate and add: 'The Backup overview's feature table instead labels the rate $0.15 per GB per month; the pricing page specifies GiB.' Cite https://learn.microsoft.com/microsoft-365/backup/backup-overview alongside https://learn.microsoft.com/microsoft-365/backup/backup-pricing for this discrepancy. | Source: https://learn.microsoft.com/microsoft-365/backup/backup-pricing
-- [supported, minor] Governance controls; Scope; rationale: impact / role: Access follows existing administrator-role assignments rather than grants made on the activity-log page. | Found: It's important to note that your admin role determines which products you can manage with Microsoft 365 Backup. | Fix: Cite https://learn.microsoft.com/microsoft-365/backup/backup-setup for the statement that existing admin roles determine access. | Source: https://learn.microsoft.com/microsoft-365/backup/backup-setup
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks readers to review administrator-role assignments, but the controls table has no role-assignment row. | Found: Check which people hold Global Administrator, Microsoft 365 Backup Administrator, SharePoint Administrator or Exchange Administrator [...] Table rows: activity logs; Microsoft Purview Audit. | Fix: Remove the Before rollout bullet beginning 'Check which people hold Global Administrator'; this correction does not add a role-assignment control row.
-- [contradicted, minor] Governance controls / consistency: The prose states that no activity-log on/off control is documented, but the table has no row representing that absence. | Found: Learn documents roles for viewing them but no setting that turns them on or off [...] Table rows: activity logs; Microsoft Purview Audit. | Fix: Remove 'but no setting that turns them on or off' from the Governance controls paragraph; do not add a control row.
+- [supported, minor] front matter: licensing.notes; Cost and licensing / cost: The pricing page gives a list price of $0.15/GiB/month of protected content. | Found: The list price is $0.15/GiB/month of protected content. | Fix: Keep the pricing-page rate. Add: 'The Backup overview's billing table still labels the same numerical rate per GB rather than per GiB; this briefing uses the pricing page's GiB unit.' Both pages are already cited: https://learn.microsoft.com/microsoft-365/backup/backup-overview and https://learn.microsoft.com/microsoft-365/backup/backup-pricing. | Source: https://learn.microsoft.com/microsoft-365/backup/backup-pricing
 -->

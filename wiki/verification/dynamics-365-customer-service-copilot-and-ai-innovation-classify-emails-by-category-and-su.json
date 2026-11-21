@@ -1,0 +1,1116 @@
+{
+  "slug": "dynamics-365-customer-service-copilot-and-ai-innovation-classify-emails-by-category-and-su",
+  "roadmapId": 576775,
+  "title": "Dynamics 365 Customer Service: AI email classification by category and subcategory",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "1 blocking finding (claim 39)"
+    ]
+  },
+  "counts": {
+    "claims": 87,
+    "confirmed": 83,
+    "unconfirmed": 0,
+    "contradicted": 4,
+    "blocker": 1,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: the automation column for choosing classification timing gives an action that classifies an email, not an operation that changes the timing setting. The roadmap facts, admin paths and pay-as-you-go prerequisite are supported; the taxonomy path also needs its final steps.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is August CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The record associates the feature with Microsoft Copilot (Microsoft 365) and Dynamics 365 Customer Service.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Customer Service\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-16T19:08:55.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-16T19:08:55\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The roadmap says AI analyses the email subject and body.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "AI analyzes the email subject and body, then stores the assigned category or subcategory on the email activity record.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The roadmap says the assigned category or subcategory is stored on the email activity record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "AI analyzes the email subject and body, then stores the assigned category or subcategory on the email activity record.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says Case Management Agent, automatic record creation rules, Power Automate flows and reporting can use the assigned value.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Case Management Agent, automatic record creation rules, Power Automate flows, reporting, and other downstream processes can use this value to determine how to handle the email.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap gives mailboxes, sender domains and languages as examples of classification conditions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "They can also set conditions that determine which emails are classified, such as specific mailboxes, sender domains, languages, and so forth.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says qualifying inbound emails are automatically classified using the Case Management Agent flow when enabled.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When the feature is enabled, the system qualifies inbound emails and automatically classifies them by using the Case Management Agent flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says administrators can disable classification to stop processing new emails.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Administrators can also manually update an assigned category or subcategory, or disable classification to stop processing new emails.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Scope: Who is affected",
+      "type": "record",
+      "claim": "The roadmap describes enablement by admins, makers or marketers for end users.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enabled by admins/makers/marketers for end users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "Customer Service email classification uses AI to assign incoming emails to administrator-defined categories and subcategories.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "Email classification analyzes the content of incoming emails and assigns each message to a configured category.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing: setup",
+      "type": "behaviour",
+      "claim": "Learn describes five setup tasks: taxonomy, scope, timing and enablement, simulation, and downstream use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "Configuring email classification involves five high-level tasks:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope: Who configures it",
+      "type": "admin-path",
+      "claim": "Email classification is configured in the Copilot Service admin center app under Email settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "Configure email classification in the Copilot Service admin center app, under Email settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing: taxonomy",
+      "type": "behaviour",
+      "claim": "At least two categories must be configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "You must configure at least two categories.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing: taxonomy",
+      "type": "behaviour",
+      "claim": "The taxonomy supports up to 20 top-level categories.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "You can configure up to 20 categories at the top level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing: taxonomy",
+      "type": "behaviour",
+      "claim": "Each category supports up to 10 subcategories at each level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "Each category can have up to 10 subcategories at each level",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing: taxonomy",
+      "type": "behaviour",
+      "claim": "The hierarchy supports up to four levels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "the hierarchy can contain up to four levels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing: Learn comparison",
+      "type": "absence",
+      "claim": "The Learn configuration page does not mention Case Management Agent.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Dynamics 365 email classification cross geography permissions processing Case Management Agent classification flow'; read configure-email-classification in full, including its downstream-use section. It contains no Case Management Agent reference.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: defaultState; summary; Why it matters; changes",
+      "type": "default",
+      "claim": "Email classification is administrator opt-in rather than automatically starting on arrival.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "Choose when qualifying emails are classified, and then enable email classification.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: licensing.model; cost; rationale: cost",
+      "type": "licensing",
+      "claim": "Email classification has consumption-based entitlement through pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "Pay-as-you-go billing is enabled for your environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "summary; licensing.notes; controls[0].note; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "Pay-as-you-go billing enabled for the environment is a prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "Pay-as-you-go billing is enabled for your environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[0].note; Risk assessment: Security; Scope; Governance controls",
+      "type": "role",
+      "claim": "Configuration requires the System Administrator or CSR Manager security role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "You have the System Administrator or CSR Manager security role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The enablement path is Copilot Service admin center > Email settings > Email classification > Manage > Enable feature > Turn on email classification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "go to Email settings > Email classification, and then select Manage. ... Under Enable feature, select Turn on email classification.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no API to set Turn on email classification as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'email classification configuration isenabled API Dynamics' and 'Dynamics 365 email classification Turn on email classification API setting organization msdyn configuration scope qualification'; read configuration, custom action and category references; no enable-setting operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The taxonomy path is Copilot Service admin center > Email settings > Email classification > Manage > Define taxonomy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "In Define taxonomy, select + Add. ... To create a subcategory, in Parent, select the category directly above it in the hierarchy.",
+      "severity": "minor",
+      "fix": "Complete controls[1].ui.path as 'Email settings > Email classification > Manage > Define taxonomy > + Add > Add category > Parent' for subcategory creation; the current path stops on the correct page before the controls. Source: https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification."
+    },
+    {
+      "n": 31,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "POST /msdyn_emailclassificationcategories creates a category record.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_emailclassificationcategory",
+      "quote": "Create ... POST /msdyn_emailclassificationcategories",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "The category table has a parent category lookup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_emailclassificationcategory",
+      "quote": "The parent category in the classification hierarchy. Empty for a top-level category.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Governance controls: taxonomy records",
+      "type": "command",
+      "claim": "The category table reference documents create and update operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_emailclassificationcategory",
+      "quote": "Create ... POST /msdyn_emailclassificationcategories ... Update ... PATCH /msdyn_emailclassificationcategories(msdyn_emailclassificationcategoryid)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "The email eligibility path is Copilot Service admin center > Email settings > Email classification > Manage > Choose which emails to categorize > Manage rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "go to Email settings > Email classification, and then select Manage. ... Under Choose which emails to categorize, select Manage rule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[2].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No API is documented for the qualifying-email scope condition as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'email classification scope msdyn condition' and 'email classification scope conditions API table enable'; read configuration, custom action and scope-rule reference excerpts. The latter limits candidate categories, not which inbound emails are evaluated; no matching setting API found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "The eligibility rule supports one condition with multiple clauses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "You can create one condition with multiple clauses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "An email must meet all clauses to be classified.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "An email must meet all the clauses to be classified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "The timing option is reached through Copilot Service admin center > Email settings > Email classification > Manage > Choose when to categorize emails > In your own customization using API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "Under Choose when to categorize emails, select one of the following options: ... In your own customization using API: Allows your custom automation to control when emails are classified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "POST /api/data/v9.2/msdyn_EmailClassificationCustomAction is the automation equivalent of choosing whether custom automation rather than arrival triggers classification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/use-email-classification-custom-action",
+      "quote": "Use the msdyn_EmailClassificationCustomAction Dataverse action to analyze an existing email record ... The action updates the Email category (AI) and Classification Status fields on the email record.",
+      "severity": "blocker",
+      "fix": "Set controls[3].api to null: the documented POST endpoint exists, but classifies an individual email rather than setting the timing option. Replace its note with 'Select this option in the admin app before configuring custom automation; the msdyn_EmailClassificationCustomAction action classifies an existing email record.' Keep the custom-action source link in sources."
+    },
+    {
+      "n": 40,
+      "where": "controls[3].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The custom action classifies one existing email rather than selecting the timing option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/use-email-classification-custom-action",
+      "quote": "Use the msdyn_EmailClassificationCustomAction Dataverse action to analyze an existing email record and assign one of the active email categories configured for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[3].note",
+      "type": "command",
+      "claim": "The action accepts the emailId request parameter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/use-email-classification-custom-action",
+      "quote": "emailId | String | Yes | GUID of an existing Dataverse email record.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[3].note",
+      "type": "command",
+      "claim": "The action accepts the doRuleEvaluation request parameter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/use-email-classification-custom-action",
+      "quote": "doRuleEvaluation | Boolean | Yes | Determines whether the configured email classification conditions are evaluated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "As soon as they arrive automatically classifies qualifying incoming emails.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "As soon as they arrive: Automatically classifies qualifying incoming emails.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Learn gives specific mailboxes and departments as examples for defining email scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "For example, you can classify emails sent to specific mailboxes or associated with specific departments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "applicability",
+      "claim": "The custom action requires Copilot permissions to be enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/use-email-classification-custom-action",
+      "quote": "The required Copilot, AI agent, and cross-geography permissions are enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "applicability",
+      "claim": "The custom action requires AI agent permissions to be enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/use-email-classification-custom-action",
+      "quote": "The required Copilot, AI agent, and cross-geography permissions are enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "applicability",
+      "claim": "The custom action requires cross-geography permissions to be enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/use-email-classification-custom-action",
+      "quote": "The required Copilot, AI agent, and cross-geography permissions are enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The invoking user needs permission to read the email record.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/use-email-classification-custom-action",
+      "quote": "The user invoking the action has permissions to read and update the email record and read the email classification configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The invoking user needs permission to update the email record.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/use-email-classification-custom-action",
+      "quote": "The user invoking the action has permissions to read and update the email record and read the email classification configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The invoking user needs permission to read the classification configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/use-email-classification-custom-action",
+      "quote": "The user invoking the action has permissions to read and update the email record and read the email classification configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Simulation results can be downloaded as an Excel workbook.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "You can download the results as an Excel workbook to share them for review.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Data exposure; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Simulation results show the predicted category.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "The results show the predicted category and the reason for each prediction.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Data exposure; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Simulation results show a reason for each prediction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "The results show the predicted category and the reason for each prediction.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Autonomy; rationale: risk",
+      "type": "behaviour",
+      "claim": "Evaluated emails receive a configured category even when their content does not clearly match any category.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "Email classification always assigns one of the configured categories to an evaluated email, even if the email content doesn't clearly match any category.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Autonomy",
+      "type": "behaviour",
+      "claim": "With only two categories, evaluated emails receive one of those two categories even if unrelated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "If you configure only two categories (for example, Billing and Marketing), every email is classified as either Billing or Marketing, even if the email is unrelated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Why it matters; Risk assessment: Autonomy; rationale: risk",
+      "type": "applicability",
+      "claim": "Email categories can exclude emails, such as Marketing emails, from automatic case creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "Prevent certain categories of emails from creating cases. For example, you can exclude emails classified as Marketing from case creation",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "summary; Why it matters; Risk assessment: Autonomy; rationale: impact",
+      "type": "applicability",
+      "claim": "Routing rules can reference email categories.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "Use email categories in routing rules to send emails to the right queues or service representatives based on what the email is about.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risk assessment: Autonomy",
+      "type": "applicability",
+      "claim": "Automatic record creation and update rules can reference email categories.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "You can reference email categories in: ... Automatic record creation and update rules.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "summary; Risk assessment: Autonomy; rationale: impact",
+      "type": "applicability",
+      "claim": "Case creation logic can reference email categories.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "You can reference email categories in: ... Case creation logic.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Risk assessment: Change; Governance controls; rationale: cost",
+      "type": "cost",
+      "claim": "Classifying an email more than once can increase AI consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/use-email-classification-custom-action",
+      "quote": "Classifying the same email more than once can increase AI consumption",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Risk assessment: Change; Governance controls",
+      "type": "behaviour",
+      "claim": "Repeated classification can overwrite existing classification results.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/use-email-classification-custom-action",
+      "quote": "Classifying the same email more than once can ... overwrite existing classification results",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Risk assessment: Change; Governance controls",
+      "type": "behaviour",
+      "claim": "Repeated classification can cause downstream processes to execute multiple times.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/use-email-classification-custom-action",
+      "quote": "Classifying the same email more than once can ... cause downstream processes to execute multiple times.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Risk assessment: Change; Scope",
+      "type": "behaviour",
+      "claim": "The email-form experience lets service representatives view AI-generated categories.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "Add the email classification experience to the email form so that ... service representatives ... can view AI-generated email categories",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Risk assessment: Change",
+      "type": "behaviour",
+      "claim": "Service representatives may manually change assigned categories depending on configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "Depending on your configuration, service representatives might be able to manually update the email category.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Risk assessment: Change",
+      "type": "behaviour",
+      "claim": "The email-form experience lets representatives provide classification feedback.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "can view AI-generated email categories, change assigned categories, and provide feedback on categorizations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Cost and licensing: overview default",
+      "type": "default",
+      "claim": "The cited Microsoft Copilot pay-as-you-go overview says its pay-as-you-go billing is disabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/pay-as-you-go-overview",
+      "quote": "By default, pay-as-you-go billing is disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Cost and licensing: overview roles",
+      "type": "role",
+      "claim": "The cited overview says a Global Administrator can enable or disable Microsoft 365 pay-as-you-go features in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/pay-as-you-go-overview",
+      "quote": "A Global Administrator or subscription owner can enable or disable Microsoft 365 pay-as-you-go features in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Cost and licensing: overview roles",
+      "type": "role",
+      "claim": "The cited overview says a subscription owner can enable or disable Microsoft 365 pay-as-you-go features in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/pay-as-you-go-overview",
+      "quote": "A Global Administrator or subscription owner can enable or disable Microsoft 365 pay-as-you-go features in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "licensing.notes; Cost and licensing; rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "A rate or meter specific to email classification is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Dynamics 365 Customer Service email classification pay as you go billing meter rate Copilot credits licensing' and 'email classification rate credits'; read configuration, custom action, Customer Service setup-pay-as-you-go, Copilot overview/meters and billing-rate search excerpts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Cost and licensing: scoping",
+      "type": "cost",
+      "claim": "Learn describes scope conditions as controlling which emails use AI resources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "Because email classification uses AI resources, you can control which emails are evaluated by defining conditions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Cost and licensing: neighbouring meter",
+      "type": "cost",
+      "claim": "The cited Microsoft Copilot meters page publishes $0.01 per message for its Copilot Studio meter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/pay-as-you-go-meters",
+      "quote": "Copilot Studio ... $0.01 per message",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Cost and licensing: neighbouring pages",
+      "type": "absence",
+      "claim": "The cited Copilot overview and meters pages describe Copilot Chat and SharePoint agents without mentioning email classification.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Dynamics 365 Customer Service email classification pay as you go billing meter rate Copilot credits licensing'; opened pay-as-you-go-overview and pay-as-you-go-meters in full. Their applicability notes name Copilot Chat and SharePoint Agents, not email classification.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "An Excel simulation input can contain up to 50 historical email records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "The file can contain up to 50 records and must be no larger than 1 MB.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance guidance: Before and After rollout",
+      "type": "consistency",
+      "claim": "The checklist asks administrators to confirm billing enablement and watch consumption, but neither billing control has a controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm pay-as-you-go billing is enabled ... Watch pay-as-you-go consumption for the environment ... Controls: enable classification; taxonomy; eligible emails; timing.",
+      "severity": "minor",
+      "fix": "The billing-enablement and consumption-monitoring checklist steps have no controls-table row. Remove those control-check instructions from the checklist; retain the billing prerequisite in Cost and licensing. Do not add unverified rows."
+    },
+    {
+      "n": 75,
+      "where": "Governance guidance: At and After rollout",
+      "type": "consistency",
+      "claim": "The checklist tells readers to run and rerun simulations, but simulation has no controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Run a simulation using up to 50 historical emails ... Rerun the simulation after any change ... Controls: enable classification; taxonomy; eligible emails; timing.",
+      "severity": "minor",
+      "fix": "The run-simulation and rerun-simulation checklist steps have no controls-table row. Move these instructions out of the governance checklist into Risk assessment as testing advice; do not add an unverified row."
+    },
+    {
+      "n": 76,
+      "where": "Governance guidance: Before and After rollout",
+      "type": "consistency",
+      "claim": "The checklist asks readers to identify downstream routing and creation rules and review category exclusions, but those controls have no table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Identify every routing rule, automatic record creation rule and case creation rule ... Review which emails are excluded from case creation by category ... Controls: enable classification; taxonomy; eligible emails; timing.",
+      "severity": "minor",
+      "fix": "The downstream-rule inventory and category-exclusion review checklist steps have no controls-table rows. Keep their verified applicability in Risk assessment, but remove these control-check instructions from the checklist rather than adding unverified rows."
+    },
+    {
+      "n": 77,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Simulation can use organisation email records instead of an Excel upload.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "If you select Organization records, use the condition builder to select email records, such as all emails from the previous week.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The email-form field to add is named Email category (AI).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "In Table columns, locate Email category (AI) and drag the field onto the form where you want it to appear.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The email-form component to add is named EmailClassificationControl.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "Search for EmailClassificationControl, and then select Add.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "Cost and licensing; Governance controls: form change",
+      "type": "behaviour",
+      "claim": "Adding the representative-facing email classification experience is a Power Apps email-form customisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "Open Power Apps. ... Open the Email table, and then open the email form that you want to customize.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Governance controls: form change",
+      "type": "applicability",
+      "claim": "The email-form component governs viewing and changing categories, not enabling classification processing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "Under Enable feature, select Turn on email classification. ... Add the email classification experience to the email form so that ... service representatives ... can view AI-generated email categories, change assigned categories, and provide feedback",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Learn advises distinct category names and descriptions that distinguish taxonomy branches.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "Use distinct, actionable category names and descriptions. ... When you use a hierarchical taxonomy, ensure that category and subcategory names and descriptions clearly distinguish each branch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Learn advises considering a catch-all category such as Uncategorized.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "Consider adding a catch-all category, such as \"Uncategorized\", for email that doesn't clearly match another category.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn advises rerunning simulation after taxonomy or description changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "After you add, edit, or remove categories or update category descriptions, rerun the simulation to compare the results",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "At least two active categories are a prerequisite for classification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/use-email-classification-custom-action",
+      "quote": "At least two active email categories are configured.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "Risk assessment: Change; Governance controls",
+      "type": "behaviour",
+      "claim": "Learn tells callers not to invoke the custom action on emails already processed by built-in classification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/use-email-classification-custom-action",
+      "quote": "Don't invoke this action when built-in automatic email classification has already processed the email.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "What's changing: taxonomy; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Each category has a name and description.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+      "quote": "Each category includes a name and description.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T05:13:50.171Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-service/develop/use-email-classification-custom-action",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_emailclassificationcategory",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/pay-as-you-go-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/pay-as-you-go-meters",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=576775",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether email classification is turned on",
+        "docs": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+        "reachable": true,
+        "segments": [
+          "Email settings",
+          "Email classification",
+          "Manage",
+          "Enable feature",
+          "Turn on email classification"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "The category and subcategory taxonomy AI assigns",
+        "docs": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+        "reachable": true,
+        "segments": [
+          "Email settings",
+          "Email classification",
+          "Manage",
+          "Define taxonomy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "The category and subcategory taxonomy AI assigns",
+        "docs": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_emailclassificationcategory",
+        "reachable": true,
+        "token": "POST /msdyn_emailclassificationcategories",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which inbound emails are evaluated",
+        "docs": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+        "reachable": true,
+        "segments": [
+          "Email settings",
+          "Email classification",
+          "Manage",
+          "Choose which emails to categorize",
+          "Manage rule"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Whether your own automation, not arrival, triggers classification",
+        "docs": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification",
+        "reachable": true,
+        "segments": [
+          "Email settings",
+          "Email classification",
+          "Manage",
+          "Choose when to categorize emails",
+          "In your own customization using API"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Whether your own automation, not arrival, triggers classification",
+        "docs": "https://learn.microsoft.com/dynamics365/customer-service/develop/use-email-classification-custom-action",
+        "reachable": true,
+        "token": "POST /api/data/v9.2/msdyn_EmailClassificationCustomAction",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

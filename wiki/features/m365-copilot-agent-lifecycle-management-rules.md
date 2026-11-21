@@ -55,6 +55,9 @@ sources:
   - title: "Supported resources for remediation and applyOnce (preview)"
     url: "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources"
     kind: "learn"
+  - title: "Set up authentication for Tenant Configuration Management APIs"
+    url: "https://learn.microsoft.com/graph/utcm-authentication-setup"
+    kind: "learn"
   - title: "Create configurationMonitor"
     url: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
     kind: "learn"
@@ -117,7 +120,7 @@ controls:
       kind: "graph"
       call: "POST /beta/admin/configurationManagement/configurationMonitors"
       docs: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
-    note: "Preview; production use unsupported. mode applyOnce; baseline resourceType microsoft.agent.useraccess, userAssignmentCategory everyone or noOne. Needs AI Administrator and delegated ConfigurationMonitoring.ReadWrite.All."
+    note: "AI Administrator for the signed-in user, delegated ConfigurationMonitoring.ReadWrite.All for the calling app, delegated CopilotPolicySettings.ReadWrite on the TCM service principal with tenant-wide consent (consentType AllPrincipals)."
   - governs: "Approving or rejecting agent publish requests"
     scope: "tenant"
     ui:
@@ -164,19 +167,23 @@ changes:
     note: "Corrected licensing: lifecycle rules are a premium Agent 365 capability (add-on, medium cost); noted that Researcher and Analyst sit outside agent settings; removed the Entra manager-attribute checklist step."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 97 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 7
+  - date: "2026-11-21"
+    note: "Corrected the user-access control's permission requirements to the Tenant Configuration Management authentication page, and removed the deletion steps from the governance checklist."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 100 statements not yet confirmed"
+version: 8
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 7
+  version: 8
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 97
-  confirmed: 95
+  claims: 100
+  confirmed: 100
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "0430fd5f9b4a01f641e3a8e217f95df1"
+  contradicted: 0
+  attempts: 0
+  hash: "5ac6f9b67b40a91a203d225fef3ff26b"
 ---
 
 ## What's changing
@@ -225,10 +232,10 @@ Rules let you apply a written lifecycle policy in bulk after you have reviewed t
 ## Governance guidance
 
 ### Before rollout
-- Write the lifecycle policy: when an unused agent is blocked, when a blocked agent is deleted, and who inherits ownerless agents. Check which rules your tenant offers under **Agents** > **Settings** > **Agent management rules** before relying on automatic deletion.
+- Write the lifecycle policy: when an unused agent is blocked and who inherits ownerless agents. Check which rules your tenant offers under **Agents** > **Settings** > **Agent management rules** before relying on them.
 
 ### At rollout
-- Start with reassignment of ownerless Agent Builder agents and blocking of ownerless agents without usage; hold any deletion until the first review cycle completes.
+- Start with reassignment of ownerless Agent Builder agents and blocking of ownerless agents without usage.
 - Notify reassigned managers with a short guide to reviewing an inherited agent.
 
 ### After rollout
@@ -244,7 +251,7 @@ Rules let you apply a written lifecycle policy in bulk after you have reviewed t
 <tbody>
 <tr><td data-label="Control"><strong>Automated lifecycle rules for agents</strong><br><small>Tenant</small><br><small class="controls__note">Rules include installing Microsoft agents, reassigning ownerless Agent Builder agents to the manager, blocking ownerless agents without usage, applying a template (one-time) and rejecting stale publish requests.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › Agent management rules › Add rule <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#agent-management-rules" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Manual block or unblock for an agent</strong><br><small>Agent</small><br><small class="controls__note">Graph side is beta and block only; production use is unsupported. Needs delegated CopilotPackages.ReadWrite.All (no application permission) and an Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block / Unblock <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#block-or-unblock-agents" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Who may use agents</strong><br><small>Tenant</small><br><small class="controls__note">Preview; production use unsupported. mode applyOnce; baseline resourceType microsoft.agent.useraccess, userAssignmentCategory everyone or noOne. Needs AI Administrator and delegated ConfigurationMonitoring.ReadWrite.All.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who may use agents</strong><br><small>Tenant</small><br><small class="controls__note">AI Administrator for the signed-in user, delegated ConfigurationMonitoring.ReadWrite.All for the calling app, delegated CopilotPolicySettings.ReadWrite on the TCM service principal with tenant-wide consent (consentType AllPrincipals).</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Approving or rejecting agent publish requests</strong><br><small>Tenant</small><br><small class="controls__note">Beta, rejection only; production use unsupported. Needs Agent 365 and CopilotPackages.ReadWrite.All. Rejects a pending title submission, not an individual user request; supply the matching version.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Requests › agent › Publish to store / Reject submission <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests#actions-for-requested-agents" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{packageId}/reject</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-reject" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -267,10 +274,8 @@ cost: Medium. Conditions-based lifecycle rules are a premium Agent 365 capabilit
 impact: Medium. Users can lose agents; managers inherit ownership.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[2].note; Governance controls table / role: The user-access API note gives delegated ConfigurationMonitoring.ReadWrite.All and AI Administrator as its permission requirements without the required TCM workload grant. | Found: For Copilot and Agent resources, grant the TCM service principal the CopilotPolicySettings.ReadWrite delegated permission on Microsoft Graph for remediation and applyOnce. | Fix: In controls[2].note and the rendered table, replace 'Needs AI Administrator and delegated ConfigurationMonitoring.ReadWrite.All.' with 'Needs AI Administrator for the signed-in user, delegated ConfigurationMonitoring.ReadWrite.All for the calling app, and delegated CopilotPolicySettings.ReadWrite on the TCM service principal with tenant-wide consent (consentType AllPrincipals).' Cite https://learn.microsoft.com/graph/utcm-authentication-setup. | Source: https://learn.microsoft.com/graph/utcm-authentication-setup
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout and At rollout; Governance controls table / consistency: The governance checklist tells readers to decide when to delete blocked agents, but the controls table contains no deletion row. | Found: when a blocked agent is deleted hold any deletion until the first review cycle completes Table: Automated lifecycle rules; Manual block or unblock; Who may use agents; Approving or rejecting agent publish requests. | Fix: The Before rollout instruction about deleting blocked agents and the At rollout instruction to hold deletion have no corresponding control row. Remove those deletion instructions from the checklist; do not add a row in this correction.
+- [supported, minor] controls[2].api; controls[2].note; rendered controls table / command: POST /beta/admin/configurationManagement/configurationMonitors can set tenant agent user access. | Found: Create a new configurationMonitor ... applies a desired-state baseline once in applyOnce mode. ... POST /admin/configurationManagement/configurationMonitors | Fix: Keep the call. Append to controls[2].note: 'Preview; beta API production use is unsupported. Set mode to applyOnce and baseline.resources to resourceType microsoft.agent.useraccess, resourceVersion 1, with properties.valueObject.userAssignmentCategory set to everyone or noOne.' The mode is documented at https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta and the access property at https://learn.microsoft.com/graph/utcm-agent-resources#useraccess-resource-type. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
 -->

@@ -1,0 +1,802 @@
+{
+  "slug": "microsoft-purview-compliance-manager-purview-compliance-manager-integration-with-microsoft",
+  "roadmapId": 536576,
+  "title": "Microsoft Purview Compliance Manager: assess Microsoft Foundry agents against AI regulations",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 54: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "2 blocking findings (claims 45, 48)"
+    ]
+  },
+  "counts": {
+    "claims": 61,
+    "confirmed": 56,
+    "unconfirmed": 2,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 1,
+    "minor": 5
+  },
+  "summary": "Hold: the assessment-creation wizard is presented as a control over who can create assessments, but it does not assign permissions. The Foundry role command also assigns access at project scope, whereas the integration prerequisites require a role on the relevant Foundry accounts.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "Microsoft plans to map agents created in Foundry to Compliance Manager regulations and assessments and expose compliance status and improvement actions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Customers can map Agents being created in AI Foundry to compliance regulations and assessments in Purview Compliance Manager and get to know the compliance status and improvement actions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; summary; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is January CY2027, not a committed availability date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is December CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"December CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-10-19T23:15:15.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-19T23:15:15\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment; Open questions",
+      "type": "absence",
+      "claim": "Learn describes the Foundry integration without labelling that integration's release status.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Compliance Manager Foundry integration default enabled automatic assessments arrival. Read compliance-manager-assessments in full; the Foundry integration section has no preview or GA label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "The integration syncs evaluation results into Compliance Manager for AI models and agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-assessments",
+      "quote": "Compliance Manager integrates with Azure AI Foundry to automate compliance evaluations for AI models and agents. The Compliance Manager integration with Azure AI Foundry syncs evaluation results directly into Compliance Manager",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn describes 75 actions from Foundry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-assessments",
+      "quote": "AI Foundry provides 75 actions, including 15 automated evaluation actions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "The Foundry action set includes 15 automated evaluation actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-assessments",
+      "quote": "AI Foundry provides 75 actions, including 15 automated evaluation actions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The evaluation metrics include reliability, BLEU score, coherence and fluency.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-assessments",
+      "quote": "15 automated evaluation actions for metrics like reliability, BLEU score, coherence, and fluency.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Compliance Manager regularly syncs those 15 evaluation actions from Foundry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-assessments",
+      "quote": "Compliance Manager regularly syncs these 15 evaluation actions from AI Foundry",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; What's changing; Why it matters; Governance guidance",
+      "type": "behaviour",
+      "claim": "The integration displays pass/fail status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-assessments",
+      "quote": "displaying real-time pass/fail status and detailed metrics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "The integration displays detailed evaluation metrics alongside compliance status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-assessments",
+      "quote": "Provides granular evaluation metrics alongside compliance status for transparency.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Users can convert Foundry automated actions to manual actions through Compliance Manager settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-assessments",
+      "quote": "Users can convert automated actions to manual actions through Compliance Manager settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Organisations without Foundry access can update actions manually.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-assessments",
+      "quote": "Allows manual updates for organizations without AI Foundry access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Scope; Governance guidance; Open questions",
+      "type": "behaviour",
+      "claim": "Users define the assessment scope directly in Compliance Manager.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-assessments",
+      "quote": "Users define the assessment scope directly in Compliance Manager.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "The other Foundry actions are not described as automated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Compliance Manager Foundry integration agents changes actions automated evaluation scope projects. Read compliance-manager-assessments and improvement-actions; Foundry documentation identifies 15 automated actions, not automation for the remaining actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: defaultState; Why it matters; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft has not stated the integration's activation state on arrival or that it changes existing behaviour automatically.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Compliance Manager Foundry integration default enabled automatic assessments arrival. Read roadmap, compliance-manager-assessments and setup. Setup states automatic-testing defaults, not whether Foundry integration activates on arrival.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].note; Risk assessment; Scope; Governance guidance",
+      "type": "role",
+      "claim": "The assessments page names Compliance Manager Administration, Compliance Manager Assessor or Global Administrator for creating and modifying assessments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-assessments",
+      "quote": "To create and modify an assessment, a user must hold a role of Compliance Manager Administration, Compliance Manager Assessor, or Global Administrator.",
+      "severity": "minor",
+      "fix": "Add: 'Microsoft's setup role table disagrees: Compliance Manager Assessor can edit data only and cannot create assessments, while Compliance Manager Contribution can create assessments (https://learn.microsoft.com/purview/compliance-manager-setup#role-types).' Retain attribution of the original list to the assessments page."
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment; Scope; Governance controls; controls[1].note",
+      "type": "role",
+      "claim": "The administrator needs Azure AI Project Manager or Azure AI User on the relevant Foundry accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-assessments",
+      "quote": "The admin account must have either the Azure AI Project Manager or Azure AI User RBAC role assigned to the relevant AI Foundry accounts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].note; Risk assessment; Scope; Governance controls",
+      "type": "role",
+      "claim": "The Foundry role is needed to add agents during assessment creation, separately from the Compliance Manager creation role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-assessments",
+      "quote": "The Azure AI Project Manager or Azure AI User RBAC role access is required to add Agents during assessment creation for the AI Foundry service in Compliance Manager.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[1].note; Risk assessment; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "Azure AI User and Azure AI Project Manager were renamed Foundry User and Foundry Project Manager.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/concepts/rbac-foundry",
+      "quote": "Foundry User, Foundry Owner, Foundry Account Owner, and Foundry Project Manager were previously named Azure AI User, Azure AI Owner, Azure AI Account Owner, and Azure AI Project Manager.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment",
+      "type": "role",
+      "claim": "Users need at least Compliance Manager Reader or Microsoft Entra Global reader to access Compliance Manager.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-setup",
+      "quote": "Users need at least the Compliance Manager reader role, or Microsoft Entra global reader role, to access Compliance Manager.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment; Governance controls",
+      "type": "applicability",
+      "claim": "Access to Compliance Manager assessment data follows role-based permissions, and only assigned role holders can access Compliance Manager.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-setup",
+      "quote": "Only users who are assigned a role can access Compliance Manager, and the actions allowed by each user are restricted by role type.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment",
+      "type": "admin-path",
+      "claim": "Access can be granted per assessment through Manage user access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-assessments",
+      "quote": "From your Assessments page, find the assessment you want to grant access to. Select it to open its details page. In the upper-right corner, select Manage user access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Global Administrator or Compliance Manager Administrator can set Compliance Manager user permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-setup",
+      "quote": "The person holding the Global Administrator role or Compliance Manager Administrator role for your organization can set user permissions for Compliance Manager.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[2].note; Governance controls",
+      "type": "role",
+      "claim": "Compliance Manager settings and automated-testing settings require Compliance Manager Administrator or Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-setup",
+      "quote": "Compliance Manager settings are accessible by users who hold a Compliance Manager Administrator role or Global Administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Compliance Manager is available to organisations with Office 365 and Microsoft 365 licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-setup",
+      "quote": "Compliance Manager is available to organizations with Office 365 and Microsoft 365 licenses",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Assessment availability depends on the licensing agreement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-setup",
+      "quote": "Assessment availability and management capabilities depend on your licensing agreement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "EU Artificial Intelligence Act, ISO/IEC 23894:2023, ISO/IEC 42001:2023 and NIST AI RMF 1.0 are the four premium AI templates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-assessments",
+      "quote": "Compliance Manager provides four premium regulatory templates ... EU Artificial Intelligence Act; ISO/IEC 23894:2023; ISO/IEC 42001:2023; NIST AI Risk Management Framework (RMF) 1.0",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Premium regulations require purchase of a licence, subject to the stated free entitlements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-regulations",
+      "quote": "The regulations designated as premium require purchase of a license to use them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing; Governance guidance",
+      "type": "licensing",
+      "claim": "Using an AI regulation counts toward purchased premium licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-assessments",
+      "quote": "Using an AI regulation counts toward your purchased premium licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Depending on the licensing agreement, up to three more premium templates may be usable for free.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-regulations",
+      "quote": "Depending on your licensing agreement, your organization might be able to use up to three more premium regulatory templates for free.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Licences for activated regulations are good for one year.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-regulations",
+      "quote": "Licenses for activated regulations are good for one year.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "Learn says built-in Foundry assessments for key AI regulations are free for six months with Copilot or Agent licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-assessments",
+      "quote": "Organizations benefit from built-in assessments for key AI regulations—including the EU AI Act, NIST AI RMF, and ISO/IEC standards—provided free for six months with Copilot or Agent licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The Foundry assessments passage does not specify which Copilot or Agent licences qualify.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Compliance Manager Foundry assessments six months Copilot Agent licenses price meter billing; Compliance Manager premium assessment regulation licensing price Foundry six months licenses. Read assessments and regulations; no qualifying SKU list for the six-month offer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The Foundry assessments passage does not specify what happens or is charged after the six-month offer.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Compliance Manager Foundry assessments six months Copilot Agent licenses price meter billing; Compliance Manager premium assessment regulation licensing price Foundry six months licenses. Read assessments, regulations and Purview billing models; no post-offer terms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The regulation licensing page gives purchase routes but no per-licence price.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Compliance Manager premium assessment regulation licensing price Foundry six months licenses. Read compliance-manager-regulations in full: admin-center, CSP and volume-licensing purchase routes appear, but no per-licence price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No Foundry-specific Compliance Manager integration meter is described on the cited pages.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Compliance Manager Foundry assessments six months Copilot Agent licenses price meter billing. Read assessments, regulations, setup and purview-billing-models; no Compliance Manager Foundry assessment meter, distinct from other Purview AI meters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Mixed licensing reflects premium AI template entitlements and a six-month Foundry assessment offer with Copilot or Agent licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-assessments",
+      "quote": "Using an AI regulation counts toward your purchased premium licenses. ... provided free for six months with Copilot or Agent licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The medium cost field reflects potentially purchased premium AI template licences rather than a documented consumption meter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-regulations",
+      "quote": "The regulations designated as premium require purchase of a license to use them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Compliance Manager > Assessments > Add assessment controls who can create an assessment that includes Foundry agents.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-assessments",
+      "quote": "From your Assessments page, select Add assessment to begin the assessment creation wizard.",
+      "severity": "blocker",
+      "fix": "Change controls[0].governs and the rendered row label to 'Creation of an assessment that includes Foundry agents'. Keep the documented path and role note: Add assessment starts creation, not permission assignment. Change the checklist reference to call it the assessment-creation row."
+    },
+    {
+      "n": 46,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no API for creating Compliance Manager assessments.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Compliance Manager create assessment API PowerShell Security Compliance Microsoft Graph; Compliance Manager Security Compliance PowerShell New assessment Testing source cmdlet. Read assessments and search excerpts for SCC PowerShell and Graph; no creation operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Azure portal > Foundry resource > Access control (IAM) reaches the page for Foundry role assignments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/concepts/rbac-foundry",
+      "quote": "In the Azure portal, open your Foundry resource and go to Access control (IAM). Create a role assignment for Foundry User, set Members to User, group, or service principal, select your user principal",
+      "severity": "minor",
+      "fix": "Keep the path, which reaches the right page, and add to its note: 'On Access control (IAM), create a role assignment for Foundry User, set Members to User, group, or service principal, and select the user principal.'"
+    },
+    {
+      "n": 48,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Assigning Foundry User with az role assignment create --role 53ca6127-db72-4b80-b1b0-d745d6d5456d --assignee <user> --scope <project-id> supplies the role needed to add agents to Compliance Manager.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-assessments",
+      "quote": "The admin account must have either the Azure AI Project Manager or Azure AI User RBAC role assigned to the relevant AI Foundry accounts.",
+      "severity": "blocker",
+      "fix": "Replace the call with 'az role assignment create --role 53ca6127-db72-4b80-b1b0-d745d6d5456d --assignee <user> --scope <foundry-resource-id>'. Set api.docs to https://learn.microsoft.com/azure/foundry/concepts/rbac-foundry, which documents this command and resource-level assignments. Define the scope placeholder in the note as the relevant Foundry account/resource's Azure resource ID, not a project's ID. The CLI reference at https://learn.microsoft.com/cli/azure/role/assignment confirms all parameters; Azure RBAC scope documentation states lower levels inherit from higher levels, not that project assignments grant parent-account access."
+    },
+    {
+      "n": 49,
+      "where": "controls[2].ui; Governance controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Settings > Compliance Manager > Testing source reaches the automatic-testing control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-setup",
+      "quote": "select the Settings icon at the top of the page, then select Compliance Manager. ... Testing source: Allows you to turn off or on the automatic testing of improvement actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[2].api; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no API for the Compliance Manager Testing source setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Compliance Manager Testing source automatic testing settings PowerShell cmdlet API; Compliance Manager Security Compliance PowerShell New assessment Testing source cmdlet. Read setup, improvement-actions and SCC PowerShell search excerpts; no setting operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[2].governs; Governance guidance; Risk assessment",
+      "type": "behaviour",
+      "claim": "Testing source turns automatic testing of improvement actions on or off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-setup",
+      "quote": "Testing source: Allows you to turn off or on the automatic testing of improvement actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[2].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The Foundry passage does not identify whether its reference to converting actions through settings specifically means the tenant Testing source setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Compliance Manager Foundry automated actions manual Testing source settings. Read assessments, setup and improvement-actions. Foundry says Compliance Manager settings; general documentation also describes Testing type on action details and bulk conversion.",
+      "severity": "minor",
+      "fix": "Replace the row-note caveat with: 'Testing source governs automatic testing for eligible improvement actions generally; Microsoft's Foundry passage does not identify a Foundry-specific conversion route.' The setup page says testing can be disabled for all actions or configured per action. Keep the narrower open question about the precise Foundry conversion route."
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "The feature takes no action on agents and makes no change to what agents can do.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Purview Compliance Manager Foundry integration agents changes actions automated evaluation scope projects. Read assessments and improvement-actions; sources describe evaluation-result sync but do not explicitly guarantee no actions on agents or no change to their capabilities.",
+      "severity": "major",
+      "fix": "Replace 'No change in what agents can do: Learn describes syncing evaluation results and improvement actions, not changes to agents' with 'Learn describes syncing evaluation results and improvement actions.' In the risk rationale, replace 'reads evaluation results into Compliance Manager and takes no action on agents' with 'syncs evaluation results into Compliance Manager'."
+    },
+    {
+      "n": 54,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "End users and agent builders see no change.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Purview Compliance Manager Foundry integration agents changes actions automated evaluation scope projects. Read assessments and Foundry RBAC documentation; no passage states that end users and agent builders see no change.",
+      "severity": "minor",
+      "fix": "Remove 'end users and agent builders see no change in Learn's description' from the impact rationale. Retain the low impact judgement and its explanation in terms of Compliance Manager administrators and Foundry account owners."
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The displayed automated evaluation status depends on the evaluation actions synced from Foundry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-assessments",
+      "quote": "Compliance Manager regularly syncs these 15 evaluation actions from AI Foundry, displaying real-time pass/fail status and detailed metrics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance guidance: Before rollout and After rollout",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to check the regulation licence counter, but there is no corresponding controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check on the Regulations page whether the licence counter and your agreement cover the AI templates ... Check the licence counter after the first assessment ... Table rows cover assessment creation, Foundry roles and Testing source only.",
+      "severity": "minor",
+      "fix": "Remove the two licence-counter checklist bullets, which have no corresponding table row; retain the verified licensing facts in Cost and licensing. Do not add a new control row as part of this correction."
+    },
+    {
+      "n": 57,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap does not list US Government clouds, without thereby stating they are unavailable.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[1].note; controls[1].api",
+      "type": "role",
+      "claim": "53ca6127-db72-4b80-b1b0-d745d6d5456d is the Foundry User role definition ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/tutorials/quickstart-create-foundry-resources",
+      "quote": "Foundry User: 53ca6127-db72-4b80-b1b0-d745d6d5456d",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The Add assessment wizard lets users choose a regulation and then choose available services on the Select services page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-assessments",
+      "quote": "On the Base your assessment on a regulation page, select Select regulation ... On the Select services page, designate which services this assessment applies to ... The flyout pane shows which services are available for your chosen regulation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance guidance: Before rollout and After rollout",
+      "type": "licensing",
+      "claim": "The Regulations page has a counter showing templates in use against the organisation's licence entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-regulations",
+      "quote": "The Regulation licenses used counter near the top of the Regulations page represents the number of regulatory templates in use out of the number you're eligible to use according to your licensing agreement and any purchased licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Manual improvement actions have test results entered by the organisation rather than automatically synced results.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-setup",
+      "quote": "If the value is listed as Automatic, then the action is automatically tested. If the value is Manual, then the action is tested by your organization.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T05:13:56.158Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=536576",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/compliance-manager-assessments",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/compliance-manager-setup",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/compliance-manager-regulations",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/foundry/concepts/rbac-foundry",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/foundry/tutorials/quickstart-create-foundry-resources",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who can create an assessment that includes Foundry agents",
+        "docs": "https://learn.microsoft.com/purview/compliance-manager-assessments",
+        "reachable": true,
+        "segments": [
+          "Compliance Manager",
+          "Assessments",
+          "Add assessment"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Who holds the Foundry role needed to add agents to an assessment",
+        "docs": "https://learn.microsoft.com/azure/foundry/concepts/rbac-foundry",
+        "reachable": true,
+        "segments": [
+          "Foundry resource",
+          "Access control"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Who holds the Foundry role needed to add agents to an assessment",
+        "docs": "https://learn.microsoft.com/azure/foundry/tutorials/quickstart-create-foundry-resources",
+        "reachable": true,
+        "token": "az role assignment",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether improvement actions are tested automatically",
+        "docs": "https://learn.microsoft.com/purview/compliance-manager-setup",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Compliance Manager",
+          "Testing source"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
