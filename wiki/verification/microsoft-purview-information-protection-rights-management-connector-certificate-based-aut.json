@@ -1,0 +1,619 @@
+{
+  "slug": "microsoft-purview-information-protection-rights-management-connector-certificate-based-aut",
+  "roadmapId": 564617,
+  "title": "Microsoft Purview: Rights Management connector moves to certificate-based authentication",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "2 blocking findings (claims 40, 41)"
+    ]
+  },
+  "counts": {
+    "claims": 48,
+    "confirmed": 45,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "Hold: Microsoft documents roles that can create and manage the Entra app registration, contrary to the briefing's statement that these roles are not stated. The existing connector installation guidance also requires the installing account to be allowed to protect content when onboarding controls are configured; that qualification is missing.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; front matter: products",
+      "type": "record",
+      "claim": "This is a Microsoft Purview Rights Management connector authentication change.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview: Information Protection - Rights Management connector – Certificate-based authentication",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "The connector is planned to move from shared-secret to certificate-based authentication.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The Microsoft Rights Management (RMS) connector is moving from shared-secret authentication to certificate-based authentication",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; Security & identity; rationale: risk",
+      "type": "record",
+      "claim": "Administrators configure their own Microsoft Entra app registration.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With this update, administrators configure their own Microsoft Entra app registration and certificate",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing; Security & identity; Cost and licensing",
+      "type": "record",
+      "claim": "Administrators supply and configure their own certificate.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With this update, administrators configure their own Microsoft Entra app registration and certificate",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Change & support; controls[1].note",
+      "type": "record",
+      "claim": "A new PowerShell module configures the certificate for Connector, Exchange, SharePoint and FCI.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "then use the new PowerShell module to configure the certificate for each workload (Connector, Exchange, SharePoint, and FCI).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "New cmdlets handle certificate import.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "New PowerShell cmdlets handle certificate import, registry configuration, private-key permissions, and validation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "New cmdlets handle registry configuration.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "New PowerShell cmdlets handle certificate import, registry configuration, private-key permissions, and validation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "New cmdlets handle private-key permissions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "New PowerShell cmdlets handle certificate import, registry configuration, private-key permissions, and validation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Change & support; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "New cmdlets handle validation.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "New PowerShell cmdlets handle certificate import, registry configuration, private-key permissions, and validation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Security & identity",
+      "type": "record",
+      "claim": "The planned connector setup no longer provisions an Entra service principal on the customer's behalf.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "As part of this change, the connector setup no longer provisions an Entra service principal or issues a shared secret on the customer's behalf.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The planned connector setup no longer issues a shared secret on the customer's behalf.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "As part of this change, the connector setup no longer provisions an Entra service principal or issues a shared secret on the customer's behalf.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "record",
+      "claim": "The roadmap asks customers to register an Entra application before installing or upgrading the connector.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Customers should plan to register an Entra ID application and upload a certificate before installing or upgrading the connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "record",
+      "claim": "The roadmap asks customers to upload a certificate before installing or upgrading the connector.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Customers should plan to register an Entra ID application and upload a certificate before installing or upgrading the connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: targetDate; What's changing; Why it matters",
+      "type": "record",
+      "claim": "General Availability is targeted for January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The preview target is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The record lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\", \"Preview\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The record lists only Worldwide (Standard Multi-Tenant), not US Government clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The record lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Web\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-10-13T23:01:05.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-13T23:01:05\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Learn does not yet describe the connector's planned certificate authentication change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: RMS connector certificate-based authentication PowerShell module certificate import registry private-key permissions validation; \"RMS connector\" \"certificate\" \"authentication\" \"module\". Read connector deployment, installation and RMS requirements; only existing setup is described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The existing installer asks an administrator to sign in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/information-protection/install-configure-rms-connector",
+      "quote": "Select Sign In to sign in to your account. Make sure you enter credentials for an account that has sufficient privileges to configure the RMS connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Existing installation sets up security tokens stored in the local registry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/information-protection/install-configure-rms-connector",
+      "quote": "A set of security tokens for the connector, which authorize operations with Azure RMS. These tokens are downloaded from Azure RMS and installed on the local computer in the registry.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Security & identity",
+      "type": "behaviour",
+      "claim": "The existing connector creates the Entra service principal Aadrm_S-1-7-0.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/rights-management-requirements",
+      "quote": "The service principal account in Microsoft Entra ID, Aadrm_S-1-7-0, that the connector creates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "The connector supports Exchange Server, SharePoint Server and Windows file servers using FCI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/information-protection/deploy-rms-connector",
+      "quote": "The RMS connector supports the following on-premises servers: Exchange Server, SharePoint Server, and file servers that run Windows Server and use File Classification Infrastructure to classify and apply policies to Office documents in a folder.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters; Data exposure",
+      "type": "behaviour",
+      "claim": "The connector relays communication between on-premises servers and Azure Rights Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/information-protection/deploy-rms-connector",
+      "quote": "After you deploy the connector, it acts as a communications interface (a relay) between the on-premises servers and the cloud service",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The default state of the new authentication is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Rights Management connector certificate authentication existing installations upgrade default migration deadline. Read roadmap description and connector deployment, installation and RMS requirements pages; none states automatic adoption or an opt-in default for this change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated what this change does to already-installed connectors or when their existing authentication must change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Rights Management connector certificate authentication existing installations upgrade default migration deadline. Read roadmap and connector installation and deployment pages; version-update and TLS guidance does not set a certificate-authentication migration deadline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Data exposure; rationale: risk",
+      "type": "role",
+      "claim": "Accounts specified for the Exchange Server role in connector configuration receive the Azure RMS super user role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/information-protection/install-configure-rms-connector",
+      "quote": "All accounts that you specify for the Exchange Server role in the connector configuration are granted the super user role in Azure RMS",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Data exposure",
+      "type": "applicability",
+      "claim": "Those Exchange accounts have access to all content for the RMS tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/information-protection/install-configure-rms-connector",
+      "quote": "are granted the super user role in Azure RMS, which gives them access to all content for this RMS tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not published which resource permissions the new connector app registration needs.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Rights Management connector certificate authentication Entra app registration application permissions roles administrator. Read connector installation, RMS requirements and Entra app registration; Entra Connect and assessment AIPService results describe other scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Security & identity",
+      "type": "applicability",
+      "claim": "The existing connector installation and configuration account must not require MFA.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/rights-management-requirements",
+      "quote": "The Rights Management connector and the Microsoft Purview Information Protection scanner don't support MFA. If you deploy the connector or scanner, the following accounts mustn't require MFA: The account that installs and configures the connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Security & identity",
+      "type": "applicability",
+      "claim": "The existing Aadrm_S-1-7-0 service principal must not require MFA.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/rights-management-requirements",
+      "quote": "If you deploy the connector or scanner, the following accounts mustn't require MFA: ... The service principal account in Microsoft Entra ID, Aadrm_S-1-7-0, that the connector creates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Change & support",
+      "type": "behaviour",
+      "claim": "Learn requires at least two connector computers for fault tolerance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/information-protection/deploy-rms-connector",
+      "quote": "For fault tolerance and high availability, you must install the RMS connector on a minimum of two computers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.model and notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The feature uses the existing Azure Rights Management service entitlement through Microsoft 365 or Microsoft Purview Information Protection subscriptions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/azure-rights-management-learn-about",
+      "quote": "Use the Azure Rights Management service with Microsoft 365 subscriptions or subscriptions for Microsoft Purview Information Protection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The connector deployment page names no separate licence among its prerequisites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/information-protection/deploy-rms-connector",
+      "quote": "The protection service is activated; Directory synchronization between your on-premises Active Directory forests and Microsoft Entra ID; A minimum of two member computers on which to install the RMS connector; TLS version 1.2.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No licence specific to certificate-based connector authentication is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Rights Management connector certificate authentication licensing price meter Microsoft Purview. Read Azure RMS overview, requirements, connector deployment and Purview service description excerpts; connector licensing depends on Information Protection features used.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No price specific to certificate-based connector authentication is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Rights Management connector certificate authentication licensing price meter Microsoft Purview. Read Azure RMS overview, requirements, connector deployment and Purview service description licensing excerpts; none publishes a price for this authentication change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to certificate-based connector authentication is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Rights Management connector certificate authentication licensing price meter Microsoft Purview. Read Azure RMS overview, requirements, connector deployment and Purview service description licensing excerpts; none names a meter for this authentication change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope: installing account",
+      "type": "role",
+      "claim": "Today's installing account can be a tenant global administrator, Azure RMS global administrator or Azure RMS connector administrator without a stated onboarding qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/azure/information-protection/install-configure-rms-connector",
+      "quote": "If you have implemented onboarding controls, make sure that the account you specify is able to protect content. For example, if you restricted the ability to protect content to the \"IT department\" group, the account that you specify here must be a member of that group.",
+      "severity": "blocker",
+      "fix": "Keep the listed installation roles and append: 'If onboarding controls are configured, the installing account must also be allowed to protect content, including membership of the permitted group where protection is restricted to that group.' Cite https://learn.microsoft.com/azure/information-protection/install-configure-rms-connector."
+    },
+    {
+      "n": 41,
+      "where": "Scope: new app registration roles; Open questions",
+      "type": "absence",
+      "claim": "Which roles can complete the new app registration and certificate steps is not stated.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference#application-administrator",
+      "quote": "Users in this role can create and manage all aspects of enterprise applications, application registrations, and application proxy settings. ... This role grants the ability to manage application credentials.",
+      "severity": "blocker",
+      "fix": "Replace the Scope absence with: 'Microsoft Entra's Application Administrator role can create and manage app registrations and their credentials. Connector-specific authorization for the new PowerShell module is not yet documented.' Cite https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference#application-administrator. Remove 'and which roles can create it' from the app-permissions open question."
+    },
+    {
+      "n": 42,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Add-AipServiceRoleBasedAdministrator -EmailAddress <email address> -Role ConnectorAdministrator grants the existing connector administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/aipservice/add-aipservicerolebasedadministrator",
+      "quote": "Specifies the email address of a user or group to have administrative rights for the protection service. ... connector administrator (the account is granted least privileges to configure and run the Rights Management (RMS) connector). ... ConnectorAdministrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].ui; Governance controls",
+      "type": "absence",
+      "claim": "Delegated connector administration has no management-portal configuration surface.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Rights Management connector administrator delegated role management portal UI. Read Add-AipServiceRoleBasedAdministrator and connector installation; reference requires PowerShell for delegated administrative control and excludes management portals.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].ui and api; Governance controls",
+      "type": "absence",
+      "claim": "Neither an admin UI nor a command for configuring the planned certificate authentication on the connector and its workloads is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: RMS connector certificate-based authentication PowerShell module certificate import registry private-key permissions validation; \"RMS connector\" \"certificate\" \"authentication\" \"module\". Read connector deployment and installation; HTTPS and role cmdlets are different controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "The documented role assignment governs existing connector installation and administration, not configuration of the new certificate authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/information-protection/install-configure-rms-connector",
+      "quote": "This procedure describes how to create a dedicated account to run the Azure RMS connector with the least privileges possible, to use when signing in during the RMS connector installation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Autonomy & actions; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap describes administrator authentication configuration, not new end-user actions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "administrators configure their own Microsoft Entra app registration and certificate, then use the new PowerShell module to configure the certificate for each workload (Connector, Exchange, SharePoint, and FCI).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Why it matters: connector credential",
+      "type": "behaviour",
+      "claim": "The existing connector credential authorizes operations against Azure RMS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/information-protection/install-configure-rms-connector",
+      "quote": "A set of security tokens for the connector, which authorize operations with Azure RMS.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance guidance: At rollout; controls table",
+      "type": "consistency",
+      "claim": "The checklist instructs app registration and certificate upload, but the table has no row for those Entra controls.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Register the Entra application and upload the certificate before installing or upgrading the connector ... Table rows: Who may sign in to install and administer the connector; Certificate-based authentication for the connector and each workload.",
+      "severity": "minor",
+      "fix": "The checklist's Entra application registration and certificate-upload step has no corresponding Entra control row. Do not add a row in this correction; narrow that bullet to: 'Plan connector installation or upgrade after the roadmap's app-registration and certificate-upload prerequisites are complete.'"
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T06:06:20.779Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=564617",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/information-protection/deploy-rms-connector",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/information-protection/install-configure-rms-connector",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/rights-management-requirements",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/azure-rights-management-learn-about",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/aipservice/add-aipservicerolebasedadministrator",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Who may sign in to install and administer the connector",
+        "docs": "https://learn.microsoft.com/powershell/module/aipservice/add-aipservicerolebasedadministrator",
+        "reachable": true,
+        "token": "Add-AipServiceRoleBasedAdministrator",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

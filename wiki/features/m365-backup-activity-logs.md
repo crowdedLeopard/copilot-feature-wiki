@@ -95,19 +95,23 @@ changes:
     note: "Corrected the admin centre path to start at Settings, removed the role-assignment checklist bullet and the on/off-setting remark, and cited the set-up page for role-based access."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 104 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-21"
+    note: "Corrected the Purview Audit retention wording: one year by default also applies to Purview Suite and E5 eDiscovery and Audit add-on users; noted the GB/GiB labelling difference on the rate."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 109 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 104
-  confirmed: 103
+  claims: 109
+  confirmed: 109
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "b437fc7138fc87e92589802ae1c19ece"
+  contradicted: 0
+  attempts: 0
+  hash: "2f17b8dfc98dbc0b9b647a78b4187bba"
 ---
 
 ## What's changing
@@ -150,7 +154,7 @@ The notice says no action is required, so nothing breaks if nobody acts. The gap
 
 ## Cost and licensing
 
-Microsoft 365 Backup is a pay-as-you-go consumption-based service. Microsoft's pricing page gives a list price of $0.15/GiB/month of protected content, and the Backup overview says it charges based on consumption, unlike traditional user-based licences.
+Microsoft 365 Backup is a pay-as-you-go consumption-based service. Microsoft's pricing page gives a list price of $0.15/GiB/month of protected content, and the Backup overview says it charges based on consumption, unlike traditional user-based licences. The Backup overview's billing table labels the same rate per GB rather than per GiB; this briefing uses the pricing page's GiB unit.
 
 Microsoft Learn documents no separate licence, meter or charge for activity logs at the time of writing (November 2026), and neither the notice nor the roadmap record names one. Treat the logs as part of the existing Microsoft 365 Backup service until Microsoft says otherwise.
 
@@ -197,7 +201,7 @@ The indirect cost is administrator time to review the logs, to export CSV files 
 
 The activity logs are a viewing and export surface. Learn documents roles for viewing them and states that retention is not configurable. Those roles come from your existing role assignments; the logs page does not grant access of its own.
 
-The Graph call needs the BackupRestore-Monitor.Read.All permission, delegated or application, per the reference page. Microsoft Purview Audit is the control Learn points to for compliance investigations. Its search needs the Audit Logs or View-Only Audit Logs role, and its retention depends on licence: 180 days for users on non-E5 licences, and one year by default for Microsoft Entra ID, Exchange and SharePoint activity for users on E5 licences, so it is a different retention window from the 365 days of the in-product logs. The Purview audit table lists Backup operation names such as BackupPolicyActivated and RestoreTaskCompleted; confirm in your tenant that the operations you rely on appear.
+The Graph call needs the BackupRestore-Monitor.Read.All permission, delegated or application, per the reference page. Microsoft Purview Audit is the control Learn points to for compliance investigations. Its search needs the Audit Logs or View-Only Audit Logs role, and its retention depends on licence: 180 days for users with other Office 365 or Microsoft 365 licences who do not have Microsoft Purview Suite or the Microsoft 365 E5 eDiscovery and Audit add-on, and one year by default for Microsoft Entra ID, Exchange and SharePoint activity for users on E5 licences or with those add-ons, so it is a different retention window from the 365 days of the in-product logs. The Purview audit table lists Backup operation names such as BackupPolicyActivated and RestoreTaskCompleted; confirm in your tenant that the operations you rely on appear.
 
 ## Open questions
 
@@ -210,12 +214,4 @@ The Graph call needs the BackupRestore-Monitor.Read.All permission, delegated or
 risk: Low. The logs are a monitoring view over backup policy and restore activity; the sources describe viewing, searching and exporting, and no change to what is backed up or restored.
 cost: Low. Microsoft Learn documents no separate charge for activity logs at the time of writing (November 2026); Microsoft 365 Backup itself is billed pay-as-you-go, so the cost to plan for is admin time to review and export.
 impact: Low. Only administrators who manage Microsoft 365 Backup see the logs, and what each sees depends on their role; end users notice nothing.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: retention paragraph / licensing: Purview audit retention is 180 days for users on non-E5 licences. | Found: For users assigned an Office 365 E5 or Microsoft 365 E5 license (or users with a Microsoft Purview Suite ... or Microsoft 365 E5 eDiscovery and Audit add-on license), the system retains audit records for Microsoft Entra ID, Exchange, and SharePoint activity for one year by default. | Fix: Replace '180 days for users on non-E5 licences' with '180 days for users with other Office 365 or Microsoft 365 licences who do not have Microsoft Purview Suite or the Microsoft 365 E5 eDiscovery and Audit add-on'. Those add-ons also qualify users for one-year default retention of Microsoft Entra ID, Exchange and SharePoint activity, as stated at https://learn.microsoft.com/purview/audit-search. | Source: https://learn.microsoft.com/purview/audit-search
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.notes; Cost and licensing / cost: The pricing page gives a list price of $0.15/GiB/month of protected content. | Found: The list price is $0.15/GiB/month of protected content. | Fix: Keep the pricing-page rate. Add: 'The Backup overview's billing table still labels the same numerical rate per GB rather than per GiB; this briefing uses the pricing page's GiB unit.' Both pages are already cited: https://learn.microsoft.com/microsoft-365/backup/backup-overview and https://learn.microsoft.com/microsoft-365/backup/backup-pricing. | Source: https://learn.microsoft.com/microsoft-365/backup/backup-pricing
 -->

@@ -76,11 +76,8 @@ controls:
       surface: "Copilot Service admin center"
       path: "Email settings > Email classification > Manage > Choose when to categorize emails > In your own customization using API"
       docs: "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification"
-    api:
-      kind: "rest"
-      call: "POST /api/data/v9.2/msdyn_EmailClassificationCustomAction"
-      docs: "https://learn.microsoft.com/dynamics365/customer-service/develop/use-email-classification-custom-action"
-    note: "The action classifies one email; it does not select the option. Request body parameters: emailId and doRuleEvaluation."
+    api: null
+    note: "Select this option in the admin app before configuring custom automation; the msdyn_EmailClassificationCustomAction action classifies an existing email record."
 confidence: "medium"
 created: "2026-11-21"
 updated: "2026-11-21"
@@ -90,19 +87,23 @@ changes:
     note: "First briefing for this item: admin-opt-in email classification in Customer Service, with pay-as-you-go billing as a prerequisite."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 87 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected: the custom-action control row no longer lists the action as an API for the timing option; governance checklist limited to controls in the table, with simulation and downstream-rule testing moved to Risk assessment."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 91 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 87
-  confirmed: 83
+  claims: 91
+  confirmed: 91
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "1b6cc25504a3e1dde407f1d211a987ee"
+  contradicted: 0
+  attempts: 0
+  hash: "9dcb3643e3f7b17ade0bda80abfbe085"
 ---
 
 ## What's changing
@@ -132,7 +133,8 @@ Nothing in the sources says classification starts by itself: Learn presents turn
 
 **Autonomy & actions**
 - Learn states that classification always assigns one of the configured categories, even if the email does not clearly match; with only two categories, every email is one of them. If a category is used to exclude emails from automatic case creation, a genuine request placed in an excluded category creates no case. Add a catch-all category and test with a simulation first.
-- Routing rules, automatic record creation and update rules, and case creation logic can reference the category, so check each of them before changing the taxonomy.
+- Routing rules, automatic record creation and update rules, and case creation logic can reference the category, so check each of them before changing the taxonomy, and sample the emails a category excludes from case creation for misclassification.
+- Test with a simulation before turning classification on, and rerun it after any change to categories or descriptions. Learn describes a simulation that uses up to 50 historical emails in an Excel file, or organisation records, and shows the predicted category and reason for each.
 
 **Change & support**
 - Learn warns that calling the custom action on an email that built-in classification has already processed can increase AI consumption, overwrite results and make downstream processes run more than once.
@@ -157,20 +159,15 @@ Other costs are administrator time for taxonomy design and simulation, and the P
 ## Governance guidance
 
 ### Before rollout
-- Confirm pay-as-you-go billing is enabled for the Customer Service environment, and agree with finance who owns the spend.
 - Draft the taxonomy with a catch-all category such as "Uncategorized", and write distinct names and descriptions for each branch, as the Learn page advises.
 - Decide which emails to classify (specific mailboxes or departments) so AI is not run on every inbound message.
-- Identify every routing rule, automatic record creation rule and case creation rule that will reference the category.
 
 ### At rollout
-- Run a simulation using up to 50 historical emails in an Excel file, or organisation records, and review the predicted category and reason for each.
 - Set the scope condition, choose **As soon as they arrive** or the custom API option, then turn on email classification.
 - Add the **Email category (AI)** field and the **EmailClassificationControl** component to the email form if representatives should see or change categories.
 
 ### After rollout
-- Rerun the simulation after any change to categories or descriptions.
-- Review which emails are excluded from case creation by category and sample them for misclassification.
-- Watch pay-as-you-go consumption for the environment and rescope the condition if usage is higher than planned.
+- Rescope the condition under **Choose which emails to categorize** if AI usage is higher than planned.
 
 ## Governance controls
 
@@ -182,7 +179,7 @@ Other costs are administrator time for taxonomy design and simulation, and the P
 <tr><td data-label="Control"><strong>Whether email classification is turned on</strong><br><small>Environment</small><br><small class="controls__note">Requires the System Administrator or CSR Manager security role. Pay-as-you-go billing must be enabled.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Email settings › Email classification › Manage › Enable feature › Turn on email classification <a href="https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>The category and subcategory taxonomy AI assigns</strong><br><small>Environment</small><br><small class="controls__note">The API creates a category record in the Dataverse table; the table reference lists a parent category lookup.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Email settings › Email classification › Manage › Define taxonomy <a href="https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST /msdyn_emailclassificationcategories</code> <a href="https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_emailclassificationcategory" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which inbound emails are evaluated</strong><br><small>Environment</small><br><small class="controls__note">One condition with several clauses; an email must meet all clauses to be classified.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Email settings › Email classification › Manage › Choose which emails to categorize › Manage rule <a href="https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether your own automation, not arrival, triggers classification</strong><br><small>Environment</small><br><small class="controls__note">The action classifies one email; it does not select the option. Request body parameters: emailId and doRuleEvaluation.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Email settings › Email classification › Manage › Choose when to categorize emails › In your own customization using API <a href="https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST /api/data/v9.2/msdyn_EmailClassificationCustomAction</code> <a href="https://learn.microsoft.com/dynamics365/customer-service/develop/use-email-classification-custom-action" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether your own automation, not arrival, triggers classification</strong><br><small>Environment</small><br><small class="controls__note">Select this option in the admin app before configuring custom automation; the msdyn_EmailClassificationCustomAction action classifies an existing email record.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Email settings › Email classification › Manage › Choose when to categorize emails › In your own customization using API <a href="https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -203,13 +200,8 @@ cost: Variable. Learn lists pay-as-you-go billing as a prerequisite and warns th
 impact: Medium. Customer Service administrators set it up, and service representatives and the routing and case-creation rules that use the category are the people who notice its results.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[3].api / command: POST /api/data/v9.2/msdyn_EmailClassificationCustomAction is the automation equivalent of choosing whether custom automation rather than arrival triggers classification. | Found: Use the msdyn_EmailClassificationCustomAction Dataverse action to analyze an existing email record ... The action updates the Email category (AI) and Classification Status fields on the email record. | Fix: Set controls[3].api to null: the documented POST endpoint exists, but classifies an individual email rather than setting the timing option. Replace its note with 'Select this option in the admin app before configuring custom automation; the msdyn_EmailClassificationCustomAction action classifies an existing email record.' Keep the custom-action source link in sources. | Source: https://learn.microsoft.com/dynamics365/customer-service/develop/use-email-classification-custom-action
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui / admin-path: The taxonomy path is Copilot Service admin center > Email settings > Email classification > Manage > Define taxonomy. | Found: In Define taxonomy, select + Add. ... To create a subcategory, in Parent, select the category directly above it in the hierarchy. | Fix: Complete controls[1].ui.path as 'Email settings > Email classification > Manage > Define taxonomy > + Add > Add category > Parent' for subcategory creation; the current path stops on the correct page before the controls. Source: https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification. | Source: https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification
-- [contradicted, minor] Governance guidance: Before and After rollout / consistency: The checklist asks administrators to confirm billing enablement and watch consumption, but neither billing control has a controls-table row. | Found: Confirm pay-as-you-go billing is enabled ... Watch pay-as-you-go consumption for the environment ... Controls: enable classification; taxonomy; eligible emails; timing. | Fix: The billing-enablement and consumption-monitoring checklist steps have no controls-table row. Remove those control-check instructions from the checklist; retain the billing prerequisite in Cost and licensing. Do not add unverified rows.
-- [contradicted, minor] Governance guidance: At and After rollout / consistency: The checklist tells readers to run and rerun simulations, but simulation has no controls-table row. | Found: Run a simulation using up to 50 historical emails ... Rerun the simulation after any change ... Controls: enable classification; taxonomy; eligible emails; timing. | Fix: The run-simulation and rerun-simulation checklist steps have no controls-table row. Move these instructions out of the governance checklist into Risk assessment as testing advice; do not add an unverified row.
-- [contradicted, minor] Governance guidance: Before and After rollout / consistency: The checklist asks readers to identify downstream routing and creation rules and review category exclusions, but those controls have no table rows. | Found: Identify every routing rule, automatic record creation rule and case creation rule ... Review which emails are excluded from case creation by category ... Controls: enable classification; taxonomy; eligible emails; timing. | Fix: The downstream-rule inventory and category-exclusion review checklist steps have no controls-table rows. Keep their verified applicability in Risk assessment, but remove these control-check instructions from the checklist rather than adding unverified rows.
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: The taxonomy is at Copilot Service admin center > Email settings > Email classification > Manage > Define taxonomy. | Found: In Copilot Service admin center, go to Email settings > Email classification, and then select Manage. In Define taxonomy, select + Add. | Fix: Extend controls[1].ui.path and its rendered table path to 'Email settings > Email classification > Manage > Define taxonomy > + Add', as documented at https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification. | Source: https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-classification
 -->

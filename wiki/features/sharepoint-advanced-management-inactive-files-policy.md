@@ -11,7 +11,7 @@ clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
 targetDate: "December CY2026"
 previewDate: "October CY2026"
-risk: "medium"
+risk: "low"
 cost: "variable"
 impact: "medium"
 defaultState: "admin-opt-in"
@@ -110,19 +110,23 @@ changes:
     note: "New briefing: the PowerShell-only preview of the inactive files policy, its Microsoft 365 Archive billing dependency and the threshold and OneDrive differences between Learn pages."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 120 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after verification: added the new-policy step for policies covering more than 100,000 sites, rated risk Low, and removed two checklist items that had no controls-table row."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 118 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 120
-  confirmed: 116
+  claims: 118
+  confirmed: 118
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "b26bcc950b580613c1786f63842f0446"
+  contradicted: 0
+  attempts: 0
+  hash: "76699a4c8d89180f36db223e94e88e31"
 ---
 
 ## What's changing
@@ -185,7 +189,6 @@ If Archive is turned off or its billing is unhealthy, the pricing page says arch
 
 ### Before rollout
 
-- Confirm with your billing owner that Microsoft 365 Archive is turned on and pay-as-you-go billing is connected, following the Archive setup page, and agree who owns the storage charge.
 - Confirm which SharePoint Advanced Management entitlement your tenant holds, because the feature page requires one.
 - Install Microsoft.Online.SharePoint.PowerShell 16.0.27709.12000 or later and sign in with the SharePoint Administrator role.
 - Agree an inactivity threshold with site owners, and for critical content pick a period that falls after July 2025.
@@ -197,11 +200,11 @@ If Archive is turned off or its billing is unhealthy, the pricing page says arch
 - Add site exclusions with `-Exclude` before activating any `AllSites` policy.
 - Activate the policy with `Set-SPOFileArchivePolicy -State Active` while it is still in simulation mode, and tell the affected site owners how results will be reviewed.
 - Treat creation, activation and enforcement as three separate steps; do not set `IsWhatIfMode` to `$false` until the report review is signed off.
+- For a policy covering more than 100,000 sites, create a new policy with the same criteria, scope and site inclusions or exclusions and set `IsWhatIfMode` to `$false` on that new policy. Switching the existing simulation policy resumes its previous processing position and may skip sites already evaluated in simulation.
 
 ### After rollout
 
 - Run `Get-SPOFileArchivePolicyReport` and review configuration, processing coverage, projected impact and outcome reasons with site owners before enabling enforcement.
-- Search the audit log for the FileArchived activity to investigate what a policy archived.
 - Stop a policy by setting its state to Inactive, and remember files already archived stay archived until reactivated.
 - Re-check the Learn pages when the roadmap status moves, as preview limits and the default threshold may change.
 
@@ -234,17 +237,7 @@ A `SelectedSites` policy needs at least one included site before it can be activ
 - When will the SharePoint admin center or SharePoint Admin Agent offer a way to manage these policies? Watch the Learn page and Message center.
 
 <!-- rationale
-risk: Medium. Learn describes a policy as inactive until an admin activates it, but once it is active and out of simulation, files past the inactivity threshold are archived and need reactivation before anyone can read them.
+risk: Low. The policy is created inactive and archives nothing until an administrator activates it outside simulation mode.
 cost: Variable. Microsoft 365 Archive storage is billed per GB through pay-as-you-go billing, and only once archived plus active storage exceeds the tenant's licensed SharePoint storage; a SharePoint Advanced Management entitlement is also required.
 impact: Medium. Site owners and users notice when a file they open has been archived and must be reactivated; how many people that is depends on the scope and threshold the admin sets.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance guidance: At rollout; After rollout / behaviour: After report review, the existing simulation policy can be switched to enforcement without a scope-dependent exception. | Found: If your policy covers more than 100,000 sites, create a new policy with the same criteria, scope, and site inclusions or exclusions when you're ready to archive files. Set `IsWhatIfMode` to `$false` on the new policy. | Fix: Add after the enforcement instruction: "For a policy covering more than 100,000 sites, create a new policy with the same criteria, scope and site inclusions or exclusions and set IsWhatIfMode to $false on that new policy. Switching the existing simulation policy resumes its previous processing position and may skip sites already evaluated in simulation." Source: https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide#review-simulation-results | Source: https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files?view=o365-worldwide
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] front matter: risk; rationale: risk / consistency: Medium risk is justified by what the policy does after opt-in rather than exposure at its default. | Found: defaultState: "admin-opt-in" risk: "medium" rationale: "Learn describes a policy as inactive until an admin activates it, but once it is active and out of simulation, files past the inactivity threshold are archived" | Fix: Set risk to "low" and replace the risk rationale with "Low. The policy is created inactive and archives nothing until an administrator activates it outside simulation mode." The standard rates a new control at its default and defines nothing happening until admin opt-in as low risk.
-- [contradicted, minor] Governance guidance: Before rollout, first bullet; Governance controls / consistency: The billing and Archive enablement control the checklist asks administrators to check has no controls-table row. | Found: "Confirm with your billing owner that Microsoft 365 Archive is turned on and pay-as-you-go billing is connected"; the table covers policy criteria, policy state, simulation, site associations and run reports only. | Fix: The first Before rollout bullet checks Archive enablement and billing connection, which have no controls-table row. Remove that checklist bullet; retain the supported Archive prerequisites in Scope. Do not add a row.
-- [contradicted, minor] Governance guidance: After rollout, second bullet; Governance controls / consistency: The audit-log check in the governance checklist has no controls-table row. | Found: "Search the audit log for the FileArchived activity to investigate what a policy archived"; the table's review row gives Get-SPOFileArchivePolicyReport, not an audit-log search control. | Fix: The After rollout bullet directing an audit-log search has no matching controls-table row. Remove that checklist bullet; retain the independently supported FileArchived information in Risk assessment. Do not add a row.
 -->

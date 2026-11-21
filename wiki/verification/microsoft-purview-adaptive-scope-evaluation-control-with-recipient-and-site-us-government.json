@@ -1,0 +1,584 @@
+{
+  "slug": "microsoft-purview-adaptive-scope-evaluation-control-with-recipient-and-site-us-government",
+  "roadmapId": 572676,
+  "title": "Microsoft Purview: adaptive scope lifecycle status controls for recipients and site owners (GCC, GCC High and DoD)",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "1 blocking finding (claim 13)"
+    ]
+  },
+  "counts": {
+    "claims": 41,
+    "confirmed": 40,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 0
+  },
+  "summary": "The roadmap facts and existing scope controls are supported, and searches found no documentation for the planned lifecycle setting or its default. The policy coverage explanation needs a qualification: communication compliance does not support SharePoint sites or OneDrive accounts.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; controls[0].note; changes",
+      "type": "record",
+      "claim": "Microsoft plans explicit adaptive scope control over lifecycle-state evaluation for recipients and site owners.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview Adaptive Scopes will provide administrators with explicit control over lifecycle-state evaluation for recipients and site owners",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The planned control is meant to align policy targeting and scope membership with organisational requirements.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "helping ensure policy targeting and scope membership remain aligned with organizational requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The item is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; front matter: targetDate; What's changing; Scope; changes",
+      "type": "record",
+      "claim": "The roadmap target is January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "No preview date is listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "title; summary; front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The item lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "The feature belongs to Microsoft Purview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-10-14T23:01:02.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-14T23:01:02\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Roadmap item 568785 describes the same feature for Worldwide (Standard Multi-Tenant), with its own dates.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "568785: \"title\": \"Microsoft Purview: Adaptive Scope evaluation control with recipient and site owner lifecycle status\"; \"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]; \"targetDate\": \"April CY2027\"; \"previewDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "type": "behaviour",
+      "claim": "An adaptive scope is a dynamic membership query with three scope types: Users, SharePoint sites and Microsoft 365 Groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "An adaptive scope uses a query that you specify ... There are three different types of adaptive scopes ... Users ... SharePoint sites ... Microsoft 365 Groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing: first paragraph; Why it matters: first paragraph",
+      "type": "applicability",
+      "claim": "Communication compliance, retention and auto-labeling policies can target the described adaptive sets of users, groups or sites, without a policy-specific qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "For communication compliance policies: SharePoint sites and OneDrive accounts aren't supported. Excluded users and Microsoft 365 groups are supported.",
+      "severity": "blocker",
+      "fix": "Add immediately after the adaptive scope definition: 'For communication compliance policies, SharePoint sites and OneDrive accounts are not supported.' In Why it matters, replace the first sentence with: 'Changing scope membership can change policy coverage; communication compliance policies do not support SharePoint sites or OneDrive accounts.' Source: https://learn.microsoft.com/purview/purview-adaptive-scopes."
+    },
+    {
+      "n": 14,
+      "where": "controls[0]; summary; What's changing; Risk assessment; Governance controls",
+      "type": "absence",
+      "claim": "No admin UI or PowerShell lifecycle-evaluation setting is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview adaptive scopes lifecycle status recipient site owner evaluation control default licensing PowerShell'; opened Adaptive scopes, New-AdaptiveScope and Set-AdaptiveScope. No lifecycle setting or parameter was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: defaultState; Why it matters; Open questions; rationale: risk",
+      "type": "default",
+      "claim": "Microsoft has not stated the new control's default or whether existing scopes change on arrival.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"adaptive scopes\" \"lifecycle\" \"default\"'; read the roadmap record, Adaptive scopes and New-AdaptiveScope. No lifecycle-control default or existing-scope rollout behaviour was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing: third paragraph",
+      "type": "record",
+      "claim": "The roadmap description does not name lifecycle states, a default or the setting's location.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview Adaptive Scopes will provide administrators with explicit control over lifecycle-state evaluation for recipients and site owners, helping ensure policy targeting and scope membership remain aligned with organizational requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; controls[1].note; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "The advanced query builder uses the OPATH property IsInactiveMailbox to exclude or target inactive mailboxes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "You must use the advanced query builder if you want to exclude inactive mailboxes. Or conversely, target just inactive mailboxes. For this configuration, use the OPATH property IsInactiveMailbox",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[1].note; Risk assessment: Security & identity; Scope; Governance controls",
+      "type": "role",
+      "claim": "Creating an adaptive scope requires a role group with the Scope Manager role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "You need to assign the correct role groups to admins to create an adaptive scope. Any role group with the Scope Manager role can create an adaptive scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Scope: second paragraph",
+      "type": "role",
+      "claim": "The six named built-in role groups include Scope Manager.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "The Scope Manger role is included in the following built-in role groups: Compliance Administrator; Compliance Data Administrator; Organization Management; Records Management; Communication Compliance; Communication Compliance Admins",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[1].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "Keep Full directory when not restricting scope membership by administrative unit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "If you don't want to restrict the adaptive scope by using administrative units, or your organization hasn't configured administrative units, keep the default of Full directory.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Purview portal route is Settings > Roles and scopes > Adaptive scopes > + Create scope > administrative unit > scope type > Advanced query builder.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "Microsoft Purview portal > Settings > Roles and scopes > Adaptive scopes ... select + Create scope ... first asked to assign an administrative unit ... Select the type of scope ... Alternatively, you can select Advanced query builder",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "New-AdaptiveScope -Name <String> -LocationType User -RawQuery <String> creates a user scope using an advanced OPATH query.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-adaptivescope",
+      "quote": "New-AdaptiveScope -Name <String> -LocationType <DynamicBoundaryLocationType> -RawQuery <String> ... Valid values are: User ... The RawQuery parameter switches the scope to advanced query mode. You use OPATH filter syntax for advanced query mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[2].ui; Governance controls table; Risk assessment: Data exposure",
+      "type": "admin-path",
+      "claim": "The Purview portal membership route is Settings > Roles and scopes > Adaptive scopes > scope > Details > Scope details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "Select Settings > Roles and scopes > Adaptive scopes. Select an existing adaptive scope from the list. From the Details flyout pane, select Scope details.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[2].api; Governance controls table; Governance guidance: After rollout",
+      "type": "command",
+      "claim": "Get-AdaptiveScopeMembers -Identity <scope name> -State Removed retrieves former members of the named scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-adaptivescopemembers",
+      "quote": "Get-AdaptiveScopeMembers -Identity \"US Finance Users\" -State Removed ... This example retrieves the past members of the adaptive scope US Finance Users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure; controls[2].governs; Governance guidance",
+      "type": "behaviour",
+      "claim": "The Scope details State column shows Added for current members and Removed for members that no longer match the query.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "Review the State column in the list that shows Added for members within the adaptive scope or Removed if the member was previously in the adaptive scope but removed now they no longer match the scope query.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Existing adaptive scope queries run daily.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "These dynamic queries run daily against the attributes or properties that you specify for the selected scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Existing adaptive scope queries and changes can take up to five days to populate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "It can take up to five days for the queries to fully populate and changes aren't immediate. Factor in this delay by waiting a few days before you add a newly created scope to a policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The member details list can take up to five days to reflect added or removed members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "It might take up to five days for the member details list to update added or removed members.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters: first paragraph",
+      "type": "licensing",
+      "claim": "Learn says users returned by scope-validation queries without a valid adaptive-scope licence do not have policy settings applied.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "if the number of recipients returned is higher than expected, it might be because it includes users who don't have a valid license for adaptive scopes. These users don't have the policy settings applied to them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Retention policies using adaptive policy scopes require one of the five listed licence families.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "If the retention policy uses an adaptive policy scope ... Microsoft 365 E5/A5/G5; Microsoft Purview Suite/EDU/GOV/FLW; Microsoft Defender + Purview Suite FLW; Office 365 E5/A5/G5; Microsoft 365 E5/A5/F5/G5 Information Protection and Governance",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is included in the existing adaptive-retention entitlement, while anything specific to the new option remains unpublished.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "If the retention policy uses an adaptive policy scope, then one of the following licenses is required to provide user rights:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A licence requirement specific to the lifecycle-status control is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"adaptive scope\" \"lifecycle\" licensing price meter'; read the Purview service description and Adaptive scopes. The published adaptive-retention licence requirements name no separate lifecycle-control entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing: first sentence",
+      "type": "record",
+      "claim": "The roadmap record names no licence or meter.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview Adaptive Scopes will provide administrators with explicit control over lifecycle-state evaluation for recipients and site owners, helping ensure policy targeting and scope membership remain aligned with organizational requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope: second paragraph",
+      "type": "availability",
+      "claim": "The GCC High planning page lists adaptive scopes for retention and labeling policies as Available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/plan-for-microsoft-purview-gcc-high-deployments",
+      "quote": "| Microsoft Purview Data Lifecycle Management (formerly Information Governance) | Adaptive scopes for retention and labeling policies | Available |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "absence",
+      "claim": "The role that will manage the new lifecycle control is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"adaptive scope\" \"lifecycle\" recipient site owner PowerShell setting states permissions rollout'; read Adaptive scopes and New-AdaptiveScope/Set-AdaptiveScope. Scope Manager is documented for creation, not a named lifecycle-control setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether the new control follows the existing query timing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"adaptive scope\" \"lifecycle\" recipient site owner PowerShell setting states permissions rollout'; read Adaptive scopes and the roadmap. Daily queries and five-day population describe existing scopes, not lifecycle-control rollout timing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Scope: final sentence; summary",
+      "type": "absence",
+      "claim": "Rollout mechanics, new-control prerequisites and required administrator action are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"adaptive scope\" \"lifecycle\" recipient site owner PowerShell setting states permissions rollout'; read the roadmap, Adaptive scopes and New-AdaptiveScope/Set-AdaptiveScope. No lifecycle rollout procedure, prerequisite or required action was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure and Change & support; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not described the new lifecycle states, their policy outcomes or their mapping to the three scope types.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"adaptive scope\" \"lifecycle\" recipient site owner PowerShell setting states permissions rollout'; read Adaptive scopes, the roadmap and New-AdaptiveScope/Set-AdaptiveScope. No lifecycle-state list, policy outcomes or scope-type mapping was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity and Autonomy & actions; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap describes an administrator control, not a new identity model, agent, autonomous action or end-user change.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview Adaptive Scopes will provide administrators with explicit control over lifecycle-state evaluation for recipients and site owners, helping ensure policy targeting and scope membership remain aligned with organizational requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Governance guidance: At rollout",
+      "type": "record",
+      "claim": "No Message Center administrator notice is supplied with this task.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The supplied roadmap record and pre-check contain the roadmap description, status and target, and no Message Center post.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The known incremental cost is administrator time; the sources publish no direct price or meter specific to the control.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"adaptive scope\" \"lifecycle\" licensing price meter'; read the roadmap, Purview service description and Adaptive scopes. Existing adaptive-retention licences are published, but no incremental lifecycle-control price or meter was found.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T06:06:14.037Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=572676",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/plan-for-microsoft-purview-gcc-high-deployments",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-adaptivescope",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-adaptivescopemembers",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Scope query, including excluding or targeting inactive mailboxes today",
+        "docs": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and scopes",
+          "Adaptive scopes",
+          "+ Create scope",
+          "administrative unit",
+          "scope type",
+          "Advanced query builder"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Scope query, including excluding or targeting inactive mailboxes today",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-adaptivescope",
+        "reachable": true,
+        "token": "New-AdaptiveScope",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Scope membership review, including added and removed members",
+        "docs": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and scopes",
+          "Adaptive scopes",
+          "scope",
+          "Details",
+          "Scope details"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Scope membership review, including added and removed members",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/get-adaptivescopemembers",
+        "reachable": true,
+        "token": "Get-AdaptiveScopeMembers",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

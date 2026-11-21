@@ -5,12 +5,15 @@ slug: "data-policies"
 summary: "How Power Platform data policies govern what Copilot Studio agents can connect to and where they can be published, the connector names that map to agent capabilities, and why MCP tools and channels are governed the same way."
 created: "2026-11-13"
 updated: "2026-11-21"
-version: 5
+version: 6
 tags: ["data-policies","dlp","power-platform","copilot-studio","connectors","channels","mcp","endpoint-filtering"]
 covers: ["dlp","endpoint-filtering"]
 sources:
   - title: "Configure data policies for agents"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
+    kind: "learn"
+  - title: "Advanced connector policies"
+    url: "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies"
     kind: "learn"
   - title: "Troubleshoot data policy enforcement for Copilot Studio"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/admin-dlp-troubleshooting"
@@ -60,7 +63,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Power Platform admin center"
-      path: "Security > Data and privacy > Data policy > New Policy > Next > Add an environment > Next > Assign connectors > connector > Block"
+      path: "Security > Data and privacy > Data policy > New Policy > Next > Add an environment > Next > Assign connectors > connector > three dots > Block"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
     api:
       kind: "powershell"
@@ -71,7 +74,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Power Platform admin center"
-      path: "Security > Data and privacy > Data policy > New Policy > Next > Add an environment > Next > Assign connectors > connector > Configure connector > Connector endpoints"
+      path: "Security > Data and privacy > Data policy > New Policy > Next > Add an environment > Next > Assign connectors > connector > three dots > Configure connector > Connector endpoints"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
     api:
       kind: "powershell"
@@ -87,7 +90,7 @@ controls:
     api: null
     note: "Preview. Set per environment or environment group; the environment group message overrides the environment message. Plain text, up to 400 characters."
 confidence: "medium"
-dependents: 58
+dependents: 59
 changes:
   - date: "2026-11-16"
     note: "Taken offline until a corrected version passes its check: a failed check no longer keeps a page online with a notice."
@@ -109,18 +112,22 @@ changes:
     note: "Corrected the policy automation to Set-DlpPolicy, which updates a policy, in place of Get-DlpPolicy, which only retrieves; extended the blocking and Maker guidance admin paths to the setting itself."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 93 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-21"
+    note: "Corrected the open question on virtual connector migration to Microsoft's documented ACP guidance, added the ACP-only mode qualification, and added the three-dots step to the connector block and endpoint paths."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 98 statements confirmed"
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 5
+  version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 93
-  confirmed: 92
+  claims: 98
+  confirmed: 98
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "6eee3c674595d38d7f7d6cc8095b2787"
+  contradicted: 0
+  attempts: 0
+  hash: "871c3d75f69506254e1a092f4ca07a45"
 ---
 
 ## What it is
@@ -128,6 +135,8 @@ verification:
 A **data policy** is a Power Platform rule that sorts connectors into data groups and decides which connectors an app, flow or agent can use together. Learn also calls it a data loss prevention (DLP) policy.
 
 Each policy places connectors in the **Business**, **Non-Business** or **Blocked** group, for the environments in its scope. Connectors in different groups can't share data: with SharePoint in Business and Gmail in Non-Business, makers can't build an app or flow that uses both. A Blocked connector can't be used at all. Since early 2025 data policy enforcement is in effect for all tenants, and since March 2025 agents cannot be exempted from it.
+
+In ACP-only mode, classic data policies are ignored for the affected scope, even if they remain configured; do not rely on them there for connector, endpoint or virtual-connector restrictions. See [Advanced connector policies](https://learn.microsoft.com/power-platform/admin/advanced-connector-policies).
 
 Copilot Studio exposes its own capabilities as virtual connectors (connectors not based on a REST API), so one policy mechanism covers tools, channels and triggers.
 
@@ -180,8 +189,8 @@ No licence or charge specific to data policies is stated on the Microsoft pages 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which connectors and channels agents, apps and flows can use (Business, Non-Business or Blocked)</strong><br><small>Tenant</small><br><small class="controls__note">Tenant-level: Power Platform Administrator. Environment-level: Environment Admin, or System Administrator if the environment has a Dataverse database. Updates the policy using the policy update object.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy › Next › Add an environment › Next › Assign connectors › connector › Block <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-DlpPolicy -PolicyName &lt;policy name&gt; -UpdatedPolicy $UpdatedPolicy</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-dlppolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which endpoints makers can connect to for HTTP and the other supported connectors</strong><br><small>Tenant</small><br><small class="controls__note">Preview. Evaluates static design-time endpoints only; not environment variables, custom inputs or runtime-bound endpoints.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy › Next › Add an environment › Next › Assign connectors › connector › Configure connector › Connector endpoints <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-PowerAppDlpPolicyConnectorConfigurations -TenantId &lt;tenant ID&gt; -PolicyName &lt;policy GUID&gt; -NewDlpPolicyConnectorConfigurations $ConnectorConfigurations</code> <a href="https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which connectors and channels agents, apps and flows can use (Business, Non-Business or Blocked)</strong><br><small>Tenant</small><br><small class="controls__note">Tenant-level: Power Platform Administrator. Environment-level: Environment Admin, or System Administrator if the environment has a Dataverse database. Updates the policy using the policy update object.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy › Next › Add an environment › Next › Assign connectors › connector › three dots › Block <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-DlpPolicy -PolicyName &lt;policy name&gt; -UpdatedPolicy $UpdatedPolicy</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-dlppolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which endpoints makers can connect to for HTTP and the other supported connectors</strong><br><small>Tenant</small><br><small class="controls__note">Preview. Evaluates static design-time endpoints only; not environment variables, custom inputs or runtime-bound endpoints.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy › Next › Add an environment › Next › Assign connectors › connector › three dots › Configure connector › Connector endpoints <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-PowerAppDlpPolicyConnectorConfigurations -TenantId &lt;tenant ID&gt; -PolicyName &lt;policy GUID&gt; -NewDlpPolicyConnectorConfigurations $ConnectorConfigurations</code> <a href="https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Custom guidance message shown to makers when a capability is blocked or disabled</strong><br><small>Environment</small><br><small class="controls__note">Preview. Set per environment or environment group; the environment group message overrides the environment message. Plain text, up to 400 characters.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Copilot Studio › Maker guidance › environment or environment group › Edit setting › Agent status › Display guidance messaging in popovers for blocked items <a href="https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -206,16 +215,6 @@ The tenant-wide error message with a contact email and a "Learn more" link is se
 ## Open questions
 
 - Can the Microsoft Copilot Studio connector be blocked to stop event triggers, given that Learn also lists it among connectors that cannot be blocked?
-- When Copilot Studio virtual connectors move to their own governance rules, will existing data policy settings carry over? Microsoft does not say.
+- Microsoft's ACP migration guidance tells administrators to configure dedicated agent settings for channels, authentication and skills to match their current Copilot Studio virtual connector settings. See [Advanced connector policies](https://learn.microsoft.com/power-platform/admin/advanced-connector-policies#migrate-from-data-policies-to-acp).
 - Is there an API for **Maker guidance**? Not yet documented.
 - Is any licence or charge specific to data policies planned? Not yet published.
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Open questions: virtual connector settings carrying over / absence: Microsoft does not say how existing data-policy settings carry over when Copilot Studio virtual connectors move to dedicated governance rules. | Found: Configure the dedicated agent settings for the same scope so that they match your current Copilot Studio virtual connector settings: Agent access channels for publishing channels. Authentication for agents for agent authentication. Skills in Copilot Studio for skills. | Fix: Replace this open-question bullet with: 'Microsoft's ACP migration guidance tells administrators to configure dedicated agent settings for channels, authentication and skills to match their current Copilot Studio virtual connector settings.' Cite https://learn.microsoft.com/power-platform/admin/advanced-connector-policies#migrate-from-data-policies-to-acp. Do not assert automatic migration: the documented instruction is to configure matching settings. | Source: https://learn.microsoft.com/power-platform/admin/advanced-connector-policies
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What it is; Why it matters; summary / applicability: Data policies govern Copilot Studio agents in every environment covered by the policy's scope. | Found: These data policies apply to Copilot Studio agents in the environments included in the policy's scope. | Fix: Add this qualification to the scope explanation and cite https://learn.microsoft.com/power-platform/admin/advanced-connector-policies: 'In ACP-only mode, classic data policies are ignored for the affected scope, even if they remain configured; do not rely on them there for connector, endpoint or virtual-connector restrictions.' The cited agent guide gives the general scope, while the ACP guide documents this exception. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
-- [supported, minor] controls[0].ui / admin-path: The connector-blocking route is Security > Data and privacy > Data policy > New Policy > Next > Add an environment > Next > Assign connectors > connector > Block in the Power Platform admin center. | Found: Select Next. The Add an environment page appears. Select Next. The Assign connectors page appears. To prevent agent makers from using the features associated with the connector, select Block. | Fix: Include the omitted more-options button: 'Security > Data and privacy > Data policy > New Policy > Next > Add an environment > Next > Assign connectors > connector > three dots > Block'. All printed steps and their order are documented; omitting this icon is not a blocker. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
-- [supported, minor] controls[1].ui / admin-path: The endpoint route is Security > Data and privacy > Data policy > New Policy > Next > Add an environment > Next > Assign connectors > connector > Configure connector > Connector endpoints. | Found: Select Next. The Assign connectors page appears. To allow or deny specific endpoints for SharePoint or public websites configured as knowledge sources, or for HTTP request: Select Configure connector > Connector endpoints. | Fix: Include the omitted more-options button: 'Security > Data and privacy > Data policy > New Policy > Next > Add an environment > Next > Assign connectors > connector > three dots > Configure connector > Connector endpoints'. All printed steps and their order are documented; omitting this icon is not a blocker. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
--->

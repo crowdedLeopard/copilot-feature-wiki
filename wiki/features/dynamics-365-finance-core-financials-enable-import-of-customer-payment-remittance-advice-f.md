@@ -1,0 +1,161 @@
+---
+title: "Dynamics 365 Finance: AI import of customer payment remittance advice for settlement"
+slug: "dynamics-365-finance-core-financials-enable-import-of-customer-payment-remittance-advice-f"
+roadmapId: 576741
+topic: "m365-copilot"
+products: ["Microsoft Copilot (Microsoft 365)","Dynamics 365 Finance"]
+summary: "Microsoft plans AI import and matching of customer remittance advice in Dynamics 365 Finance, feeding payment journals and settlement. Preview March 2027. Controls, default and licence are not yet documented."
+status: "in-development"
+releasePhase: ["General Availability","Preview"]
+clouds: ["Worldwide (Standard Multi-Tenant)"]
+platforms: ["Web"]
+targetDate: "June CY2027"
+previewDate: "March CY2027"
+risk: "medium"
+cost: "low"
+impact: "medium"
+defaultState: "unknown"
+action: "review"
+licensing:
+  model: "unknown"
+  notes: "Not yet published. The roadmap item names no licence or meter, and the Microsoft Learn pages for Copilot in finance and operations apps list no entry for this feature."
+audiences: ["finops","service-owner","power-platform-admin"]
+tags: ["dynamics-365","finance-and-operations","accounting","ai","power-platform","automation"]
+sources:
+  - title: "Microsoft 365 Roadmap 576741"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=576741"
+    kind: "roadmap"
+  - title: "Overview of Copilot capabilities in finance and operations apps"
+    url: "https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/copilot/copilot-for-finance-operations"
+    kind: "learn"
+videos: []
+related: ["dynamics-365-finance-business-performance-mcp-for-erp-analytics"]
+controls:
+  - governs: "Enabling or disabling remittance advice import and AI processing"
+    scope: "other"
+    ui: null
+    api: null
+    note: "No setting, role or admin centre path is documented. The roadmap says only that admins, makers or marketers enable it for end users."
+confidence: "low"
+created: "2026-11-21"
+updated: "2026-11-21"
+roadmapModified: "2026-10-16T19:08:26"
+changes:
+  - date: "2026-11-21"
+    note: "New briefing. Microsoft Learn does not yet describe this feature, so the page rests on the roadmap record."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 47 statements not yet confirmed"
+version: 1
+verification:
+  status: "verified-with-gaps"
+  date: "2026-11-21"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 47
+  confirmed: 46
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 0
+  hash: "c142bd05c3e86b99a0cdaf21611867d8"
+---
+
+## What's changing
+
+The roadmap item describes a Dynamics 365 Finance capability that imports customer payment and remittance advice, scans and maps it using AI, matches it with data in Dynamics 365 Finance, and passes the details into customer payment journals and the settlement process. It also lists reports on payment and settlement status, outstanding invoices and overall cash flow.
+
+The roadmap text says the AI processing happens "in the integrated Power Platform environment". It does not say which Power Platform components are involved, and it does not say which file or message formats are accepted. Microsoft Learn does not describe this feature yet, so everything on this page about its behaviour is the roadmap's description.
+
+The roadmap record gives the status as In development, with a preview targeted for March CY2027 and general availability targeted for June CY2027. Both are Microsoft's targets, not commitments. The record lists Worldwide (Standard Multi-Tenant) and the Web platform, with release phases General Availability and Preview. Its "Enabled for" line reads "Enabled by admins/makers/marketers for end users"; the roadmap does not say whether the feature is on or off when it arrives.
+
+## Why it matters
+
+This change puts AI between customer remittance documents and the payment journal lines that drive settlement of open invoices. That is financial data feeding postings, so the review step, the error handling and the audit trail matter more than the time saving the roadmap promises.
+
+Microsoft has not stated what happens on arrival, so base your plan on the roadmap dates and on no source saying existing behaviour changes. A finance service owner can use the lead time before the March CY2027 preview to decide who would test it and what evidence of correct matching they would need.
+
+## Risk assessment
+
+**Data exposure**
+
+- Remittance advice usually carries customer names, invoice references and payment amounts. The roadmap says the documents are imported, scanned and mapped by AI in the integrated Power Platform environment; where that data is processed and stored is not yet documented.
+
+**Security & identity**
+
+- Microsoft has not documented which account the import runs as or which roles can use it, so confirm both before enabling it for the accounts receivable team.
+
+**Autonomy & actions**
+
+- The roadmap says remittance details are integrated into customer payment journals and the settlement process. Whether a person reviews matches before they are settled is not stated; confirm this in preview, because a wrong match could settle the wrong invoice.
+
+**Change & support**
+
+- A preview is targeted for March CY2027 and general availability for June CY2027. Expect the preview to change before general availability, and plan finance-team training and support for matching exceptions.
+
+## Cost and licensing
+
+No licence, meter or price for this feature is published at the time of writing (November 2026). The roadmap item names none, and the Microsoft Learn overview of Copilot capabilities in finance and operations apps lists no entry for it.
+
+The roadmap says the AI processing runs in the integrated Power Platform environment. Microsoft has not said whether that incurs a Power Platform or Copilot Credits charge, so a rate for this feature is not yet published. Indirect costs known today are finance-team time to test the preview and to handle exceptions.
+
+## Scope
+
+The roadmap record lists Worldwide (Standard Multi-Tenant) as the only cloud and Web as the platform. It lists Dynamics 365 Finance and Microsoft Copilot (Microsoft 365) as products, with release phases Preview (targeted March CY2027) and General Availability (targeted June CY2027).
+
+The "Enabled for" line says "Enabled by admins/makers/marketers for end users". Prerequisites, supported roles, supported file formats and which users or legal entities are covered are not yet documented. Microsoft has not said how the feature is rolled out.
+
+## Governance guidance
+
+### Before rollout
+
+- Identify the accounts receivable owner who would test remittance import and approve its matching rules.
+- List the remittance sources your customers use today (email attachments, bank portals, files) so you can check them against the formats Microsoft documents later.
+- Ask your Microsoft account team or Dynamics 365 partner which licence and which Power Platform environment the feature needs.
+
+### At rollout
+
+- Test the preview in a non-production Finance environment first, using remittance samples with sensitive customer details removed.
+- Confirm whether imported matches wait for a person's review before they reach a customer payment journal.
+
+### After rollout
+
+- Compare settled invoices against the remittance advice for a sample of each batch, and record the mismatch rate.
+- Review the roadmap item and Microsoft's release notes for changes to the March CY2027 and June CY2027 targets.
+
+## Governance controls
+
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Enabling or disabling remittance advice import and AI processing</strong><br><small class="controls__note">No setting, role or admin centre path is documented. The roadmap says only that admins, makers or marketers enable it for end users.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+Microsoft Learn documents no control for this feature at the time of writing (November 2026), so the table records the gap. The roadmap's "Enabled for" line says admins, makers or marketers enable it for end users, but it does not name a setting, role or admin centre. Treat any enablement path as unconfirmed until Microsoft publishes it.
+
+## Open questions
+
+- Is the feature on or off when it arrives, and where does an administrator enable or disable it? Watch the roadmap item and Message center.
+- Which licence, Power Platform capacity or Copilot Credits meter applies to the AI scanning and mapping? Watch the Dynamics 365 Finance Learn pages.
+- Does a person review matches before they reach customer payment journals and settlement?
+- Which remittance formats and channels are supported, and where is the document data processed and stored?
+
+<!-- rationale
+risk: Medium. The roadmap describes AI scanning and mapping of customer payment documents that feed payment journals and settlement, and Microsoft has not documented any control or default for it.
+cost: Low. The only cost the sources show is admin and finance-team time; the licence and any meter for this feature are not yet published, so this rating may change.
+impact: Medium. The roadmap says admins, makers or marketers enable it for end users; in practice the accounts receivable team that handles customer payments is the group that would notice.
+-->
+
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, major] Risk assessment: Data exposure / behaviour: Remittance advice usually carries customer names. | Found: Searched: "remittance advice" "customer name"; "remittance" "advice" "customer" names invoice amount. Read Business Central remittance excerpts, invoice-model output and EY payment-processing excerpts; none states the usual presence of customer names on remittance advice. | Fix: Remove 'customer names' from the sentence. No text read supports that generalisation.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] summary; front matter: previewDate; What's changing; Scope; Risk assessment / record: Preview is targeted for March CY2027. | Found: "previewDate": "March CY2027" | Fix: Replace 'Preview March 2027.' in the summary with 'Preview targeted for March CY2027.' The body already correctly identifies the date as a target.
+- [supported, minor] front matter: licensing.model; licensing.notes; summary; Cost and licensing; rationale: cost / licensing: The licensing model is unknown because no licence specific to this feature is published. | Found: Customers must acquire and assign appropriate subscription licenses for their users in the Microsoft 365 admin center, following Microsoft's product terms. | Fix: Set licensing.model to 'included'. Replace the notes with 'Dynamics 365 Finance is a licensed product; users require appropriate subscription licences determined by their assigned security roles. A licence or additional entitlement specific to this planned remittance import feature is not yet published.' Cite https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/sysadmin/stay-compliant-user-license-requirement. Keep feature-specific price and meter uncertainty, without suggesting that no product licensing requirement is known. | Source: https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/sysadmin/stay-compliant-user-license-requirement
+- [supported, minor] Risk assessment: Data exposure / behaviour: Remittance advice carries invoice references. | Found: This advice displays vendor invoice number, which helps vendors to perform reconciliations. | Fix: Replace the document-contents sentence with 'Treat imported remittance documents as sensitive financial data and inspect your samples for customer identifiers, invoice references and payment amounts before testing.' This makes the list a checking recommendation rather than extending Business Central's documented vendor-advice contents to all customer remittances. | Source: https://learn.microsoft.com/dynamics365/business-central/localfunctionality/unitedkingdom/how-to-print-remittance-advice
+- [supported, minor] Risk assessment: Data exposure / behaviour: Remittance advice carries payment amounts. | Found: The Remittance Advice - Journal report prints the total applied invoice amount instead of the paid amount in the United Kingdom version | Fix: Use the same replacement as for the document-contents sentence: 'Treat imported remittance documents as sensitive financial data and inspect your samples for customer identifiers, invoice references and payment amounts before testing.' The source demonstrates payment amounts in an existing remittance report, not the usual contents accepted by this planned feature. | Source: https://learn.microsoft.com/dynamics/s-e/nav/nav2013apphotfixoverview_699
+- [supported, minor] Why it matters / behaviour: Customer payment journals feed payment postings and settlement of invoices. | Found: Click Settle transactions to mark invoices that were paid. You're not required to settle the payment to any invoices. If this is a prepayment or if you don't know what invoice was paid, you can enter and post the payment. | Fix: Add https://learn.microsoft.com/dynamics365/finance/cash-bank-management/tasks/customer-payment-overview to sources for the journal-posting and invoice-settlement background. | Source: https://learn.microsoft.com/dynamics365/finance/cash-bank-management/tasks/customer-payment-overview
+-->

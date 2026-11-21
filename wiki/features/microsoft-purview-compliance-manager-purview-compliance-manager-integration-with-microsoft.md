@@ -43,7 +43,7 @@ sources:
 videos: []
 related: ["microsoft-purview-data-loss-prevention-inline-dlp-for-prompts-for-microsoft-foundry-apps-a","microsoft-purview-insider-risk-management-insider-risk-management-for-agents","microsoft-purview-purview-sdk-embedded-in-agent-framework-sdk","microsoft-purview-dspm-copilot-readiness-and-data-explorer"]
 controls:
-  - governs: "Who can create an assessment that includes Foundry agents"
+  - governs: "Creation of an assessment that includes Foundry agents"
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
@@ -59,9 +59,9 @@ controls:
       docs: "https://learn.microsoft.com/azure/foundry/concepts/rbac-foundry"
     api:
       kind: "azure-cli"
-      call: "az role assignment create --role 53ca6127-db72-4b80-b1b0-d745d6d5456d --assignee <user> --scope <project-id>"
-      docs: "https://learn.microsoft.com/azure/foundry/tutorials/quickstart-create-foundry-resources"
-    note: "The GUID is the Foundry User role (formerly Azure AI User). Learn's Compliance Manager page also accepts Azure AI Project Manager, now Foundry Project Manager."
+      call: "az role assignment create --role 53ca6127-db72-4b80-b1b0-d745d6d5456d --assignee <user> --scope <foundry-resource-id>"
+      docs: "https://learn.microsoft.com/azure/foundry/concepts/rbac-foundry"
+    note: "The GUID is the Foundry User role (formerly Azure AI User). <foundry-resource-id> is the Azure resource ID of the relevant Foundry account. Learn's Compliance Manager page also accepts Azure AI Project Manager."
   - governs: "Whether improvement actions are tested automatically"
     scope: "tenant"
     ui:
@@ -69,7 +69,7 @@ controls:
       path: "Settings > Compliance Manager > Testing source"
       docs: "https://learn.microsoft.com/purview/compliance-manager-setup"
     api: null
-    note: "Needs the Compliance Manager Administrator or Global Administrator role. Not stated whether this is the setting for converting Foundry automated actions to manual."
+    note: "Needs the Compliance Manager Administrator or Global Administrator role. Testing source governs automatic testing for eligible improvement actions generally; Learn's Foundry passage does not identify a Foundry-specific conversion route."
 confidence: "medium"
 created: "2026-11-21"
 updated: "2026-11-21"
@@ -79,19 +79,23 @@ changes:
     note: "New briefing: Compliance Manager assessments for Microsoft Foundry agents, with roles, licensing and settings from Learn."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 61 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Correction: the assessment row now describes creation, the Foundry role command uses the Foundry resource scope, and unsupported no-action and no-change statements and the licence-counter steps are removed."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 59 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 56
-  unconfirmed: 2
-  contradicted: 3
-  attempts: 1
-  hash: "e74f6864257fbe4f0b0713305978f969"
+  claims: 59
+  confirmed: 58
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "2df520e400fa1c44f9af297f680bdd5c"
 ---
 
 ## What's changing
@@ -118,7 +122,7 @@ Microsoft has not stated what happens on arrival, so no source says existing beh
 - Creating or modifying an assessment needs Compliance Manager Administration, Compliance Manager Assessor or Global Administrator, per Learn.
 
 **Autonomy & actions**
-- No change in what agents can do: Learn describes syncing evaluation results and improvement actions, not changes to agents. Users can convert automated actions to manual ones, which changes whether status is machine-synced or entered by a person.
+- Learn describes syncing evaluation results and improvement actions. Users can convert automated actions to manual ones, which changes whether status is machine-synced or entered by a person.
 
 **Change & support**
 - Status shown depends on which of the 15 evaluation actions have synced. A passing control based on partial automation could be read as full compliance, so agree with auditors what the score covers.
@@ -141,9 +145,8 @@ Per Learn, prerequisites are the Azure AI Project Manager or Azure AI User role 
 ## Governance guidance
 
 ### Before rollout
-- List who holds Compliance Manager Administration, Compliance Manager Assessor or Global Administrator, the roles Learn names for creating assessments (see the assessment row in the table).
+- List who holds Compliance Manager Administration, Compliance Manager Assessor or Global Administrator, the roles Learn names for creating assessments (see the assessment-creation row in the table).
 - Check who holds Foundry User or Foundry Project Manager (formerly Azure AI User and Azure AI Project Manager) on the Foundry accounts you want assessed, using the Foundry role row.
-- Check on the Regulations page whether the licence counter and your agreement cover the AI templates you plan to use.
 
 ### At rollout
 - Create a trial assessment with the Add assessment wizard, choose an AI regulation, and see whether Foundry is offered on the Select services page.
@@ -152,7 +155,6 @@ Per Learn, prerequisites are the Azure AI Project Manager or Azure AI User role 
 
 ### After rollout
 - Compare synced pass/fail results for the automated evaluation actions with the evaluation results shown in Foundry.
-- Check the licence counter after the first assessment, because using an AI regulation counts toward purchased premium licences.
 - Re-read the Learn page and Message center when the roadmap status changes from In development.
 
 ## Governance controls
@@ -162,9 +164,9 @@ Per Learn, prerequisites are the Azure AI Project Manager or Azure AI User role 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Who can create an assessment that includes Foundry agents</strong><br><small>Tenant</small><br><small class="controls__note">Learn lists Compliance Manager Administration, Compliance Manager Assessor or Global Administrator for creating assessments. Foundry agents are added during assessment creation.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Compliance Manager › Assessments › Add assessment <a href="https://learn.microsoft.com/purview/compliance-manager-assessments" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Who holds the Foundry role needed to add agents to an assessment</strong><br><small class="controls__note">The GUID is the Foundry User role (formerly Azure AI User). Learn's Compliance Manager page also accepts Azure AI Project Manager, now Foundry Project Manager.</small></td><td data-label="Admin UI"><strong>Azure portal</strong><br>Foundry resource › Access control (IAM) <a href="https://learn.microsoft.com/azure/foundry/concepts/rbac-foundry" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Azure CLI</strong><br><code>az role assignment create --role 53ca6127-db72-4b80-b1b0-d745d6d5456d --assignee &lt;user&gt; --scope &lt;project-id&gt;</code> <a href="https://learn.microsoft.com/azure/foundry/tutorials/quickstart-create-foundry-resources" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether improvement actions are tested automatically</strong><br><small>Tenant</small><br><small class="controls__note">Needs the Compliance Manager Administrator or Global Administrator role. Not stated whether this is the setting for converting Foundry automated actions to manual.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Compliance Manager › Testing source <a href="https://learn.microsoft.com/purview/compliance-manager-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Creation of an assessment that includes Foundry agents</strong><br><small>Tenant</small><br><small class="controls__note">Learn lists Compliance Manager Administration, Compliance Manager Assessor or Global Administrator for creating assessments. Foundry agents are added during assessment creation.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Compliance Manager › Assessments › Add assessment <a href="https://learn.microsoft.com/purview/compliance-manager-assessments" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Who holds the Foundry role needed to add agents to an assessment</strong><br><small class="controls__note">The GUID is the Foundry User role (formerly Azure AI User). &lt;foundry-resource-id&gt; is the Azure resource ID of the relevant Foundry account. Learn's Compliance Manager page also accepts Azure AI Project Manager.</small></td><td data-label="Admin UI"><strong>Azure portal</strong><br>Foundry resource › Access control (IAM) <a href="https://learn.microsoft.com/azure/foundry/concepts/rbac-foundry" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Azure CLI</strong><br><code>az role assignment create --role 53ca6127-db72-4b80-b1b0-d745d6d5456d --assignee &lt;user&gt; --scope &lt;foundry-resource-id&gt;</code> <a href="https://learn.microsoft.com/azure/foundry/concepts/rbac-foundry" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether improvement actions are tested automatically</strong><br><small>Tenant</small><br><small class="controls__note">Needs the Compliance Manager Administrator or Global Administrator role. Testing source governs automatic testing for eligible improvement actions generally; Learn's Foundry passage does not identify a Foundry-specific conversion route.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Compliance Manager › Testing source <a href="https://learn.microsoft.com/purview/compliance-manager-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -183,21 +185,17 @@ Microsoft Learn documents no API for creating assessments or for the testing sou
 - When will Learn show the integration as generally available, given the roadmap target of January CY2027?
 
 <!-- rationale
-risk: Low. The feature reads evaluation results into Compliance Manager and takes no action on agents; the roadmap does not state a default, so this rates today's behaviour continuing.
+risk: Low. The feature syncs evaluation results into Compliance Manager; the roadmap does not state a default, so this rates today's behaviour continuing.
 cost: Medium. Learn says premium AI regulation templates need a purchased licence, with the Foundry assessments free for six months with Copilot or Agent licences; a price is not stated on the pages read.
-impact: Low. Compliance Manager administrators and the Foundry account owners who hold the required roles notice it; end users and agent builders see no change in Learn's description.
+impact: Low. Compliance Manager administrators and the Foundry account owners who hold the required roles notice it.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: Microsoft Purview portal > Compliance Manager > Assessments > Add assessment controls who can create an assessment that includes Foundry agents. | Found: From your Assessments page, select Add assessment to begin the assessment creation wizard. | Fix: Change controls[0].governs and the rendered row label to 'Creation of an assessment that includes Foundry agents'. Keep the documented path and role note: Add assessment starts creation, not permission assignment. Change the checklist reference to call it the assessment-creation row. | Source: https://learn.microsoft.com/purview/compliance-manager-assessments
-- [contradicted, blocker] controls[1].api; Governance controls table / command: Assigning Foundry User with az role assignment create --role 53ca6127-db72-4b80-b1b0-d745d6d5456d --assignee <user> --scope <project-id> supplies the role needed to add agents to Compliance Manager. | Found: The admin account must have either the Azure AI Project Manager or Azure AI User RBAC role assigned to the relevant AI Foundry accounts. | Fix: Replace the call with 'az role assignment create --role 53ca6127-db72-4b80-b1b0-d745d6d5456d --assignee <user> --scope <foundry-resource-id>'. Set api.docs to https://learn.microsoft.com/azure/foundry/concepts/rbac-foundry, which documents this command and resource-level assignments. Define the scope placeholder in the note as the relevant Foundry account/resource's Azure resource ID, not a project's ID. The CLI reference at https://learn.microsoft.com/cli/azure/role/assignment confirms all parameters; Azure RBAC scope documentation states lower levels inherit from higher levels, not that project assignments grant parent-account access. | Source: https://learn.microsoft.com/purview/compliance-manager-assessments
-- [unsupported, major] Risk assessment: Autonomy & actions; rationale: risk / behaviour: The feature takes no action on agents and makes no change to what agents can do. | Found: Searched: Purview Compliance Manager Foundry integration agents changes actions automated evaluation scope projects. Read assessments and improvement-actions; sources describe evaluation-result sync but do not explicitly guarantee no actions on agents or no change to their capabilities. | Fix: Replace 'No change in what agents can do: Learn describes syncing evaluation results and improvement actions, not changes to agents' with 'Learn describes syncing evaluation results and improvement actions.' In the risk rationale, replace 'reads evaluation results into Compliance Manager and takes no action on agents' with 'syncs evaluation results into Compliance Manager'.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].note; Risk assessment; Scope; Governance guidance / role: The assessments page names Compliance Manager Administration, Compliance Manager Assessor or Global Administrator for creating and modifying assessments. | Found: To create and modify an assessment, a user must hold a role of Compliance Manager Administration, Compliance Manager Assessor, or Global Administrator. | Fix: Add: 'Microsoft's setup role table disagrees: Compliance Manager Assessor can edit data only and cannot create assessments, while Compliance Manager Contribution can create assessments (https://learn.microsoft.com/purview/compliance-manager-setup#role-types).' Retain attribution of the original list to the assessments page. | Source: https://learn.microsoft.com/purview/compliance-manager-assessments
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Azure portal > Foundry resource > Access control (IAM) reaches the page for Foundry role assignments. | Found: In the Azure portal, open your Foundry resource and go to Access control (IAM). Create a role assignment for Foundry User, set Members to User, group, or service principal, select your user principal | Fix: Keep the path, which reaches the right page, and add to its note: 'On Access control (IAM), create a role assignment for Foundry User, set Members to User, group, or service principal, and select the user principal.' | Source: https://learn.microsoft.com/azure/foundry/concepts/rbac-foundry
-- [supported, minor] controls[2].note; Governance controls; Open questions / absence: The Foundry passage does not identify whether its reference to converting actions through settings specifically means the tenant Testing source setting. | Found: Searched: Purview Compliance Manager Foundry automated actions manual Testing source settings. Read assessments, setup and improvement-actions. Foundry says Compliance Manager settings; general documentation also describes Testing type on action details and bulk conversion. | Fix: Replace the row-note caveat with: 'Testing source governs automatic testing for eligible improvement actions generally; Microsoft's Foundry passage does not identify a Foundry-specific conversion route.' The setup page says testing can be disabled for all actions or configured per action. Keep the narrower open question about the precise Foundry conversion route.
-- [unsupported, minor] rationale: impact / behaviour: End users and agent builders see no change. | Found: Searched: Purview Compliance Manager Foundry integration agents changes actions automated evaluation scope projects. Read assessments and Foundry RBAC documentation; no passage states that end users and agent builders see no change. | Fix: Remove 'end users and agent builders see no change in Learn's description' from the impact rationale. Retain the low impact judgement and its explanation in terms of Compliance Manager administrators and Foundry account owners.
-- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The checklist tells administrators to check the regulation licence counter, but there is no corresponding controls-table row. | Found: Check on the Regulations page whether the licence counter and your agreement cover the AI templates ... Check the licence counter after the first assessment ... Table rows cover assessment creation, Foundry roles and Testing source only. | Fix: Remove the two licence-counter checklist bullets, which have no corresponding table row; retain the verified licensing facts in Cost and licensing. Do not add a new control row as part of this correction.
+- [supported, minor] controls[0].note; Risk assessment; Governance guidance / role: Learn lists Compliance Manager Administration, Compliance Manager Assessor or Global Administrator for creating and modifying assessments. | Found: To create and modify an assessment, a user must hold a role of Compliance Manager Administration, Compliance Manager Assessor, or Global Administrator. | Fix: Add after this role list: 'Microsoft's setup page disagrees: it says Compliance Manager Assessor can edit data but cannot create assessments, while Compliance Manager Contribution can create them.' Cite https://learn.microsoft.com/purview/compliance-manager-setup#role-types. | Source: https://learn.microsoft.com/purview/compliance-manager-assessments
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Microsoft Purview portal > Compliance Manager > Assessments > Add assessment reaches the assessment creation wizard. | Found: From your Assessments page, select Add assessment to begin the assessment creation wizard. | Fix: The path starts creation but stops before completing it. Extend it to 'Compliance Manager > Assessments > Add assessment > Base your assessment on a regulation > Select regulation > regulation > Add name and group > Select services > Select services > service > Review and finish > Create assessment', using the wizard labels at https://learn.microsoft.com/purview/compliance-manager-assessments#create-assessments. Keep the note that Foundry agents are added during creation; do not invent a Foundry-specific agent-picker label. | Source: https://learn.microsoft.com/purview/compliance-manager-assessments
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Azure portal > Foundry resource > Access control (IAM) reaches Foundry role assignment management. | Found: In the Azure portal, open your Foundry resource and go to Access control (IAM). Create a role assignment for Foundry User, set Members to User, group, or service principal, select your user principal | Fix: Complete the path as 'Foundry resource > Access control (IAM) > Role assignments > Add > Add role assignment > Role > Job function roles > Foundry User > Members > User, group, or service principal > Select members > user'. Cite https://learn.microsoft.com/azure/role-based-access-control/role-assignments-portal for the intermediate IAM steps; the Foundry role is documented at the existing docs URL. | Source: https://learn.microsoft.com/azure/foundry/concepts/rbac-foundry
+- [supported, minor] controls[2].ui; Governance guidance; Governance controls table / admin-path: Microsoft Purview portal > Settings > Compliance Manager > Testing source reaches automated testing settings. | Found: select the Settings icon at the top of the page, then select Compliance Manager. [...] Select Testing source from the left navigation. [...] Turn off automatic testing for all actions. | Fix: Extend the path to 'Settings > Compliance Manager > Testing source > Turn off automatic testing for all actions'. The same page also documents the alternative options 'Turn on automatic testing for all actions' and 'Turn on automatic testing per action'; name these in the note if retaining the row's general on/off wording. | Source: https://learn.microsoft.com/purview/compliance-manager-setup
+- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: The checklist tells readers to take stock of Compliance Manager role holders, but the table has no control for assigning those permissions. | Found: List who holds Compliance Manager Administration, Compliance Manager Assessor or Global Administrator [...] Creation of an assessment that includes Foundry agents | Fix: Remove the first Before rollout bullet beginning 'List who holds Compliance Manager Administration': the assessment-creation row documents the creation wizard, not the control for assigning Compliance Manager permissions. Do not add a new row in this correction.
 -->

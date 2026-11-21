@@ -14,7 +14,7 @@ previewDate: "June CY2026"
 risk: "low"
 cost: "low"
 impact: "medium"
-defaultState: "unknown"
+defaultState: "admin-opt-in"
 action: "review"
 licensing:
   model: "mixed"
@@ -46,6 +46,9 @@ sources:
   - title: "Administrator settings for Sales agent"
     url: "https://learn.microsoft.com/microsoft-sales-copilot/administrator-settings-sales-app"
     kind: "learn"
+  - title: "Sales agent FAQ"
+    url: "https://learn.microsoft.com/microsoft-sales-copilot/sales-m365-copilot-faq"
+    kind: "learn"
   - title: "Which users and apps can use Sales agent, including in Microsoft 365 Copilot (Sales agent administrator settings (Sales app in Outlook or Teams))"
     url: "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps"
     kind: "learn"
@@ -59,7 +62,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Sales agent administrator settings (Sales app in Outlook or Teams)"
-      path: "Sales > Settings > Tenant > Access settings > Allow access to Sales agent > Microsoft 365 Copilot"
+      path: "Sales > Settings > Tenant > Access settings > Allow access to Sales agent > Sales agent > Microsoft 365 Copilot"
       docs: "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps"
     api: null
     note: "Needs Global Administrator, Exchange Administrator or Power Platform Administrator. Controls access only; it does not install the app or grant CRM data."
@@ -80,26 +83,30 @@ changes:
     note: "First briefing for this item: roadmap shows Launched; Learn has no page for it, so access settings, licensing and agent capacity come from related Sales agent pages."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 71 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after the independent check: default state now admin-opt-in per the roadmap's Enabled for line, the roadmap title's agent reference, access path, and FAQ differences; removed three checklist items."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 74 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 68
+  claims: 74
+  confirmed: 74
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "56e5f74e76125f8613166776e517b05f"
+  contradicted: 0
+  attempts: 0
+  hash: "0211b149bcff82962b1a923585dae76a"
 ---
 
 ## What's changing
 
 Sellers can ask Sales agent in Microsoft 365 Copilot about opportunity research and get short, action-oriented insights first, then ask for deeper analysis when they want it. The roadmap item describes this as asking "about opportunity research from Sales agent". It lists status Launched, a preview date of June CY2026 and a target date of July CY2026, with General Availability and Preview as release phases, the Web platform and the Worldwide (Standard Multi-Tenant) cloud.
 
-Microsoft Learn has no page for this item itself, so what follows about its behaviour is the roadmap's description plus background from related pages. The roadmap does not name the agent that produces the research. Learn describes Sales Opportunity Agent (previously known as Opportunity Research Agent), which synthesises insights from CRM, emails, meetings and web research. A Learn reference page for an "Opportunity research" tool in Dynamics 365 Sales says it retrieves the persisted Sales Opportunity Agent research for an opportunity, including deal overview, account, competitor, stakeholder, historical-pattern and custom insight sections when available. Microsoft has not said that this tool is how the roadmap item works.
+Microsoft Learn has no page for this item itself, so what follows about its behaviour is the roadmap's description plus background from related pages. The roadmap title identifies the insights as Sales Opportunity Agent insights; its description does not specify how Sales agent retrieves them. Learn describes Sales Opportunity Agent (previously known as Opportunity Research Agent), which synthesises insights from CRM, emails, meetings and web research. A Learn reference page for an "Opportunity research" tool in Dynamics 365 Sales says it retrieves the persisted Sales Opportunity Agent research for an opportunity, including deal overview, account, competitor, stakeholder, historical-pattern and custom insight sections when available. Microsoft has not said that this tool is how the roadmap item works.
 
 Sales agent itself is a chat interface in Microsoft 365 Copilot, reached under Agents > Sales. Learn documents summaries of an opportunity, account or lead, meeting catch-up and CRM look-ups as existing uses. The research tool page is marked as illustrating current capabilities, with tool names and behaviour liable to change.
 
@@ -107,7 +114,7 @@ Sales agent itself is a chat interface in Microsoft 365 Copilot, reached under A
 
 This puts opportunity research in the chat sellers already use, so the effect on a tenant is mainly about who can reach it, what it reads and what the underlying agent costs. Sales Opportunity Agent consumes the tenant's capacity as it processes opportunities, so a seller-facing chat that depends on its research gives finance and Power Platform admins a reason to look at that agent's scope and refresh schedule.
 
-Microsoft has not stated what happens on arrival for this item, so no source says existing behaviour changes. Learn does say that Sales agent access is turned on for all users by default, with auto-installed users blocked in Microsoft 365 Copilot, so the practical question for a service owner is whether the existing access settings and licences already match who should see opportunity research.
+The roadmap describes this capability as enabled by admins/makers/marketers for end users; it does not identify a feature-specific switch. Learn does say that Sales agent access is turned on for all users by default, with auto-installed users blocked in Microsoft 365 Copilot, so the practical question for a service owner is whether the existing access settings and licences already match who should see opportunity research.
 
 ## Risk assessment
 
@@ -128,7 +135,7 @@ Microsoft has not stated what happens on arrival for this item, so no source say
 
 ## Cost and licensing
 
-**Licence.** Sales agent needs one of two options, per Learn: a Microsoft 365 Copilot licence and access to Dynamics 365 Sales or Salesforce (CRM data plus Microsoft 365 Graph grounding), or Dynamics 365 Sales Enterprise or Premium access without a Microsoft 365 Copilot licence (CRM data only). A Microsoft 365 Copilot licence is required for Sales agent to access Graph-grounded data such as Outlook emails and Teams meetings.
+**Licence.** Sales agent needs one of two options, per Learn: a Microsoft 365 Copilot licence and access to Dynamics 365 Sales or Salesforce (CRM data plus Microsoft 365 Graph grounding), or Dynamics 365 Sales Enterprise or Premium access without a Microsoft 365 Copilot licence (CRM data only). A Microsoft 365 Copilot licence is required for Sales agent to access Graph-grounded data such as Outlook emails and Teams meetings. The Sales agent FAQ still says a Microsoft 365 Copilot licence is required, whereas the use and setup pages list the CRM-only Enterprise or Premium option.
 
 **Meter.** Sales Opportunity Agent uses the capacity assigned to the tenant, as prepaid capacity or pay-as-you-go. Its consumption scales with the number of opportunities in scope and how often insights are refreshed, and Learn says narrowing the opportunity scope and the refresh frequency in the agent configuration settings manages usage. Dynamics 365 Sales bills these agent capabilities in Copilot Studio messages and says that when quota is depleted, the AI capability is unavailable until more capacity is added. A rate for questions about research in Sales agent chat is not yet published.
 
@@ -145,8 +152,6 @@ Learn lists these prerequisites for Sales agent: it is installed, the user is si
 ### Before rollout
 - Confirm which sellers hold a Microsoft 365 Copilot licence or Dynamics 365 Sales Enterprise or Premium access, since that decides whether chat answers include Graph-grounded data.
 - Review Sales agent access under Tenant > Access settings, including Restrict auto-installed users, which Learn says blocks auto-installed users in Microsoft 365 Copilot by default.
-- Ask the CRM admin whether Sales Opportunity Agent is running in each environment, and agree its opportunity scope and refresh schedule before sellers depend on its research.
-- Check CRM security roles for read access to opportunities and to the agent's research results.
 
 ### At rollout
 - Pilot with a security group under Allow access, and clear Restrict auto-installed users for the pilot, as Learn's tip suggests.
@@ -154,7 +159,6 @@ Learn lists these prerequisites for Sales agent: it is installed, the user is si
 - Tell sellers to open Microsoft 365 Copilot, select Agents, then Sales.
 
 ### After rollout
-- Watch Sales Opportunity Agent capacity and usage in the Power Platform admin center, where Learn says message capacity and usage can be viewed.
 - Re-check the Learn pages for Sales agent and the research tool, which say tool names and behaviour can change.
 
 ## Governance controls
@@ -164,14 +168,14 @@ Learn lists these prerequisites for Sales agent: it is installed, the user is si
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users and apps can use Sales agent, including in Microsoft 365 Copilot</strong><br><small>Tenant</small><br><small class="controls__note">Needs Global Administrator, Exchange Administrator or Power Platform Administrator. Controls access only; it does not install the app or grant CRM data.</small></td><td data-label="Admin UI"><strong>Sales agent administrator settings (Sales app in Outlook or Teams)</strong><br>Sales › Settings › Tenant › Access settings › Allow access to Sales agent › Microsoft 365 Copilot <a href="https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users and apps can use Sales agent, including in Microsoft 365 Copilot</strong><br><small>Tenant</small><br><small class="controls__note">Needs Global Administrator, Exchange Administrator or Power Platform Administrator. Controls access only; it does not install the app or grant CRM data.</small></td><td data-label="Admin UI"><strong>Sales agent administrator settings (Sales app in Outlook or Teams)</strong><br>Sales › Settings › Tenant › Access settings › Allow access to Sales agent › Sales agent › Microsoft 365 Copilot <a href="https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether Sales Chat is available in a CRM environment, and to which security groups</strong><br><small>Environment</small><br><small class="controls__note">Dynamics 365 needs System Administrator or System Customizer. Turning it off keeps Sales agent visible but removes Sales data from answers.</small></td><td data-label="Admin UI"><strong>Sales agent administrator settings (Sales app in Outlook or Teams)</strong><br>Sales › Settings › Environment › Access settings › Allow access to Sales Chat <a href="https://learn.microsoft.com/microsoft-sales-copilot/access-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 Both controls need the Sales agent administrator settings, which are visible only to administrators signed in to the Sales agent in Outlook or Teams. Tenant access settings need one of the Microsoft Entra roles Global Administrator, Exchange Administrator or Power Platform Administrator. Environment settings in Dynamics 365 need the System Administrator or System Customizer role.
 
-The two switches work together: Learn says tenant access settings do not override environment-level Sales chat access, app installation, licensing or CRM privileges. When the environment-level Sales Chat access is turned off, users still see Sales as an agent and can ask questions, but responses do not include Sales data.
+The two switches work together: Learn says tenant access settings do not override environment-level Sales chat access, app installation, licensing or CRM privileges. When the environment-level Sales Chat access is turned off, users still see Sales as an agent and can ask questions, but responses do not include Sales data. The Sales agent FAQ's end-user answer says instead that such users will not receive responses to their queries.
 
 Microsoft Learn documents no API for either access setting at the time of writing (November 2026). Learn documents no switch specific to opportunity research in chat, so these existing Sales agent settings are what an admin has today. Agent capacity is allocated through the Power Platform admin center, as the consumption billing page describes.
 
@@ -186,16 +190,4 @@ Microsoft Learn documents no API for either access setting at the time of writin
 risk: Low. The questions are asked in Sales agent, which Learn says surfaces only information the user has permission to access, and the related research tool is documented as read-only.
 cost: Low. Sales agent needs the licences Learn lists, and Sales Opportunity Agent draws on tenant capacity, but Microsoft has not published a meter or rate specific to asking about research in chat.
 impact: Medium. Sellers who use Sales agent in Microsoft 365 Copilot notice it; admins are affected only through access settings, licensing and agent capacity.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: defaultState; Why it matters / default: The arrival state is unknown because Microsoft has not stated it. | Found: Enabled by admins/makers/marketers for end users | Fix: Set defaultState to admin-opt-in. Replace 'Microsoft has not stated what happens on arrival for this item, so no source says existing behaviour changes' with 'The roadmap describes this capability as enabled by admins/makers/marketers for end users; it does not identify a feature-specific switch.' Keep the separately attributed background defaults for Sales agent.
-- [contradicted, blocker] What's changing / record: The roadmap does not name the agent that produces the research. | Found: Dynamics 365 Sales: Opportunity acceleration - Chat about sales opportunity agent insights from inside Sales agent | Fix: Replace the sentence with 'The roadmap title identifies the insights as Sales Opportunity Agent insights; its description does not specify how Sales agent retrieves them.'
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.notes; Cost and licensing; Scope / licensing: Dynamics 365 Sales Enterprise or Premium access without Microsoft 365 Copilot gives CRM data only. | Found: Dynamics 365 Sales Enterprise or Premium access, without a Microsoft 365 Copilot license | CRM data only | Fix: Keep the licensing table's rule, but add: 'The Sales agent FAQ still says a Microsoft 365 Copilot licence is required, whereas the use and setup pages list the CRM-only Enterprise/Premium option.' Cite https://learn.microsoft.com/microsoft-sales-copilot/sales-m365-copilot-faq#sales-agent-in-microsoft-365-copilot. | Source: https://learn.microsoft.com/microsoft-sales-copilot/use-sales-chat
-- [supported, minor] controls[0].ui / admin-path: In the Sales app in Outlook or Teams, Sales > Settings > Tenant > Access settings > Allow access to Sales agent > Microsoft 365 Copilot reaches the application access toggle. | Found: Under Tenant, select Access settings. Select Allow access to Sales agent. In the Sales agent pane, locate the application you want to configure: Microsoft 365 Copilot | Fix: Insert the omitted pane heading: 'Sales > Settings > Tenant > Access settings > Allow access to Sales agent > Sales agent > Microsoft 365 Copilot'. The Sales > Settings entry steps are verified at the already-cited https://learn.microsoft.com/microsoft-sales-copilot/administrator-settings-sales-app. | Source: https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps
-- [supported, minor] controls[1].note; Governance controls / behaviour: Turning off environment Sales Chat leaves Sales visible and able to answer, but without Sales data. | Found: users who have Sales agent installed will still see Sales as an agent in Microsoft 365 Copilot. They can still ask questions and get responses, but the responses will not include any Sales data. | Fix: Keep the access-settings description, but add: 'The Sales agent FAQ's end-user answer instead says disabling Sales Chat prevents query responses.' Cite https://learn.microsoft.com/microsoft-sales-copilot/sales-m365-copilot-faq#sales-agent-in-microsoft-365-copilot. | Source: https://learn.microsoft.com/microsoft-sales-copilot/access-settings
-- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The checklist asks readers to check CRM security roles, research scope and refresh settings, and capacity/usage, but these controls have no table rows. | Found: 'agree its opportunity scope and refresh schedule'; 'Check CRM security roles'; 'Watch Sales Opportunity Agent capacity and usage'; the table lists only tenant and environment Sales agent access. | Fix: Remove those three checklist bullets, or move them outside the governance checklist as background considerations. The missing controls are CRM security roles, research scope/refresh and capacity/usage; this finding does not request additional control rows.
 -->

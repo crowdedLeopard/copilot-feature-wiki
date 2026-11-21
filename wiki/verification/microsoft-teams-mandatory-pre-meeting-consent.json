@@ -1,0 +1,714 @@
+{
+  "slug": "microsoft-teams-mandatory-pre-meeting-consent",
+  "roadmapId": 561914,
+  "title": "Microsoft Teams: mandatory pre-meeting consent for meeting participants",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "1 blocking finding (claim 33)"
+    ]
+  },
+  "counts": {
+    "claims": 54,
+    "confirmed": 51,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 1,
+    "minor": 5
+  },
+  "summary": "Hold: the route to Customize message skips enabling the consent toggle, which Microsoft's instructions require first. The page also infers that people who cannot see the message cannot join, although Microsoft does not document that outcome and lists join scenarios where consent does not apply.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; What's changing",
+      "type": "record",
+      "claim": "Microsoft Teams is adding mandatory pre-meeting consent configurable by tenant admins.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We are providing a new configuration experience in Teams Admin Center where tenant admins can enable and customize an explicit consent message before joining any meeting hosted in their organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Android, Desktop, iOS and Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-09-01T23:00:02.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-01T23:00:02\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "Admins can provide custom terms, disclaimers, recording notices or responsible AI guidelines for participants to accept.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+      "quote": "You can present custom terms and conditions, disclaimers, recording notices, responsible AI usage guidelines, and other compliance-related statements to meeting participants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Why it matters; Scope; Governance guidance; rationale: impact",
+      "type": "behaviour",
+      "claim": "The requirement covers organisers, internal users, external users and anonymous attendees in meetings governed by the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+      "quote": "All meeting participants, including organizers, internal users, external users, and anonymous attendees, must accept the consent message before joining.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "A participant who does not accept the consent message cannot join.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+      "quote": "If a participant doesn't accept the consent message, they can't join the meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState; summary; controls[0].note; What's changing; rationale: risk",
+      "type": "default",
+      "claim": "The control is admin-opt-in, off by default, with EnablePreMeetingConsent defaulting to False.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
+      "quote": "-EnablePreMeetingConsent: Controls whether participants must explicitly accept a custom consent dialog before they can join any meeting hosted by the tenant. Type: Boolean. Default value: False.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; controls[0].scope; What's changing; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "Pre-meeting consent is governed by the meeting policy assigned to the organiser.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+      "quote": "Pre-meeting consent is controlled through Teams meeting policies and is turned off by default. When enabled, the consent experience applies to meetings organized by users who are assigned the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[1].note; What's changing; Cost and licensing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Consent content supports one default language and up to four additional languages, five in total.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+      "quote": "You can specify one default language and up to four additional languages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Participants see consent content selected according to their device language.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+      "quote": "Participants see the consent message based on their device language settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The default-language content is shown when the device language is not configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+      "quote": "If a participant's device language isn't configured in the policy, the content from the default language is shown to the participant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The consent message is limited to 1,500 characters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+      "quote": "Compose your message. The message can contain up to 1,500 characters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Cost and licensing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Admins can preview the participant experience before saving.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+      "quote": "After you add your custom consent message, you can preview the participant experience before saving the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Participant consent acknowledgements are stored in audit logs for compliance, reporting and investigations.",
+      "status": "supported",
+      "source": "Message Center post MC1454114",
+      "quote": "Consent acknowledgments are recorded in audit logs to support governance, investigations, and transparency.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1454114 was published on 2026-08-13.",
+      "status": "supported",
+      "source": "Message Center post MC1454114",
+      "quote": "Published 2026-08-13; last updated 2026-08-13",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1454114 describes General Availability with Targeted Release beginning in September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1454114",
+      "quote": "General Availability - Targeted Release: Beginning in September 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide and GCC rollout begins mid-October 2026 and is expected to complete by mid-November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1454114",
+      "quote": "Worldwide and GCC: Beginning in mid-October 2026 and expected to complete by mid-November 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "GCC High and DoD rollout begins mid-November 2026 and is expected to complete by mid-December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1454114",
+      "quote": "GCC High, and DoD: Beginning in mid-November 2026 and expected to complete by mid-December 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1454114",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "summary; Why it matters; rationale: impact",
+      "type": "record",
+      "claim": "There is no impact unless admins enable the feature and no action is required if they do not plan to use it.",
+      "status": "supported",
+      "source": "Message Center post MC1454114",
+      "quote": "No impact to users or meetings unless the feature is enabled by admins. No action is required if you do not plan to use this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "Microsoft asks admins planning to enable consent to review compliance and legal requirements.",
+      "status": "supported",
+      "source": "Message Center post MC1454114",
+      "quote": "If you plan to enable this capability: - Review compliance and legal requirements for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "Microsoft asks admins planning to enable consent to communicate the new meeting join requirement.",
+      "status": "supported",
+      "source": "Message Center post MC1454114",
+      "quote": "Communicate this change to users so that they understand the new meeting join requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "Microsoft asks admins planning to enable consent to update internal documentation and helpdesk guidance as needed.",
+      "status": "supported",
+      "source": "Message Center post MC1454114",
+      "quote": "Update internal documentation and helpdesk guidance as needed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Governance guidance; Open questions",
+      "type": "behaviour",
+      "claim": "The Learn feature page labels the feature Public Preview, unlike the roadmap and notice's General Availability phase.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+      "quote": "This feature is currently in Public Preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The enable control is at Teams admin center > Meetings > Meeting policies > policy > Meeting join & lobby > Enable pre-meeting participant consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+      "quote": "Go to Meetings > Meeting policies. Select an existing policy or create a new one. Under Meeting join & lobby, turn the Enable pre-meeting participant consent toggle On.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -EnablePreMeetingConsent $true enables the consent requirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
+      "quote": "$true: All participants must explicitly accept a custom consent dialog before joining any meeting hosted by the tenant. Note: This feature has not been fully released yet, so the setting will have no effect.",
+      "severity": "minor",
+      "fix": "Keep the call, but add to the maturity paragraph: 'The Set-CsTeamsMeetingPolicy reference also says EnablePreMeetingConsent and PreMeetingConsentContentIdentifier have no effect because the feature is not fully released, while the feature guide documents using them.' Both pages are already cited."
+    },
+    {
+      "n": 32,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Consent content must be configured and associated with the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
+      "quote": "Requires at least one consent content entry configured in TeamsPreMeetingConsentConfiguration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[1].ui; Governance controls; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Admins reach Customize message directly through Meeting join & lobby without first enabling pre-meeting participant consent.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+      "quote": "3. Under Meeting join & lobby, turn the Enable pre-meeting participant consent toggle On. 4. Select Customize message.",
+      "severity": "blocker",
+      "fix": "Replace the message path in front matter and table with 'Teams admin center > Meetings > Meeting policies > policy > Meeting join & lobby > Enable pre-meeting participant consent > Customize message'. Add to its note: 'Turn the consent toggle On before selecting Customize message.' Replace the first At rollout bullet with 'In the chosen policy, turn on Enable pre-meeting participant consent, select Customize message, compose the message and use Preview before saving.' This follows https://learn.microsoft.com/microsoftteams/pre-meeting-consent."
+    },
+    {
+      "n": 34,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "New-CsPreMeetingConsent -LocalizedContent <localized content> creates the consent message configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+      "quote": "$consent = New-CsPreMeetingConsent `\n    -LocalizedContent @(\n        $englishContent\n        $frenchContent\n    )",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[1].note; controls[1].scope; Governance controls",
+      "type": "command",
+      "claim": "The consent content is a separate configuration, assigned to a meeting policy by passing its returned identifier to Set-CsTeamsMeetingPolicy -PreMeetingConsentContentIdentifier.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+      "quote": "Copy the configuration identifier returned by New-CsPreMeetingConsent:\n$consentId = \"<consent-configuration-guid>\"\nSet-CsTeamsMeetingPolicy `\n    -Identity $policyIdentity `\n    -PreMeetingConsentContentIdentifier $consentId `\n    -EnablePreMeetingConsent $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Admins must remove content assignment from all meeting policies before deleting a consent configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+      "quote": "Before deleting a configuration, remove the content assignment from all meeting policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "applicability",
+      "claim": "Pre-meeting consent does not currently apply to an originator initiating an ad-hoc meeting in a channel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+      "quote": "Pre-meeting consent doesn't currently apply to the following meeting scenarios: - Originator initiating an ad-hoc meeting in a channel.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "applicability",
+      "claim": "Pre-meeting consent does not currently apply to accepting an incoming direct meeting join request on mobile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+      "quote": "Pre-meeting consent doesn't currently apply to the following meeting scenarios: ... Accepting an incoming direct request to join a meeting on mobile.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "applicability",
+      "claim": "Pre-meeting consent does not currently apply to Siri or voice-activated meeting joins on mobile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+      "quote": "Pre-meeting consent doesn't currently apply to the following meeting scenarios: ... Using Siri or voice-activated meeting joins on mobile.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "applicability",
+      "claim": "Pre-meeting consent does not currently apply to joining using Apple CarPlay or other car systems.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+      "quote": "Pre-meeting consent doesn't currently apply to the following meeting scenarios: ... Using Apple CarPlay or other car systems to join a meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope: Meetings only",
+      "type": "applicability",
+      "claim": "The Learn page marks the feature as applying to Meetings and not Events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+      "quote": "APPLIES TO: [Image of a checkmark for yes] Meetings [Image of an x for No] Events",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope: Roles and prerequisites; Governance controls",
+      "type": "absence",
+      "claim": "The pre-meeting consent Learn page does not name a required admin role.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Teams pre-meeting consent admin role Teams Rooms PSTN bots audit event'; read https://learn.microsoft.com/microsoftteams/pre-meeting-consent in full. It names admins but no specific required admin role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "The feature page and supplied notice name no licence specific to pre-meeting consent.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Teams pre-meeting consent licensing license Teams Premium price meter'; read pre-meeting-consent and MC1454114 fully, Premium licensing excerpts and user-access. No feature-specific entitlement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing model is unknown because no feature-specific licence requirement is published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-access",
+      "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
+      "severity": "minor",
+      "fix": "Set licensing.model to 'included' under the standard's product-level entitlement rule. Replace the licensing notes and corresponding prose with 'Teams requires a Teams license for each user in the organization, except anonymous meeting joins. A requirement specific to pre-meeting consent is not yet published.' Cite https://learn.microsoft.com/microsoftteams/user-access. Retain cost low and the narrower unpublished feature-specific licensing caveat."
+    },
+    {
+      "n": 45,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The feature page and notice name no price or meter for pre-meeting consent.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Teams pre-meeting consent licensing license Teams Premium price meter'; opened pre-meeting-consent and user-access, read Premium licensing and add-on licensing excerpts and MC1454114. No price or meter for this feature found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The Learn feature page describes no agent or automated action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Teams pre-meeting consent admin role Teams Rooms PSTN bots audit event'; read pre-meeting-consent fully. It describes participant acknowledgement and admin configuration, not an agent or an automated action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "A participant who cannot see the consent message cannot join the meeting.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Teams pre-meeting consent participants unsupported client cannot see consent message join'; read pre-meeting-consent and results. The guide documents declining consent and exempt join scenarios, not this unseen-message outcome.",
+      "severity": "major",
+      "fix": "Replace 'A participant who declines or cannot see the message cannot join' with 'A participant who declines the message cannot join'. Remove 'and from users on the mobile join paths above' from the helpdesk forecast: those paths are documented exceptions, not documented failed joins."
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "applicability",
+      "claim": "Changing an organiser's assigned meeting policy changes which pre-meeting consent setting applies to their meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+      "quote": "When enabled, the consent experience applies to meetings organized by users who are assigned the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Admins can review Teams consent audit records in Microsoft Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-teams-audit-log-events",
+      "quote": "To retrieve audit logs for Teams activities, use the Microsoft Purview portal. ... Audit data is only visible in the audit log if auditing is turned on.",
+      "severity": "minor",
+      "fix": "Remove the audit-review checklist bullet as requested by the table-consistency finding. If retaining its factual premise in Risk assessment: Data exposure, use 'Teams audit data is retrieved through Microsoft Purview and is visible only if auditing is turned on.' Cite https://learn.microsoft.com/purview/audit-teams-audit-log-events. Keep the specific consent activity name as an open question."
+    },
+    {
+      "n": 50,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "The pre-meeting consent Learn page does not explain how Teams Rooms, PSTN dial-in participants or meeting bots meet the requirement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Teams pre-meeting consent audit activity Purview Teams Rooms PSTN bots' and 'Teams pre-meeting consent admin role Teams Rooms PSTN bots audit event'; read pre-meeting-consent fully. Rooms, PSTN and bot handling is not stated there.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Participant agreement for recording and transcription is a different meeting policy option from pre-meeting consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription",
+      "quote": "Within your chosen policy, navigate to the Recording & Transcription section. Toggle the Require participant agreement for recording and transcription setting On or Off.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription to sources for this distinction."
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "consistency",
+      "claim": "Every control the governance checklist asks readers to check appears in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "After rollout: 'Check the Teams meeting audit logs in Microsoft Purview for consent acknowledgements'. The controls table has only the enable toggle and consent message rows.",
+      "severity": "minor",
+      "fix": "The audit-review checklist step has no corresponding controls row. Remove that checklist bullet; do not add a new row as part of this correction. The audit logging fact and audit-activity open question can remain."
+    },
+    {
+      "n": 53,
+      "where": "Scope: Roles and prerequisites; Governance guidance",
+      "type": "behaviour",
+      "claim": "Admins can configure the feature in Teams admin center or through PowerShell, using an existing or new meeting policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+      "quote": "You can enable and configure pre-meeting consent in the Teams admin center or by using PowerShell. ... Select an existing policy or create a new one.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Pre-meeting consent is an acknowledgement gate, not a requirement to sign in or verify identity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+      "quote": "All meeting participants, including organizers, internal users, external users, and anonymous attendees, must accept the consent message before joining.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T06:06:20.172Z",
+    "summary": {
+      "links": 4,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1454114",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=561914",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether pre-meeting consent is required for meetings organised by users with a policy",
+        "docs": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+        "reachable": true,
+        "segments": [
+          "Teams admin center",
+          "Meetings",
+          "Meeting policies",
+          "Meeting join & lobby",
+          "Enable pre-meeting participant consent"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether pre-meeting consent is required for meetings organised by users with a policy",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "The consent message, its title and its languages",
+        "docs": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+        "reachable": true,
+        "segments": [
+          "Teams admin center",
+          "Meetings",
+          "Meeting policies",
+          "Meeting join & lobby",
+          "Customize message"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "The consent message, its title and its languages",
+        "docs": "https://learn.microsoft.com/microsoftteams/pre-meeting-consent",
+        "reachable": true,
+        "token": "New-CsPreMeetingConsent",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
