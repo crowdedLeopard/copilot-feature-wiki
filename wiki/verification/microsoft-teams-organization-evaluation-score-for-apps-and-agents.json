@@ -1,0 +1,655 @@
+{
+  "slug": "microsoft-teams-organization-evaluation-score-for-apps-and-agents",
+  "roadmapId": 532720,
+  "title": "Microsoft Teams: organisation evaluation score for third-party apps and agents",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "3 blocking findings (claims 26, 41, 49)"
+    ]
+  },
+  "counts": {
+    "claims": 49,
+    "confirmed": 46,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 3,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "Hold: the briefing gives the wrong condition for a No data result and leaves out qualifications needed when allowing apps. It also presents the administrator role as unknown even though Microsoft's role documentation covers everything in the Teams admin center.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: title, roadmapId, products",
+      "type": "record",
+      "claim": "Roadmap item 532720 concerns Microsoft Teams organization evaluation scores for apps and agents.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 532720, \"title\": \"Microsoft Teams: Organization Evaluation Score for Apps and Agents\", \"products\": [\"Microsoft Teams\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is February CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"February CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-10-14T23:01:02.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-14T23:01:02\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Admins can define organizational security, compliance and permission approval requirements and evaluate apps and agents against them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+      "quote": "The organization’s app approval criteria lets admins select the security, compliance, and permission related requirements that matter most to their organization and see how apps or agents measure up against those requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Evaluation score settings offers a predefined list of requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+      "quote": "Review the predefined list of available security, compliance, and permission related requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[0].note; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Admins can add selected requirements and save them for score calculation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+      "quote": "On the Evaluation score settings page, select Add. ... Select Save to save the selected requirements. ... The selected requirements are used to calculate evaluation scores for eligible apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].note; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Admins can edit or remove requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+      "quote": "Add, edit, or remove requirements to make the overall criteria relevant to their organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0].note; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Admins can download their requirements as CSV.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+      "quote": "On the Evaluation score settings page, select the excel icon. Listed requirements will be downloaded in the CSV format.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Governance guidance: At rollout; rationale: risk",
+      "type": "behaviour",
+      "claim": "Configured requirements drive a new Evaluation score column on Manage apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+      "quote": "Based on the requirements that are configured on the Evaluation score settings page, your organization specific evaluation score is made available through a new Evaluation score column in the Manage apps page in the Teams admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The column shows the percentage of selected requirements met by each eligible app or agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+      "quote": "The Evaluation score column shows the percentage of selected requirements that are met for each eligible app or agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Admins can sort apps and agents by evaluation score.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+      "quote": "Click on the sort icon on the Evaluation score column header. Apps and agents are sorted by their evaluation score in ascending or descending order, based on count of requirements that are met.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Evaluation requirements met filters offer greater-than or equal-to percentage conditions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+      "quote": "Select Evaluation requirements met value from the Filter dropdown. Choose one of the following conditions: Greater than a specified percentage; Equal to a specified percentage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The Evaluation score report tab is reached by selecting an app on Teams apps > Manage apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+      "quote": "In the Teams admin center, go to Teams apps > Manage apps. Select an app or agent. ... Select the Evaluation score report tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The report identifies each configured requirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+      "quote": "Name: The configured requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The report shows the configured value of each requirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+      "quote": "Requirement value: The configured value of the requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Report statuses distinguish Met, Not met and No data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+      "quote": "Status: Whether the requirement is Met, Not met, or No data, based on the underlying metadata.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Only third-party apps and agents qualify for evaluation scores.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+      "quote": "Evaluation scores are shown only for apps and agents that meet all of the following conditions: The app or agent is a third-party application",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Scoring requires available app security and compliance data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+      "quote": "Security and compliance data is available for the app",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Why it matters; Risk assessment: Security & identity; Scope",
+      "type": "behaviour",
+      "claim": "Scoring excludes apps already available in the organization for anyone to install or use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+      "quote": "The app isn't already available in the organization for installation or use by anyone",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Scores use currently available metadata and can change when the underlying data changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+      "quote": "Evaluation scores reflect the security, compliance, permissions related metadata currently available and may change in future, if underlying data changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters: second paragraph",
+      "type": "behaviour",
+      "claim": "An unconfigured requirement shows as No data rather than as a fail.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+      "quote": "If a configured security, compliance, permission related parameter isn't available for the selected app or agent, the status is shown as no data.",
+      "severity": "blocker",
+      "fix": "Replace 'an unconfigured requirement shows as No data, not as a fail' with 'a configured requirement whose parameter is unavailable for the selected app or agent shows as No data, not as Not met', as documented at https://learn.microsoft.com/microsoftteams/org-trust-standard."
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "No data requirements are distinguished from requirements that are met.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+      "quote": "Depending on the app or agent, the evaluation score can include: Requirements that are met; Requirements that are not met; Requirements for which no data is available",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Changing evaluation requirements does not change the app's underlying security, compliance or permission data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+      "quote": "Adding, editing, or removing requirements changes how evaluation scores are calculated. It doesn't change the underlying security, compliance, permission related data provided by the app or agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "The feature's Learn page describes metadata evaluation, not reading organizational content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+      "quote": "Evaluation scores reflect the security, compliance, permissions related metadata currently available and may change in future, if underlying data changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions; Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "The score and report inform an administrator's availability decision rather than automatically approving an app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+      "quote": "This detailed view helps admins understand exactly which requirements an app or agent satisfies and where gaps exist before deciding whether to make the app or agent available in the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].ui; rendered controls table",
+      "type": "admin-path",
+      "claim": "Teams admin center > Teams apps > Manage apps > app > Allow or Block reaches the individual app control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "Sign in to the Teams admin center and access Teams apps > Manage apps. Select the app on the Manage apps page and select Allow or Block option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].api; rendered controls table; Governance controls",
+      "type": "command",
+      "claim": "MicrosoftTeams Update-M365TeamsApp -Id <app-id> -IsBlocked <Boolean> changes an app's tenant state.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true ... -Id: Application ID of Microsoft Teams app. ... -IsBlocked: The state of the app in the tenant. ... Type: Boolean",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The documented availability operation governs app state rather than reading or changing evaluation scores.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "This cmdlet allows administrators to modify app state, availability and installation status by adding or removing users and groups or changing assignment type or installation status.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].ui; rendered controls table; What's changing; Governance guidance",
+      "type": "admin-path",
+      "claim": "Teams admin center > Teams apps > Evaluation score settings reaches tenant evaluation criteria.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+      "quote": "Sign in to Microsoft Teams admin center. In the left navigation, go to Teams apps. Select Evaluation score settings. ... From this page, admins can define and manage the organization’s evaluation criteria.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].api; rendered controls table; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft documents no PowerShell, Graph or other API for these evaluation criteria at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: evaluation requirements Teams PowerShell Microsoft Graph organization trust score settings API. Read org-trust-standard, Update-M365TeamsApp and Graph partner-security-partnersecurityscore-list-requirements; the latter concerns partner security, not Teams app criteria.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: defaultState; summary; Why it matters; Open questions; rationale: risk",
+      "type": "default",
+      "claim": "Microsoft has not stated what the evaluation control does on arrival without configuration.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Evaluation score settings\" \"default\" \"role\". Read org-trust-standard, manage-apps, teams-admin March 25 and governmentchannel April 08, plus the roadmap; none states the evaluation control's arrival default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.model, licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "Licensing is unknown because no feature-specific entitlement is published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-access",
+      "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
+      "severity": "minor",
+      "fix": "Set licensing.model to included under the standard's product-level licensing rule. Replace the notes and corresponding licensing sentences with 'Teams generally requires a Teams license for each user, except for anonymous meeting attendance. No licence specific to evaluation scores is published.' Cite https://learn.microsoft.com/microsoftteams/user-access. Keep cost low; a feature-specific price or meter remains unpublished."
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a feature-specific price or meter for evaluation scores.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"evaluation score\" Teams license pricing meter; Microsoft Teams admin center licensing requirements administrator license. Read org-trust-standard, manage-apps and user-access; returned pricing passages concern other services, not evaluation scores.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "The feature's Learn page names no licence requirement, price or meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"evaluation score\" Teams license pricing meter. Read the complete https://learn.microsoft.com/microsoftteams/org-trust-standard; its configuration, eligibility and report sections name no licence, price or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope: Roles; Governance guidance",
+      "type": "role",
+      "claim": "Manage apps names Teams Administrator for Teams admin center use and permits some higher-privilege administrators to perform governance tasks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "To use Teams admin center, you must have a Teams Administrator role. Some admins with a higher privilege role can accomplish agent and app governance tasks but we recommend using the lower privilege role where possible.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[0].note; rendered controls table; Scope: Roles; Open questions",
+      "type": "absence",
+      "claim": "The role needed to configure Evaluation score settings is not stated.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
+      "quote": "Teams Administrator | Manage the Teams service, and manage and create Microsoft 365 Groups. | Everything in the Microsoft Teams admin center and associated PowerShell controls",
+      "severity": "blocker",
+      "fix": "Replace the role-unknown note and Scope sentence with 'The Teams Administrator role can manage everything in the Teams admin center, including these settings.' Cite https://learn.microsoft.com/microsoftteams/using-admin-roles. Narrow the open question to 'Can changing Evaluation score settings be delegated below Teams Administrator?'"
+    },
+    {
+      "n": 42,
+      "where": "Scope: What is scored; Open questions",
+      "type": "default",
+      "claim": "The Manage apps overview states that third-party agents and apps are blocked by default in GCC, GCC High and DoD Teams deployments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "In a Microsoft 365 Government - GCC, GCCH and DoD deployment of Teams, all third-party agents and apps are blocked by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "date",
+      "claim": "Teams admin release notes list Organization Trust Score for apps and agents under March 25, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/officeupdates/teams-admin",
+      "quote": "March 25, 2026 ... Organization Trust Score for apps and agents: Today, IT admins manually review trust data for Teams apps and agents in the Teams admin center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "date",
+      "claim": "Government Channel release notes list Organization Trust score for apps and agents under Teams admin April 08 for GCC customers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/officeupdates/governmentchannel",
+      "quote": "Teams admin: April 08 ... GCC Customers ... Organization Trust score for apps and agents: This feature enables IT admins to manually review trust data for Teams apps and agents in the Teams admin center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "App-centric management separately defines per-user access to apps and agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "Use agent and app assignment through app centric management to define user access for agents and apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The app details page provides publisher support or contact information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "For direct support requests and inquiry about agent or app updates, contact the app developer at their website address available at the following two places: App details page of the app in Manage apps page in Teams admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Editing or removing requirements changes score calculations for the configured criteria.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+      "quote": "Adding, editing, or removing requirements changes how evaluation scores are calculated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "The roadmap contrasts manual trust-data reviews with automated evaluations and describes faster, more consistent decisions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Today, IT admins manually review trust data for Teams apps and agents ... This feature introduces a scalable, automated evaluation process. ... This enables faster, more consistent decision-making",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].note; Governance controls; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "The individual Allow or Block control is presented without qualifications as what determines app availability.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "To allow an agent or app, you must do all of the following settings. ... If your organization isn't migrated to unified app management, allow or block the agent or app in Teams admin center and under the Integrated apps page in Microsoft 365 admin center",
+      "severity": "blocker",
+      "fix": "Add to controls[1].note and qualify the Governance controls availability statement: 'Allowing an app also requires org-wide app settings and app-centric user access to permit it. Until unified app management migration, synchronize allow or block settings in Teams admin center and Microsoft 365 admin center > Integrated apps; after migration, either center can manage them.' Cite https://learn.microsoft.com/microsoftteams/manage-apps. Replace the At rollout allow/block bullet with 'Use Manage apps for allow or block decisions, checking org-wide app settings and app-centric user access as well; until unified app management migration, synchronize the decision with Microsoft 365 admin center > Integrated apps.'"
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T20:52:07.537Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=532720",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/officeupdates/teams-admin",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/officeupdates/governmentchannel",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which requirements the organisation scores apps and agents against",
+        "docs": "https://learn.microsoft.com/microsoftteams/org-trust-standard",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Evaluation score settings"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether an individual app or agent is allowed or blocked for the organisation",
+        "docs": "https://learn.microsoft.com/microsoftteams/manage-apps",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Allow or Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether an individual app or agent is allowed or blocked for the organisation",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "reachable": true,
+        "token": "Update-M365TeamsApp",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

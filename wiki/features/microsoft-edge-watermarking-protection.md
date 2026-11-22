@@ -44,7 +44,7 @@ controls:
     scope: "group"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Settings > Microsoft Edge > configuration policy > Customization Settings > Security Settings > Watermarking"
+      path: "Settings > Microsoft Edge > Configuration policies > configuration policy > Properties > Customization Settings > Security Settings > Watermarking"
       docs: "https://learn.microsoft.com/deployedge/microsoft-edge-enabling-dlp-features"
     api: null
     note: "Requires the Microsoft Edge Administrator role. The preview page says to scope the profile to user identity, not device. Preview feature; labels may change."
@@ -57,19 +57,23 @@ changes:
     note: "First briefing on Edge watermarking: documented as a preview, enforcement-triggered, with an Edge management service toggle and no documented API."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 58 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected the policy-precedence statement (GPO/MDM override by default, reversible), replaced two unsupported risk statements with Learn's wording, and completed the Watermarking admin path."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 54
-  unconfirmed: 2
-  contradicted: 2
-  attempts: 1
-  hash: "75d6e767f706b5cc3195d00db414facc"
+  claims: 67
+  confirmed: 66
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "93d304f5183dae013d8279bc282ec181"
 ---
 
 ## What's changing
@@ -91,8 +95,8 @@ Microsoft has not stated what happens on arrival at general availability, so no 
 ## Risk assessment
 
 **Data exposure**
-- The watermark adds no new data access. It is drawn over content already shown in the browser, so exposure stays where your block actions leave it.
-- A watermark does not stop copying. Where a label applies no restriction, or a DLP policy is Audit only, the page says nothing is rendered, so unrestricted content looks unprotected to users.
+- The browser renders a semi-transparent overlay across the content area. Exposure stays where your block actions leave it.
+- Microsoft describes watermarking as a deterrent to unauthorised sharing. Where a label applies no restriction, or a DLP policy is Audit only, the page says nothing is rendered, so unrestricted content looks unprotected to users.
 - Sidebar and Shoreline surfaces are listed as not supported, so content shown there carries no watermark until Microsoft adds them.
 
 **Security & identity**
@@ -145,13 +149,13 @@ The DLP features page describes a second route: a configuration policy of type C
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Watermarking is turned on for a group of users</strong><br><small>Group</small><br><small class="controls__note">Requires the Microsoft Edge Administrator role. The preview page says to scope the profile to user identity, not device. Preview feature; labels may change.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Microsoft Edge › configuration policy › Customization Settings › Security Settings › Watermarking <a href="https://learn.microsoft.com/deployedge/microsoft-edge-enabling-dlp-features" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether Watermarking is turned on for a group of users</strong><br><small>Group</small><br><small class="controls__note">Requires the Microsoft Edge Administrator role. The preview page says to scope the profile to user identity, not device. Preview feature; labels may change.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Microsoft Edge › Configuration policies › configuration policy › Properties › Customization Settings › Security Settings › Watermarking <a href="https://learn.microsoft.com/deployedge/microsoft-edge-enabling-dlp-features" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 One setting turns the watermark on: the Watermarking toggle in the Edge management service. What triggers it is a restriction action set in the DLP provider (a Purview label, session or eDLP policy, or Intune), so those policies decide which content is watermarked, not the Edge toggle.
 
-The Edge management service page says policies applied through it are overridden if they conflict with a Group Policy Object or an MDM policy set on the device. The preview page asks for a profile scoped to user identity, and the Edge administrator role is needed to reach the service. Learn documents no Microsoft Graph or Edge policy for the toggle at the time of writing (November 2026).
+By default, conflicting device GPO or MDM policies override Edge management service policies; EdgeManagementPolicyOverridesPlatformPolicy can reverse that precedence ([Edge management service](https://learn.microsoft.com/deployedge/microsoft-edge-management-service)). The preview page asks for a profile scoped to user identity, and the Edge administrator role is needed to reach the service. Learn documents no Microsoft Graph or Edge policy for the toggle at the time of writing (November 2026).
 
 ## Open questions
 
@@ -162,18 +166,13 @@ The Edge management service page says policies applied through it are overridden
 - Will the toggle get a Graph or Edge policy for scripted deployment?
 
 <!-- rationale
-risk: Low. The watermark is a visible deterrent that adds no new data access, and the Learn page says it appears only where a policy applies a restriction action, so it does not replace blocking or auditing. The default at general availability is not stated.
+risk: Low. The watermark is a visible deterrent, and the Learn page says it appears only where a policy applies a restriction action, so it does not replace blocking or auditing. The default at general availability is not stated.
 cost: Low. The Learn preview page lists Microsoft 365 E5 (preferred) or E3 licensing and Edge 142 or later as requirements and names no separate price or meter, so the known cost is admin time and user communication.
 impact: Low. Only users in the groups an admin assigns the setting to will see the watermark, on content that a policy restricts; the default at general availability is not stated.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: policy precedence / behaviour: Edge management service policies are overridden whenever they conflict with a GPO or MDM policy on the device. | Found: If you want the Microsoft Edge management service policy to override MDM/GPM policy you can set the override in the EdgeManagementPolicyOverridesPlatformPolicy policy. This is a private policy and must be set via the registry. | Fix: Replace the sentence with: 'By default, conflicting device GPO or MDM policies override Edge management service policies; EdgeManagementPolicyOverridesPlatformPolicy can reverse that precedence.' Cite https://learn.microsoft.com/deployedge/microsoft-edge-management-service. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-management-service
-- [unsupported, major] Risk assessment: Data exposure; rationale: risk / behaviour: The watermark adds no new data access. | Found: Searched: Microsoft Edge watermarking protection data access copying autonomous actions watermark display. Opened learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection and the DLP configuration page. They describe a browser overlay, not an assurance of no new data access. | Fix: Replace 'The watermark adds no new data access' with 'The browser renders a semi-transparent overlay across the content area' in Risk assessment and remove 'that adds no new data access' from the risk rationale. Cite https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection.
-- [unsupported, major] Risk assessment: Data exposure / behaviour: A watermark does not stop copying. | Found: Searched: Microsoft Edge watermarking protection data access copying autonomous actions watermark display. Read the feature and DLP configuration pages; they describe deterrence and separate restriction actions, but do not state that watermarking does not stop copying. | Fix: Replace 'A watermark does not stop copying' with 'Microsoft describes watermarking as a deterrent to unauthorised sharing'. Cite https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls: table / admin-path: The Watermarking path is Microsoft 365 admin center > Settings > Microsoft Edge > configuration policy > Customization Settings > Security Settings > Watermarking. | Found: In the Edge Management Service (admin.microsoft.com → Settings → Microsoft Edge) In your Configuration policy, navigate to Customization Settings → Security Settings. Enable Watermarking for users who are receiving MAM policies. | Fix: Use 'Settings > Microsoft Edge > Configuration policies > configuration policy > Properties > Customization Settings > Security Settings > Watermarking'. The omitted tab lists the policies and Properties is the details page; the starting route is documented by the already cited https://learn.microsoft.com/deployedge/microsoft-edge-management-service. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-enabling-dlp-features
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls: table / consistency: The checklist tells readers to inventory DLP and Intune app protection policies and check Targeted Release, but those controls have no table rows. | Found: Inventory which Purview label, session and eDLP policies and which Intune app protection policies carry a block action. Check ... that Targeted Release is enabled for the tenant. Table: Whether Watermarking is turned on for a group of users. | Fix: Flag the Before rollout instructions to inventory Purview/Intune protection policies and check Targeted Release as checklist steps with no corresponding controls-table rows; do not add unverified paths or commands.
+- [contradicted, minor] Governance guidance: Before rollout, After rollout; controls / consistency: Every control the governance checklist asks readers to check or inventory has a controls-table row. | Found: Checklist: "Inventory which Purview label, session and eDLP policies and which Intune app protection policies carry a block action"; "Targeted Release is enabled"; "Open edge://policy". The table contains only the Watermarking toggle. | Fix: Remove the first Before rollout bullet about inventorying Purview and Intune policies. In the second Before rollout bullet, remove ', and that Targeted Release is enabled for the tenant'. Remove the first After rollout bullet about edge://policy. These checklist controls have no table rows; do not add rows in this correction.
 -->

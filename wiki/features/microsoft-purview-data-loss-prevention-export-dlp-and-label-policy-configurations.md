@@ -14,7 +14,7 @@ previewDate: null
 risk: "low"
 cost: "low"
 impact: "low"
-defaultState: "on"
+defaultState: "user-opt-in"
 action: "review"
 licensing:
   model: "included"
@@ -81,19 +81,23 @@ changes:
     note: "Corrected after verification: removed an unsupported claim about how support cases start, set both API sides to Not yet documented, extended the admin paths, and set the licensing model to included."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-22"
+    note: "Corrected after verification: default state changed to user-opt-in, and a note added that the service description's labeling licence text conflicts with its manual-labeling table."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 71 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 60
+  claims: 71
+  confirmed: 71
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "5b5cfa24d92b1ea6bfd3a5af9ded60c2"
+  contradicted: 0
+  attempts: 0
+  hash: "6890e9fb790ee78a9be957ea74d2d03d"
 ---
 
 ## What's changing
@@ -132,7 +136,7 @@ The cost of getting it wrong is handling, not behaviour. The ZIP is a full copy 
 
 The export page lists no licence, meter or prerequisite, and Microsoft Learn documents no charge for the export. A licence specific to this feature is not yet published. The DLP policy article refers readers to Microsoft 365 licensing guidance for DLP licensing, so confirm your entitlement for DLP and sensitivity labels there.
 
-This is an option inside licensed Purview solutions. The Microsoft Purview service description lists Microsoft 365 E3/G3 and E5/G5 among licences supporting DLP for Exchange, SharePoint and OneDrive and manual sensitivity labeling; no export-specific licence is published.
+This is an option inside licensed Purview solutions. The Microsoft Purview service description lists Microsoft 365 E3/G3 and E5/G5 among licences supporting DLP for Exchange, SharePoint and OneDrive and manual sensitivity labeling; no export-specific licence is published. The same service-description section also says sensitivity labeling, including automatic or policy-based labeling, requires Microsoft 365 E5 or Microsoft 365 Information Protection and Governance (IPG), which conflicts with its manual-labeling table; confirm entitlement before relying on that table.
 
 The indirect cost is admin time to export, store and review the files. The ZIP can be analysed locally with the standard `Import-Clixml` PowerShell cmdlet, which Learn says reads the file locally and does not connect to any service.
 
@@ -188,12 +192,4 @@ The Export-PurviewConfig cmdlet is a separate documented cmdlet for diagnostic d
 risk: Low. The export is a read-only snapshot that cannot be imported back, so it changes nothing in the tenant. The one exposure is the file itself, which holds the full policy configuration.
 cost: Low. The only cost the sources show is admin time to export and store the files. A licence specific to the export is not yet published.
 impact: Low. The export option is on the DLP and label publishing policies pages and produces a read-only reference snapshot.
--->
-
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: defaultState / consistency: The default state is on. | Found: defaultState: "on" Nothing changes until an admin exports; no action is required. The standard defines user-opt-in as available but each user chooses to use it; Learn says: Select Export to zip. | Fix: Set defaultState to "user-opt-in": this is an available export capability that its user explicitly selects, not automatic export or enforcement. The export instructions are at https://learn.microsoft.com/purview/purview-policy-export; searches for an export enable/disable switch found none.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: The service description lists Microsoft 365 E3/G3 and E5/G5 with manual sensitivity labeling included. | Found: Microsoft 365 E5/A5/G5/E3/A3/G3/F1/F3/Business Premium Manual Sensitivity Labeling | Included Sensitivity labeling, including automatic or policy-based labeling, requires a Microsoft 365 E5 license or Microsoft 365 Information Protection and Governance (IPG). | Fix: Add after the manual-labeling licence sentence: "The same service-description section also says sensitivity labeling, including automatic or policy-based labeling, requires Microsoft 365 E5 or Microsoft 365 Information Protection and Governance (IPG), which conflicts with its manual-labeling table; confirm entitlement before relying on that table." Keep the existing service-description citation. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
 -->

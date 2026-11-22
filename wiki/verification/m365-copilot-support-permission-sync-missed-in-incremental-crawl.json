@@ -1,0 +1,780 @@
+{
+  "slug": "m365-copilot-support-permission-sync-missed-in-incremental-crawl",
+  "roadmapId": 503570,
+  "title": "Microsoft 365 Copilot connectors: permission sync in incremental crawls",
+  "status": "verified-with-gaps",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [
+    "claim 58: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": null,
+  "counts": {
+    "claims": 59,
+    "confirmed": 58,
+    "unconfirmed": 1,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 8
+  },
+  "summary": "The briefing passes: its roadmap facts, licensing and connector-specific permission-sync descriptions are supported. It should avoid implying a guaranteed permission-update interval, acknowledge conflicting Confluence On-premises documentation, and remove the unsupported assertion that users see no new surface.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The general availability target is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The preview target is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap was modified at 2026-10-20T23:00:34.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-20T23:00:34\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; summary",
+      "type": "record",
+      "claim": "The roadmap says permissions previously synced only in the periodic full crawl.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Earlier, permissions were synced only in the periodic full crawl",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Why it matters; summary",
+      "type": "record",
+      "claim": "The roadmap describes the default full-crawl frequency as generally one day for most connectors.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "periodic full crawl which generally ha a default frequency of 1 day for most of the connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap says more frequent incremental permission sync is now supported.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Now, we have support for doing permission syncs more frequently in an incremental way.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "ServiceNow Knowledge has a new incremental identity sync crawl that checks identity changes and updates permissions between full crawls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment",
+      "quote": "A new type of incremental crawl that checks for identity changes, such as new or removed users, role assignments, group memberships, and user criteria attributes, and updates permissions between full crawls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Security & identity; Scope; Open questions",
+      "type": "applicability",
+      "claim": "ServiceNow incremental identity sync requires an Advanced flow connection with the user_changes resource set up.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment",
+      "quote": "It's available for Advanced flow connections that set up the `user_changes` resource",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "default",
+      "claim": "The ServiceNow incremental identity sync crawl defaults to every 30 minutes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment",
+      "quote": "The default frequency is every 30 minutes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Administrators cannot change the ServiceNow incremental identity sync frequency in the admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment",
+      "quote": "Unlike the full crawl and incremental crawl, you can't change this frequency in the admin center. To change it, contact MicrosoftGraphConnectorsFeedback@service.microsoft.com.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Connector agent version 4.0.7.0 added incremental identity crawling for Confluence On-Premises.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/connector-agent-releases",
+      "quote": "Added incremental identity crawling for the Confluence On-Premises connector, enabling more efficient processing of user and group changes between full crawls.",
+      "severity": "minor",
+      "fix": "After the release-history statement, add: 'The Confluence On-premises deployment page still says permission updates sync only during full crawls.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-onpremises-deployment, which states 'Updates to permissions sync only during full crawls.'"
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "Connector agent version 4.0.7.0 is dated 17 November 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/connector-agent-releases",
+      "quote": "Version 4.0.7.0 (*November 17, 2026*)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Neither the ServiceNow deployment page nor the connector agent release history identifies its capability as roadmap item 503570.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '503570 permission'; checked ServiceNow Knowledge deployment for 503570 and read connector-agent-releases. Neither page identifies roadmap item 503570.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope",
+      "type": "absence",
+      "claim": "A consolidated list of connectors supporting the new incremental permission-sync behavior is not stated in one place.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot connectors incremental permission sync 503570 enabled default tenant supported connectors frequency load'; read deployment-overview, ServiceNow Knowledge deployment and connector-agent-releases. No consolidated support list found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; controls[0].note; Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "The general deployment overview says incremental crawls do not currently process permission updates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
+      "quote": "Incremental crawls don't currently process updates to **permissions**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "summary; What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends periodic full crawls even when incremental crawls are used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
+      "quote": "Even when you use incremental refreshes, run full refreshes periodically to ensure data consistency between the source system and the search index.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Confluence Cloud deployment page says incremental crawls do not pick up ACL changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-deployment",
+      "quote": "Incremental crawls don't pick up ACL changes or deleted items.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Copilot grounds answers on indexed connector content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview",
+      "quote": "The conversational Copilot Chat experience in Microsoft Copilot, Teams, Outlook, and other Microsoft 365 apps use connector content to respond to user queries.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365/copilot/connectors/overview to sources for the grounding and indexed-item ACL statements in Why it matters."
+    },
+    {
+      "n": 24,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Each indexed connector item carries access rules from the source system.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview",
+      "quote": "Each item includes content, metadata (like title and URL), and an access control list (ACL) that enforces permissions.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/overview for this sentence; its permission-based filtering passage also says Search and Copilot only show items to users who have access in the source system."
+    },
+    {
+      "n": 25,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Where incremental crawls skip permission updates, revoked source access can remain reflected incorrectly in the index until the next full crawl.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/veeva-onpremise-overview",
+      "quote": "Changes to permissions in Vault might not instantly reflect in the index; if a permission is revoked, there can be a delay until the next full crawl.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "For connectors with incremental permission handling, the stale-permission window shrinks to the incremental interval.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment",
+      "quote": "checks for identity changes, such as new or removed users, role assignments, group memberships, and user criteria attributes, and updates permissions between full crawls.",
+      "severity": "minor",
+      "fix": "Replace 'Where a connector now does that in incremental crawls, the window shrinks from the full-crawl interval (generally a day, per the roadmap item) to the incremental interval.' with 'Where a connector supports the relevant permission change in incremental crawls, that change can be processed between full crawls.' The cited deployment overview says system load can delay crawl start times by up to an hour; the configured interval is not a guaranteed completion time."
+    },
+    {
+      "n": 27,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "The default arrival behavior for the roadmap-wide change is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft 365 Copilot connectors permission sync incremental crawl mandatory admin action rollout default enabled'; read roadmap, deployment-overview, ServiceNow Knowledge deployment and connector-agent-releases. No roadmap-wide arrival default found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "summary",
+      "type": "absence",
+      "claim": "No mandatory administrator action is published for this roadmap item in the supplied evidence.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft 365 Copilot connectors permission sync incremental crawl mandatory admin action rollout default enabled'; read roadmap, deployment-overview and connector-specific sources. No mandatory action or deadline found; no Message Center post supplied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The deployment overview lists updating ACLs as a reason to run a full refresh.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
+      "quote": "Use a full refresh in scenarios such as: ... Updating ACLs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Veeva On-Premises may need a full crawl because Document Roles and some permission changes are not fully captured in every incremental crawl.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/veeva-onpremise-overview",
+      "quote": "Document Roles and some permission changes might not be fully captured during every incremental crawl. A full crawl might be required before access changes are completely reflected in Microsoft Graph.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Running the ServiceNow setup script requires an elevated security_admin role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-setup-scripts",
+      "quote": "ServiceNow admin account with the `security_admin` role elevated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "incremental_identity_sync_setup.js adds the user_changes resource for ServiceNow Advanced flow incremental identity sync.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-setup-scripts",
+      "quote": "Adds the `user_changes` resource for incremental identity sync, grants read access to the audit tables, and enables table auditing. For Advanced flow only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The incremental identity setup script creates READ ACLs on sys_audit and sys_audit_delete.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-setup-scripts",
+      "quote": "Creates row-level READ ACLs for `sys_audit` and `sys_audit_delete`, linked to the crawling role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The script enables table-level auditing on sys_user, sys_user_has_role, sys_user_grmember and user_criteria.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-setup-scripts",
+      "quote": "Enables **table-level** auditing on `sys_user`, `sys_user_has_role`, `sys_user_grmember`, and `user_criteria`, and sets the field-level audit flags on the monitored fields.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes refreshing permissions more frequently, not adding Copilot actions or new content sources.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Earlier, permissions were synced only in the periodic full crawl which generally ha a default frequency of 1 day for most of the connectors. Now, we have support for doing permission syncs more frequently in an incremental way.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.model; cost; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The change is included within the existing connector and Microsoft 365 Copilot licensing described by the prerequisites page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Indexing synced connector data incurs no extra cost for tenants with Microsoft 365 licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "cost",
+      "claim": "Connector grounding in Copilot is included without extra charges for organizations with Microsoft 365 Copilot licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 with a Microsoft 365 Copilot add-on supports synced connector Copilot grounding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "| Microsoft 365 + Microsoft 365 Copilot add-on | ✅ | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 E7 supports synced connector Copilot grounding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "| Microsoft 365 E7 | ✅ | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 alone supports synced connectors in Microsoft Search, but not Copilot grounding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "| Microsoft 365 (any plan) | ✅ | ❌ | ❌ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No license specific to this incremental permission-sync feature is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft 365 Copilot connectors prerequisites licensing incremental identity synchronization charge'; read prerequisites licensing table, ServiceNow Knowledge deployment and connector-agent-releases. Product licensing is stated; no feature-specific license found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate meter or charge specific to incremental permission sync is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot connectors incremental identity permission sync licensing price meter' and 'Microsoft 365 Copilot connectors prerequisites licensing incremental identity synchronization charge'; read prerequisites and feature sources. No separate permission-sync meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether this feature's more frequent permission sync adds source-system load.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'incremental identity load connectors' and 'ServiceNow Confluence incremental identity crawl source system load performance permission sync'; read ServiceNow Knowledge deployment, setup-scripts and connector-agent-releases. No feature-specific source-load statement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Synced connectors index external content on a recurring schedule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "**Synced connectors** index content from an external data source into the Microsoft 365 substrate on a recurring schedule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Federated connectors query data at runtime without indexing, so indexed-content crawl schedules do not apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "**Federated connectors** query the external data source at runtime without indexing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope; controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Configuring and managing connectors in the Microsoft 365 admin center requires the AI administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "To configure and deploy Copilot connectors, you must be an AI administrator in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Prebuilt synced connectors also require administrator access to the external service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "In addition, for prebuilt synced connectors (such as Google Drive, Confluence, ServiceNow), you must have admin access to the external service (Google Workspace Super Admin, Confluence Admin).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Copilot > Connectors > Gallery > data source > Custom setup > Sync reaches full and incremental crawl scheduling.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
+      "quote": "On the **Connectors** tab, in the left pane, choose **Gallery**, and select the data source you want to connect ... select **Custom setup** ... On the **Sync** tab, you can configure how often data syncs between the source and the connector index.",
+      "severity": "minor",
+      "fix": "Expand the path to 'Copilot > Connectors > Connectors tab > Gallery > data source > Custom setup > Sync'. The omitted Connectors tab is the tab listing the connector gallery; the printed steps are otherwise in the documented order."
+    },
+    {
+      "n": 50,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No API equivalent for setting the prebuilt connection's full and incremental crawl schedule is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Graph Copilot connector crawl schedule sync configuration API beta externalConnection update'; opened externalConnection update in v1.0 and beta, deployment-overview and manage-connector. No schedule-setting operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Copilot > Connectors > Gallery > data source > Custom setup > Users > Access Permissions reaches the connection-creation visibility setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
+      "quote": "On the **Connectors** tab ... choose **Gallery**, and select the data source ... select **Custom setup** ... On the **Users** tab, under **Access Permissions**, choose whether indexed data is visible to: Only users with access to the content; Everyone in the organization",
+      "severity": "minor",
+      "fix": "Expand the path to 'Copilot > Connectors > Connectors tab > Gallery > data source > Custom setup > Users > Access Permissions'. This is the creation path documented by the cited page, not an edit-in-place path for a published connection."
+    },
+    {
+      "n": 52,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "No API equivalent for the connection-level Everyone versus source-access setting is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot connectors access permissions Everyone Only people admin center API setting externalConnection acl'; opened manage-access-permissions and externalConnection update v1.0/beta. External-item ACL APIs do not set this connection-level visibility choice.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].governs and note; Governance guidance: Before rollout; Governance controls",
+      "type": "applicability",
+      "claim": "Source permission sync governs visibility when the connection respects source access, whereas Everyone exposes indexed data to all organization users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-deployment",
+      "quote": "If you choose **Everyone**, indexed data appears in the search results for all users. If you choose **Only people with access to this data source**, search results respect the same permission setup as the data source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "The Map Identities section on the Users tab configures how source users are matched to Microsoft Entra ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
+      "quote": "By default, the system maps users by matching their email to `UserPrincipalName` or `Mail` in Microsoft Entra ID. In the **Map Identities** section, you can provide a custom mapping formula.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Existing synced connections and their configured access permissions can be reviewed under Copilot > Connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
+      "quote": "go to **Copilot** > **Connectors** > **Your Connections**. ... Select the connector you want to review to open the details pane. ... Under **Permissions**, you can view the permissions set for the connector.",
+      "severity": "minor",
+      "fix": "Replace the first Before rollout bullet with 'List each synced connection under Copilot > Connectors > Your Connections, select the connection, and review Permissions to see whether it respects source access or is visible to everyone.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions."
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "behaviour",
+      "claim": "The connection pane offers on-demand full or incremental crawls outside the schedule, with a full crawl providing the documented permission-refresh route.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "On-demand crawl helps you start a crawl outside of the crawl schedule. You can choose to run a full or incremental crawl, as shown in the image.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Graph externalConnection update reference does not list crawl scheduling or source-access visibility among its updatable properties.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-update",
+      "quote": "The following properties can be updated. ... configuration ... Specifies additional application IDs that are allowed to manage the connection and to index content in the connection. ... description ... name",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "Users see no new surface as a result of this feature.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Microsoft 365 Copilot permission sync incremental crawl new user interface experience 503570'; read roadmap, deployment-overview, ServiceNow Knowledge deployment, connector-agent-releases and overview. No passage states that this change introduces no user surface.",
+      "severity": "minor",
+      "fix": "Replace 'users see no new surface, only access changes that may reach the index sooner on supported connectors' with 'access changes may reach the index sooner on supported connectors'."
+    },
+    {
+      "n": 59,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not describe the roadmap change as one tenant-wide feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot connectors incremental permission sync 503570 enabled default tenant supported connectors frequency load' and '503570 permission'; read deployment-overview, ServiceNow Knowledge deployment and connector-agent-releases. No tenant-wide feature description found.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T20:52:05.232Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-setup-scripts",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/connector-agent-releases",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-deployment",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/veeva-onpremise-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-update",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=503570",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "How often a connection runs full and incremental crawls, which sets how soon permission changes can reach the index",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Connectors",
+          "Gallery",
+          "data source",
+          "Custom setup",
+          "Sync"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether a connection's indexed content is visible to everyone or only to people with access to the content",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Connectors",
+          "Gallery",
+          "data source",
+          "Custom setup",
+          "Users",
+          "Access Permissions"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

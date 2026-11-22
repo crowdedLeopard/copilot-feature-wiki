@@ -15,7 +15,7 @@ risk: "low"
 cost: "low"
 impact: "low"
 defaultState: "unknown"
-action: "review"
+action: "prepare"
 licensing:
   model: "included"
   notes: "Learn's Teams Rooms licences page says Direct Guest Join (DGJ) is designed to let shared meeting devices join Teams meetings without a separate Teams meeting licence for the joining device, when implemented through Microsoft-supported interoperability experiences. No separate price or meter is published for the 4×4 grid or simulcast."
@@ -45,6 +45,9 @@ sources:
     kind: "learn"
   - title: "Set-CalendarProcessing"
     url: "https://learn.microsoft.com/powershell/module/exchange/set-calendarprocessing"
+    kind: "learn"
+  - title: "Release notes for Microsoft Teams Rooms"
+    url: "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note"
     kind: "learn"
 videos: []
 related: ["microsoft-teams-call-quality-feedback-surveys-for-teams-rooms-on-android","microsoft-teams-admin-center-intelligent-insights-for-meeting-quality"]
@@ -86,26 +89,30 @@ changes:
     note: "Corrected after the independent check: meeting direction now follows the roadmap, SIP fallback and mailbox qualification added, control notes corrected."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 76 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-22"
+    note: "Corrected after the independent check: Google Meet DGJ on Teams Rooms for Android now reflects Learn's September 2026 release notes; action set to prepare; one firewall checklist bullet and a WebRTC aside removed."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 81 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 76
-  confirmed: 73
+  claims: 81
+  confirmed: 81
   unconfirmed: 0
-  contradicted: 3
-  attempts: 2
-  hash: "8850712224dd02378988237ab37273e7"
+  contradicted: 0
+  attempts: 0
+  hash: "ca65a596da1fe877bfa80c26ff314b88"
 ---
 
 ## What's changing
 
 The roadmap item says Direct Guest Join (DGJ) gets media quality improvements: support for up to 16 participant videos in a 4×4 grid, available in May, and simulcast streaming in June. It describes them as making cross-platform meetings more immersive and reliable when joining Teams meetings from Zoom, Google Meet or Cisco devices.
 
-The roadmap direction is a Zoom, Google Meet or Cisco device joining a Teams meeting. Microsoft Learn's third-party meetings page covers the opposite direction, a Teams Rooms device joining a third-party meeting over WebRTC, a browser-style real-time media technology, and describes it alongside the SIP-based alternative, cross-platform meetings via SIP join. That material is background on DGJ, not a description of these improvements. The roadmap item also states that DGJ is not yet available for Google Meet on Teams Rooms for Android.
+The roadmap direction is a Zoom, Google Meet or Cisco device joining a Teams meeting. Microsoft Learn's third-party meetings page covers the opposite direction, a Teams Rooms device joining a third-party meeting over WebRTC, and describes it alongside the SIP-based alternative, cross-platform meetings via SIP join. That material is background on DGJ, not a description of these improvements. The roadmap item still says DGJ is not yet available for Google Meet on Teams Rooms for Android, but Learn's September 2026 Android release notes announce two-way Google Meet DGJ in version 1449/1.0.96.2026261804 ([Teams Rooms release notes](https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution)).
 
 The roadmap record shows status Launched, release phase General Availability, target May CY2026, cloud Worldwide (Standard Multi-Tenant) and platform Teams and Surface Devices. Microsoft Learn does not describe the 4×4 grid or simulcast at the time of writing (November 2026): its third-party meetings page, which is about Teams Rooms joining third-party meetings, lists DGJ receive video as up to 720p / 30 fps. What this page says about the grid and simulcast is therefore the roadmap's description.
 
@@ -144,7 +151,7 @@ The Teams Rooms configuration Learn documents for DGJ is background, because it 
 
 **Who and what.** The roadmap describes people using DGJ to join Teams meetings from Zoom, Google Meet or Cisco devices, and lists Teams and Surface Devices as the platform. Background, for Teams Rooms joining third-party meetings: Learn describes Teams Rooms on Windows and on Android, and states that Teams Rooms on Surface Hub supports DGJ.
 
-**Providers.** The roadmap names Zoom, Google Meet and Cisco devices, and notes that DGJ for Google Meet is not yet available on Teams Rooms for Android. Background: Learn's join-button row for DGJ, for Teams Rooms joining third-party meetings, lists Cisco Webex, Zoom and Google Meet.
+**Providers.** The roadmap names Zoom, Google Meet and Cisco devices, and still says DGJ for Google Meet is not yet available on Teams Rooms for Android; Learn's September 2026 Android release notes announce two-way Google Meet DGJ in version 1449/1.0.96.2026261804 ([Teams Rooms release notes](https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution)). Background: Learn's join-button row for DGJ, for Teams Rooms joining third-party meetings, lists Cisco Webex, Zoom and Google Meet.
 
 **Cloud and rollout.** The roadmap lists Worldwide (Standard Multi-Tenant) only. The roadmap gives May CY2026 for the 4×4 grid and June for simulcast; status is Launched.
 
@@ -156,11 +163,10 @@ The Teams Rooms configuration Learn documents for DGJ is background, because it 
 - Ask the network team whether the 4×4 grid or simulcast changes the bandwidth DGJ meetings need, because Microsoft has not stated it.
 - Check in the Teams Rooms Pro Management portal which rooms have Zoom, Google Meet or Cisco Webex switched on under Meetings; this is background for rooms joining third-party meetings, not a prerequisite for the roadmap improvements.
 - Check each room mailbox that will join third-party meetings against the `Set-CalendarProcessing` step on the third-party meetings page, which sets `ProcessExternalMeetingMessages` and `DeleteComments`; the `-DeleteComments` setting applies only to resource mailboxes with AutomateProcessing set to AutoAccept.
-- Ask the network team to confirm that firewalls and web filters allow the rooms to reach each provider's website without authentication, with the right QoS class if you use one.
 
 ### At rollout
 - Test a Teams meeting that a guest joins from a Zoom, Google Meet or Cisco device and note the video layout.
-- Tell room users that Google Meet through DGJ is not yet available on Teams Rooms for Android, per the roadmap.
+- Report to room users that the roadmap still says Google Meet DGJ is not yet available on Teams Rooms for Android, while Learn's September 2026 Android release notes announce two-way Google Meet DGJ in version 1449/1.0.96.2026261804, rather than telling them it is unavailable.
 
 ### After rollout
 - Collect help-desk reports of missing Join buttons or unparsed forwarded invites and apply the fixes on Learn's DGJ troubleshooting page.
@@ -192,20 +198,9 @@ There is no documented tenant-wide switch for the 4×4 grid or simulcast. The fi
 - Do the improvements need a client version, a device setting or a licence beyond DGJ itself? Microsoft has not stated the default.
 - Do the 4×4 grid and simulcast change the network bandwidth DGJ needs? Watch the third-party meetings page, Step 3B.
 - Which Zoom, Google Meet and Cisco devices get the grid and simulcast? Watch the roadmap item and Learn.
-- When will DGJ for Google Meet reach Teams Rooms on Android? Watch the roadmap item.
 
 <!-- rationale
 risk: Low. The roadmap describes video grid and streaming improvements to an existing join method and states no new data access, autonomous action or admin setting.
 cost: Low. No separate price or meter is published for the grid or simulcast, and the roadmap states no new licence; the cost is admin and network-team time.
 impact: Low. The roadmap describes the improvements as changes to video layout and streaming for people using Direct Guest Join to join Teams meetings from Zoom, Google Meet or Cisco devices; no admin setting is stated.
--->
-
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance guidance: At rollout; What's changing; Scope; Open questions / availability: Administrators should tell users Google Meet through DGJ is not yet available on Teams Rooms for Android, per the roadmap. | Found: 1449/1.0.96.2026261804 (September 2026) Introduced in this update: 1. Google Meet for Direct Guest Join: Organizations now have expanded meeting interoperability with two-way Direct Guest Join (DGJ) between Google Meet and Microsoft Teams meetings. | Fix: Replace the Android availability statements and the rollout instruction with: 'The roadmap still says Google Meet DGJ is not yet available on Teams Rooms for Android, but Learn's September 2026 Android release notes announce two-way Google Meet DGJ in version 1449/1.0.96.2026261804. Report this discrepancy to room users rather than asserting unavailability.' Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution. Remove the open question asking when it will reach Android. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] front matter: action; Why it matters / consistency: Review is the action rating for this launched improvement to existing DGJ meeting media. | Found: action: "review"; 'treat them as arriving with DGJ rather than as something you switch on.' The standard assigns prepare to an arriving redesign or replacement of existing behaviour, including when its default is unknown. | Fix: Set action to 'prepare': this is an improvement arriving in existing DGJ meetings, not a capability that changes nothing until an administrator chooses it.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every control the governance checklist tells readers to check is represented in the controls table. | Found: 'Ask the network team to confirm that firewalls and web filters allow the rooms to reach each provider's website without authentication, with the right QoS class'; table rows cover provider toggles, calendar processing and a tenant-switch gap. | Fix: Remove the Before rollout bullet that asks the network team to confirm firewall, web-filter and QoS controls; those controls have no table row. Retain the existing background explanation of the network prerequisites.
-- [supported, minor] What's changing / behaviour: WebRTC is a browser-style real-time media technology. | Found: The WebRTC API is a web standard that enables real-time communication (RTC) between browsers and mobile applications. | Fix: Remove the explanatory clause 'a browser-style real-time media technology' to avoid adding a source about an unrelated product solely for this definition. | Source: https://learn.microsoft.com/azure/foundry/openai/how-to/realtime-audio-webrtc
 -->

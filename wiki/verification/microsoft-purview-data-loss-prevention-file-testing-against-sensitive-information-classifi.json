@@ -1,0 +1,769 @@
+{
+  "slug": "microsoft-purview-data-loss-prevention-file-testing-against-sensitive-information-classifi",
+  "roadmapId": 566323,
+  "title": "Microsoft Purview DLP: test files against all classifiers (GCC, GCC High, DoD)",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "2 blocking findings (claims 24, 52)",
+      "3 major findings"
+    ]
+  },
+  "counts": {
+    "claims": 57,
+    "confirmed": 52,
+    "unconfirmed": 4,
+    "contradicted": 1,
+    "blocker": 2,
+    "major": 3,
+    "minor": 2
+  },
+  "summary": "The roadmap details and both documented commands check out, but the briefing overstates permissions: Microsoft does not establish that everyone who can open the new test can submit files, and global administrators can view role groups without the separately stated Role Management requirement. Several details of the new testing workflow are also inferred rather than documented.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing; title; summary",
+      "type": "record",
+      "claim": "Microsoft Purview is adding file testing on the main Classification page.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "A new feature will be introduced on the main Classification page, allowing users to test files against all available classifiers to identify the presence of sensitive information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; title; summary",
+      "type": "record",
+      "claim": "The new test can evaluate files against all available classifiers for sensitive information.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "allowing users to test files against all available classifiers to identify the presence of sensitive information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; summary; Governance guidance",
+      "type": "record",
+      "claim": "Users can instead select one classifier for the new test.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users will have the option to select a single classifier or run tests across all classifiers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Why it matters; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes the purpose as finding sensitive content and troubleshooting classification issues more efficiently.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This capability is designed to help users identify sensitive content within files and troubleshoot classification issues more efficiently.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "This roadmap item lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is August CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "This roadmap record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "This item lists General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-10-05T23:03:05.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-05T23:03:05\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Roadmap item 557554 describes the same file-testing capability separately.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 557554; \"description\": \"A new feature will be introduced on the main Classification page, allowing users to test files against all available classifiers to identify the presence of sensitive information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Roadmap item 557554 lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 557554; \"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 557554 is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 557554; \"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 557554 has a target of March CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 557554; \"targetDate\": \"March CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 557554 has a preview date of February CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 557554; \"previewDate\": \"February CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The supplied roadmap record names no licence.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "A new feature will be introduced on the main Classification page, allowing users to test files against all available classifiers to identify the presence of sensitive information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The supplied roadmap record names no required role.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users will have the option to select a single classifier or run tests across all classifiers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The supplied roadmap record names no prerequisite.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This capability is designed to help users identify sensitive content within files and troubleshoot classification issues more efficiently.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].ui; What's changing; Governance controls",
+      "type": "admin-path",
+      "claim": "The existing per-type test is at Microsoft Purview portal > Information Protection > Classifiers > Sensitive info types > sensitive information type > Test.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
+      "quote": "Sign in to the Microsoft Purview portal > Information Protection > Classifiers > Sensitive info types and choose the sensitive information type from the list to open the details pane. Choose Test.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].api; controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "Test-DataClassification -ClassificationNames <names> -TextToClassify <text> tests text for specified sensitive information types, not an uploaded file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/test-dataclassification",
+      "quote": "The ClassificationNames parameter specifies the sensitive information type that you want to find in the text specified by the TextToClassify parameter. Valid values are: Name; Id (GUID value). You can specify multiple values separated by commas.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[1].ui; Governance guidance",
+      "type": "admin-path",
+      "claim": "Purview role-group membership is managed at Settings > Roles and scopes > Role groups > role group > Edit > Choose users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Go to Settings > Roles and scopes ... Select Role groups. ... select a Microsoft Purview role group ... Select Edit on the control bar. ... On Edit members of the role group, select Choose users or Choose groups.",
+      "severity": "minor",
+      "fix": "Include the documented wizard-page heading in controls[1].ui.path and its rendered table path: 'Settings > Roles and scopes > Role groups > role group > Edit > Edit members of the role group > Choose users'."
+    },
+    {
+      "n": 23,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user>\" adds the user to the specified management role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. ... The Identity parameter specifies the role group to add a member to. ... The Member parameter specifies who you want to add to the role group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[1].note; Governance controls table",
+      "type": "role",
+      "claim": "Viewing role groups needs the Role Management role.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "To view Role groups in the Roles and scopes area in the Microsoft Purview portal, users need to be a global administrator or need to be assigned the Role Management role (assigned only to the Organization Management role group).",
+      "severity": "blocker",
+      "fix": "Replace 'Needs the Role Management role to view role groups' in controls[1].note and the rendered table with 'To view role groups, be a global administrator or have the Role Management role (assigned only to the Organization Management role group)'."
+    },
+    {
+      "n": 25,
+      "where": "front matter: defaultState; Why it matters; Open questions; rationale: risk",
+      "type": "default",
+      "claim": "Microsoft has not stated the default state or what happens on arrival for the new file test.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Purview\" \"Classifiers\" \"test\" \"all\" default permissions tenant enable file testing'; read the roadmap, Classifiers overview, SIT testing and Purview permissions. None states the new test's default or enablement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "No published Microsoft text identifies the licence covering the new all-classifier test specifically, so its licensing model is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Purview file testing against all sensitive information classifiers licensing price meter prerequisites'; read Classifiers overview, SIT Learn pages, Purview service description and billing models. No entitlement for this new test is named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "No meter specific to the new all-classifier test is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Purview file testing against all sensitive information classifiers licensing price meter prerequisites'; read Purview billing models and service description. Their meters do not identify this uploaded-file testing capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "No price or rate specific to the new file test is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Purview file testing against all sensitive information classifiers licensing price meter prerequisites'; read Classifiers overview, Purview billing models and service description. None publishes a rate or price for the new test.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "The existing custom/default SIT Test option requires at least one Exchange Online licence in the tenant, otherwise it is greyed out.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
+      "quote": "To test any custom or default SIT tenant, there must be at least one Exchange Online license added to the tenant. Otherwise, the Test SIT option will be greyed out when any SIT is selected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not say whether the new all-classifier test has the existing Test option's Exchange Online licence condition.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Purview file testing against all sensitive information classifiers licensing price meter prerequisites'; read SIT testing, Learn about SITs, Classifiers overview and Purview service description. No passage extends that condition to this new test.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The Classifiers overview itself names no licence.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Purview licensing classifiers data classification sensitive information types portal requirements'; opened and read the full Microsoft Purview classifiers overview. It names roles and capabilities but no licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; front matter: changes; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe the roadmap's all-classifier file-testing workflow.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Purview\" \"test\" \"all classifiers\" results matches file'; read Classifiers overview, SIT testing and Learn about SITs. Results describe per-type tests, training or on-demand scans, not the roadmap's main-page all-classifier test.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Governance guidance",
+      "type": "admin-path",
+      "claim": "Classifiers can be reached under Information Protection, Data Loss Prevention or DSPM in the Microsoft Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "In the Microsoft Purview portal, you can access Classifiers under Information Protection, Data Loss Prevention, or DSPM (Data Security Posture Management).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn marks the new Classifiers experience as preview, separately from the roadmap item's General Availability phase.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "The new Classifiers experience in Microsoft Purview is in preview and is available alongside the existing classification experiences. ... Features and functionality in the new experience might change before general availability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].note; What's changing; Governance controls table",
+      "type": "behaviour",
+      "claim": "The existing per-type uploaded-file test takes only one file at a time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
+      "quote": "Upload a file and choose Test. (You can only upload and test one file at a time.)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].note; What's changing; Governance controls table",
+      "type": "behaviour",
+      "claim": "The existing per-type testing procedure supports only unencrypted files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
+      "quote": "This procedure is only supported for unencrypted files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "The new test's file types, sizes, encryption support and number of simultaneous files are not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Purview\" \"file testing\" \"classifiers\" GCC GCC High DoD file limits roles administrator action'; read Classifiers overview and SIT testing. Only the existing per-type test has the stated single-file and unencrypted-file restrictions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters; Risk assessment",
+      "type": "behaviour",
+      "claim": "The existing uploaded-file SIT test does not refresh classification for existing SharePoint or OneDrive files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
+      "quote": "It tests the SIT against the file you upload; it doesn't refresh classification for existing SharePoint or OneDrive files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The existing per-type test displays match results for the uploaded file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
+      "quote": "Upload a file and choose Test. ... On the Match results page, review the results and choose Finish.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "role",
+      "claim": "The existing SIT test requires membership in one of the listed Microsoft Purview role groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
+      "quote": "The account you use must be assigned one of these role groups in the Microsoft Purview portal:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "role",
+      "claim": "The existing SIT test also requires one of the listed Exchange roles or role groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
+      "quote": "The account you use to perform tests of SITs must be assigned one of these roles in the Microsoft Purview and one of these roles or role groups in Exchange.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure; Scope; controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "Access to the Classifiers page can be granted through a Microsoft Entra administrator role or a Microsoft Purview role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "Access to the Classifiers page can come from a Microsoft Entra administrator role or a Microsoft Purview role group. ... Adding a user to a role group grants the permissions of the roles in that group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope",
+      "type": "role",
+      "claim": "The Classifiers overview lists Global administrator, Compliance administrator, Security administrator and Compliance data administrator as Entra roles providing access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "The following Microsoft Entra roles provide access: Global administrator; Compliance administrator; Security administrator; Compliance data administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope",
+      "type": "role",
+      "claim": "The applicable Purview roles are Information Protection Admin, Analyst, Investigator and Reader.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "Applicable Microsoft Purview roles: Information Protection Admin; Information Protection Analyst; Information Protection Investigator; Information Protection Reader",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope",
+      "type": "role",
+      "claim": "The Classifiers overview lists corresponding Information Protection role groups for assigning access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-overview",
+      "quote": "Applicable Microsoft Purview role groups ... Information Protection; Information Protection Admins; Information Protection Analysts; Information Protection Investigators; Information Protection Readers",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Security & identity; Scope; controls[1].note; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not identify the roles that can run the new all-classifier test.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Purview\" \"Classifiers\" \"test\" \"all\" default permissions tenant enable file testing'; read Classifiers overview, Purview permissions and SIT testing. The first gives page access and the last gives existing SIT-test permissions, not new-test permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The Classifiers overview and SIT testing instructions do not explicitly establish that their procedures apply unchanged in GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Purview\" \"file testing\" \"classifiers\" GCC GCC High DoD file limits roles administrator action'; read Classifiers overview, SIT testing and government deployment search excerpts. None confirms these testing procedures apply unchanged across those clouds.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance controls; Open questions; controls notes",
+      "type": "absence",
+      "claim": "Microsoft does not document a tenant switch for the new all-classifier test; neither existing control row is documented as that switch.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Purview\" \"Classifiers\" \"test\" \"all\" default permissions tenant enable file testing'; read Classifiers overview, SIT testing, Purview permissions and both cmdlet references. They describe testing and membership, not a new-test enable/disable switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Why it matters; rationale: risk and impact",
+      "type": "absence",
+      "claim": "No source describes the new test as changing existing behaviour or introducing a change to end users.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Purview classifiers uploaded file testing labels blocks moves deletes file policy test results'; read the roadmap, Classifiers overview and SIT testing. None states that the new file test changes existing user behaviour.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "absence",
+      "claim": "No source describes the new test as labeling, blocking, moving or deleting content.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Purview classifiers uploaded file testing labels blocks moves deletes file policy test results'; read the roadmap and SIT testing, and classification/simulation search excerpts. Actions described for scans or policies are not attributed to this new test.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "summary",
+      "type": "absence",
+      "claim": "Microsoft names no required administrator action for the new test's arrival.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Purview\" \"file testing\" \"classifiers\" GCC GCC High DoD file limits roles administrator action'; read the roadmap, Classifiers overview, SIT testing and Purview permissions. No rollout-specific administrator action for the new test is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "Anyone who can open the new test can submit a file to it.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"Purview\" \"Classifiers\" \"test\" \"all\" default permissions tenant enable file testing'; read Classifiers overview, Purview permissions and SIT testing. Page-access roles are documented, but opening the new test is not stated to confer permission to submit.",
+      "severity": "blocker",
+      "fix": "Replace 'Anyone who can open the test can submit a file to it' with 'Confirm who can submit files to the new test before widening access'. Keep the sample/redacted-file advice."
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Testing all classifiers produces more results to read than testing one.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"Purview\" \"test\" \"all classifiers\" results matches file'; read Classifiers overview and SIT testing. The roadmap permits testing all classifiers but does not specify result presentation or guarantee more returned results.",
+      "severity": "major",
+      "fix": "Replace 'Testing against all classifiers produces more results to read than testing one' with 'Check how the new test presents results when all classifiers are selected'. Keep the advice to agree who interprets results."
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Running tests and reading their results entails administrator or analyst time, presented as a cost Microsoft documents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-test-a-sit",
+      "quote": "Upload a file and choose Test. ... On the Match results page, review the results and choose Finish. ... Perform the same steps for the second file.",
+      "severity": "minor",
+      "fix": "Present the time cost as wiki analysis, not Microsoft's published cost: replace 'The cost Microsoft documents is therefore indirect: administrator and analyst time to run tests and read results' with 'Plan for administrator and analyst time to run tests and read results'. In the cost rationale, replace 'the cost Microsoft documents for the existing per-type Test option is an Exchange Online licence in the tenant, plus admin time' with 'Learn requires an Exchange Online licence in the tenant for the existing per-type Test option; plan for admin time to run tests'."
+    },
+    {
+      "n": 55,
+      "where": "summary",
+      "type": "behaviour",
+      "claim": "The new all-classifier test operates on an uploaded file.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"Purview\" \"test\" \"all classifiers\" results matches file'; read Classifiers overview and SIT testing. The roadmap says 'test files' without describing input selection; uploading is documented only for the existing per-type workflow.",
+      "severity": "major",
+      "fix": "Replace 'Purview is adding a file test that checks an uploaded file against one or all classifiers' in the summary with 'Purview is adding a file test against one or all classifiers'."
+    },
+    {
+      "n": 56,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The new test checks why a document was or was not detected without first building or changing a policy.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Purview classifiers uploaded file testing labels blocks moves deletes file policy test results'; read Classifiers overview and SIT testing. The existing SIT procedure is independent of policy creation, but the new test's policy dependencies are not stated.",
+      "severity": "major",
+      "fix": "Replace 'A file test on the Classifiers page gives compliance and security teams a way to check why a document was or was not detected without building or changing a policy first' with 'The roadmap describes the new test as a way to find sensitive content and troubleshoot classification issues'."
+    },
+    {
+      "n": 57,
+      "where": "Why it matters; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The same sensitive information type can produce different detection results in email in transit, files at rest and files on managed devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
+      "quote": "The same sensitive information type can produce different results depending on where content is evaluated—for example, email in transit (Exchange), files at rest (SharePoint and OneDrive), and files on managed devices (Endpoint DLP).",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T20:52:01.024Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=566323",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-classification-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sit-test-a-sit",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/test-dataclassification",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-permissions",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Testing one uploaded file against one sensitive information type (today's per-type test)",
+        "docs": "https://learn.microsoft.com/purview/sit-test-a-sit",
+        "reachable": true,
+        "segments": [
+          "Information Protection",
+          "Classifiers",
+          "Sensitive info types",
+          "sensitive information type",
+          "Test"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Testing one uploaded file against one sensitive information type (today's per-type test)",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/test-dataclassification",
+        "reachable": true,
+        "token": "Test-DataClassification",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Who can reach the Classifiers page (Purview role-group membership)",
+        "docs": "https://learn.microsoft.com/purview/purview-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and scopes",
+          "Role groups",
+          "role group",
+          "Edit",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Who can reach the Classifiers page (Purview role-group membership)",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

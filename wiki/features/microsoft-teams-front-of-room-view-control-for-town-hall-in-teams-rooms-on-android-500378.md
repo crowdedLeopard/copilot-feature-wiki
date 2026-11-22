@@ -43,6 +43,9 @@ sources:
   - title: "Set-CsTeamsEventsPolicy"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy"
     kind: "learn"
+  - title: "Host or attend an event from a Microsoft Teams Room (MTR)"
+    url: "https://support.microsoft.com/office/host-or-attend-an-event-from-a-microsoft-teams-room-mtr-d7ff15e0-6516-4ebc-ae03-a2bdf58a4478"
+    kind: "docs"
 videos: []
 related: ["microsoft-teams-front-of-room-view-control-for-webinars-and-structured-meetings-in-teams-r","microsoft-teams-chat-for-organizers-and-presenters-in-structured-meetings-and-webinars-on","microsoft-teams-ability-to-separate-out-the-townhall-attendee-invites"]
 controls:
@@ -70,19 +73,23 @@ changes:
     note: "Corrected after the independent check: removed the claim that the events policy is the only related admin control, split the Pro licence from indirect costs, added the cmdlet's preview note, set action to prepare and removed two checklist steps with no controls row."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 52 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-22"
+    note: "Corrected after the independent check: the Data exposure bullet now says what presenter view shows on the room display, and the open question about its contents is removed."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 53 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 51
+  claims: 53
+  confirmed: 53
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "4d5224526892b20a7cf980ec76d7433c"
+  contradicted: 0
+  attempts: 0
+  hash: "aa6bebc9ec97ef69b8f898e7a12f9e0d"
 ---
 
 ## What's changing
@@ -104,7 +111,7 @@ Because the default state is on for rooms that meet the licence and invitation c
 ## Risk assessment
 
 **Data exposure**
-- Switching the front-of-room display to presenter view is a presenter's choice from the console, and anyone in the physical room can see the display. Confirm what presenter view shows in your rooms before the first Town Hall, because the sources do not describe its contents.
+- Switching the front-of-room display to presenter view is a presenter's choice from the console, and anyone in the physical room can see the display. Microsoft's support page says presenter view also shows the Manage screen queue and a red square around the live feed that marks what attendees are currently seeing, and advises switching to Attendee view to hide the presenter controls where presenters and attendees are in the same room.
 
 **Security & identity**
 - The roadmap item ties this behaviour to a room being invited as a meeting presenter. Review which rooms organisers add as presenters, since that invitation is what puts a room's display into this behaviour.
@@ -166,7 +173,6 @@ The release notes describe the view switch as a presenter action from the consol
 ## Open questions
 
 - Can administrators choose the default front-of-room view per device or policy? The release notes describe the attendee-view default and the presenter's switch, and name no setting.
-- What does presenter view show on the front-of-room display, and who in the room can see it? Watch the Teams Rooms release notes.
 - What does the release notes' resolved-issues line that Town Hall presenter support and front-of-room view control "are available with direct console connection" mean for rooms connected another way?
 - The roadmap item says the webinar experience was due later in 2026, while the release notes list a webinar and structured meeting version under a June 2026 build. Which is current? See the related webinar briefing.
 
@@ -174,12 +180,4 @@ The release notes describe the view switch as a presenter action from the consol
 risk: Low. It changes which view a room's front-of-room display shows during a Town Hall, and presenters switch views from the console; it is a room-display behaviour, not a new data connection or action.
 cost: Low. The roadmap item says it is available in Teams Rooms Pro, so a room on another licence would need Pro; for rooms already on Pro the cost is admin time to brief presenters.
 impact: Low. Only Teams Rooms on Android devices invited as Town Hall presenters, and the people presenting from them, notice it; the roadmap item says the switch does not impact attendees.
--->
-
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure; Open questions / absence: Microsoft has not described what presenter view shows on the front-of-room display. | Found: It will also show the **Manage screen** queue where presenters are brought on and off screen, as well as a red square around the live feed to indicate what attendees are currently seeing. | Fix: Remove ', because the sources do not describe its contents' from the Data exposure bullet and remove the Open questions bullet beginning 'What does presenter view show'. Microsoft describes the display contents under 'Presenter and attendee views' at https://support.microsoft.com/office/host-or-attend-an-event-from-a-microsoft-teams-room-mtr-d7ff15e0-6516-4ebc-ae03-a2bdf58a4478, linked from the Android release notes. | Source: https://support.microsoft.com/office/host-or-attend-an-event-from-a-microsoft-teams-room-mtr-d7ff15e0-6516-4ebc-ae03-a2bdf58a4478
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure / behaviour: People physically in the room can see the room display, including its presenter controls when presenter view is selected. | Found: If you’re in an MTR where both presenters and attendees are present, switch to **Attendee view** to hide the presenter controls on the front display. | Fix: Add https://support.microsoft.com/office/host-or-attend-an-event-from-a-microsoft-teams-room-mtr-d7ff15e0-6516-4ebc-ae03-a2bdf58a4478 to sources for the physical-room visibility statement. | Source: https://support.microsoft.com/office/host-or-attend-an-event-from-a-microsoft-teams-room-mtr-d7ff15e0-6516-4ebc-ae03-a2bdf58a4478
 -->

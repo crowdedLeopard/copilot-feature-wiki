@@ -1,0 +1,500 @@
+{
+  "slug": "microsoft-teams-prevent-presence-transition-to-do-not-disturb-setting-when-screen-sharing",
+  "roadmapId": 567300,
+  "title": "Microsoft Teams: user setting to stop presence switching to Do not disturb while screen sharing (GCC High, DoD)",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "1 blocking finding (claim 13)"
+    ]
+  },
+  "counts": {
+    "claims": 39,
+    "confirmed": 36,
+    "unconfirmed": 2,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 2,
+    "minor": 1
+  },
+  "summary": "Hold: the blanket statement that Learn does not describe the setting or its client location is too broad; a Microsoft Q&A moderator describes a screen-sharing Do not disturb setting, although not specifically for government clouds. The claims of no new data access or automated actions also lack supporting text, and licensing should acknowledge the published Teams requirement.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft Teams introduces a user setting to opt out of automatically transitioning to Do not disturb while presenting or screen sharing.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We're introducing a setting that allows users to opt-out of transitioning presence automatically to Do Not Disturb when presenting or screen sharing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Why it matters; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap says users opting out can continue receiving calls without manually changing their presence.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This ensures that they can continue to receive calls, keeping them connected and responsive without manual presence adjustments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "title; front matter: clouds; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The item lists GCC High and DoD and no other clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The item lists Desktop and Mac as its platforms.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-10-06T22:56:31.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-06T22:56:31\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: defaultState; What's changing; Why it matters; Open questions; rationale: risk",
+      "type": "default",
+      "claim": "The opt-out's initial state is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams prevent presence transition Do not disturb screen sharing user setting default admin policy GCC High DoD. Read roadmap, presence-admins, Government Channel release notes and Q&A 12583868; none states this control's government-cloud default or changes for inactive users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: licensing.model and licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "Licensing is unknown because no licence specific to this setting is published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-access",
+      "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
+      "severity": "minor",
+      "fix": "Set licensing.model to included. Replace the licensing notes and the sentence suggesting the licence covering this option is wholly unknown with: 'Teams users need a Teams license, except when joining meetings anonymously. Microsoft has not published a licence requirement specific to this setting.' Cite https://learn.microsoft.com/microsoftteams/user-access. Narrow the licensing open question to whether a requirement specific to this setting will be published."
+    },
+    {
+      "n": 12,
+      "where": "controls[0].ui and controls[0].api; summary; Why it matters; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "No tenant admin UI or automation for requiring or blocking this presenting Do not disturb opt-out is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams prevent presence transition Do not disturb screen sharing user setting default admin policy GCC High DoD; Microsoft Teams PowerShell Graph presence presenting screen sharing DoNotDisturb policy admin opt out. Read presence-admins, both cited cmdlet references and Graph presence excerpts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing: Learn does not describe this setting; client location",
+      "type": "absence",
+      "claim": "Microsoft Learn does not describe this setting yet, and its location in the Teams client is not stated.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/answers/a/12583868",
+      "quote": "If your status changes to \"Do Not Disturb\" when sharing your screen, go to Settings > Privacy in Teams.\nUncheck Set my status to Do Not Disturb when I'm sharing my screen.",
+      "severity": "blocker",
+      "fix": "Replace the blanket absence statements with: 'The cited Learn presence page does not describe this setting or its client location in GCC High or DoD.' The Microsoft Q&A moderator's answer describes a user setting but does not identify government clouds, so do not present that answer's path as confirmed for this roadmap item."
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Incoming calls normally go to voicemail when a user is in Do not disturb, subject to the priority-access exception described later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/presence-admins",
+      "quote": "Users receive calls in all presence states except for Do not disturb, in which case incoming calls go to voicemail.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Presenting is an app-configured presence state based on the state of the Teams app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/presence-admins",
+      "quote": "Normally, a user's status is based on user activity (whether they're Available or Away); on the state of the Teams app (for example, whether they're In a call or Presenting)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Presence is visible to other users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/presence-admins",
+      "quote": "Presence indicates the user's current availability and status to other users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Risk assessment: Security & identity",
+      "type": "command",
+      "claim": "Learn documents Set-CsPrivacyConfiguration with EnablePrivacyMode to manage external sharing of presence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/presence-admins",
+      "quote": "When privacy mode is enabled, presence is never shared outside your organization, regardless of your external access settings.\nSet-CsPrivacyConfiguration -Identity global -EnablePrivacyMode $True",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The roadmap describes a presence setting without describing new data being read or shared.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We're introducing a setting that allows users to opt-out of transitioning presence automatically to Do Not Disturb when presenting or screen sharing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap describes no identity or permission change.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We're introducing a setting that allows users to opt-out of transitioning presence automatically to Do Not Disturb when presenting or screen sharing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The setting does not add agent or automated actions.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Teams presenting opt-out; Teams prevent presence transition Do not disturb screen sharing user setting default admin policy GCC High DoD. Read roadmap and presence-admins; neither states that the setting adds no agent or automated actions.",
+      "severity": "major",
+      "fix": "Remove 'so it does not add agent or automated actions' and retain only: 'The roadmap describes the setting as a user opt-out of an automatic status change.'"
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Learn says calls are received in every presence state other than Do not disturb.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/presence-admins",
+      "quote": "Users receive calls in all presence states except for Do not disturb, in which case incoming calls go to voicemail.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "It is not stated whether a call notification from this opt-out appears on shared content.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams presenting screen sharing call notification shown shared screen setting 567300. Read presence-admins, Government Channel release notes and content-sharing search excerpts; none specifies notification visibility for this opt-out.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "record",
+      "claim": "The roadmap record names no licence.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We're introducing a setting that allows users to opt-out of transitioning presence automatically to Do Not Disturb when presenting or screen sharing. This ensures that they can continue to receive calls, keeping them connected and responsive without manual presence adjustments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The Learn presence page names no licence requirement for this setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams licensing requirements Teams included in Microsoft 365 Office 365 plans GCC High DoD presence setting pricing. Read the complete presence-admins page; it names no licence for this setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No meter is documented for this setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams licensing requirements Teams included in Microsoft 365 Office 365 plans GCC High DoD presence setting pricing. Read presence-admins, user-access, Teams service-description and government licensing excerpts; no meter for this setting was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No separate charge is documented for this setting at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams licensing requirements Teams included in Microsoft 365 Office 365 plans GCC High DoD presence setting pricing. Read presence-admins, user-access and Teams service-description licensing excerpts; no separate price for this setting was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "The roadmap and Learn do not identify Teams client versions carrying this government-cloud setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams prevent presence transition Do not disturb screen sharing user setting default admin policy GCC High DoD. Read roadmap, presence-admins, Government Channel release notes and Q&A 12583868; none identifies client versions for this government-cloud setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The roadmap and Learn do not name a role required to configure this opt-out.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams prevent presence transition Do not disturb screen sharing user setting default admin policy GCC High DoD; Microsoft Teams PowerShell Graph presence presenting screen sharing DoNotDisturb policy admin opt out. Read roadmap, presence-admins and cited cmdlet references; no required role found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The roadmap record and Learn do not state whether this setting also reaches other clouds.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams prevent presence transition Do not disturb screen sharing user setting default admin policy GCC High DoD. Read roadmap, presence-admins, Government Channel release notes and Q&A 12583868; none states other-cloud availability for this item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Governance controls: Set-CsTeamsMeetingPolicy reference",
+      "type": "absence",
+      "claim": "The Set-CsTeamsMeetingPolicy reference lists no presence or Do not disturb parameter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams PowerShell Graph presence presenting screen sharing DoNotDisturb policy admin opt out. Read Set-CsTeamsClientConfiguration in full; searched fetched Set-CsTeamsMeetingPolicy text for presence, disturb, DND and presenting with no matches.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Governance controls: Client Do Not Disturb and Breakthrough",
+      "type": "behaviour",
+      "claim": "Learn says Teams administrators cannot currently customize the Client Do Not Disturb and Breakthrough settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/presence-admins",
+      "quote": "Client Do Not Disturb and Breakthrough features are always enabled for users in Teams.\nThe ability of a Teams admin to customize these settings isn't currently supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Governance controls: priority access list",
+      "type": "behaviour",
+      "claim": "Users manage a priority access list in Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/presence-admins",
+      "quote": "Users can add people to a priority access list by going to Settings > Privacy in Teams. If they do, messages from these people display banner notifications as normal for that user. Even if the user is in a Do not disturb state, the user still receives calls from these people.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "rationale: risk; Why it matters: not a data change",
+      "type": "behaviour",
+      "claim": "The setting reads no new data.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Teams presence new data screen sharing; Teams prevent presence transition Do not disturb screen sharing user setting default admin policy GCC High DoD. Read roadmap and presence-admins; neither states that this setting reads no new data.",
+      "severity": "major",
+      "fix": "Replace 'it reads no new data' in the risk rationale with 'the roadmap describes no new data access'. Narrow 'not a data or spend change' in Why it matters to 'the roadmap describes no new data access or charge'."
+    },
+    {
+      "n": 34,
+      "where": "Governance controls: priority access list",
+      "type": "behaviour",
+      "claim": "Contacts on a user's priority access list can call that user even in Do not disturb.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/presence-admins",
+      "quote": "Even if the user is in a Do not disturb state, the user still receives calls from these people.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance controls: priority access list",
+      "type": "applicability",
+      "claim": "The documented priority access list is not an admin control over the presenting Do not disturb opt-out.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/presence-admins",
+      "quote": "Users can add people to a priority access list by going to Settings > Privacy in Teams. If they do, messages from these people display banner notifications as normal for that user. Even if the user is in a Do not disturb state, the user still receives calls from these people.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Governance controls: Set-CsTeamsClientConfiguration reference",
+      "type": "absence",
+      "claim": "The Set-CsTeamsClientConfiguration reference lists no presence or Do not disturb parameter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams PowerShell Graph presence presenting screen sharing DoNotDisturb policy admin opt out. Read the complete Set-CsTeamsClientConfiguration reference, including its syntax and parameter descriptions; no presence or Do not disturb parameter appears.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap does not say that this feature changes privacy mode.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We're introducing a setting that allows users to opt-out of transitioning presence automatically to Do Not Disturb when presenting or screen sharing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters; Open questions",
+      "type": "absence",
+      "claim": "No source states that existing behaviour changes for users who do nothing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams prevent presence transition Do not disturb screen sharing user setting default admin policy GCC High DoD. Read roadmap, presence-admins, Government Channel release notes and Q&A 12583868; none states a behaviour change for users who do not change the setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "record",
+      "claim": "The roadmap record names no meter.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We're introducing a setting that allows users to opt-out of transitioning presence automatically to Do Not Disturb when presenting or screen sharing. This ensures that they can continue to receive calls, keeping them connected and responsive without manual presence adjustments.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T20:52:07.896Z",
+    "summary": {
+      "links": 4,
+      "unreachable": 0,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=567300",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/presence-admins",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsclientconfiguration",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [],
+    "roadmapDrift": []
+  },
+  "history": []
+}

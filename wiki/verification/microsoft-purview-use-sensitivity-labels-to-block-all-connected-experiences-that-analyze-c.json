@@ -1,0 +1,586 @@
+{
+  "slug": "microsoft-purview-use-sensitivity-labels-to-block-all-connected-experiences-that-analyze-c",
+  "roadmapId": 561320,
+  "title": "Microsoft Purview: sensitivity label setting now blocks all connected experiences that analyse content in Word, Excel and PowerPoint",
+  "status": "verified-with-gaps",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 46,
+    "confirmed": 46,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "The briefing passes: the label command, default, client versions and roadmap facts are supported. Two minor clarifications remain: the licensing source contains conflicting statements, and Microsoft links to a broader list of connected experiences than the open question suggests.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "The existing Prevent some connected experiences label setting now blocks all Microsoft connected experiences for analysis of files in Word, Excel and PowerPoint rather than a subset.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "In Word, Excel, and PowerPoint, the ‘Prevent some connected experiences that analyze content’ label setting now prevents files in these apps from being sent to all Microsoft connected experiences for analysis, rather than a subset of these connected experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Excel, PowerPoint, Word and Microsoft Purview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Excel\", \"PowerPoint\", \"Word\", \"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Android, Desktop, iOS and Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The roadmap release phases are Current Channel and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"Current Channel\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-06T22:56:31.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-06T22:56:31\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "controls[0].ui; controls[0].note; What's changing; Governance controls",
+      "type": "absence",
+      "claim": "This setting has no Microsoft Purview portal configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "This configuration isn't available in the Microsoft Purview portal. You must use the PowerShell advanced setting BlockContentAnalysisServices",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-Label -Identity <label name or GUID> -AdvancedSettings @{BlockContentAnalysisServices=\"True\"} sets the label's analysis block in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+      "quote": "Example: Set-Label -Identity Confidential -AdvancedSettings @{BlockContentAnalysisServices=\"True\"}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].note; What's changing; Security & identity; Governance controls",
+      "type": "applicability",
+      "claim": "The setting is configured per label and applies to documents carrying that label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "you want to prevent all documents and emails with this label in Office apps from being sent to Microsoft connected experiences for analysis",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0].note; Security & identity; Scope; Governance controls",
+      "type": "role",
+      "claim": "Using Set-Label in Security & Compliance PowerShell requires assigned permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+      "quote": "To use this cmdlet in Security & Compliance PowerShell, you need to be assigned permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: defaultState; controls[0].note; What's changing; Why it matters",
+      "type": "default",
+      "claim": "The block is admin-opt-in: BlockContentAnalysisServices defaults to False and must be configured to True to prevent analysis.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+      "quote": "BlockContentAnalysisServices: Specifies a privacy setting to allow or prevent content in Word, Excel, PowerPoint, and Outlook from being sent to Microsoft for content analysis. Available values are True, and False (the default).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].note; Governance guidance: At rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Removing the setting or setting it to False restores the default of sending labelled content for analysis.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "To return the setting back to the default of sending the labeled content to Microsoft connected experiences for analysis, remove the setting or set the value to False.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "summary; What's changing; Why it matters; Data exposure; rationale: impact",
+      "type": "behaviour",
+      "claim": "On newer Windows and supported macOS and mobile versions, configured labels affect all connected experiences that analyse content in Word, Excel and PowerPoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "On newer Windows clients and on all supported MacOS and mobile client versions, the setting affects all connected experiences that analyze content in Word, Excel, and PowerPoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Data exposure; Scope; Governance controls",
+      "type": "behaviour",
+      "claim": "Older Windows versions in the Prevent some connected experiences row retain the narrower subset behaviour.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "On older Windows versions of Word, Excel, PowerPoint, and Outlook that are listed in the Prevent some connected experiences that analyze content row, the following subset of connected experiences are impacted by this setting:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing: older Windows subset",
+      "type": "behaviour",
+      "claim": "The older Windows subset includes automatic alt text.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "| Automatic alt txt | Word, PowerPoint, Excel, Outlook |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Change & support; Cost and licensing; rationale: risk",
+      "type": "behaviour",
+      "claim": "The setting affects automatic sensitivity labelling and label recommendations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "| Automatically apply or recommend sensitivity labels | Word, PowerPoint, Excel, Outlook |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Why it matters; Change & support; rationale: impact",
+      "type": "behaviour",
+      "claim": "The setting excludes configured labelled content from Microsoft 365 Copilot in the named Office apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "Although content with the configured sensitivity label will be excluded from Microsoft 365 Copilot in the named Office apps, the content remains available to Microsoft 365 Copilot for other scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Change & support",
+      "type": "behaviour",
+      "claim": "The setting affects Microsoft Purview DLP policy tips for Outlook.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "| Microsoft Purview Data Loss Prevention policy tips | Outlook |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Change & support",
+      "type": "behaviour",
+      "claim": "The older Windows subset includes PowerPoint Designer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "| PowerPoint Designer | PowerPoint |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing: older Windows subset",
+      "type": "behaviour",
+      "claim": "The older Windows subset includes Similarity checker.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "| Similarity checker | Word |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Change & support",
+      "type": "behaviour",
+      "claim": "The older Windows subset includes Translator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "| Translator | Word, PowerPoint, Excel, Outlook |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Data exposure",
+      "type": "behaviour",
+      "claim": "Configured labelled content remains available to Microsoft 365 Copilot in Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "the content remains available to Microsoft 365 Copilot for other scenarios. For example, in Teams, and in Microsoft 365 Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Data exposure",
+      "type": "behaviour",
+      "claim": "Configured labelled content remains available to Microsoft 365 Copilot Chat, so this setting is not a complete Copilot block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "the content remains available to Microsoft 365 Copilot for other scenarios. For example, in Teams, and in Microsoft 365 Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Change & support; Scope: Clients",
+      "type": "availability",
+      "claim": "Learn marks the broader behaviour as rolling out to Windows Current Channel 2606+.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-versions",
+      "quote": "Prevent all connected experiences that analyze content | Rolling out to Current Channel: 2606+",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Change & support; Scope: Clients",
+      "type": "availability",
+      "claim": "Learn marks the broader behaviour as rolling out to Windows Monthly Enterprise Channel 2606+.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-versions",
+      "quote": "Rolling out to Monthly Enterprise Channel: 2606+",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Scope: Clients",
+      "type": "availability",
+      "claim": "Learn marks the broader behaviour as rolling out on Mac 16.110+.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-versions",
+      "quote": "Rolling out: 16.110+",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Scope: Clients",
+      "type": "availability",
+      "claim": "Learn marks the broader behaviour as rolling out on iOS 2.111+.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-versions",
+      "quote": "Rolling out: 2.111+",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing; Scope: Clients",
+      "type": "availability",
+      "claim": "Learn marks the broader behaviour as rolling out on Android 16.0.20026+.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-versions",
+      "quote": "Rolling out: 16.0.20026+",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Scope: Apps and platforms",
+      "type": "availability",
+      "claim": "The Prevent all connected experiences capability is not available on the web.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-versions",
+      "quote": "| Rolling out: 16.110+ | Rolling out: 2.111+ | Rolling out: 16.0.20026+ | Not available |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope: Apps and platforms",
+      "type": "applicability",
+      "claim": "Opening files side by side with Copilot in the Microsoft Copilot app on Windows or Mac uses Office web apps, where this setting does not apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-versions",
+      "quote": "When you open an Excel, PowerPoint, or Word file side-by-side with your Copilot conversation within the Microsoft Copilot app on a Windows or Mac device, you're using the web version of those apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The setting is an option inside licensed sensitivity labelling, so its licensing model is included under the applicable product plans rather than a separately documented entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "the administrator creating and managing Information Protection features must have the appropriate licenses for the following subscription plans to configure the functionality. Similarly, end users also need the appropriate licenses to use the functionality in their respective client applications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing: manual labelling plan example",
+      "type": "licensing",
+      "claim": "The service description's manual sensitivity labelling table lists Included for Microsoft 365 E5/A5/G5/E3/A3/G3/F1/F3/Business Premium.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5/E3/A3/G3/F1/F3/Business Premium\n...\n| Manual Sensitivity Labeling | Included | Included | Included | Included | Included |",
+      "severity": "minor",
+      "fix": "After the manual-labelling table example, add: 'The same service-description section also says sensitivity labelling requires Microsoft 365 E5 or Microsoft 365 Information Protection and Governance (IPG), so its prose and manual-labelling table differ.' Retain the existing service-description citation."
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Administrators configuring Information Protection functionality need the appropriate licences for the listed plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "the administrator creating and managing Information Protection features must have the appropriate licenses for the following subscription plans to configure the functionality.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "End users need the appropriate licences to use the Information Protection functionality in their client applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Similarly, end users also need the appropriate licenses to use the functionality in their respective client applications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Sensitivity labels in Office apps require a subscription edition of Office.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "To use sensitivity labels in Office apps, you must use a subscription edition of Office.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "availability",
+      "claim": "Standalone editions of Office do not support sensitivity labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "Sensitivity labels aren't supported for standalone editions of Office, sometimes called \"Office Perpetual\".",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No separate licence or plan entry specific to BlockContentAnalysisServices is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: BlockContentAnalysisServices licensing sensitivity label; BlockContentAnalysisServices license pricing billing meter. Read Office apps, Set-Label, Purview service description and Get started with sensitivity labels search excerpt; no setting-specific licence entry.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft documents no separate meter for this label setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: BlockContentAnalysisServices license pricing billing meter; BlockContentAnalysisServices licensing sensitivity label. Read Office apps, Set-Label, Purview service description and Get started with sensitivity labels excerpt; no meter for this Office label setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "Microsoft has not stated that this change affects content without a label configured with the setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: BlockContentAnalysisServices tenant-wide portal policy unlabeled default. Read roadmap description, Office apps control section and Set-Label default: documented reach is content with the configured label; no new effect on unlabelled or unconfigured labels stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Autonomy & actions",
+      "type": "absence",
+      "claim": "Learn describes no new autonomous action introduced by this setting change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: BlockContentAnalysisServices autonomous actions default content analysis. Read roadmap description and Office apps Prevent connected experiences section: the change blocks analysis services; no new autonomous action described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance controls: tenant-wide switch",
+      "type": "absence",
+      "claim": "The documented configuration here is per label, not a tenant-wide switch for BlockContentAnalysisServices.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: BlockContentAnalysisServices tenant-wide portal policy unlabeled default. Read Office apps, Set-Label and Connected experiences in Office; no tenant-wide form of this label advanced setting found. General Office privacy policies are distinct controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Open questions: first bullet",
+      "type": "behaviour",
+      "claim": "The Office apps page gives a subset table for older Windows versions rather than enumerating the broader behaviour's experiences there.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "On newer Windows clients and on all supported MacOS and mobile client versions, the setting affects all connected experiences that analyze content in Word, Excel, and PowerPoint.",
+      "severity": "minor",
+      "fix": "Replace the first Open questions bullet with: 'Which experiences in Microsoft's linked Connected experiences in Office list are affected on each supported client? The Office apps page links to that list and separately enumerates the older Windows subset.' Link 'Connected experiences in Office' to https://learn.microsoft.com/microsoft-365-apps/privacy/connected-experiences and add that source."
+    },
+    {
+      "n": 46,
+      "where": "Open questions: Outlook bullet",
+      "type": "behaviour",
+      "claim": "The roadmap names Word, Excel and PowerPoint, while the Office apps documentation also mentions Outlook in the control paragraph.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "The setting lets you prevent content in Word, Excel, PowerPoint, and Outlook (for Prevent all connected experiences that analyze content) from being sent to Microsoft for content analysis as a privacy control.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T20:52:04.634Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=561320",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels-versions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether labelled files in Word, Excel and PowerPoint are blocked from connected experiences that analyse content",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+        "reachable": true,
+        "token": "Set-Label",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

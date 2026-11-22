@@ -1,0 +1,718 @@
+{
+  "slug": "restricted-content-discovery",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "Restricted Content Discovery: how do you keep a SharePoint site out of Copilot and organisation-wide search?",
+  "status": "verified-with-gaps",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 55,
+    "confirmed": 53,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 1,
+    "minor": 5
+  },
+  "summary": "The licensing requirements, site setting, delegation command and reporting commands are supported by Microsoft documentation. The statement that a restriction hides a site from Copilot indefinitely needs narrowing, and the page should acknowledge conflicting Microsoft descriptions of recent-interaction exceptions and the setting label.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What it is; controls[0].scope",
+      "type": "behaviour",
+      "claim": "Restricted Content Discovery is a site-level SharePoint setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Restricted Content Discovery is a site-level setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What it is; controls[0].governs",
+      "type": "behaviour",
+      "claim": "The setting limits discovery of site content, including recently interacted files, in organisation-wide search and Microsoft Copilot responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Restricted Content Discovery helps you limit discovery of content from specific SharePoint sites, including recently interacted files, in organization-wide search results and Microsoft Copilot responses while those reviews are taking place.",
+      "severity": "minor",
+      "fix": "Add: 'Microsoft's Restricted Content Discovery page includes recently interacted files, but https://learn.microsoft.com/copilot/manage/copilot-search-manage describes an exception for content a user owns or recently interacted with, and https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-features-copilot-license describes a recent-interaction exception for Copilot Business Chat.' Do not resolve the disagreement by silently choosing either description."
+    },
+    {
+      "n": 3,
+      "where": "What it is: What it changes; Why it matters",
+      "type": "behaviour",
+      "claim": "The Copilot button disappears from restricted sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Users don't see entry points such as the Copilot button, AI actions menus (including creating agents), or Create pages with AI.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What it is: What it changes; Why it matters",
+      "type": "behaviour",
+      "claim": "AI actions menus, including creating agents, disappear from restricted sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Users don't see entry points such as the Copilot button, AI actions menus (including creating agents), or Create pages with AI.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What it is: What it changes; Why it matters",
+      "type": "behaviour",
+      "claim": "Create pages with AI disappears from restricted sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Users don't see entry points such as the Copilot button, AI actions menus (including creating agents), or Create pages with AI.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What it is: What it changes; What to check",
+      "type": "behaviour",
+      "claim": "A Restricted tag is visible on a site with the policy applied.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "When a site has a Restricted Content Discovery policy applied to it, a Restricted tag is visible, as shown in the following screenshot:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What it is; Why it matters; Risks and limits: Temporary by design",
+      "type": "behaviour",
+      "claim": "Microsoft describes the setting as a temporary governance control for reviewing and right-sizing access during Copilot deployment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Restricted Content Discovery is designed as a temporary governance control that gives organizations time to review and right-size access while continuing their Copilot deployment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "summary; What it is: What it does not change; Risks and limits; What to check",
+      "type": "behaviour",
+      "claim": "Restricted Content Discovery does not change existing permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Restricted Content Discovery doesn't change existing permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What it is: What it does not change; Why it matters; Risks and limits",
+      "type": "behaviour",
+      "claim": "Users who have permission can continue accessing restricted content directly.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Users who already have access to content can continue to access that content directly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What it is: What it does not change; Risks and limits",
+      "type": "behaviour",
+      "claim": "The content remains in the Microsoft 365 search index.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "The feature doesn't remove content from the Microsoft 365 search index.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What it is: What it does not change",
+      "type": "applicability",
+      "claim": "Microsoft Purview eDiscovery continues to function on restricted content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Microsoft Purview capabilities such as eDiscovery and auto-labeling continue to function.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What it is: What it does not change",
+      "type": "applicability",
+      "claim": "Microsoft Purview auto-labelling continues to function on restricted content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Microsoft Purview capabilities such as eDiscovery and auto-labeling continue to function.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What it is: What it does not change; Risks and limits",
+      "type": "behaviour",
+      "claim": "Searches originating from site context are unaffected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Restricted Content Discovery doesn't affect searches that originate from site context or other intelligent experiences such as Microsoft 365 Feed and Recommendations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What it is: What it does not change; Risks and limits",
+      "type": "behaviour",
+      "claim": "Microsoft 365 Feed is unaffected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Restricted Content Discovery doesn't affect searches that originate from site context or other intelligent experiences such as Microsoft 365 Feed and Recommendations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What it is: What it does not change; Risks and limits",
+      "type": "behaviour",
+      "claim": "Recommendations are unaffected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Restricted Content Discovery doesn't affect searches that originate from site context or other intelligent experiences such as Microsoft 365 Feed and Recommendations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What it is: What it does not change",
+      "type": "behaviour",
+      "claim": "Experiences operating on content already in use, such as summarising an open document, are unaffected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Restricted Content Discovery doesn't affect experiences that operate on content that's already in use by the user, such as summarizing an open document.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What it is; controls[0].note",
+      "type": "availability",
+      "claim": "The feature applies to SharePoint sites only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "You can only apply this feature to SharePoint sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What it is; Risks and limits: OneDrive is out of scope",
+      "type": "availability",
+      "claim": "The setting is not supported for OneDrive sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "It's not supported for OneDrive sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What it is; Risks and limits: Changes can take days; What to check",
+      "type": "behaviour",
+      "claim": "Propagation is not instant and can take more than a week for sites with more than 500,000 items.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "For sites with more than 500,000 items, an update to Restricted Content Discovery could take more than a week to fully process and reflect in search and Copilot experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What it is: What it changes",
+      "type": "behaviour",
+      "claim": "Affected organisation-wide search experiences include SharePoint home, Office.com and Bing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Restricted Content Discovery affects organization-wide search experiences (SharePoint home, Office.com, Bing) and Microsoft Copilot discovery scenarios, including experiences that rely on tenant-wide content discovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters; Risks and limits: Overuse thins Copilot answers",
+      "type": "behaviour",
+      "claim": "Excessive use can reduce available content and affect the completeness and relevance of search results and Copilot responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Excessive use can reduce the amount of content available to organization-wide search and Microsoft Copilot experiences, which can affect the completeness and relevance of search results and AI-generated responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft lists oversharing risk, permissions reviews and phased rollouts as scenarios, including temporarily restricting Finance or Human Resources sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Sites with a high risk of oversharing.\nSites undergoing permissions review.\nPhased Microsoft Copilot rollouts.\nFor example, you might temporarily apply Restricted Content Discovery to a group of Finance or Human Resources sites while site owners review permissions and access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters; Risks and limits: Discovery is hidden, access is not",
+      "type": "applicability",
+      "claim": "Restricted Access Control prevents users outside the specified group from accessing a site and its contents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/get-ready-copilot-sharepoint-advanced-management",
+      "quote": "Users who aren't part of the specified group can't access the site or its contents, even if they had prior access through permissions or a link.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The organisation needs a Microsoft Copilot licence to configure Restricted Content Discovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Ensure your organization has a Microsoft Copilot license. Restricted Content Discovery is intended for Microsoft Copilot deployment and governance scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "SharePoint Advanced Management must be available to the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "You can configure Restricted Content Discovery if your organization is licensed for Copilot and has SharePoint Advanced Management available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Assigning a Microsoft Copilot licence to at least one user gives access to SAM capabilities supporting the Copilot deployment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites",
+      "quote": "If your organization has at least one Microsoft Copilot license assigned to a user, your SharePoint administrators automatically receive access to SharePoint Advanced Management capabilities to support your Copilot deployment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "A subscription including SharePoint K, P1 or P2 with the SharePoint Advanced Management Plan 1 add-on is another listed SAM entitlement route.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites",
+      "quote": "Your subscription includes SharePoint K, P1, or P2, and your organization purchases the SharePoint Advanced Management Plan 1 add-on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 E7 is another listed SAM entitlement route.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites",
+      "quote": "Your organization has Microsoft 365 E7, also known as The Frontier Suite.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "A listed base subscription is required, with Microsoft 365 E3 and E5 among the options.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites",
+      "quote": "Your organization must have one of the following base licenses:\nOffice 365 E3, E5, or A5\nMicrosoft 365 E1, E3, E5, or A5\nMicrosoft 365 GCC, GCC-High, or DoD",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The Restricted Content Discovery page publishes no separate price or meter for the setting as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Restricted Content Discovery\" \"price\" \"meter\". Read https://learn.microsoft.com/sharepoint/restricted-content-discovery and the SAM prerequisites in full; neither publishes a separate RCD price or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Copilot licence pricing is published on Microsoft's pricing and licensing resources, not on the Restricted Content Discovery page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/microsoft-365-copilot-licensing",
+      "quote": "Before you purchase or assign licenses, confirm eligibility in the Microsoft Product Terms, Microsoft Copilot service description, and Microsoft Copilot pricing and plans.",
+      "severity": "minor",
+      "fix": "Add the Microsoft pages relied on but missing from sources: https://learn.microsoft.com/microsoft-365/copilot/microsoft-365-copilot-licensing, https://www.microsoft.com/en-us/copilot/pricing/business, https://learn.microsoft.com/copilot/manage/copilot-search-manage and https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-features-copilot-license. The licensing page links to pricing and plans, and the pricing page publishes per-user subscription prices; the other two pages document the recent-interaction exceptions that should be acknowledged."
+    },
+    {
+      "n": 32,
+      "where": "Risks and limits: Temporary by design",
+      "type": "behaviour",
+      "claim": "A restriction left in place after review hides the site from Copilot indefinitely.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Restricted Content Discovery\" \"expire\". Read the RCD page in full and results for Manage access to agents in SharePoint and Catalog management. No passage states an indefinite duration; the RCD page also exempts content already in use.",
+      "severity": "major",
+      "fix": "Replace the bullet's sentence with: 'After the review is complete, you can remove the restriction and allow the sites to become discoverable again.' This is stated at https://learn.microsoft.com/sharepoint/restricted-content-discovery."
+    },
+    {
+      "n": 33,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The setting is at SharePoint admin center > Sites > Active sites > site > Settings > Restrict content from Microsoft Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "In the SharePoint admin center, expand Sites and select Active sites.\nSelect the site you want to configure.\nOpen the Settings tab, and then turn Restrict content from Microsoft Copilot on.",
+      "severity": "minor",
+      "fix": "Keep the documented path, but add to controls[0].note: 'The Copilot readiness guide instead labels the setting Restrict content discovery > On on the same Settings tab.' The differing label is at https://learn.microsoft.com/microsoft-365/copilot/get-ready-copilot-sharepoint-advanced-management."
+    },
+    {
+      "n": 34,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "Set-SPOSite -Identity <site-url> -RestrictContentOrgWideSearch $true enables the site's restriction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite?view=sharepoint-ps",
+      "quote": "For any parameters that are passed in, the Set-SPOSite cmdlet sets or updates the setting for the site collection identified by parameter Identity.\n-RestrictContentOrgWideSearch\nType: System.Boolean",
+      "severity": "minor",
+      "fix": "Keep the command, which the RCD page explicitly gives, but add: 'The Set-SPOSite reference's valid-parameter list for Groups site collections omits RestrictContentOrgWideSearch, whereas the Restricted Content Discovery guide gives this command without that qualification.' Both pages are already cited."
+    },
+    {
+      "n": 35,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "Using $false with RestrictContentOrgWideSearch removes the site's restriction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "To disable Restricted Content Discovery for a site, open PowerShell as an administrator and run the following command:\nSet-SPOSite -Identity <site-url> -RestrictContentOrgWideSearch $false",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].note",
+      "type": "admin-path",
+      "claim": "The administrator selects Save after turning the setting on in the admin centre.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Open the Settings tab, and then turn Restrict content from Microsoft Copilot on.\nSelect Save.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[1].api; Risks and limits: Delegation shifts the control",
+      "type": "command",
+      "claim": "Set-SPOTenant -DelegateRestrictedContentDiscoverabilityManagement $true lets site administrators manage Restricted Content Discovery for their own sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant?view=sharepoint-ps",
+      "quote": "Sets properties on the SharePoint Online organization.\n-DelegateRestrictedContentDiscoverabilityManagement\nType: System.Boolean",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[1].ui",
+      "type": "absence",
+      "claim": "An admin UI control for tenant delegation of Restricted Content Discovery management is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"DelegateRestrictedContentDiscoverabilityManagement\" \"admin center\"; Restricted Content Discovery delegation site administrators admin UI report SharePoint admin center. Read RCD delegation and readiness-guide sections; only PowerShell enables RCD delegation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[1].note; Risks and limits: Delegation shifts the control",
+      "type": "behaviour",
+      "claim": "A site administrator changing Restricted Content Discovery must provide a justification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "If a site administrator makes a change to Restricted Content Discovery settings, they must provide a justification for the change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Governance controls: role notes",
+      "type": "role",
+      "claim": "By default, only SharePoint administrators can manage Restricted Content Discovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "By default, only SharePoint administrators can manage Restricted Content Discovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance controls: role notes",
+      "type": "role",
+      "claim": "The SAM prerequisites name SharePoint Administrator and SharePoint Advanced Management Administrator roles assigned in Microsoft Entra ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites",
+      "quote": "To access the SharePoint admin center and use SharePoint Advanced Management capabilities, you must have an appropriate role assigned in Microsoft Entra ID.\nSharePoint Administrator\nSharePoint Advanced Management Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance controls: role notes",
+      "type": "role",
+      "claim": "The Set-SPOSite reference requires a SharePoint Online administrator who is also a site collection administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite?view=sharepoint-ps",
+      "quote": "You must be a SharePoint Online administrator and be a site collection administrator to run the cmdlet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance controls: status commands",
+      "type": "command",
+      "claim": "Get-SPOSite -Identity <site-url> | Select RestrictContentOrgWideSearch checks a site's restriction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Check Restricted Content Discovery status for a site\nOpen PowerShell as an administrator and run the following command:\nGet-SPOSite -Identity <site-url> | Select RestrictContentOrgWideSearch",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance controls: status commands; What to check",
+      "type": "command",
+      "claim": "Get-SPOTenant | Select-Object DelegateRestrictedContentDiscoverabilityManagement checks tenant delegation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "To verify delegation status, run:\nGet-SPOTenant | Select-Object DelegateRestrictedContentDiscoverabilityManagement",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[2].api; What to check",
+      "type": "command",
+      "claim": "Start-SPORestrictedContentDiscoverabilityReport generates a tenant report identifying sites where Restricted Content Discovery is enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Administrators can use PowerShell to generate reports that identify sites where Restricted Content Discovery is enabled.\nGenerate a report\nOpen PowerShell as an administrator and run the following command:\nStart-SPORestrictedContentDiscoverabilityReport",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[2].ui",
+      "type": "absence",
+      "claim": "An admin UI equivalent of the tenant-wide report of sites with Restricted Content Discovery enabled is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Restricted Content Discovery\" \"report\" \"admin center\" \"enabled\". Read RCD reporting, Catalog management and agent-access report results; the UI reports cover catalog groups or agent-accessed sites, not the equivalent tenant-wide RCD inventory.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[2].note; Governance controls: report commands",
+      "type": "command",
+      "claim": "Get-SPORestrictedContentDiscoverabilityReport shows report status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "View report status\nOpen PowerShell as an administrator and run the following command:\nGet-SPORestrictedContentDiscoverabilityReport",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[2].note; Governance controls: report commands",
+      "type": "command",
+      "claim": "Get-SPORestrictedContentDiscoverabilityReport -Action Download -ReportId <ReportGUID> downloads a report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Download a report\nOpen PowerShell as an administrator and run the following command:\nGet-SPORestrictedContentDiscoverabilityReport -Action Download -ReportId <ReportGUID>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls: auditing; What to check",
+      "type": "applicability",
+      "claim": "Microsoft Purview audit records enabling Restricted Content Discovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "You can view audit events through Microsoft Purview audit log activities for activities involving Restricted Content Discovery.\nThese events include:\nEnabling Restricted Content Discovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls: auditing; What to check",
+      "type": "applicability",
+      "claim": "Microsoft Purview audit records disabling Restricted Content Discovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "These events include:\nEnabling Restricted Content Discovery.\nDisabling Restricted Content Discovery.\nJustifications provided when updates are made to the setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls: auditing; What to check",
+      "type": "applicability",
+      "claim": "Microsoft Purview audit records justifications provided when the setting is updated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "These events include:\nEnabling Restricted Content Discovery.\nDisabling Restricted Content Discovery.\nJustifications provided when updates are made to the setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No Microsoft Graph or other REST equivalent for setting Restricted Content Discovery is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Restricted Content Discovery Microsoft Graph REST API RestrictContentOrgWideSearch; \"RestrictContentOrgWideSearch\" \"REST\" \"CSOM\". Read RCD and Graph site v1.0/beta and siteSettings beta references; no RCD-setting operation was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Open questions: agent grounding",
+      "type": "absence",
+      "claim": "The RCD page does not separately document declarative-agent grounding in every case.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Restricted Content Discovery\" \"declarative\". Read RCD in full and readiness-guide and Manage access to agents in SharePoint passages. They describe agentic discovery and SharePoint-agent restrictions, not every declarative-agent grounding case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Open questions: Purview audit event names",
+      "type": "absence",
+      "claim": "The Restricted Content Discovery page lists audited actions but does not give exact Purview operation names.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Restricted Content Discovery\" \"audit\" \"operation\"; site:learn.microsoft.com/purview/audit-log-activities \"RestrictContent\". Read RCD Auditing in full and returned Audit log activities excerpts; no exact RCD operation identifiers were found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "What to check: permission review and audit-log search",
+      "type": "consistency",
+      "claim": "Every control the checklist tells readers to review or monitor has a controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review the permissions on each restricted site, because the setting does not change them.\nSearch the Purview audit log for the enable, disable and justification events.\nThe table contains only the site restriction, tenant delegation and RCD inventory report.",
+      "severity": "minor",
+      "fix": "The permission-review and Purview audit-log search checklist steps have no corresponding table rows. Remove these two checklist bullets; the permission warning and auditing guidance remain in the body. Do not add control rows as part of this correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T20:51:59.524Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite?view=sharepoint-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant?view=sharepoint-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/get-ready-copilot-sharepoint-advanced-management",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a site's content is hidden from organisation-wide search and Copilot discovery, and AI entry points removed",
+        "docs": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+        "reachable": true,
+        "segments": [
+          "Sites",
+          "Active sites",
+          "Settings",
+          "Restrict content from Microsoft Copilot"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether a site's content is hidden from organisation-wide search and Copilot discovery, and AI entry points removed",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite?view=sharepoint-ps",
+        "reachable": true,
+        "token": "Set-SPOSite",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether site administrators can manage the setting for their own sites",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant?view=sharepoint-ps",
+        "reachable": true,
+        "token": "Set-SPOTenant",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "A tenant report of sites where the setting is enabled",
+        "docs": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+        "reachable": true,
+        "token": "Start-SPORestrictedContentDiscoverabilityReport",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

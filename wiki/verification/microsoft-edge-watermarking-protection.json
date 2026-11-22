@@ -2,36 +2,85 @@
   "slug": "microsoft-edge-watermarking-protection",
   "roadmapId": 547827,
   "title": "Microsoft Edge: watermarking protection for sensitive content",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-22",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-22",
-    "reasons": [
-      "1 blocking finding (claim 53)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 58,
-    "confirmed": 54,
-    "unconfirmed": 2,
-    "contradicted": 2,
-    "blocker": 1,
-    "major": 2,
-    "minor": 2
+    "claims": 67,
+    "confirmed": 66,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 0,
+    "minor": 1
   },
-  "summary": "Hold: the policy-precedence guidance omits Microsoft's documented exception that lets Edge management service policies override device policies. The preview behaviour and licensing are otherwise well sourced, but two assurances about data access and copying go beyond the documentation.",
+  "summary": "The briefing passes: its roadmap facts, preview requirements and Watermarking control are supported by Microsoft documentation. The admin path is confirmed across the two cited configuration pages. A minor correction is needed because the governance checklist asks readers to check controls missing from the controls table.",
   "claims": [
     {
       "n": 1,
+      "where": "title; front matter: products",
+      "type": "record",
+      "claim": "The roadmap feature is Microsoft Edge Watermarking Protection.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"title\": \"Microsoft Edge: Watermarking Protection\", \"products\": [\"Microsoft Edge\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft describes the feature as visibly reinforcing data protection policies with a persistent watermark on sensitive browser content.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Watermarking Protection in Microsoft Edge helps organizations visibly reinforce data protection policies by overlaying a persistent watermark on sensitive content viewed in the browser.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft intends watermarking to deter unauthorised sharing.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature is designed to deter unauthorized sharing, support compliance efforts, and increase user awareness when handling confidential information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft intends watermarking to support compliance efforts.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature is designed to deter unauthorized sharing, support compliance efforts, and increase user awareness when handling confidential information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft intends watermarking to increase user awareness when handling confidential information.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature is designed to deter unauthorized sharing, support compliance efforts, and increase user awareness when handling confidential information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -42,18 +91,18 @@
       "fix": null
     },
     {
-      "n": 2,
+      "n": 7,
       "where": "summary; front matter: targetDate; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap targets December CY2026, rather than committing to availability that month.",
+      "claim": "The roadmap targets December CY2026, rather than committing to a release date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"targetDate\": \"December CY2026\"",
+      "quote": "\"targetDate\": \"December CY2026\", \"status\": \"In development\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 3,
+      "n": 8,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap release phase is General Availability.",
@@ -64,7 +113,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 9,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
@@ -75,7 +124,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 10,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap platform is Web.",
@@ -86,10 +135,10 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 11,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap record supplies no preview date.",
+      "claim": "The roadmap publishes no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -97,10 +146,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 12,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-10-15T22:47:30.",
+      "claim": "The roadmap record was modified at 2026-10-15T22:47:30.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-10-15T22:47:30\"",
@@ -108,52 +157,8 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "title; summary; What's changing",
-      "type": "behaviour",
-      "claim": "Watermarking Protection overlays a persistent watermark on sensitive content viewed in Edge.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
-      "quote": "Watermarking Protection in Microsoft Edge helps organizations visibly reinforce data protection policies by overlaying a persistent watermark on sensitive content viewed in the browser.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "What's changing; Why it matters; rationale: risk",
-      "type": "record",
-      "claim": "Microsoft describes the feature as designed to deter unauthorised sharing.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "This feature is designed to deter unauthorized sharing, support compliance efforts, and increase user awareness when handling confidential information.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "Microsoft describes the feature as designed to support compliance efforts.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "This feature is designed to deter unauthorized sharing, support compliance efforts, and increase user awareness when handling confidential information.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "Microsoft describes the feature as designed to increase awareness when handling confidential information.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "This feature is designed to deter unauthorized sharing, support compliance efforts, and increase user awareness when handling confidential information.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "What's changing",
+      "n": 13,
+      "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "The watermark is a semi-transparent overlay across the content area.",
       "status": "supported",
@@ -163,8 +168,8 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "What's changing; Risk assessment: Data exposure",
+      "n": 14,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "The browser renders the watermark.",
       "status": "supported",
@@ -174,7 +179,7 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 15,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Users cannot remove or alter the watermark.",
@@ -185,10 +190,10 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "summary; What's changing; controls[0].note; Scope",
+      "n": 16,
+      "where": "summary; What's changing; Scope; controls[0].note",
       "type": "availability",
-      "claim": "Learn documents this experience as a preview rather than a final design.",
+      "claim": "Learn documents Watermarking Protection as a preview, not a final design.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
       "quote": "Watermarking Protection in Microsoft Edge for Business (In Preview)",
@@ -196,10 +201,10 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing: supported surfaces",
+      "n": 17,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Regular browser tabs support the watermark.",
+      "claim": "The preview supports watermarking regular browser tabs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
       "quote": "| Regular browser tabs | ✔️ |",
@@ -207,10 +212,10 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "What's changing: supported surfaces",
+      "n": 18,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Split-screen tabs support the watermark.",
+      "claim": "The preview supports watermarking split-screen tabs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
       "quote": "| Split screen tabs | ✔️ |",
@@ -218,21 +223,10 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "What's changing: supported surfaces",
-      "type": "behaviour",
-      "claim": "Pop-up windows support the watermark.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
-      "quote": "| Pop-up windows and app windows | ✔️ |",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 19,
-      "where": "What's changing: supported surfaces",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "App windows support the watermark.",
+      "claim": "The preview supports watermarking pop-up windows.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
       "quote": "| Pop-up windows and app windows | ✔️ |",
@@ -241,9 +235,20 @@
     },
     {
       "n": 20,
-      "where": "What's changing: supported surfaces",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Local PDFs with sensitivity labelling support the watermark.",
+      "claim": "The preview supports watermarking app windows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
+      "quote": "| Pop-up windows and app windows | ✔️ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The preview supports watermarking local PDFs with sensitivity labelling.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
       "quote": "| Local PDFs with sensitivity labeling | ✔️ |",
@@ -251,10 +256,10 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing: supported surfaces",
+      "n": 22,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "MIP-labelled PDFs support the watermark.",
+      "claim": "The preview supports watermarking MIP-labelled PDFs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
       "quote": "| MIP-labeled PDFs | ✔️ |",
@@ -262,21 +267,10 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What's changing; Why it matters; Governance guidance: user notice",
-      "type": "behaviour",
-      "claim": "Printing is a supported watermark surface.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
-      "quote": "| Printing and screenshots | ✔️ |",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 23,
-      "where": "What's changing; Why it matters; Risk assessment: Security & identity; Governance guidance",
+      "where": "What's changing; Why it matters; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "Screenshots are a supported watermark surface.",
+      "claim": "The watermark is supported in printing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
       "quote": "| Printing and screenshots | ✔️ |",
@@ -285,9 +279,20 @@
     },
     {
       "n": 24,
-      "where": "What's changing: supported surfaces",
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
       "type": "behaviour",
-      "claim": "Reading mode supports the watermark.",
+      "claim": "The watermark is supported in screenshots.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
+      "quote": "| Printing and screenshots | ✔️ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The preview supports watermarking reading mode.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
       "quote": "| Reading mode | ✔️ |",
@@ -295,21 +300,10 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "What's changing; Risk assessment: Data exposure; Open questions",
-      "type": "behaviour",
-      "claim": "Sidebar surfaces are unsupported and planned for the future.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
-      "quote": "| Sidebar and Shoreline surfaces | ❌ (planned for future) |",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 26,
       "where": "What's changing; Risk assessment: Data exposure; Open questions",
       "type": "behaviour",
-      "claim": "Shoreline surfaces are unsupported and planned for the future.",
+      "claim": "Sidebar surfaces are not supported by the preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
       "quote": "| Sidebar and Shoreline surfaces | ❌ (planned for future) |",
@@ -318,20 +312,64 @@
     },
     {
       "n": 27,
-      "where": "What's changing; Risk assessment: Security & identity; Governance guidance: user notice",
+      "where": "What's changing; Risk assessment: Data exposure; Open questions",
       "type": "behaviour",
-      "claim": "The fixed watermark string is 'Confidential – Don't share' followed by the user name and a timestamp.",
+      "claim": "Shoreline surfaces are not supported by the preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
-      "quote": "The default string is:\n\n“Confidential – Don't share” Username Timestamp",
+      "quote": "| Sidebar and Shoreline surfaces | ❌ (planned for future) |",
       "severity": null,
       "fix": null
     },
     {
       "n": 28,
+      "where": "What's changing; Open questions",
+      "type": "availability",
+      "claim": "Microsoft plans future support for sidebar and Shoreline surfaces.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
+      "quote": "| Sidebar and Shoreline surfaces | ❌ (planned for future) |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "The fixed watermark message is Confidential – Don't share.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
+      "quote": "The default string is: “Confidential – Don't share” Username Timestamp",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "The watermark includes the user name after its message.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
+      "quote": "“Confidential – Don't share” Username Timestamp",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "The watermark includes a timestamp after the user name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
+      "quote": "“Confidential – Don't share” Username Timestamp",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
       "where": "What's changing; Risk assessment: Change & support; Open questions",
       "type": "behaviour",
-      "claim": "Neither users nor admins can modify the watermark strings today.",
+      "claim": "Admins cannot currently modify the watermark strings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
       "quote": "These strings are rendered consistently across supported surfaces and can't be modified by the user or admin today.",
@@ -339,9 +377,9 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 33,
       "where": "What's changing; Open questions",
-      "type": "behaviour",
+      "type": "availability",
       "claim": "Customisable, dynamic watermarks are planned for a future release.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
@@ -350,21 +388,21 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "summary; What's changing; Why it matters; Governance controls; rationale: risk and impact",
+      "n": 34,
+      "where": "summary; What's changing; Why it matters; Governance controls; rationales",
       "type": "behaviour",
-      "claim": "The preview watermark is triggered only by an actual restriction action, such as block copy, block upload or block print.",
+      "claim": "The feature page ties watermarking to actual restriction actions, such as block copy, block upload or block print, rather than classification alone.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
-      "quote": "A watermark appears only when a policy applies an actual restriction action (for example, block copy, block upload, or block print) from a DLP provider",
+      "quote": "Watermarking is tied to enforcement actions, not to labels or auditing. A watermark appears only when a policy applies an actual restriction action (for example, block copy, block upload, or block print)",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
-      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance; Governance controls",
+      "n": 35,
+      "where": "What's changing; Governance controls; Governance guidance",
       "type": "applicability",
-      "claim": "The documented restriction providers include Purview label, Purview session, eDLP Purview and Intune policies.",
+      "claim": "A Purview label policy can supply the restriction action that triggers a watermark.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
       "quote": "from a DLP provider such as a Purview label policy, a Purview session policy, eDLP Purview policy, or Intune.",
@@ -372,21 +410,54 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 36,
+      "where": "What's changing; Governance controls; Governance guidance",
+      "type": "applicability",
+      "claim": "A Purview session policy can supply the restriction action that triggers a watermark.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
+      "quote": "from a DLP provider such as a Purview label policy, a Purview session policy, eDLP Purview policy, or Intune.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Governance controls; Governance guidance",
+      "type": "applicability",
+      "claim": "An eDLP Purview policy can supply the restriction action that triggers a watermark.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
+      "quote": "from a DLP provider such as a Purview label policy, a Purview session policy, eDLP Purview policy, or Intune.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Governance controls; Governance guidance",
+      "type": "applicability",
+      "claim": "Intune can supply the restriction action that triggers a watermark.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
+      "quote": "from a DLP provider such as a Purview label policy, a Purview session policy, eDLP Purview policy, or Intune.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
       "where": "What's changing; Why it matters; Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "A sensitivity label without a restriction does not render a watermark.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
-      "quote": "A watermark is not rendered when:\n\n- A sensitivity label is present but applies no restriction.",
+      "quote": "A watermark is not rendered when: A sensitivity label is present but applies no restriction.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
+      "n": 40,
       "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
       "type": "behaviour",
-      "claim": "An Audit only DLP policy does not display a watermark.",
+      "claim": "An Audit-only matching DLP policy does not display a watermark.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
       "quote": "The matching DLP policy is set to Audit only. An audit action logs the activity but does not display a watermark.",
@@ -394,75 +465,75 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "summary; Why it matters; Governance guidance: At rollout; Governance controls",
+      "n": 41,
+      "where": "summary; controls[0].governs; Why it matters; Governance guidance; rationale: impact",
       "type": "behaviour",
-      "claim": "Admins enable the preview using the Watermarking toggle on the profile's Security Settings page in the Edge management service.",
+      "claim": "Admins enable Watermarking in the Edge management service using a profile assigned to the intended user group.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
-      "quote": "Admins can enable watermarking through the Edge Management Service (EMX) by creating a test profile and configuring the watermarking toggle.\nIn the Security Settings page, turn on the Watermarking toggle.",
+      "quote": "Create a test profile and assign it to a desired scope group. Note: It should be scoped to user identity, not device. In the Security Settings page, turn on the Watermarking toggle.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
-      "where": "summary; controls[0].scope; Scope; Governance guidance; rationale: impact",
-      "type": "applicability",
-      "claim": "The preview profile is assigned to a desired group of users.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
-      "quote": "Create a test profile and assign it to a desired scope group. Note: It should be scoped to user identity, not device.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
+      "n": 42,
       "where": "controls[0].note; Risk assessment: Security & identity; Scope; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "The watermarking profile must be scoped to user identity rather than device.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
+      "quote": "Note: It should be scoped to user identity, not device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "The profile should be scoped to user identity rather than device, including when troubleshooting a missing watermark.",
+      "claim": "Device scoping is a documented check when the watermark is missing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
-      "quote": "Note: It should be scoped to user identity, not device.\nConfirm the profile is scoped to user identity, not device.",
+      "quote": "Troubleshooting: watermark isn't showing ... Confirm the profile is scoped to user identity, not device.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
-      "where": "controls[0].note; Scope; Governance guidance: At rollout; Governance controls",
-      "type": "role",
-      "claim": "Accessing the Edge management service in the Microsoft 365 admin center requires the Microsoft Edge Administrator role.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
-      "quote": "You must be a Microsoft Edge Administrator to access the experience in Microsoft 365 Admin Center (Note: GDAP roles are currently not fully supported).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Cost and licensing; Scope; Governance guidance; Risk assessment: Change & support; rationale: cost",
-      "type": "availability",
-      "claim": "The preview requires Edge version 142 or later.",
+      "n": 44,
+      "where": "Cost and licensing; Scope; Risk assessment; Governance guidance; rationale: cost",
+      "type": "behaviour",
+      "claim": "The preview requires Microsoft Edge 142 or later.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
-      "quote": "Microsoft Edge version 142 or later",
+      "quote": "To use Watermarking Protection, your organization must meet the following prerequisites: Microsoft Edge version 142 or later",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
-      "where": "front matter: licensing.model and notes; Cost and licensing; Scope; rationale: cost",
+      "n": 45,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; Scope; rationale: cost",
       "type": "licensing",
-      "claim": "The included licensing model names Microsoft 365 E5 (preferred) or E3 as the preview's licence requirement.",
+      "claim": "The included licensing model rests on the feature's published Microsoft 365 E5 or E3 requirement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
-      "quote": "To use Watermarking Protection, your organization must meet the following prerequisites:\nMicrosoft 365 E5 (preferred) or E3 licensing",
+      "quote": "To use Watermarking Protection, your organization must meet the following prerequisites: ... Microsoft 365 E5 (preferred) or E3 licensing",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
+      "n": 46,
+      "where": "licensing.notes; Cost and licensing; Scope; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "The preview page identifies Microsoft 365 E5 as preferred over E3.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
+      "quote": "Microsoft 365 E5 (preferred) or E3 licensing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
       "where": "Cost and licensing; Scope",
-      "type": "availability",
+      "type": "role",
       "claim": "Admin access to the Edge Management Service portal is a preview prerequisite.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
@@ -471,54 +542,98 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 48,
       "where": "Cost and licensing; Scope; Governance guidance: Before rollout",
       "type": "availability",
       "claim": "Targeted Release must be enabled for the tenant to use the preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
-      "quote": "Targeted Release enabled for your tenant",
+      "quote": "To use Watermarking Protection, your organization must meet the following prerequisites: ... Targeted Release enabled for your tenant",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
-      "where": "front matter: defaultState; Why it matters; Open questions; rationale: risk and impact",
-      "type": "default",
-      "claim": "The default at general availability is not stated, so defaultState is unknown.",
+      "n": 49,
+      "where": "controls[0].note; Scope; Governance guidance: At rollout; Governance controls",
+      "type": "role",
+      "claim": "The Edge management service requires the Microsoft Edge Administrator role to access its experience in the Microsoft 365 admin center.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Edge Watermarking Protection general availability default enabled licensing E3 E5 other licenses price meter. Opened learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection; read release-note search excerpts. Only preview enablement is described.",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+      "quote": "You must be a Microsoft Edge Administrator to access the experience in Microsoft 365 Admin Center (Note: GDAP roles are currently not fully supported).",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "n": 50,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Watermarking route is Microsoft 365 admin center > Settings > Microsoft Edge > Configuration policies > configuration policy > Properties > Customization Settings > Security Settings > Watermarking.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-enabling-dlp-features",
+      "quote": "In the Edge Management Service (admin.microsoft.com → Settings → Microsoft Edge) ... In your Configuration policy, navigate to Customization Settings → Security Settings. Enable Watermarking for users who are receiving MAM policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[0].api; Governance controls; changes: first briefing",
       "type": "absence",
-      "claim": "The preview page names no separate add-on, price or meter for watermarking.",
+      "claim": "Microsoft documents no Graph call or Edge policy that sets the Watermarking toggle as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Edge Watermarking Protection general availability default enabled licensing E3 E5 other licenses price meter. Opened the full watermarking preview page and DLP configuration page; neither names a separate watermarking add-on, price or meter.",
+      "quote": "Searched: Edge Watermarking toggle Microsoft Graph beta configuration policy watermark policy reference. Opened feature and DLP pages, Edge management service, Edge Graph overview/API reference; searched the complete Edge policy list for watermark: no match.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
-      "where": "front matter: licensing.notes",
+      "n": 52,
+      "where": "front matter: defaultState; Why it matters; Open questions; rationales: risk, impact",
       "type": "absence",
-      "claim": "Microsoft has not published whether licences beyond E5 and E3 cover this watermarking feature.",
+      "claim": "The general-availability default state is not stated, so unknown is appropriate and no source establishes a change to existing behaviour on arrival.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Edge Watermarking Protection general availability default enabled licensing E3 E5 other licenses price meter. Read the feature and DLP pages plus Edge configuration licensing search excerpts; none names another licence for this watermarking feature.",
+      "quote": "Searched: Microsoft Edge Watermarking Protection default enabled general availability licenses price meter E3 E5. Read roadmap, Watermarking Protection, DLP Features and Edge management service: preview enablement is described, but no GA default is stated.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
+      "n": 53,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The preview page names no separate add-on, price or meter for Watermarking Protection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge Watermarking Protection default enabled general availability licenses price meter E3 E5. Opened Watermarking Protection requirements and DLP Features; the feature page lists E5 (preferred) or E3 and no separate add-on, price or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "licensing.notes",
+      "type": "absence",
+      "claim": "Microsoft has not published whether licences beyond E5 and E3 apply to this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge Watermarking Protection default enabled general availability licenses price meter E3 E5. Read Watermarking Protection and DLP Features, plus Edge E3/E5 configuration search excerpts; none names another licence covering this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The preview page does not explain what preferred means for E3 tenants.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge Watermarking Protection default enabled general availability licenses price meter E3 E5. Read the complete Watermarking Protection page and DLP Features; the preview requirement says E5 (preferred) or E3 without explaining preferred.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The separate DLP configuration guidance applies to Microsoft 365 E3 customers using Intune MAM.",
+      "claim": "The DLP features guidance applies to Microsoft 365 E3 customers using Intune mobile application management for Edge for Business.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-enabling-dlp-features",
       "quote": "This guidance applies to Microsoft 365 E3 customers configuring Edge for Business DLP features through Intune Mobile Application Management (MAM), where the Edge work profile is the trusted boundary.",
@@ -526,10 +641,10 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 57,
       "where": "Cost and licensing",
       "type": "applicability",
-      "claim": "The DLP guidance directs E5 customers seeking per-site or per-app trust boundaries to Microsoft Purview DLP.",
+      "claim": "The DLP features page directs Microsoft 365 E5 customers wanting per-site or per-app boundaries to Microsoft Purview DLP.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-enabling-dlp-features",
       "quote": "If you are on Microsoft 365 E5 and want to use Microsoft Purview DLP to define the trust boundary at the per-site / per-app level instead of profile-wide, see Microsoft Purview DLP.",
@@ -537,32 +652,54 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Scope: second route",
+      "n": 58,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The DLP features page specifies Windows 10+ for the configuration policy used in its Watermarking route.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-enabling-dlp-features",
+      "quote": "Ensure Windows 10+ is selected for platforms and policy type is Cloud.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Scope",
       "type": "behaviour",
-      "claim": "The MAM watermarking route uses a configuration policy with Windows 10+ platforms and policy type Cloud.",
+      "claim": "The DLP features page specifies a Cloud-type configuration policy for its Watermarking route.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-enabling-dlp-features",
-      "quote": "Create a new Configuration policy targeted to the intended users.\nEnsure Windows 10+ is selected for platforms and policy type is Cloud.",
+      "quote": "Ensure Windows 10+ is selected for platforms and policy type is Cloud.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
-      "where": "Scope: second route",
+      "n": 60,
+      "where": "Scope",
       "type": "applicability",
-      "claim": "The MAM route provides a profile-wide watermark when users have at least one Intune app protection policy and the watermarking policy.",
+      "claim": "The MAM route requires at least one Intune app protection policy as well as the watermarking policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-enabling-dlp-features",
-      "quote": "MAM-managed profiles have a watermark throughout the entire profile (Note: users need at least one Intune app protection policy and this watermarking policy for the watermark to be enabled).",
+      "quote": "users need at least one Intune app protection policy and this watermarking policy for the watermark to be enabled",
       "severity": null,
       "fix": null
     },
     {
-      "n": 49,
+      "n": 61,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The MAM route gives a watermark throughout the managed profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-enabling-dlp-features",
+      "quote": "MAM-managed profiles have a watermark throughout the entire profile",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
       "where": "Risk assessment: Change & support; Governance guidance: After rollout",
       "type": "admin-path",
-      "claim": "Microsoft recommends checking edge://policy for the applied watermarking policy and the user's scope.",
+      "claim": "Microsoft documents edge://policy as the place to confirm that the watermarking policy is applied and the user is in scope.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
       "quote": "In edge://policy, confirm the watermarking policy is applied and the user is in scope.",
@@ -570,10 +707,10 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 63,
       "where": "Risk assessment: Change & support; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Microsoft identifies an audit action instead of a restriction as the most common cause of a missing watermark.",
+      "claim": "The feature page identifies Audit rather than a block action as the most common cause of an expected watermark not appearing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection",
       "quote": "Verify the DLP/session/label policy carries a restriction (block) action, not just Audit. This is the most common cause.",
@@ -581,101 +718,57 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "controls[0].ui; Governance controls: table",
-      "type": "admin-path",
-      "claim": "The Watermarking path is Microsoft 365 admin center > Settings > Microsoft Edge > configuration policy > Customization Settings > Security Settings > Watermarking.",
+      "n": 64,
+      "where": "Governance controls; changes: correction",
+      "type": "behaviour",
+      "claim": "Conflicting device GPO or MDM policies override Edge management service policies by default.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-enabling-dlp-features",
-      "quote": "In the Edge Management Service (admin.microsoft.com → Settings → Microsoft Edge)\nIn your Configuration policy, navigate to Customization Settings → Security Settings.\nEnable Watermarking for users who are receiving MAM policies.",
-      "severity": "minor",
-      "fix": "Use 'Settings > Microsoft Edge > Configuration policies > configuration policy > Properties > Customization Settings > Security Settings > Watermarking'. The omitted tab lists the policies and Properties is the details page; the starting route is documented by the already cited https://learn.microsoft.com/deployedge/microsoft-edge-management-service."
-    },
-    {
-      "n": 52,
-      "where": "controls[0].api; front matter: changes; Governance controls",
-      "type": "absence",
-      "claim": "No Microsoft Graph operation or Edge policy for the Watermarking toggle is documented at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Edge watermarking toggle Microsoft Graph API Edge policy reference watermark automation. Opened Edge Graph concept and API overview and learn.microsoft.com/deployedge/microsoft-edge-policies; searched the complete policy reference for watermark (no matches).",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+      "quote": "Any policies you apply with Microsoft Edge management service will be overridden if they conflict with an existing Group Policy Object (GPO) or Mobile Device Management (MDM) policy that's set on the device.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 53,
-      "where": "Governance controls: policy precedence",
+      "n": 65,
+      "where": "Governance controls; changes: correction",
       "type": "behaviour",
-      "claim": "Edge management service policies are overridden whenever they conflict with a GPO or MDM policy on the device.",
-      "status": "contradicted",
+      "claim": "EdgeManagementPolicyOverridesPlatformPolicy can reverse that policy-source precedence.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
-      "quote": "If you want the Microsoft Edge management service policy to override MDM/GPM policy you can set the override in the EdgeManagementPolicyOverridesPlatformPolicy policy. This is a private policy and must be set via the registry.",
-      "severity": "blocker",
-      "fix": "Replace the sentence with: 'By default, conflicting device GPO or MDM policies override Edge management service policies; EdgeManagementPolicyOverridesPlatformPolicy can reverse that precedence.' Cite https://learn.microsoft.com/deployedge/microsoft-edge-management-service."
+      "quote": "If you want the Microsoft Edge management service policy to override MDM/GPM policy you can set the override in the EdgeManagementPolicyOverridesPlatformPolicy policy.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 54,
-      "where": "Risk assessment: Data exposure; rationale: risk",
-      "type": "behaviour",
-      "claim": "The watermark adds no new data access.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Microsoft Edge watermarking protection data access copying autonomous actions watermark display. Opened learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection and the DLP configuration page. They describe a browser overlay, not an assurance of no new data access.",
-      "severity": "major",
-      "fix": "Replace 'The watermark adds no new data access' with 'The browser renders a semi-transparent overlay across the content area' in Risk assessment and remove 'that adds no new data access' from the risk rationale. Cite https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection."
-    },
-    {
-      "n": 55,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "A watermark does not stop copying.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Microsoft Edge watermarking protection data access copying autonomous actions watermark display. Read the feature and DLP configuration pages; they describe deterrence and separate restriction actions, but do not state that watermarking does not stop copying.",
-      "severity": "major",
-      "fix": "Replace 'A watermark does not stop copying' with 'Microsoft describes watermarking as a deterrent to unauthorised sharing'. Cite https://learn.microsoft.com/deployedge/microsoft-edge-management-watermark-protection."
-    },
-    {
-      "n": 56,
+      "n": 66,
       "where": "Risk assessment: Autonomy & actions",
       "type": "absence",
-      "claim": "No autonomous actions are described for the watermark.",
+      "claim": "Microsoft describes no autonomous actions for Watermarking Protection.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Edge watermarking protection data access copying autonomous actions watermark display. Read the full feature page and DLP configuration page; they describe policy-triggered display and admin configuration, not autonomous actions.",
+      "quote": "Searched: \"Watermarking Protection\" \"Edge\" \"autonomous\". Read complete Watermarking Protection and DLP Features pages and returned Edge release-note excerpts; they describe browser rendering and policy enforcement, not autonomous actions.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 57,
-      "where": "Governance guidance: Before rollout; Governance controls: table",
+      "n": 67,
+      "where": "Governance guidance: Before rollout, After rollout; controls",
       "type": "consistency",
-      "claim": "The checklist tells readers to inventory DLP and Intune app protection policies and check Targeted Release, but those controls have no table rows.",
+      "claim": "Every control the governance checklist asks readers to check or inventory has a controls-table row.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Inventory which Purview label, session and eDLP policies and which Intune app protection policies carry a block action.\nCheck ... that Targeted Release is enabled for the tenant.\nTable: Whether Watermarking is turned on for a group of users.",
+      "quote": "Checklist: \"Inventory which Purview label, session and eDLP policies and which Intune app protection policies carry a block action\"; \"Targeted Release is enabled\"; \"Open edge://policy\". The table contains only the Watermarking toggle.",
       "severity": "minor",
-      "fix": "Flag the Before rollout instructions to inventory Purview/Intune protection policies and check Targeted Release as checklist steps with no corresponding controls-table rows; do not add unverified paths or commands."
-    },
-    {
-      "n": 58,
-      "where": "Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "The preview page does not explain what 'preferred' means for E3 tenants.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Edge Watermarking Protection general availability default enabled licensing E3 E5 other licenses price meter. Read the complete feature page: it says 'Microsoft 365 E5 (preferred) or E3 licensing' without explaining 'preferred'. The separate DLP page describes the MAM route.",
-      "severity": null,
-      "fix": null
+      "fix": "Remove the first Before rollout bullet about inventorying Purview and Intune policies. In the second Before rollout bullet, remove ', and that Targeted Release is enabled for the tenant'. Remove the first After rollout bullet about edge://policy. These checklist controls have no table rows; do not add rows in this correction."
     }
   ],
   "precheck": {
-    "at": "2026-11-22T19:56:45.199Z",
+    "at": "2026-11-22T20:52:00.541Z",
     "summary": {
       "links": 5,
       "unreachable": 0,
       "uiPaths": 1,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 0,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
@@ -717,15 +810,27 @@
         "segments": [
           "Settings",
           "Microsoft Edge",
+          "Configuration policies",
           "configuration policy",
+          "Properties",
           "Customization Settings",
           "Security Settings",
           "Watermarking"
         ],
-        "missing": []
+        "missing": [
+          "Configuration policies",
+          "Properties"
+        ]
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-22",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

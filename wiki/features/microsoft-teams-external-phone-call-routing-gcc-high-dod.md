@@ -17,13 +17,16 @@ impact: "low"
 defaultState: "admin-opt-in"
 action: "review"
 licensing:
-  model: "mixed"
-  notes: "Microsoft's Teams Phone licensing page says users who need their own phone number need licensing that includes Teams and Microsoft 365 Phone System, for example a legacy Microsoft 365 E5 licence, or a Microsoft Teams Enterprise licence combined with Microsoft Teams Phone Standard. A licence or price specific to these routing settings is not yet published."
+  model: "included"
+  notes: "Microsoft lists Redirect external phone calls with Microsoft Teams Enterprise plus Teams Phone, not with Microsoft Teams Enterprise alone. Users who need their own phone number need licensing that includes Teams and Microsoft 365 Phone System, for example a legacy Microsoft 365 E5 licence, or a Microsoft Teams Enterprise licence combined with Microsoft Teams Phone Standard."
 audiences: ["m365-admin","service-owner","end-user"]
 tags: ["teams","teams-phone","powershell","policy","call-routing","gcc-high","dod"]
 sources:
   - title: "Routing inbound calls"
     url: "https://learn.microsoft.com/microsoftteams/inbound-call-routing"
+    kind: "learn"
+  - title: "Teams Calling features"
+    url: "https://learn.microsoft.com/microsoftteams/here-s-what-you-get-with-phone-system"
     kind: "learn"
   - title: "Set-CsTeamsCallingPolicy"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy?view=teams-ps"
@@ -95,19 +98,23 @@ changes:
     note: "Corrected after verification: unanswered destination can be delegates or a group, Teams Only deployment-mode qualification, removed an unverified admin centre location, and added the GCC High and DoD Direct Routing note."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 53 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-22"
+    note: "Corrected licensing: Microsoft lists Redirect external phone calls with Teams Enterprise plus Teams Phone, so the model is now included; removed the unpublished-licence wording."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 56 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 53
-  confirmed: 50
+  claims: 56
+  confirmed: 55
   unconfirmed: 0
-  contradicted: 3
-  attempts: 2
-  hash: "d365f8431d06fd291331b496317ccdf2"
+  contradicted: 1
+  attempts: 0
+  hash: "1fcd4500893b697899c30cb9ac14058a"
 ---
 
 ## What's changing
@@ -144,9 +151,11 @@ If nobody acts, the documented default is RegularIncoming (no changes to default
 
 Microsoft's "Routing inbound calls" page names no licence, meter or charge for these routing settings. It says the article applies to Microsoft Calling Plans, Operator Connect, Teams Phone Mobile and Direct Routing. For GCC High and DoD, Microsoft's service description says Phone System is delivered via Direct Routing.
 
+Microsoft's "Teams Calling features" page lists Redirect external phone calls with Microsoft Teams Enterprise plus Teams Phone, not with Microsoft Teams Enterprise alone.
+
 The Teams Phone licensing page states that users who need their own telephone number to make and receive calls must be assigned licensing that includes the Microsoft Teams and Microsoft 365 Phone System applications. Its examples include a legacy Microsoft 365 E5 licence, or a Microsoft Teams Enterprise licence combined with the Microsoft Teams Phone Standard licence. That page also says that if Microsoft provides PSTN access and phone numbers, the user needs a Microsoft Calling Plan licence in addition.
 
-A licence or price specific to these routing settings, or specific to GCC High and DoD, is not yet published. The indirect cost is admin time to choose policies, communicate the change and handle missed-call queries.
+A separate charge or price for these routing settings, or specific to GCC High and DoD, is not yet published. The indirect cost is admin time to choose policies, communicate the change and handle missed-call queries.
 
 ## Scope
 
@@ -191,20 +200,17 @@ Where **Unanswered** is chosen, the destination is the user's own unanswered cal
 ## Open questions
 
 - Does the roadmap item cover both the PSTN and the federated routing settings, or only one? The roadmap text says "all external phone calls" and does not name the settings; watch the roadmap item and the Routing inbound calls page.
-- Is any licence or charge specific to these routing settings, or specific to GCC High and DoD tenants, published beyond the Teams Phone licensing requirements? Watch the Teams Phone licensing page.
+- Is any charge specific to these routing settings, or specific to GCC High and DoD tenants, published beyond the Teams Phone licensing requirements? Watch the Teams Phone licensing page.
 - How are calls diverted by these settings recorded in call history and reports in GCC High and DoD? Watch the Routing inbound calls page for an update.
 
 <!-- rationale
 risk: Low. The documented default is RegularIncoming, so routing is unchanged until an admin picks voicemail or unanswered settings; the exposure that remains is legitimate external callers being diverted.
-cost: Low. Microsoft's Routing inbound calls page names no licence or charge for these settings; the cost known is admin time on top of the Teams Phone licensing users already need for phone numbers.
+cost: Low. Microsoft lists Redirect external phone calls with Teams Enterprise plus Teams Phone, which phone-number users already need; the cost known is admin time, and the Routing inbound calls page names no separate charge.
 impact: Low. Only users covered by a calling policy that an admin changes notice different routing; nobody is affected until then, and the change is made by Teams admins.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model / licensing: The entitlement model for the routing feature is mixed. | Found: Redirect external phone calls | Send inbound calls from external callers to user's forwarding settings (for example, voicemail) while not impacting internal calls. | Image of a x for no | Image of a checkmark for yes | Fix: Set licensing.model to included. Add https://learn.microsoft.com/microsoftteams/here-s-what-you-get-with-phone-system to sources and state in licensing.notes: 'Microsoft lists Redirect external phone calls with Microsoft Teams Enterprise plus Teams Phone, not with Microsoft Teams Enterprise alone.' Keep the existing licence-combination examples as background. | Source: https://learn.microsoft.com/microsoftteams/here-s-what-you-get-with-phone-system
-- [contradicted, blocker] front matter: licensing.notes; Cost and licensing; Open questions / absence: Microsoft has not published a licence covering these routing settings. | Found: With Microsoft Teams Enterprise license | With Microsoft Teams Enterprise license + Teams Phone license ... Redirect external phone calls ... Image of a x for no | Image of a checkmark for yes | Fix: Replace the unpublished-licence wording in licensing.notes and Cost and licensing with: 'Microsoft lists Redirect external phone calls with Microsoft Teams Enterprise plus Teams Phone, not with Microsoft Teams Enterprise alone.' Cite https://learn.microsoft.com/microsoftteams/here-s-what-you-get-with-phone-system. In Open questions, remove 'licence or' so the question concerns a separate charge only. | Source: https://learn.microsoft.com/microsoftteams/here-s-what-you-get-with-phone-system
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks readers to check voicemail enablement, but the controls table has no row for voicemail enablement. | Found: Confirm that each affected user has voicemail enabled and unanswered call settings configured ... Controls table: Routing for PSTN calls; Routing for federated calls; If unanswered. | Fix: The Before rollout instruction to confirm voicemail enablement has no matching control row; the If unanswered row covers only the unanswered destination. Do not add a control row as part of this correction.
+- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist asks administrators to check whether voicemail is enabled, but the controls table has no row for voicemail availability. | Found: Confirm that each affected user has voicemail enabled and unanswered call settings configured ... Controls: inbound PSTN routing; inbound federated routing; user's unanswered destination. | Fix: Remove 'voicemail enabled and' from the Before rollout checklist bullet, leaving 'Confirm that each affected user has unanswered call settings configured, because a call is disconnected where the chosen destination is not available.' Keep the supported voicemail prerequisite in the body; do not add a control row.
 -->

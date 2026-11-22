@@ -41,7 +41,7 @@ videos: []
 related: ["microsoft-edge-ask-copilot-about-an-image","microsoft-edge-upgraded-copilot-new-tab-page","endpoint-dlp"]
 controls:
   - governs: "Whether Edge opens the Copilot side pane automatically for Outlook links"
-    scope: "tenant"
+    scope: "user"
     ui:
       surface: "Group Policy (Administrative Templates)"
       path: "Administrative Templates > Microsoft Edge > Automatically open Copilot side pane with contextual insights for links opened from Outlook"
@@ -50,9 +50,9 @@ controls:
       kind: "other"
       call: "Registry: SOFTWARE\\Policies\\Microsoft\\Edge, value M365LinksAutoOpenCopilotEnabled (REG_DWORD)"
       docs: "https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365linksautoopencopilotenabled"
-    note: "Enable or leave unconfigured: pane opens. Disable: it does not. Mandatory only. The page says the policy is not yet supported."
+    note: "Enable or leave unconfigured: pane opens. Disable: it does not. Mandatory only. The page says the policy is not yet supported. Applies per Edge profile."
   - governs: "Whether Copilot can read page content for Entra account profiles (disabling also disables this feature)"
-    scope: "tenant"
+    scope: "user"
     ui:
       surface: "Group Policy (Administrative Templates)"
       path: "Administrative Templates > Microsoft Edge > Control Copilot access to Microsoft Edge page content, browsing history, and video transcript for Entra account user profiles when using Copilot in the Microsoft Edge sidepane"
@@ -61,9 +61,9 @@ controls:
       kind: "other"
       call: "Registry: SOFTWARE\\Policies\\Microsoft\\Edge, value EdgeEntraCopilotPageContext (REG_DWORD)"
       docs: "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext"
-    note: "Unconfigured: enabled in non-EU regions, disabled in EU regions; users can change it in Edge settings. Copilot can't read DLP-protected pages."
+    note: "Unconfigured: enabled in non-EU regions, disabled in EU regions; users can change it in Edge settings. Copilot can't read DLP-protected pages. Applies per Edge profile."
   - governs: "Whether Copilot can read page content for Entra ID profiles (disabling also disables this feature)"
-    scope: "tenant"
+    scope: "user"
     ui:
       surface: "Group Policy (Administrative Templates)"
       path: "Administrative Templates > Microsoft Edge > Control Copilot access to page context for Microsoft Entra ID profiles"
@@ -72,7 +72,7 @@ controls:
       kind: "other"
       call: "Registry: SOFTWARE\\Policies\\Microsoft\\Edge, value CopilotPageContext (REG_DWORD)"
       docs: "https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotpagecontext"
-    note: "Does not control Copilot with enterprise data protection; EdgeEntraCopilotPageContext does."
+    note: "Does not control Copilot with enterprise data protection; EdgeEntraCopilotPageContext does. Applies per Edge profile."
 confidence: "medium"
 created: "2026-11-22"
 updated: "2026-11-22"
@@ -82,19 +82,23 @@ changes:
     note: "First briefing for this item, built from the roadmap record and Microsoft's Edge policy pages."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 59 statements contradicted, 4 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Correction: policy controls now shown as user (per-profile) scope; reworded the availability and DLP statements in Why it matters; removed the DLP review checklist step."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 57 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 53
-  unconfirmed: 4
-  contradicted: 2
-  attempts: 1
-  hash: "2bf9605f9a688e96be5e870ce3c415ef"
+  claims: 57
+  confirmed: 57
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "7b59f84e71527865d82d6518206cbdf0"
 ---
 
 ## What's changing
@@ -107,9 +111,9 @@ The roadmap item is In development, with a General Availability target of Decemb
 
 ## Why it matters
 
-Unless an administrator sets the policy, Microsoft's policy page says the Copilot side pane opens automatically for eligible links. That means a new, unrequested Copilot surface next to every same-tenant email link a user opens in Edge, with Copilot reading page content and the email to produce its suggestions.
+Unless an administrator sets the policy, Microsoft's policy page says the Copilot side pane opens automatically for eligible links. That means a new, unrequested Copilot surface when a user opens an eligible web link from an Outlook email sent from the same tenant, with Copilot reading page content and the email to produce its suggestions.
 
-The feature depends on Copilot's access to page content, so existing page-context and DLP decisions now also decide whether users see this pane. Settle those before December, then decide whether to leave the auto-open on or switch it off and tell users.
+The feature depends on Copilot's access to page content, so disabling either page-context policy also disables the auto-open feature. DLP-protected page content remains inaccessible to Copilot. Settle those before December, then decide whether to leave the auto-open on or switch it off and tell users.
 
 ## Risk assessment
 
@@ -144,7 +148,6 @@ The feature applies to eligible links in Outlook emails sent from the same tenan
 ### Before rollout
 - Check whether EdgeEntraCopilotPageContext and CopilotPageContext are configured in your Edge policies; either one set to disabled turns this feature off.
 - Decide whether users in your tenant should get the auto-opening side pane, and set M365LinksAutoOpenCopilotEnabled accordingly.
-- Review which pages your DLP policies protect, since Copilot can't read those pages.
 
 ### At rollout
 - Deploy the M365LinksAutoOpenCopilotEnabled value you chose to Edge on Windows and macOS before Edge version 148 reaches users.
@@ -161,9 +164,9 @@ The feature applies to eligible links in Outlook emails sent from the same tenan
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Edge opens the Copilot side pane automatically for Outlook links</strong><br><small>Tenant</small><br><small class="controls__note">Enable or leave unconfigured: pane opens. Disable: it does not. Mandatory only. The page says the policy is not yet supported.</small></td><td data-label="Admin UI"><strong>Group Policy (Administrative Templates)</strong><br>Administrative Templates › Microsoft Edge › Automatically open Copilot side pane with contextual insights for links opened from Outlook <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365linksautoopencopilotenabled" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry: SOFTWARE\Policies\Microsoft\Edge, value M365LinksAutoOpenCopilotEnabled (REG_DWORD)</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365linksautoopencopilotenabled" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether Copilot can read page content for Entra account profiles (disabling also disables this feature)</strong><br><small>Tenant</small><br><small class="controls__note">Unconfigured: enabled in non-EU regions, disabled in EU regions; users can change it in Edge settings. Copilot can't read DLP-protected pages.</small></td><td data-label="Admin UI"><strong>Group Policy (Administrative Templates)</strong><br>Administrative Templates › Microsoft Edge › Control Copilot access to Microsoft Edge page content, browsing history, and video transcript for Entra account user profiles when using Copilot in the Microsoft Edge sidepane <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry: SOFTWARE\Policies\Microsoft\Edge, value EdgeEntraCopilotPageContext (REG_DWORD)</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether Copilot can read page content for Entra ID profiles (disabling also disables this feature)</strong><br><small>Tenant</small><br><small class="controls__note">Does not control Copilot with enterprise data protection; EdgeEntraCopilotPageContext does.</small></td><td data-label="Admin UI"><strong>Group Policy (Administrative Templates)</strong><br>Administrative Templates › Microsoft Edge › Control Copilot access to page context for Microsoft Entra ID profiles <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotpagecontext" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry: SOFTWARE\Policies\Microsoft\Edge, value CopilotPageContext (REG_DWORD)</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotpagecontext" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Edge opens the Copilot side pane automatically for Outlook links</strong><br><small>User</small><br><small class="controls__note">Enable or leave unconfigured: pane opens. Disable: it does not. Mandatory only. The page says the policy is not yet supported. Applies per Edge profile.</small></td><td data-label="Admin UI"><strong>Group Policy (Administrative Templates)</strong><br>Administrative Templates › Microsoft Edge › Automatically open Copilot side pane with contextual insights for links opened from Outlook <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365linksautoopencopilotenabled" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry: SOFTWARE\Policies\Microsoft\Edge, value M365LinksAutoOpenCopilotEnabled (REG_DWORD)</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365linksautoopencopilotenabled" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Copilot can read page content for Entra account profiles (disabling also disables this feature)</strong><br><small>User</small><br><small class="controls__note">Unconfigured: enabled in non-EU regions, disabled in EU regions; users can change it in Edge settings. Copilot can't read DLP-protected pages. Applies per Edge profile.</small></td><td data-label="Admin UI"><strong>Group Policy (Administrative Templates)</strong><br>Administrative Templates › Microsoft Edge › Control Copilot access to Microsoft Edge page content, browsing history, and video transcript for Entra account user profiles when using Copilot in the Microsoft Edge sidepane <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry: SOFTWARE\Policies\Microsoft\Edge, value EdgeEntraCopilotPageContext (REG_DWORD)</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Copilot can read page content for Entra ID profiles (disabling also disables this feature)</strong><br><small>User</small><br><small class="controls__note">Does not control Copilot with enterprise data protection; EdgeEntraCopilotPageContext does. Applies per Edge profile.</small></td><td data-label="Admin UI"><strong>Group Policy (Administrative Templates)</strong><br>Administrative Templates › Microsoft Edge › Control Copilot access to page context for Microsoft Entra ID profiles <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotpagecontext" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry: SOFTWARE\Policies\Microsoft\Edge, value CopilotPageContext (REG_DWORD)</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotpagecontext" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -184,15 +187,9 @@ cost: Low. The only cost the sources show is admin time to review the policies; 
 impact: High. It changes what happens when users click links in Outlook emails: a side pane opens without the user asking, for every user the feature reaches.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters / availability: The new pane appears next to every same-tenant email link a user opens in Edge. | Found: This policy controls whether Microsoft Edge automatically opens the Microsoft Copilot side pane when users open eligible web links from Outlook emails sent from the same tenant. | Fix: Replace "next to every same-tenant email link a user opens in Edge" with "when a user opens an eligible web link from an Outlook email sent from the same tenant". The policy does not promise coverage of every link. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365linksautoopencopilotenabled
-- [unsupported, blocker] Why it matters / applicability: DLP decisions determine whether users see the automatically opening pane. | Found: Searched: "M365LinksAutoOpenCopilotEnabled" DLP protected pages automatic pane visibility. Read all three policy references and Purview DLP excerpts; DLP blocks page-content access, but none states that it suppresses this pane's automatic opening. | Fix: Replace "so existing page-context and DLP decisions now also decide whether users see this pane" with "so disabling either page-context policy also disables the auto-open feature. DLP-protected page content remains inaccessible to Copilot."
-- [unsupported, blocker] controls[0].scope; Governance controls table / applicability: The auto-open Group Policy and registry control has tenant scope. | Found: Searched: "M365LinksAutoOpenCopilotEnabled" tenant policy per profile scope. Read the policy reference: "Per Profile: Yes". The documented Group Policy and registry setting does not state tenant-wide enforcement. | Fix: Set controls[0].scope to "user" and replace the rendered "Tenant" label with "User". Append to its note: "Applies per Edge profile." The reference documents profile-scoped application, not a tenant-wide switch.
-- [unsupported, blocker] controls[1].scope; Governance controls table / applicability: The EdgeEntraCopilotPageContext Group Policy and registry control has tenant scope. | Found: Searched: "M365LinksAutoOpenCopilotEnabled" tenant policy per profile scope. Read EdgeEntraCopilotPageContext: "Per Profile: Yes"; it applies only to Entra-account users in Edge's side pane. No tenant-wide enforcement is stated. | Fix: Set controls[1].scope to "user" and replace the rendered "Tenant" label with "User". Append to its note: "Applies per Edge profile."
-- [unsupported, blocker] controls[2].scope; Governance controls table / applicability: The CopilotPageContext Group Policy and registry control has tenant scope. | Found: Searched: "M365LinksAutoOpenCopilotEnabled" tenant policy per profile scope. Read CopilotPageContext: "Per Profile: Yes" and "This policy applies only to Microsoft Entra ID profiles in Microsoft Edge." No tenant-wide enforcement is stated. | Fix: Set controls[2].scope to "user" and replace the rendered "Tenant" label with "User". Append to its note: "Applies per Edge profile."
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; controls[0].note; Governance controls; Open questions / availability: The policy reference says the policy is not yet supported at the time of writing. | Found: This policy is not yet supported. When support becomes available, eligible links from Outlook emails sent from the same tenant can open with the Copilot side pane. | Fix: After the not-yet-supported statement, add: "Intune's June 8, 2026 update nevertheless lists this policy as a configuration option; the policy reference still says it is not yet supported." Cite https://learn.microsoft.com/intune/whats-new/#week-of-june-8,-2026-service-release-2605, which lists the Enabled, unconfigured and Disabled options without the unsupported qualification. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365linksautoopencopilotenabled
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist asks administrators to review DLP policies, but the controls table has no DLP-policy row. | Found: Checklist: "Review which pages your DLP policies protect". The three control rows are M365LinksAutoOpenCopilotEnabled, EdgeEntraCopilotPageContext and CopilotPageContext. | Fix: Remove the checklist bullet "Review which pages your DLP policies protect, since Copilot can't read those pages." Keep the supported DLP restriction in Risk assessment; do not add an unverified control row.
+- [supported, minor] What's changing; controls[0].note; Governance controls / availability: The policy page marks the policy as not yet supported, so the briefing treats its behaviour as planned. | Found: This policy is not yet supported. When support becomes available, eligible links from Outlook emails sent from the same tenant can open with the Copilot side pane. | Fix: After the not-yet-supported statement, add: 'Microsoft's Intune June 8, 2026 release notes describe this policy and automatic opening from Edge 148 in present terms, while the policy reference still says it is not yet supported and the roadmap remains In development.' Cite https://learn.microsoft.com/intune/whats-new/#week-of-june-8,-2026-service-release-2605. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365linksautoopencopilotenabled
+- [supported, minor] Governance controls / applicability: EdgeEntraCopilotPageContext covers Microsoft 365 Copilot Chat and enterprise-data-protected Copilot in the Edge side pane. | Found: This chart covers the behavior of Microsoft 365 Copilot Chat in Edge for Business which is accessible in the sidepane. | Fix: Add https://learn.microsoft.com/deployedge/edge-learnmore-copilot-page-summary-results to sources for the Copilot Chat side-pane identification. The cited EdgeEntraCopilotPageContext reference gives its reach as Copilot experiences in the side pane, including Microsoft 365 Copilot Business Chat and Microsoft Copilot with enterprise data protection. | Source: https://learn.microsoft.com/deployedge/edge-learnmore-copilot-page-summary-results
 -->

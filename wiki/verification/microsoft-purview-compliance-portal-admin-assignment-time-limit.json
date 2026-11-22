@@ -1,0 +1,703 @@
+{
+  "slug": "microsoft-purview-compliance-portal-admin-assignment-time-limit",
+  "roadmapId": 566865,
+  "title": "Microsoft Purview: time-limited role group assignments",
+  "status": "verified-with-gaps",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 54,
+    "confirmed": 54,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "The briefing passes: Microsoft documents optional assignment expiry, its limits, exclusions and audit behaviour, and the roadmap facts match. Minor corrections should clarify the expiry route, the underlying licensing requirement and differences between Microsoft's role documentation.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap specifies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"Worldwide (Standard Multi-Tenant)\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists GCC High.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "title; front matter: products",
+      "type": "record",
+      "claim": "This is a Microsoft Purview feature.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-01T23:00:07.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-01T23:00:07\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing: first paragraph",
+      "type": "record",
+      "claim": "The roadmap describes a limit in days for temporary admin permission when assigning users and security groups to role groups.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview is introducing the ability to set a limit in days when assigning users and security groups to role groups. This allows admins to define a fixed duration when providing admin permission on a temporary basis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "At the expiry date the assignment is automatically removed and access revoked without manual removal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "When the configured expiration date is reached, the assignment is automatically removed and access is revoked without requiring manual action from an administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: defaultState; summary; What's changing; rationale: risk",
+      "type": "default",
+      "claim": "Expiry is optional and requires administrator configuration, supporting admin-opt-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Automatic expiring permissions are optional and are configured on a per-user assignment basis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; What's changing; Scope; Governance controls",
+      "type": "behaviour",
+      "claim": "Expiry is configured on each assignment rather than on the role group or tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Automatic expiring permissions are optional and are configured on a per-user assignment basis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Administrators can create temporary assignments with an expiration date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Administrators can create temporary assignments with an expiration date",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Administrators can update an existing expiration date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "update an existing expiration date",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Cost and licensing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Administrators can extend an assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "extend an assignment",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Administrators can remove the expiration to make an assignment permanent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "remove the expiration to make the assignment permanent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The minimum selectable expiration period is one day.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "A minimum expiration period of one day and maximum expiration period of two years can be selected",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The maximum selectable expiration period is two years.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "A minimum expiration period of one day and maximum expiration period of two years can be selected",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The expiration range is measured from the current date in the configuring administrator's local time zone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "from the current date in the local time zone of the administrator who sets the expiration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Expiry does not affect completed actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Actions that are already completed or in progress aren't affected",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Expiry does not affect actions already in progress.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Actions that are already completed or in progress aren't affected",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "New operations are denied after the assignment expires.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "but any new operation is denied after the assignment expires.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Scope",
+      "type": "applicability",
+      "claim": "Expiry applies to built-in and custom role groups other than the two listed eDiscovery exclusions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "All built-in and custom role groups except the following support automatic expiring permissions:\n- eDiscovery Administrator\n- eDiscovery Manager",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[0].note; What's changing; Scope; Governance guidance",
+      "type": "applicability",
+      "claim": "eDiscovery Administrator does not support expiry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "All built-in and custom role groups except the following support automatic expiring permissions:\n- eDiscovery Administrator\n- eDiscovery Manager",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].note; What's changing; Scope; Governance guidance",
+      "type": "applicability",
+      "claim": "eDiscovery Manager does not support expiry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "All built-in and custom role groups except the following support automatic expiring permissions:\n- eDiscovery Administrator\n- eDiscovery Manager",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "default",
+      "claim": "Standing assignments without an expiry remain permanent unless an administrator configures expiry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Automatic expiring permissions are optional and are configured on a per-user assignment basis. Administrators can create temporary assignments with an expiration date",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters; Risk assessment; Governance guidance; Open questions; rationale: risk",
+      "type": "behaviour",
+      "claim": "No notification is sent before temporary permissions expire.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "You don't receive a notification before permissions expire",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].note; Why it matters; Risk assessment; Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "Expiry itself generates no additional audit log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "nor are any additional audit logs are generated when a user's temporary permissions expires.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Individual and security-group assignments to the same role group retain independent expiration dates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "If a user receives the same role group through both an individual assignment and a security group assignment, each assignment retains its own expiration date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Access through the same role group remains active while at least one assignment is valid.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Access remains active as long as one of the assignments is still valid.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Users added to an assigned security group receive the expiration date associated with that group's role-group assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Assigning a role group to a security group also means changes to that group's membership update any added users with the expiration date associated with the assigned role group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Microsoft Entra roles shown in Purview are managed in Microsoft Entra ID rather than through the Purview role-group expiry steps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "The roles that appear in the Microsoft Entra ID section of the Roles and scopes area are Microsoft Entra roles ... To manage members of a Microsoft Entra role, select Manage members in Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].note; Cost and licensing; Scope; Governance controls",
+      "type": "role",
+      "claim": "The documented portal steps for managing role-group members and expiry require the Role management role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Sign in to the Microsoft Purview portal ... by using credentials for an admin account assigned the Role management role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Global administrators can manage role-group assignments and expiry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Global Administrator | Access to all administrative features in all Microsoft 365 services. ... | Data Catalog CuratorsData Estate Insights ReadersOrganization ManagementPurview Administrators",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Viewing Role groups requires global administrator or the Role Management role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "To view Role groups in the Roles and scopes area in the Microsoft Purview portal, users need to be a global administrator or need to be assigned the Role Management role",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "The permissions page says Role Management is assigned only to Organization Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Role Management role (assigned only to the Organization Management role group).",
+      "severity": "minor",
+      "fix": "Keep the attribution, but add: 'The roles reference instead lists Organization Management and Purview Administrators as default assignments for Role Management.' Cite https://learn.microsoft.com/defender-office-365/scc-permissions#roles-in-microsoft-defender-for-office-365-and-microsoft-purview, whose Role Management row lists both groups."
+    },
+    {
+      "n": 40,
+      "where": "Scope: Clouds and platform; Open questions",
+      "type": "availability",
+      "claim": "Learn restricts security-group role-group membership to Microsoft 365 commercial cloud organisations, unlike the broader roadmap cloud list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Security groups are supported only in Microsoft 365 commercial cloud organizations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope: Related option",
+      "type": "behaviour",
+      "claim": "PIM for Groups enables just-in-time user activation through security groups assigned to Purview role groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "By using PIM for Groups, you can assign Microsoft Entra security groups to Microsoft Purview role groups in the Microsoft Purview portal. This assignment allows users to activate just-in-time access and then perform tasks in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope: Related option",
+      "type": "behaviour",
+      "claim": "Direct user assignments to Purview role groups cannot manage just-in-time activations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "you can't manage just-in-time activations by using direct user assignments to role groups in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].ui; Governance controls table; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Expiry is reached in the Purview portal through Settings > Roles and scopes > Role groups > role group > Edit > Choose users > user > Edit expiration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "On Edit members of the role group, select Choose users or Choose groups. ... Select Select. ... If the selected users or groups need temporary access, select the users or groups and select Edit expiration.",
+      "severity": "minor",
+      "fix": "For the documented built-in-group route, use 'Settings > Roles and scopes > Role groups > role group > Edit > Edit members of the role group > Choose users > user > Select > user > Edit expiration'. Add to the note: 'For a custom group, continue through Name the role group and Edit roles of the role group to Edit members of the role group.' Both routes are documented at https://learn.microsoft.com/purview/purview-permissions#manage-role-groups; the current route omits intermediate wizard headings and the member-picker confirmation."
+    },
+    {
+      "n": 44,
+      "where": "controls[0].note; Governance controls table",
+      "type": "admin-path",
+      "claim": "Choose groups follows the same documented expiry steps for security groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "On Edit members of the role group, select Choose users or Choose groups. ... If the selected users or groups need temporary access, select the users or groups and select Edit expiration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].api; Governance controls table; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no PowerShell or Microsoft Graph operation for configuring this Purview role-group assignment expiry.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Purview\" \"role group\" \"expiration\" \"PowerShell\"' and '\"Purview\" \"role group\" \"expiration\" \"Graph\"'; read purview-permissions, Add-RoleGroupMember and Update-RoleGroupMember. No expiry-setting operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Audit searching is reached through Audit > Search in the Microsoft Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Select the Audit solution card. ... On the Search page, configure the following search criteria as applicable:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog is the PowerShell operation for searching these audit records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "The underlying cmdlet used to search the audit log is an Exchange Online cmdlet, which is Search-UnifiedAuditLog. ... You have to run this cmdlet in Exchange Online PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].governs; Governance controls",
+      "type": "behaviour",
+      "claim": "Adding an expiration date is recorded in Microsoft Purview permissions audit logs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "The expiration date is recorded as part of the audit logs for Microsoft Purview permissions when the date is added or updated by the admin.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].governs; Governance controls",
+      "type": "behaviour",
+      "claim": "Updating an expiration date is recorded in Microsoft Purview permissions audit logs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "The expiration date is recorded as part of the audit logs for Microsoft Purview permissions when the date is added or updated by the admin.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].note; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "UpdatePermission is the searchable audit operation for editing a user assignment expiration date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "| Updated user role assignments expiration in role group | UpdatePermission | A user assignment expiration date is updated in an RBAC role group. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].note; Governance controls table",
+      "type": "role",
+      "claim": "Audit searching requires Audit Logs or View-Only Audit Logs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "You must be assigned the Audit Logs or View-Only Audit Logs roles in the Microsoft Purview portal to search the audit log. ... To access audit cmdlets, you must be assigned the Audit Logs or View-Only Audit Logs roles in the Exchange admin center.",
+      "severity": "minor",
+      "fix": "Replace the role sentence in controls[1].note and its rendered copy with: 'Needs the Audit Logs or View-Only Audit Logs role in the Microsoft Purview portal for UI searches; audit cmdlets require one of those roles in the Exchange admin center and run in Exchange Online PowerShell.' The role names are correct but their separate assignment surfaces are not explained. Source: https://learn.microsoft.com/purview/audit-search."
+    },
+    {
+      "n": 52,
+      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No licence, separate price or meter specific to temporary role-group assignment expiry is published in the examined Microsoft documentation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Purview temporary role group assignments expiration licensing license service description'; read purview-permissions and the Purview service description; searched the latter for temporary, expiry and role groups. No feature-specific licence, price or meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Licensing is unknown because Microsoft has not published a feature-specific licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Any user benefiting from the service requires a license. ... Users with a Purview role assigned for use in the Microsoft Purview portal.",
+      "severity": "minor",
+      "fix": "Set licensing.model to 'included' for this option within licensed Purview solutions. Replace licensing.notes with: 'Users with a Purview role assigned for use in the Microsoft Purview portal require the applicable Purview solution licence. Microsoft has not published a licence, separate price or meter specific to temporary role group assignment expiry at the time of writing (November 2026).' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description. Retain the narrow feature-specific gap in the body rather than implying product licensing is wholly unpublished."
+    },
+    {
+      "n": 54,
+      "where": "Governance controls: final prose",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no tenant-wide setting requiring expiry on these assignments.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Purview automatically expiring permissions require expiration tenant wide policy role groups'; read purview-permissions, including Temporary permissions and all Manage role groups steps. No tenant-wide requirement control found; expiry is optional per assignment.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T20:51:57.507Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=566865",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-log-activities",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-search",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Expiry date on a user's or security group's role group assignment",
+        "docs": "https://learn.microsoft.com/purview/purview-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and scopes",
+          "Role groups",
+          "role group",
+          "Edit",
+          "Choose users",
+          "Edit expiration"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Audit record of expiry dates being added or updated",
+        "docs": "https://learn.microsoft.com/purview/audit-search",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Search"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Audit record of expiry dates being added or updated",
+        "docs": "https://learn.microsoft.com/purview/audit-search",
+        "reachable": true,
+        "token": "Search-UnifiedAuditLog",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

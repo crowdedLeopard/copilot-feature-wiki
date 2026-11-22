@@ -4,7 +4,7 @@ slug: "m365-copilot-multiple-voice-styles-in-m365-copilot-voice-chats"
 roadmapId: 564804
 topic: "m365-copilot"
 products: ["Microsoft Copilot (Microsoft 365)"]
-summary: "Users will be able to pick a voice style for spoken replies in Microsoft 365 Copilot voice chats. It is a user-facing option; Microsoft Learn documents no admin switch for it or for voice chat generally."
+summary: "Microsoft plans to let users pick a voice style for spoken replies in Microsoft 365 Copilot voice chats. It is a user-facing option; Microsoft Learn documents no admin switch for it or for voice chat generally."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "mixed"
-  notes: "Microsoft's requirements page says Copilot Chat is available with an eligible Microsoft 365 subscription and that Microsoft Copilot needs a Copilot licence. A licence rule specific to voice styles is not yet published."
+  model: "included"
+  notes: "Microsoft's requirements page says users of Microsoft Copilot need a Microsoft Copilot licence and a qualifying prerequisite licence. A licence rule specific to voice styles is not yet published."
 audiences: ["m365-admin","change-adoption","end-user"]
 tags: ["m365-copilot","copilot-chat","speech","user-experience","mobile"]
 sources:
@@ -51,19 +51,23 @@ changes:
     note: "First briefing for this roadmap item: voice styles in Microsoft 365 Copilot voice chats, target December CY2026."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 46 statements contradicted, 4 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Correction after verification: licensing model set to included, summary reworded as a plan, and unsupported claims about group-level switching and usage-report identification removed."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 49 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 46
-  confirmed: 42
-  unconfirmed: 4
+  claims: 49
+  confirmed: 49
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "8c1d8a6c6dd059f8b05472e3ea96c8cd"
+  attempts: 0
+  hash: "d6f78da0f5aa8b182b2057d59a728c86"
 ---
 
 ## What's changing
@@ -98,7 +102,7 @@ Microsoft has not stated what happens on arrival, including whether the choice i
 **Change & support**
 
 - A new choice appears in voice chats on desktop and mobile once it rolls out. Tell users where to find it when Microsoft documents the screen.
-- Microsoft Learn states that there is no feature-specific toggle for admins to disable voice chat, so a support team cannot switch the choice off for a group. Whether a separate control for voice styles will exist is not yet documented.
+- Microsoft Learn states that there is no feature-specific toggle for admins to disable voice chat. Whether a separate control for voice styles will exist is not yet documented.
 
 ## Cost and licensing
 
@@ -118,7 +122,7 @@ The item's audience is end users who use voice chat. Microsoft's Windows page de
 
 ### Before rollout
 
-- Identify which user groups already use voice chat, using the Copilot usage reports you already run, so you know who will notice the new choice.
+- Ask pilot users which groups already use voice chat, so you know who may notice the new choice.
 - Brief the help desk that users may hear different voices from one another and that Microsoft documents no admin switch for voice chat.
 - Check the requirements page for the Copilot Chat and Microsoft Copilot licence rules so you can answer who gets voice features.
 
@@ -156,17 +160,6 @@ The same Windows page says web grounding can be disabled by turning off optional
 
 <!-- rationale
 risk: Low. The roadmap describes a choice of voice style inside voice chat, and Microsoft Learn says voice chats follow the same data protection commitments as text and store no audio.
-cost: Low. No price or meter is published for voice styles; the only cost Microsoft's pages show is admin time for communication. Copilot licence rules for the product are on the requirements page.
+cost: Low. Plan for indirect admin and help-desk time for communication. No separate voice-style price or meter is published; the product licence requirements are documented, but voice-style-specific eligibility is not yet published.
 impact: Low. Only users who start voice chats will notice a new choice of voice, and the roadmap lists no change to what voice chat can reach or do.
--->
-
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: licensing.model / licensing: Voice styles have a mixed licensing model. | Found: Searched: Microsoft 365 Copilot voice styles licensing pricing Copilot Credits voice selection 564804. Read requirements and licence-options excerpts; product licence alternatives do not establish multiple entitlement routes for voice styles. | Fix: Set licensing.model to 'included', the standard's classification for a new option inside an already licensed product. Keep the documented Microsoft Copilot and qualifying prerequisite licence requirements and the caveat that voice-style-specific eligibility is not yet published; do not imply confirmed Copilot Chat eligibility.
-- [unsupported, blocker] Risk assessment: Change & support / applicability: A support team cannot switch the voice-style choice off for a group. | Found: Searched: Microsoft 365 Copilot voice chat disable group admin support team voice styles policy. Read Windows voice and admin-center settings; no feature-specific voice toggle is documented, but neither establishes this categorical group-level impossibility. | Fix: Remove ', so a support team cannot switch the choice off for a group'. Retain the documented statement that there is no feature-specific admin toggle to disable voice chat and the narrower absence of a documented voice-style control.
-- [unsupported, blocker] Governance guidance: Before rollout, first bullet / applicability: Copilot usage reports can identify which user groups already use voice chat. | Found: Searched: Microsoft 365 Copilot usage reports identify voice chat users voice mode. Read both Copilot usage-report references, including their user metric tables; they describe prompts, activity dates and app entry points, not voice-chat user identification. | Fix: Replace the bullet with 'Ask pilot users which groups already use voice chat, so you know who may notice the new choice.' Do not claim that Copilot usage reports distinguish voice chat from text.
-- [unsupported, major] rationale: cost / behaviour: Microsoft's pages show admin time for communication as the only cost. | Found: Searched: Microsoft 365 Copilot voice styles licensing pricing Copilot Credits voice selection 564804. Read requirements, Windows voice and admin-center settings pages; none identifies communication time as the only cost. | Fix: Replace the cost rationale with 'Low. Plan for indirect admin and help-desk time for communication. No separate voice-style price or meter is published; the product licence requirements are documented, but voice-style-specific eligibility is not yet published.' This distinguishes the wiki's cost analysis from Microsoft's statements.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary; What's changing; Risk assessment: Change & support / record: Users will be able to choose multiple voice styles in Microsoft 365 Copilot voice chats. | Found: Users can select from multiple voice style options for their voice experience in M365 Copilot. | Fix: Replace the summary's first sentence with 'Microsoft plans to let users pick a voice style for spoken replies in Microsoft 365 Copilot voice chats.' The item remains In development.
 -->
