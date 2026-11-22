@@ -4,7 +4,7 @@ slug: "m365-copilot-reference-an-attached-powerpoint-deck-s-style-when-creating-
 roadmapId: 555880
 topic: "m365-copilot"
 products: ["PowerPoint","Microsoft Copilot (Microsoft 365)"]
-summary: "Launched: users with Copilot in PowerPoint on desktop can attach an existing deck so a new presentation takes its theme and styles. Users choose it; no admin action is required, and no new licence is published."
+summary: "Launched: users with Copilot in PowerPoint on desktop can attach an existing deck so a new presentation takes its theme and styles. Users choose whether to attach a deck; feature-specific admin prerequisites and licensing are not yet documented."
 status: "launched"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -31,6 +31,9 @@ sources:
   - title: "Microsoft Copilot overview"
     url: "https://learn.microsoft.com/copilot/plan/copilot-overview"
     kind: "learn"
+  - title: "Get started with Word, Excel, and PowerPoint Agents in Microsoft Copilot"
+    url: "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents"
+    kind: "learn"
   - title: "Assign or unassign licenses for users in the Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users"
     kind: "learn"
@@ -53,26 +56,30 @@ controls:
     note: "Role: at least License Administrator or User Administrator. Governs Copilot in PowerPoint access as a whole, not attaching a deck specifically."
 confidence: "medium"
 created: "2026-11-21"
-updated: "2026-11-21"
+updated: "2026-11-22"
 roadmapModified: "2026-08-05T22:47:32"
 changes:
   - date: "2026-11-21"
     note: "First briefing for the desktop item; Mac (555878) and Web (555879) are separate roadmap items for the same feature."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 49 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected the summary: removed the unsupported claim that no admin action is required, and added the Word, Excel and PowerPoint Agents page as a source."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 2 of 59 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-21"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-22"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 49
-  confirmed: 48
-  unconfirmed: 1
+  claims: 59
+  confirmed: 57
+  unconfirmed: 2
   contradicted: 0
-  attempts: 1
-  hash: "a4ecea9ebbaf17d629e2fc22605ac4b7"
+  attempts: 0
+  hash: "e08e194bd37bc8992d73f495bb54adc0"
 ---
 
 ## What's changing
@@ -162,10 +169,11 @@ cost: Low. Only admin time and communication are shown; Microsoft publishes no s
 impact: Low. Only people who use Copilot in PowerPoint on desktop and choose to attach a deck will notice it; nothing changes for anyone else.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] summary / default: No admin action is required. | Found: Searched: PowerPoint Agent Mode admin enable disable attached presentation. Opened Learn release-notes, configure-copilot-admin-center and wordexcelppt-agents; none states that this feature requires no admin action or resolves its Agent Mode prerequisites. | Fix: Replace 'Users choose it; no admin action is required, and no new licence is published.' with 'Users choose whether to attach a deck; feature-specific admin prerequisites and licensing are not yet documented.'
+- [unsupported, major] Risk assessment: Data exposure / behaviour: What Copilot can see is set by the user's choice of attached file. | Found: Searched: Copilot PowerPoint attached deck style uses slide content only theme; attached presentation style theme permissions. Opened release-notes and copilot-overview. The feature entry identifies a styling input but does not define the full boundary of data Copilot can see. | Fix: Remove 'so what Copilot can see is set by that user's choice of file'. Keep 'The feature reads a deck the user attaches' and the existing statement that the release notes do not describe whether slide content is used.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Open questions: Anthropic models setting / applicability: Learn describes an Anthropic-model enablement requirement for Word, Excel and PowerPoint Agents in the Microsoft Copilot app. | Found: These agents exclusively use Anthropic's AI models. This AI model must be enabled. These requirements are mandatory for [Word, Excel, and PowerPoint Agents](wordexcelppt-agents) to function. | Fix: Add https://learn.microsoft.com/copilot/manage/wordexcelppt-agents to sources for the existing statement about the Anthropic models setting for agents in the Microsoft Copilot app; retain the separate uncertainty about Agent Mode in PowerPoint. | Source: https://learn.microsoft.com/copilot/manage/wordexcelppt-agents
+- [unsupported, minor] rationale: impact / default: Only desktop Copilot users who choose to attach a deck will notice this change, and nothing changes for anyone else. | Found: Searched: Copilot in PowerPoint attached deck style default unchanged users who do not attach. Read the roadmap and the complete 555878/555880 release-notes entry. They describe selecting and using a deck; neither states that all other users' behaviour remains unchanged. | Fix: Replace the impact rationale with: 'Low. The documented workflow is a user-selected attachment in Copilot in PowerPoint on desktop; no source reviewed says existing behaviour changes for users who do not attach a deck.' Keep the user-opt-in default and the low impact rating.
+- [supported, minor] Governance guidance: Before rollout, first bullet / admin-path: Users > Active users is the documented starting page for confirming a user's licence assignment. | Found: go to the Users > Active users page. ... Select the row of the user ... In the right pane, select Licenses and Apps. ... Expand the Licenses section | Fix: Expand the checklist path to 'Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses', matching the existing controls row. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users
 -->

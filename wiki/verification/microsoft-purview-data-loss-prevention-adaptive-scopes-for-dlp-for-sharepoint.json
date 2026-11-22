@@ -1,0 +1,706 @@
+{
+  "slug": "microsoft-purview-data-loss-prevention-adaptive-scopes-for-dlp-for-sharepoint",
+  "roadmapId": 549288,
+  "title": "Microsoft Purview DLP: adaptive scopes for SharePoint sites",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "3 blocking findings (claims 36, 43, 45)"
+    ]
+  },
+  "counts": {
+    "claims": 50,
+    "confirmed": 45,
+    "unconfirmed": 3,
+    "contradicted": 2,
+    "blocker": 3,
+    "major": 1,
+    "minor": 3
+  },
+  "summary": "Hold: the briefing presents an incompletely documented PowerShell parameter as a working scoping command and carries daily evaluation behaviour from retention and auto-labeling into DLP without confirmation. The static policy creation path also omits a required template selection. The roadmap facts and general DLP licensing are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; Scope",
+      "type": "record",
+      "claim": "Microsoft plans SharePoint DLP targeting by site URL, site name or custom site metadata.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "allows administrators to automatically target DLP policies to the right sites based on attributes such as site URL, site name, or custom site metadata",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Why it matters; controls[2].note",
+      "type": "record",
+      "claim": "Static scoping requires manually listing and maintaining sites rather than evaluating their attributes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Unlike static scoping, which requires manually listing sites and maintaining them over time",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap describes continuous evaluation of site properties.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "adaptive scopes continuously evaluate site properties",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Risk assessment: Data exposure; Autonomy & actions",
+      "type": "record",
+      "claim": "The planned scopes automatically include or exclude sites as their properties change, without editing the policy's site list.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "adaptive scopes continuously evaluate site properties and auto‑include or exclude locations as they evolve",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Cost and licensing: Limits",
+      "type": "record",
+      "claim": "The roadmap says adaptive scopes eliminate the 100-site static policy limit.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "eliminates the 100‑site static policy limit",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: status; What's changing; Risk assessment",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap preview target is February CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"February CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: targetDate; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is January CY2027, reported as a target rather than a commitment.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-08-27T22:38:48.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-08-27T22:38:48\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: defaultState; Why it matters; Scope; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft has not stated the arrival mechanics or default state of SharePoint adaptive scopes for DLP.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint DLP adaptive scopes default rollout existing policies user experience notifications; read roadmap, DLP policy reference, deployment guidance and Adaptive scopes. General DLP location defaults do not state this new control's default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Why it matters; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "No source states that existing SharePoint DLP policies change on arrival; continued static scoping is presented as an assumption.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint DLP adaptive scopes default rollout existing policies user experience notifications; read roadmap, DLP policy reference and Create and deploy data loss prevention policies. No conversion of existing policies was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "No dedicated Learn page for adaptive scopes for SharePoint DLP was found as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: DLP SharePoint adaptive scopes choose policy wizard default existing policies licensing limit; SharePoint adaptive scopes select DLP policy. Read DLP policy reference, Adaptive scopes and DLP creation pages; found mentions, not a dedicated feature page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment; controls[0].note",
+      "type": "availability",
+      "claim": "Learn describes SharePoint adaptive scopes at the policy level as in preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "site locations and, in preview, adaptive scopes at the policy level",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "A SharePoint DLP policy assigned to an administrative unit applies to all sites in that unit with no further site scoping.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "The option to further edit the scope to include or exclude specific sites isn't available. The policy applies to all sites that are part of the administrative unit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Cost and licensing; controls[2].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "The DLP policy reference states that DLP supports scoping policies to up to 100 sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "When scoping a policy for SharePoint locations, you can limit the scope of a policy to specific SharePoint sites and adaptive scopes. DLP supports scoping policies to up to 100 sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Cost and licensing: Limits; Open questions",
+      "type": "absence",
+      "claim": "Learn does not explicitly distinguish the adaptive DLP site maximum from the generic 100-site figure.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint DLP adaptive scopes pricing meter billing limits sites; read DLP policy reference and Adaptive scopes. The reference gives a generic 100-site figure; the separate 50,000-site limit is explicitly for auto-labeling.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Learn's general SharePoint sites adaptive scope type supports Site URL, Site name and Site template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "Site URL Site name Site template",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "That SharePoint scope type supports custom properties RefinableString00 to RefinableString99.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "Custom properties (SharePoint only): RefinableString00 - RefinableString99",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The general adaptive scopes page says dynamic queries run daily.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "These dynamic queries run daily against the attributes or properties that you specify for the selected scope. ... It can take up to five days for the queries to fully populate and changes aren't immediate.",
+      "severity": "minor",
+      "fix": "Add to the background description: 'The same page says queries can take up to five days to fully populate and recommends waiting a few days before adding a newly created scope to a policy.' Keep this explicitly about the general adaptive scopes documentation, not confirmed DLP timing."
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Governance controls",
+      "type": "absence",
+      "claim": "The general adaptive scopes page names retention and auto-labeling for SharePoint site scopes, not DLP.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: DLP in the fetched Adaptive scopes page and DLP SharePoint adaptive scopes daily evaluation New-AdaptiveScope site scope. Its SharePoint table lists retention and auto-labeling; its introduction also names communication compliance, not DLP.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The general adaptive scopes page says typed query values are not immediately validated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "Because the query doesn't run immediately, there's no validation that you typed in the value correctly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment; Scope; controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "A role group containing Scope Manager can create an adaptive scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "Any role group with the Scope Manager role can create an adaptive scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Compliance Administrator is a built-in role group containing Scope Manager.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "The Scope Manger role is included in the following built-in role groups: Compliance Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment; Scope: Roles; Governance controls",
+      "type": "role",
+      "claim": "Learn lists Compliance administrator, Compliance data administrator, Information Protection, Information Protection Admin and Security administrator for creating and deploying DLP policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+      "quote": "The account you use to create and deploy policies must be a member of one of these role groups: Compliance administrator; Compliance data administrator; Information Protection; Information Protection Admin; Security administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[1].note; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The adaptive scopes page says a SharePoint sites scope cannot be created when administrative units are selected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "Because administrative units don't yet support SharePoint sites, you can't create an adaptive scope for SharePoint sites if you select administrative units.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Using custom site properties may require additional SharePoint configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "For SharePoint sites, there might be additional SharePoint configuration needed if you plan to use custom site properties.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing: Limits; Open questions",
+      "type": "behaviour",
+      "claim": "The documented SharePoint adaptive scope limit for auto-labeling is 50,000 sites per policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "For auto-labeling policies, a SharePoint adaptive scope supports up to 50,000 sites per policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The included licensing model reflects the published licence entitlement for the DLP product this scoping option belongs to.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Which licenses provide the rights for a user to benefit from the service? Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2), Exchange Online Plan 2",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The service description lists Microsoft 365 E5/A5/G5/E3/A3/G3, Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2) and Exchange Online Plan 2 for Exchange, SharePoint and OneDrive DLP.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2), Exchange Online Plan 2",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "No licensing requirement specific to adaptive scopes for SharePoint DLP was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: DLP adaptive scopes licensing SharePoint; read Microsoft Purview service description and Adaptive scopes. The service description's adaptive-scope licence requirements concern retention; its DLP section gives general product entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing: Licence and Meter; rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "No meter specific to adaptive scopes for SharePoint DLP is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint DLP adaptive scopes pricing meter billing limits sites; read Purview service description, Adaptive scopes and DLP policy reference. Results for SharePoint Embedded billing concern storage, application transactions and agents, not DLP scopes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].ui; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The UI route for selecting a SharePoint adaptive scope in a DLP policy is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint adaptive scopes select DLP policy; DLP SharePoint adaptive scopes choose policy wizard. Read DLP policy reference and DLP creation pages. They mention adaptive scoping but give no route to its selection control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].api; Governance guidance: At rollout",
+      "type": "command",
+      "claim": "New-DlpCompliancePolicy -Name \"<policy name>\" -SharePointAdaptiveScopes <values> is documented as the operation that attaches SharePoint adaptive scopes.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: SharePointAdaptiveScopes scope values New-DlpCompliancePolicy; opened its reference. Syntax lists the parameter, but its description is '{{ Fill SharePointAdaptiveScopes Description }}'; no passage explains what values identify a scope or what the parameter does.",
+      "severity": "blocker",
+      "fix": "Set controls[0].api to null and retain the note that New-DlpCompliancePolicy lists -SharePointAdaptiveScopes but does not describe its values or operation. Replace 'Attach the scope to a new test DLP policy' with 'Confirm Microsoft's documented method for attaching the scope before testing a new DLP policy.'"
+    },
+    {
+      "n": 37,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "New-DlpCompliancePolicy is in Security & Compliance PowerShell and lists SharePointAdaptiveScopes without a completed description.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
+      "quote": "This cmdlet is available only in Security & Compliance PowerShell. ... ### -SharePointAdaptiveScopes ... {{ Fill SharePointAdaptiveScopes Description }} ... Type: MultiValuedProperty",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "Set-DlpCompliancePolicy lists adaptive scope parameters for endpoint, Exchange, OneDrive and Teams, but none for SharePoint.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: AdaptiveScopes and SharePointAdaptiveScopes in fetched Set-DlpCompliancePolicy reference; Set-DlpCompliancePolicy SharePointAdaptiveScopes update adaptive scopes SharePoint. Found EndpointDlp, Exchange, OneDrive and Teams adaptive parameters; no SharePoint counterpart.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Changing SharePoint adaptive scope assignments on an existing DLP policy by script is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Set-DlpCompliancePolicy SharePointAdaptiveScopes update adaptive scopes SharePoint; read Set-DlpCompliancePolicy reference and search excerpts. Documented SharePoint updates change static URL lists; no adaptive assignment update operation was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Settings > Roles and scopes > Adaptive scopes > + Create scope reaches adaptive scope creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "Sign in to the Microsoft Purview portal > Settings > Roles and scopes > Adaptive scopes. On the Adaptive scopes page, select + Create scope.",
+      "severity": "minor",
+      "fix": "Keep the printed path and add to the row note: 'In the wizard, keep Full directory and select SharePoint sites as the scope type before building the property query.' The path currently ends at entry to the wizard rather than the site-scope configuration."
+    },
+    {
+      "n": 41,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "New-AdaptiveScope -Name \"<scope name>\" -LocationType Site -FilterConditions <hashtable> creates a site adaptive scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-adaptivescope",
+      "quote": "New-AdaptiveScope -Name <String> -FilterConditions <PswsHashtable> -LocationType <DynamicBoundaryLocationType> ... Valid values are: User; Group (Microsoft 365 group); Site",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "New-AdaptiveScope's reference describes adaptive scopes as used in retention policies and retention label policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-adaptivescope",
+      "quote": "Use the New-AdaptiveScope cmdlet to create adaptive scopes in your organization. Adaptive scopes (or static scopes) are used in retention policies and retention label policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "The static DLP wizard path needs only one Custom selection between Enterprise applications & devices and Assign admin units.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
+      "quote": "Select Enterprise applications & devices. Select Custom from both the Categories list and the Regulations list. ... Accept the default Full directory on the Assign admin units page.",
+      "severity": "blocker",
+      "fix": "Replace controls[2].ui.path with 'Data loss prevention > Policies > + Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom > Assign admin units > Full directory > Choose where to apply the policy > SharePoint sites'. The cited procedure requires both Custom choices."
+    },
+    {
+      "n": 44,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "New-DlpCompliancePolicy -Name \"<policy name>\" -SharePointLocation \"<site URL>\" creates a DLP policy including the named SharePoint site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
+      "quote": "The SharePointLocation parameter specifies the SharePoint sites to include in the DLP policy. You identify the site by its URL value, or you can use the value All to include all sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout; rationale: risk",
+      "type": "applicability",
+      "claim": "The general adaptive scopes page's daily query schedule applies to SharePoint DLP and can be used when allowing for coverage changes.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: DLP SharePoint adaptive scopes daily evaluation New-AdaptiveScope site scope; read Adaptive scopes, DLP policy reference and roadmap. The daily page lists retention and auto-labeling, not DLP; the roadmap describes continuous evaluation.",
+      "severity": "blocker",
+      "fix": "Replace the Autonomy & actions timing sentence with 'The roadmap describes automatic membership changes; Microsoft's DLP evaluation interval is not yet documented.' Remove 'allowing for the daily query run Learn describes' from After rollout and remove daily timing as a verified DLP premise from the risk rationale. Keep the explicitly attributed background comparison and open question."
+    },
+    {
+      "n": 46,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "A mistyped query value is not validated when saving the new DLP adaptive scope.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: DLP SharePoint adaptive scopes daily evaluation New-AdaptiveScope site scope; read Adaptive scopes and DLP policy reference. The validation statement is on the general page that does not name DLP; no DLP-specific validation behaviour was found.",
+      "severity": "major",
+      "fix": "Remove 'because a mistyped value is not caught when the scope is saved' from Why it matters. In Data exposure, replace the validation premise with 'The general adaptive scopes page warns that typed values are not immediately validated, but it does not state whether DLP uses this configuration.' Remove unvalidated values as a confirmed DLP premise from the risk rationale."
+    },
+    {
+      "n": 47,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Microsoft does not explicitly confirm that the general SharePoint adaptive scope definition is the definition used by DLP.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: DLP SharePoint adaptive scopes daily evaluation New-AdaptiveScope site scope; read Adaptive scopes, New-AdaptiveScope and DLP policy reference. DLP mentions adaptive scopes but does not link its definition; the general references name other policy types.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Data exposure; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends incremental DLP deployment beginning with simulation mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+      "quote": "Always take an incremental approach to deploying a policy, starting from the least impactful DLP simulation mode through full enforcement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft's DLP deployment guidance describes reviewing alerts and Activity explorer to assess policy behaviour.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+      "quote": "Run the policy in simulation mode ... Admin sees alerts and can track activities. ... you can monitor the impact of the policy in the DLP simulation mode overview and the DLP Activity explorer console.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: Before rollout and At rollout",
+      "type": "consistency",
+      "claim": "Every control the checklist asks administrators to check or set has a corresponding controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Check who holds the Scope Manager role'; 'Check whether any DLP policy is scoped to an administrative unit'; 'run it in simulation mode ... review DLP alerts and Activity explorer'. Rows: adaptive assignment, scope definition, static site list.",
+      "severity": "minor",
+      "fix": "Remove the checklist bullets asking readers to check role assignments and administrative-unit assignments; those facts can remain in Scope and Risk assessment. Remove the simulation-mode and monitoring instruction from the At rollout checklist, retaining the already-supported simulation advice in Risk assessment. Do not add control rows."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T02:05:16.952Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-policy-reference",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancepolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-adaptivescope",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=549288",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which SharePoint sites a DLP policy covers, by adaptive scope",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
+        "reachable": true,
+        "token": "New-DlpCompliancePolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Definition of a SharePoint sites adaptive scope",
+        "docs": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and scopes",
+          "Adaptive scopes",
+          "+ Create scope"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Definition of a SharePoint sites adaptive scope",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-adaptivescope",
+        "reachable": true,
+        "token": "New-AdaptiveScope",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Static list of SharePoint sites a DLP policy covers (today's alternative)",
+        "docs": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
+        "reachable": true,
+        "segments": [
+          "Data loss prevention",
+          "Policies",
+          "+ Create policy",
+          "Enterprise applications & devices",
+          "Custom",
+          "Assign admin units",
+          "Choose where to apply the policy",
+          "SharePoint sites"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Static list of SharePoint sites a DLP policy covers (today's alternative)",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
+        "reachable": true,
+        "token": "New-DlpCompliancePolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -14,7 +14,7 @@ previewDate: null
 risk: "low"
 cost: "low"
 impact: "low"
-defaultState: "unknown"
+defaultState: "user-opt-in"
 action: "review"
 licensing:
   model: "add-on"
@@ -53,26 +53,30 @@ controls:
     note: "General licence control, not specific to this capability. Whether this capability needs the add-on licence is not yet published."
 confidence: "medium"
 created: "2026-11-21"
-updated: "2026-11-21"
+updated: "2026-11-22"
 roadmapModified: "2026-08-05T22:47:32"
 changes:
   - date: "2026-11-21"
     note: "First briefing for this item: Web platform record for referencing an attached deck's style in Copilot Agent Mode; Mac and Desktop are separate roadmap items."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 46 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after verification: default state is now user-opt-in, and the claim that no source says existing behaviour changes was removed."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 50 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
-  date: "2026-11-21"
-  version: 1
+  date: "2026-11-22"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 46
-  confirmed: 44
-  unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "ba44d9b837e6edd2bc22f8aeaad0cd72"
+  claims: 50
+  confirmed: 49
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 2
+  hash: "8c5bd52c599483fdb80bc357bd10d020"
 ---
 
 ## What's changing
@@ -87,7 +91,7 @@ The roadmap record lists the status as Launched, the target as June CY2026, the 
 
 For most tenants this is a small convenience with little to configure: users who build decks with Copilot can start from an existing deck's look instead of the default theme. Its value to a service owner is mainly brand consistency, which depends on users choosing a suitable reference deck.
 
-Microsoft has not stated what happens on arrival for administrators or whether any admin action is needed, and no source says existing behaviour changes. Plan on users finding the option without notice, and on questions from users who attach a deck and do not get the layout they expected.
+The release note describes users choosing an attached reference deck and requesting slides in its style. Plan on users finding the option without notice, and on questions from users who attach a deck and do not get the layout they expected.
 
 ## Risk assessment
 
@@ -148,7 +152,7 @@ Assigning licences needs at least the License Administrator or User Administrato
 ## Open questions
 
 - Which Copilot licence tier includes referencing an attached deck's style: the add-on licence, the Basic experience, or both? Watch the Microsoft Copilot overview page on Learn.
-- Is there an admin setting to turn this capability off, and is it on for every user by default? Watch the Copilot release notes and Message center.
+- Is there an admin setting to turn this capability off? Watch the Copilot release notes and Message center.
 - Does Copilot read anything from the attached deck beyond its theme and styles, and do existing file permissions apply as the related July 2026 release note states?
 - Why does the roadmap record still carry a June 2026 'in development' update while its status is Launched? Watch the roadmap item for a corrected description.
 
@@ -158,9 +162,8 @@ cost: Low. No licence or meter specific to this capability is published, so the 
 impact: Low. Only people building decks with Copilot in PowerPoint on the web notice it, as an extra way to start a new deck; administrators have no documented setting to change.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: defaultState; Why it matters; Open questions / default: The capability's default state is unknown. | Found: Use the 'Attach file' feature to select an existing PowerPoint deck. Request Copilot to generate slides using the attached deck’s style. | Fix: Set defaultState to 'user-opt-in': the standard includes a capability that each user chooses to use. Replace the default-state uncertainty in Why it matters with 'The release note describes users choosing an attached reference deck and requesting slides in its style.' Keep any question about tenant-wide rollout availability separate from this usage default. The targeted admin-switch searches found no setting specific to this capability. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes
-- [contradicted, blocker] Why it matters / behaviour: No source says existing behaviour changes. | Found: Copilot in PowerPoint now supports attaching an existing presentation when creating and editing a new one. Previously, new presentations used default themes. Now, Copilot applies the attached file’s theme and styles to the new deck, ensuring design consistency. | Fix: Remove 'and no source says existing behaviour changes'. The release note explicitly describes changed presentation-creation behaviour; its user steps, rather than a claim that nothing changes, establish that using the attached style is a user choice. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes
+- [unsupported, blocker] front matter: licensing.model / licensing: The entitlement model for this capability is add-on. | Found: Searched: PowerPoint Copilot Agent Mode licensing prerequisites attached reference deck style. Opened release notes, Copilot overview and license options. Add-on describes the full product experience; no source establishes a separate add-on entitlement for this option. | Fix: Set licensing.model to "included", the standard's model for a new option inside an already licensed product. Retain the notes describing Microsoft 365 Copilot Basic and the Microsoft 365 Copilot add-on full experience, and retain the qualification that the experience containing this specific option is not yet published. Do not assert that the option requires a separate add-on purchase. Source: https://learn.microsoft.com/copilot/plan/copilot-overview.
 -->

@@ -14,7 +14,7 @@ previewDate: "May CY2026"
 risk: "medium"
 cost: "variable"
 impact: "low"
-defaultState: "unknown"
+defaultState: "admin-opt-in"
 action: "review"
 licensing:
   model: "consumption"
@@ -76,6 +76,9 @@ sources:
   - title: "Update spendingPolicy"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
     kind: "learn"
+  - title: "June 2026 announcements (Partner Center)"
+    url: "https://learn.microsoft.com/partner-center/announcements/2026-june"
+    kind: "learn"
 videos: []
 related: ["work-iq","spending-policies","copilot-credits","mcp"]
 controls:
@@ -103,7 +106,7 @@ controls:
     note: "The request body sets periodLimit and perUserLimit. Limits do not reserve credits. Delegated only; needs CopilotCostManagement-Policy.ReadWrite.All."
 confidence: "medium"
 created: "2026-11-21"
-updated: "2026-11-21"
+updated: "2026-11-22"
 roadmapModified: "2026-08-21T22:00:23"
 changes:
   - date: "2026-11-21"
@@ -114,19 +117,23 @@ changes:
     note: "Corrected after verification: service removal in a spending policy cannot disable the last enabled service; removed the claim that MCP policy controls are undocumented for REST; clarified service principal provisioning; trimmed checklist items without a controls row."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 86 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-22"
+    note: "Corrected after verification: default state is now admin-opt-in because Microsoft says an administrator must enable consumption billing first; connector wording narrowed; checklist trimmed to controls in the table."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 79 statements confirmed"
+version: 3
 verification:
-  status: "held"
-  date: "2026-11-21"
-  version: 2
+  status: "verified"
+  date: "2026-11-22"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 86
-  confirmed: 84
+  claims: 79
+  confirmed: 79
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "ae60cae8363316ca9e288f37b2dc6946"
+  contradicted: 0
+  attempts: 0
+  hash: "d37ad9511e4298371f2a712fcc35ab0c"
 ---
 
 ## What's changing
@@ -135,19 +142,19 @@ The roadmap item describes a new Work IQ REST endpoint that serves as a unified 
 
 Microsoft Learn documents Work IQ API as three routes: A2A (agent-to-agent), MCP (Model Context Protocol) and REST. The REST route is the Work IQ Chat API, which creates and continues multi-turn conversations with Microsoft 365 Copilot, for example `POST https://workiq.svc.cloud.microsoft/rest/conversations/{conversationId}/chat`. The reference has a production version and a `/beta` version, and Learn says `/beta` APIs are not supported in production applications. The REST pages describe conversations grounded in enterprise search and web search; the wording about invoking workflows is the roadmap record's description.
 
-Microsoft's licensing announcement, dated 2 June 2026, says Work IQ API reaches general availability on 16 June. Neither the record nor the pages read describe a change for end users, and no page states whether the endpoint is on or off for a tenant on arrival.
+Microsoft's licensing announcement, dated 2 June 2026, says Work IQ API reaches general availability on 16 June. Neither the record nor the pages read describe a change for end users. Microsoft says an administrator must enable consumption billing before Work IQ API usage can begin.
 
 ## Why it matters
 
 This is a new way to spend Copilot Credits and a new way for custom code to reach Microsoft 365 data, and both sit with administrators even though developers choose the endpoint. Usage is billed to the tenant's shared Copilot Credits, so a department building an app against the REST API draws on the same pool as other eligible services.
 
-Microsoft has not stated what happens on arrival, so base planning on the fact that no source says existing behaviour changes. The practical step is to decide which spending policy, if any, covers Work IQ API, before a team starts calling it.
+Microsoft says an administrator must enable consumption billing before Work IQ API usage can begin. The practical step is to decide which spending policy, if any, covers Work IQ API, before a team starts calling it.
 
 ## Risk assessment
 
 **Data exposure**
 - The REST API uses enterprise search grounding and web search grounding by default, and can take OneDrive and SharePoint files as context. Learn says Microsoft 365 permissions mean individuals get results only from content they are allowed to access. Switching web grounding off is a single-turn action, repeated for each chat message.
-- Copilot Connectors sources are reachable through Work IQ APIs, and Learn says the existing Microsoft 365 admin center controls that allow or block Copilot Connectors also apply there.
+- Work IQ APIs can reach Copilot Connector sources that are available to the signed-in user and connected by that user in Microsoft 365 Copilot Chat; not every configured connector is available through Work IQ. Learn says the existing Microsoft 365 admin center controls that allow or block Copilot Connectors also apply there.
 
 **Security & identity**
 - Work IQ uses Microsoft Entra ID delegated authentication and does not support application-only authentication, so every call runs as a signed-in user. The Chat API lists `WorkIQAgent.Ask` as its delegated permission.
@@ -189,7 +196,7 @@ Who can spend depends on spending policy scope. Learn's Claude walkthrough lists
 - Set the policy and per-user limits, remembering that Learn's policy page asks for at least 2,000 credits per user per month and that limits do not reserve credits.
 
 ### After rollout
-- Investigate any `QuotaExhausted` error by checking the policy's service selection, limits, billing method and prepaid capacity.
+- Investigate any `QuotaExhausted` error by checking the policy's service selection and limits.
 - Re-read the Work IQ REST reference when Microsoft moves the `/beta` operations to production.
 
 ## Governance controls
@@ -215,20 +222,11 @@ The Work IQ MCP policy and block controls in the Microsoft 365 admin center are 
 - Which legacy Copilot Chat endpoints does the roadmap mean, and will Microsoft publish retirement dates in Message center or the Work IQ API overview?
 - Does Microsoft document a tenant control that blocks the Work IQ REST API itself, as opposed to limiting who can spend credits on it?
 - What credit rate applies to a typical Work IQ Chat API request? The announcement lists it as variable by scenario.
-- What is the state on arrival for a tenant that has not configured billing?
+- A tenant without consumption billing configured cannot begin Work IQ API usage; an administrator must enable billing first.
 - Which operations does the REST API offer for invoking agents and workflows, beyond the multi-turn chat the reference documents?
 
 <!-- rationale
 risk: Medium. An app holding the delegated WorkIQAgent.Ask permission can query a signed-in user's Microsoft 365 data, and Learn describes that permission in one walkthrough as including write access. Nothing starts until an app is built and granted the permission.
 cost: Variable. Work IQ API use is billed in Copilot Credits with no separate subscription, SKU or per-user licence, and Microsoft has not published a fixed credit rate for the Chat API.
 impact: Low. The people who notice are developers who build against the endpoint and the administrators who fund it; no change for end users is described.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: defaultState; What's changing; Why it matters; Open questions / default: The default state is unknown because Microsoft has not stated what happens on arrival, including for a tenant without billing configured. | Found: Before Work IQ usage can begin at GA on June 16, an administrator must enable consumptive billing. | Fix: Set defaultState to admin-opt-in. Replace the last clause of What's changing about no stated tenant on/off state, and the first sentence of Why it matters' second paragraph, with: 'Microsoft says an administrator must enable consumption billing before Work IQ API usage can begin.' Replace the Open questions bullet about a tenant without billing with: 'A tenant without consumption billing configured cannot begin Work IQ API usage; an administrator must enable billing first.' Cite https://learn.microsoft.com/partner-center/announcements/2026-june#work-iq-api-and-consumptive-pricing-update. | Source: https://learn.microsoft.com/partner-center/announcements/2026-june#work-iq-api-and-consumptive-pricing-update
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure / behaviour: Copilot Connector sources are reachable through Work IQ APIs. | Found: Copilot Connectors, both synced and federated, participate in Work IQ APIs when they're available to the signed-in user and connected by that user as data sources in Microsoft 365 Copilot Chat. | Fix: Replace 'Copilot Connectors sources are reachable through Work IQ APIs' with 'Work IQ APIs can reach Copilot Connector sources that are available to the signed-in user and connected by that user in Microsoft 365 Copilot Chat; not every configured connector is available through Work IQ.' The qualifications are at https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-in-work-iq-apis. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-in-work-iq-apis
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist asks readers to check billing method and prepaid capacity, but neither has a controls-table row. | Found: Investigate any `QuotaExhausted` error by checking the policy's service selection, limits, billing method and prepaid capacity. The table contains only service coverage and policy/per-user limits. | Fix: Replace the After rollout bullet with: 'Investigate any `QuotaExhausted` error by checking the policy's service selection and limits.' Do not add controls-table rows as part of this correction.
 -->

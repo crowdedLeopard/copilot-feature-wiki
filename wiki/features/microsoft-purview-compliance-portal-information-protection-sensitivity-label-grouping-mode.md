@@ -78,7 +78,7 @@ controls:
     note: "The migration page uses this command to unpublish the new sublabels. Security & Compliance PowerShell."
 confidence: "medium"
 created: "2026-11-21"
-updated: "2026-11-21"
+updated: "2026-11-22"
 roadmapModified: "2026-09-28T22:58:08"
 changes:
   - date: "2026-11-21"
@@ -89,19 +89,23 @@ changes:
     note: "Correction: label-group creation and migration PowerShell sides now read Not yet documented, portal paths completed, licensing page named, one unsupported checklist step removed."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 72 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-22"
+    note: "Corrected the scope conditions under which migration creates a same-name sublabel, to match the migration page."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 80 statements confirmed"
+version: 3
 verification:
-  status: "held"
-  date: "2026-11-21"
-  version: 2
+  status: "verified"
+  date: "2026-11-22"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 71
+  claims: 80
+  confirmed: 80
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "f2fae9a080a99868912078f1f392e123"
+  contradicted: 0
+  attempts: 0
+  hash: "575338da1530094d0e2817797bf4b982"
 ---
 
 ## What's changing
@@ -110,7 +114,7 @@ The roadmap item states that the sensitivity labelling scheme will be simplified
 
 Microsoft Learn already describes the replacement without naming a cloud. It says label groups are now replacing parent labels, that label groups have configuration options only for name, description, colour and priority, and that you can't publish label groups themselves, only the labels within them. Migrating converts existing parent labels into label groups. Learn calls the migration irreversible.
 
-Where a parent label is configured for encryption, content marking, auto-labelling or PowerShell advanced settings, is included in a different publishing policy from its sublabels, or has a different label scope from its sublabels, migration also creates a sublabel with the same name, GUID and settings as the parent. The new label group receives a new GUID. Learn says that, without reconfiguration, this sublabel is available to select in a policy where the parent label couldn't be selected before.
+Where a parent label is configured for encryption, content marking, auto-labelling or PowerShell advanced settings, is included in a different publishing policy from its sublabels, or has a sublabel configured for a scope the parent does not have, or, within the same label policy, has a scope not configured for any of its sublabels, migration also creates a sublabel with the same name, GUID and settings as the parent. The new label group receives a new GUID. Learn says that, without reconfiguration, this sublabel is available to select in a policy where the parent label couldn't be selected before.
 
 Learn says migration is automatic for tenants created on or after October 1, 2025, or where migration would not create a new same-name sublabel. Otherwise an admin starts it from a banner on the Sensitivity labels page, and the page says migration is gradually rolling out. Microsoft has not stated how this applies in GCC, GCC High and DoD. Microsoft also lists the feature under roadmap item 386900 for Worldwide (Standard Multi-Tenant), with status Launched and a target of December CY2025.
 
@@ -193,10 +197,4 @@ Unpublishing a same-name sublabel is done in the label policy, not on the label.
 risk: Medium. Learn says label migration is irreversible, and a parent label that carries encryption, content marking or auto-labelling becomes a same-name sublabel that policies can publish.
 cost: Low. The only cost the sources show is admin time to review and migrate labels. Sensitivity labels need per-user licences that depend on the features used, and no licence or meter specific to label groups is published.
 impact: Low. Label administrators do the work. Learn says label groups look and behave the same to users, though a same-name sublabel can add a choice in a policy.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing: third paragraph / behaviour: Having a different label scope from its sublabels is sufficient for a parent label to create a same-name sublabel. | Found: A sublabel is configured for a label scope that the parent label isn't configured for. Within the same label policy, the parent label has one or more scopes that aren't configured for any of its sublabels. | Fix: Replace 'or has a different label scope from its sublabels' with 'or has a sublabel configured for a scope the parent does not have, or, within the same label policy, has a scope not configured for any of its sublabels'. These are the specific scope conditions at https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme. | Source: https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme
 -->

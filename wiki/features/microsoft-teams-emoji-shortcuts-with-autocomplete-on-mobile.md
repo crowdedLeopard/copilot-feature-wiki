@@ -17,8 +17,8 @@ impact: "high"
 defaultState: "on"
 action: "prepare"
 licensing:
-  model: "unknown"
-  notes: "Not yet published. Neither the roadmap item nor MC1404321 names a licence or charge for this feature. Microsoft Learn says only that Teams is provided as part of many Microsoft 365 licenses."
+  model: "included"
+  notes: "Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU. No licence specific to mobile emoji shortcuts is published."
 audiences: ["m365-admin","end-user","change-adoption"]
 tags: ["teams","mobile","emoji","user-experience","adoption","gcc","gcc-high","dod"]
 sources:
@@ -34,14 +34,14 @@ sources:
   - title: "Manage messaging policies in Teams"
     url: "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams"
     kind: "learn"
-  - title: "Chat, teams, channels, & apps in Microsoft Teams"
-    url: "https://learn.microsoft.com/microsoftteams/deploy-chat-teams-channels-microsoft-teams-landing-page"
-    kind: "learn"
-  - title: "Whether custom emojis and reactions are used across the tenant (PowerShell)"
+  - title: "Set-CsTeamsMessagingConfiguration"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration"
     kind: "learn"
-  - title: "Which users can upload (create) custom emojis (PowerShell)"
+  - title: "Set-CsTeamsMessagingPolicy"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingpolicy"
+    kind: "learn"
+  - title: "Microsoft Teams service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description"
     kind: "learn"
 videos: []
 related: ["microsoft-teams-expanded-markdown-support-in-microsoft-teams"]
@@ -61,12 +61,12 @@ controls:
       kind: "powershell"
       call: "Set-CsTeamsMessagingConfiguration -CustomEmojis $false"
       docs: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration"
-    note: "Existing custom emoji control; the page says on by default. Not documented as covering the mobile shortcut menu."
+    note: "Existing custom emoji control; on by default. Enables or disables use of custom emojis and reactions across the whole tenant."
   - governs: "Which users can upload (create) custom emojis"
     scope: "user"
     ui:
       surface: "Teams admin center"
-      path: "Messaging policies > policy > Upload custom emojis"
+      path: "Messaging policies > policy > Edit > Upload custom emojis"
       docs: "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams"
     api:
       kind: "powershell"
@@ -75,26 +75,30 @@ controls:
     note: "Applies per messaging policy; on by default. Controls who can add custom emojis, not who can insert them."
 confidence: "medium"
 created: "2026-11-21"
-updated: "2026-11-21"
+updated: "2026-11-22"
 roadmapModified: "2026-11-19T00:53:06"
 changes:
   - date: "2026-11-21"
     note: "First briefing: colon-based emoji shortcuts and autocomplete reach Teams on iOS and Android, on by default with no admin controls."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after the independent check: Upload custom emojis path now includes Edit, the Autonomy & actions bullet follows the notice, custom emoji control wording matches Learn, and licensing now cites the Teams service description."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-21"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-22"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 57
+  claims: 64
+  confirmed: 64
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "9408c0cd5d61b3748a1b331aa1e1c26a"
+  contradicted: 0
+  attempts: 0
+  hash: "43771c88d553f79a10f8a894b4990921"
 ---
 
 ## What's changing
@@ -121,7 +125,7 @@ The feature is low in risk and cost, so the work is communication. The one point
 - No change to sign-in, roles or permissions is described in the roadmap item or the notice.
 
 **Autonomy & actions**
-- No change: the feature does nothing without a user typing a colon in the compose box.
+- The notice describes emoji insertion and conversion while users compose messages, including colon-based and existing parenthesis shortcuts.
 
 **Change & support**
 - The behaviour is on by default and the notice states there are no admin controls, so the only way to manage the change is communication. Emoticons such as :), :D and :P convert automatically, which users may notice as unexpected text changes.
@@ -129,7 +133,7 @@ The feature is low in risk and cost, so the work is communication. The one point
 
 ## Cost and licensing
 
-No licence requirement or charge is stated for this feature. Neither the roadmap item nor MC1404321 names a licence, a meter or a price, and Microsoft Learn's Teams deployment page says only that Teams is provided as part of many Microsoft 365 licenses ([Chat, teams, channels, & apps in Microsoft Teams](https://learn.microsoft.com/microsoftteams/deploy-chat-teams-channels-microsoft-teams-landing-page)). A licence statement for this feature is not yet published.
+Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU ([Microsoft Teams service description](https://learn.microsoft.com/office365/servicedescriptions/teams-service-description)). No licence specific to mobile emoji shortcuts is published: neither the roadmap item nor MC1404321 names a licence, a meter or a price for this feature.
 
 The indirect cost is admin and support time: updating help desk scripts and training material, and sending a user communication, as the notice suggests.
 
@@ -164,20 +168,19 @@ The indirect cost is admin and support time: updating help desk scripts and trai
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether emoji shortcuts and autocomplete are available on Teams mobile</strong><br><small>Tenant</small><br><small class="controls__note">MC1404321 states the feature is enabled by default with no admin controls.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether custom emojis and reactions are used across the tenant</strong><br><small>Tenant</small><br><small class="controls__note">Existing custom emoji control; the page says on by default. Not documented as covering the mobile shortcut menu.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Messaging Settings › Custom emojis › use custom emojis <a href="https://learn.microsoft.com/microsoftteams/teams-custom-emojis" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMessagingConfiguration -CustomEmojis $false</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users can upload (create) custom emojis</strong><br><small>User</small><br><small class="controls__note">Applies per messaging policy; on by default. Controls who can add custom emojis, not who can insert them.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Messaging policies › policy › Upload custom emojis <a href="https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMessagingPolicy -Identity &lt;policy name&gt; -CreateCustomEmojis $false</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether custom emojis and reactions are used across the tenant</strong><br><small>Tenant</small><br><small class="controls__note">Existing custom emoji control; on by default. Enables or disables use of custom emojis and reactions across the whole tenant.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Messaging Settings › Custom emojis › use custom emojis <a href="https://learn.microsoft.com/microsoftteams/teams-custom-emojis" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMessagingConfiguration -CustomEmojis $false</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users can upload (create) custom emojis</strong><br><small>User</small><br><small class="controls__note">Applies per messaging policy; on by default. Controls who can add custom emojis, not who can insert them.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Messaging policies › policy › Edit › Upload custom emojis <a href="https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMessagingPolicy -Identity &lt;policy name&gt; -CreateCustomEmojis $false</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 Microsoft's notice MC1404321 states the emoji shortcuts are enabled by default with no admin controls, and Microsoft Learn documents no setting for them in the messaging policy settings list at the time of writing (November 2026). The first row records that gap.
 
-The next two rows are existing custom emoji controls, listed because the notice says custom emojis are supported in the shortcuts. They govern custom emojis in Teams. Neither the notice nor the custom emoji page says whether they also restrict custom emojis in the mobile shortcut menu, so treat them as the nearest available controls, not as controls over the shortcuts. Microsoft's custom emoji page also lists a **Delete custom emojis** policy setting, which is off by default except for Teams admins.
+The next two rows are existing custom emoji controls, listed because the notice says custom emojis are supported in the shortcuts. They govern custom emojis in Teams. The tenant setting enables or disables use of custom emojis and reactions across the whole tenant; the Upload custom emojis policy setting controls creation, not insertion. They are not switches for the standard emoji shortcuts. Microsoft's custom emoji page also lists a **Delete custom emojis** policy setting, which is off by default except for Teams admins.
 
 ## Open questions
 
-- Do the tenant **use custom emojis** switch and the **Upload custom emojis** policy setting also control custom emojis in the mobile shortcut and autocomplete menu? Watch the Teams custom emoji page and MC1404321.
 - When will the parenthesis shortcuts be retired? Microsoft's notice says only "later", in alignment with desktop; watch Message center for a dated notice.
-- Which licences cover this feature? Microsoft has not published a licence statement for it; watch the roadmap item and Microsoft Learn.
+- Is a licence specific to mobile emoji shortcuts published? Watch the roadmap item and Microsoft Learn.
 - Will Microsoft add an admin setting for emoji shortcuts or emoticon conversion? MC1404321 says there are no admin controls at present.
 
 <!-- rationale
@@ -186,13 +189,8 @@ cost: Low. The only cost the sources show is admin time for help desk and traini
 impact: High. Microsoft's notice says all Teams users on iOS and Android are affected and the feature is enabled by default, so users will see a new suggestion menu when they type a colon.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Autonomy & actions / behaviour: The feature does nothing without a user typing a colon in the compose box. | Found: Parenthesis () shortcuts continue to work and will be retired later in alignment with desktop | Fix: Replace the bullet with 'The notice describes emoji insertion and conversion while users compose messages, including colon-based and existing parenthesis shortcuts.'
-- [contradicted, blocker] controls[2].ui; Governance controls table / admin-path: Upload custom emojis can be configured at Teams admin center > Messaging policies > policy > Upload custom emojis. | Found: Select the policy by clicking to the left of the policy name, and then select Edit. | Fix: Replace controls[2].ui.path and the rendered path with 'Messaging policies > policy > Edit > Upload custom emojis'. Keep the existing surface and docs URL. | Source: https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams
-- [contradicted, blocker] Governance controls prose; Open questions / absence: It is unconfirmed whether the tenant custom emoji control restricts custom emojis used through mobile shortcuts. | Found: This setting enables/disables the use of custom emojis and reactions across the whole tenant. | Fix: Replace the sentence beginning 'Neither the notice nor the custom emoji page' with 'The tenant setting enables or disables use of custom emojis and reactions across the whole tenant; the Upload custom emojis policy setting controls creation, not insertion.' Remove the first Open questions bullet. Keep the distinction that these are not switches for standard emoji shortcuts. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown because no feature-specific licence is published. | Found: Microsoft Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU. | Fix: Set licensing.model to 'included'. Replace the notes with 'Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU. No licence specific to mobile emoji shortcuts is published.' Cite https://learn.microsoft.com/office365/servicedescriptions/teams-service-description. | Source: https://learn.microsoft.com/office365/servicedescriptions/teams-service-description
-- [supported, minor] controls[1].note; Governance controls table / applicability: The correctly documented tenant custom emoji control is not documented as covering the mobile shortcut menu. | Found: This setting enables/disables the use of custom emojis and reactions across the whole tenant. | Fix: Replace controls[1].note and its rendered note with 'Existing custom emoji control; on by default. Enables or disables use of custom emojis and reactions across the whole tenant.' The documented reach includes custom emojis used through mobile shortcuts, without turning off standard emoji shortcuts. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration
+- [supported, minor] rationale: impact / record: Users see the new suggestion menu when they type a colon. | Found: Users can open the emoji suggestion menu by typing : followed by at least two characters (e.g., :sm) | Fix: Replace the impact rationale's final clause with 'so users will see a new suggestion menu when they type a colon followed by at least two characters.' The body already gives this qualification correctly.
 -->

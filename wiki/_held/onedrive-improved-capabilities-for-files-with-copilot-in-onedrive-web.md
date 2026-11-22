@@ -4,7 +4,7 @@ slug: "onedrive-improved-capabilities-for-files-with-copilot-in-onedrive-web"
 roadmapId: 569215
 topic: "m365-copilot"
 products: ["OneDrive","Microsoft Copilot (Microsoft 365)"]
-summary: "Microsoft plans richer Copilot skills for finding, analysing, creating and sharing from files in OneDrive on the web. Default, licence and a feature-specific control are not yet documented, so plan from existing Copilot controls."
+summary: "Microsoft plans richer Copilot skills for finding, analysing, creating and sharing from files in OneDrive on the web. Default and a feature-specific control are not yet documented; general Microsoft Copilot licensing is published."
 status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -18,12 +18,15 @@ defaultState: "unknown"
 action: "prepare"
 licensing:
   model: "add-on"
-  notes: "Microsoft Learn says Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible plans. A licence statement or price specific to this feature is not yet published."
+  notes: "Microsoft Learn says Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible plans. Microsoft publishes general Copilot licensing; no separate terms for these improved skills are published."
 audiences: ["m365-admin","service-owner","security","end-user"]
 tags: ["onedrive","m365-copilot","copilot","sharing","oversharing","restricted-content-discovery","sensitivity-labels","licensing"]
 sources:
   - title: "License options for Microsoft Copilot"
     url: "https://learn.microsoft.com/copilot/plan/copilot-license-options"
+    kind: "learn"
+  - title: "Understand usage-based billing and cost management for Copilot Credits"
+    url: "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits"
     kind: "learn"
   - title: "Data protection and auditing for Microsoft Copilot"
     url: "https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing"
@@ -64,7 +67,7 @@ controls:
       kind: "powershell"
       call: "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()"
       docs: "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell"
-    note: "At least License Administrator or User Administrator. Learn does not say this feature requires the Microsoft Copilot licence."
+    note: "At least License Administrator or User Administrator. Microsoft publishes general Copilot licensing; no separate terms for these improved skills are published."
   - governs: "Which SharePoint sites Microsoft Copilot can discover content from"
     scope: "site"
     ui:
@@ -78,26 +81,30 @@ controls:
     note: "Microsoft's page says this applies to SharePoint sites only and is not supported for OneDrive sites, so it is an alternative for SharePoint content, not a control over OneDrive."
 confidence: "low"
 created: "2026-11-21"
-updated: "2026-11-21"
+updated: "2026-11-22"
 roadmapModified: "2026-08-17T22:52:47"
 changes:
   - date: "2026-11-21"
     note: "First briefing for this roadmap item: plans only, with no Learn page for the feature yet."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 57 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after verification: removed unsupported claims about where saved outputs get permissions and labels, dropped checklist items without control rows, and narrowed the licensing and meter statements."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 62 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
-  date: "2026-11-21"
-  version: 1
+  date: "2026-11-22"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 54
-  unconfirmed: 2
-  contradicted: 1
-  attempts: 1
-  hash: "c33dc8fde18bc43521464420fb2518e9"
+  claims: 62
+  confirmed: 60
+  unconfirmed: 0
+  contradicted: 2
+  attempts: 2
+  hash: "4d69dd5098e10b2e3775347eaabe2756"
 ---
 
 ## What's changing
@@ -135,7 +142,7 @@ Microsoft has not stated whether the improved skills arrive on by default, so do
 
 Microsoft Learn's licence page says Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government and education subscription plans ([License options for Microsoft Copilot](https://learn.microsoft.com/copilot/plan/copilot-license-options)). Whether Copilot file skills in OneDrive on the web need that licence is not yet published, and the roadmap item names no licence.
 
-No meter, credit rate or cap for this feature is published at the time of writing (November 2026). Indirect costs are admin time to review sharing and labels, and user communication.
+Microsoft lists Advanced work in OneDrive among services managed by usage-based billing in Copilot Credits, with a Copilot licence required; the page does not identify that service as these improved file skills ([Understand usage-based billing and cost management for Copilot Credits](https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits)). Whether this roadmap feature uses that service is not yet published. Indirect costs are admin time to review sharing and labels, and user communication.
 
 ## Scope
 
@@ -147,15 +154,12 @@ Who gets the feature, which roles configure it and the rollout mechanics are not
 
 ### Before rollout
 - Confirm with your Microsoft account team, or in Message center, whether Copilot file skills in OneDrive on the web need a Microsoft Copilot licence, and which users hold one.
-- Review sharing and permissions on OneDrive content that Copilot-licensed users can reach, because Copilot respects existing permissions and can surface overshared content.
-- Check that sensitivity labels and any Microsoft Purview DLP policy for Copilot cover the files users keep in OneDrive.
 
 ### At rollout
 - Watch Message center for a post on this roadmap item; none was supplied with this briefing.
-- Tell users that saved or shared Copilot outputs follow the permissions and labels that apply where they are saved, and ask them to check recipients before sharing.
+- Ask users to check recipients, effective file permissions and sensitivity labels before sharing generated outputs.
 
 ### After rollout
-- Review Microsoft Purview Audit for Copilot interactions that touched OneDrive files, remembering that audit records carry no prompt or response text.
 - Re-check Microsoft Learn for a page on this feature and a OneDrive-specific control, and update your plan when one appears.
 
 ## Governance controls
@@ -166,7 +170,7 @@ Who gets the feature, which roles configure it and the rollout mechanics are not
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Tenant-wide switch for Copilot file skills in OneDrive on the web</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no OneDrive-specific switch for this feature at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which users hold a Microsoft Copilot licence</strong><br><small>User</small><br><small class="controls__note">At least License Administrator or User Administrator. Learn does not say this feature requires the Microsoft Copilot licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Licenses › product › Assign licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users hold a Microsoft Copilot licence</strong><br><small>User</small><br><small class="controls__note">At least License Administrator or User Administrator. Microsoft publishes general Copilot licensing; no separate terms for these improved skills are published.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Licenses › product › Assign licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which SharePoint sites Microsoft Copilot can discover content from</strong><br><small>Site</small><br><small class="controls__note">Microsoft's page says this applies to SharePoint sites only and is not supported for OneDrive sites, so it is an alternative for SharePoint content, not a control over OneDrive.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Sites › Active sites › site › Settings › Restrict content from Microsoft Copilot <a href="https://learn.microsoft.com/sharepoint/restricted-content-discovery" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOSite -Identity &lt;site-url&gt; -RestrictContentOrgWideSearch $true</code> <a href="https://learn.microsoft.com/sharepoint/restricted-content-discovery" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -184,17 +188,17 @@ Restricted Content Discovery applies to SharePoint sites only. Microsoft's page 
 
 <!-- rationale
 risk: Medium. Copilot works within existing OneDrive permissions, so the new create-and-share skills widen what users can do with overshared files; Microsoft documents no OneDrive-specific control for this feature.
-cost: Medium. Microsoft Learn lists Microsoft Copilot as available with Microsoft 365 E7 or as an add-on; whether this feature needs that licence, and any meter, is not yet published.
+cost: Medium. Microsoft Learn lists Microsoft Copilot as available with Microsoft 365 E7 or as an add-on; whether this feature needs that licence is not yet published, and Learn lists Advanced work in OneDrive under usage-based billing without tying it to this feature.
 impact: Medium. Users who open Copilot in OneDrive on the web would notice it; the roadmap lists Web as the only platform and does not say who gets it first.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Governance guidance: At rollout / behaviour: Saved or shared outputs from these improved skills follow the permissions of their save location. | Found: Searched: Copilot generated files saved shared OneDrive permissions sensitivity labels. Read data protection, release notes and OneDrive storage excerpts; general access controls are described, not how these skills choose destination permissions. | Fix: Replace the rollout bullet with 'Ask users to check recipients, effective file permissions and sensitivity labels before sharing generated outputs.' This is advice and does not assert undocumented save behaviour.
-- [unsupported, blocker] Governance guidance: At rollout / applicability: Saved or shared Copilot outputs follow the labels that apply where they are saved. | Found: Searched: Copilot generated files saved shared OneDrive permissions sensitivity labels. Read data protection and Purview considerations excerpts: inheritance is from source labels where supported; container labels aren't inherited. No blanket destination-label rule for these skills. | Fix: Replace the rollout bullet with 'Ask users to check recipients, effective file permissions and sensitivity labels before sharing generated outputs.' Keep the existing supported source-label inheritance statement in Risk assessment; do not promise inheritance from the destination.
+- [contradicted, blocker] Cost and licensing; Governance controls; rationale: cost; Governance guidance; Open questions / absence: Whether these improved Copilot skills need a Microsoft Copilot licence is not yet published. | Found: Copilot is only available to users with a license assigned. If you remove the license from a user, the user loses access to Copilot. Integration with SharePoint in Microsoft 365 and OneDrive is a core feature in Microsoft Copilot. | Fix: Replace the licence-dependency caveats in Cost and licensing, Governance controls and the cost rationale with 'Microsoft documents a Microsoft Copilot licence requirement for its OneDrive integration; separate terms for these improved file skills are not yet published.' Cite https://learn.microsoft.com/compliance/anz/blueprint-copilot-reqconfig. In Before rollout, replace 'whether Copilot file skills in OneDrive on the web need a Microsoft Copilot licence, and which users hold one' with 'which users hold a Microsoft Copilot licence and whether Microsoft has published separate terms for these improved file skills'. Change the first Open question to 'Are there separate licensing terms or usage charges for these improved file skills? Watch the Microsoft 365 Roadmap item and Microsoft Learn.' Keep the uncertainty about whether this item is Advanced work in OneDrive. | Source: https://learn.microsoft.com/compliance/anz/blueprint-copilot-reqconfig
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary; licensing.notes; controls[1].note; Cost and licensing; Governance controls; Open questions / absence: No licence requirement specific to these improved file skills is published. | Found: Searched: "Copilot file skills" "OneDrive" pricing; Copilot in OneDrive web license Microsoft 365 Copilot required. Read license options and service description. General Copilot licensing is published; no passage separately names these improved skills. | Fix: Narrow the summary to 'Default and a feature-specific control are not yet documented; general Microsoft Copilot licensing is published.' Replace controls[1].note's final sentence with 'Microsoft publishes general Copilot licensing; no separate terms for these improved skills are published.' Keep the existing general licensing statement and the narrower feature-specific gap in Cost and licensing.
-- [supported, minor] Cost and licensing; rationale: cost; Open questions / absence: No meter specifically identified with these improved file skills is published. | Found: Searched: Copilot in OneDrive file skills licensing pricing meter credits cap. Read usage-based billing overview: Advanced work in OneDrive uses Copilot Credits, but no description connects that service to this roadmap item. | Fix: Replace the meter sentence with 'Microsoft lists Advanced work in OneDrive among services managed by usage-based billing in Copilot Credits, with a Copilot licence required; the page does not identify that service as these improved file skills.' Cite https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits. Retain only the narrower uncertainty about whether this roadmap feature uses that service.
-- [contradicted, minor] Governance guidance; controls / consistency: The checklist asks readers to review sharing and permissions, sensitivity labels, DLP and Audit, but these controls have no table rows. | Found: Review sharing and permissions ... Check that sensitivity labels and any Microsoft Purview DLP policy ... Review Microsoft Purview Audit ... controls: tenant-wide switch, licence assignment, Restricted Content Discovery. | Fix: The Before rollout sharing/permissions review and labels/DLP check, and the After rollout Audit review, have no corresponding controls-table rows. Remove those checklist items to satisfy the table-consistency rule without adding unverified rows; retain the supported descriptions in Risk assessment.
+- [supported, minor] Governance controls / behaviour: Sensitivity labels are configured in Microsoft Purview. | Found: To create and publish these labels, use the Microsoft Purview portal. | Fix: Add https://learn.microsoft.com/purview/create-sensitivity-labels to sources for the statement that sensitivity labels are configured in Microsoft Purview; no new path or control row is required by this correction. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
+- [supported, minor] Governance controls / behaviour: Microsoft Purview DLP for Copilot is configured in Microsoft Purview. | Found: Sign in to the Microsoft Purview portal. Go to Data Loss Prevention > Policies and select + Create policy. | Fix: Add https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about to sources for the statement that DLP for Copilot is configured in Microsoft Purview; do not add an unrequested control row. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
+- [supported, minor] Risk assessment: Data exposure / record: A user with broad access can now ask for outputs built from those files. | Found: "status": "In development"; "targetDate": "December CY2026"; "create polished outputs like summaries, dashboards, and presentations" | Fix: Replace 'so a user with broad access can now ask for outputs built from those files' with 'so the planned skills could let a user with broad access ask for outputs built from those files'. This keeps the capability attributed to a plan rather than implying it is live.
+- [contradicted, minor] Governance guidance: At rollout / consistency: The checklist asks users to check effective file permissions and sensitivity labels, but these controls have no table rows. | Found: Ask users to check recipients, effective file permissions and sensitivity labels before sharing generated outputs. The table lists only the feature switch, licence assignment and Restricted Content Discovery. | Fix: Remove the At rollout bullet 'Ask users to check recipients, effective file permissions and sensitivity labels before sharing generated outputs.' Its permission and label checks have no control rows; this correction should not add rows.
 -->

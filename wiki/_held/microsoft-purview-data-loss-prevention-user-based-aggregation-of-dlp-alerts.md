@@ -22,8 +22,14 @@ licensing:
 audiences: ["security","compliance"]
 tags: ["purview","dlp","defender-xdr","gcc","gcc-high","dod"]
 sources:
-  - title: "Get started with the data loss prevention alerts"
+  - title: "Get started with data loss prevention alerts"
     url: "https://learn.microsoft.com/purview/dlp-alerts-get-started"
+    kind: "learn"
+  - title: "Set-PolicyConfig"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig"
+    kind: "learn"
+  - title: "Investigate data loss alerts with Microsoft Defender XDR"
+    url: "https://learn.microsoft.com/defender-xdr/dlp-investigate-alerts-defender"
     kind: "learn"
   - title: "Set-DlpComplianceRule"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule"
@@ -37,36 +43,46 @@ sources:
   - title: "Microsoft 365 Roadmap item 567010"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=567010"
     kind: "roadmap"
+  - title: "Microsoft 365 Roadmap item 564765"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=564765"
+    kind: "roadmap"
 videos: []
 related: ["microsoft-purview-data-loss-prevention-rule-based-tagging-and-auto-resolution-of-alerts-ba","microsoft-purview-data-loss-prevention-sla-based-alert-reporting-dashboard","microsoft-purview-data-loss-prevention-data-security-triage-agent-summaries-and-categoriza"]
 controls:
-  - governs: "Tenant-level user-based alert aggregation and its time window"
+  - governs: "Tenant-level user-based alert aggregation"
     scope: "tenant"
     ui: null
-    api: null
-    note: "Learn refers to a tenant-level DLP setting for user-based alert aggregation (15, 30, 45 or 60 minutes) but gives no path or command. Set-DlpComplianceRule -AlertProperties has no description on its reference page."
+    api:
+      kind: "powershell"
+      call: "Set-PolicyConfig -IsUserBaseDlpAlertAggregationEnabled $true"
+      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig"
+    note: "Security & Compliance PowerShell only. Parameter descriptions are placeholders; -AggregationTimeWindowForDlpAlerts (System.UInt32) is also listed. Cloud applicability not stated."
 confidence: "medium"
 created: "2026-11-21"
-updated: "2026-11-21"
+updated: "2026-11-22"
 roadmapModified: "2026-09-16T22:57:03"
 changes:
   - date: "2026-11-21"
     note: "First briefing for the GCC, GCC High and DoD roadmap item for user-based aggregation of DLP alerts."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 55 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after the independent check: the Set-PolicyConfig aggregation parameters are now noted, the control row that said no automation exists is removed, and the Defender XDR conditions are stated."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 63 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
-  date: "2026-11-21"
-  version: 1
+  date: "2026-11-22"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 52
+  claims: 63
+  confirmed: 62
   unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "0449b53bc4dde47df7ace1377ecc5064"
+  contradicted: 0
+  attempts: 2
+  hash: "01814a603b460a54ba15a5c43fd84082"
 ---
 
 ## What's changing
@@ -111,12 +127,11 @@ The cost that is known is indirect: admin time to configure and analyst time to 
 
 The roadmap lists GCC, GCC High and DoD, platform Web, release phase General Availability, status In development and a January CY2027 target. Microsoft's Purview planning pages for GCC and GCC High list the DLP alerts dashboard and alerting experience as Available.
 
-Learn says viewing the DLP alert management dashboard or editing alert configuration in a DLP policy needs membership of one of several role groups, including Compliance Administrator, Compliance Data Administrator and Security Administrator. The dashboard also needs the Manage alerts role plus DLP Compliance Management or View-Only DLP Compliance Management. Alerts can be investigated in Microsoft Defender XDR and in the Microsoft Purview portal.
+Learn says viewing the DLP alert management dashboard or editing alert configuration in a DLP policy needs membership of one of several role groups, including Compliance Administrator, Compliance Data Administrator and Security Administrator. The dashboard also needs the Manage alerts role plus DLP Compliance Management or View-Only DLP Compliance Management. The DLP alerts page lists Defender XDR and the Microsoft Purview portal as places to investigate alerts. The Defender guide says its built-in DLP alert tuning rule must be disabled to see DLP signals as alerts there, and requires a licence from Microsoft Office 365 E5/A5, Microsoft 365 E5/A5, Microsoft 365 E5/A5 Compliance or Microsoft 365 E5/A5 Information Protection and Governance.
 
 ## Governance guidance
 
 ### Before rollout
-- Identify who triages DLP alerts today and which role groups they hold, using the roles Learn lists for the DLP alert management dashboard.
 - Record current alert volumes per rule so you can compare after aggregation is enabled.
 - Decide how analysts will handle new matches that fold into an alert they already closed.
 
@@ -127,7 +142,7 @@ Learn says viewing the DLP alert management dashboard or editing alert configura
 
 ### After rollout
 - Compare alert counts and time to triage against your baseline; Learn warns volume can rise for per-user aggregation.
-- Confirm in Defender XDR and the Purview portal that aggregated alerts show the entities your analysts need.
+- Confirm in Defender XDR (if licensed and the built-in DLP alert tuning rule is disabled) and the Purview portal that aggregated alerts show the entities your analysts need.
 
 ## Governance controls
 
@@ -136,11 +151,11 @@ Learn says viewing the DLP alert management dashboard or editing alert configura
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Tenant-level user-based alert aggregation and its time window</strong><br><small>Tenant</small><br><small class="controls__note">Learn refers to a tenant-level DLP setting for user-based alert aggregation (15, 30, 45 or 60 minutes) but gives no path or command. Set-DlpComplianceRule -AlertProperties has no description on its reference page.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Tenant-level user-based alert aggregation</strong><br><small>Tenant</small><br><small class="controls__note">Security &amp; Compliance PowerShell only. Parameter descriptions are placeholders; -AggregationTimeWindowForDlpAlerts (System.UInt32) is also listed. Cloud applicability not stated.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PolicyConfig -IsUserBaseDlpAlertAggregationEnabled $true</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-Learn refers to a DLP setting at the tenant level that turns user-based alert aggregation on or off and sets the time window, but gives no admin centre path for it and no command or API for it at the time of writing (November 2026). Treat any path you find as unverified until Microsoft documents it.
+The Security & Compliance PowerShell Set-PolicyConfig reference lists -IsUserBaseDlpAlertAggregationEnabled (Boolean) and -AggregationTimeWindowForDlpAlerts (System.UInt32), but their descriptions are placeholders, so their detailed behaviour and cloud applicability are not stated there.
 
 Alert aggregation type for single-event alerts is configured at the rule level, while the user-based option is set at the tenant level. Threshold-based aggregation is configured separately at the rule level and user-based aggregation does not apply to it.
 
@@ -148,22 +163,17 @@ Alert aggregation type for single-event alerts is configured at the rule level, 
 
 - Is user-based alert aggregation on or off when it reaches GCC, GCC High and DoD? Watch the roadmap item and the DLP alerts page on Microsoft Learn.
 - The roadmap says alerts aggregate by user even when multiple rules match, while Learn's preview describes alerts per rule match event per user. Which behaviour ships?
-- Where in the Microsoft Purview portal is the tenant-level setting, and is there a PowerShell or API equivalent?
+- Where in the Microsoft Purview portal is the tenant-level setting? How do the published Set-PolicyConfig aggregation parameters behave in these clouds?
 - Does the Learn preview apply to GCC, GCC High and DoD, and does DoD differ from the other two clouds?
 
 <!-- rationale
 risk: Low. The roadmap describes a change to how alert events are grouped, not to what DLP policies detect, and Microsoft has not stated a default; the exposure left is analysts missing later matches folded into a closed alert.
 cost: Low. Learn lists no separate licence or meter for user-based aggregation; the cost that is known is admin and analyst time to retune alert triage. The licensing for single-event alerts is a DLP subscription.
-impact: Low. Mainly the compliance and security administrators and analysts who triage DLP alerts notice it; end users do not see alerts.
+impact: Low. Mainly the compliance and security administrators and analysts who triage DLP alerts notice it.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui/api; controls[0].note; Governance controls; Open questions / absence: Neither an admin UI route nor a command or API for tenant-level user-based aggregation and its time window is documented. | Found: Set-PolicyConfig ... [-AggregationTimeWindowForDlpAlerts <System.UInt32>] ... [-IsUserBaseDlpAlertAggregationEnabled <Boolean>] | Fix: Remove the both-null control row rather than claiming that no automation is published. Replace the blanket command absence in Governance controls with: 'The Security & Compliance PowerShell Set-PolicyConfig reference lists -IsUserBaseDlpAlertAggregationEnabled (Boolean) and -AggregationTimeWindowForDlpAlerts (System.UInt32), but their descriptions are placeholders, so their detailed behaviour and cloud applicability are not stated there.' Cite https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig. Replace the automation part of the open question with 'How do the published Set-PolicyConfig aggregation parameters behave in these clouds?' Do not infer the time parameter's units or allowed values from its name. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: second paragraph / record: Microsoft lists the same feature under roadmap item 564765. | Found: "id": 564765, "title": "Microsoft Purview: Data Loss Prevention - User Based Aggregation of DLP Alerts" | Fix: Add the source 'Microsoft 365 Roadmap item 564765' at https://www.microsoft.com/microsoft-365/roadmap?id=564765 for the second item's title, cloud, status and target.
-- [supported, minor] Scope; Governance guidance: After rollout / availability: DLP alerts can be investigated in Microsoft Defender XDR. | Found: DLP alerts can be investigated and managed in the Microsoft Defender XDR dashboard ... Other page: When the built-in DLP alert tuning rule is disabled, you can manage and respond to ... DLP alerts and incidents in the Microsoft Defender portal. | Fix: Cite https://learn.microsoft.com/defender-xdr/dlp-investigate-alerts-defender and replace the Defender sentence with: 'The DLP alerts page lists Defender XDR as an investigation surface; the Defender guide says its built-in DLP alert tuning rule must be disabled to see DLP signals as alerts and requires Microsoft Office 365 E5/A5, Microsoft 365 E5/A5, Microsoft 365 E5/A5 Compliance or Microsoft 365 E5/A5 Information Protection and Governance.' Qualify the After rollout check with 'if licensed and the built-in DLP alert tuning rule is disabled'. | Source: https://learn.microsoft.com/purview/dlp-alerts-get-started
-- [unsupported, minor] rationale: impact / behaviour: End users do not see alerts. | Found: Searched: DLP alerts end users see alerts security administrators. Read dlp-alerts-get-started and dlp-alert-investigation-learn; dashboard role requirements do not establish a universal exclusion, and notifications can be sent to users. | Fix: Remove '; end users do not see alerts' from the impact rationale. Retain the assessment that the change mainly affects administrators and analysts who triage DLP alerts.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The governance checklist asks readers to take stock of alert-access role groups, but the controls table has no corresponding row. | Found: Identify who triages DLP alerts today and which role groups they hold ... Table: Tenant-level user-based alert aggregation and its time window | Fix: The Before rollout role-group inventory step has no corresponding control row. Remove that checklist bullet to resolve the mismatch without adding an unverified row; keep the documented role requirements in Scope.
+- [unsupported, blocker] controls[0].api; Governance controls: rendered API column / command: Set-PolicyConfig -IsUserBaseDlpAlertAggregationEnabled $true is a documented operation that enables tenant-level user-based alert aggregation. | Found: Searched: "IsUserBaseDlpAlertAggregationEnabled" "AggregationTimeWindowForDlpAlerts"; "Set-PolicyConfig" "IsUserBaseDlpAlertAggregationEnabled" "$true" enable. Read Set-PolicyConfig: syntax and Boolean type exist, but the description is a placeholder; no passage documents the enabling effect. | Fix: Remove controls[0] and its rendered table row rather than present this call as verified enablement. Retain the existing prose listing the two real parameters and explaining that their descriptions are placeholders at https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig. Do not replace the call with a claim that no automation parameter exists.
 -->

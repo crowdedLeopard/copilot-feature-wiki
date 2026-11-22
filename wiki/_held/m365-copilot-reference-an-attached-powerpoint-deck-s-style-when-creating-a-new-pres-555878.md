@@ -17,7 +17,7 @@ impact: "low"
 defaultState: "user-opt-in"
 action: "review"
 licensing:
-  model: "mixed"
+  model: "included"
   notes: "Microsoft's Copilot overview describes Copilot in PowerPoint in a Basic tier without the add-on licence and a Premium tier with it. Which tier covers this feature is not yet published; no charge specific to it is published."
 audiences: ["m365-admin","change-adoption"]
 tags: ["m365-copilot","powerpoint","macos","microsoft-365-apps"]
@@ -53,26 +53,30 @@ controls:
     note: "Existing licence control, not a switch for this feature. Needs at least the License Administrator or User Administrator role."
 confidence: "medium"
 created: "2026-11-21"
-updated: "2026-11-21"
+updated: "2026-11-22"
 roadmapModified: "2026-08-05T22:47:32"
 changes:
   - date: "2026-11-21"
     note: "First briefing for this roadmap item: Mac platform, Launched, with release-notes confirmation and the licence control."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 38 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after the independent check: licensing model now 'included' (tier for this feature still not yet published), and the licence-check path in Governance guidance now gives the full route."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 50 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
-  date: "2026-11-21"
-  version: 1
+  date: "2026-11-22"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 38
-  confirmed: 37
+  claims: 50
+  confirmed: 48
   unconfirmed: 1
-  contradicted: 0
-  attempts: 1
-  hash: "2c9843e6f6ae6f05c8a43ddabc72dd2c"
+  contradicted: 1
+  attempts: 2
+  hash: "96555e096581bf4207778104884a8ad6"
 ---
 
 ## What's changing
@@ -127,7 +131,7 @@ Which of those tiers covers attaching a deck is not yet published, and no meter,
 
 ### Before rollout
 
-- Check which Mac users hold a Microsoft 365 Copilot licence in the Microsoft 365 admin center (Users > Active users > Licenses and Apps) so you know who can be expected to see the feature.
+- Check which Mac users hold a Microsoft 365 Copilot licence in the Microsoft 365 admin center (Users > Active users > user > Licenses and Apps > Licenses) so you know who can be expected to see the feature.
 - Decide which existing decks you want people to use as the style reference, such as an approved corporate template, and tell users which ones.
 
 ### At rollout
@@ -166,10 +170,12 @@ cost: Low. The release-notes entry names no licence or meter for this feature; u
 impact: Low. Only Mac users who already use Copilot in PowerPoint and choose to attach a deck will notice it; the roadmap lists the Windows and web versions under separate items.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: licensing.model / licensing: The attached-deck style feature has a mixed licensing model. | Found: Searched: PowerPoint Agent Mode attach presentation theme styles licensing requirements credit meter Basic Premium; PowerPoint Copilot style licensing. Opened Copilot overview and release-notes: they describe product tiers, not a mixed entitlement model for this feature. | Fix: Set licensing.model to "included" for a new option inside the existing licensed product, retaining the notes' distinction between Microsoft 365 Copilot (Basic) and Microsoft 365 Copilot (Premium) and the narrow uncertainty about this feature's tier. The product overview lists presentation creation and editing among existing in-app capabilities: https://learn.microsoft.com/copilot/plan/copilot-overview.
+- [contradicted, blocker] front matter: licensing.notes; Cost and licensing; Scope: Users; Open questions / absence: Microsoft has not published whether Basic or Premium covers this Agent Mode feature. | Found: Edit with Copilot in Word, Excel, PowerPoint, and OneNote^2^ ... ^2^ Microsoft 365 Copilot (Premium) features: A Microsoft 365 Copilot license is required to access this feature. | Fix: Replace the unpublished-tier statements with: 'The roadmap describes this capability as part of Agent Mode, which Microsoft now calls editing with Copilot. Microsoft's service description identifies Edit with Copilot in PowerPoint as a Microsoft 365 Copilot (Premium) feature requiring a Microsoft 365 Copilot licence.' Cite https://support.microsoft.com/office/copilot-frontier/get-started-editing-with-copilot-in-office for the rename and https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot for the licence. Keep licensing.model as 'included', name that licence in its notes and the cost rationale, and remove the first Open question asking which tier covers it. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: Before rollout, first bullet / admin-path: The licence-check route is Microsoft 365 admin center > Users > Active users > Licenses and Apps. | Found: go to the Users > Active users page. Select the row of the user that you want to assign a license to. In the right pane, select Licenses and Apps. Expand the Licenses section | Fix: In Governance guidance's licence-check bullet, replace the shortened parenthetical path with "Users > Active users > user > Licenses and Apps > Licenses". Selecting the user is a scope-selection step omitted from the otherwise correct path; https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users documents it. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users
+- [supported, minor] title; What's changing / record: The roadmap describes the capability as using Agent Mode in PowerPoint. | Found: When creating a presentation with Copilot in PowerPoint using Agent Mode | Fix: Use 'editing with Copilot' instead of 'Copilot Agent Mode' in the title. Keep the roadmap quotation, and add: 'Microsoft now calls Agent Mode editing with Copilot.' Cite https://support.microsoft.com/office/copilot-frontier/get-started-editing-with-copilot-in-office, which states: 'In previous releases, this was marketed as "Agent Mode" but is now integrated into the regular Copilot experience.'
+- [supported, minor] front matter: licensing.model; rationale: cost / licensing: The licensing model is included within the licence covering the existing Copilot editing experience. | Found: Microsoft 365 Copilot (Premium) features: A Microsoft 365 Copilot license is required to access this feature. | Fix: Keep licensing.model as 'included' and cite https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot in sources for the applicable Premium entitlement. The correction to the unpublished-tier claim supplies the licence wording. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot
+- [unsupported, minor] rationale: risk / behaviour: The release-notes entry describes no new data source. | Found: Searched: PowerPoint Copilot Agent Mode attach existing presentation theme styles Basic Premium license admin setting disable Graph PowerShell. Read November 4 release-notes entry and Copilot overview; neither states that this introduces no new data source. | Fix: Remove 'data source,' from the risk rationale. The entry documents an attached presentation as input but does not establish that no new data source is involved; retain the narrower statements that it describes no new connector or autonomous action.
 -->

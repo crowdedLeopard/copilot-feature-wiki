@@ -1,0 +1,916 @@
+{
+  "slug": "usage-reports",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "Microsoft 365 admin center usage reports: what do they show, who sees names and what do they cost?",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "3 blocking findings (claims 37, 38, 62)"
+    ]
+  },
+  "counts": {
+    "claims": 70,
+    "confirmed": 66,
+    "unconfirmed": 3,
+    "contradicted": 1,
+    "blocker": 3,
+    "major": 1,
+    "minor": 6
+  },
+  "summary": "Hold: the overview does not state that viewing reports requires no separate licence or charge, and the Copilot usage API call omits its required function argument. The principal privacy setting and reporting roles are documented, but several paths and qualifications also need small corrections.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The conceal setting is at Microsoft 365 admin center > Settings > Org Settings > Services > Reports > Conceal user, group, and site names in all reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Select Org Settings. On the Services tab, select Reports. In the Reports panel, uncheck the checkbox next to Conceal user, group, and site names in all reports.",
+      "severity": "minor",
+      "fix": "Keep the cited path, but add: 'The Teams reporting reference labels the same option Display concealed user, group, and site names in all reports.' Cite https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/teams-reporting-reference."
+    },
+    {
+      "n": 2,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "PATCH /v1.0/admin/reportSettings changes the tenant report privacy setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-1.0",
+      "quote": "Update tenant-level settings for Microsoft 365 reports.\nPATCH https://graph.microsoft.com/v1.0/admin/reportSettings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Reporting roles are assigned at Microsoft Entra admin center > Identity > Users > All users > user > Assigned roles > Add assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/reportroot-authorization",
+      "quote": "Expand the Identity menu > Users > select All users. Select the user. Choose Assigned roles, and then Add assignment. Select the appropriate role, and click Add.",
+      "severity": "minor",
+      "fix": "Complete the route through the role selection: 'Identity > Users > All users > user > Assigned roles > Add assignment > role'. The final Add button is confirmation and need not be included."
+    },
+    {
+      "n": 4,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "POST /v1.0/roleManagement/directory/roleAssignments assigns a Microsoft Entra directory role to a principal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0",
+      "quote": "POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments\n\"roleDefinitionId\": \"c2cf284d-6c41-4e6b-afac-4b80928c9034\",\n\"principalId\": \"f8ca5a85-489a-49a0-b555-0a6d81e56f0d\",\n\"directoryScopeId\": \"/\"",
+      "severity": "minor",
+      "fix": "Keep the call and add to its note: 'The request body sets roleDefinitionId for the reporting role and principalId for the user; directoryScopeId is / for a tenant-wide assignment.'"
+    },
+    {
+      "n": 5,
+      "where": "summary; What it is; Why it matters; Risks and limits",
+      "type": "default",
+      "claim": "Usage reports conceal usernames, display names, groups and sites by default through one organisation setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "By default, all reports hide user information such as usernames, display names, groups, and sites to help companies support local privacy laws.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "controls[0].note; Why it matters; Governance controls",
+      "type": "role",
+      "claim": "Global administrators can change the setting to show concealed information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Global administrators can update the settings to display concealed information if your organization's privacy practices allow it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "controls[0].note",
+      "type": "behaviour",
+      "claim": "The request-body property displayConcealedNames conceals information when true and shows it when false.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-1.0",
+      "quote": "displayConcealedNames | Boolean | If set to true, all reports conceal user information such as usernames, groups, and sites. If false, all reports show identifiable information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "controls[0].note; Why it matters; Risks and limits",
+      "type": "applicability",
+      "claim": "The tenant conceal setting also applies to Microsoft Graph usage reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "This setting also applies to the Microsoft 365 usage reports in Microsoft Graph and Power BI and to the usage reports in Microsoft Teams Admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "controls[0].note; Why it matters; Risks and limits",
+      "type": "applicability",
+      "claim": "The tenant conceal setting also applies to Microsoft 365 usage reports in Power BI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "This setting also applies to the Microsoft 365 usage reports in Microsoft Graph and Power BI and to the usage reports in Microsoft Teams Admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "controls[0].note; Why it matters; Risks and limits",
+      "type": "applicability",
+      "claim": "The tenant conceal setting also applies to usage reports in the Teams admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Other reports, such as some reports in the Microsoft Teams admin center, follow this organization setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "title; summary; What it is",
+      "type": "behaviour",
+      "claim": "Microsoft 365 admin center usage reports show how people use Microsoft 365 services, including Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Microsoft 365 admin center usage reports provide insight into how people in your organization use Microsoft 365 for business services.\nMicrosoft Copilot usage",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Microsoft says these reports identify heavy users and people who barely use a service and might not need a Microsoft 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "you can see who uses a service to the fullest extent and who barely uses it and might not need a Microsoft 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What it is: How they work",
+      "type": "admin-path",
+      "claim": "The usage dashboard is reached through Reports > Usage in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "In the navigation menu, select Reports. If you don't see Reports, select Show all, and then select Reports. Select Usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What it is: How they work",
+      "type": "behaviour",
+      "claim": "Selecting View more on a service card opens a details page with report tabs for that service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Select View more from the at-a-glance activity card for a service (such as email or OneDrive) to see the report details page. On that page, different reports for the service are provided in tabs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What it is: How they work",
+      "type": "behaviour",
+      "claim": "General usage reports cover the last 7, 30, 90 and 180 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Usage reports are generally available for the last 7, 30, 90, and 180 days. For details about specific report availability, see the individual usage report articles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What it is: How they work; Risks and limits: Data lags",
+      "type": "behaviour",
+      "claim": "General usage reports typically become available within 24 to 72 hours but can take several days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "The reports typically become available within 24 to 72 hours, but might sometimes take several days to become available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What it is: How they work; What to check",
+      "type": "admin-path",
+      "claim": "Copilot reports are under Reports > Usage > Microsoft Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage",
+      "quote": "On the Usage page, under Reports, select Microsoft Copilot, and then select Copilot. On the report page, select the Usage tab to view adoption and usage metrics.",
+      "severity": "minor",
+      "fix": "Give the complete usage-report route 'Reports > Usage > Microsoft Copilot > Copilot > Usage' and the Credits route 'Reports > Usage > Microsoft Copilot > Credits'. Note that https://learn.microsoft.com/copilot/manage/copilot-admin-reports instead describes Microsoft Copilot > Usage."
+    },
+    {
+      "n": 18,
+      "where": "What it is: How they work; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Copilot usage report counts users with Microsoft Copilot licences as enabled users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage",
+      "quote": "Enabled Users shows the total number of unique users in your organization with Microsoft Copilot licenses over the selected timeframe.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What it is: How they work; Why it matters",
+      "type": "behaviour",
+      "claim": "The Copilot usage report shows active users and app usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage",
+      "quote": "Active Users shows the total number of enabled users in your organization who tried a user-initiated Microsoft Copilot feature, in one or more apps in Microsoft 365 over the selected timeframe.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What it is: How they work",
+      "type": "behaviour",
+      "claim": "The Copilot usage report shows prompts submitted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage",
+      "quote": "Total prompts submitted shows the total number of prompts users sent to Microsoft Copilot Chat during the selected time frame.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What it is: How they work",
+      "type": "behaviour",
+      "claim": "The Copilot usage report offers reporting periods of 7, 28, 90 and 180 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage",
+      "quote": "You can view the Microsoft Copilot report over the last 7, 28, 90, or 180 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risks and limits: Data lags",
+      "type": "behaviour",
+      "claim": "Copilot activity reporting typically takes about 48 hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage",
+      "quote": "For Copilot activity on a given day, the report typically becomes available within 48 hours of the end of that day (in UTC).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What it is: How they work; Why it matters",
+      "type": "behaviour",
+      "claim": "The Copilot Credits report provides visibility into consumption for pay-as-you-go billing policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "This report gives you visibility into credits used for your Microsoft Copilot pay-as-you-go billing policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What it is: How they work; Why it matters",
+      "type": "behaviour",
+      "claim": "The Credits report shows credits used per user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "Credits used per user, per agent, per billing policy, and per agent-user pair",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What it is: How they work; Why it matters",
+      "type": "behaviour",
+      "claim": "The Credits report shows credits used per agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "Credits used per user, per agent, per billing policy, and per agent-user pair",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What it is: How they work",
+      "type": "behaviour",
+      "claim": "The Credits report shows credits used per billing policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "Credits used per user, per agent, per billing policy, and per agent-user pair",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What it is: How they work",
+      "type": "behaviour",
+      "claim": "The Credits report shows credits used per agent-user pair.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "Credits used per user, per agent, per billing policy, and per agent-user pair",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What it is: How they work",
+      "type": "behaviour",
+      "claim": "The Credits report offers reporting periods of 7 or 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "You can view the Copilot Credits report over the last 7 or 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Credits report covers users without Microsoft Copilot licences interacting with Copilot Chat agents that consume the Copilot Studio meter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "from interactions by users in your organization who don't have a Microsoft Copilot license and are interacting with agents in Copilot Chat that spin the Copilot Studio meter during the selected time period.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What it is: Other Copilot reporting sources",
+      "type": "behaviour",
+      "claim": "Microsoft identifies four main sources of Copilot usage reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-admin-reports",
+      "quote": "Microsoft Copilot offers four main sources for usage reports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What it is: Other Copilot reporting sources",
+      "type": "behaviour",
+      "claim": "Viva Insights Copilot Analytics provides the Copilot Dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-admin-reports",
+      "quote": "Viva Insights Copilot Analytics: Offers comprehensive Copilot analytics through the Copilot Dashboard and Advanced Insights Analyst workbench for detailed metrics and custom reporting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What it is: Other Copilot reporting sources",
+      "type": "applicability",
+      "claim": "Viva Feature Access Management governs access to the Copilot Dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "using the Viva Insights web app feature access management control in the Microsoft 365 admin center. Turning this control off disables the entire app, which includes the Microsoft Copilot Dashboard, Copilot Analytics reports, and advanced analysis and admin tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What it is: Other Copilot reporting sources; Governance controls",
+      "type": "behaviour",
+      "claim": "Microsoft Purview audit logs are a separate Copilot reporting source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-admin-reports",
+      "quote": "Microsoft Purview audit logs: Delivers detailed audit logs of all Copilot activities for compliance tracking and security auditing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What it is: Other Copilot reporting sources",
+      "type": "behaviour",
+      "claim": "Power Platform and Copilot Studio analytics form another Copilot reporting source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-admin-reports",
+      "quote": "Power Platform & Copilot Studio Analytics: Provides consumption metrics for Copilot agents and detailed analytics on agent performance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Admin center usage reports are where unlicensed or metered usage first becomes visible.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft Copilot reporting options admin reports usage credits; read copilot-admin-reports, microsoft-365-copilot-credits and the Copilot usage API reference. These document several reporting sources, not that this admin center is the first to show usage.",
+      "severity": "major",
+      "fix": "Replace 'They are also where unlicensed or metered usage first becomes visible' with 'The Copilot Credits report makes metered agent usage by users without a Microsoft Copilot licence visible'."
+    },
+    {
+      "n": 36,
+      "where": "Why it matters; Risks and limits: Names are hidden by default",
+      "type": "behaviour",
+      "claim": "The conceal setting anonymises identifying information in reports and exports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/teams-reporting-reference",
+      "quote": "The Global administrator can hide identifiable information (using MD5 hashes) such as display name, group name, email, and Microsoft Entra user ID in the report and its export.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The usage reports overview states that viewing reports requires no separate licence.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 usage reports viewing separate license fee charge requirements; Microsoft 365 admin center usage reports no additional license required free viewing. Read activity-reports and reporting prerequisites; no passage states a licence exemption.",
+      "severity": "blocker",
+      "fix": "Replace the opening sentence with: 'The usage reports overview lists the roles needed to view reports but names no separate viewing licence or charge at the time of writing (November 2026).' This describes the overview's silence, not an exemption."
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The usage reports overview states that viewing reports has no separate charge.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 usage reports viewing separate license fee charge requirements; Microsoft 365 admin center usage reports no additional license required free viewing. Read activity-reports and reporting prerequisites; no passage states that viewing is uncharged.",
+      "severity": "blocker",
+      "fix": "Use the same replacement opening sentence: 'The usage reports overview lists the roles needed to view reports but names no separate viewing licence or charge at the time of writing (November 2026).' Do not attribute a no-charge statement to Microsoft."
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Usage reports do not include perpetual licence models.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Usage reports don't include perpetual license models.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risks and limits: The setting is a logged event; What to check",
+      "type": "behaviour",
+      "claim": "Showing identifiable user information is logged in the Microsoft Purview audit log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Showing identifiable user information is a logged event in the Microsoft Purview portal audit log.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risks and limits: Role choice decides what a reader sees",
+      "type": "role",
+      "claim": "Usage Summary Reports Reader sees no user details in admin center usage reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Usage Summary Reports Reader (with no user details).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risks and limits: Role choice decides what a reader sees",
+      "type": "role",
+      "claim": "User Experience Success Manager sees no user details in admin center usage reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "User Experience Success Manager (with no user details)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risks and limits: Role choice decides what a reader sees",
+      "type": "role",
+      "claim": "Global Reader has access only to tenant-level data through the Graph reports API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/reportroot-authorization",
+      "quote": "The Global Reader and Usage Summary Reports Reader roles will only have access to tenant-level data, without visibility into detailed metrics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risks and limits: Role choice decides what a reader sees",
+      "type": "role",
+      "claim": "Usage Summary Reports Reader has access only to tenant-level data through the Graph reports API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/reportroot-authorization",
+      "quote": "The Global Reader and Usage Summary Reports Reader roles will only have access to tenant-level data, without visibility into detailed metrics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risks and limits: Names are hidden by default",
+      "type": "applicability",
+      "claim": "The Credits report conceals Billing Policy ID and user names under the same setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "By default, the Copilot credits report anonymizes the Billing Policy ID, just like the username and display name.\nChanges to this hidden data setting affect the username, display name, and Billing Policy ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risks and limits: Data lags",
+      "type": "behaviour",
+      "claim": "The Credits report does not automatically refresh recent usage and must be refreshed manually.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "The report shows data up to today, but it doesn't automatically update if there's recent usage. To view the latest data, manually refresh the report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risks and limits: Copilot Credits report history is short; What to check",
+      "type": "behaviour",
+      "claim": "During preview, the Credits report displays a maximum of 30 days of history.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "During preview, the report displays a maximum of 30 days of Copilot Credits history.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risks and limits: Copilot Credits report history is short; Open questions",
+      "type": "date",
+      "claim": "Usage information from before 3 May 2025 is unavailable in the Credits report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "In addition, usage information from before May 3, 2025, isn't available in the report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risks and limits: Alerts are report cards, not limits",
+      "type": "behaviour",
+      "claim": "The Credits report includes alerts for users consuming more than 2,000 credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "To help you mitigate overspending, the report includes alerts when users in your organization use more than 2,000 credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risks and limits: Alerts are report cards, not limits",
+      "type": "behaviour",
+      "claim": "The Credits report alerts on users above 3,000 credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "The Alerts card is visible in the report when one or more users consume more than 3,000 credits in the past 30 days.",
+      "severity": "minor",
+      "fix": "Replace the threshold sentence with: 'The Credits report shows an Alerts card when a user consumes more than 3,000 credits in the past 30 days, with a similar alert for 2,000 to 3,000 credits.'"
+    },
+    {
+      "n": 51,
+      "where": "Risks and limits: Alerts are report cards, not limits",
+      "type": "behaviour",
+      "claim": "Credits report alerts are informational report cards rather than consumption caps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "The Alerts card is visible in the report when one or more users consume more than 3,000 credits in the past 30 days.\nSelect View Copilot credits details to see the user list and export it to CSV.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risks and limits: Not every cloud has every report",
+      "type": "availability",
+      "claim": "The overview lists the Copilot Credits report as available only in the public cloud.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "| Report | Public | GCC | GCC-High | DoD | Microsoft 365 operated by 21Vianet |\n| Microsoft Copilot credits | Yes | N/A | N/A | N/A | N/A |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risks and limits: Not every cloud has every report; What to check",
+      "type": "availability",
+      "claim": "Other reports, including Copilot Connectors usage, are not yet released in some clouds.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "| Microsoft 365 Copilot Connectors usage | Yes | N/A^1^ | N/A^1^ | N/A^1^ | N/A^2^ |\nN/A^1^: The report will be released in the future.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risks and limits: No per-user lookup",
+      "type": "behaviour",
+      "claim": "An administrator cannot enter a user account to generate a cross-service usage list and should instead sort or export service reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "You can't generate a report where you enter a user's account and then get a list of which services they're using and how much.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risks and limits: Deleted users disappear",
+      "type": "behaviour",
+      "claim": "Microsoft deletes a deleted user's usage data within 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "When you delete a user account, Microsoft deletes that user's usage data within 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risks and limits: Deleted users disappear",
+      "type": "behaviour",
+      "claim": "Usage chart totals continue to include deleted users for periods when they were active.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "The usage chart totals still include deleted users for the periods they were active, but they don't appear in the User Details table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risks and limits: Copilot usage by Graph excludes unlicensed users",
+      "type": "licensing",
+      "claim": "The Copilot usage API returns usage data only for users with Microsoft 365 Copilot licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetail",
+      "quote": "This API only returns usage data for users who have a Microsoft 365 Copilot license. Unlicensed Copilot Chat usage data isn't available through Microsoft Graph reports APIs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "summary; Governance controls",
+      "type": "role",
+      "claim": "The overview permits viewing by Global, Exchange, SharePoint, Teams, Teams Communications and AI Administrators, Reports Reader, Usage Summary Reports Reader and User Experience Success Manager.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Global Administrator\nExchange Administrator\nSharePoint Administrator\nUsage Summary Reports Reader (with no user details).\nReports Reader\nTeams Administrator\nTeams Communications Administrator\nUser Experience Success Manager (with no user details)\nAI Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls; What to check",
+      "type": "role",
+      "claim": "Microsoft recommends using roles with the fewest permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Microsoft recommends that you use roles with the fewest permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "An application or delegated reader of the Copilot usage API needs Reports.Read.All.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetail",
+      "quote": "| Delegated (work or school account) | Reports.Read.All | Not available. |\n| Application | Reports.Read.All | Not available. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Delegated reporting calls additionally require the signed-in user to hold a supported limited administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/reportroot-authorization",
+      "quote": "In addition to the app having been granted the required permissions, the user must be a member of a Microsoft Entra ID limited administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "GET /v1.0/copilot/reports/getMicrosoft365CopilotUsageUserDetail is the Copilot usage report call.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetail",
+      "quote": "GET https://graph.microsoft.com/v1.0/copilot/reports/getMicrosoft365CopilotUsageUserDetail(period='D7')\nperiod | String | Required.",
+      "severity": "blocker",
+      "fix": "Replace the call with 'GET /v1.0/copilot/reports/getMicrosoft365CopilotUsageUserDetail(period='D7')'. The reference requires the period argument in the function invocation; version is optional."
+    },
+    {
+      "n": 63,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "ReportSettings.ReadWrite.All permits updating report settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-1.0",
+      "quote": "| Delegated (work or school account) | ReportSettings.ReadWrite.All | Not available. |\n| Application | ReportSettings.ReadWrite.All | Not available. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Open questions: audit operation name",
+      "type": "absence",
+      "claim": "The overview says showing identifiable information is audited but does not name the audit operation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: usage reports showing identifiable user information audit operation name conceal names. Read activity-reports, adminReportSettings update and Teams reporting reference; the overview states that showing identifiable information is logged but supplies no operation name.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Open questions: report settings API government clouds",
+      "type": "availability",
+      "claim": "The v1.0 report settings update reference marks US Government L4 and L5 unavailable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-1.0",
+      "quote": "| Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet |\n| ✅ | ❌ | ❌ | ❌ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Open questions: report settings API government clouds",
+      "type": "availability",
+      "claim": "The beta report settings update reference marks US Government L4 and L5 available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta",
+      "quote": "| Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet |\n| ✅ | ✅ | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Open questions: Credits report after preview",
+      "type": "absence",
+      "claim": "Whether the Credits report history limits persist after preview remains unspecified.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Credits report history after preview 30 days May 3 2025. Read microsoft-365-copilot-credits and search excerpts on Copilot Studio capacity reports; no passage describes this admin center report's history after preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Cost and licensing; Risks and limits: Alerts are report cards, not limits",
+      "type": "behaviour",
+      "claim": "Spending policies, rather than report alert cards, provide Copilot Credits consumption caps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview#key-capabilities",
+      "quote": "Create, read, update, and delete spending policies that cap Copilot Credits consumption for an audience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "sources; What it is; Why it matters; Cost and licensing",
+      "type": "behaviour",
+      "claim": "The statements about Dashboard access governance, anonymised exports and spending caps are supported by Microsoft pages missing from the source list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "Turning this control off disables the entire app, which includes the Microsoft Copilot Dashboard, Copilot Analytics reports, and advanced analysis and admin tools.",
+      "severity": "minor",
+      "fix": "Add these sources together: https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard ; https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/teams-reporting-reference ; https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview ."
+    },
+    {
+      "n": 70,
+      "where": "controls[1].note",
+      "type": "role",
+      "claim": "The role assignment reference identifies Privileged Role Administrator as the least privileged supported role for creating a directory role assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0",
+      "quote": "For delegated access using work or school accounts, the signed-in user must be assigned a supported Microsoft Entra role or a custom role that grants the permissions required for this operation. Privileged Role Administrator is the least privileged role supported for this operation.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T02:05:12.248Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/copilot-admin-reports",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/reportroot-authorization",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetail",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether usage reports conceal user, group and site names",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Org Settings",
+          "Services",
+          "Reports",
+          "Conceal user, group, and site names in all reports"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether usage reports conceal user, group and site names",
+        "docs": "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/admin/reportSettings",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users can read usage reports (Microsoft Entra role assignment)",
+        "docs": "https://learn.microsoft.com/graph/reportroot-authorization",
+        "reachable": true,
+        "segments": [
+          "Identity",
+          "Users",
+          "All users",
+          "Assigned roles",
+          "Add assignment"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which users can read usage reports (Microsoft Entra role assignment)",
+        "docs": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/roleManagement/directory",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

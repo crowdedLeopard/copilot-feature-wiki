@@ -44,7 +44,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Settings > Data loss prevention > Scan failure settings for Exchange"
+      path: "Settings > Data loss prevention > Scan failure settings for Exchange > toggle"
       docs: "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection"
     api:
       kind: "powershell"
@@ -53,26 +53,30 @@ controls:
     note: "Preview. Exchange Online only. $json is '{\"Classification\":{\"State\":1}}'; State 0 disables. Allow up to one hour to synchronise."
 confidence: "high"
 created: "2026-11-21"
-updated: "2026-11-21"
+updated: "2026-11-22"
 roadmapModified: "2026-09-01T22:59:38"
 changes:
   - date: "2026-11-21"
     note: "First briefing for this item, based on the preview Learn page for Exchange Online classification failure detection."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 46 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected: removed an unsupported claim that a block action applies to every message, extended the portal path to the toggle, and removed checklist items that had no controls-table row."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 43 statements confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-21"
-  version: 1
+  status: "verified"
+  date: "2026-11-22"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 46
-  confirmed: 44
+  claims: 43
+  confirmed: 43
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "77bb7d479625687b1646e3403cbde59b"
+  contradicted: 0
+  attempts: 0
+  hash: "e461614100e6356ee4a774fd7ce8b331"
 ---
 
 ## What's changing
@@ -99,7 +103,7 @@ Because the setting is administrator-enabled, nothing changes in a tenant until 
 - No new identity or permission model is described on the feature page. The setting is tenant-wide for Exchange Online DLP; Learn names no per-user or per-policy scope for it.
 
 **Autonomy & actions**
-- The actions are whatever your rules specify. The Learn example uses Audit for timeout, throttling and other failures, and Block for content rules. A block action on a scan-failure condition would apply to every message whose attachment hits that failure type.
+- The actions are whatever your rules specify. The Learn example uses Audit for timeout, throttling and other failures, and Block for content rules.
 
 **Change & support**
 - Learn states that existing rules using the two conditions might produce more matches after enabling. Expect more alerts and possibly more user queries if those rules block or notify.
@@ -122,19 +126,13 @@ No price or credit rate for the feature is published. The costs shown by the sou
 ## Governance guidance
 
 ### Before rollout
-- Inventory the Exchange Online DLP rules that use **Document couldn't be scanned** or **Document didn't complete scanning**, because Learn says enabling detection can increase their matches.
-- Decide the action for each failure type (**Timeout**, **Throttled**, **Other**), starting with audit-only as in Learn's example.
-- Plan rule priorities so content-detection rules sit above scan-failure rules, as Learn advises.
 - Confirm which role your organisation uses to change DLP settings and rules before delegating the work.
 
 ### At rollout
 - Turn on **Scan failure settings for Exchange** in the Microsoft Purview portal, or run the Security & Compliance PowerShell command in the controls table.
 - Wait up to one hour for synchronisation before testing rule behaviour.
-- Add rules that combine **DocumentScanFailures** with one of the two scan conditions using AND.
 
 ### After rollout
-- Review DLP rule match volumes for the rules that already used the two scan conditions and tune any that now over-match.
-- Check that scan-failure rules still rank below content rules after any policy changes.
 - Watch the Learn page and Message center for changes between preview and general availability.
 
 ## Governance controls
@@ -144,7 +142,7 @@ No price or credit rate for the feature is published. The costs shown by the sou
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Exchange Online DLP detects classification failures</strong><br><small>Tenant</small><br><small class="controls__note">Preview. Exchange Online only. $json is '{&quot;Classification&quot;:{&quot;State&quot;:1}}'; State 0 disables. Allow up to one hour to synchronise.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Data loss prevention › Scan failure settings for Exchange <a href="https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PolicyConfig -DlpErrorHandlingConfig $json</code> <a href="https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Exchange Online DLP detects classification failures</strong><br><small>Tenant</small><br><small class="controls__note">Preview. Exchange Online only. $json is '{&quot;Classification&quot;:{&quot;State&quot;:1}}'; State 0 disables. Allow up to one hour to synchronise.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Data loss prevention › Scan failure settings for Exchange › toggle <a href="https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PolicyConfig -DlpErrorHandlingConfig $json</code> <a href="https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -165,13 +163,4 @@ The per-failure-type behaviour is set in rules through the **DocumentScanFailure
 risk: Medium. Until an administrator turns detection on, the scan-failure conditions detect only text extraction failures, so a rule built on them does not match classification failures such as timeouts; turning it on can also raise rule matches.
 cost: Low. The feature page names no licence or meter; the cost is admin time to enable the setting, add rules and tune them. DLP for Exchange Online sits under the licences in the Microsoft Purview service description.
 impact: Low. Administrators enable it and write the rules. Senders notice only if a rule they trigger blocks or flags messages whose attachments failed to scan.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Autonomy & actions / applicability: A block action on a scan-failure condition would apply to every message whose attachment hits that failure type. | Found: Whether an action takes effect or not depends on how you configure the mode of the policy. | Fix: Remove the sentence 'A block action on a scan-failure condition would apply to every message whose attachment hits that failure type.' The unconditional 'every message' disregards policy scope, policy mode and the classifier-ordering limitation already described on the page. | Source: https://learn.microsoft.com/purview/dlp-policy-reference
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table; Governance guidance / admin-path: The enabling control is reached in Microsoft Purview portal through Settings > Data loss prevention > Scan failure settings for Exchange. | Found: go to Settings on the left navigation menu > Data loss prevention > Scan failure settings for Exchange. In Scan failure settings for Exchange turn on the toggle. | Fix: Extend controls[0].ui.path and the matching rendered table path to 'Settings > Data loss prevention > Scan failure settings for Exchange > toggle'. The source gives an unlabelled toggle on that page; the current route correctly reaches the page but stops before the control. | Source: https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection
-- [contradicted, minor] Governance guidance; Governance controls / consistency: The checklist tells readers to configure failure-type rules and review rule priorities and match volumes, but those controls have no table rows. | Found: Checklist: 'Add rules that combine DocumentScanFailures'; 'Check that scan-failure rules still rank below content rules'; 'Review DLP rule match volumes'. The only table row governs 'Whether Exchange Online DLP detects classification failures'. | Fix: The checklist's scan-failure rule configuration, rule-priority review and rule-match-volume review have no controls-table rows. Remove those checklist instructions if retaining the current one-row table; keep the explanatory prose. Do not add unverified control rows.
 -->

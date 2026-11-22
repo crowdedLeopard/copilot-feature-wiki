@@ -1,0 +1,741 @@
+{
+  "slug": "m365-copilot-dynamic-tool-discovery-for-declarative-agents-and-federated-copilot-connector",
+  "roadmapId": 561855,
+  "title": "Microsoft 365 Copilot: dynamic tool discovery for MCP plugins in declarative agents",
+  "status": "verified-with-gaps",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 58,
+    "confirmed": 57,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "The briefing's runtime discovery behaviour, default, licensing statements and block controls are supported by Microsoft documentation. Minor corrections should cite the package-to-agent mapping and remove checklist instructions for controls not represented in the table.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is June CY2026, which has passed by the run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant) and no US Government cloud.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Desktop, Mobile and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mobile\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-05-13T23:00:44.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-05-13T23:00:44\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; summary; What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Declarative agents using MCP server-based plugins resolve tools at runtime directly from the server rather than a publish-time manifest list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/plugin-dynamic-tool-discovery",
+      "quote": "Dynamic tool discovery enables declarative agents that use MCP server-based plugins to resolve their available tools at runtime, directly from the MCP server, instead of being limited to the tool list captured in the agent's plugin manifest at publish time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Developers can add, update or retire MCP tools without repackaging, revalidating and republishing the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/plugin-dynamic-tool-discovery",
+      "quote": "This feature lets users access the latest capabilities of an MCP server in near real time, without waiting for the agent to be repackaged, revalidated, and republished.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The platform fetches current tool definitions, compares them with the last known set, validates changes and applies them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/plugin-dynamic-tool-discovery",
+      "quote": "The platform fetches the current tool definitions from the MCP server at runtime, diffs them against the last known set, validates the changes, and applies them so the agent operates on an up-to-date view of the server's capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Every newly discovered or modified tool undergoes RAI and XPIA screening before activation for end users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/plugin-dynamic-tool-discovery",
+      "quote": "every newly discovered or modified tool is screened by RAI and XPIA classifiers before the tool is activated for end users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Tool changes that fail runtime validation are blocked.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/plugin-dynamic-tool-discovery",
+      "quote": "The process blocks tool changes that fail validation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "A developer can pin a fixed set of tools in the plugin manifest instead of using dynamic discovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/overview-plugins",
+      "quote": "When building the agent, a developer can optionally pin a fixed set of tools in the plugin manifest instead.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "default",
+      "claim": "Microsoft 365 Agents Toolkit configures new MCP plugins for dynamic discovery by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/plugin-dynamic-tool-discovery",
+      "quote": "By default, Microsoft 365 Agents Toolkit configures a new MCP plugin for dynamic tool discovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "REST API plugins always use tools defined in the plugin manifest.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/overview-plugins",
+      "quote": "REST API plugins always use the tools defined in the plugin manifest.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
+      "type": "default",
+      "claim": "Dynamic discovery is on by default for MCP plugins used as declarative-agent actions, despite the roadmap retaining In development status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/overview-plugins",
+      "quote": "For plugins based on an MCP server, Copilot resolves the plugin's tools dynamically at runtime by default, directly from the MCP server. ... This default applies to MCP plugins used as declarative-agent actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap plans federated Copilot connector support at a later stage without giving its date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Support for federated Copilot connectors will be a fast follow to declarative agents at a later stage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Remote MCP plugins referenced through agentConnectors require app manifest version 1.29 or later for dynamic discovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/plugin-dynamic-tool-discovery",
+      "quote": "For a plugin that references a remote MCP server through agentConnectors in the Microsoft 365 app manifest, dynamic tool discovery requires app manifest version 1.29 or later and a host that permits it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "The agentConnectors case also requires a host that permits dynamic discovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/plugin-dynamic-tool-discovery",
+      "quote": "dynamic tool discovery requires app manifest version 1.29 or later and a host that permits it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Changing pinned tools requires updating the manifest, resubmitting the agent, revalidation and republication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/plugin-dynamic-tool-discovery",
+      "quote": "Any change to the tool surface, such as adding a new tool, removing a deprecated one, renaming a parameter, or refining a description, requires the agent developer to update the manifest, resubmit the agent, and have it revalidated and republished before users see the change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The MCP server developer owns and authors the tool definitions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/plugin-dynamic-tool-discovery",
+      "quote": "The MCP server developer still authors and owns the tool definitions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters; rationale: impact",
+      "type": "behaviour",
+      "claim": "Tool changes reach users in near real time after server deployment and successful runtime validation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/plugin-dynamic-tool-discovery",
+      "quote": "Near real time, gated only on MCP server deployment and runtime validation",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Third-party apps continue to rely on publisher attestation, Microsoft 365 certification and publish-time store validation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/plugin-dynamic-tool-discovery",
+      "quote": "ISV (3P) apps continue to rely on the existing extensibility governance stack: publisher attestation and M365 certification, the tenant and ISV service contract and terms of use, and store validation performed at publish time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The plugin's MCP server is hosted outside Microsoft 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/overview-plugins",
+      "quote": "The agent sends a request to the plugin's MCP server or API, which is hosted outside of Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Non-Microsoft publishers' terms govern their services' data handling.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Data processed by non-Microsoft services isn't subject to Microsoft agreements. Review the terms provided by non-Microsoft agent and plugin publishers to make sure that you're familiar with the data handling and privacy practices of the agent or plugin.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Copilot asks the user before sending any data to a plugin for the first time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/overview-plugins",
+      "quote": "Copilot asks the user before sending any data for the first time to a plugin.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity; Governance guidance",
+      "type": "behaviour",
+      "claim": "An MCP server can return different tool lists tailored to signed-in users, including by SKU, role or entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/plugin-dynamic-tool-discovery",
+      "quote": "User-specific tool surfaces (for example, by SKU, role, or entitlement) ... Supported. The MCP server can return a tool list tailored to the signed-in user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "After the first connection, data-modifying MCP tools require confirmation by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/overview-plugins",
+      "quote": "After the user confirms the connection, MCP server tools and APIs that only retrieve data don't require confirmation, while tools and APIs that modify data do.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance; Open questions",
+      "type": "behaviour",
+      "claim": "Plugin developers can override the default confirmation behaviour.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/overview-plugins",
+      "quote": "Plugin developers can override these defaults.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Runtime-resolved MCP tools count toward the total functions and tools considered in the plugin limitations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/overview-plugins",
+      "quote": "A plugin can include an unlimited number of functions or MCP tools. ... For an MCP plugin that uses dynamic tool discovery, the tools resolved from the MCP server at runtime count toward this total.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Response quality might degrade when a plugin includes more than 10 functions or tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/overview-plugins",
+      "quote": "Due to token window limits, the quality of the responses might degrade if more than 10 functions or tools are included.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters; Risk assessment: Change & support; Governance guidance",
+      "type": "admin-path",
+      "claim": "The Microsoft 365 admin center agent details Data & tools tab shows a banner under Tools identifying runtime-changing MCP tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/plugin-dynamic-tool-discovery",
+      "quote": "In the Data & tools tab of the agent details view, an information banner under the Tools section indicates that the agent uses an MCP server whose tools can change at runtime.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "The discovery mechanism is surfaced on individual agent details rather than catalog-level listings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/plugin-dynamic-tool-discovery",
+      "quote": "The agent and connector catalog list view itself is unchanged. The discovery mechanism is surfaced on the per-agent details page, not in catalog-level listings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Why it matters; Risk assessment: Change & support; rationale: risk",
+      "type": "behaviour",
+      "claim": "Interactions with agents using dynamic discovery are recorded in the Microsoft Purview audit log under the Copilot workload.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/plugin-dynamic-tool-discovery",
+      "quote": "Interactions with agents that use dynamic tool discovery are recorded in the Microsoft Purview audit log under the Copilot workload, alongside interactions with any other declarative agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Administrators can locate these audit records with Workload = Copilot in Purview audit search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/plugin-dynamic-tool-discovery",
+      "quote": "Admins can locate these records by filtering on Workload = Copilot in Purview audit search",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "TargetAgentName identifies the specific agent in CopilotEventData.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/plugin-dynamic-tool-discovery",
+      "quote": "can identify the specific agent using the TargetAgentName field in CopilotEventData.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].ui; summary; Governance controls; Governance guidance",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Agents > All agents > agent > Block blocks the selected agent across the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select Agents > All agents. ... select an agent from the list of agents. ... immediately under the agent's name, select Block or Unblock. ... Restrict access to an agent across the organization, preventing any user from using it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage. ... POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[0].api",
+      "type": "applicability",
+      "claim": "The package block operation can govern an agent represented by a Copilot package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview",
+      "quote": "A package represents an agent or a tool, such as a plugin, MCP server, or skill, in the organization catalog. ... Block, unblock, and reassign ownership of packages.",
+      "severity": "minor",
+      "fix": "Add 'Agent 365 Package Management API overview' at https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview to sources; it establishes why the package operation can govern an agent."
+    },
+    {
+      "n": 41,
+      "where": "controls[0].note; Risk assessment: Security & identity; Governance controls",
+      "type": "behaviour",
+      "claim": "Agent blocking targets the selected agent and must not be assumed to block shared MCP servers or revoke connected-service permissions and credentials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "These actions apply to the selected agent. ... don't assume the action also applies to the whole plugin package, its skills, shared MCP servers, or connections. Agent approval or blocking doesn't necessarily grant or revoke connected-service permissions or credentials.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Security & identity; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Agents > Tools is the surface for managing plugins, skills and MCP servers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "To manage plugins, skills, and MCP servers, use Agents > Tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1]; summary; Why it matters; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft documents no separate tenant- or agent-level admin UI or API switch for dynamic tool discovery itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"dynamic tool discovery\" tenant agent switch Microsoft Graph admin configuration. Read plugins/plugin-dynamic-tool-discovery, agent-settings and package/block; the feature page explicitly says there is no separate tenant- or agent-level switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "summary; controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "Existing agent assignment to specific users or groups can stage availability for agents using dynamic discovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/plugin-dynamic-tool-discovery",
+      "quote": "Use the same controls, including assigning an agent to specific users or groups, to stage availability of an agent that uses dynamic tool discovery before broader rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Custom actions for declarative agents are included capabilities in Copilot Chat with or without usage-based billing and in licensed Microsoft 365 Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/prerequisites",
+      "quote": "| Capability | Copilot Chat (no usage-based billing)* | Copilot Chat (usage-based billing)** | Microsoft 365 Copilot (licensed) | ... | Custom actions | ✅ | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Usage limits apply to included Copilot Chat features without usage-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/prerequisites",
+      "quote": "Copilot Chat (no usage-based billing)* ... * Usage limits apply to all included features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No licence specific to dynamic tool discovery is published, and the feature page names none.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"dynamic tool discovery\" licensing pricing meter Copilot Credits. Read plugin-dynamic-tool-discovery and prerequisites; reviewed billing-licensing and billing rates search excerpts. No feature-specific licence was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to dynamic tool discovery is documented in November 2026, and the feature page names none.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"dynamic tool discovery\" licensing pricing meter Copilot Credits. Read plugin-dynamic-tool-discovery and prerequisites; reviewed requirements-messages-management billing-rate excerpts and Copilot Credits report excerpts. No discovery-specific meter was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].note; Cost and licensing; Governance controls",
+      "type": "licensing",
+      "claim": "Access to the Graph Package Management block API requires a Microsoft Agent 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The Graph block operation uses delegated CopilotPackages.ReadWrite.All permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "| Delegated (work or school account) | CopilotPackages.ReadWrite.All | Not available. | ... | Application | Not available. | Not available. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The Graph block API is beta.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Agents > Settings > User access manages tenant access to agents and plugins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Select Agents > Settings > User access to manage your organization's agents and plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls",
+      "type": "default",
+      "claim": "User access defaults to All users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "All users - This option is the default. It means that all users in the organization can access agents and plugins, subject to the existing app policies and user assignments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The User access and Agent and plugin access settings cover plugins including MCP servers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Use User access to control how members of your organization access and install agents and plugins. Plugins include tools, MCP servers, connectors, skills, and other AI artifacts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "Agent and plugin access is a setting on the Microsoft 365 admin center Agent settings page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "The Agent settings page includes the following configuration options: ... Agent and plugin access - Specify which categories of AI agents and plugins are permitted for use within the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Agent and plugin access controls which publisher types users can view and install from the catalog.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "The Agent and plugin access setting controls which types of agents and plugins users can view and install from the agent catalog. ... Allow agents and plugins built by Microsoft ... your organization ... external publishers",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "The cited dynamic discovery article covers MCP plugins used as declarative-agent actions rather than the federated connector follow-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/plugin-dynamic-tool-discovery",
+      "quote": "This article covers MCP plugins used as declarative-agent actions. For a plugin that references a remote MCP server through agentConnectors in the Microsoft 365 app manifest, dynamic tool discovery requires app manifest version 1.29 or later and a host that permits it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance guidance; Governance controls",
+      "type": "consistency",
+      "claim": "The governance checklist instructs readers to check the discovery banner, search audit records and review MCP servers, but none has a corresponding controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'read the banner on the Data & tools tab'; 'Run a Purview audit search'; 'review the MCP server under Agents > Tools'. Table: only agent blocking and the absent discovery switch.",
+      "severity": "minor",
+      "fix": "Remove the Before rollout bullet beginning 'Inventory declarative agents', the At rollout bullet beginning 'Run a Purview audit search', and the After rollout bullet beginning 'Re-check the Data & tools tab'. In the After rollout block bullet, remove ', and review the MCP server under Agents > Tools'. Keep the supported descriptions of these surfaces elsewhere; do not add control rows."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T02:05:11.404Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/plugins/plugin-dynamic-tool-discovery",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/plugins/overview-plugins",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/plugins/prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=561855",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether an agent that uses dynamic tool discovery is available to anyone in the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether an agent that uses dynamic tool discovery is available to anyone in the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
