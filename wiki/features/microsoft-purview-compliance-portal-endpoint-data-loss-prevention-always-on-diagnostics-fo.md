@@ -25,6 +25,9 @@ sources:
   - title: "Microsoft 365 Roadmap 499432"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=499432"
     kind: "roadmap"
+  - title: "Microsoft 365 Roadmap 499431"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=499431"
+    kind: "roadmap"
   - title: "Always-on diagnostics for endpoint DLP"
     url: "https://learn.microsoft.com/purview/dlp-always-on-diagnostics"
     kind: "learn"
@@ -44,7 +47,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Settings > Data Loss Prevention > Always-on diagnostics (preview)"
+      path: "Settings > Data Loss Prevention > Always-on diagnostics (preview) > On"
       docs: "https://learn.microsoft.com/purview/dlp-always-on-diagnostics"
     api: null
     note: "Page labels the setting preview and says it applies to Windows and macOS devices together. Enabling needs an Entra role such as Compliance Administrator or a tenant-level Purview role."
@@ -63,7 +66,7 @@ controls:
       path: "Settings > Device onboarding > Devices > device > Always-on Diagnostics > Request device log"
       docs: "https://learn.microsoft.com/purview/dlp-always-on-diagnostics"
     api: null
-    note: "The page gives two other starting points: Data Loss Prevention > Alerts > Events, and Explorers > Activity explorer. One active request per device."
+    note: "The page gives two other starting points: Data Loss Prevention > Alerts > Events, and Data Loss Prevention > Explorers > Activity explorer. One active request per device."
 confidence: "medium"
 created: "2026-11-22"
 updated: "2026-11-22"
@@ -73,19 +76,23 @@ changes:
     note: "First briefing for the macOS item of Always-on diagnostics for endpoint DLP; notes that two Learn pages disagree on macOS support and that the macOS default is not stated."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 67 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected the Activity explorer path in the log-request note, added On to the enable path, removed three Before rollout steps with no control row, and added roadmap 499431 as a source."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 76 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 65
+  claims: 76
+  confirmed: 76
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "56aa88a40f819c20e0d49af90be87dad"
+  contradicted: 0
+  attempts: 0
+  hash: "ebf8c1ddd2ae46323c8795a2fb624b40"
 ---
 
 ## What's changing
@@ -146,10 +153,7 @@ Clouds and platforms: the roadmap item lists Worldwide (Standard Multi-Tenant), 
 
 ### Before rollout
 
-- Identify which Macs are onboarded through Intune, JAMF Pro or another MDM solution, and confirm each runs Endpoint DLP build 101.26042.xxxx or later on one of the three latest macOS versions.
-- Ask the network team to allow outbound HTTPS from Macs to *.blob.core.windows.net without interception, since the page names these as upload endpoints.
 - Decide with your privacy and compliance leads whether **Share diagnostics with Microsoft** may be enabled, given that logs go to Microsoft-managed storage in the tenant's data residency region and the log contents on Macs are not described.
-- List who holds the Entra and Purview roles that can enable the feature and request logs, and remove any that are not needed.
 
 ### At rollout
 
@@ -170,9 +174,9 @@ Clouds and platforms: the roadmap item lists Worldwide (Standard Multi-Tenant), 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Always-on diagnostics is on, the cache storage period and the per-device storage limit</strong><br><small>Tenant</small><br><small class="controls__note">Page labels the setting preview and says it applies to Windows and macOS devices together. Enabling needs an Entra role such as Compliance Administrator or a tenant-level Purview role.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Data Loss Prevention › Always-on diagnostics (preview) <a href="https://learn.microsoft.com/purview/dlp-always-on-diagnostics" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether Always-on diagnostics is on, the cache storage period and the per-device storage limit</strong><br><small>Tenant</small><br><small class="controls__note">Page labels the setting preview and says it applies to Windows and macOS devices together. Enabling needs an Entra role such as Compliance Administrator or a tenant-level Purview role.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Data Loss Prevention › Always-on diagnostics (preview) › On <a href="https://learn.microsoft.com/purview/dlp-always-on-diagnostics" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether device logs are uploaded to Microsoft</strong><br><small>Tenant</small><br><small class="controls__note">Upload is separate from turning the feature on. The page says logs cannot be downloaded by admins.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Data Loss Prevention › Always-on diagnostics (preview) › Automatically upload device logs › Share diagnostics with Microsoft <a href="https://learn.microsoft.com/purview/dlp-always-on-diagnostics" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Requesting the logs of one device for a support case</strong><br><small class="controls__note">The page gives two other starting points: Data Loss Prevention &gt; Alerts &gt; Events, and Explorers &gt; Activity explorer. One active request per device.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Device onboarding › Devices › device › Always-on Diagnostics › Request device log <a href="https://learn.microsoft.com/purview/dlp-always-on-diagnostics" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Requesting the logs of one device for a support case</strong><br><small class="controls__note">The page gives two other starting points: Data Loss Prevention &gt; Alerts &gt; Events, and Data Loss Prevention &gt; Explorers &gt; Activity explorer. One active request per device.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Device onboarding › Devices › device › Always-on Diagnostics › Request device log <a href="https://learn.microsoft.com/purview/dlp-always-on-diagnostics" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -192,14 +196,4 @@ Roles differ by task: the enabling roles and the log-request roles are separate 
 risk: Medium. Learn describes a setting that lets admins upload device trace logs to Microsoft, and the contents of those logs and the macOS default are not stated, so the upload choice needs a decision.
 cost: Low. Microsoft's Purview service description lists Endpoint DLP as included in the plans it names, and no meter is published for this feature; the known cost is admin time and device storage.
 impact: Low. Administrators configure it and Microsoft Support uses it; the roadmap describes background logging on Macs, and no end-user prompt or workflow change is described.
--->
-
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[2].note; Governance controls table / admin-path: Explorers > Activity explorer is another starting point for requesting logs. | Found: From Data Loss Prevention > Explorers > Activity explorer, select an alert from the list. | Fix: Replace 'Explorers > Activity explorer' in controls[2].note and its rendered table note with 'Data Loss Prevention > Explorers > Activity explorer', as documented at https://learn.microsoft.com/purview/dlp-always-on-diagnostics. | Source: https://learn.microsoft.com/purview/dlp-always-on-diagnostics
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary; What's changing / record: The separate Windows endpoint item is roadmap 499431. | Found: 499431: Microsoft Purview compliance portal: Endpoint Data Loss Prevention -- Always-on diagnostics for Windows Endpoints (Phase 2) | Fix: Add Microsoft 365 Roadmap 499431 to sources at https://www.microsoft.com/microsoft-365/roadmap?id=499431; its record supports the Windows comparison.
-- [supported, minor] controls[0].ui; Governance controls table; Governance guidance: At rollout / admin-path: Microsoft Purview portal > Settings > Data Loss Prevention > Always-on diagnostics (preview) reaches the on/off, cache and storage settings. | Found: Navigate to Settings > Data Loss Prevention > Always-on diagnostics (preview). 3. Select On. 4. Set the cache storage period. | Fix: Keep the shared route and append ' > On' to controls[0].ui.path for enabling the feature; retain the note that the same page sets the cache storage period and maximum storage per device. | Source: https://learn.microsoft.com/purview/dlp-always-on-diagnostics
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist names device-onboarding inventory, firewall/proxy rules and role assignments without corresponding control rows. | Found: Identify which Macs are onboarded ... allow outbound HTTPS ... List who holds the Entra and Purview roles ... Table rows cover diagnostics settings, upload consent and requesting a device log. | Fix: The Before rollout steps to inventory onboarding, change firewall/proxy rules and review role assignments have no corresponding table rows. Remove those three checklist bullets; retain the verified prerequisites and roles in Scope and Risk assessment. Do not add control rows in this correction.
 -->

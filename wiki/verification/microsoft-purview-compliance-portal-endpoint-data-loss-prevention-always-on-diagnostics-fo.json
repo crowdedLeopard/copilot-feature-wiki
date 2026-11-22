@@ -2,39 +2,33 @@
   "slug": "microsoft-purview-compliance-portal-endpoint-data-loss-prevention-always-on-diagnostics-fo",
   "roadmapId": 499432,
   "title": "Microsoft Purview Endpoint DLP: always-on diagnostics for macOS devices (roadmap phase 1)",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-22",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-22",
-    "reasons": [
-      "1 blocking finding (claim 64)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 67,
-    "confirmed": 65,
+    "claims": 76,
+    "confirmed": 76,
     "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 3
+    "minor": 0
   },
-  "summary": "Hold: the alternative Activity explorer route omits Data Loss Prevention, where Microsoft says that navigation starts. The principal controls, licensing background and roadmap facts are supported, and the briefing correctly reports Microsoft's conflicting statements about macOS support.",
+  "summary": "The briefing passes: its roadmap facts, licensing, portal controls and troubleshooting constraints are supported. It accurately reports the disagreement between Microsoft's pages about macOS support and leaves the macOS default unstated rather than applying the documented Windows default.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing",
+      "where": "title",
       "type": "record",
-      "claim": "Roadmap item 499432 is phase 1 of Always-on diagnostics for macOS Endpoint DLP endpoints.",
+      "claim": "Roadmap item 499432 covers Always-on diagnostics for macOS endpoints, Phase 1.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Microsoft Purview compliance portal: Endpoint Data Loss Prevention -- Always-on diagnostics for macOS endpoints (Phase 1)",
@@ -43,9 +37,9 @@
     },
     {
       "n": 2,
-      "where": "summary; What's changing; Risk assessment: Data exposure; rationale: impact",
+      "where": "summary; What's changing; rationale: impact",
       "type": "record",
-      "claim": "The roadmap plans automatic recording and local storage of comprehensive trace logs on onboarded Macs.",
+      "claim": "The roadmap plans automatic recording of comprehensive trace logs on onboarded Macs.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Comprehensive trace logs will be automatically recorded and stored locally on onboarded Mac devices",
@@ -54,9 +48,20 @@
     },
     {
       "n": 3,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The planned Mac trace logs are stored locally on onboarded devices.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Comprehensive trace logs will be automatically recorded and stored locally on onboarded Mac devices",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
       "where": "summary; What's changing; Why it matters",
       "type": "record",
-      "claim": "The roadmap says these logs eliminate reproducing the scenario when submitting an investigation request to Microsoft.",
+      "claim": "The roadmap describes diagnostic information available for Microsoft investigation requests without reproducing the issue.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "customers can share enhanced diagnostic information with Microsoft without needing to reproduce the exact scenario.",
@@ -64,10 +69,10 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap describes collecting detailed traces over periods of up to 90 days.",
+      "claim": "The roadmap describes collection of detailed traces over periods of up to 90 days.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "It allows for the collection of detailed traces over extended periods (up to 90 days).",
@@ -75,10 +80,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "front matter: status; What's changing; Open questions",
       "type": "record",
-      "claim": "Item 499432 has status In development.",
+      "claim": "Roadmap item 499432 is In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -86,10 +91,10 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
       "where": "front matter: targetDate; What's changing; Open questions",
       "type": "record",
-      "claim": "The roadmap target is November CY2025, which has passed at the November 2026 run date.",
+      "claim": "The roadmap target is November CY2025.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"November CY2025\"",
@@ -97,10 +102,32 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 8,
+      "where": "What's changing; Open questions",
+      "type": "date",
+      "claim": "The November CY2025 roadmap target has passed as of this November 2026 run.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The item lists Worldwide (Standard Multi-Tenant) and lists no other clouds.",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), with no other clouds listed for this item.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -108,7 +135,7 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 11,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap platforms are Desktop and Mac.",
@@ -119,21 +146,10 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "front matter: releasePhase; What's changing",
-      "type": "record",
-      "claim": "The roadmap lists General Availability as the release phase.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
+      "n": 12,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The record gives no preview target date.",
+      "claim": "The roadmap record gives no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -141,10 +157,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 13,
       "where": "front matter: products",
       "type": "record",
-      "claim": "The record lists Microsoft 365 admin center and Microsoft Purview as products.",
+      "claim": "The roadmap products are Microsoft 365 admin center and Microsoft Purview.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"products\": [\"Microsoft 365 admin center\", \"Microsoft Purview\"]",
@@ -152,10 +168,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 14,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2025-07-31T23:15:15.",
+      "claim": "The record's modification timestamp is 2025-07-31T23:15:15.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2025-07-31T23:15:15\"",
@@ -163,35 +179,13 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 15,
       "where": "summary; What's changing",
       "type": "record",
-      "claim": "The separate Windows endpoint item is roadmap 499431.",
+      "claim": "Microsoft lists the Windows endpoint feature separately as roadmap item 499431.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "499431: Microsoft Purview compliance portal: Endpoint Data Loss Prevention -- Always-on diagnostics for Windows Endpoints (Phase 2)",
-      "severity": "minor",
-      "fix": "Add Microsoft 365 Roadmap 499431 to sources at https://www.microsoft.com/microsoft-365/roadmap?id=499431; its record supports the Windows comparison."
-    },
-    {
-      "n": 14,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The Windows item is Phase 2.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "499431: Always-on diagnostics for Windows Endpoints (Phase 2)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The Windows item has status Launched.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "499431: \"status\": \"Launched\"",
+      "quote": "\"id\": 499431; \"title\": \"Microsoft Purview compliance portal: Endpoint Data Loss Prevention -- Always-on diagnostics for Windows Endpoints (Phase 2)\"",
       "severity": null,
       "fix": null
     },
@@ -199,7 +193,29 @@
       "n": 16,
       "where": "What's changing",
       "type": "record",
-      "claim": "The Windows item's target is March CY2026.",
+      "claim": "The Windows item 499431 is Phase 2.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Always-on diagnostics for Windows Endpoints (Phase 2)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The Windows item 499431 is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "499431: \"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The Windows item 499431 has a target of March CY2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "499431: \"targetDate\": \"March CY2026\"",
@@ -207,85 +223,8 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "controls[0].ui; Governance controls table; Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "Microsoft Purview portal > Settings > Data Loss Prevention > Always-on diagnostics (preview) reaches the on/off, cache and storage settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
-      "quote": "Navigate to Settings > Data Loss Prevention > Always-on diagnostics (preview). 3. Select On. 4. Set the cache storage period.",
-      "severity": "minor",
-      "fix": "Keep the shared route and append ' > On' to controls[0].ui.path for enabling the feature; retain the note that the same page sets the cache storage period and maximum storage per device."
-    },
-    {
-      "n": 18,
-      "where": "controls[0].api; Governance controls",
-      "type": "absence",
-      "claim": "No PowerShell, Graph or REST operation is documented for the on/off, cache-period and device-storage settings.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Endpoint DLP Always-on diagnostics Set-PolicyConfig EndpointDlpGlobalSettings cache storage upload logs collection API. Opened dlp-always-on-diagnostics and Set-PolicyConfig; searched the reference for Always, Diagnostic, cache and upload; no setting-specific operation.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 19,
-      "where": "controls[1].ui; Governance controls table; What's changing",
-      "type": "admin-path",
-      "claim": "The upload control is at Microsoft Purview portal > Settings > Data Loss Prevention > Always-on diagnostics (preview) > Automatically upload device logs > Share diagnostics with Microsoft.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
-      "quote": "Navigate to Settings > Data Loss Prevention > Always-on diagnostics (preview). ... To enable upload, under Automatically upload device logs select Share diagnostics with Microsoft.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "controls[1].api; Governance controls",
-      "type": "absence",
-      "claim": "No PowerShell, Graph or REST operation is documented for enabling diagnostic log upload.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Always-on diagnostics Graph API PowerShell Share diagnostics Request device log; Endpoint DLP Always-on diagnostics Set-PolicyConfig EndpointDlpGlobalSettings cache storage upload logs collection API. Opened feature page and Set-PolicyConfig; no documented upload-setting operation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "controls[2].ui; Governance controls table; Governance controls",
-      "type": "admin-path",
-      "claim": "A device-log request can start at Microsoft Purview portal > Settings > Device onboarding > Devices > device > Always-on Diagnostics > Request device log.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
-      "quote": "From Settings > Device onboarding > Devices, select a device from the list. ... under Always-on Diagnostics select Request device log.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "controls[2].api; Governance controls",
-      "type": "absence",
-      "claim": "No PowerShell, Graph or REST operation is documented for requesting these Always-on diagnostics device logs.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Graph Purview Endpoint DLP request device log Always-on diagnostics API collection request; Always-on diagnostics Graph API PowerShell Share diagnostics Request device log. Opened feature page and Set-PolicyConfig; results show portal steps, not an AOD request API.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "controls[0].note; What's changing",
-      "type": "availability",
-      "claim": "Learn labels the Always-on diagnostics setting preview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
-      "quote": "Navigate to Settings > Data Loss Prevention > Always-on diagnostics (preview).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "What's changing; Scope; Governance guidance: Before rollout",
+      "where": "What's changing; Scope",
       "type": "availability",
       "claim": "The feature page supports onboarded Macs running any of the three latest released macOS versions.",
       "status": "supported",
@@ -295,10 +234,10 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "What's changing; Risk assessment: Change & support; Scope; Governance guidance",
+      "n": 20,
+      "where": "What's changing; Risk assessment: Change & support; Scope",
       "type": "availability",
-      "claim": "Documented Mac support requires build 101.26042.xxxx or later.",
+      "claim": "The documented minimum macOS build is 101.26042.xxxx.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
       "quote": "Always-on diagnostics requires build 101.26042.xxxx or later.",
@@ -306,10 +245,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 21,
       "where": "What's changing",
       "type": "availability",
-      "claim": "Supported Mac processors are x64 and M1, M2 and M3 (ARM64).",
+      "claim": "The feature page supports Mac processors x64 and M1, M2 and M3 (ARM64).",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
       "quote": "macOS devices with x64 and M1, M2, and M3 (ARM64) processors are supported.",
@@ -317,10 +256,10 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "controls[0].note; What's changing; Scope; Governance controls",
+      "n": 22,
+      "where": "What's changing; Scope; controls[0].note",
       "type": "applicability",
-      "claim": "Enabling the shared settings applies Always-on diagnostics to all onboarded Windows and macOS devices together.",
+      "claim": "Turning on the setting enables Always-on diagnostics on all onboarded Windows and macOS devices together.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
       "quote": "When an admin turns on Always-on diagnostics, the feature is enabled on all onboarded Windows devices, including servers, and all onboarded macOS devices.",
@@ -328,21 +267,32 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 23,
       "where": "What's changing; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Administrators can configure the cache storage period, and Learn recommends 90 days.",
+      "claim": "The same settings page lets the administrator set the cache storage period.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
-      "quote": "Set the cache storage period. A 90-day cache storage period is recommended.",
+      "quote": "Navigate to Settings > Data Loss Prevention > Always-on diagnostics (preview). ... Set the cache storage period.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
-      "where": "What's changing; Risk assessment; Cost and licensing; Governance guidance",
-      "type": "cost",
-      "claim": "The configurable maximum device storage must be between 500 and 1,500 MB.",
+      "n": 24,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends a 90-day cache storage period.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
+      "quote": "A 90-day cache storage period is recommended.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment: Change & support; Cost and licensing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Administrators can set maximum per-device storage to a value between 500 and 1,500 MB.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
       "quote": "Set the maximum storage for the device. The value must be between 500 and 1,500 MB.",
@@ -350,21 +300,32 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "summary; controls[1].note; What's changing; Why it matters",
+      "n": 26,
+      "where": "summary; What's changing; controls[1].note; Risk assessment",
       "type": "behaviour",
-      "claim": "Enabling upload with Share diagnostics with Microsoft is separate from turning on local diagnostics.",
+      "claim": "Share diagnostics with Microsoft enables upload separately from turning on local diagnostics.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
-      "quote": "3. Select On. ... 7. To enable upload, under Automatically upload device logs select Share diagnostics with Microsoft.",
+      "quote": "Select On. ... To enable upload, under Automatically upload device logs select Share diagnostics with Microsoft.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
-      "where": "What's changing; Open questions; front matter: changes",
+      "n": 27,
+      "where": "What's changing; controls[0].note",
+      "type": "behaviour",
+      "claim": "The feature page labels the setting preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
+      "quote": "Navigate to Settings > Data Loss Prevention > Always-on diagnostics (preview).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Governance guidance: After rollout; Open questions",
       "type": "availability",
-      "claim": "The cited troubleshooting page disagrees with the feature page by saying AOD supports only Windows 10, Windows 11 and Windows Server.",
+      "claim": "The cited troubleshooting page says AOD is supported only on Windows, disagreeing with the feature page's macOS support.",
       "status": "supported",
       "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/data-loss-prevention/diagnose-paste-to-supported-browser-issues",
       "quote": "AOD is supported only on Windows 10, Windows 11, and Windows Server.",
@@ -372,10 +333,10 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 29,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "The troubleshooting page directs macOS administrators to the MDE Client Analyzer.",
+      "claim": "The troubleshooting page directs macOS users to the Microsoft Defender for Endpoint Client Analyzer.",
       "status": "supported",
       "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/data-loss-prevention/diagnose-paste-to-supported-browser-issues",
       "quote": "For macOS, use the MDE Client Analyzer.",
@@ -383,21 +344,10 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "front matter: defaultState; Why it matters; Scope; Open questions; rationale: risk",
-      "type": "absence",
-      "claim": "Microsoft has not stated the macOS arrival default, so defaultState is unknown.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Always-on diagnostics macOS default; Always-on diagnostics macOS default trace log contents separate Mac settings rollout. Read roadmap, feature page and paste troubleshooting page; automatic recording is described but only Windows has an explicit enabled-by-default statement.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
+      "n": 30,
       "where": "Why it matters; Open questions",
       "type": "default",
-      "claim": "The troubleshooting page says AOD is enabled by default on onboarded Windows devices as of mid-April 2026.",
+      "claim": "The troubleshooting page states that AOD is enabled by default on onboarded Windows devices as of mid-April 2026.",
       "status": "supported",
       "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/data-loss-prevention/diagnose-paste-to-supported-browser-issues",
       "quote": "As of mid-April 2026, Always-on diagnostics (AOD) is enabled by default on onboarded Windows devices. Admins can opt out.",
@@ -405,10 +355,21 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 31,
+      "where": "front matter: defaultState; Why it matters; Scope; Governance guidance; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft has not stated the macOS arrival default, so defaultState is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Always-on diagnostics macOS default enabled automatically trace log contents macOS specific storage settings; \"Always-on diagnostics\" \"macOS\" \"cache\" \"default\". Read AOD feature page, Paste troubleshooting page and roadmap; only Windows has an explicit default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Windows troubleshooting documentation describes policy-evaluation logs, classification results, enforcement actions and error states.",
+      "claim": "Learn describes Windows AOD traces as including policy-evaluation logs, classification results, enforcement actions and error states.",
       "status": "supported",
       "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/data-loss-prevention/diagnose-paste-to-supported-browser-issues",
       "quote": "continuously collects Endpoint DLP trace logs in the background, such as policy-evaluation logs, classification results, enforcement actions, and error states.",
@@ -416,62 +377,62 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Risk assessment: Data exposure; Governance guidance; Open questions; rationale: risk",
+      "n": 33,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout; Open questions; rationale: risk",
       "type": "absence",
-      "claim": "The macOS Always-on diagnostics log contents are not described.",
+      "claim": "The Microsoft pages do not describe the specific contents of macOS AOD trace logs.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Always-on diagnostics macOS logs contain; Always-on diagnostics macOS default trace log contents separate Mac settings rollout. Read feature and paste troubleshooting pages; Mac privacy and Client Analyzer excerpts describe other diagnostics, not AOD log contents.",
+      "quote": "Searched: Purview Always-on diagnostics macOS default enabled automatically trace log contents macOS specific storage settings. Read AOD feature page and Paste troubleshooting page; the latter describes trace contents but explicitly confines AOD support to Windows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Requested diagnostic logs are uploaded to Microsoft-managed Azure Blob Storage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
+      "quote": "Logs are stored in Microsoft-managed Azure Blob Storage",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Uploaded log data remains within the tenant's data residency region.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
+      "quote": "Data remains within the tenant's data residency region",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Uploaded log data is retained for 180 days unless manually deleted earlier.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
+      "quote": "Data remains within the tenant's data residency region and is retained for 180 days unless manually deleted earlier.",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
-      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "where": "controls[1].note; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The enabled upload option and a device-log request send diagnostics to Microsoft-managed Azure Blob Storage.",
+      "claim": "Administrators cannot directly download the logs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
-      "quote": "you can request that the log files be sent to Microsoft Support. The procedure is the same for Windows and macOS devices. ... Logs are stored in Microsoft-managed Azure Blob Storage",
+      "quote": "Logs aren't available for direct download by admins and are stored in a proprietary Microsoft-internal format that can only be decoded using Microsoft tools.",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
-      "where": "Risk assessment: Data exposure; Governance guidance",
-      "type": "behaviour",
-      "claim": "Uploaded log data remains within the tenant's data residency region.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
-      "quote": "Data remains within the tenant’s data residency region",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Uploaded data is retained for 180 days unless manually deleted earlier.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
-      "quote": "is retained for 180 days unless manually deleted earlier.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "controls[1].note; Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Administrators cannot download the diagnostic logs directly.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
-      "quote": "Logs aren’t available for direct download by admins",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
       "where": "Risk assessment: Security & identity",
       "type": "role",
       "claim": "Access to uploaded logs is restricted to Microsoft personnel in designated access groups.",
@@ -482,10 +443,10 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 39,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Microsoft audits access to uploaded logs.",
+      "claim": "Access to the logs is audited.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
       "quote": "all such access is fully audited to ensure accountability and security.",
@@ -493,54 +454,54 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 40,
       "where": "controls[0].note; Risk assessment: Security & identity; Scope",
       "type": "role",
-      "claim": "Compliance Administrator, Security Administrator or Global Administrator can enable Always-on diagnostics.",
+      "claim": "An account in Compliance Administrator, Security Administrator or Global Administrator can enable the feature.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
-      "quote": "Microsoft Entra roles for enabling always-on diagnostics: Compliance Administrator; Security Administrator; Global Administrator",
+      "quote": "Microsoft Entra roles for enabling always-on diagnostics\n- Compliance Administrator\n- Security Administrator\n- Global Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope; Governance controls",
+      "type": "role",
+      "claim": "The enabling account can alternatively hold one of the documented tenant-level Purview roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
+      "quote": "The following tenant-level Purview roles can enable Always-on diagnostics:\n- OrganizationConfiguration\n- ComplianceAdmin\n- SecurityAdmin\n- DLPComplianceManagement\n- InformationProtectionAdmin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "role",
+      "claim": "Scoped Purview administrators are not supported for the documented diagnostics permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
+      "quote": "Must be assigned at the tenant level; scoped admins are not supported: ... Purview roles (tenant-level only)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "The feature is restricted to authorised Endpoint DLP troubleshooting, not investigative or non-support purposes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
+      "quote": "This feature is only for authorized eDLP troubleshooting scenarios (whether functioning or not). It must not be used for investigative or non-support purposes, including any activity outside approved troubleshooting workflows.",
       "severity": null,
       "fix": null
     },
     {
       "n": 44,
-      "where": "controls[0].note; Risk assessment: Security & identity; Scope; Governance controls",
-      "type": "role",
-      "claim": "The qualifying Purview roles must be tenant-level, with scoped administrators unsupported.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
-      "quote": "Must be assigned at the tenant level; scoped admins are not supported: ... Purview roles (tenant-level only). The following tenant-level Purview roles can enable Always-on diagnostics",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Scope: Roles; Governance controls; Governance guidance",
-      "type": "role",
-      "claim": "Learn gives a separate, longer role list for viewing and creating log requests than for enabling the feature.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
-      "quote": "OrganizationConfiguration; ManageAlerts; ViewOnlyManageAlerts; InformationProtectionAdmin; InformationProtectionAnalyst; InformationProtectionInvestigator ... OrganizationConfiguration; ComplianceAdmin; SecurityAdmin; DLPComplianceManagement; InformationProtectionAdmin",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Risk assessment: Security & identity",
-      "type": "applicability",
-      "claim": "Always-on diagnostics is authorised only for Endpoint DLP troubleshooting, not investigative or non-support purposes.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
-      "quote": "This feature is only for authorized eDLP troubleshooting scenarios (whether functioning or not). It must not be used for investigative or non-support purposes",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Trace recording is continuous once the feature is enabled.",
+      "claim": "Trace recording is continuous once Always-on diagnostics is enabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
       "quote": "The Always-on diagnostics feature in Microsoft Purview enables continuous, automated trace logging for endpoint data loss prevention (DLP).",
@@ -548,10 +509,10 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 45,
       "where": "Risk assessment: Autonomy & actions; rationale: impact",
       "type": "behaviour",
-      "claim": "Microsoft Support requests the diagnostic traces, and the customer administrator collects them from the affected device.",
+      "claim": "The documented support workflow has Microsoft Support request traces and the customer administrator collect them from the affected device.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
       "quote": "Microsoft Support requests diagnostic trace logs, which the customer administrator collects from the affected device using documented procedures.",
@@ -559,10 +520,10 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "controls[2].note; Risk assessment: Autonomy & actions; Governance guidance",
+      "n": 46,
+      "where": "controls[2].note; Risk assessment: Autonomy & actions; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Only one active collection request is supported per device.",
+      "claim": "Only one active log collection request is supported per device at a time.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
       "quote": "Only one active collection request is supported per device at any given time",
@@ -570,10 +531,43 @@
       "fix": null
     },
     {
+      "n": 47,
+      "where": "Risk assessment: Change & support; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Devices must be able to reach upload endpoints including *.blob.core.windows.net using outbound HTTPS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
+      "quote": "It must maintain continuous network connectivity and be able to reach Microsoft upload endpoints, including \\*.blob.core.windows.net. Outbound HTTPS traffic to Microsoft services must not be blocked by firewalls, proxies, or security policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The upload connection must pass proxy controls without interception preventing uploads.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
+      "quote": "any proxy configuration must allow outbound HTTPS traffic without interception or modification that would prevent uploads.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "A collection request may remain pending when the device is offline.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
+      "quote": "Collection requests may remain pending if the device is offline, wiped, reimaged, reassigned, or otherwise unable to respond.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 50,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Requests can remain pending for devices that are offline, wiped, reimaged or reassigned.",
+      "claim": "A collection request may remain pending when the device is wiped.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
       "quote": "Collection requests may remain pending if the device is offline, wiped, reimaged, reassigned, or otherwise unable to respond.",
@@ -582,108 +576,31 @@
     },
     {
       "n": 51,
-      "where": "Risk assessment: Change & support; Cost and licensing; Governance guidance",
+      "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Devices need connectivity to upload endpoints including *.blob.core.windows.net over outbound HTTPS that firewalls or proxies do not obstruct.",
+      "claim": "A collection request may remain pending when the device is reimaged.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
-      "quote": "including *.blob.core.windows.net. Outbound HTTPS traffic to Microsoft services must not be blocked by firewalls, proxies, or security policies",
+      "quote": "Collection requests may remain pending if the device is offline, wiped, reimaged, reassigned, or otherwise unable to respond.",
       "severity": null,
       "fix": null
     },
     {
       "n": 52,
-      "where": "Governance guidance: After rollout",
+      "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Administrators are responsible for monitoring requests and retrying or reinitiating failures.",
+      "claim": "A collection request may remain pending when the device is reassigned.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
-      "quote": "Admins are responsible for monitoring the status of collection requests and for taking action when failures occur. If a request fails, admins must retry or re-initiate the request as needed",
+      "quote": "Collection requests may remain pending if the device is offline, wiped, reimaged, reassigned, or otherwise unable to respond.",
       "severity": null,
       "fix": null
     },
     {
       "n": 53,
-      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "The service description lists Endpoint DLP as Included, supporting the included licensing model for an option within Endpoint DLP.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "| Endpoint Data Loss Prevention (DLP) | Included |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The Included plans are Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, and Microsoft 365 E5/A5/F5/G5 Information Protection & Governance.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "| Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The macOS onboarding page points to Microsoft's information protection licensing guidance.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/device-onboarding-macos-overview",
-      "quote": "Licensing guidance: See, Microsoft 365 licensing guidance for information protection.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "Cost and licensing: Meter",
-      "type": "licensing",
-      "claim": "The Always-on diagnostics prerequisites list onboarding, connectivity and MDM requirements but name no licence or meter.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
-      "quote": "The device must be onboarded to Microsoft Purview and actively reporting with Always-on Diagnostics enabled. ... If you are using macOS, the device must be onboarded to Microsoft Purview through Intune, JAMF Pro, or another MDM solution.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "No licence specific to Always-on diagnostics has been published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Always-on diagnostics licensing price meter billing Endpoint DLP. Read feature prerequisites, macOS onboarding licensing guidance and the Purview service description's Endpoint DLP table; no separate AOD licence is stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "No price specific to Always-on diagnostics has been published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Always-on diagnostics licensing price meter billing Endpoint DLP. Read feature page and searched Purview service description for Always-on and diagnostic; no feature-specific price was stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "No meter specific to Always-on diagnostics is published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Always-on diagnostics licensing price meter billing Endpoint DLP. Read feature page and Purview service description's Endpoint DLP table; searched the service description for Always-on and diagnostic; no AOD meter was stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "Scope; Governance guidance: Before rollout",
-      "type": "applicability",
-      "claim": "Macs must be onboarded to Purview through Intune, JAMF Pro or another MDM solution.",
+      "where": "Scope; Cost and licensing; Governance controls",
+      "type": "behaviour",
+      "claim": "macOS devices must be onboarded to Purview through Intune, JAMF Pro or another MDM solution.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
       "quote": "If you are using macOS, the device must be onboarded to Microsoft Purview through Intune, JAMF Pro, or another MDM solution.",
@@ -691,32 +608,197 @@
       "fix": null
     },
     {
+      "n": 54,
+      "where": "Scope; Governance controls",
+      "type": "role",
+      "claim": "Viewing and creating collection requests uses a separate, longer Purview role list than enabling the feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
+      "quote": "Purview roles for viewing and creating log collection requests ... OrganizationConfiguration ... ManageAlerts ... ViewOnlyManageAlerts ... InformationProtectionAdmin ... InformationProtectionAnalyst ... InformationProtectionInvestigator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Purview roles for viewing and creating log collection requests must be assigned at tenant level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
+      "quote": "Purview roles for viewing and creating log collection requests\nMust be assigned at the tenant level; scoped admins are not supported:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Endpoint DLP is included in the plans named by the Purview service description, supporting the included licensing model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Endpoint Data Loss Prevention (DLP) | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The plans including Endpoint DLP include Microsoft 365 E5/A5/G5.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The table also includes Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The table also includes Microsoft 365 E5/A5/F5/G5 Information Protection & Governance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The macOS onboarding page points readers to Microsoft 365 information protection licensing guidance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-macos-overview",
+      "quote": "Licensing guidance\nSee, Microsoft 365 licensing guidance for information protection.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 61,
-      "where": "Scope",
+      "where": "Cost and licensing",
       "type": "absence",
-      "claim": "The macOS rollout mechanics are not stated.",
+      "claim": "The AOD feature page's prerequisites cover onboarding and connectivity and name no licence or meter.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Always-on diagnostics macOS default trace log contents separate Mac settings rollout. Read roadmap, feature page and paste troubleshooting page; no Mac rollout sequence or channel mechanics are supplied.",
+      "quote": "Searched: Purview Always-on diagnostics licensing price billing meter rollout macOS. Read the full Prerequisites section at https://learn.microsoft.com/purview/dlp-always-on-diagnostics: device onboarding, reporting, connectivity, Windows Server enablement and macOS MDM onboarding; no licence or meter.",
       "severity": null,
       "fix": null
     },
     {
       "n": 62,
-      "where": "Governance controls",
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
       "type": "absence",
-      "claim": "Mac-specific on/off, cache-period or storage values are not documented separately from the shared settings.",
+      "claim": "A licence specific to Always-on diagnostics is not published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Always-on diagnostics macOS default trace log contents separate Mac settings rollout. Read dlp-always-on-diagnostics and searched Set-PolicyConfig for diagnostics and cache; shared OS settings are documented, but no Mac-specific AOD values.",
+      "quote": "Searched: Purview Always-on diagnostics licensing price billing meter rollout macOS. Read AOD feature page, macOS onboarding page, Purview service description's Endpoint DLP table and Purview billing-model search excerpts; found product entitlement, not a diagnostics-specific licence.",
       "severity": null,
       "fix": null
     },
     {
       "n": 63,
-      "where": "controls[2].note; Governance controls table",
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "A price specific to Always-on diagnostics is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Always-on diagnostics licensing price billing meter rollout macOS. Read AOD feature page and Purview service description's Endpoint DLP table; reviewed Purview billing-model search excerpts. No diagnostics-specific price found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to Always-on diagnostics is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Always-on diagnostics licensing price billing meter rollout macOS. Read AOD feature page and Purview service description's Endpoint DLP table; reviewed Purview billing-model excerpts including pay-as-you-go capabilities and units. No AOD meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[0].ui",
       "type": "admin-path",
-      "claim": "Data Loss Prevention > Alerts > Events is another starting point for requesting logs.",
+      "claim": "The enable control is in Microsoft Purview portal > Settings > Data Loss Prevention > Always-on diagnostics (preview) > On, with cache and storage settings on that page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
+      "quote": "Sign in to the Microsoft Purview portal. ... Navigate to Settings > Data Loss Prevention > Always-on diagnostics (preview). ... Select On. ... Set the cache storage period. ... Set the maximum storage for the device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No PowerShell, Graph or REST operation is documented for AOD enablement, cache period or storage limit.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Always-on diagnostics PowerShell Graph REST enable cache storage Share diagnostics Microsoft Request device log API; site:learn.microsoft.com/powershell/module/exchangepowershell \"diagnostics\" \"DLP\" \"Always\". Read AOD page and returned Learn excerpts; no setting operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The upload control is in Microsoft Purview portal > Settings > Data Loss Prevention > Always-on diagnostics (preview) > Automatically upload device logs > Share diagnostics with Microsoft.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
+      "quote": "Navigate to Settings > Data Loss Prevention > Always-on diagnostics (preview). ... To enable upload, under Automatically upload device logs select Share diagnostics with Microsoft.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "No PowerShell, Graph or REST operation is documented for Share diagnostics with Microsoft.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Always-on diagnostics PowerShell Graph REST enable cache storage Share diagnostics Microsoft Request device log API; site:learn.microsoft.com/graph \"always-on\" \"diagnostics\" endpoint log collection. Read AOD page and returned Learn excerpts; no upload-setting operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "A device log request starts in Microsoft Purview portal > Settings > Device onboarding > Devices > device > Always-on Diagnostics > Request device log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
+      "quote": "From Settings > Device onboarding > Devices, select a device from the list. ... Based on the location you chose, under Always-on Diagnostics select Request device log.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[2].api; Governance controls",
+      "type": "absence",
+      "claim": "No PowerShell, Graph or REST operation is documented for requesting an AOD device log for a support case.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Always-on diagnostics PowerShell Graph REST enable cache storage Share diagnostics Microsoft Request device log API; site:learn.microsoft.com/graph \"always-on\" \"diagnostics\" endpoint log collection. Read AOD page and results; Intune diagnostics are not documented as AOD requests.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "controls[2].note; Governance controls",
+      "type": "admin-path",
+      "claim": "Another documented request starting point is Data Loss Prevention > Alerts > Events.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
       "quote": "From Data Loss Prevention > Alerts > Events, select an event from the list.",
@@ -724,54 +806,65 @@
       "fix": null
     },
     {
-      "n": 64,
-      "where": "controls[2].note; Governance controls table",
+      "n": 72,
+      "where": "controls[2].note; Governance controls",
       "type": "admin-path",
-      "claim": "Explorers > Activity explorer is another starting point for requesting logs.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
-      "quote": "From Data Loss Prevention > Explorers > Activity explorer, select an alert from the list.",
-      "severity": "blocker",
-      "fix": "Replace 'Explorers > Activity explorer' in controls[2].note and its rendered table note with 'Data Loss Prevention > Explorers > Activity explorer', as documented at https://learn.microsoft.com/purview/dlp-always-on-diagnostics."
-    },
-    {
-      "n": 65,
-      "where": "Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "A log request's completion status can be followed in the portal.",
+      "claim": "A third documented request starting point is Data Loss Prevention > Explorers > Activity explorer.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
-      "quote": "Navigate to Settings > Data Loss Prevention > Always-on diagnostics (preview). ... When the status is complete, provide the associated request number to Microsoft Support.",
+      "quote": "From Data Loss Prevention > Explorers > Activity explorer, select an alert from the list.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 66,
-      "where": "Governance guidance: Before rollout; Governance controls table",
-      "type": "consistency",
-      "claim": "The checklist names device-onboarding inventory, firewall/proxy rules and role assignments without corresponding control rows.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Identify which Macs are onboarded ... allow outbound HTTPS ... List who holds the Entra and Purview roles ... Table rows cover diagnostics settings, upload consent and requesting a device log.",
-      "severity": "minor",
-      "fix": "The Before rollout steps to inventory onboarding, change firewall/proxy rules and review role assignments have no corresponding table rows. Remove those three checklist bullets; retain the verified prerequisites and roles in Scope and Risk assessment. Do not add control rows in this correction."
-    },
-    {
-      "n": 67,
-      "where": "rationale: impact",
+      "n": 73,
+      "where": "Governance controls",
       "type": "absence",
-      "claim": "The macOS sources describe no end-user prompt or workflow change.",
+      "claim": "A Mac-specific enablement, cache period or storage-limit value is not documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Always-on diagnostics macOS default trace log contents separate Mac settings rollout. Read Mac roadmap and feature page; background recording and administrator collection are described, but no Mac end-user prompt or workflow is specified.",
+      "quote": "Searched: Purview Always-on diagnostics macOS default enabled automatically trace log contents macOS specific storage settings; \"Always-on diagnostics\" \"macOS\" \"cache\" \"default\". Read AOD page: settings apply to both Windows and macOS; no separate Mac values documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The macOS item's rollout mechanics are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Always-on diagnostics licensing price billing meter rollout macOS. Read roadmap 499432, AOD feature page and Paste troubleshooting page; target and prerequisites are stated, but no Mac rollout sequence or delivery mechanics are given.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Microsoft makes administrators responsible for monitoring log collection request status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
+      "quote": "Admins are responsible for monitoring the status of collection requests and for taking action when failures occur.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Microsoft instructs administrators to retry or re-initiate failed collection requests as needed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-always-on-diagnostics",
+      "quote": "If a request fails, admins must retry or re-initiate the request as needed to ensure successful data collection.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-22T07:35:33.839Z",
+    "at": "2026-11-22T08:34:14.460Z",
     "summary": {
-      "links": 5,
+      "links": 6,
       "unreachable": 0,
       "uiPaths": 3,
       "uiPathsWithMissingWords": 0,
@@ -782,6 +875,11 @@
     "linkChecks": [
       {
         "url": "https://www.microsoft.com/microsoft-365/roadmap?id=499432",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=499431",
         "ok": true,
         "status": 200
       },
@@ -854,5 +952,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-22",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

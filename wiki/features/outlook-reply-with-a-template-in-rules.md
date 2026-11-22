@@ -18,7 +18,7 @@ defaultState: "user-opt-in"
 action: "prepare"
 licensing:
   model: "included"
-  notes: "Microsoft's licensing page says using Outlook for Windows with a Microsoft 365 organisational address needs a plan that includes the desktop Microsoft 365 apps. A licence or meter specific to this feature is not yet published."
+  notes: "Microsoft's licensing page says using Outlook for Windows with a Microsoft 365 organisational address needs a plan that includes the desktop Microsoft 365 apps. Once an account with a qualifying desktop-app licence is added, secondary accounts can use licences without desktop apps, such as Business Basic or E1. A licence or meter specific to this feature is not yet published."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["outlook","new-outlook","exchange","automation"]
 sources:
@@ -42,6 +42,9 @@ sources:
     kind: "learn"
   - title: "Remote domains in Exchange Online"
     url: "https://learn.microsoft.com/exchange/mail-flow-best-practices/remote-domains/remote-domains"
+    kind: "learn"
+  - title: "Disable-InboxRule"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/disable-inboxrule"
     kind: "learn"
   - title: "Microsoft 365 Roadmap item 567318"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=567318"
@@ -74,19 +77,23 @@ changes:
     note: "First briefing for this item: rollout windows from MC1505607, the Inbox Rules mailbox policy as the only documented control, and no feature-specific licence published."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 44 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Correction: removed the sender-identity claim, added the secondary-account licensing qualification and Business Basic web access, and described the Inbox Rules setting as an existing lever, not the only one."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 49 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 44
-  confirmed: 40
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "15a87aaca7b76d533a826fce68a9c571"
+  claims: 49
+  confirmed: 49
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "df97eb03998fd4660a575e18f6289731"
 ---
 
 ## What's changing
@@ -99,9 +106,9 @@ The roadmap record shows the item as Rolling out, with the target "October CY202
 
 ## Why it matters
 
-This puts automatic outbound email in the hands of every user who writes inbox rules. Nothing is sent until a user creates a rule, but when one matches, Outlook replies without that user doing anything, in the user's name and with whatever wording the template holds. That is a support and communication matter more than a security one, and it is why Microsoft's notice recommends informing the help desk and checking whether your organisation has guidance on automated email responses.
+This puts automatic outbound email in the hands of every user who writes inbox rules. Nothing is sent until a user creates a rule, but when one matches, Outlook replies without that user doing anything, with whatever wording the template holds. That is a support and communication matter more than a security one, and it is why Microsoft's notice recommends informing the help desk and checking whether your organisation has guidance on automated email responses.
 
-If nobody acts, the capability still arrives on the schedule above, and the notice says no admin action is required. The one existing lever is the Inbox Rules setting in Outlook on the web mailbox policies, which switches rule creation off for the users a policy covers, not this action alone.
+If nobody acts, the capability still arrives on the schedule above, and the notice says no admin action is required. An existing lever is the Inbox Rules setting in Outlook on the web mailbox policies, which switches rule creation off for the users a policy covers, not this action alone.
 
 ## Risk assessment
 
@@ -120,7 +127,7 @@ If nobody acts, the capability still arrives on the schedule above, and the noti
 
 ## Cost and licensing
 
-**Licence.** Microsoft's licensing page for new Outlook for Windows says that to use the Outlook for Windows desktop app (classic or new) with a Microsoft 365 organisational email address, you need a plan that includes the desktop versions of the Microsoft 365 apps. Neither the roadmap item nor Microsoft's notice names any other licence for this feature, and a licence or entitlement specific to this feature is not yet published. That page covers the new Outlook for Windows app; it does not address Outlook on the web.
+**Licence.** Microsoft's licensing page for new Outlook for Windows says that to use the Outlook for Windows desktop app (classic or new) with a Microsoft 365 organisational email address, you need a plan that includes the desktop versions of the Microsoft 365 apps. Once an account with a qualifying desktop-app licence is added, secondary accounts can use licences without desktop apps, such as Business Basic or E1. Neither the roadmap item nor Microsoft's notice names any other licence for this feature, and a licence or entitlement specific to this feature is not yet published. The page also states that Business Basic provides access to the web and mobile versions of Outlook and Microsoft 365.
 
 **Meter.** No meter, credit or charge is named in the roadmap item or the notice. Microsoft has not published pricing for this feature.
 
@@ -180,13 +187,4 @@ Microsoft Learn documents no switch for this action alone at the time of writing
 risk: Low. The notice describes users creating the rule themselves, and the Inbox Rules mailbox policy setting already governs whether users can create rules in Outlook on the web and new Outlook for Windows.
 cost: Low. The only cost shown is indirect: admin and help desk time. The roadmap item and Microsoft's notice name no separate licence or charge, and a licence specific to this feature is not yet published.
 impact: Low. Only users who set up such a rule, and the people who receive its replies, notice it. Microsoft's notice suggests informing the help desk.
--->
-
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: Outlook sends the automatic response in the user's name. | Found: Searched: new Outlook reply with template inbox rule sender identity external automatic repeat replies limits. Read MC1505607, the roadmap, policy-management and emulate-out-of-office-assistant; none identifies the sending identity for this new feature. | Fix: Remove 'in the user's name' from the sentence; neither the roadmap nor MC1505607 states the sending identity.
-- [contradicted, blocker] front matter: licensing.notes; Cost and licensing: Licence / licensing: Using Outlook for Windows with a Microsoft 365 organisational email address requires a plan including desktop Microsoft 365 apps, without stating the secondary-account exception. | Found: Once you add an account with a qualifying license to Outlook, you can add secondary accounts with licenses for products that don't include the desktop apps such as Business Basic or E1. | Fix: Add this qualification to the licensing notes and Licence paragraph: 'Once an account with a qualifying desktop-app licence is added, secondary accounts can use licences without desktop apps, such as Business Basic or E1.' Keep the licensing model included and cite https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options. | Source: https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options
-- [contradicted, blocker] Cost and licensing: Licence / licensing: The new Outlook licensing page does not address Outlook on the web. | Found: The Business Basic plan provides access to productivity tools through the web and mobile versions of Outlook and Microsoft 365. | Fix: Replace 'That page covers the new Outlook for Windows app; it does not address Outlook on the web.' with 'The page also states that Business Basic provides access to the web and mobile versions of Outlook and Microsoft 365.' | Source: https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options
-- [contradicted, blocker] Why it matters; front matter: changes / absence: The Inbox Rules mailbox-policy setting is the one existing lever and the only documented control. | Found: Use the Disable-InboxRule cmdlet to disable existing Inbox rules in mailboxes. | Fix: Change 'The one existing lever is the Inbox Rules setting' to 'An existing lever is the Inbox Rules setting' in Why it matters. In the change note, replace 'as the only documented control' with 'as a documented control'. Retain the narrower statement that no separate switch for availability of this action alone is documented. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/disable-inboxrule?view=exchange-ps
 -->

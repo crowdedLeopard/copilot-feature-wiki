@@ -4,7 +4,7 @@ slug: "sharepoint-sharepoint-agent-usage-statistics-across-all-sharepoint-sites"
 roadmapId: 480729
 topic: "governance"
 products: ["Microsoft 365 admin center","SharePoint"]
-summary: "Microsoft plans tenant-wide usage statistics for SharePoint agents, aimed at tenant admins. No Learn page describes it yet. It is a reporting feature: no admin action is needed, and the existing Agent Insights report is the nearest control."
+summary: "Microsoft plans tenant-wide usage statistics for SharePoint agents, aimed at tenant admins. Microsoft has not stated what happens on arrival; the existing Agent Insights report is the nearest control."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -34,6 +34,12 @@ sources:
   - title: "Use agents with pay-as-you-go billing"
     url: "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing"
     kind: "learn"
+  - title: "Monitor agent access to SharePoint and OneDrive"
+    url: "https://learn.microsoft.com/sharepoint/insights-on-agent-access"
+    kind: "learn"
+  - title: "Microsoft Copilot Agents usage report"
+    url: "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new?view=o365-worldwide"
+    kind: "learn"
 videos: []
 related: ["m365-admin-center-agents-usage-report","usage-reports","m365-copilot-agent-365-business-analytics-experience","m365-admin-center-agent-level-pay-as-you-go-controls","auditing"]
 controls:
@@ -57,26 +63,30 @@ changes:
     note: "First briefing: planned tenant-wide SharePoint agent usage statistics, with the existing Agent Insights report as the nearest control."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 39 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after the independent check: removed the unsupported 'no admin action' claim and the blanket 'no Learn page' statement, and dropped two checklist items that had no controls row."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 42 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 39
-  confirmed: 35
-  unconfirmed: 2
-  contradicted: 2
-  attempts: 1
-  hash: "9ce89f381d43dec089c8cbd9acf505e9"
+  claims: 42
+  confirmed: 41
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 2
+  hash: "d8629c91c5679f3dadb186aeb9a79969"
 ---
 
 ## What's changing
 
 The roadmap item states that SharePoint agents' usage statistics would be aggregated across all SharePoint sites and made available to the tenant admin persona. The roadmap lists Microsoft 365 admin center and SharePoint as products, Worldwide (Standard Multi-Tenant) as the cloud, and General Availability as the release phase.
 
-Microsoft Learn does not describe this feature yet, so what follows about its behaviour is the roadmap's description. The roadmap does not say where the statistics will appear, which measures they will include or how often they refresh. Learn does say that Microsoft is prioritising richer analytics across the Copilot Analytics dashboard, Microsoft 365 Admin Center, SharePoint Advanced Management and SharePoint Online in the coming months.
+Microsoft documents agent access across SharePoint and OneDrive sites ([Monitor agent access to SharePoint and OneDrive](https://learn.microsoft.com/sharepoint/insights-on-agent-access)) and SharePoint agent usage in Copilot ([Microsoft Copilot Agents usage report](https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new?view=o365-worldwide)), but the sources checked do not explicitly identify either report as roadmap item 480729. What follows about this feature's behaviour is the roadmap's description. The roadmap does not say where the statistics will appear, which measures they will include or how often they refresh. Learn does say that Microsoft is prioritising richer analytics across the Copilot Analytics dashboard, Microsoft 365 Admin Center, SharePoint Advanced Management and SharePoint Online in the coming months.
 
 The record's status is In development, with a target date of December CY2025. That target is a Microsoft plan, and it is earlier than the date of this briefing (22 November 2026) while the status is still In development, so confirm the current timing in the Microsoft 365 roadmap.
 
@@ -93,7 +103,7 @@ Microsoft has not stated what happens on arrival. No source says existing behavi
 - **Data exposure**: The roadmap describes statistics for the tenant admin persona only. Microsoft has not said whether the statistics name users or sites, so check what they expose when Microsoft documents them.
 - **Security & identity**: Not yet documented: which admin roles will see the statistics. The existing Agent Insights report is generated by a SharePoint administrator, and Learn says regular site owners cannot run it unless granted explicit roles.
 - **Autonomy & actions**: No change described: the roadmap item covers statistics, not new agent actions.
-- **Change & support**: The target date in the record has passed while the status is In development, so expect the date to move. Until a Learn page exists, helpdesk answers should point to the Agent Insights report, the Purview audit log and Cost Management.
+- **Change & support**: The target date in the record has passed while the status is In development, so expect the date to move. Until Microsoft says which report implements this item, helpdesk answers should point to the Agent Insights report, the Purview audit log and Cost Management.
 
 ## Cost and licensing
 
@@ -113,8 +123,7 @@ The audience is the tenant admin persona. Roles, licences and rollout mechanics 
 
 ### Before rollout
 
-- Inventory your current agent monitoring: identify who generates the Agent Insights report in the SharePoint admin center and whether data collection is enabled.
-- Confirm with finance owners whether SharePoint agents use pay-as-you-go billing, and who watches the Cost Management budget.
+- Inventory your current agent monitoring: identify who generates the Agent Insights report in the SharePoint admin center.
 
 ### At rollout
 
@@ -157,9 +166,7 @@ impact: Low. The roadmap names the tenant admin persona as the audience, so admi
 <!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] summary; front matter: defaultState; Why it matters / default: No admin action is needed for the reporting feature. | Found: Searched: 'SharePoint agent usage statistics no action' and 'SharePoint tenant statistics agent rollout'; opened Monitor agent usage, Insights report on agents, Monitor agent access, and Microsoft Copilot Agents usage report. None states this for the roadmap item. | Fix: Replace 'no admin action is needed' with 'Microsoft has not stated what happens on arrival'. This also resolves the internal conflict with defaultState: unknown and the same statement in Why it matters. Do not infer automatic availability or an absence of setup requirements.
-- [unsupported, major] summary; What's changing; Risk assessment / absence: No Microsoft Learn page describes the tenant-wide SharePoint agent usage statistics feature yet. | Found: Searched: 'SharePoint agent usage report statistics', 'SharePoint usage statistics agents licensing', and 'SharePoint 480729'; opened Monitor agent access and Microsoft Copilot Agents usage report. Both document relevant analytics, but neither identifies this roadmap item. | Fix: Replace the blanket documentation-gap statement and 'Until a Learn page exists' with 'Microsoft documents agent access across SharePoint and OneDrive sites and SharePoint agent usage in Copilot, but the sources checked do not explicitly identify either report as roadmap item 480729.' Cite https://learn.microsoft.com/sharepoint/insights-on-agent-access and https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new?view=o365-worldwide. Do not assert that either report implements this item.
+- [unsupported, blocker] Risk assessment: Data exposure; rationale: risk / availability: The planned statistics are for administrators only. | Found: Searched: '"480729" "SharePoint" usage statistics only tenant administrators access'; read roadmap and cited report guides. The record says 'available for the tenant admin persona', not exclusively available to admins; no source establishes this item's access restrictions. | Fix: Replace 'The roadmap describes statistics for the tenant admin persona only.' with 'The roadmap describes statistics for the tenant admin persona.' In the risk rationale, replace 'statistics for admins only' with 'statistics aimed at tenant admins'. Keep the existing statement that the specific roles are not yet documented.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist's instruction to check data collection has a corresponding controls row. | Found: Checklist: 'whether data collection is enabled'. The sole row governs 'Agent Insights report on agents across SharePoint and OneDrive sites' and scripts report generation, not data collection. | Fix: Remove 'and whether data collection is enabled' from the first Before rollout bullet; the data-collection control has no row. Do not add a row as part of this correction.
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist's instruction to take stock of pay-as-you-go billing and the Cost Management budget has corresponding controls rows. | Found: Checklist: 'Confirm with finance owners whether SharePoint agents use pay-as-you-go billing, and who watches the Cost Management budget.' The controls table contains only the Agent Insights report. | Fix: Remove the second Before rollout bullet; neither pay-as-you-go billing nor the Cost Management budget has a controls row. Do not add rows as part of this correction.
+- [supported, minor] controls[0].api; Governance controls table / command: Start-SPOCopilotAgentInsightsReport -ReportPeriodInDays 28 generates the existing Agent Insights report for 28 days through SharePoint Online Management Shell. | Found: For example, to generate a report for the past 28 days, run the command: Start-SPOCopilotAgentInsightsReport -ReportPeriodInDays <28> | Fix: Add to the control note: 'The report guide documents this control as available, while the cmdlet reference still says the associated feature will be rolling out soon.' Cite https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/start-spocopilotagentinsightsreport, which also confirms that ReportPeriodInDays accepts 28. | Source: https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents
 -->

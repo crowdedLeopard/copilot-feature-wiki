@@ -46,6 +46,9 @@ sources:
   - title: "Assign Microsoft 365 licenses to user accounts with PowerShell"
     url: "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell"
     kind: "learn"
+  - title: "Share an agent in Microsoft Teams"
+    url: "https://learn.microsoft.com/training/modules/use-no-code-agents-sharepoint/3-share-agent-microsoft-teams"
+    kind: "learn"
   - title: "Microsoft 365 Roadmap item 481823"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=481823"
     kind: "roadmap"
@@ -98,19 +101,23 @@ changes:
     note: "Corrected cost to variable, with the Copilot Studio meter named for pay-as-you-go use, and removed two checklist items that had no matching control row."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 55 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-22"
+    note: "Corrected the Security & identity bullet on whose permissions apply when an agent is shared in Teams, using Microsoft's Learn module on sharing agents in Teams."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 54
+  claims: 58
+  confirmed: 58
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "6bd5b29dddd4ad09e6cc81d8a92d2aa1"
+  contradicted: 0
+  attempts: 0
+  hash: "f5bc376c6f141b2c2cd5b3f42fa97f73"
 ---
 
 ## What's changing
@@ -137,7 +144,7 @@ Microsoft has not stated what happens on arrival, including whether users get th
 
 **Security & identity**
 - Learn says the permissions on the .agent file decide who can access or edit an agent. Review those permissions before the agent becomes available in group chats.
-- Microsoft has not said whose permissions apply when several people in one chat or meeting prompt the same agent. Confirm this before relying on permission-based answers in a mixed group.
+- For existing SharePoint agents shared in Teams, Microsoft says the agent responds based on the permissions of the person asking the question; sharing the agent does not automatically change permissions on its sources.
 
 **Autonomy & actions**
 - The roadmap description covers only using agents in group chats and meetings. It mentions no new actions or autonomous behaviour.
@@ -207,8 +214,8 @@ cost: Variable. SharePoint agent usage by users without a Microsoft Copilot lice
 impact: Low. The roadmap describes use in Teams mobile group chats and meetings, and Microsoft has not said who sees it first or whether it appears by default.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity / absence: Microsoft has not said whose permissions apply when several people in one chat or meeting prompt the same agent. | Found: The agent responds based on the permissions of the person asking the question. When you share an agent with others, they can only access the sources for which they have permissions. | Fix: Replace this bullet with: 'For existing SharePoint agents shared in Teams, Microsoft says the agent responds based on the permissions of the person asking the question; sharing the agent does not automatically change permissions on its sources.' Cite https://learn.microsoft.com/training/modules/use-no-code-agents-sharepoint/3-share-agent-microsoft-teams and add that page to sources. | Source: https://learn.microsoft.com/training/modules/use-no-code-agents-sharepoint/3-share-agent-microsoft-teams
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.notes; Cost and licensing; controls[2].note; rationale: cost / licensing: Users without a Microsoft Copilot licence can be covered by SharePoint agents pay-as-you-go billing. | Found: For users who aren't assigned with a Microsoft Copilot license, you can control user access to agents through pay-as-you-go billing. | Fix: Narrow the repeated general pay-as-you-go wording in licensing.notes, Cost and licensing, controls[2].note and the cost rationale to: 'For existing .agent files, users without a Microsoft Copilot licence can be covered by SharePoint agents pay-as-you-go billing.' Cite https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents, which states: 'SharePoint Agents pay-as-you-go only applies to .agent files. The upgraded agents follow the capabilities and licensing model for agents in Microsoft Copilot app.' | Source: https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint
 -->

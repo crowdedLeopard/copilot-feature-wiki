@@ -38,7 +38,7 @@ videos: []
 related: ["microsoft-edge-allow-users-to-translate-pdf-documents-into-their-preferred-language","microsoft-edge-adding-support-for-viewing-sensitivity-labels-applied-to-a-microsoft-inform"]
 controls:
   - governs: "Whether users can organise and merge PDF files in the Edge PDF reader (PdfOrganizeAndMergeEnabled)"
-    scope: "user"
+    scope: "other"
     ui: null
     api: null
     note: "The roadmap item names this policy; Learn's Edge policy reference has no page for it at the time of writing (November 2026)."
@@ -51,19 +51,23 @@ changes:
     note: "New briefing: planned PDF page organising and merging in the Edge PDF reader; policy named on the roadmap but not yet documented on Learn."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 43 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected the policy control's scope to Other, because Microsoft has not documented whether PdfOrganizeAndMergeEnabled applies per device or per user."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 42 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 43
+  claims: 42
   confirmed: 42
-  unconfirmed: 1
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "e89185746e1a5d5cc5b7e387b05293de"
+  attempts: 0
+  hash: "1319c3f6ee3367f0f6ba420d910a1e6c"
 ---
 
 ## What's changing
@@ -129,7 +133,7 @@ The feature is part of the Edge built-in PDF reader, which Learn says is deploye
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether users can organise and merge PDF files in the Edge PDF reader (PdfOrganizeAndMergeEnabled)</strong><br><small>User</small><br><small class="controls__note">The roadmap item names this policy; Learn's Edge policy reference has no page for it at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether users can organise and merge PDF files in the Edge PDF reader (PdfOrganizeAndMergeEnabled)</strong><br><small class="controls__note">The roadmap item names this policy; Learn's Edge policy reference has no page for it at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -148,10 +152,4 @@ The policy's default, its scope (device or user) and what it disables exactly ar
 risk: Low. The roadmap says files are processed on the device and the originals are not modified, so the change stays inside existing file boundaries. The default and the policy's behaviour are not yet documented.
 cost: Low. The roadmap item names no licence or meter, and the only cost the sources show is admin time to decide on the PdfOrganizeAndMergeEnabled policy. Licensing is not yet published.
 impact: Medium. It adds new editing actions to the PDF reader that users already have in Edge, so people who handle PDFs will notice it. Microsoft has not stated whether it is on by default.
--->
-
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[0].scope; Governance controls table: User / applicability: The PdfOrganizeAndMergeEnabled control has user scope. | Found: Searched: PdfOrganizeAndMergeEnabled Microsoft Edge PDF organize merge policy default per profile registry; complete Edge policy list and its expected reference URL. No scope found. The briefing itself says 'its scope (device or user) ... [is] not yet documented'. | Fix: Set controls[0].scope to 'other' and replace the rendered table's 'User' scope label with 'Other'. Keep the existing prose stating that device or user scope is not yet documented; do not identify the policy as user-scoped without documentation.
 -->

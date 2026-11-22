@@ -78,19 +78,23 @@ changes:
     note: "Correction: licensing model set to included, the role difference between Learn pages noted, label wording and schema-call note aligned with Learn, and the role checklist step reworded."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 51 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-22"
+    note: "Correction: removed the claim that nobody needs to act before the recommendations appear, reworded the schema-change sentence, added the initial-crawl exception, and removed the connection-state checklist step."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 53 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 48
-  unconfirmed: 2
-  contradicted: 1
-  attempts: 2
-  hash: "9694dfa3920b3bae4bdad771bf578312"
+  claims: 53
+  confirmed: 53
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "ab47c5727766a675c5b6b2734475cf96"
 ---
 
 ## What's changing
@@ -107,7 +111,7 @@ The roadmap record shows status In development with a target of September CY2025
 
 For a service owner, the value is better Copilot answers from connector data you already run. Learn says `title` is required for meaningful result rendering and relevant Copilot results, and `url` is required for citations to link back to the source system. A custom connector missing either is the likeliest place for poor results.
 
-Microsoft has not stated what happens on arrival, so this page makes no claim about a default. The recommendations are guidance rather than a change to existing behaviour, so nobody needs to act before they appear. Plan for the developer who owns each custom connector to review them and decide on schema changes.
+Microsoft has not stated what happens on arrival, so this page makes no claim about a default. No source says existing behaviour changes, so plan for the connector developer to review the guidance rather than assuming a required pre-rollout change. Plan for the developer who owns each custom connector to review them and decide on schema changes.
 
 ## Risk assessment
 
@@ -118,10 +122,10 @@ Microsoft has not stated what happens on arrival, so this page makes no claim ab
 - Viewing and managing Copilot connectors needs the AI administrator role, per Learn. Changing a schema through Microsoft Graph uses the `ExternalConnection.ReadWrite.OwnedBy` permission or the higher `ExternalConnection.ReadWrite.All`, so review which applications hold either.
 
 **Autonomy & actions**
-- The Learn page describes recommendations as analysing the schema and highlighting missing labels. A person or an application still has to change the schema.
+- The Learn page describes recommendations as analysing the schema and highlighting missing labels. Microsoft Graph documents a separate operation to change the schema.
 
 **Change & support**
-- Learn says editing a connection might trigger a full crawl, where applicable, so schedule label changes outside peak sync windows and expect the connection state to show Syncing.
+- Learn says editing a connection might trigger a full crawl, where applicable, so schedule label changes outside peak sync windows and expect the connection state to show Syncing. During the initial full crawl, edits do not trigger another full crawl; changes are applied during the next scheduled full crawl.
 - The four-label check is not exhaustive, so a connector with no recommendations has not been shown to be well designed.
 
 ## Cost and licensing
@@ -148,7 +152,6 @@ The roadmap record lists Worldwide (Standard Multi-Tenant) as the cloud, with Ge
 - Send missing-label findings to the connector developer, who changes the schema through Microsoft Graph.
 
 ### After rollout
-- Watch the connection state after a schema change, because editing a connection might trigger a full crawl.
 - Re-check the recommendations after each change and ask users whether Copilot answers cite the right source items.
 
 ## Governance controls
@@ -180,14 +183,4 @@ The Microsoft Graph row is the documented call that updates a connection's schem
 risk: Low. Microsoft Learn describes the feature as analysing a connector's schema and highlighting missing semantic labels; the risk sits in whoever later changes the schema, which existing connector controls cover.
 cost: Low. The cost the sources show is admin and developer time to review and fix labels; no licence or meter specific to schema recommendations is published, and Microsoft 365 licensing for connectors is covered on the prerequisites page.
 impact: Low. AI administrators and the developers of custom connectors see the recommendations; Microsoft Learn describes no change to what end users see until a schema is changed.
--->
-
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Why it matters / default: The recommendations are not a change to existing behaviour, so nobody needs to act before they appear. | Found: Searched: Copilot connectors schema recommendations automatically change schema apply recommendations. Read manage-connector and schema guide; also searched recommendations' default and rollout. Neither source states that existing behaviour is unchanged on arrival. | Fix: Replace 'The recommendations are guidance rather than a change to existing behaviour, so nobody needs to act before they appear.' with 'No source says existing behaviour changes, so plan for the connector developer to review the guidance rather than assuming a required pre-rollout change.' Keep defaultState as unknown.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: A person or an application still has to change the schema rather than the recommendations making changes. | Found: Searched: Copilot connectors schema recommendations automatically change schema apply recommendations; schema recommendations Copilot read-only automatically. Read manage-connector, schema guide and PATCH reference. They document highlighting and schema updates, not this mandatory intervention rule. | Fix: Replace 'A person or an application still has to change the schema.' with 'Microsoft Graph documents a separate operation to change the schema.'
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Change & support; Governance guidance: After rollout / behaviour: Editing a connection might trigger a full crawl, where applicable. | Found: Editing a connection might trigger a full crawl, where applicable. However, during the initial full crawl, editing the connection doesn't trigger another full crawl. Changes made during the first crawl are applied during the next scheduled full crawl. | Fix: Add after the full-crawl statement: 'During the initial full crawl, edits do not trigger another full crawl; changes are applied during the next scheduled full crawl.' | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist tells administrators to monitor connection state, but that monitoring control has no table row. | Found: After rollout: 'Watch the connection state after a schema change'. The table's rows cover only 'Viewing schema recommendations for a published custom connector' and 'Changing a connection's schema to add the missing labels'. | Fix: Remove the After rollout bullet 'Watch the connection state after a schema change, because editing a connection might trigger a full crawl.' The full-crawl consideration remains in Risk assessment; do not add a control row in this correction.
 -->

@@ -83,19 +83,23 @@ changes:
     note: "Corrected after verification: removed unsupported statements on storage, read-only behaviour and automated actions, and licence-check steps; noted Plan 5; narrowed the Outlook question."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 59 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-22"
+    note: "Corrected the cost statement: Planner and Project Plan 5 includes all Plan 3 capabilities, so Plan 3 is needed only for users not already entitled through Plan 3 or Plan 5."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 62 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 58
+  claims: 62
+  confirmed: 62
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "c7bb59506c00a7b85541eedbbca22513"
+  contradicted: 0
+  attempts: 0
+  hash: "a73d76398412204e556a36e92c4983ea"
 ---
 
 ## What's changing
@@ -134,9 +138,9 @@ The view is licence-gated. Per the service description, Planner and Project Plan
 
 The Planner service description lists Capacity view as "Yes" for Planner and Project Plan 3 and "No" for Microsoft Planner included in Microsoft 365, Planner Plan 1 and Microsoft 365 Copilot. Microsoft's notice MC1474110 says the same in its own terms: users with a Planner Plan 3 licence are affected and users without one do not see the view. The service description also says Planner and Project Plan 5 includes all Planner and Project Plan 3 capabilities, whereas the notice says users without Plan 3 will not see the view.
 
-The service description's footnote says the view is currently available only in unified plans, and that the features available to each user in a unified plan depend on their licence. No meter, credit rate or separate charge for Capacity view appears on the pages read; the Plan 3 price is not given there.
+The service description's footnote says the view is currently available only in unified plans, and that the features available to each user in a unified plan depend on their license. No meter, credit rate or separate charge for Capacity view appears on the pages read; the Plan 3 price is not given there.
 
-The cost is therefore the Plan 3 licence for any user who needs the view, plus admin time for communication and for tidying task assignees and dates. This briefing does not state the subscription price.
+For users not already entitled through Planner and Project Plan 3 or an existing Planner and Project Plan 5 subscription, access can require purchasing Planner and Project Plan 3, plus admin time for communication and for tidying task assignees and dates. This briefing does not state the subscription price.
 
 ## Scope
 
@@ -191,10 +195,4 @@ The Teams admin center page covers the Planner app in Teams, and says settings c
 risk: Low. Microsoft's notice says the view is built entirely from existing Planner task data and creates no new data, so it stays inside existing data boundaries.
 cost: Medium. Microsoft's service description lists Capacity view as available with Planner and Project Plan 3 and not with Planner Plan 1, Microsoft 365 or Microsoft 365 Copilot, so seeing it can mean buying Plan 3 for a subset of users.
 impact: Medium. Microsoft's notice says it appears by default for users with a Planner Plan 3 licence, so team leads and plan owners notice it; users without that licence do not see it.
--->
-
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: final paragraph / consistency: The cost is the Plan 3 licence for any user who needs the view. | Found: The service description also says Planner and Project Plan 5 includes all Planner and Project Plan 3 capabilities ... The cost is therefore the Plan 3 licence for any user who needs the view | Fix: Replace 'The cost is therefore the Plan 3 licence for any user who needs the view' with 'For users not already entitled through Planner and Project Plan 3 or an existing Planner and Project Plan 5 subscription, access can require purchasing Planner and Project Plan 3'. Keep the following admin-time clause. The cited service description states that Plan 5 includes all Plan 3 capabilities.
 -->

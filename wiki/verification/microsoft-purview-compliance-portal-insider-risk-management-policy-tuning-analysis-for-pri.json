@@ -1,0 +1,735 @@
+{
+  "slug": "microsoft-purview-compliance-portal-insider-risk-management-policy-tuning-analysis-for-pri",
+  "roadmapId": 378409,
+  "title": "Microsoft Purview Insider Risk Management: policy tuning analysis for priority content-only policies",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 52: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "2 blocking findings (claims 46, 50)"
+    ]
+  },
+  "counts": {
+    "claims": 56,
+    "confirmed": 50,
+    "unconfirmed": 3,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 2,
+    "minor": 2
+  },
+  "summary": "Hold: the policy creation path omits the required category and template choices. The notice already says the insights concern activity containing the selected priority content, contrary to the open question. Claims about guaranteed alerts and unchanged behaviour also go beyond the evidence.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Policy tuning analysis predicts in real time how many tenant users could match policy conditions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Policy tuning analysis provides admins with a real-time prediction of the number of users in a tenant that could potentially match a given set of policy conditions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "This update extends policy tuning analysis to policies scoped for priority content.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With this update, policy tuning analysis will support insider risk policies that are scoped for priority content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; controls[1].note",
+      "type": "behaviour",
+      "claim": "The priority-content scoring choice assigns scores and generates alerts for specified activities containing priority content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+      "quote": "Risk scores are assigned and alerts are generated only when specified activities include priority content. Activities without priority content aren't scored, but you can still review them if an alert is generated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing, notice procedure",
+      "type": "record",
+      "claim": "The notice instructs admins to enable Analytics, create or edit an all-user policy, select priority content and choose the priority-content-only scoring option.",
+      "status": "supported",
+      "source": "Message Center post MC1059679",
+      "quote": "Create/edit a policy scoped to all users in the organization. ... On the scoring page, select Get alerts only for activity that includes priority content:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing, notice procedure",
+      "type": "record",
+      "claim": "One to two days after saving the policy, editing it shows per-indicator insights under Choose your own thresholds.",
+      "status": "supported",
+      "source": "Message Center post MC1059679",
+      "quote": "1-2 days after the policy is saved, edit the policy again and navigate to the indicator thresholds page where insights on user activity containing the scoped priority content for each indicator will be visible under Choose your own thresholds:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is June CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is May CY2024.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"May CY2024\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: releasePhase; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2025-07-08T23:15:08.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2025-07-08T23:15:08\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "MC1059679 was last updated on 10 August 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1059679",
+      "quote": "Updated August 10, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice gives Worldwide a late June 2025 rollout start and expected completion by late August 2025.",
+      "status": "supported",
+      "source": "Message Center post MC1059679",
+      "quote": "General Availability (Worldwide): We will begin rolling out late June 2025 (previously mid-June) and expect to complete by late August 2025 (previously late July).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Scope; Governance guidance; changes",
+      "type": "record",
+      "claim": "The notice gives GCC, GCC High and DoD a mid-December 2026 start and expected completion by end of December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1059679",
+      "quote": "General Availability (GCC, GCCHigh, DoD): We will begin rolling out mid-December 2026 and expect to complete by end of December 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1059679",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Rollout requires no preparatory admin action, and the capability is available by default for admins to configure.",
+      "status": "supported",
+      "source": "Message Center post MC1059679",
+      "quote": "This rollout will happen automatically by the specified date with no admin action required before the rollout. ... This change will be available by default for admins to configure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Using the capability requires an administrator to enable Analytics, represented as admin-opt-in.",
+      "status": "supported",
+      "source": "Message Center post MC1059679",
+      "quote": "To use this feature, admins will need to enable Analytics in Insider risk management > Settings. After Analytics is enabled and insights are populated, admins will be able to see real-time predictions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Policy authors can use the estimates to adjust thresholds before activating policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "This feature helps you configure the appropriate thresholds for each indicator to achieve the highest level of alert effectiveness before activating your policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "Learn labels real-time analytics preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Use real-time analytics (preview) to get a guided, data-driven threshold configuration experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The gauge counts scoped users whose previous ten days of activity exceeded the lowest daily thresholds.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "The gauge shows the approximate number of scoped users whose activities from the previous 10 days exceeded the lowest daily thresholds for at least one of the selected built-in indicators for the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The top-five indicator list is ordered by users exceeding the lowest daily thresholds.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "The top five indicators list is sorted by the number of users exceeding the lowest daily thresholds.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Per-indicator insights show approximate user counts over the previous ten days rather than names.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "The insight shows the approximate number of users whose activities from the previous 10 days exceeded the specified low thresholds for the indicator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Learn's real-time analytics section does not mention priority-content policies.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management real-time policy tuning analytics priority content licensing pricing meter'; read the policy-indicators page's real-time analytics section and searched its text for priority content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure; Why it matters; Governance guidance",
+      "type": "behaviour",
+      "claim": "Analytics scans include Microsoft 365 audit logs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-analytics",
+      "quote": "Microsoft 365 audit logs: Included in all scans, this primary source helps you identify most of the potentially risky activities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure; Governance guidance",
+      "type": "behaviour",
+      "claim": "Analytics scans include Exchange Online activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-analytics",
+      "quote": "Exchange Online: Included in all scans, Exchange Online activity helps you identify activities where data in attachments are emailed to external contacts or services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure; Why it matters; Governance guidance",
+      "type": "behaviour",
+      "claim": "Analytics scans include Microsoft Entra ID history.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-analytics",
+      "quote": "Microsoft Entra ID: Included in all scans, Microsoft Entra history helps you identify risky activities associated with users with deleted user accounts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Analytics includes Microsoft 365 HR data connector events if configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-analytics",
+      "quote": "Microsoft 365 HR data connector: If configured, HR connector events help you identify risky activities associated with users that have resignation or upcoming termination dates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Scan results are aggregated and anonymised, and reviewers cannot identify individual usernames.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-analytics",
+      "quote": "Scanned results and insights are returned as aggregated and anonymized user activity. Reviewers can't identify individual usernames.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Enabling Analytics requires Insider Risk Management, Insider Risk Management Admins or Microsoft 365 Global admin role-group membership.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-analytics",
+      "quote": "To enable insider risk analytics, you must be a member of the Insider Risk Management, Insider Risk Management Admins, or Microsoft 365 Global admin role group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity; Governance guidance",
+      "type": "role",
+      "claim": "Accessing analytics insights requires an unrestricted administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+      "quote": "You must be an unrestricted administrator to access analytics insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Change & support; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Real-time analytics requires Include all users and groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "To take advantage of real-time analytics (preview) for indicator threshold settings, you must scope your policy to Include all users and groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "The View impact graph is unavailable with Include specific users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "This graph isn't available if you select the Include specific users option when you create the policy. You must select the Include all users and groups option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Recommended thresholds are not supplied for custom indicators or variants of built-in indicators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "Insider Risk Management doesn't provide recommended thresholds for custom indicators or variants of built-in indicators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Real-time threshold analytics is unavailable for Communication Compliance indicators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "At this time, real-time analytics for indicator threshold settings aren't available for the Communication Compliance indicators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].note; Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "Disabling Analytics removes real-time analytics from policy threshold settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-analytics",
+      "quote": "When you disable analytics: ... You can't see real-time analytics when you customize indicator threshold settings for your policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Change & support, cumulative exfiltration",
+      "type": "behaviour",
+      "claim": "A priority-content-only policy still alerts on cumulative exfiltration activity.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management Analytics enable PowerShell Set analytics Microsoft Graph settings priority content scoring policy'; read policies, Prioritize content and Cumulative exfiltration detection. These establish scoring, not guaranteed alerts.",
+      "severity": "major",
+      "fix": "Replace the sentence with 'Cumulative exfiltration activity always receives a risk score, regardless of whether it contains prioritised content.' Cite https://learn.microsoft.com/purview/insider-risk-management-policies."
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Cumulative exfiltration receives a risk score regardless of priority content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+      "quote": "The option to only score activities containing priority content doesn't apply to cumulative exfiltration activities. Cumulative exfiltration activity always receives a risk score, regardless of whether or not it contains prioritized content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Insider Risk Management is included in the named E5/A5/G5 plans, Purview suites and Insider Risk Management suites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, and Microsoft 365 E5/A5/F5/G5 Insider Risk Management ... Insider Risk Management | Included",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No separate licence, price or meter specific to policy tuning analysis is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management real-time policy tuning analytics priority content licensing pricing meter'; opened service description, analytics, configure and Purview billing models. No separate tuning-analysis entitlement or meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The analytics page gives admin-role prerequisites and names no separate analytics licence or meter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-analytics",
+      "quote": "To enable insider risk analytics, you must be a member of the Insider Risk Management, Insider Risk Management Admins, or Microsoft 365 Global admin role group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Some Insider Risk Management indicators require pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "Some indicators included in Insider Risk Management are only available if you enable the pay-as-you-go billing model for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Insights and recommendations can take 24 to 48 hours after enabling Analytics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "After you enable analytics, it can take 24 to 48 hours for insights and recommendations to appear.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].note; Scope",
+      "type": "behaviour",
+      "claim": "The five named templates support priority content selection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+      "quote": "The following policy templates support priority content selection: Data leaks; Data leaks by priority users; Data leaks by risky users; Data theft by departing users; Risky AI usage",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Analytics is under Microsoft Purview portal > Settings > Insider Risk Management > Insider risk settings > Analytics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-analytics",
+      "quote": "Select Settings in the upper-right corner of the page. ... Select Insider Risk Management to go to the Insider Risk Management settings. ... Under Insider risk settings, select Analytics, and then turn off the setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The printed Create policy path reaches priority-content scoring without a policy category or template choice.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "On the Policy template page, choose a policy category and then select the template for the new policy.",
+      "severity": "blocker",
+      "fix": "Replace the path with 'Insider Risk Management > Policies > Create policy > Policy template > policy category > template > Content to prioritize > I want to prioritize content > Scoring > Get alerts only for activity that includes priority content'. Keep the note that the template must support priority content selection and the existing docs URL."
+    },
+    {
+      "n": 47,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no PowerShell or Graph operation to set Analytics.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Security Compliance PowerShell Insider Risk Management Set-InsiderRiskPolicy Analytics PriorityContent'; 'Microsoft Graph security insiderRiskManagement analytics configure settings API'. Read analytics/configure and Defender Graph integration excerpt; no setting call found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no PowerShell or Graph operation for the priority-content scoring option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'site:learn.microsoft.com \"priority content\" \"PowerShell\" \"scoring\"'; 'Security Compliance PowerShell Insider Risk Management Set-InsiderRiskPolicy Analytics PriorityContent'; Graph settings query. Read policies/configure and Graph integration excerpt; no scoring call found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "Analytics reports are under Insider Risk Management > Reports > Analytics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-analytics",
+      "quote": "To view the results of analytics scanning in your organization, go to Insider Risk Management > Reports > Analytics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Open questions, first question",
+      "type": "absence",
+      "claim": "Microsoft's notice does not say whether the insights concern priority-content activity or all activity.",
+      "status": "contradicted",
+      "source": "Message Center post MC1059679",
+      "quote": "insights on user activity containing the scoped priority content for each indicator will be visible under Choose your own thresholds",
+      "severity": "blocker",
+      "fix": "Remove the first open question. The notice already states that the per-indicator insights concern user activity containing the scoped priority content."
+    },
+    {
+      "n": 51,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "The feature does not change policies by itself, so doing nothing preserves current policy behaviour.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management policy tuning real-time analytics automatically change thresholds notify users'; read notice, analytics, configure and indicator-threshold sections. They describe admin configuration but do not expressly guarantee unchanged policy behaviour.",
+      "severity": "major",
+      "fix": "Replace the autonomy bullet with 'Admins can adjust indicator thresholds and see the insight update in real time.' In Why it matters, remove 'so a tenant that does nothing keeps its current policy behaviour'. In the risk rationale, replace 'so nothing reaches users or data until an admin opts in' with 'and using the estimates requires Analytics to be enabled'."
+    },
+    {
+      "n": 52,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "End users are not notified or changed by this feature.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Insider Risk Management policy tuning real-time analytics automatically change thresholds notify users'; read MC1059679 and analytics/indicator documentation. None states the claimed absence of end-user notifications or effects.",
+      "severity": "minor",
+      "fix": "Remove 'end users are not notified or changed by this feature' from the impact rationale. Retain the rationale that the estimates are for Insider Risk Management admins and policy authors."
+    },
+    {
+      "n": 53,
+      "where": "Governance guidance; Governance controls",
+      "type": "consistency",
+      "claim": "Every control the checklist asks administrators to review or configure appears in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Check that the people who will enable Analytics belong to ... role group'; 'adjust thresholds'; 'Re-check policies scoped to specific users'. Table rows cover Analytics enablement and priority-content scoring only.",
+      "severity": "minor",
+      "fix": "The checklist's role membership, indicator thresholds and user/group scope checks have no corresponding table rows. Remove those control-setting or control-review instructions from the checklist; do not add rows in this correction."
+    },
+    {
+      "n": 54,
+      "where": "controls[0].scope; Why it matters; Governance controls",
+      "type": "applicability",
+      "claim": "Analytics scanning is an organisation-wide setting rather than limited to a policy's users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-analytics",
+      "quote": "Microsoft Purview Insider Risk Management analytics enables you to evaluate potential insider risks in your organization without configuring any insider risk policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].governs; Governance controls",
+      "type": "applicability",
+      "claim": "The priority-content scoring choice is configured per policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "The Scoring detail page allows you to scope the policy to only assign risk scores and generate alerts for specified activities that include priority content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "Administrators can manually adjust thresholds and see the insights change in real time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+      "quote": "If you select the Choose your own thresholds option and manually adjust a threshold setting for a specific indicator, the insight for the indicator updates in real time.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T08:34:15.639Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=378409",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1059679",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-settings-analytics",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether Insider Risk Management analytics, which real-time threshold insights depend on, is turned on",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-settings-analytics",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Insider Risk Management",
+          "Insider risk settings",
+          "Analytics"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether a policy scores and alerts only on activity that includes priority content",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+        "reachable": true,
+        "segments": [
+          "Insider Risk Management",
+          "Policies",
+          "Create policy",
+          "Content to prioritize",
+          "I want to prioritize content",
+          "Scoring"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

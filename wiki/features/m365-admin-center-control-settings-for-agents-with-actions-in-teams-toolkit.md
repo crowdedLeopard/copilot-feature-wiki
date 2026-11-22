@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for this control. The roadmap record names no licence, and the Advanced package uploads page lists the AI Admin role as its only prerequisite and names no licence."
+  model: "included"
+  notes: "Agent management requires the applicable Microsoft 365, Microsoft Copilot, or Microsoft Agent 365 subscription and licenses. No licensing requirement specific to this planned control is published."
 audiences: ["m365-admin","security","maker"]
 tags: ["m365-admin-center","agents","agent-governance","copilot-control-system","declarative-agents","publish-controls","admin-controls"]
 sources:
@@ -42,6 +42,12 @@ sources:
     kind: "learn"
   - title: "Supported Copilot resources for Tenant Configuration Management (preview)"
     url: "https://learn.microsoft.com/graph/utcm-copilot-resources"
+    kind: "learn"
+  - title: "Microsoft Entra built-in roles"
+    url: "https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference"
+    kind: "learn"
+  - title: "Agent management in Microsoft 365 admin center"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-365-overview"
     kind: "learn"
   - title: "Microsoft 365 Roadmap item 487847"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=487847"
@@ -77,19 +83,23 @@ changes:
     note: "First briefing: roadmap control for publishing agents with actions from Teams Toolkit, with the nearest documented controls and the open question of whether they are the same."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 54 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected the role statement (AI Administrator), the reject request body's version wording and the product-level licensing entitlement."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 61 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 52
+  claims: 61
+  confirmed: 61
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "00a267432f3be00b3a6f8414cae00b7c"
+  contradicted: 0
+  attempts: 0
+  hash: "8370724c02bce3ea7d683acfd5413c0a"
 ---
 
 ## What's changing
@@ -124,7 +134,7 @@ Microsoft has not stated what happens when the new control arrives, or what its 
 
 ## Cost and licensing
 
-No licence or meter is yet published for the control the roadmap describes. The roadmap record names none. The Advanced package uploads page lists the AI Admin role as its prerequisite and names no licence.
+Agent management in the Microsoft 365 admin center requires the applicable Microsoft 365, Microsoft Copilot, or Microsoft Agent 365 subscription and licenses, per the prerequisites on the Agent management page. No licence or meter specific to the control the roadmap describes is yet published. The roadmap record names none. The Advanced package uploads page lists the AI Admin role as its prerequisite and names no licence.
 
 One adjacent fact: the Graph call that rejects a pending package submission is in the Package Management API, whose page says access requires a Microsoft Agent 365 license. That page covers the API, not the admin centre screens, and Microsoft has not said whether the new control carries the same requirement.
 
@@ -134,7 +144,7 @@ Indirect cost is admin time: reviewing requests, setting who may upload, and tel
 
 - **Clouds and platform:** the roadmap record lists Worldwide (Standard Multi-Tenant) and Web. Other clouds are not listed on the record.
 - **Who it targets:** the roadmap says advanced agents (agents with actions) created from Teams Toolkit. Learn's Advanced package uploads setting applies to packages uploaded by members of your organisation and does not relate to Microsoft or third-party built agents.
-- **Roles:** the Advanced package uploads page names the AI Admin role for managing that setting. The role for the new control is not yet published.
+- **Roles:** the Advanced package uploads page names the AI Admin role for managing that setting. Microsoft documents AI Administrator as managing all aspects of Microsoft Copilot, including approving and publishing line-of-business copilot agents; no separate role requirement specific to this planned control is stated.
 - **Rollout:** the roadmap target is December CY2025; Microsoft has not stated a rollout mechanism or whether a Message center post will announce it.
 
 ## Governance guidance
@@ -167,7 +177,7 @@ Indirect cost is admin time: reviewing requests, setting who may upload, and tel
 
 **Advanced package uploads** is a tenant setting with three options: All users, No users, or Specific users or groups. Microsoft Learn documents no Graph or PowerShell call for it at the time of writing (November 2026). The Graph policy settings list names five other Copilot settings, and the Tenant Configuration Management Copilot resources page lists none for package uploads.
 
-**Requests** is a per-agent decision, not a tenant switch: an admin publishes or rejects each submission. The Graph call in the table rejects a pending submission only, is in beta, and its request body takes optional `version` and `reviewerComment` properties.
+**Requests** is a per-agent decision, not a tenant switch: an admin publishes or rejects each submission. The Graph call in the table rejects a pending submission only, is in beta, and its request body defines `version` and `reviewerComment` as optional in the schema, but Microsoft instructs callers to supply the version of the staged submission being rejected; omitting `version` does not select the latest or pending version.
 
 The Agent settings page also documents **Agent and plugin access**, which controls which types of agents and plugins users can view and install from the agent catalog, including those built by your organisation. That governs installation, not who may publish.
 
@@ -177,7 +187,7 @@ The Agent settings page also documents **Agent and plugin access**, which contro
 - What is the control's default when it arrives, and does anything change for tenants that do nothing? Microsoft has not stated it.
 - Does it restrict publishing, uploading or both, and what happens to agents already published and requests already pending?
 - Does it cover MCP servers as well as agents with actions?
-- Which licence, if any, does the control need, and will an API be documented for it?
+- Which licence, if any, does the control need beyond the product-level subscription, and will an API be documented for it?
 
 <!-- rationale
 risk: Medium. Agents with actions can invoke custom actions, and Microsoft has not stated the new control's default; the documented admin approval step in the Requests list is the gate that exists today.
@@ -185,11 +195,9 @@ cost: Low. The only cost the sources show is admin time spent reviewing agent re
 impact: Medium. The roadmap aims the control at agent makers who build in the toolkit and at the admins who approve their agents, not at end users.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope: Roles / absence: The role for managing the new Copilot agent publishing control is not yet published. | Found: Assign the AI Administrator role to users who need to do the following tasks: ... Manage all aspects of Microsoft Copilot ... Approve and publish line-of-business copilot agents | Fix: Replace 'The role for the new control is not yet published' with 'Microsoft documents AI Administrator as managing all aspects of Microsoft Copilot, including approving and publishing line-of-business copilot agents; no separate role requirement specific to this planned control is stated.' Cite https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference#ai-administrator. | Source: https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference#ai-administrator
-- [contradicted, blocker] Governance controls: Requests paragraph / command: The reject request body's version property is optional, without a qualification about supplying the matching submitted version. | Found: The schema defines both parameters as optional. This doesn't mean that omitting version selects the latest or pending version. Supply the version of the staged submission you're rejecting. | Fix: Replace 'its request body takes optional `version` and `reviewerComment` properties' with 'its request body defines `version` and `reviewerComment` as optional in the schema, but Microsoft instructs callers to supply the version of the staged submission being rejected; omitting `version` does not select the latest or pending version.' Keep the existing reject reference citation. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-reject
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost / licensing: Licensing is unknown because no requirement specific to the new publishing control is published. | Found: Your organization has the required subscription and licenses for either Microsoft 365, Microsoft Copilot, or Microsoft Agent 365. | Fix: Set licensing.model to included and replace its notes with: 'Agent management requires the applicable Microsoft 365, Microsoft Copilot, or Microsoft Agent 365 subscription and licenses. No licensing requirement specific to this planned control is published.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-365-overview. Keep the narrower feature-specific licensing gap in Cost and licensing rather than implying that product-level entitlement is unknown. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-365-overview
+- [supported, minor] controls[0].ui / admin-path: Advanced package uploads is reached in Microsoft 365 admin center through Copilot > Settings > All settings > Advanced package uploads. | Found: select Copilot > Settings > All settings > Advanced package uploads. The Advanced package uploads pane is displayed. | Fix: Extend the path to 'Copilot > Settings > All settings > Advanced package uploads > All users / No users / Specific users or groups', as documented at https://learn.microsoft.com/copilot/manage/configure-copilot-advanced-package-uploads; the current path correctly reaches the setting pane. | Source: https://learn.microsoft.com/copilot/manage/configure-copilot-advanced-package-uploads
+- [supported, minor] controls[1].ui; Governance guidance: At rollout / admin-path: Microsoft 365 admin center > Agents > All agents > Requests > agent exposes Publish to store and Reject submission. | Found: Select Agents > All agents > Requests. ... select Publish to store within the agent details pane to view the agent publishing wizard. ... Reject submission - After reviewing a requested agent's details, select this action | Fix: Keep the documented rejection route. Extend the publishing route to 'Agents > All agents > Requests > agent > Publish to store > users or groups > policy template > existing template / default template / custom template > Review permissions > Publish' at https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests; Publish to store starts, rather than completes, publishing. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests
 -->

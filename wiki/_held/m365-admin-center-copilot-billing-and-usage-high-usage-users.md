@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "consumption"
-  notes: "The usage it reports is pay-as-you-go: Learn says the service is billed through the Azure subscription named when pay-as-you-go billing was set up. A licence or price specific to this page is not yet published."
+  model: "unknown"
+  notes: "Microsoft has not published the entitlement for this page; the usage it reports is pay-as-you-go. Learn says the service is billed through the Azure subscription named when pay-as-you-go billing was set up. A licence or price specific to this page is not yet published."
 audiences: ["m365-admin","finops"]
 tags: ["m365-admin-center","copilot-credits","pay-as-you-go","usage-reports","cost-management","licensing","copilot-chat","finops"]
 sources:
@@ -92,19 +92,23 @@ changes:
     note: "Corrected after verification: noted documented billing for Microsoft 365 Copilot licence holders, narrowed the purchase-action gap, and removed unsupported statements on listed fields, user impact and a billing-policy checklist step."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 54 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-22"
+    note: "Corrected after verification: licensing model set to unknown (entitlement for the page not published), and the risk and impact rationales and one rollout checklist item narrowed to what the sources say."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 55 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 50
-  unconfirmed: 3
-  contradicted: 1
-  attempts: 2
-  hash: "ee916390ff16a226dd3eee24c2d6ddf1"
+  claims: 55
+  confirmed: 54
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 3
+  hash: "5746c9b9ca6b53d62c9d6668edf73293"
 ---
 
 ## What's changing
@@ -156,7 +160,7 @@ Roles for viewing the new page are not documented. Rollout mechanics and prerequ
 - Confirm which admins already hold the License Administrator or User Administrator role, since licence assignment needs one of them.
 
 ### At rollout
-- Open the page when it appears and compare its user list with the Credits report's Alerts card and exported user list.
+- Open the page when it appears.
 - Confirm with Microsoft Learn or your Microsoft account team whether the page's purchase action eliminates all of a listed user's charges before buying.
 
 ### After rollout
@@ -187,17 +191,13 @@ Learn documents no setting that turns the high-usage users page on or off, and t
 - Is the page on by default, and is the March CY2026 target still current? Watch the roadmap item and Message center.
 
 <!-- rationale
-risk: Low. The roadmap describes an admin-side list and a licence action; it adds no user-facing behaviour, and Learn shows usage reports hiding names by default.
+risk: Low. The roadmap describes an admin-side list and a licence action, and Learn shows usage reports hiding names by default.
 cost: Variable. The usage it lists is pay-as-you-go consumption billed to an Azure subscription; the roadmap item says licences can be bought from the page, and no price for this page is published.
-impact: Low. Only administrators who manage Copilot billing see the list.
+impact: Low. The roadmap places the list in the Microsoft 365 admin center; viewing roles for the new page are not yet documented.
 -->
 
 <!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: licensing.model / licensing: Consumption is the licensing model by which an administrator is entitled to the high-usage users page. | Found: Searched: "high-usage users" Copilot license report licensing access entitlement. Read Credits report, PAYG overview, Copilot-node setup and billing-licensing. These document underlying usage billing, not consumption-based entitlement to this admin page. | Fix: Set licensing.model to "unknown". Keep the documented Azure billing explanation in licensing.notes, but precede it with "Microsoft has not published the entitlement for this page; the usage it reports is pay-as-you-go."
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [unsupported, minor] rationale: risk / behaviour: The new feature adds no user-facing behaviour. | Found: Searched: "high-usage users" Copilot user-facing behaviour. Read roadmap and Credits report; the roadmap describes an admin-side list and licence action, but does not state that the feature adds no user-facing behaviour. | Fix: Remove "it adds no user-facing behaviour" from the risk rationale. Retain the sourced description of an admin-side list and a licence action.
-- [unsupported, minor] rationale: impact / role: Only administrators who manage Copilot billing can see the new list. | Found: Searched: "Copilot" "high-usage users" "Billing" licenses default roles. Read roadmap, PAYG overview and Copilot-node setup; none specifies the exclusive viewing audience for this list. The briefing itself says viewing roles are undocumented. | Fix: Replace the impact rationale with "Low. The roadmap places the list in the Microsoft 365 admin center; viewing roles for the new page are not yet documented."
-- [contradicted, minor] Governance guidance: At rollout / consistency: The checklist's Credits report monitoring step has a corresponding controls-table row. | Found: Checklist: "compare its user list with the Credits report's Alerts card and exported user list." Table: licence assignment, report concealment, and tenant switch; no Credits report monitoring row. | Fix: Remove "and compare its user list with the Credits report's Alerts card and exported user list" from the At rollout bullet; retain "Open the page when it appears."
+- [unsupported, blocker] What's changing: first paragraph / admin-path: The High-usage users view is reached under Microsoft 365 admin center > Copilot > Billing & usage. | Found: Searched: "High-usage users" "Copilot" "Billing & usage" admin center navigation. Opened Credits report and pay-as-you-go setup. They give routes for other billing controls, not this view; the roadmap title supplies no navigation steps. | Fix: Replace the first sentence with: "The roadmap item plans a High-usage users view in the Microsoft 365 admin center's Copilot Billing & usage area; its navigation path is not yet documented." Keep the roadmap attribution, but remove the asserted 'Copilot > Billing & usage' route.
 -->

@@ -1,0 +1,763 @@
+{
+  "slug": "onedrive-sync-support-for-up-to-1-million-items-on-macos",
+  "roadmapId": 570448,
+  "title": "OneDrive: sync up to 1 million items on macOS",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "1 blocking finding (claim 47)"
+    ]
+  },
+  "counts": {
+    "claims": 59,
+    "confirmed": 58,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "The rollout, eligibility, licensing context and Tier preference are supported. The control note incorrectly says the Mac deployment page does not mention Intune, although that page explicitly describes using Intune; the Intune path also stops before the preference-file configuration.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: title, roadmapId, products",
+      "type": "record",
+      "claim": "Roadmap item 570448 concerns OneDrive sync support for up to 1 million items on macOS.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 570448, \"title\": \"OneDrive: Sync support for up to 1 million items on macOS\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Scope; Governance guidance",
+      "type": "record",
+      "claim": "General Availability is targeted for June CY2027, not committed for that date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate, changes; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap preview date is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; Scope; rationale: impact",
+      "type": "record",
+      "claim": "Mac is the only platform listed for this roadmap item.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-10-20T23:00:34.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-20T23:00:34\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing; Why it matters; Risk assessment",
+      "type": "record",
+      "claim": "Microsoft plans to increase Mac sync capacity from 300,000 to 1 million items per sync instance, per device.",
+      "status": "supported",
+      "source": "Message Center post MC1477187",
+      "quote": "We are now increasing the same item sync limit for OneDrive on macOS: from 300,000 items to 1 million items per sync instance, per device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Scope; controls[0]; controls[1]; rationale: impact",
+      "type": "record",
+      "claim": "The preview requires the Insiders ring.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This preview requires the Insiders ring and that devices meet minimum hardware and configuration requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Scope; Governance guidance; rationale: impact",
+      "type": "record",
+      "claim": "Preview devices must meet minimum hardware and configuration requirements.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This preview requires the Insiders ring and that devices meet minimum hardware and configuration requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "Non-qualifying devices retain the supported 300,000-item limit without a change in behaviour.",
+      "status": "supported",
+      "source": "Message Center post MC1477187",
+      "quote": "Devices that do not meet the minimum hardware and configuration requirements will continue to sync at the existing supported limit of 300,000 items without disruption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The Mac increase follows a Windows increase announced in MC1294528.",
+      "status": "supported",
+      "source": "Message Center post MC1477187",
+      "quote": "In MC1294528, we announced an increase to the item sync limit for OneDrive on Windows. We are now increasing the same item sync limit for OneDrive on macOS",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft intends the increase to help organisations with large OneDrive and SharePoint libraries sync reliably.",
+      "status": "supported",
+      "source": "Message Center post MC1477187",
+      "quote": "This increase is designed to help organizations with large OneDrive and SharePoint libraries sync more content reliably across devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Public Preview precedes General Availability.",
+      "status": "supported",
+      "source": "Message Center post MC1477187",
+      "quote": "The capability will be available first in Public Preview for devices enrolled in the Insiders ring, and later in General Availability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1477187 was published on 2026-09-22.",
+      "status": "supported",
+      "source": "Message Center post MC1477187",
+      "quote": "Published 2026-09-22; last updated 2026-10-20; Microsoft's end date 2027-07-30",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1477187 was last updated on 2026-10-20.",
+      "status": "supported",
+      "source": "Message Center post MC1477187",
+      "quote": "Published 2026-09-22; last updated 2026-10-20; Microsoft's end date 2027-07-30",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice scheduled Worldwide Public Preview to begin in mid-October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1477187",
+      "quote": "Public Preview (Worldwide): Rollout will begin in mid-October 2026 and is expected to complete by late October 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice expected Worldwide Public Preview rollout to complete by late October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1477187",
+      "quote": "Public Preview (Worldwide): Rollout will begin in mid-October 2026 and is expected to complete by late October 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Scope; Open questions",
+      "type": "absence",
+      "claim": "The supplied notice gives a Worldwide preview schedule but no rollout timing for GCC, GCC High or DoD.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive macOS 1 million items preview; read the entire supplied MC1477187 and roadmap record. MC1477187 schedules Public Preview (Worldwide) only; the record gives no cloud-specific dates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Scope; Governance guidance; Open questions",
+      "type": "record",
+      "claim": "The notice identifies operating system, memory, storage and processor as requirement categories.",
+      "status": "supported",
+      "source": "Message Center post MC1477187",
+      "quote": "Ensure devices meet the minimum hardware and configuration requirements (i.e., supported operating system, memory, storage, and processor).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Cost and licensing; Governance guidance; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Specific hardware and configuration values for the million-item Mac preview are not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive macOS \"1 million items\" minimum requirements automatically enabled; OneDrive Mac \"1 million\" licensing price hardware storage requirements default preview. Read MC1477187, roadmap, Mac deployment page and SharePoint limits; no feature-specific values found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment; Governance guidance; Open questions; rationale: risk",
+      "type": "record",
+      "claim": "Performance is not yet optimised for a high volume of read-only files.",
+      "status": "supported",
+      "source": "Message Center post MC1477187",
+      "quote": "Performance is not yet optimized for syncing a high volume of read-only files or for accounts under legal hold.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Risk assessment; Governance guidance; Open questions; rationale: risk",
+      "type": "record",
+      "claim": "Performance is not yet optimised for accounts under legal hold.",
+      "status": "supported",
+      "source": "Message Center post MC1477187",
+      "quote": "Performance is not yet optimized for syncing a high volume of read-only files or for accounts under legal hold.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "Microsoft says it is working to improve performance and reliability for these scenarios.",
+      "status": "supported",
+      "source": "Message Center post MC1477187",
+      "quote": "We are actively working to improve performance and reliability for these scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "summary; Why it matters",
+      "type": "record",
+      "claim": "No action is required for administrators who do not plan to participate in Public Preview.",
+      "status": "supported",
+      "source": "Message Center post MC1477187",
+      "quote": "No action is required if you do not plan to participate in Public Preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "absence",
+      "claim": "The record and notice describe no new data source or new data access.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: data-source and access changes in the full supplied roadmap description and MC1477187; they describe increased sync capacity for OneDrive and SharePoint libraries, with no new source or access grant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The roadmap and MC1477187 describe no change to sign-in or permissions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: sign-in and permissions in the entire supplied roadmap description and MC1477187. Neither describes a sign-in or permission change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "MC1477187 states that no compliance considerations were identified.",
+      "status": "supported",
+      "source": "Message Center post MC1477187",
+      "quote": "No compliance considerations identified. Review as appropriate for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The item describes a sync-capacity change rather than an agent or new automated action.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "OneDrive Sync supports syncing up to 1 million items on macOS devices, helping teams manage large document libraries and shared content at scale without compromising access across devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "SharePoint limits recommends syncing no more than 300,000 files in one OneDrive or team site library.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-limits",
+      "quote": "For optimum performance, we recommend syncing no more than 300,000 files in a single OneDrive or team site library.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The same performance issues can occur at 300,000 items or more across all synced libraries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-limits",
+      "quote": "the same performance issues can occur if you have 300,000 items or more across all libraries you're syncing, even if you aren't syncing all items in those libraries.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The 300,000-file soft sync limit also applies to shortcut folders.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-limits",
+      "quote": "The 300K file “soft” limit for OneDrive Sync also applies to shortcut folders.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.model, licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The included model rests on OneDrive being included in Microsoft 365, Office 365 and SharePoint plans, or purchased standalone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description",
+      "quote": "OneDrive is included in Microsoft 365 and Office 365 plans, in SharePoint plans, and can also be purchased as a standalone plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No additional licence specific to the million-item sync limit is published or named in the record and notice.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive Mac \"1 million\" licensing price hardware storage requirements default preview. Read OneDrive service description, SharePoint limits, Mac deployment page, roadmap and MC1477187; no feature-specific licence found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No price specific to the million-item limit is yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive Mac \"1 million\" licensing price hardware storage requirements default preview. Read OneDrive service description and related storage-pricing search excerpts; none prices the million-item sync capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter for this sync-capacity feature is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive macOS 1 million items sync limit minimum hardware requirements enable default licensing price meter. Read OneDrive service description, SharePoint limits and search results; no meter for the increased item count found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether qualifying Insiders devices receive the higher limit automatically or need a setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive \"macOS\" \"1 million items\" minimum requirements automatically enabled. Read roadmap, MC1477187, Mac deployment and update-process pages; eligibility is stated, but no explicit automatic-enablement or default-state passage was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe this Mac million-item feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive macOS 1 million items sync limit minimum hardware requirements enable default licensing price meter; OneDrive \"macOS\" \"1 million items\" minimum requirements automatically enabled. Read Mac deployment and SharePoint limits; no feature documentation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure; Cost and licensing",
+      "type": "absence",
+      "claim": "A local-disk requirement for larger synced libraries is not published in detail or discussed specifically in the notice.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive Mac \"1 million\" licensing price hardware storage requirements default preview. Read MC1477187, Mac deployment, SharePoint limits and search excerpts; storage is a prerequisite category, but no feature-specific local-disk amount is given.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope; Governance guidance: At rollout; Open questions",
+      "type": "behaviour",
+      "claim": "The Mac App Store sync app follows a separate update process.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sync-client-update-process",
+      "quote": "The sync app installed from the Mac App Store follows a separate update process. After we finish rolling out updates within the Production ring, we publish them to the Mac App Store, where they're immediately released to everyone.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "Participation of the Mac App Store edition in this million-item preview is not explicitly stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive \"macOS\" \"1 million\" \"App Store\". Read Mac deployment and sync update-process pages, Office Mac App Store search excerpts, roadmap and MC1477187; no feature-specific App Store eligibility statement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Intune offers Devices > Manage devices > Configuration > Create > New policy > macOS > Templates > Preference file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos",
+      "quote": "Select Devices > Manage devices > Configuration > Create > New policy. Platform: Select macOS. Profile type: Select Templates > Preference file. In Configuration settings, configure your settings:",
+      "severity": "minor",
+      "fix": "Extend controls[0].ui.path and its rendered table path to 'Devices > Manage devices > Configuration > Create > New policy > macOS > Templates > Preference file > Configuration settings > Property list file'. The cited Intune page places the preference-file upload there."
+    },
+    {
+      "n": 44,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "The Tier XML preference in com.microsoft.OneDriveUpdater.plist sets the Mac sync app update ring.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
+      "quote": "This setting lets you specify the sync app update ring for users in your organization. ~/Library/Preferences/com.microsoft.OneDriveUpdater.plist | com.microsoft.OneDriveUpdater. <key>Tier</key>\n<string>(UpdateRing)</string>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "The Intune preference-file profile instructions require the Policy and Profile Manager built-in role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos",
+      "quote": "Sign in to the Microsoft Intune admin center with an account that has the Policy and Profile Manager built-in role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "The Mac page lists Insiders, Production and Enterprise, also known as Deferred.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
+      "quote": "first to Insiders, then to Production, and finally to Deferred. Enterprise (also known as \"Deferred\"): The Enterprise ring users get new features, bug fixes, and performance improvements last.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].note; Governance controls table",
+      "type": "absence",
+      "claim": "The Mac deployment page does not mention Intune.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
+      "quote": "You can use Microsoft Intune. Other common tools are Jamf Pro, Munki, and AutoPkg.",
+      "severity": "blocker",
+      "fix": "In controls[0].note and the rendered table note, replace 'it does not mention Intune, so confirm the profile on a test Mac' with 'its Tier section does not describe Intune deployment, so confirm the profile on a test Mac'. The Mac page does mention Intune for app deployment."
+    },
+    {
+      "n": 48,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Devices receiving the Intune preference-file profile must be enrolled and MDM managed by Intune.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos",
+      "quote": "The device must be enrolled and MDM managed by Intune.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Intune does not validate property-list settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos",
+      "quote": "Test your changes before assigning the profile to your devices. Intune doesn't validate the settings in the property list file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Users cannot change the update ring after the Tier setting is enabled and a ring selected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
+      "quote": "When you enable this setting and select a ring, users aren't able to change it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1]; controls[0].note; Governance controls; Why it matters",
+      "type": "absence",
+      "claim": "No separate million-item on/off setting or preview-enablement control beyond the update ring is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive macOS \"million\" \"Tier\" enable sync limit setting. Read the Mac settings list, Tier section, Intune preference-file page, roadmap and MC1477187; Tier sets the ring, and no million-item switch or other preview-enablement control was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: At rollout; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Insiders-ring users receive builds that preview new features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
+      "quote": "The Insiders ring users receive builds that let them preview new features coming to OneDrive. We also recommend leaving everyone else in the organization in the default Production ring",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Scope: Users; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "The notice identifies users syncing OneDrive, OneDrive for Business or SharePoint document libraries on macOS as affected.",
+      "status": "supported",
+      "source": "Message Center post MC1477187",
+      "quote": "Users syncing OneDrive, OneDrive for Business, or SharePoint document libraries on macOS. Users with libraries that approach or exceed the current supported sync limit of 300,000 items. Identify users and devices with large OneDrive or SharePoint libraries",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Microsoft recommends testing property-list changes before assigning the Intune profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos",
+      "quote": "Test your changes before assigning the profile to your devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: At rollout",
+      "type": "default",
+      "claim": "Production is the default sync app update ring.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
+      "quote": "Production: The Production ring users get the latest features as they become available. This ring is the default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends leaving everyone other than early adopters in the default Production ring.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
+      "quote": "We also recommend leaving everyone else in the organization in the default Production ring to ensure they receive bug fixes and new features in a timely fashion.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "MC1477187 recommends identifying users and devices with large OneDrive or SharePoint libraries that may benefit.",
+      "status": "supported",
+      "source": "Message Center post MC1477187",
+      "quote": "Identify users and devices with large OneDrive or SharePoint libraries that may benefit from the increased sync limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Scope: Users; Governance guidance: Before rollout; rationale: impact",
+      "type": "record",
+      "claim": "MC1477187 names users whose libraries approach or exceed 300,000 items as affected.",
+      "status": "supported",
+      "source": "Message Center post MC1477187",
+      "quote": "Users with libraries that approach or exceed the current supported sync limit of 300,000 items.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Tier chooses the sync app update ring rather than setting an item limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
+      "quote": "This setting lets you specify the sync app update ring for users in your organization.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T08:34:13.003Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=570448",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/sync-client-update-process",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-limits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1477187",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which sync app update ring Mac devices use (Insiders is needed for the preview)",
+        "docs": "https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos",
+        "reachable": true,
+        "segments": [
+          "Devices",
+          "Manage devices",
+          "Configuration",
+          "Create",
+          "New policy",
+          "macOS",
+          "Templates",
+          "Preference file"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which sync app update ring Mac devices use (Insiders is needed for the preview)",
+        "docs": "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos",
+        "reachable": true,
+        "token": "Tier key",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
