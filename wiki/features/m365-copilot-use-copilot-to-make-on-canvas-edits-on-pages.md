@@ -59,7 +59,7 @@ controls:
       kind: "graph"
       call: "POST /beta/admin/configurationManagement/configurationMonitors"
       docs: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
-    note: "Not a switch for comment-driven edits; people with permission can still view and edit existing Pages, but disabling removes Copilot Chat's live view/edit access to shared Loop files. Group scope in UI; beta API, value 0 or 1."
+    note: "Not a comment-edit switch. TCM supports it only in tenant-level policies; applyOnce fails if a group-level policy sets it. Use mode applyOnce, properties.value \"0\" or \"1\", microsoft.copilot.copilotpagesnotebooks, resourceVersion 1."
   - governs: "Whether Copilot can be asked to edit a Page through comments"
     scope: "tenant"
     ui: null
@@ -78,19 +78,23 @@ changes:
     note: "Corrected after verification: added that Pages keep working if the OneDrive licence is later removed, cited that the Page grounds Copilot, narrowed the control claims and the comment-visibility claim, and added the Graph setting details."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 66 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-22"
+    note: "Corrected after verification: the Graph call now notes that Tenant Configuration Management supports the setting only in tenant-level policies, the opening claim about chat is reworded, and the Notebooks licence note is added."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 76 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 64
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 2
-  hash: "7160ccbbb2d73416ab8ee797800b65f8"
+  claims: 76
+  confirmed: 76
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "f6f31ad5af0742e5be741e0f6c6b2a71"
 ---
 
 ## What's changing
@@ -103,7 +107,7 @@ The record lists the status as In development, with a preview targeted for Novem
 
 ## Why it matters
 
-This moves Copilot from a private chat into a shared document that several people can open. The roadmap text says Copilot would act on requests left as comments, which makes a Page a place where an AI edit can be requested by one person and seen by others. For a service owner the questions are who can ask Copilot to change a shared Page, whose permissions apply when it does, and how the change is reviewed. Microsoft has not said how any of these work.
+The roadmap plans to bring Copilot into collaboration on a Page, not just the chat box. The roadmap text says Copilot would act on requests left as comments, which makes a Page a place where an AI edit can be requested by one person and seen by others. For a service owner the questions are who can ask Copilot to change a shared Page, whose permissions apply when it does, and how the change is reviewed. Microsoft has not said how any of these work.
 
 Microsoft has not stated what happens on arrival, so base planning on the roadmap targets and on no source saying that existing behaviour changes. The controls you hold today are the Cloud Policy creation setting and whatever sharing rules apply to the Page files; neither is documented as specific to this feature.
 
@@ -127,7 +131,7 @@ Microsoft has not stated what happens on arrival, so base planning on the roadma
 
 ## Cost and licensing
 
-**Licence.** The Copilot Pages requirements page says users need a OneDrive licence and an active OneDrive site for Copilot Pages. If a OneDrive site exists and the licence is later removed, Copilot Pages continue to work. It lists the Microsoft Copilot or Copilot Chat licence for Copilot Notebooks, not for Pages. No licence specific to comment-driven edits is published.
+**Licence.** The Copilot Pages requirements page says users need a OneDrive licence and an active OneDrive site for Copilot Pages. If a OneDrive site exists and the licence is later removed, Copilot Pages continue to work. It lists the Microsoft Copilot or Copilot Chat licence for Copilot Notebooks, not for Pages. The Graph resource reference instead says that Copilot Notebooks also require a Microsoft 365 Copilot licence. No licence specific to comment-driven edits is published.
 
 **Meter.** No meter, credit rate or charge specific to this feature is published at the time of writing (November 2026).
 
@@ -163,14 +167,14 @@ The Cloud Policy setting that governs Pages creation can be scoped to all users 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether users can create and view Copilot Pages and Copilot Notebooks (existing control)</strong><br><small>Tenant</small><br><small class="controls__note">Not a switch for comment-driven edits; people with permission can still view and edit existing Pages, but disabling removes Copilot Chat's live view/edit access to shared Loop files. Group scope in UI; beta API, value 0 or 1.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Create and view Copilot Pages and Copilot Notebooks <a href="https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether users can create and view Copilot Pages and Copilot Notebooks (existing control)</strong><br><small>Tenant</small><br><small class="controls__note">Not a comment-edit switch. TCM supports it only in tenant-level policies; applyOnce fails if a group-level policy sets it. Use mode applyOnce, properties.value &quot;0&quot; or &quot;1&quot;, microsoft.copilot.copilotpagesnotebooks, resourceVersion 1.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Create and view Copilot Pages and Copilot Notebooks <a href="https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether Copilot can be asked to edit a Page through comments</strong><br><small>Tenant</small><br><small class="controls__note">No setting specific to this feature is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 The existing availability control shown here is the Cloud Policy setting that governs creation and use of Copilot Pages and Copilot Notebooks. Its Learn page says that when creation is disabled, users cannot create new Pages or Notebooks, existing items are not deleted, and users can still view and edit existing items if they have permission. It is not documented as a switch for comment-driven Copilot edits.
 
-The Graph row is a preview Tenant Configuration Management call. Learn lists a Copilot Pages and Notebooks resource with a `value` property where `0` disables and `1` enables the setting. The Graph resource reference additionally says that when the setting is disabled, Copilot Chat does not provide live access to view or edit shared Loop files. Set mode to `applyOnce`; it defaults to `monitorOnly`. The baseline resource is `microsoft.copilot.copilotpagesnotebooks`, resourceVersion 1, with properties.value set to "0" or "1". The second row records that no feature-specific switch is documented at the time of writing (November 2026).
+The Graph row is a preview Tenant Configuration Management call. Learn lists a Copilot Pages and Notebooks resource with a `value` property where `0` disables and `1` enables the setting. The Graph resource reference additionally says that when the setting is disabled, Copilot Chat does not provide live access to view or edit shared Loop files. Tenant Configuration Management supports this setting only in tenant-level policies: if the setting is configured in any group-level policy in Microsoft 365 Apps admin center, `applyOnce` fails. Set mode to `applyOnce`; it defaults to `monitorOnly`. The baseline resource is `microsoft.copilot.copilotpagesnotebooks`, resourceVersion 1, with properties.value set to "0" or "1". The second row records that no feature-specific switch is documented at the time of writing (November 2026).
 
 ## Open questions
 
@@ -184,13 +188,4 @@ The Graph row is a preview Tenant Configuration Management call. Learn lists a C
 risk: Medium. Copilot would change a shared Page when asked in a comment; the existing Cloud Policy creation setting does not stop every route to editing existing Pages.
 cost: Low. The only licence Learn names for Copilot Pages is a OneDrive licence with an active OneDrive site, and Pages keep working if the licence is later removed. No licence or meter specific to this feature is published, so the known cost is admin time.
 impact: Medium. People who already use Copilot Pages on the web would notice a new way to work with Copilot; users who do not use Pages would not.
--->
-
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; controls[0].note; Governance controls / command: POST /beta/admin/configurationManagement/configurationMonitors in applyOnce mode automates this setting without any stated restriction concerning group-level Cloud Policies. | Found: TCM supports these settings only in tenant-level policies in the Microsoft 365 Apps admin center. Before using TCM, ensure that the target setting isn't configured in any group-level policy in that admin center. | Fix: Keep the call. Add to controls[0].note and the Graph paragraph: 'TCM supports this setting only in tenant-level policies. If the setting is configured in any group-level policy in Microsoft 365 Apps admin center, applyOnce fails.' Cite https://learn.microsoft.com/graph/utcm-copilot-resources. In the row note also name the deciding request fields: 'Use mode applyOnce and baseline.resources[].properties.value as string "0" or "1" for microsoft.copilot.copilotpagesnotebooks, resourceVersion 1.' | Source: https://learn.microsoft.com/graph/utcm-copilot-resources
-- [unsupported, major] Why it matters / behaviour: This change moves Copilot from a private chat into a shared document. | Found: Searched: "Copilot Pages" "comments" "private chat". Read roadmap record, cpcn-permission and copilot-pages-ediscovery; the roadmap says 'not just the chat box', and the permissions page's explicit private-chat statement concerns Notebooks, not this feature. | Fix: Replace the sentence with: 'The roadmap plans to bring Copilot into collaboration on a Page, not just the chat box.'
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing / licensing: The requirements page lists the Microsoft Copilot or Copilot Chat licence for Notebooks, not Pages. | Found: Copilot Pages: Users need a OneDrive license and an active OneDrive site. Copilot Notebooks: Users need the Microsoft Copilot or Copilot Chat license. | Fix: Add to this sentence: 'The Graph resource reference instead says that Copilot Notebooks also require a Microsoft 365 Copilot licence.' Cite https://learn.microsoft.com/graph/utcm-copilot-resources#copilotpagesnotebooks-resource-type, which states 'Copilot Notebooks also require a Microsoft 365 Copilot license.' | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements
 -->

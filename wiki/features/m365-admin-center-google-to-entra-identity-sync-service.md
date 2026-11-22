@@ -38,10 +38,10 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Setup > Migration resources > Self-service migration and import tools > Explore migration & imports tools > Google Workspace > Sync users and groups"
+      path: "Setup > Migration resources > Self-service migration and import tools > Explore migration & imports tools > Google Workspace > Sync users and groups > Sync Users > Sync users"
       docs: "https://learn.microsoft.com/sharepointmigration/google-identity-sync"
     api: null
-    note: "The page names no administrator role for this tool. Sync users and Sync groups are run from the Identity Sync page after connecting to Google."
+    note: "The page names no administrator role for this tool. Connection and domain mapping come first; Sync groups is selected afterwards on the same page."
   - governs: "Which Google Workspace domains are synchronised (domain mapping)"
     scope: "tenant"
     ui:
@@ -64,26 +64,30 @@ changes:
     note: "First briefing: Learn now documents Google Identity Sync (under 300 licensed users) while the roadmap still shows In development with a January CY2025 target."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 66 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected the Sync groups description (existing matching groups are left unchanged), reworded the no-published-licence statement, and extended the start-sync path."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 78 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 63
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "4bef9d2c6a44a55a9583cdb744d7bfed"
+  claims: 78
+  confirmed: 77
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "7b1ffc70545bce9597a563b4d02da190"
 ---
 
 ## What's changing
 
 Google Identity Sync is a one-way synchronisation of user and group identities from Google Workspace to Microsoft 365, run from the Microsoft 365 admin center. Microsoft Learn describes it as reducing the effort of provisioning Microsoft Entra ID users and groups, and as preparing identities for a migration of Gmail, Google Drive and other Google content.
 
-The Learn page describes this behaviour. An administrator connects to Google Workspace, signs in as a Google administrator and installs the required migration app there. The tool then discovers users and groups, and the administrator maps Google domains to Microsoft 365 domains and finalises the mapping, after which it cannot be edited. Selecting **Sync users** creates Entra users with the same email alias in the mapped domain: active Google users become enabled, suspended Google users become disabled, and archived users are not included. An Entra user that already has the same alias is not overwritten. **Sync groups** then creates a Microsoft 365 group for each Google group and syncs its members and owners.
+The Learn page describes this behaviour. An administrator connects to Google Workspace, signs in as a Google administrator and installs the required migration app there. The tool then discovers users and groups, and the administrator maps Google domains to Microsoft 365 domains and finalises the mapping, after which it cannot be edited. Selecting **Sync users** creates Entra users with the same email alias in the mapped domain: active Google users become enabled, suspended Google users become disabled, and archived users are not included. An Entra user that already has the same alias is not overwritten. **Sync groups** then synchronises Google groups in mapped domains, creating a Microsoft 365 group where no corresponding group exists. Matching existing group objects are left unchanged, while member and owner assignments are synchronised.
 
 The roadmap item describes the scope more widely: an onboarding and synchronisation tool for customers moving from Google, to create identities and move Drive and Mail content into OneDrive and Exchange Online. The Identity Sync page covers identities only. The roadmap record gives status In development, a preview target of December CY2024 and a General Availability target of January CY2025, with Worldwide (Standard Multi-Tenant) as the only cloud and Web as the platform. Both target months have passed, the record still shows In development, and the Learn page describes the steps without marking the feature as preview.
 
@@ -117,7 +121,7 @@ The point to plan for is re-sync. Learn warns that re-syncing groups can remove 
 
 ## Cost and licensing
 
-Microsoft Learn names no licence and no price for Google Identity Sync itself. The Identity Sync page and the Migration Manager overview describe the steps and limits and state no fee for the tool, so the licensing model is recorded as not yet published.
+Microsoft Learn names no licence and no price for Google Identity Sync itself. The Identity Sync page and the Migration Manager overview describe the steps and limits but publish no tool-specific licence or price, so the licensing model is recorded as not yet published.
 
 What the page does say is that, once synchronisation is complete and verified, you assign users the licences required for the Microsoft 365 services you are migrating to. For an Exchange migration that starts with mail users, assign the Exchange licence after the batch converts them to mailboxes, within 30 days. Those licence costs and the admin time spent mapping domains and checking reports are the indirect costs. No meter is documented for the sync at the time of writing (November 2026).
 
@@ -155,7 +159,7 @@ What the page does say is that, once synchronisation is complete and verified, y
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Google Identity Sync is run: starting the user and group sync</strong><br><small>Tenant</small><br><small class="controls__note">The page names no administrator role for this tool. Sync users and Sync groups are run from the Identity Sync page after connecting to Google.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Setup › Migration resources › Self-service migration and import tools › Explore migration &amp; imports tools › Google Workspace › Sync users and groups <a href="https://learn.microsoft.com/sharepointmigration/google-identity-sync" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether Google Identity Sync is run: starting the user and group sync</strong><br><small>Tenant</small><br><small class="controls__note">The page names no administrator role for this tool. Connection and domain mapping come first; Sync groups is selected afterwards on the same page.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Setup › Migration resources › Self-service migration and import tools › Explore migration &amp; imports tools › Google Workspace › Sync users and groups › Sync Users › Sync users <a href="https://learn.microsoft.com/sharepointmigration/google-identity-sync" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which Google Workspace domains are synchronised (domain mapping)</strong><br><small>Tenant</small><br><small class="controls__note">Finalize domain mapping locks the mappings; they cannot be edited afterwards.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Setup › Migration resources › Self-service migration and import tools › Explore migration &amp; imports tools › Google Workspace › Sync users and groups › Domain mapping › Map domains <a href="https://learn.microsoft.com/sharepointmigration/google-identity-sync" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Tenant-wide switch to turn Google Identity Sync off or restrict who may use it</strong><br><small>Tenant</small><br><small class="controls__note">Not documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
@@ -180,12 +184,8 @@ cost: Low. Admin time is the only cost the sources show; users then need licence
 impact: Low. Administrators of a tenant moving from Google Workspace use it, and Learn limits it to tenants with fewer than 300 licensed users.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing: second paragraph / behaviour: Sync groups creates a Microsoft 365 group for each Google group. | Found: If a corresponding Microsoft 365 group doesn't exist, a new Microsoft 365 group is created. If a matching Microsoft 365 group already exists, no changes are made. Only Google Workspace groups whose email addresses belong to the mapped domains are synchronized. | Fix: Replace 'Sync groups then creates a Microsoft 365 group for each Google group and syncs its members and owners' with 'Sync groups then synchronises Google groups in mapped domains, creating a Microsoft 365 group where no corresponding group exists. Matching existing group objects are left unchanged, while member and owner assignments are synchronised.' Source: https://learn.microsoft.com/sharepointmigration/google-identity-sync. | Source: https://learn.microsoft.com/sharepointmigration/google-identity-sync
-- [unsupported, blocker] Cost and licensing: first paragraph / cost: The Identity Sync and Migration Manager overview pages state no fee for the tool. | Found: Searched: "Google Identity Sync" license pricing fee meter Microsoft 365; Migration Manager Google Identity Sync licensing prerequisites pricing. Read google-identity-sync and mm-google-overview in full; neither explicitly states that the tool has no fee. | Fix: Replace 'The Identity Sync page and the Migration Manager overview describe the steps and limits and state no fee for the tool, so the licensing model is recorded as not yet published' with 'The Identity Sync page and the Migration Manager overview describe the steps and limits but publish no tool-specific licence or price, so the licensing model is recorded as not yet published.' Do not describe the tool as free.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; rendered controls table; Scope: Arrival / admin-path: The printed Microsoft 365 admin center path reaches the Identity Sync page from Setup through Sync users and groups. | Found: Setup > Migration resources. ... Under Self-service migration and import tools, select Explore migration & imports tools. ... Select Google Workspace ... Select Sync users and groups. | Fix: The path reaches the page holding the control but stops before starting sync. Set controls[0].ui.path to 'Setup > Migration resources > Self-service migration and import tools > Explore migration & imports tools > Google Workspace > Sync users and groups > Sync Users > Sync users'. Retain the note that connection and domain mapping precede user sync and Sync groups is selected afterwards on the same page. Source: https://learn.microsoft.com/sharepointmigration/google-identity-sync. | Source: https://learn.microsoft.com/sharepointmigration/google-identity-sync
-- [contradicted, minor] Governance guidance: At rollout and After rollout; controls / consistency: The checklist instructs administrators to review sync reports, assign licences and compare group membership, but these controls have no matching table rows. | Found: Download the user, group and member sync reports ... Assign licences ... Compare each destination group's members and owners ... Table rows: starting sync; domain mapping; tenant-wide switch. | Fix: The checklist steps 'Download the user, group and member sync reports', 'Assign licences for the services being migrated' and 'Compare each destination group's members and owners' have no matching controls-table row. Do not add unverified rows as part of this correction.
+- [contradicted, minor] Governance guidance: At rollout and After rollout; controls / consistency: The checklist names sync-report monitoring, licence assignment and destination membership review controls without corresponding controls-table rows. | Found: Checklist: "Download the user, group and member sync reports"; "Assign licences"; "Compare each destination group's members and owners". Controls table: starting sync; domain mapping; absent tenant-wide disable/restriction switch. | Fix: The At rollout steps for downloading sync reports and assigning licences, and the After rollout step for reviewing destination members and owners, have no corresponding controls-table rows. Record this checklist/table mismatch; do not add control rows as part of this correction.
 -->

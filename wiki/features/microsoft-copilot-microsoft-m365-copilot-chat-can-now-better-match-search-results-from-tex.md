@@ -15,10 +15,10 @@ risk: "medium"
 cost: "low"
 impact: "medium"
 defaultState: "unknown"
-action: "prepare"
+action: "act-now"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for this feature. The Learn licence options page says \"Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans\"; nothing says how it applies here."
+  model: "included"
+  notes: "Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans. Licensing specific to this image-text matching enhancement is not yet published."
 audiences: ["m365-admin","service-owner","security"]
 tags: ["copilot-chat","m365-copilot","copilot-search","ocr","word","powerpoint","microsoft-365-files","oversharing","restricted-content-discovery"]
 sources:
@@ -36,6 +36,12 @@ sources:
     kind: "learn"
   - title: "Microsoft 365 Copilot release notes"
     url: "https://learn.microsoft.com/microsoft-365/copilot/release-notes"
+    kind: "learn"
+  - title: "Manage Microsoft Copilot Search"
+    url: "https://learn.microsoft.com/copilot/manage/copilot-search-manage"
+    kind: "learn"
+  - title: "What is Microsoft Copilot?"
+    url: "https://learn.microsoft.com/copilot/plan/copilot-overview"
     kind: "learn"
 videos: []
 related: ["sharepoint-copilot-search-in-sharepoint-and-onedrive","m365-admin-center-authoritative-content-management-for-m365-copilot-search"]
@@ -55,7 +61,7 @@ controls:
       kind: "powershell"
       call: "Set-SPOSite -Identity <site-url> -RestrictContentOrgWideSearch $true"
       docs: "https://learn.microsoft.com/sharepoint/restricted-content-discovery"
-    note: "Limits discovery of a site's content in organisation-wide search and Copilot responses; does not change permissions. Not a control over this feature."
+    note: "Does not change permissions. Applies to organization-wide search and Microsoft Copilot discovery scenarios; it is not a dedicated switch for image-text matching."
 confidence: "low"
 created: "2026-11-22"
 updated: "2026-11-22"
@@ -65,19 +71,23 @@ changes:
     note: "First briefing: roadmap-only feature with no Learn page, no documented switch, and no stated default or licence."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 47 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Correction: Restricted Content Discovery is described as covering organisation-wide search and Copilot discovery, not a switch for this feature; licensing model and action rating updated."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 50 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 45
-  unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "cb6b13a2d18bb8cf652d27248b592be1"
+  claims: 50
+  confirmed: 49
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 0
+  hash: "b433a4bdf30ad987becc7a7ef6b6c3af"
 ---
 
 ## What's changing
@@ -105,7 +115,7 @@ Microsoft has not stated what happens on arrival, so base planning on the roadma
 
 No licence, meter or price for this feature is yet published. The roadmap item names no licence, and the Learn release notes do not list the feature.
 
-For context, the Learn page "License options for Microsoft Copilot" says Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government and education subscription plans. It does not say how that applies to this feature.
+For context, the Learn page "License options for Microsoft Copilot" says Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government and education subscription plans. Licensing specific to this feature is not yet published.
 
 SharePoint's separate optical character recognition (OCR) service is documented on Learn with a pay-as-you-go billing note, and whether this feature uses it is not yet published (see Open questions). The indirect cost that is known is admin time to review access to files that hold images of documents.
 
@@ -143,11 +153,11 @@ SharePoint's separate optical character recognition (OCR) service is documented 
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether this feature matches text inside images</strong><br><small>Tenant</small><br><small class="controls__note">No setting is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which SharePoint sites Copilot can discover content from (existing control, not specific to this feature)</strong><br><small>Site</small><br><small class="controls__note">Limits discovery of a site's content in organisation-wide search and Copilot responses; does not change permissions. Not a control over this feature.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Sites › Active sites › site › Settings › Restrict content from Microsoft Copilot <a href="https://learn.microsoft.com/sharepoint/restricted-content-discovery" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOSite -Identity &lt;site-url&gt; -RestrictContentOrgWideSearch $true</code> <a href="https://learn.microsoft.com/sharepoint/restricted-content-discovery" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which SharePoint sites Copilot can discover content from (existing control, not specific to this feature)</strong><br><small>Site</small><br><small class="controls__note">Does not change permissions. Applies to organization-wide search and Microsoft Copilot discovery scenarios; it is not a dedicated switch for image-text matching.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Sites › Active sites › site › Settings › Restrict content from Microsoft Copilot <a href="https://learn.microsoft.com/sharepoint/restricted-content-discovery" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOSite -Identity &lt;site-url&gt; -RestrictContentOrgWideSearch $true</code> <a href="https://learn.microsoft.com/sharepoint/restricted-content-discovery" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-No setting that turns this feature on or off, and no automation for one, is documented on Microsoft Learn at the time of writing (November 2026). The one control row that exists is an existing site-level control, not a control over this feature.
+No setting that turns this feature on or off, and no automation for one, is documented on Microsoft Learn at the time of writing (November 2026). Restricted Content Discovery is an existing site-level control for organization-wide search and Microsoft Copilot discovery scenarios, not a dedicated switch for image-text matching.
 
 Restricted Content Discovery applies per SharePoint site, requires SharePoint Advanced Management, and by default only SharePoint administrators can manage it. The page says it affects discoverability, not access permissions, and that updates can take time to propagate.
 
@@ -165,14 +175,10 @@ cost: Low. The only cost the sources show is admin time to review file access an
 impact: Medium. Anyone who searches work files through Copilot Chat on the web could see different matches, but the roadmap names no change to how the chat itself works.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: prose after table / applicability: The existing site-level Restricted Content Discovery control is not a control over this feature. | Found: Restricted Content Discovery affects organization-wide search experiences (SharePoint home, Office.com, Bing) and Microsoft Copilot discovery scenarios, including experiences that rely on tenant-wide content discovery. | Fix: Replace 'The one control row that exists is an existing site-level control, not a control over this feature.' with: 'Restricted Content Discovery is an existing site-level control for organization-wide search and Microsoft Copilot discovery scenarios, not a dedicated switch for image-text matching.' | Source: https://learn.microsoft.com/sharepoint/restricted-content-discovery
+- [unsupported, major] Why it matters / behaviour: Text inside embedded images is often the least-reviewed content in a tenant. | Found: Searched: Copilot Chat embedded image text search least reviewed scanned contracts oversharing permissions. Read OCR overview, Copilot overview, Restricted Content Discovery and search results; none states comparative review frequency for embedded image text. | Fix: Remove 'Text inside embedded images is often the least-reviewed content in a tenant: scanned contracts pasted into Word, screenshots of tables, photographed slides.' Keep the following conditional analysis about increased discoverability and oversharing.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model; licensing.notes / licensing: The licensing model is unknown, despite the quoted general Microsoft Copilot entitlement. | Found: Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans. | Fix: Set licensing.model to included for an enhancement inside the licensed product. Replace licensing.notes with: 'Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans. Licensing specific to this image-text matching enhancement is not yet published.' Keep the existing licence-options citation. | Source: https://learn.microsoft.com/copilot/plan/copilot-license-options
-- [supported, minor] controls[1].governs; controls[1].note; Risk assessment: Data exposure; Governance controls / applicability: Restricted Content Discovery limits discovery of selected SharePoint sites' content in organization-wide search and Copilot responses. | Found: Restricted Content Discovery helps you limit discovery of content from specific SharePoint sites, including recently interacted files, in organization-wide search results and Microsoft Copilot responses | Fix: Keep this claim. Add https://learn.microsoft.com/copilot/manage/copilot-search-manage to sources and note: 'The Manage Microsoft Copilot Search page still describes an exception for content a user owns or recently interacted with; the Restricted Content Discovery page explicitly includes recently interacted files.' | Source: https://learn.microsoft.com/sharepoint/restricted-content-discovery
-- [supported, minor] controls[1].note; Governance controls table note / applicability: The correctly documented general-control row says Restricted Content Discovery is not a control over this feature. | Found: Restricted Content Discovery affects organization-wide search experiences (SharePoint home, Office.com, Bing) and Microsoft Copilot discovery scenarios, including experiences that rely on tenant-wide content discovery. | Fix: Replace 'Not a control over this feature.' in the front-matter and rendered row notes with: 'Applies to organization-wide search and Microsoft Copilot discovery scenarios; it is not a dedicated switch for image-text matching.' | Source: https://learn.microsoft.com/sharepoint/restricted-content-discovery
-- [supported, minor] Why it matters: existing access; Risk assessment: Data exposure / behaviour: Copilot access to organizational content is scoped by the user's existing permissions. | Found: However, all experiences are powered by: ... Access scoped by user permissions (security and compliance enforced) | Fix: Add https://learn.microsoft.com/copilot/plan/copilot-overview to sources for the existing-permissions premise. | Source: https://learn.microsoft.com/copilot/plan/copilot-overview
-- [contradicted, minor] front matter: action; Why it matters; Governance guidance: Before rollout / consistency: Prepare is the action rating although the page assumes existing search changes without admin action and recommends a pre-rollout decision. | Found: action: "prepare"; risk: "medium"; targetDate: "December CY2026"; "the assumption that Copilot Chat search results change without an administrator acting"; "decide which are not ready to be discoverable through Copilot" | Fix: Set action to act-now: on the page's stated planning assumption, the December CY2026 target is within 60 days of November 22, risk is medium, and an access-review decision is recommended before it lands. Keep defaultState unknown.
+- [supported, minor] controls[1].governs and note; Risk assessment: Data exposure; Governance controls / applicability: Restricted Content Discovery limits discovery of selected SharePoint sites in organization-wide search and Microsoft Copilot discovery scenarios. | Found: Restricted Content Discovery affects organization-wide search experiences (SharePoint home, Office.com, Bing) and Microsoft Copilot discovery scenarios, including experiences that rely on tenant-wide content discovery. | Fix: Append to the Governance controls prose: 'Microsoft's Manage Microsoft Copilot Search page says Restricted Content Discovery has an exception when a user owns or has recently interacted with content; the Restricted Content Discovery page instead describes restricting recently interacted files as well.' Both pages are already cited: https://learn.microsoft.com/copilot/manage/copilot-search-manage and https://learn.microsoft.com/sharepoint/restricted-content-discovery. | Source: https://learn.microsoft.com/sharepoint/restricted-content-discovery
 -->

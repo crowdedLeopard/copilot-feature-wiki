@@ -82,19 +82,23 @@ changes:
     note: "First briefing for this item: roadmap-only feature, with background on SharePoint custom profile properties and the Copilot Search licence."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 54 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected the SharePoint admin center path in the inventory step to include Open and People, as the Learn page gives it."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 53 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
+  claims: 53
   confirmed: 53
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "9595ec31a6e143b2f63583c07d375bb8"
+  contradicted: 0
+  attempts: 0
+  hash: "447b40c3bb3d8d838e2398e68ed531cd"
 ---
 
 ## What's changing
@@ -143,7 +147,7 @@ The indirect cost is admin time to review the custom properties in SharePoint an
 ## Governance guidance
 
 ### Before rollout
-- Inventory the custom properties: in the SharePoint admin center, open More features > User profiles > Manage User Properties and list each property you added.
+- Inventory the custom properties: in the SharePoint admin center, open More features > User profiles > Open > People > Manage User Properties and list each property you added.
 - Check each property's Policy Settings (default privacy setting and whether users can override it) and decide which values should not become easier to find.
 - Check each property's Search Settings, in particular Indexed, and note which ones are marked.
 - Edit or delete properties you no longer need, using the Manage User Properties page.
@@ -189,10 +193,4 @@ The Copilot > Search area of the Microsoft 365 admin center is documented for ac
 risk: Medium. Custom SharePoint profile properties can hold values such as emergency contact info, and Learn does not yet say how a property's privacy settings apply to the new search.
 cost: Low. Learn says Copilot Search is included in the Microsoft Copilot licence; no separate licence or meter for this feature is published, so the known cost is admin time to review properties.
 impact: Medium. Users with an eligible Microsoft Copilot licence who search for people would notice, and only where the organisation has populated custom properties.
--->
-
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance guidance: Before rollout, inventory bullet / admin-path: The inventory route is SharePoint admin center > More features > User profiles > Manage User Properties. | Found: Select User profiles, and then select Open. Under People, choose Manage User Properties. | Fix: Replace the inventory bullet's path with 'More features > User profiles > Open > People > Manage User Properties' in the SharePoint admin center, as documented at https://learn.microsoft.com/sharepoint/add-and-edit-user-profile-properties. Open is a required labeled selection, not an omitted heading. | Source: https://learn.microsoft.com/sharepoint/add-and-edit-user-profile-properties
 -->

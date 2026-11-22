@@ -25,6 +25,9 @@ sources:
   - title: "Microsoft 365 Roadmap 570448"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=570448"
     kind: "roadmap"
+  - title: "Restrictions and limitations in OneDrive and SharePoint"
+    url: "https://support.microsoft.com/en-us/office/restrictions-and-limitations-in-onedrive-and-sharepoint-64883a5d-228e-48f5-b3d2-eb39e07630fa"
+    kind: "docs"
   - title: "Deploy and configure the OneDrive sync app for Mac"
     url: "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos"
     kind: "learn"
@@ -75,19 +78,23 @@ changes:
     note: "Corrected the update ring control: its note no longer says the Mac page does not mention Intune, and its path now ends at the Property list file setting."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 65 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-22"
+    note: "Corrected: the preview hardware and configuration requirements are published by Microsoft Support, so the claims that they were unpublished are replaced with a link to that page."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 76 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 64
+  claims: 76
+  confirmed: 76
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "238491e7498ce421e74f93046c5feaf9"
+  contradicted: 0
+  attempts: 0
+  hash: "14053060c13356d8f82fbe3f6e1a99e3"
 ---
 
 ## What's changing
@@ -126,7 +133,7 @@ Microsoft has not stated whether the higher limit switches on by itself for qual
 
 The OneDrive service description says OneDrive is included in Microsoft 365 and Office 365 plans, in SharePoint plans, and can also be purchased as a standalone plan. The roadmap item and MC1477187 name no additional licence for the higher limit, and a licence or price specific to the 1 million item limit is not yet published.
 
-No meter is documented for this feature at the time of writing (November 2026). Indirect costs are admin time to select preview users and brief the helpdesk, and any Mac upgrades needed to meet the minimum hardware requirements, which are not yet published in detail. Local disk space needed for larger synced libraries is not yet published.
+No meter is documented for this feature at the time of writing (November 2026). Indirect costs are admin time to select preview users and brief the helpdesk, and any Mac upgrades needed to meet the minimum hardware requirements. [Microsoft Support publishes the preview hardware and configuration requirements in Restrictions and limitations in OneDrive and SharePoint.](https://support.microsoft.com/en-us/office/restrictions-and-limitations-in-onedrive-and-sharepoint-64883a5d-228e-48f5-b3d2-eb39e07630fa) Local disk space needed for larger synced libraries is not yet published.
 
 ## Scope
 
@@ -140,7 +147,7 @@ No meter is documented for this feature at the time of writing (November 2026). 
 
 ### Before rollout
 - Identify Macs of users whose OneDrive or SharePoint libraries approach or exceed 300,000 items, as MC1477187 recommends, and choose a small preview group.
-- Check each candidate Mac against the minimum hardware and configuration requirements once Microsoft publishes them: operating system, memory, storage and processor.
+- Check each candidate Mac against the published preview requirements in [Restrictions and limitations in OneDrive and SharePoint](https://support.microsoft.com/en-us/office/restrictions-and-limitations-in-onedrive-and-sharepoint-64883a5d-228e-48f5-b3d2-eb39e07630fa).
 - Exclude users with legal-hold accounts or large numbers of read-only files from the first group, because MC1477187 says performance is not yet optimised for them.
 - Brief the helpdesk that the preview needs the Insiders ring and that non-qualifying Macs stay at 300,000 items.
 
@@ -172,7 +179,6 @@ Microsoft Learn documents no setting that turns the 1 million item limit on or o
 
 ## Open questions
 
-- What are the minimum hardware and configuration requirements (operating system version, memory, storage, processor) for the 1 million item limit on Mac? Watch MC1477187 and the OneDrive sync app Learn pages.
 - Does the higher limit apply automatically on a qualifying Insiders Mac, or does a setting enable it? Microsoft has not stated the default.
 - Does the Mac App Store edition of the sync app take part in the preview, given that it follows a separate update process?
 - When will the preview and General Availability reach GCC, GCC High and DoD? The roadmap lists them, but MC1477187 schedules only Worldwide.
@@ -180,14 +186,12 @@ Microsoft Learn documents no setting that turns the 1 million item limit on or o
 
 <!-- rationale
 risk: Low. Microsoft's notice MC1477187 says devices that do not meet the requirements see no change, and no new data access is described; the known gap is performance with read-only files and legal-hold accounts.
-cost: Low. Only indirect cost is documented: admin time and helpdesk preparation. Hardware requirements and any feature-specific licence are not yet published; OneDrive itself is included in Microsoft 365 plans.
+cost: Low. Only indirect cost is documented: admin time and helpdesk preparation. Microsoft Support publishes the preview hardware and configuration requirements; a feature-specific licence is not yet published, and OneDrive itself is included in Microsoft 365 plans.
 impact: Low. The preview reaches only Mac users on the Insiders ring whose devices qualify; users with libraries near 300,000 items will notice most.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing; Governance guidance: Before rollout; rationale: cost; Open questions / absence: Detailed hardware and configuration requirements for the Mac preview have not yet been published, so candidates should be checked once Microsoft publishes them. | Found: Windows 11, Windows Server 2025, or macOS Golden Gate 27. Memory: 8 GB RAM minimum (16 GB recommended). Storage: Solid-state drive (SSD) required. Processor: Intel i5 / AMD Ryzen 5 or later, Snapdragon X Plus or Apple silicon. | Fix: Replace the claims that hardware requirements are unpublished in Cost and licensing and the cost rationale with: 'Microsoft Support publishes the preview hardware and configuration requirements in Restrictions and limitations in OneDrive and SharePoint.' Link that sentence and add https://support.microsoft.com/en-us/office/restrictions-and-limitations-in-onedrive-and-sharepoint-64883a5d-228e-48f5-b3d2-eb39e07630fa to sources. Replace the Before rollout bullet with: 'Check each candidate Mac against the published preview requirements in Restrictions and limitations in OneDrive and SharePoint.' Remove the first Open questions bullet, which asks for those already published requirements. Keep the narrower statement that the supplied notice and roadmap do not give their values. | Source: https://support.microsoft.com/en-us/office/restrictions-and-limitations-in-onedrive-and-sharepoint-64883a5d-228e-48f5-b3d2-eb39e07630fa
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Intune path reaches the Property list file setting in a macOS Preference file profile. | Found: Select Devices > Manage devices > Configuration > Create > New policy. Platform: Select macOS. Profile type: Select Templates > Preference file. In Configuration settings, configure your settings: ... Property list file | Fix: Expand the path to 'Devices > Manage devices > Configuration > Create > New policy > macOS > Templates > Preference file > Create > Basics > Configuration settings > Property list file', following https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos. The omitted Basics page only collects a name and description; this is not a wrong navigation route. | Source: https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos
+- [supported, minor] summary; What's changing; Why it matters / record: Microsoft plans to raise the macOS OneDrive sync limit to 1 million items. | Found: OneDrive Sync supports syncing up to 1 million items on macOS devices | Fix: After the roadmap status and dates in What's changing, add: 'Microsoft Support describes support for syncing up to 1,000,000 items as available in public preview for Windows and macOS.' The supporting source is already cited: https://support.microsoft.com/en-us/office/restrictions-and-limitations-in-onedrive-and-sharepoint-64883a5d-228e-48f5-b3d2-eb39e07630fa. Keep the roadmap status and target dates.
 -->

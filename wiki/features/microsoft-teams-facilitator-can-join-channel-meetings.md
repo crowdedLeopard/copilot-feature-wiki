@@ -55,8 +55,11 @@ controls:
       surface: "Teams admin center"
       path: "Teams apps > Manage apps > Facilitator > Allow or Block"
       docs: "https://learn.microsoft.com/microsoftteams/facilitator-teams"
-    api: null
-    note: "Allowed by default; blocked if all apps are blocked for the organisation. The Update-M365TeamsApp reference labels -IsBlocked $true as unblocking; the blocking value is not reliably documented. Use the Allow or Block action."
+    api:
+      kind: "powershell"
+      call: "Update-M365TeamsApp -Id <app id> -IsBlocked $false"
+      docs: "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp"
+    note: "Automation shown here unblocks the app, as described in reference example 4. The reference also describes -IsBlocked $true as unblocking, so a reliable blocking value is not stated; use the admin UI to block."
   - governs: "Whether collaborative AI-generated meeting notes are enabled in Teams"
     scope: "tenant"
     ui: null
@@ -89,19 +92,23 @@ changes:
     note: "Corrected after the independent check: removed the unreliable Update-M365TeamsApp blocking call, added the meeting-policy join-link warning, and aligned rollout wording, language limits and checklist with their sources."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 92 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-22"
+    note: "Corrected after the independent check: row 1 now gives the Update-M365TeamsApp automation (documented as unblocking) instead of saying none is documented."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 95 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 92
-  confirmed: 91
+  claims: 95
+  confirmed: 95
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "951ef511b1682041110082184531ef8e"
+  contradicted: 0
+  attempts: 0
+  hash: "8b407e4bda8b460b1dab1777481e545f"
 ---
 
 ## What's changing
@@ -172,7 +179,7 @@ Prerequisites on the Facilitator page: a Microsoft 365 base licence, a Teams lic
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Facilitator is allowed or blocked for the organisation</strong><br><small>Tenant</small><br><small class="controls__note">Allowed by default; blocked if all apps are blocked for the organisation. The Update-M365TeamsApp reference labels -IsBlocked $true as unblocking; the blocking value is not reliably documented. Use the Allow or Block action.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Facilitator › Allow or Block <a href="https://learn.microsoft.com/microsoftteams/facilitator-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether Facilitator is allowed or blocked for the organisation</strong><br><small>Tenant</small><br><small class="controls__note">Automation shown here unblocks the app, as described in reference example 4. The reference also describes -IsBlocked $true as unblocking, so a reliable blocking value is not stated; use the admin UI to block.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Facilitator › Allow or Block <a href="https://learn.microsoft.com/microsoftteams/facilitator-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app id&gt; -IsBlocked $false</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether collaborative AI-generated meeting notes are enabled in Teams</strong><br><small>Tenant</small><br><small class="controls__note">Tenant-wide, not per user. Does not apply to collaborative meeting notes in Teams New Calendar, where Cloud Policy applies. Requires the SharePoint PowerShell module.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -IsCollabMeetingNotesFluidEnabled $false</code> <a href="https://learn.microsoft.com/microsoft-365/loop/loop-components-configuration" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Who can schedule channel meetings (existing control; does not govern Facilitator)</strong><br><small>User</small><br><small class="controls__note">New channel meetings only; the organiser can still edit existing ones. Turning off meeting policy settings also disables join links and conference IDs of existing meetings of that type the user organised; content stays accessible.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Meeting scheduling › Channel meeting scheduling <a href="https://learn.microsoft.com/microsoftteams/manage-who-can-schedule-meetings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -AllowChannelMeetingScheduling $False</code> <a href="https://learn.microsoft.com/microsoftteams/manage-who-can-schedule-meetings" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -198,10 +205,4 @@ For retention, the Purview page says to use a retention policy with the Teams ch
 risk: Medium. Facilitator's prompts, responses and notes are visible to everyone in the meeting, and Purview lists no support for sensitivity labels, DLP or Insider Risk Management for Facilitator AI interactions.
 cost: Low. The Facilitator page says Facilitator is included with a Microsoft Copilot licence; it states no separate price or meter for channel meetings, so the known cost is licence assignment and admin time.
 impact: Medium. Licensed users in organisations that have enabled Facilitator can add it to channel meetings; everyone in those meetings sees its responses and notes.
--->
-
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls: table row 1 / absence: No automation is documented for the organisation-wide control that allows or blocks Facilitator. | Found: Update-M365TeamsApp -Id 2b876f4d-2e6b-4ee7-9b09-8893808c1380 -IsBlocked $false ... Unblocks 1Page App ... -Id: Application ID of Microsoft Teams app. | Fix: Set controls[0].api to kind 'powershell', call 'Update-M365TeamsApp -Id <app id> -IsBlocked $false', docs 'https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp'. In the note, state: 'Automation shown here unblocks the app, as described in reference example 4. The reference also describes -IsBlocked $true as unblocking, so a reliable blocking value is not stated; use the admin UI to block.' Keep the tenant-wide UI path unchanged. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp
 -->

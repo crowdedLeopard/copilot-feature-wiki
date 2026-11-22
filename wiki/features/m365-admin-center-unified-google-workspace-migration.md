@@ -4,7 +4,7 @@ slug: "m365-admin-center-unified-google-workspace-migration"
 roadmapId: 470139
 topic: "governance"
 products: ["Microsoft 365 Admin Center"]
-summary: "One Microsoft 365 admin center page to start and track Gmail and Google Drive migrations from Google Workspace. Tenants with up to 1,000 mailboxes get a simplified Gmail flow. Admins choose when to migrate."
+summary: "One Microsoft 365 admin center page to start and track Gmail and Google Drive migrations from Google Workspace. Learn describes a simplified Gmail flow for up to 1,000 source mailboxes, subject to tenant availability."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published: the consolidated migration page and the simplified Gmail page name no licence or price for the tool. Migrated mailboxes need Exchange licences, as the large-tenant article states."
+  model: "included"
+  notes: "Migrated mailboxes require Exchange licences. No licence or charge specific to the unified page or simplified flow is published."
 audiences: ["m365-admin","service-owner","security"]
 tags: ["migration","m365-admin-center","exchange","onedrive","sharepoint"]
 sources:
@@ -39,6 +39,9 @@ sources:
     kind: "learn"
   - title: "Frequently Asked Questions: Migration Manager Google"
     url: "https://learn.microsoft.com/sharepointmigration/mm-faqs-google"
+    kind: "learn"
+  - title: "Migration Admin role"
+    url: "https://learn.microsoft.com/sharepointmigration/mm-migration-admin-role"
     kind: "learn"
   - title: "Set up Microsoft 365 for Google Workspace migration"
     url: "https://learn.microsoft.com/microsoft-365/admin/moveto-microsoft-365/set-up-microsoft-365-forgoogle"
@@ -68,7 +71,7 @@ controls:
       kind: "graph"
       call: "POST /v1.0/roleManagement/directory/roleAssignments"
       docs: "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal"
-    note: "Select the Microsoft 365 Migration Administrator role. The role page ties it to Migration Manager; it does not say it covers the Gmail flow. The request body names the role and the user."
+    note: "Select the Microsoft 365 Migration Administrator role. The role page ties it to Migration Manager, not the Gmail flow. The request body sets roleDefinitionId, principalId and directoryScopeId (/ for tenant scope)."
   - governs: "Tenant switch to hide or turn off the Google Workspace migration page"
     scope: "tenant"
     ui: null
@@ -83,19 +86,23 @@ changes:
     note: "First briefing for this item: the unified Google Workspace migration page, the 1000-mailbox boundary for the simplified Gmail flow, and the role and licensing gaps."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 67 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after the independent check: qualified the simplified Gmail flow by Learn's availability note, fixed the admin path, aligned the checklist with the controls table, and set licensing to included."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 69 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 65
+  claims: 69
+  confirmed: 69
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "bd5321bbb4981ab51486dabfb07db875"
+  contradicted: 0
+  attempts: 0
+  hash: "ae93c0a6d301b83abb4d7eda3b6bb4f6"
 ---
 
 ## What's changing
@@ -112,7 +119,7 @@ The roadmap record lists the status as In development with a target of March CY2
 
 A migration moves a whole organisation's mail and files, so the page matters most to the service owner who decides when, and under which Google and Microsoft accounts, it runs. Microsoft has not stated what happens on arrival, so no source says existing behaviour changes for a tenant that does nothing; the exposure comes when an admin starts a migration.
 
-The unified page also decides which Gmail route a tenant gets: at or below 1000 source mailboxes it is the simplified flow, above that the large-tenant flow. Plan for the route your mailbox count selects.
+Where the simplified flow is available, the unified page also decides which Gmail route a tenant gets: at or below 1000 source mailboxes it is the simplified flow, above that the large-tenant flow. Plan for the route your mailbox count selects.
 
 ## Risk assessment
 
@@ -144,7 +151,7 @@ Indirect costs are admin time, Google-side administration (domain verification, 
 
 The roadmap record lists Worldwide (Standard Multi-Tenant) as the only cloud, Web as the platform and General Availability as the release phase. Microsoft's classic Google Workspace migration article says that method is not currently available for GCC High or DoD.
 
-The simplified Gmail flow is for a Google source of 1000 mailboxes or fewer; above that the large-tenant route applies. The Drive route uses Migration Manager, which has a Lite experience that is enabled by default for tenants with fewer than 300 Microsoft 365 licences when the project is created. Learn's setup page gives the route in as Setup > Migration resources > Explore migration & imports tools > Google Workspace. Prerequisites include a Google Workspace administrator who can install the app, a verified domain, and for the large-tenant route the Recipient Management role group in Exchange Online.
+The simplified Gmail flow is for a Google source of 1000 mailboxes or fewer; above that the large-tenant route applies. The Simplified Gmail article also says the feature is not available worldwide pending Google app verification and gives an estimated worldwide launch of late October 2024; confirm availability in your tenant. The Drive route uses Migration Manager, which has a Lite experience that is enabled by default for tenants with fewer than 300 Microsoft 365 licences when the project is created. Learn's setup page gives the route in as Setup > Migration resources > Self-service migration and import tools > Explore migration & imports tools > Google Workspace. Prerequisites include a Google Workspace administrator who can install the app, a verified domain, and for the large-tenant route the Recipient Management role group in Exchange Online.
 
 ## Governance guidance
 
@@ -152,12 +159,9 @@ The simplified Gmail flow is for a Google source of 1000 mailboxes or fewer; abo
 - Decide which Microsoft 365 role runs the Drive migration, preferring the Microsoft 365 Migration Administrator role to Global admin, and assign it in the Microsoft Entra admin center.
 - Confirm your Google mailbox count against the 1000 boundary, so you know whether the simplified flow or the large-tenant flow applies.
 - Ask the Google Workspace administrator to review the permissions the Microsoft 365 Mail Migration app requests before installing it.
-- Verify the business domain in Microsoft 365 and plan the DNS change that moves mail routing.
 
 ### At rollout
-- Start from Setup > Migration resources in the Microsoft 365 admin center and add the source domain on the Google migration dashboard.
-- Review Migration Manager permission and file version settings before the first Drive run, because file-level permissions and older versions need explicit settings.
-- Assign Exchange licences to migrated users within the 30 days the batch article gives, where the large-tenant batch route is used.
+- Start from Setup > Migration resources > Self-service migration and import tools > Explore migration & imports tools > Google Workspace in the Microsoft 365 admin center and add the source domain on the Google migration dashboard.
 
 ### After rollout
 - Compare migrated mail and file access with the source and recreate external sharing links by hand, as the Drive FAQ advises.
@@ -171,7 +175,7 @@ The simplified Gmail flow is for a Google source of 1000 mailboxes or fewer; abo
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Who can run Migration Manager for Google Drive migration</strong><br><small>Tenant</small><br><small class="controls__note">Select the Microsoft 365 Migration Administrator role. The role page ties it to Migration Manager; it does not say it covers the Gmail flow. The request body names the role and the user.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Identity › Roles &amp; admins › role › Add assignments <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who can run Migration Manager for Google Drive migration</strong><br><small>Tenant</small><br><small class="controls__note">Select the Microsoft 365 Migration Administrator role. The role page ties it to Migration Manager, not the Gmail flow. The request body sets roleDefinitionId, principalId and directoryScopeId (/ for tenant scope).</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Identity › Roles &amp; admins › role › Add assignments <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tenant switch to hide or turn off the Google Workspace migration page</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no such switch at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -193,14 +197,8 @@ cost: Low. The sources show admin time and Exchange licences for migrated mailbo
 impact: Low. Admins who run the migration notice the new page; end users are affected by the mailbox and file moves, not by the page itself.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] summary; Why it matters; Scope / availability: Tenants with up to 1,000 source mailboxes get the simplified flow, without any further availability qualification. | Found: This feature isn't available worldwide. We're waiting for Google verification of the Google Marketplace app Microsoft 365 Mail Migration. The estimated time for worldwide launch is late October 2024. | Fix: Replace the summary's eligibility sentence with 'Learn describes a simplified Gmail flow for up to 1,000 source mailboxes, subject to tenant availability.' Add to Scope: 'The Simplified Gmail article also says the feature is not available worldwide pending Google app verification and gives an estimated worldwide launch of late October 2024; confirm availability in your tenant.' Qualify the route statement in Why it matters with 'where available'. Preserve the roadmap's listed cloud as a record fact. | Source: https://learn.microsoft.com/exchange/mailbox-migration/custom-migration-small-business-from-gmail
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model; licensing.notes; Open questions / licensing: Feature-specific licensing for the unified page and simplified flow is not published, represented by licensing.model unknown. | Found: After the batch starts and mail users are converted to mailboxes, assign their Exchange licenses within 30 days. | Fix: Set licensing.model to included under the standard for an option inside a licensed product. Keep the known Exchange mailbox requirement in the notes and say: 'Migrated mailboxes require Exchange licences. No licence or charge specific to the unified page or simplified flow is published.' Do not describe the migration tool as free. | Source: https://learn.microsoft.com/microsoft-365/admin/moveto-microsoft-365/migrate-email
-- [supported, minor] Risk assessment: Security & identity; Governance guidance: Before rollout / role: The Microsoft 365 Migration Administrator role is narrower than SharePoint admin or Global admin for this migration work. | Found: With this new role, you limit usage to only what is required to migrate your content, reserving SharePoint Admin access to only users who need it. This role only allows access to Migration Manager. | Fix: Add https://learn.microsoft.com/sharepointmigration/mm-migration-admin-role to sources for the narrower-role comparison. | Source: https://learn.microsoft.com/sharepointmigration/mm-migration-admin-role
-- [supported, minor] Scope; Governance guidance: At rollout / admin-path: The entry route is Microsoft 365 admin center > Setup > Migration resources > Explore migration & imports tools > Google Workspace. | Found: Select Setup > Migration resources. Under Self-service migration and import tools, select Explore migration & imports tools. Select Google Workspace to open its migration page. | Fix: Use 'Setup > Migration resources > Self-service migration and import tools > Explore migration & imports tools > Google Workspace' in Scope and the At rollout entry bullet. The omitted intermediate label is a heading, not an additional choice. | Source: https://learn.microsoft.com/microsoft-365/admin/moveto-microsoft-365/set-up-microsoft-365-forgoogle
-- [supported, minor] controls[0].api; controls[0].note / command: POST /v1.0/roleManagement/directory/roleAssignments creates the role assignment, with the request body identifying the role and user. | Found: POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments "principalId": "<Object ID of user or group>", "roleDefinitionId": "<ID of role definition>", "directoryScopeId": "/" | Fix: Replace 'The request body names the role and the user' with 'The request body sets roleDefinitionId to the role definition ID, principalId to the user object ID, and directoryScopeId to / for tenant scope.' Keep the call unchanged. | Source: https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal
-- [contradicted, minor] Governance guidance; Governance controls / consistency: The checklist names controls for domain verification, migration permission/version settings and Exchange licence assignment that are absent from the controls table. | Found: Checklist: 'Verify the business domain in Microsoft 365'; 'Review Migration Manager permission and file version settings'; 'Assign Exchange licences'. Table: only Migration Manager role assignment and an undocumented tenant hide/disable switch. | Fix: The Before rollout domain-verification step and the At rollout permission/version-settings and licence-assignment steps have no corresponding controls-table rows. Remove those control-setting steps from the checklist to reconcile it with the existing table; do not add unchecked rows.
+- [supported, minor] Governance controls / behaviour: Domain-wide delegation is authorized in the Google Admin console, not through a Microsoft 365 setting. | Found: Go to the Google Workspace Admin page https://admin.google.com/AdminHome and sign in as Google Workspace admin for your tenant. Click Security, then click API Controls, and then click Manage Domain Wide Delegation. | Fix: Add https://learn.microsoft.com/exchange/mailbox-migration/manually-configuring-gsuite-for-migration to sources for the statement that domain-wide delegation is controlled in the Google Admin console. | Source: https://learn.microsoft.com/exchange/mailbox-migration/manually-configuring-gsuite-for-migration
 -->

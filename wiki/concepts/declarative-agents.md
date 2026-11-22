@@ -5,12 +5,12 @@ slug: "declarative-agents"
 summary: "A declarative agent is a Microsoft 365 Copilot agent defined by instructions, knowledge and actions and run on Copilot's own orchestrator. Administrators use it to decide which agents exist, who can use them and which licence each needs."
 created: "2026-11-22"
 updated: "2026-11-22"
-version: 2
+version: 3
 tags: ["declarative-agents","agents","m365-copilot","agent-governance","extensibility","licensing","m365-admin-center","agent-365"]
 covers: []
 sources:
   - title: "Declarative agents for Microsoft 365 Copilot"
-    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-declarative-agent"
+    url: "https://learn.microsoft.com/plugins/overview-declarative-agent"
     kind: "learn"
   - title: "Compare declarative and custom engine agents"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/agents-overview"
@@ -24,8 +24,11 @@ sources:
   - title: "Set up your development environment for your plugin"
     url: "https://learn.microsoft.com/plugins/prerequisites"
     kind: "learn"
-  - title: "Declarative agent schema 1.5 for Microsoft 365 Copilot"
-    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-manifest-1.5"
+  - title: "Add knowledge sources to your declarative agent"
+    url: "https://learn.microsoft.com/plugins/knowledge-sources"
+    kind: "learn"
+  - title: "Govern access, tools, and connections for plugins and agents"
+    url: "https://learn.microsoft.com/plugins/manage"
     kind: "learn"
   - title: "Governance and lifecycle actions for agents available in Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions"
@@ -51,11 +54,8 @@ sources:
   - title: "Update Copilot package"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update"
     kind: "learn"
-  - title: "List packages"
+  - title: "List Copilot packages"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackages-list"
-    kind: "learn"
-  - title: "Managing AI experiences enabled by usage-based billing"
-    url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits"
     kind: "learn"
 related: ["mcp","copilot-credits","spending-policies","agent-identity","app-management","knowledge-grounding","m365-copilot-employee-self-service-agent-in-m365-copilot","m365-copilot-use-agent-365-agents-within-m365-copilot-chat-and-declarative-agents"]
 controls:
@@ -69,7 +69,7 @@ controls:
       kind: "graph"
       call: "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
-    note: "Beta; the Package Management API requires a Microsoft Agent 365 licence. Applies to the selected agent, not its whole plugin package."
+    note: "Beta; the Package Management API requires a Microsoft Agent 365 licence. The UI action is documented for the selected agent; the API blocks the Copilot package identified by {id}."
   - governs: "Which users or groups can access agents and plugins"
     scope: "tenant"
     ui:
@@ -80,7 +80,7 @@ controls:
       kind: "graph"
       call: "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors"
       docs: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
-    note: "Preview; mode=applyOnce. For microsoft.agent.useraccess (resourceVersion 1), properties.valueObject.userAssignmentCategory sets everyone or noOne. Needs delegated permissions and AI Administrator; TCM is global service only."
+    note: "Preview; applyOnce. For microsoft.agent.useraccess (resourceVersion 1), properties.valueObject.userAssignmentCategory sets everyone or noOne. Needs AI Administrator; the remediation page says TCM is global service only."
   - governs: "Which users or groups an agent is available to and deployed to"
     scope: "agent"
     ui:
@@ -114,18 +114,22 @@ changes:
     note: "Corrected: removed the default-state inference and the 'no price of its own' claim, added the preview Graph call for User access, fixed the custom engine hosting cell, added the GCC caveat, dropped two checklist items."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 118 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-22"
+    note: "Corrected three findings: the Tools boundary now separates plugin management from connected-service credentials, the block row states the UI and API scope as documented, and Agent management rules are no longer excluded from source-discovery restrictions."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 130 statements not yet confirmed"
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 118
-  confirmed: 115
+  claims: 130
+  confirmed: 130
   unconfirmed: 0
-  contradicted: 3
-  attempts: 2
-  hash: "08f86be9d5756975e4401fcfc935f3e4"
+  contradicted: 0
+  attempts: 0
+  hash: "bde18750b0b9114754188e3e86775e35"
 ---
 
 ## What it is
@@ -166,7 +170,7 @@ A user can use an agent only if they meet the requirements of every capability i
 ## Risks and limits
 
 - **Capability mismatch.** Users can access an agent only if they meet the requirements of every capability it uses, so an agent that uses Email, People or Teams knowledge is unavailable to users without a Copilot licence.
-- **Blocking acts on the agent only.** The documented actions apply to the selected agent, not necessarily to its plugin package, skills, shared MCP servers or connections, and blocking does not necessarily revoke connected-service permissions or credentials. Manage those under **Agents** > **Tools**.
+- **Agent and package boundaries.** The documented actions apply to the selected agent, not necessarily to its plugin package, skills, shared MCP servers or connections, and blocking does not necessarily revoke connected-service permissions or credentials. Manage plugins, skills and MCP servers under **Agents** > **Tools**; manage connected-service permissions, credentials and connections separately in the product that owns them. A package that contains an agent and a skill appears under both Tools and Agents as one entity; those views do not make its capabilities independently governed packages.
 - **Block reach varies by builder.** Blocking an Agent Builder or Copilot Studio agent affects it in Copilot and other hosts; blocking a SharePoint or Foundry agent affects only Copilot Chat.
 - **Creation cannot be switched off alone.** Microsoft documents that administrators cannot disable Agent Builder creation separately while keeping agents enabled; they can control access, org-wide sharing and catalogue publishing.
 - **Behaviour is managed, not deterministic.** Instructions are not a deterministic workflow engine, platform and model updates can change behaviour, and large sources do not guarantee complete coverage of a response.
@@ -181,8 +185,8 @@ A user can use an agent only if they meet the requirements of every capability i
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether one agent is available to anyone in the organisation</strong><br><small>Agent</small><br><small class="controls__note">Beta; the Package Management API requires a Microsoft Agent 365 licence. Applies to the selected agent, not its whole plugin package.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block › Block agent <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users or groups can access agents and plugins</strong><br><small>Tenant</small><br><small class="controls__note">Preview; mode=applyOnce. For microsoft.agent.useraccess (resourceVersion 1), properties.valueObject.userAssignmentCategory sets everyone or noOne. Needs delegated permissions and AI Administrator; TCM is global service only.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether one agent is available to anyone in the organisation</strong><br><small>Agent</small><br><small class="controls__note">Beta; the Package Management API requires a Microsoft Agent 365 licence. The UI action is documented for the selected agent; the API blocks the Copilot package identified by {id}.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block › Block agent <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users or groups can access agents and plugins</strong><br><small>Tenant</small><br><small class="controls__note">Preview; applyOnce. For microsoft.agent.useraccess (resourceVersion 1), properties.valueObject.userAssignmentCategory sets everyone or noOne. Needs AI Administrator; the remediation page says TCM is global service only.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which users or groups an agent is available to and deployed to</strong><br><small>Agent</small><br><small class="controls__note">The request body sets allowedUsersAndGroups, acquireUsersAndGroups, availableTo and deployedTo. Beta; requires a Microsoft Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Registry › Status › Available › agent › Install › Deploy agent to selected users <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Inventory of agents in the tenant</strong><br><small>Tenant</small><br><small class="controls__note">Read-only. By default the response contains only titles that contain an agent. Requires a Microsoft Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET https://graph.microsoft.com/v1.0/copilot/admin/catalog/packages</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackages-list" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -192,7 +196,7 @@ Microsoft's page on the preview Tenant Configuration Management (TCM) route name
 
 Three more settings sit beside the table without a path read for this page. **Agent and plugin access** selects whether Microsoft, organisation or external-publisher agents appear: a disabled type is hidden from the Agent store, though Microsoft's own agents stay visible and cannot be installed. **Sharing** sets who can share Agent Builder agents with the whole organisation and applies to no other builder. **Agent management rules** run bulk actions such as blocking ownerless agents without usage. Preview TCM resources exist for agent types, sharing and user access.
 
-Admin actions are recorded in the Purview audit log (for example BlockedAgent and UpdatedTenantSettings); see [Auditing](/concepts/auditing/). Note that User access and the three settings above govern distribution, not what an agent's knowledge sources contain; that is set by SharePoint and connector permissions.
+Admin actions are recorded in the Purview audit log (for example BlockedAgent and UpdatedTenantSettings); see [Auditing](/concepts/auditing/). Note that User access, Agent and plugin access and Sharing govern agent distribution, not source-content permissions; those are set by SharePoint and connector permissions.
 
 ## What to check
 
@@ -207,15 +211,11 @@ Admin actions are recorded in the Purview audit log (for example BlockedAgent an
 - Preview TCM applyOnce documents automation for User access, Agent and plugin access and Sharing; the useraccess schema documents everyone and noOne, not specific users or groups.
 - Does Microsoft publish a Copilot Credits rate specific to declarative agents? This page defers to Microsoft's billing rates page.
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risks and limits: Blocking acts on the agent only / admin-path: The instruction 'Manage those under Agents > Tools' includes the connected-service permissions, credentials and connections just named. | Found: Connection or account | The product that owns authentication and the connection | Manage sign-in, authorization, source permissions, connection scope, and revocation separately. | Fix: Replace 'Manage those under Agents > Tools' with 'Manage plugins, skills and MCP servers under Agents > Tools; manage connected-service permissions, credentials and connections separately in the product that owns them.' The first clause is documented at https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions and the second at https://learn.microsoft.com/plugins/manage#apply-a-component-control-when-required. | Source: https://learn.microsoft.com/plugins/manage
-- [contradicted, blocker] controls[0].note / applicability: The block row, including its Package Management API, applies to the selected agent and not its whole plugin package. | Found: Block a Copilot package to prevent its usage. | Fix: Replace 'Applies to the selected agent, not its whole plugin package' with 'The UI action is documented for the selected agent; the API blocks the Copilot package identified by {id}.' The UI boundary is documented at https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions and the API boundary at https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block. Make the same change in the rendered row. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block
-- [contradicted, blocker] Governance controls: final paragraph / applicability: User access and all three additional settings, including Agent management rules, govern distribution rather than knowledge-source data access. | Found: Restrict external sharing of sites and its content | Provides capability to restrict agents and Copilot from discovering specific sites and content. | Fix: Replace 'User access and the three settings above govern distribution, not what an agent's knowledge sources contain' with 'User access, Agent and plugin access and Sharing govern agent distribution, not source-content permissions.' Do not include Agent management rules in this exclusion: https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings documents Apply template for security policies, and https://learn.microsoft.com/microsoft-agent-365/admin/policy-template includes source-discovery restrictions. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/policy-template
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing: capability list / licensing: SharePoint data requires usage-based billing or a Copilot licence. | Found: Custom knowledge: SharePoint data | ❌ | ✅ | ✅ | Fix: Retain the prerequisites table's rule, but add: 'The knowledge-sources page separately says SharePoint and OneDrive retrieval requires an active Microsoft 365 Copilot licence; its overview table allows a licence or metered usage.' Cite https://learn.microsoft.com/plugins/knowledge-sources#sharepoint-and-onedrive for this documentation disagreement. | Source: https://learn.microsoft.com/plugins/prerequisites
-- [supported, minor] Risks and limits: Blocking acts on the agent only / applicability: The agent actions page says selected-agent actions do not necessarily apply to its whole plugin package or bundled capabilities. | Found: These actions apply to the selected agent. If the agent is included in a plugin, don't assume the action also applies to the whole plugin package, its skills, shared MCP servers, or connections. | Fix: Keep the cited page's qualification, but rename this bullet 'Agent and package boundaries' and add: 'The plugin governance page separately says a package containing an agent and a skill appears under Tools and Agents as one entity; those views do not make its capabilities independently governed packages.' Cite https://learn.microsoft.com/plugins/manage#understand-package-and-skill-blocking. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
-- [supported, minor] controls[1].note / availability: The remediation and applyOnce documentation says preview TCM is global-service only. | Found: These capabilities are available in preview through Microsoft Graph beta. TCM is available only in the global service, not in national clouds. | Fix: Replace 'TCM is global service only' with 'The remediation/applyOnce guidance says TCM is global-service only; the create-monitor reference separately lists US Government L4 and L5 as available.' Both pages are already cited: https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources and https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta. | Source: https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources
-- [supported, minor] sources; Why it matters; Cost and licensing / applicability: The permission-scoped grounding and published billing-rate statements are supported by Microsoft pages not included in the source list. | Found: Microsoft Copilot only surfaces organizational data to which individual users have at least view permissions. | Fix: Add the supporting sources https://learn.microsoft.com/microsoft-365-copilot/microsoft-365-copilot-privacy and https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management. The corrections that describe documentation disagreements and package boundaries also need https://learn.microsoft.com/plugins/knowledge-sources and https://learn.microsoft.com/plugins/manage. No additional prose or control rows are required by this source-list correction. | Source: https://learn.microsoft.com/microsoft-365-copilot/microsoft-365-copilot-privacy
+- [supported, minor] controls[1].api / command: POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors can apply a User access baseline once. | Found: Create a new configurationMonitor ... applies a desired-state baseline once in applyOnce mode. ... mode ... Optional; defaults to monitorOnly. | Fix: Keep the call. Add to the row's note: 'Set the request body's mode to applyOnce; the baseline contains the microsoft.agent.useraccess resource.' The reference is https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
+- [supported, minor] What it is: comparison table, Hosting / behaviour: Custom engine agents are hosted in Microsoft 365 with Copilot Studio or externally with custom solutions such as Azure AI. | Found: Engine hosting ... Hosted in Microsoft 365 with Copilot Studio or externally with custom solutions such as Azure AI. ... Hosting: Require additional hosting outside of Microsoft 365 | Fix: Keep the table cell, and add immediately below the table: 'The same comparison page's Custom engine agents section instead says they require additional hosting outside Microsoft 365, typically Azure.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/agents-overview. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/agents-overview
+- [supported, minor] Cost and licensing: SharePoint capability / licensing: SharePoint data requires usage-based billing or a Copilot licence. | Found: Custom knowledge: SharePoint data | ❌ | ✅ | ✅ | Fix: Keep the prerequisite-table statement, and add: 'The knowledge-sources page separately says SharePoint and OneDrive retrieval requires an active Microsoft 365 Copilot licence and fails without one, despite its own metered-usage table.' Cite https://learn.microsoft.com/plugins/knowledge-sources alongside https://learn.microsoft.com/plugins/prerequisites. | Source: https://learn.microsoft.com/plugins/prerequisites
+- [supported, minor] Cost and licensing; Governance controls: distribution boundary; sources / behaviour: The all-capabilities access requirement, billing-rate reference and source-permission distinction are supported by additional Microsoft pages not included in sources. | Found: Users can access a declarative agent only if they meet the requirements for all capabilities it uses. | Fix: Add these verified sources: https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-manifest-1.8 ; https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management ; https://learn.microsoft.com/plugins/agent-builder-share-manage-agents . | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-manifest-1.8#declarative-agent-manifest-object
 -->

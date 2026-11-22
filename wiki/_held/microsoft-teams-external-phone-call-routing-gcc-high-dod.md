@@ -18,7 +18,7 @@ defaultState: "admin-opt-in"
 action: "review"
 licensing:
   model: "mixed"
-  notes: "Microsoft's Teams Phone licensing page says users who need their own phone number need licensing that includes Teams and Microsoft 365 Phone System, for example an E5 licence or the Teams Phone Standard add-on. A licence or price specific to these routing settings is not yet published."
+  notes: "Microsoft's Teams Phone licensing page says users who need their own phone number need licensing that includes Teams and Microsoft 365 Phone System, for example a legacy Microsoft 365 E5 licence, or a Microsoft Teams Enterprise licence combined with Microsoft Teams Phone Standard. A licence or price specific to these routing settings is not yet published."
 audiences: ["m365-admin","service-owner","end-user"]
 tags: ["teams","teams-phone","powershell","policy","call-routing","gcc-high","dod"]
 sources:
@@ -36,6 +36,12 @@ sources:
     kind: "learn"
   - title: "Teams Phone licensing"
     url: "https://learn.microsoft.com/microsoftteams/teams-phone-licensing"
+    kind: "learn"
+  - title: "Set up Cloud Voicemail"
+    url: "https://learn.microsoft.com/microsoftteams/set-up-phone-system-voicemail"
+    kind: "learn"
+  - title: "Office 365 GCC High and DoD"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/gcc-high-and-dod"
     kind: "learn"
   - title: "Microsoft 365 Roadmap item 567884"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=567884"
@@ -75,7 +81,7 @@ controls:
       kind: "powershell"
       call: "Set-CsUserCallingSettings -Identity user6@contoso.com -IsUnansweredEnabled $true -UnansweredTargetType Voicemail -UnansweredDelay 00:00:20"
       docs: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csusercallingsettings?view=teams-ps"
-    note: "Existing per-user setting that the Unanswered routing choice relies on; it does not route external calls by itself. The Voice tab shows only for users with a Teams Phone licence."
+    note: "Existing per-user setting that Unanswered routing relies on; it does not route external calls by itself. Voice tab shows only for users with a Teams Phone licence. Available only in Teams Only deployment mode."
 confidence: "medium"
 created: "2026-11-22"
 updated: "2026-11-22"
@@ -85,19 +91,23 @@ changes:
     note: "First briefing: documents the Teams calling-policy settings for routing external PSTN and federated calls to voicemail or unanswered settings, available in GCC High and DoD."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 49 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after verification: unanswered destination can be delegates or a group, Teams Only deployment-mode qualification, removed an unverified admin centre location, and added the GCC High and DoD Direct Routing note."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 53 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 49
-  confirmed: 45
-  unconfirmed: 1
+  claims: 53
+  confirmed: 50
+  unconfirmed: 0
   contradicted: 3
-  attempts: 1
-  hash: "c74f6be4bfbd3294e2265e47eea9938a"
+  attempts: 2
+  hash: "d365f8431d06fd291331b496317ccdf2"
 ---
 
 ## What's changing
@@ -121,7 +131,7 @@ If nobody acts, the documented default is RegularIncoming (no changes to default
 
 **Security & identity**
 - The setting is a calling-policy value (`InboundPstnCallRoutingTreatment` and `InboundFederatedCallRoutingTreatment`), so it applies to whoever is assigned that policy. Microsoft's page frames it as a way to reduce unwanted external calls; it does not describe it as a security control for any specific attack.
-- The page says **Unanswered** and **Send to voicemail** take precedence over delegate ringing, call groups and call forwarding, so external calls to users who rely on those arrangements will no longer reach the delegates or group members.
+- Unanswered and Send to voicemail take precedence over other call forwarding settings, including simultaneous delegate ringing and call groups. Unanswered still follows the user's unanswered destination, which can be MyDelegates or Group.
 
 **Autonomy & actions**
 - No agent or automated action is described. Once an admin sets the policy value, the routing applies to every inbound call of that type for the users on the policy, without the user approving it.
@@ -132,7 +142,7 @@ If nobody acts, the documented default is RegularIncoming (no changes to default
 
 ## Cost and licensing
 
-Microsoft's "Routing inbound calls" page names no licence, meter or charge for these routing settings. It says the article applies to Microsoft Calling Plans, Operator Connect, Teams Phone Mobile and Direct Routing.
+Microsoft's "Routing inbound calls" page names no licence, meter or charge for these routing settings. It says the article applies to Microsoft Calling Plans, Operator Connect, Teams Phone Mobile and Direct Routing. For GCC High and DoD, Microsoft's service description says Phone System is delivered via Direct Routing.
 
 The Teams Phone licensing page states that users who need their own telephone number to make and receive calls must be assigned licensing that includes the Microsoft Teams and Microsoft 365 Phone System applications. Its examples include a legacy Microsoft 365 E5 licence, or a Microsoft Teams Enterprise licence combined with the Microsoft Teams Phone Standard licence. That page also says that if Microsoft provides PSTN access and phone numbers, the user needs a Microsoft Calling Plan licence in addition.
 
@@ -142,14 +152,14 @@ A licence or price specific to these routing settings, or specific to GCC High a
 
 **Who and where.** The roadmap item lists the GCC High and DoD clouds and the Desktop and Mac platforms, in the General Availability phase with status Launched and a target of September CY2026. Microsoft's page states that the settings are also available for GCCH and DoD.
 
-**Users.** The settings are values in a Teams calling policy, so they apply to the users assigned that policy. The page says the article applies to Microsoft Calling Plans, Operator Connect, Teams Phone Mobile and Direct Routing, so users on those telephony options are the ones in scope. Users who rely on phone numbers need Teams Phone licensing as described above.
+**Users.** The settings are values in a Teams calling policy, so they apply to the users assigned that policy. The page says the article applies to Microsoft Calling Plans, Operator Connect, Teams Phone Mobile and Direct Routing, so users on those telephony options are the ones in scope. For GCC High and DoD, Microsoft's service description says Phone System is delivered via Direct Routing. Users who rely on phone numbers need Teams Phone licensing as described above. The per-user unanswered configuration is available only in Teams Only deployment mode.
 
 **Out of scope.** **Let users decide** is offered for PSTN calls only, not for federated calls.
 
 ## Governance guidance
 
 ### Before rollout
-- Identify which calling policies are in use and which users are assigned each, using the Teams admin center calling policies list, so you know who a change will reach.
+- Identify which calling policies are in use and which users are assigned each, so you know who a change will reach.
 - Decide per group whether external calls should go to voicemail, to unanswered settings, or stay on default routing, and agree it with the owners of call groups and delegate arrangements, which the setting overrides.
 - Confirm that each affected user has voicemail enabled and unanswered call settings configured, because a call is disconnected where the chosen destination is not available.
 
@@ -159,7 +169,7 @@ A licence or price specific to these routing settings, or specific to GCC High a
 
 ### After rollout
 - Test with a pilot user by placing an external call and checking that it reaches voicemail or follows the unanswered setting as chosen.
-- Review the affected users' unanswered call settings, which Microsoft says forward to voicemail after 30 seconds by default if not modified, and correct any that route somewhere unintended.
+- Review the affected users' unanswered call settings, which Microsoft says forward to voicemail after 30 seconds by default if not modified, and correct any that route somewhere unintended. Microsoft notes that the settings displayed in Teams admin center or Teams PowerShell can nevertheless show the unanswered target as none and a delay of 20 seconds.
 
 ## Governance controls
 
@@ -170,7 +180,7 @@ A licence or price specific to these routing settings, or specific to GCC High a
 <tbody>
 <tr><td data-label="Control"><strong>How inbound PSTN calls are routed for users on a calling policy</strong><br><small>User</small><br><small class="controls__note">The reference lists RegularIncoming (default), Unanswered, Voicemail and UserOverride (Let users decide). Takes precedence over call forwarding, call groups and delegate ringing.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Calling policies › policy › Routing for PSTN calls <a href="https://learn.microsoft.com/microsoftteams/inbound-call-routing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsCallingPolicy -Identity Global -InboundPstnCallRoutingTreatment Unanswered</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>How inbound federated calls are routed for users on a calling policy</strong><br><small>User</small><br><small class="controls__note">The reference lists RegularIncoming (default), Unanswered and Voicemail. There is no user-override option for federated calls.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Calling policies › policy › Routing for federated calls <a href="https://learn.microsoft.com/microsoftteams/inbound-call-routing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsCallingPolicy -Identity Global -InboundFederatedCallRoutingTreatment Voicemail</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Where a user's unanswered calls go, which is the destination for calls routed to unanswered settings</strong><br><small>User</small><br><small class="controls__note">Existing per-user setting that the Unanswered routing choice relies on; it does not route external calls by itself. The Voice tab shows only for users with a Teams Phone licence.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Users › Manage users › user › Voice › Call answering rules › If unanswered <a href="https://learn.microsoft.com/microsoftteams/user-call-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsUserCallingSettings -Identity user6@contoso.com -IsUnansweredEnabled $true -UnansweredTargetType Voicemail -UnansweredDelay 00:00:20</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csusercallingsettings?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Where a user's unanswered calls go, which is the destination for calls routed to unanswered settings</strong><br><small>User</small><br><small class="controls__note">Existing per-user setting that Unanswered routing relies on; it does not route external calls by itself. Voice tab shows only for users with a Teams Phone licence. Available only in Teams Only deployment mode.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Users › Manage users › user › Voice › Call answering rules › If unanswered <a href="https://learn.microsoft.com/microsoftteams/user-call-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsUserCallingSettings -Identity user6@contoso.com -IsUnansweredEnabled $true -UnansweredTargetType Voicemail -UnansweredDelay 00:00:20</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csusercallingsettings?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -193,13 +203,8 @@ impact: Low. Only users covered by a calling policy that an admin changes notice
 <!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity, second bullet / behaviour: External calls routed using Unanswered or Send to voicemail will no longer reach delegates or group members. | Found: Set-CsUserCallingSettings -Identity user1@contoso.com -IsUnansweredEnabled $true -UnansweredTargetType MyDelegates -UnansweredDelay 00:00:30 ... This example shows setting unanswered call forward to the delegates after 30 seconds for user1@contoso.com. | Fix: Replace the second Security & identity bullet with: 'Unanswered and Send to voicemail take precedence over other call forwarding settings, including simultaneous delegate ringing and call groups. Unanswered still follows the user's unanswered destination, which can be MyDelegates or Group.' The cited Set-CsUserCallingSettings reference documents both target types. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csusercallingsettings?view=teams-ps
-- [contradicted, blocker] controls[2].note; Scope: Users; Governance guidance / applicability: The per-user unanswered configuration is presented for affected Teams Phone users without a deployment-mode restriction. | Found: Important ... This feature is only in Teams Only deployment mode. | Fix: Append 'This per-user configuration is available only in Teams Only deployment mode.' to controls[2].note, and carry the same qualification in Scope: Users. The cited user-call-settings page states this requirement. | Source: https://learn.microsoft.com/microsoftteams/user-call-settings
-- [unsupported, blocker] Governance guidance: Before rollout, first bullet / admin-path: The Teams admin center calling policies list can identify which users are assigned each policy. | Found: Searched: Teams calling policies view assigned users policy; Teams calling policies View users. Read teams-calling-policy excerpts, assign-policies-users-and-groups and policy viewing excerpts; none states the calling policies list identifies effective users. | Fix: Remove 'using the Teams admin center calling policies list' from the first Before rollout bullet. Keep the advice to identify policies and affected users without claiming an unverified UI location.
+- [contradicted, blocker] front matter: licensing.model / licensing: The entitlement model for the routing feature is mixed. | Found: Redirect external phone calls | Send inbound calls from external callers to user's forwarding settings (for example, voicemail) while not impacting internal calls. | Image of a x for no | Image of a checkmark for yes | Fix: Set licensing.model to included. Add https://learn.microsoft.com/microsoftteams/here-s-what-you-get-with-phone-system to sources and state in licensing.notes: 'Microsoft lists Redirect external phone calls with Microsoft Teams Enterprise plus Teams Phone, not with Microsoft Teams Enterprise alone.' Keep the existing licence-combination examples as background. | Source: https://learn.microsoft.com/microsoftteams/here-s-what-you-get-with-phone-system
+- [contradicted, blocker] front matter: licensing.notes; Cost and licensing; Open questions / absence: Microsoft has not published a licence covering these routing settings. | Found: With Microsoft Teams Enterprise license | With Microsoft Teams Enterprise license + Teams Phone license ... Redirect external phone calls ... Image of a x for no | Image of a checkmark for yes | Fix: Replace the unpublished-licence wording in licensing.notes and Cost and licensing with: 'Microsoft lists Redirect external phone calls with Microsoft Teams Enterprise plus Teams Phone, not with Microsoft Teams Enterprise alone.' Cite https://learn.microsoft.com/microsoftteams/here-s-what-you-get-with-phone-system. In Open questions, remove 'licence or' so the question concerns a separate charge only. | Source: https://learn.microsoft.com/microsoftteams/here-s-what-you-get-with-phone-system
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: An E5 licence is an example of qualifying licensing, specified as legacy Microsoft 365 E5 in the body. | Found: A legacy Microsoft 365 E5 license - includes Microsoft Teams and Microsoft 365 Phone System applications | Fix: In licensing.notes, replace 'an E5 licence or the Teams Phone Standard add-on' with 'a legacy Microsoft 365 E5 licence, or a Microsoft Teams Enterprise licence combined with Microsoft Teams Phone Standard'. This preserves the qualifying combination and legacy distinction already given in the body. | Source: https://learn.microsoft.com/microsoftteams/teams-phone-licensing
-- [supported, minor] Risk assessment: Data exposure / behaviour: Callers' voicemail messages are stored in the user's mailbox. | Found: Voicemail messages generated by Cloud Voicemail are delivered to and stored in the user's Exchange mailbox, either in Exchange Online or in Exchange Server. | Fix: Add https://learn.microsoft.com/microsoftteams/set-up-phone-system-voicemail to sources for the voicemail mailbox statement. | Source: https://learn.microsoft.com/microsoftteams/set-up-phone-system-voicemail
-- [supported, minor] Cost and licensing; Scope: Users / applicability: The routing article applies to Calling Plans, Operator Connect, Teams Phone Mobile and Direct Routing. | Found: This article applies to Microsoft Calling Plans, Operator Connect, Teams Phone Mobile, and Direct Routing. | Fix: After this general article-scope statement, add: 'For GCC High and DoD, Microsoft's service description says Phone System is delivered via Direct Routing.' Cite https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/gcc-high-and-dod, whose passage states 'Phone System and Audio Conferencing for GCC High and DoD environments are being delivered via Direct Routing.' | Source: https://learn.microsoft.com/microsoftteams/inbound-call-routing
-- [supported, minor] Governance guidance: After rollout, second bullet / default: Unmodified call answering rules forward unanswered calls to voicemail after 30 seconds. | Found: If a user or tenant admin doesn't modify their call answering rules, unanswered calls are forwarded to voicemail after 30 seconds by default. The settings displayed for the user in Teams admin center or Teams PowerShell show the unanswered target as none and a delay of 20 seconds. | Fix: Append to the After rollout bullet: 'Microsoft notes that the settings displayed in Teams admin center or Teams PowerShell can nevertheless show the unanswered target as none and a delay of 20 seconds.' This preserves the cited page's qualification and avoids treating the displayed values as proof of a different default. | Source: https://learn.microsoft.com/microsoftteams/user-call-settings
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The governance checklist asks readers to confirm voicemail enablement and take stock of policy assignments, but neither has a corresponding controls-table row. | Found: Identify which calling policies are in use and which users are assigned each ... Confirm that each affected user has voicemail enabled ... Table rows: PSTN routing; federated routing; per-user unanswered destination. | Fix: The Before rollout instructions to confirm voicemail enablement and inventory policy assignments have no corresponding controls-table rows. Flag those two checklist/table gaps; do not add rows as part of this correction.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks readers to check voicemail enablement, but the controls table has no row for voicemail enablement. | Found: Confirm that each affected user has voicemail enabled and unanswered call settings configured ... Controls table: Routing for PSTN calls; Routing for federated calls; If unanswered. | Fix: The Before rollout instruction to confirm voicemail enablement has no matching control row; the If unanswered row covers only the unanswered destination. Do not add a control row as part of this correction.
 -->

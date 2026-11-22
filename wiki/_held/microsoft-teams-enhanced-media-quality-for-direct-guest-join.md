@@ -4,7 +4,7 @@ slug: "microsoft-teams-enhanced-media-quality-for-direct-guest-join"
 roadmapId: 558922
 topic: "modern-work"
 products: ["Microsoft Teams"]
-summary: "Teams Rooms that join Zoom, Google Meet or Cisco meetings by Direct Guest Join get up to 16 videos (4×4 grid) and simulcast, per the roadmap. Launched; no admin action is stated, but rooms need DGJ enabled and a clear network path."
+summary: "The roadmap describes up to 16 videos (4×4 grid) and simulcast when joining Teams meetings from Zoom, Google Meet or Cisco devices through Direct Guest Join. Launched; no admin action is stated."
 status: "launched"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "review"
 licensing:
   model: "included"
-  notes: "Learn's third-party meetings page lists Teams Rooms Basic and Teams Rooms Pro for Direct Guest Join, and the Teams Rooms licences page marks it for both. No separate price or meter is published for the 4×4 grid or simulcast."
+  notes: "Learn's Teams Rooms licences page says Direct Guest Join (DGJ) is designed to let shared meeting devices join Teams meetings without a separate Teams meeting licence for the joining device, when implemented through Microsoft-supported interoperability experiences. No separate price or meter is published for the 4×4 grid or simulcast."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["teams","teams-rooms","pro-management-portal","direct-guest-join"]
 sources:
@@ -43,6 +43,9 @@ sources:
   - title: "Microsoft Teams Rooms on Surface Hub"
     url: "https://learn.microsoft.com/surface-hub/surface-hub-teams-rooms"
     kind: "learn"
+  - title: "Set-CalendarProcessing"
+    url: "https://learn.microsoft.com/powershell/module/exchange/set-calendarprocessing"
+    kind: "learn"
 videos: []
 related: ["microsoft-teams-call-quality-feedback-surveys-for-teams-rooms-on-android","microsoft-teams-admin-center-intelligent-insights-for-meeting-quality"]
 controls:
@@ -50,13 +53,13 @@ controls:
     scope: "other"
     ui:
       surface: "Teams Rooms Pro Management portal"
-      path: "Rooms > room > Settings > Meetings"
+      path: "Rooms > room > Settings > Meetings > provider"
       docs: "https://learn.microsoft.com/microsoftteams/rooms/third-party-join"
     api:
       kind: "other"
       call: "<ZoomMeetingsEnabled>true</ZoomMeetingsEnabled>"
       docs: "https://learn.microsoft.com/microsoftteams/rooms/xml-config-file"
-    note: "Per room. The portal route lists a toggle per provider and supports bulk jobs; remote configuration is Teams Rooms Pro only. The XML element is the console settings file; Microsoft recommends the portal."
+    note: "Background, for the opposite meeting direction. Per room. The XML element enables Zoom only in the Teams Rooms on Windows console settings file; it is not the automation for all three provider toggles."
   - governs: "Whether the room mailbox keeps third-party invite details so a Join button appears"
     scope: "other"
     ui: null
@@ -64,7 +67,7 @@ controls:
       kind: "powershell"
       call: "Set-CalendarProcessing <UserPrincipalName> -ProcessExternalMeetingMessages $True -DeleteComments $False"
       docs: "https://learn.microsoft.com/microsoftteams/rooms/third-party-join"
-    note: "Exchange Online PowerShell, run per room mailbox. The third-party meetings page gives this step as PowerShell only."
+    note: "Background, for the opposite meeting direction. Exchange Online PowerShell, run per room mailbox. The -DeleteComments setting applies only to resource mailboxes with AutomateProcessing set to AutoAccept."
   - governs: "Tenant-wide switch for the 4×4 grid and simulcast improvements"
     scope: "tenant"
     ui: null
@@ -79,81 +82,84 @@ changes:
     note: "First briefing for this item: Direct Guest Join gets a 4×4 video grid and simulcast; Learn does not yet describe either."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 63 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after the independent check: meeting direction now follows the roadmap, SIP fallback and mailbox qualification added, control notes corrected."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 76 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 59
+  claims: 76
+  confirmed: 73
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "8c0f7666644b2a00b616333ba81af17a"
+  contradicted: 3
+  attempts: 2
+  hash: "8850712224dd02378988237ab37273e7"
 ---
 
 ## What's changing
 
-The roadmap item says Direct Guest Join (DGJ) gets media quality improvements: support for up to 16 participant videos in a 4×4 grid, available in May, and simulcast streaming in June. It describes them as making cross-platform meetings more immersive and reliable when joining from Zoom, Google Meet or Cisco devices.
+The roadmap item says Direct Guest Join (DGJ) gets media quality improvements: support for up to 16 participant videos in a 4×4 grid, available in May, and simulcast streaming in June. It describes them as making cross-platform meetings more immersive and reliable when joining Teams meetings from Zoom, Google Meet or Cisco devices.
 
-DGJ is the way a Teams Rooms device joins a third-party meeting over WebRTC, a browser-style real-time media technology. Microsoft Learn describes it alongside the SIP-based alternative, cross-platform meetings via SIP join. The roadmap item also states that DGJ is not yet available for Google Meet on Teams Rooms for Android.
+The roadmap direction is a Zoom, Google Meet or Cisco device joining a Teams meeting. Microsoft Learn's third-party meetings page covers the opposite direction, a Teams Rooms device joining a third-party meeting over WebRTC, a browser-style real-time media technology, and describes it alongside the SIP-based alternative, cross-platform meetings via SIP join. That material is background on DGJ, not a description of these improvements. The roadmap item also states that DGJ is not yet available for Google Meet on Teams Rooms for Android.
 
-The roadmap record shows status Launched, release phase General Availability, target May CY2026, cloud Worldwide (Standard Multi-Tenant) and platform Teams and Surface Devices. Microsoft Learn does not describe the 4×4 grid or simulcast at the time of writing (November 2026): its third-party meetings page still lists DGJ receive video as up to 720p / 30 fps. What this page says about the grid and simulcast is therefore the roadmap's description.
+The roadmap record shows status Launched, release phase General Availability, target May CY2026, cloud Worldwide (Standard Multi-Tenant) and platform Teams and Surface Devices. Microsoft Learn does not describe the 4×4 grid or simulcast at the time of writing (November 2026): its third-party meetings page, which is about Teams Rooms joining third-party meetings, lists DGJ receive video as up to 720p / 30 fps. What this page says about the grid and simulcast is therefore the roadmap's description.
 
 ## Why it matters
 
-For most tenants this is a quality improvement, not a decision. Rooms that already join Zoom, Google Meet or Cisco meetings through DGJ are the ones that may show more participants at once. Microsoft has not stated whether the improvements need any setting, so treat them as arriving with DGJ rather than as something you switch on.
+For most tenants this is a quality improvement, not a decision. The meetings the roadmap says are affected are Teams meetings joined through DGJ from Zoom, Google Meet or Cisco devices. Microsoft has not stated whether the improvements need any setting, so treat them as arriving with DGJ rather than as something you switch on.
 
-The work for an administrator is in what DGJ already depends on. Learn says rooms connect directly to the third-party platform's website, so firewalls, web filters and QoS must allow it, and each room needs the provider switched on and its mailbox set to keep invite details. A room that cannot join today will not benefit from a better grid.
+The Teams Rooms configuration Learn documents for DGJ is background, because it governs rooms joining third-party meetings, the opposite direction. It is still useful context: Learn says those rooms connect directly to the third-party platform's website, so firewalls, web filters and QoS must allow it, and each room needs the provider switched on and its mailbox set to keep invite details.
 
 ## Risk assessment
 
 **Data exposure**
-- The roadmap item states no new data access. Under DGJ, Teams Rooms devices connect directly to the third-party platform's website, so the meeting itself runs on that platform; check that platform's own settings for what it records or shares.
+- The roadmap item states no new data access. Background, for Teams Rooms joining third-party meetings: devices connect directly to the third-party platform's website, so that meeting runs on that platform; check that platform's own settings for what it records or shares.
 
 **Security & identity**
-- A room joins with the username and email address of its room mailbox, or with a custom name and email you set per device, so guests of the other platform see that identity. Decide which each room should use.
-- Joining third-party and externally scheduled invites relies on the room mailbox processing external meeting messages (`ProcessExternalMeetingMessages`). That is an existing prerequisite, not a new one, but it applies to every room you enable.
+- Background, for Teams Rooms joining third-party meetings: a room joins with the username and email address of its room mailbox, or with a custom name and email you set per device, so guests of the other platform see that identity.
+- Background, for the same direction: joining third-party and externally scheduled invites relies on the room mailbox processing external meeting messages (`ProcessExternalMeetingMessages`). That is an existing prerequisite, not a new one.
 
 **Autonomy & actions**
-- No change: the roadmap describes video layout and streaming, and nothing the room does on its own.
+- No change: the roadmap describes video layout and streaming, and nothing the room or device does on its own.
 
 **Change & support**
 - Users may see more videos on screen in DGJ meetings. Whether more video or simulcast changes bandwidth needs is not stated, so confirm it with your network team before assuming current firewall and QoS rules suffice.
-- Learn says a room with SIP calling enabled uses SIP instead of WebRTC to join the enabled third-party meetings. Rooms in that state may not use DGJ for those meetings; confirm which rooms are affected.
-- Learn's DGJ troubleshooting page covers the common failures: a missing Join button, forwarded invites that do not parse and cameras that stay off in Zoom meetings.
+- Background, for Teams Rooms joining third-party meetings: SIP-enabled rooms use SIP for enabled third-party meetings, but automatically fall back to DGJ over WebRTC for calendar-joined invitations without a SIP dial string; join by ID fails when the meeting lacks SIP capabilities ([Learn](https://learn.microsoft.com/microsoftteams/rooms/third-party-join)).
+- Background: Learn's DGJ troubleshooting page covers the common failures for Teams Rooms: a missing Join button, forwarded invites that do not parse and cameras that stay off in Zoom meetings.
 
 ## Cost and licensing
 
-**Licence.** Learn's third-party meetings page lists Teams Rooms Basic and Teams Rooms Pro as the licences for DGJ, and the Teams Rooms licences page marks Direct Guest Join for Zoom and Webex meetings under both. Teams Rooms Basic can be assigned to up to 25 Teams Rooms systems in an organisation; beyond that, Teams Rooms Pro is needed.
+**Licence.** Learn's Teams Rooms licences page says DGJ is designed to let shared meeting devices join Teams meetings without a separate Teams meeting licence for the joining device, when implemented through Microsoft-supported interoperability experiences. Background, for Teams Rooms joining third-party meetings: Learn's third-party meetings page lists Teams Rooms Basic and Teams Rooms Pro as the licences for DGJ, and the Teams Rooms licences page marks Direct Guest Join for Zoom and Webex meetings under both. Teams Rooms Basic can be assigned to up to 25 Teams Rooms systems in an organisation; beyond that, Teams Rooms Pro is needed.
 
 **Meter.** Neither page publishes a separate price or meter for the 4×4 grid or simulcast.
 
-**Indirect costs.** Learn contrasts DGJ with SIP join, which needs a paid SIP dialling plan; DGJ does not, but needs direct internet access from the room. Expect admin time to enable providers per room and network-team time to check firewall, web filter and QoS rules. Remote configuration through the Pro Management portal is listed for Teams Rooms Pro only.
+**Indirect costs.** Background, for Teams Rooms joining third-party meetings: Learn contrasts DGJ with SIP join, which needs a paid SIP dialling plan; DGJ does not, but needs direct internet access from the room. Expect admin time to enable providers per room and network-team time to check firewall, web filter and QoS rules. Remote configuration through the Pro Management portal is listed for Teams Rooms Pro only.
 
 ## Scope
 
-**Who and what.** Teams Rooms devices that join third-party meetings by DGJ. Learn describes Teams Rooms on Windows and on Android, and states that Teams Rooms on Surface Hub supports DGJ. The roadmap lists Teams and Surface Devices as the platform.
+**Who and what.** The roadmap describes people using DGJ to join Teams meetings from Zoom, Google Meet or Cisco devices, and lists Teams and Surface Devices as the platform. Background, for Teams Rooms joining third-party meetings: Learn describes Teams Rooms on Windows and on Android, and states that Teams Rooms on Surface Hub supports DGJ.
 
-**Providers.** The roadmap names Zoom, Google Meet and Cisco devices, and notes that DGJ for Google Meet is not yet available on Teams Rooms for Android. Learn's join-button row for DGJ lists Cisco Webex, Zoom and Google Meet.
+**Providers.** The roadmap names Zoom, Google Meet and Cisco devices, and notes that DGJ for Google Meet is not yet available on Teams Rooms for Android. Background: Learn's join-button row for DGJ, for Teams Rooms joining third-party meetings, lists Cisco Webex, Zoom and Google Meet.
 
 **Cloud and rollout.** The roadmap lists Worldwide (Standard Multi-Tenant) only. The roadmap gives May CY2026 for the 4×4 grid and June for simulcast; status is Launched.
 
-**Prerequisites (from Learn).** Understand whether DGJ or SIP join suits you, configure the room mailbox to process third-party and external invites, make sure no tenant policy blocks the rooms from the third-party services, and enable third-party meetings on each device. If you use a third-party URL-scanning solution rather than Defender for Office 365 Safe Links, it may rewrite join links and make the meeting unrecognisable to the room; Learn says to add the provider's URLs to its exception list.
+**Prerequisites for Teams Rooms joining third-party meetings (background, from Learn).** Understand whether DGJ or SIP join suits you, configure the room mailbox to process third-party and external invites, make sure no tenant policy blocks the rooms from the third-party services, and enable third-party meetings on each device. If you use a third-party URL-scanning solution rather than Defender for Office 365 Safe Links, it may rewrite join links and make the meeting unrecognisable to the room; Learn says to add the provider's URLs to its exception list. Learn lists none of this as a prerequisite for the roadmap improvements.
 
 ## Governance guidance
 
 ### Before rollout
-- Check in the Teams Rooms Pro Management portal which rooms have Zoom, Google Meet or Cisco Webex switched on under Meetings, and which use the room mailbox identity or a custom name and email.
-- Check each room mailbox that will join third-party meetings against the `Set-CalendarProcessing` step on the third-party meetings page, which sets `ProcessExternalMeetingMessages` and `DeleteComments`.
+- Ask the network team whether the 4×4 grid or simulcast changes the bandwidth DGJ meetings need, because Microsoft has not stated it.
+- Check in the Teams Rooms Pro Management portal which rooms have Zoom, Google Meet or Cisco Webex switched on under Meetings; this is background for rooms joining third-party meetings, not a prerequisite for the roadmap improvements.
+- Check each room mailbox that will join third-party meetings against the `Set-CalendarProcessing` step on the third-party meetings page, which sets `ProcessExternalMeetingMessages` and `DeleteComments`; the `-DeleteComments` setting applies only to resource mailboxes with AutomateProcessing set to AutoAccept.
 - Ask the network team to confirm that firewalls and web filters allow the rooms to reach each provider's website without authentication, with the right QoS class if you use one.
-- Find out which rooms have SIP calling enabled, because Learn says those rooms use SIP instead of WebRTC for the enabled third-party meetings.
 
 ### At rollout
-- Test one room per hardware type by joining a Zoom and a Google Meet meeting from the calendar Join button and noting the video layout.
-- Enable providers in bulk with a Device Settings job in the Pro Management portal where you have many rooms with Teams Rooms Pro licences.
+- Test a Teams meeting that a guest joins from a Zoom, Google Meet or Cisco device and note the video layout.
 - Tell room users that Google Meet through DGJ is not yet available on Teams Rooms for Android, per the roadmap.
 
 ### After rollout
@@ -167,13 +173,13 @@ The work for an administrator is in what DGJ already depends on. Learn says room
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether a room joins Zoom, Google Meet and Cisco Webex meetings through Direct Guest Join</strong><br><small class="controls__note">Per room. The portal route lists a toggle per provider and supports bulk jobs; remote configuration is Teams Rooms Pro only. The XML element is the console settings file; Microsoft recommends the portal.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Rooms › room › Settings › Meetings <a href="https://learn.microsoft.com/microsoftteams/rooms/third-party-join" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>&lt;ZoomMeetingsEnabled&gt;true&lt;/ZoomMeetingsEnabled&gt;</code> <a href="https://learn.microsoft.com/microsoftteams/rooms/xml-config-file" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether the room mailbox keeps third-party invite details so a Join button appears</strong><br><small class="controls__note">Exchange Online PowerShell, run per room mailbox. The third-party meetings page gives this step as PowerShell only.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CalendarProcessing &lt;UserPrincipalName&gt; -ProcessExternalMeetingMessages $True -DeleteComments $False</code> <a href="https://learn.microsoft.com/microsoftteams/rooms/third-party-join" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether a room joins Zoom, Google Meet and Cisco Webex meetings through Direct Guest Join</strong><br><small class="controls__note">Background, for the opposite meeting direction. Per room. The XML element enables Zoom only in the Teams Rooms on Windows console settings file; it is not the automation for all three provider toggles.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Rooms › room › Settings › Meetings › provider <a href="https://learn.microsoft.com/microsoftteams/rooms/third-party-join" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>&lt;ZoomMeetingsEnabled&gt;true&lt;/ZoomMeetingsEnabled&gt;</code> <a href="https://learn.microsoft.com/microsoftteams/rooms/xml-config-file" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the room mailbox keeps third-party invite details so a Join button appears</strong><br><small class="controls__note">Background, for the opposite meeting direction. Exchange Online PowerShell, run per room mailbox. The -DeleteComments setting applies only to resource mailboxes with AutomateProcessing set to AutoAccept.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CalendarProcessing &lt;UserPrincipalName&gt; -ProcessExternalMeetingMessages $True -DeleteComments $False</code> <a href="https://learn.microsoft.com/microsoftteams/rooms/third-party-join" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tenant-wide switch for the 4×4 grid and simulcast improvements</strong><br><small>Tenant</small><br><small class="controls__note">No setting is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-There is no documented tenant-wide switch for the 4×4 grid or simulcast, so the controls that matter are the ones that decide whether a room can use DGJ at all.
+There is no documented tenant-wide switch for the 4×4 grid or simulcast. The first two rows govern Teams Rooms joining third-party meetings, the opposite direction to these improvements, and are listed as background.
 
 - Remote configuration of rooms is listed for Teams Rooms Pro only. Settings changes from the Pro Management portal apply only to signed-in devices and queue a job that restarts the device, so use Schedule Later to avoid meeting hours.
 - Each provider can also be switched on from the device's own settings; Learn gives the steps for the Windows console and the Android device.
@@ -183,25 +189,23 @@ There is no documented tenant-wide switch for the 4×4 grid or simulcast, so the
 ## Open questions
 
 - Which Learn page will describe the 4×4 grid and simulcast, and will the DGJ receive video limit of up to 720p / 30 fps on the third-party meetings page change? Watch the page and the Teams Rooms release notes.
-- Do the improvements need a room app version, a room setting or a licence beyond DGJ being enabled? Microsoft has not stated the default.
+- Do the improvements need a client version, a device setting or a licence beyond DGJ itself? Microsoft has not stated the default.
 - Do the 4×4 grid and simulcast change the network bandwidth DGJ needs? Watch the third-party meetings page, Step 3B.
-- Do the improvements apply to meetings joined by SIP on rooms that have SIP calling enabled?
+- Which Zoom, Google Meet and Cisco devices get the grid and simulcast? Watch the roadmap item and Learn.
 - When will DGJ for Google Meet reach Teams Rooms on Android? Watch the roadmap item.
 
 <!-- rationale
 risk: Low. The roadmap describes video grid and streaming improvements to an existing join method and states no new data access, autonomous action or admin setting.
-cost: Low. Learn lists Direct Guest Join under Teams Rooms Basic and Teams Rooms Pro, and no separate price or meter is published for the grid or simulcast; the cost is admin and network-team time.
-impact: Low. Only people in Teams Rooms that join Zoom, Google Meet or Cisco meetings through Direct Guest Join see the change, and it affects video layout and streaming, not how they join.
+cost: Low. No separate price or meter is published for the grid or simulcast, and the roadmap states no new licence; the cost is admin and network-team time.
+impact: Low. The roadmap describes the improvements as changes to video layout and streaming for people using Direct Guest Join to join Teams meetings from Zoom, Google Meet or Cisco devices; no admin setting is stated.
 -->
 
 <!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] summary; What's changing; Why it matters; Scope; rationale: impact / record: The roadmap improvements affect Teams Rooms joining Zoom, Google Meet or Cisco meetings through DGJ. | Found: These updates make cross-platform meetings more immersive and reliable when joining Teams meetings from Zoom, Google Meet, or Cisco devices. | Fix: Replace the summary's first sentence with 'The roadmap describes up to 16 videos (4×4 grid) and simulcast when joining Teams meetings from Zoom, Google Meet or Cisco devices through Direct Guest Join.' Use that meeting direction throughout What's changing and Scope. Remove statements in Why it matters, Risk assessment and the impact rationale that assign these improvements exclusively to Teams Rooms joining other platforms. Label the existing Teams Rooms configuration material as background for the opposite meeting direction, not as a prerequisite or control for these roadmap improvements.
-- [contradicted, blocker] Risk assessment: Change & support; Governance guidance: Before rollout; Open questions / behaviour: Enabling SIP calling makes the room use SIP instead of WebRTC for enabled third-party meetings. | Found: Teams Rooms will automatically use Direct Guest Join over WebRTC if the third party meeting invite doesn't contain a SIP dial string. ... Automatic fallback to WebRTC DGJ works for meetings using the calendar join button. | Fix: Replace the unqualified SIP statement in Risk assessment and Governance guidance with 'SIP-enabled rooms use SIP for enabled third-party meetings, but automatically fall back to DGJ over WebRTC for calendar-joined invitations without a SIP dial string; join by ID fails when the meeting lacks SIP capabilities.' Cite https://learn.microsoft.com/microsoftteams/rooms/third-party-join. | Source: https://learn.microsoft.com/microsoftteams/rooms/third-party-join
-- [contradicted, blocker] controls[1].note and governs; Why it matters; Governance guidance: Before rollout / applicability: The printed mailbox command preserves invitation text for each room mailbox without another mailbox-processing qualification. | Found: The DeleteComments parameter specifies whether to remove or keep any text in the message body of incoming meeting requests. ... This parameter is used only on resource mailboxes where the AutomateProcessing parameter is set to AutoAccept. | Fix: Add 'The -DeleteComments setting applies only to resource mailboxes with AutomateProcessing set to AutoAccept' to controls[1].note and its rendered note, and qualify the mailbox-check instruction with 'for resource mailboxes with AutomateProcessing set to AutoAccept'. Cite https://learn.microsoft.com/powershell/module/exchange/set-calendarprocessing in sources. Keep the documented command unchanged. | Source: https://learn.microsoft.com/powershell/module/exchange/set-calendarprocessing
+- [contradicted, blocker] Governance guidance: At rollout; What's changing; Scope; Open questions / availability: Administrators should tell users Google Meet through DGJ is not yet available on Teams Rooms for Android, per the roadmap. | Found: 1449/1.0.96.2026261804 (September 2026) Introduced in this update: 1. Google Meet for Direct Guest Join: Organizations now have expanded meeting interoperability with two-way Direct Guest Join (DGJ) between Google Meet and Microsoft Teams meetings. | Fix: Replace the Android availability statements and the rollout instruction with: 'The roadmap still says Google Meet DGJ is not yet available on Teams Rooms for Android, but Learn's September 2026 Android release notes announce two-way Google Meet DGJ in version 1449/1.0.96.2026261804. Report this discrepancy to room users rather than asserting unavailability.' Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution. Remove the open question asking when it will reach Android. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table; Governance guidance / admin-path: The provider controls are reached through Teams Rooms Pro Management portal > Rooms > room > Settings > Meetings. | Found: Select Rooms. ... Select your desired room. ... Select Settings. ... Select Meetings. ... Toggle your desired meeting platforms (for example, Cisco Webex, Zoom, Google Meet, etc.). | Fix: Extend controls[0].ui.path and its rendered table path to 'Rooms > room > Settings > Meetings > provider'. The current path stops on the correct settings page but omits the provider toggle. | Source: https://learn.microsoft.com/microsoftteams/rooms/third-party-join
-- [supported, minor] controls[0].api; controls[0].note; Governance controls table / command: The XML element <ZoomMeetingsEnabled>true</ZoomMeetingsEnabled> enables Zoom DGJ. | Found: | <ZoomMeetingsEnabled> | Boolean ❷ | First ❶ | Disabled by default. If true, enables direct guest join experience for Zoom meetings. | | Fix: In controls[0].note and its rendered note, replace 'The XML element is the console settings file' with 'The XML element enables Zoom only in the Teams Rooms on Windows console settings file; it is not the automation for all three provider toggles.' Keep the existing XML element and reference. | Source: https://learn.microsoft.com/microsoftteams/rooms/xml-config-file
-- [contradicted, minor] Governance guidance: Before rollout and At rollout; controls / consistency: The governance checklist's named controls are represented in the controls table. | Found: Check ... which use the room mailbox identity or a custom name and email. ... Find out which rooms have SIP calling enabled. ... Enable providers in bulk with a Device Settings job. | Fix: The identity-selection, SIP-calling and bulk Device Settings job checklist steps have no matching control rows; the table contains only per-room provider toggles, mailbox processing and a missing enhancement switch. Remove these checklist instructions if they are retained without matching table coverage; do not add rows as part of this correction.
+- [contradicted, minor] front matter: action; Why it matters / consistency: Review is the action rating for this launched improvement to existing DGJ meeting media. | Found: action: "review"; 'treat them as arriving with DGJ rather than as something you switch on.' The standard assigns prepare to an arriving redesign or replacement of existing behaviour, including when its default is unknown. | Fix: Set action to 'prepare': this is an improvement arriving in existing DGJ meetings, not a capability that changes nothing until an administrator chooses it.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every control the governance checklist tells readers to check is represented in the controls table. | Found: 'Ask the network team to confirm that firewalls and web filters allow the rooms to reach each provider's website without authentication, with the right QoS class'; table rows cover provider toggles, calendar processing and a tenant-switch gap. | Fix: Remove the Before rollout bullet that asks the network team to confirm firewall, web-filter and QoS controls; those controls have no table row. Retain the existing background explanation of the network prerequisites.
+- [supported, minor] What's changing / behaviour: WebRTC is a browser-style real-time media technology. | Found: The WebRTC API is a web standard that enables real-time communication (RTC) between browsers and mobile applications. | Fix: Remove the explanatory clause 'a browser-style real-time media technology' to avoid adding a source about an unrelated product solely for this definition. | Source: https://learn.microsoft.com/azure/foundry/openai/how-to/realtime-audio-webrtc
 -->

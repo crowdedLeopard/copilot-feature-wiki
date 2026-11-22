@@ -15,7 +15,7 @@ risk: "low"
 cost: "low"
 impact: "low"
 defaultState: "on"
-action: "none"
+action: "prepare"
 licensing:
   model: "included"
   notes: "The roadmap item says the feature is available in Teams Rooms Pro, and the Teams Rooms on Android release notes say features marked with the Pro icon are only available with the Teams Rooms Pro licence."
@@ -24,6 +24,9 @@ tags: ["teams","teams-rooms","teams-events"]
 sources:
   - title: "Microsoft 365 Roadmap 500378"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=500378"
+    kind: "roadmap"
+  - title: "Microsoft 365 Roadmap 562534"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=562534"
     kind: "roadmap"
   - title: "Release notes for Microsoft Teams Rooms"
     url: "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note"
@@ -53,7 +56,7 @@ controls:
       kind: "powershell"
       call: "Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled"
       docs: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy"
-    note: "Existing control for creating Town Halls; it does not set the front-of-room view. Changing it to Off after an event is scheduled stops the user running or starting the event."
+    note: "Existing control for creating Town Halls; it does not set the front-of-room view. Changing it to Off after an event is scheduled stops the user running or starting the event. The cmdlet reference describes the policy as still in preview."
 confidence: "high"
 created: "2026-11-22"
 updated: "2026-11-22"
@@ -63,19 +66,23 @@ changes:
     note: "First briefing for this Worldwide item: Town Hall front-of-room view control on Teams Rooms on Android, Teams Rooms Pro only."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 47 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after the independent check: removed the claim that the events policy is the only related admin control, split the Pro licence from indirect costs, added the cmdlet's preview note, set action to prepare and removed two checklist steps with no controls row."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 52 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 44
+  claims: 52
+  confirmed: 51
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "1d79fc7b39f3a0664d82e4b93d0e319f"
+  contradicted: 1
+  attempts: 2
+  hash: "4d5224526892b20a7cf980ec76d7433c"
 ---
 
 ## What's changing
@@ -114,7 +121,7 @@ Because the default state is on for rooms that meet the licence and invitation c
 
 **Licence.** The roadmap item says the feature is available in Teams Rooms Pro. The Teams Rooms on Android release notes state that features marked with the Pro icon are only available with the Teams Rooms Pro licence, and this feature carries that icon in the release notes. The Teams Rooms licences page says that to use a feature on a Teams Rooms device, you assign the licence in which that feature is available to that device. It describes Teams Rooms Basic as providing core meeting experiences at no additional cost.
 
-**Meter and cost.** Neither the roadmap item nor the release notes name a meter for this feature. The indirect cost is admin time to brief presenters and, for any room not on Pro, the Teams Rooms Pro licence.
+**Meter and cost.** Neither the roadmap item nor the release notes name a meter for this feature. The indirect cost is admin time to brief presenters. A room without Teams Rooms Pro needs that licence to use this feature.
 
 A Teams Rooms on Android device and touch console counts as a Teams Rooms system on the licences page.
 
@@ -131,13 +138,11 @@ A Teams Rooms on Android device and touch console counts as a Teams Rooms system
 ## Governance guidance
 
 ### Before rollout
-- Identify which Teams Rooms on Android devices hold a Teams Rooms Pro licence, since the roadmap item says the feature is available in Teams Rooms Pro.
 - Ask your device manufacturers whether the Teams Rooms on Android build that includes this feature is available for your make and model.
 - Check that the events policy for your organisers has the Events optimized for a large audience setting On, because that setting controls whether users with the policy can create Town Halls.
 
 ### At rollout
 - Brief Town Hall organisers that a room invited as a presenter shows the attendee view on its display by default.
-- Show room presenters where the console lets them switch the front-of-room display to presenter view.
 
 ### After rollout
 - Run a test Town Hall with a Teams Rooms on Android presenter and confirm the default view and the switch work as the release notes describe.
@@ -150,11 +155,11 @@ A Teams Rooms on Android device and touch console counts as a Teams Rooms system
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether organisers can create events optimised for large audiences, such as Town Halls</strong><br><small>User</small><br><small class="controls__note">Existing control for creating Town Halls; it does not set the front-of-room view. Changing it to Off after an event is scheduled stops the user running or starting the event.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Events optimized for a large audience <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -AllowTownhalls Disabled</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether organisers can create events optimised for large audiences, such as Town Halls</strong><br><small>User</small><br><small class="controls__note">Existing control for creating Town Halls; it does not set the front-of-room view. Changing it to Off after an event is scheduled stops the user running or starting the event. The cmdlet reference describes the policy as still in preview.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Events optimized for a large audience <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -AllowTownhalls Disabled</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The only admin control the sources tie to this scenario is the existing events policy setting that decides whether organisers can create Town Halls. It does not set the front-of-room view. The events page states that if the value is changed to Off after a user schedules an event, they cannot run or start the event.
+The existing events policy setting decides whether organisers can create Town Halls. It does not set the front-of-room view. The events page states that if the value is changed to Off after a user schedules an event, they cannot run or start the event.
 
 The release notes describe the view switch as a presenter action from the console. Licence assignment decides whether a room can use the feature at all.
 
@@ -174,11 +179,7 @@ impact: Low. Only Teams Rooms on Android devices invited as Town Hall presenters
 <!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: first sentence / applicability: The existing event-creation setting is the only admin control the sources tie to this scenario. | Found: **Who can attend events optimized for a large audience**(Everyone,Everyone in my organization excluding guests,Everyone in my organization including guests) / Controls who can attend events optimized for large audiences (such as town halls) created by organizers with this policy. | Fix: Replace the first sentence with: 'The existing events policy setting decides whether organisers can create Town Halls.' Keep the following sentence, 'It does not set the front-of-room view.' The cited page also documents attendance controls, so remove the exclusive claim without adding controls or coverage. | Source: https://learn.microsoft.com/microsoftteams/set-up-events
+- [contradicted, blocker] Risk assessment: Data exposure; Open questions / absence: Microsoft has not described what presenter view shows on the front-of-room display. | Found: It will also show the **Manage screen** queue where presenters are brought on and off screen, as well as a red square around the live feed to indicate what attendees are currently seeing. | Fix: Remove ', because the sources do not describe its contents' from the Data exposure bullet and remove the Open questions bullet beginning 'What does presenter view show'. Microsoft describes the display contents under 'Presenter and attendee views' at https://support.microsoft.com/office/host-or-attend-an-event-from-a-microsoft-teams-room-mtr-d7ff15e0-6516-4ebc-ae03-a2bdf58a4478, linked from the Android release notes. | Source: https://support.microsoft.com/office/host-or-attend-an-event-from-a-microsoft-teams-room-mtr-d7ff15e0-6516-4ebc-ae03-a2bdf58a4478
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: second roadmap item / record: Roadmap item 562534 lists the same Town Hall front-of-room view capability. | Found: "id": 562534, "title": "Microsoft Teams: Front-of-room view control for Town Hall in Teams Rooms on Android" | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=562534 to sources as 'Microsoft 365 Roadmap 562534', kind 'roadmap', for the second item's description, clouds, platforms, target and status.
-- [supported, minor] controls[0].api / command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled disables large-audience event creation for that policy. | Found: ### -AllowTownhalls This setting governs if a user can create an event optimized for large audiences using Teams Events. / **Disabled**: Disables the **Optimize for Large Audience** option for organizers scheduling an event. / -Identity: Unique identifier assigned to the Teams Events policy. | Fix: Keep the call unchanged. Add to controls[0].note: 'The Set-CsTeamsEventsPolicy reference currently describes the policy as still in preview.' The cmdlet reference states this, although the cited events management page describes the setting without a preview caveat. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy
-- [supported, minor] Cost and licensing: Meter and cost; rationale: cost / cost: Rooms without Pro need the Pro licence to use this feature, but the paragraph groups that licence with indirect costs. | Found: Features with ![](../media/mtr-pro-icon.png) are only available with Teams Rooms Pro license. | Fix: Replace 'The indirect cost is admin time to brief presenters and, for any room not on Pro, the Teams Rooms Pro licence.' with 'The indirect cost is admin time to brief presenters. A room without Teams Rooms Pro needs that licence to use this feature.' Keep the low rating as the incremental communication cost for already licensed rooms. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note
-- [contradicted, minor] front matter: action; Why it matters; Governance guidance / consistency: Action none fits a launched change that the briefing says requires presenter communication and checking organiser policies. | Found: action: "none" / "the practical work is communication: tell presenters and event organisers how the room behaves" / "Check that the events policy for your organisers has the Events optimized for a large audience setting On" | Fix: Change action from 'none' to 'prepare': the standard uses prepare for an arriving low-risk, low-cost change requiring communication, and reserves none for awareness with nothing to configure or decide.
-- [contradicted, minor] Governance guidance: Before rollout and At rollout; controls / consistency: Every control the governance checklist asks readers to take stock of or demonstrate appears in the controls table. | Found: Identify which Teams Rooms on Android devices hold a Teams Rooms Pro licence / Show room presenters where the console lets them switch the front-of-room display to presenter view / controls: only the event-creation policy row | Fix: The licence-inventory step and console view-switch step have no corresponding controls rows. Remove those two checklist bullets; retain the supported licensing explanation and console-switch description elsewhere. Do not add rows during this correction.
+- [supported, minor] Risk assessment: Data exposure / behaviour: People physically in the room can see the room display, including its presenter controls when presenter view is selected. | Found: If you’re in an MTR where both presenters and attendees are present, switch to **Attendee view** to hide the presenter controls on the front display. | Fix: Add https://support.microsoft.com/office/host-or-attend-an-event-from-a-microsoft-teams-room-mtr-d7ff15e0-6516-4ebc-ae03-a2bdf58a4478 to sources for the physical-room visibility statement. | Source: https://support.microsoft.com/office/host-or-attend-an-event-from-a-microsoft-teams-room-mtr-d7ff15e0-6516-4ebc-ae03-a2bdf58a4478
 -->

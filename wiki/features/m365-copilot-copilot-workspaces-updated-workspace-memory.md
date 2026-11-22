@@ -44,7 +44,7 @@ controls:
     scope: "tenant"
     ui: null
     api: null
-    note: "No admin switch for workspace memory is documented. The enhanced personalization setting is documented for Copilot memory only."
+    note: "No admin switch specific to workspace memory is documented. Enhanced personalization is documented for Copilot memory and personalized recommendations; Microsoft does not identify workspace memory as a linked feature."
 confidence: "low"
 created: "2026-11-22"
 updated: "2026-11-22"
@@ -54,19 +54,23 @@ changes:
     note: "First briefing on this roadmap item: documents the plan, the lack of Learn coverage and the questions to put to Microsoft."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after the independent check: eDiscovery coverage of Copilot memory now distinguishes custom instructions, the controls note no longer says enhanced personalization covers Copilot memory only, and the arrival date is framed as a roadmap target."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 61 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 61
-  confirmed: 59
+  confirmed: 61
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "9865b6dfc166031a5f26ecc0a06212e9"
+  contradicted: 0
+  attempts: 0
+  hash: "09d11f592d347eb3f97db8e6d3ea3325"
 ---
 
 ## What's changing
@@ -83,13 +87,13 @@ Microsoft does document a separate feature, Copilot memory, which keeps saved me
 
 Memory turns a Copilot session into something that keeps what it learned about how someone works. For a service owner, that is a new store of content derived from people's work, and Microsoft has not yet said who controls it, how long it lasts or whether it appears in audit and discovery tooling.
 
-If nobody acts, Microsoft has not stated what happens on arrival. No source says existing behaviour changes, and none says it stays the same. The sensible view is to treat this as arriving in December CY2026 and to ask the control questions before the preview reaches users, rather than after.
+If nobody acts, Microsoft has not stated what happens on arrival. No source says existing behaviour changes, and none says it stays the same. The sensible view is to plan against the roadmap target of December CY2026, not a confirmed arrival date, and to ask the control questions before the preview reaches users, rather than after.
 
 ## Risk assessment
 
 **Data exposure**
 - Copilot is planned to save workspace details, working preferences and recurring instructions. Microsoft has not said where this memory is stored, which workspace members can see it or whether it is derived from files, chats or both.
-- For the separate Copilot memory feature, Microsoft documents that memories are stored in the user's Exchange mailbox in a hidden folder and are discoverable through eDiscovery. Whether workspace memory is stored or discoverable the same way is not documented.
+- For the separate Copilot memory feature, Microsoft documents that memories are stored in the user's Exchange mailbox in a hidden folder. Saved memories and inferred memories from chat history are discoverable through eDiscovery, but custom instructions are not yet discoverable. Whether workspace memory is stored or discoverable the same way is not documented.
 
 **Security & identity**
 - The roadmap says the update uses Work IQ. Microsoft has not said whose permissions apply when workspace memory is saved or reused. Confirm that before telling users it is safe to put sensitive material in a workspace.
@@ -140,7 +144,7 @@ Who in a tenant gets workspace memory, which licences are needed, which admin ro
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether workspace memory is available to users</strong><br><small>Tenant</small><br><small class="controls__note">No admin switch for workspace memory is documented. The enhanced personalization setting is documented for Copilot memory only.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether workspace memory is available to users</strong><br><small>Tenant</small><br><small class="controls__note">No admin switch specific to workspace memory is documented. Enhanced personalization is documented for Copilot memory and personalized recommendations; Microsoft does not identify workspace memory as a linked feature.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -162,13 +166,8 @@ cost: Low. The only cost the sources show is admin time; no licence, meter or cr
 impact: Medium. People who use Copilot Workspaces on desktop or the web would see Copilot reuse saved context; the roadmap does not say how many users have workspaces or whether the memory is on by default.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure / applicability: Copilot memories are discoverable through eDiscovery, without distinguishing custom instructions from saved and inferred memories. | Found: Saved memories and inferred memories from your chat history are discoverable using eDiscovery and Microsoft Graph Explorer. Custom instructions aren't yet discoverable in these solutions. | Fix: Replace the background sentence with: 'For the separate Copilot memory feature, Microsoft documents that memories are stored in the user's Exchange mailbox in a hidden folder. Saved memories and inferred memories from chat history are discoverable through eDiscovery, but custom instructions are not yet discoverable.' Source: https://learn.microsoft.com/copilot/manage/copilot-personalization-memory | Source: https://learn.microsoft.com/copilot/manage/copilot-personalization-memory
-- [contradicted, blocker] controls[0].note; rendered Governance controls table / applicability: The enhanced personalization setting is documented for Copilot memory only. | Found: Copilot memory - Memory and personalization make Copilot personalized to you and your work. Personalized recommendations - Microsoft Copilot users who have Copilot memory enabled can discover capabilities through personalized recommendations tailored to their role | Fix: Replace controls[0].note and the matching rendered note with: 'No admin switch specific to workspace memory is documented. Enhanced personalization is documented for Copilot memory and personalized recommendations; Microsoft does not identify workspace memory as a linked feature.' Source: https://learn.microsoft.com/graph/control-enhanced-personalization-privacy | Source: https://learn.microsoft.com/graph/control-enhanced-personalization-privacy
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model and licensing.notes; Cost and licensing / licensing: The licensing model is unknown because no workspace-memory-specific licence is published. | Found: Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites. | Fix: Set licensing.model to included. Replace the notes with: 'This is a new option inside Microsoft 365 Copilot, which the service description identifies as an add-on plan with specific licensing prerequisites. Workspace-memory-specific licensing terms are not yet published.' Keep the cited service-description URL. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot
-- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: Microsoft's service description says Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites. | Found: Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites. | Fix: After this attributed sentence, add: 'Microsoft's License options for Microsoft Copilot page also says Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible subscription plans.' Add https://learn.microsoft.com/copilot/microsoft-365/microsoft-365-copilot-licensing to sources. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot
-- [supported, minor] Why it matters / date: Administrators should treat this as arriving in December CY2026. | Found: "status": "In development", "targetDate": "December CY2026" | Fix: Replace 'The sensible view is to treat this as arriving in December CY2026' with 'The sensible view is to plan against the roadmap target of December CY2026, not a confirmed arrival date'.
+- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; Scope / licensing: Workspace-memory-specific licensing is not published, so the licensing model is unknown. | Found: Searched: "Copilot Workspaces" licensing pricing Copilot Credits workspace memory. Opened Copilot service description and Work IQ overview; read License options for Microsoft Copilot excerpt. Product entitlement is published, but no workspace-specific licence stated. | Fix: Set licensing.model to included. Replace licensing.notes with: 'Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans. Microsoft has not published a licence requirement specific to workspace memory.' Cite https://learn.microsoft.com/copilot/plan/copilot-license-options. In Cost and licensing, replace the sentence ending 'so the licensing model stays "Not yet published"' with those same two sentences; retain the narrower unpublished workspace-memory meter and rate statement.
 -->

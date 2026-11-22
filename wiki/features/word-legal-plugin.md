@@ -41,7 +41,7 @@ controls:
     scope: "group"
     ui:
       surface: "Microsoft 365 Apps admin center"
-      path: "Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings"
+      path: "Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Legal Skills in M365 Copilot in Word"
       docs: "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy"
     api: null
     note: "Select the policy named \"Legal Skills in M365 Copilot in Word\" (named on the Manage Copilot for legal page). Applies when the Office app restarts. Does not govern the Cowork legal plugin."
@@ -54,19 +54,23 @@ changes:
     note: "First briefing: roadmap item 571885 plus the Learn page on managing Copilot for legal, which gives the default and the Cloud Policy setting."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 45 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Correction: Change & support now says Cloud Policy settings apply on restart after the device has retrieved them; removed an unsupported claim about documents users open; extended the control path to the policy name."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 45
-  confirmed: 42
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "04654221a11f73ef83e2cd00e48ad643"
+  claims: 50
+  confirmed: 49
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "17b1dabe914acaed1d14560a026b558e"
 ---
 
 ## What's changing
@@ -87,7 +91,7 @@ The wiki's view is that legal documents (contracts, policies, correspondence) ar
 
 **Data exposure**
 - Learn does not describe what content beyond the open document the legal skills read or which sources they draw on. Ask your Microsoft contact or watch the Learn page before concluding the plugin sees only the open document.
-- Legal documents often carry sensitive or privileged content. Check which sensitivity labels and Purview policies already cover those files, because the plugin acts inside Word on documents users open.
+- Legal documents often carry sensitive or privileged content. Check which sensitivity labels and Purview policies already cover those files, because the plugin provides legal skills in Word desktop.
 
 **Security & identity**
 - Learn says the plugin is enabled for all Microsoft 365 Copilot commercial subscribers by default, so access follows the Copilot licence and not a separate legal role. Restricting it to a legal group means creating a Cloud Policy configuration that targets groups.
@@ -98,7 +102,7 @@ The wiki's view is that legal documents (contracts, policies, correspondence) ar
 - Treat output as a draft for a qualified legal professional to check; that is the wiki's advice, not a Microsoft statement about this plugin.
 
 **Change & support**
-- Cloud Policy settings apply only when the Office app is restarted, so a change to the policy reaches users on their next restart and not at once.
+- Cloud Policy settings take effect when the Office app is restarted after the device has retrieved the applicable settings. Retrieval follows the service's check-in interval, so the next restart alone does not guarantee that a newly changed policy has arrived.
 - Expect questions from legal teams about when skills appear, because the roadmap targets preview in April CY2026 and general availability in December CY2026 while Learn already describes the plugin as enabled.
 
 ## Cost and licensing
@@ -144,7 +148,7 @@ The wiki's view is that legal documents (contracts, policies, correspondence) ar
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether the legal plugin is available in Copilot in Word desktop, per user group</strong><br><small>Group</small><br><small class="controls__note">Select the policy named &quot;Legal Skills in M365 Copilot in Word&quot; (named on the Manage Copilot for legal page). Applies when the Office app restarts. Does not govern the Cowork legal plugin.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Start with the basics › Choose the scope › Configure Settings <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether the legal plugin is available in Copilot in Word desktop, per user group</strong><br><small>Group</small><br><small class="controls__note">Select the policy named &quot;Legal Skills in M365 Copilot in Word&quot; (named on the Manage Copilot for legal page). Applies when the Office app restarts. Does not govern the Cowork legal plugin.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Start with the basics › Choose the scope › Configure Settings › Legal Skills in M365 Copilot in Word <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -166,12 +170,8 @@ cost: Low. Learn names no separate licence or meter for the plugin; the cost sho
 impact: Medium. People who work on legal documents in Word desktop notice it first; Learn says the plugin is enabled by default for Microsoft 365 Copilot commercial subscribers.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Change & support / behaviour: A change to the policy reaches users on their next restart. | Found: If the user has previously signed in, the check-in call is made only if the check-in interval has lapsed. | Fix: Replace the Change & support bullet with 'Cloud Policy settings take effect when the Office app is restarted after the device has retrieved the applicable settings. Retrieval follows the service's check-in interval, so the next restart alone does not guarantee that a newly changed policy has arrived.' Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
-- [unsupported, major] Risk assessment: Data exposure / behaviour: The legal plugin acts on documents users open inside Word. | Found: Searched: Copilot legal plugin Word data sources document edits approval legal role. Read Manage Copilot for legal and the roadmap; they describe legal tasks and documents in Word but do not specify that the documents acted on are documents users open. | Fix: Replace 'because the plugin acts inside Word on documents users open' with 'because the plugin provides legal skills in Word desktop'. Keep the preceding recommendation to check existing file protections as the wiki's advice, not a claim that those protections govern the plugin.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls: Admin UI / admin-path: The Microsoft 365 Apps admin center route through Customization, Policy Management, Policy configurations, Create, Start with the basics, Choose the scope and Configure Settings reaches the policy selection page. | Found: Under Customization, select Policy Management. On the Policy configurations page, select Create. On the Configure Settings page, select the policies that you want to include in the policy configuration. | Fix: Extend controls[0].ui.path and the rendered route to 'Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Legal Skills in M365 Copilot in Word'. The final policy name is given at https://learn.microsoft.com/microsoft-365/admin/manage/manage-copilot-for-legal?view=o365-worldwide; retain the existing note. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
-- [contradicted, minor] Governance guidance: After rollout; Risk assessment: Data exposure; Governance controls / consistency: The governance advice asks readers to check audit and existing file-protection controls that are absent from the controls table. | Found: Check the Microsoft Purview audit log for changes to the policy configuration, if auditing is enabled. / Check which sensitivity labels and Purview policies already cover those files / Whether the legal plugin is available in Copilot in Word desktop, per user group | Fix: The After rollout audit-log check and the Data exposure sensitivity-label/Purview-policy check have no corresponding controls-table rows. This is a checklist/table coverage finding only; do not add control rows as part of this correction.
+- [contradicted, minor] Governance guidance: After rollout; controls / consistency: The checklist tells administrators to check policy changes in the Purview audit log, but the controls table contains only the legal-plugin availability policy. | Found: Check the Microsoft Purview audit log for changes to the policy configuration, if auditing is enabled. | Whether the legal plugin is available in Copilot in Word desktop, per user group | Fix: The After rollout audit-log checklist step has no corresponding controls-table row. Remove that checklist bullet to align the checklist with the existing table; retain the supported audit-support statement in Governance controls and do not add a new row.
 -->

@@ -4,7 +4,7 @@ slug: "microsoft-teams-events-now-support-up-to-20-000-registrations-making-it-e
 roadmapId: 574110
 topic: "modern-work"
 products: ["Microsoft Teams"]
-summary: "Teams webinars and town halls will accept up to 20,000 registrations per event from December 2026. Over 3,000 needs an Attendee Capacity Pack for the organiser. No admin action is required, but pack sizing needs checking."
+summary: "Teams webinars and town halls are expected to gain up to 20,000 registrations per event during December 2026. Over 3,000 needs an Attendee Capacity Pack for the organiser. No admin action is required, but pack sizing needs checking."
 status: "in-development"
 releasePhase: ["General Availability","Targeted Release"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -40,6 +40,12 @@ sources:
   - title: "Manage who can schedule and attend events in Microsoft Teams"
     url: "https://learn.microsoft.com/microsoftteams/set-up-events"
     kind: "learn"
+  - title: "Assign Teams add-on licenses to users"
+    url: "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/assign-teams-add-on-licenses"
+    kind: "learn"
+  - title: "user: assignLicense"
+    url: "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0"
+    kind: "learn"
 videos: []
 related: ["microsoft-teams-invite-attendees-to-register","microsoft-teams-ability-to-separate-out-the-townhall-attendee-invites","microsoft-teams-teams-events-attendance-and-engagement-report-policy"]
 controls:
@@ -47,10 +53,13 @@ controls:
     scope: "user"
     ui:
       surface: "Teams admin center"
-      path: "Add-on Licenses > Teams Events > Licenses > Assign to new users"
+      path: "Add-on Licenses > Teams Events > Licenses > Assign to new users > Assign Add-on licenses > Attendee pack"
       docs: "https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage"
-    api: null
-    note: "Global Administrator role to manage; Teams Administrator is read-only. One pack per organiser."
+    api:
+      kind: "graph"
+      call: "POST /v1.0/users/{id}/assignLicense"
+      docs: "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0"
+    note: "Global Administrator role to manage; Teams Administrator is read-only. One pack per organiser. The request body uses addLicenses with the purchased pack skuId; removeLicenses identifies licences to remove."
   - governs: "Whether users can create webinars (events up to 1,000 attendees)"
     scope: "user"
     ui:
@@ -93,24 +102,28 @@ changes:
     note: "First briefing: registration capacity for Teams webinars and town halls rises to 20,000 from December 2026, with the Attendee Capacity Pack needed above 3,000."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 59 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after verification: pack assignment now lists the Microsoft Graph assignLicense call, and the summary and opening prose describe December 2026 as the planned rollout."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 59 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 59
-  confirmed: 55
+  confirmed: 59
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "6850752d034fcd7579210fda3cfce1a1"
+  contradicted: 0
+  attempts: 0
+  hash: "6e5a69c055f92657b7e39ced668f4f9f"
 ---
 
 ## What's changing
 
-From December 2026, registration capacity for Microsoft Teams town halls and webinars scales with the event's attendee capacity, up to 20,000 registrations per event. Microsoft's notice MC1557760 (published 2026-11-17) says organisers with Teams Enterprise can allow up to 3,000 registrations and organisers with Attendee Capacity Packs can allow up to 20,000.
+During the planned December 2026 rollout, registration capacity for Microsoft Teams town halls and webinars scales with the event's attendee capacity, up to 20,000 registrations per event. Microsoft's notice MC1557760 (published 2026-11-17) says organisers with Teams Enterprise can allow up to 3,000 registrations and organisers with Attendee Capacity Packs can allow up to 20,000.
 
 The notice gives a Worldwide General Availability rollout starting in early December 2026 and expected to complete by late December 2026, and states no action is required. It adds that large webinars with registration don't support broadcast-style streaming, which is available with town halls, that organisers still need the right events policy, and that Microsoft plans to support more registrations per event in future releases.
 
@@ -146,7 +159,7 @@ The change arrives without an admin step, so the practical decision is licensing
 
 **How packs combine.** Learn states that the capacity included with Teams Enterprise and a pack aren't combined (a 20,000 pack gives 20,000, not 23,000), and that each organiser can be assigned only one pack.
 
-**Price.** A price for Attendee Capacity Packs is not yet published on the Learn pages for packs, and a registration-specific charge is not yet published either. Buying and assigning packs is covered in the controls table.
+**Price.** A price for Attendee Capacity Packs is not yet published on the Learn pages for packs, and a registration-specific charge is not yet published either. Assigning packs is covered in the controls table.
 
 ## Scope
 
@@ -170,7 +183,6 @@ The change arrives without an admin step, so the practical decision is licensing
 - Explain to organisers that large webinars with registration don't support broadcast-style streaming, which town halls do.
 
 ### After rollout
-- Check the Usage reports tab on the Teams Events page to see how packs are used across the organisation.
 - Review the event inventory before removing or changing a pack, because Learn warns upcoming events may no longer run at the scheduled capacity.
 - Confirm with a pilot organiser that registration above 3,000 works with their assigned pack, and raise any gap with Microsoft.
 
@@ -181,25 +193,22 @@ The change arrives without an admin step, so the practical decision is licensing
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Attendee Capacity Pack assignment to organisers</strong><br><small>User</small><br><small class="controls__note">Global Administrator role to manage; Teams Administrator is read-only. One pack per organiser.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Add-on Licenses › Teams Events › Licenses › Assign to new users <a href="https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Attendee Capacity Pack assignment to organisers</strong><br><small>User</small><br><small class="controls__note">Global Administrator role to manage; Teams Administrator is read-only. One pack per organiser. The request body uses addLicenses with the purchased pack skuId; removeLicenses identifies licences to remove.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Add-on Licenses › Teams Events › Licenses › Assign to new users › Assign Add-on licenses › Attendee pack <a href="https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/users/{id}/assignLicense</code> <a href="https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether users can create webinars (events up to 1,000 attendees)</strong><br><small>User</small><br><small class="controls__note">Existing control. Learn labels it by 1,000 attendees; whether it governs webinars above that size is not stated.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Events up to 1k attendees <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -AllowWebinars Enabled</code> <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether users can create events optimised for a large audience (town halls)</strong><br><small>User</small><br><small class="controls__note">Existing control; Microsoft's notice says events policies don't change.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Events optimized for a large audience <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -AllowTownhalls Enabled</code> <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Who can attend town halls created under a policy</strong><br><small>User</small><br><small class="controls__note">Existing control. The matching setting for events up to 1,000 attendees is EventAccessType.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Who can attend events optimized for a large audience <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -TownhallEventAttendeeAccess Everyone</code> <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The pack assignment is done in the Teams admin center and, per Learn, needs the Global Administrator role; Teams Administrators have read-only access to License Management. Microsoft Learn's pack pages document the Teams admin center only for assignment.
+The pack assignment is done in the Teams admin center and, per Learn, needs the Global Administrator role; Teams Administrators have read-only access to License Management.
 
 The events policy toggles are labelled by attendee count (up to 1k attendees and optimised for a large audience). Microsoft's notice says existing events policies and admin controls don't change; it does not say which toggle governs a webinar with more than 1,000 registrations. Treat the rows as the existing controls the notice points to, and confirm the behaviour in a pilot.
-
-No separate admin setting for the registration limit itself is documented at the time of writing (November 2026).
 
 ## Open questions
 
 - Which events policy setting applies to webinars with more than 1,000 registrations, given the toggle is labelled "Events up to 1k attendees"? Watch the Learn page on managing who can schedule events and Message center.
 - Will registration limits for each pack size below 20K follow the pack's attendee capacity exactly? Watch the Learn feature comparison page, which still lists registration at 1,000 attendees.
 - What do Attendee Capacity Packs cost, and is there any charge specific to registration above 3,000? Not yet published on the Learn pack pages.
-- Is there an API or script for assigning Attendee Capacity Packs? Not documented on the Learn pack pages at the time of writing.
 
 <!-- rationale
 risk: Low. Microsoft's notice MC1557760 says existing events policies and admin controls don't change and lists no compliance considerations; the exposure is organisers planning events the licence cannot cover.
@@ -207,14 +216,11 @@ cost: Medium. Registration above 3,000 per event needs an Attendee Capacity Pack
 impact: Medium. Organisers of webinars and town halls with registration see the higher limit; other users and admins notice only if they manage events policies or pack licences.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls table; Open questions / absence: No API or script is documented for assigning Attendee Capacity Packs. | Found: You can use the Microsoft 365 admin center or PowerShell to assign licenses to users in your organization. | Fix: Replace controls[0].api null with kind 'graph', call 'POST /v1.0/users/{id}/assignLicense', docs 'https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0'. Add to the row note: 'The request body uses addLicenses with the purchased pack skuId; removeLicenses identifies licences to remove.' Cite that reference and https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/assign-teams-add-on-licenses. Remove the Open questions bullet implying assignment automation is undocumented. The general Teams add-on assignment guide covers the licence class that the cited pack page explicitly places these packs in; absence from the pack-specific pages does not establish absence of automation. | Source: https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/assign-teams-add-on-licenses
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: targetDate; summary; What's changing; changes[0] / record: The roadmap target is December CY2026, expressed as firm December availability in the summary and opening prose. | Found: "targetDate": "December CY2026", "status": "In development" | Fix: Change the summary's first sentence to 'Teams webinars and town halls are expected to gain up to 20,000 registrations per event during December 2026.' Change 'From December 2026' in What's changing to 'During the planned December 2026 rollout'. The roadmap target remains 'December CY2026', not a commitment.
-- [supported, minor] controls[0].ui; Governance controls table; Governance guidance / admin-path: The pack assignment path is Teams admin center > Add-on Licenses > Teams Events > Licenses > Assign to new users. | Found: In the Teams admin center, go to Add-on Licenses > Teams Events. On the Licenses tab, select Assign to new users to get started. | Fix: Extend controls[0].ui.path to 'Add-on Licenses > Teams Events > Licenses > Assign to new users > Assign Add-on licenses > Attendee pack'. The cited page says to select the organisers in the pane and select each user's pack size in the Attendee pack column; the existing path stops at the entry to that pane. | Source: https://learn.microsoft.com/microsoftteams/attendee-capacity-pack-manage
-- [contradicted, minor] Cost and licensing: Price; Governance controls table / consistency: The prose says buying and assigning packs are covered in the controls table, but the table contains assignment only. | Found: Buying and assigning packs is covered in the controls table. / Attendee Capacity Pack assignment to organisers: Add-on Licenses > Teams Events > Licenses > Assign to new users | Fix: Replace 'Buying and assigning packs is covered in the controls table.' with 'Assigning packs is covered in the controls table.' Do not add a purchase row.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist tells administrators to check Usage reports, but that monitoring control has no table row. | Found: Check the Usage reports tab on the Teams Events page to see how packs are used across the organisation. / Table rows: pack assignment, webinar creation, large-audience event creation, town hall attendee access. | Fix: Remove the 'Check the Usage reports tab' checklist bullet to keep the checklist aligned with the existing table. Do not add a control row.
-- [contradicted, minor] Governance controls: final paragraph; Governance controls table / consistency: The prose reports a missing separate registration-limit control, but the controls table does not show that gap. | Found: No separate admin setting for the registration limit itself is documented at the time of writing (November 2026). / Table rows: pack assignment and three existing events-policy controls. | Fix: Remove the final Governance controls sentence about the separate registration-limit setting so the prose does not claim a missing control absent from the table. Do not add a row.
+- [supported, minor] Risk assessment: Autonomy & actions / behaviour: The organiser sets event capacity when scheduling the event. | Found: Organizers use a unified creation flow to configure event settings—such as registration and attendee interaction—based on event capacity and scenario, rather than selecting a fixed event type. | Fix: Cite https://learn.microsoft.com/microsoftteams/plan-events for the organiser's scheduling experience; the already cited pack page also states that an attendee pack determines the maximum capacity an organiser can set. | Source: https://learn.microsoft.com/microsoftteams/plan-events
+- [supported, minor] controls[1].api; Governance controls table / command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowWebinars Enabled allows events up to 1,000 attendees. | Found: To allow organizers with this policy to create events with up to 1,000 attendees, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowWebinars Enabled | Fix: Add one note covering the three events-policy commands: 'The Set-CsTeamsEventsPolicy reference still labels the policy preview, although the management guide presents these controls without that label.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps, whose search excerpt states 'Note that this policy is currently still in preview.' | Source: https://learn.microsoft.com/microsoftteams/set-up-events
+- [supported, minor] controls[1].note; Governance controls table / applicability: The row correctly records the existing webinar control but qualifies its applicability above 1,000 attendees as unstated. | Found: Controls whether users with this policy can create events with up to 1,000 attendees, such as webinars. ... For events with more than 1,000 attendees, Optimize for large audience is on and can't be turned off. | Fix: Replace controls[1].note with 'Existing control. Learn documents AllowWebinars for events with up to 1,000 attendees and AllowTownhalls for events optimised for large audiences.' The documentation describes the general policy reach; keep the separate question about the newly announced large webinars with registration. | Source: https://learn.microsoft.com/microsoftteams/set-up-events
+- [supported, minor] front matter: changes[0].note / date: The first change note says registration capacity rises to 20,000 from December 2026 without labelling the date a plan. | Found: General Availability (Worldwide): We will begin rolling out in early December 2026 and expect to complete by late December 2026. | Fix: Replace changes[0].note with 'First briefing: registration capacity for Teams webinars and town halls is planned to rise to 20,000 during December 2026, with the Attendee Capacity Pack needed above 3,000.'
 -->

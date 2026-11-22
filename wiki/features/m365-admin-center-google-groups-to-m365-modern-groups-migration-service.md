@@ -43,6 +43,9 @@ sources:
   - title: "Owners and members of a migrated Microsoft 365 group (Microsoft Graph)"
     url: "https://learn.microsoft.com/graph/api/group-post-members?view=graph-rest-1.0"
     kind: "learn"
+  - title: "Microsoft 365 Groups overview for administrators"
+    url: "https://learn.microsoft.com/microsoft-365/admin/create-groups/office-365-groups"
+    kind: "learn"
 videos: []
 related: []
 controls:
@@ -72,7 +75,7 @@ controls:
       kind: "graph"
       call: "POST /v1.0/groups/{group-id}/members/$ref"
       docs: "https://learn.microsoft.com/graph/api/group-post-members?view=graph-rest-1.0"
-    note: "Existing group controls for review after a migration. The Graph call adds members only."
+    note: "Existing group controls. On Membership, choose Owners or Members, then Add or X. The Graph call adds members only; its request body sets @odata.id to a reference to the user being added."
 confidence: "low"
 created: "2026-11-22"
 updated: "2026-11-22"
@@ -82,26 +85,30 @@ changes:
     note: "First briefing for this roadmap item; Microsoft Learn does not yet document the service, so the page rests on the roadmap text and existing group controls."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 51 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after verification: Google Identity Sync described as identity synchronisation only, Graph role requirement narrowed to delegated scenarios, and the group-creation restriction's applicability left as not yet documented."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 48
-  unconfirmed: 2
-  contradicted: 1
-  attempts: 1
-  hash: "388361f1428f5c3528a3363fabb437ea"
+  claims: 58
+  confirmed: 58
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "29c23471d33a8aca25c55120869013f7"
 ---
 
 ## What's changing
 
 Microsoft plans a first-party service in the Microsoft 365 admin center that migrates Google Groups into Microsoft 365 Groups. The roadmap item describes it as a way for customers moving from Google to create the groups, their members, member conversations and all permissions in Microsoft 365 Groups automatically, without recreating the groups by hand.
 
-Microsoft Learn does not describe this service yet, so what follows about its behaviour is the roadmap's description. Microsoft Learn does document a separate, existing tool, Google Identity Sync, which does one-way synchronisation of user and group identities from Google Workspace to Microsoft 365. For groups it maps each Google Workspace group to a Microsoft 365 unified group and synchronises owners and members; it is a different feature from this roadmap item and is not a description of it. [Google Identity Sync](https://learn.microsoft.com/sharepointmigration/google-identity-sync)
+Microsoft Learn does not describe this service yet, so what follows about its behaviour is the roadmap's description. Microsoft Learn does document an existing tool, Google Identity Sync, which does one-way synchronisation of user and group identities from Google Workspace to Microsoft 365. For groups it maps each Google Workspace group to a Microsoft 365 unified group and synchronises owners and members; that page documents identity synchronisation, not conversation migration. [Google Identity Sync](https://learn.microsoft.com/sharepointmigration/google-identity-sync)
 
 The roadmap record lists the status as In development, with a preview target of January CY2025 and a general availability target of February CY2025, for Worldwide (Standard Multi-Tenant) on the web. Both targets are earlier than today's date (22 November 2026) while the status is still In development, and the record was last modified on 22 November 2024, so treat the dates as unreliable and watch for an update.
 
@@ -132,13 +139,13 @@ Microsoft has not stated what happens on arrival, and no source says existing be
 
 A licence or meter for this service is not yet published: the roadmap item names none, and Microsoft Learn has no page for it at the time of writing (November 2026). Do not budget for a charge or assume there is none until Microsoft publishes it.
 
-The cost known today is indirect: administrator time to plan the migration and to review destination groups afterwards. For the separate Google Identity Sync tool, Microsoft's page says synchronised users still need licences for the Microsoft 365 services being migrated to; that page does not describe licensing for this roadmap service.
+The cost known today is indirect: administrator time to plan the migration and to review destination groups afterwards. For the existing Google Identity Sync tool, Microsoft's page says synchronised users still need licences for the Microsoft 365 services being migrated to; that page does not describe licensing for this roadmap service.
 
 ## Scope
 
 The roadmap item lists Worldwide (Standard Multi-Tenant) as the only cloud and Web as the platform, with General Availability and Preview as release phases. The audience is customers moving from Google, who are the roadmap's stated target. Roles, prerequisites and rollout mechanics are not yet documented.
 
-For comparison, the separate Google Identity Sync page states that it is available to tenants with fewer than 300 licensed users; do not assume the same limit applies here.
+For comparison, the existing Google Identity Sync page states that it is available to tenants with fewer than 300 licensed users; do not assume the same limit applies here.
 
 ## Governance guidance
 
@@ -165,13 +172,13 @@ For comparison, the separate Google Identity Sync page states that it is availab
 <tbody>
 <tr><td data-label="Control"><strong>Availability of the Google Groups migration service</strong><br><small>Tenant</small><br><small class="controls__note">No tenant switch, role or API for this service is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Who can create Microsoft 365 groups</strong><br><small>Tenant</small><br><small class="controls__note">Existing control. The page says it affects users, not service principals; whether it applies to this service is not documented. The EnableGroupCreation value is set through the group setting's values.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Microsoft Entra ID › All groups › Groups › General settings › Users can create Microsoft 365 groups in Azure portals, API or PowerShell <a href="https://learn.microsoft.com/entra/identity/users/groups-self-service-management" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /v1.0/groupSettings/{groupSettingId}</code> <a href="https://learn.microsoft.com/graph/api/groupsetting-update?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Owners and members of a migrated Microsoft 365 group</strong><br><small>Group</small><br><small class="controls__note">Existing group controls for review after a migration. The Graph call adds members only.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Teams &amp; groups › Active teams &amp; groups › group › Membership <a href="https://learn.microsoft.com/microsoft-365/admin/create-groups/manage-groups" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/groups/{group-id}/members/$ref</code> <a href="https://learn.microsoft.com/graph/api/group-post-members?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Owners and members of a migrated Microsoft 365 group</strong><br><small>Group</small><br><small class="controls__note">Existing group controls. On Membership, choose Owners or Members, then Add or X. The Graph call adds members only; its request body sets @odata.id to a reference to the user being added.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Teams &amp; groups › Active teams &amp; groups › group › Membership <a href="https://learn.microsoft.com/microsoft-365/admin/create-groups/manage-groups" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/groups/{group-id}/members/$ref</code> <a href="https://learn.microsoft.com/graph/api/group-post-members?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-No switch, role or setting specific to this service is documented at the time of writing (November 2026), so the first row is empty on both sides. The other rows are existing Microsoft 365 group controls that you can use around a migration; they do not govern the migration service itself.
+No switch, role or setting specific to this service is documented at the time of writing (November 2026), so the first row is empty on both sides. The other rows are existing Microsoft 365 group controls that you can use around a migration: the membership controls govern destination groups; whether the group-creation restriction applies to the migration service is not yet documented.
 
-The Users can create Microsoft 365 groups setting needs at least the Global Administrator role to change in the Entra admin center, per the page that gives the path, and its page says it does not affect service principals. Changing group membership through the Graph call needs a supported Microsoft Entra role, such as Groups Administrator, or group ownership, per the reference page.
+The Users can create Microsoft 365 groups setting needs at least the Global Administrator role to change in the Entra admin center, per the page that gives the path, and its page says it does not affect service principals. In delegated scenarios, the signed-in user adding members through Graph must also have a supported Microsoft Entra role, such as Groups Administrator, or be a group owner, per the reference page.
 
 ## Open questions
 
@@ -187,14 +194,8 @@ cost: Low. The only cost the sources show is admin time and review of migrated g
 impact: Low. Only tenants moving from Google Workspace and their administrators are affected, plus the members of any migrated group; nothing is described as changing for other tenants.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] What's changing / behaviour: Google Identity Sync is a different feature from this roadmap item. | Found: Searched: Google Groups Microsoft 365 Groups migration service 470024; "Google Groups" "migration" "conversations". Opened Google Identity Sync and Consolidated migration of data from Google Workspace. Neither identifies Identity Sync's relationship to this roadmap item. | Fix: Replace 'it is a different feature from this roadmap item and is not a description of it' with 'that page documents identity synchronisation, not conversation migration'. The Google Identity Sync page at https://learn.microsoft.com/sharepointmigration/google-identity-sync does not document conversation migration or identify its relationship to this roadmap item.
-- [contradicted, blocker] Governance controls / role: Changing membership through the Graph call requires a supported Microsoft Entra role, such as Groups Administrator, or group ownership. | Found: In delegated scenarios, the signed-in user must also be assigned a supported Microsoft Entra role ... Group owners ... Groups Administrator. Supported resource: user; Application: GroupMember.ReadWrite.All. | Fix: Replace the sentence with: 'In delegated scenarios, the signed-in user adding members through Graph must also have a supported Microsoft Entra role, such as Groups Administrator, or be a group owner.' Cite https://learn.microsoft.com/graph/api/group-post-members?view=graph-rest-1.0. The reference also supports application access, so do not state the signed-in-user requirement for every call. | Source: https://learn.microsoft.com/graph/api/group-post-members?view=graph-rest-1.0
-- [unsupported, blocker] Governance controls / applicability: The existing group-control rows do not govern the migration service itself. | Found: Searched: "Google Groups" migration service enable administrator permissions default; "Google Groups" migration Microsoft Graph beta PowerShell API. Opened self-service group management, Google Identity Sync and Consolidated migration. No source excludes this service from the creation restriction. | Fix: Replace 'they do not govern the migration service itself' with 'the membership controls govern destination groups; whether the group-creation restriction applies to the migration service is not yet documented'. This preserves the distinction without asserting a service exemption that Microsoft has not stated.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters; Risk assessment: Data exposure / applicability: Microsoft 365 group membership grants access to the group's content, including its shared inbox. | Found: When you add users to the group, you automatically grant them the appropriate access. Members - Access all group resources but can't change group settings. | Fix: Add https://learn.microsoft.com/microsoft-365/admin/create-groups/office-365-groups to sources, titled 'Microsoft 365 Groups overview for administrators'; it states the membership-to-resource-access premise. | Source: https://learn.microsoft.com/microsoft-365/admin/create-groups/office-365-groups
-- [supported, minor] controls[2].ui; Governance controls table; Governance guidance: After rollout / admin-path: Owners and members can be reviewed at Microsoft 365 admin center > Teams & groups > Active teams & groups > group > Membership. | Found: Expand Teams & groups, and then click Active teams & groups. Click the name of the group ... On the Membership tab, choose if you want to manage Owners or Members. Choose Add ... or click X to remove someone. | Fix: Keep the path, which reaches the right tab, and add to controls[2].note: 'On Membership, choose Owners or Members; choose Add to add someone or X to remove someone.' This completes the route documented at https://learn.microsoft.com/microsoft-365/admin/create-groups/manage-groups without changing the row's scope. | Source: https://learn.microsoft.com/microsoft-365/admin/create-groups/manage-groups
-- [supported, minor] controls[2].api; controls[2].note; Governance controls table / command: POST /v1.0/groups/{group-id}/members/$ref adds group members, not owners. | Found: POST https://graph.microsoft.com/v1.0/groups/{group-id}/members/$ref ... supply a JSON object that contains an @odata.id property with a reference by ID to a supported group member object type. | Fix: Keep controls[2].api.call unchanged and add to its note: 'The request body sets @odata.id to a reference to the user being added.' The pre-check's missing-endpoint warning is a false positive: the endpoint appears in Example 1 at https://learn.microsoft.com/graph/api/group-post-members?view=graph-rest-1.0. | Source: https://learn.microsoft.com/graph/api/group-post-members?view=graph-rest-1.0
+- [supported, minor] controls[2].ui / admin-path: Teams & groups > Active teams & groups > group > Membership reaches group owner and member management in the Microsoft 365 admin center. | Found: Expand Teams & groups ... Active teams & groups. ... Click the name of the group ... On the Membership tab, choose ... Owners or Members. ... Choose Add ... or click X | Fix: Complete the path as 'Teams & groups > Active teams & groups > group > Membership > Owners or Members > Add or X', retaining the note that Add adds someone and X removes someone, as documented at https://learn.microsoft.com/microsoft-365/admin/create-groups/manage-groups. | Source: https://learn.microsoft.com/microsoft-365/admin/create-groups/manage-groups
 -->

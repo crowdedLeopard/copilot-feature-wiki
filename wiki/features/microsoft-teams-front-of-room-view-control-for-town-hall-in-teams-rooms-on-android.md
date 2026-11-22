@@ -25,6 +25,9 @@ sources:
   - title: "Microsoft 365 Roadmap 562534"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=562534"
     kind: "roadmap"
+  - title: "Microsoft 365 Roadmap 500378"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=500378"
+    kind: "roadmap"
   - title: "Release notes for Microsoft Teams Rooms"
     url: "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note"
     kind: "learn"
@@ -55,7 +58,7 @@ controls:
       kind: "powershell"
       call: "Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled"
       docs: "https://learn.microsoft.com/microsoftteams/set-up-events"
-    note: "Decides who can create Town Halls under the policy. It does not control the front-of-room view of rooms that present in them."
+    note: "Decides who can create Town Halls under the policy. It does not control the front-of-room view of rooms that present in them. The Set-CsTeamsEventsPolicy reference still labels this policy as preview."
 confidence: "high"
 created: "2026-11-22"
 updated: "2026-11-22"
@@ -65,19 +68,23 @@ changes:
     note: "First briefing for this item: the GCC High and DoD listing of front-of-room view control for Town Hall in Teams Rooms on Android."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 44 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected the cost basis: the Teams Rooms Pro licence is a prerequisite, and the indirect cost is communication time. Added the preview label on the events policy cmdlet and the 500378 roadmap source."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 49 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 44
-  confirmed: 43
+  claims: 49
+  confirmed: 49
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "32e93c2744e59526ac7d3f4bead3d9b5"
+  contradicted: 0
+  attempts: 0
+  hash: "cd2038595b84497d31af910d5b328c55"
 ---
 
 ## What's changing
@@ -113,7 +120,7 @@ Because the release notes tie the feature to Teams Rooms Pro, the first check in
 
 The release notes for Microsoft Teams Rooms say that features marked with the Teams Rooms Pro icon are only available with a Teams Rooms Pro licence, and this feature is marked that way. The roadmap description also says it is available in Teams Rooms Pro. Microsoft Learn's licensing page lists Teams Rooms Pro as available in the GCC, GCC-High and DoD segments, and says Pro licences can be purchased through the Microsoft 365 admin center or a preferred sales channel.
 
-The licensing page lists no price, and no separate meter or charge for this feature is documented at the time of writing (November 2026). The indirect costs are communication time and a Teams Rooms Pro licence for any Android room that is not yet on one.
+The licensing page lists no price, and no separate meter or charge for this feature is documented at the time of writing (November 2026). Communication time is an indirect cost. An Android room without Teams Rooms Pro needs that licence to use this feature.
 
 ## Scope
 
@@ -149,7 +156,7 @@ The licensing page lists no price, and no separate meter or charge for this feat
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Default front-of-room view for Teams Rooms on Android presenters in Town Hall</strong><br><small>Tenant</small><br><small class="controls__note">Presenters switch the view from the room console, per the roadmap description. No admin policy for the default view is documented.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which users can create events optimized for large audiences, such as Town Halls</strong><br><small>User</small><br><small class="controls__note">Decides who can create Town Halls under the policy. It does not control the front-of-room view of rooms that present in them.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Events optimized for a large audience <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -AllowTownhalls Disabled</code> <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users can create events optimized for large audiences, such as Town Halls</strong><br><small>User</small><br><small class="controls__note">Decides who can create Town Halls under the policy. It does not control the front-of-room view of rooms that present in them. The Set-CsTeamsEventsPolicy reference still labels this policy as preview.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Events optimized for a large audience <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -AllowTownhalls Disabled</code> <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -166,15 +173,12 @@ The Teams events policy row is an existing control that decides which users can 
 
 <!-- rationale
 risk: Low. The change only sets which view the room display starts in, and presenters keep full console control; the exposure that remains is a presenter switching the room display to presenter view in front of attendees.
-cost: Low. The release notes mark the feature as available only with a Teams Rooms Pro licence, so the cost is that licence for any Android room without one, plus communication time; no separate meter is documented.
+cost: Low. The feature is included in Teams Rooms Pro; for rooms already licensed for Pro, the indirect cost is communication time. No separate meter is documented.
 impact: Medium. Presenters and in-room audiences in Teams Rooms on Android devices that join a Town Hall as a presenter see a different default display; the page does not describe any change for remote attendees.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: cost; Cost and licensing; rationale: cost / consistency: The low cost rating is consistent with a rationale that includes purchasing a Pro licence for Android rooms without one. | Found: cost: "low"; 'the cost is that licence for any Android room without one, plus communication time'. The standard defines low as 'indirect cost only: admin time, communications, training'. | Fix: Keep cost low but narrow its basis to existing Pro rooms: replace rationale: cost with 'Low. The feature is included in Teams Rooms Pro; for rooms already licensed for Pro, the indirect cost is communication time. No separate meter is documented.' In Cost and licensing, replace the last sentence with 'Communication time is an indirect cost. An Android room without Teams Rooms Pro needs that licence to use this feature.' This separates the product licence prerequisite from the indirect cost of this default change.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Scope / record: The same feature is listed in roadmap item 500378 for Worldwide (Standard Multi-Tenant). | Found: "id": 500378; "title": "Microsoft Teams: Front-of-room view control for Town Hall in Teams Rooms on Android"; "clouds": ["Worldwide (Standard Multi-Tenant)"] | Fix: Add Microsoft 365 Roadmap 500378, https://www.microsoft.com/microsoft-365/roadmap?id=500378, to sources to support the statements about that separate item.
-- [supported, minor] controls[1].api; Governance controls / command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled prevents organisers under the policy from creating large-audience events. | Found: To prevent organizers with this policy from creating events optimized for large audiences, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled | Fix: Append to controls[1].note: 'The Set-CsTeamsEventsPolicy reference still labels this policy as preview.' The reference at https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps says 'Note that this policy is currently still in preview.' Do not change this roadmap item's GA phase. | Source: https://learn.microsoft.com/microsoftteams/set-up-events
+- [supported, minor] What's changing / record: The description of item 500378 says the webinar experience is still in development. | Found: That experience is still in development and will be released later in 2026. | Fix: After the sentence reporting item 500378's webinar-development note, add: 'The Teams Rooms release notes nevertheless list front-of-room view control for webinars and structured meetings as introduced in Android update 1449/1.0.96.2026129709 (June 2026).' Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note, which is already in sources.
 -->
