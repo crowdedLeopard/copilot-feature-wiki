@@ -12,7 +12,7 @@ platforms: ["Web"]
 targetDate: "June CY2025"
 previewDate: null
 risk: "low"
-cost: "low"
+cost: "medium"
 impact: "low"
 defaultState: "unknown"
 action: "review"
@@ -37,6 +37,18 @@ sources:
   - title: "Microsoft Copilot"
     url: "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot"
     kind: "learn"
+  - title: "Agent 365 Package Management API overview"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview"
+    kind: "learn"
+  - title: "Governance and lifecycle actions for agents available in Microsoft 365 admin center"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions"
+    kind: "learn"
+  - title: "Understand roles in Microsoft Entra ID"
+    url: "https://learn.microsoft.com/entra/identity/role-based-access-control/concept-understand-roles"
+    kind: "learn"
+  - title: "Whether the Microsoft 365 Admin agent is blocked or scoped to specific users or groups (Microsoft Graph)"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
+    kind: "learn"
 videos: []
 related: ["m365-copilot-m365-admin-center-usage-reports-copilot-chat-for-gcc-gcc-high-and-dod","m365-copilot-m365-admin-center-new-m365-copilot-usage-report-for-gcc-high-and-dod","m365-copilot-copilot-cowork-for-government-clouds"]
 controls:
@@ -54,8 +66,11 @@ controls:
       surface: "Microsoft 365 admin center"
       path: "Agents > Registry > Microsoft 365 Admin > Block"
       docs: "https://learn.microsoft.com/copilot/manage/copilot-ai-admin-agent"
-    api: null
-    note: "Requires Global Administrator or AI Administrator on the commercial page. Blocking affects invoking the agent through Copilot Chat and admin surfaces; other admin functionality is unaffected."
+    api:
+      kind: "graph"
+      call: "POST /beta/copilot/admin/catalog/packages/{id}/block"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
+    note: "Preview; requires Microsoft Agent 365 and delegated CopilotPackages.ReadWrite.All. Blocks the selected catalog package; GCC availability of this API is not confirmed."
 confidence: "medium"
 created: "2026-11-22"
 updated: "2026-11-22"
@@ -65,19 +80,23 @@ changes:
     note: "New briefing: roadmap plan for Copilot in the Microsoft 365 admin center in GCC, with commercial Admin agent documentation as background and the GCC gaps listed."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 48 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after verification: cost raised to medium for the Copilot add-on licence; added the catalog package block API (preview) to the Admin agent blocking row; trimmed two checklist items that had no controls row."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 45
+  claims: 61
+  confirmed: 60
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "4a058fddbf8ab87db1f60dd529f702c7"
+  contradicted: 1
+  attempts: 2
+  hash: "a0fe8131b8ce28201bc5d934587b3aba"
 ---
 
 ## What's changing
@@ -115,7 +134,7 @@ Microsoft has not stated what happens on arrival in GCC, so do not assume it is 
 
 The roadmap item says tenants need at least one Microsoft 365 Copilot licence to access Copilot in the admin center. The Microsoft Copilot service description calls Microsoft 365 Copilot an add-on plan with specific licensing prerequisites.
 
-Learn's page on the Microsoft 365 Admin agent, which does not mention GCC, says admins do not need an additional Microsoft Copilot or Agent 365 licence to use it. If both hold in GCC, the tenant-level licence is the condition and no per-admin licence is added. A GCC-specific licensing statement is not yet published, so confirm before budgeting.
+Learn's page on the Microsoft 365 Admin agent, which does not mention GCC, says admins do not need an additional Microsoft Copilot or Agent 365 license to use it. If both hold in GCC, the tenant-level licence is the condition and no per-admin licence is added. A GCC-specific licensing statement is not yet published, so confirm before budgeting.
 
 No price, meter or credit rate for this feature is stated on the roadmap item. The indirect cost is admin time for role review and communication.
 
@@ -130,7 +149,6 @@ No price, meter or credit rate for this feature is stated on the roadmap item. T
 ## Governance guidance
 
 ### Before rollout
-- List the administrators in the tenant and their Microsoft Entra roles, because Learn says those roles govern what the Admin agent can do for each person.
 - Check Message center and the roadmap item to see whether the status has moved from In development before you plan communications.
 - Check whether your tenant holds at least one Microsoft 365 Copilot licence, the condition the roadmap gives.
 - Decide who should be allowed to use Copilot in admin centers and note where its setting and block action live (see the controls table).
@@ -142,7 +160,6 @@ No price, meter or credit rate for this feature is stated on the roadmap item. T
 - Tell administrators that write actions need their explicit confirmation, as Learn describes for the commercial agent, once you have confirmed the same in GCC.
 
 ### After rollout
-- Search the Microsoft 365 admin center audit logs for actions taken through Copilot and check they match what administrators report.
 - Review whether the Block action or the Microsoft Copilot in admin centers setting still matches your decision after any role changes.
 
 ## Governance controls
@@ -153,13 +170,15 @@ No price, meter or credit rate for this feature is stated on the roadmap item. T
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether eligible admins can use Copilot in supported admin centers</strong><br><small>Tenant</small><br><small class="controls__note">Described for the commercial cloud; GCC presence of this setting is not confirmed. AI Administrator suggested; Global Reader can view only.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › User access › Microsoft Copilot in admin centers <a href="https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether the Microsoft 365 Admin agent is blocked or scoped to specific users or groups</strong><br><small>Agent</small><br><small class="controls__note">Requires Global Administrator or AI Administrator on the commercial page. Blocking affects invoking the agent through Copilot Chat and admin surfaces; other admin functionality is unaffected.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Registry › Microsoft 365 Admin › Block <a href="https://learn.microsoft.com/copilot/manage/copilot-ai-admin-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether the Microsoft 365 Admin agent is blocked or scoped to specific users or groups</strong><br><small>Agent</small><br><small class="controls__note">Preview; requires Microsoft Agent 365 and delegated CopilotPackages.ReadWrite.All. Blocks the selected catalog package; GCC availability of this API is not confirmed.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Registry › Microsoft 365 Admin › Block <a href="https://learn.microsoft.com/copilot/manage/copilot-ai-admin-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 The commercial Admin agent page names Global Administrator or AI Administrator as the roles that can block the agent, and the Copilot settings page says to use an appropriate admin role such as AI Administrator, with Global Reader able to view but not change settings. Both pages are written for the commercial experience; whether the same settings and role requirements appear in GCC is not yet confirmed.
 
-The settings page says the settings you see depend on your licences, enabled features and rollout status, and that a setting's location or availability might differ. Learn says blocking the Admin agent restricts administrators from invoking it through Copilot Chat and admin surfaces, and that other admin functionality is unaffected. Learn documents no PowerShell or API call for either control at the time of writing (November 2026).
+The settings page says the settings you see depend on your licences, enabled features and rollout status, and that a setting's location or availability might differ. Learn says blocking the Admin agent restricts administrators in your tenant from invoking it through Microsoft Copilot Chat and admin surfaces, and that other admin functionality in the Microsoft 365 admin center is unaffected. The general agent-actions documentation instead gives Agents > All agents > agent > Block.
+
+The catalog package blocking API is documented in preview. Microsoft Learn documents no API for the Microsoft Copilot in admin centers access setting at the time of writing (November 2026).
 
 ## Open questions
 
@@ -170,17 +189,14 @@ The settings page says the settings you see depend on your licences, enabled fea
 
 <!-- rationale
 risk: Low. It is an assistant for administrators; Learn's page for the commercial Admin agent says it works within the signed-in admin's role and asks for confirmation before changes. GCC behaviour is not yet described.
-cost: Low. The roadmap ties access to at least one Microsoft 365 Copilot licence in the tenant; Learn's Admin agent page says admins need no additional licence, and a GCC-specific statement is not yet published.
+cost: Medium. The roadmap requires the tenant to hold at least one Microsoft 365 Copilot add-on licence. The Admin agent documentation says admins need no additional licence, but does not separately describe GCC. Role review and communication add admin time.
 impact: Low. Only administrators who open the admin center would notice the Copilot button; end users are not affected.
 -->
 
 <!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].api; Governance controls table and prose / absence: Microsoft documents no API call for the standard agent blocking control used by the Microsoft 365 Admin agent. | Found: Block a Copilot package to prevent its usage. ... Access to the Package Management API requires a Microsoft Agent 365 license. ... POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block | Fix: Replace the blanket API absence with the documented general catalog-agent control: graph call 'POST /beta/copilot/admin/catalog/packages/{id}/block', docs https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block. Note: 'Preview; requires Microsoft Agent 365 and delegated CopilotPackages.ReadWrite.All. Blocks the selected catalog package; GCC availability of this API is not confirmed.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview, which states that a package represents an agent or tool in the organization catalog. Replace the prose absence with 'The catalog package blocking API is documented in preview; no API for the Microsoft Copilot in admin centers access setting was found.' | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: The low cost rating describes indirect costs only despite the documented tenant add-on entitlement requirement. | Found: cost: "low"; licensing.model: "add-on"; "The roadmap item says tenants need at least one Microsoft 365 Copilot licence". The assessment scale defines low as "indirect cost only" and medium as "add-on licences for a subset of users". | Fix: Set cost to 'medium' and replace the cost rationale with: 'Medium. The roadmap requires the tenant to hold at least one Microsoft 365 Copilot add-on licence. The Admin agent documentation says admins need no additional licence, but does not separately describe GCC. Role review and communication add admin time.'
+- [contradicted, blocker] controls[1].note; Governance controls table / absence: GCC availability of the package-blocking Graph API is not confirmed. | Found: | Graph API provides access to agent registry, basic metadata and governance actions | Microsoft 365 admin center | No | Yes | No | | Fix: Replace 'GCC availability of this API is not confirmed' in controls[1].note and its rendered table note with 'The Microsoft Agent 365 service description lists agent-registry Graph API governance capabilities as unavailable in GCC.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365#feature-availability. Keep the documented beta call as general background, not GCC automation. Its reference's Global service support must not override the service description's explicit GCC exclusion. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity / role: A Global Administrator has broader administrative reach than a Teams Administrator. | Found: Teams Administrator roles can manage features with their respective services. ... We have two global roles - Global Administrator and Global Reader. All Microsoft 365 services honor these two roles. | Fix: Add https://learn.microsoft.com/entra/identity/role-based-access-control/concept-understand-roles to sources for the cross-service versus service-specific role comparison. | Source: https://learn.microsoft.com/entra/identity/role-based-access-control/concept-understand-roles
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Agents > Registry > Microsoft 365 Admin > Block reaches the Admin agent's blocking action; its documentation also permits scoped deployment. | Found: Select to Agents > Registry. ... Locate Microsoft 365 Admin in the registry. ... Use the available agent actions to Block the agent or to scope deployment to specific users or groups instead of the entire organization. | Fix: Keep the feature-specific path, but add this note: 'The general agent-actions documentation instead gives Agents > All agents > agent > Block.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions in sources. | Source: https://learn.microsoft.com/copilot/manage/copilot-ai-admin-agent
-- [contradicted, minor] Governance guidance: Before rollout and After rollout; Governance controls / consistency: The governance checklist asks readers to take stock of Entra role assignments and search audit logs, neither of which has a controls row. | Found: "List the administrators in the tenant and their Microsoft Entra roles"; "Search the Microsoft 365 admin center audit logs". The controls table contains only Copilot access and Admin agent blocking. | Fix: Remove the role-inventory and audit-search bullets from the governance checklist; retain the verified RBAC and audit explanations in Risk assessment. Do not add unverified control rows.
+- [supported, minor] Cost and licensing; Open questions / absence: A GCC-specific licensing statement reconciling the roadmap's tenant requirement and Learn's no-additional-admin-licence rule is not published. | Found: Searched: "Microsoft 365 Admin agent" "GCC" licensing data confirmation availability; "Microsoft Copilot in admin centers" "GCC" default enabled rollout license. Read Admin agent, Copilot service description and government licensing excerpts; no GCC-specific reconciliation found. | Fix: Replace 'A GCC-specific licensing statement is not yet published' with 'Learn does not separately state whether its no-additional-admin-licence rule applies to the GCC experience described by this roadmap item.' The broader wording overlooks the GCC tenant licence requirement already quoted from the roadmap.
 -->

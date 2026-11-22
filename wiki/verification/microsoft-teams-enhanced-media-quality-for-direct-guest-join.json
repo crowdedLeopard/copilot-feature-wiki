@@ -1,0 +1,812 @@
+{
+  "slug": "microsoft-teams-enhanced-media-quality-for-direct-guest-join",
+  "roadmapId": 558922,
+  "title": "Microsoft Teams: enhanced media quality for Direct Guest Join",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "3 blocking findings (claims 12, 38, 59)"
+    ]
+  },
+  "counts": {
+    "claims": 63,
+    "confirmed": 59,
+    "unconfirmed": 0,
+    "contradicted": 4,
+    "blocker": 3,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold: the briefing reverses the roadmap's meeting direction, applying improvements for devices joining Teams meetings to Teams Rooms joining other platforms. It also omits the documented fallback from SIP to Direct Guest Join and the mailbox prerequisite for preserving invitation text.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap has no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Teams and Surface Devices.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Teams and Surface Devices\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "title; front matter: products",
+      "type": "record",
+      "claim": "This is a Microsoft Teams change to Direct Guest Join media quality.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"title\": \"Microsoft Teams: Enhanced media quality for Direct Guest Join\", \"products\": [\"Microsoft Teams\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap was modified on 2026-10-19T23:15:15.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-19T23:15:15\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing; rationale: risk and impact",
+      "type": "record",
+      "claim": "The roadmap describes support for up to 16 participant videos in a 4-by-4 grid.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "support for up to 16 participant videos (4×4 grid)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap description gives May for the grid.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "support for up to 16 participant videos (4×4 grid) available in May",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap describes simulcast streaming in June.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "and simulcast streaming (June) when using Direct Guest Join.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; Why it matters; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap improvements affect Teams Rooms joining Zoom, Google Meet or Cisco meetings through DGJ.",
+      "status": "contradicted",
+      "source": "roadmap record",
+      "quote": "These updates make cross-platform meetings more immersive and reliable when joining Teams meetings from Zoom, Google Meet, or Cisco devices.",
+      "severity": "blocker",
+      "fix": "Replace the summary's first sentence with 'The roadmap describes up to 16 videos (4×4 grid) and simulcast when joining Teams meetings from Zoom, Google Meet or Cisco devices through Direct Guest Join.' Use that meeting direction throughout What's changing and Scope. Remove statements in Why it matters, Risk assessment and the impact rationale that assign these improvements exclusively to Teams Rooms joining other platforms. Label the existing Teams Rooms configuration material as background for the opposite meeting direction, not as a prerequisite or control for these roadmap improvements."
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope; Governance guidance; Open questions",
+      "type": "record",
+      "claim": "The roadmap says DGJ is not yet available for Google Meet on Teams Rooms for Android.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Direct Guest Join is not yet available for Google Meet on Teams Rooms for Android.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap description names no new data access.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You’ll notice media quality improvements including support for up to 16 participant videos (4×4 grid) available in May and simulcast streaming (June) when using Direct Guest Join.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes layout and streaming improvements without naming autonomous actions or an administrator setting.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You’ll notice media quality improvements including support for up to 16 participant videos (4×4 grid) available in May and simulcast streaming (June) when using Direct Guest Join.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "DGJ is a WebRTC-based way for a Teams Rooms device to join third-party meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+      "quote": "Teams Rooms offer two ways for connecting to third-party meetings: a SIP video-based solution known as cross-platform meeting via SIP join and a WebRTC based solution known as Direct Guest Join.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Learn describes cross-platform meetings via SIP join as the alternative to DGJ.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+      "quote": "a SIP video-based solution known as cross-platform meeting via SIP join and a WebRTC based solution known as Direct Guest Join.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Governance guidance: After rollout; Open questions",
+      "type": "behaviour",
+      "claim": "The third-party meetings page lists DGJ receive video as up to 720p / 30 fps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+      "quote": "| Receive video quality | Up to 1080p / 30 fps | Up to 720p / 30 fps |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; front matter: changes; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe this DGJ grid or simulcast improvement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Direct Guest Join 4x4 16 participant videos simulcast enhanced media quality default tenant setting bandwidth license; \"Direct Guest Join\" \"simulcast\" \"4\" licensing price default bandwidth. Opened third-party-join; read rooms-release-note search excerpts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated the default or a setting needed for the grid and simulcast improvements.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Direct Guest Join 4x4 16 participant videos simulcast enhanced media quality default tenant setting bandwidth license. Read roadmap description; opened third-party-join and xml-config-file. Provider defaults do not state the improvements' default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[2].ui and api; Governance controls",
+      "type": "absence",
+      "claim": "No tenant-wide UI or automation switch is documented for the grid and simulcast improvements.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Direct Guest Join simulcast grid tenant switch Teams PowerShell policy. Opened third-party-join, xml-config-file, pro-portal-settings and Set-CsTeamsRoomVideoTeleConferencingPolicy; none documents a switch for these improvements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated the bandwidth change caused by this grid or simulcast improvement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Direct Guest Join 4x4 16 participant videos simulcast enhanced media quality default tenant setting bandwidth license; \"Direct Guest Join\" \"simulcast\" \"4\" licensing price default bandwidth. Opened third-party-join Step 3B; results describe ACS simulcast, not this DGJ change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Teams Rooms DGJ is included with Teams Rooms Basic and Teams Rooms Pro.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
+      "quote": "The following tables compare the Teams Rooms Basic and Teams Rooms Pro licenses and show what features are available with each. | **Direct Guest Join for Zoom and Webex meetings** | ✔ | ✔ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "An organisation may assign up to 25 Teams Rooms Basic licences; additional systems need Teams Rooms Pro.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
+      "quote": "You can assign up to 25 Microsoft Teams Rooms Basic licenses to Teams Rooms systems in your organization. If you need to license more than 25 Teams Rooms systems, those additional licenses need to be Teams Rooms Pro licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].note; Cost and licensing; Governance controls",
+      "type": "licensing",
+      "claim": "The Basic and Pro comparison lists remote configuration only for Teams Rooms Pro.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
+      "quote": "| **Remote configuration** |  | ✔ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.notes; Cost and licensing: Meter; rationale: cost",
+      "type": "absence",
+      "claim": "No separate price or meter is published for the DGJ grid or simulcast improvements.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Direct Guest Join\" \"simulcast\" \"4\" licensing price default bandwidth. Opened rooms-licensing and third-party-join; neither names a separate price or meter for the grid or simulcast.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "licensing",
+      "claim": "SIP join requires a paid SIP dialling plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+      "quote": "| SIP paid dialing plan required | Yes | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "licensing",
+      "claim": "DGJ does not require a paid SIP dialling plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+      "quote": "| Supported Functionality | Cross-Platform Meetings via SIP | Direct Guest Join | ... | SIP paid dialing plan required | Yes | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "summary; Why it matters; Risk assessment: Data exposure; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Teams Rooms DGJ needs direct internet access to the third-party platform's website.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+      "quote": "When using Direct Guest Join, Teams Rooms devices connect directly to the website of that third-party platform. Because of this direct connection, your Teams Rooms devices need to be able to connect to that third party website.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Firewalls and web filters must allow the DGJ web traffic without authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+      "quote": "Ensure your organization’s firewalls or web filters allow the traffic without authentication",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "DGJ web traffic should be in an appropriate QoS class where applicable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+      "quote": "and that the web traffic is in an appropriate QoS class (if applicable).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "summary; Why it matters; Scope: Prerequisites; controls[0].note",
+      "type": "applicability",
+      "claim": "Third-party meeting providers must be enabled on each Teams Rooms device.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+      "quote": "The last step you need to take is to allow Teams Rooms to join third-party meetings with Teams Rooms device settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters; controls[1].governs; Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Teams Rooms reads the third-party invitation body and needs it retained to generate a Join button.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+      "quote": "when joining third-party meetings, Teams Rooms read the calendar invite message body so you need to retain the meeting invite body to ensure a join button can be generated for third-party meeting platforms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity; Scope: Prerequisites; Governance guidance",
+      "type": "applicability",
+      "claim": "Processing third-party and externally scheduled invitations is an existing room-mailbox prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+      "quote": "Configure the Teams Rooms' resource accounts Exchange mailbox to process invites for third-party and externally scheduled meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "A room can join a third-party meeting using the room mailbox's username and email address.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+      "quote": "If you want to join meetings with the username and email address associated with the room mailbox, select Join with room info.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "A room can instead use a custom username and email address configured per device.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+      "quote": "If you want to join meetings with an alternate username and email address, select Join with custom info and enter username and email address you'd like to use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The third-party service displays the configured guest identity in its experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/xml-config-file",
+      "quote": "Specify guest name used to join third party meetings. Third party service will display this data in their experience and may store in their service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout; Open questions",
+      "type": "behaviour",
+      "claim": "Enabling SIP calling makes the room use SIP instead of WebRTC for enabled third-party meetings.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+      "quote": "Teams Rooms will automatically use Direct Guest Join over WebRTC if the third party meeting invite doesn't contain a SIP dial string. ... Automatic fallback to WebRTC DGJ works for meetings using the calendar join button.",
+      "severity": "blocker",
+      "fix": "Replace the unqualified SIP statement in Risk assessment and Governance guidance with 'SIP-enabled rooms use SIP for enabled third-party meetings, but automatically fall back to DGJ over WebRTC for calendar-joined invitations without a SIP dial string; join by ID fails when the meeting lacks SIP capabilities.' Cite https://learn.microsoft.com/microsoftteams/rooms/third-party-join."
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn's DGJ troubleshooting page covers missing third-party Join buttons.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoftteams/teams-rooms-and-devices/resolve-direct-guest-join-issues",
+      "quote": "The Join button for a third-party meeting doesn't appear on the room calendar.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The DGJ troubleshooting page covers forwarded invitations that cannot be parsed correctly.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoftteams/teams-rooms-and-devices/resolve-direct-guest-join-issues",
+      "quote": "Forwarding a third-party meeting invitation can change the meeting details in a way that DGJ can't parse correctly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The DGJ troubleshooting page covers cameras not turning on automatically in Zoom meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoftteams/teams-rooms-and-devices/resolve-direct-guest-join-issues",
+      "quote": "The camera doesn't turn on automatically after the room joins a Zoom meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope: Who and what",
+      "type": "availability",
+      "claim": "Learn describes third-party meeting join for Teams Rooms on Windows and Android.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+      "quote": "Teams Rooms on Windows ... Teams Rooms on Android ... To configure Teams Rooms on Android locally on the device, do the following steps:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope: Who and what",
+      "type": "availability",
+      "claim": "Teams Rooms on Surface Hub supports DGJ.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/surface-hub/surface-hub-teams-rooms",
+      "quote": "Microsoft Teams Rooms on Surface Hub supports joining third-party online meetings, referred to as Direct Guest Join. You can use Surface Hub to join meetings hosted on Cisco Webex and Zoom.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope: Prerequisites; Governance controls",
+      "type": "behaviour",
+      "claim": "Third-party URL scanners may rewrite meeting links and make meetings unrecognisable to Teams Rooms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+      "quote": "if your organization uses a third-party solution that scans all URLs for threats, it may change the meeting join URLs and make the meeting unrecognizable by the Teams Rooms device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope: Prerequisites; Governance controls",
+      "type": "applicability",
+      "claim": "Learn instructs organisations using third-party URL rewriting to add meeting-service URLs to that solution's exception list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+      "quote": "If you use a third-party solution, refer to the instructions for that solution to add URLs to its URL rewrite exception list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope: Prerequisites; Governance controls",
+      "type": "applicability",
+      "claim": "Learn says Defender for Office 365 Safe Links needs no additional steps for third-party meeting links.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+      "quote": "If your organization uses Microsoft Defender for Office 365 safe links, no additional steps are required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].ui; Governance controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "The provider controls are reached through Teams Rooms Pro Management portal > Rooms > room > Settings > Meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+      "quote": "Select Rooms. ... Select your desired room. ... Select Settings. ... Select Meetings. ... Toggle your desired meeting platforms (for example, Cisco Webex, Zoom, Google Meet, etc.).",
+      "severity": "minor",
+      "fix": "Extend controls[0].ui.path and its rendered table path to 'Rooms > room > Settings > Meetings > provider'. The current path stops on the correct settings page but omits the provider toggle."
+    },
+    {
+      "n": 48,
+      "where": "controls[0].api; controls[0].note; Governance controls table",
+      "type": "command",
+      "claim": "The XML element <ZoomMeetingsEnabled>true</ZoomMeetingsEnabled> enables Zoom DGJ.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/xml-config-file",
+      "quote": "| <ZoomMeetingsEnabled> | Boolean ❷ | First ❶ | Disabled by default. If true, enables direct guest join experience for Zoom meetings. |",
+      "severity": "minor",
+      "fix": "In controls[0].note and its rendered note, replace 'The XML element is the console settings file' with 'The XML element enables Zoom only in the Teams Rooms on Windows console settings file; it is not the automation for all three provider toggles.' Keep the existing XML element and reference."
+    },
+    {
+      "n": 49,
+      "where": "controls[1].api; Governance controls table; Governance guidance",
+      "type": "command",
+      "claim": "The third-party meetings page documents Set-CalendarProcessing <UserPrincipalName> -ProcessExternalMeetingMessages $True -DeleteComments $False in Exchange Online PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+      "quote": "Connect to Exchange Online PowerShell. ... Set-CalendarProcessing <UserPrincipalName> -ProcessExternalMeetingMessages $True -DeleteComments $False",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].ui; controls[1].note; Governance controls table",
+      "type": "absence",
+      "claim": "No admin-centre UI is documented for the paired external-message processing and invitation-body preservation settings.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Exchange admin center room mailbox ProcessExternalMeetingMessages DeleteComments booking options UI; \"ProcessExternalMeetingMessages\" \"admin center\" \"DeleteComments\". Opened third-party-join and Manage resource mailboxes in Exchange Online, including Booking settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[0].note; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Pro Management portal Device Settings jobs support applying settings to multiple devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+      "quote": "For Teams Rooms Pro management administrators, a job can be created to apply one or more settings to one or more Teams devices through the Teams Rooms Pro management portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Pro Management portal settings management is available only for signed-in devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+      "quote": "Settings management is available only for signed-in devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Applying settings through the portal queues a job and restarts the device.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+      "quote": "Apply Now - Queues a job to apply the setting and restarts the device as soon as possible to apply the setting changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Schedule Later schedules settings changes for the nightly maintenance window to avoid meeting disruption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+      "quote": "Schedule Later - Schedules the settings change to be applied during the nightly maintenance window to avoid disrupting scheduled meetings during business hours.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Learn documents provider enablement through local settings on both Windows and Android Teams Rooms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+      "quote": "Go to the Meetings tab and select a third-party meeting provider you wish to enable ... Select Meetings. ... Select the toggle next to the third-party meeting providers you want to enable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Microsoft recommends the Pro Management portal instead of XML configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/xml-config-file",
+      "quote": "We recommend using the individual and bulk settings configuration options within the Teams Rooms Pro Management Portal instead of the XML configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Microsoft says it no longer publishes new XML settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/xml-config-file",
+      "quote": "We no longer publish new XML settings but all settings are managable within the Portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance guidance: Before rollout and At rollout; controls",
+      "type": "consistency",
+      "claim": "The governance checklist's named controls are represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check ... which use the room mailbox identity or a custom name and email. ... Find out which rooms have SIP calling enabled. ... Enable providers in bulk with a Device Settings job.",
+      "severity": "minor",
+      "fix": "The identity-selection, SIP-calling and bulk Device Settings job checklist steps have no matching control rows; the table contains only per-room provider toggles, mailbox processing and a missing enhancement switch. Remove these checklist instructions if they are retained without matching table coverage; do not add rows as part of this correction."
+    },
+    {
+      "n": 59,
+      "where": "controls[1].note and governs; Why it matters; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "The printed mailbox command preserves invitation text for each room mailbox without another mailbox-processing qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/exchange/set-calendarprocessing",
+      "quote": "The DeleteComments parameter specifies whether to remove or keep any text in the message body of incoming meeting requests. ... This parameter is used only on resource mailboxes where the AutomateProcessing parameter is set to AutoAccept.",
+      "severity": "blocker",
+      "fix": "Add 'The -DeleteComments setting applies only to resource mailboxes with AutomateProcessing set to AutoAccept' to controls[1].note and its rendered note, and qualify the mailbox-check instruction with 'for resource mailboxes with AutomateProcessing set to AutoAccept'. Cite https://learn.microsoft.com/powershell/module/exchange/set-calendarprocessing in sources. Keep the documented command unchanged."
+    },
+    {
+      "n": 60,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes the improvements as making cross-platform meetings more immersive and reliable.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "These updates make cross-platform meetings more immersive and reliable when joining Teams meetings from Zoom, Google Meet, or Cisco devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Scope: Providers; controls[0].governs",
+      "type": "availability",
+      "claim": "Learn's DGJ Join Button row lists Cisco Webex, Zoom and Google Meet.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+      "quote": "| Join Button | Amazon Chime Cisco Webex Google Meet GoToMeeting RingCentral Zoom Other SIP services | Cisco Webex Zoom Google Meet |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Scope: Prerequisites",
+      "type": "applicability",
+      "claim": "Teams Rooms third-party join requires ensuring tenant policies do not block connections to third-party meeting services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+      "quote": "Ensure no tenant policies are blocking devices from connecting to third-party meeting services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "In Teams Rooms third-party DGJ, the meeting is hosted on the other platform.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+      "quote": "When third-party join is enabled, you can use Teams Rooms to join meetings hosted on other meeting platforms as easily as you can join meetings hosted on Microsoft Teams. Third-party meeting providers drive the experience of their platform on the Teams Room device.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T14:04:36.886Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=558922",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/xml-config-file",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/troubleshoot/microsoftteams/teams-rooms-and-devices/resolve-direct-guest-join-issues",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/surface-hub/surface-hub-teams-rooms",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a room joins Zoom, Google Meet and Cisco Webex meetings through Direct Guest Join",
+        "docs": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+        "reachable": true,
+        "segments": [
+          "Rooms",
+          "room",
+          "Settings",
+          "Meetings"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether a room joins Zoom, Google Meet and Cisco Webex meetings through Direct Guest Join",
+        "docs": "https://learn.microsoft.com/microsoftteams/rooms/xml-config-file",
+        "reachable": true,
+        "token": "<ZoomMeetingsEnabled>true</ZoomMeetingsEnabled>",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether the room mailbox keeps third-party invite details so a Join button appears",
+        "docs": "https://learn.microsoft.com/microsoftteams/rooms/third-party-join",
+        "reachable": true,
+        "token": "Set-CalendarProcessing",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

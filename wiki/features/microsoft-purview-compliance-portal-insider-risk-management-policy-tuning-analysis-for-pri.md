@@ -58,7 +58,7 @@ controls:
     scope: "other"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Insider Risk Management > Policies > Create policy > Content to prioritize > I want to prioritize content > Scoring"
+      path: "Insider Risk Management > Policies > Create policy > Policy template > policy category > template > Content to prioritize > I want to prioritize content > Scoring > Get alerts only for activity that includes priority content"
       docs: "https://learn.microsoft.com/purview/insider-risk-management-configure"
     api: null
     note: "Choose Get alerts only for activity that includes priority content on the Scoring page. The policy template must support priority content selection."
@@ -71,19 +71,23 @@ changes:
     note: "First briefing: real-time policy tuning analysis extends to priority content-only IRM policies; GCC, GCC High and DoD rollout starts mid-December 2026 per MC1059679."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 56 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after verification: full policy-wizard path for priority-content scoring, cumulative exfiltration wording, and removed unsupported statements on policy behaviour and one open question."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 52 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 50
-  unconfirmed: 3
-  contradicted: 3
-  attempts: 1
-  hash: "908ca5c2200ae14b437f918bba4d288e"
+  claims: 52
+  confirmed: 52
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "b7ffb697be7db611cef94f4d6822b5f9"
 ---
 
 ## What's changing
@@ -100,7 +104,7 @@ The roadmap item is Rolling out, with a June CY2025 target and a May CY2024 prev
 
 Priority-content policies are narrow by design, so a wrong threshold either floods analysts with alerts or hides real activity. This change gives the policy author an estimate of how many users would cross each threshold before the policy goes live, which cuts trial-and-error retuning.
 
-Microsoft says the feature is available by default for admins to configure and requires Analytics to be enabled, so a tenant that does nothing keeps its current policy behaviour. Teams that run priority-content policies should decide whether to enable Analytics, which scans audit and directory activity for the whole organisation, in exchange for the tuning data.
+Microsoft says the feature is available by default for admins to configure and requires Analytics to be enabled. Teams that run priority-content policies should decide whether to enable Analytics, which scans audit and directory activity for the whole organisation, in exchange for the tuning data.
 
 ## Risk assessment
 
@@ -112,12 +116,12 @@ Microsoft says the feature is available by default for admins to configure and r
 - Enabling Analytics needs membership of the Insider Risk Management or Insider Risk Management Admins role group, or the Microsoft 365 Global admin role group. Learn also says an unrestricted administrator is needed to access analytics insights, so an admin-unit-scoped admin may not see them.
 
 **Autonomy & actions**
-- No autonomous action: the feature estimates alert volume for a policy and does not change a policy by itself. Admins set the thresholds.
+- Admins can adjust indicator thresholds and see the insight update in real time.
 
 **Change & support**
 - Estimates only appear for policies that use **Include all users and groups**; Learn says the View impact graph is not available with **Include specific users**. Expect support questions from authors of narrower policies.
 - Learn says recommended thresholds are not provided for custom indicators or variants of built-in indicators, and that real-time analytics for threshold settings is not available for the Communication Compliance indicators.
-- Turning Analytics off removes real-time analytics from the threshold pages. Cumulative exfiltration activity always receives a risk score on Learn's account, so a priority-content-only policy still alerts on it.
+- Turning Analytics off removes real-time analytics from the threshold pages. Cumulative exfiltration activity always receives a risk score, regardless of whether it contains prioritised content.
 
 ## Cost and licensing
 
@@ -135,17 +139,14 @@ Learn's Get started page says some IRM indicators are only available with pay-as
 
 ### Before rollout
 - Identify which IRM policies use priority content with **Get alerts only for activity that includes priority content**, and list their owners.
-- Check that the people who will enable Analytics belong to the Insider Risk Management or Insider Risk Management Admins role group, and that policy authors are unrestricted administrators.
 - Decide whether the organisation accepts an Analytics scan of audit, Exchange Online and Microsoft Entra ID activity before turning it on.
 
 ### At rollout
 - Turn on **Analytics** in the IRM settings, then allow 24 to 48 hours for insights to appear.
 - Edit one priority-content policy scoped to **Include all users and groups** and review the gauge and per-indicator insights on the thresholds page.
-- Record each threshold change and the estimate that led to it in the policy description or change log.
 
 ### After rollout
-- Compare the estimated user counts with the alerts the policy actually generates, and adjust thresholds where they differ.
-- Re-check policies scoped to specific users, which show no View impact graph, and consider whether they need a broader scope.
+- Compare the estimated user counts with the alerts the policy actually generates.
 - Watch Message center for GCC, GCC High and DoD, where Microsoft's notice says rollout begins mid-December 2026.
 
 ## Governance controls
@@ -156,7 +157,7 @@ Learn's Get started page says some IRM indicators are only available with pay-as
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether Insider Risk Management analytics, which real-time threshold insights depend on, is turned on</strong><br><small>Tenant</small><br><small class="controls__note">Role groups: Insider Risk Management, Insider Risk Management Admins or Microsoft 365 Global admin. Turning it off stops real-time analytics on the policy threshold pages.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Insider Risk Management › Insider risk settings › Analytics <a href="https://learn.microsoft.com/purview/insider-risk-management-settings-analytics" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether a policy scores and alerts only on activity that includes priority content</strong><br><small class="controls__note">Choose Get alerts only for activity that includes priority content on the Scoring page. The policy template must support priority content selection.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Policies › Create policy › Content to prioritize › I want to prioritize content › Scoring <a href="https://learn.microsoft.com/purview/insider-risk-management-configure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether a policy scores and alerts only on activity that includes priority content</strong><br><small class="controls__note">Choose Get alerts only for activity that includes priority content on the Scoring page. The policy template must support priority content selection.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Policies › Create policy › Policy template › policy category › template › Content to prioritize › I want to prioritize content › Scoring › Get alerts only for activity that includes priority content <a href="https://learn.microsoft.com/purview/insider-risk-management-configure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -166,25 +167,19 @@ The Analytics setting is tenant-wide and also drives other analytics features, s
 
 ## Open questions
 
-- Does real-time analytics for priority-content-only policies count only activity that includes priority content, or all activity? Microsoft's notice does not say; watch MC1059679 and the policy indicators page on Learn.
 - Will the feature stay labelled preview on Learn while the roadmap lists General Availability and Preview? Watch the roadmap item and the Learn page.
 - Is a separate licence or meter planned for real-time analytics? None is published; watch the Microsoft Purview service description.
 - Will the GCC, GCC High and DoD timeline in MC1059679 move again after the 10 August 2026 update?
 
 <!-- rationale
-risk: Low. The change adds an estimate to the policy wizard for admins; Microsoft's notice says admins must enable Analytics before it shows, so nothing reaches users or data until an admin opts in.
+risk: Low. The change adds an estimate to the policy wizard for admins; Microsoft's notice says admins must enable Analytics before it shows, and using the estimates requires Analytics to be enabled.
 cost: Low. The only cost the sources show is admin time to enable Analytics and retune policies; Insider Risk Management is listed as included in the Microsoft 365 E5 family of plans named on the Purview service description.
-impact: Low. Only Insider Risk Management admins and policy authors see the estimates; end users are not notified or changed by this feature.
+impact: Low. The estimates are for Insider Risk Management admins and policy authors.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Change & support, cumulative exfiltration / behaviour: A priority-content-only policy still alerts on cumulative exfiltration activity. | Found: Searched: 'Insider Risk Management Analytics enable PowerShell Set analytics Microsoft Graph settings priority content scoring policy'; read policies, Prioritize content and Cumulative exfiltration detection. These establish scoring, not guaranteed alerts. | Fix: Replace the sentence with 'Cumulative exfiltration activity always receives a risk score, regardless of whether it contains prioritised content.' Cite https://learn.microsoft.com/purview/insider-risk-management-policies.
-- [contradicted, blocker] controls[1].ui / admin-path: The printed Create policy path reaches priority-content scoring without a policy category or template choice. | Found: On the Policy template page, choose a policy category and then select the template for the new policy. | Fix: Replace the path with 'Insider Risk Management > Policies > Create policy > Policy template > policy category > template > Content to prioritize > I want to prioritize content > Scoring > Get alerts only for activity that includes priority content'. Keep the note that the template must support priority content selection and the existing docs URL. | Source: https://learn.microsoft.com/purview/insider-risk-management-configure
-- [contradicted, blocker] Open questions, first question / absence: Microsoft's notice does not say whether the insights concern priority-content activity or all activity. | Found: insights on user activity containing the scoped priority content for each indicator will be visible under Choose your own thresholds | Fix: Remove the first open question. The notice already states that the per-indicator insights concern user activity containing the scoped priority content.
-- [unsupported, major] Why it matters; Risk assessment: Autonomy & actions; rationale: risk / behaviour: The feature does not change policies by itself, so doing nothing preserves current policy behaviour. | Found: Searched: 'Insider Risk Management policy tuning real-time analytics automatically change thresholds notify users'; read notice, analytics, configure and indicator-threshold sections. They describe admin configuration but do not expressly guarantee unchanged policy behaviour. | Fix: Replace the autonomy bullet with 'Admins can adjust indicator thresholds and see the insight update in real time.' In Why it matters, remove 'so a tenant that does nothing keeps its current policy behaviour'. In the risk rationale, replace 'so nothing reaches users or data until an admin opts in' with 'and using the estimates requires Analytics to be enabled'.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [unsupported, minor] rationale: impact / behaviour: End users are not notified or changed by this feature. | Found: Searched: 'Insider Risk Management policy tuning real-time analytics automatically change thresholds notify users'; read MC1059679 and analytics/indicator documentation. None states the claimed absence of end-user notifications or effects. | Fix: Remove 'end users are not notified or changed by this feature' from the impact rationale. Retain the rationale that the estimates are for Insider Risk Management admins and policy authors.
-- [contradicted, minor] Governance guidance; Governance controls / consistency: Every control the checklist asks administrators to review or configure appears in the controls table. | Found: Checklist: 'Check that the people who will enable Analytics belong to ... role group'; 'adjust thresholds'; 'Re-check policies scoped to specific users'. Table rows cover Analytics enablement and priority-content scoring only. | Fix: The checklist's role membership, indicator thresholds and user/group scope checks have no corresponding table rows. Remove those control-setting or control-review instructions from the checklist; do not add rows in this correction.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The Analytics control is reached through Microsoft Purview portal > Settings > Insider Risk Management > Insider risk settings > Analytics. | Found: Select Settings in the upper-right corner of the page. ... Select Insider Risk Management ... Under Insider risk settings, select Analytics, and then turn off the setting. | Fix: Extend controls[0].ui.path and its rendered copy to 'Settings > Insider Risk Management > Insider risk settings > Analytics > Scan your tenant's user activity to identify potential insider risks'. The switch label is documented at https://learn.microsoft.com/purview/insider-risk-management-configure#step-3-optional-enable-and-view-insider-risk-analytics-insights, already cited. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-analytics
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: The printed policy-wizard path reaches the priority-content scoring option in the Microsoft Purview portal. | Found: On the Policy template page, choose a policy category and then select the template for the new policy. ... Scoring: ... Choose Get alerts for all activity or Get alerts only for activity that includes priority content. | Fix: Use 'Insider Risk Management > Policies > Create policy > Policy template > policy category > template > Users and groups > Include all users and groups > Content to prioritize > I want to prioritize content > Scoring > Get alerts only for activity that includes priority content' in controls[1].ui.path and its rendered copy. The omitted user-scope selection is documented at https://learn.microsoft.com/purview/insider-risk-management-configure. | Source: https://learn.microsoft.com/purview/insider-risk-management-configure
 -->

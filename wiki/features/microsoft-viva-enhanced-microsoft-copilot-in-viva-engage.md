@@ -12,7 +12,7 @@ platforms: ["Desktop","Web"]
 targetDate: "November CY2026"
 previewDate: null
 risk: "medium"
-cost: "low"
+cost: "variable"
 impact: "medium"
 defaultState: "on"
 action: "act-now"
@@ -49,6 +49,21 @@ sources:
   - title: "copilotPackage: block"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
     kind: "learn"
+  - title: "Manage Copilot Cowork for your organization"
+    url: "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance"
+    kind: "learn"
+  - title: "Understand usage-based billing and cost management for Copilot Credits"
+    url: "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits"
+    kind: "learn"
+  - title: "Viva Engage content and Microsoft Copilot"
+    url: "https://learn.microsoft.com/viva/engage/viva-engage-content-copilot"
+    kind: "learn"
+  - title: "Required configuration for Copilot guidance for Sensitive and Regulated customers"
+    url: "https://learn.microsoft.com/compliance/anz/blueprint-copilot-reqconfig"
+    kind: "learn"
+  - title: "Agent 365 Package Management API overview"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview"
+    kind: "learn"
 videos: []
 related: ["work-iq","mcp","m365-copilot-viva-engage-community-agent","copilot-credits"]
 controls:
@@ -72,13 +87,13 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Agents > Tools > plugin > Users"
+      path: "Agents > Tools > plugin > Users > Available to specific users or groups"
       docs: "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins"
     api:
       kind: "graph"
       call: "POST /beta/copilot/admin/catalog/packages/{id}/block"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
-    note: "Cowork only; the Copilot pane in Engage is unaffected. Needs tenant admin or Copilot administrator. The API is beta and Learn says it requires an Agent 365 licence."
+    note: "Cowork only; the Copilot pane in Engage is unaffected. Block is the alternative action on the same Users tab. Needs tenant admin or Copilot administrator. The API is beta and Learn says it requires an Agent 365 licence."
 confidence: "high"
 created: "2026-11-22"
 updated: "2026-11-22"
@@ -88,19 +103,23 @@ changes:
     note: "New briefing: Learn already documents the enhanced Copilot in Viva Engage as on by default with a Copilot licence, while the roadmap shows In development, target November CY2026."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 65 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Correction: cost rating changed to variable because Cowork tasks use usage-based billing in Copilot Credits; plugin path, package API wording and sources updated; two checklist steps without matching controls removed."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 63
+  claims: 77
+  confirmed: 77
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "127918021a7fc21d76eaaef887613115"
+  contradicted: 0
+  attempts: 0
+  hash: "c50fa10d68bd9d2fc3f7135577a59633"
 ---
 
 ## What's changing
@@ -148,7 +167,7 @@ Learn says the experience is on by default once a user has a Microsoft Copilot l
 
 **Agents.** Learn says Microsoft 365 agents in Engage follow the same availability and billing as in Microsoft Copilot, and links to its Copilot Credits billing overview. See [Copilot Credits](/concepts/copilot-credits/) for the shared meter. What a Microsoft 365 agent costs when run from the Engage pane follows that billing, not a separate Engage price.
 
-**Cowork.** The Engage plugin page says licensing, access and usage-based billing for Cowork are covered in its Cowork administration guidance, and the Cowork plugin management page says users who use Cowork plugins must have Microsoft 365 Copilot licences assigned.
+**Cowork.** The Engage plugin page says licensing, access and usage-based billing for Cowork are covered in its Cowork administration guidance, and the Cowork plugin management page says users who use Cowork plugins must have Microsoft 365 Copilot licences assigned. Cowork tasks consume Copilot Credits; model responses and tool and skill calls count toward consumption.
 
 **Indirect cost.** Admin time to review who holds Copilot licences, communications to Engage users, and review of private-community permissions.
 
@@ -169,7 +188,6 @@ Learn says the experience is on by default once a user has a Microsoft Copilot l
 ### Before rollout
 
 - List the users who hold a Microsoft Copilot licence and use Viva Engage, using **Billing > Licenses** in the Microsoft 365 admin center, so you know who will see the Copilot pane.
-- Review membership and posting permissions in private communities that hold sensitive discussion, because Copilot reads whatever the user's account can read.
 - Decide whether the Engage plugin for Cowork should be available, and to whom, in **Agents > Tools** before users install it themselves.
 - Confirm with your Copilot billing owner how Microsoft 365 agents used from the Engage pane are billed, using the Copilot Credits billing page Learn links.
 
@@ -181,7 +199,6 @@ Learn says the experience is on by default once a user has a Microsoft Copilot l
 
 ### After rollout
 
-- Review Microsoft Purview audit logs under Copilot activities for plugin interactions, which Learn says include Cowork and its plugins.
 - Remove the Microsoft Copilot licence from users who should not have the experience, accepting that this is not Engage-specific.
 - Re-read the Learn setup page and the roadmap item for status changes, since the roadmap shows In development while Learn already describes the experience.
 
@@ -194,13 +211,13 @@ Learn says the experience is on by default once a user has a Microsoft Copilot l
 <tbody>
 <tr><td data-label="Control"><strong>Which users have Microsoft Copilot in Viva Engage, through Microsoft Copilot licence assignment</strong><br><small>User</small><br><small class="controls__note">The Copilot in Engage page says to remove a user's Microsoft Copilot licence to turn the experience off. The request body's removeLicenses removes it. Needs License or User Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Licenses › product › Assign licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/users/{id | userPrincipalName}/assignLicense</code> <a href="https://learn.microsoft.com/graph/api/user-assignlicense" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>An Engage-specific switch for the Copilot pane in Engage</strong><br><small>Tenant</small><br><small class="controls__note">Learn says access is controlled by licence assignment and there is no separate Engage setting.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Availability of the Engage plugin for Cowork tasks that act in Engage</strong><br><small>Tenant</small><br><small class="controls__note">Cowork only; the Copilot pane in Engage is unaffected. Needs tenant admin or Copilot administrator. The API is beta and Learn says it requires an Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › plugin › Users <a href="https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Availability of the Engage plugin for Cowork tasks that act in Engage</strong><br><small>Tenant</small><br><small class="controls__note">Cowork only; the Copilot pane in Engage is unaffected. Block is the alternative action on the same Users tab. Needs tenant admin or Copilot administrator. The API is beta and Learn says it requires an Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › plugin › Users › Available to specific users or groups <a href="https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 Licence assignment is the only documented way to switch the Copilot pane in Engage on or off for a user; Learn says there is no separate Engage setting. Removing the licence is not scoped to Engage, so expect it to affect where else that user has Microsoft Copilot.
 
-The Cowork plugin row governs only the route by which Cowork can act in Engage. It does not turn off the Copilot pane inside Engage. The Package Management API call is a Microsoft Graph beta operation that Learn says requires a Microsoft Agent 365 licence; the Cowork plugin page says plugins use the same app package format as Teams apps, Copilot agents and Office add-ins, and whether the Engage plugin appears as a package for this call is something to confirm in your tenant.
+The Cowork plugin row governs only the route by which Cowork can act in Engage. It does not turn off the Copilot pane inside Engage. The Package Management API call is a Microsoft Graph beta operation that Learn says requires a Microsoft Agent 365 licence; the Cowork plugin page says plugins use the same app package format as Teams apps, Copilot agents and Office add-ins, and the Package Management API covers agents and tools, including plugins, in the organization catalog.
 
 ## Open questions
 
@@ -211,19 +228,13 @@ The Cowork plugin row governs only the route by which Cowork can act in Engage. 
 
 <!-- rationale
 risk: Medium. Learn says the experience is on by default for users with a Microsoft Copilot licence, it reads Engage content and work data each user can already access, and the only documented off switch is licence removal.
-cost: Low. The setup page names the Microsoft Copilot licence as the requirement and says Microsoft 365 agents in Engage bill as they do in Microsoft Copilot, so the direct cost is admin time and communications.
+cost: Variable. The Copilot pane requires a Microsoft Copilot licence; Cowork tasks accessed from it use usage-based billing measured in Copilot Credits. Allow for admin time and communications.
 impact: Medium. Licensed Copilot users who open Viva Engage on the web or desktop see the Copilot pane change; users without a Copilot licence and admins configuring Engage are not affected.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: The low cost rating and rationale say the only direct cost is admin time and communications despite including Cowork tasks in scope. | Found: Page: 'the direct cost is admin time and communications.' Microsoft: 'Cowork uses a usage-based billing model. Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.' | Fix: Set cost to 'variable'. Replace the cost rationale with 'Variable. The Copilot pane requires a Microsoft Copilot licence; Cowork tasks accessed from it use usage-based billing measured in Copilot Credits. Allow for admin time and communications.' Cite https://learn.microsoft.com/copilot/cowork/cowork-admin-governance and https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits, and add to Cost and licensing: 'Cowork tasks consume Copilot Credits; model responses and tool and skill calls count toward consumption.' Keep licensing.model 'included' for entitlement to the enhanced pane. | Source: https://learn.microsoft.com/copilot/cowork/cowork-admin-governance
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters; Risk assessment: Data exposure / behaviour: Accessible private-community conversations can be used as grounding alongside other work content. | Found: Posts from public communities, private communities, Answers, Events, and Storylines. Only content that users have permission to view is eligible for grounding. | Fix: Add https://learn.microsoft.com/viva/engage/viva-engage-content-copilot to sources for the private-community grounding premise; the existing enhanced setup citation supplies the wider work-content part. | Source: https://learn.microsoft.com/viva/engage/viva-engage-content-copilot
-- [supported, minor] controls[2].ui; Governance controls table; Governance guidance / admin-path: Microsoft 365 admin center > Agents > Tools > plugin > Users reaches the plugin availability page. | Found: select Agents > Tools. Find the plugin you want to manage and go to the Users tab. Adjust the availability setting: Available to all users; Available to specific users or groups. | Fix: The path stops on the correct tab. Extend controls[2].ui.path to 'Agents > Tools > plugin > Users > Available to specific users or groups' and keep blocking described in the note; the cited page documents Block as the alternative action. | Source: https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins
-- [supported, minor] Cost and licensing: Agents / cost: Copilot Credits are the shared unit of usage-based billing for eligible Microsoft services. | Found: Copilot Credits are a common currency for eligible Microsoft services with usage-based billing. | Fix: Add https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits to sources; the concept-page link is not a Microsoft citation. | Source: https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits
-- [supported, minor] Risk assessment: Change & support; Governance controls; Governance guidance: After rollout / applicability: Removing the Microsoft Copilot licence is not Engage-specific and removes the user's wider Copilot access. | Found: Copilot is only available to users with a license assigned. If you remove the license from a user, the user loses access to Copilot. | Fix: Add https://learn.microsoft.com/compliance/anz/blueprint-copilot-reqconfig to sources for the broader effect of Microsoft Copilot licence removal. | Source: https://learn.microsoft.com/compliance/anz/blueprint-copilot-reqconfig#license-assignment
-- [contradicted, minor] Governance guidance: Before rollout and After rollout; Governance controls table / consistency: The checklist asks readers to review private-community membership and posting permissions and Purview audit logs, but neither control appears in the table. | Found: Checklist: 'Review membership and posting permissions in private communities' and 'Review Microsoft Purview audit logs'. Table: licence assignment, separate Engage-switch absence, and Cowork plugin availability only. | Fix: The private-community membership/posting-permission review and Purview audit review steps have no matching control rows. Remove those two checklist bullets to align the checklist with the existing table; do not add unverified rows.
-- [supported, minor] Governance controls: final paragraph; controls[2].api applicability / applicability: The package block operation is a general control, but the page leaves its coverage of the Engage plugin as something to confirm in the tenant. | Found: A package represents an agent or a tool, such as a plugin, MCP server, or skill, in the organization catalog. Admin blocks a package to prevent its usage across the organization. | Fix: Replace 'whether the Engage plugin appears as a package for this call is something to confirm in your tenant' with 'the Package Management API covers agents and tools, including plugins, in the organization catalog'. Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview to sources. Keep the existing beta call and Agent 365 licence qualification. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview
+- [supported, minor] Governance guidance: Before rollout, first bullet / admin-path: Billing > Licenses in the Microsoft 365 admin center is the location for reviewing licence holders. | Found: In the admin center, go to the Billing > Licenses page. ... Select a product. ... Direct user assignments: If a license is assigned directly to a user, the user appears individually in the list of assignments for that product. | Fix: Expand the checklist route to 'Billing > Licenses > product'. Add 'For group-based assignments, view the assigned group's members under Teams & groups > Active teams & groups' as documented at https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users
+- [supported, minor] Governance guidance: Before rollout and At rollout; Risk assessment: Autonomy & actions / admin-path: Agents > Tools in the Microsoft 365 admin center is the location for restricting or blocking the Engage Cowork plugin. | Found: select Agents > Tools. ... Find the plugin you want to manage and go to the Users tab. ... Available to specific users or groups ... Select Block | Fix: Expand the abbreviated restriction route to 'Agents > Tools > plugin > Users > Available to specific users or groups', and the blocking route to 'Agents > Tools > plugin > Users > Block', matching https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins and the existing control row. | Source: https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins
 -->

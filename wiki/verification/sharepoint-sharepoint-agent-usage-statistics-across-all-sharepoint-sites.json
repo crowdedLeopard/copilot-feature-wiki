@@ -2,37 +2,31 @@
   "slug": "sharepoint-sharepoint-agent-usage-statistics-across-all-sharepoint-sites",
   "roadmapId": 480729,
   "title": "SharePoint: tenant-wide usage statistics for SharePoint agents",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-22",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-22",
-    "reasons": [
-      "1 blocking finding (claim 41)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 42,
-    "confirmed": 41,
-    "unconfirmed": 1,
+    "claims": 43,
+    "confirmed": 43,
+    "unconfirmed": 0,
     "contradicted": 0,
-    "blocker": 1,
+    "blocker": 0,
     "major": 0,
-    "minor": 1
+    "minor": 2
   },
-  "summary": "The briefing accurately reports the roadmap and documents the existing Agent Insights control. However, it describes the planned statistics as accessible only to administrators, which the roadmap does not establish; the access restrictions remain unpublished. The command reference also retains a rollout caveat that differs from the report guide.",
+  "summary": "The briefing accurately reports the roadmap's overdue target and distinguishes documented reports from the still-unidentified planned statistics. The existing report's command and access requirements are supported; minor corrections should complete its UI route and acknowledge SharePoint's general licensing requirement.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing",
+      "where": "summary; What's changing",
       "type": "record",
       "claim": "Microsoft plans to aggregate SharePoint agents' usage statistics across all SharePoint sites.",
       "status": "supported",
@@ -45,7 +39,7 @@
       "n": 2,
       "where": "summary; What's changing; Scope; rationale: impact",
       "type": "record",
-      "claim": "The roadmap names the tenant admin persona as the audience for the statistics.",
+      "claim": "The roadmap describes the tenant admin persona as the audience for the statistics.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "SharePoint agents' usage statistics would be aggregated across all SharePoint sites and available for the tenant admin persona.",
@@ -56,7 +50,7 @@
       "n": 3,
       "where": "front matter: products; What's changing; Scope",
       "type": "record",
-      "claim": "The listed products are Microsoft 365 admin center and SharePoint.",
+      "claim": "The roadmap lists Microsoft 365 admin center and SharePoint as products.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"products\": [\"Microsoft 365 admin center\", \"SharePoint\"]",
@@ -65,42 +59,9 @@
     },
     {
       "n": 4,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "The listed cloud is Worldwide (Standard Multi-Tenant).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: releasePhase; What's changing",
-      "type": "record",
-      "claim": "The release phase is General Availability.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: platforms; Scope",
-      "type": "record",
-      "claim": "The listed platforms are Developer and Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Developer\", \"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
       "where": "front matter: status; What's changing; Risk assessment; Open questions",
       "type": "record",
-      "claim": "The record still lists the feature as In development.",
+      "claim": "The record's status remains In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -108,10 +69,10 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 5,
       "where": "front matter: targetDate; What's changing; Risk assessment; Open questions",
       "type": "record",
-      "claim": "The roadmap target is December CY2025, a planned date already past on 22 November 2026.",
+      "claim": "The roadmap target is December CY2025, which precedes the briefing's run date of 22 November 2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"December CY2025\"",
@@ -119,10 +80,43 @@
       "fix": null
     },
     {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "General Availability is the roadmap's release phase.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) as the cloud.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "Developer and Web are the listed platforms.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Developer\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 9,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The record has no preview date.",
+      "claim": "The record supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -144,7 +138,7 @@
       "n": 11,
       "where": "Scope",
       "type": "record",
-      "claim": "The record lists no US Government clouds, without declaring them unavailable.",
+      "claim": "No US Government clouds are listed in the record, without asserting that they are excluded.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -155,7 +149,7 @@
       "n": 12,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap does not identify the screen where the statistics will appear.",
+      "claim": "The roadmap does not specify where the statistics will appear.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "SharePoint agents' usage statistics would be aggregated across all SharePoint sites and available for the tenant admin persona.",
@@ -164,9 +158,9 @@
     },
     {
       "n": 13,
-      "where": "What's changing",
+      "where": "What's changing; Why it matters",
       "type": "record",
-      "claim": "The roadmap does not specify which measures the statistics will contain.",
+      "claim": "The roadmap does not specify the measures in the planned statistics.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "SharePoint agents' usage statistics would be aggregated across all SharePoint sites and available for the tenant admin persona.",
@@ -186,20 +180,9 @@
     },
     {
       "n": 15,
-      "where": "Risk assessment: Autonomy & actions; rationale: risk",
-      "type": "record",
-      "claim": "The roadmap describes statistics rather than new agent actions or new data access.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "SharePoint agents' usage statistics would be aggregated across all SharePoint sites and available for the tenant admin persona.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Microsoft documents a report on agent access across SharePoint and OneDrive sites.",
+      "claim": "Microsoft documents reporting on agent access across SharePoint and OneDrive sites.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/insights-on-agent-access",
       "quote": "The agent access insights report provides SharePoint administrators with rich information on how the agents access content across all SharePoint and OneDrive sites in your organization.",
@@ -207,10 +190,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 16,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Microsoft documents SharePoint agent usage in Copilot.",
+      "claim": "Microsoft documents SharePoint agent usage in the Microsoft Copilot Agents usage report.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new?view=o365-worldwide",
       "quote": "You can see which agents both licensed and unlicensed Microsoft Copilot users use across Declarative, SharePoint, and Custom engine agents.",
@@ -218,21 +201,21 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "What's changing; controls[0].note; Governance controls",
+      "n": 17,
+      "where": "What's changing; Governance controls",
       "type": "absence",
-      "claim": "The checked sources do not explicitly identify the documented reports as roadmap item 480729.",
+      "claim": "The checked sources do not explicitly identify a documented report as roadmap item 480729.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: '480729 SharePoint agent usage statistics tenant admin report default rollout roles licensing'; read roadmap and Learn insights-on-sharepoint-agents, insights-on-agent-access, monitor-agent-usage, and microsoft-365-copilot-agents-new; none explicitly identifies item 480729.",
+      "quote": "Searched: \"480729\" \"SharePoint\"; SharePoint \"480729\" usage statistics tenant admin report default rollout roles metrics. Opened insights-on-agent-access, insights-on-sharepoint-agents, monitor-agent-usage and microsoft-365-copilot-agents-new; none identifies item 480729.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 19,
+      "n": 18,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Learn says Microsoft is prioritising richer analytics across Copilot Analytics dashboard, Microsoft 365 Admin Center, SharePoint Advanced Management and SharePoint Online in the coming months.",
+      "claim": "Learn says Microsoft is prioritizing richer analytics across four named reporting surfaces in the coming months.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/monitor-agent-usage",
       "quote": "Microsoft is prioritizing delivering even richer analytics across Copilot Analytics dashboard, Microsoft 365 Admin Center, SharePoint Advanced Management, and SharePoint Online in the coming months.",
@@ -240,10 +223,109 @@
       "fix": null
     },
     {
+      "n": 19,
+      "where": "front matter: defaultState; summary; Why it matters",
+      "type": "default",
+      "claim": "Microsoft has not stated what the planned statistics do on arrival, so defaultState is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"SharePoint agent\" \"usage statistics\" \"roles\" \"default\"; SharePoint \"480729\" usage statistics tenant admin report default rollout roles metrics. Read the record, monitor-agent-usage, insights-on-agent-access and microsoft-365-copilot-agents-new; no default for this item.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 20,
-      "where": "What's changing; controls[0].governs; Governance controls",
+      "where": "front matter: licensing.model and notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Licensing for this feature is not yet published and the licensing model is unknown.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description",
+      "quote": "To access SharePoint, users in your organization need to be assigned a license that includes SharePoint. Searched: SharePoint agent usage statistics across all SharePoint sites licensing price meter prerequisites; read SharePoint service description and SAM prerequisites; no item-specific entitlement.",
+      "severity": "minor",
+      "fix": "Set licensing.model to included for the product-level entitlement, and replace the first licensing sentence in the notes and body with: 'SharePoint requires a licence that includes SharePoint; any additional licensing requirement specific to these planned statistics is not yet published.' Cite https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description. Do not attribute the existing reports' SharePoint Advanced Management entitlement to the unidentified planned report."
+    },
+    {
+      "n": 21,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No meter for the planned statistics is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint agent usage statistics across all SharePoint sites licensing price meter prerequisites. Opened sharepoint-agents-azure-billing, sharepoint-advanced-management-prerequisites and SharePoint service description; billing meters agent interactions, not this unidentified reporting item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "absence",
+      "claim": "Specific administrator roles for the planned statistics are not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"SharePoint agent\" \"usage statistics\" \"roles\" \"default\". Opened monitor-agent-usage, insights-on-agent-access, insights-on-sharepoint-agents and sharepoint-advanced-management-prerequisites; roles cover named existing reports, with no explicit mapping to item 480729.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Rollout mechanics for the planned statistics are not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint \"480729\" usage statistics tenant admin report default rollout roles metrics. Opened monitor-agent-usage and the cited report pages and read the roadmap record; no rollout mechanism explicitly tied to this item was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether the planned statistics identify users or sites.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint tenant wide agent usage statistics admin settings PowerShell Microsoft Graph report user site names refresh. Opened insights-on-agent-access and microsoft-365-copilot-agents-new; their documented names and privacy rules are not explicitly assigned to item 480729.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "It is not stated whether the planned statistics show cost.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint agent usage statistics across all SharePoint sites licensing price meter prerequisites. Opened monitor-agent-usage, sharepoint-agents-azure-billing and the cited report pages; none assigns cost columns to the planned roadmap item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "No setting specifically for the planned statistics is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint tenant wide agent usage statistics admin settings PowerShell Microsoft Graph report user site names refresh. Opened insights-on-sharepoint-agents, insights-on-agent-access, Start-SPOCopilotAgentInsightsReport and microsoft-365-copilot-agents-new; no item-specific setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "The checked sources do not say this roadmap item changes existing behaviour.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint \"480729\" usage statistics tenant admin report default rollout roles metrics. Read the record and opened monitor-agent-usage and the cited reporting pages; no replacement or mandatory behaviour change is attributed to this item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; controls[0].governs and scope; Governance controls",
       "type": "behaviour",
-      "claim": "The existing Agent Insights report covers recently created agents across all SharePoint and OneDrive sites in the organisation.",
+      "claim": "The existing Agent Insights report covers recently created agents across all SharePoint and OneDrive sites within the organization.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents",
       "quote": "The insights report on agents in SharePoint provides SharePoint administrators with rich information on the recently created agents across all SharePoint sites and OneDrive sites within their organization.",
@@ -251,10 +333,10 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 29,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The Agent Insights report is based on audit data for file creation and renaming.",
+      "claim": "The Agent Insights report is built from FileCreated and FileRenamed audit data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents",
       "quote": "The insights report is based on the Microsoft audit data logged for the agents created in SharePoint through the FileCreated and FileRenamed events.",
@@ -262,65 +344,54 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What's changing; controls[0].note",
+      "n": 30,
+      "where": "What's changing; controls[0].note; Governance controls",
       "type": "behaviour",
-      "claim": "The documented created-agent report reports agent inventory rather than interaction frequency.",
+      "claim": "The existing creation-based Agent Insights report reports agent inventory rather than interaction frequency.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents",
-      "quote": "CopilotAgentsOnSites: Provides the name of all the agents currently available on all sites. ... TopSites: Provides a list of 100 sites with the number of agents available on each site.",
+      "quote": "This report helps admins learn about the sites with the highest number of agents created. ... CopilotAgentsOnSites: Provides the name of all the agents currently available on all sites.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 23,
+      "n": 31,
       "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "The Agent Insights report is reached in SharePoint admin center through Reports > Agent Insights.",
+      "claim": "The existing report is reached in the SharePoint admin center through Reports > Agent Insights.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents",
-      "quote": "Sign in to the SharePoint admin center ... In the navigation pane, expand Reports and then select Agent Insights.",
-      "severity": null,
-      "fix": null
+      "quote": "In the navigation pane, expand Reports and then select Agent Insights. ... As a SharePoint Administrator, select Create a report to create the report. ... Select Create and run.",
+      "severity": "minor",
+      "fix": "For a route that reaches report generation, extend controls[0].ui.path and its rendered table cell to 'Reports > Agent Insights > Create a report > Create and run'. The current route correctly reaches the report page but stops before the generation operation shown on the automation side."
     },
     {
-      "n": 24,
+      "n": 32,
       "where": "controls[0].api; Governance controls table",
       "type": "command",
-      "claim": "Start-SPOCopilotAgentInsightsReport -ReportPeriodInDays 28 generates the existing Agent Insights report for 28 days through SharePoint Online Management Shell.",
+      "claim": "Start-SPOCopilotAgentInsightsReport -ReportPeriodInDays 28 generates the existing report for 28 days.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents",
-      "quote": "For example, to generate a report for the past 28 days, run the command: Start-SPOCopilotAgentInsightsReport -ReportPeriodInDays <28>",
-      "severity": "minor",
-      "fix": "Add to the control note: 'The report guide documents this control as available, while the cmdlet reference still says the associated feature will be rolling out soon.' Cite https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/start-spocopilotagentinsightsreport, which also confirms that ReportPeriodInDays accepts 28."
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/start-spocopilotagentinsightsreport",
+      "quote": "Using this cmdlet, administrators may trigger the build of a new Copilot agent insight report for the specified number of days. ... The possible values of ReportPeriodInDays are: 1, 7, 14, 28.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 25,
+      "n": 33,
       "where": "controls[0].note; Risk assessment; Scope; Governance controls",
       "type": "role",
-      "claim": "Learn names SharePoint administrator credentials for generating the existing report in the admin centre and Management Shell.",
+      "claim": "Microsoft names the SharePoint administrator role for generating existing Agent Insights reports in the admin center and Management Shell.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents",
-      "quote": "As a SharePoint Administrator, select Create a report to create the report. ... With permissions of at least a SharePoint administrator, you can generate and view the insights report by using the following commands:",
+      "quote": "Sign in to the SharePoint admin center with the SharePoint administrator credentials for your organization. ... With permissions of at least a SharePoint administrator, you can generate and view the insights report by using the following commands:",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
-      "where": "Risk assessment: Security & identity; Governance controls",
-      "type": "role",
-      "claim": "Regular site owners cannot run these reports unless granted explicit roles.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/monitor-agent-usage",
-      "quote": "Unless you grant explicit roles, regular site owners can't run these reports.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "front matter: licensing.notes; controls[0].note; Cost and licensing; rationale: cost",
+      "n": 34,
+      "where": "licensing.notes; controls[0].note; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Generating and viewing the existing report in Management Shell requires the organisation to have the SharePoint Advanced Management add-on SKU or a Microsoft Copilot licence.",
+      "claim": "Generating and viewing the existing report through Management Shell requires the organization to have SharePoint Advanced Management or a Microsoft Copilot licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents",
       "quote": "To generate and view these reports, ensure the organization has the SharePoint Advanced Management add-on SKU or Microsoft Copilot license.",
@@ -328,10 +399,10 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 35,
       "where": "Cost and licensing",
       "type": "behaviour",
-      "claim": "Without a SharePoint Advanced Management licence, the report experience asks the administrator to enable data collection first.",
+      "claim": "Without a SharePoint Advanced Management licence, administrators are asked to enable data collection for the existing report.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents",
       "quote": "If you don't have a Microsoft SharePoint Advanced Management license, you're asked to enable data collection so that relevant audit data is collected to build the report.",
@@ -339,7 +410,40 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 36,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "role",
+      "claim": "Regular site owners cannot run the existing reports unless explicitly granted roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/monitor-agent-usage",
+      "quote": "Unless you grant explicit roles, regular site owners can't run these reports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].note; Governance controls table",
+      "type": "availability",
+      "claim": "The cmdlet reference says the associated feature will be rolling out soon.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/start-spocopilotagentinsightsreport",
+      "quote": "The feature associated with this cmdlet will be rolling out soon.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Existing monitoring options include Agent Insights, Microsoft Purview audit logs and Microsoft Cost Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/monitor-agent-usage",
+      "quote": "The Agent Insights report gives SharePoint admins detailed visibility into newly created agents ... Users with at least Compliance admin permissions with access to Purview can track agent creation and usage details. ... Use Microsoft Cost Management to monitor the cost of agent usage",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
       "where": "Cost and licensing",
       "type": "cost",
       "claim": "SharePoint agent usage can incur pay-as-you-go charges.",
@@ -350,7 +454,7 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 40,
       "where": "Cost and licensing",
       "type": "cost",
       "claim": "SharePoint agent usage charges appear under the Copilot Studio meter on the invoice.",
@@ -361,10 +465,10 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "Why it matters; Cost and licensing; Risk assessment: Change & support",
-      "type": "applicability",
-      "claim": "Microsoft Cost Management is a documented route for monitoring organisation-level agent usage cost.",
+      "n": 41,
+      "where": "Cost and licensing; Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft Cost Management is documented for monitoring agent usage cost at organization level.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/monitor-agent-usage",
       "quote": "SharePoint admins can use Microsoft Cost Management to monitor the cost of agent usage at the organization level.",
@@ -372,131 +476,32 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "front matter: defaultState; summary; Why it matters",
-      "type": "absence",
-      "claim": "Microsoft has not stated the default state of the planned statistics or what happens on their arrival.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: '480729 SharePoint agent usage statistics tenant admin report default rollout roles licensing'; read roadmap, monitor-agent-usage, insights-on-sharepoint-agents, insights-on-agent-access and microsoft-365-copilot-agents-new; none specifies this roadmap item's arrival default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "front matter: licensing.model and notes; Cost and licensing; Scope; rationale: cost",
-      "type": "absence",
-      "claim": "Microsoft has not published the entitlement model for the planned statistics, so licensing is unknown.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'SharePoint agent usage statistics across all SharePoint sites analytics reporting license pricing meter'; read monitoring, both insights guides, Copilot Agents usage, Azure billing and SAM prerequisites; existing reports have licences, but none identifies the planned statistics' entitlement.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "No meter specifically for the planned statistics is documented as of November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'SharePoint agent usage statistics across all SharePoint sites analytics reporting license pricing meter'; read sharepoint-agents-azure-billing, SAM prerequisites and report guides; the published meter bills agent interactions, not producing these planned statistics.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Risk assessment: Security & identity; Scope",
-      "type": "absence",
-      "claim": "The specific admin roles that can see the planned statistics are not yet documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: '480729 SharePoint agent usage statistics tenant admin report default rollout roles licensing'; read report guides and agent-roles-perms search excerpt; roles are documented for existing reports and agent management, but no source maps those roles to this roadmap item.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Scope",
-      "type": "absence",
-      "claim": "Rollout mechanics for the planned statistics are not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: '480729 SharePoint agent usage statistics tenant admin report default rollout roles licensing'; read roadmap and monitoring/report guides; the record names a target and phase but gives no rollout mechanism, and the guides do not map a mechanism to this item.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Risk assessment: Data exposure",
-      "type": "absence",
-      "claim": "Microsoft has not said whether the planned statistics identify users or sites.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'SharePoint agent usage statistics all sites report metrics user site names refresh roadmap 480729'; read Copilot Agents usage and both insights guides; existing reports document identifying fields, but none identifies its fields as those of roadmap item 480729.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "Whether the planned statistics show cost is not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'SharePoint agent usage statistics across all SharePoint sites analytics reporting license pricing meter'; read monitor-agent-usage, Azure billing and report guides; cost monitoring is documented in Cost Management, but no source specifies a cost field for this roadmap item.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Governance controls; rationale: risk",
-      "type": "absence",
-      "claim": "No setting specifically for the planned statistics is documented as of November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'SharePoint tenant wide agent usage statistics enable disable setting PowerShell Microsoft Graph reports'; read both insights guides and Start-SPOCopilotAgentInsightsReport reference; found existing report commands and unrelated Graph API-usage metrics, not a setting tied to item 480729.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Why it matters",
-      "type": "absence",
-      "claim": "No checked source says this roadmap item changes existing behaviour on arrival.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: '480729 SharePoint agent usage statistics tenant admin report default rollout roles licensing'; read roadmap and cited monitoring/report guides; no passage identifies an automatic replacement or other change to existing behaviour for this item.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Risk assessment: Data exposure; rationale: risk",
-      "type": "availability",
-      "claim": "The planned statistics are for administrators only.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: '\"480729\" \"SharePoint\" usage statistics only tenant administrators access'; read roadmap and cited report guides. The record says 'available for the tenant admin persona', not exclusively available to admins; no source establishes this item's access restrictions.",
-      "severity": "blocker",
-      "fix": "Replace 'The roadmap describes statistics for the tenant admin persona only.' with 'The roadmap describes statistics for the tenant admin persona.' In the risk rationale, replace 'statistics for admins only' with 'statistics aimed at tenant admins'. Keep the existing statement that the specific roles are not yet documented."
-    },
-    {
       "n": 42,
-      "where": "Why it matters; Risk assessment: Change & support",
-      "type": "applicability",
-      "claim": "The Microsoft Purview audit log is a documented route for monitoring agent creation and usage details.",
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap item describes statistics, not new agent actions.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/monitor-agent-usage",
-      "quote": "Users with at least Compliance admin permissions with access to Purview can track agent creation and usage details.",
+      "source": "roadmap record",
+      "quote": "SharePoint agents' usage statistics would be aggregated across all SharePoint sites and available for the tenant admin persona.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "rationale: risk",
+      "type": "record",
+      "claim": "The roadmap description states no new data access mechanism.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "SharePoint agents' usage statistics would be aggregated across all SharePoint sites and available for the tenant admin persona.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-22T08:34:16.452Z",
+    "at": "2026-11-22T14:04:48.232Z",
     "summary": {
-      "links": 6,
+      "links": 7,
       "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
@@ -512,6 +517,11 @@
       },
       {
         "url": "https://learn.microsoft.com/sharepoint/insights-on-sharepoint-agents",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/start-spocopilotagentinsightsreport",
         "ok": true,
         "status": 200
       },
@@ -566,6 +576,12 @@
       "date": "2026-11-22",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-22",
+      "status": "held",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

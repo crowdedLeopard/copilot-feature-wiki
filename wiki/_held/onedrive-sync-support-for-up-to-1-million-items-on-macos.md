@@ -50,13 +50,13 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Intune admin center"
-      path: "Devices > Manage devices > Configuration > Create > New policy > macOS > Templates > Preference file"
+      path: "Devices > Manage devices > Configuration > Create > New policy > macOS > Templates > Preference file > Configuration settings > Property list file"
       docs: "https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos"
     api:
       kind: "other"
       call: "Tier key in com.microsoft.OneDriveUpdater.plist: <key>Tier</key><string>(UpdateRing)</string>"
       docs: "https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos"
-    note: "Sets the ring only, not the item limit. Intune role: Policy and Profile Manager. The Mac page lists Insiders, Production and Enterprise (Deferred); it does not mention Intune, so confirm the profile on a test Mac."
+    note: "Sets the ring only, not the item limit. Intune role: Policy and Profile Manager. The Mac page lists Insiders, Production and Enterprise (Deferred); its Tier section does not describe Intune deployment, so confirm the profile on a test Mac."
   - governs: "A setting to turn the 1 million item sync limit on or off"
     scope: "tenant"
     ui: null
@@ -71,19 +71,23 @@ changes:
     note: "First briefing: Mac sync limit planned to rise from 300,000 to 1 million items, preview on the Insiders ring planned from October 2026."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 59 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected the update ring control: its note no longer says the Mac page does not mention Intune, and its path now ends at the Property list file setting."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 65 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 58
+  claims: 65
+  confirmed: 64
   unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "e968d2036ced588c7fc49872bfa5de3d"
+  attempts: 2
+  hash: "238491e7498ce421e74f93046c5feaf9"
 ---
 
 ## What's changing
@@ -157,7 +161,7 @@ No meter is documented for this feature at the time of writing (November 2026). 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which sync app update ring Mac devices use (Insiders is needed for the preview)</strong><br><small>Tenant</small><br><small class="controls__note">Sets the ring only, not the item limit. Intune role: Policy and Profile Manager. The Mac page lists Insiders, Production and Enterprise (Deferred); it does not mention Intune, so confirm the profile on a test Mac.</small></td><td data-label="Admin UI"><strong>Microsoft Intune admin center</strong><br>Devices › Manage devices › Configuration › Create › New policy › macOS › Templates › Preference file <a href="https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Tier key in com.microsoft.OneDriveUpdater.plist: &lt;key&gt;Tier&lt;/key&gt;&lt;string&gt;(UpdateRing)&lt;/string&gt;</code> <a href="https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which sync app update ring Mac devices use (Insiders is needed for the preview)</strong><br><small>Tenant</small><br><small class="controls__note">Sets the ring only, not the item limit. Intune role: Policy and Profile Manager. The Mac page lists Insiders, Production and Enterprise (Deferred); its Tier section does not describe Intune deployment, so confirm the profile on a test Mac.</small></td><td data-label="Admin UI"><strong>Microsoft Intune admin center</strong><br>Devices › Manage devices › Configuration › Create › New policy › macOS › Templates › Preference file › Configuration settings › Property list file <a href="https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Tier key in com.microsoft.OneDriveUpdater.plist: &lt;key&gt;Tier&lt;/key&gt;&lt;string&gt;(UpdateRing)&lt;/string&gt;</code> <a href="https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>A setting to turn the 1 million item sync limit on or off</strong><br><small>Tenant</small><br><small class="controls__note">No such setting is documented at the time of writing (November 2026); eligibility depends on the Insiders ring and device requirements.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -183,7 +187,7 @@ impact: Low. The preview reaches only Mac users on the Insiders ring whose devic
 <!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].note; Governance controls table / absence: The Mac deployment page does not mention Intune. | Found: You can use Microsoft Intune. Other common tools are Jamf Pro, Munki, and AutoPkg. | Fix: In controls[0].note and the rendered table note, replace 'it does not mention Intune, so confirm the profile on a test Mac' with 'its Tier section does not describe Intune deployment, so confirm the profile on a test Mac'. The Mac page does mention Intune for app deployment. | Source: https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos
+- [contradicted, blocker] Cost and licensing; Governance guidance: Before rollout; rationale: cost; Open questions / absence: Detailed hardware and configuration requirements for the Mac preview have not yet been published, so candidates should be checked once Microsoft publishes them. | Found: Windows 11, Windows Server 2025, or macOS Golden Gate 27. Memory: 8 GB RAM minimum (16 GB recommended). Storage: Solid-state drive (SSD) required. Processor: Intel i5 / AMD Ryzen 5 or later, Snapdragon X Plus or Apple silicon. | Fix: Replace the claims that hardware requirements are unpublished in Cost and licensing and the cost rationale with: 'Microsoft Support publishes the preview hardware and configuration requirements in Restrictions and limitations in OneDrive and SharePoint.' Link that sentence and add https://support.microsoft.com/en-us/office/restrictions-and-limitations-in-onedrive-and-sharepoint-64883a5d-228e-48f5-b3d2-eb39e07630fa to sources. Replace the Before rollout bullet with: 'Check each candidate Mac against the published preview requirements in Restrictions and limitations in OneDrive and SharePoint.' Remove the first Open questions bullet, which asks for those already published requirements. Keep the narrower statement that the supplied notice and roadmap do not give their values. | Source: https://support.microsoft.com/en-us/office/restrictions-and-limitations-in-onedrive-and-sharepoint-64883a5d-228e-48f5-b3d2-eb39e07630fa
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Intune offers Devices > Manage devices > Configuration > Create > New policy > macOS > Templates > Preference file. | Found: Select Devices > Manage devices > Configuration > Create > New policy. Platform: Select macOS. Profile type: Select Templates > Preference file. In Configuration settings, configure your settings: | Fix: Extend controls[0].ui.path and its rendered table path to 'Devices > Manage devices > Configuration > Create > New policy > macOS > Templates > Preference file > Configuration settings > Property list file'. The cited Intune page places the preference-file upload there. | Source: https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Intune path reaches the Property list file setting in a macOS Preference file profile. | Found: Select Devices > Manage devices > Configuration > Create > New policy. Platform: Select macOS. Profile type: Select Templates > Preference file. In Configuration settings, configure your settings: ... Property list file | Fix: Expand the path to 'Devices > Manage devices > Configuration > Create > New policy > macOS > Templates > Preference file > Create > Basics > Configuration settings > Property list file', following https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos. The omitted Basics page only collects a name and description; this is not a wrong navigation route. | Source: https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos
 -->

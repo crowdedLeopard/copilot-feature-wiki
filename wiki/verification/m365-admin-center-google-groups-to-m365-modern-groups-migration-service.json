@@ -1,0 +1,694 @@
+{
+  "slug": "m365-admin-center-google-groups-to-m365-modern-groups-migration-service",
+  "roadmapId": 470024,
+  "title": "Microsoft 365 admin center: migrate Google Groups to Microsoft 365 Groups",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "2 blocking findings (claims 48, 50)"
+    ]
+  },
+  "counts": {
+    "claims": 51,
+    "confirmed": 48,
+    "unconfirmed": 2,
+    "contradicted": 1,
+    "blocker": 2,
+    "major": 1,
+    "minor": 3
+  },
+  "summary": "Hold: the Graph membership guidance presents a delegated-access role requirement as applying to every call, although application permissions are also supported. The page also asserts that existing controls do not govern the migration service when their applicability is unknown. Roadmap facts and the documented control paths and endpoints otherwise check out.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft plans a first-party Google Groups migration service.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Google Groups to M365 Modern Groups Migration Service is a 1st party service for migrating Google groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The planned service is in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "with the M365 Admin center as a new feature",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "The service is planned to migrate Google Groups into Microsoft 365 Groups.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Google Groups to M365 Modern Groups Migration Service",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes automatic creation of the groups and their members.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "would have the ability to automatically create the groups, its members",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "summary; What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes migrating member conversations into Microsoft 365 Groups.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "member conversations and all permissions to M365 Groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "summary; What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes migrating all permissions into Microsoft 365 Groups.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "all permissions to M365 Groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The planned service avoids manually recreating the groups.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "without the need to recreate the groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap targets customers moving from Google to Microsoft 365.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Google compete customers moving to M365",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: status; summary; What's changing; Risk assessment; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview target is January CY2025, already past on the run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"January CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap general availability target is February CY2025, already past on the run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"February CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Web is the roadmap platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview as release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: roadmapModified; What's changing; Risk assessment",
+      "type": "record",
+      "claim": "The roadmap record was last modified on 22 November 2024.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2024-11-22T23:15:35\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; licensing.notes; changes",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe the roadmap's Google Groups conversation-and-permission migration service.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Google Groups\" \"migration\" \"conversations\"; Google Groups Microsoft 365 Groups migration service 470024 conversations permissions. Opened Google Identity Sync, Data Migration and Consolidated migration of data from Google Workspace; no service-specific documentation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Google Identity Sync provides one-way user and group identity synchronisation from Google Workspace to Microsoft 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "Google Identity Sync provides one-way synchronization of user and group identities from Google Workspace to Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Google Identity Sync maps each source Google Workspace group to a Microsoft 365 unified group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "Each source Google Workspace group is mapped to a Microsoft 365 unified group, using the default Microsoft 365 domain for the group email address.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Google Identity Sync synchronises group owners and members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "If a destination owner or member doesn't exist in the Microsoft 365 group, the user is added with the appropriate role (Owner or Member).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Google Identity Sync is a different feature from this roadmap item.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Google Groups Microsoft 365 Groups migration service 470024; \"Google Groups\" \"migration\" \"conversations\". Opened Google Identity Sync and Consolidated migration of data from Google Workspace. Neither identifies Identity Sync's relationship to this roadmap item.",
+      "severity": "major",
+      "fix": "Replace 'it is a different feature from this roadmap item and is not a description of it' with 'that page documents identity synchronisation, not conversation migration'. The Google Identity Sync page at https://learn.microsoft.com/sharepointmigration/google-identity-sync does not document conversation migration or identify its relationship to this roadmap item."
+    },
+    {
+      "n": 21,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Microsoft 365 group membership grants access to the group's content, including its shared inbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/create-groups/office-365-groups",
+      "quote": "When you add users to the group, you automatically grant them the appropriate access. Members - Access all group resources but can't change group settings.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365/admin/create-groups/office-365-groups to sources, titled 'Microsoft 365 Groups overview for administrators'; it states the membership-to-resource-access premise."
+    },
+    {
+      "n": 22,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "FastTrack's Google Workspace Gmail, Contacts and Calendar migration lists Google Groups as not migrated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/fasttrack/data-migration",
+      "quote": "Google Workspace environment (Gmail, Contacts, and Calendar only) ... What doesn’t migrate ... Google Groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Google Identity Sync maps the Google Owner and Manager roles to Microsoft 365 Owner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "Google Workspace group members with the Owner or Manager role are mapped to the Owner role in the corresponding Microsoft 365 group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Google Identity Sync maps Google Member to Microsoft 365 Member.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "Google Workspace group members with the Member role are mapped to the Member role in the Microsoft 365 group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Google Identity Sync does not synchronise external users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "External users and custom-permission members are not synchronized.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Google Identity Sync does not synchronise custom-permission members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "External users and custom-permission members are not synchronized.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Google Identity Sync warns that re-sync can remove owner and member assignments added only in Microsoft 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "Re-sync can remove member and owner assignments added only in Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Google Identity Sync instructs administrators to assign synchronised users the licences needed for the destination Microsoft 365 services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "Once user synchronization is complete and verified, assign users the licenses required for the Microsoft 365 services you're migrating to.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Google Identity Sync is available to tenants with fewer than 300 licensed users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "This feature is available to tenants with fewer than 300 licensed users. Support for tenants with more than 300 licensed users will be available in a future release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].ui; controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No tenant availability switch or service-specific API is documented for the roadmap migration service.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Google Groups\" migration service enable administrator permissions default; \"Google Groups\" migration Microsoft Graph beta PowerShell API. Opened Google Identity Sync, groupSetting-update, group-post-members and Consolidated migration; no service switch or API found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: defaultState; summary; Why it matters; Open questions",
+      "type": "default",
+      "claim": "The default state of this migration service is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Google Groups\" migration service enable administrator permissions default. Read roadmap description; opened Google Identity Sync and Consolidated migration of data from Google Workspace. None states this roadmap service's arrival default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.model; licensing.notes; summary; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Microsoft has not published which licence entitles a tenant to this migration service.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Google Groups migration Microsoft 365 Groups licensing price meter Microsoft 365 admin center; \"Google Groups\" \"migration\" licence pricing. Opened Google Identity Sync, Data Migration, Consolidated migration and Microsoft 365 Groups overview; none licenses this service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No service-specific price or meter is published, and the roadmap names neither.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Google Groups migration Microsoft 365 Groups licensing price meter Microsoft 365 admin center; \"Google Groups\" \"migration\" licence pricing. Read roadmap; opened Google Identity Sync, Data Migration and Consolidated migration. No price or meter for this service found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].note; Scope; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "A role that runs or configures this specific migration service is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Google Groups\" migration service enable administrator permissions default; Google Groups Microsoft 365 Groups migration service 470024 conversations permissions admin center role prerequisites. Opened Google Identity Sync and Consolidated migration; no service-specific role found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Prerequisites for this specific migration service are not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Google Groups Microsoft 365 Groups migration service 470024 conversations permissions admin center role prerequisites. Opened Google Identity Sync and Consolidated migration; prerequisites returned for identity or mailbox migration do not identify this service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Rollout mechanics for this migration service are not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Google Groups Microsoft 365 Groups migration service 470024 conversations permissions admin center enable default. Read roadmap; opened Google Identity Sync and Consolidated migration. No service-specific rollout mechanism found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "This migration service's Google-permission-to-Microsoft-365-role mapping is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Google Groups Microsoft 365 Groups migration service 470024 conversations permissions; \"Google Groups\" migration service enable administrator permissions default. Opened Google Identity Sync, Data Migration and Consolidated migration; only identity-sync mappings found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "This migration service's handling of external group members is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Google Groups\" \"migration\" \"conversations\"; Google Groups Microsoft 365 Groups migration service 470024 conversations permissions. Opened Google Identity Sync, Data Migration and Consolidated migration; external-user exclusions refer to other migration scopes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented the identity under which this migration service creates groups.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Google Groups\" migration service enable administrator permissions default; \"Google Groups\" migration Microsoft Graph beta PowerShell API. Opened Google Identity Sync, Consolidated migration and self-service group management; no creation identity for this service found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Microsoft has not documented whether an administrator approves each run of this migration service.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Google Groups Microsoft 365 Groups migration service 470024 conversations permissions admin center approval API; \"Google Groups\" migration service enable administrator permissions default. Opened Google Identity Sync and Consolidated migration; no approval rule for this service found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The group-creation setting is at Microsoft Entra admin center > Microsoft Entra ID > All groups > Groups > General settings > Users can create Microsoft 365 groups in Azure portals, API or PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-self-service-management",
+      "quote": "Select Microsoft Entra ID. Select All groups > Groups, and then select General settings. Set Users can create Microsoft 365 groups in Azure portals, API or PowerShell to Yes or No.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].api; controls[1].note; Governance controls table",
+      "type": "command",
+      "claim": "PATCH /v1.0/groupSettings/{groupSettingId} updates the tenant group setting, including EnableGroupCreation through values.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/groupsetting-update?view=graph-rest-1.0",
+      "quote": "Update a tenant-wide setting. PATCH /groupSettings/{groupSettingId}. values ... The updated set of values. You must include the entire collection set. You cannot update a single set of values.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].note; Risk assessment: Security & identity; Governance controls",
+      "type": "applicability",
+      "claim": "The group-creation settings apply to users and do not affect service principals.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-self-service-management",
+      "quote": "These settings are for users and don't affect service principals. ... even if you set these settings to No, the service principal can still create groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].note; Risk assessment: Security & identity; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "Whether the user group-creation restriction applies to this migration service is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Google Groups\" migration service enable administrator permissions default; \"Google Groups\" migration Microsoft Graph beta PowerShell API. Opened self-service group management, Google Identity Sync and Consolidated migration; the service's creation identity is unspecified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[2].ui; Governance controls table; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Owners and members can be reviewed at Microsoft 365 admin center > Teams & groups > Active teams & groups > group > Membership.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/create-groups/manage-groups",
+      "quote": "Expand Teams & groups, and then click Active teams & groups. Click the name of the group ... On the Membership tab, choose if you want to manage Owners or Members. Choose Add ... or click X to remove someone.",
+      "severity": "minor",
+      "fix": "Keep the path, which reaches the right tab, and add to controls[2].note: 'On Membership, choose Owners or Members; choose Add to add someone or X to remove someone.' This completes the route documented at https://learn.microsoft.com/microsoft-365/admin/create-groups/manage-groups without changing the row's scope."
+    },
+    {
+      "n": 46,
+      "where": "controls[2].api; controls[2].note; Governance controls table",
+      "type": "command",
+      "claim": "POST /v1.0/groups/{group-id}/members/$ref adds group members, not owners.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/group-post-members?view=graph-rest-1.0",
+      "quote": "POST https://graph.microsoft.com/v1.0/groups/{group-id}/members/$ref ... supply a JSON object that contains an @odata.id property with a reference by ID to a supported group member object type.",
+      "severity": "minor",
+      "fix": "Keep controls[2].api.call unchanged and add to its note: 'The request body sets @odata.id to a reference to the user being added.' The pre-check's missing-endpoint warning is a false positive: the endpoint appears in Example 1 at https://learn.microsoft.com/graph/api/group-post-members?view=graph-rest-1.0."
+    },
+    {
+      "n": 47,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "The cited Entra UI instructions require at least Global Administrator for the group-creation setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-self-service-management",
+      "quote": "Sign in to the Microsoft Entra admin center as at least a Global Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Changing membership through the Graph call requires a supported Microsoft Entra role, such as Groups Administrator, or group ownership.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/api/group-post-members?view=graph-rest-1.0",
+      "quote": "In delegated scenarios, the signed-in user must also be assigned a supported Microsoft Entra role ... Group owners ... Groups Administrator. Supported resource: user; Application: GroupMember.ReadWrite.All.",
+      "severity": "blocker",
+      "fix": "Replace the sentence with: 'In delegated scenarios, the signed-in user adding members through Graph must also have a supported Microsoft Entra role, such as Groups Administrator, or be a group owner.' Cite https://learn.microsoft.com/graph/api/group-post-members?view=graph-rest-1.0. The reference also supports application access, so do not state the signed-in-user requirement for every call."
+    },
+    {
+      "n": 49,
+      "where": "controls[2].note; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Existing Microsoft 365 group controls allow administrators to review and change destination-group owners and members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/create-groups/manage-groups",
+      "quote": "After you have created a Microsoft 365 group and added group members, you can configure your group. You can ... manage owners or members",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The existing group-control rows do not govern the migration service itself.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Google Groups\" migration service enable administrator permissions default; \"Google Groups\" migration Microsoft Graph beta PowerShell API. Opened self-service group management, Google Identity Sync and Consolidated migration. No source excludes this service from the creation restriction.",
+      "severity": "blocker",
+      "fix": "Replace 'they do not govern the migration service itself' with 'the membership controls govern destination groups; whether the group-creation restriction applies to the migration service is not yet documented'. This preserves the distinction without asserting a service exemption that Microsoft has not stated."
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "record",
+      "claim": "The roadmap's planned migration would give destination-group members groups and conversation history to use.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "would have the ability to automatically create the groups, its members, member conversations and all permissions to M365 Groups",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T14:04:41.750Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=470024",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/fasttrack/data-migration",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/create-groups/manage-groups",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/users/groups-self-service-management",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/groupsetting-update?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/group-post-members?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Who can create Microsoft 365 groups",
+        "docs": "https://learn.microsoft.com/entra/identity/users/groups-self-service-management",
+        "reachable": true,
+        "segments": [
+          "Microsoft Entra ID",
+          "All groups",
+          "Groups",
+          "General settings",
+          "Users can create Microsoft 365 groups in Azure portals, API or PowerShell"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Who can create Microsoft 365 groups",
+        "docs": "https://learn.microsoft.com/graph/api/groupsetting-update?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/groupSettings",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Owners and members of a migrated Microsoft 365 group",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/create-groups/manage-groups",
+        "reachable": true,
+        "segments": [
+          "Teams & groups",
+          "Active teams & groups",
+          "Membership"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Owners and members of a migrated Microsoft 365 group",
+        "docs": "https://learn.microsoft.com/graph/api/group-post-members?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/groups/members",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

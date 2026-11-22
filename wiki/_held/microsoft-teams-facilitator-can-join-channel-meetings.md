@@ -55,11 +55,8 @@ controls:
       surface: "Teams admin center"
       path: "Teams apps > Manage apps > Facilitator > Allow or Block"
       docs: "https://learn.microsoft.com/microsoftteams/facilitator-teams"
-    api:
-      kind: "powershell"
-      call: "Update-M365TeamsApp -Id <app id> -IsBlocked $true"
-      docs: "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp"
-    note: "The page says Facilitator is allowed by default, and blocked if all apps are blocked for the organisation. Teams admin credentials are used to sign in."
+    api: null
+    note: "Allowed by default; blocked if all apps are blocked for the organisation. The Update-M365TeamsApp reference labels -IsBlocked $true as unblocking; the blocking value is not reliably documented. Use the Allow or Block action."
   - governs: "Whether collaborative AI-generated meeting notes are enabled in Teams"
     scope: "tenant"
     ui: null
@@ -78,7 +75,7 @@ controls:
       kind: "powershell"
       call: "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowChannelMeetingScheduling $False"
       docs: "https://learn.microsoft.com/microsoftteams/manage-who-can-schedule-meetings"
-    note: "Restricts creating new channel meetings; the page says the organiser can still edit existing ones. It does not restrict Facilitator."
+    note: "New channel meetings only; the organiser can still edit existing ones. Turning off meeting policy settings also disables join links and conference IDs of existing meetings of that type the user organised; content stays accessible."
 confidence: "medium"
 created: "2026-11-22"
 updated: "2026-11-22"
@@ -88,19 +85,23 @@ changes:
     note: "New briefing: Facilitator in Teams channel meetings, with the schedule from MC1461165 (updated 20 October 2026) and the existing Facilitator controls."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 82 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after the independent check: removed the unreliable Update-M365TeamsApp blocking call, added the meeting-policy join-link warning, and aligned rollout wording, language limits and checklist with their sources."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 92 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 82
-  confirmed: 79
+  claims: 92
+  confirmed: 91
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "e06b5387e141db528ad328d3d05f1391"
+  contradicted: 1
+  attempts: 2
+  hash: "951ef511b1682041110082184531ef8e"
 ---
 
 ## What's changing
@@ -109,7 +110,7 @@ The roadmap item says Facilitator, the AI agent in Teams meetings, can join meet
 
 Microsoft Learn does not describe channel-meeting behaviour yet, so what follows about this feature is the roadmap's and the notice's description. The Facilitator setup page covers Facilitator in meetings generally and, at the time of writing (November 2026), does not mention channel meetings. It lists 1:1 chats, group chats and external chats and meetings as unsupported.
 
-The roadmap record shows the item as In development with a target of February CY2027, for Android, Desktop, iOS, Mac and Web in the Worldwide (Standard Multi-Tenant) cloud, in General Availability and Targeted Release phases. MC1461165 (updated 20 October 2026) gives the schedule: Targeted Release begins in early February 2027 (previously early November 2026) and completes by mid-February 2027; General Availability (Worldwide) begins in mid-February 2027 (previously mid-November 2026) and completes by early March 2027. The notice sets no act-by date.
+The roadmap record shows the item as In development with a target of February CY2027, for Android, Desktop, iOS, Mac and Web in the Worldwide (Standard Multi-Tenant) cloud, in General Availability and Targeted Release phases. MC1461165 (updated 20 October 2026) gives the schedule: Targeted Release begins in early February 2027 (previously early November 2026) and is expected to complete by mid-February 2027; General Availability (Worldwide) begins in mid-February 2027 (previously mid-November 2026) and is expected to complete by early March 2027. The notice sets no act-by date.
 
 ## Why it matters
 
@@ -132,7 +133,7 @@ The practical decision is whether your current Facilitator settings, retention a
 - The roadmap says Facilitator manages the agenda and captures tasks. The Facilitator page lists task tracking integration with Planner as a public preview capability; whether channel meetings use it is not stated.
 
 **Change & support**
-- Facilitator requires Loop experiences in Teams to be turned on, and the page says AI-generated notes support meetings where a single language is spoken. Expect support questions when notes are missing for either reason.
+- Facilitator requires Loop experiences in Teams to be turned on, and the page says AI-generated notes support meetings where a single language is spoken. In a multilingual meeting, notes are taken only for portions spoken in the selected meeting language. Expect support questions when notes are missing for either reason.
 - The page says Facilitator's notes are not automatically collected as cloud attachments in Purview eDiscovery.
 
 ## Cost and licensing
@@ -145,7 +146,7 @@ The page states no separate price or meter for channel meetings, and MC1461165 n
 
 MC1461165 says the affected organisations are those that have enabled Facilitator in Teams, and the affected users are those licensed for Facilitator. The platforms and services it names are Microsoft Teams and Teams channel meetings. The roadmap lists Android, Desktop, iOS, Mac and Web, in the Worldwide (Standard Multi-Tenant) cloud only; the record lists no US Government clouds.
 
-Prerequisites on the Facilitator page: a Microsoft 365 base licence, a Teams licence, a Microsoft Copilot licence, and Loop experiences in Teams for Facilitator in meetings turned on. The page says Facilitator is allowed by default unless all apps are blocked for the organisation. Rollout is Targeted Release from early February 2027, then General Availability from mid-February 2027 to early March 2027, per MC1461165.
+Prerequisites on the Facilitator page: a Microsoft 365 base licence, a Teams licence, a Microsoft Copilot licence, and Loop experiences in Teams for Facilitator in meetings turned on. The page says Facilitator is allowed by default unless all apps are blocked for the organisation. Rollout is Targeted Release from early February 2027, then General Availability from mid-February 2027, expected to complete by early March 2027, per MC1461165.
 
 ## Governance guidance
 
@@ -161,7 +162,6 @@ Prerequisites on the Facilitator page: a Microsoft 365 base licence, a Teams lic
 - Tell organisers that Facilitator's responses are visible to everyone in the meeting and that users must select the spoken language when they turn it on.
 
 ### After rollout
-- Review Facilitator interactions through Purview auditing, which the Purview page lists as supported.
 - Re-read the Facilitator setup page for any channel-meeting limits Microsoft adds.
 - Revisit rows 1 and 2 if notes need to be switched off for the whole tenant.
 
@@ -172,13 +172,13 @@ Prerequisites on the Facilitator page: a Microsoft 365 base licence, a Teams lic
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Facilitator is allowed or blocked for the organisation</strong><br><small>Tenant</small><br><small class="controls__note">The page says Facilitator is allowed by default, and blocked if all apps are blocked for the organisation. Teams admin credentials are used to sign in.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Facilitator › Allow or Block <a href="https://learn.microsoft.com/microsoftteams/facilitator-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app id&gt; -IsBlocked $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Facilitator is allowed or blocked for the organisation</strong><br><small>Tenant</small><br><small class="controls__note">Allowed by default; blocked if all apps are blocked for the organisation. The Update-M365TeamsApp reference labels -IsBlocked $true as unblocking; the blocking value is not reliably documented. Use the Allow or Block action.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Facilitator › Allow or Block <a href="https://learn.microsoft.com/microsoftteams/facilitator-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether collaborative AI-generated meeting notes are enabled in Teams</strong><br><small>Tenant</small><br><small class="controls__note">Tenant-wide, not per user. Does not apply to collaborative meeting notes in Teams New Calendar, where Cloud Policy applies. Requires the SharePoint PowerShell module.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -IsCollabMeetingNotesFluidEnabled $false</code> <a href="https://learn.microsoft.com/microsoft-365/loop/loop-components-configuration" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Who can schedule channel meetings (existing control; does not govern Facilitator)</strong><br><small>User</small><br><small class="controls__note">Restricts creating new channel meetings; the page says the organiser can still edit existing ones. It does not restrict Facilitator.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Meeting scheduling › Channel meeting scheduling <a href="https://learn.microsoft.com/microsoftteams/manage-who-can-schedule-meetings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -AllowChannelMeetingScheduling $False</code> <a href="https://learn.microsoft.com/microsoftteams/manage-who-can-schedule-meetings" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who can schedule channel meetings (existing control; does not govern Facilitator)</strong><br><small>User</small><br><small class="controls__note">New channel meetings only; the organiser can still edit existing ones. Turning off meeting policy settings also disables join links and conference IDs of existing meetings of that type the user organised; content stays accessible.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Meeting scheduling › Channel meeting scheduling <a href="https://learn.microsoft.com/microsoftteams/manage-who-can-schedule-meetings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -AllowChannelMeetingScheduling $False</code> <a href="https://learn.microsoft.com/microsoftteams/manage-who-can-schedule-meetings" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-Row 1 is the documented control for whether Facilitator is available to the organisation or to a group of users. The Facilitator page also points to app permission policies and app-centric management for allowing Facilitator to a group, and says it is allowed by default unless all apps are blocked.
+Row 1 gives the organisation-wide Allow or Block action. The Facilitator page separately describes group availability through app policies and app-centric management. It says Facilitator is allowed by default unless all apps are blocked.
 
 Row 2 is a tenant-wide SharePoint property: the Facilitator page says it cannot be set per user and that disabling it turns AI-generated notes for meetings off for all users. The Loop admin page says the property does not apply to collaborative meeting notes in Teams New Calendar, where Cloud Policy applies instead. Microsoft Learn documents no admin centre page for the property at the time of writing (November 2026).
 
@@ -203,12 +203,5 @@ impact: Medium. Licensed users in organisations that have enabled Facilitator ca
 <!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; rendered controls row 1 / command: Update-M365TeamsApp -Id <app id> -IsBlocked $true provides the automation for blocking Facilitator. | Found: Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true ... Unblocks Bookings app | Fix: Set controls[0].api to null and add this qualification to its note: 'The Update-M365TeamsApp reference labels -IsBlocked $true as unblocking; the blocking value is not reliably documented. Use the Teams admin center Allow or Block action.' Do not substitute $false: that reference also labels a $false example as unblocking. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp
-- [contradicted, blocker] controls[2].note; rendered controls row 3 / applicability: The scheduling restriction is described as preventing new meetings while leaving the organiser able to edit existing ones. | Found: After any of the meeting policy settings are turned off ... The meeting join links and conference IDs of all existing meetings of that type that the user previously started or scheduled don't work. | Fix: Keep the documented edit-existing-meetings statement, but add to controls[2].note: 'The same page warns that turning off meeting policy settings also disables join links and conference IDs for existing meetings of that type previously organised by the affected user; existing content remains accessible.' | Source: https://learn.microsoft.com/microsoftteams/manage-who-can-schedule-meetings
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: rollout schedule / record: Targeted Release completes by mid-February 2027. | Found: expected to complete by mid-February 2027 (previously mid-November 2026) | Fix: Replace 'completes by mid-February 2027' with 'is expected to complete by mid-February 2027'.
-- [supported, minor] What's changing; Scope / record: General Availability completes by early March 2027. | Found: expected to complete by early March 2027 (previously early December 2026) | Fix: Replace 'completes by early March 2027' with 'is expected to complete by early March 2027', and describe the end of the Scope rollout window as expected.
-- [supported, minor] Risk assessment: Change & support / behaviour: AI-generated notes support meetings where a single language is spoken. | Found: Currently, AI-generated notes for meetings only support meetings where a single language is spoken. If multiple languages are spoken during the meeting, notes are only taken for the portions of the meeting that are spoken in the selected meeting language. | Fix: Add: 'In a multilingual meeting, notes are taken only for portions spoken in the selected meeting language.' Do not imply that speaking another language stops all note-taking. | Source: https://learn.microsoft.com/microsoftteams/facilitator-teams
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist directs readers to review Purview auditing, but no auditing row appears in the controls table. | Found: Review Facilitator interactions through Purview auditing ... Controls table: Facilitator allow/block; collaborative meeting notes; channel meeting scheduling. | Fix: Remove 'Review Facilitator interactions through Purview auditing, which the Purview page lists as supported' from the checklist. The factual support statement can remain in Risk assessment; this correction does not add a control row.
-- [supported, minor] Governance controls: row 1 notes / applicability: Row 1 supplies the documented organisation-or-group availability control. | Found: 2. Allow Facilitator for a group of users ... a new app policy needs to be created and then assigned to users. | Fix: Replace 'Row 1 is the documented control for whether Facilitator is available to the organisation or to a group of users' with 'Row 1 gives the organisation-wide Allow or Block action. The Facilitator page separately describes group availability through app policies and app-centric management.' | Source: https://learn.microsoft.com/microsoftteams/facilitator-teams
+- [contradicted, blocker] controls[0].api; Governance controls: table row 1 / absence: No automation is documented for the organisation-wide control that allows or blocks Facilitator. | Found: Update-M365TeamsApp -Id 2b876f4d-2e6b-4ee7-9b09-8893808c1380 -IsBlocked $false ... Unblocks 1Page App ... -Id: Application ID of Microsoft Teams app. | Fix: Set controls[0].api to kind 'powershell', call 'Update-M365TeamsApp -Id <app id> -IsBlocked $false', docs 'https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp'. In the note, state: 'Automation shown here unblocks the app, as described in reference example 4. The reference also describes -IsBlocked $true as unblocking, so a reliable blocking value is not stated; use the admin UI to block.' Keep the tenant-wide UI path unchanged. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp
 -->

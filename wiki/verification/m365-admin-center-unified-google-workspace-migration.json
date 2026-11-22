@@ -1,0 +1,867 @@
+{
+  "slug": "m365-admin-center-unified-google-workspace-migration",
+  "roadmapId": 470139,
+  "title": "Microsoft 365 admin center: unified Google Workspace migration for Gmail and Google Drive",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "1 blocking finding (claim 24)"
+    ]
+  },
+  "counts": {
+    "claims": 67,
+    "confirmed": 65,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "Hold: the briefing promises the simplified Gmail flow based only on mailbox count, but its cited Microsoft article also says the feature is not available worldwide pending Google app verification. The roadmap facts and role-assignment controls check out; smaller corrections concern licensing presentation, navigation and the API note.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap describes a unified Microsoft 365 admin center page for initiating and monitoring Gmail and Google Drive migrations.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Through a unified portal page, you can initiate and monitor migration tasks for both Gmail and Google Drive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap describes the revamped, step-by-step Gmail flow for Google Workspace tenants with fewer than 1,000 users.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "if your Google Workspace tenant has fewer than 1,000 users, you'll benefit from the newly revamped Gmail migration flow, which simplifies the process and guides you through each step.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is March CY2025, already past on the November 22, 2026 run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"March CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap provides no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2024-11-22T23:15:35.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2024-11-22T23:15:35\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "Microsoft has not stated the unified page's default state on arrival or that existing tenant behavior changes without action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"consolidated\" \"Google\" \"migration\" \"default\"; \"Google Workspace\" \"migration\" \"disable\" \"admin center\" default tenant switch hide. Read roadmap, consolidated-gws-migration, SGM and mm-google-overview; no unified-page arrival default found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: licensing.model; licensing.notes; Open questions",
+      "type": "licensing",
+      "claim": "Feature-specific licensing for the unified page and simplified flow is not published, represented by licensing.model unknown.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/moveto-microsoft-365/migrate-email",
+      "quote": "After the batch starts and mail users are converted to mailboxes, assign their Exchange licenses within 30 days.",
+      "severity": "minor",
+      "fix": "Set licensing.model to included under the standard for an option inside a licensed product. Keep the known Exchange mailbox requirement in the notes and say: 'Migrated mailboxes require Exchange licences. No licence or charge specific to the unified page or simplified flow is published.' Do not describe the migration tool as free."
+    },
+    {
+      "n": 12,
+      "where": "licensing.notes; Cost and licensing; rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not published a price or meter specific to the unified migration page or Simplified Gmail migration.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Simplified Gmail\" migration license licensing pricing cost Microsoft 365; \"Google Workspace migration\" \"tool\" \"cost\" \"license\" Microsoft. Read consolidated-gws-migration, SGM and google-marketplace-app-migration; no specific price or meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The Migration Manager Google overview lists role and access prerequisites without naming a licence requirement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Google Workspace\" \"Migration Manager\" license pricing fee. Read mm-google-overview, including Get started: destination roles, source administrator access, settings and destinations; this prerequisite list names no licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Migrated mailboxes require Exchange licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/moveto-microsoft-365/migrate-email",
+      "quote": "After the batch starts and mail users are converted to mailboxes, assign their Exchange licenses within 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Cost and licensing; Governance guidance: At rollout",
+      "type": "date",
+      "claim": "The batch route requires assigning Exchange licences within 30 days after the batch starts and mail users become mailboxes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/moveto-microsoft-365/migrate-email",
+      "quote": "After the batch starts and mail users are converted to mailboxes, assign their Exchange licenses within 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The Simplified Gmail migration article does not repeat the batch route's 30-day licensing statement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Simplified Gmail\" migration license licensing pricing cost Microsoft 365. Read custom-migration-small-business-from-gmail in full; its introduction, workflow and DNS-sync note contain no 30-day licensing statement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "summary; Why it matters; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "An administrator chooses and starts the migrations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/custom-migration-small-business-from-gmail",
+      "quote": "The tenant admin can kick off Mail/Exchange migrations or Drive/ODSP from this centralized /consolidated dashboard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The first-run consolidated Google migration dashboard asks the administrator to add the source domain.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/consolidated-gws-migration",
+      "quote": "For a First Run Experience (FRE), the TA adds the source domain to migrate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "After domains are added, the dashboard displays a Mail tile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/consolidated-gws-migration",
+      "quote": "The TA sees a Mail tile listing metadata about mail users and mailbox details from the Google source domain.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "After domains are added, the dashboard displays a Drive tile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/consolidated-gws-migration",
+      "quote": "Similarly, TA also sees a Drive tile listing metadata about the source Google drive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Gmail solution looks up the number of users in the Google source domain to select the migration experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/consolidated-gws-migration",
+      "quote": "the solution looks up the numbers of users in the domain and guides the TA to the appropriate experience",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Why it matters; Scope; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Above 1,000 source mailboxes, the solution routes the administrator to the classic or large-tenant Gmail migration flow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/custom-migration-small-business-from-gmail",
+      "quote": "If your total mailbox count on source side is > 1000, the solution routes you to CGM.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Why it matters; Scope; Open questions",
+      "type": "behaviour",
+      "claim": "Learn gives the Simplified Gmail route's source-mailbox threshold as 1,000 or fewer, unlike the roadmap's fewer-than-1,000 wording.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/custom-migration-small-business-from-gmail",
+      "quote": "You (tenant admin) can experience this new SGM solution only if your total mailbox count on GWS source side is <=1000.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "summary; Why it matters; Scope",
+      "type": "availability",
+      "claim": "Tenants with up to 1,000 source mailboxes get the simplified flow, without any further availability qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/custom-migration-small-business-from-gmail",
+      "quote": "This feature isn't available worldwide. We're waiting for Google verification of the Google Marketplace app Microsoft 365 Mail Migration. The estimated time for worldwide launch is late October 2024.",
+      "severity": "blocker",
+      "fix": "Replace the summary's eligibility sentence with 'Learn describes a simplified Gmail flow for up to 1,000 source mailboxes, subject to tenant availability.' Add to Scope: 'The Simplified Gmail article also says the feature is not available worldwide pending Google app verification and gives an estimated worldwide launch of late October 2024; confirm availability in your tenant.' Qualify the route statement in Why it matters with 'where available'. Preserve the roadmap's listed cloud as a record fact."
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Scope; Governance controls",
+      "type": "behaviour",
+      "claim": "The consolidated dashboard's Drive route uses Migration Manager.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/consolidated-gws-migration",
+      "quote": "See the details of migrating from Google Drive to Microsoft 365 OneDrive and Sharepoint here: Migrate Google files to Microsoft 365 for business with Migration Manager.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "Migration Manager copies Google Drive content to OneDrive and SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/mm-google-overview",
+      "quote": "Bring your content together by migrating Google Workspace files, metadata, and permissions to OneDrive and SharePoint in Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The simplified flow begins with signing in to Google using migration administrator credentials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/custom-migration-small-business-from-gmail",
+      "quote": "Log in to Google using migration admin credentials.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "The simplified flow installs the Google Marketplace app named Microsoft 365 Mail Migration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/custom-migration-small-business-from-gmail",
+      "quote": "Install a Google marketplace app custom built for GWS mail migrations, called \"Microsoft 365 Mail Migration\".",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The simplified flow requires confirming Google credentials again after the app setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/custom-migration-small-business-from-gmail",
+      "quote": "You need to confirm your Google credentials again to make sure access and permissions are in order.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The administrator can select the mailboxes to migrate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/custom-migration-small-business-from-gmail",
+      "quote": "At this point, you can choose mailboxes (one, many, or all) to migrate from GWS to EXO.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The simplified workflow offers selection of mail, calendar, contacts, rules, permissions and delegates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/custom-migration-small-business-from-gmail",
+      "quote": "type of data (mail, calendar, contacts, rules, permissions, delegates).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The simplified workflow offers selection of a data date range.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/custom-migration-small-business-from-gmail",
+      "quote": "duration of data (all or from a date range).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "After all mailboxes are migrated, the administrator selects Complete Migration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/custom-migration-small-business-from-gmail",
+      "quote": "Once the migration of all mailboxes is done, mark the completion of migration by choosing the option Complete Migration in the experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "After Complete Migration, the simplified flow asks for DNS changes to route new mail to Exchange Online.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/custom-migration-small-business-from-gmail",
+      "quote": "Now you're asked to change your DNS entries in your DNS registrar to direct all new emails to EXO.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The simplified solution has regular-mailbox and large-mailbox workflows, with large mailboxes defined as over 80 GB.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/custom-migration-small-business-from-gmail",
+      "quote": "Now you see two different workflows – one to migrate regular sized mailboxes, and other to migrate large mailboxes (>80 GB).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing; Open questions",
+      "type": "date",
+      "claim": "Learn describes the consolidated Mail and Drive experience as being launched in October 2024.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/consolidated-gws-migration",
+      "quote": "In October 2024, the experience for consolidated migration from Google is being launched for Mail and Drive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Microsoft's consolidated migration article describes Groups, Teams and other workloads as future additions rather than current workloads.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/consolidated-gws-migration",
+      "quote": "New workloads from Groups, Teams, and other areas will be added in the near future.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Installing the mail migration app grants Google API permissions for reading domain-directory and tenant usage information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/google-marketplace-app-migration",
+      "quote": "Get primary domain when creating migration endpoint | https://www.googleapis.com/auth/admin.directory.customer.readonly\nGet tenant user count | https://www.googleapis.com/auth/admin.reports.usage.readonly",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Installing the mail migration app grants permissions used to migrate Gmail, calendar, contacts and tasks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/google-marketplace-app-migration",
+      "quote": "By installing the app, you're granting the following permissions via the respective APIs:\nMigrate Contacts\nMigrate Tasks\nMigrate Calendar\nMigrate Gmail",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The mail migration app does not modify source Google mail, calendar, contacts or tasks data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/google-marketplace-app-migration",
+      "quote": "The app does not modify or delete your data from GWS mail, calendar, contacts, or tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The mail migration app does not delete source Google mail, calendar, contacts or tasks data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/google-marketplace-app-migration",
+      "quote": "The app does not modify or delete your data from GWS mail, calendar, contacts, or tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Migration Manager never deletes source Drive data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/mm-faqs-google",
+      "quote": "Migration Manager never deletes source data. It copies data from the source to the destination, similar to copy and paste rather than cut and paste.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure; Governance guidance: At rollout",
+      "type": "default",
+      "claim": "Drive file-level permission migration is off by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/mm-faqs-google",
+      "quote": "File-level permission migration is off by default; files otherwise inherit destination folder permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Migration Manager does not recreate external sharing links.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/mm-faqs-google",
+      "quote": "Migration Manager doesn't recreate external sharing links.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Security & identity; Scope; rationale: risk",
+      "type": "role",
+      "claim": "Installing the Microsoft 365 Mail Migration app requires Google administrator privileges and signing in to the Google Admin console.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/google-marketplace-app-migration",
+      "quote": "To install this app in your Google Admin console, you need administrator privileges.\nYou need to log in to the Google Admin Console using your admin credentials.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "A Google Workspace super administrator must authorize domain-wide delegation for the batch route.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/moveto-microsoft-365/migrate-email",
+      "quote": "Domain-wide delegation is a separate Google Workspace authorization. A Google Workspace super administrator must authorize the API client and OAuth scopes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Migration Manager lists OneDrive/SharePoint admin as an allowed destination-tenant role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/mm-google-overview",
+      "quote": "You must be one of the following roles in the Microsoft 365 tenant where you want to migrate your content:\nOneDrive/SharePoint admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Migration Manager lists Global admin as an allowed destination-tenant role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/mm-google-overview",
+      "quote": "You must be one of the following roles in the Microsoft 365 tenant where you want to migrate your content:\nGlobal admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].note; Risk assessment; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "The Microsoft 365 Migration Administrator role governs access to Migration Manager for migration of Google Drive content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference#microsoft-365-migration-administrator",
+      "quote": "Use Migration Manager in the Microsoft 365 admin center to manage content migration to Microsoft 365, including Teams, OneDrive for Business, and SharePoint sites, from Google Drive, Dropbox, Box, and Egnyte",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "The Microsoft 365 Migration Administrator role is narrower than SharePoint admin or Global admin for this migration work.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/mm-migration-admin-role",
+      "quote": "With this new role, you limit usage to only what is required to migrate your content, reserving SharePoint Admin access to only users who need it.\nThis role only allows access to Migration Manager.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/sharepointmigration/mm-migration-admin-role to sources for the narrower-role comparison."
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Selecting Migrate again after the first Drive migration starts a delta sync.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/mm-faqs-google",
+      "quote": "After you complete a migration task for the first time, selecting Migrate again initiates a delta sync (incremental migration run).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Simplified Gmail migration continues syncing new source mail for 72 hours after confirmation of the DNS change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/custom-migration-small-business-from-gmail",
+      "quote": "the SGM solution keeps syncing new emails landing in GWS for 72 hours following your confirmation of DNS change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The simplified migration article gives DNS propagation as taking between one minute and 72 hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/custom-migration-small-business-from-gmail",
+      "quote": "the DNS entry change propagation can take anywhere between a minute to 72 hours depending on your DNS registrar",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Scope",
+      "type": "default",
+      "claim": "Migration Manager Lite is enabled by default for tenants with fewer than 300 Microsoft 365 licences when the migration project is created.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/mm-google-overview",
+      "quote": "It's enabled by default for tenants with fewer than 300 Microsoft 365 licenses when the migration project is created.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Scope; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The entry route is Microsoft 365 admin center > Setup > Migration resources > Explore migration & imports tools > Google Workspace.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/moveto-microsoft-365/set-up-microsoft-365-forgoogle",
+      "quote": "Select Setup > Migration resources.\nUnder Self-service migration and import tools, select Explore migration & imports tools.\nSelect Google Workspace to open its migration page.",
+      "severity": "minor",
+      "fix": "Use 'Setup > Migration resources > Self-service migration and import tools > Explore migration & imports tools > Google Workspace' in Scope and the At rollout entry bullet. The omitted intermediate label is a heading, not an additional choice."
+    },
+    {
+      "n": 56,
+      "where": "Scope; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The migration preparation includes adding and verifying the business domain in Microsoft 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/moveto-microsoft-365/set-up-microsoft-365-forgoogle",
+      "quote": "Before starting migration:\nAdd and verify your business domain.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope; Governance controls",
+      "type": "role",
+      "claim": "The Exchange Online administrator performing the automated batch prerequisites must have at least the Recipient Management role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/moveto-microsoft-365/migrate-email",
+      "quote": "In Exchange Online, the administrator performing these steps must have at least the Recipient Management role group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "A tenant-scoped role assignment can be made in Microsoft Entra admin center under Identity > Roles & admins > role > Add assignments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+      "quote": "Browse to Identity > Roles & admins.\nSelect a role name to open the role. Don't add a check mark next to the role.\nSelect Add assignments and then select the users, groups, or agent identities you want to assign to this role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[0].api; controls[0].note",
+      "type": "command",
+      "claim": "POST /v1.0/roleManagement/directory/roleAssignments creates the role assignment, with the request body identifying the role and user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+      "quote": "POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments\n\"principalId\": \"<Object ID of user or group>\",\n\"roleDefinitionId\": \"<ID of role definition>\",\n\"directoryScopeId\": \"/\"",
+      "severity": "minor",
+      "fix": "Replace 'The request body names the role and the user' with 'The request body sets roleDefinitionId to the role definition ID, principalId to the user object ID, and directoryScopeId to / for tenant scope.' Keep the call unchanged."
+    },
+    {
+      "n": 60,
+      "where": "controls[1]; Governance controls",
+      "type": "absence",
+      "claim": "No tenant-level UI or API switch to hide or disable the unified Google Workspace migration page is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Google Workspace\" \"migration\" \"disable\" \"admin center\" default tenant switch hide. Read consolidated-gws-migration, custom-migration-small-business-from-gmail, mm-google-overview and admin-center-overview; no page-specific disable/hide UI setting or API found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[0].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The documentation does not name the Microsoft 365 role needed to start the consolidated dashboard's simplified Gmail flow or extend the Migration Manager role to it.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Simplified Gmail Migration\" \"role\" administrator; Microsoft 365 Migration Administrator permissions Migration Manager Google Drive Gmail role. Read consolidated-gws-migration, SGM, migration-role reference excerpt and mm-migration-admin-role; no SGM starting role specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Google app installation and domain-wide delegation authorization are Google-side controls rather than Microsoft 365 controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/moveto-microsoft-365/migrate-email",
+      "quote": "On the API Clients page, select Add new.\nCopy the ClientID and Scope values from the migration page, and paste them into the corresponding fields (Client ID and OAuth scopes) on the Add a new client page. Then select Authorize.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance guidance: At rollout",
+      "type": "default",
+      "claim": "Migrating older Drive file versions requires explicit settings before migration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/mm-faqs-google",
+      "quote": "Migration Manager supports version migration, but the default is to copy only the most recent version. To retain older versions, configure File versions in Project Settings or the applicable Task settings before migration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The Drive FAQ advises recreating external sharing links manually at the destination.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/mm-faqs-google",
+      "quote": "Migration Manager doesn't recreate external sharing links. Recreate the links manually in the destination after migration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance guidance; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist names controls for domain verification, migration permission/version settings and Exchange licence assignment that are absent from the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Verify the business domain in Microsoft 365'; 'Review Migration Manager permission and file version settings'; 'Assign Exchange licences'. Table: only Migration Manager role assignment and an undocumented tenant hide/disable switch.",
+      "severity": "minor",
+      "fix": "The Before rollout domain-verification step and the At rollout permission/version-settings and licence-assignment steps have no corresponding controls-table rows. Remove those control-setting steps from the checklist to reconcile it with the existing table; do not add unchecked rows."
+    },
+    {
+      "n": 66,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The cited migration articles publish no numerical estimate for administrative work, Google-side preparation or destination storage costs.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Google Workspace migration\" \"tool\" \"cost\" \"license\" Microsoft; \"Google Workspace\" \"Migration Manager\" license pricing fee. Read consolidated, SGM, app, Google overview/FAQ, setup and batch articles; no figures for admin time, preparation or destination storage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The classic Google Workspace migration article says that method is not currently available for GCC High or DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mailbox-migration/perform-g-suite-migration",
+      "quote": "Google Workspace migration is not currently available for Office 365 US Government GCC High or DoD.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T14:04:44.937Z",
+    "summary": {
+      "links": 11,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=470139",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/exchange/mailbox-migration/consolidated-gws-migration",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/exchange/mailbox-migration/custom-migration-small-business-from-gmail",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/exchange/mailbox-migration/google-marketplace-app-migration",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepointmigration/mm-google-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepointmigration/mm-faqs-google",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/moveto-microsoft-365/set-up-microsoft-365-forgoogle",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/moveto-microsoft-365/migrate-email",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/exchange/mailbox-migration/perform-g-suite-migration",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who can run Migration Manager for Google Drive migration",
+        "docs": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+        "reachable": true,
+        "segments": [
+          "Identity",
+          "Roles & admins",
+          "role",
+          "Add assignments"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Who can run Migration Manager for Google Drive migration",
+        "docs": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+        "reachable": true,
+        "token": "/v1.0/roleManagement/directory",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

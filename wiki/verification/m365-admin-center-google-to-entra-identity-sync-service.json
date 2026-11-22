@@ -1,0 +1,827 @@
+{
+  "slug": "m365-admin-center-google-to-entra-identity-sync-service",
+  "roadmapId": 470023,
+  "title": "Microsoft 365 admin center: Google Identity Sync from Google Workspace to Entra ID",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "2 blocking findings (claims 32, 54)"
+    ]
+  },
+  "counts": {
+    "claims": 66,
+    "confirmed": 63,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: group sync does not create a new Microsoft 365 group for every Google group; Microsoft documents mapped-domain filtering and leaves matching existing groups unchanged. The cited pages also do not state that the tool has no fee, although they publish no tool-specific price. The roadmap facts and most documented sync behaviour are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "Google Identity Sync provides one-way user and group identity synchronization from Google Workspace to Microsoft 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "Google Identity Sync provides one-way synchronization of user and group identities from Google Workspace to Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Scope",
+      "type": "behaviour",
+      "claim": "The tool is run from the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "Sign in to the Microsoft 365 admin center, and then go to Setup > Migration resources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; Scope; rationale: impact",
+      "type": "availability",
+      "claim": "Google Identity Sync is available to tenants with fewer than 300 licensed users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "This feature is available to tenants with fewer than 300 licensed users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap General Availability target is January CY2025, a month already past on the run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview target is December CY2024, a month already past on the run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"December CY2024\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap products are Microsoft 365, Microsoft 365 Admin Center and Microsoft Entra.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft 365\", \"Microsoft 365 Admin Center\", \"Microsoft Entra\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2024-11-22T23:15:35.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2024-11-22T23:15:35\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The sync is admin-opt-in: an administrator connects and configures the tool before starting synchronization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "On the Identity Sync page, select Connect to Google. ... After domain mappings are finalized, select Sync users on the Sync Users card to start the synchronization process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: licensing.model; summary; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No Microsoft licence entitlement specific to the Google Identity Sync tool is published, so its licensing model is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Google Identity Sync\" license pricing fee meter Microsoft 365; Migration Manager Google Identity Sync licensing prerequisites pricing. Read google-identity-sync and mm-google-overview; neither names a licence covering the tool itself.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[0].ui; rendered controls table; Scope: Arrival",
+      "type": "admin-path",
+      "claim": "The printed Microsoft 365 admin center path reaches the Identity Sync page from Setup through Sync users and groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "Setup > Migration resources. ... Under Self-service migration and import tools, select Explore migration & imports tools. ... Select Google Workspace ... Select Sync users and groups.",
+      "severity": "minor",
+      "fix": "The path reaches the page holding the control but stops before starting sync. Set controls[0].ui.path to 'Setup > Migration resources > Self-service migration and import tools > Explore migration & imports tools > Google Workspace > Sync users and groups > Sync Users > Sync users'. Retain the note that connection and domain mapping precede user sync and Sync groups is selected afterwards on the same page. Source: https://learn.microsoft.com/sharepointmigration/google-identity-sync."
+    },
+    {
+      "n": 15,
+      "where": "controls[0].api; rendered controls table; Governance controls",
+      "type": "absence",
+      "claim": "No API or automation operation is documented for starting this Google Identity Sync user and group flow.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Google Identity Sync\" API Microsoft Graph synchronization domain mapping; Microsoft Graph Google Workspace Identity Sync users groups domain mappings API synchronizationJob. Read google-identity-sync and Graph synchronization-overview; neither ties an operation to this tool.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0].note; Scope: Prerequisites; Governance controls",
+      "type": "absence",
+      "claim": "The Identity Sync page names no required Microsoft administrator role.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Google Identity Sync Microsoft 365 Migration Administrator permissions role. Read google-identity-sync in full: it requires Microsoft 365 admin center sign-in and Google administrator authentication but names no Microsoft role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[1].ui; rendered controls table",
+      "type": "admin-path",
+      "claim": "The printed Microsoft 365 admin center path reaches Domain mapping > Map domains on the Identity Sync page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "Select Sync users and groups. ... After discovery is complete, the number of detected domains is displayed on the Domain mapping card. Select Map domains to open the domain mapping page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[1].api; rendered controls table",
+      "type": "absence",
+      "claim": "No API or automation equivalent is documented for this tool's domain mapping.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Google Identity Sync\" API Microsoft Graph synchronization domain mapping; Microsoft Graph Google Workspace Identity Sync users groups domain mappings API synchronizationJob. Read google-identity-sync and Graph synchronization-overview; no tool-specific mapping operation is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[1].note; What's changing; Risk assessment; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Selecting Finalize domain mapping locks the mappings and they cannot subsequently be edited.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "Once you complete the mappings, select Finalize domain mapping to lock them in. After domain mappings are finalized, they can't be edited.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[2].ui; controls[2].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No tenant-wide switch or restriction specific to enabling access to Google Identity Sync is documented on either UI or API surfaces.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Google Identity Sync\" administrator role permissions disable restrict tenant audit schedule; Google Identity Sync scheduled synchronization disable access setting audit events. Read google-identity-sync, mm-google-overview and mm-migration-admin-role; no tool-specific switch is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft describes Identity Sync as reducing the effort of provisioning Entra users and groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "It reduces the administrative effort required to provision Microsoft Entra ID users and groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Identity Sync prepares identities for migration of Gmail, Google Drive and other Google content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "prepares identities for a smoother migration of Gmail, Google Drive, and other Google content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment: Security & identity; Scope: Prerequisites",
+      "type": "role",
+      "claim": "Connecting requires signing in to Google Workspace as an administrator and installing the required migration app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "Follow the guided setup to sign in to Google Workspace as an administrator, install the required migration app in Google Workspace, and then complete the authentication flow by signing in again.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The tool discovers Google Workspace users and groups after the connection is established.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "After the connection is established, Google Identity Sync automatically scans Google Workspace and displays the total number of discovered users and groups in the Discover card.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; controls[1].governs; Governance guidance",
+      "type": "behaviour",
+      "claim": "Domain mapping maps Google Workspace domains to Microsoft 365 domains.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "Domain mapping allows you to map Google Workspace domains to Microsoft 365 domains.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Scope: What is synchronised",
+      "type": "behaviour",
+      "claim": "Only Google Workspace users in mapped domains are synchronized.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "Only Google Workspace users whose email addresses belong to the mapped domains are synchronized to Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Each synchronized Google user maps to an Entra user with the same email alias in the mapped domain.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "Each Google Workspace user is synced to an Entra user with the same email alias in the mapped domain.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Active Google users are created as enabled Entra users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "Active Google Workspace users are created as enabled users in Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Risk assessment: Security & identity; Governance guidance",
+      "type": "behaviour",
+      "claim": "Suspended Google users are created as disabled Entra users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "Suspended Google Workspace users are created as disabled users in Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Archived Google users are excluded from synchronization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "Archived Google Workspace users are not included in the synchronization process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "An existing Entra user with the same email alias is not overwritten or replaced with a new user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "If an Entra user with the same email alias already exists before synchronization, no new Entra user is created and the existing user isn't overwritten.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing: second paragraph",
+      "type": "behaviour",
+      "claim": "Sync groups creates a Microsoft 365 group for each Google group.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "If a corresponding Microsoft 365 group doesn't exist, a new Microsoft 365 group is created. If a matching Microsoft 365 group already exists, no changes are made. Only Google Workspace groups whose email addresses belong to the mapped domains are synchronized.",
+      "severity": "blocker",
+      "fix": "Replace 'Sync groups then creates a Microsoft 365 group for each Google group and syncs its members and owners' with 'Sync groups then synchronises Google groups in mapped domains, creating a Microsoft 365 group where no corresponding group exists. Matching existing group objects are left unchanged, while member and owner assignments are synchronised.' Source: https://learn.microsoft.com/sharepointmigration/google-identity-sync."
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Scope: What is synchronised",
+      "type": "behaviour",
+      "claim": "Group synchronization includes Google group members and owners.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "The group synchronization process also synchronizes members of Google Workspace groups. ... If a destination owner or member doesn't exist in the Microsoft 365 group, the user is added with the appropriate role (Owner or Member).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing: roadmap scope paragraph",
+      "type": "record",
+      "claim": "The roadmap describes onboarding and one-way synchronization for Google customers moving to Microsoft 365, including creating identities and moving Drive and Mail content to OneDrive and Exchange Online.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This will be available as part of the M365 Admin center for Google compete customers moving into M365 to create the identities in M365 farm and move Drive and Mail content into Onedrive and Exchange online",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing: roadmap scope paragraph",
+      "type": "behaviour",
+      "claim": "The Identity Sync page covers identity synchronization rather than a content migration procedure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "Google Identity Sync provides one-way synchronization of user and group identities from Google Workspace to Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing: roadmap scope paragraph",
+      "type": "absence",
+      "claim": "The Learn Identity Sync page describes the steps without marking the feature as preview.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: preview and in development in the fully fetched https://learn.microsoft.com/sharepointmigration/google-identity-sync. The page describes the flow and tenant size restriction but contains no preview qualification.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "type": "availability",
+      "claim": "Support for tenants with more than 300 licensed users is described as a future release, not current documented availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "Support for tenants with more than 300 licensed users will be available in a future release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Re-syncing groups can remove member and owner assignments added only in Microsoft 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "Re-sync can remove member and owner assignments added only in Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Google primaryEmail maps to Entra userPrincipalName.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "| primaryEmail | userPrincipalName | Used as the primary identity |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure; Why it matters",
+      "type": "behaviour",
+      "claim": "Google name attributes map to Entra name attributes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "| name.fullName | displayName | | ... | name.familyName | surname | | ... | name.givenName | givenName | |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Google work telephone numbers map to Entra telephoneNumber.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "| phones[].value (where phones[].type = \"work\") | telephoneNumber | Only work phone numbers are mapped |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure; Why it matters",
+      "type": "behaviour",
+      "claim": "Google department maps to Entra department.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "| organizations[0]['department'] | department | First organization entry only |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Google job title maps to Entra jobTitle.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "| organizations[0]['title'] | jobTitle | First organization entry only |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Destination Microsoft 365 groups use the Google group's name, description and email alias on the default Microsoft 365 domain.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "displayName = Google Workspace group name; description = Google Workspace group description; mail = emailalias@default-domain",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Data exposure; Scope",
+      "type": "behaviour",
+      "claim": "External users and custom-permission members are not synchronized.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "External users and custom-permission members are not synchronized.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "User creation and enabled account state precede the documented step of assigning service licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "Active Google Workspace users are created as enabled users in Entra ID. ... Once user synchronization is complete and verified, assign users the licenses required for the Microsoft 365 services you're migrating to.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "For synchronized Entra users with assigned administrative roles, telephoneNumber is not updated during sync because of security restrictions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "For synchronized Microsoft Entra ID users with assigned administrative roles, telephoneNumber attribute is not updated during sync due to security restrictions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Autonomy & actions; controls[0].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "User sync, subsequent group sync and re-sync are started by selecting their respective buttons.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "select Sync users ... to start the synchronization process. ... select Sync groups ... to start group synchronization. ... select Re-sync users ... select Re-sync groups to apply the changes to Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The Learn Identity Sync page does not describe a synchronization schedule.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Google Identity Sync scheduled synchronization disable access setting audit events. Read google-identity-sync in full; it describes explicit Sync and Re-sync selections, not a schedule. Graph synchronization-overview describes a different provisioning mechanism.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Group re-sync applies supported Google group and membership updates, including matching member roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "Supported attribute changes for a previously synchronized Google Workspace group are applied to the corresponding Microsoft 365 group. ... If the destination owner or member exists with a different role, the role is updated to match the source group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Deleting a previously synchronized Google user does not modify the corresponding Entra user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "If a previously synced Google Workspace user is deleted, the corresponding Entra ID user isn't modified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Deleting a synchronized Google group does not modify the corresponding Microsoft 365 group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "If a synchronized Google Workspace group is deleted in Google Workspace, the corresponding Microsoft 365 group isn't modified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Downloadable user, group and member sync reports show Failed or Skipped results and Message fields to investigate, and Microsoft says to resolve failed operations before continuing migration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "For Failed or Skipped results, use the Message field to identify the issue. Resolve failed operations before continuing with migration. ... The member sync report provides synchronization details for group members",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing: first paragraph",
+      "type": "cost",
+      "claim": "The Identity Sync and Migration Manager overview pages state no fee for the tool.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Google Identity Sync\" license pricing fee meter Microsoft 365; Migration Manager Google Identity Sync licensing prerequisites pricing. Read google-identity-sync and mm-google-overview in full; neither explicitly states that the tool has no fee.",
+      "severity": "blocker",
+      "fix": "Replace 'The Identity Sync page and the Migration Manager overview describe the steps and limits and state no fee for the tool, so the licensing model is recorded as not yet published' with 'The Identity Sync page and the Migration Manager overview describe the steps and limits but publish no tool-specific licence or price, so the licensing model is recorded as not yet published.' Do not describe the tool as free."
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No tool-specific price or billing meter is documented for Google Identity Sync at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Google Identity Sync\" license pricing fee meter Microsoft 365; Migration Manager Google Identity Sync licensing prerequisites pricing. Read google-identity-sync and mm-google-overview; results publish no tool-specific price or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "Microsoft says to assign users licences for the Microsoft 365 services being migrated to after user synchronization is complete and verified.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "Once user synchronization is complete and verified, assign users the licenses required for the Microsoft 365 services you're migrating to.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "For an Exchange migration starting with mail users, the Exchange licence is assigned after batch conversion to mailboxes, within 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "For an Exchange migration that starts with mail users, assign the Exchange license after the batch converts them to mailboxes, within 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Scope: Prerequisites; Governance controls",
+      "type": "role",
+      "claim": "The Google Drive Migration Manager overview lists OneDrive/SharePoint admin, Microsoft 365 Migration Administrator or Global admin as destination roles for content migration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/mm-google-overview",
+      "quote": "You must be one of the following roles in the Microsoft 365 tenant where you want to migrate your content: OneDrive/SharePoint admin; A user granted the Microsoft 365 Migration Administrator role; Global admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Scope: Prerequisites; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not state which Google Drive content migration administrator role applies to Identity Sync.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Google Identity Sync Microsoft 365 Migration Administrator permissions role. Read google-identity-sync, mm-google-overview, mm-migration-admin-role and about-admin-roles search excerpts; the role descriptions cover content migration, not this identity-provisioning tool.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Scope: Arrival",
+      "type": "record",
+      "claim": "The roadmap description does not describe a rollout to end users.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This will be available as part of the M365 Admin center for Google compete customers moving into M365",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance guidance: At rollout and After rollout; controls",
+      "type": "consistency",
+      "claim": "The checklist instructs administrators to review sync reports, assign licences and compare group membership, but these controls have no matching table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Download the user, group and member sync reports ... Assign licences ... Compare each destination group's members and owners ... Table rows: starting sync; domain mapping; tenant-wide switch.",
+      "severity": "minor",
+      "fix": "The checklist steps 'Download the user, group and member sync reports', 'Assign licences for the services being migrated' and 'Compare each destination group's members and owners' have no matching controls-table row. Do not add unverified rows as part of this correction."
+    },
+    {
+      "n": 62,
+      "where": "Governance controls; What's changing",
+      "type": "behaviour",
+      "claim": "Domain mapping must be completed and finalized before user synchronization can start.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "This step is required before you can proceed with user synchronization. ... After domain mappings are finalized, select Sync users on the Sync Users card to start the synchronization process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Scope: What is synchronised",
+      "type": "behaviour",
+      "claim": "Only Google Workspace groups whose email addresses belong to mapped domains are synchronized.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "Only Google Workspace groups whose email addresses belong to the mapped domains are synchronized.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance guidance: At rollout; What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft's documented sequence runs user synchronization before group synchronization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+      "quote": "After the user synchronization process completes, select Sync groups in the Sync Groups card to start group synchronization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Open questions: larger tenants",
+      "type": "absence",
+      "claim": "Microsoft has not published a release date for support of tenants with more than 300 licensed users.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Google Identity Sync\" more than 300 licensed users availability release date audit logs events. Read google-identity-sync; it says 'in a future release' without a date. The roadmap record has no date for this larger-tenant extension.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Open questions: audit events",
+      "type": "absence",
+      "claim": "Microsoft has not documented audit events specific to Google Identity Sync runs.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Google Identity Sync scheduled synchronization disable access setting audit events; \"Google Identity Sync\" more than 300 licensed users availability release date audit logs events. Read google-identity-sync; it documents downloadable reports, not sync-run audit events.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T14:04:42.797Z",
+    "summary": {
+      "links": 3,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=470023",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepointmigration/mm-google-overview",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether Google Identity Sync is run: starting the user and group sync",
+        "docs": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+        "reachable": true,
+        "segments": [
+          "Setup",
+          "Migration resources",
+          "Self-service migration and import tools",
+          "Explore migration & imports tools",
+          "Google Workspace",
+          "Sync users and groups"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which Google Workspace domains are synchronised (domain mapping)",
+        "docs": "https://learn.microsoft.com/sharepointmigration/google-identity-sync",
+        "reachable": true,
+        "segments": [
+          "Setup",
+          "Migration resources",
+          "Self-service migration and import tools",
+          "Explore migration & imports tools",
+          "Google Workspace",
+          "Sync users and groups",
+          "Domain mapping",
+          "Map domains"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

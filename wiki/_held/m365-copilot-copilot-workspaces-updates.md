@@ -40,11 +40,17 @@ sources:
   - title: "Create configurationMonitor"
     url: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
     kind: "learn"
+  - title: "Overview of Copilot Pages and Copilot Notebooks storage"
+    url: "https://learn.microsoft.com/microsoft-365/loop/cpcn-storage"
+    kind: "learn"
+  - title: "Overview of Cloud Policy service for Microsoft 365"
+    url: "https://learn.microsoft.com/deployoffice/admincenter/overview-cloud-policy"
+    kind: "learn"
 videos: []
 related: ["m365-copilot-audio-overview-updates-in-copilot-notebooks","work-iq","cloud-policy"]
 controls:
   - governs: "Whether users can create and view Copilot Pages and Copilot Notebooks"
-    scope: "group"
+    scope: "other"
     ui:
       surface: "Microsoft 365 Apps admin center"
       path: "Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Create and view Copilot Pages and Copilot Notebooks"
@@ -53,7 +59,7 @@ controls:
       kind: "graph"
       call: "POST /beta/admin/configurationManagement/configurationMonitors"
       docs: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
-    note: "Documented for Notebooks, not named for Workspaces. Graph: preview; baseline resource microsoft.copilot.copilotpagesnotebooks with mode applyOnce sets it."
+    note: "UI: group or tenant. Graph: tenant-level policies only; ensure the setting is not configured in any group-level policy in the Microsoft 365 Apps admin center, or monitoring, snapshots, remediation and applyOnce fail."
   - governs: "Separate switch for Work IQ workspace suggestions or Copilot Workspaces team features"
     scope: "tenant"
     ui: null
@@ -68,19 +74,23 @@ changes:
     note: "New briefing: Copilot Notebooks becomes Copilot Workspaces, with the Cloud Policy setting documented for notebooks as the control to check."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 57 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after verification: Graph route limited to tenant-level policies, control scope changed, simultaneous-rollout claim narrowed, storage guidance discrepancy noted, two checklist bullets removed."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 70 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 54
-  unconfirmed: 1
+  claims: 70
+  confirmed: 68
+  unconfirmed: 0
   contradicted: 2
-  attempts: 1
-  hash: "f38b1449e5484d60e257dfd2fc71c0a5"
+  attempts: 2
+  hash: "4d274c26dba96720310319071cada934"
 ---
 
 ## What's changing
@@ -103,7 +113,7 @@ The practical question is who can create, share and see workspaces, and the one 
 
 **Data exposure**
 - Workspaces are for group work, so a notebook that was private becomes something its owner can invite others to; the support article says existing sharing continues and unshared workspaces stay private. Review which notebooks are already shared before the rename reaches your users.
-- Learn documents that Copilot Pages and Copilot Notebooks live in a user-owned SharePoint Embedded container shared with Loop My workspace, with storage counted against the SharePoint quota. How Workspaces stores shared content is not described.
+- Learn documents that Copilot Pages and Copilot Notebooks live in a user-owned SharePoint Embedded container shared with Loop My workspace, with storage counted against the SharePoint quota. Microsoft's storage overview differs: Pages and Notebooks are stored in OneDrive for Business, and only those created before November 2025 remain in the user-owned SharePoint Embedded container. How Workspaces stores shared content is not described.
 
 **Security & identity**
 - The roadmap says Work IQ suggests workspaces based on current workstreams. What data feeds the suggestion is not described, so confirm it before assuming it respects the same boundaries as Copilot Chat.
@@ -113,14 +123,14 @@ The practical question is who can create, share and see workspaces, and the one 
 - The roadmap says Copilot surfaces which actions need attention. It describes no action Copilot takes on its own, so no autonomous behaviour is documented.
 
 **Change & support**
-- Users will see a renamed product and new team features at the same time; links and bookmarks should keep working according to the support article, which says a redirect is used where a web address changes.
+- Users will see a renamed product, and the roadmap plans new team features; links and bookmarks should keep working according to the support article, which says a redirect is used where a web address changes.
 - Disabling the Cloud Policy setting hides the Notebooks module in the Microsoft Copilot app and breaks sharing links to notebooks; see the controls notes before using it.
 
 ## Cost and licensing
 
 No licence specific to Copilot Workspaces is published at the time of writing (November 2026). Learn's requirements page for Copilot Notebooks says users need the Microsoft Copilot or Copilot Chat licence, while the Microsoft Graph page for the Copilot Pages and Notebooks setting says Copilot Notebooks also require a Microsoft 365 Copilot licence. Those two pages differ, so confirm which applies to your users before budgeting. Since Workspaces is the renamed Notebooks, expect the same licence question to apply, but Microsoft has not said so.
 
-Copilot Pages and Copilot Notebooks storage counts toward the organisation's overall SharePoint quota, according to Learn. No meter, credit rate or price for the new workspace features is published at the time of writing. The other cost is administrator and support time for communicating the rename and the sharing behaviour.
+Copilot Pages and Copilot Notebooks storage counts toward the organisation's overall SharePoint quota, according to Learn. The storage overview differs: current Pages and Notebooks count against the user's OneDrive storage limit; only legacy items created before November 2025 count against the organisation's SharePoint quota. No meter, credit rate or price for the new workspace features is published at the time of writing. The other cost is administrator and support time for communicating the rename and the sharing behaviour.
 
 ## Scope
 
@@ -138,13 +148,11 @@ Users with Copilot Notebooks are in scope for the rename: the support article sa
 
 ### At rollout
 - Tell users that notebooks keep their content and sharing when renamed, and that Workspaces are for group work while Projects are for their own work.
-- Allow WebSocket traffic to *.svc.ms and *.office.com so live editing works.
 - Decide before the new team features appear whether you will disable the Cloud Policy setting for any group, knowing it also hides the Notebooks module.
 
 ### After rollout
 - Check that existing notebook links and sharing still open as the support article says they should.
 - Watch Message center and the Learn pages for Workspaces-specific controls, since none are documented yet.
-- Review SharePoint storage use, because Notebooks content counts toward the quota.
 
 ## Governance controls
 
@@ -153,14 +161,14 @@ Users with Copilot Notebooks are in scope for the rename: the support article sa
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether users can create and view Copilot Pages and Copilot Notebooks</strong><br><small>Group</small><br><small class="controls__note">Documented for Notebooks, not named for Workspaces. Graph: preview; baseline resource microsoft.copilot.copilotpagesnotebooks with mode applyOnce sets it.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Create and view Copilot Pages and Copilot Notebooks <a href="https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether users can create and view Copilot Pages and Copilot Notebooks</strong><br><small class="controls__note">UI: group or tenant. Graph: tenant-level policies only; ensure the setting is not configured in any group-level policy in the Microsoft 365 Apps admin center, or monitoring, snapshots, remediation and applyOnce fail.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Create and view Copilot Pages and Copilot Notebooks <a href="https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Separate switch for Work IQ workspace suggestions or Copilot Workspaces team features</strong><br><small>Tenant</small><br><small class="controls__note">No such control is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 The Learn-documented control is named for Copilot Pages and Copilot Notebooks. Microsoft's support article says Notebooks becomes Workspaces and that core security, compliance and governance controls continue to apply, but no Learn page says whether this setting carries the Workspaces name or governs the new team features.
 
-The policy changes take up to 90 minutes to show where policy configurations already exist, and up to 24 hours where none did. When creation is disabled, existing items are not deleted, the Notebooks module is hidden in the Microsoft Copilot app and sharing links to Notebooks do not work. For the Graph route, Tenant Configuration Management supports this setting only in tenant-level policies in the Microsoft 365 Apps admin center and is a preview API; AI Administrator is the least-privileged role for the signed-in user for remediation and applyOnce.
+The policy changes take up to 90 minutes to show where policy configurations already exist, and up to 24 hours where none did. When creation is disabled, existing items are not deleted, the Notebooks module is hidden in the Microsoft Copilot app and sharing links to Notebooks do not work. For the Graph route, Tenant Configuration Management supports this setting only in tenant-level policies in the Microsoft 365 Apps admin center and is a preview API. Before using it, ensure the setting is not configured in any group-level policy in that admin center; if it is, monitoring, snapshots, remediation and applyOnce fail. For the baseline, resourceType is microsoft.copilot.copilotpagesnotebooks, resourceVersion is 1 and properties.value is "0" to disable or "1" to enable. AI Administrator is the least-privileged role for the signed-in user for remediation and applyOnce.
 
 ## Open questions
 
@@ -171,19 +179,15 @@ The policy changes take up to 90 minutes to show where policy configurations alr
 
 <!-- rationale
 risk: Medium. Existing notebooks become workspaces that can be shared with a team, and the roadmap says Copilot will summarise changes across shared documents; Microsoft documents no separate Workspaces controls.
-cost: Low. The sources show admin time and SharePoint storage only; the Notebooks licence is the Microsoft Copilot or Copilot Chat licence, and nothing specific to Workspaces is published.
+cost: Low. The sources show admin time and storage, with differing Microsoft guidance on the applicable quota; the Notebooks licence is the Microsoft Copilot or Copilot Chat licence, and nothing specific to Workspaces is published.
 impact: Medium. Users of Copilot Notebooks see them renamed and gain team features; people who do not use notebooks are not named as affected.
 -->
 
 <!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].scope; controls[0].api; Governance controls: Graph limitations / applicability: The Graph operation is presented alongside a group-scoped UI control with only a tenant-level-policy caveat and no warning that any group-level configuration makes it fail. | Found: Before using TCM, ensure that the target setting isn't configured in any group-level policy in that admin center. If it is, monitoring, snapshots, remediation, and applyOnce fail for that resource. | Fix: Set controls[0].scope to 'other' and add to its note: 'UI: group or tenant. Graph: tenant-level policies only; ensure the target setting is not configured in any group-level policy in the Microsoft 365 Apps admin center, or monitoring, snapshots, remediation and applyOnce fail.' Add that same prerequisite to the Graph limitations paragraph. Source: https://learn.microsoft.com/graph/utcm-copilot-resources. | Source: https://learn.microsoft.com/graph/utcm-copilot-resources
-- [unsupported, major] Risk assessment: Change & support / behaviour: Users will see the rename and the new team features at the same time. | Found: Searched: Copilot Workspaces Work IQ default state summaries; Copilot Workspaces summaries data autonomous. Read roadmap December/November targets and support late-October phased rollout; neither says the rename and all roadmap updates arrive simultaneously. | Fix: Replace 'Users will see a renamed product and new team features at the same time' with 'Users will see a renamed product, and the roadmap plans new team features'. Keep the separately verified links-and-redirect statement.
+- [contradicted, blocker] front matter: defaultState; summary; Why it matters / consistency: The briefing's arrival state is unknown even though it says existing notebooks convert automatically without administrator action. | Found: Briefing: defaultState: unknown. Microsoft: 'Your existing notebooks automatically become workspaces.' 'No immediate action is required to keep existing notebooks and content available.' | Fix: Set defaultState to 'on' for the automatic notebook-to-workspace conversion described throughout this briefing. Keep the narrower sentence 'Microsoft has not stated the default state for the roadmap's new features' and distinguish it from the automatic rename. SCHEMA defines 'on' to include automatic rollout without admin action. | Source: https://support.microsoft.com/en-us/microsoft-365-copilot/copilot-notebooks-to-copilot-workspaces
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table; Governance guidance / admin-path: The stated Microsoft 365 Apps admin center path reaches Create and view Copilot Pages and Copilot Notebooks. | Found: Select Customization from the left pane. Select Policy Management. Create a new policy configuration or edit an existing one. From the Choose the scope dropdown list ... In Configure Settings ... Create and view Copilot Pages and Copilot Notebooks | Fix: Add https://learn.microsoft.com/deployoffice/admincenter/overview-cloud-policy to sources: it identifies config.office.com as the Microsoft 365 Apps admin center. Keep the path; the cited notebook page gives its steps. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration
-- [supported, minor] controls[0].api; controls[0].note; Governance controls table / command: POST /beta/admin/configurationManagement/configurationMonitors can apply the microsoft.copilot.copilotpagesnotebooks baseline once using mode applyOnce. | Found: POST /admin/configurationManagement/configurationMonitors mode | monitorMode | The monitor mode. The possible values are: monitorOnly, applyOnce, unknownFutureValue. Optional; defaults to monitorOnly. | Fix: Keep the call and add to its note: 'Set mode to applyOnce and baseline resourceType to microsoft.copilot.copilotpagesnotebooks, resourceVersion to 1, and properties.value to "0" to disable or "1" to enable.' The value property and allowed values are documented at https://learn.microsoft.com/graph/utcm-copilot-resources. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
-- [supported, minor] Risk assessment: Data exposure / behaviour: Learn documents Pages and Notebooks in a user-owned SharePoint Embedded container shared with Loop My workspace. | Found: Copilot Pages (.page files) and Copilot Notebooks are stored in the same user-owned SharePoint Embedded container used by Loop My workspace. | Fix: Add: 'Microsoft's storage overview differs: Pages and Notebooks are stored in OneDrive for Business; only those created before November 2025 remain in the user-owned SharePoint Embedded container.' Cite and add https://learn.microsoft.com/microsoft-365/loop/cpcn-storage to sources. Retain the existing admin-page account as the other side of this documentation discrepancy. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration
-- [supported, minor] Risk assessment: Data exposure; Cost and licensing; Governance guidance; rationale: cost / cost: Learn says Pages and Notebooks storage counts toward the organisation's SharePoint quota. | Found: Storage counts toward your organization's overall SharePoint quota. | Fix: Add to Cost and licensing: 'The storage overview differs: current Pages and Notebooks count against the user's OneDrive storage limit; only legacy items created before November 2025 count against the organisation's SharePoint quota.' Cite https://learn.microsoft.com/microsoft-365/loop/cpcn-storage. Change 'SharePoint storage only' in the cost rationale to 'storage, with differing Microsoft guidance on the applicable quota'. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration
-- [contradicted, minor] Governance guidance: At rollout and After rollout; Governance controls / consistency: The checklist tells readers to allow WebSocket endpoints and review storage, but neither control has a table row. | Found: Allow WebSocket traffic to *.svc.ms and *.office.com so live editing works. Review SharePoint storage use ... Table rows: creation/viewing policy; separate Workspaces switch. | Fix: Remove the checklist bullets 'Allow WebSocket traffic to *.svc.ms and *.office.com so live editing works' and 'Review SharePoint storage use, because Notebooks content counts toward the quota'. The network and storage facts remain in their body sections; do not add unverified control rows.
+- [supported, minor] controls[0].api; Governance controls table and prose / command: POST /beta/admin/configurationManagement/configurationMonitors can apply the tenant-level Copilot Pages and Notebooks control. | Found: Create a new configurationMonitor object that runs periodically in the background at a scheduled frequency to detect configuration drift in monitorOnly mode, or applies a desired-state baseline once in applyOnce mode. | Fix: Keep the call. Append to controls[0].note and its rendered table note: 'Set mode to applyOnce; in baseline.resources use resourceType microsoft.copilot.copilotpagesnotebooks, resourceVersion 1, and properties.value "0" to disable or "1" to enable.' The endpoint defaults to monitorOnly; the resource and values are documented at https://learn.microsoft.com/graph/utcm-copilot-resources. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
+- [contradicted, minor] front matter: action / consistency: The prepare action rating fits a medium-risk automatic change with rollout already starting and the December target imminent. | Found: action: prepare; risk: medium; targetDate: December CY2026. 'Existing notebooks automatically become workspaces.' 'Decide before the new team features appear whether you will disable the Cloud Policy setting for any group.' | Fix: Set action to 'act-now': at the November 22, 2026 run the December target is within 60 days, the briefing rates risk medium, the conversion is automatic, and its checklist identifies a pre-arrival policy decision. Keep the statement that Microsoft requires no immediate action to preserve existing content.
 -->

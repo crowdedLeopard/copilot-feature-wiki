@@ -5,7 +5,7 @@ slug: "app-management"
 summary: "The Teams admin center settings that allow, block and assign Teams apps and agents per user or group, set defaults for new ones, and sync with the Microsoft 365 admin center once a tenant is unified."
 created: "2026-11-22"
 updated: "2026-11-22"
-version: 2
+version: 3
 tags: ["app-management","teams","agents","third-party-apps","admin-controls","m365-admin-center","powershell"]
 covers: []
 sources:
@@ -45,6 +45,9 @@ sources:
   - title: "Set up Facilitator in Microsoft Teams"
     url: "https://learn.microsoft.com/microsoftteams/facilitator-teams"
     kind: "learn"
+  - title: "Set up a Channel Agent for Microsoft Teams"
+    url: "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams"
+    kind: "learn"
 related: ["facilitator","microsoft-teams-m365-admin-centers-manage-teams-apps-that-work-on-outlook-and-m365-app","microsoft-teams-unified-agent-and-app-availability-management-across-m365-and-teams-admin","microsoft-teams-streamlined-m365-certified-app-management-in-teams-admin-center","microsoft-teams-enable-agents-for-existing-applications-in-your-organization"]
 controls:
   - governs: "Which users and groups can use each app or agent (Everyone, Specific users or groups, No one)"
@@ -83,8 +86,11 @@ controls:
       surface: "Teams admin center"
       path: "Teams apps > Built-in Teams agents > agent > Edit availability"
       docs: "https://learn.microsoft.com/microsoftteams/manage-apps"
-    api: null
-    note: "Choose everyone, specific users or groups, or no one. Not governed by the Microsoft apps org-wide setting."
+    api:
+      kind: "powershell"
+      call: "Update-M365TeamsApp -Id <app-id> -AppAssignmentType UsersAndGroups -OperationType Add -Groups <group-ids>"
+      docs: "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp"
+    note: "Not governed by the Microsoft apps org-wide setting. The Facilitator setup page points to app centric management for assigning users; the Manage apps overview directs built-in agents to the dedicated page."
   - governs: "Moving the tenant to unified agent and app management across the two admin centres"
     scope: "tenant"
     ui:
@@ -115,18 +121,22 @@ changes:
     note: "Corrected: removed the unsupported PowerShell call for org-wide app settings, reworded the third-party blocking guidance, and fixed the built-in agents path. Teams licence wording, auto-migration inconsistency and the checklist were also revised."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 82 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-22"
+    note: "Corrected: built-in Teams agent availability now lists the Update-M365TeamsApp call documented via app centric management, the open question on PowerShell is narrowed to unified management, and the Channel Agent setup route is added."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 80 statements not yet confirmed"
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 82
-  confirmed: 81
+  claims: 80
+  confirmed: 80
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "8392243024e8967dcceed67e6a8010e2"
+  contradicted: 0
+  attempts: 0
+  hash: "40f51aea349ecf1cdad957b6b2e1d68f"
 ---
 
 ## What it is
@@ -145,7 +155,7 @@ Microsoft states that to allow an agent or app you must set all of these, while 
 
 **Unified management.** Once a tenant is unified, changes to org-wide settings, app status or availability in the Teams admin center are synchronised to the Microsoft 365 admin center and the reverse, so one decision governs Teams, Outlook and Microsoft Copilot apps. Tenants that never changed these settings in either centre are unified automatically; tenants that did opt in through a wizard on **Manage apps**.
 
-**Built-in Teams agents** such as Channel Agent and Facilitator are managed on their own page, not on **Manage apps**. The Manage apps overview directs built-in agents to Built-in Teams agents; the [Facilitator setup page](https://learn.microsoft.com/microsoftteams/facilitator-teams) still directs administrators to Teams apps > Manage apps > Facilitator > Allow or Block. For the Facilitator agent, see [/concepts/facilitator/](/concepts/facilitator/). For unified management at work, see [/features/microsoft-teams-m365-admin-centers-manage-teams-apps-that-work-on-outlook-and-m365-app/](/features/microsoft-teams-m365-admin-centers-manage-teams-apps-that-work-on-outlook-and-m365-app/).
+**Built-in Teams agents** such as Channel Agent and Facilitator are managed on their own page, not on **Manage apps**. The Manage apps overview directs built-in agents to Built-in Teams agents; the [Facilitator setup page](https://learn.microsoft.com/microsoftteams/facilitator-teams) still directs administrators to Teams apps > Manage apps > Facilitator > Allow or Block. The [Channel Agent setup page](https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams) likewise directs administrators to Teams apps > Manage apps > Channel Agent > Allow or Block. For the Facilitator agent, see [/concepts/facilitator/](/concepts/facilitator/). For unified management at work, see [/features/microsoft-teams-m365-admin-centers-manage-teams-apps-that-work-on-outlook-and-m365-app/](/features/microsoft-teams-m365-admin-centers-manage-teams-apps-that-work-on-outlook-and-m365-app/).
 
 ## Why it matters
 
@@ -186,7 +196,7 @@ Costs arise from what you manage, and those belong on the product's own page:
 <tr><td data-label="Control"><strong>Which users and groups can use each app or agent (Everyone, Specific users or groups, No one)</strong><br><small>App</small><br><small class="controls__note">Teams Administrator role. Changes take up to 24 hours. AppAssignmentType also takes Everyone and Noone. Guests cannot use an app set to Specific users or groups.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › app › Users and groups › Select to manage who this app is installed for or available to in your organization › Availability › Edit availability › Available to <a href="https://learn.microsoft.com/microsoftteams/app-centric-management" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app-id&gt; -AppAssignmentType UsersAndGroups -OperationType Add -Groups &lt;group-ids&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether an individual app or agent is allowed or blocked for the organisation</strong><br><small>App</small><br><small class="controls__note">The reference's own examples describe -IsBlocked $true as unblocking an app; test on one app first.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › app › Allow or Block <a href="https://learn.microsoft.com/microsoftteams/manage-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app-id&gt; -IsBlocked $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Default availability of new and unmanaged apps, by app type (Org-wide app settings)</strong><br><small>Tenant</small><br><small class="controls__note">Update-M365UnifiedTenantSettings documents a GlobalApp setting, but Microsoft has not documented which Org-wide app setting it changes; no equivalent call for this control is established.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Actions › Org-wide app settings <a href="https://learn.microsoft.com/microsoftteams/manage-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Who can use built-in Teams agents such as Channel Agent and Facilitator</strong><br><small>Agent</small><br><small class="controls__note">Choose everyone, specific users or groups, or no one. Not governed by the Microsoft apps org-wide setting.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Built-in Teams agents › agent › Edit availability <a href="https://learn.microsoft.com/microsoftteams/manage-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Who can use built-in Teams agents such as Channel Agent and Facilitator</strong><br><small>Agent</small><br><small class="controls__note">Not governed by the Microsoft apps org-wide setting. The Facilitator setup page points to app centric management for assigning users; the Manage apps overview directs built-in agents to the dedicated page.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Built-in Teams agents › agent › Edit availability <a href="https://learn.microsoft.com/microsoftteams/manage-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app-id&gt; -AppAssignmentType UsersAndGroups -OperationType Add -Groups &lt;group-ids&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Moving the tenant to unified agent and app management across the two admin centres</strong><br><small>Tenant</small><br><small class="controls__note">Only a Global admin can give consent and apply the final changes. Tenants that never changed these settings are unified automatically.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Move to unified app management <a href="https://learn.microsoft.com/microsoftteams/uam-tac-mac" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether an agent is blocked for the whole organisation from the Microsoft 365 admin center</strong><br><small>Agent</small><br><small class="controls__note">The API is in beta, needs the delegated CopilotPackages.ReadWrite.All permission and a Microsoft Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -209,12 +219,11 @@ To stop users buying third-party apps, Microsoft documents disabling purchases w
 
 - Which Org-wide app setting does each Update-M365UnifiedTenantSettings setting name (DefaultApp, GlobalApp, PrivateApp, EnableCopilotExtensibility) change? The reference does not map them.
 - Does Update-M365TeamsApp with -IsBlocked $true block or unblock? The reference's own examples describe it as unblocking while the parameter is described as the state of the app.
-- Is there a PowerShell or API call to move a tenant to unified app management, or to change built-in Teams agent availability? Microsoft documents only the admin centre routes.
+- Is there a PowerShell or API call to move a tenant to unified app management? Microsoft documents only the admin centre route.
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[3].api; Open questions / absence: Microsoft documents only admin-centre routes, and no PowerShell or API call, for changing built-in Teams agent availability. | Found: You can also use app centric management to allow and block, create policies, and assign users. | Fix: Set controls[3].api to powershell, call 'Update-M365TeamsApp -Id <app-id> -AppAssignmentType UsersAndGroups -OperationType Add -Groups <group-ids>', docs https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp. Add to its note: 'The Facilitator setup page documents app centric management for assigning users, whose reference documents this PowerShell operation; the Manage apps overview instead directs built-in agents to the dedicated page.' The applicability source is https://learn.microsoft.com/microsoftteams/facilitator-teams and the automation source is https://learn.microsoft.com/microsoftteams/app-centric-management. Replace the last Open questions item with 'Is there a PowerShell or API call to move a tenant to unified app management? Microsoft documents only the admin centre route.' | Source: https://learn.microsoft.com/microsoftteams/facilitator-teams
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What it is: Built-in Teams agents; What to check / applicability: Channel Agent, Facilitator and other built-in Teams agents are managed on Built-in Teams agents, not Manage apps. | Found: Built-in Teams agents like Channel Agent, Facilitator, and other built-in agents available across chats, channels, and meetings are managed from the Built-In Teams agents page, not the Manage apps page. | Fix: After the Facilitator route discrepancy, add: 'The Channel Agent setup page likewise directs administrators to Teams apps > Manage apps > Channel Agent > Allow or Block.' Cite and add to sources https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams, titled 'Set up a Channel Agent for Microsoft Teams'. Its documented steps select Teams apps > Manage apps, select Channel Agent, and select Allow or Block in the Actions menu. | Source: https://learn.microsoft.com/microsoftteams/manage-apps
+- [supported, minor] What it is: Facilitator setup route / admin-path: The Facilitator setup page still gives Teams apps > Manage apps > Facilitator > Allow or Block. | Found: In the left rail navigation, select Teams apps > Manage apps. ... Select Facilitator from the app list. ... In the actions menu, select Allow or Block. | Fix: Replace the attributed Facilitator setup route with 'Teams apps > Manage apps > Facilitator > Actions > Allow or Block'. Keep the existing explanation that the Manage apps overview gives a different route. | Source: https://learn.microsoft.com/microsoftteams/facilitator-teams
+- [supported, minor] What it is: Channel Agent setup route / admin-path: The Channel Agent setup page gives Teams apps > Manage apps > Channel Agent > Allow or Block. | Found: The following feature is currently in public preview. ... In the left rail navigation, select Teams apps > Manage apps. ... Select Channel Agent from the app list. ... In the Actions menu, select Allow or Block | Fix: Replace the sentence with: 'The Channel Agent setup page, which marks Channel Agent as public preview, likewise directs administrators to Teams apps > Manage apps > Channel Agent > Actions > Allow or Block.' Keep its existing link. | Source: https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams
 -->

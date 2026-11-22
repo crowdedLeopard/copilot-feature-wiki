@@ -96,24 +96,28 @@ changes:
     note: "Corrected after verification: licensing model set to unknown (entitlement for the page not published), and the risk and impact rationales and one rollout checklist item narrowed to what the sources say."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 55 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-22"
+    note: "Corrected after verification: removed the asserted Copilot > Billing & usage navigation route; the path to the page is not yet documented."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 54 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-22"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
+  claims: 54
   confirmed: 54
-  unconfirmed: 1
+  unconfirmed: 0
   contradicted: 0
-  attempts: 3
-  hash: "5746c9b9ca6b53d62c9d6668edf73293"
+  attempts: 0
+  hash: "75ebda39d63e0c3d40e6fe4ac8a407d3"
 ---
 
 ## What's changing
 
-The roadmap item describes a High-usage users view in the Microsoft 365 admin center, under Copilot > Billing & usage. It lists users with high Copilot pay-as-you-go usage, which the roadmap defines as greater than 2000 credits, and lets an administrator buy and assign Copilot licences to those users directly on the page.
+The roadmap item plans a High-usage users view in the Microsoft 365 admin center's Copilot Billing & usage area; its navigation path is not yet documented. It lists users with high Copilot pay-as-you-go usage, which the roadmap defines as greater than 2000 credits, and lets an administrator buy and assign Copilot licences to those users directly on the page.
 
 Microsoft Learn does not yet describe this page, so what follows about its behaviour is the roadmap's description. The closest documented behaviour is in the Microsoft Copilot Credits report (Microsoft 365 admin center > Reports > Usage > Reports > Microsoft Copilot > Credits), whose documentation includes preview qualifications: its Alerts card appears when one or more users consume more than 3,000 credits in the past 30 days, a similar alert appears for 2,000 to 3,000 credits, and **View Copilot credits details** shows a user list that can be exported to CSV. That report covers credits used by users who don't have a Microsoft Copilot licence and use metered agents in Copilot Chat. Whether the new page uses the same data or thresholds is not documented.
 
@@ -194,10 +198,4 @@ Learn documents no setting that turns the high-usage users page on or off, and t
 risk: Low. The roadmap describes an admin-side list and a licence action, and Learn shows usage reports hiding names by default.
 cost: Variable. The usage it lists is pay-as-you-go consumption billed to an Azure subscription; the roadmap item says licences can be bought from the page, and no price for this page is published.
 impact: Low. The roadmap places the list in the Microsoft 365 admin center; viewing roles for the new page are not yet documented.
--->
-
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] What's changing: first paragraph / admin-path: The High-usage users view is reached under Microsoft 365 admin center > Copilot > Billing & usage. | Found: Searched: "High-usage users" "Copilot" "Billing & usage" admin center navigation. Opened Credits report and pay-as-you-go setup. They give routes for other billing controls, not this view; the roadmap title supplies no navigation steps. | Fix: Replace the first sentence with: "The roadmap item plans a High-usage users view in the Microsoft 365 admin center's Copilot Billing & usage area; its navigation path is not yet documented." Keep the roadmap attribution, but remove the asserted 'Copilot > Billing & usage' route.
 -->
