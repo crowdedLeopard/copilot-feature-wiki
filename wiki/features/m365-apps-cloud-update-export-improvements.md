@@ -4,7 +4,7 @@ slug: "m365-apps-cloud-update-export-improvements"
 roadmapId: 577398
 topic: "modern-work"
 products: ["Microsoft 365","Microsoft 365 app"]
-summary: "The Microsoft 365 Apps admin center is adding richer, filter-aware device exports across Inventory and Cloud Update. It is admin-only and optional, so no action is needed beyond checking who can export device data."
+summary: "The Microsoft 365 Apps admin center is adding richer, filter-aware device exports across Inventory and Cloud Update. It affects administrators; review export permissions and re-test CSV consumers as it rolls out."
 status: "rolling-out"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -15,7 +15,7 @@ risk: "low"
 cost: "low"
 impact: "low"
 defaultState: "unknown"
-action: "review"
+action: "prepare"
 licensing:
   model: "included"
   notes: "Per the Inventory page, the signed-in user must hold one of its listed plans (for example Microsoft 365 E3 or E5, Office 365 E3 or E5, Business Standard or Premium, A3 or A5). Nothing specific to the export improvements is published."
@@ -54,19 +54,23 @@ changes:
     note: "First briefing for this roadmap item: records the planned export improvements against the Inventory export Learn describes today."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 44 statements contradicted, 4 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after verification: removed unsupported claims about configuration, device-side effects and role inheritance on CSV files; action set to prepare; removed the role-holder checklist step."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 54 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 44
-  confirmed: 38
-  unconfirmed: 4
-  contradicted: 2
-  attempts: 1
-  hash: "80c9ccfdcf8e858be0b199c2617642bf"
+  claims: 54
+  confirmed: 54
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "e5d940cbc10ddba32e764aaf06615af6"
 ---
 
 ## What's changing
@@ -81,21 +85,21 @@ The roadmap record gives the status as Rolling out, the release phase as General
 
 ## Why it matters
 
-Exports are how many teams turn device data into compliance reports, patch-readiness lists and tickets. Today's Inventory export ignores filters and omits the cloud update columns, so a team that wants only, say, devices failing an update must filter the CSV by hand. The planned changes target exactly that gap, which is why this is worth a look even though it needs no configuration.
+Exports are how many teams turn device data into compliance reports, patch-readiness lists and tickets. Today's Inventory export ignores filters and omits the cloud update columns, so a team that wants only, say, devices failing an update must filter the CSV by hand. The planned changes target exactly that gap, which is why this is worth a look while Microsoft has not documented an enablement setting for the improvements.
 
 Microsoft has not stated what happens on arrival, so the page cannot say whether the new options appear for every tenant at once or in stages. Nothing in the roadmap record says existing exports change in a way that breaks anything, but plan for the CSV layout to differ if you feed exports into scripts or reports.
 
 ## Risk assessment
 
 **Data exposure**
-- The Inventory device table includes the last signed-in user and that user's email address. If the improved exports add device and update fields, a CSV may carry personal data and device details outside the admin centre, where Microsoft 365 Apps admin center roles no longer apply. Decide where exports may be stored and who may receive them.
+- The Inventory device table includes the last signed-in user and that user's email address. If the improved exports add device and update fields, a CSV may carry personal data and device details outside the admin centre. Decide where exports may be stored and who may receive them.
 - Filtered exports produce smaller, targeted files, which are easier to share than the full list. Treat each as the same sensitivity as the Inventory view it came from.
 
 **Security & identity**
 - Access follows the roles for the Microsoft 365 Apps admin center. The Inventory page lists Office Apps Administrator (recommended), Security Administrator and Global Administrator. The roadmap describes no new role or permission for export.
 
 **Autonomy & actions**
-- No change: exporting reads data and changes nothing on devices.
+- The Inventory page documents export as creating a .csv file for use in other tools.
 
 **Change & support**
 - Exports will contain more fields and may be available from more views. Any script, spreadsheet or report that expects today's Inventory CSV columns should be re-tested once the new export reaches your tenant.
@@ -122,7 +126,6 @@ Indirect cost: admin time to review new export fields, update any reports that c
 ## Governance guidance
 
 ### Before rollout
-- Identify who holds the Office Apps Administrator, Security Administrator and Global Administrator roles, since the Inventory page lists them for accessing and managing the feature.
 - List the scripts, spreadsheets or reports that consume today's Inventory CSV, so you can re-test them when the new export arrives.
 - Decide where exported device lists may be stored and for how long, because the Inventory table includes the last user and their email.
 
@@ -160,17 +163,11 @@ A setting that turns the improved exports on or off for a tenant is not describe
 <!-- rationale
 risk: Low. Export is an admin action in the Microsoft 365 Apps admin center, and the roadmap describes no change to who can see device data; which extra fields the exports will carry is not yet published.
 cost: Low. The only cost the sources show is admin time; the Inventory page lists the subscription plans a user needs and names no separate charge for export, and nothing specific to this change is published.
-impact: Low. Only administrators who use Inventory and Cloud Update device views notice the change; end users see nothing.
+impact: Low. The roadmap describes export improvements for administrators using Inventory and Cloud Update device views.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] summary; Why it matters / default: The improvements are optional and need no configuration. | Found: Searched: Microsoft 365 Apps Cloud Update export improvements filtered exports enable disable default role 577398; Cloud Update export configuration enable. Read Inventory, cloud-update-enhancements and cloud-update-prepare; none establishes the improved export's configuration requirements. | Fix: Replace the summary's second sentence with 'It affects administrators; review export permissions and re-test CSV consumers as it rolls out.' Replace 'even though it needs no configuration' in Why it matters with 'while Microsoft has not documented an enablement setting for the improvements'.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: Exporting reads data and changes nothing on devices. | Found: Searched: Microsoft 365 Apps cloud update export CSV device changes permissions audit export Message Center 577398. Read Inventory's export section and cloud-update-enhancements; they describe CSV generation, not an explicit guarantee of no device-side changes. | Fix: Replace the bullet with 'The Inventory page documents export as creating a .csv file for use in other tools.'
-- [unsupported, blocker] Risk assessment: Data exposure / applicability: Microsoft 365 Apps admin center roles no longer apply to CSV data outside the admin center. | Found: Searched: Microsoft 365 Apps export roles csv read; Microsoft 365 Apps cloud update export CSV device changes permissions. Read Inventory and cloud-update-enhancements; neither describes the enforcement or inheritance of admin-center roles on downloaded CSV files. | Fix: Remove the clause 'where Microsoft 365 Apps admin center roles no longer apply'. Retain the risk analysis about exporting personal and device data and deciding storage locations and recipients.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] front matter: action / consistency: The review action rating treats the change as optional rather than an arriving improvement to existing exports. | Found: action: review; status: rolling-out; 'Today's Inventory export ignores filters and omits the cloud update columns'; 'Any script, spreadsheet or report that expects today's Inventory CSV columns should be re-tested once the new export reaches your tenant.' | Fix: Set action to 'prepare': the record describes improvements rolling out to existing export views, and the briefing identifies CSV consumers needing checks before adopting the changed output.
-- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: Every control the checklist asks readers to take stock of is represented in the controls table. | Found: 'Identify who holds the Office Apps Administrator, Security Administrator and Global Administrator roles'; the sole table row is 'Exporting the Inventory device list to a .csv file'. | Fix: The Before rollout step asking readers to identify role holders has no role-management control row. Remove that checklist step; the verified role requirements can remain in Scope and the export row note.
-- [unsupported, minor] rationale: impact / behaviour: End users see nothing from this change. | Found: Searched: Microsoft 365 Apps cloud update export CSV device changes permissions audit export Message Center 577398. Read Inventory, cloud-update-enhancements and cloud-update-prepare; none explicitly states that the export improvements have no end-user-visible effects. | Fix: Replace the impact rationale with 'Low. The roadmap describes export improvements for administrators using Inventory and Cloud Update device views.' Keep the low impact rating.
+- [supported, minor] Open questions: cloud update audit log / behaviour: Microsoft has a cloud update Purview auditing page that readers can watch for export-auditing guidance. | Found: Cloud update supports Microsoft Purview Audit so you can review admin activity for cloud update in Microsoft 365 Apps admin center. | Fix: Add the source 'Audit cloud update activity with Microsoft Purview' at https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-purview. Keep export auditing as an open question; the documented activities do not state that export is audited. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/cloud-update-purview
 -->

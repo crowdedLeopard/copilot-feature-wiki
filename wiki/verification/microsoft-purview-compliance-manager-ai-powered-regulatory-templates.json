@@ -2,50 +2,55 @@
   "slug": "microsoft-purview-compliance-manager-ai-powered-regulatory-templates",
   "roadmapId": 523209,
   "title": "Microsoft Purview Compliance Manager: AI-powered regulatory templates from regulation PDFs",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-22",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-22",
-    "reasons": [
-      "1 blocking finding (claim 33)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 54,
-    "confirmed": 52,
+    "claims": 64,
+    "confirmed": 63,
     "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 1,
+    "contradicted": 1,
+    "blocker": 0,
     "major": 0,
-    "minor": 5
+    "minor": 1
   },
-  "summary": "Hold: the access guidance implies that per-regulation permissions remove a user's broader Compliance Manager access, but Microsoft explicitly says the broader role remains. The roadmap facts and PDF creation procedure are supported; the two control paths stop early and need their remaining steps.",
+  "summary": "The briefing passes: the roadmap facts, PDF creation procedure, access controls and licensing qualifications are supported. Microsoft documents all three Add commands flagged by the pre-check. The checklist's instruction to review overall Compliance Manager roles has no corresponding control row, a minor presentation gap.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing",
+      "where": "title",
       "type": "record",
-      "claim": "Microsoft plans AI-powered conversion of regulation PDFs into actionable controls and actions in Compliance Manager.",
+      "claim": "The roadmap names AI-powered regulatory templates in Microsoft Purview Compliance Manager.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Microsoft Purview: Compliance Manager - AI Powered Regulatory Templates; This feature in Purview Compliance Manager shall enable customers to convert complex regulations from PDF documents to actionable controls and actions in multi cloud environment.",
+      "quote": "Microsoft Purview: Compliance Manager - AI Powered Regulatory Templates",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans to convert regulation PDFs to actionable controls and actions in a multicloud environment.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature in Purview Compliance Manager shall enable customers to convert complex regulations from PDF documents to actionable controls and actions in multi cloud environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
       "where": "What's changing",
       "type": "record",
-      "claim": "Customers can use converted templates to create assessments, identify compliance gaps and implement controls.",
+      "claim": "Customers can use the converted templates to create assessments, identify compliance gaps and implement controls.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Customers can use the converted regulatory templates to create assessments and identify compliance gaps, understand and implement controls to improve their compliance posture.",
@@ -53,8 +58,8 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "front matter: status; summary; What's changing; Scope; controls[0].note",
+      "n": 4,
+      "where": "front matter: status; summary; What's changing; Scope; controls[0].note; Risk assessment",
       "type": "record",
       "claim": "The roadmap status is In development.",
       "status": "supported",
@@ -64,10 +69,10 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "front matter: targetDate; What's changing; Scope",
+      "n": 5,
+      "where": "front matter: targetDate; What's changing; Scope; Open questions",
       "type": "record",
-      "claim": "The roadmap target is October CY2026, a month already past on 22 November 2026.",
+      "claim": "The roadmap target is October CY2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"October CY2026\"",
@@ -75,7 +80,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "front matter: previewDate; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap preview date is November CY2025.",
@@ -86,10 +91,10 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The record lists General Availability and Preview release phases.",
+      "claim": "The roadmap release phases are General Availability and Preview.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -97,10 +102,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 8,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the record.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -108,10 +113,10 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 9,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "Web is the only platform listed in the record.",
+      "claim": "Web is the only platform listed in the roadmap record.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -119,32 +124,109 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "front matter: defaultState; What's changing; rationale: risk",
-      "type": "default",
-      "claim": "Microsoft has not stated the roadmap feature's default state on arrival.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Compliance Manager PDF template creation tenant enable disable default setting; \"Compliance Manager\" \"PDF\" \"default\" \"disable\". Read roadmap record, compliance-manager-create-template and compliance-manager-setup; no feature rollout default stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 10,
-      "where": "summary; Why it matters; rationale: risk",
-      "type": "absence",
-      "claim": "No supplied source states required administrator action or that existing behaviour or data access changes on arrival.",
+      "where": "What's changing; Risk assessment",
+      "type": "record",
+      "claim": "The target month has passed as of the 22 November 2026 run date.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Compliance Manager PDF template creation tenant enable disable default setting; \"Compliance Manager\" \"PDF\" \"default\" \"disable\". Read record, pre-check, compliance-manager-create-template and compliance-manager-setup; no arrival action or existing-access change stated.",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 11,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-08-26T22:50:58.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-08-26T22:50:58\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The PDF creation route is Microsoft Purview portal > Compliance Manager > Regulations > Create new template > Upload PDF document > Scan and extract > Review draft template > Publish template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
+      "quote": "From your Regulations page, select Create new template. ... Select Upload PDF document. ... Select Scan and extract. ... When the scan is complete, select Review draft template. ... When you're satisfied, select Publish template.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no API or automation for PDF regulation-template creation at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Compliance Manager\" regulation template create upload API PowerShell Security Compliance'; opened compliance-manager-create-template, compliance-manager-regulations and compliance-manager-setup. Results describe portal creation, not a PDF creation operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The access route is Microsoft Purview portal > Compliance Manager > Regulations > regulation > Manage user access > role > Add readers / Add assessors / Add contributors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-regulations",
+      "quote": "From the Regulations page ... Select it to open its details page. ... select Manage user access. ... Navigate to the tab for the role ... Select the + Add command for the role tab you're on: Add readers, or Add assessors or Add contributors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "No API is documented for assigning per-regulation assessment-access roles.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Compliance Manager\" regulation \"Manage user access\" API PowerShell' and 'Compliance Manager Manage user access regulation permissions PowerShell Security Compliance New RoleGroupMember API'; opened regulations and setup. General role-group cmdlets do not document per-regulation assignments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[2]; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No tenant UI switch or API to turn PDF template creation on or off is documented in November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Compliance Manager\" \"PDF\" disable enable default tenant settings' and '\"Compliance Manager\" regulation template create upload API PowerShell Security Compliance'; opened setup and create-template. Settings and search results document no PDF availability switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: defaultState; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Microsoft has not stated the roadmap feature's default on arrival or that existing behaviour changes without action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Compliance Manager\" \"PDF\" disable enable default tenant settings'; read roadmap description, create-template and setup. PDF creation is an admin procedure; none states rollout defaults or an automatic change to existing behaviour for this roadmap capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "summary",
+      "type": "absence",
+      "claim": "No administrator action is stated as required for the roadmap change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Compliance Manager\" \"PDF\" disable enable default tenant settings'; read roadmap record and create-template. Neither specifies required rollout action. The supplied pre-check contains no Message Center post.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
       "where": "front matter: licensing.model",
       "type": "licensing",
-      "claim": "Compliance Manager has mixed entitlement: included product access and separately licensed premium regulations.",
+      "claim": "The mixed licensing model describes included Compliance Manager access together with purchased premium regulation licences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/compliance-manager-regulations",
       "quote": "The Microsoft Data Protection Baseline regulatory template is available for organizations at all subscription levels to use. The regulations designated as premium require purchase of a license to use them.",
@@ -152,7 +234,7 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 20,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
       "claim": "Compliance Manager is included with Office 365 and Microsoft 365 licences.",
@@ -163,7 +245,7 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 21,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Assessment availability and management capabilities depend on the licensing agreement.",
@@ -174,7 +256,7 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 22,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "The Microsoft Data Protection Baseline template is available at all subscription levels.",
@@ -185,10 +267,10 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 23,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Premium regulations require purchased licences, subject to the stated free-template entitlement.",
+      "claim": "Regulations designated premium require a purchased licence, subject to the stated free-template entitlement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/compliance-manager-regulations",
       "quote": "The regulations designated as premium require purchase of a license to use them. ... Depending on your licensing agreement, your organization might be able to use up to three more premium regulatory templates for free.",
@@ -196,10 +278,10 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 24,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Depending on the agreement, an organisation might use up to three more premium templates for free.",
+      "claim": "Depending on the agreement, an organisation may use up to three more premium templates for free.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/compliance-manager-regulations",
       "quote": "Depending on your licensing agreement, your organization might be able to use up to three more premium regulatory templates for free.",
@@ -207,10 +289,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 25,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "A5/E5/G5 customers can choose any three premium regulations for free in addition to the baseline.",
+      "claim": "A5/E5/G5 customers can choose three premium regulations to use for free.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/compliance-manager-regulations-list",
       "quote": "Customers at the A5/E5/G5 subscription levels: In addition to the Microsoft Data Protection baseline, you can choose any three premium regulations to use for free.",
@@ -218,109 +300,329 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "front matter: licensing.notes; Why it matters; rationale: cost; Open questions",
-      "type": "absence",
-      "claim": "A licence rule specific to PDF-created custom templates is not published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Compliance Manager custom PDF templates license Regulation licenses used storage processing AI powered 523209 enable disable. Read create-template, regulations, regulations-list, setup, service description and FAQ licensing excerpt; no PDF-specific entitlement stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "Cost and licensing: Meter; Open questions",
-      "type": "absence",
-      "claim": "Whether PDF-created templates count towards Regulation licenses used is not published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Compliance Manager custom PDF templates license Regulation licenses used storage processing AI powered 523209 enable disable. Read create-template, regulations and service description; the counter is documented, but PDF-created templates are not assigned a counter rule.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "Cost and licensing: Meter",
-      "type": "absence",
-      "claim": "The creating-regulation-templates page lists roles and PDF requirements and names no licence or meter.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Compliance Manager PDF template creation licensing custom templates. Read all of compliance-manager-create-template, including Requirements; it names Administration or Assessor, an official regulation document and PDF format, with no licence or meter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "Cost and licensing: Meter; Governance guidance: Before rollout",
-      "type": "licensing",
-      "claim": "Regulation licenses used on the Regulations page tracks templates in use against entitlement.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/compliance-manager-regulations",
-      "quote": "The Regulation licenses used counter near the top of the Regulations page represents the number of regulatory templates in use out of the number you're eligible to use according to your licensing agreement and any purchased licenses.",
-      "severity": "minor",
-      "fix": "Add after the counter description: 'The Get started page calls these counters Free regulation licenses used/Purchased regulation licenses used.' Both names are documented; retain the existing counter description. See https://learn.microsoft.com/purview/compliance-manager-setup#regulations-page."
-    },
-    {
-      "n": 22,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "PDF template creation is reached at Microsoft Purview portal > Compliance Manager > Regulations > Create new template > Upload PDF document.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
-      "quote": "From your Regulations page, select Create new template. ... Select Upload PDF document. ... Select Scan and extract. ... select Review draft template. ... When you're satisfied, select Publish template.",
-      "severity": "minor",
-      "fix": "Extend controls[0].ui.path and its rendered copy to 'Compliance Manager > Regulations > Create new template > Upload PDF document > Scan and extract > Review draft template > Publish template'. The existing path stops early in the documented creation procedure; applicable services and form fields can remain in the prose."
-    },
-    {
-      "n": 23,
-      "where": "controls[0].api; Governance controls",
-      "type": "absence",
-      "claim": "No API or PowerShell operation is documented for creating Compliance Manager regulation templates from PDFs.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Compliance Manager regulation template PDF create PowerShell Security Compliance Microsoft Graph API user access regulations. Read create-template and Security & Compliance PowerShell; search returned portal procedures and unrelated Intune Graph policies, not a template-creation call.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "controls[1].ui; Governance controls table; Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "Per-regulation user access is reached at Microsoft Purview portal > Compliance Manager > Regulations > regulation > Manage user access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/compliance-manager-regulations",
-      "quote": "Select it to open its details page. ... select Manage user access. ... Navigate to the tab for the role you want your user to hold for this regulation. ... Add readers, or Add assessors or Add contributors.",
-      "severity": "minor",
-      "fix": "Extend controls[1].ui.path and its rendered copy to 'Compliance Manager > Regulations > regulation > Manage user access > role > Add readers / Add assessors / Add contributors'. State in the note that the last choice follows the selected Reader, Assessor or Contributor tab. The existing path stops at the pane holding the control."
-    },
-    {
-      "n": 25,
-      "where": "controls[1].api",
-      "type": "absence",
-      "claim": "No API or PowerShell operation is documented for per-regulation user access in Compliance Manager.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Compliance Manager regulation Manage user access PowerShell cmdlet Security Compliance Graph API. Read regulations access instructions, setup User access, assessment-access excerpt and Security & Compliance PowerShell; no per-regulation assignment operation returned.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 26,
-      "where": "controls[2].ui; controls[2].api; Governance controls; Open questions",
+      "where": "front matter: licensing.notes; Why it matters; Cost and licensing; rationale: cost; Open questions",
       "type": "absence",
-      "claim": "No tenant UI switch or API to enable or disable PDF template creation is documented in November 2026.",
+      "claim": "A licence rule specific to templates created from PDFs is not yet published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Compliance Manager PDF template creation tenant enable disable default setting; \"Compliance Manager\" \"PDF\" \"default\" \"disable\". Read create-template, setup settings and Security & Compliance PowerShell; results document automatic testing, not a PDF creation switch.",
+      "quote": "Searched: '\"Compliance Manager\" \"PDF\" \"license\" custom regulation templates pricing'; opened create-template, regulations, regulations-list, setup and service description. Results license premium templates and copied premium regulations, not newly PDF-created templates specifically.",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "controls[0].note; What's changing; Risk assessment; Scope; Governance guidance",
+      "where": "Cost and licensing: Meter",
+      "type": "absence",
+      "claim": "The creation page lists roles and PDF input requirements but names no licence or meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Compliance Manager\" \"PDF\" \"license\" custom regulation templates pricing'; read the entire create-template page. Its Requirements section lists Administration or Assessor and an official regulation PDF; no licence, price or meter is named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing: Meter",
+      "type": "licensing",
+      "claim": "Regulation licenses used tracks templates in use against the number the organisation is eligible to use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-regulations",
+      "quote": "The Regulation licenses used counter near the top of the Regulations page represents the number of regulatory templates in use out of the number you're eligible to use according to your licensing agreement and any purchased licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing: Meter",
+      "type": "behaviour",
+      "claim": "The Get started page names Free regulation licenses used/Purchased regulation licenses used counters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-setup",
+      "quote": "The Free regulation licenses used/Purchased regulation licenses used counter near the top of the page shows the number of active regulations currently in use out of the total number available for your organization to use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing: Meter; Open questions",
+      "type": "absence",
+      "claim": "Whether PDF-created templates count towards the regulation licence counter is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Compliance Manager\" \"PDF\" \"license\" custom regulation templates pricing'; opened create-template, regulations, setup, regulations-list and service description. The counter describes eligible templates generally; no passage identifies how a newly uploaded PDF template is counted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The system analyses uploaded regulation PDFs for malware.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
+      "quote": "The system analyzes the document for malware",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The system extracts controls from the uploaded document.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
+      "quote": "The system analyzes the document for malware, extracts controls and maps controls to existing improvement actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The system maps extracted controls to existing improvement actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
+      "quote": "maps controls to existing improvement actions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Detected errors are displayed for correction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
+      "quote": "Any detected errors are displayed for correction.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Risk assessment; Cost and licensing: Indirect cost",
+      "type": "behaviour",
+      "claim": "The admin can edit existing controls in the draft.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
+      "quote": "The admin can then update existing controls ... Review the draft template. Add, remove, or edit the controls as needed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The admin can add new controls to the draft.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
+      "quote": "The admin can then update existing controls, add new ones, and manually map actions to controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Risk assessment: Change & support; Cost and licensing",
+      "type": "behaviour",
+      "claim": "The admin can manually map actions to controls before publication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
+      "quote": "The admin can then update existing controls, add new ones, and manually map actions to controls. Once all adjustments are complete, the draft template is published for use in Compliance Manager.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "The documented procedure has the admin review the draft and select Publish template before publication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
+      "quote": "Review the draft template. Add, remove, or edit the controls as needed. When you're satisfied, select Publish template. ... Confirm template details and optionally provide notes, and then select Publish template.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "A published new template can be used to create an assessment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
+      "quote": "The template is published and you can now create an assessment based on your new template.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing; Risk assessment: Data exposure; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "The uploaded regulation must be published by an official regulator or standards body.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
+      "quote": "For PDF upload: A regulation document published by an official regulator or standards body.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "The upload accepts regulation documents in PDF format only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
+      "quote": "For PDF upload: ... PDF format only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn also documents creating a regulation template from a blank template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
+      "quote": "you can create custom regulation templates using one of two methods: Upload a regulation in PDF format; Start from a blank template",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope: Input",
+      "type": "behaviour",
+      "claim": "The upload steps have the admin select applicable services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
+      "quote": "Select applicable services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The creation page does not call its PDF procedure AI-powered.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Compliance Manager PDF regulation template create PowerShell API upload disable tenant setting default storage processing licensing custom templates'; read the complete create-template page for AI and AI-powered. Neither term appears.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The creation page does not label the procedure as preview.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Compliance Manager PDF regulation template create PowerShell API upload disable tenant setting default storage processing licensing custom templates'; read the complete create-template page for preview. No preview label appears.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The creation page does not label the procedure as generally available.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Compliance Manager PDF regulation template create PowerShell API upload disable tenant setting default storage processing licensing custom templates'; read the complete create-template page for general availability. No availability-phase label appears.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "The creation page does not mention the roadmap item or confirm that its procedure is the same capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Compliance Manager PDF regulation template create PowerShell API upload disable tenant setting default storage processing licensing custom templates'; read complete create-template page and roadmap record. The page contains no roadmap reference or 523209 identifier.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "A regulation template is the framework used to create a Compliance Manager assessment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-setup",
+      "quote": "A regulatory template is a framework for creating an assessment in Compliance Manager.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "The uploaded regulation PDF's storage and processing location is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Compliance Manager\" \"PDF\" storage processing data residency'; opened create-template and regulations. Results describe unrelated document-processing services and general residency; no passage identifies the storage or processing location of Compliance Manager's uploaded regulation PDF.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Data exposure; Governance controls",
       "type": "role",
-      "claim": "The PDF template procedure requires Compliance Manager Administration or Compliance Manager Assessor.",
+      "claim": "An overall Compliance Manager role assigned in the Purview portal extends by default to all regulations and their assessments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-regulations",
+      "quote": "When you assign users a Compliance Manager role in the Microsoft Purview portal, their role extends by default to all regulations ... depending on the user's role type, they can view or interact with any existing or future assessments created with that regulation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].note; Risk assessment: Data exposure; Governance controls",
+      "type": "role",
+      "claim": "A per-regulation role applies at that role level to existing and future assessments created with the regulation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-regulations",
+      "quote": "When you set a user's role for a regulation, the user will be able to interact at that role level for all assessments (existing and future) created with that regulation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Data exposure; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "Removing a regulation-based role does not remove an overall Compliance Manager role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-regulations",
+      "quote": "Removing a regulation-based role won't remove the user's overall Compliance Manager role if they have one.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "role",
+      "claim": "An overall Compliance Manager role is changed in the Microsoft Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-regulations",
+      "quote": "If you want to change a user's overall role, you have to change it in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Admins whose Compliance Manager permissions were set in Microsoft Entra ID do not appear in Manage user access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-regulations",
+      "quote": "Admins whose permissions for Compliance Manager were set in Microsoft Entra ID won't appear on the Manage user access flyout pane.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "The creation page requires Compliance Manager Administration or Compliance Manager Assessor.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
       "quote": "A user must hold a role of Compliance Manager Administration or Compliance Manager Assessor.",
@@ -328,18 +630,18 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 56,
       "where": "Risk assessment: Security & identity",
       "type": "role",
-      "claim": "The general role table assigns management of regulatory templates to Compliance Manager Administration.",
+      "claim": "The role table assigns regulatory-template management to Compliance Manager Administration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/compliance-manager-setup",
-      "quote": "| Manage assessments, regulatory templates, and tenant data; assign improvement actions | Compliance Manager Administration | Compliance Administrator, Compliance Data Administrator, Security Administrator |",
+      "quote": "| Manage assessments, regulatory templates, and tenant data; assign improvement actions | Compliance Manager Administration |",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
+      "n": 57,
       "where": "Scope; Governance controls",
       "type": "role",
       "claim": "Compliance Manager settings are accessible to Compliance Manager Administrator or Global Administrator.",
@@ -350,263 +652,54 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "controls[1].note; Governance controls table",
-      "type": "applicability",
-      "claim": "A role assigned for a regulation applies at that role level to existing and future assessments created with it.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/compliance-manager-regulations",
-      "quote": "When you set a user's role for a regulation, the user will be able to interact at that role level for all assessments (existing and future) created with that regulation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "controls[1].note; Governance controls",
-      "type": "role",
-      "claim": "Admins whose Compliance Manager permissions were set in Entra ID do not appear in Manage user access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/compliance-manager-regulations",
-      "quote": "Admins whose permissions for Compliance Manager were set in Microsoft Entra ID won't appear on the Manage user access flyout pane.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Risk assessment: Data exposure; Governance controls",
-      "type": "default",
-      "claim": "Compliance Manager roles assigned in the Purview portal extend by default to all regulations and their assessments according to role type.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/compliance-manager-regulations",
-      "quote": "their role extends by default to all regulations ... depending on the user's role type, they can view or interact with any existing or future assessments created with that regulation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Risk assessment: Data exposure; Governance controls; Governance guidance: At rollout",
-      "type": "applicability",
-      "claim": "Restricting access per regulation is sufficient to narrow the all-regulation access of an existing overall Compliance Manager role holder.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/purview/compliance-manager-regulations",
-      "quote": "Removing a regulation-based role won't remove the user's overall Compliance Manager role if they have one. If you want to change a user's overall role, you have to change it in the Microsoft Purview portal.",
-      "severity": "blocker",
-      "fix": "Replace the 'unless you restrict access per regulation' clause with: 'Per-regulation assignments apply at the assigned role level, but removing one does not remove an overall Compliance Manager role; change the overall role in the Microsoft Purview portal.' Replace 'per-regulation access is the narrowing control' with the same qualification. In the rollout checklist, say 'Review per-regulation assignments in Manage user access; also review overall Compliance Manager roles, which removing a regulation-based role does not remove.' Source: https://learn.microsoft.com/purview/compliance-manager-regulations#grant-user-access-to-regulations."
-    },
-    {
-      "n": 34,
-      "where": "Governance controls",
+      "n": 58,
+      "where": "Governance controls: prose",
       "type": "admin-path",
-      "claim": "Compliance Manager settings, including User access, are reached from the Settings icon in the Purview portal.",
+      "claim": "User access settings are reached in the Purview portal through Settings > Compliance Manager > User access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/compliance-manager-setup",
       "quote": "select the Settings icon at the top of the page, then select Compliance Manager. ... User access: Allows you to view and manage user roles for access to assessments or assessment templates.",
-      "severity": "minor",
-      "fix": "Replace the navigation clause with 'are reached in the Microsoft Purview portal through Settings > Compliance Manager > User access'. This completes the prose's abbreviated description of the route."
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 35,
-      "where": "Governance controls",
+      "n": 59,
+      "where": "Governance controls: prose",
+      "type": "behaviour",
+      "claim": "The User access setting manages roles for assessments and assessment templates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-setup",
+      "quote": "User access: Allows you to view and manage user roles for access to assessments or assessment templates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance controls: prose",
       "type": "behaviour",
       "claim": "The settings page lists Testing source, Manage user history, User access and Connectors.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/compliance-manager-setup",
-      "quote": "The types of settings for Compliance Manager include: ... Testing source ... Manage user history ... User access ... Connectors",
+      "quote": "The types of settings for Compliance Manager include: Testing source ... Manage user history ... User access ... Connectors",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Risk assessment: Data exposure; Open questions",
-      "type": "absence",
-      "claim": "Where uploaded regulation PDFs are stored and processed, and which AI service reads them, is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Compliance Manager\" \"PDF\" \"stored\" \"processed\"; Compliance Manager custom PDF templates license Regulation licenses used storage processing AI powered 523209 enable disable. Read create-template, setup and relevant product excerpts; no PDF location or AI processor stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "The template-creation Learn page does not label the PDF upload as preview or generally available.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Compliance Manager custom PDF templates AI powered 523209; read all of compliance-manager-create-template for preview and availability labels. No preview or General Availability designation appears.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "The template-creation Learn page does not call the procedure AI-powered.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Compliance Manager custom PDF templates AI powered 523209. Read all of compliance-manager-create-template; it describes malware analysis, extraction and mapping without calling this AI-powered.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "What's changing; Open questions",
-      "type": "absence",
-      "claim": "The Learn procedure is not explicitly linked to roadmap item 523209.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Compliance Manager custom PDF templates license Regulation licenses used storage processing AI powered 523209 enable disable. Read create-template and roadmap record; Learn does not mention 523209 and the record has no moreInfoLink.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "What's changing; Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "The system analyses the uploaded regulatory PDF for malware.",
+      "n": 61,
+      "where": "controls[2].note; Governance controls: Use roles as the limit",
+      "type": "applicability",
+      "claim": "Compliance Manager roles provide a documented limit on who can use PDF template creation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
-      "quote": "The system analyzes the document for malware",
+      "quote": "A user must hold a role of Compliance Manager Administration or Compliance Manager Assessor.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 41,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "The system extracts controls from the uploaded PDF.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
-      "quote": "The system analyzes the document for malware, extracts controls",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "The system maps extracted controls to existing improvement actions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
-      "quote": "maps controls to existing improvement actions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "What's changing; Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Detected errors are shown for correction.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
-      "quote": "Any detected errors are displayed for correction.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "What's changing; Risk assessment; Governance guidance",
-      "type": "behaviour",
-      "claim": "The administrator can update or add controls in the draft.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
-      "quote": "The admin can then update existing controls, add new ones",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "What's changing; Risk assessment; Cost and licensing",
-      "type": "behaviour",
-      "claim": "The administrator can manually map actions to controls.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
-      "quote": "and manually map actions to controls.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance; rationale: risk",
-      "type": "behaviour",
-      "claim": "The documented procedure has the administrator review the draft and select Publish template.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
-      "quote": "Review the draft template. Add, remove, or edit the controls as needed. When you're satisfied, select Publish template.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "The Learn procedure contains no step publishing a template without an administrator selecting Publish template.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Compliance Manager regulation template PDF create; read all steps of compliance-manager-create-template, PDF and blank-template procedures. Both require the user to select Publish template; no automatic publication step is given.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "What's changing; Why it matters",
-      "type": "behaviour",
-      "claim": "A published template can be used as the basis for an assessment.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
-      "quote": "The template is published and you can now create an assessment based on your new template.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "What's changing; Risk assessment: Data exposure; Scope; Governance guidance",
-      "type": "behaviour",
-      "claim": "The uploaded regulation document must be published by an official regulator or standards body.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
-      "quote": "A regulation document published by an official regulator or standards body.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "What's changing; Scope; Governance guidance",
-      "type": "behaviour",
-      "claim": "The regulation upload accepts PDF format only.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
-      "quote": "For PDF upload: ... PDF format only.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Learn also documents creating a regulation template from a blank template.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
-      "quote": "you can create custom regulation templates using one of two methods: ... Upload a regulation in PDF format ... Start from a blank template",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "Scope: Input",
-      "type": "behaviour",
-      "claim": "The PDF creation steps have the administrator select applicable services.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
-      "quote": "Select applicable services.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
+      "n": 62,
       "where": "Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "The publishing procedure allows publishing notes to be entered.",
+      "claim": "The publication procedure lets the admin enter publishing notes.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
       "quote": "Confirm template details and optionally provide notes, and then select Publish template.",
@@ -614,24 +707,35 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "Governance guidance: Before rollout",
+      "n": 63,
+      "where": "rationale: impact",
+      "type": "role",
+      "claim": "The documented users of template creation hold Compliance Manager roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/compliance-manager-create-template",
+      "quote": "A user must hold a role of Compliance Manager Administration or Compliance Manager Assessor.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance guidance: At rollout; Risk assessment: Data exposure",
       "type": "consistency",
-      "claim": "The checklist asks readers to inventory Compliance Manager role holders and check the licence counter without corresponding control rows.",
+      "claim": "The instruction to review overall Compliance Manager roles is represented in the controls table.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Review who holds the Compliance Manager Administration and Compliance Manager Assessor roles ... Check the Regulation licenses used counter ... Controls rows cover PDF creation, per-regulation access and the absent tenant switch.",
+      "quote": "also review overall Compliance Manager roles ... (see the controls table). The table covers PDF creation, per-regulation access and a missing tenant switch; it has no overall-role management row.",
       "severity": "minor",
-      "fix": "The role-holder inventory and Regulation licenses used counter checks have no corresponding table rows. Remove those two checklist bullets; retain the existing role and licensing discussion. Do not add control rows during correction."
+      "fix": "Remove '; also review overall Compliance Manager roles, which removing a regulation-based role does not remove' from the At rollout checklist bullet. Remove '(see the controls table)' from the Data exposure paragraph's instruction to change the overall role. Keep the verified overall-role explanation in the prose; do not add a control row."
     }
   ],
   "precheck": {
-    "at": "2026-11-22T02:58:57.129Z",
+    "at": "2026-11-22T04:02:06.669Z",
     "summary": {
       "links": 6,
       "unreachable": 0,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 0,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
@@ -679,7 +783,10 @@
           "Compliance Manager",
           "Regulations",
           "Create new template",
-          "Upload PDF document"
+          "Upload PDF document",
+          "Scan and extract",
+          "Review draft template",
+          "Publish template"
         ],
         "missing": []
       },
@@ -693,12 +800,23 @@
           "Compliance Manager",
           "Regulations",
           "regulation",
-          "Manage user access"
+          "Manage user access",
+          "role",
+          "Add readers / Add assessors / Add contributors"
         ],
-        "missing": []
+        "missing": [
+          "Add readers / Add assessors / Add contributors"
+        ]
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-22",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

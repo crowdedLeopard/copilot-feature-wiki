@@ -4,7 +4,7 @@ slug: "m365-copilot-discover-graph-connector-prompts-in-the-prompt-gallery-when-
 roadmapId: 501448
 topic: "m365-copilot"
 products: ["Microsoft Copilot (Microsoft 365)"]
-summary: "Roadmap item: popular graph connector prompts are planned for the Prompt Gallery in Copilot Chat. Microsoft has published no admin control, default or licence for it, so check connector licensing and watch the item."
+summary: "Roadmap item: graph connector prompts are planned for the Prompt Gallery in Copilot Chat. No admin control or default is published; Copilot Chat is included with eligible Microsoft 365 licences, but licensing for these prompts is not yet published."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "No Microsoft page states a licence for graph connector prompts in the Prompt Gallery. Connector licensing is published separately: federated connectors need a Microsoft 365 Copilot add-on licence (or Microsoft 365 E7)."
+  model: "included"
+  notes: "Copilot Chat is included with eligible Microsoft 365 licences; licensing specific to these new prompts is not yet published. Connector licensing is published separately: federated connectors need a Microsoft 365 Copilot add-on licence (or Microsoft 365 E7)."
 audiences: ["m365-admin","change-adoption","end-user"]
 tags: ["m365-copilot","copilot-chat","copilot-connectors","prompt-gallery","adoption"]
 sources:
@@ -30,6 +30,12 @@ sources:
     kind: "learn"
   - title: "Prerequisites for deploying connectors"
     url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites"
+    kind: "learn"
+  - title: "Copilot connectors overview"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview"
+    kind: "learn"
+  - title: "Microsoft Copilot overview"
+    url: "https://learn.microsoft.com/copilot/plan/copilot-overview"
     kind: "learn"
   - title: "Microsoft 365 Roadmap item 501448"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=501448"
@@ -51,19 +57,23 @@ changes:
     note: "First briefing: roadmap item for graph connector prompts in the Prompt Gallery; Microsoft Learn documents no control, default or licence for it yet."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 41 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after the independent check: removed the unsupported 'not a new data path' claim, added the Microsoft 365 E7 alternative, removed four checklist steps without control rows, and restated licensing."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 43 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 41
-  confirmed: 38
+  claims: 43
+  confirmed: 41
   unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "6cf675fbfb1ebd61a8657394e5fd64f6"
+  contradicted: 1
+  attempts: 2
+  hash: "657693ec87826595826c1141d0324388"
 ---
 
 ## What's changing
@@ -76,7 +86,7 @@ The record lists the item as In development, with a target of June CY2026, relea
 
 ## Why it matters
 
-This is a discoverability change, not a new data path: it puts example prompts for connected data in front of users in Copilot Chat. If it reaches your tenant, users may start asking Copilot questions about content indexed from external systems, so the quality of connector permissions and of the indexed content matters more than it did.
+The roadmap describes extra graph connector prompts in the existing Prompt Gallery for use in Copilot Chat; it does not describe changes to data access. If it reaches your tenant, users may start asking Copilot questions about content indexed from external systems, so the quality of connector permissions and of the indexed content matters more than it did.
 
 Microsoft has not stated what happens on arrival, so base planning on no source saying that existing behaviour changes. The practical task is to know which connectors you have deployed and who is licensed to use them before users are prompted towards them.
 
@@ -93,12 +103,12 @@ Microsoft has not stated what happens on arrival, so base planning on no source 
 - Nothing in the record describes autonomous behaviour or write actions; the item adds prompts to a gallery.
 
 **Change & support**
-- Users may see connector prompts they cannot use if they hold no qualifying licence, which can generate support questions. Federated connectors need a Microsoft 365 Copilot add-on licence, per the connector prerequisites page.
+- Users may see connector prompts they cannot use if they hold no qualifying licence, which can generate support questions. Federated connectors need a Microsoft 365 Copilot add-on licence or Microsoft 365 E7, per the connector prerequisites page.
 - No admin setting for this feature is documented, so communication to users is the available lever.
 
 ## Cost and licensing
 
-No licence or meter is published for graph connector prompts in the Prompt Gallery. The Prompt Gallery page and the roadmap record name none.
+Copilot Chat is included with eligible Microsoft 365 licences; licensing specific to these new prompts is not yet published.
 
 Connector licensing is published separately on the connectors prerequisites page. It states that federated Copilot connectors are available only to tenants and users with a Microsoft 365 Copilot add-on licence (or Microsoft 365 E7), and that if your organisation has Microsoft 365 Copilot licences, connector grounding in Copilot is included and no extra charges apply. Whether the new prompts are limited to any connector type or licence is not yet published.
 
@@ -113,17 +123,13 @@ Which users see the prompts, and whether a connector must be deployed or a licen
 ## Governance guidance
 
 ### Before rollout
-- Confirm in the Microsoft 365 admin center which connectors your organisation has deployed, as an AI administrator, so you know which connected data the prompts could point at.
-- Check which users hold a Microsoft 365 Copilot add-on licence, because federated connectors require it per the connector prerequisites page.
-- Review the permissions on connector content that Copilot can already return, since prompts make that content easier to discover.
+- Watch the roadmap item and Message center for a status change from In development.
 
 ### At rollout
-- Watch the roadmap item and Message center for a status change from In development.
 - Tell service desk and champions that suggested prompts for connected data may appear in Copilot Chat, and who is licensed to use them.
 
 ### After rollout
 - Check the Prompt Gallery in a test account with and without a Copilot licence to see who the connector prompts appear for, and record the result.
-- Use the Prompt Gallery export cmdlets, if you need an audit of saved, liked or shared prompts.
 
 ## Governance controls
 
@@ -157,10 +163,6 @@ impact: Low. Users with Copilot Chat would see extra suggested prompts; nothing 
 <!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: This change is not a new data path. | Found: Searched: "graph connector prompts" "Prompt Gallery"; Copilot Prompt Gallery graph connector prompts Copilot Chat default admin switch per connector Microsoft Graph API. Read roadmap, Prompt Gallery and connector overview; none states that this feature introduces no new data path. | Fix: Replace 'This is a discoverability change, not a new data path: it puts example prompts for connected data in front of users in Copilot Chat.' with 'The roadmap describes extra graph connector prompts in the existing Prompt Gallery for use in Copilot Chat; it does not describe changes to data access.'
-- [contradicted, blocker] Risk assessment: Change & support; Governance guidance; front matter: licensing.notes; Cost and licensing / licensing: Federated connectors require a Microsoft 365 Copilot add-on licence, with E7 given as an alternative in the notes and cost section but omitted in the risk section and licensing checklist. | Found: Federated Copilot connectors are available only to tenants and users with a Microsoft 365 Copilot add-on license (or Microsoft 365 E7). | Fix: In Risk assessment, replace 'Federated connectors need a Microsoft 365 Copilot add-on licence' with 'Federated connectors need a Microsoft 365 Copilot add-on licence or Microsoft 365 E7'. Remove the Before rollout licensing bullet, which omits E7; the complete entitlement requirement already appears in Cost and licensing. Keep the already qualified notes and cost paragraph. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model and notes; summary; Cost and licensing; rationale: cost / licensing: Licensing is unknown because Microsoft publishes no licence specific to graph connector prompts in Prompt Gallery. | Found: Copilot Chat (Basic) is the standalone baseline experience included with eligible Microsoft 365 licenses. Searched: Copilot Prompt Gallery license requirements Microsoft 365 Copilot Chat connector suggested prompts; read Prompt Gallery and connector prerequisites, with no prompt-specific entitlement | Fix: Set licensing.model to included for this new gallery option inside Copilot Chat. Replace the first licensing note and the summary's 'no ... licence' wording with: 'Copilot Chat is included with eligible Microsoft 365 licences; licensing specific to these new prompts is not yet published.' Cite https://learn.microsoft.com/copilot/plan/copilot-overview. Keep the separately documented connector licensing qualification. | Source: https://learn.microsoft.com/copilot/plan/copilot-overview#copilot-features-in-microsoft-365-apps
-- [supported, minor] Risk assessment: Data exposure; Governance guidance; rationale: risk / applicability: Connector content returned by Copilot remains constrained by the user's access to that content. | Found: Security enforced - Users only see content they're authorized to access. | Fix: Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/overview for the connector permission-boundary statement; the current sources do not state that boundary. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/overview
-- [contradicted, minor] Governance guidance; controls / consistency: The governance checklist names connector inventory, licence checks, connector permissions and Prompt Gallery export, but none has a controls-table row. | Found: Confirm ... which connectors your organisation has deployed; Check which users hold ... a licence; Review the permissions on connector content; Use the Prompt Gallery export cmdlets. The table has only 'Whether graph connector prompts appear in the Prompt Gallery'. | Fix: The Before rollout connector-inventory, licence and permission checks and the After rollout export step have no corresponding controls-table row. Remove these four checklist bullets; retain the existing documented licensing and export descriptions in the body rather than adding unverified control rows.
+- [contradicted, blocker] Governance controls / role: Connectors themselves are governed by an AI administrator in the Microsoft 365 admin center. | Found: To manage federated connectors, you need one of the following administrator roles: Global Administrator; Search Administrator. | Fix: Narrow the sentence to the operation supported by the cited prerequisites page: 'Connectors themselves are deployed separately by an AI administrator in the Microsoft 365 admin center.' Remove 'and governed'; deployment prerequisites do not establish the role for every connector governance operation. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors
+- [unsupported, blocker] Risk assessment: Data exposure; rationale: risk / applicability: Answers to the new connector prompts can only draw on connector content Copilot already reaches for the user, so existing deployed connectors completely determine their data reach. | Found: Searched: Copilot connector prompts Prompt Gallery answers existing data access permissions connector content. Read connectors overview and Prompt Gallery. Permission filtering is stated, but no text establishes unchanged connector reach or the new prompts' retrieval mechanism. | Fix: Replace the second sentence of the Data exposure bullet with 'The connectors overview states that users only see content they are authorised to access.' Replace the last sentence of the risk rationale with the same narrower statement. Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/overview; do not infer unchanged data reach from roadmap silence.
 -->

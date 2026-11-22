@@ -1,0 +1,704 @@
+{
+  "slug": "m365-admin-center-organizational-data-granular-access-policy-controls-for-custom-attribute",
+  "roadmapId": 564805,
+  "title": "Microsoft 365 admin center: access policies for Organizational Data custom attributes",
+  "status": "verified-with-gaps",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 56,
+    "confirmed": 54,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 1,
+    "minor": 2
+  },
+  "summary": "The briefing passes: the roadmap facts, Staging restriction, licensing and delegate-access behaviour are supported. The admin route needs its remaining editor steps and a note about differing Microsoft navigation guidance; the assertion that agent capabilities are unchanged is not documented.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; title",
+      "type": "record",
+      "claim": "The update lets administrators release custom attributes to specific users or groups rather than broadly to all employees or all managers.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This update enables admins to release custom attributes to specific users or groups, rather than broadly to all employees or all managers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Administrators can configure whether leaders and managers may share non-public data with Workforce Insights delegates.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Additionally, admins can configure whether leaders and managers are permitted to share non-public data with Workforce Insights delegates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "The roadmap associates the feature with Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft 365 admin center\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing; Open questions",
+      "type": "record",
+      "claim": "The record lists General Availability and Preview as release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Web is the only platform listed in the record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-08-17T22:52:47.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-08-17T22:52:47\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The control is on: its default Staging policy restricts access without an administrator configuring an audience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "Staging is the default policy for custom attributes. The default settings for Staging don't release the data to any users. Admin configuration is required to make custom attributes available to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Access policies are an included option within Organizational Data Service and its consuming apps' licensing, rather than a separately documented entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "Licensing requirements vary based on the Microsoft 365 or Viva app that will consume organizational data from Microsoft 365 Organizational Data Service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Organizational Data Service licensing requirements depend on the consuming app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "Licensing requirements vary based on the Microsoft 365 or Viva app that will consume organizational data from Microsoft 365 Organizational Data Service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "Workforce Insights users require paid Microsoft Copilot licences, described as Microsoft 365 Copilot on the configuration page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/configure-workforce-insights-agent",
+      "quote": "Workforce Insights Agent (Frontier) requires a paid Microsoft 365 Copilot license, and the tenant has to enroll in Microsoft Frontier program.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: licensing.notes; Risk assessment: Security & identity; Cost and licensing; Governance guidance",
+      "type": "licensing",
+      "claim": "Workforce Insights delegates also require a paid Microsoft Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/workforce-insights-agent",
+      "quote": "Delegates also require a paid Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The Learn pages publish no separate price or meter for Organizational Data access policies.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Organizational Data Service\" \"access policies\" pricing meter licensing. Opened get-started, set-access-policies, configure-workforce-insights-agent and workforce-insights-agent; none names a separate policy price or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn lists Public (internal), Limited access - Selected internal, Limited access - Manager level and Limited access - Staging.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "Public (internal)\nLimited access - Selected internal\nLimited access - Manager level\nLimited access - Staging",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Staging is intended for controlled release to a small number of users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "Visibility: Intended for controlled release to a small number of users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "default",
+      "claim": "Staging has no additional users as its default audience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "Limited access - Staging\nVisibility: Intended for controlled release to a small number of users\nDefault audience: No additional users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "summary; What's changing; Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "type": "default",
+      "claim": "Staging is the default access policy for custom attributes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "The default access policy for custom attributes is Staging.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "default",
+      "claim": "Learn says custom attributes remain unavailable to users until Staging is configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "Until the Staging policy is configured, no users can access data for custom attributes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; controls[0].governs; Governance controls",
+      "type": "behaviour",
+      "claim": "The configurable policy's Users setting defines who can access user data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "Users: Defines who can access user data",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment: Data exposure; controls[0].governs; Governance controls",
+      "type": "behaviour",
+      "claim": "Population group defines whose data is available to the user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "Population group: Defines which data is available to the user",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The population can be restricted by reporting hierarchy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "Filter by reporting hierarchy limits the user to data for the people who report to them directly or indirectly (plus their own data).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The population can be filtered by user attributes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "Filter by user attributes allows you to specify criteria. Only users who meet the criteria are available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment: Security & identity; controls[0].governs and note",
+      "type": "behaviour",
+      "claim": "Allow users to delegate access gives an assigned Workforce Insights delegate the same population as the user for attributes governed by that policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "When enabled, if a user has assigned a delegate in Workforce Insights, their delegate has access to the same population as the user under the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A user can still assign a delegate when Allow users to delegate access is disabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "When disabled, the user can still assign a delegate in Workforce Insights",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "With delegation disabled, the delegate does not receive the user's population scope for attributes where the policy does not enable delegation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "the delegate won't have access to the user's population scope for attributes where delegation is not enabled in the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Open questions",
+      "type": "availability",
+      "claim": "The Workforce Insights agent remains in the Microsoft Frontier program and is subject to change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/workforce-insights-agent",
+      "quote": "The Workforce Insights agent is in the Microsoft Frontier program and subject to change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Custom attributes can contain sensitive organizational data.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This provides a more conservative default approach for managing sensitive organizational data, while also supporting staged rollout of new attributes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters",
+      "type": "applicability",
+      "claim": "Changes to access policies apply to data from any Organizational Data Service connector.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "Any changes you make to access policies apply to data from any Microsoft 365 Organizational Data Service connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Selected internal can release an attribute to All users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "Selected Internal: All users; Custom list",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Manager level can release an attribute to Managers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "Manager level: Managers; Custom list of managers",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Microsoft advises using the strictest policy that meets the organization's needs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/configure-workforce-insights-agent",
+      "quote": "Use the strictest policy that meets your needs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Microsoft advises testing with a small group using Staging first.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/configure-workforce-insights-agent",
+      "quote": "Use the Staging policy to test with a small group first.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "The default Population group makes all user data available to users who have access under the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "Population group: Defines which data is available to the user\nDefault: All user data is available",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Users can access data describing themselves, including performance ratings, in addition to policy-granted permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "In Microsoft 365, users have access to data that describes themselves, such as performance ratings. This access is available in addition to any permissions granted by a policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "behaviour",
+      "claim": "Reserved attributes retain preset, non-editable access policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "Reserved attribute access policies are preset and aren't editable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "There is no change to what the agent can do.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Workforce Insights\" \"access policies\" \"no change\" actions. Read set-access-policies, configure-workforce-insights-agent, workforce-insights-agent and manage-access-wfi-agent; they describe data scope, not an unchanged action capability.",
+      "severity": "major",
+      "fix": "Remove 'No change to what the agent can do:' and retain the supported statement that access policies decide which attributes and employee groups queries can return."
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Autonomy & actions; Scope",
+      "type": "applicability",
+      "claim": "Access policies govern fields and employee groups available in Workforce Insights and organizational queries in Microsoft 365 Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/configure-workforce-insights-agent",
+      "quote": "Access policies: Set which fields and employee groups each user can see. They apply to the agent and organizational queries in Microsoft 365 Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope",
+      "type": "applicability",
+      "claim": "Organizational Data access policies affect People Skills services including People Search, People Card and Org Explorer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "Microsoft 365 People Skills services including People Search, People Card, and Org Explorer",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope",
+      "type": "applicability",
+      "claim": "Organizational Data access policies affect Microsoft 365 apps including Teams and Office.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "Microsoft 365 apps including Microsoft Teams, Microsoft Office, and more",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "Insights and Viva Glint are not subject to these same Microsoft 365 and Copilot access policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "Insights and Viva Glint aren't subject to the same access policies configured for Microsoft 365 and Microsoft Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Administrators explicitly grant specific users access in Insights and Viva Glint instead.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "Insights and Viva Glint work differently:\nAdmins explicitly grant access to specific users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 Profile requires at least one Exchange Online licence in the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "| Microsoft 365 Profile | At least one Exchange Online license in the tenant |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Insights requires a Microsoft Viva Insights licence or a Microsoft 365 licence that includes Insights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "| Insights | A Microsoft Viva Insights license, or a Microsoft 365 license that includes Insights |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The getting-started licensing table names Microsoft 365 Copilot or Viva for People Skills.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "| People Skills | Microsoft 365 Copilot or Viva.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing",
+      "type": "availability",
+      "claim": "The tenant must enrol in Microsoft Frontier to use Workforce Insights Agent (Frontier).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/configure-workforce-insights-agent",
+      "quote": "Workforce Insights Agent (Frontier) requires a paid Microsoft 365 Copilot license, and the tenant has to enroll in Microsoft Frontier program.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Scope; controls[0].note; Governance controls; Governance guidance: After rollout",
+      "type": "role",
+      "claim": "Global Administrator and Organizational Data Source Administrator are the roles that create and manage Organizational Data access policies centrally.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "The Microsoft 365 Global Administrator or the Organizational Data Source Administrator create and manage these policies centrally in Microsoft 365 Organizational Data Service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].ui; Governance controls: table",
+      "type": "admin-path",
+      "claim": "The printed Microsoft 365 admin center route reaches Edit access policies, where audiences, population and delegation are configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "Under the Organization-wide access policy section, select Edit access policies. ... To edit one of the configurable access policies, select the access policy from the list, then select Edit access policy.",
+      "severity": "minor",
+      "fix": "Use 'Settings > Setup > Migration and Imports > tools to migrate or import data > Microsoft 365 Organizational Data Service > Settings > Organization-wide access policy > Edit access policies > Configure access policies > policy > Edit access policy'. Note that Users, Population group and Allow users to delegate access are configured there. Also note that the cited get-started page gives a different migration route: 'Setup > Migration resources > Migrate to the cloud with confidence > Explore migration & import tools > Microsoft 365 Organizational Data Service' (https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started#step-3-access-microsoft-365-organizational-data-service)."
+    },
+    {
+      "n": 51,
+      "where": "controls[0].note; Governance controls; Governance guidance: At rollout; Scope",
+      "type": "behaviour",
+      "claim": "The wizard applies policies to individual custom attributes shared with Workforce Insights in its subsequent Apply policies step.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "Access policies for custom attributes apply only to custom attributes that are shared with Workforce Insights. ... To update attributes, select them from the list, choose Select access policy, and pick the policy you want to apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Public (internal) is a system policy with settings that cannot be changed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+      "quote": "This is an access policy with defined settings that can't be changed. The only system policy available is Public (internal).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No API or PowerShell operation is documented for configuring Organizational Data attribute access policies.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Organizational Data Service\" \"access policies\" \"Microsoft Graph\" PowerShell API; \"Organizational Data Service\" PowerShell access policy Selected internal. Read set-access-policies, Graph microsoftApplicationDataAccessSettings, viva/manage-access-policies and manage-access-wfi-agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Open questions: existing custom attributes",
+      "type": "absence",
+      "claim": "Microsoft has not documented whether previously shared custom attributes migrate to Staging or retain their prior audience.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Organizational Data\" \"custom attributes\" \"existing\" \"Staging\"; \"Organizational Data\" \"Staging\" existing custom attributes migration \"delegate\" default. Read set-access-policies and configuration page; results about Viva Glint onboarding do not establish Workforce Insights policy migration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Open questions: delegation default",
+      "type": "absence",
+      "claim": "Learn describes both states of Allow users to delegate access but does not state its default.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Allow users to delegate access\" \"default\"; \"Organizational Data\" \"Staging\" existing custom attributes migration \"delegate\" default. Read set-access-policies, workforce-insights-agent and manage-access-wfi-agent; none states this policy option's default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "front matter: action",
+      "type": "consistency",
+      "claim": "The prepare action rating fits this low-risk, low-cost new control.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "action: \"prepare\"; risk: \"low\"; cost: \"low\"; summary: \"Launched; review before you share attributes.\" The standard defines review for a new control and reserves prepare for a new control closing high exposure.",
+      "severity": "minor",
+      "fix": "Set action to 'review': this is a launched new control rated low in risk and cost, with review needed before an administrator chooses to share attributes."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T04:01:59.987Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=564805",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/configure-workforce-insights-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/workforce-insights-agent",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users see each custom attribute, whose data they see, and whether delegates inherit access",
+        "docs": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/set-access-policies",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Setup",
+          "Migration and Imports",
+          "Microsoft 365 Organizational Data Service",
+          "Settings",
+          "Organization-wide access policy",
+          "Edit access policies"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

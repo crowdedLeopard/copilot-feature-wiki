@@ -22,21 +22,18 @@ licensing:
 audiences: ["m365-admin","change-adoption"]
 tags: ["organizational-messages","m365-admin-center","hybrid-identity","adoption","admin-controls"]
 sources:
-  - title: "Microsoft 365 Roadmap 503564"
-    url: "https://www.microsoft.com/microsoft-365/roadmap?id=503564"
-    kind: "roadmap"
   - title: "Organizational messages in the Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365"
     kind: "learn"
   - title: "Organizational messages in Microsoft 365 FAQ"
     url: "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq"
     kind: "learn"
-  - title: "Create deviceManagementConfigurationPolicy"
-    url: "https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationpolicy-create?view=graph-rest-beta"
-    kind: "learn"
   - title: "Assign Microsoft Entra roles"
     url: "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal"
     kind: "learn"
+  - title: "Microsoft 365 Roadmap 503564"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=503564"
+    kind: "roadmap"
 videos: []
 related: ["m365-admin-center-organizational-messages-now-supports-email-messages"]
 controls:
@@ -44,18 +41,15 @@ controls:
     scope: "group"
     ui:
       surface: "Microsoft Intune admin center"
-      path: "Devices > Manage devices > Configuration > Policies > Create > New Policy > Windows 10 and later > Settings catalog > Configuration settings > Add settings > Experience > Enable delivery of organizational messages (User)"
+      path: "Devices > Manage devices > Configuration > Policies > Create > New Policy > Windows 10 and later > Settings catalog > Create > Configuration settings > Add settings > Experience > Enable delivery of organizational messages (User)"
       docs: "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365"
-    api:
-      kind: "graph"
-      call: "POST /beta/deviceManagement/configurationPolicies"
-      docs: "https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationpolicy-create?view=graph-rest-beta"
-    note: "Applies to Windows delivery only. The Graph call creates the policy that holds the settings; beta API."
+    api: null
+    note: "Applies to Windows delivery only."
   - governs: "Who can write and approve organizational messages"
     scope: "user"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Users > Active users > user > Manage roles > Admin center access > Show all by category > Other > Organizational Messages Writer"
+      path: "Show all > Users > Active users > user > Manage roles > Admin center access > Show all by category > Other > Organizational Messages Writer"
       docs: "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq"
     api:
       kind: "graph"
@@ -79,19 +73,23 @@ changes:
     note: "First briefing: records hybrid-joined device support, the Windows delivery policies and the roles and licences for organizational messages."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 62 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected the Intune path (second Create), removed the Graph create-policy call from the Windows delivery row, added Show all to the role path and trimmed three checklist items with no table row."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 71 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 59
+  claims: 71
+  confirmed: 68
   unconfirmed: 0
   contradicted: 3
-  attempts: 1
-  hash: "ff2c3b8012053ecacfa6cbf3f4e43818"
+  attempts: 2
+  hash: "e6840b2fd7545e8fad9182a799491020"
 ---
 
 ## What's changing
@@ -145,8 +143,6 @@ Authors need the Organizational Messages Writer role and approvers the Organizat
 ### Before rollout
 - Inventory which Windows devices in your tenant are Microsoft Entra hybrid joined, and confirm they run Windows 11, version 25H2 or 24H2 Enterprise if you will use Windows channels. The service owner does this with the device team.
 - Create or check the Intune settings catalog policy that allows organisational messages and assign it to groups containing hybrid-joined devices (controls table, row 1).
-- Check that no Intune device restriction policy sets Windows Spotlight, Windows Spotlight on lock screen, Windows Tips, Windows Spotlight in action center or Windows Spotlight personalization to Block.
-- Open the two Windows delivery endpoints on the firewall used by hybrid-joined devices.
 
 ### At rollout
 - Assign the Organizational Messages Writer and Approver roles to named people only (controls table, row 2).
@@ -154,7 +150,6 @@ Authors need the Organizational Messages Writer role and approvers the Organizat
 - Allow at least 24 hours for the test message to arrive, and longer for a tenant that has not scheduled a message in the past 30 days.
 
 ### After rollout
-- Review Messages seen, Clicks and Dismisses in the Review activity view to confirm hybrid-joined users are receiving messages.
 - Cancel any message that was scheduled to the wrong group from Manage messages (controls table, row 3).
 - Recheck the Intune policies when you add device groups.
 
@@ -165,15 +160,15 @@ Authors need the Organizational Messages Writer role and approvers the Organizat
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Windows devices can receive organizational messages</strong><br><small>Group</small><br><small class="controls__note">Applies to Windows delivery only. The Graph call creates the policy that holds the settings; beta API.</small></td><td data-label="Admin UI"><strong>Microsoft Intune admin center</strong><br>Devices › Manage devices › Configuration › Policies › Create › New Policy › Windows 10 and later › Settings catalog › Configuration settings › Add settings › Experience › Enable delivery of organizational messages (User) <a href="https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/deviceManagement/configurationPolicies</code> <a href="https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationpolicy-create?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Who can write and approve organizational messages</strong><br><small>User</small><br><small class="controls__note">Organizational Messages Writer and Approver are Microsoft Entra roles. The request body sets principalId, roleDefinitionId and directoryScopeId.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Users › Active users › user › Manage roles › Admin center access › Show all by category › Other › Organizational Messages Writer <a href="https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Windows devices can receive organizational messages</strong><br><small>Group</small><br><small class="controls__note">Applies to Windows delivery only.</small></td><td data-label="Admin UI"><strong>Microsoft Intune admin center</strong><br>Devices › Manage devices › Configuration › Policies › Create › New Policy › Windows 10 and later › Settings catalog › Create › Configuration settings › Add settings › Experience › Enable delivery of organizational messages (User) <a href="https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Who can write and approve organizational messages</strong><br><small>User</small><br><small class="controls__note">Organizational Messages Writer and Approver are Microsoft Entra roles. The request body sets principalId, roleDefinitionId and directoryScopeId.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Show all › Users › Active users › user › Manage roles › Admin center access › Show all by category › Other › Organizational Messages Writer <a href="https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Stopping or removing a scheduled or active message</strong><br><small>Tenant</small><br><small class="controls__note">Manage messages lets the team cancel, delete, approve and copy messages.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Show all › Reports › Organizational messages › Manage messages <a href="https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 Windows delivery depends on Intune policy: the Learn page says some policies can block delivery of organizational messages, and that tenant policies are needed only for Windows surfaces, not for Teams or email. Learn describes no separate admin switch for hybrid-joined devices.
 
-The Graph call in row 1 creates the settings catalog policy object; the Experience settings are chosen in the policy, as the Learn steps show. The Intune Graph /beta API requires an active Intune licence and may change.
+Row 1: Microsoft Learn documents no API for this Intune setting at the time of writing (November 2026); the Learn page gives the Intune admin center steps only.
 
 Row 2 assigns Microsoft Entra roles, so it needs an admin who can assign roles. The Graph call applies to any Entra role; the Organizational Messages roles are the ones relevant here. Row 3: the Learn page documents cancelling in the admin centre, and at the time of writing (November 2026) it documents no API for cancelling a message.
 
@@ -192,9 +187,12 @@ impact: Low. Admins notice first, because they author and target messages; end u
 <!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: The printed Intune route goes from Settings catalog directly to Configuration settings and then to Enable delivery of organizational messages (User). | Found: Under Profile type, select Settings catalog. Select Create. The Create profile wizard opens. | Fix: Replace the path with 'Devices > Manage devices > Configuration > Policies > Create > New Policy > Windows 10 and later > Settings catalog > Create > Configuration settings > Add settings > Experience > Enable delivery of organizational messages (User)'. The second Create opens the wizard, as documented at https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365. | Source: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365
-- [contradicted, blocker] controls[0].api; Governance controls table / command: POST /beta/deviceManagement/configurationPolicies is the automation equivalent for enabling Windows organisational-message delivery. | Found: Create a new deviceManagementConfigurationPolicy object. In the request body, supply a JSON representation for the deviceManagementConfigurationPolicy object. | Fix: Set controls[0].api to null and remove its Graph-create explanation from the row note and Governance controls prose. The cited operation creates the policy container; its documented request properties do not set Enable delivery of organizational messages (User), so it is not the equivalent delivery control. | Source: https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationpolicy-create?view=graph-rest-beta
+- [contradicted, blocker] Risk assessment: Change & support / applicability: Disable Cloud Optimized Content is among the device restriction settings that can be set to Block. | Found: Make sure Disable Cloud Optimized Content is set to Disabled. | Fix: Remove ', Disable Cloud Optimized Content' from the parenthesised list in Change & support. The remaining Windows Spotlight and Windows Tips examples use the documented Block value; Disable Cloud Optimized Content instead uses Enabled/Disabled. | Source: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365
+- [contradicted, blocker] controls[0].api; Governance controls: Row 1 / absence: Microsoft Learn documents no API for the Intune setting that enables organizational-message delivery. | Found: Update the properties of a deviceManagementConfigurationSetting object. ... PATCH /deviceManagement/configurationPolicies/{deviceManagementConfigurationPolicyId}/settings/{deviceManagementConfigurationSettingId} ... settingInstance ... Setting Instance | Fix: Replace controls[0].api with graph 'PATCH /beta/deviceManagement/configurationPolicies/{deviceManagementConfigurationPolicyId}/settings/{deviceManagementConfigurationSettingId}', citing https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationsetting-update?view=graph-rest-beta. Replace the Row 1 absence sentence with 'The Intune beta API updates an existing policy setting through settingInstance; identify the Enable delivery of organizational messages (User) setting in that policy. This general setting-update API requires an active Intune licence and is not a hybrid-specific endpoint.' Add the row note 'Beta API; the request body sets settingInstance.' The main page identifies this as a settings catalog setting, and the reference documents updating the setting itself rather than merely creating its policy. | Source: https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationsetting-update?view=graph-rest-beta
+- [contradicted, blocker] front matter: licensing.model / consistency: The documented entitlement is a mixed licensing model rather than inclusion in qualifying existing product licences. | Found: Page field: model: mixed. Learn: Admins and users can access these advanced features for organizational messages when the tenant has at least one of the following licenses: Microsoft 365 E3, or E5 ... Office 365 E3 or Office 365 E5 ... Windows Enterprise E3 or E5. | Fix: Set licensing.model to 'included'. Keep the named qualifying licences and the existing FAQ qualifications for Windows and Teams custom messages. The schema defines included as part of a licence the product already needs; the cited passages describe entitlement through those licences, not a separate add-on or consumption model. Pre-made availability without those licences does not introduce another purchasing model. | Source: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The Microsoft 365 admin center role-assignment path reaches Organizational Messages Writer through Users, Active users and Manage roles. | Found: From the left navigation bar, select ... Show all, and then select Users to expand it. Under Users, select Active users. | Fix: Use the full documented path 'Show all > Users > Active users > user > Manage roles > Admin center access > Show all by category > Other > Organizational Messages Writer'. The omitted Show all is the navigation-expansion step; the remaining printed labels match https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq. | Source: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq
-- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: Every control the governance checklist asks the reader to check or configure has a controls-table row. | Found: Checklist: Check that no Intune device restriction policy sets ... to Block; Open the two Windows delivery endpoints; Review Messages seen, Clicks and Dismisses. Table: Windows delivery setting, author/approver roles, and stopping/removing messages only. | Fix: Remove the checklist bullets beginning 'Check that no Intune device restriction policy', 'Open the two Windows delivery endpoints', and 'Review Messages seen, Clicks and Dismisses'. Their factual explanations can remain in the body; these checklist controls have no corresponding table rows. Do not add rows as part of this correction.
+- [supported, minor] controls[0].ui / admin-path: The printed Intune route reaches the Enable delivery of organizational messages (User) setting. | Found: Under Platform, select Windows 10 and later. Under Profile type, select Settings catalog. Select Create. ... In the Configuration settings page, select + Add settings. ... select Experience ... Enable delivery of organizational messages (User) | Fix: Use the full route 'Devices > Manage devices > Configuration > Policies > Create > New Policy > Platform > Windows 10 and later > Profile type > Settings catalog > Create > Configuration settings > Add settings > Settings picker > Browse by category > Experience > Settings name > Enable delivery of organizational messages (User)'. The missing steps are headings, not additional choices. Add the note 'Set Enable delivery of organizational messages (User) to Allow in Configuration settings.' | Source: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365
+- [supported, minor] controls[1].ui / admin-path: The printed Microsoft 365 admin center route reaches the Organizational Messages Writer role checkbox. | Found: select Manage roles under Roles. ... select Admin center access, and then select Show all by category. ... Other ... select the checkbox next to Organizational Messages Writer and/or Organizational Messages Approver | Fix: Use 'Show all > Users > Active users > user > Roles > Manage roles > Admin center access > Show all by category > Other > Organizational Messages Writer'. The omitted Roles step is a heading, so the current route remains navigable. | Source: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq
+- [supported, minor] controls[2].ui / admin-path: Show all > Reports > Organizational messages > Manage messages reaches the area for stopping or removing messages. | Found: select ... Show all, and then select Reports ... select Organizational messages. ... Manage messages ... Cancel, delete, approve, and copy messages. | Fix: Keep the documented route, but make its early stopping point explicit in the note: 'This route opens Manage messages, where Cancel stops a message and Delete removes it; it does not give the individual message action steps.' The cited page lists the actions without providing a complete cancellation procedure. | Source: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365
+- [supported, minor] Open questions: hybrid-specific prerequisite / behaviour: The Learn requirements list only names the device types. | Found: Devices - (For Windows) Only Microsoft Entra ID–joined devices and Microsoft Entra hybrid joined devices are supported. | Fix: Replace 'The Learn requirements list only names the device types' with 'The Devices entry in Learn names the supported device types without giving separate hybrid-specific prerequisites.' The full Requirements section also names roles, tenant policies, Windows versions and firewall endpoints. | Source: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365
 -->

@@ -5,7 +5,7 @@ slug: "usage-reports"
 summary: "The Reports > Usage dashboards in the Microsoft 365 admin center show how people use Microsoft 365 services and Copilot. One tenant setting decides whether they name users, groups and sites; a limited set of admin roles can read them."
 created: "2026-11-22"
 updated: "2026-11-22"
-version: 2
+version: 3
 tags: ["usage-reports","m365-admin-center","analytics","monitoring","privacy","adoption","m365-copilot","microsoft-graph"]
 covers: []
 sources:
@@ -45,6 +45,9 @@ sources:
   - title: "Microsoft 365 Copilot Cost Management API overview"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
     kind: "learn"
+  - title: "Audit log activities"
+    url: "https://learn.microsoft.com/purview/audit-log-activities"
+    kind: "learn"
 related: ["copilot-credits","spending-policies","auditing","viva-feature-access-management","m365-admin-center-copilot-credits-usage-report","m365-admin-center-usage-reports-m365-copilot-connectors"]
 controls:
   - governs: "Whether usage reports conceal user, group and site names"
@@ -80,18 +83,22 @@ changes:
     note: "Corrected after the independent check: reworded the licensing and metered-usage claims, gave the Copilot usage API call with its period argument, and completed the report routes and role-assignment details."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 83 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-22"
+    note: "Corrected after the independent check: the audit event for changing the usage-report privacy setting is now named, and the audit-search checklist step and its open question are removed."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 81 statements not yet confirmed"
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 83
+  claims: 81
   confirmed: 81
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "d8234874ad60f174a64fdfd84b2d4028"
+  contradicted: 0
+  attempts: 0
+  hash: "b881bb4cdec8704a8add92a9610edec7"
 ---
 
 ## What it is
@@ -122,7 +129,7 @@ Some reports describe costs of other mechanisms. The Copilot usage report counts
 ## Risks and limits
 
 - **Names are hidden by default.** Reports and exports show anonymised users until the setting is changed. Changing it affects Graph, Power BI and Teams admin center reports too, and Copilot Credits reports show the Billing Policy ID and user names under the same setting.
-- **The setting is a logged event.** Microsoft says showing identifiable user information is logged in the Microsoft Purview audit log, so changes are traceable.
+- **The setting is a logged event.** Microsoft Purview records changes to usage-report privacy settings as UpdateUsageReportsPrivacySetting (Updated usage report privacy settings).
 - **Role choice decides what a reader sees.** Usage Summary Reports Reader and User Experience Success Manager see no user details. In the Graph reports API, Global Reader and Usage Summary Reports Reader get tenant-level data only.
 - **Data lags.** Expect 24 to 72 hours for most reports, and about 48 hours for Copilot activity. The Copilot Credits report does not refresh automatically; refresh it manually.
 - **Copilot Credits report history is short.** During preview it shows a maximum of 30 days and nothing before 3 May 2025, so do not use it as a billing record.
@@ -152,20 +159,17 @@ The conceal setting is an organisation setting; Microsoft says Global administra
 
 - Check whether **Conceal user, group, and site names in all reports** is on, and who in your organisation depends on named data.
 - Review who holds the reporting roles in the role-assignment table row, and prefer Reports Reader or Usage Summary Reports Reader to Global Administrator.
-- Search the Microsoft Purview audit log for the logged event when identifiable names were last shown.
 - Open Reports > Usage > Microsoft Copilot and confirm which of the usage, Credits and Connectors reports appear in your cloud.
 - Compare any Copilot Credits report figures with your billing records rather than relying on the report's 30-day history.
 
 ## Open questions
 
-- Which audit operation name records showing identifiable user information? The overview says it is logged but does not name the event.
 - Is the report settings API available in US Government clouds? The v1.0 reference lists US Government L4 and L5 as not available, the beta reference lists them as available.
 - Do the 30-day history limit and the pre-3 May 2025 gap on the Copilot Credits report apply after the preview ends?
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Open questions: audit operation name / absence: The audit operation name for showing identifiable user information remains an open documentation question. | Found: Report activities The following table lists the activities for usage reports recorded in the Microsoft 365 audit log. Updated usage report privacy settings | UpdateUsageReportsPrivacySetting | Admin updated privacy settings for usage reports. | Fix: Remove the first Open questions bullet. Replace the existing logged-event sentence in Risks and limits with: 'Microsoft Purview records changes to usage-report privacy settings as UpdateUsageReportsPrivacySetting (Updated usage report privacy settings).' Cite https://learn.microsoft.com/purview/audit-log-activities#report-activities. | Source: https://learn.microsoft.com/purview/audit-log-activities
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] What to check: Search the Microsoft Purview audit log / consistency: The checklist tells readers to search the audit log, but the controls table contains no audit-search row. | Found: What to check: 'Search the Microsoft Purview audit log for the logged event when identifiable names were last shown.' The table contains only name concealment and reporting-role assignment. | Fix: The audit-search checklist step has no controls-table row. Remove that checklist bullet; the existing linked auditing concept and logged-event discussion can remain. Do not add a control row as part of this correction.
+- [supported, minor] What it is: How they work / admin-path: The Copilot usage report is at Reports > Usage > Microsoft Copilot > Copilot > Usage. | Found: On the Usage page, under Reports, select Microsoft Copilot, and then select Copilot. ... On the report page, select the Usage tab to view adoption and usage metrics. | Fix: Include the Reports heading on the Usage page: 'Reports > Usage > Reports > Microsoft Copilot > Copilot > Usage'. The cited page says 'under Reports'; the existing route otherwise gives the correct choices. | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage
+- [supported, minor] What it is: How they work / admin-path: The Copilot Credits report is at Reports > Usage > Microsoft Copilot > Credits. | Found: On the Usage page, under Reports, select Microsoft Copilot, and then select Credits. | Fix: Include the Reports heading on the Usage page: 'Reports > Usage > Reports > Microsoft Copilot > Credits'. The cited page says 'under Reports'; the existing route otherwise gives the correct choices. | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits
 -->

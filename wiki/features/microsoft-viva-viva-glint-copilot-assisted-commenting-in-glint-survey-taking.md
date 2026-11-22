@@ -43,14 +43,6 @@ sources:
 videos: []
 related: ["viva-feature-access-management","microsoft-viva-glint-teams-notification-customization","microsoft-viva-import-hris-data-in-viva-glint-from-microsoft-admin-center"]
 controls:
-  - governs: "Whether survey takers can use Rewrite with Copilot, for the organisation or selected users and groups"
-    scope: "tenant"
-    ui:
-      surface: "Microsoft 365 admin center"
-      path: "Settings > Viva > Viva Glint > Manage settings for Microsoft Copilot in Viva Glint"
-      docs: "https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access"
-    api: null
-    note: "Route to Glint's Copilot access pane; the pages do not place the Survey Taking setting within it. Global, Viva Glint Tenant or AI Administrator. Off by default."
   - governs: "Whether Rewrite with Copilot can be switched on or off for individual surveys or programmes"
     scope: "other"
     ui: null
@@ -69,19 +61,23 @@ changes:
     note: "Corrected after verification: the data-processing bullet now states what the Copilot in Viva Glint privacy page says, and the guest-user restriction is stated as Learn gives it."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 50 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-22"
+    note: "Corrected after verification: removed the controls-table row that gave the existing Copilot in Viva Glint pane's path as the Survey Taking setting's location, which Microsoft does not document."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 55 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 49
-  unconfirmed: 1
-  contradicted: 0
-  attempts: 2
-  hash: "dc56ba672aa19b81732280e4216ebb80"
+  claims: 55
+  confirmed: 54
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "40f27efef66d8864556f27c31e6f3bd3"
 ---
 
 ## What's changing
@@ -141,7 +137,7 @@ The indirect cost is admin time to configure the setting, communications to empl
 - Decide on a pilot group of Microsoft Entra users or groups rather than the whole organisation.
 
 ### At rollout
-- Turn on the Copilot in Viva Glint Survey Taking setting for the pilot users or groups in the Microsoft 365 admin center, using the control in the table below.
+- Turn on the Copilot in Viva Glint Survey Taking setting for the pilot users or groups in the Microsoft 365 admin center. Microsoft documents the setting but does not give its exact navigation path.
 - Allow up to 24 hours for the change to reach users before judging the pilot, and avoid further changes in that window.
 - Tell survey takers that the feature only rewrites their own text, is optional, and that unaccepted suggestions are not saved.
 
@@ -157,12 +153,11 @@ The indirect cost is admin time to configure the setting, communications to empl
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether survey takers can use Rewrite with Copilot, for the organisation or selected users and groups</strong><br><small>Tenant</small><br><small class="controls__note">Route to Glint's Copilot access pane; the pages do not place the Survey Taking setting within it. Global, Viva Glint Tenant or AI Administrator. Off by default.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Viva › Viva Glint › Manage settings for Microsoft Copilot in Viva Glint <a href="https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether Rewrite with Copilot can be switched on or off for individual surveys or programmes</strong><br><small class="controls__note">The feature page states that the feature cannot be enabled or disabled for individual surveys or programs.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The feature page describes one dedicated setting, titled Copilot in Viva Glint Survey Taking, and says it can be managed independently of the existing Copilot in Viva Glint setting. The path in the table is the route to Copilot in Viva Glint access that the feature page links for guidance, and the pages read do not say where the Survey Taking setting sits within it. Learn does not name the featureId for this setting in the Viva Feature Access Management PowerShell documentation at the time of writing (November 2026), so the table gives no call.
+The feature page describes one dedicated setting, titled Copilot in Viva Glint Survey Taking, and says it can be managed independently of the existing Copilot in Viva Glint setting. Microsoft documents the setting but does not give its exact navigation path, so the table has no row for it; the feature page links to [Manage Copilot access in the Microsoft 365 admin center](https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access) for guidance. Learn does not name the featureId for this setting in the Viva Feature Access Management PowerShell documentation at the time of writing (November 2026), so no call is given.
 
 The Copilot access page says Global Administrators, Viva Glint Tenant Administrators and AI Administrators can manage Copilot in Viva Glint, and that policy changes can take up to 24 hours to take effect. Learn states that the setting cannot be applied to individual surveys or programs.
 
@@ -178,8 +173,8 @@ cost: Low. The only cost the pages show is admin time and communications. Learn 
 impact: Low. Nobody sees the feature until an administrator turns the setting on; after that, the people who notice are survey takers who write comments.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[0].ui; Governance controls; Governance guidance: At rollout / admin-path: Settings > Viva > Viva Glint > Manage settings for Microsoft Copilot in Viva Glint is the controls-table route for managing the separate Survey Taking setting. | Found: Searched: Viva Glint Copilot Survey Taking enable disable individual surveys programs setting Microsoft 365 admin center. Read rewrite-comments-copilot-viva-glint and mac-copilot-access: the latter documents the existing Copilot pane, not the separate Survey Taking control. | Fix: Remove controls[0].ui and the corresponding rendered path; because the setting exists but its route has not been documented, remove that row rather than render its UI as 'Not yet documented'. Retain the named setting and the Microsoft guidance link in Governance controls. Replace 'using the control in the table below' in At rollout with 'Microsoft documents the setting but does not give its exact navigation path'. The feature page at https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint states that the setting is independent of the existing Copilot in Viva Glint setting; do not present the existing setting's route as its location.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [contradicted, minor] Governance guidance: At rollout and After rollout; Governance controls / consistency: The checklist tells readers to enable and review the Survey Taking access setting without a matching controls-table row. | Found: Turn on the Copilot in Viva Glint Survey Taking setting for the pilot users or groups in the Microsoft 365 admin center. / Microsoft documents the setting but does not give its exact navigation path, so the table has no row for it | Fix: The At rollout step beginning 'Turn on the Copilot in Viva Glint Survey Taking setting' and the After rollout step beginning 'Review the scope' name an access control with no table row. Remove those checklist directives; retain the documented setting and navigation gap in Governance controls.
 -->

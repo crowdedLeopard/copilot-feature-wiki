@@ -17,8 +17,8 @@ impact: "high"
 defaultState: "on"
 action: "prepare"
 licensing:
-  model: "mixed"
-  notes: "Microsoft's overview says users with the Microsoft 365 Copilot add-on licence get the full experience of Copilot in Word, and users without it can still use Copilot in Word within fair use limits. Which tier gets direct editing by default is not yet published."
+  model: "add-on"
+  notes: "The Microsoft Copilot service description identifies Edit with Copilot in Word as a Premium feature requiring a Microsoft 365 Copilot licence. The release note does not separately describe licence-specific rollout of the new chat default."
 audiences: ["m365-admin","change-adoption","end-user"]
 tags: ["word","m365-copilot","copilot","user-experience","admin-controls","licensing"]
 sources:
@@ -30,6 +30,12 @@ sources:
     kind: "learn"
   - title: "Microsoft Copilot overview"
     url: "https://learn.microsoft.com/copilot/plan/copilot-overview"
+    kind: "learn"
+  - title: "Microsoft Copilot"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot"
+    kind: "learn"
+  - title: "Data protection and auditing for Microsoft Copilot"
+    url: "https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing"
     kind: "learn"
   - title: "Microsoft Copilot requirements"
     url: "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements"
@@ -74,19 +80,23 @@ changes:
     note: "First briefing: Copilot chat in Word edits documents directly by default; roadmap says In development while the release notes list it; no admin switch documented."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 42 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected licensing: the service description requires a Microsoft 365 Copilot licence for Edit with Copilot in Word (add-on); narrowed the Basic-user statement; removed an unsupported 'until now' claim."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 42
-  confirmed: 38
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "15963601cae6dea138daa8a127caa3cf"
+  claims: 50
+  confirmed: 49
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "1b10b31c2a3826121b6cce49c7f32863"
 ---
 
 ## What's changing
@@ -99,14 +109,14 @@ The roadmap record lists the item as In development with a target of March CY202
 
 ## Why it matters
 
-Until now users who wanted Copilot to change a Word document had to switch editing on; the release notes say they no longer need to. In practice a prompt such as "rewrite this paragraph" can now change the document itself rather than only produce text to paste. Microsoft has not stated whether any further step is needed on arrival beyond the user's own off switch, and no admin control for it is documented.
+The release notes say Copilot can now make direct edits in Word chat without users toggling editing on. In practice a prompt such as "rewrite this paragraph" can now change the document itself rather than only produce text to paste. Microsoft has not stated whether any further step is needed on arrival beyond the user's own off switch, and no admin control for it is documented.
 
 For a service owner the exposure is document integrity: shared contracts, policies and reports can be altered by a user's Copilot prompt. The roadmap's reviewable-and-reversible wording and the release notes' tracked changes are the safety net, so help desk and training messages should tell users where to review changes before they save or share a document.
 
 ## Risk assessment
 
 **Data exposure**
-- No new data source is described: the change is about what Copilot can do to the document the user has open. Microsoft Learn does not describe a different data boundary for direct editing, so existing Copilot controls and sensitivity labels apply as they do today.
+- No new data source is described: the change is about what Copilot can do to the document the user has open. Microsoft says Copilot uses existing Microsoft 365 data protection and access controls and honours sensitivity labels when grounding responses and generating content.
 
 **Security & identity**
 - The release notes describe edits made in the user's own Word session. Microsoft Learn documents no separate identity for these edits, and none is assumed here.
@@ -120,15 +130,17 @@ For a service owner the exposure is document integrity: shared contracts, polici
 
 ## Cost and licensing
 
-Microsoft's Copilot overview says users with the Microsoft 365 Copilot add-on licence have access to the full experience of Copilot in Word, Excel, PowerPoint and OneNote, and that users without the add-on can use Copilot in those apps within fair use limits. It also says the chat experiences in Word vary depending on the user's licence and tenant configuration.
+Microsoft's Copilot overview says users with the Microsoft 365 Copilot add-on licence have access to the full experience of Copilot in Word, Excel, PowerPoint and OneNote. Microsoft 365 Copilot (Basic) users without the add-on can use Copilot capabilities in Word, Excel, PowerPoint and OneNote; some features have fair use limits. Copilot Chat (Basic) users do not have this app access. The overview also says the chat experiences in Word vary depending on the user's licence and tenant configuration.
 
-Microsoft Learn documents no separate licence, meter or credit rate for direct editing in Word at the time of writing (November 2026), and the roadmap item names none. Which licence tier receives direct editing by default is not yet published. The indirect cost is admin and help desk time, plus any licence assignment changes you make using the controls table.
+The Microsoft Copilot service description identifies Edit with Copilot in Word as a Premium feature requiring a Microsoft 365 Copilot licence. The release note does not separately describe licence-specific rollout of the new chat default.
+
+Microsoft Learn documents no separate meter or credit rate for direct editing in Word at the time of writing (November 2026), and the roadmap item names none. The indirect cost is admin and help desk time, plus any licence assignment changes you make using the controls table.
 
 ## Scope
 
 The roadmap record lists Word and Microsoft Copilot (Microsoft 365) as products, the Worldwide (Standard Multi-Tenant) cloud, and Desktop, Mac and Web as platforms, at General Availability. The release notes entry is marked [Web]. Microsoft publishes a separate item for GCC (see the related briefing), and this record does not list any US Government cloud.
 
-The roadmap description says the default chat experience in Word allows direct edits, so it is aimed at users who have Copilot in Word. The overview page describes Word access by licence tier, and which tiers get direct editing is not yet published. The roadmap record names no rollout mechanics, release channel or prerequisite.
+The roadmap description says the default chat experience in Word allows direct edits, so it is aimed at users who have Copilot in Word. The overview page describes Word access by licence tier, and the service description requires a Microsoft 365 Copilot licence for Edit with Copilot in Word. The roadmap record names no rollout mechanics, release channel or prerequisite.
 
 ## Governance guidance
 
@@ -157,14 +169,14 @@ The roadmap description says the default chat experience in Word allows direct e
 </tbody>
 </table>
 
-Licence assignment decides who has the Copilot add-on in Word. It does not switch direct editing on or off, and Microsoft has not said whether the add-on tier changes the behaviour. Assigning licences needs at least the License Administrator or User Administrator role, as the licence page states.
+Licence assignment decides who has the Copilot add-on in Word. It does not switch direct editing on or off. The service description requires a Microsoft 365 Copilot licence for Edit with Copilot in Word. Assigning licences needs at least the License Administrator or User Administrator role, as the licence page states.
 
-Microsoft Learn lists Copilot settings in the Microsoft 365 admin center under Copilot > Settings, and its Microsoft Graph copilotPolicySetting page lists five supported settings, none for Word editing. The user-level off switch in Word is described in the release notes but its location is not given.
+Microsoft Learn lists Copilot settings in the Microsoft 365 admin center under Copilot > Settings, and its preview Microsoft Graph copilotPolicySetting page lists five supported settings, none for Word editing. The user-level off switch in Word is described in the release notes but its location is not given.
 
 ## Open questions
 
 - Where in Word does a user turn off direct editing, and can an administrator set that choice for the tenant or for groups? Watch the Microsoft 365 Copilot release notes and Message center.
-- Does direct editing apply to users without the Microsoft 365 Copilot add-on licence who use Copilot in Word? Watch the Copilot overview page.
+- Does the new default have any licence-specific rollout qualifications beyond the published Edit with Copilot requirement?
 - Does the rollout cover Desktop and Mac as the roadmap record lists, or only Web as the release notes show, and when does the status move from In development?
 - Does direct editing honour sensitivity label restrictions and read-only documents in the same way as other Copilot actions in Word?
 
@@ -174,14 +186,8 @@ cost: Low. The cost known is admin and communication time plus the Copilot licen
 impact: High. It changes the default chat behaviour in Word for the people who use Copilot there, so users notice on first use without an admin acting.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: Until this change, users who wanted Copilot to change a Word document had to switch editing on. | Found: Searched: Copilot Word direct editing by default user turn off editing mode settings 557673; Copilot Word edit mode license. Read release notes and overview. They describe the new chat default, not a historical requirement for every way Copilot could change a Word document. | Fix: Replace the first sentence with: 'The release notes say Copilot can now make direct edits in Word chat without users toggling editing on.'
-- [contradicted, blocker] front matter: licensing.notes; Cost and licensing / licensing: Users without the Copilot add-on can use Copilot in Word, Excel, PowerPoint and OneNote within fair use limits. | Found: Copilot Chat (Basic): You don't have the Microsoft 365 Copilot add-on license and don't have access to Copilot in Word, Excel, PowerPoint, and OneNote. | Fix: Replace the unqualified statement in the notes and body with: 'Microsoft 365 Copilot (Basic) users without the add-on can use Copilot capabilities in Word, Excel, PowerPoint and OneNote; some features have fair use limits. Copilot Chat (Basic) users do not have this app access.' Keep the overview citation. | Source: https://learn.microsoft.com/copilot/plan/copilot-overview
-- [contradicted, blocker] front matter: licensing.model / licensing: The licensing model for the editing feature is mixed. | Found: Edit with Copilot in Word, Excel, PowerPoint, and OneNote² ² Microsoft 365 Copilot (Premium) features: A Microsoft 365 Copilot license is required to access this feature. | Fix: Set licensing.model to 'add-on' and state: 'The Microsoft Copilot service description identifies Edit with Copilot in Word as a Premium feature requiring a Microsoft 365 Copilot licence.' Add https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot to sources. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot
-- [contradicted, blocker] front matter: licensing.notes; Cost and licensing; Scope; Governance controls; Open questions / absence: Microsoft has not published which licence tier can edit directly in Word. | Found: Edit with Copilot in Word, Excel, PowerPoint, and OneNote² ² Microsoft 365 Copilot (Premium) features: A Microsoft 365 Copilot license is required to access this feature. | Fix: Replace statements that editing entitlement is unpublished with: 'The service description requires a Microsoft 365 Copilot licence for Edit with Copilot in Word; the release note does not separately describe licence-specific rollout of the new chat default.' Replace the Basic-user open question with: 'Does the new default have any licence-specific rollout qualifications beyond the published Edit with Copilot requirement?' Cite the service description. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure / applicability: Existing Copilot data protections and sensitivity labels continue to apply to Copilot in Word. | Found: It uses the same data protection, access control, and compliance capabilities that already apply across Microsoft 365. Copilot honors Microsoft Purview sensitivity labels and encryption when it grounds responses and generates content. | Fix: Replace the inference with: 'Microsoft says Copilot uses existing Microsoft 365 data protection and access controls and honours sensitivity labels when grounding responses and generating content.' Cite https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing. | Source: https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing
-- [supported, minor] Governance controls / behaviour: The copilotPolicySetting reference lists five supported setting identifiers, none for Word's editing default. | Found: This API is currently in preview. Supported settings: microsoft.copilot.copilotchatpinning; microsoft.copilot.blockaccesstoopenfiles; microsoft.copilot.imagegeneration; microsoft.copilot.allowwebsearch; microsoft.copilot.allowinadmincenters. | Fix: Change 'its Microsoft Graph copilotPolicySetting page lists five supported settings' to 'its preview Microsoft Graph copilotPolicySetting page lists five supported settings'. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/resources/copilotpolicysetting
+- [contradicted, minor] front matter: action; Governance guidance / consistency: The action is prepare despite a documented on-by-default Web release, medium risk and a communication decision. | Found: action: "prepare"; risk: "medium"; defaultState: "on"; "The Microsoft 365 Copilot release notes list the same item under an entry dated June 2, 2026, marked [Web]." | Fix: Set action to 'act-now': the June 2, 2026 release notes already describe the Web default as available. Keep the explicit caveat that the roadmap remains In development and that Desktop and Mac rollout is not resolved.
 -->

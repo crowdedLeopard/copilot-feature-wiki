@@ -2,30 +2,762 @@
   "slug": "microsoft-teams-preloaded-video-for-teams-events-and-meetings",
   "roadmapId": 562340,
   "title": "Microsoft Teams: organisers play OneDrive videos in events with Manage what attendees see",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-22",
   "version": 1,
-  "model": "none",
-  "engine": "manual",
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
   "attempts": 0,
-  "hold": {
-    "reason": "unverified",
-    "since": "2026-11-22",
-    "reasons": [
-      "Written but not yet checked against Microsoft Learn."
-    ]
-  },
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
+    "claims": 60,
+    "confirmed": 59,
     "unconfirmed": 0,
-    "contradicted": 0,
+    "contradicted": 1,
     "blocker": 0,
     "major": 0,
-    "minor": 0
+    "minor": 3
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
-  "history": []
+  "summary": "The briefing accurately separates the roadmap's meeting-and-event scope from Microsoft's narrower event rollout notice. No actionable contradiction was found; minor corrections concern the template locking step, a missing citation for OneDrive sharing permissions, and a permissions recommendation not represented in the controls table.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap item concerns Microsoft Teams.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Teams\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "General Availability is a roadmap release phase.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "Targeted Release is a roadmap release phase.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: platforms; What's changing; Risk assessment; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Desktop.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: platforms; What's changing; Risk assessment; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-11T00:52:46.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-11T00:52:46\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "title; summary; What's changing; Risk assessment: Data exposure; Scope",
+      "type": "record",
+      "claim": "Event organisers and producers can select and share videos stored in OneDrive.",
+      "status": "supported",
+      "source": "Message Center post MC1506734",
+      "quote": "Organizers and producers will be able to select and share videos stored in OneDrive directly within Teams events configured with Manage what attendees see",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Videos can be presented on stage without screen sharing a local media player.",
+      "status": "supported",
+      "source": "Message Center post MC1506734",
+      "quote": "Videos can be presented on stage without screen sharing a local media player or embedding videos into a PowerPoint presentation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Presenting these videos does not require embedding them in PowerPoint.",
+      "status": "supported",
+      "source": "Message Center post MC1506734",
+      "quote": "Videos can be presented on stage without screen sharing a local media player or embedding videos into a PowerPoint presentation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The notice names events optimized for scale, previously called town halls, rather than meetings.",
+      "status": "supported",
+      "source": "Message Center post MC1506734",
+      "quote": "Microsoft Teams will soon support sharing video directly from OneDrive during Teams events that are optimized for scale (previously called town halls).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Organisers and producers get built-in controls to start playback.",
+      "status": "supported",
+      "source": "Message Center post MC1506734",
+      "quote": "will have access to built-in controls to start and pause video playback during events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Organisers and producers get built-in controls to pause playback.",
+      "status": "supported",
+      "source": "Message Center post MC1506734",
+      "quote": "will have access to built-in controls to start and pause video playback during events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft describes smoother, higher-quality playback for attendees.",
+      "status": "supported",
+      "source": "Message Center post MC1506734",
+      "quote": "Attendees will experience smoother and higher-quality video playback.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap locates OneDrive video upload in the Manage view options.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users can now upload videos directly into a Teams event or meeting from OneDrive from the \"Manage view\" options",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "summary; What's changing; Scope: Prerequisites",
+      "type": "record",
+      "claim": "The organiser must have turned on Manage what attendees see mode.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "when an organizer has turned on Manage What Attendees See mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment: Change & support; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap description includes meetings as well as events.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users can now upload videos directly into a Teams event or meeting from OneDrive",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The notice schedules Targeted Release in Worldwide to begin in mid-November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1506734",
+      "quote": "Targeted Release (Worldwide): Rollout will begin in mid-November 2026 (previously early November) and end in early December 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The notice schedules Targeted Release in Worldwide to end in early December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1506734",
+      "quote": "Targeted Release (Worldwide): Rollout will begin in mid-November 2026 (previously early November) and end in early December 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The notice schedules General Availability in Worldwide and GCC to begin in early December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1506734",
+      "quote": "General Availability (Worldwide, GCC): Rollout will begin in early December 2026 and is expected to complete by early December 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The notice expects General Availability in Worldwide and GCC to complete in early December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1506734",
+      "quote": "General Availability (Worldwide, GCC): Rollout will begin in early December 2026 and is expected to complete by early December 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Scope: Clouds",
+      "type": "record",
+      "claim": "The notice says GCCH tenants are not impacted.",
+      "status": "supported",
+      "source": "Message Center post MC1506734",
+      "quote": "If you are a tenant in a GCCH or DoD environment, you can safely ignore this message as you are not impacted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Scope: Clouds",
+      "type": "record",
+      "claim": "The notice says DoD tenants are not impacted.",
+      "status": "supported",
+      "source": "Message Center post MC1506734",
+      "quote": "If you are a tenant in a GCCH or DoD environment, you can safely ignore this message as you are not impacted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "summary; Why it matters; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft's notice says no action is required.",
+      "status": "supported",
+      "source": "Message Center post MC1506734",
+      "quote": "No action is required. We recommend that you:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft recommends informing event organisers and producers about OneDrive video sharing.",
+      "status": "supported",
+      "source": "Message Center post MC1506734",
+      "quote": "Inform Teams event organizers and producers that they can share videos directly from OneDrive in Teams events configured with Manage what attendees see.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters; Risk assessment; Cost and licensing; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Microsoft recommends storing the videos in OneDrive with appropriate permissions before use.",
+      "status": "supported",
+      "source": "Message Center post MC1506734",
+      "quote": "Ensure that organizers and producers store videos in OneDrive with the appropriate permissions before using them in events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft recommends reviewing guidance about screen sharing local videos or embedding them in PowerPoint.",
+      "status": "supported",
+      "source": "Message Center post MC1506734",
+      "quote": "Review and update internal event production guidance that recommends screen sharing locally played videos or embedding videos in PowerPoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Microsoft says the notice will be updated with new documentation.",
+      "status": "supported",
+      "source": "Message Center post MC1506734",
+      "quote": "We will update this post with new documentation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The feature is user-opt-in: organisers and producers choose videos without a feature-specific admin enablement.",
+      "status": "supported",
+      "source": "Message Center post MC1506734",
+      "quote": "Organizers and producers will be able to select and share videos stored in OneDrive directly within Teams events configured with Manage what attendees see. Searched: Teams OneDrive video policy; plan-events and Set-CsTeamsEventsPolicy show no feature-specific switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Included is the entitlement model, based on the existing Advanced event features licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "Advanced event features: These licenses provide the full Teams events feature set. They include the foundational capabilities plus advanced features such as event workflows, customization, production controls, monitoring, insights, and higher engagement event capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Manage what attendees see is listed under Advanced event features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "Organizers with a license in the Advanced event features category have all foundational event capabilities plus the following advanced event features. ... Manage what attendees see",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Users need a licence from the Advanced event features category to access the full Teams events feature set.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "To access the full set of Teams events features, users must have a license from the Advanced event features category.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Enterprise category includes Office 365 E1, E3 and E5 and Microsoft 365 E3, E5 and E7.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "| Enterprise | Not applicable | Office 365 E1, E3, E5Microsoft 365 E3, E5, E7 |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Advanced EDU category includes Office 365 and Microsoft 365 A3 and A5 for Faculty.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "Office 365 A3 for Faculty, A5 for FacultyMicrosoft 365 A3 for Faculty, A5 for Faculty",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Teams Premium Legacy is listed in the Advanced event features category.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "| Other | Microsoft Teams ExploratoryMicrosoft Teams TrialMicrosoft Teams Essentials | Teams Premium Legacy |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; Open questions",
+      "type": "absence",
+      "claim": "No separate licence requirement specific to this OneDrive video option is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams OneDrive video sharing events licence licensing pricing meter preloaded; Teams OneDrive preloaded video. Read events-licensing and plan-events; search excerpts cover Stream plans and event licensing, not a separate entitlement for this option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no price specific to this OneDrive video option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams OneDrive video sharing events licence licensing pricing meter preloaded. Read events-licensing; search excerpts on eCDN pricing, Stream plans and video translation do not price this option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no meter specific to this OneDrive video option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams OneDrive video sharing events licence licensing pricing meter preloaded. Read events-licensing; search excerpts describe eCDN, Teams interoperability and video translation, not a meter for this option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe the new preloaded OneDrive video feature itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams OneDrive preloaded video; OneDrive video Manage view; Teams OneDrive preloaded video events Manage view permissions playback licensing price meter clients. Read plan-events and events-licensing; results describe VOD, recordings and Clipchamp, not this option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Why it matters; Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not described how file permissions are checked for playback to event attendees.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Manage what attendees see OneDrive video permissions. Read manage-meeting-presentation-experience and collaboration-options; search excerpts cover embedded Outlook/Loop videos and meeting recordings, not permissions checks for this event playback.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "With Manage what attendees see, organisers must intentionally bring shared content and video on screen.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-presentation-experience",
+      "quote": "Organizers must intentionally bring shared content and video on screen before attendees can see it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Manage what attendees see lets organisers control on-screen content and whose video is visible.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-presentation-experience",
+      "quote": "When this option is enabled, meeting organizers can control what content is shared on screen and who's video is visible.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Learn does not say whether OneDrive video uses the same explicit bring-on-screen step.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive video Manage view; Manage what attendees see OneDrive video permissions. Read manage-meeting-presentation-experience and plan-events; neither describes the new OneDrive video's staging sequence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The notice describes human selection and playback controls, not autonomous actions.",
+      "status": "supported",
+      "source": "Message Center post MC1506734",
+      "quote": "Organizers and producers will be able to select and share videos stored in OneDrive directly within Teams events configured with Manage what attendees see and will have access to built-in controls to start and pause video playback during events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether this new Manage view video option appears on clients beyond Desktop and Mac.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams OneDrive video events Manage view web mobile client supported. Read roadmap and events-platform-support search excerpts; web support for Manage what attendees see in smaller events does not specify support for this new video option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].ui; Governance controls: first row",
+      "type": "admin-path",
+      "claim": "Teams admin center > Meetings > Meeting templates > Add > Meeting engagement > Manage what attendees see reaches the custom template setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/create-custom-meeting-template",
+      "quote": "In the Teams admin center, expand Meetings and select Meeting templates. ... Select Add. ... To prevent the meeting organizer from changing an option, select the option and then select lock.",
+      "severity": "minor",
+      "fix": "The printed path reaches the option but stops before locking it. Keep the path for its default value and add to the note: 'To lock the setting, select Manage what attendees see, then select lock.'"
+    },
+    {
+      "n": 51,
+      "where": "controls[0].api; Governance controls: first row",
+      "type": "absence",
+      "claim": "No automation operation is documented to set or lock Manage what attendees see inside a custom meeting template.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: TeamsMeetingTemplate Set Manage; TeamsMeetingTemplateConfiguration PowerShell update set; Manage what attendees see Graph template. Read Get-CsTeamsMeetingTemplateConfiguration (read only); Set-CsTeamsMeetingTemplatePermissionPolicy excerpts set visibility/default template, not its options.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[0].note; Governance guidance; Governance controls",
+      "type": "licensing",
+      "claim": "Custom meeting templates require Teams Premium.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-presentation-experience",
+      "quote": "Meeting settings in sensitivity labels and custom meeting templates require Teams Premium.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The use of custom meeting templates for events optimized for scale is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams events optimized for scale custom meeting templates Manage what attendees see default OneDrive video. Read create-custom-meeting-template, custom-meeting-templates-overview and plan-events; prebuilt town hall/webinar event templates do not establish custom meeting template applicability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].governs; Governance controls",
+      "type": "behaviour",
+      "claim": "A custom meeting template can set the default value of Manage what attendees see.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/create-custom-meeting-template",
+      "quote": "Default value - This is the value that's applied to a meeting when the template is used. ... Manage what attendees see | When On, meeting organizers can preview and approve content being shared on screen before other meeting participants can see it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[0].governs; Governance controls",
+      "type": "behaviour",
+      "claim": "A template can lock the option so the organiser cannot change it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/create-custom-meeting-template",
+      "quote": "Lock status - This determines if the meeting organizer can change the option that was set by the template. If the option is locked, the meeting organizer can't change it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1]; summary; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "No admin policy on either UI or automation is documented for organisers choosing Manage what attendees see in events.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Manage what attendees see events admin policy PowerShell custom meeting template set Graph API. Read plan-events: 'Manage what attendees see | No control.' Read Set-CsTeamsEventsPolicy syntax; no parameter sets this option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The presentation-experience page gives no admin policy for Manage what attendees see, but does give template and organiser control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-presentation-experience",
+      "quote": "| Setting | Admin policy | Sensitivity label | Template | Meeting organizer | ... | Manage what attendees see | No | No | Yes | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls: final paragraph",
+      "type": "applicability",
+      "claim": "OneDrive sharing permissions remain a control over access to the file itself.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/collaboration-options",
+      "quote": "When users share a file or folder, they can choose from several types of sharing links that offer different levels of permissions. ... Specific people links require the user to specify a list of people who will have access to the file or folder.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/sharepoint/collaboration-options for the sentence 'OneDrive sharing permissions on the file remain the existing control over the file itself.' Add that URL to sources; do not claim it establishes attendee playback permissions."
+    },
+    {
+      "n": 59,
+      "where": "Governance controls: final paragraph; Open questions",
+      "type": "absence",
+      "claim": "No control specific to OneDrive video in events is described in Learn at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Manage what attendees see OneDrive policy; Teams OneDrive preloaded video events Manage view permissions playback licensing price meter clients. Read plan-events, manage-meeting-presentation-experience and Set-CsTeamsEventsPolicy; no switch or video-selection restriction for this option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance guidance: At rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist tells readers to ensure appropriate OneDrive file permissions, but the controls table has no corresponding row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Ask producers to store videos in OneDrive with the appropriate permissions before using them, as the notice advises. ... Default and lock of Manage what attendees see in a custom meeting template ... Admin policy for organisers using Manage what attendees see in events",
+      "severity": "minor",
+      "fix": "Remove the 'Ask producers to store videos in OneDrive with the appropriate permissions before using them, as the notice advises' bullet from Governance guidance. Keep the notice's permissions recommendation in the existing explanatory prose; do not add a control row."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T04:01:59.605Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=562340",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1506734",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/events-licensing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/plan-events",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-meeting-presentation-experience",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/create-custom-meeting-template",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/get-csteamsmeetingtemplateconfiguration",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Default and lock of Manage what attendees see in a custom meeting template",
+        "docs": "https://learn.microsoft.com/microsoftteams/create-custom-meeting-template",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting templates",
+          "Add",
+          "Meeting engagement",
+          "Manage what attendees see"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-22",
+      "status": "held",
+      "version": 1,
+      "model": "none"
+    }
+  ]
 }

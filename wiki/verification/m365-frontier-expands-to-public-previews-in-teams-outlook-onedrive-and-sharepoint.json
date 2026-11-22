@@ -1,0 +1,924 @@
+{
+  "slug": "m365-frontier-expands-to-public-previews-in-teams-outlook-onedrive-and-sharepoint",
+  "roadmapId": 578225,
+  "title": "Microsoft 365: Frontier program expands to preview features in Teams, Outlook, OneDrive and SharePoint",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "3 blocking findings (claims 26, 69, 74)"
+    ]
+  },
+  "counts": {
+    "claims": 74,
+    "confirmed": 71,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 3,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold for corrections to licensing, the release exception limit and existing enrolments. The admin's Copilot licence requirement changes only when the unified experience reaches the tenant, the exception limit counts individual group members, and Learn already says enrolled users receive eligible previews as they are released.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Android, Desktop, iOS, Mac, Teams and Surface Devices, and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Teams and Surface Devices\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap was modified at 2026-11-06T23:04:41.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-06T23:04:41\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "title; summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Frontier expands eligible public previews to new Outlook for Windows, OneDrive, SharePoint, Microsoft Teams and Copilot.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users enrolled in Frontier can get eligible previews for new Outlook for Windows, OneDrive, SharePoint, Microsoft Teams, and Copilot",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The expanded previews are managed through a single admin-controlled enrolment experience.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "managed through a single admin-controlled enrollment experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Governance guidance; Governance controls",
+      "type": "record",
+      "claim": "Frontier enrolment is optional and separate from Standard and Deferred preferences for GA features.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Frontier enrollment is optional and separate from Standard and Deferred release preferences for generally available features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Open questions",
+      "type": "record",
+      "claim": "Existing Frontier users do not need to re-enrol.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Existing Frontier users do not need to re-enroll.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Frontier enrolment is admin opt-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "To opt in to Frontier preview, toggle Turn on Frontier to On.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The expansion does not itself enrol previously unenrolled users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Frontier (opt-in) is designed for users who want access before general availability to features to evaluate and prepare.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "default",
+      "claim": "Standard release is the default for generally available features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Standard release is the default release experience where users receive new features as soon as they're generally available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Deferred release is approximately 30 days after Standard rollout begins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Deferred release is for audiences in more complex environments that need additional time (approximately 30 days after rollout to the Standard release audience begins) to validate changes before deployment.",
+      "severity": "minor",
+      "fix": "Qualify the parenthesis as 'approximately 30 days after Standard rollout begins for deferred-eligible major updates; ineligible updates follow the Standard schedule', as stated at https://learn.microsoft.com/microsoft-365/admin/manage/configure-release-options."
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Users can be enrolled in Frontier and assigned to Standard or Deferred release at the same time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "You can opt in users to both Frontier preview and assign them to Standard release or Deferred release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Why it matters; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "The existing Standard or Deferred preference determines GA timing for features outside Frontier.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "For features that aren't part of Frontier, the user's existing Standard release or Deferred release preference determines when they receive features at GA.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope; controls[0].note; changes",
+      "type": "date",
+      "claim": "The unified experience is rolling out gradually from mid-November 2026 and may not have reached the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "The unified release preferences experience is rolling out gradually in mid-November 2026, so it might not be available in your organization yet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The existing Copilot Frontier experience remains available after the unified experience arrives.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "When the unified release preferences experience becomes available, the existing experience for opting in to Frontier preview within the Microsoft 365 admin center will still exist.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Frontier features are preview and subject to change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Frontier features are preview and subject to change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Frontier features and agents can take up to three hours to become available after enrolment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "It might take three hours for Frontier features and agents to be available to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Why it matters; Scope; Open questions; controls[0].scope; controls[1].scope",
+      "type": "applicability",
+      "claim": "Frontier is managed at tenant level and administrators control which users access which Frontier features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Frontier is managed at the tenant level. Production tenants can safely enroll users into the Frontier program to allow your organization access to Frontier features. IT admins have explicit control which users have access to which Frontier features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Both enrolment experiences offer All users or Specific users and groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "All users - All users automatically receive Frontier features and agents. Specific users and groups - Only specified users and groups automatically receive Frontier features and agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "AI Administrator, Security Administrator or Office Apps Administrator can enrol users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "You need an account that includes one of the following roles: AI Administrator Security Administrator Office Apps Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed, with product licence prerequisites and potentially paid experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Assign users licenses that provide access to the products you want them to preview. Certain Frontier experiences may only be available on a paid basis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Enrolling users needs no Copilot licence, without qualification about the admin account or rollout stage.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Once the unified release preferences experience is available, admins will no longer be required to have a license that includes Copilot to opt in to Frontier via the existing experience or the new unified release preferences experience.",
+      "severity": "blocker",
+      "fix": "Replace the unqualified enrolment licensing statement in the notes, body and cost rationale with 'Users do not need a Microsoft Copilot licence to be enrolled. Admins no longer need a licence that includes Copilot to enrol users through either experience once the unified release preferences experience is available in their tenant.' Cite https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier."
+    },
+    {
+      "n": 27,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance",
+      "type": "licensing",
+      "claim": "Copilot Frontier features require a Microsoft Copilot licence or a licence including access to Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "to use Frontier features for Copilot, users need a Microsoft Copilot license or a license that includes access to Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance",
+      "type": "licensing",
+      "claim": "Teams Frontier features require a licence including Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "to use Frontier features for Microsoft Teams, users need a license that includes access to Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing; Governance guidance",
+      "type": "licensing",
+      "claim": "Enrolled users lacking the relevant product licence are not shown that product's Frontier features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Users enrolled in Frontier without a Microsoft Copilot license aren't presented with Copilot-related Frontier features. Users enrolled in Frontier without a license that includes access to Teams aren't presented with Teams-related Frontier features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The admin account should have corresponding product licences for full access to Frontier AI settings and agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Verify that your own admin account has also has a corresponding license for products to ensure full access to Frontier AI settings and agents. Some Frontier settings and agents in the Microsoft 365 admin center might not appear.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "cost",
+      "claim": "Certain Frontier experiences may only be available on a paid basis.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Certain Frontier experiences may only be available on a paid basis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing; Open questions",
+      "type": "cost",
+      "claim": "The Frontier page points to the Microsoft Copilot Credits Guide for credit consumption requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Copilot credit consumption requirements are described in the Microsoft Copilot Credits Guide.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The Frontier page itself gives no price or credit rate for a specific Frontier preview.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Frontier previews pricing Copilot Credits budget cap. Read get-started-frontier in full, including prerequisites and preview terms; it refers readers to the Credits Guide but states no price or rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The Frontier page itself describes no cap or budget control.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Frontier previews pricing Copilot Credits budget cap. Read get-started-frontier in full; no cap or budget setting appears there. Search found spending policies for individual previews, outside that page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure; Governance guidance",
+      "type": "behaviour",
+      "claim": "Frontier experiences are governed by existing customer agreements including the Data Protection Addendum.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Frontier experiences are governed by your existing customer agreements, including the Product Terms and Microsoft Data Protection Addendum (DPA).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Frontier previews allow personal data processing as described in the DPA.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Frontier experiences are preview features that allow for personal data processing, as described in the DPA.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure; Governance guidance",
+      "type": "behaviour",
+      "claim": "HIPAA Business Associate Agreement coverage is not included for Frontier experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "HIPAA Business Associate Agreement coverage is not included for Frontier experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure; Governance guidance",
+      "type": "behaviour",
+      "claim": "Frontier features do not comply with ISO 27001 requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Frontier features do not comply with ISO 27001, ISO 27002, or ISO 27018 requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure; Governance guidance",
+      "type": "behaviour",
+      "claim": "Frontier features do not comply with ISO 27002 requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Frontier features do not comply with ISO 27001, ISO 27002, or ISO 27018 requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure; Governance guidance",
+      "type": "behaviour",
+      "claim": "Frontier features do not comply with ISO 27018 requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Frontier features do not comply with ISO 27001, ISO 27002, or ISO 27018 requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Why it matters; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Frontier experiences may be modified.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "As preview features, Frontier experiences may be modified, suspended, or discontinued",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "Frontier experiences may be suspended.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "As preview features, Frontier experiences may be modified, suspended, or discontinued",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Frontier experiences may be discontinued.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "As preview features, Frontier experiences may be modified, suspended, or discontinued",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Frontier experiences may not be covered by standard support commitments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "may not be covered by standard support commitments or service level agreements",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Frontier experiences may not be covered by service level agreements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "may not be covered by standard support commitments or service level agreements",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Some Frontier features require large language models from AI providers such as Anthropic.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Some Frontier features and agents require access to large language models from AI providers, such as Anthropic.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Frontier never enables an AI provider on the administrator's behalf.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Even if a Frontier feature relies on a particular AI provider being turned on, Frontier will never enable AI providers on your behalf.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "A provider-dependent feature is unusable until the administrator approves the corresponding provider in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "If the corresponding AI provider isn't enabled by you, the Frontier feature will not be usable for you or your users. To allow access to other models, use the Microsoft 365 admin center to explicitly approve each model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "applicability",
+      "claim": "Frontier does not override agent settings and a disabled agent stays unavailable irrespective of Frontier enrolment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "The Frontier admin control doesn't override the settings configured in the Agent section of the admin center. If an admin turned off a Frontier agent in the Agent view, that agent isn't available to users, regardless of a user's Frontier enrollment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Frontier previews include agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "By opting in to Frontier, IT administrators can evaluate new Microsoft Copilot agents",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "date",
+      "claim": "Starting March 29, 2026, newly published Frontier agents are available only to Frontier-enrolled users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Starting March 29, 2026, newly published Frontier agents are available only to Frontier-enrolled users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Frontier agents appear in the Agent store with (Frontier) in the name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Frontier agents are available to them from the Agent store in Microsoft Copilot. Search for \"Built by Microsoft\", and Frontier program agents are displayed with (Frontier) in the name.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The expanded workload previews are not identified sufficiently to say which of those eligible previews act autonomously.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Frontier expanded Outlook OneDrive SharePoint Teams public previews autonomous. Read Frontier and release options pages; Scout and Autopilot search excerpts describe autonomy but do not identify the eligible workload previews in this roadmap expansion.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Moving users from Standard to Deferred release may remove access to features not yet in Deferred.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/configure-release-options",
+      "quote": "If you move users from Standard release to Deferred release, they might lose access to features that aren't available yet in Deferred release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Scope: Clouds",
+      "type": "availability",
+      "claim": "Frontier and Deferred release are currently unavailable in GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/configure-release-options",
+      "quote": "For customers in GCC, GCC High, and DoD environments, Standard release (general availability) remains the supported release option following the retirement of Targeted release. Currently, Deferred release and Frontier aren't available in government cloud environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Scope: Surfaces",
+      "type": "applicability",
+      "claim": "The release model applies to new Outlook for Windows, Outlook on the web, OneDrive, SharePoint Online, Office for the web, Teams and the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/configure-release-options",
+      "quote": "The Microsoft 365 updates described in this article apply to New Outlook for Windows, Outlook on the web, OneDrive, SharePoint Online, Office for the web, Microsoft Teams, and the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope: Surfaces",
+      "type": "applicability",
+      "claim": "The release model does not apply to Microsoft 365 Apps, which use update channels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/configure-release-options",
+      "quote": "These updates don't apply to Microsoft 365 Apps, which are managed separately via update channels, such as the Current Channel and Monthly Enterprise Channel.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Scope: Rollout",
+      "type": "date",
+      "claim": "Targeted release is retired in January 2027.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/configure-release-options",
+      "quote": "In January 2027, Targeted release will be retired and no longer available to use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Scope: Rollout",
+      "type": "behaviour",
+      "claim": "Existing Frontier users remain enrolled after Targeted release retirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "If you already have users enrolled in Frontier, these users will stay enrolled in Frontier after the retirement of Targeted release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Scope: Rollout",
+      "type": "date",
+      "claim": "From November 2026 commercial clouds cannot add, remove or modify Targeted release enrolment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/configure-release-options",
+      "quote": "In November 2026, commercial clouds can no longer add users to, remove users from, or modify Targeted release enrollment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The previous Standard and Deferred experience is retired for commercial clouds when the unified experience arrives.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/configure-release-options",
+      "quote": "The previous experience for managing Standard release and Deferred release preferences will be retired for commercial clouds when the unified release preferences experience becomes available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Learn suggests an Entra ID security group to target a small Frontier pilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Use a Microsoft Entra ID security group to target specific users who can access Frontier agents. This approach helps you validate experiences with a small group before broad rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The unified Frontier toggle is at Microsoft 365 admin center > Settings > Org settings > Organization profile > Release preferences > Turn on Frontier.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "In the Microsoft 365 admin center, go to Settings > Org settings. Under the Organization profile tab, select Release preferences. To opt in to Frontier preview, toggle Turn on Frontier to On.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[0].api",
+      "type": "absence",
+      "claim": "No documented automation call sets unified Frontier enrolment.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Frontier enrollment Turn on Frontier Microsoft Graph beta admin settings PowerShell API; powershell Frontier Standard Deferred release preferences Set enrollment. Read get-started-frontier and configure-release-options; no matching call found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Existing Frontier enrolment is reached at Microsoft 365 admin center > Copilot > Settings > View all > Copilot Frontier.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "go to Copilot > Settings. Select the View all tab. In the Search all Copilot settings search bar, type \"Frontier\". Select Copilot Frontier. To opt in to Frontier preview, toggle Turn on Frontier to On.",
+      "severity": "minor",
+      "fix": "Extend controls[1].ui.path and its rendered path to 'Copilot > Settings > View all > Copilot Frontier > Turn on Frontier'. The existing path reaches the right setting pane but stops before its documented toggle."
+    },
+    {
+      "n": 66,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No documented automation call sets enrolment through the existing Copilot Frontier setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Frontier enrollment Turn on Frontier Microsoft Graph beta admin settings PowerShell API; powershell Frontier Standard Deferred release preferences Set enrollment. Read get-started-frontier and configure-release-options; no matching call found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Standard and Deferred release are configured at Microsoft 365 admin center > Settings > Org settings > Organization profile > Release preferences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/configure-release-options",
+      "quote": "In the Microsoft 365 admin center, go to Settings > Org settings. Under the Organization profile tab, select Release preferences. From the Release preferences panel, choose either Standard release or Deferred release.",
+      "severity": "minor",
+      "fix": "Extend controls[2].ui.path and its rendered path to 'Settings > Org settings > Organization profile > Release preferences > Standard release or Deferred release'. Add to its note: 'This path applies after the unified experience reaches your tenant; until then use Copilot > Settings > View all > Copilot Release Preferences: General Availability > Standard release or Deferred release.' Both routes are documented at https://learn.microsoft.com/microsoft-365/admin/manage/configure-release-options."
+    },
+    {
+      "n": 68,
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "No documented automation call sets Standard or Deferred release preferences.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Standard Deferred release preferences configuration Microsoft Graph API PowerShell 10000 exceptions; powershell Frontier Standard Deferred release preferences Set enrollment. Read configure-release-options; no matching call found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[2].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "Standard or Deferred release allows up to 10,000 user or group exceptions, without saying group members count individually.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/configure-release-options",
+      "quote": "You can add up to 10,000 exceptions to Standard release or Deferred release. Each user in a security group and each user added individually count toward the 10,000-user limit.",
+      "severity": "blocker",
+      "fix": "Replace 'with up to 10,000 user or group exceptions' in controls[2].note and the rendered note with 'with up to 10,000 user exceptions; each user in an assigned security group counts individually toward the limit'. Cite https://learn.microsoft.com/microsoft-365/admin/manage/configure-release-options."
+    },
+    {
+      "n": 70,
+      "where": "controls[2].note",
+      "type": "role",
+      "claim": "Standard and Deferred configuration uses the same admin roles as Frontier enrolment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/configure-release-options",
+      "quote": "To configure Standard release and Deferred release options, you need one of the following roles in the Microsoft 365 admin center: Office Apps Admin Security Admin AI Admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance controls: Agent settings",
+      "type": "admin-path",
+      "claim": "Allow agents and plugins built by Microsoft is under Microsoft 365 admin center > Agent > Settings > Agent and plugin access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "In the Microsoft 365 admin center, go to Agent > Settings > Agent and plugin access. Verify that Allow agents and plugins built by Microsoft is checked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance controls: Agent settings",
+      "type": "applicability",
+      "claim": "Allow agents and plugins built by Microsoft must be checked before users access Frontier agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Before your users can access Frontier agents, make sure that agent types are approved for use. Verify that Allow agents and plugins built by Microsoft is checked. This setting allows the use of Microsoft Frontier agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance controls: final paragraph",
+      "type": "absence",
+      "claim": "The two cited admin pages themselves provide UI steps but no PowerShell or Microsoft Graph call for their release settings.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Frontier enrollment Turn on Frontier Microsoft Graph beta admin settings PowerShell API. Read get-started-frontier and configure-release-options in full; steps are UI-only and the Graph PowerShell link concerns groups, not release settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Why it matters: existing enrolments; Open questions: existing All users",
+      "type": "absence",
+      "claim": "Microsoft Learn does not say whether eligible expanded previews reach existing Frontier enrolments automatically.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "All users - All users automatically receive Frontier features and agents. After you turn on Frontier experiences for your organization, eligible users can access supported preview features as they're released.",
+      "severity": "blocker",
+      "fix": "Replace the final sentence of Why it matters with 'Tenants that already enrol users should check the scope now: eligible enrolled users can access supported previews as they are released, and the roadmap says existing Frontier users do not need to re-enrol.' Remove the Open questions bullet asking whether existing All users enrolments receive eligible previews automatically. Cite https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier; this does not claim every preview is enabled or waive product-specific prerequisites."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T04:02:01.970Z",
+    "summary": {
+      "links": 3,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=578225",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/configure-release-options",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Frontier enrolment for all users or specific users and groups (unified release preferences)",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Org settings",
+          "Organization profile",
+          "Release preferences",
+          "Turn on Frontier"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Frontier enrolment through the existing Copilot Frontier setting",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Settings",
+          "View all",
+          "Copilot Frontier"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Standard or Deferred release for GA features (existing control, separate from Frontier)",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/configure-release-options",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Org settings",
+          "Organization profile",
+          "Release preferences"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

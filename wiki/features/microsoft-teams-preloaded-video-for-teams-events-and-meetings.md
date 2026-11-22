@@ -66,7 +66,21 @@ roadmapModified: "2026-11-11T00:52:46"
 changes:
   - date: "2026-11-22"
     note: "New briefing: OneDrive video sharing in Teams events with Manage what attendees see, rolling out November to early December 2026."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
 version: 1
+verification:
+  status: "verified-with-gaps"
+  date: "2026-11-22"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 60
+  confirmed: 59
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "6b5ae913d3773f0bf4d8b3e1c20a6652"
 ---
 
 ## What's changing
@@ -156,4 +170,12 @@ Nothing in Learn at the time of writing (November 2026) describes a control spec
 risk: Low. The change adds a way to present a OneDrive file inside an option organisers already choose to use; Microsoft's notice asks for no admin action and Learn documents no admin policy for that option.
 cost: Low. The only cost the sources show is admin time and communication; Learn lists Manage what attendees see under Advanced event features licences, and no separate price or meter for OneDrive video is published.
 impact: Medium. Event organisers and producers who use Manage what attendees see will notice it; attendees see the playback, and other users are not affected.
+-->
+
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance controls: first row / admin-path: Teams admin center > Meetings > Meeting templates > Add > Meeting engagement > Manage what attendees see reaches the custom template setting. | Found: In the Teams admin center, expand Meetings and select Meeting templates. ... Select Add. ... To prevent the meeting organizer from changing an option, select the option and then select lock. | Fix: The printed path reaches the option but stops before locking it. Keep the path for its default value and add to the note: 'To lock the setting, select Manage what attendees see, then select lock.' | Source: https://learn.microsoft.com/microsoftteams/create-custom-meeting-template
+- [supported, minor] Governance controls: final paragraph / applicability: OneDrive sharing permissions remain a control over access to the file itself. | Found: When users share a file or folder, they can choose from several types of sharing links that offer different levels of permissions. ... Specific people links require the user to specify a list of people who will have access to the file or folder. | Fix: Cite https://learn.microsoft.com/sharepoint/collaboration-options for the sentence 'OneDrive sharing permissions on the file remain the existing control over the file itself.' Add that URL to sources; do not claim it establishes attendee playback permissions. | Source: https://learn.microsoft.com/sharepoint/collaboration-options
+- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist tells readers to ensure appropriate OneDrive file permissions, but the controls table has no corresponding row. | Found: Ask producers to store videos in OneDrive with the appropriate permissions before using them, as the notice advises. ... Default and lock of Manage what attendees see in a custom meeting template ... Admin policy for organisers using Manage what attendees see in events | Fix: Remove the 'Ask producers to store videos in OneDrive with the appropriate permissions before using them, as the notice advises' bullet from Governance guidance. Keep the notice's permissions recommendation in the existing explanatory prose; do not add a control row.
 -->

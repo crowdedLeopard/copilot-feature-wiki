@@ -2,50 +2,44 @@
   "slug": "microsoft-entra-enhanced-security-accounts-manager-sam-account-name-support-for-microsoft",
   "roadmapId": 569446,
   "title": "Microsoft Entra Domain Services: sAMAccountName synchronised from on-premises Active Directory",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-22",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-22",
-    "reasons": [
-      "1 blocking finding (claim 40)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 49,
-    "confirmed": 47,
+    "claims": 43,
+    "confirmed": 43,
     "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 2
+    "minor": 0
   },
-  "summary": "Hold: the controls table says automation is not documented, but Microsoft's preview Python SDK documents an update operation and the setting it accepts. The feature behaviour, eligible SKUs and hourly billing are supported, and the briefing correctly reports Microsoft's conflicting statements about new-domain defaults.",
+  "summary": "The briefing passes: the portal control, preview Python SDK operation, SKU requirements and hourly billing are supported by Microsoft documentation. It correctly distinguishes opt-in for existing domains from Microsoft's conflicting statements about new-domain defaults, and identifies the feature as public preview.",
   "claims": [
     {
       "n": 1,
-      "where": "title; front matter: products",
-      "type": "record",
-      "claim": "This roadmap item concerns enhanced sAMAccountName support in Microsoft Entra Domain Services.",
+      "where": "What's changing: first paragraph",
+      "type": "behaviour",
+      "claim": "sAMAccountName stores the legacy Active Directory logon name.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "Microsoft Entra: Enhanced Security Accounts Manager (sAM) Account Name support for Microsoft Entra Domain Services",
+      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
+      "quote": "The security account manager account name (sAMAccountName) attribute stores a user’s legacy logon name in Active Directory Domain Services",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "summary; What's changing; Scope; rationale: risk",
+      "where": "title; summary; What's changing; Why it matters; Risk assessment; controls[0].note",
       "type": "behaviour",
-      "claim": "Enhanced synchronisation can source hybrid users' sAMAccountName from onPremisesSamAccountName in Microsoft Entra ID.",
+      "claim": "Enabling enhanced synchronisation sources hybrid users' managed-domain sAMAccountName from onPremisesSamAccountName already in Microsoft Entra ID.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
       "quote": "Setting enabled: Microsoft Entra Domain Services sources sAMAccountName from onPremisesSamAccountName in Microsoft Entra ID for hybrid users.",
@@ -54,20 +48,9 @@
     },
     {
       "n": 3,
-      "where": "What's changing; Why it matters",
-      "type": "behaviour",
-      "claim": "sAMAccountName stores the legacy logon name in Active Directory.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
-      "quote": "The security account manager account name (sAMAccountName) attribute stores a user’s legacy logon name in Active Directory Domain Services",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
       "where": "What's changing; Scope; Open questions",
       "type": "availability",
-      "claim": "Microsoft Learn describes this feature as public preview.",
+      "claim": "Microsoft Learn describes the feature as public preview, despite the roadmap status remaining In development.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
       "quote": "Enhanced support for synchronizing the security account manager account name (sAMAccountName) with Microsoft Entra Domain Services is now in public preview.",
@@ -75,7 +58,95 @@
       "fix": null
     },
     {
+      "n": 4,
+      "where": "What's changing: second paragraph",
+      "type": "behaviour",
+      "claim": "With the setting disabled, Domain Services generates sAMAccountName from mailNickname or the user principal name prefix.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
+      "quote": "Setting disabled: Microsoft Entra Domain Services generates sAMAccountName from mailNickname or the user principal name prefix.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 5,
+      "where": "What's changing: second paragraph",
+      "type": "behaviour",
+      "claim": "Generated sAMAccountName values are truncated when needed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
+      "quote": "Truncation and de-duplication are applied when needed to meet legacy constraints.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing: second paragraph",
+      "type": "behaviour",
+      "claim": "Generated sAMAccountName values are de-duplicated when needed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
+      "quote": "Truncation and de-duplication are applied when needed to meet legacy constraints.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "summary; What's changing; Risk assessment; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Once enabled, synchronisation updates the sAMAccountName source and values of existing hybrid users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
+      "quote": "Enabling the setting changes the sAMAccountName source for existing hybrid users. ... Existing hybrid users are updated during synchronization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Cloud-only users without onPremisesSamAccountName continue to use mailNickname-based generated names.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
+      "quote": "Cloud-only users without an onPremisesSamAccountName value continue to use mailNickname-based sAMAccountName generation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "The admin-opt-in default describes existing managed domains, which retain current behaviour until an administrator enables the setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
+      "quote": "Existing managed domains continue to use the current behavior until an administrator enables sAMAccountName synchronization from on-premises.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing: third paragraph",
+      "type": "record",
+      "claim": "The roadmap description says enhanced synchronisation is enabled by default for new managed domains.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Existing managed domains can enable the new synchronization behavior, while it is enabled by default for new managed domains.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing: third paragraph; Open questions: new-domain default",
+      "type": "default",
+      "claim": "The Learn page contains conflicting statements that new-domain synchronisation is enabled by default and disabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
+      "quote": "For new managed domain deployments, enhanced synchronization is enabled by default. ... For new domain deployments, samaccountName will need to be enabled, by default it is disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
       "where": "front matter: status; What's changing; Open questions",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -86,18 +157,7 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "front matter: targetDate; What's changing; Open questions",
-      "type": "record",
-      "claim": "The roadmap target is November CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"November CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
+      "n": 13,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview target is August CY2026.",
@@ -108,18 +168,18 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: releasePhase; Scope",
+      "n": 14,
+      "where": "front matter: targetDate; What's changing; Open questions",
       "type": "record",
-      "claim": "The roadmap lists General Availability and Preview as release phases.",
+      "claim": "The roadmap target is November CY2026, not a committed general-availability date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "quote": "\"targetDate\": \"November CY2026\", \"status\": \"In development\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 9,
+      "n": 15,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
@@ -130,7 +190,7 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 16,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists the Web platform.",
@@ -141,109 +201,43 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "summary; What's changing; Why it matters; rationale: impact",
-      "type": "default",
-      "claim": "Existing managed domains retain their current behaviour until an administrator enables enhanced synchronisation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
-      "quote": "Existing managed domains continue to use the current behavior until an administrator enables sAMAccountName synchronization from on-premises.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "front matter: defaultState",
-      "type": "default",
-      "claim": "The default state is admin-opt-in for the existing-domain scenario described by the briefing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
-      "quote": "Existing managed domains continue to use the current behavior until an administrator enables sAMAccountName synchronization from on-premises.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "What's changing",
+      "n": 17,
+      "where": "front matter: releasePhase; Scope",
       "type": "record",
-      "claim": "The roadmap says enhanced synchronisation is enabled by default for new managed domains.",
+      "claim": "The roadmap release phases are General Availability and Preview.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Existing managed domains can enable the new synchronization behavior, while it is enabled by default for new managed domains.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing; Open questions",
-      "type": "default",
-      "claim": "The feature's Learn page contains conflicting enabled-by-default and disabled-by-default statements for new domains.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
-      "quote": "For new managed domain deployments, enhanced synchronization is enabled by default. ... For new domain deployments, samaccountName will need to be enabled, by default it is disabled.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "With the setting disabled, sAMAccountName is generated from mailNickname or the user principal name prefix.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
-      "quote": "Setting disabled: Microsoft Entra Domain Services generates sAMAccountName from mailNickname or the user principal name prefix.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Generated sAMAccountName values are truncated when needed.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
-      "quote": "Truncation and de-duplication are applied when needed to meet legacy constraints.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Generated sAMAccountName values are de-duplicated when needed.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
-      "quote": "Truncation and de-duplication are applied when needed to meet legacy constraints.",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
-      "where": "summary; What's changing; Risk assessment; Governance guidance",
+      "where": "Why it matters: first paragraph",
       "type": "behaviour",
-      "claim": "Enabling the setting updates existing hybrid users during synchronisation.",
+      "claim": "Legacy-authentication applications commonly expect sAMAccountName to be unique.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
-      "quote": "Existing hybrid users are updated during synchronization.",
+      "quote": "Applications that use legacy authentication commonly expect this value to be unique, no longer than 20 characters, and free of unsupported special characters.",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
-      "where": "What's changing; Scope",
+      "where": "Why it matters: first paragraph",
       "type": "behaviour",
-      "claim": "Cloud-only users without onPremisesSamAccountName retain mailNickname-based name generation.",
+      "claim": "Legacy-authentication applications commonly expect sAMAccountName to be no longer than 20 characters.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
-      "quote": "Cloud-only users without an onPremisesSamAccountName value continue to use mailNickname-based sAMAccountName generation.",
+      "quote": "Applications that use legacy authentication commonly expect this value to be unique, no longer than 20 characters, and free of unsupported special characters.",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "Why it matters",
+      "where": "Why it matters: first paragraph",
       "type": "behaviour",
-      "claim": "Applications using legacy authentication commonly expect sAMAccountName to be unique.",
+      "claim": "Legacy-authentication applications commonly expect sAMAccountName to be free of unsupported special characters.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
       "quote": "Applications that use legacy authentication commonly expect this value to be unique, no longer than 20 characters, and free of unsupported special characters.",
@@ -252,42 +246,9 @@
     },
     {
       "n": 21,
-      "where": "Why it matters",
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "Applications using legacy authentication commonly expect sAMAccountName to be no longer than 20 characters.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
-      "quote": "Applications that use legacy authentication commonly expect this value to be unique, no longer than 20 characters, and free of unsupported special characters.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "Applications using legacy authentication commonly expect sAMAccountName to contain no unsupported special characters.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
-      "quote": "Applications that use legacy authentication commonly expect this value to be unique, no longer than 20 characters, and free of unsupported special characters.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "Why it matters; Risk assessment; rationale: risk",
-      "type": "behaviour",
-      "claim": "The setting preserves hybrid account-name consistency with on-premises Active Directory for dependent applications and scripts.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
-      "quote": "This helps preserve account-name consistency with on-premises Active Directory and improves compatibility with applications and scripts that depend on existing sAMAccountName values.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "Risk assessment; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "Microsoft advises reviewing applications, scripts, scheduled tasks and access-control configurations before enabling the setting.",
+      "claim": "Microsoft advises reviewing applications, scripts, scheduled tasks and access-control configurations that use sAMAccountName before enabling the setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
       "quote": "Before enabling it: ... Review applications, scripts, scheduled tasks, and access-control configurations that use sAMAccountName.",
@@ -295,8 +256,8 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "Risk assessment; Scope; Governance guidance: Before rollout",
+      "n": 22,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance: Before rollout",
       "type": "behaviour",
       "claim": "Users synchronised from on-premises Active Directory must have onPremisesSamAccountName populated in Microsoft Entra ID.",
       "status": "supported",
@@ -306,10 +267,32 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 23,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn recommends comparing representative hybrid users' Domain Services sAMAccountName values with their source values in Microsoft Entra ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
+      "quote": "Select representative hybrid users whose onPremisesSamAccountName values are known. ... Confirm that their sAMAccountName values in Microsoft Entra Domain Services match the source values in Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout and After rollout",
+      "type": "behaviour",
+      "claim": "Learn recommends validating dependent application and script authentication after synchronisation completes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
+      "quote": "Plan to validate authentication and application access after synchronization completes. ... Test authentication for applications and scripts that depend on sAMAccountName.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
       "where": "controls[0].note; Risk assessment; Scope; Governance guidance",
       "type": "role",
-      "claim": "Changing the portal setting requires both Application Administrator and Groups Administrator.",
+      "claim": "The administrator changing the portal setting must hold both Application Administrator and Groups Administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
       "quote": "To change the setting, the administrator must have both the Application Administrator and Groups Administrator roles.",
@@ -317,21 +300,21 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "Scope; Cost and licensing",
-      "type": "behaviour",
-      "claim": "The feature requires a Microsoft Entra Domain Services managed domain.",
+      "n": 26,
+      "where": "front matter: licensing.model and notes; summary; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "The feature is included as an option in an Enterprise or Premium Domain Services managed domain, which is its documented SKU prerequisite.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
-      "quote": "Prerequisites: A Microsoft Entra Domain Services managed domain.",
+      "quote": "Prerequisites: ... A Microsoft Entra Domain Services managed domain. ... An Enterprise or Premium SKU. The feature is not available with the Standard SKU.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 28,
-      "where": "summary; licensing.notes; Cost and licensing; Scope; Governance guidance; rationale: cost",
+      "n": 27,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "The feature requires an Enterprise or Premium Domain Services SKU.",
+      "claim": "The feature is unavailable with the Standard SKU, so a Standard domain needs an eligible SKU change before using it.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
       "quote": "An Enterprise or Premium SKU. The feature is not available with the Standard SKU.",
@@ -339,76 +322,43 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "licensing.notes; Cost and licensing; Governance guidance: Before rollout",
-      "type": "licensing",
-      "claim": "The feature is unavailable with the Standard Domain Services SKU.",
+      "n": 28,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The feature's Learn page names no separate charge for enhanced sAMAccountName synchronisation.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
-      "quote": "The feature is not available with the Standard SKU.",
+      "source": null,
+      "quote": "Searched: Entra Domain Services enhanced sAMAccountName synchronization Enterprise Premium pricing additional charge meter licence. Read security-account-name, entra/fundamentals/licensing and domain-services/faqs; feature page names SKUs but no separate charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing: second paragraph",
+      "type": "cost",
+      "claim": "Microsoft Entra Domain Services is a paid service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/domain-services/faqs",
+      "quote": "Is Microsoft Entra Domain Services a paid service? Yes. For more information, see the pricing page.",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The feature is an included capability of the eligible Enterprise or Premium Domain Services SKU.",
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Domain Services has hourly charges based on the SKU selected by the tenant owner, supporting the variable cost rating.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
-      "quote": "Prerequisites: ... An Enterprise or Premium SKU. The feature is not available with the Standard SKU.",
+      "source": "https://learn.microsoft.com/entra/fundamentals/licensing",
+      "quote": "Microsoft Entra Domain Services charges accrue per hour based on the SKU the tenant owner selects.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "The feature's Learn page names no separate charge for this feature.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Entra Domain Services sAMAccountName synchronization separate feature charge pricing Enterprise Premium. Read security-account-name in full and licensing's Domain Services section; no separate feature charge is named on the feature page.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Domain Services is a paid service.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/domain-services/faqs",
-      "quote": "Is Microsoft Entra Domain Services a paid service? Yes.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Domain Services charges accrue per hour.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/fundamentals/licensing",
-      "quote": "Microsoft Entra Domain Services charges accrue per hour based on the SKU the tenant owner selects.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Domain Services billing depends on the SKU selected by the tenant owner.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/fundamentals/licensing",
-      "quote": "Microsoft Entra Domain Services charges accrue per hour based on the SKU the tenant owner selects.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Cost and licensing",
+      "where": "Cost and licensing: second paragraph",
       "type": "behaviour",
-      "claim": "A managed domain's SKU can be switched after creation.",
+      "claim": "A Domain Services SKU can be switched after the managed domain is created.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/domain-services/administration-concepts",
       "quote": "You select a SKU when you create the managed domain, and you can switch SKUs as your business requirements change after the managed domain is created.",
@@ -416,65 +366,21 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Cost and licensing",
+      "n": 32,
+      "where": "Cost and licensing: second paragraph",
       "type": "cost",
-      "claim": "Microsoft directs readers to the Azure pricing page for Domain Services pricing.",
+      "claim": "Microsoft directs readers to the Azure Domain Services pricing page for prices.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/domain-services/administration-concepts",
-      "quote": "For more information, see the Domain Services pricing page (https://azure.microsoft.com/pricing/details/active-directory-ds/).",
+      "source": "https://learn.microsoft.com/entra/identity/domain-services/faqs",
+      "quote": "Is Microsoft Entra Domain Services a paid service? Yes. For more information, see the pricing page. [https://azure.microsoft.com/pricing/details/active-directory-ds/]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
-      "where": "controls[0].note; Governance controls",
-      "type": "command",
-      "claim": "The cited template reference documents Microsoft.AAD/domainServices at API version 2026-08-31-preview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/azure/templates/microsoft.aad/domainservices",
-      "quote": "resource symbolicname 'Microsoft.AAD/domainServices@2026-08-31-preview' = {",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "controls[0].note; Governance controls",
-      "type": "command",
-      "claim": "The template setting is properties.domainSecuritySettings.syncOnPremSamAccountName.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/azure/templates/microsoft.aad/domainservices",
-      "quote": "\"properties\": { ... \"domainSecuritySettings\": { ... \"syncOnPremSamAccountName\": \"string\" ... }",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "controls[0].note; Governance controls",
-      "type": "command",
-      "claim": "The template property permits Enabled and Disabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/azure/templates/microsoft.aad/domainservices",
-      "quote": "syncOnPremSamAccountName | A flag to determine whether the SyncOnPremSamAccountName feature is active. When enabled, the samAccountName attribute in Entra Domain Services is synchronized from the onPremisesSamAccountName attribute in Entra ID | 'Disabled''Enabled'",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "controls[0].api; Governance controls: API and automation",
-      "type": "absence",
-      "claim": "Microsoft has not documented automation that sets enhanced sAMAccountName synchronisation.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.operations.domainservicesoperations?view=azure-python-preview",
-      "quote": "begin_update(resource_group_name: str, domain_service_name: str, domain_service: _models.DomainService, *, content_type: str = 'application/json', **kwargs: Any) -> LROPoller[_models.DomainService]",
-      "severity": "blocker",
-      "fix": "Replace controls[0].api null with kind other, call 'client.domain_services.begin_update(resource_group_name, domain_service_name, domain_service)', and docs https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.operations.domainservicesoperations?view=azure-python-preview. In the note say: 'The preview Python SDK accepts a DomainService whose properties.domain_security_settings.sync_on_prem_sam_account_name sets Enabled or Disabled.' Cite the DomainService, DomainServiceProperties and DomainSecuritySettings model references at https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.models.domainservice?view=azure-python-preview, https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.models.domainserviceproperties?view=azure-python-preview and https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.models.domainsecuritysettings?view=azure-python-preview. These pages explicitly connect the update argument to the setting; this does not assert rollback behaviour."
-    },
-    {
-      "n": 41,
-      "where": "controls[0].note; Governance controls",
+      "n": 33,
+      "where": "controls[0].scope and note; Governance controls",
       "type": "applicability",
-      "claim": "The setting is configured per managed domain.",
+      "claim": "The enhanced sAMAccountName setting is configured per managed domain.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
       "quote": "Select your managed domain. ... In the left navigation, select Security settings. ... For sAMAccountName synchronization from on-premises, select Enable.",
@@ -482,103 +388,125 @@
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Governance controls",
+      "n": 34,
+      "where": "controls[0].ui; rendered Governance controls table; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The portal route is Microsoft Entra admin center > Microsoft Entra Domain Services > managed domain > Security settings > sAMAccountName synchronization from on-premises > Enable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
+      "quote": "Search for and select Microsoft Entra Domain Services. ... Select your managed domain. ... In the left navigation, select Security settings. ... For sAMAccountName synchronization from on-premises, select Enable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].api; rendered Governance controls table",
+      "type": "command",
+      "claim": "The preview Python SDK supports client.domain_services.begin_update(resource_group_name, domain_service_name, domain_service) to update an existing domain using the DomainService object described in the note.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.operations.domainservicesoperations?view=azure-python-preview",
+      "quote": "The Update Domain Service operation can be used to update the existing deployment. ... begin_update(resource_group_name: str, domain_service_name: str, domain_service: _models.DomainService, *, content_type: str = 'application/json', **kwargs: Any)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].note: Python SDK object",
+      "type": "command",
+      "claim": "The SDK DomainService has a properties object of type DomainServiceProperties.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.models.domainservice?view=azure-python-preview",
+      "quote": "properties: _models.DomainServiceProperties | None",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].note: Python SDK object",
+      "type": "command",
+      "claim": "DomainServiceProperties has domain_security_settings of type DomainSecuritySettings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.models.domainserviceproperties?view=azure-python-preview",
+      "quote": "domain_security_settings: _models.DomainSecuritySettings | None",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].note: Python SDK deciding property",
+      "type": "command",
+      "claim": "DomainSecuritySettings.sync_on_prem_sam_account_name controls this feature and accepts Enabled or Disabled in the preview SDK.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.models.domainsecuritysettings?view=azure-python-preview",
+      "quote": "When enabled, the samAccountName attribute in Entra Domain Services is synchronized from the onPremisesSamAccountName attribute in Entra ID. Known values are: \"Enabled\" and \"Disabled\".",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance controls: ARM reference paragraph",
+      "type": "command",
+      "claim": "Microsoft.AAD/domainServices@2026-08-31-preview documents properties.domainSecuritySettings.syncOnPremSamAccountName.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/templates/microsoft.aad/domainservices",
+      "quote": "resource symbolicname 'Microsoft.AAD/domainServices@2026-08-31-preview' = { ... properties: { ... domainSecuritySettings: { ... syncOnPremSamAccountName: 'string'",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Governance controls: ARM reference paragraph",
+      "type": "command",
+      "claim": "The ARM reference allows Enabled and Disabled for syncOnPremSamAccountName.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/templates/microsoft.aad/domainservices",
+      "quote": "syncOnPremSamAccountName | A flag to determine whether the SyncOnPremSamAccountName feature is active. When enabled, the samAccountName attribute in Entra Domain Services is synchronized from the onPremisesSamAccountName attribute in Entra ID | 'Disabled''Enabled'",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance controls: last paragraph",
       "type": "absence",
-      "claim": "No per-user or per-group selection of the enhanced attribute source is described by the cited pages.",
+      "claim": "Microsoft documents no per-user or per-group choice of which hybrid users change sAMAccountName source within the managed domain.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Entra Domain Services sAMAccountName synchronization per user group selection disable existing domain revert pricing separate charge. Read security-account-name and ARM domainServices; scoped-sync results select domain membership, not the attribute-source switch.",
+      "quote": "Searched: sAMAccountName Domain Services per-user group synchronization. Read security-account-name, DomainSecuritySettings and ARM reference; synchronization/scoped-synchronization search excerpts control who enters the domain, not a per-user name-source switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Open questions: reverting an existing domain",
+      "type": "absence",
+      "claim": "Learn does not describe reverting an existing domain after enabling this setting or the resulting generated-name behaviour.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: sAMAccountName synchronization disable Domain Services; syncOnPremSamAccountName PATCH. Read security-account-name, SDK operation/models and ARM reference. Disabled is a documented value, but no passage describes rollback of already-updated existing users.",
       "severity": null,
       "fix": null
     },
     {
       "n": 43,
-      "where": "Open questions",
+      "where": "Risk assessment: Autonomy & actions",
       "type": "absence",
-      "claim": "Learn does not explain disabling the setting again on an existing domain or the resulting name rollback.",
+      "claim": "No agent or autonomous-agent behaviour is described for this attribute-synchronisation feature.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"sAMAccountName\" \"Domain Services\" \"disable\" \"existing\". Read security-account-name, ARM domainServices and preview SDK models/operations. Disabled is an accepted value, but no passage explains reversal on an existing domain or restoration of generated names.",
+      "quote": "Searched: Microsoft Entra Domain Services enhanced sAMAccountName synchronization agent autonomous actions. Read security-account-name and synchronization search excerpts; these describe administrator-enabled attribute synchronisation, not an agent.",
       "severity": null,
       "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Risk assessment; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Learn recommends comparing representative hybrid users' Domain Services sAMAccountName values with source values in Microsoft Entra ID.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
-      "quote": "Select representative hybrid users whose onPremisesSamAccountName values are known. Confirm that their sAMAccountName values in Microsoft Entra Domain Services match the source values in Microsoft Entra ID.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Risk assessment; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Learn recommends testing authentication for applications and scripts dependent on sAMAccountName.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
-      "quote": "Test authentication for applications and scripts that depend on sAMAccountName.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "For unexpected values, Learn advises checking the source attribute and whether enhanced synchronisation is enabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
-      "quote": "If a user doesn’t receive the expected value, confirm that onPremisesSamAccountName is populated in Microsoft Entra ID and verify that the enhanced synchronization setting is enabled.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "controls[0].ui; Governance controls: Admin UI",
-      "type": "admin-path",
-      "claim": "The portal route is Microsoft Entra admin center > Microsoft Entra Domain Services > managed domain > Security settings > sAMAccountName synchronization from on-premises.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/domain-services/security-account-name",
-      "quote": "Search for and select Microsoft Entra Domain Services. Select your managed domain. In the left navigation, select Security settings. For sAMAccountName synchronization from on-premises, select Enable.",
-      "severity": "minor",
-      "fix": "Extend controls[0].ui.path to 'Microsoft Entra Domain Services > managed domain > Security settings > sAMAccountName synchronization from on-premises > Enable'. The printed route reaches the correct setting but omits its Enable option."
-    },
-    {
-      "n": 48,
-      "where": "front matter: cost; rationale: cost",
-      "type": "cost",
-      "claim": "The variable cost rating reflects the Domain Services hourly SKU-based meter.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/fundamentals/licensing",
-      "quote": "Microsoft Entra Domain Services charges accrue per hour based on the SKU the tenant owner selects.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "Governance guidance: Before rollout; controls",
-      "type": "consistency",
-      "claim": "The checklist tells readers to check the domain SKU, but the controls table has no SKU row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Check that the domain is on the Enterprise or Premium SKU; the feature is not available with the Standard SKU. | The table's only control is Whether sAMAccountName is synchronised from onPremisesSamAccountName.",
-      "severity": "minor",
-      "fix": "Remove the checklist bullet 'Check that the domain is on the Enterprise or Premium SKU; the feature is not available with the Standard SKU.' The prerequisite already appears in Scope and Cost and licensing; no new control row is needed."
     }
   ],
   "precheck": {
-    "at": "2026-11-22T02:58:56.143Z",
+    "at": "2026-11-22T04:02:02.872Z",
     "summary": {
-      "links": 6,
+      "links": 10,
       "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
-      "apiCalls": 0,
-      "apiCallsNotOnPage": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -608,6 +536,26 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.operations.domainservicesoperations?view=azure-python-preview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.models.domainservice?view=azure-python-preview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.models.domainserviceproperties?view=azure-python-preview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.models.domainsecuritysettings?view=azure-python-preview",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://www.microsoft.com/microsoft-365/roadmap?id=569446",
         "ok": true,
         "status": 200
@@ -624,9 +572,19 @@
           "Microsoft Entra Domain Services",
           "managed domain",
           "Security settings",
-          "sAMAccountName synchronization from on-premises"
+          "sAMAccountName synchronization from on-premises",
+          "Enable"
         ],
         "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether sAMAccountName is synchronised from onPremisesSamAccountName",
+        "docs": "https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.operations.domainservicesoperations?view=azure-python-preview",
+        "reachable": true,
+        "token": "client.domain_services.begin_update(resource_group_name, domain_service_name,",
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -636,6 +594,12 @@
       "date": "2026-11-22",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-22",
+      "status": "held",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

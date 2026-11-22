@@ -37,6 +37,18 @@ sources:
   - title: "Frequently asked questions (FAQs) about Microsoft Entra Domain Services"
     url: "https://learn.microsoft.com/entra/identity/domain-services/faqs"
     kind: "learn"
+  - title: "DomainServicesOperations Class"
+    url: "https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.operations.domainservicesoperations?view=azure-python-preview"
+    kind: "learn"
+  - title: "DomainService Class"
+    url: "https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.models.domainservice?view=azure-python-preview"
+    kind: "learn"
+  - title: "DomainServiceProperties Class"
+    url: "https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.models.domainserviceproperties?view=azure-python-preview"
+    kind: "learn"
+  - title: "DomainSecuritySettings Class"
+    url: "https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.models.domainsecuritysettings?view=azure-python-preview"
+    kind: "learn"
   - title: "Microsoft 365 Roadmap item 569446"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=569446"
     kind: "roadmap"
@@ -47,10 +59,13 @@ controls:
     scope: "other"
     ui:
       surface: "Microsoft Entra admin center"
-      path: "Microsoft Entra Domain Services > managed domain > Security settings > sAMAccountName synchronization from on-premises"
+      path: "Microsoft Entra Domain Services > managed domain > Security settings > sAMAccountName synchronization from on-premises > Enable"
       docs: "https://learn.microsoft.com/entra/identity/domain-services/security-account-name"
-    api: null
-    note: "Per managed domain. Portal change needs Application Administrator and Groups Administrator. The ARM template reference documents properties.domainSecuritySettings.syncOnPremSamAccountName (Enabled, Disabled) in 2026-08-31-preview."
+    api:
+      kind: "other"
+      call: "client.domain_services.begin_update(resource_group_name, domain_service_name, domain_service)"
+      docs: "https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.operations.domainservicesoperations?view=azure-python-preview"
+    note: "Per managed domain. Portal change needs Application Administrator and Groups Administrator. The preview Python SDK accepts a DomainService whose properties.domain_security_settings.sync_on_prem_sam_account_name sets Enabled or Disabled."
 confidence: "high"
 created: "2026-11-22"
 updated: "2026-11-22"
@@ -64,19 +79,23 @@ changes:
     note: "Correction: the Resource Manager property is now stated as documented in the template reference, not as a scripted control; cost rating set to variable, with hourly SKU-based billing named."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 49 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-22"
+    note: "Correction: the controls table now gives the preview Python SDK update call for the setting and the Enable option in the portal path; removed the SKU checklist step, which has no control row."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 43 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 49
-  confirmed: 47
+  claims: 43
+  confirmed: 43
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "448702a3e9a77f94de7ab293c2dcb63c"
+  contradicted: 0
+  attempts: 0
+  hash: "7bca863afec9b9a45e445cadf623d700"
 ---
 
 ## What's changing
@@ -126,7 +145,6 @@ The roadmap lists Worldwide (Standard Multi-Tenant) and the Web platform. The re
 ## Governance guidance
 
 ### Before rollout
-- Check that the domain is on the Enterprise or Premium SKU; the feature is not available with the Standard SKU.
 - Confirm that onPremisesSamAccountName is populated correctly in Microsoft Entra ID for your hybrid users.
 - Inventory applications, scripts, scheduled tasks and access-control configurations that use sAMAccountName, and identify integrations that depend on the currently generated value.
 - Assign an administrator who holds both Application Administrator and Groups Administrator.
@@ -147,7 +165,7 @@ The roadmap lists Worldwide (Standard Multi-Tenant) and the Web platform. The re
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether sAMAccountName is synchronised from onPremisesSamAccountName</strong><br><small class="controls__note">Per managed domain. Portal change needs Application Administrator and Groups Administrator. The ARM template reference documents properties.domainSecuritySettings.syncOnPremSamAccountName (Enabled, Disabled) in 2026-08-31-preview.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Microsoft Entra Domain Services › managed domain › Security settings › sAMAccountName synchronization from on-premises <a href="https://learn.microsoft.com/entra/identity/domain-services/security-account-name" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether sAMAccountName is synchronised from onPremisesSamAccountName</strong><br><small class="controls__note">Per managed domain. Portal change needs Application Administrator and Groups Administrator. The preview Python SDK accepts a DomainService whose properties.domain_security_settings.sync_on_prem_sam_account_name sets Enabled or Disabled.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Microsoft Entra Domain Services › managed domain › Security settings › sAMAccountName synchronization from on-premises › Enable <a href="https://learn.microsoft.com/entra/identity/domain-services/security-account-name" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>client.domain_services.begin_update(resource_group_name, domain_service_name, domain_service)</code> <a href="https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.operations.domainservicesoperations?view=azure-python-preview" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -165,13 +183,4 @@ The setting is per managed domain. The pages read describe no per-user or per-gr
 risk: Medium. Enabling the setting changes the sAMAccountName source for existing hybrid users, so applications, scripts and access-control entries that rely on the generated value can break.
 cost: Variable. Domain Services charges accrue per hour based on the selected SKU; Standard domains need Enterprise or Premium to use this feature. For domains already on an eligible SKU, the feature page names no separate charge and the rollout work is administrator time.
 impact: Low. An administrator has to enable it on an existing domain; users notice only if their sAMAccountName changes and a dependent application or script is affected.
--->
-
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls: API and automation / absence: Microsoft has not documented automation that sets enhanced sAMAccountName synchronisation. | Found: begin_update(resource_group_name: str, domain_service_name: str, domain_service: _models.DomainService, *, content_type: str = 'application/json', **kwargs: Any) -> LROPoller[_models.DomainService] | Fix: Replace controls[0].api null with kind other, call 'client.domain_services.begin_update(resource_group_name, domain_service_name, domain_service)', and docs https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.operations.domainservicesoperations?view=azure-python-preview. In the note say: 'The preview Python SDK accepts a DomainService whose properties.domain_security_settings.sync_on_prem_sam_account_name sets Enabled or Disabled.' Cite the DomainService, DomainServiceProperties and DomainSecuritySettings model references at https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.models.domainservice?view=azure-python-preview, https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.models.domainserviceproperties?view=azure-python-preview and https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.models.domainsecuritysettings?view=azure-python-preview. These pages explicitly connect the update argument to the setting; this does not assert rollback behaviour. | Source: https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.operations.domainservicesoperations?view=azure-python-preview
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls: Admin UI / admin-path: The portal route is Microsoft Entra admin center > Microsoft Entra Domain Services > managed domain > Security settings > sAMAccountName synchronization from on-premises. | Found: Search for and select Microsoft Entra Domain Services. Select your managed domain. In the left navigation, select Security settings. For sAMAccountName synchronization from on-premises, select Enable. | Fix: Extend controls[0].ui.path to 'Microsoft Entra Domain Services > managed domain > Security settings > sAMAccountName synchronization from on-premises > Enable'. The printed route reaches the correct setting but omits its Enable option. | Source: https://learn.microsoft.com/entra/identity/domain-services/security-account-name
-- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist tells readers to check the domain SKU, but the controls table has no SKU row. | Found: Check that the domain is on the Enterprise or Premium SKU; the feature is not available with the Standard SKU. | The table's only control is Whether sAMAccountName is synchronised from onPremisesSamAccountName. | Fix: Remove the checklist bullet 'Check that the domain is on the Enterprise or Premium SKU; the feature is not available with the Standard SKU.' The prerequisite already appears in Scope and Cost and licensing; no new control row is needed.
 -->

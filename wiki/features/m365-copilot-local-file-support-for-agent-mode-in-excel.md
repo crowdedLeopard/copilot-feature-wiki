@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "review"
 licensing:
   model: "add-on"
-  notes: "Microsoft describes Microsoft 365 Copilot as an add-on plan with licensing prerequisites. Which licence tier covers local file support, and whether any meter applies, is not yet published."
+  notes: "Microsoft's service description lists Edit with Copilot in Excel as a Microsoft 365 Copilot (Premium) feature requiring a Microsoft 365 Copilot licence; no local-file-specific licensing terms are published. Microsoft's licence-options page also says Microsoft Copilot is included with Microsoft 365 E7."
 audiences: ["m365-admin","service-owner","security","change-adoption"]
 tags: ["excel","m365-copilot","microsoft-365-apps","macos","privacy"]
 sources:
@@ -37,8 +37,14 @@ sources:
   - title: "Data, Privacy, and Security for Microsoft Copilot"
     url: "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy"
     kind: "learn"
+  - title: "Data protection and auditing for Microsoft Copilot"
+    url: "https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing"
+    kind: "learn"
   - title: "Microsoft Copilot"
     url: "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot"
+    kind: "learn"
+  - title: "License options for Microsoft Copilot"
+    url: "https://learn.microsoft.com/copilot/plan/copilot-license-options"
     kind: "learn"
   - title: "Microsoft Copilot overview"
     url: "https://learn.microsoft.com/copilot/plan/copilot-overview"
@@ -79,7 +85,7 @@ controls:
       kind: "powershell"
       call: "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()"
       docs: "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell"
-    note: "At least License Administrator or User Administrator. Which licence tier covers local file support is not yet published."
+    note: "At least License Administrator or User Administrator. Edit with Copilot in Excel needs a Microsoft 365 Copilot licence per the service description; no local-file-specific terms are published."
   - governs: "Switch for local file support in Agent Mode in Excel"
     scope: "tenant"
     ui: null
@@ -94,19 +100,23 @@ changes:
     note: "New briefing: roadmap item 557564 is still In development; Learn does not yet document local file support, and Microsoft's pages now call Agent Mode Edit with Copilot."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 52 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after verification: local-file labels and encryption are honoured per Microsoft's data-protection page, the service description gives the licence for Edit with Copilot in Excel, and two unsupported checklist items were removed."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 52 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 52
-  confirmed: 49
+  confirmed: 52
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "ce8c177495ee5517ecf6abad4a46a321"
+  contradicted: 0
+  attempts: 0
+  hash: "0b69a8fafb68d2b0b139b393d3a110fc"
 ---
 
 ## What's changing
@@ -126,8 +136,8 @@ The existing controls decide the outcome. The privacy control for connected expe
 ## Risk assessment
 
 **Data exposure**
-- Copilot would work on workbooks stored on the device. Microsoft's privacy page says Copilot honours the usage rights of data encrypted by Microsoft Purview Information Protection, applied by sensitivity labels or by Information Rights Management. How that applies to a workbook on the device is not yet documented.
-- The connected-experiences policy is the documented lever: if connected experiences that analyse your content are turned off on devices in your organisation, Microsoft says Copilot features are not available in Excel on Windows, Mac, iOS or Android.
+- Copilot would work on workbooks stored on the device. Microsoft's privacy page says Copilot honours the usage rights of data encrypted by Microsoft Purview Information Protection, applied by sensitivity labels or by Information Rights Management. When a labelled or encrypted file on local storage is open in an Office app, Copilot honours the same protection settings.
+- The connected-experiences policy is the documented lever: if connected experiences that analyse your content are turned off on devices in your organisation, Microsoft says Copilot features are not available in Excel on Windows, Mac, iOS or Android when running the most current version of these apps.
 
 **Security & identity**
 - No change is documented for this item. Microsoft's requirements page lists a Microsoft Entra ID work or school account as required for Copilot.
@@ -142,9 +152,9 @@ The existing controls decide the outcome. The privacy control for connected expe
 
 ## Cost and licensing
 
-Microsoft's service description page states that Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites. The requirements page says users need a Microsoft Copilot licence and a qualifying prerequisite licence. Microsoft also describes a Microsoft 365 Copilot (Basic) experience for users without the add-on licence, with Copilot capabilities inside apps such as Word or Excel, and says chat experiences in Word, Excel and PowerPoint vary with the user's licence and tenant configuration.
+Microsoft's service description page states that Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites. Microsoft's licence-options page also says Microsoft Copilot is included with Microsoft 365 E7. The requirements page says users need a Microsoft Copilot licence and a qualifying prerequisite licence. Microsoft also describes a Microsoft 365 Copilot (Basic) experience for users without the add-on licence, with Copilot capabilities inside apps such as Word or Excel, and says chat experiences in Word, Excel and PowerPoint vary with the user's licence and tenant configuration.
 
-Which of those tiers includes local file support for Agent Mode is not yet published, and no rate or meter specific to this feature is published. The indirect costs are admin time to check licence assignment and policy, and user communication.
+Microsoft's service description lists Edit with Copilot in Excel as a Microsoft 365 Copilot (Premium) feature requiring a Microsoft 365 Copilot licence; no local-file-specific licensing terms are published, and no rate or meter specific to this feature is published. The indirect costs are admin time to check licence assignment and policy, and user communication.
 
 ## Scope
 
@@ -157,16 +167,14 @@ Copilot in desktop apps needs Microsoft 365 Apps deployed to users, and Microsof
 ### Before rollout
 - Check who holds a Microsoft Copilot licence, in Microsoft 365 admin center > Billing > Licenses, so you know who could use the capability once it ships.
 - Confirm the state of the *Allow the use of connected experiences in Office that analyze content* policy, because turning it off removes Copilot features from Excel.
-- Review how your Purview sensitivity labels and encryption are applied to workbooks users keep on devices, since Copilot honours usage rights on encrypted data.
 - Watch roadmap item 557564 and the Copilot release notes for a status change.
 
 ### At rollout
 - Tell Excel users who work with local files that Copilot edits are made in the workbook and need review before the file is shared.
 - Show pilot users the Show Changes pane, where Microsoft says Copilot edits carry attribution.
-- Check pilot machines for the Office Feature Updates task and for blocked Copilot endpoints if the feature does not appear.
 
 ### After rollout
-- Re-read the Copilot release notes for an entry on local files, and update this assessment when Microsoft documents behaviour, licence tier and any admin control.
+- Re-read the Copilot release notes for an entry on local files, and update this assessment when Microsoft documents behaviour, licence terms and any admin control.
 - Re-check licence assignment if Microsoft states that a tier is excluded.
 
 ## Governance controls
@@ -177,7 +185,7 @@ Copilot in desktop apps needs Microsoft 365 Apps deployed to users, and Microsof
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether Copilot features are available in Excel (connected experiences that analyse content)</strong><br><small>User</small><br><small class="controls__note">Existing control, not specific to local files. Turning it off makes Copilot features unavailable in Excel. Also settable through Cloud Policy; Mac uses a preference.</small></td><td data-label="Admin UI"><strong>Group Policy Management</strong><br>User Configuration › Policies › Administrative Templates › Microsoft Office 2016 › Privacy › Trust Center › Allow the use of connected experiences in Office that analyze content <a href="https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry value UserContentDisabled set to 2 (Disabled)</code> <a href="https://learn.microsoft.com/microsoft-365-apps/privacy/manage-privacy-controls" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users hold the Microsoft Copilot licence</strong><br><small>User</small><br><small class="controls__note">At least License Administrator or User Administrator. Which licence tier covers local file support is not yet published.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Licenses › product › Assign licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users hold the Microsoft Copilot licence</strong><br><small>User</small><br><small class="controls__note">At least License Administrator or User Administrator. Edit with Copilot in Excel needs a Microsoft 365 Copilot licence per the service description; no local-file-specific terms are published.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Licenses › product › Assign licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch for local file support in Agent Mode in Excel</strong><br><small>Tenant</small><br><small class="controls__note">No setting specific to this feature is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -188,24 +196,13 @@ The licence row decides who holds Copilot, and assigning licences needs at least
 
 ## Open questions
 
-- Which licence tier will include local file support for Agent Mode, and will any meter or capacity apply? Watch the Microsoft Copilot service description and the Copilot requirements page.
+- Will local file support have any additional licensing terms, meter or capacity requirement? Watch the Microsoft Copilot service description and the Copilot requirements page.
 - What is the default on arrival, and will an admin switch exist? Watch Message center and the roadmap item.
-- How is a workbook stored on the device read and processed, and how do sensitivity labels and encryption apply to it? Watch the Microsoft Copilot privacy page.
+- How is a workbook stored on the device read and processed? Watch the Microsoft Copilot privacy page.
 - Is this item's Agent Mode the capability the release notes now call Edit with Copilot, and will the roadmap status change now that the March CY2026 target has passed?
 
 <!-- rationale
 risk: Medium. Copilot would edit workbooks stored on the device, and Microsoft has not described how those files are processed; the connected-experiences policy that governs Copilot in Excel already exists.
 cost: Low. No separate licence, meter or price for this feature is published; Microsoft describes Copilot as an add-on plan, so the known cost is admin time and licences already planned.
 impact: Medium. Aimed at Excel users on Desktop and Mac who keep workbooks on their device and use Copilot; no admin setting is documented for it and admins are not asked to act.
--->
-
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Data exposure; Open questions / absence: How sensitivity labels and encryption apply to a workbook on the device is not yet documented. | Found: When a labeled or encrypted file stored outside Microsoft 365 (for example, on local storage, a network share, or another cloud service) is open in an Office app, Copilot honors the same protection settings. | Fix: Replace 'How that applies to a workbook on the device is not yet documented.' with 'When a labelled or encrypted file on local storage is open in an Office app, Copilot honours the same protection settings.' Cite https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing. Remove 'and how do sensitivity labels and encryption apply to it' from the processing open question. | Source: https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing
-- [contradicted, blocker] front matter: licensing.notes; controls[1].note; Cost and licensing; Open questions / absence: Which Copilot licence tier covers the local-file Agent Mode capability is not yet published. | Found: | Edit with Copilot in Word, Excel, PowerPoint, and OneNote | Yes | Not currently available | Not currently available | Not currently available | Microsoft 365 Copilot (Premium) features: A Microsoft 365 Copilot license is required to access this feature. | Fix: Replace the licence-tier absence in licensing.notes, controls[1].note and Cost and licensing with 'Microsoft's service description lists Edit with Copilot in Excel as a Microsoft 365 Copilot (Premium) feature requiring a Microsoft 365 Copilot licence; no local-file-specific licensing terms are published.' Keep the existing service-description citation. Change the first open question to 'Will local file support have any additional licensing terms, meter or capacity requirement?' | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].note; Why it matters; Data exposure; Governance guidance; Governance controls / applicability: Turning off connected experiences that analyse content makes Copilot unavailable in Excel on Windows, Mac, iOS and Android. | Found: Microsoft Copilot features won't be available to your users in the following apps: - Excel This applies to when you're running the most current version of these apps on Windows, Mac, iOS, or Android devices. | Fix: Add 'when running the most current version of these apps' to the Data exposure sentence that lists Windows, Mac, iOS and Android. | Source: https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy
-- [supported, minor] front matter: licensing.model and notes; Cost and licensing; rationale: cost / licensing: Microsoft's service description describes Microsoft 365 Copilot as an add-on plan with licensing prerequisites. | Found: Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites. | Fix: Keep the cited add-on description, but add 'Microsoft's licence-options page also says Microsoft Copilot is included with Microsoft 365 E7.' Cite https://learn.microsoft.com/copilot/plan/copilot-license-options, whose text says 'Microsoft Copilot is available with Microsoft 365 E7 or as an add-on'. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot
-- [contradicted, minor] Governance guidance: Before rollout; At rollout / consistency: The checklist asks readers to review sensitivity labels and encryption and check update-task/network controls that have no controls-table rows. | Found: Review how your Purview sensitivity labels and encryption are applied ... Check pilot machines for the Office Feature Updates task and for blocked Copilot endpoints ... Controls rows: connected experiences, licence assignment, local-file switch. | Fix: The sensitivity-label/encryption review and Office Feature Updates/network checks have no table rows. Remove those two checklist bullets to resolve the checklist/table mismatch without adding unverified controls.
 -->

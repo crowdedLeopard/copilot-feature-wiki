@@ -47,7 +47,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Compliance Manager > Regulations > Create new template > Upload PDF document"
+      path: "Compliance Manager > Regulations > Create new template > Upload PDF document > Scan and extract > Review draft template > Publish template"
       docs: "https://learn.microsoft.com/purview/compliance-manager-create-template"
     api: null
     note: "Needs the Compliance Manager Administration or Assessor role. Learn describes this procedure; the roadmap item is still In development."
@@ -55,10 +55,10 @@ controls:
     scope: "other"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Compliance Manager > Regulations > regulation > Manage user access"
+      path: "Compliance Manager > Regulations > regulation > Manage user access > role > Add readers / Add assessors / Add contributors"
       docs: "https://learn.microsoft.com/purview/compliance-manager-regulations"
     api: null
-    note: "Roles set here apply to existing and future assessments created with that regulation. Entra-assigned admins do not appear in the pane."
+    note: "Roles set here apply to existing and future assessments created with that regulation. The last choice follows the selected Reader, Assessor or Contributor tab. Entra-assigned admins do not appear in the pane."
   - governs: "Tenant switch to turn PDF template creation on or off"
     scope: "tenant"
     ui: null
@@ -73,19 +73,23 @@ changes:
     note: "New briefing: roadmap item In development; Learn already documents PDF upload for regulation templates, but licensing and default are not stated."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 54 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected per-regulation access: removing a regulation-based role does not remove an overall Compliance Manager role. Extended two control paths and the Settings route, added the counter's Get started name, and removed two checklist bullets with no control row."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 52
+  claims: 64
+  confirmed: 63
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "eeb5300a2ee8937a739ab18966790248"
+  contradicted: 1
+  attempts: 0
+  hash: "93d6520bbceb6f72b06924da35147685"
 ---
 
 ## What's changing
@@ -108,7 +112,7 @@ If nobody acts, Microsoft has not stated that existing behaviour changes. The pr
 
 **Data exposure**
 - The uploaded file is a regulation PDF that Learn says must be published by an official regulator or standards body, which limits what is expected to be uploaded. Where the file is stored and processed is not yet documented.
-- A role assigned in the Microsoft Purview portal extends by default to all regulations, so anyone with a Compliance Manager role can see a published template and its assessments unless you restrict access per regulation (see the controls table).
+- A role assigned in the Microsoft Purview portal extends by default to all regulations, so anyone with a Compliance Manager role can see a published template and its assessments. Per-regulation assignments apply at the assigned role level, but removing one does not remove an overall Compliance Manager role; change the overall role in the Microsoft Purview portal (see the controls table).
 
 **Security & identity**
 - Learn names the Compliance Manager Administration and Compliance Manager Assessor roles for uploading. The Compliance Manager role table lists Administration as the role that manages regulatory templates, so confirm which role your tenant needs.
@@ -125,7 +129,7 @@ If nobody acts, Microsoft has not stated that existing behaviour changes. The pr
 
 **Licence.** The Microsoft Purview service description says Compliance Manager is available to organisations with Office 365 and Microsoft 365 licences, and that assessment availability and management capabilities depend on the licensing agreement. The Microsoft Data Protection Baseline template is available at all subscription levels. Regulations designated premium require a purchased licence; depending on the agreement, an organisation might use up to three more premium templates for free, and Learn states that A5/E5/G5 customers can choose three premium regulations for free.
 
-**Meter.** The Learn page on creating regulation templates names roles and PDF format as its requirements and names no licence or meter. Whether a template created from a PDF counts towards the **Regulation licenses used** counter, which tracks templates in use against the number you are eligible to use, is not yet published.
+**Meter.** The Learn page on creating regulation templates names roles and PDF format as its requirements and names no licence or meter. Whether a template created from a PDF counts towards the **Regulation licenses used** counter, which tracks templates in use against the number you are eligible to use, is not yet published. The Get started page calls these counters Free regulation licenses used/Purchased regulation licenses used.
 
 **Indirect cost.** Admin and compliance time to review each extracted draft and correct controls and mappings.
 
@@ -139,14 +143,12 @@ If nobody acts, Microsoft has not stated that existing behaviour changes. The pr
 ## Governance guidance
 
 ### Before rollout
-- Review who holds the Compliance Manager Administration and Compliance Manager Assessor roles, and confirm each holder should be able to create and publish templates.
 - List the regulations your compliance team would upload and confirm each is a PDF published by an official regulator or standards body.
-- Check the **Regulation licenses used** counter on the Regulations page and your licensing agreement before building templates you intend to assess against.
 
 ### At rollout
 - Watch the roadmap item and Message center for a status change from In development.
 - Pilot with one regulation: upload it, then compare the extracted controls and mapped improvement actions with the source PDF before selecting **Publish template**.
-- Use **Manage user access** on the regulation details page to limit who works on assessments built from a published template.
+- Review per-regulation assignments in **Manage user access**; also review overall Compliance Manager roles, which removing a regulation-based role does not remove.
 
 ### After rollout
 - Record who published each template and the publishing notes entered, so later reviewers can see what was checked.
@@ -159,13 +161,13 @@ If nobody acts, Microsoft has not stated that existing behaviour changes. The pr
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Creating a regulation template from a regulation PDF</strong><br><small>Tenant</small><br><small class="controls__note">Needs the Compliance Manager Administration or Assessor role. Learn describes this procedure; the roadmap item is still In development.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Compliance Manager › Regulations › Create new template › Upload PDF document <a href="https://learn.microsoft.com/purview/compliance-manager-create-template" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Who can access the assessments built from a regulation template</strong><br><small class="controls__note">Roles set here apply to existing and future assessments created with that regulation. Entra-assigned admins do not appear in the pane.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Compliance Manager › Regulations › regulation › Manage user access <a href="https://learn.microsoft.com/purview/compliance-manager-regulations" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Creating a regulation template from a regulation PDF</strong><br><small>Tenant</small><br><small class="controls__note">Needs the Compliance Manager Administration or Assessor role. Learn describes this procedure; the roadmap item is still In development.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Compliance Manager › Regulations › Create new template › Upload PDF document › Scan and extract › Review draft template › Publish template <a href="https://learn.microsoft.com/purview/compliance-manager-create-template" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Who can access the assessments built from a regulation template</strong><br><small class="controls__note">Roles set here apply to existing and future assessments created with that regulation. The last choice follows the selected Reader, Assessor or Contributor tab. Entra-assigned admins do not appear in the pane.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Compliance Manager › Regulations › regulation › Manage user access › role › Add readers / Add assessors / Add contributors <a href="https://learn.microsoft.com/purview/compliance-manager-regulations" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Tenant switch to turn PDF template creation on or off</strong><br><small>Tenant</small><br><small class="controls__note">None documented at the time of writing (November 2026); roles are the available limit.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-Compliance Manager role holders see regulations by default, so per-regulation access is the narrowing control. Compliance Manager settings, including **User access** for assessments and assessment templates, are reached from the Settings icon in the Microsoft Purview portal and are open to the Compliance Manager Administrator or Global Administrator role. Admins whose Compliance Manager permissions come from Microsoft Entra ID do not appear on the **Manage user access** pane.
+Compliance Manager role holders see regulations by default. Per-regulation assignments apply at the assigned role level, but removing one does not remove an overall Compliance Manager role; change the overall role in the Microsoft Purview portal. Compliance Manager settings, including **User access** for assessments and assessment templates, are reached in the Microsoft Purview portal through Settings > Compliance Manager > User access and are open to the Compliance Manager Administrator or Global Administrator role. Admins whose Compliance Manager permissions come from Microsoft Entra ID do not appear on the **Manage user access** pane.
 
 The Compliance Manager settings page lists four setting types (Testing source, Manage user history, User access, Connectors) and none is a switch for PDF template creation. At the time of writing (November 2026), Microsoft Learn documents no tenant setting to turn the feature on or off and no API for it. Use roles as the limit.
 
@@ -182,14 +184,8 @@ cost: Low. Compliance Manager is included with Office 365 and Microsoft 365 lice
 impact: Low. Only people holding a Compliance Manager role who build or maintain regulation templates are named by Learn as users of the capability.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure; Governance controls; Governance guidance: At rollout / applicability: Restricting access per regulation is sufficient to narrow the all-regulation access of an existing overall Compliance Manager role holder. | Found: Removing a regulation-based role won't remove the user's overall Compliance Manager role if they have one. If you want to change a user's overall role, you have to change it in the Microsoft Purview portal. | Fix: Replace the 'unless you restrict access per regulation' clause with: 'Per-regulation assignments apply at the assigned role level, but removing one does not remove an overall Compliance Manager role; change the overall role in the Microsoft Purview portal.' Replace 'per-regulation access is the narrowing control' with the same qualification. In the rollout checklist, say 'Review per-regulation assignments in Manage user access; also review overall Compliance Manager roles, which removing a regulation-based role does not remove.' Source: https://learn.microsoft.com/purview/compliance-manager-regulations#grant-user-access-to-regulations. | Source: https://learn.microsoft.com/purview/compliance-manager-regulations
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing: Meter; Governance guidance: Before rollout / licensing: Regulation licenses used on the Regulations page tracks templates in use against entitlement. | Found: The Regulation licenses used counter near the top of the Regulations page represents the number of regulatory templates in use out of the number you're eligible to use according to your licensing agreement and any purchased licenses. | Fix: Add after the counter description: 'The Get started page calls these counters Free regulation licenses used/Purchased regulation licenses used.' Both names are documented; retain the existing counter description. See https://learn.microsoft.com/purview/compliance-manager-setup#regulations-page. | Source: https://learn.microsoft.com/purview/compliance-manager-regulations
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: PDF template creation is reached at Microsoft Purview portal > Compliance Manager > Regulations > Create new template > Upload PDF document. | Found: From your Regulations page, select Create new template. ... Select Upload PDF document. ... Select Scan and extract. ... select Review draft template. ... When you're satisfied, select Publish template. | Fix: Extend controls[0].ui.path and its rendered copy to 'Compliance Manager > Regulations > Create new template > Upload PDF document > Scan and extract > Review draft template > Publish template'. The existing path stops early in the documented creation procedure; applicable services and form fields can remain in the prose. | Source: https://learn.microsoft.com/purview/compliance-manager-create-template
-- [supported, minor] controls[1].ui; Governance controls table; Governance guidance: At rollout / admin-path: Per-regulation user access is reached at Microsoft Purview portal > Compliance Manager > Regulations > regulation > Manage user access. | Found: Select it to open its details page. ... select Manage user access. ... Navigate to the tab for the role you want your user to hold for this regulation. ... Add readers, or Add assessors or Add contributors. | Fix: Extend controls[1].ui.path and its rendered copy to 'Compliance Manager > Regulations > regulation > Manage user access > role > Add readers / Add assessors / Add contributors'. State in the note that the last choice follows the selected Reader, Assessor or Contributor tab. The existing path stops at the pane holding the control. | Source: https://learn.microsoft.com/purview/compliance-manager-regulations
-- [supported, minor] Governance controls / admin-path: Compliance Manager settings, including User access, are reached from the Settings icon in the Purview portal. | Found: select the Settings icon at the top of the page, then select Compliance Manager. ... User access: Allows you to view and manage user roles for access to assessments or assessment templates. | Fix: Replace the navigation clause with 'are reached in the Microsoft Purview portal through Settings > Compliance Manager > User access'. This completes the prose's abbreviated description of the route. | Source: https://learn.microsoft.com/purview/compliance-manager-setup
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks readers to inventory Compliance Manager role holders and check the licence counter without corresponding control rows. | Found: Review who holds the Compliance Manager Administration and Compliance Manager Assessor roles ... Check the Regulation licenses used counter ... Controls rows cover PDF creation, per-regulation access and the absent tenant switch. | Fix: The role-holder inventory and Regulation licenses used counter checks have no corresponding table rows. Remove those two checklist bullets; retain the existing role and licensing discussion. Do not add control rows during correction.
+- [contradicted, minor] Governance guidance: At rollout; Risk assessment: Data exposure / consistency: The instruction to review overall Compliance Manager roles is represented in the controls table. | Found: also review overall Compliance Manager roles ... (see the controls table). The table covers PDF creation, per-regulation access and a missing tenant switch; it has no overall-role management row. | Fix: Remove '; also review overall Compliance Manager roles, which removing a regulation-based role does not remove' from the At rollout checklist bullet. Remove '(see the controls table)' from the Data exposure paragraph's instruction to change the overall role. Keep the verified overall-role explanation in the prose; do not add a control row.
 -->
