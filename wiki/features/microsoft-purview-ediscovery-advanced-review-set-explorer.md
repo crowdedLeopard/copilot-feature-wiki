@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "review"
 licensing:
   model: "included"
-  notes: "Review sets sit in eDiscovery (Premium). Learn's permissions page names Office 365 or Microsoft 365 E5, or the Microsoft Purview Suite or Microsoft 365 eDiscovery and Audit add-on, for premium analysis. No explorer-specific price is published."
+  notes: "Review sets are premium eDiscovery features. Learn's permissions page names Office 365 or Microsoft 365 E5, or the Microsoft Purview Suite or Microsoft 365 eDiscovery and Audit add-on, for premium analysis. No explorer-specific price is published."
 audiences: ["compliance","security","change-adoption"]
 tags: ["ediscovery","purview","analytics","gcc","gcc-high","dod"]
 sources:
@@ -31,8 +31,11 @@ sources:
   - title: "Assign permissions in eDiscovery"
     url: "https://learn.microsoft.com/purview/edisc-permissions"
     kind: "learn"
-  - title: "Microsoft Purview eDiscovery legacy solutions"
-    url: "https://learn.microsoft.com/purview/ediscovery"
+  - title: "Learn about eDiscovery"
+    url: "https://learn.microsoft.com/purview/edisc"
+    kind: "learn"
+  - title: "Learn about eDiscovery features and components"
+    url: "https://learn.microsoft.com/purview/edisc-features-components"
     kind: "learn"
 videos: []
 related: ["microsoft-purview-compliance-portal-ediscovery-advanced-review-set-explorer","ediscovery","microsoft-purview-ediscovery-in-product-diagnostics-to-troubleshoot-common-challenges"]
@@ -57,19 +60,23 @@ changes:
     note: "First briefing for the GCC, GCC High and DoD roadmap item; Learn documents the explorer as a preview, and its default, licence and clouds are not stated."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 58 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Correction: removed the unsupported data-store claim, corrected the cost rationale on premium licensing for case-member reviewers, and aligned the licence wording with the current eDiscovery feature table."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 55
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "01769baa8dd9402370df0bae152fd4bd"
+  claims: 50
+  confirmed: 49
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "11184b807801da8ecec15a7e8c45a5ea"
 ---
 
 ## What's changing
@@ -82,7 +89,7 @@ The roadmap record shows status In development, release phase General Availabili
 
 ## Why it matters
 
-This is a reviewer-productivity change inside an existing eDiscovery workflow, not a new data store. KQL lets a reviewer group, count and extract text from the same review set items the condition builder already searches; Learn's own examples list external recipients per item and count items per participant. Expect questions from legal and investigation teams about training, how query results are quoted in a matter, and who may run them.
+This is a reviewer-productivity change that runs queries against the current review set's indexed items. KQL lets a reviewer group, count and extract text from the same review set items the condition builder already searches; Learn's own examples list external recipients per item and count items per participant. Expect questions from legal and investigation teams about training, how query results are quoted in a matter, and who may run them.
 
 Microsoft has not stated what happens on arrival, and no source says existing behaviour changes, so there is no urgent deadline. The decision for a service owner is whether the people who hold review access to cases should hold it, because the explorer is reached through that access.
 
@@ -103,7 +110,7 @@ Microsoft has not stated what happens on arrival, and no source says existing be
 
 ## Cost and licensing
 
-Learn's explorer page names no licence and no meter for the explorer, and the roadmap record states none. Review sets are part of eDiscovery (Premium), which Learn describes as providing an end-to-end workflow to identify, preserve, collect, review, analyze and export content. Learn's permissions page says that to analyse a user's data when premium eDiscovery features are enabled, the user must be assigned an Office 365 E5 or Microsoft 365 E5 licence. Users with an Office 365 E1 or an Office 365 or Microsoft 365 E3 licence can instead be assigned a Microsoft Purview Suite or Microsoft 365 eDiscovery and Audit add-on licence. The same page says administrators, compliance officers or legal personnel assigned to cases as members who use premium features to collect, view and analyse data do not need an E5 licence.
+Learn's explorer page names no licence and no meter for the explorer, and the roadmap record states none. Review sets are premium eDiscovery features. Learn's permissions page says that to analyse a user's data when premium eDiscovery features are enabled, the user must be assigned an Office 365 E5 or Microsoft 365 E5 licence. Users with an Office 365 E1 or an Office 365 or Microsoft 365 E3 licence can instead be assigned a Microsoft Purview Suite or Microsoft 365 eDiscovery and Audit add-on licence. The same page says administrators, compliance officers or legal personnel assigned to cases as members who use premium features to collect, view and analyse data do not need an E5 licence.
 
 A price or licence specific to the explorer is not yet published. The indirect cost is administrator and reviewer time for KQL training.
 
@@ -152,18 +159,13 @@ Learn says to assign eDiscovery permissions in the Microsoft Purview portal or, 
 
 <!-- rationale
 risk: Low. Microsoft Learn says explorer queries are read-only and run against items already in a review set, so no new data source is added; access follows eDiscovery permissions.
-cost: Low. The explorer's Learn page names no licence or meter of its own; the known cost is eDiscovery premium licensing for reviewers plus admin and KQL training time.
+cost: Low. No explorer-specific price or meter is published; the incremental cost considered here is admin and KQL training time. Premium eDiscovery licensing applies to the users whose data is analyzed, as described in Cost and licensing, not an E5 requirement for case-member reviewers.
 impact: Low. Only users with eDiscovery permissions who open a case's review sets will see the explorer tab, so mostly legal, compliance and investigation teams notice it.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: The explorer is not a new data store. | Found: Searched: "Advanced review set explorer" "store" "data"; opened edisc-review-set-explorer, edisc, edisc-workflow and edisc-billing. They describe indexed review set queries, not whether the explorer introduces any storage. | Fix: Replace 'This is a reviewer-productivity change inside an existing eDiscovery workflow, not a new data store.' with 'This is a reviewer-productivity change that runs queries against the current review set's indexed items.'
-- [contradicted, blocker] rationale: cost / licensing: The known cost includes eDiscovery premium licensing for reviewers. | Found: Administrators, compliance officers, or legal personnel who are assigned to cases as members and use premium eDiscovery features to collect, view, and analyze data don't need an E5 license. | Fix: Replace the cost rationale with 'Low. No explorer-specific price or meter is published; the incremental cost considered here is admin and KQL training time. Premium eDiscovery licensing applies to the users whose data is analyzed, as described in Cost and licensing, not an E5 requirement for case-member reviewers.' | Source: https://learn.microsoft.com/purview/edisc-permissions
-- [contradicted, blocker] front matter: changes[0].note / licensing: The explorer's licence is not stated. | Found: If your organization has an Office 365 E5 or Microsoft 365 E5 subscription (or related E5 add-on subscriptions), you can further manage cases and analyze content by using premium eDiscovery features. | Review set KQL queries (preview) |  | Supported. | | Fix: Replace the change note with 'First briefing for the GCC, GCC High and DoD roadmap item; Learn documents the explorer as a preview. Its government-cloud rollout default and any explorer-specific licence or meter are not stated.' This preserves the narrow gap without denying the documented premium eDiscovery entitlement. | Source: https://learn.microsoft.com/purview/edisc
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters / behaviour: The explorer and query condition builder analyze the same review set content. | Found: Search and filter content using the query condition builder to focus on specific subsets of documents. Use the Advanced review set explorer (preview) to run Kusto Query Language (KQL) queries directly against review set data | Fix: Add https://learn.microsoft.com/purview/edisc-features-components to sources for the statement that the condition builder and explorer work on the same review set content. | Source: https://learn.microsoft.com/purview/edisc-features-components#review-sets
-- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: Review sets belong to premium eDiscovery. | Found: | Capability | eDiscovery feature support | Premium eDiscovery feature support | | Review sets |  | Supported. | | Review set KQL queries (preview) |  | Supported. | | Fix: Replace 'Review sets sit in eDiscovery (Premium)' and 'Review sets are part of eDiscovery (Premium)' with 'Review sets are premium eDiscovery features'. Cite https://learn.microsoft.com/purview/edisc, whose current feature table includes review sets and review set KQL queries (preview), instead of relying on the China-only legacy overview. | Source: https://learn.microsoft.com/purview/edisc
-- [supported, minor] Cost and licensing / behaviour: Learn describes eDiscovery (Premium) as an end-to-end workflow to identify, preserve, collect, review, analyze and export investigation content. | Found: eDiscovery (Premium) provides an end-to-end workflow to identify, preserve, collect, review, analyze, and export content that's responsive to your organization's internal and external investigations. | Fix: Remove the clause ', which Learn describes as providing an end-to-end workflow to identify, preserve, collect, review, analyze and export content'. The cited article explicitly applies only to organizations hosted by 21Vianet; use the current premium-feature statement instead, without describing the legacy solution as the government-cloud product. | Source: https://learn.microsoft.com/purview/ediscovery
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Review access can be assigned in Microsoft Purview portal > Settings > Role groups > eDiscovery Manager > Edit > Manage eDiscovery Manager > Choose users or Choose groups. | Found: Go to Settings > Role groups. On Role groups for Microsoft Purview solutions, select eDiscovery Manager. On the eDiscovery Manager pane ... Select Edit. On Manage eDiscovery Manager, select Choose users or Choose groups. | Fix: Use 'Settings > Role groups > Role groups for Microsoft Purview solutions > eDiscovery Manager > Edit > Manage eDiscovery Manager > Choose users or Choose groups' in controls[0].ui.path and the rendered table; the omitted text is a heading, not a missing selectable navigation step. | Source: https://learn.microsoft.com/purview/edisc-permissions
+- [contradicted, minor] Governance guidance: Before rollout, case membership / consistency: The checklist instructs readers to check case membership, but the controls table covers role-group membership only. | Found: Confirm which cases your reviewers work in and who is a member ... Controls: Who can access review sets, and so the explorer, through eDiscovery roles. | Fix: Remove the Before rollout bullet 'Confirm which cases your reviewers work in and who is a member, because the explorer opens from a case's review sets.' It asks readers to check a control absent from the table; do not add a new row in this correction.
 -->

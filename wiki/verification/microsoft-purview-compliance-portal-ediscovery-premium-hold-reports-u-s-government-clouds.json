@@ -2,39 +2,33 @@
   "slug": "microsoft-purview-compliance-portal-ediscovery-premium-hold-reports-u-s-government-clouds",
   "roadmapId": 93269,
   "title": "Microsoft Purview eDiscovery (Premium): hold reports for GCC, GCC High and DoD",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-22",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-22",
-    "reasons": [
-      "2 blocking findings (claims 19, 40)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 61,
-    "confirmed": 58,
-    "unconfirmed": 1,
-    "contradicted": 2,
-    "blocker": 2,
+    "claims": 67,
+    "confirmed": 67,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 6
+    "minor": 1
   },
-  "summary": "Hold: the briefing presents seven days as a maximum age for hold-status data, but the cited warning does not guarantee that maximum. It also incorrectly calls the roadmap the only Microsoft source about the Government release, despite citing three Government deployment pages that describe it.",
+  "summary": "The briefing matches the roadmap and distinguishes the documented preview from the planned Government release. Its commands, subscription requirements and permissions are supported; the role-assignment path omits only a page heading.",
   "claims": [
     {
       "n": 1,
       "where": "title; summary; What's changing; Scope",
       "type": "record",
-      "claim": "The planned feature is hold reports for Microsoft Purview eDiscovery (Premium) in U.S. Government clouds.",
+      "claim": "Microsoft plans eDiscovery (Premium) hold reports in the Microsoft Purview portal.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Microsoft Purview compliance portal:  eDiscovery (Premium) – Hold reports (U.S. Government clouds)",
@@ -45,7 +39,7 @@
       "n": 2,
       "where": "summary; What's changing",
       "type": "record",
-      "claim": "Microsoft plans out-of-the-box reports containing information about all legal holds associated with eDiscovery cases.",
+      "claim": "The planned reports are out-of-the-box reports about all legal holds associated with eDiscovery cases.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Out-of-the-box reports that contain information about all legal holds associated with eDiscovery cases in the Microsoft Purview compliance portal.",
@@ -78,7 +72,7 @@
       "n": 5,
       "where": "summary; What's changing",
       "type": "record",
-      "claim": "The roadmap describes downloading aggregated hold information for further analysis.",
+      "claim": "The roadmap describes downloading aggregated information for further analysis.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "download the aggregated information for further analysis.",
@@ -87,23 +81,23 @@
     },
     {
       "n": 6,
-      "where": "front matter: status; What's changing; Scope",
+      "where": "front matter: clouds; title; summary; What's changing; Scope; changes",
       "type": "record",
-      "claim": "The roadmap status is In development.",
+      "claim": "The roadmap lists GCC, GCC High and DoD.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 7,
-      "where": "front matter: targetDate; What's changing; Scope; changes",
+      "where": "front matter: platforms; Scope",
       "type": "record",
-      "claim": "February CY2027 is the roadmap target, not a committed release date.",
+      "claim": "The roadmap platform is Web.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"targetDate\": \"February CY2027\"",
+      "quote": "\"platforms\": [\"Web\"]",
       "severity": null,
       "fix": null
     },
@@ -120,23 +114,23 @@
     },
     {
       "n": 9,
-      "where": "front matter: clouds; title; summary; What's changing; Scope",
+      "where": "front matter: targetDate; What's changing; Scope; changes",
       "type": "record",
-      "claim": "The roadmap lists GCC, GCC High and DoD.",
+      "claim": "The roadmap target is February CY2027, not a committed release date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "quote": "\"targetDate\": \"February CY2027\", \"status\": \"In development\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 10,
-      "where": "front matter: platforms; Scope",
+      "where": "front matter: status; What's changing",
       "type": "record",
-      "claim": "Web is the platform listed in the roadmap.",
+      "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
       "severity": null,
       "fix": null
     },
@@ -155,7 +149,7 @@
       "n": 12,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap record was modified at 2026-08-17T22:52:47.",
+      "claim": "The roadmap modification timestamp is 2026-08-17T22:52:47.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-08-17T22:52:47\"",
@@ -164,86 +158,9 @@
     },
     {
       "n": 13,
-      "where": "front matter: defaultState; Why it matters; Scope; Open questions; rationale: risk",
-      "type": "absence",
-      "claim": "Microsoft has not stated the automatic-arrival or enablement mechanics of this future Government hold-report release.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: eDiscovery hold report Government GCC automatically enabled default report dashboard permissions. Read roadmap, hold-report page, three Government plan pages and Purview service description; no Government report rollout default is stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The licensing model is unknown because no Government hold-report-specific licence statement is published.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-ediscovery",
-      "quote": "eDiscovery (premium) | Included | Not included | Included | Included | Not included",
-      "severity": "minor",
-      "fix": "Set licensing.model to included. Add this source and state: 'The Microsoft Purview service description includes eDiscovery (premium) in Microsoft 365 G5 and Office 365 G5, among other listed plans. A separate licensing statement specific to the Government hold report is not yet published.' Retain the hold-report page's premium-subscription prerequisite."
-    },
-    {
-      "n": 15,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "The hold-report page requires an organisation subscription supporting premium eDiscovery features.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-hold-report",
-      "quote": "Your organization must have an organization subscription that supports premium eDiscovery features to generate and access the hold report.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "A separate licensing statement specific to the hold report in GCC, GCC High and DoD is not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Purview eDiscovery Premium Government G5 GCC High DoD hold reports licensing subscription. Read hold-report prerequisites, edisc-get-started, Purview service description and Government plan pages; found product licensing, not a separate Government report licence.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "The hold-report page names no meter, price or report-specific add-on.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: eDiscovery hold report Government GCC High DoD report price meter add-on. Read the full edisc-hold-report page and the eDiscovery section of the Purview service description; the report page lists subscription and role prerequisites, not a meter, price or report add-on.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "Cost and licensing",
-      "type": "record",
-      "claim": "The roadmap item states no licence requirement.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Out-of-the-box reports that contain information about all legal holds associated with eDiscovery cases in the Microsoft Purview compliance portal. Sort and filter your view based on various criteria and download the aggregated information for further analysis.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing: second paragraph",
+      "where": "What's changing; Risk assessment; controls[0].note; Governance guidance",
       "type": "availability",
-      "claim": "The roadmap item is the only Microsoft source about the Government release.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/plan-for-microsoft-purview-gcc-deployments",
-      "quote": "|  | Hold reports | In development |",
-      "severity": "blocker",
-      "fix": "Replace 'The roadmap item is the only Microsoft source about the Government release.' with 'The roadmap supplies the Government release target; Microsoft's Government deployment pages also list hold reports as In development.'"
-    },
-    {
-      "n": 20,
-      "where": "What's changing: second paragraph; Governance guidance: After rollout",
-      "type": "availability",
-      "claim": "Microsoft's GCC deployment page lists Hold reports under eDiscovery (Premium) as In development.",
+      "claim": "The GCC deployment page lists Hold reports under eDiscovery (Premium) as In development.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/plan-for-microsoft-purview-gcc-deployments",
       "quote": "| eDiscovery (Premium) | Advanced processing | Available | ... |  | Hold reports | In development |",
@@ -251,10 +168,10 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing: second paragraph; Governance guidance: After rollout",
+      "n": 14,
+      "where": "What's changing; Risk assessment; controls[0].note; Governance guidance",
       "type": "availability",
-      "claim": "Microsoft's GCC High deployment page lists Hold reports under eDiscovery (Premium) as In development.",
+      "claim": "The GCC High deployment page lists Hold reports under eDiscovery (Premium) as In development.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/plan-for-microsoft-purview-gcc-high-deployments",
       "quote": "| eDiscovery (Premium) | Advanced processing | Available | ... |  | Hold reports | In development |",
@@ -262,10 +179,10 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What's changing: second paragraph; Governance guidance: After rollout",
+      "n": 15,
+      "where": "What's changing; Risk assessment; controls[0].note; Governance guidance",
       "type": "availability",
-      "claim": "Microsoft's DoD deployment page lists Hold reports under eDiscovery (Premium) as In development.",
+      "claim": "The DoD deployment page lists Hold reports under eDiscovery (Premium) as In development.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/plan-for-microsoft-purview-dod-deployments",
       "quote": "| eDiscovery (Premium) | Advanced processing | Available | ... |  | Hold reports | In development |",
@@ -273,21 +190,10 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing; references to the commercial preview page throughout",
-      "type": "absence",
-      "claim": "The hold-report preview page does not specify which clouds it covers.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: eDiscovery hold report GCC GCC High DoD license subscription default automatically enable permissions PowerShell. Read the full hold-report page; it does not name commercial, GCC, GCC High or DoD cloud coverage.",
-      "severity": "minor",
-      "fix": "Keep the statement that the page does not specify clouds. Replace 'commercial preview page', 'commercial page' and 'commercial preview pages' throughout with 'cloud-unspecified preview page', 'preview page' and 'preview documentation' respectively; the source does not identify itself as commercial-only."
-    },
-    {
-      "n": 24,
-      "where": "What's changing; controls[1].note",
+      "n": 16,
+      "where": "What's changing; controls[1].note; Open questions",
       "type": "behaviour",
-      "claim": "The documented built-in hold report is in public preview.",
+      "claim": "The cited Learn hold report design is a public preview, not a statement of the final Government design.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-hold-report",
       "quote": "The hold report is in public preview and provides a tenant-wide summary of hold policies for all eDiscovery cases.",
@@ -295,7 +201,18 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 17,
+      "where": "What's changing; Risk assessment; Scope; controls[1].note",
+      "type": "absence",
+      "claim": "The cited preview hold report page does not specify cloud coverage.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: eDiscovery hold report GCC GCC High DoD automatically enable default rollout prerequisites Dashboards. Read edisc-hold-report in full and the GCC, GCC High and DoD deployment pages; the preview article does not name its clouds.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
       "where": "What's changing; Scope",
       "type": "behaviour",
       "claim": "The preview report covers all hold policies within the tenant.",
@@ -306,10 +223,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 19,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The report lists locations in hold policies whether the policies are enabled or disabled.",
+      "claim": "The preview report lists all locations in hold policies whether enabled or disabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-hold-report",
       "quote": "It lists all locations that are part of those hold policies, whether enabled or disabled.",
@@ -317,10 +234,21 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 20,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The preview report includes holds from cases without premium features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-report",
+      "quote": "The hold report is in public preview and provides a tenant-wide summary of hold policies for all eDiscovery cases. ... Case type: Indicates if the case is an eDiscovery or eDiscovery case with premium features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The report displays the case name.",
+      "claim": "The preview report includes a case name column.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-hold-report",
       "quote": "Case Name: Name of the case that the hold policy is associated with.",
@@ -328,10 +256,10 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 22,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The report displays the hold name.",
+      "claim": "The preview report includes a hold name column.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-hold-report",
       "quote": "Hold name: Name of the Hold Policy that contains the associated locations.",
@@ -339,65 +267,10 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "What's changing; Why it matters; Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Location error is a report column displaying the location's hold-policy error.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-hold-report",
-      "quote": "Location error: Displays the error message associated with the location within the hold policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "What's changing; Why it matters; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "The Policy status column includes Applied Partially, Released partially and Policy failed.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-hold-report",
-      "quote": "Policy status: The following policy status values are available: ... Applied Partially ... Released partially ... Policy failed",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "The report can show the user who created the hold policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-hold-report",
-      "quote": "Policy created by: Shows the user that created the initial hold policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Why it matters; Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "The report can show the user who last modified the hold policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-hold-report",
-      "quote": "Policy last modified by: Shows the user that last modified the hold policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "The report can show the policy's rule query.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-hold-report",
-      "quote": "Rule query: Displays any content match query that is applied to the policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
+      "n": 23,
       "where": "What's changing; Risk assessment: Data exposure; Scope",
       "type": "behaviour",
-      "claim": "Reported locations include Exchange mailboxes and SharePoint sites.",
+      "claim": "The preview report shows Exchange mailbox locations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-hold-report",
       "quote": "Location: The Exchange mailbox or SharePoint site in the hold policy.",
@@ -405,7 +278,40 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 24,
+      "where": "What's changing; Risk assessment: Data exposure; Scope",
+      "type": "behaviour",
+      "claim": "The preview report shows SharePoint site locations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-report",
+      "quote": "Location: The Exchange mailbox or SharePoint site in the hold policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The preview report has a Location error column showing errors associated with a location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-report",
+      "quote": "Location error: Displays the error message associated with the location within the hold policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The preview report has a Policy status column.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-report",
+      "quote": "Policy status: The following policy status values are available:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "The preview report can be sorted.",
@@ -416,7 +322,7 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 28,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "The preview report can be filtered.",
@@ -427,7 +333,7 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 29,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "The preview report can be grouped.",
@@ -438,10 +344,10 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 30,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The preview report's columns can be customised.",
+      "claim": "The preview report columns can be customised.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-hold-report",
       "quote": "Sort, filter, group by, and customize columns to customize your hold report.",
@@ -449,32 +355,32 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "What's changing; Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "n": 31,
+      "where": "What's changing; Risk assessment; Governance guidance; controls[1]",
       "type": "behaviour",
-      "claim": "Downloading produces the entire report as a .csv regardless of filtering or grouping.",
+      "claim": "The preview hold report can be downloaded as a .csv file.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-hold-report",
-      "quote": "Download the hold report to a .csv file for further analysis. The entire report is downloaded regardless of any filtering or grouping option you apply to the report.",
+      "quote": "Download the hold report to a .csv file for further analysis.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
-      "where": "Why it matters: second paragraph",
+      "n": 32,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance",
       "type": "behaviour",
-      "claim": "The preview page warns that hold-status data can be up to seven days old, implying a seven-day maximum age.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: eDiscovery hold report no more than once every seven days up to seven days. Read edisc-hold-report: the status warning says 'no more than once every seven days'; three-to-seven-day full-sync text concerns case-name and case-status updates, not a guaranteed maximum status age.",
-      "severity": "blocker",
-      "fix": "Replace 'The commercial preview page warns that the data can be up to seven days old' with 'The preview page warns that policy and location status sync no more than once every seven days and might not reflect recent hold changes'. Keep the advice to check the specific hold in its case."
+      "claim": "The download contains the entire report regardless of filtering or grouping.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-report",
+      "quote": "The entire report is downloaded regardless of any filtering or grouping option you apply to the report.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 41,
-      "where": "What's changing; Risk assessment: Change & support; Governance guidance: After rollout",
+      "n": 33,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance; Open questions",
       "type": "behaviour",
-      "claim": "The preview page says policy and location status sync no more than once every seven days.",
+      "claim": "The preview page warns that policy and location status sync no more than once every seven days.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-hold-report",
       "quote": "The report syncs policy and location status no more than once every seven days, so the information shown might not reflect recent changes to your hold policies.",
@@ -482,10 +388,21 @@
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "n": 34,
+      "where": "Why it matters; Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Microsoft directs readers to the hold-policy details page in the case for current policy and location status.",
+      "claim": "The preview report might not reflect recent hold changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-report",
+      "quote": "the information shown might not reflect recent changes to your hold policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Why it matters; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The hold policy details page in the case gives the current status of a specific hold and its locations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-hold-report",
       "quote": "For the current status of a specific hold policy and its locations, go to the hold policy details page in the Microsoft Purview eDiscovery case.",
@@ -493,10 +410,87 @@
       "fix": null
     },
     {
+      "n": 36,
+      "where": "Why it matters; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Applied partially is a preview policy status indicating that some locations might not have the hold applied.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-report",
+      "quote": "Applied Partially: – Indicates that the hold policy that the location is part of is set to be turned on (enabled) and has some locations where the hold might not be applied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Released partially is an available preview policy status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-report",
+      "quote": "Released partially: Indicates that the hold policy that the location is part of is set to be turned off (disabled) and has some locations where the hold might not be released.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "Policy failed is a preview status indicating incorrectly configured policies that are not enforced.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-report",
+      "quote": "Policy failed: Indicates that the policy is set up incorrectly. The policy doesn't have a rule or was set up with rule set as disabled. These policies aren't enforced even if the policy status is successful.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The preview page tells administrators to create a rule and resync a failed policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-report",
+      "quote": "To ensure these policies are enforced, create a rule and resync the policy. For more information, see New-CaseHoldRule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The preview report includes the user who created the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-report",
+      "quote": "Policy created by: Shows the user that created the initial hold policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The preview report includes the user who last modified the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-report",
+      "quote": "Policy last modified by: Shows the user that last modified the hold policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The preview report can display the policy's rule query.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-report",
+      "quote": "Rule query: Displays any content match query that is applied to the policy. If there's no content match query applied to the policy, this field is empty.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 43,
-      "where": "summary; Risk assessment: Security & identity; Cost and licensing; Governance controls; rationales",
+      "where": "Risk assessment; Cost and licensing; Governance controls; summary; rationale: impact",
       "type": "role",
-      "claim": "The preview report requires eDiscovery Administrator or eDiscovery Manager (preview) permissions.",
+      "claim": "eDiscovery Administrator is a documented role for accessing the preview report.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-hold-report",
       "quote": "Users accessing the hold report must be assigned the eDiscovery Administrator or eDiscovery Manager (preview) role.",
@@ -505,9 +499,20 @@
     },
     {
       "n": 44,
+      "where": "Risk assessment; Cost and licensing; Governance controls; summary; rationale: impact",
+      "type": "role",
+      "claim": "eDiscovery Manager (preview) is a documented role for accessing the preview report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-report",
+      "quote": "Users accessing the hold report must be assigned the eDiscovery Administrator or eDiscovery Manager (preview) role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
       "where": "Risk assessment: Security & identity; Scope; Governance controls",
       "type": "role",
-      "claim": "eDiscovery Managers can view only hold reports for cases they belong to.",
+      "claim": "eDiscovery Managers can view hold reports only for cases of which they are members.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-hold-report",
       "quote": "eDiscovery Managers can only view hold reports related to the cases they are a member of.",
@@ -515,84 +520,139 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "Risk assessment: Security & identity; controls[0].note; rationale: impact",
-      "type": "applicability",
-      "claim": "The general eDiscovery permission controls are documented, but their Government report applicability is described as unconfirmed.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-permissions",
-      "quote": "To use eDiscovery capabilities and features in the Microsoft Purview portal, assign the appropriate permissions to users.",
-      "severity": "minor",
-      "fix": "Replace the Government access-model caveat with: 'Microsoft documents these permissions for eDiscovery capabilities and features in the Microsoft Purview portal; the Government deployment pages still list hold reports as In development.' In the impact rationale, attribute the named report-viewer roles to the documented preview rather than a separately confirmed Government access model."
-    },
-    {
       "n": 46,
-      "where": "Scope; controls[0].governs; rationale: risk",
+      "where": "Scope",
       "type": "role",
-      "claim": "eDiscovery Administrators can access hold reports scoped to all cases.",
+      "claim": "eDiscovery Administrators can see all cases.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-permissions",
-      "quote": "Additionally, an eDiscovery Administrator can: ... Access process and hold reports scoped to all cases.",
+      "quote": "Access all cases that are listed on the eDiscovery area in the Microsoft Purview portal. ... Access process and hold reports scoped to all cases.",
       "severity": null,
       "fix": null
     },
     {
       "n": 47,
-      "where": "Risk assessment: Autonomy & actions; rationale: risk",
-      "type": "absence",
-      "claim": "The report page describes viewing and downloading information, not changing holds through the report.",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Generating and accessing the preview hold report requires an organisation subscription supporting premium eDiscovery features.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: eDiscovery hold report read only report change holds. Read full edisc-hold-report and edisc-hold-report-script; report steps describe view, sort, filter, group, customise and download. Hold remediation is described separately, not as a report write operation.",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-report",
+      "quote": "Your organization must have an organization subscription that supports premium eDiscovery features to generate and access the hold report.",
       "severity": null,
       "fix": null
     },
     {
       "n": 48,
-      "where": "Risk assessment: Autonomy & actions; Why it matters",
-      "type": "behaviour",
-      "claim": "Policy failed identifies incorrectly configured policies that are not enforced and directs administrators to create a rule and resync.",
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing model is included as an option within licensed premium eDiscovery.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-hold-report",
-      "quote": "The policy doesn't have a rule or was set up with rule set as disabled. These policies aren't enforced even if the policy status is successful. To ensure these policies are enforced, create a rule and resync the policy.",
+      "quote": "Your organization must have an organization subscription that supports premium eDiscovery features to generate and access the hold report.",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "A location held under several policies appears repeatedly and contributes repeatedly to the location-in-policy item count.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Purview service description includes premium eDiscovery in Microsoft 365 G5 among its listed plans.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-hold-report",
-      "quote": "If the same location is placed on hold under different policies, the same location appears multiple times in the report under the respective case and hold policy and contributes to multiple item counts.",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "E5/A5/F5/G5, Microsoft Purview Suite/EDU/GOV/FLW, Microsoft 365 E5/A5/F5/G5 eDiscovery and Audit, Office 365 E5/A5/G5 ... | eDiscovery (premium) | Included | Not included | Included | Included | Not included |",
       "severity": null,
       "fix": null
     },
     {
       "n": 50,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Microsoft Purview portal > Settings > Role groups > eDiscovery Manager > Edit > Choose users reaches role assignment.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Purview service description includes premium eDiscovery in Office 365 G5 among its listed plans.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-permissions",
-      "quote": "Go to Settings > Role groups. ... select eDiscovery Manager. ... Select Edit. ... On Manage eDiscovery Manager, select Choose users or Choose groups.",
-      "severity": "minor",
-      "fix": "Use 'Settings > Role groups > eDiscovery Manager > Edit > Manage eDiscovery Manager > Choose users'. In the note, state that this first selection assigns Managers; the documented wizard subsequently offers Choose users to assign Administrators."
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Office 365 E5/A5/G5 ... | eDiscovery (premium) | Included | Not included | Included | Included | Not included |",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 51,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "Add-RoleGroupMember \"eDiscoveryManager\" -Member <name of security group> assigns the eDiscovery Managers subgroup.",
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A separate licensing statement specific to the Government hold report is not published.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-permissions",
-      "quote": "Add-RoleGroupMember \"eDiscoveryManager\" -Member <name of security group>",
-      "severity": "minor",
-      "fix": "Keep the documented command, but add to controls[0].note: 'The group supplied to -Member must be a mail-enabled security group; this command assigns the eDiscovery Managers subgroup, not the Administrators subgroup.'"
+      "source": null,
+      "quote": "Searched: eDiscovery hold report government licensing subscription price meter add-on G5. Read edisc-hold-report, the Purview service description's eDiscovery section and all three Government deployment pages; none states separate Government hold-report licensing.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 52,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The preview hold report page names no meter, price or add-on for the report itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: eDiscovery hold report government licensing subscription price meter add-on G5. Read edisc-hold-report in full, its subscription prerequisites and the Purview service description's eDiscovery section; the report page names no meter, price or report add-on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: defaultState; Why it matters; Open questions; rationale: risk",
+      "type": "default",
+      "claim": "Microsoft has not stated whether the Government hold report arrives automatically or requires enabling.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: eDiscovery hold report GCC GCC High DoD automatically enable default rollout prerequisites Dashboards. Read the roadmap, preview article, permissions, service description and Government plans; no Government-report default is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Rollout mechanics and prerequisites specific to the Government hold report are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: eDiscovery hold report GCC GCC High DoD automatically enable default rollout prerequisites Dashboards. Read the roadmap, edisc-hold-report and GCC, GCC High and DoD plan pages; they give no Government-report rollout mechanics or distinct prerequisites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Managers are assigned at Microsoft Purview portal > Settings > Role groups > eDiscovery Manager > Edit > Manage eDiscovery Manager > Choose users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "Go to Settings > Role groups. ... On Role groups for Microsoft Purview solutions, select eDiscovery Manager. ... Select Edit. ... On Manage eDiscovery Manager, select Choose users or Choose groups.",
+      "severity": "minor",
+      "fix": "Include the omitted page heading: Settings > Role groups > Role groups for Microsoft Purview solutions > eDiscovery Manager > Edit > Manage eDiscovery Manager > Choose users. Keep the note that this assigns Managers, not Administrators."
+    },
+    {
+      "n": 56,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Add-RoleGroupMember \"eDiscoveryManager\" -Member <name of security group> assigns a mail-enabled security group to the Managers subgroup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "You can add a mail-enabled security group as a member of the eDiscovery Managers subgroup ... by using the Add-RoleGroupMember cmdlet in Security & Compliance PowerShell. ... Add-RoleGroupMember \"eDiscoveryManager\" -Member <name of security group>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[0].note; Governance controls table",
+      "type": "role",
+      "claim": "The first Choose users step assigns Managers rather than Administrators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "On Manage eDiscovery Manager, select Choose users or Choose groups. ... Search and select the users you want to add as an eDiscovery Manager ... Select Next. ... To assign users to the eDiscovery Administrator role group, select Choose users or Choose groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
       "where": "controls[0].note; Governance controls table",
       "type": "role",
       "claim": "A mail-enabled security group cannot be added to the eDiscovery Administrators subgroup.",
@@ -603,52 +663,30 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 59,
       "where": "controls[1].ui; Governance controls table; Open questions",
       "type": "admin-path",
-      "claim": "The documented preview report path in Microsoft Purview is eDiscovery > Dashboards > Hold report (preview).",
+      "claim": "The documented preview path in the Microsoft Purview portal is eDiscovery > Dashboards > Hold report (preview).",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-hold-report",
-      "quote": "Go to eDiscovery > Dashboards > Hold report (preview) to view your hold report.",
+      "quote": "The hold report (preview) in eDiscovery ... in the Microsoft Purview portal. ... Go to eDiscovery > Dashboards > Hold report (preview) to view your hold report.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 54,
-      "where": "controls[1].api; Governance controls table; controls[1].note",
+      "n": 60,
+      "where": "controls[1].api; controls[1].note; Governance controls table",
       "type": "command",
-      "claim": "Get-CaseHoldPolicy <hold policy name> -Case <case ID> -DistributionDetail is a scripted read of hold-policy status, not a report-enablement switch.",
+      "claim": "Get-CaseHoldPolicy <hold policy name> -Case <case ID> -DistributionDetail is the sample script's operation for reading detailed hold status, not enabling the report.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-hold-report-script",
-      "quote": "$policies = Get-CaseHoldPolicy -Case $cc.Name | % { Get-CaseHoldPolicy $_.Name -Case $_.CaseId -DistributionDetail }",
+      "quote": "$policies = Get-CaseHoldPolicy -Case $cc.Name | % { Get-CaseHoldPolicy $_.Name -Case $_.CaseId -DistributionDetail } ... -holdstatus $policy.DistributionStatus -holderror $policy.DistributionResults",
       "severity": null,
       "fix": null
     },
     {
-      "n": 55,
-      "where": "controls[1].note; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "The preview documentation does not specify a separate Government hold-report menu path.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: eDiscovery hold report Government GCC automatically enabled default report dashboard permissions. Read hold-report page and all three Government plan pages; a general preview path is given, but no Government-specific report route.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "Governance controls: second paragraph",
-      "type": "absence",
-      "claim": "The cited report and script pages do not expressly describe running the sample report script in GCC, GCC High or DoD.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Security Compliance PowerShell hold report script GCC High DoD Get-CaseHoldPolicy. Read full edisc-hold-report-script and edisc-hold-report, plus Get-CaseHoldPolicy reference; those pages do not specify Government execution of this sample script.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "Governance controls: first paragraph",
+      "n": 61,
+      "where": "Governance controls",
       "type": "role",
       "claim": "Assigning eDiscovery permissions requires Organization Management membership or the Role Management role.",
       "status": "supported",
@@ -658,10 +696,21 @@
       "fix": null
     },
     {
-      "n": 58,
+      "n": 62,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "A location under multiple policies appears multiple times and contributes multiple times to the count of locations in policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-report",
+      "quote": "If the same location is placed on hold under different policies, the same location appears multiple times in the report under the respective case and hold policy and contributes to multiple item counts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
       "where": "Governance guidance: At rollout; Governance controls",
-      "type": "command",
-      "claim": "The sample hold-report script runs after connecting to Security & Compliance PowerShell.",
+      "type": "behaviour",
+      "claim": "Learn's scripted alternative generates a hold report through Security & Compliance PowerShell.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-hold-report-script",
       "quote": "First, connect to Security & Compliance PowerShell for your organization. ... After you connect to Security & Compliance PowerShell, create and run the script that collects information about the eDiscovery cases in your organization.",
@@ -669,10 +718,21 @@
       "fix": null
     },
     {
-      "n": 59,
-      "where": "Governance controls: second paragraph",
+      "n": 64,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "absence",
+      "claim": "The cited report documentation describes viewing and downloading rather than changing holds.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"hold report\" eDiscovery \"enable\" \"default\" \"modify\" \"GCC\". Read edisc-hold-report and edisc-hold-report-script in full; the report instructions describe viewing and downloading, not editing holds from the report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Microsoft does not support the sample script under a standard support programme.",
+      "claim": "The sample hold report script is not supported under any Microsoft standard support programme.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/edisc-hold-report-script",
       "quote": "The sample scripts provided in this article aren't supported under any Microsoft standard support program or service.",
@@ -680,32 +740,32 @@
       "fix": null
     },
     {
-      "n": 60,
-      "where": "Scope",
-      "type": "behaviour",
-      "claim": "The preview report includes holds from cases without premium features as well as cases with premium features.",
+      "n": 66,
+      "where": "controls[1].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The cited pages do not state whether the preview menu path applies in GCC, GCC High or DoD.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/edisc-hold-report",
-      "quote": "Case type: Indicates if the case is an eDiscovery or eDiscovery case with premium features.",
+      "source": null,
+      "quote": "Searched: eDiscovery hold report GCC GCC High DoD automatically enable default rollout prerequisites Dashboards. Read edisc-hold-report and all three Government deployment pages; none specifies a Government hold report menu path.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 61,
-      "where": "Governance guidance: After rollout; Governance controls table",
-      "type": "consistency",
-      "claim": "The checklist asks readers to check current status in an individual hold policy, but no control row describes that check.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Review rows with Applied partially, Released partially or Policy failed status, then open the hold policy in its case for current status before acting. The table contains role assignment and the tenant hold report, not the individual hold-policy details check.",
-      "severity": "minor",
-      "fix": "The After rollout step checking current status on an individual hold-policy details page has no corresponding control row. Remove that instruction from the checklist; retain the separately documented advice in Risk assessment."
+      "n": 67,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The cited script documentation does not state whether the sample applies in GCC, GCC High or DoD.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: eDiscovery hold report script Security Compliance PowerShell GCC High DoD support. Read edisc-hold-report-script in full and Government deployment pages; the script article does not specify Government-cloud applicability.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-22T04:51:07.296Z",
+    "at": "2026-11-22T05:47:51.549Z",
     "summary": {
-      "links": 7,
+      "links": 8,
       "unreachable": 0,
       "uiPaths": 2,
       "uiPathsWithMissingWords": 0,
@@ -731,6 +791,11 @@
       },
       {
         "url": "https://learn.microsoft.com/purview/edisc-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
         "ok": true,
         "status": 200
       },
@@ -762,6 +827,7 @@
           "Role groups",
           "eDiscovery Manager",
           "Edit",
+          "Manage eDiscovery Manager",
           "Choose users"
         ],
         "missing": []
@@ -778,7 +844,7 @@
       {
         "index": 1,
         "side": "ui",
-        "governs": "Viewing and downloading the hold report (commercial preview path; scripted alternative)",
+        "governs": "Viewing and downloading the hold report (preview path; scripted alternative)",
         "docs": "https://learn.microsoft.com/purview/edisc-hold-report",
         "reachable": true,
         "segments": [
@@ -791,7 +857,7 @@
       {
         "index": 1,
         "side": "api",
-        "governs": "Viewing and downloading the hold report (commercial preview path; scripted alternative)",
+        "governs": "Viewing and downloading the hold report (preview path; scripted alternative)",
         "docs": "https://learn.microsoft.com/purview/edisc-hold-report-script",
         "reachable": true,
         "token": "Get-CaseHoldPolicy",
@@ -800,5 +866,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-22",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

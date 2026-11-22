@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "prepare"
 licensing:
   model: "mixed"
-  notes: "No licence specific to this change is published. Learn says access to Agent Builder and its capabilities depend on the licences assigned in the tenant; Copilot Chat is available to all Microsoft 365 users, and enhanced agent capabilities need a Microsoft 365 Copilot licence or pay-as-you-go billing (Copilot Credits)."
+  notes: "No licence specific to this change is published. Copilot Chat is available to users with an eligible Microsoft 365 subscription; enhanced agent capabilities need a Microsoft 365 Copilot licence or pay-as-you-go billing. For SharePoint knowledge, the billing policy must be connected to the SharePoint agents service."
 audiences: ["m365-admin","maker","change-adoption"]
 tags: ["copilot","m365-copilot","agents","adoption","agent-governance"]
 sources:
@@ -42,6 +42,9 @@ sources:
     kind: "learn"
   - title: "Set up your development environment for your plugin"
     url: "https://learn.microsoft.com/plugins/prerequisites"
+    kind: "learn"
+  - title: "Microsoft Copilot requirements"
+    url: "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements"
     kind: "learn"
   - title: "copilotPackage: block"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
@@ -69,19 +72,23 @@ changes:
     note: "First briefing: roadmap-only description of a simplified agent creation flow; existing agent access, sharing and block controls listed as the nearest levers."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 71 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Correction: added the SharePoint billing-policy qualification to licensing, narrowed the Copilot Chat eligibility wording, fixed the dates wording, reworded the risk rationale and removed checklist steps that had no controls-table row."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 74 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 67
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "b2c7b839a08f00fc7bc6ed8b52171da8"
+  claims: 74
+  confirmed: 74
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "781cecf167937bb9605ef56243bb209d"
 ---
 
 ## What's changing
@@ -111,13 +118,13 @@ Microsoft has not stated what happens on arrival or whether administrators must 
 
 **Change & support**
 - Org-wide sharing of Agent Builder agents is set to All users by default, so easier creation can lead to more agents shared across the tenant unless the **Sharing** setting is narrowed. Changes to that setting apply only to new sharing actions; agents already shared stay accessible.
-- Makers who learned the current flow will meet a changed first run. The record gives no screens or dates for the change, so help-desk guidance has to wait for Microsoft's documentation.
+- Makers who learned the current flow will meet a changed first run. The record gives no screens or rollout window beyond the December CY2025 target, so help-desk guidance has to wait for Microsoft's documentation.
 
 ## Cost and licensing
 
 The roadmap record names no licence, meter or price for this change, and Microsoft's pages publish no charge specific to this experience at the time of writing (November 2026).
 
-The general rules sit on Learn's agent pages. Access to Agent Builder and the capabilities an agent can use depend on the licences assigned in the tenant. Microsoft 365 Copilot Chat is available to all Microsoft 365 users, and agents with enhanced capabilities such as grounding on SharePoint data or Microsoft 365 Copilot connectors are available to users in tenants with Copilot Studio pay-as-you-go billing (consumed as Copilot Credits) and to users with Microsoft 365 Copilot licences. Learn also says agents built in Agent Builder do not consume the tenant's Dataverse storage entitlement.
+The general rules sit on Learn's agent pages. Access to Agent Builder and the capabilities an agent can use depend on the licences assigned in the tenant. Microsoft 365 Copilot Chat is available to users with an eligible Microsoft 365 subscription, and agents with enhanced capabilities such as grounding on SharePoint data or Microsoft 365 Copilot connectors are available to users in tenants with Copilot Studio pay-as-you-go billing (consumed as Copilot Credits) and to users with Microsoft 365 Copilot licences. For pay-as-you-go agents that use SharePoint files as knowledge sources, the billing policy must be connected to the SharePoint agents service and users must be in the security group assigned to that billing policy. Learn also says agents built in Agent Builder do not consume the tenant's Dataverse storage entitlement.
 
 The indirect cost is admin time to review sharing settings and communicate the change to makers.
 
@@ -130,19 +137,15 @@ No licence, role or prerequisite for the change itself is published. For the nea
 ## Governance guidance
 
 ### Before rollout
-- Check **Agents** > **Settings** > **User access** in the Microsoft 365 admin center to see who can access agents and plugins; Learn gives All users as the default.
-- Review **Agents** > **Settings** > **Sharing** to decide who may share Agent Builder agents with the whole organisation; Learn gives All users as the default.
 - Tell makers and the help desk that Microsoft plans a changed agent-creation first run, and that the roadmap gives no screens or date beyond the December CY2025 target.
 - Confirm which licences your likely makers hold, because agent capabilities depend on the licence or pay-as-you-go billing in the tenant.
 
 ### At rollout
 - Watch Message center and the Microsoft 365 Copilot release notes for a post that names roadmap item 506848 and states the default and any required action.
-- Pilot with a small group: create an agent using the natural-language option and check that the sharing restrictions you set still apply to it.
-- Review any submissions waiting for approval to the org catalog; Learn says publishing an agent to the org catalog requires admin review and approval.
+- Pilot with a small group: create an agent using the natural-language option.
 
 ### After rollout
 - Review the **All agents** list for new agents and block any that should not be available, using the block control in the table.
-- Re-check the **User access** and **Sharing** settings, and take stock of agents shared organisation-wide.
 
 ## Governance controls
 
@@ -167,18 +170,13 @@ The controls that remain are on the agents themselves. **User access** (Microsof
 - The December CY2025 target has passed while the status remains In development: has the date moved, or has the item been replaced by another roadmap entry?
 
 <!-- rationale
-risk: Low. The roadmap describes a simpler, faster creation flow and states no new data access or actions; existing access, sharing and block settings in the Microsoft 365 admin center still apply to the agents it produces.
+risk: Low. The roadmap describes a simpler, faster creation flow and states no new data access or actions; it does not identify the authoring surface, so the documented Agent Builder controls are background only.
 cost: Low. The roadmap names no licence or meter for this change, so the known cost is admin time and communication; agent capabilities still depend on the licences and Copilot Credits billing the tenant already has.
 impact: Medium. Users who build agents in Microsoft Copilot would notice a changed first-run flow; people who only use agents see nothing in the roadmap description.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.notes; Cost and licensing / licensing: Enhanced agent capabilities, including SharePoint grounding, are available with tenant pay-as-you-go billing or a Microsoft 365 Copilot licence. | Found: For agents that use SharePoint files as knowledge sources, the billing policy must be connected to the SharePoint agents service and users must be in the security group assigned to the billing policy. | Fix: Add this qualification to the licensing notes and the enhanced-capabilities sentence: 'For pay-as-you-go agents that use SharePoint files as knowledge sources, the billing policy must be connected to the SharePoint agents service and users must be in the security group assigned to that billing policy.' The qualification is at https://learn.microsoft.com/plugins/prerequisites. | Source: https://learn.microsoft.com/plugins/prerequisites
-- [contradicted, blocker] Risk assessment: Change & support / record: The record gives no dates for the change. | Found: "targetDate": "December CY2025" | Fix: Replace 'The record gives no screens or dates for the change' with 'The record gives no screens or rollout window beyond the December CY2025 target'.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: Microsoft 365 Copilot Chat is available to all Microsoft 365 users. | Found: Microsoft 365 Copilot Chat is a broadly accessible AI chat interface that is available to all Microsoft 365 users. | Fix: Replace 'available to all Microsoft 365 users' with 'available to users with an eligible Microsoft 365 subscription' in the notes and body, and cite https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements, which gives that narrower requirement. | Source: https://learn.microsoft.com/plugins/prerequisites
-- [unsupported, minor] rationale: risk / applicability: Existing access, sharing and block settings still apply to the agents produced by this new creation experience. | Found: Searched: '506848 Agent Builder simplified creation control settings licensing'. Read Agent settings and Agent Builder guidance: Sharing covers only Agent Builder; no source identifies the new surface or confirms that Sharing governs its output. | Fix: Replace the risk rationale with: 'Low. The roadmap describes a simpler, faster creation flow and states no new data access or actions; it does not identify the authoring surface, so the documented Agent Builder controls are background only.'
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: The checklist directs readers to check User access, Sharing and catalog submissions, but the controls table contains only Block. | Found: Check Agents > Settings > User access; Review Agents > Settings > Sharing; Review any submissions waiting for approval to the org catalog. The controls table has only 'Whether a specific agent is available to anyone in the organisation (block or unblock)'. | Fix: The Before rollout User access and Sharing steps, At rollout catalog-submission review, and After rollout User access and Sharing re-check have no corresponding table rows. Remove those checklist instructions rather than adding controls during correction.
+- [supported, minor] What's changing; Governance guidance: At rollout / behaviour: Users can create an agent by describing it in natural language. | Found: The natural language experience is only available when you set your Microsoft 365 language to one of the available languages. If natural language isn't supported in your preferred language, you can configure your agent manually. | Fix: Add to the natural-language pilot bullet: 'The natural-language experience is available only when your Microsoft 365 language is one of the supported languages; otherwise configure the agent manually.' Source: https://learn.microsoft.com/plugins/agent-builder-build-agents. | Source: https://learn.microsoft.com/plugins/agent-builder-build-agents
 -->

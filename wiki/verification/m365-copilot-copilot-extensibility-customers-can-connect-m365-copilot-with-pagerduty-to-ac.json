@@ -1,0 +1,1026 @@
+{
+  "slug": "m365-copilot-copilot-extensibility-customers-can-connect-m365-copilot-with-pagerduty-to-ac",
+  "roadmapId": 515161,
+  "title": "Microsoft 365 Copilot: PagerDuty connectors for escalation policies and on-call schedules",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "4 blocking findings (claims 22, 36, 50, 74)"
+    ]
+  },
+  "counts": {
+    "claims": 77,
+    "confirmed": 71,
+    "unconfirmed": 3,
+    "contradicted": 3,
+    "blocker": 4,
+    "major": 1,
+    "minor": 5
+  },
+  "summary": "Hold: the briefing incorrectly generalises organisation-wide default access to both connectors; schedules default to people with source access. It also labels included connector grounding as a separate add-on and asserts an undocumented default for indexing team relationships. The documented deployment paths and Graph delete call otherwise check out.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; What's changing",
+      "type": "record",
+      "claim": "The roadmap plans a PagerDuty connection for escalation policies and on-call schedules.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Customers can connect M365 Copilot with PagerDuty to access escalation policies and on-call schedules with Copilot Connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status remains In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is December CY2025, which has passed by this run.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "General Availability is the roadmap release phase.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap item does not name either separately documented connector.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Customers can connect M365 Copilot with PagerDuty to access escalation policies and on-call schedules with Copilot Connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The escalation policies connector indexes policy metadata.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-overview",
+      "quote": "Escalation policy metadata: Policy ID, name, summary, description, and URLs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Indexed escalation rules include minutes until escalation and assigned targets.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-deployment",
+      "quote": "This property is a list of entries in the escalation policy, including the number of minutes before an unacknowledged incident escalates away from this rule, and the targets an incident should be assigned to upon reaching the rule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The connector indexes services associated with each escalation policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-overview",
+      "quote": "Service associations: Services that use each escalation policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The connector indexes teams linked to escalation policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-overview",
+      "quote": "Team relationships: Teams linked to escalation policies (for Advanced Permissions).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The escalation policies connector supports full crawl only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-deployment",
+      "quote": "The PagerDuty Escalation Policies connector only supports full crawl.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "default",
+      "claim": "The default escalation policies full crawl schedule is daily.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-deployment",
+      "quote": "The default schedule of the full crawl is set for every day.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Learn documents an escalation policies connector that surfaces indexed data in Copilot, Copilot Search and Microsoft Search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-overview",
+      "quote": "When you deploy the connector, Copilot, Copilot Search, and Microsoft Search can surface relevant escalation policy information directly within apps like Microsoft Teams, Outlook, and SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Learn documents a schedules connector that surfaces schedule data in Microsoft 365 search and Copilot experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-schedules-overview",
+      "quote": "The PagerDuty Schedules Microsoft 365 Copilot connector integrates PagerDuty schedule data into Microsoft 365. ... This connector is currently in preview and might have limited availability. Preview features are subject to change.",
+      "severity": "minor",
+      "fix": "Add to What's changing: 'The PagerDuty Schedules connector is currently in preview, might have limited availability and is subject to change, according to its Learn overview.' Keep the roadmap's General Availability release phase as a separate record fact."
+    },
+    {
+      "n": 17,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Most staff cannot see on-call rosters and escalation rules today without a PagerDuty login.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: PagerDuty escalation policies schedules login access team relationships indexed default. Opened both PagerDuty connector overviews and deployment guides; none states what most staff can currently see or requires a login for every existing route.",
+      "severity": "major",
+      "fix": "Remove 'that most staff cannot see today without a PagerDuty login' from the first sentence of Why it matters."
+    },
+    {
+      "n": 18,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "An administrator must create the connection before either connector starts indexing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-schedules-deployment",
+      "quote": "To deploy the connector, choose Create in the Microsoft 365 admin center. The PagerDuty Schedules Copilot connector starts indexing schedules from your PagerDuty account right away.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-schedules-deployment to sources; it documents the schedules deployment prerequisite and indexing trigger. The cited escalation policies deployment page independently documents its Create trigger."
+    },
+    {
+      "n": 19,
+      "where": "summary; controls[0].note; Why it matters; Risk assessment; Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "Updating access permissions after creation is unsupported; changing them requires deleting and recreating the connection with Custom setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
+      "quote": "Updating access permissions after you create the connection isn't currently supported.",
+      "severity": "minor",
+      "fix": "After the delete-and-recreate statement add: 'The PagerDuty Escalation Policies overview instead says admins can customize access permissions later through connector settings; this conflicts with the Manage access permissions page.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-overview."
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "Escalation rule detail is indexed by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-deployment",
+      "quote": "The following properties are indexed by default. ... ruleDetail ... This property is a list of entries in the escalation policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "Linked services are indexed by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-deployment",
+      "quote": "The following properties are indexed by default. ... usedByServices ... The services associated with the escalation policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "Team relationships are indexed by default.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: PagerDuty escalation policies schedules login access team relationships indexed default. Opened Escalation Policies overview and deployment; overview lists teams for Advanced Permissions, but deployment's default-property table does not list teams.",
+      "severity": "blocker",
+      "fix": "Replace 'Rule detail, linked services and team relationships are indexed by default' with 'Rule detail and linked services are indexed by default'. Retain the separately supported statement that the connector indexes team relationships for Advanced Permissions without asserting a default."
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "default",
+      "claim": "All users in the organisation can access indexed escalation policies by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-deployment",
+      "quote": "Users | All users in the organization can access indexed escalation policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "With PagerDuty Advanced Permissions enabled, escalation policy access is limited to members of linked teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-deployment",
+      "quote": "When you enable Advanced Permissions in PagerDuty, only members of the teams linked to a specific escalation policy can access and search for that escalation policy in Microsoft Search and Microsoft 365 Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "PagerDuty Advanced Permissions also limits schedules to members of linked teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-schedules-overview",
+      "quote": "When Advanced Permissions is enabled in PagerDuty, only members of the teams linked to a specific schedule can access and search for that schedule in Microsoft Search and Microsoft 365 Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "The escalation policies connector indexes the four named audit properties by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-deployment",
+      "quote": "The following properties are indexed by default. ... createdBy | createdBy ... createdTime | createdDateTime ... lastModifiedBy | lastModifiedBy ... lastModifiedTime | lastModifiedDateTime",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Indexing those audit properties requires a PagerDuty Business or Enterprise plan licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-overview",
+      "quote": "A PagerDuty Business or Enterprise plan license is required to index the following data properties: createdBy, createdDateTime, lastModifiedBy, and lastModifiedDateTime.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity; Governance guidance",
+      "type": "behaviour",
+      "claim": "The escalation policies connector uses OAuth 2.0 with an entered PagerDuty app Client ID and Client Secret.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-deployment",
+      "quote": "To use PagerDuty OAuth for authentication, enter the Client ID and Client Secret you obtained from your PagerDuty app registration settings in the prerequisites section.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity; Governance guidance",
+      "type": "behaviour",
+      "claim": "The deployment guide requires Audit records Read Access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-deployment",
+      "quote": "Select the following scopes in the PagerDuty new app registration setting page: Audit records – Read Access",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity; Governance guidance",
+      "type": "behaviour",
+      "claim": "The deployment guide requires Escalation Policies Read Access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-deployment",
+      "quote": "Escalation Policies – Read Access",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity; Governance guidance",
+      "type": "behaviour",
+      "claim": "The deployment guide requires Teams Read Access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-deployment",
+      "quote": "Teams – Read Access",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity; Governance guidance",
+      "type": "behaviour",
+      "claim": "The deployment guide requires Users Read Access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-deployment",
+      "quote": "Users – Read Access",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The overview documents retrieval and use as a knowledge source in declarative agents built with Copilot Studio, Agent Builder or Microsoft 365 Agents Toolkit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-overview",
+      "quote": "Developers can use this connector as a knowledge source in declarative agents they build with the Copilot Studio, Agent Builder, or the Microsoft 365 Agents Toolkit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "If failures prevent reliable delete detection, items not rediscovered for 28 days are automatically removed from the index.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "If connection failures prevent delete detection from running reliably, items that aren't rediscovered during crawls for 28 days are automatically removed from the Microsoft 365 index to maintain compliance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Indexing synced connector data incurs no extra cost for Microsoft 365 licensed tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model for this new connector capability is add-on.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
+      "severity": "blocker",
+      "fix": "Set licensing.model to 'included': this connector capability is included in the Microsoft 365 Copilot entitlement, rather than being a separate connector add-on. Retain the notes naming Microsoft 365 plus the Microsoft 365 Copilot add-on, or Microsoft 365 E7, as the underlying entitlement."
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 plus the Microsoft 365 Copilot add-on supports synced connector Copilot grounding and agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Microsoft 365 + Microsoft 365 Copilot add-on | ✅ | ✅ | ✅",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 E7 also supports synced connector Copilot grounding and agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Microsoft 365 E7 | ✅ | ✅ | ✅",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "A Microsoft 365 plan alone supports Microsoft Search but not synced connector grounding and agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Microsoft 365 (any plan) | ✅ | ❌ | ❌",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Copilot Studio licence option supports agents without Copilot grounding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Microsoft 365 + Copilot Studio license | ✅ | Agents only (no Copilot grounding) | ❌",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 Copilot pay-as-you-go supports agents without Copilot grounding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Microsoft 365 Copilot pay-as-you-go | ✅ | Agents only (no Copilot grounding) | ❌",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Connector grounding in Copilot is included with Microsoft 365 Copilot licences without extra charges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The PagerDuty connector pages publish no connector-specific price or meter as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: PagerDuty Copilot connectors pricing meter escalation policies schedules. Opened connector prerequisites, both PagerDuty overviews and deployment guides; they state general Microsoft 365 licensing and audit-property plan requirements, not a connector-specific price or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope; Governance guidance; Governance controls; controls[1].note",
+      "type": "role",
+      "claim": "An AI administrator is required to deploy and manage Copilot connectors and staged rollout.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "To configure and deploy Copilot connectors, you must be an AI administrator in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "A PagerDuty administrator is needed for the source-side OAuth setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-deployment",
+      "quote": "You have a PagerDuty account with administrator permission in the PagerDuty app. ... Before you deploy the connector, create an OAuth application in PagerDuty:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope",
+      "type": "role",
+      "claim": "The escalation policies deployment guide requires a Microsoft 365 admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-deployment",
+      "quote": "You must be a Microsoft 365 admin.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The PagerDuty environment must allow API access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-deployment",
+      "quote": "The PagerDuty environment is configured to allow API access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The OAuth 2.0 app must be registered with Scoped OAuth.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-deployment",
+      "quote": "In PagerDuty, add a new app with OAuth 2.0 functionality enabled. ... Select Scoped OAuth in the PagerDuty new app registration setting page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The instance REST API URL depends on the US or EU PagerDuty service region.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-deployment",
+      "quote": "For the US service region: https://api.pagerduty.com ... For the EU service region: https://api.eu.pagerduty.com",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope: final sentence",
+      "type": "default",
+      "claim": "Users in scope for these connectors are all users in the organisation by default.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-schedules-deployment",
+      "quote": "Users | Access permissions | Only people with access to the content in the data source",
+      "severity": "blocker",
+      "fix": "Replace the final Scope sentence with: 'Escalation policies are visible to all users in the organisation by default; schedules default to only people with access to the content in the data source. Staged rollout can limit results to up to 100 users and 15 Microsoft 365 groups, subject to access permissions.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-schedules-deployment."
+    },
+    {
+      "n": 51,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The printed Gallery and Custom setup path reaches the escalation policies Access permissions setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-deployment",
+      "quote": "select Copilot > Connectors. ... Select the Gallery tab. ... select PagerDuty Escalation Policies. ... select Custom setup. ... Customize user settings ... Access permissions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[0].api",
+      "type": "absence",
+      "claim": "No automation for the prebuilt PagerDuty connection's setup-time access-permissions choice is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph externalConnection access permissions visible everyone PagerDuty connector API. Opened Manage access permissions, PagerDuty deployment and externalConnection beta reference; custom-item ACL APIs do not document this prebuilt-connector setup choice.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Copilot > Connectors > Your Connections > connection > Staged Rollout > Edit reaches the staged rollout editor.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout",
+      "quote": "go to Copilot > Connectors > Your Connections. ... Find the connector that you want to modify. ... In the Staged Rollout column, next to Staged, choose Edit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No connector staged rollout API or PowerShell operation is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph connector staged rollout users groups API PowerShell; \"Copilot connectors\" \"staged rollout\" \"API\". Opened Staged rollout and externalConnection beta reference; no operation for this setting. Entra sign-in staged rollout is a different feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].note; Scope",
+      "type": "behaviour",
+      "claim": "Connector staged rollout permits up to 100 users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout",
+      "quote": "You can only add up to 100 users and 15 Microsoft 365 groups to the staged rollout list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1].note; Scope",
+      "type": "behaviour",
+      "claim": "Connector staged rollout permits up to 15 Microsoft 365 groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout",
+      "quote": "You can only add up to 100 users and 15 Microsoft 365 groups to the staged rollout list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "Staged rollout applies to Search and Copilot experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout",
+      "quote": "Staged rollout settings are applicable to all Search and Copilot experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Staged rollout limits the results audience without replacing source access permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout",
+      "quote": "When the rollout finishes, only the users and groups you specified see connector data in results, depending on their permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "The printed Your Connections path reaches Copilot Visibility for partner connections.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Go to Copilot > Connectors > Your Connections. ... Select the connection that you want to modify. ... Under Copilot Visibility, select the toggle to turn the connector on or off",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "No API equivalent for the documented Copilot Visibility toggle is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph externalConnection Copilot Visibility toggle enabledContentExperiences API. Opened Manage connector connections, Graph manage-connections and externalConnection beta reference; search participation is documented, but not equivalence to the Copilot-only toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "Turning Copilot Visibility off excludes the connection from Copilot Search and Copilot Chat results.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "When the visibility is off, the connector is excluded from all Copilot Search and Copilot Chat results and responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "The connection can continue crawling while Copilot Visibility is off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "If the connection is off, it can still crawl the data source, but the data isn't used for search results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "Visibility changes can take up to 30 minutes to propagate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "After you update the visibility settings at the connection level, allow up to 30 minutes for the changes to propagate across all Copilot experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[2].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Learn describes the visibility toggle for partner connectors without confirming its reach to these Microsoft-built PagerDuty connectors.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph externalConnection Copilot Visibility toggle enabledContentExperiences API. Opened Manage connector connections and both PagerDuty overviews/deployments; the toggle's stated reach is partner connectors, not these Microsoft-built connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Copilot > Connectors > Your Connections > connection > Delete reaches the documented deletion control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
+      "quote": "go to Copilot > Connectors > Your Connections. ... Select the connector you want to review to open the details pane. ... In the connector pane, choose Delete to delete the existing connection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "DELETE /v1.0/external/connections/{connectionsId} deletes an external connection and its indexed items.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-delete",
+      "quote": "Deletes an externalConnection object. ... DELETE /external/connections/{connectionsId} ... DELETE https://graph.microsoft.com/v1.0/external/connections/contosohr",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[3].note",
+      "type": "role",
+      "claim": "ExternalConnection.ReadWrite.OwnedBy is a Graph delete permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-delete",
+      "quote": "Delegated (work or school account) | ExternalConnection.ReadWrite.OwnedBy | ExternalConnection.ReadWrite.All ... Application | ExternalConnection.ReadWrite.OwnedBy | ExternalConnection.ReadWrite.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[3].note",
+      "type": "role",
+      "claim": "ExternalConnection.ReadWrite.All is another Graph delete permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-delete",
+      "quote": "Higher privileged permissions ... ExternalConnection.ReadWrite.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[3].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Learn says Graph callers can manage only connections they created or were authorised to manage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/connecting-external-content-manage-connections",
+      "quote": "You can only view and manage the connections that you created or were explicitly authorized to manage.",
+      "severity": "minor",
+      "fix": "Replace the permission restriction with: 'ExternalConnection.ReadWrite.OwnedBy restricts the app to authorised connections; ExternalConnection.ReadWrite.All allows the app to read and write all external connections.' Cite https://learn.microsoft.com/graph/permissions-reference#all-permissions, which states the wider All scope and qualifies the manage-connections page's blanket restriction."
+    },
+    {
+      "n": 70,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The cited Graph connection-management page does not specifically describe deletion of admin-center-gallery connections.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph externalConnection access permissions visible everyone PagerDuty connector API. Opened Graph manage-connections, Delete externalConnection and externalConnection beta reference; they describe externalConnection operations but no gallery-specific procedure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Connection state can be checked on Your Connections.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "You can view the connection state for your deployed connectors on the Your Connections tab in the admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Permanent crawl failures mark the connection Failed and generate service health notifications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "If a permanent failure occurs, the connection is marked as Failed, and notifications are sent to the service health dashboard under the Issues section for your organization to act on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Rollout to limited audience is the setup toggle for a limited initial audience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-deployment",
+      "quote": "To roll out to a limited audience, select the toggle next to Rollout to limited audience and specify the users and groups to roll the connector out to.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance guidance: Before rollout, first bullet",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Copilot > Connectors is the printed route for choosing access permissions before creation.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph externalConnection access permissions visible everyone PagerDuty connector API. Opened PagerDuty deployment and Manage access permissions; the setup choice is inside the selected connector's Custom setup, not at the Connectors navigation entry.",
+      "severity": "blocker",
+      "fix": "Remove the '(Microsoft 365 admin center > Copilot > Connectors)' parenthetical from this bullet; the controls table already supplies the complete verified escalation policies setup path. This shortened navigation-only route does not reach the access setting."
+    },
+    {
+      "n": 75,
+      "where": "Governance guidance; controls",
+      "type": "consistency",
+      "claim": "The checklist's connection-state and failure-notification checks have no matching monitoring row in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check the connection state on the Your Connections tab ... Watch for Failed connection states and the service health notifications ... Controls list access permissions, staged rollout, Copilot Visibility and deletion only.",
+      "severity": "minor",
+      "fix": "The 'Check the connection state' At rollout step and 'Watch for Failed connection states' After rollout step have no matching control row. This is a checklist/table coverage finding, not a request to add a row."
+    },
+    {
+      "n": 76,
+      "where": "controls[0].note; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Access permissions can be set to everyone or to users with access to the data source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-deployment",
+      "quote": "Choose whether indexed data is visible to everyone in the organization or only to users who have access to the data source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Configured access permissions can be reviewed in the connection details pane.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
+      "quote": "Select the connector you want to review to open the details pane. ... Under Permissions, you can view the permissions set for the connector.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T05:47:49.863Z",
+    "summary": {
+      "links": 11,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=515161",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-deployment",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-schedules-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-schedules-connector",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-delete",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/connecting-external-content-manage-connections",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who can access indexed escalation policies (set when the connection is created)",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/pagerduty-escalation-policies-deployment",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Connectors",
+          "Gallery",
+          "PagerDuty Escalation Policies",
+          "Custom setup",
+          "Customize user settings",
+          "Access permissions"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users and groups see connector data during a staged rollout",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Connectors",
+          "Your Connections",
+          "connection",
+          "Staged Rollout",
+          "Edit"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether the connection's content appears in Copilot Search and Copilot Chat",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Connectors",
+          "Your Connections",
+          "connection",
+          "Copilot Visibility"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Whether the connection exists and its indexed data is kept (delete)",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Connectors",
+          "Your Connections",
+          "connection",
+          "Delete"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Whether the connection exists and its indexed data is kept (delete)",
+        "docs": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-delete",
+        "reachable": true,
+        "token": "/v1.0/external/connections",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

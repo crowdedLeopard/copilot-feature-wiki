@@ -5,7 +5,7 @@ slug: "facilitator"
 summary: "Facilitator is the AI agent in Teams meetings that takes shared notes and answers in the meeting chat. It comes with a Microsoft Copilot licence and is governed through Teams app settings, Loop settings and Purview."
 created: "2026-11-22"
 updated: "2026-11-22"
-version: 2
+version: 3
 tags: ["facilitator","teams","teams-rooms","m365-copilot","microsoft-loop","meeting-transcripts","meeting-policy","retention"]
 covers: []
 sources:
@@ -32,6 +32,9 @@ sources:
     kind: "learn"
   - title: "New-RetentionComplianceRule"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule"
+    kind: "learn"
+  - title: "Automatically retain or delete content by using retention policies"
+    url: "https://learn.microsoft.com/purview/create-retention-policies"
     kind: "learn"
 related: ["meeting-transcripts","meeting-policy","retention","microsoft-teams-enhanced-copilot-and-ai-controls-for-meetings","microsoft-teams-ai-powered-notes-for-in-person-meetings-with-facilitator-in-teams-r-560318","microsoft-teams-facilitator-in-gcc"]
 controls:
@@ -96,13 +99,13 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Data Lifecycle Management > Policies > Retention Policies"
-      docs: "https://learn.microsoft.com/purview/ai-teams-facilitator"
+      path: "Data Lifecycle Management > Policies > Retention policies > New retention policy > Choose the type of retention policy to create > Static > Choose locations to apply the policy > location"
+      docs: "https://learn.microsoft.com/purview/create-retention-policies"
     api:
       kind: "powershell"
       call: "New-RetentionComplianceRule -Policy <policy name> -RetentionDuration <days> -RetentionComplianceAction <Keep, Delete or KeepAndDelete>"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule"
-    note: "Create the policy in the portal: Teams chats location for interactions, OneDrive accounts for notes. The cmdlet adds a retention rule to an existing policy already scoped to that location; duration is in days."
+    note: "Teams chats location for interactions, OneDrive accounts for notes; create separate policies for the two locations. The cmdlet adds a rule to an existing policy; duration is in days."
 confidence: "medium"
 dependents: 10
 changes:
@@ -114,18 +117,22 @@ changes:
     note: "Corrected the block command (the reference's examples describe both values as unblocking), the retention command (a rule, not a policy), the availability delay and path, and three smaller wording points."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 111 statements contradicted, 3 unconfirmed; taken offline until corrected"
+  - date: "2026-11-22"
+    note: "Corrected after the independent check: who can see Facilitator output (replacing the claim that any licensed user can start it), open questions that named skills and a policy replacement no Microsoft page states, and the retention policy path."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 114 statements contradicted, 0 unconfirmed; taken offline until corrected"
 verification:
   status: "held"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 111
-  confirmed: 106
-  unconfirmed: 3
-  contradicted: 2
-  attempts: 2
-  hash: "4972eee2cd9112d28534b90dbfee70ac"
+  claims: 114
+  confirmed: 113
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 3
+  hash: "0639b12e9d58e46a30e1b549c5dfff9c"
 ---
 
 ## What it is
@@ -146,7 +153,7 @@ In meetings, notes are stored as a `.loop` file in the **Meetings** folder in On
 
 ## Why it matters
 
-Facilitator is allowed by default, but not if all apps are blocked for the organisation. Unless someone decides otherwise, any user with the required licences can start an agent whose prompts, answers and notes are shared with everyone in the meeting.
+Facilitator is allowed by default, but not if all apps are blocked for the organisation. A licensed user's prompts to it, and its responses and notes, are visible to everyone in the meeting, including unlicensed users.
 
 That makes three decisions yours: who may use it (app availability), whether the Loop and transcription settings it depends on stay on, and how its notes and chat interactions are retained and discovered. Purview support is partial, so these decisions cannot be left to labels or data loss prevention.
 
@@ -181,7 +188,7 @@ The Facilitator setup page lists licences and user requirements as its prerequis
 <tr><td data-label="Control"><strong>AI-generated notes for meetings</strong><br><small>Tenant</small><br><small class="controls__note">Tenant-wide. Microsoft says the property does not apply to collaborative meeting notes in Teams New Calendar.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -IsCollabMeetingNotesFluidEnabled $false</code> <a href="https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether users can transcribe meetings, a Teams Rooms setup step</strong><br><small>User</small><br><small class="controls__note">Learn lists turning on transcription as a step for Facilitator in Teams Rooms.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Transcription <a href="https://learn.microsoft.com/microsoftteams/meeting-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -AllowTranscription $true</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Take notes button on a room's console home screen</strong><br><small class="controls__note">Preview; Teams Rooms Pro. The default setting is enabled.</small></td><td data-label="Admin UI"><strong>Pro Management portal</strong><br>Rooms › room › Settings › Device › Show Take notes button on the home screen <a href="https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Retention of Facilitator chat interactions and notes</strong><br><small>Tenant</small><br><small class="controls__note">Create the policy in the portal: Teams chats location for interactions, OneDrive accounts for notes. The cmdlet adds a retention rule to an existing policy already scoped to that location; duration is in days.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Lifecycle Management › Policies › Retention Policies <a href="https://learn.microsoft.com/purview/ai-teams-facilitator" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RetentionComplianceRule -Policy &lt;policy name&gt; -RetentionDuration &lt;days&gt; -RetentionComplianceAction &lt;Keep, Delete or KeepAndDelete&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Retention of Facilitator chat interactions and notes</strong><br><small>Tenant</small><br><small class="controls__note">Teams chats location for interactions, OneDrive accounts for notes; create separate policies for the two locations. The cmdlet adds a rule to an existing policy; duration is in days.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Lifecycle Management › Policies › Retention policies › New retention policy › Choose the type of retention policy to create › Static › Choose locations to apply the policy › location <a href="https://learn.microsoft.com/purview/create-retention-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RetentionComplianceRule -Policy &lt;policy name&gt; -RetentionDuration &lt;days&gt; -RetentionComplianceAction &lt;Keep, Delete or KeepAndDelete&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -202,20 +209,13 @@ Facilitator interactions in meetings fall under a retention policy for Teams cha
 
 ## Open questions
 
-- Which other Facilitator skills (question detection, Protection, meeting memory) will get their own admin switch? The skills section of the Set up Facilitator page documents only the AI-generated notes control at the time of writing.
-- Will the Copilot meeting policy and its planned replacements change how Facilitator is governed? See the linked briefing on MeetingAI.
+- Which other Facilitator skills will get their own admin switch? The skills section of the Set up Facilitator page documents only the AI-generated notes control at the time of writing.
+- Will the Copilot meeting policy change how Facilitator is governed?
 - What will Teams Rooms Pro in-person note-taking cost once it leaves preview? Learn says the licensing model may change.
 - When will Facilitator reach the US government clouds, and how will it behave there? See the GCC briefing.
 
 <!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters / role: Any user with the required licences can start Facilitator unless someone decides otherwise. | Found: Only meeting participants who are organizers or presenters and are using Teams for web or desktop can turn Facilitator on or off during a meeting. | Fix: Replace 'any user with the required licences can start an agent' with 'a user with the required licences who is an organiser or presenter using Teams for web or desktop can turn Facilitator on during a meeting'. Cite https://support.microsoft.com/office/37657f91-39b5-40eb-9421-45141e3ce9f6. | Source: https://support.microsoft.com/office/37657f91-39b5-40eb-9421-45141e3ce9f6
-- [contradicted, blocker] Open questions: other skills / absence: Meeting memory is among the Facilitator capabilities still waiting for its own admin switch. | Found: Meeting memory is in preview and only available to organizations in the Teams TAP program. ... In the Teams Admin Center, you can disable meeting memory for your organization | Fix: Remove 'meeting memory' from the first open question: https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings already documents its preview admin switch. Do not imply that the switch is unpublished. | Source: https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings
-- [unsupported, major] Open questions: other skills / behaviour: Question detection is a named Facilitator skill. | Found: Searched: Facilitator question detection; Facilitator question detection Protection meeting memory. Opened Facilitator setup and the linked Microsoft Support article; neither names a Question detection skill. | Fix: Remove 'question detection' from the parenthetical list in the first open question; no Microsoft page read states this skill name.
-- [unsupported, major] Open questions: other skills / behaviour: Protection is a named Facilitator skill. | Found: Searched: Facilitator Protection skill; Facilitator question detection Protection meeting memory. Opened Facilitator setup and the linked Microsoft Support article; the latter describes preview verbal-phishing monitoring but does not name a Protection skill. | Fix: Remove 'Protection' from the parenthetical list in the first open question; no Microsoft page read states this skill name.
-- [unsupported, major] Open questions: Copilot meeting policy / behaviour: The Copilot meeting policy has planned replacements. | Found: Searched: Teams MeetingAI policy replaces Copilot meeting policy enhanced AI controls. Read Copilot meeting-policy search excerpts and Facilitator setup; no Microsoft passage read states the planned replacements. The linked wiki briefing is not evidence. | Fix: Remove 'and its planned replacements' from the second open question, leaving 'Will the Copilot meeting policy change how Facilitator is governed?'.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[6].ui / admin-path: Facilitator retention policies are configured under Microsoft Purview portal > Data Lifecycle Management > Policies > Retention Policies. | Found: navigate to Data Lifecycle Management > Policies > Retention Policies and create a retention policy | Fix: The path stops on the policy list. For a static policy, extend it to 'Data Lifecycle Management > Policies > Retention Policies > New retention policy > Choose the type of retention policy to create > Static > Choose locations to apply the policy > location > Decide if you want to retain content, delete it, or both'. Keep the note identifying Teams chats and OneDrive accounts; create separate policies for those locations. Cite https://learn.microsoft.com/purview/create-retention-policies. | Source: https://learn.microsoft.com/purview/ai-teams-facilitator
-- [supported, minor] Open questions: other skills / behaviour: Facilitator uses meeting memory. | Found: Copilot and Facilitator use meeting memory to answer questions about a meeting. | Fix: For the supported meeting-memory reference, add https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings to sources if retaining that reference. The role correction also relies on https://support.microsoft.com/office/37657f91-39b5-40eb-9421-45141e3ce9f6, and the retention-path correction on https://learn.microsoft.com/purview/create-retention-policies; add those URLs when applying those fixes. | Source: https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings
+- [contradicted, blocker] controls[6].ui / admin-path: The retention path uses Choose locations to apply the policy for both Teams chats interactions and OneDrive accounts notes. | Found: If you chose Static: On the Choose locations to apply the policy page, select one or more locations: Retention policy for all other services: If you chose Static: On the Choose locations page, toggle on or off any of the locations | Fix: Replace controls[6].ui.path and its rendered path with 'Data Lifecycle Management > Policies > Retention policies > New retention policy > Choose the type of retention policy to create > Static > Choose locations to apply the policy (Teams chats) or Choose locations (OneDrive accounts) > location'. Learn documents the two location-page labels separately at https://learn.microsoft.com/purview/create-retention-policies. | Source: https://learn.microsoft.com/purview/create-retention-policies
 -->

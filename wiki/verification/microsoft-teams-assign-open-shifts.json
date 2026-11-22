@@ -1,0 +1,862 @@
+{
+  "slug": "microsoft-teams-assign-open-shifts",
+  "roadmapId": 562535,
+  "title": "Microsoft Teams Shifts: Assign open shifts fills open shifts automatically",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "2 blocking findings (claims 31, 52)"
+    ]
+  },
+  "counts": {
+    "claims": 68,
+    "confirmed": 65,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: the prescribed PowerShell blocking value conflicts with its reference page, which labels that example as unblocking an app. The statement that there is no spending cap also goes beyond the verified absence of a published meter. The scheduling behaviour, Teams licence requirement and rollout information are supported, with smaller corrections needed for conflicting control documentation and missing citations.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Assign open shifts is a Teams Shifts feature that automatically fills unassigned shifts.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Auto Assign Open Shifts is a Microsoft Teams Shifts feature that automatically fills unassigned (open) shifts for you.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: releasePhase; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap record lists Desktop and Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-11-04T00:02:09.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-04T00:02:09\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Approved time off is an assignment input.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The system considers factors like employee availability, approved time off, past scheduling patterns, and scheduling rules",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Employee availability is an assignment input.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The system considers factors like employee availability, approved time off, past scheduling patterns, and scheduling rules",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Past scheduling patterns are an assignment input.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The system considers factors like employee availability, approved time off, past scheduling patterns, and scheduling rules",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Scheduling rules, including hours and rest constraints, are assignment inputs.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "scheduling rules (e.g., max hours, rest time)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Security & identity; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The new button appears for users with scheduling permissions.",
+      "status": "supported",
+      "source": "Message Center post MC1324280",
+      "quote": "A new “Assign open shifts” button appears for users with scheduling permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing; Why it matters; rationale: risk",
+      "type": "record",
+      "claim": "Using Assign open shifts is optional.",
+      "status": "supported",
+      "source": "Message Center post MC1324280",
+      "quote": "Using the feature is optional.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Microsoft says no action is required.",
+      "status": "supported",
+      "source": "Message Center post MC1324280",
+      "quote": "No action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft suggests administrators may share documentation and update scheduling-manager guidance.",
+      "status": "supported",
+      "source": "Message Center post MC1324280",
+      "quote": "Admins may choose to share documentation and update internal guidance for scheduling managers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The notice gives a Worldwide General Availability rollout beginning in mid-June 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1324280",
+      "quote": "General Availability (Worldwide): Rollout begins in mid-June 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Change & support; Scope: Rollout",
+      "type": "record",
+      "claim": "The notice expects rollout completion by end of October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1324280",
+      "quote": "is expected to complete by end of October 2026 (previously mid-September).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice's previous expected completion was mid-September.",
+      "status": "supported",
+      "source": "Message Center post MC1324280",
+      "quote": "is expected to complete by end of October 2026 (previously mid-September).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The rollout notice was updated on 22 September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1324280",
+      "quote": "Updated September 22, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Scope: Clouds and platforms",
+      "type": "record",
+      "claim": "The notice names Teams Shifts on web and desktop.",
+      "status": "supported",
+      "source": "Message Center post MC1324280",
+      "quote": "Platforms/Services: Microsoft Teams (Shifts) on web and desktop.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Scope: Rollout",
+      "type": "record",
+      "claim": "Microsoft's end date for the notice is 30 November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1324280",
+      "quote": "Published 2026-05-27; last updated 2026-09-22; Microsoft's end date 2026-11-30",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "The feature uses existing Shifts data to generate suggested assignments.",
+      "status": "supported",
+      "source": "Message Center post MC1324280",
+      "quote": "The feature uses existing Shifts data (availability, time off, scheduling rules, historical patterns) to generate suggested assignments",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The notice says the feature introduces no new data types.",
+      "status": "supported",
+      "source": "Message Center post MC1324280",
+      "quote": "without introducing new data types.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure; Security & identity",
+      "type": "record",
+      "claim": "Existing Shifts scheduling permissions govern feature visibility.",
+      "status": "supported",
+      "source": "Message Center post MC1324280",
+      "quote": "Visibility of the feature is governed by existing Shifts scheduling permissions, which can be managed through role and group-based access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: defaultState; summary",
+      "type": "default",
+      "claim": "The feature is user-opt-in: managers choose whether to use it rather than assignments being switched on automatically.",
+      "status": "supported",
+      "source": "Message Center post MC1324280",
+      "quote": "Managers can choose whether or not to use Assign Open Shifts during scheduling.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing model is included under the product-level requirement that users have a Teams licence to use Shifts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/expand-teams-across-your-org/shifts/manage-the-shifts-app-for-your-organization-in-teams",
+      "quote": "Users must have a Teams license to use Shifts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has published no licence specific to Assign open shifts as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Assign open shifts\" licensing price meter billing. Opened Auto-assign open shifts and Manage the Shifts app; read MC1324280. Only the product-level Teams licence requirement was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has published no separate price or charge specific to Assign open shifts as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Assign open shifts\" licensing price meter billing. Opened Auto-assign open shifts and Manage the Shifts app; read MC1324280. None states a feature-specific price or charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: licensing.notes; Cost and licensing: Meter and caps; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft documents no meter for Assign open shifts as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Assign open shifts\" licensing price meter billing; Assign open shifts maximum spending cap. Opened Auto-assign open shifts and Manage the Shifts app; read MC1324280. No feature meter was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing: Meter and caps",
+      "type": "cost",
+      "claim": "There is no spending cap to set.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Assign open shifts maximum spending cap; \"Assign open shifts\" licensing price meter billing. Opened Auto-assign open shifts and Manage the Shifts app. Neither states that no spending cap exists.",
+      "severity": "blocker",
+      "fix": "Delete ', so there is no spending cap to set'. Retain the verified statement: 'Microsoft documents no meter for this feature at the time of writing (November 2026).'"
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "The manager must enter the open shifts in the schedule before assigning them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/frontline/shifts-auto-assign-open-shifts",
+      "quote": "Make sure all of the shifts you need to assign are entered into the Open Shifts area at the top of your schedule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The manager starts the process with the Assign open shifts button in the Shifts app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/frontline/shifts-auto-assign-open-shifts",
+      "quote": "Select Assign open shifts in the top right corner of the Shifts app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The manager selects a schedule group for assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/frontline/shifts-auto-assign-open-shifts",
+      "quote": "Select a schedule group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Only schedule groups with open shifts appear in the dialog.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/frontline/shifts-auto-assign-open-shifts",
+      "quote": "Only schedule groups with open shifts will appear.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "admin-path",
+      "claim": "The manager can review and modify scheduling rules through Auto assignment rules in the assignment dialog.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/frontline/shifts-auto-assign-open-shifts",
+      "quote": "by selecting Auto assignment rules. Make modifications to your rules as necessary, then hit Back.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Auto assignment rules include maximum weekly hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/frontline/shifts-auto-assign-open-shifts",
+      "quote": "like maximum weekly and daily hours, maximum consecutive days worked, and minimum rest periods",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Auto assignment rules include maximum daily hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/frontline/shifts-auto-assign-open-shifts",
+      "quote": "like maximum weekly and daily hours, maximum consecutive days worked, and minimum rest periods",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Auto assignment rules include maximum consecutive days worked.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/frontline/shifts-auto-assign-open-shifts",
+      "quote": "like maximum weekly and daily hours, maximum consecutive days worked, and minimum rest periods",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Auto assignment rules include minimum rest periods.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/frontline/shifts-auto-assign-open-shifts",
+      "quote": "like maximum weekly and daily hours, maximum consecutive days worked, and minimum rest periods",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "applicability",
+      "claim": "Rule changes apply to all team members rather than just the selected schedule group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/frontline/shifts-auto-assign-open-shifts",
+      "quote": "Rule changes apply to all members of your Team",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Rule changes take effect the next time open shifts are assigned.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/frontline/shifts-auto-assign-open-shifts",
+      "quote": "take effect the next time open shifts are assigned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "summary; What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "The assignment result is a draft rather than an automatically published schedule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/frontline/shifts-auto-assign-open-shifts",
+      "quote": "Your schedule is now present as a draft, which you can review and edit as needed before publishing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What's changing; Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "The manager can review the draft before publishing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/frontline/shifts-auto-assign-open-shifts",
+      "quote": "Your schedule is now present as a draft, which you can review and edit as needed before publishing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "What's changing; rationale: risk",
+      "type": "behaviour",
+      "claim": "The manager can edit the draft before publishing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/frontline/shifts-auto-assign-open-shifts",
+      "quote": "Your schedule is now present as a draft, which you can review and edit as needed before publishing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "What's changing; rationale: risk",
+      "type": "behaviour",
+      "claim": "Undo restores the state before assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/frontline/shifts-auto-assign-open-shifts",
+      "quote": "Use Undo to revert to the state before you hit assign.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Shifts that cannot be filled remain open for manual handling.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/frontline/shifts-auto-assign-open-shifts",
+      "quote": "If it's impossible to build a schedule that works, shifts that couldn't be filled will remain as open shifts for you to deal with manually.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The manager publishes using Share with team after producing the draft.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/frontline/shifts-auto-assign-open-shifts",
+      "quote": "Select the \"Share with team\" button and follow steps to publish.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; Scope: Users; rationale: impact",
+      "type": "behaviour",
+      "claim": "Workers see published assignments, not the manager's unshared draft.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/shift?view=graph-rest-1.0",
+      "quote": "Draft changes are only visible to managers. The changes are visible to employees when they're shared, which copies the changes from the draftShift to the sharedShift property.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/graph/api/resources/shift?view=graph-rest-1.0 to sources for the statement that workers cannot see the unshared draft."
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Security & identity; Scope: Users; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Frontline managers in Shifts have the team owner or schedule owner role and can perform scheduling.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/frontline/manage-shifts-permissions-frontline-managers",
+      "quote": "Frontline managers in Shifts are users that have the team owner or schedule owner role. They create and manage schedules for their teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[0].ui; Governance controls table; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Teams admin center > Teams apps > Manage apps > Shifts > Status reaches the org-level Shifts app block or allow control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/expand-teams-across-your-org/shifts/manage-the-shifts-app-for-your-organization-in-teams",
+      "quote": "go to Teams apps > Manage apps. In the list of apps, search for the Shifts app, select it, and then switch the Status toggle to Blocked or Allowed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Update-M365TeamsApp -Id <app-id> -IsBlocked $true is the documented PowerShell call to block the app.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true\nUnblocks Bookings app (App ID 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b).",
+      "severity": "blocker",
+      "fix": "Replace the call in both representations with 'Update-M365TeamsApp -Id <app-id> -IsBlocked <Boolean>'. Add to the note: 'The reference describes IsBlocked as the app state, but labels examples using both $true and $false as unblocking. Use the documented Status toggle for a Blocked or Allowed choice until Microsoft clarifies the examples.' Do not claim the printed $true example is verified to block."
+    },
+    {
+      "n": 53,
+      "where": "controls[0].governs and note; Governance controls",
+      "type": "applicability",
+      "claim": "Blocking Shifts affects the whole app, including its scheduling, swap and time-off functions, rather than only Assign open shifts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/expand-teams-across-your-org/shifts/manage-the-shifts-app-for-your-organization-in-teams",
+      "quote": "You can turn off or turn on the app at the org level on the Manage apps page in the Microsoft Teams admin center. Employees view their upcoming shifts, see who else is scheduled for the day, request to swap or offer a shift, and request time off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].note; Scope: Prerequisites; Governance controls table",
+      "type": "default",
+      "claim": "The Shifts app is enabled by default for all Teams users and can be disabled at the organisation level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/expand-teams-across-your-org/shifts/manage-the-shifts-app-for-your-organization-in-teams",
+      "quote": "Shifts is enabled by default for all Teams users in your organization. You can turn off or turn on the app at the org level on the Manage apps page in the Microsoft Teams admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].api; Governance controls table and prose; Governance guidance",
+      "type": "command",
+      "claim": "PATCH /beta/teams/{team-id}/schedule/shiftsRoleDefinition/teamowner updates the manager role permissions as documented in the cited frontline-manager article.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/frontline/manage-shifts-permissions-frontline-managers",
+      "quote": "PATCH https://graph.microsoft.com/beta/teams/fb963991-69a8-4d2c-8465-cd8e374891c4/schedule/shiftsRoleDefinition/teamowner",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/graph/api/shiftsroledefinition-update?view=graph-rest-beta to sources and append to the row note: 'Microsoft's Graph update reference instead prints PATCH /beta/team/{teamId}/schedule/shiftsRoleDefinitions/{roleId}, with allowedResourceActions nested in shiftsRolePermissions. The two Microsoft pages disagree on the route and body wrapper.' Preserve the existing call's attribution to the frontline-manager article rather than silently choosing one."
+    },
+    {
+      "n": 56,
+      "where": "controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "The role-permission request uses an allowedResourceActions list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/frontline/manage-shifts-permissions-frontline-managers",
+      "quote": "remove the CanModifyTimeClockCapabilities parameter from the allowedResourceActions list for the team owner role and schedule owner role",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[1].governs and note; Governance controls",
+      "type": "applicability",
+      "claim": "CanModifyShiftRequestsCapabilities controls managers' ability to change Open shifts, Swap shifts and Offer shift settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/frontline/manage-shifts-permissions-frontline-managers",
+      "quote": "Open shifts | Turn on or turn off the ability to create and request open shifts. | ✔️¹\nYou manage these three capabilities through the CanModifyShiftRequestsCapabilities parameter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[1].note; Governance controls table",
+      "type": "command",
+      "claim": "The corresponding schedule-owner role identifier is scheduleowner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/frontline/manage-shifts-permissions-frontline-managers",
+      "quote": "PATCH https://graph.microsoft.com/beta/teams/fb963991-69a8-4d2c-8465-cd8e374891c4/schedule/shiftsRoleDefinition/scheduleowner",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "absence",
+      "claim": "No admin UI is documented for restricting the frontline-manager capabilities managed by shiftsRoleDefinition.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"shiftsRoleDefinition\" \"admin center\" permissions. Opened Manage Shifts permissions for frontline managers and the Graph shiftsRoleDefinition and shiftsRolePermission references. Found API-based restrictions, not an admin UI for them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[2].ui and api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft documents no dedicated tenant switch to disable Assign open shifts as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Assign open shifts\" disable admin switch Teams PowerShell Graph. Opened Auto-assign open shifts, Manage Shifts permissions, and Graph beta schedule, shiftsRoleDefinition and shiftsRolePermission references. No dedicated switch was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[1].note; Governance controls",
+      "type": "absence",
+      "claim": "The documented Open shifts manager-setting permission is not stated to govern the Assign open shifts button itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Assign open shifts\" disable admin switch Teams PowerShell Graph; \"shiftsRoleDefinition\" \"admin center\" permissions. Read the feature, manager-permissions and shiftsRolePermission pages. The permission covers changing settings, not running the new button.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Learn lists scheduling inputs but does not describe how they are weighted.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Assign open shifts\" \"weight\" scheduling rules. Opened Auto-assign open shifts and read its Overview and How it works sections. They name time off, historical patterns and constraints but give no weighting method.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The cited Shifts management page says specific users can be allowed or blocked using a custom app permission policy assigned to them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/expand-teams-across-your-org/shifts/manage-the-shifts-app-for-your-organization-in-teams",
+      "quote": "To allow or block specific users in your organization from using Shifts, make sure Shifts is turned on for your organization on the Manage apps page. Then create a custom policy for app permissions and assign it to those users.",
+      "severity": "minor",
+      "fix": "Replace the sentence with: 'For organisations still using app permission policies, Learn says specific users can be allowed or blocked by creating a custom app permission policy and assigning it to them; Shifts must be allowed at the org level. Microsoft says permission policies no longer apply after moving to app-centric management.' Add https://learn.microsoft.com/microsoftteams/teams-app-permission-policies to sources; its Important note states that qualification."
+    },
+    {
+      "n": 64,
+      "where": "Open questions",
+      "type": "behaviour",
+      "claim": "Microsoft publishes a Shifts activities list on the Teams audit-log events page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/expand-teams-across-your-org/shifts/manage-the-shifts-app-for-your-organization-in-teams",
+      "quote": "to see a list of Shifts activities that are logged in the audit log, see Search the audit log for events in Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance guidance: Before rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist asks readers to take stock of team-owner and schedule-owner assignments, but the table has no row for that role control.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check which people hold the team owner or schedule owner role on frontline teams. The table lists Shifts app availability, manager-setting permissions and a dedicated Assign open shifts switch, but not role assignments.",
+      "severity": "minor",
+      "fix": "Remove the Before rollout bullet beginning 'Check which people hold the team owner or schedule owner role'. Keep the verified role description in Scope; do not add a control row as part of this correction."
+    },
+    {
+      "n": 66,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn says the app finds and applies a schedule that fits workers' time off and the supplied rules.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/frontline/shifts-auto-assign-open-shifts",
+      "quote": "The app automatically finds and applies a schedule that fits everyone's time off as well as the rules you provided.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "What's changing; Risk assessment: Change & support; Open questions; front matter: changes",
+      "type": "availability",
+      "claim": "The Learn feature page still labels Assign open shifts public preview, in disagreement with the roadmap's Launched and General Availability fields.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/frontline/shifts-auto-assign-open-shifts",
+      "quote": "This feature is currently in public preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Scope: Users; What's changing",
+      "type": "record",
+      "claim": "The notice identifies frontline managers who create or manage schedules in Teams Shifts as the affected users.",
+      "status": "supported",
+      "source": "Message Center post MC1324280",
+      "quote": "Who is affected: Frontline managers who create or manage schedules using Microsoft Teams Shifts.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T05:47:50.260Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=562535",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/frontline/shifts-auto-assign-open-shifts",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/expand-teams-across-your-org/shifts/manage-the-shifts-app-for-your-organization-in-teams",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/frontline/manage-shifts-permissions-frontline-managers",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1324280",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether the Shifts app, which hosts Assign open shifts, is available in the organisation",
+        "docs": "https://learn.microsoft.com/microsoftteams/expand-teams-across-your-org/shifts/manage-the-shifts-app-for-your-organization-in-teams",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Shifts",
+          "Status"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether the Shifts app, which hosts Assign open shifts, is available in the organisation",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "reachable": true,
+        "token": "Update-M365TeamsApp",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which Shifts settings frontline managers may change, including the Open shifts setting",
+        "docs": "https://learn.microsoft.com/microsoft-365/frontline/manage-shifts-permissions-frontline-managers",
+        "reachable": true,
+        "token": "/beta/teams/schedule",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

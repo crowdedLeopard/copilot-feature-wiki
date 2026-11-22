@@ -1,0 +1,721 @@
+{
+  "slug": "m365-copilot-copilot-extensibility-devx-compliance-sensitivity-labels-for-custom-connector",
+  "roadmapId": 502540,
+  "title": "Microsoft 365 Copilot: compliance sensitivity labels for custom connectors",
+  "status": "verified-with-gaps",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 48: severity blocker on a rationale: risk rating lowered to minor; ratings are judgements and cannot hold a page",
+    "the verifier wrote \"hold\" but listed no blocker and fewer than three majors; the claims decide, so the page is not held"
+  ],
+  "hold": null,
+  "counts": {
+    "claims": 54,
+    "confirmed": 51,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 0,
+    "major": 1,
+    "minor": 4
+  },
+  "summary": "Hold: the risk rationale says connector content is not label-protected today, although the cited beta reference says the service applies Purview label rules to indexed items. The roadmap facts, licensing background and Graph calls are supported, but the claim that administrators cannot see label-GUID errors is not established.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap plans compliance sensitivity labels for custom Microsoft 365 Copilot connectors.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Copilot (Microsoft 365): [Copilot Extensibility] ​​[DevX] Compliance sensitivity labels for custom connectors",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The record status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is December CY2025, a month already past on the run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing; Scope; Risk assessment",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The record does not list US Government clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The entire roadmap description is one sentence and supplies no behavioural detail.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"description\": \"Compliance sensitivity labels for custom connectors.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap record has no more-info link.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"moreInfoLink\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2025-10-27T23:15:26.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2025-10-27T23:15:26\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "An externalItem is an item added to a Microsoft Graph connection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/externalconnectors-externalitem?view=graph-rest-beta",
+      "quote": "An item added to a Microsoft Graph connection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The beta externalItem resource has an optional informationProtectionLabel property.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/externalconnectors-externalitem?view=graph-rest-beta",
+      "quote": "Specifies the Microsoft Purview sensitivity label for the item. Set the sensitivityLabelId property to the GUID of a Purview sensitivity label. The service then applies the label rules to the item. To get the label GUID, use the Get sensitivityLabel API or the Get-Label PowerShell command. Optional.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; controls[0].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "informationProtectionLabel.sensitivityLabelId takes the GUID of a Purview sensitivity label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/externalconnectors-externaliteminformationprotectionlabel?view=graph-rest-beta",
+      "quote": "sensitivityLabelId | String | The GUID of the Purview sensitivity label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The service applies the label rules to an externalItem assigned the Purview label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/externalconnectors-externalitem?view=graph-rest-beta",
+      "quote": "Set the sensitivityLabelId property to the GUID of a Purview sensitivity label. The service then applies the label rules to the item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment; Governance controls",
+      "type": "behaviour",
+      "claim": "The documented Graph operation and property are beta and subject to change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-put-items?view=graph-rest-beta",
+      "quote": "APIs under the /beta version in Microsoft Graph are subject to change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Microsoft does not support use of beta APIs in production applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-put-items?view=graph-rest-beta",
+      "quote": "Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not connected this beta property to roadmap item 502540.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"502540\" sensitivity labels custom connectors default rollout licensing pricing; \"informationProtectionLabel\" connectors sensitivity admin center labels report error. Opened externalItem, label resource and Create externalItem; none identifies the roadmap item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Developers can build custom connectors with the Microsoft 365 Agents Toolkit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview",
+      "quote": "you can build a custom connector by using the Microsoft 365 Agents Toolkit or the Microsoft Graph connectors API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Developers can build custom connectors with the Microsoft Graph connectors API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview",
+      "quote": "If no prebuilt connector exists for your system, you can build a custom connector by using the Microsoft 365 Agents Toolkit or the Microsoft Graph connectors API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The overview lists custom connectors under tenant-configured synced connectors, not federated connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview",
+      "quote": "Custom connectors | Yes | No | No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "Custom synced connector content is indexed into Microsoft Graph and can be used by Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview",
+      "quote": "Synced connectors crawl and index content from external sources into Microsoft Graph. You can discover this indexed data in Copilot and Microsoft Search experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Why it matters; Risk assessment",
+      "type": "behaviour",
+      "claim": "The Purview considerations page says Copilot Chat does not recognise sensitivity labels applied to data from external sources through plugins and Graph connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-m365-copilot-considerations",
+      "quote": "If you're using the extension capabilities that include plugins and the Microsoft Graph Connector, sensitivity labels and encryption that are applied to this data from external sources aren't recognized by Microsoft 365 Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The connectors FAQ bases sensitivity label inheritance and enforcement on Microsoft Purview labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/frequently-asked-questions",
+      "quote": "Sensitivity label inheritance and enforcement for data in Microsoft 365 is based on Microsoft Purview labels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "External systems' classifications might not automatically map to Purview labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/frequently-asked-questions",
+      "quote": "External source systems might use proprietary or non-standard classification models that don't automatically map to Purview labels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The Purview considerations page describes disconnecting connections that use a Graph API connector.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-m365-copilot-considerations",
+      "quote": "You can always disconnect the external data sources by using the Microsoft 365 admin center to turn off those plugins for users, and disconnect connections that use a Graph API connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft recommends disconnecting external sources if their sensitivity label handling is a concern.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-m365-copilot-considerations",
+      "quote": "You can always disconnect the external data sources",
+      "severity": "minor",
+      "fix": "Replace 'and recommends disconnecting external data sources if that is a concern' with 'and says administrators can disconnect external data sources'. The source describes an option, not a recommendation."
+    },
+    {
+      "n": 28,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated the planned feature's default or what happens on arrival without administrator action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"502540\" sensitivity labels custom connectors default rollout licensing pricing; \"custom connectors\" \"sensitivity labels\" licensing price default admin. Read roadmap, externalItem, Create externalItem, prerequisites and deployment-overview; none states this feature's arrival default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No source says this roadmap feature changes existing connector behaviour automatically.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"502540\" sensitivity labels custom connectors default rollout licensing pricing. Read roadmap, externalItem, Create externalItem and deployment-overview; no automatic migration or existing-connector behaviour change is stated for this item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].ui; summary; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No administrator UI control for labelling connector items is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"informationProtectionLabel\" connectors sensitivity admin center labels report error; \"custom connectors\" \"sensitivity labels\" licensing price default admin. Opened deployment-overview, manage-connector and indexed-content; none documents an item sensitivity-label UI setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].api; summary; What's changing; Governance controls",
+      "type": "command",
+      "claim": "PUT /beta/external/connections/{connection-id}/items/{item-id} sets the item's Purview label through informationProtectionLabel.sensitivityLabelId.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-put-items?view=graph-rest-beta",
+      "quote": "PUT https://graph.microsoft.com/beta/external/connections/contosohr/items/TSP228082938; \"informationProtectionLabel\": { \"sensitivityLabelId\": \"b6a62c3c-d471-4a3e-9f5f-93c1f928b02d\" }",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].note; Risk assessment; Governance controls",
+      "type": "role",
+      "claim": "ExternalItem.ReadWrite.OwnedBy is the least privileged permission for the write operation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-put-items?view=graph-rest-beta",
+      "quote": "Permission type | Least privileged permissions | Higher privileged permissions; Application | ExternalItem.ReadWrite.OwnedBy | ExternalItem.ReadWrite.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].note; Risk assessment; Governance controls",
+      "type": "role",
+      "claim": "ExternalItem.ReadWrite.All is the higher privileged alternative for the write operation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-put-items?view=graph-rest-beta",
+      "quote": "Delegated (work or school account) | ExternalItem.ReadWrite.OwnedBy | ExternalItem.ReadWrite.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].ui; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "For connectors deployed through the documented admin-centre setup, access is configured at Copilot > Connectors > connector > Custom setup > Users > Access Permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
+      "quote": "In the left pane, choose Copilot > Connectors. On the connector page in the admin center, select Custom setup. On the Users tab, under Access Permissions, choose whether indexed data is visible to:",
+      "severity": "minor",
+      "fix": "Use 'Copilot > Connectors > Your Connections > connector > Custom setup > Users > Access Permissions'. Add https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector to sources for the Your Connections step. Keep the existing qualification about connectors deployed through this setup."
+    },
+    {
+      "n": 35,
+      "where": "controls[1].api; controls[1].note",
+      "type": "command",
+      "claim": "PUT /beta/external/connections/{connection-id}/items/{item-id} sets per-item access through the acl request-body property.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-put-items?view=graph-rest-beta",
+      "quote": "PUT /external/connections/{connection-id}/items/{item-id}; When you create an externalItem, the following properties are required: acl and properties.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[1].note; Risk assessment; Governance controls",
+      "type": "applicability",
+      "claim": "Access Permissions and item ACLs govern content access rather than assigning sensitivity labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/externalconnectors-externalitem?view=graph-rest-beta",
+      "quote": "acl | microsoft.graph.externalConnectors.acl collection | An array of access control entries. Each entry specifies the access granted to a user or group. Required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[1].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "Configuring and deploying Copilot connectors in the Microsoft 365 admin center requires the AI administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "To configure and deploy Copilot connectors, you must be an AI administrator in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The included licensing model reflects synced connector Copilot grounding entitlement under Microsoft 365 plus the Microsoft 365 Copilot add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Microsoft 365 + Microsoft 365 Copilot add-on | ✅ | ✅ | ✅; If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The connector prerequisites table includes synced connector Copilot grounding and agents under Microsoft 365 E7.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "License | Synced connectors - Microsoft Search | Synced connectors - Copilot grounding and agents | Federated connectors; Microsoft 365 E7 | ✅ | ✅ | ✅",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Synced connector deployment requires a tenant with Microsoft 365 licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Your tenant must have Microsoft 365 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Indexing synced connector data incurs no extra cost for tenants with Microsoft 365 licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No licence rule specific to sensitivity labels on connector items is published in the checked Microsoft documentation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"custom connectors\" \"sensitivity labels\" licensing price default admin; \"502540\" sensitivity labels custom connectors default rollout licensing pricing. Read prerequisites and Graph label references; Purview licensing search results give general rules, not a connector-label price or SKU.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap record names no licence for this item.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"description\": \"Compliance sensitivity labels for custom connectors.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Microsoft has not published rollout mechanics specifically for the planned roadmap feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"502540\" sensitivity labels custom connectors default rollout licensing pricing; \"custom connectors\" \"sensitivity labels\" licensing price default admin. Read roadmap, prerequisites and beta Graph references; none identifies a feature-specific rollout or prerequisite set.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Microsoft has not published prerequisites specifically identified with the planned roadmap feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"502540\" sensitivity labels custom connectors default rollout licensing pricing; \"custom connectors\" \"sensitivity labels\" licensing price default admin. Read roadmap, prerequisites and beta Graph references; no prerequisites are identified with the roadmap item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The admin centre does not show wrong or missing label GUID errors.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot connector sensitivity label invalid GUID missing error admin center index browser report. Opened indexed-content, error-responses and manage-connector. They document general error visibility but do not state whether label-GUID errors are shown or hidden.",
+      "severity": "major",
+      "fix": "Remove 'that the admin centre does not show'. The checked documentation does not establish whether these particular errors are visible."
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Microsoft has not documented a report of sensitivity labels per connection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot connector sensitivity label invalid GUID missing error admin center index browser report; \"informationProtectionLabel\" connectors sensitivity admin center labels report error. Read Graph label references, indexed-content and manage-connector; no per-connection label report is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "rationale: risk",
+      "type": "consistency",
+      "claim": "Connector content is not label-protected today.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/api/resources/externalconnectors-externalitem?view=graph-rest-beta",
+      "quote": "Rationale: 'connector content is not label-protected today'. Graph reference, also reported in What's changing: 'The service then applies the label rules to the item.'",
+      "severity": "minor",
+      "fix": "Replace the risk rationale with: 'Medium. Microsoft has not stated the planned control's default. On the basis of today's behaviour continuing, the Purview page's external-source label limitation warrants review, while the beta Graph reference separately says assigned Purview label rules are applied to indexed items.'"
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: After rollout",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to disconnect connections, but that control has no table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Disconnect any connection whose content cannot be protected to your requirements'. Controls rows: 'Sensitivity label on items a custom connector indexes'; 'Who can see items indexed by a connector'.",
+      "severity": "minor",
+      "fix": "Remove the 'Disconnect any connection whose content cannot be protected to your requirements' checklist bullet. It directs a control action that has no controls-table row; do not add a new row in this correction."
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No price or charge specifically for sensitivity labels on connector items is published in the checked Microsoft documentation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"custom connectors\" \"sensitivity labels\" licensing price default admin; \"502540\" sensitivity labels custom connectors default rollout licensing pricing. Read prerequisites, externalItem, Create externalItem and label resource; no connector-label price is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No meter specifically for sensitivity labels on connector items is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot custom connectors sensitivity labels informationProtectionLabel admin center default rollout 502540 pricing licensing report label errors. Read prerequisites and Graph item and label references; results include general Purview billing, not a connector-label meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "No autonomous external action is documented for the connector item's label property.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"externalItem\" \"informationProtectionLabel\" actions Copilot Chat display sensitivity label. Read externalItem, label resource, Create externalItem and connectors overview; label rules are documented, but no autonomous external-system action is specified for this property.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "rationale: impact; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented what users see specifically for a connector item assigned the beta label property.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"externalItem\" \"informationProtectionLabel\" actions Copilot Chat display sensitivity label. Read Graph label references, connector FAQ and Purview considerations; search results describe general label display, not this beta connector-item experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Connector grounding in Copilot incurs no extra charges for organisations with Microsoft 365 Copilot licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T05:47:50.767Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=502540",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/externalconnectors-externalitem?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/externalconnectors-externaliteminformationprotectionlabel?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-put-items?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/ai-m365-copilot-considerations",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/frequently-asked-questions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Sensitivity label on items a custom connector indexes",
+        "docs": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-put-items?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/external/connections",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Who can see items indexed by a connector",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Connectors",
+          "Custom setup",
+          "Users",
+          "Access Permissions"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Who can see items indexed by a connector",
+        "docs": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-put-items?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/external/connections",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

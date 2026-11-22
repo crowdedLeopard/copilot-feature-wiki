@@ -1,0 +1,816 @@
+{
+  "slug": "m365-copilot-copilot-extensibility-admins-can-deploy-and-govern-agents-with-mcp-in-the-m36",
+  "roadmapId": 501124,
+  "title": "Microsoft 365 Copilot: admins deploy and govern MCP-based agents in the Microsoft 365 admin center",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "2 blocking findings (claims 31, 35)"
+    ]
+  },
+  "counts": {
+    "claims": 60,
+    "confirmed": 56,
+    "unconfirmed": 0,
+    "contradicted": 4,
+    "blocker": 2,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "Hold: Microsoft documents preview automation for the publisher-category and User access settings, contrary to the page's claim that these are portal-only controls. The roadmap facts and MCP server procedures are supported; two paths stop before the deciding control, and the checklist names consent and monitoring controls missing from the table.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap plans deployment, monitoring and management of MCP-based agents in the Microsoft 365 admin center for secure enterprise use.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Admins can deploy, monitor, and manage agents built with the Model Context Protocol (MCP) in the M365 admin center for secure enterprise use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is October CY2025, which has passed by the run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant) and lists no US Government cloud.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified; What's changing",
+      "type": "record",
+      "claim": "The record was modified at 2025-09-19T22:00:03 and supplies only the short description quoted in the briefing.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2025-09-19T22:00:03\", \"moreInfoLink\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: defaultState; Why it matters; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft has not stated the roadmap item's default behaviour on arrival, so defaultState is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '501124 MCP deploy govern agents admin center default rollout automatically'; 'MCP 501124 default Microsoft 365'. Read roadmap record, Tools overview, MCP management, Agent settings and BYO pages; none specifies this roadmap item's arrival default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Agents > Tools > Registry > MCP server > Block blocks the selected server tenant-wide.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Select Agents > Tools, and then select the Registry tab. ... Select an MCP server from the list to open its overview pane. ... Select Block to restrict the server across your organization, or Unblock to restore access to a previously blocked server.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No API or command is documented for the Tools registry's server-level block or unblock control.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Graph beta MCP server registry block unblock individual tools enable disable API Agent 365'. Read MCP management, Package block, develop-mcp reference and Azure gateway integration excerpts; no registry block/unblock operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0].note; Risk assessment: Autonomy & actions; Governance controls",
+      "type": "behaviour",
+      "claim": "Blocking an MCP server disables all tools it exposes and can interrupt agents depending on it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Blocked: The tool is disabled, and agents can't access it. ... Blocking an MCP server disables all the tools it exposes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[0].note; Risk assessment: Security & identity; Governance controls; Open questions",
+      "type": "applicability",
+      "claim": "For BYO servers, the Tooling Gateway enforces blocking for gateway-routed invocations from supported clients, not necessarily direct endpoint access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-byo-mcp-server",
+      "quote": "The Agent 365 Tooling Gateway enforces server blocking for invocations routed through the gateway from supported clients. Don't assume blocking prevents direct access to the underlying server endpoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Agents > Tools > Registry > MCP server > Tools reaches individual tool controls in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Select the Tools tab. The list shows every tool the server exposes, along with its description and an Enabled or Disabled toggle. ... Turn individual tools on or off as needed.",
+      "severity": "minor",
+      "fix": "Extend controls[1].ui.path and its rendered copy to 'Agents > Tools > Registry > MCP server > Tools > Enabled or Disabled toggle'. The current path reaches the correct page but stops before the control."
+    },
+    {
+      "n": 16,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "No API or command is documented for individual tool toggles in the Tools registry.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Graph beta MCP server registry block unblock individual tools enable disable API Agent 365'. Read MCP management, Azure API Management integration excerpts, Package block and develop-mcp; no registry toggle operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[1].note; What's changing; Scope; Governance controls",
+      "type": "availability",
+      "claim": "Tool-level control is rolling out and supports only specific MCP server types registered on Agent 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Tool-level granular control is rolling out to tenants and supports only specific types of MCP servers registered on Agent 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Each exposed tool on a supported server has an Enabled or Disabled toggle.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "The list shows every tool the server exposes, along with its description and an Enabled or Disabled toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters; Risk assessment: Data exposure; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Microsoft describes write, delete and payment-processing tools as high-risk examples that can be disabled while lower-risk tools remain enabled on a supported server.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Use this capability to keep high-risk tools, such as tools that write, delete, or process payments, turned off by default while allowing lower-risk tools on the same server.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[2].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Agents > Tools > Requests (preview) reaches the Microsoft 365 admin center's MCP approval controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Select Agents > Tools, and then select the Requests (preview) tab. ... Select Approve to make the server available in the organizational registry, or Reject to deny the request.",
+      "severity": "minor",
+      "fix": "Extend controls[2].ui.path and its rendered copy to 'Agents > Tools > Requests (preview) > Approve'. Keep the note that server review precedes approval and Microsoft Entra consent is separate."
+    },
+    {
+      "n": 21,
+      "where": "controls[2].api; Governance controls",
+      "type": "absence",
+      "claim": "No API or command is documented to approve or reject MCP registration requests in the Tools queue.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Graph API PowerShell MCP server registration requests approve reject Agent 365'. Read MCP management, BYO, Package block and develop-mcp reference; the CLI removed approve/block, and publish only creates a pending request.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Developer-registered remote MCP servers appear as requests with server details and declared tools for administrative review.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "After a developer registers a tool, such as a remote MCP server, the tool appears in the Microsoft 365 admin center for review and approval. ... Review the server information and declared tools for accuracy and compliance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[2].governs; What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Approve makes the selected server available in the organisational registry, while Reject denies its request.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Select Approve to make the server available in the organizational registry, or Reject to deny the request.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[2].note; Risk assessment: Security & identity; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "MCP registration approval and Microsoft Entra consent are separate, and availability in agent-building surfaces requires consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "After approval, consent to the Microsoft Entra permissions required by the MCP server. The server becomes available to agent-building surfaces only after consent is granted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[2].note; Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "Completing MCP request review and approval requires access to the Tools page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "You must have access to the Tools page in the Microsoft 365 admin center to manage agent tools and review MCP server registration requests.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[2].note; Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "Completing MCP review and approval requires the ability to grant tenant-wide consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "To complete the review and approval process, you must meet two requirements: ... You must be able to grant tenant-wide consent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[2].note; Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "AI Administrator meets both MCP review and consent requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Two roles meet both requirements: AI Administrator. Global Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[2].note; Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Global Administrator meets both MCP review and consent requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Two roles meet both requirements: AI Administrator. Global Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "After approval and consent, an MCP server can take up to 30 minutes to appear in all tenant Copilot Studio environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "After approval and consent, the MCP server can take up to 30 minutes to appear in all Microsoft Copilot Studio environments in the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[3].ui; Governance controls; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Agents > Settings > Agent and plugin access is the Microsoft 365 admin center path to publisher-category access settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Select Agents > Settings > Agent and plugin access. ... Under the installation settings, choose which publisher categories users can access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[3].api; Governance controls: no API for any control",
+      "type": "absence",
+      "claim": "Microsoft documents no API or automation for Agent and plugin access, so it is a portal-only action.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "These resources also support remediation and applyOnce. ... allowedagenttypes resource type ... Controls which types of apps, agents, and plugins users can see in their store and install.",
+      "severity": "blocker",
+      "fix": "Set controls[3].api to kind 'graph', call 'POST /beta/admin/configurationManagement/configurationMonitors', docs 'https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta'. Append to its note: 'Preview TCM automation uses mode=applyOnce and baseline.resources with resourceType=microsoft.agent.allowedagenttypes, resourceVersion=1, and properties.valueObject fields areMicrosoftAppsAllowed, areTenantScopedAppsAllowed, areISVAppsAllowed and areMicrosoftCertifiedThirdPartyAppsAllowed. It requires the signed-in AI Administrator and delegated permissions described at https://learn.microsoft.com/graph/utcm-agent-resources; TCM applyOnce is global-service only.' Cite that resource page and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. Replace the blanket portal-only sentence with 'Microsoft documents preview TCM automation for Agent and plugin access and User access; no matching automation was found for the three MCP server controls at the time of writing (November 2026).'"
+    },
+    {
+      "n": 32,
+      "where": "controls[3].note; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The cited MCP management page names publisher categories Microsoft, your organisation and certified external publishers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Under the installation settings, choose which publisher categories users can access: Microsoft, your organization, or certified external publishers.",
+      "severity": "minor",
+      "fix": "Append to controls[3].note: 'The Agent settings page instead labels the third category Allow agents and plugins built by external publishers.' Keep the cited MCP management page's wording attributed to that page; both pages are already in sources."
+    },
+    {
+      "n": 33,
+      "where": "controls[3].governs; controls[4].governs; Governance controls",
+      "type": "applicability",
+      "claim": "Agent and plugin access and User access cover agents and plugins, with MCP servers included in the documented plugin class.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "The Agent and plugin access setting controls which types of agents and plugins users can view and install from the agent catalog. Plugins include tools, MCP servers, connectors, skills, and other AI artifacts that extend agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[4].ui; Governance controls; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Agents > Settings > User access is the Microsoft 365 admin center path to tenant user access settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Select Agents > Settings > User access to manage your organization's agents and plugins. ... Select who can access agents and plugins within your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[4].api; Governance controls: no API for any control",
+      "type": "absence",
+      "claim": "Microsoft documents no API or automation for User access, so it is a portal-only action.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "useraccess resource type ... userAssignmentCategory ... Specifies whether all users or no users can access agents and plugins. ... everyone, noOne",
+      "severity": "blocker",
+      "fix": "Set controls[4].api to kind 'graph', call 'POST /beta/admin/configurationManagement/configurationMonitors', docs 'https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta'. Append to its note: 'Preview TCM automation uses mode=applyOnce and baseline.resources with resourceType=microsoft.agent.useraccess, resourceVersion=1, and properties.valueObject.userAssignmentCategory set to everyone or noOne. This reference does not document selecting specific users or groups through this resource. It requires the signed-in AI Administrator and delegated permissions described at https://learn.microsoft.com/graph/utcm-agent-resources; TCM applyOnce is global-service only.' Cite that resource page and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. Apply the replacement of the blanket portal-only sentence specified for Agent and plugin access."
+    },
+    {
+      "n": 36,
+      "where": "controls[4].note; Governance controls; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "User access offers All users, No users, and Specific users or groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "The setting has three options: All users ... No users ... Specific users or groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[4].note; Why it matters; Governance guidance: Before rollout",
+      "type": "default",
+      "claim": "User access defaults to All users, subject to existing app policies and user assignments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "All users - This option is the default. It means that all users in the organization can access agents and plugins, subject to the existing app policies and user assignments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Data processed by non-Microsoft services is not subject to Microsoft agreements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Data processed by non-Microsoft services isn't subject to Microsoft agreements. Review the terms provided by non-Microsoft agent and plugin publishers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "The BYO MCP registration feature is in preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-byo-mcp-server",
+      "quote": "This feature is in preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing; Cost and licensing",
+      "type": "behaviour",
+      "claim": "The BYO route registers an organisation's own remote MCP server with Agent 365 using the Agent 365 CLI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-byo-mcp-server",
+      "quote": "A developer registers the server through the Agent 365 CLI and provides the server URL, authentication type, and tools to expose.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "BYO preview supports Copilot Studio, Visual Studio Code, Claude Code and GitHub Copilot CLI clients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-byo-mcp-server",
+      "quote": "Supported client surfaces during preview are Copilot Studio, Visual Studio Code, Claude Code, and GitHub Copilot CLI.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Azure AI Foundry and Microsoft 365 Declarative Agents are not supported BYO clients in preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-byo-mcp-server",
+      "quote": "Azure AI Foundry and Microsoft 365 Declarative Agents aren't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Autonomy & actions; Governance controls; Open questions",
+      "type": "availability",
+      "claim": "Individual tool blocking for BYO servers is planned for a future release.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-byo-mcp-server",
+      "quote": "Individual tool blocking for BYO MCP servers is planned for a future release. Tool-level controls are rolling out for other supported MCP server types registered on Agent 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "Plugin blocking is separate from server blocking and does not block associated MCP servers or connectors used by other plugins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-tools-overview",
+      "quote": "Blocking a plugin doesn't block associated MCP servers or connectors that other plugins use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Why it matters; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Package-level approval or blocking should not be treated as granting or revoking connected-service permissions or credentials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Don't treat package approval or blocking as granting or revoking connected-service permissions or credentials.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "Copilot Studio and Power Platform can have separate controls for components and connections.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Copilot Studio and Power Platform can have separate controls for their components and connections.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "summary; What's changing; Scope; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Learn documents current MCP governance in Agents > Tools > Registry alongside plugins, skills and connectors, with publisher information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-tools-overview",
+      "quote": "The Tools page ... provides a centralized view ... including plugins, skills, Model Context Protocol (MCP) servers, and connectors. ... Publisher: Shows the publisher, such as Microsoft for first-party tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The Tools registry shows MCP server status as Available or Blocked.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-tools-overview",
+      "quote": "Status: Shows whether the tool is Available or Blocked. ... Type: Shows the tool category, such as MCP Server.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No separate MCP governance or Tooling Gateway price or consumption rate was found, and the cited control pages publish none.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Agent 365 MCP governance Tooling Gateway pricing billing meter Copilot Credits'. Read Tools, MCP, BYO, agent licensing and Agent 365 service description; billing searches returned agent/workload rates, not a separate governance/gateway rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Learn does not establish whether its current Tools registry and BYO controls are the confirmed scope of roadmap item 501124.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '501124 MCP deploy govern agents admin center default rollout automatically'; 'MCP 501124 default Microsoft 365'. Read roadmap record and cited Tools/MCP/BYO pages; none links the documented capability to this roadmap id.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Microsoft Defender advanced hunting can track MCP server invocations routed through the Agent 365 Tooling Gateway.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-byo-mcp-server",
+      "quote": "Use Microsoft Defender advanced hunting to track and analyze MCP server invocations routed through the Agent 365 Tooling Gateway.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Gateway invocation telemetry is not complete monitoring coverage for every plugin or package component.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-byo-mcp-server",
+      "quote": "This telemetry doesn't provide complete monitoring coverage for every plugin or every component in a plugin package.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Agent management has mixed entitlement routes through Microsoft 365, Microsoft Copilot and Microsoft Agent 365 licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-365-overview",
+      "quote": "Microsoft Copilot ... This license can be added to your Microsoft 365 license (E3, E5). It's included with your Microsoft 365 license (E7). ... Microsoft Agent 365 is also included in Microsoft 365 (E7).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Agent management prerequisites require the organisation's appropriate subscription and licences for Microsoft 365, Microsoft Copilot or Microsoft Agent 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-365-overview",
+      "quote": "Your organization has the required subscription and licenses for either Microsoft 365, Microsoft Copilot, or Microsoft Agent 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Users creating, publishing or using agents need the appropriate licences assigned.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-365-overview",
+      "quote": "Users at your organization that create, publish, or use agents have the appropriate licenses assigned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 E7 includes Microsoft 365 E5, Microsoft Copilot, Microsoft Agent 365 and Microsoft Entra Suite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-365-overview",
+      "quote": "Microsoft 365 (E7) includes Microsoft 365 E5, Microsoft Copilot, Microsoft Agent 365, and Microsoft Entra Suite.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 plans include Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-365-overview",
+      "quote": "Microsoft 365 (All Suites) includes Copilot Chat. Copilot Chat provides web data agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The cited Package Management API block reference describes blocking a Copilot package and does not mention an MCP server operation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage. ... POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance guidance: At rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to grant Microsoft Entra consent, but the controls table has no consent row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Grant the Microsoft Entra consent only for servers you approved ... Controls: server block, individual tools, registry approval, publisher categories, User access. Approval's note says consent is a separate step.",
+      "severity": "minor",
+      "fix": "Remove the separate checklist bullet beginning 'Grant the Microsoft Entra consent only for servers you approved'. Keep the already documented distinction between approval and consent, and the 30-minute propagation statement, in the body. Do not add a control row."
+    },
+    {
+      "n": 60,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to query Defender advanced hunting, but the controls table has no monitoring row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Query Microsoft Defender advanced hunting for MCP invocations routed through the Agent 365 Tooling Gateway ... The five control rows cover blocking, tools, approval, publisher categories and User access, not monitoring.",
+      "severity": "minor",
+      "fix": "Remove the After rollout checklist bullet beginning 'Query Microsoft Defender advanced hunting'. Do not add a control row; the supported monitoring statement can remain outside the checklist if retained."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T05:47:48.231Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=501124",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-tools-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-byo-mcp-server",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-365-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether an MCP server is available to agents (block or unblock)",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Tools",
+          "Registry",
+          "MCP server",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which individual tools of an MCP server are enabled",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Tools",
+          "Registry",
+          "MCP server",
+          "Tools"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether a registered MCP server is approved into the organisational registry",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Tools",
+          "Requests"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Which publisher categories of agents and plugins, including MCP servers, users can install",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Settings",
+          "Agent and plugin access"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Which users or groups can use agents and plugins, including MCP servers",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Settings",
+          "User access"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

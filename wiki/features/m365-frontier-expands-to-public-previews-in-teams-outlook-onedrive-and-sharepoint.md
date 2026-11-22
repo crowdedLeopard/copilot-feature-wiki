@@ -31,6 +31,9 @@ sources:
   - title: "Configure new Standard and Deferred release options for Microsoft 365"
     url: "https://learn.microsoft.com/microsoft-365/admin/manage/configure-release-options"
     kind: "learn"
+  - title: "Application card: Autopilot (Frontier)"
+    url: "https://learn.microsoft.com/copilot/autopilot/microsoft-autopilot-application-card"
+    kind: "learn"
 videos: []
 related: ["frontier-program"]
 controls:
@@ -71,19 +74,23 @@ changes:
     note: "Corrected after the independent check: Frontier enrolment licensing now notes admins no longer need a Copilot-inclusive licence once the unified experience arrives, the 10,000 exception limit counts group members individually, and enrolled users receive eligible previews as released."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 83 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-22"
+    note: "Corrected after the independent check: replaced the claim that autonomous previews are not described with what Microsoft's Autopilot (Frontier) application card says, removed 'as Learn suggests' from the pilot-group step, and corrected the impact rationale on who sees Frontier agents."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 87 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 83
-  confirmed: 81
+  claims: 87
+  confirmed: 87
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "4e3ca20b6e464a110bed58b9825bbd6c"
+  contradicted: 0
+  attempts: 0
+  hash: "5464b9c398b0338d6deab5eab5def741"
 ---
 
 ## What's changing
@@ -111,7 +118,7 @@ The default state is admin opt-in: Learn describes Frontier as opt-in, and users
 - Frontier does not override agent settings: Learn says an agent turned off in the Agent view is unavailable regardless of a user's Frontier enrolment.
 
 **Autonomy & actions**
-- Frontier previews include agents. Newly published Frontier agents have been available to Frontier-enrolled users only since March 29, 2026, and appear in the Agent store with (Frontier) in the name. Which previews act on their own is not described for the expanded Teams, Outlook, OneDrive and SharePoint scope.
+- Frontier previews include agents. Newly published Frontier agents have been available to Frontier-enrolled users only since March 29, 2026, and appear in the Agent store with (Frontier) in the name. Microsoft's [Autopilot (Frontier) application card](https://learn.microsoft.com/copilot/autopilot/microsoft-autopilot-application-card) says Autopilot uses authorised Teams, Outlook, OneDrive and SharePoint information through its available tools and can complete tasks without asking at each step.
 
 **Change & support**
 - Microsoft says Frontier experiences may not be covered by standard support commitments or service level agreements. Tell the helpdesk which users are enrolled so unfamiliar behaviour is routed correctly.
@@ -137,7 +144,7 @@ Indirect cost is admin time, pilot-group communication and helpdesk readiness. N
 
 ### Before rollout
 - Open the current Frontier setting and record whether enrolment is All users or Specific users and groups, so you know what the expansion could reach (Microsoft 365 admin center; role: AI Administrator, Security Administrator or Office Apps Administrator).
-- Create or choose a Microsoft Entra ID security group for the pilot, as Learn suggests, and keep it separate from your Standard or Deferred exception groups.
+- Create or choose a Microsoft Entra ID security group for the pilot and keep it separate from your Standard or Deferred exception groups.
 - Check that pilot users hold a licence that includes each product they will preview, since Frontier features for a product are not shown without it.
 - Ask compliance to review Microsoft's Frontier preview terms (Data Protection Addendum, no HIPAA Business Associate Agreement coverage, no ISO 27001, 27002 or 27018 compliance) before enrolling regulated users.
 
@@ -181,14 +188,11 @@ Microsoft Learn's Frontier and release options pages document admin centre steps
 <!-- rationale
 risk: Medium. Nothing reaches users until an admin opts in, but enrolling users, or the whole tenant, gives them eligible pre-GA features that Microsoft says may be changed or suspended and may sit outside standard support commitments.
 cost: Low. Users do not need a Microsoft Copilot licence to be enrolled, but need the licence for the product they preview; Microsoft says certain Frontier experiences may be paid, and the Frontier page gives no price or credit rate.
-impact: Medium. Only enrolled users see Frontier features, but enrolling all users exposes the whole tenant to preview behaviour in Teams, Outlook, OneDrive, SharePoint and Copilot, which helpdesks will not recognise from documentation.
+impact: Medium. Enrolled users receive eligible expanded previews; Frontier agents published before March 29, 2026 remain accessible to all users with a Microsoft Copilot licence. Enrolling all users exposes the whole tenant to preview behaviour in Teams, Outlook, OneDrive, SharePoint and Copilot, which helpdesks will not recognise from documentation.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Autonomy & actions / absence: Which previews act on their own is not described for the expanded Teams, Outlook, OneDrive and SharePoint scope. | Found: Autopilot uses authorized Teams, Outlook, OneDrive, and SharePoint information through its available tools. ... Autopilot can complete tasks without asking at each step. | Fix: Remove 'Which previews act on their own is not described for the expanded Teams, Outlook, OneDrive and SharePoint scope.' Microsoft's Autopilot (Frontier) application card documents cross-workload autonomous actions and their approval rules at https://learn.microsoft.com/copilot/autopilot/microsoft-autopilot-application-card. | Source: https://learn.microsoft.com/copilot/autopilot/microsoft-autopilot-application-card
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: Before rollout, pilot group / behaviour: Learn suggests using a Microsoft Entra ID security group for the Frontier enrolment pilot. | Found: Use a Microsoft Entra ID security group to target specific users who can access Frontier agents. This approach helps you validate experiences with a small group before broad rollout. | Fix: Remove 'as Learn suggests' from the pilot-group bullet. The quoted recommendation is specifically in the direct agent-deployment procedure, not the general Frontier enrolment procedure; keep the wider pilot-group advice as the wiki's recommendation. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier
-- [contradicted, minor] rationale: impact / availability: Only enrolled users see Frontier features. | Found: Frontier agents published before this date continue to be accessible to all users with a Microsoft Copilot license. | Fix: Replace 'Only enrolled users see Frontier features' with 'Enrolled users receive eligible expanded previews; Frontier agents published before March 29, 2026 remain accessible to all users with a Microsoft Copilot licence', as stated at https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier
+- [supported, minor] Risk assessment: Autonomy & actions / behaviour: Autopilot can complete tasks without asking at each step. | Found: Autopilot can complete tasks without asking at each step. ... Actions that match the owner's request run; others show an approval card. Payments and sensitive browser steps always need approval. | Fix: Append: 'An automated review system reviews actions that send, share, delete or change content, or create or change an automation; actions matching the owner's request run, others show an approval card, and payments and sensitive browser steps always need approval.' Keep the existing application-card citation. | Source: https://learn.microsoft.com/copilot/autopilot/microsoft-autopilot-application-card
 -->

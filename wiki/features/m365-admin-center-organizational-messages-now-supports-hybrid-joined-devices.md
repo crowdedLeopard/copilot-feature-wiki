@@ -55,7 +55,7 @@ controls:
     scope: "user"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Show all > Users > Active users > user > Manage roles > Admin center access > Show all by category > Other > Organizational Messages Writer"
+      path: "Show all > Users > Active users > user > Roles > Manage roles > Admin center access > Show all by category > Other > Organizational Messages Writer"
       docs: "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq"
     api:
       kind: "graph"
@@ -69,7 +69,7 @@ controls:
       path: "Show all > Reports > Organizational messages > Manage messages"
       docs: "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365"
     api: null
-    note: "Manage messages lets the team cancel, delete, approve and copy messages. This route opens Manage messages; the page lists those actions without giving the individual message action steps."
+    note: "Manage messages lets the team cancel, delete, approve and copy messages. This route opens Manage messages; the page lists cancellation and deletion without giving their individual action steps."
 confidence: "medium"
 created: "2026-11-22"
 updated: "2026-11-22"
@@ -87,19 +87,23 @@ changes:
     note: "Corrected the Block-settings list, added the Intune Graph beta setting-update call for row 1, and set the licensing model to included."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 68 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-22"
+    note: "Corrected the Manage messages note: the page lists cancellation and deletion without steps but does give steps for approving and copying; added Roles to the role-assignment path."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 74 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 67
-  unconfirmed: 0
-  contradicted: 1
-  attempts: 3
-  hash: "ad70914437d76a711a80ba9b94f0fce5"
+  claims: 74
+  confirmed: 73
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 0
+  hash: "54159bc43ec78b9ff49e8c0795e94147"
 ---
 
 ## What's changing
@@ -171,8 +175,8 @@ Authors need the Organizational Messages Writer role and approvers the Organizat
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether Windows devices can receive organizational messages</strong><br><small>Group</small><br><small class="controls__note">Applies to Windows delivery only. Beta API; the request body sets settingInstance. Set Enable delivery of organizational messages (User) to Allow in Configuration settings.</small></td><td data-label="Admin UI"><strong>Microsoft Intune admin center</strong><br>Devices › Manage devices › Configuration › Policies › Create › New Policy › Windows 10 and later › Settings catalog › Create › Configuration settings › Add settings › Experience › Enable delivery of organizational messages (User) <a href="https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/deviceManagement/configurationPolicies/{deviceManagementConfigurationPolicyId}/settings/{deviceManagementConfigurationSettingId}</code> <a href="https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationsetting-update?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Who can write and approve organizational messages</strong><br><small>User</small><br><small class="controls__note">Organizational Messages Writer and Approver are Microsoft Entra roles. The request body sets principalId, roleDefinitionId and directoryScopeId.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Show all › Users › Active users › user › Manage roles › Admin center access › Show all by category › Other › Organizational Messages Writer <a href="https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Stopping or removing a scheduled or active message</strong><br><small>Tenant</small><br><small class="controls__note">Manage messages lets the team cancel, delete, approve and copy messages. This route opens Manage messages; the page lists those actions without giving the individual message action steps.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Show all › Reports › Organizational messages › Manage messages <a href="https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Who can write and approve organizational messages</strong><br><small>User</small><br><small class="controls__note">Organizational Messages Writer and Approver are Microsoft Entra roles. The request body sets principalId, roleDefinitionId and directoryScopeId.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Show all › Users › Active users › user › Roles › Manage roles › Admin center access › Show all by category › Other › Organizational Messages Writer <a href="https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Stopping or removing a scheduled or active message</strong><br><small>Tenant</small><br><small class="controls__note">Manage messages lets the team cancel, delete, approve and copy messages. This route opens Manage messages; the page lists cancellation and deletion without giving their individual action steps.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Show all › Reports › Organizational messages › Manage messages <a href="https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -194,11 +198,10 @@ cost: Low. The Learn page names no meter or charge for organizational messages; 
 impact: Low. Admins notice first, because they author and target messages; end users see something only when a message is scheduled for them on a Windows device.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[2].note; Governance controls table / absence: The cited page lists cancellation, deletion, approval and copying without giving individual message action steps. | Found: To approve or reject a Pending approval message, follow these steps: ... Select the message you want to review. ... select Approve. ... next to the message that you want to copy, select the ellipses ⋮ menu, and then select Copy. | Fix: Replace the second sentence of controls[2].note and its rendered copy with: 'This route opens Manage messages; the page lists cancellation and deletion without giving their individual action steps.' The same page documents individual approval and copying steps: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365. | Source: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365
+- [unsupported, major] Cost and licensing: first paragraph / behaviour: The organizational messages Learn page describes admin time as a cost. | Found: Searched: organizational messages admin time; read the full organizational messages main page and FAQ. They describe authoring, scheduling and configuration work, but do not state admin time as a cost. | Fix: Replace 'The cost it describes is licences for the advanced features and admin time.' with 'The page describes licence requirements for advanced features. Plan for admin time to configure delivery policies and author messages.' This separates documented licensing from the wiki's assessment.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The Intune path through Devices, Configuration, New Policy and Settings catalog reaches Enable delivery of organizational messages (User). | Found: Under Platform, select Windows 10 and later. Under Profile type, select Settings catalog. Select Create. ... In the Configuration settings page, select + Add settings. ... select Experience ... Enable delivery of organizational messages (User) | Fix: Use the fuller path 'Devices > Manage devices > Configuration > Policies > Create > New Policy > Windows 10 and later > Settings catalog > Create > Basics > Configuration settings > Add settings > Experience > Enable delivery of organizational messages (User)'. State in the note that after adding it, close Settings picker and set it to Allow in Configuration settings, as documented at https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365. | Source: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The Microsoft 365 admin center path Show all > Users > Active users > user > Manage roles > Admin center access > Show all by category > Other > Organizational Messages Writer assigns the writer role. | Found: select Manage roles under Roles. ... select Admin center access, and then select Show all by category. ... In the Other section, select the checkbox next to Organizational Messages Writer and/or Organizational Messages Approver | Fix: Include the omitted Roles heading: 'Show all > Users > Active users > user > Roles > Manage roles > Admin center access > Show all by category > Other > Organizational Messages Writer', as documented at https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq. | Source: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq
+- [supported, minor] controls[0].ui; Governance controls: row 1 / admin-path: The printed Intune route reaches Enable delivery of organizational messages (User) in a new Windows settings catalog policy. | Found: In the Configuration settings page, select + Add settings. ... Under Browse by category, select Experience from the list of categories. ... When the Settings name section appears: ... Enable delivery of organizational messages (User) | Fix: Include the omitted headings in controls[0].ui.path: 'Devices > Manage devices > Configuration > Policies > Create > New Policy > Platform > Windows 10 and later > Profile type > Settings catalog > Create > Basics > Configuration settings > Add settings > Settings picker > Browse by category > Experience > Settings name > Enable delivery of organizational messages (User)'. These are headings or wizard pages passed without a deciding choice; the existing note correctly explains setting Allow in Configuration settings. | Source: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365
 -->

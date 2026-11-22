@@ -13,7 +13,7 @@ targetDate: "November CY2025"
 previewDate: null
 risk: "low"
 cost: "low"
-impact: "medium"
+impact: "high"
 defaultState: "on"
 action: "prepare"
 licensing:
@@ -37,6 +37,12 @@ sources:
   - title: "Overview of Cloud Policy service for Microsoft 365"
     url: "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy"
     kind: "learn"
+  - title: "Supported Copilot resources for Tenant Configuration Management (preview)"
+    url: "https://learn.microsoft.com/graph/utcm-copilot-resources"
+    kind: "learn"
+  - title: "Create configurationMonitor"
+    url: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
+    kind: "learn"
 videos: []
 related: ["cloud-policy","m365-copilot-copilot-can-edit-your-document-by-default-in-word"]
 controls:
@@ -46,8 +52,11 @@ controls:
       surface: "Microsoft 365 Apps admin center"
       path: "Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Create and view Copilot Pages and Copilot Notebooks"
       docs: "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration"
-    api: null
-    note: "Covers creation and integration only; existing Pages stay viewable and editable. Can be scoped to groups. Office Apps Administrator is the recommended role."
+    api:
+      kind: "graph"
+      call: "POST /beta/admin/configurationManagement/configurationMonitors"
+      docs: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
+    note: "Creation and integration only; existing Pages stay viewable and editable. Office Apps Administrator recommended. API is preview TCM (applyOnce), tenant-level policies only, AI Administrator; details below the table."
   - governs: "Whether Copilot edits on a Page are highlighted"
     scope: "tenant"
     ui: null
@@ -62,19 +71,23 @@ changes:
     note: "First briefing for this roadmap item; Microsoft Learn does not yet describe the highlighting, so the page rests on the roadmap text and the Copilot Pages admin pages."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 51 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after verification: added the preview Graph TCM call for the Pages creation setting, qualified where older Pages are stored, removed 'only' claims about admin controls, set impact to high and removed OneDrive licensing from a checklist step."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 55 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 46
-  unconfirmed: 0
-  contradicted: 5
-  attempts: 1
-  hash: "27b9dd0011617063a19b2ed565e00632"
+  claims: 55
+  confirmed: 54
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 0
+  hash: "acc8b9858b56cbb2ee2b191b8601f973"
 ---
 
 ## What's changing
@@ -94,7 +107,7 @@ It does not touch your data boundaries as far as the sources say. If nobody acts
 ## Risk assessment
 
 **Data exposure**
-- No change stated: the roadmap describes how edits are shown, not what Copilot can read. Copilot Pages are stored in OneDrive for Business, and the existing creation policy (see the controls table) does not remove access to existing Pages.
+- No change stated: the roadmap describes how edits are shown, not what Copilot can read. The storage page says Pages created since November 2025 are stored in OneDrive for Business; older Pages remain in SharePoint Embedded. The existing creation policy (see the controls table) does not remove access to existing Pages.
 
 **Security & identity**
 - No change stated: the record mentions no new permissions or sign-in behaviour.
@@ -103,7 +116,7 @@ It does not touch your data boundaries as far as the sources say. If nobody acts
 - Highlighting makes Copilot's edits easier to spot, which supports review; the record does not say Copilot edits Pages automatically or without a request from the user.
 
 **Change & support**
-- A default-on visual change on the web can prompt questions. No setting specific to highlighting is documented at the time of writing (November 2026), so the only admin lever is the Cloud Policy creation setting, which governs creation and integration of Pages and not how edits are displayed.
+- A default-on visual change on the web can prompt questions. No setting specific to highlighting is documented at the time of writing (November 2026); the table shows the existing Cloud Policy creation setting, which governs creation and integration of Pages and not how edits are displayed.
 - The record's target of November CY2025 has passed while the status is In development, so rollout timing is unclear; watch Message center for a notice.
 
 ## Cost and licensing
@@ -122,7 +135,7 @@ The products in the record are the Microsoft 365 app and Microsoft Copilot (Micr
 
 ### Before rollout
 - Confirm with the roadmap item and Message center whether the Page in this item is Copilot Pages, and whether the rollout has started, since the November CY2025 target has passed.
-- Identify who uses Copilot Pages by checking OneDrive licensing and the Cloud Policy setting Create and view Copilot Pages and Copilot Notebooks (see the controls table).
+- Identify who uses Copilot Pages by checking the Cloud Policy setting Create and view Copilot Pages and Copilot Notebooks (see the controls table).
 - Draft a short note for those users saying that Copilot's edits to a Page are planned to appear highlighted by default.
 
 ### At rollout
@@ -140,14 +153,16 @@ The products in the record are the Microsoft 365 app and Microsoft Copilot (Micr
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether users can create and view Copilot Pages and Copilot Notebooks (existing control, not a switch for highlighting)</strong><br><small>Tenant</small><br><small class="controls__note">Covers creation and integration only; existing Pages stay viewable and editable. Can be scoped to groups. Office Apps Administrator is the recommended role.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Create and view Copilot Pages and Copilot Notebooks <a href="https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether users can create and view Copilot Pages and Copilot Notebooks (existing control, not a switch for highlighting)</strong><br><small>Tenant</small><br><small class="controls__note">Creation and integration only; existing Pages stay viewable and editable. Office Apps Administrator recommended. API is preview TCM (applyOnce), tenant-level policies only, AI Administrator; details below the table.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Create and view Copilot Pages and Copilot Notebooks <a href="https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether Copilot edits on a Page are highlighted</strong><br><small>Tenant</small><br><small class="controls__note">No setting is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The only documented control that touches this area is the Cloud Policy setting for creation of Copilot Pages and Copilot Notebooks. It governs creation and integration; Learn says existing Pages are not deleted and users can still view and edit existing items if they have permission. It is therefore not a way to switch off highlighting.
+The table shows the Cloud Policy setting for creation of Copilot Pages and Copilot Notebooks. It governs creation and integration; Learn says existing Pages are not deleted and users can still view and edit existing items if they have permission. It is therefore not a way to switch off highlighting.
 
 The Cloud Policy overview lists Office Apps Administrator as the recommended role for managing it, and the Copilot Pages policy page says a change can take up to 90 minutes to be reflected where policy configurations already exist, or up to 24 hours where none did. No setting for the highlighting itself is documented at the time of writing (November 2026).
+
+The API side of the creation setting is a preview Tenant Configuration Management (TCM) call. It uses mode applyOnce and an inline baseline resource of type microsoft.copilot.copilotpagesnotebooks, resourceVersion 1, with properties.value set to the string "0" to disable or "1" to enable. It supports tenant-level policies only and fails if this setting is configured in a group-level policy. It requires delegated ConfigurationMonitoring.ReadWrite.All for the calling app, delegated CopilotPolicySettings.ReadWrite for the TCM service principal, and AI Administrator for the signed-in user.
 
 ## Open questions
 
@@ -159,17 +174,14 @@ The Cloud Policy overview lists Office Apps Administrator as the recommended rol
 <!-- rationale
 risk: Low. The roadmap describes a visual cue on edits Copilot makes to a Page; it states no new data access, no new actions and no change to who can edit.
 cost: Low. The only cost the sources show is admin and communication time; Microsoft has not published a separate licence or charge for highlighting.
-impact: Medium. People who edit Pages with Copilot on the web would see edits highlighted without choosing it; admins are not asked to do anything.
+impact: High. The roadmap describes a change to default behaviour: edits made with Copilot on the web are planned to be highlighted without users choosing it.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls table / absence: No API or automation for the Pages and Notebooks creation control is documented. | Found: The 20 Copilot resources are Office Cloud Policy Service (OCPS) settings. TCM supports these settings only in tenant-level policies in the Microsoft 365 Apps admin center. | Fix: Set controls[0].api.kind to 'graph', call to 'POST /beta/admin/configurationManagement/configurationMonitors', and docs to 'https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta'. Add to its note: 'Preview TCM automation uses mode=applyOnce and an inline baseline resource of type microsoft.copilot.copilotpagesnotebooks, resourceVersion 1, with properties.value set to the string "0" to disable or "1" to enable. It supports tenant-level policies only and fails if this setting is configured in a group-level policy. It requires delegated ConfigurationMonitoring.ReadWrite.All for the calling app, delegated CopilotPolicySettings.ReadWrite for the TCM service principal, and AI Administrator for the signed-in user.' Cite https://learn.microsoft.com/graph/utcm-copilot-resources as well. | Source: https://learn.microsoft.com/graph/utcm-copilot-resources
-- [contradicted, blocker] Risk assessment: Data exposure / behaviour: Copilot Pages are stored in OneDrive for Business without a qualification for older Pages. | Found: Copilot Pages and Copilot Notebooks created before November 2025 continue to be stored in the user-owned SharePoint Embedded container. These legacy Copilot Pages and legacy Copilot Notebooks haven't moved to OneDrive for Business. | Fix: Replace 'Copilot Pages are stored in OneDrive for Business' with 'The storage page says Pages created since November 2025 are stored in OneDrive for Business; older Pages remain in SharePoint Embedded.' | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-storage
-- [contradicted, blocker] Risk assessment: Change & support; Governance controls / applicability: The Cloud Policy creation setting is the only documented admin control touching the Copilot Pages area. | Found: Code previews in Copilot Chat and Copilot Pages | Cloud Policy: Enable code previews for AI-generated content in Microsoft Copilot Chat and Copilot Pages | Enabled | Fix: Replace 'the only admin lever is the Cloud Policy creation setting' with 'the table shows the existing Cloud Policy creation setting'. Replace 'The only documented control that touches this area is the Cloud Policy setting for creation of Copilot Pages and Copilot Notebooks' with 'The table shows the Cloud Policy setting for creation of Copilot Pages and Copilot Notebooks'. Do not claim that other Pages controls are absent. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration
+- [unsupported, major] Governance guidance: Before rollout, second bullet / behaviour: Checking the Cloud Policy creation setting identifies who uses Copilot Pages. | Found: Searched: Copilot Pages Cloud Policy identify users usage reports creation setting; Copilot Pages Cloud Policy usage identify active users policy configuration. Read cpcn-admin-configuration and Cloud Policy overview; neither documents identification of actual Pages users. | Fix: Replace the bullet with: 'Identify who is allowed to create Copilot Pages by checking the Cloud Policy setting Create and view Copilot Pages and Copilot Notebooks (see the controls table).' The policy page documents availability to targeted users, not their actual use.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing / behaviour: Pages created since November 2025 are stored in OneDrive for Business. | Found: Pages and Notebooks are stored in OneDrive for Business | Fix: Add after the storage paragraph: 'Microsoft's cited requirements and admin-policy pages still describe Pages as stored in SharePoint Embedded and charged against the organisation's SharePoint quota, whereas the storage page distinguishes pre-November 2025 legacy Pages from newer Pages.' | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-storage
-- [contradicted, minor] front matter: impact; rationale: impact / consistency: A default-on change that users see without choosing it is rated medium impact. | Found: impact: medium; 'People who edit Pages with Copilot on the web would see edits highlighted without choosing it'; assessment scale: high includes 'a change to default behaviour'. | Fix: Set impact to 'high' and replace the impact rationale with 'High. The roadmap describes a change to default behaviour: edits made with Copilot on the web are planned to be highlighted without users choosing it.'
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks administrators to check OneDrive licensing, but the controls table has no licence-assignment row. | Found: 'Identify who uses Copilot Pages by checking OneDrive licensing and the Cloud Policy setting'; the table contains only the Pages creation policy and the highlighting-setting gap. | Fix: Remove 'OneDrive licensing and' from that checklist bullet so it refers only to the Cloud Policy setting already represented in the table.
+- [supported, minor] Risk assessment: Data exposure; Cost and licensing / behaviour: The storage page places Pages created since November 2025 in OneDrive for Business. | Found: Pages and Notebooks are stored in OneDrive for Business: the same visible file system where Word, Excel, and PowerPoint files live. ... Copilot Pages and Copilot Notebooks created before November 2025 continue to be stored in the user-owned SharePoint Embedded container. | Fix: Add after the storage statement: 'The admin-policy and requirements pages still describe Pages generally as stored in SharePoint Embedded, whereas the storage page distinguishes legacy Pages from newer OneDrive files.' These are the already-cited cpcn-admin-configuration, cpcn-requirements and cpcn-storage pages. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-storage
+- [supported, minor] controls[0].api; Governance controls table and text / command: POST /beta/admin/configurationManagement/configurationMonitors can apply the Pages creation setting through an applyOnce baseline. | Found: POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors ... applies a desired-state baseline once in applyOnce mode. | Fix: Append to controls[0].note and the matching rendered table note: 'The baseline resource sets properties.value ("0" disables, "1" enables).' The body already gives the resource type and applyOnce mode; the deciding property should also appear in the row note. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
 -->

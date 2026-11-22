@@ -1,0 +1,774 @@
+{
+  "slug": "outlook-all-accounts-view-unified-inbox-brings-your-email-into-a-single-inbox-view",
+  "roadmapId": 564609,
+  "title": "Outlook: All Accounts view (Unified Inbox) shows email from several accounts in one inbox",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "2 blocking findings (claims 40, 42)"
+    ]
+  },
+  "counts": {
+    "claims": 60,
+    "confirmed": 56,
+    "unconfirmed": 0,
+    "contradicted": 4,
+    "blocker": 2,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: the licensing explanation omits the documented multiple-account exception and the restriction on Cloud Policy for Microsoft 365 Apps for business. The default, rollout dates and two admin paths are supported, but administrators could otherwise budget for unnecessary desktop licences or expect an unsupported policy to enforce the view.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "All Accounts view, also known as Unified Inbox, brings email from multiple connected accounts into one inbox view in new Outlook for Windows.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The All-Accounts view, also known as Unified Inbox, lets you see emails from multiple accounts in a single inbox view in the new Outlook for Windows, without merging your mailboxes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Risk assessment: Security & identity; Governance guidance",
+      "type": "record",
+      "claim": "The view does not merge mailboxes and each account's inbox stays separate.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Each account's inbox stays separate; the view brings them together so you can triage in one place.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "Learn says it does not move messages between accounts or delete email.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view",
+      "quote": "What this policy doesn't control ... It doesn't merge mailboxes, move messages between accounts, or delete email.",
+      "severity": "minor",
+      "fix": "In What's changing, replace 'the Learn page says it does not move messages between accounts or delete email' with 'the Learn page says the policy itself does not move messages between accounts or delete email'. Its statement concerns the policy, not user actions in the view."
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Users can read messages across accounts from the view.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users can read, delete, move, archive, and mark messages across accounts without switching between mailboxes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Risk assessment: Data exposure; Autonomy & actions",
+      "type": "record",
+      "claim": "Users can delete messages across accounts from the view.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users can read, delete, move, archive, and mark messages across accounts without switching between mailboxes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing; Risk assessment: Data exposure; Autonomy & actions",
+      "type": "record",
+      "claim": "Users can move messages across accounts from the view.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users can read, delete, move, archive, and mark messages across accounts without switching between mailboxes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Risk assessment: Data exposure; Autonomy & actions",
+      "type": "record",
+      "claim": "Users can archive messages across accounts from the view.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users can read, delete, move, archive, and mark messages across accounts without switching between mailboxes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Users can mark messages across accounts from the view.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users can read, delete, move, archive, and mark messages across accounts without switching between mailboxes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment: Data exposure; Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes Copilot integration for AI-assisted email workflows.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The experience integrates with Copilot for AI-assisted email workflows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes Immersive Search for finding messages across the primary account.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "supports Immersive Search for finding messages across your primary account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap places cross-account search in later releases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Advanced scenarios such as cross-account search and shared mailbox support will follow in later releases.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap places shared mailbox support in later releases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Advanced scenarios such as cross-account search and shared mailbox support will follow in later releases.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1519843 calls the primary-account search Search with Copilot.",
+      "status": "supported",
+      "source": "Message Center post MC1519843",
+      "quote": "supports Search with Copilot for finding messages across the user's primary account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "MC1519843 lists search among actions across accounts, differing from the roadmap's description.",
+      "status": "supported",
+      "source": "Message Center post MC1519843",
+      "quote": "Users can read, delete, search, move, archive, and mark messages across accounts without switching between mailboxes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationales; changes",
+      "type": "default",
+      "claim": "All Accounts view is on by default for eligible users when the admin policy is unconfigured.",
+      "status": "supported",
+      "source": "Message Center post MC1519843",
+      "quote": "If the policy is not configured, All Accounts view remains enabled by default, and users can turn it off or back on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "summary; What's changing; Why it matters; controls[1].note; rationale: risk",
+      "type": "behaviour",
+      "claim": "Users can change the view unless the admin policy disables user override.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view",
+      "quote": "When user override is disabled, the policy controls the view and users can't change the configured behavior.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "summary",
+      "type": "record",
+      "claim": "No admin action is required unless administrators want to manage the experience.",
+      "status": "supported",
+      "source": "Message Center post MC1519843",
+      "quote": "No admin action is required unless you want to manage this experience for your users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope; rationale: impact",
+      "type": "availability",
+      "claim": "The view requires at least two eligible connected accounts with offline access enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view",
+      "quote": "All Accounts requires at least two eligible connected accounts with offline access enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The Learn policy article lets users choose their preferred view when unconfigured but does not state the shipping default.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'All Accounts view manage Outlook'; opened Manage All Accounts view in full. It says 'If this policy isn't configured, users can choose their preferred inbox view' and gives configured defaults, not a shipping default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: status; summary; What's changing; changes",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is August CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: platforms; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap platform is Web, unlike the Windows surface described in the notice and Learn.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Web\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) only.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "MC1519843 says rollout began in late September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1519843",
+      "quote": "General Availability (Worldwide): We began rolling out in late September 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "MC1519843 expects completion by late November 2026, previously late October.",
+      "status": "supported",
+      "source": "Message Center post MC1519843",
+      "quote": "expect to complete by late November 2026 (previously late October).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1519843",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The Microsoft 365 Apps admin center path leads through Customization, Policy Management, policy configuration and Configure Settings to the named policy's Configure the unified inbox view setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view",
+      "quote": "Under Customization, select Policy Management. ... On Configure Settings, search for Show All Accounts view for users with multiple accounts in Outlook for Windows. ... Set Configure the unified inbox view and Allow user to override this setting",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The Microsoft 365 Apps admin center path leads through Customization, Policy Management, policy configuration and Configure Settings to the named policy's Allow user to override this setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view",
+      "quote": "Under Customization, select Policy Management. ... On Configure Settings, search for Show All Accounts view for users with multiple accounts in Outlook for Windows. ... Set Configure the unified inbox view and Allow user to override this setting",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No API or PowerShell operation for configuring this Cloud Policy view default is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Cloud Policy policy configurations PowerShell API unified inbox Outlook automation; Office cloud policy service REST API; All Accounts view Allow user PowerShell Set-OwaMailboxPolicy Graph. Opened the feature and Cloud Policy overview; no setting operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "No API or PowerShell operation for configuring this Cloud Policy user override is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: All Accounts view Allow user PowerShell Set-OwaMailboxPolicy Graph; Cloud Policy API policy configurations Microsoft Graph PowerShell; Office cloud policy service REST API. Opened feature and overview; results supplied no operation setting this override.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].note; Governance guidance: At rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Both view and override settings apply only when Configuration setting is Enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view",
+      "quote": "The following combinations apply when Configuration setting is Enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Governance guidance: At rollout; Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "Setting both Configure the unified inbox view and Allow user to override this setting to Disabled hides the view and prevents users changing it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view",
+      "quote": "Disabled | Disabled | Hide All Accounts and prevent users from changing it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].note; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Office Apps Administrator is a supported and recommended role for managing Cloud Policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "Office Apps Administrator (Recommended) | This role can manage Office apps cloud services, including policy and settings management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].note; Scope",
+      "type": "role",
+      "claim": "Security Administrator is a supported built-in role for managing Cloud Policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "You can use the following built-in Microsoft Entra roles for accessing and managing the feature: ... Security Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].note; Scope",
+      "type": "role",
+      "claim": "Global Administrator is a supported built-in role for managing Cloud Policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "You can use the following built-in Microsoft Entra roles for accessing and managing the feature: ... Global Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls: scope and notes; Risk assessment; Governance guidance",
+      "type": "applicability",
+      "claim": "Cloud Policy can target Microsoft Entra groups and applies only to their user objects.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "Cloud Policy Service supports the use of Microsoft Entra groups ... Policies only apply to user objects. ... device objects are ignored.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Cloud Policy priority decides conflicting policy settings for users in multiple targeted groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "If the user is a member of multiple Microsoft Entra groups with conflicting policy settings, priority is used to determine which policy setting is applied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is included as an option inside licensed Outlook for Windows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
+      "quote": "To use the Outlook for Windows desktop app (either the classic or new version) with a Microsoft 365 organizational email address, you need to purchase a plan that includes the desktop versions of the Microsoft 365 apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Using Outlook for Windows with a Microsoft 365 organisational address requires a plan including desktop Microsoft 365 apps, without a multiple-account qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
+      "quote": "if any account logged into the app has a license to use the desktop applications, you can add other types of accounts to the app.",
+      "severity": "blocker",
+      "fix": "Keep model included. Replace the desktop entitlement sentence in licensing.notes and Cost and licensing with: 'For multiple-account use in new Outlook, any signed-in account with desktop-app licence rights qualifies the app; secondary accounts can use plans without desktop apps, such as Business Basic or E1.' Cite https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options."
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no licence, charge or meter specific to All Accounts view at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: All Accounts view licensing; All Accounts view licensing price meter Copilot accounts. Opened Manage All Accounts view, Understand licensing in new Outlook, and Cloud Policy overview. None specifies a separate licence, price or meter for the view.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Cloud Policy supports most Microsoft 365 plans including Microsoft 365 Apps, with no explicit restriction on non-privacy settings for Apps for business.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "You can create a policy configuration for Microsoft 365 Apps for business, but only policy settings related to privacy controls are supported.",
+      "severity": "blocker",
+      "fix": "Add after the Cloud Policy licensing sentence: 'For Microsoft 365 Apps for business, only policy settings related to privacy controls are supported.' Cite https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy. This view setting is described as an inbox-display control, not a privacy control."
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support",
+      "type": "admin-path",
+      "claim": "Users with an unconfigured policy can show or hide the view from the View tab or Settings > Mail > Folder pane.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view",
+      "quote": "If this policy isn't configured, users can choose their preferred inbox view. ... users can show or hide All Accounts from the View tab or under Settings > Mail > Folder pane.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The See emails from all your accounts in one place checkbox is unavailable when user override is Disabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view",
+      "quote": "For example, when the unified inbox view is Enabled and user override is Disabled, All Accounts is shown and the See emails from all your accounts in one place checkbox is selected and unavailable.",
+      "severity": "minor",
+      "fix": "Replace the checkbox clause with: 'For example, when the view is Enabled and override is Disabled, the checkbox \"See emails from all your accounts in one place\" is selected and unavailable.' This preserves the documented example's qualification without changing the enforcement statement."
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "applicability",
+      "claim": "The All Accounts policy does not control whether users can add secondary accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view",
+      "quote": "It doesn't control whether users can add secondary accounts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The All Accounts policy does not change the offline sync window.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view",
+      "quote": "It doesn't change the offline sync window or make locally saved mail a complete copy of every mailbox.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "Cloud Policy is also reachable in Microsoft Intune admin center under Apps > Policy > Policies for Office apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "directly in the Microsoft Intune admin center, under Apps > Policy > Policies for Office apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "When auditing is enabled, Purview tracks Cloud Policy configuration creation, deletion and modification, which administrators can search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "When auditing is enabled, events such as the creation, deletion, modification of policy configurations ... are tracked. You can use the portal or PowerShell to search the audit log for such changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Set-CASMailbox -Identity <MailboxIdentity> -OneWinNativeOutlookEnabled $false restricts the target mailbox's access through Outlook for Windows, not this view specifically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-on-the-web/enable-disable-employee-access-new-outlook",
+      "quote": "Set-CASMailbox -Identity <MailboxIdentity> -OneWinNativeOutlookEnabled <$true | $false | $null> ... This example disables Outlook for Windows for the specified user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "The Learn All Accounts policy article does not describe which accounts Copilot features read from the view.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: All Accounts view Copilot accounts data; All Accounts view licensing price meter Copilot accounts. Opened Manage All Accounts view in full; it contains no Copilot account-access description. General Copilot results do not describe this view.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes user actions and AI-assisted email workflows, not autonomous actions in the view.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users can read, delete, move, archive, and mark messages across accounts without switching between mailboxes. The experience integrates with Copilot for AI-assisted email workflows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: action",
+      "type": "consistency",
+      "claim": "Prepare is the appropriate action for this medium-risk, on-by-default change already rolling out with an available control.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "status: rolling-out; risk: medium; defaultState: on; action: prepare. The action scale assigns act-now to a rolling-out change reaching users without admin action when risk or cost is medium or higher and a control or decision exists.",
+      "severity": "minor",
+      "fix": "Set action to act-now: on the 22 November 2026 run, rollout is underway, the notice expects completion by late November, risk is medium and both configuration controls are available."
+    },
+    {
+      "n": 53,
+      "where": "Governance guidance: After rollout",
+      "type": "consistency",
+      "claim": "Every control the checklist asks administrators to check appears in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Search the Microsoft Purview audit log for policy configuration changes if auditing is enabled. The controls table contains only the view-default and user-override rows.",
+      "severity": "minor",
+      "fix": "Remove the After rollout bullet 'Search the Microsoft Purview audit log for policy configuration changes if auditing is enabled.' The audit capability can remain described in Governance controls; do not add a row in this correction."
+    },
+    {
+      "n": 54,
+      "where": "Why it matters; Governance controls",
+      "type": "behaviour",
+      "claim": "One Cloud Policy setting contains the view and override settings and documents four combinations, allowing either state to be enforced or left changeable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view",
+      "quote": "Enabled | Enabled | Show All Accounts by default. Users can change it. ... Enabled | Disabled | Show All Accounts and prevent users from changing it. ... Disabled | Enabled | Hide All Accounts by default. Users can change it. ... Disabled | Disabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn recommends comparing the user's view with the behaviour table and checking targeting, membership and policy configuration if the result differs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view",
+      "quote": "Compare the All Accounts view and the ability to change it with the behavior table above. ... If the result differs from the intended configuration, check the targeted user, group membership, and policy configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1].note; What's changing; Scope",
+      "type": "applicability",
+      "claim": "The policy article covers new Outlook for Windows, not Outlook on the web or classic Outlook.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view",
+      "quote": "This article covers All Accounts in new Outlook for Windows, not Outlook on the web or classic Outlook.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "MC1519843 asks administrators to review Outlook account and automated-assistance policies as appropriate.",
+      "status": "supported",
+      "source": "Message Center post MC1519843",
+      "quote": "Review your organization's Outlook account and automated-assistance policies as appropriate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Configure the unified inbox view can be Disabled while Configuration setting remains Enabled, and Learn warns not to confuse the two.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view",
+      "quote": "Don't confuse Configuration setting with Configure the unified inbox view: the view can be Disabled while the policy itself remains Enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap has no preview target date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-10-29T23:01:00.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-29T23:01:00\"",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T05:47:54.419Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=564609",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1519843",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-on-the-web/enable-disable-employee-access-new-outlook",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether All Accounts view is shown or hidden by default",
+        "docs": "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view",
+        "reachable": true,
+        "segments": [
+          "Customization",
+          "Policy Management",
+          "policy configuration",
+          "Configure Settings",
+          "Show All Accounts view for users with multiple accounts in Outlook for Windows",
+          "Configure the unified inbox view"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether users can change the configured All Accounts view",
+        "docs": "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view",
+        "reachable": true,
+        "segments": [
+          "Customization",
+          "Policy Management",
+          "policy configuration",
+          "Configure Settings",
+          "Show All Accounts view for users with multiple accounts in Outlook for Windows",
+          "Allow user to override this setting"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

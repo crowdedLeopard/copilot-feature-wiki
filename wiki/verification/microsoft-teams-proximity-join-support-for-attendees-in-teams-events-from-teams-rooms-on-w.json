@@ -4,10 +4,10 @@
   "title": "Microsoft Teams Rooms: proximity join for attendees of Teams events",
   "status": "held",
   "date": "2026-11-22",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,28 +16,28 @@
     "reason": "failed",
     "since": "2026-11-22",
     "reasons": [
-      "1 blocking finding (claim 44)"
+      "1 blocking finding (claim 51)"
     ]
   },
   "counts": {
-    "claims": 57,
-    "confirmed": 55,
+    "claims": 64,
+    "confirmed": 63,
     "unconfirmed": 0,
-    "contradicted": 2,
+    "contradicted": 1,
     "blocker": 1,
     "major": 0,
-    "minor": 3
+    "minor": 0
   },
-  "summary": "Hold: the briefing treats the published Teams Rooms Pro requirement for event attendees as unconfirmed merely because it does not name proximity join. The rollout, default and Bluetooth configuration are supported, but the licensing caveat needs correcting and the conflicting Windows and Android support statements need reporting explicitly.",
+  "summary": "Hold: the Bluetooth control's Learn link does not document the setting at the end of the printed path. The path and XML element are documented elsewhere in the cited sources, and the rollout, default and licensing statements are supported.",
   "claims": [
     {
       "n": 1,
       "where": "title; summary; What's changing; Scope",
       "type": "record",
-      "claim": "Attendee proximity join in Teams events is planned for Teams Rooms on Windows.",
+      "claim": "Attendees can use proximity join with Teams Rooms on Windows during Teams events.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Attendees can take advantage of proximity join with Teams Rooms on Windows and/or Android",
+      "quote": "Attendees can take advantage of proximity join with Teams Rooms on Windows and/or Android for fast, effortless connection to nearby room systems during Teams events",
       "severity": null,
       "fix": null
     },
@@ -45,7 +45,7 @@
       "n": 2,
       "where": "summary; What's changing; Scope",
       "type": "record",
-      "claim": "Attendee proximity join in Teams events is planned for Teams Rooms on Android.",
+      "claim": "Attendees can use proximity join with Teams Rooms on Android during Teams events.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Attendees can take advantage of proximity join with Teams Rooms on Windows and/or Android",
@@ -54,9 +54,9 @@
     },
     {
       "n": 3,
-      "where": "summary; What's changing",
+      "where": "summary; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap names town halls, webinars and structured meetings as events in scope.",
+      "claim": "The roadmap names town halls, webinars and structured meetings as examples of these events.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "during Teams events, such as town halls, webinars, and structured meetings.",
@@ -67,7 +67,7 @@
       "n": 4,
       "where": "What's changing; Why it matters",
       "type": "record",
-      "claim": "The change lets event attendees connect to nearby room systems with fewer steps.",
+      "claim": "Attendee proximity join connects users to nearby room systems with fewer steps.",
       "status": "supported",
       "source": "Message Center post MC1461157",
       "quote": "This enhancement simplifies the meeting join experience and helps users connect to the appropriate room device with fewer steps.",
@@ -76,83 +76,6 @@
     },
     {
       "n": 5,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationales",
-      "type": "default",
-      "claim": "The feature is on by default and becomes available automatically during rollout.",
-      "status": "supported",
-      "source": "Message Center post MC1461157",
-      "quote": "This functionality will be available by default as part of the Microsoft Teams Rooms experience.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "summary; What's changing; Why it matters",
-      "type": "record",
-      "claim": "Administrators need take no action to enable the feature.",
-      "status": "supported",
-      "source": "Message Center post MC1461157",
-      "quote": "No action is required to enable this feature. It will become available automatically during the rollout.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "What's changing; Governance guidance: Before rollout",
-      "type": "record",
-      "claim": "Microsoft recommends informing users who regularly attend Teams events about proximity join.",
-      "status": "supported",
-      "source": "Message Center post MC1461157",
-      "quote": "We recommend informing users who regularly participate in Teams events that they can use proximity join with nearby Microsoft Teams Rooms to simplify the room join experience.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The supplied notice sets no act-by date.",
-      "status": "supported",
-      "source": "Message Center post MC1461157",
-      "quote": "Act by: none",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "Microsoft updated the notice on 25 September 2026 with a later rollout timeline.",
-      "status": "supported",
-      "source": "Message Center post MC1461157",
-      "quote": "Updated September 25, 2026: We have updated the timeline. Thank you for your patience.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The notice gives Targeted Release as early November 2026 through mid-November 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1461157",
-      "quote": "Targeted Release: Rollout will begin in early November 2026 (previously early October) and is expected to complete by mid-November 2026 (previously late October).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The notice gives General Availability as mid-November 2026 through early December 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1461157",
-      "quote": "General Availability (Worldwide, GCC, GCC High): Rollout will begin in mid-November 2026 (previously late October) and is expected to complete by early December 2026 (previously mid-November).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is Rolling out.",
@@ -163,7 +86,7 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 6,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is November CY2026.",
@@ -174,10 +97,10 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 7,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The release phases are General Availability and Targeted Release.",
+      "claim": "The roadmap release phases are General Availability and Targeted Release.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
@@ -185,10 +108,10 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 8,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The listed clouds are Worldwide (Standard Multi-Tenant), GCC and GCC High.",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC and GCC High.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\"]",
@@ -196,7 +119,7 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 9,
       "where": "front matter: platforms; Scope",
       "type": "record",
       "claim": "The roadmap platforms are Android, Desktop, iOS, Mac, and Teams and Surface Devices.",
@@ -207,7 +130,7 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 10,
       "where": "front matter: previewDate",
       "type": "record",
       "claim": "The roadmap gives no preview date.",
@@ -218,21 +141,142 @@
       "fix": null
     },
     {
+      "n": 11,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-11-04T00:02:09.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-04T00:02:09\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "Microsoft's notice identifies users of Teams Rooms on Windows or Android joining Teams events as affected.",
+      "status": "supported",
+      "source": "Message Center post MC1461157",
+      "quote": "Who is affected:\n\n- Users who leverage Microsoft Teams Rooms on Windows or Android to join Teams events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationales",
+      "type": "default",
+      "claim": "The feature is on by default and becomes available automatically during rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1461157",
+      "quote": "This functionality will be available by default as part of the Microsoft Teams Rooms experience.\n\nNo action is required to enable this feature. It will become available automatically during the rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing; Why it matters; rationale: risk",
+      "type": "record",
+      "claim": "Administrators need take no action to enable the feature.",
+      "status": "supported",
+      "source": "Message Center post MC1461157",
+      "quote": "No action is required to enable this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft recommends informing regular Teams event participants about proximity join with nearby rooms.",
+      "status": "supported",
+      "source": "Message Center post MC1461157",
+      "quote": "We recommend informing users who regularly participate in Teams events that they can use proximity join with nearby Microsoft Teams Rooms to simplify the room join experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1461157",
+      "quote": "Act by: none\n\nNo action is required to enable this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice was updated on 25 September 2026 with a later rollout timeline.",
+      "status": "supported",
+      "source": "Message Center post MC1461157",
+      "quote": "Updated September 25, 2026: We have updated the timeline.\n\nRollout will begin in early November 2026 (previously early October)",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 18,
       "where": "What's changing",
-      "type": "absence",
-      "claim": "Learn has no page specifically describing attendee proximity join in events at the time of writing.",
+      "type": "record",
+      "claim": "The notice schedules Targeted Release to begin in early November 2026.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"proximity join\" \"events\" \"attendees\"; Teams Rooms attendee proximity join events town hall webinar. Opened rooms/proximity-join, rooms/teams-devices-feature-comparison and meetings-events-feature-comparison; no feature-specific description found.",
+      "source": "Message Center post MC1461157",
+      "quote": "Targeted Release: Rollout will begin in early November 2026 (previously early October)",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
       "where": "What's changing",
+      "type": "record",
+      "claim": "The notice expects Targeted Release to complete by mid-November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1461157",
+      "quote": "is expected to complete by mid-November 2026 (previously late October).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice schedules General Availability to begin in mid-November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1461157",
+      "quote": "General Availability (Worldwide, GCC, GCC High): Rollout will begin in mid-November 2026 (previously late October)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice expects General Availability to complete by early December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1461157",
+      "quote": "is expected to complete by early December 2026 (previously mid-November).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn has no dedicated page for attendee proximity join in Teams events at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms attendee proximity join events town halls webinars licensing default admin switch; opened /microsoftteams/rooms/proximity-join and /microsoftteams/meetings-events-feature-comparison; results describe general proximity join or general event support.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "General proximity join lets a user in the desktop or mobile Teams app invite or nudge a room into a meeting.",
+      "claim": "General proximity join lets a user in the desktop or mobile Teams app invite or nudge a Teams Room into a meeting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/proximity-join",
       "quote": "Proximity Join is a feature that lets end users use the Teams app on a desktop or mobile device to invite or nudge a Microsoft Teams Room into a Teams meeting.",
@@ -240,43 +284,43 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing; controls[0].governs; rationale: risk",
+      "n": 24,
+      "where": "controls[0].governs; What's changing; rationale: risk",
       "type": "behaviour",
-      "claim": "Bluetooth is a documented wireless technology used by proximity join to discover nearby rooms.",
+      "claim": "Bluetooth beaconing is used to discover nearby Teams Rooms for proximity join.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/proximity-join",
-      "quote": "Rooms discovered through Bluetooth are sorted by signal strength in descending order",
+      "quote": "Rooms discovered through Bluetooth are sorted by signal strength in descending order, and it includes all Teams Rooms both in use and not in use.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing; Risk assessment; Scope; Governance controls",
-      "type": "availability",
-      "claim": "Ultrasound proximity join is available on compatible Windows consoles, not Teams Rooms on Android.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/proximity-join",
-      "quote": "Ultrasound signaling is available on Microsoft Teams Rooms on Windows (from compatible consoles). Proximity Join using ultrasound isn't currently available for Teams Rooms on Android.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
+      "n": 25,
       "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Ultrasound proximity signaling is available from compatible Teams Rooms on Windows consoles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/proximity-join",
+      "quote": "Ultrasound signaling is available on Microsoft Teams Rooms on Windows (from compatible consoles) and can be used to along with Bluetooth for more accurate proximity join logic.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment: Security & identity; Scope; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not stated that every detail of the general proximity join page applies unchanged to events.",
+      "claim": "Microsoft has not stated that every general proximity-join detail, including tenant and lobby rules, applies unchanged to events.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"proximity join\" \"events\" \"attendees\" and \"proximity join\" \"events\" \"lobby\". Opened rooms/proximity-join and meetings-events-feature-comparison; neither states all proximity join meeting details apply unchanged to events.",
+      "quote": "Searched: Teams Rooms proximity join events town hall webinar external anonymous lobby trusted tenant; opened /microsoftteams/rooms/proximity-join; read search excerpts from /microsoftteams/who-can-bypass-meeting-lobby and /microsoftteams/plan-events; no event proximity-specific rules stated.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 23,
+      "n": 27,
       "where": "Why it matters; Scope",
       "type": "behaviour",
-      "claim": "Learn requires Bluetooth enabled on both the room and desktop or mobile client for proximity to function.",
+      "claim": "The general Proximity Join page requires Bluetooth enabled on the room device and desktop or mobile client for proximity to function.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/proximity-join",
       "quote": "Bluetooth must be enabled on both the Teams Rooms device and on the client desktop/mobile endpoint in order for proximity to function.",
@@ -284,32 +328,43 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 28,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Proximity join requires no direct network connection between personal and room devices; communication goes through Teams.",
+      "claim": "All proximity-join communication takes place through Microsoft Teams.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/proximity-join",
-      "quote": "Proximity join doesn't require a direct network connection between a user personal devices and the Teams Rooms device, all communication takes place through Microsoft Teams.",
+      "quote": "all communication takes place through Microsoft Teams.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 25,
+      "n": 29,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Bluetooth discovery signals can penetrate walls.",
+      "claim": "Proximity join does not require a direct network connection between the user's personal device and the room device.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/proximity-join",
-      "quote": "However, this signal can penetrate through walls.",
+      "quote": "Proximity join doesn't require a direct network connection between a user personal devices and the Teams Rooms device",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
+      "n": 30,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not described extra attendee or room data sent specifically by attendee proximity join in events.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms attendee proximity join events room attendee information data roster automatic join; opened /microsoftteams/rooms/proximity-join; read /microsoftteams/rooms/rooms-release-note roster-grouping excerpt; no event-specific extra data description found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Bluetooth-discovered rooms are sorted by descending signal strength.",
+      "claim": "Bluetooth-discovered rooms are listed by descending signal strength.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/proximity-join",
       "quote": "Rooms discovered through Bluetooth are sorted by signal strength in descending order",
@@ -317,7 +372,7 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 32,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Bluetooth discovery includes rooms both in use and not in use.",
@@ -328,10 +383,21 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Bluetooth signals can pass through walls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/proximity-join",
+      "quote": "However, this signal can penetrate through walls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
       "where": "Risk assessment: Security & identity; Scope",
       "type": "behaviour",
-      "claim": "General proximity join nudges must come from the same tenant or a trusted external organisation.",
+      "claim": "General proximity-join nudges require a user from the same tenant or a trusted external organisation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/proximity-join",
       "quote": "Proximity Join nudges from a desktop or mobile client must come from a user within the same tenant or from a trusted external organization.",
@@ -339,10 +405,10 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 35,
       "where": "Risk assessment: Security & identity; Scope",
       "type": "behaviour",
-      "claim": "General proximity join fails when the participant cannot bypass the meeting lobby.",
+      "claim": "General proximity join fails when the participant cannot bypass the Teams meeting lobby.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/proximity-join",
       "quote": "if the meeting participant using proximity join from their device is unable to bypass the Teams Meeting lobby, the proximity join will fail",
@@ -350,21 +416,10 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "Risk assessment: Security & identity; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not specifically described event proximity join rules for external and anonymous attendees.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"proximity join\" \"events\" \"lobby\"; Teams Rooms attendee proximity join events tenant lobby. Read rooms/proximity-join and plan-events search excerpts; meeting nudge rules and event lobby rules are documented, but their event-proximity interaction is not.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
+      "n": 36,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Teams Rooms on Android Bluetooth use is limited to advertising beacons and prompted proximal connections.",
+      "claim": "Bluetooth use on Teams Rooms on Android is limited to advertising beacons and prompted proximal connections.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/security",
       "quote": "Bluetooth technology use on Teams Rooms on Android devices is currently limited to advertising beacons and prompted proximal connections.",
@@ -372,32 +427,32 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 37,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "These Android proximity features do not pair Bluetooth devices.",
+      "claim": "Android proximity join involves no Bluetooth device pairing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/security",
-      "quote": "There's no Bluetooth device pairing as part of these features.",
+      "quote": "Proximity Join, Better Together, Teams Cast, and pairing of Teams panels rely on Bluetooth.\nThere's no Bluetooth device pairing as part of these features.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
+      "n": 38,
       "where": "Risk assessment: Autonomy & actions",
       "type": "absence",
-      "claim": "Microsoft describes no autonomous or AI action or room self-joining for this event feature.",
+      "claim": "No AI action or room joining an event on its own is described for this feature.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams Rooms proximity join events attendee data room roster automatically join ultrasound Bluetooth. Read rooms/proximity-join, rooms/security and release-note excerpts; no autonomous event joining or AI mechanism described. MC1461157 describes user-initiated connections.",
+      "quote": "Searched: Teams Rooms attendee proximity join events room attendee information data roster automatic join; opened /microsoftteams/rooms/proximity-join and read MC1461157; sources describe user nudges and automatic acceptance, not AI or independently initiated event joins.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
+      "n": 39,
       "where": "Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "The attendee chooses to connect a nearby room when joining an event.",
+      "claim": "The attendee uses proximity join to bring a nearby room into the event.",
       "status": "supported",
       "source": "Message Center post MC1461157",
       "quote": "Users will be able to use proximity join to connect to nearby Microsoft Teams Rooms when joining Teams events.",
@@ -405,21 +460,21 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Risk assessment: Data exposure; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not described extra attendee or room data sent by proximity join specifically in events.",
+      "n": 40,
+      "where": "Risk assessment: Change & support; Scope; Governance controls",
+      "type": "availability",
+      "claim": "Ultrasound proximity join is not currently available on Teams Rooms on Android.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams Rooms proximity join events attendee data room roster automatically join ultrasound Bluetooth. Read rooms/proximity-join, rooms/security and release-note/room-audio troubleshooting excerpts; these describe meeting roster association, not extra event-specific data.",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/proximity-join",
+      "quote": "Proximity Join using ultrasound isn't currently available for Teams Rooms on Android.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
+      "n": 41,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "People or animals with sensitive hearing may hear ultrasound tones from Windows consoles.",
+      "claim": "Learn cautions that people or animals with sensitive hearing may hear ultrasound tones.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/proximity-join",
       "quote": "People or animals with sensitive hearing may be able to hear the ultrasound tones.",
@@ -427,29 +482,29 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "Proximity join is included in a licence that Teams Rooms already requires.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
-      "quote": "The following tables compare the Teams Rooms Basic and Teams Rooms Pro licenses and show what features are available with each. Join Teams meetings with 1-touch, proximity, and meeting ID | ✔ | ✔",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
+      "n": 42,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "The general licensing table lists meeting proximity join for both Teams Rooms Basic and Teams Rooms Pro.",
+      "claim": "The licences comparison includes joining Teams meetings with 1-touch, proximity and meeting ID in Teams Rooms Basic.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
-      "quote": "| - | Microsoft Teams Rooms Basic | Microsoft Teams Rooms Pro | ... | Join Teams meetings with 1-touch, proximity, and meeting ID | ✔ | ✔ |",
+      "quote": "| - | Microsoft Teams Rooms Basic | Microsoft Teams Rooms Pro |\n| **Join Teams meetings with 1-touch, proximity, and meeting ID** | ✔ | ✔ |",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
+      "n": 43,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The licences comparison includes joining Teams meetings with 1-touch, proximity and meeting ID in Teams Rooms Pro.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
+      "quote": "| - | Microsoft Teams Rooms Basic | Microsoft Teams Rooms Pro |\n| **Join Teams meetings with 1-touch, proximity, and meeting ID** | ✔ | ✔ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "A shared meeting device requires a Teams Rooms licence.",
@@ -460,7 +515,7 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 45,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Enterprise per-user Microsoft 365 suite licences are not authorised for shared meeting devices.",
@@ -471,153 +526,175 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "Microsoft has not published a separate licence specifically for attendee proximity join in events.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams Rooms attendee proximity join events licence Basic Pro pricing meter. Opened rooms/rooms-licensing and meetings-events-feature-comparison; they give general proximity entitlements and a Pro event requirement, but no separate proximity-in-events licence.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "Microsoft has not published a separate meter or charge for attendee proximity join in events.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams Rooms attendee proximity join events licence Basic Pro pricing meter. Opened rooms/rooms-licensing, rooms/proximity-join and meetings-events-feature-comparison; read roadmap and MC1461157; no event-proximity meter or charge stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The events comparison says only Teams Rooms on Windows with Pro are officially supported as presenters or attendees.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison",
-      "quote": "Only Microsoft Teams Rooms on Windows with a Pro license are officially supported to join meetings and events as a presenter or as an attendee.",
-      "severity": "minor",
-      "fix": "Add after the quoted requirement: 'However, the same comparison table lists Teams Rooms on Android as able to join as an attendee or presenter, and MC1461157 names both Windows and Android for this rollout.' This explicitly reports the conflicting support statements rather than implying only the roadmap supports Android."
-    },
-    {
-      "n": 44,
-      "where": "Cost and licensing; Open questions",
-      "type": "applicability",
-      "claim": "Microsoft has not said whether the published Teams Rooms Pro event-attendee requirement governs proximity join.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison",
-      "quote": "Only Microsoft Teams Rooms on Windows with a Pro license are officially supported to join meetings and events as a presenter or as an attendee.",
-      "severity": "blocker",
-      "fix": "Remove 'Microsoft has not said whether that statement governs proximity join.' Replace the licensing open question with 'How will Microsoft reconcile the comparison footnote requiring Windows with Pro for event attendees with its table and MC1461157, which include Android? Watch the meetings and events comparison and MC1461157.' The published requirement covers Windows Rooms joining as event attendees without excluding proximity join; do not present Basic event entitlement as merely an unaddressed join-method question."
-    },
-    {
-      "n": 45,
-      "where": "Cost and licensing; Governance guidance: Before rollout",
-      "type": "licensing",
-      "claim": "Remote configuration through Pro Management is listed for Teams Rooms Pro, not Basic.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
-      "quote": "| - | Microsoft Teams Rooms Basic | Microsoft Teams Rooms Pro | ... | Remote configuration |  | ✔ |",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 46,
-      "where": "controls[0].ui",
-      "type": "admin-path",
-      "claim": "The Pro Management portal route to the Bluetooth setting is Rooms/ Phones > device > Settings > Device.",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A separate licence specific to attendee proximity join in events is not yet published.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
-      "quote": "Go to Rooms/ Phones in the left navigation and click the device you want to configure. Select the Settings tab in the device panel. ... browse settings categories (About, Account, Meetings, Device, Network, etc.).",
-      "severity": "minor",
-      "fix": "Extend controls[0].ui.path to 'Rooms/ Phones > device > Settings > Device > Allow Bluetooth beaconing'. The existing route stops on the correct settings category; https://learn.microsoft.com/microsoftteams/rooms/device-settings-available lists the final toggle under Device and is already cited."
+      "source": null,
+      "quote": "Searched: Teams Rooms proximity join Teams events attendee feature license pricing meter; opened /microsoftteams/rooms/rooms-licensing and /microsoftteams/meetings-events-feature-comparison; existing Basic/Pro and Windows-with-Pro rules found, no separate proximity-in-events licence.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 47,
-      "where": "controls[0].api",
-      "type": "command",
-      "claim": "SkypeSettings.xml provides the BluetoothAdvertisementEnabled element for Windows room configuration.",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter or separate charge specific to attendee proximity join in events is published.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/xml-config-file",
-      "quote": "<BluetoothAdvertisementEnabled>true</BluetoothAdvertisementEnabled> ... | <BluetoothAdvertisementEnabled> | Boolean ❷ | First ❶ | Enabled by default. |",
+      "source": null,
+      "quote": "Searched: Teams Rooms proximity join Teams events attendee feature license pricing meter; opened /microsoftteams/rooms/rooms-licensing, /microsoftteams/rooms/proximity-join and /microsoftteams/meetings-events-feature-comparison; read roadmap and MC1461157; no feature-specific meter or charge.",
       "severity": null,
       "fix": null
     },
     {
       "n": 48,
-      "where": "controls[0].note; Governance controls",
-      "type": "default",
-      "claim": "The Windows Device category contains Allow Bluetooth beaconing, enabled by default.",
+      "where": "Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "The meetings and events comparison footnote says only Teams Rooms on Windows with Pro are officially supported as presenters or attendees.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/device-settings-available",
-      "quote": "### Device ... | Allow Bluetooth beaconing | Toggle | Enabled by default. |",
+      "source": "https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison",
+      "quote": "Only Microsoft Teams Rooms on Windows with a Pro license are officially supported to join meetings and events as a presenter or as an attendee.",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The Windows Device category contains Ultrasound beaconing.",
+      "where": "Cost and licensing; Open questions",
+      "type": "availability",
+      "claim": "The same comparison table lists Teams Rooms on Android as able to join as attendees or presenters, despite its Windows-only footnote.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/device-settings-available",
-      "quote": "| Ultrasound beaconing | Toggle | Enabled by default. | Enables ultrasound-based proximity detection.",
+      "source": "https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison",
+      "quote": "Microsoft Teams Rooms (Android) can join as an attendee or presenter\nOnly Microsoft Teams Rooms on Windows with a Pro license are officially supported to join meetings and events as a presenter or as an attendee.",
       "severity": null,
       "fix": null
     },
     {
       "n": 50,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Windows ultrasound beaconing exposes Automatically accept proximity-based meeting invitations.",
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Remote configuration in the Pro Management portal is listed for Teams Rooms Pro, not Basic.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/device-settings-available",
-      "quote": "| Automatically accept proximity-based meeting invitations | Checkbox | Enabled by default. | When selected, supported proximity-based meeting invitations are automatically accepted. This setting appears when Ultrasound beaconing is enabled.",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
+      "quote": "| - | Microsoft Teams Rooms Basic | Microsoft Teams Rooms Pro |\n| **Remote configuration** |  | ✔ |",
       "severity": null,
       "fix": null
     },
     {
       "n": 51,
-      "where": "Governance guidance: Before rollout; Governance controls",
-      "type": "behaviour",
-      "claim": "Android Bluetooth beaconing is managed in Teams admin center Teams Rooms on Android configuration profiles.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/proximity-join",
-      "quote": "Management of proximity features for Teams Rooms on Android is available in Teams Admin Center, Teams Rooms on Android Configuration Profiles: - Bluetooth beaconing",
-      "severity": null,
-      "fix": null
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Rooms/ Phones > device > Settings > Device > Allow Bluetooth beaconing is documented by the row's pro-portal-settings link.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+      "quote": "Use the left navigation in the device panels to browse settings categories (About, Account, Meetings, Device, Network, etc.).\nModify the desired settings using the form fields.",
+      "severity": "blocker",
+      "fix": "Keep the printed path, which is supported by the portal navigation page together with the Device table. Set controls[0].ui.docs and its rendered Learn link to https://learn.microsoft.com/microsoftteams/rooms/device-settings-available?tabs=WindowsSettings: that page documents Device > Allow Bluetooth beaconing. The current link gives generic navigation but neither names nor documents this setting."
     },
     {
       "n": 52,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Android Bluetooth proximity settings are also available in Pro Management and local device settings.",
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "SkypeSettings.xml exposes the BluetoothAdvertisementEnabled element for Bluetooth beaconing configuration.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/proximity-join",
-      "quote": "The settings for ultrasound don't apply to Teams Room on Android but the Bluetooth settings are available for those devices. ... Pro Management Portal ... Allow Bluetooth beaconing ... Local device settings ... Allow Bluetooth beaconing",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/xml-config-file",
+      "quote": "<BluetoothAdvertisementEnabled>true</BluetoothAdvertisementEnabled>\n| `<BluetoothAdvertisementEnabled>` | Boolean ❷ | First ❶ | Enabled by default. |",
       "severity": null,
       "fix": null
     },
     {
       "n": 53,
-      "where": "Governance controls: Roles",
-      "type": "role",
-      "claim": "Configuring devices through Pro Management requires the necessary Rooms Management RBAC permissions.",
+      "where": "controls[0].note; Governance controls",
+      "type": "default",
+      "claim": "Allow Bluetooth beaconing is a Windows Device-category toggle enabled by default.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
-      "quote": "provided you have the necessary role-based access control permissions for Rooms Management.",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/device-settings-available",
+      "quote": "Teams Rooms on Windows\n### Device\n| Allow Bluetooth beaconing | Toggle | Enabled by default. | When checked, proximity-based meeting invitations using Bluetooth are automatically accepted.",
       "severity": null,
       "fix": null
     },
     {
       "n": 54,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Pro Management portal exposes an Ultrasound beaconing setting for Windows devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+      "quote": "Under Device, turn on Ultrasound beaconing and, if needed, Automatically accept proximity-based meeting invitations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Windows ultrasound configuration includes Automatically accept proximity-based meeting invitations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/device-settings-available",
+      "quote": "When selected, supported proximity-based meeting invitations are automatically accepted. This setting appears when Ultrasound beaconing is enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Android Bluetooth beaconing can be managed through Teams admin center Teams Rooms on Android configuration profiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/proximity-join",
+      "quote": "Management of proximity features for Teams Rooms on Android is available in Teams Admin Center, Teams Rooms on Android Configuration Profiles:\n- Bluetooth beaconing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Bluetooth proximity settings for Android are also available in the Pro Management portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/proximity-join",
+      "quote": "The settings for ultrasound don't apply to Teams Room on Android but the Bluetooth settings are available for those devices.\nManagement of proximity features is available in the Teams Rooms Pro Management portal:\n- Allow Bluetooth beaconing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Android Bluetooth proximity settings are also available in local device settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/proximity-join",
+      "quote": "The settings for ultrasound don't apply to Teams Room on Android but the Bluetooth settings are available for those devices.\nManagement of proximity features is available in settings on the device:\n- Allow Bluetooth beaconing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "Configuring device settings in the Pro Management portal requires Rooms Management role-based access control permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
+      "quote": "you can configure settings for Microsoft Teams devices (Teams Rooms on Windows, Teams Rooms on Android, Teams Panels and Teams Phones), provided you have the necessary role-based access control permissions for Rooms Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "The SkypeSettings.xml configuration route applies to Teams Rooms on Windows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/xml-config-file",
+      "quote": "At startup, if a Microsoft Teams Rooms console finds an XML file named SkypeSettings.xml located at `C:\\Users\\Skype\\AppData\\Local\\Packages\\Microsoft.SkypeRoomSystem_8wekyb3d8bbwe\\LocalState`, it applies the configuration settings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
       "where": "controls[0].note; Governance controls",
       "type": "behaviour",
-      "claim": "Learn recommends the portal's individual and bulk settings options instead of XML configuration.",
+      "claim": "Learn recommends the portal's individual and bulk configuration options instead of XML.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/xml-config-file",
       "quote": "We recommend using the individual and bulk settings configuration options within the Teams Rooms Pro Management Portal instead of the XML configuration.",
@@ -625,7 +702,7 @@
       "fix": null
     },
     {
-      "n": 55,
+      "n": 62,
       "where": "Governance controls",
       "type": "behaviour",
       "claim": "Microsoft says it no longer publishes new XML settings.",
@@ -636,35 +713,35 @@
       "fix": null
     },
     {
-      "n": 56,
+      "n": 63,
       "where": "Why it matters; Governance controls; Open questions",
       "type": "absence",
-      "claim": "No tenant-wide or event-specific proximity join switch is documented; the listed controls are per-device settings.",
+      "claim": "No tenant-wide or event-specific attendee proximity-join switch is documented; the documented proximity controls are per device.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams Rooms proximity join tenant switch PowerShell Microsoft Graph BluetoothAdvertisementEnabled; Teams Rooms attendee proximity join events admin setting Set-CsTeamsMeetingPolicy. Opened proximity-join, pro-portal-settings, XML and Set-CsTeamsMeetingPolicy; no dedicated switch found.",
+      "quote": "Searched: Teams Rooms proximity join events admin disable tenant switch PowerShell BluetoothAdvertisementEnabled; opened /microsoftteams/rooms/proximity-join, /microsoftteams/rooms/pro-portal-settings and /microsoftteams/rooms/xml-config-file; found device controls, no tenant or event switch.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 57,
-      "where": "Governance guidance: Before rollout",
-      "type": "consistency",
-      "claim": "The checklist asks administrators to take stock of room-account licences, but the controls table has no licensing row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Confirm which Teams Rooms licence (Basic or Pro) each room account holds ... Controls: Bluetooth beaconing on a Teams Rooms device",
-      "severity": "minor",
-      "fix": "Remove the checklist bullet 'Confirm which Teams Rooms licence (Basic or Pro) each room account holds, because remote configuration and the events footnote refer to Pro.' Its supporting licensing facts remain in Cost and licensing; do not add a new control row as part of this correction."
+      "n": 64,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is included in an existing Teams Rooms licence, with the documented event-support qualification stated in the body.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
+      "quote": "The following table shows the services included in each Teams Rooms license.\n| **Join Teams meetings with 1-touch, proximity, and meeting ID** | ✔ | ✔ |",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-22T04:51:16.270Z",
+    "at": "2026-11-22T05:47:51.208Z",
     "summary": {
       "links": 10,
       "unreachable": 0,
       "uiPaths": 1,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 1,
       "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
@@ -732,9 +809,12 @@
           "Rooms/ Phones",
           "device",
           "Settings",
-          "Device"
+          "Device",
+          "Allow Bluetooth beaconing"
         ],
-        "missing": []
+        "missing": [
+          "Allow Bluetooth beaconing"
+        ]
       },
       {
         "index": 0,
@@ -748,5 +828,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-22",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

@@ -59,7 +59,7 @@ controls:
     scope: "other"
     ui:
       surface: "Teams Rooms Pro Management portal"
-      path: "Rooms/ Phones > device > Settings > Device"
+      path: "Rooms/ Phones > device > Settings > Device > Allow Bluetooth beaconing"
       docs: "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings"
     api:
       kind: "other"
@@ -75,19 +75,23 @@ changes:
     note: "First briefing: attendee proximity join for Teams events is rolling out, on by default per MC1461157, with per-device Bluetooth beaconing as the documented control."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 57 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected the events licensing statement to the comparison footnote's Windows with Pro requirement, noted the Android listing conflict, removed a licence checklist step and completed the portal path."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 64 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 55
+  claims: 64
+  confirmed: 63
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "d66881f18b5c96ba258ecc3f0b5dd7f6"
+  contradicted: 1
+  attempts: 2
+  hash: "c8baab7a41e3c64513ae4c23481cf6f1"
 ---
 
 ## What's changing
@@ -133,7 +137,7 @@ Microsoft Learn's [Teams Rooms licences page](https://learn.microsoft.com/micros
 
 The roadmap record, MC1461157 and the Proximity Join page name no separate licence, meter or charge for attendee proximity join in events. A licence or meter specific to this feature is not yet published.
 
-One qualification applies to rooms in events generally. The [meetings and events comparison](https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison) says only Teams Rooms on Windows with a Pro licence are officially supported to join meetings and events as a presenter or as an attendee. Microsoft has not said whether that statement governs proximity join.
+One qualification applies to rooms in events generally. The [meetings and events comparison](https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison) says only Teams Rooms on Windows with a Pro licence are officially supported to join meetings and events as a presenter or as an attendee. However, the same comparison table lists Teams Rooms on Android as able to join as an attendee or presenter, and MC1461157 names both Windows and Android for this rollout.
 
 Indirect costs are admin time, user communication and helpdesk load. Remote configuration in the Teams Rooms Pro Management portal is listed for Teams Rooms Pro, not Basic.
 
@@ -152,7 +156,6 @@ Indirect costs are admin time, user communication and helpdesk load. Remote conf
 ### Before rollout
 
 - Check which Teams Rooms on Windows and Android have Bluetooth beaconing turned off, in the Teams Rooms Pro Management portal (control row 1) or, for Android, in Teams admin center configuration profiles, and decide whether each should stay off.
-- Confirm which Teams Rooms licence (Basic or Pro) each room account holds, because remote configuration and the events footnote refer to Pro.
 - Draft a short note for event organisers and regular attendees, as MC1461157 recommends, saying that nearby rooms can be added when joining events.
 
 ### At rollout
@@ -174,7 +177,7 @@ Indirect costs are admin time, user communication and helpdesk load. Remote conf
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Bluetooth beaconing on a Teams Rooms device, which proximity join uses to find the room</strong><br><small class="controls__note">The Allow Bluetooth beaconing toggle is in the Device category for Windows (enabled by default). The XML file applies to Teams Rooms on Windows; Learn recommends the portal instead.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Rooms/ Phones › device › Settings › Device <a href="https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>SkypeSettings.xml element &lt;BluetoothAdvertisementEnabled&gt;</code> <a href="https://learn.microsoft.com/microsoftteams/rooms/xml-config-file" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Bluetooth beaconing on a Teams Rooms device, which proximity join uses to find the room</strong><br><small class="controls__note">The Allow Bluetooth beaconing toggle is in the Device category for Windows (enabled by default). The XML file applies to Teams Rooms on Windows; Learn recommends the portal instead.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Rooms/ Phones › device › Settings › Device › Allow Bluetooth beaconing <a href="https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>SkypeSettings.xml element &lt;BluetoothAdvertisementEnabled&gt;</code> <a href="https://learn.microsoft.com/microsoftteams/rooms/xml-config-file" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -189,7 +192,7 @@ The documented controls are per device, not a tenant-wide or event-specific swit
 
 - Does attendee proximity join in events follow the same tenant, trusted-organisation and lobby rules that the Proximity Join page gives for meetings? Watch the Proximity Join page and MC1461157.
 - Will Microsoft document an admin setting specific to attendee proximity join in events, or does Bluetooth and ultrasound beaconing remain the only documented control? Watch the Learn Proximity Join page.
-- Does the Teams Rooms Pro requirement in the events comparison footnote apply to proximity join, or can Teams Rooms Basic rooms be used? Watch the meetings and events comparison and the licences page.
+- How will Microsoft reconcile the comparison footnote requiring Windows with Pro for event attendees with its table and MC1461157, which include Android? Watch the meetings and events comparison and MC1461157.
 - What attendee information do events share with the room when it is added, and how does it appear in the event roster or reports? Watch Message center and the events documentation.
 
 <!-- rationale
@@ -201,9 +204,5 @@ impact: Medium. It is on by default for people who join Teams events and use Tea
 <!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing; Open questions / applicability: Microsoft has not said whether the published Teams Rooms Pro event-attendee requirement governs proximity join. | Found: Only Microsoft Teams Rooms on Windows with a Pro license are officially supported to join meetings and events as a presenter or as an attendee. | Fix: Remove 'Microsoft has not said whether that statement governs proximity join.' Replace the licensing open question with 'How will Microsoft reconcile the comparison footnote requiring Windows with Pro for event attendees with its table and MC1461157, which include Android? Watch the meetings and events comparison and MC1461157.' The published requirement covers Windows Rooms joining as event attendees without excluding proximity join; do not present Basic event entitlement as merely an unaddressed join-method question. | Source: https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing / licensing: The events comparison says only Teams Rooms on Windows with Pro are officially supported as presenters or attendees. | Found: Only Microsoft Teams Rooms on Windows with a Pro license are officially supported to join meetings and events as a presenter or as an attendee. | Fix: Add after the quoted requirement: 'However, the same comparison table lists Teams Rooms on Android as able to join as an attendee or presenter, and MC1461157 names both Windows and Android for this rollout.' This explicitly reports the conflicting support statements rather than implying only the roadmap supports Android. | Source: https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison
-- [supported, minor] controls[0].ui / admin-path: The Pro Management portal route to the Bluetooth setting is Rooms/ Phones > device > Settings > Device. | Found: Go to Rooms/ Phones in the left navigation and click the device you want to configure. Select the Settings tab in the device panel. ... browse settings categories (About, Account, Meetings, Device, Network, etc.). | Fix: Extend controls[0].ui.path to 'Rooms/ Phones > device > Settings > Device > Allow Bluetooth beaconing'. The existing route stops on the correct settings category; https://learn.microsoft.com/microsoftteams/rooms/device-settings-available lists the final toggle under Device and is already cited. | Source: https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks administrators to take stock of room-account licences, but the controls table has no licensing row. | Found: Confirm which Teams Rooms licence (Basic or Pro) each room account holds ... Controls: Bluetooth beaconing on a Teams Rooms device | Fix: Remove the checklist bullet 'Confirm which Teams Rooms licence (Basic or Pro) each room account holds, because remote configuration and the events footnote refer to Pro.' Its supporting licensing facts remain in Cost and licensing; do not add a new control row as part of this correction.
+- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: Rooms/ Phones > device > Settings > Device > Allow Bluetooth beaconing is documented by the row's pro-portal-settings link. | Found: Use the left navigation in the device panels to browse settings categories (About, Account, Meetings, Device, Network, etc.). Modify the desired settings using the form fields. | Fix: Keep the printed path, which is supported by the portal navigation page together with the Device table. Set controls[0].ui.docs and its rendered Learn link to https://learn.microsoft.com/microsoftteams/rooms/device-settings-available?tabs=WindowsSettings: that page documents Device > Allow Bluetooth beaconing. The current link gives generic navigation but neither names nor documents this setting. | Source: https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings
 -->

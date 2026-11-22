@@ -106,19 +106,23 @@ changes:
     note: "Corrected after verification: default state is now on and licensing included, per Learn; spending-policy path completed; preview PowerShell setting marked historical; permission and sensitivity-label statements added from Learn."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 66 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-22"
+    note: "Corrected after verification: tenant-wide Restricted Content Discovery wording narrowed to what Learn states; Site AI and credit-monitoring checklist items aligned with the controls table."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 77 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 63
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 2
-  hash: "67e16d25b623d102a44e9ab753999e6e"
+  claims: 77
+  confirmed: 77
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "afea381d353fff3d577f4230faf54997"
 ---
 
 ## What's changing
@@ -142,7 +146,7 @@ For a service owner, the practical effect is that the contents of SharePoint lis
 - Learn's [Purview considerations page](https://learn.microsoft.com/purview/ai-m365-copilot-considerations) says SharePoint site pages and lists do not inherit or display their container's sensitivity label in Copilot.
 
 **Security & identity**
-- Use of Copilot in SharePoint depends on a Microsoft 365 Copilot licence per user, so licence assignment is the user-level gate. Site owners have a Site AI panel that can hide the Copilot button for visitors on their own site; a tenant administrator who wants a uniform position has to use Restricted Content Discovery.
+- Use of Copilot in SharePoint depends on a Microsoft 365 Copilot licence per user, so licence assignment is the user-level gate. Site owners have a Site AI panel that can hide the Copilot button for visitors on their own site; a tenant administrator can use [Restricted Content Discovery](https://learn.microsoft.com/sharepoint/restricted-content-discovery) to remove Copilot entry points from selected sites.
 
 **Autonomy & actions**
 - The same page lists creating and editing pages, libraries and lists as capabilities of Copilot in SharePoint, so the agent that answers questions about a list is documented as able to change lists too. The roadmap item describes retrieval only; confirm that the question-answering path is read-only.
@@ -172,7 +176,7 @@ Learn says the retiring preview PowerShell parameters need a Microsoft Copilot l
 - Confirm in the Message center and on the roadmap item whether the Knowledge Agent lists capability is the same as Copilot in SharePoint, since no Learn page names it.
 - Identify the SharePoint sites whose lists hold sensitive registers, and decide which should have Restricted Content Discovery turned on (SharePoint admin center, see the controls table).
 - Check which users hold a Microsoft 365 Copilot licence, as it is the stated prerequisite (Microsoft 365 admin center).
-- Note that the preview `KnowledgeAgentScope` settings were honored until 1 November 2026; manage availability through Site AI settings and Restricted Content Discovery.
+- Note that the preview `KnowledgeAgentScope` settings were honored until 1 November 2026; manage availability through Restricted Content Discovery.
 
 ### At rollout
 - Turn on Restricted Content Discovery for sites that need review before Copilot can be used on them, accepting that it removes Copilot entry points from the whole site.
@@ -180,7 +184,6 @@ Learn says the retiring preview PowerShell parameters need a Microsoft Copilot l
 - Tell site owners about the Site AI panel (**Settings** > **Site AI**) so they know which options they hold for their own sites.
 
 ### After rollout
-- Review Copilot Credit use in **Cost management** by spending policy, user and service, as Learn's [monitoring page](https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending) describes.
 - Re-check the Learn page for changes to availability settings and to the included-versus-credits split.
 
 ## Governance controls
@@ -211,14 +214,4 @@ The `KnowledgeAgent` parameters are the historical preview availability controls
 risk: Medium. Copilot in SharePoint is documented as working across lists and is covered by Restricted Content Discovery and a site-level panel; Learn says Copilot only summarizes or references content that the user is already authorized to access.
 cost: Low. The Learn page lists questions across lists under capabilities included with the Microsoft 365 Copilot licence; only advanced work draws Copilot Credits, and no rate specific to lists is published.
 impact: Medium. Users with a Microsoft 365 Copilot licence are the people the Learn page says Copilot in SharePoint is for, so list owners and the people who ask questions of lists will notice first.
--->
-
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Risk assessment: Security & identity / applicability: A tenant administrator who wants a uniform position has to use Restricted Content Discovery. | Found: Searched: "Copilot in SharePoint" "tenant" disable availability control. Read Get started with Copilot in SharePoint, Restricted Content Discovery and Manage access to agents in SharePoint excerpts; none states that RCD is the mandatory or exclusive route to uniform governance. | Fix: Replace 'a tenant administrator who wants a uniform position has to use Restricted Content Discovery' with 'a tenant administrator can use Restricted Content Discovery to remove Copilot entry points from selected sites', supported by https://learn.microsoft.com/sharepoint/restricted-content-discovery.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Restricted Content Discovery is at SharePoint admin center > Sites > Active sites > site > Settings > Restrict content from Microsoft Copilot. | Found: In the SharePoint admin center, expand Sites and select Active sites. ... Select the site you want to configure. ... Open the Settings tab, and then turn Restrict content from Microsoft Copilot on. | Fix: Keep the cited path, but add to the row note: 'Microsoft's deployment guidance instead labels the setting Restrict content discovery > On.' Cite https://learn.microsoft.com/microsoft-365/copilot/get-ready-copilot-sharepoint-advanced-management#step-3-prevent-accidental-oversharing, which says 'Under Restrict content discovery, select On.' | Source: https://learn.microsoft.com/sharepoint/restricted-content-discovery
-- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist tells readers to manage availability through Site AI settings, but the controls table has no Site AI row. | Found: manage availability through Site AI settings and Restricted Content Discovery. ... Table rows: Restricted Content Discovery; historical preview availability; spending-policy limits; licence assignment. | Fix: The Before rollout instruction to manage availability through Site AI settings has no corresponding row. Replace its final clause with 'manage availability through Restricted Content Discovery.' Retain the documented Site AI explanation in Governance controls; do not add a row.
-- [contradicted, minor] Governance guidance: After rollout; controls / consistency: The checklist asks for Credit usage monitoring, but the controls table has no usage-reporting row. | Found: Review Copilot Credit use in Cost management by spending policy, user and service ... Table rows: Restricted Content Discovery; historical preview availability; spending-policy limits; licence assignment. | Fix: The 'Review Copilot Credit use in Cost management' checklist step has no corresponding reporting row. Remove that checklist bullet; its reporting fact remains verified. Do not add a control row as part of this correction.
 -->

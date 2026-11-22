@@ -1,0 +1,708 @@
+{
+  "slug": "m365-admin-center-new-dedicated-license-requests-page-in-m365-admin-center",
+  "roadmapId": 561206,
+  "title": "Microsoft 365 admin center: dedicated License Requests page for Microsoft 365 Copilot",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 49: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "5 blocking findings (claims 22, 23, 34, 47, 48)"
+    ]
+  },
+  "counts": {
+    "claims": 52,
+    "confirmed": 44,
+    "unconfirmed": 1,
+    "contradicted": 7,
+    "blocker": 5,
+    "major": 0,
+    "minor": 6
+  },
+  "summary": "Hold: the page overstates gaps in documented Copilot request-management roles and omits the stronger role required for partner administrators acting on behalf of customers. Its cost rationale incorrectly says Copilot licences are bought separately in all cases, and its assurance that nothing is configured conflicts with its own statement that required admin action is unknown.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "A new dedicated Microsoft 365 admin center page lets admins discover, review and manage user-submitted Microsoft 365 Copilot licence requests.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We are introducing a new dedicated License Requests page in the Microsoft 365 Admin Center to help admins more easily discover, review, and manage Microsoft 365 Copilot license requests submitted by users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; controls[0]; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Admins can approve or deny requests directly from the new page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Approve or deny requests directly from the License Requests page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the sole cloud listed, with GCC, GCC High and DoD not listed rather than explicitly excluded.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap was modified at 2026-07-28T22:43:45.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-07-28T22:43:45\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The new page appears in the September 23, 2026 release-notes section, later than the roadmap target month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "## September 23, 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "That release-notes section covers updates released between August 26, 2026 and September 22, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Updates released between August 26, 2026, and September 22, 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The page centralizes all Copilot licence requests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "This new page centralizes all Copilot license requests, improving visibility and management efficiency.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Previously, admins had to locate licence requests through multiple menus or notifications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Previously, admins had to locate license requests through multiple menus or notifications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The new page supports sorting requests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "The page supports sorting, filtering, and bulk actions on license requests",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Admins can filter pending Copilot requests by user or date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Review pending Microsoft 365 Copilot license requests and use filters to sort by user or date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The page supports bulk actions on requests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "The page supports sorting, filtering, and bulk actions on license requests",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].ui; What's changing; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Select License Requests directly from the Microsoft 365 admin center navigation menu.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Open the Microsoft 365 Admin Center and select 'License Requests' from the navigation menu.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].api; Open questions",
+      "type": "absence",
+      "claim": "No API or command for reviewing, approving or denying requests on the new page is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph API PowerShell approve deny self-service license requests Microsoft 365 requests; \"license requests\" \"Microsoft Graph\" \"beta\" approve deny. Read request-management and release notes; Graph results concern assignment, Intune or PIM, not this queue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[1].ui; What's changing; Risk assessment; Governance controls",
+      "type": "admin-path",
+      "claim": "Today's self-service request review and approval process is reached through Billing > Licenses > Requests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/licenses/manage-license-requests",
+      "quote": "On the Licenses page, select the Requests tab. Select the row that contains the request you want to review.",
+      "severity": "minor",
+      "fix": "Keep the documented route, but add to controls[1].note: 'To act on a request, select its row, then use Approve the selected license requests and Approve, Approve x - Reject y, or Reject.' The path currently stops on the correct request-list page."
+    },
+    {
+      "n": 20,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No automation for approving or denying self-service requests on the existing Requests tab is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph API PowerShell approve deny self-service license requests Microsoft 365 requests; \"license requests\" \"Microsoft Graph\" \"beta\" approve deny. Read manage-license-requests; Graph assignment and cloud-licensing excerpts do not document queue approvals.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "The existing request-management article scopes itself to self-service purchased products and services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/licenses/manage-license-requests",
+      "quote": "The information in this article only applies to self-service purchased products and services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[1].note; Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The existing Requests tab tasks require at least User Administrator or License Administrator, without a partner qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/licenses/manage-license-requests",
+      "quote": "If you're a partner who's an Admin On Behalf Of (AOBO) a customer, you must have a role that's set to Global Administrator to complete the tasks in this article.",
+      "severity": "blocker",
+      "fix": "Add to both statements: 'Partners acting as Admin On Behalf Of (AOBO) a customer require Global Administrator.' Keep the User Administrator or License Administrator requirement for other administrators."
+    },
+    {
+      "n": 23,
+      "where": "controls[0].note; Risk assessment; Scope; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented roles for managing the Copilot requests shown by the new page.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/partner-center/insights/growth-opportunities-data/copilot",
+      "quote": "Global admins, license admins, and user admins can manage these requests seamlessly in the Microsoft 365 Admin Center.",
+      "severity": "blocker",
+      "fix": "Replace the broad role gap with: 'Microsoft documents Global admins, license admins, and user admins as able to manage Microsoft 365 Copilot licence requests in the Microsoft 365 admin center; the release note does not give page-specific permissions.' Cite https://learn.microsoft.com/partner-center/insights/growth-opportunities-data/copilot. Narrow the open question to page-specific permissions."
+    },
+    {
+      "n": 24,
+      "where": "controls[0].note; Scope; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No tenant switch that turns this dedicated page on or off is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"License Requests\" \"Copilot\" \"default\" \"switch\"; \"License Requests\" \"Microsoft 365\" \"configure\" \"enable\". Read release notes, admin-center overview and Copilot settings search excerpt; no switch for this page was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: defaultState; Why it matters; rationale: risk",
+      "type": "absence",
+      "claim": "The page's default state and any required enablement action are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"License Requests\" \"Copilot\" \"default\" \"switch\"; \"License Requests\" \"Microsoft 365\" \"configure\" \"enable\". Read release notes and admin-center overview; availability is described, but neither specifies an enablement default for this page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn has no dedicated article about this new page as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"License Requests\" \"Microsoft 365\" page roles default enable switch license pricing; Microsoft 365 admin center License Requests dedicated page Billing Licenses replaces assignment license pricing. Read release notes and manage-license-requests; no dedicated new-page article surfaced.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; controls[1].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not explicitly explained how the new page relates to the older Billing > Licenses > Requests tab.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 admin center License Requests dedicated page Billing Licenses replaces assignment license pricing. Read release notes, manage-license-requests and November announcements; none explicitly maps the new page to the older tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not said whether introducing the new page retains or replaces the old tab.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 admin center License Requests dedicated page Billing Licenses replaces assignment license pricing. Read release notes and manage-license-requests; the old tab is still documented, but its disposition under this change is not explained.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Users who hit Copilot Chat limits can request a Microsoft 365 Copilot licence from an admin who can approve or deny it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/partner-center/announcements/2026-november",
+      "quote": "In most organizations, the limit notification includes an option to upgrade. Users can select it to request a Microsoft 365 Copilot license from their admin, who can approve or deny requests in the Microsoft 365 admin center.",
+      "severity": "minor",
+      "fix": "Replace the sentence with: 'Microsoft's November 2026 partner announcement says that, in most organisations, Copilot Chat limit notifications include an upgrade option through which users can request a Microsoft 365 Copilot licence; admins can approve or deny it in the Microsoft 365 admin center.'"
+    },
+    {
+      "n": 30,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "applicability",
+      "claim": "The direct-purchase setting affects whether users may see a purchase option in the Copilot upgrade notification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/partner-center/announcements/2026-november",
+      "quote": "If the organization allows users to buy licenses directly, users might also see an option to purchase a license. Admins can turn off direct purchases for each product.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "The self-service purchase control is reached through Settings > Org settings > Services > Self-service trials and purchases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
+      "quote": "On the Services tab of the Org settings page, select Self-service trials and purchases. To manage the settings for a specific product, select the product name.",
+      "severity": "minor",
+      "fix": "Extend controls[2].ui.path to 'Settings > Org settings > Services > Self-service trials and purchases > product > Do not allow' for blocking purchases and trials. The current route stops early on the correct page; the cited article supplies these remaining steps."
+    },
+    {
+      "n": 32,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "The MSCommerce call Update-MSCommerceProductPolicy -PolicyId AllowSelfServicePurchase -ProductId <ProductID> -Value \"Disabled\" blocks purchases and trials for the selected product.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell",
+      "quote": "Update-MSCommerceProductPolicy -PolicyId AllowSelfServicePurchase -ProductId <ProductID> -Value \"Disabled\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[2].note",
+      "type": "role",
+      "claim": "The portal steps for allowing or blocking self-service purchases require Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
+      "quote": "You must be a Global Administrator to do the following steps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[2].note",
+      "type": "role",
+      "claim": "Changing MSCommerce product policies requires Global or Billing Administrator without a partner qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell",
+      "quote": "Partners who are Admins On Behalf Of (AOBO) a customer must have a role that's set to Global Administrator in order to manage and disable self-service purchases in the Microsoft 365 admin center and via PowerShell.",
+      "severity": "blocker",
+      "fix": "Add to controls[2].note: 'Partners acting as Admin On Behalf Of (AOBO) a customer require Global Administrator for PowerShell as well as the portal.'"
+    },
+    {
+      "n": 35,
+      "where": "controls[2]; Governance controls",
+      "type": "applicability",
+      "claim": "AllowSelfServicePurchase is a per-product purchase and trial control, not a dedicated-page switch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell",
+      "quote": "The AllowSelfServicePurchase policy is managed on a per-product basis. Disabled | Users can't make self-service purchases or acquire trials for the product.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[2].note; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Microsoft Copilot appears in the documented self-service product list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell",
+      "quote": "| Microsoft Copilot | CFQ7TTC0MM8R | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.model and licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No entitlement licence specifically for access to the License Requests admin page is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"License Requests\" \"Copilot\" \"price\" \"license\" admin center. Read release notes, licence options, request-management and admin-center overview. Published Copilot user entitlements do not state a licence required to access this administrative page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no separate price or meter for the admin page, and the cited release note and request-management article list none.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"License Requests\" \"Copilot\" \"price\" \"license\" admin center. Read release notes, manage-license-requests and copilot-license-options; none lists a separate charge or usage meter for the request-management page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government and education plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-license-options",
+      "quote": "Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The licence-options article tells admins to confirm Product Terms eligibility before purchasing or assigning licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-license-options",
+      "quote": "Before you purchase or assign licenses, confirm eligibility in the Microsoft Product Terms",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The cited pages use Microsoft 365 Copilot and Microsoft Copilot respectively without explaining a feature-specific difference in these names.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"License Requests\" \"Copilot\" \"price\" \"license\" admin center; \"License Requests\" \"Copilot\" \"assigned\" \"approve\". Read release notes and licence options; neither explains a naming distinction for this request page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The assignment mechanics following approval on this dedicated page are not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"License Requests\" \"Copilot\" \"assigned\" \"approve\". Read release notes, request-management and growth-opportunities data. The older tab has assignment steps and Copilot requests can allocate unused seats; no dedicated-page approval mechanics are given.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No page-specific cost per approval is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"License Requests\" \"Copilot\" \"price\" \"license\" admin center. Read release notes, licence options and growth-opportunities data; unused licences or additional purchases are described, but no price per page approval is given.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "absence",
+      "claim": "The release note describes admin request decisions and names no agent behaviour, automated action or new user data access.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"License Requests\" \"Copilot\" audit data shows users product. Read the complete release-note entry: it describes admin review, filters and bulk actions, with no agent, autonomous operation or new user data access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Microsoft has not described the dedicated page's displayed data beyond requests, user/date filters and bulk actions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"License Requests\" \"Copilot\" audit data shows users product. Read release notes and manage-license-requests; the latter lists product, requester, date and status for the old tab, but no further dedicated-page data description was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The existing Requests tab supports an organisation's own request process through instructions shown to users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/licenses/manage-license-requests",
+      "quote": "If your organization has its own request process, you can use it instead. Create a policy with instructions to display to users when they request a license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "summary; Why it matters",
+      "type": "consistency",
+      "claim": "The summary assures readers that nothing is configured, while the body says Microsoft has not stated whether admin action is needed.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "summary: 'nothing is configured.' Why it matters: 'Microsoft has not stated whether the page is on by default or whether it needs any admin action'",
+      "severity": "blocker",
+      "fix": "Remove '; nothing is configured' from the summary. Keep the narrower statement that Microsoft has not stated the page's enablement requirements."
+    },
+    {
+      "n": 48,
+      "where": "rationale: cost; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft Copilot licences themselves are bought separately.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-license-options",
+      "quote": "Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans.",
+      "severity": "blocker",
+      "fix": "Replace 'Microsoft Copilot licences themselves are bought separately' in the cost rationale with 'Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible plans', matching the body and cited licence-options article."
+    },
+    {
+      "n": 49,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "Users only encounter this page through the outcome of a request.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"License Requests\" \"Copilot\" audit data shows users product; \"License Requests\" \"Copilot\" \"assigned\" \"approve\". Read release notes and November announcements; they describe an admin page and user requests but do not state this exclusive user interaction.",
+      "severity": "minor",
+      "fix": "Remove 'users only meet it through the outcome of a request' from the impact rationale. Retain 'Admins who handle licensing notice it.'"
+    },
+    {
+      "n": 50,
+      "where": "rationale: impact",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether the dedicated page changes anything users see.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"License Requests\" \"Copilot\" audit data shows users product; \"License Requests\" \"Copilot\" \"assigned\" \"approve\". Read release notes and November announcements; no user-visible change is attributed specifically to this dedicated admin page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "front matter: action",
+      "type": "consistency",
+      "claim": "The action rating review treats an admin-page redesign as optional, although the described page change is already launched.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "action: 'review'; What's changing: 'The Microsoft 365 admin center has a new dedicated License Requests page'; SCHEMA: 'If the change arrives anyway, it is prepare: that includes a redesign or replacement of something users already have'.",
+      "severity": "minor",
+      "fix": "Set action to 'prepare': this is an arriving admin-page change needing reviewer communication, not a capability whose existence depends on an admin opting in. Keep the low risk, cost and impact ratings."
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: Before rollout; controls",
+      "type": "consistency",
+      "claim": "The checklist asks admins to check their custom request-process setting, but the controls table has no row for that setting.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Check whether your organisation uses its own request process'; controls rows cover request review, today's request process list and self-service purchases, not the custom request-process setting.",
+      "severity": "minor",
+      "fix": "Remove the checklist bullet 'Check whether your organisation uses its own request process, which the Requests tab page documents as a message shown to users in place of requests.' No additional control row is required for this correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T05:47:47.918Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=561206",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/partner-center/announcements/2026-november",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/commerce/licenses/manage-license-requests",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/copilot-license-options",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Where admins review and approve or deny Microsoft 365 Copilot licence requests",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "reachable": true,
+        "segments": [
+          "License Requests"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Today's licence request process for blocked self-service products (not confirmed as the new page)",
+        "docs": "https://learn.microsoft.com/microsoft-365/commerce/licenses/manage-license-requests",
+        "reachable": true,
+        "segments": [
+          "Billing",
+          "Licenses",
+          "Requests"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether users can buy or start trials of a product themselves, per product",
+        "docs": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Org settings",
+          "Services",
+          "Self-service trials and purchases"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether users can buy or start trials of a product themselves, per product",
+        "docs": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell",
+        "reachable": true,
+        "token": "Update-MSCommerceProductPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

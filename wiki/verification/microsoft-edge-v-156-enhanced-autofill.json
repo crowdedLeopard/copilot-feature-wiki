@@ -1,0 +1,633 @@
+{
+  "slug": "microsoft-edge-v-156-enhanced-autofill",
+  "roadmapId": 554938,
+  "title": "Microsoft Edge: Enhanced Autofill adds passports and driver's licences on desktop",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "7 blocking findings (claims 16, 18, 22, 44, 45, 46, 48)"
+    ]
+  },
+  "counts": {
+    "claims": 49,
+    "confirmed": 41,
+    "unconfirmed": 0,
+    "contradicted": 8,
+    "blocker": 7,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "Hold: the guidance mistakes a site blocklist for an allowlist and omits that AutofillSettings does not apply to profiles signed in with a personal Microsoft account. The policy path and registry reference are correct, but the statements that its applicability and autofill sync are undocumented also need correction.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope; rationale: risk and impact",
+      "type": "record",
+      "claim": "The roadmap describes desktop Edge autofilling passports, driver's licences and other specialised forms in addition to saved addresses.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "For desktop users, Microsoft Edge can now autofill additional document types—including passports, driver’s licenses, and other specialized forms—on top of your saved addresses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; changes",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Scope; summary; changes",
+      "type": "availability",
+      "claim": "The Stable release notes list Enhanced Autofill under Feature Updates for Edge 156.0.4314.42.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
+      "quote": "Version 156.0.4314.42: October 22, 2026 (Stable) - Main Release\nFeature Updates\nEnhanced Autofill. For desktop users, Microsoft Edge can now autofill additional document types",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Scope",
+      "type": "date",
+      "claim": "Edge 156.0.4314.42's Stable main release is dated 22 October 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
+      "quote": "Version 156.0.4314.42: October 22, 2026 (Stable) - Main Release",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Open questions; rationale: impact",
+      "type": "absence",
+      "claim": "The sources do not state the arrival default specifically for Enhanced Autofill.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge Enhanced Autofill passports identity documents default enabled storage sync prerequisites; \"Enhanced Autofill\" \"default\" Microsoft Edge passports. Read Stable and Beta excerpts, AutofillSettings, AutofillAddressEnabled and privacy: generic saving defaults, no feature default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: licensing.model; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published which licence covers Enhanced Autofill.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge Enhanced Autofill licensing price limits Edge for Business license requirements; Microsoft Edge for Business FAQ cost license free Edge browser; \"Enhanced Autofill\" \"license\" \"price\". Read Stable notes, Edge enterprise FAQ and Edge for Business; no covering licence found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The Enhanced Autofill entry in the Edge 156 release notes names no licence, plan or meter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
+      "quote": "Enhanced Autofill. For desktop users, Microsoft Edge can now autofill additional document types—including passports, driver's licenses, and other specialized forms—on top of your saved addresses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The supplied roadmap record lists no licence.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "For desktop users, Microsoft Edge can now autofill additional document types—including passports, driver’s licenses, and other specialized forms—on top of your saved addresses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No price, credit rate or limit is published specifically for Enhanced Autofill.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge Enhanced Autofill licensing price limits Edge for Business license requirements; \"Enhanced Autofill\" \"license\" \"price\". Read Stable notes, Edge enterprise FAQ and Edge for Business; none names a feature price, credit rate or limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "No dedicated Microsoft Learn page for Enhanced Autofill was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge Enhanced Autofill passports identity documents default enabled storage sync prerequisites; \"Enhanced Autofill\" \"default\" Microsoft Edge passports. Read Stable notes, Beta/archive excerpts, privacy and policy pages; no dedicated feature page found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn describes Enhanced Autofill only through the cited Edge 156 release note entry and roadmap text.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-beta-channel#version-1480396712-april-16,-2026",
+      "quote": "Enhanced Autofill. For desktop users, Microsoft Edge can now autofill additional document types—including passports, driver’s licenses, and other specialized forms—on top of your saved addresses. Note: This is a controlled feature rollout.",
+      "severity": "blocker",
+      "fix": "Remove 'Microsoft Learn describes the feature only through that release note entry and the roadmap text.' Keep the narrower statement that no dedicated Learn page was found; other release-note entries also describe the feature."
+    },
+    {
+      "n": 17,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The cited Enhanced Autofill release note itself does not describe storage or roaming.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
+      "quote": "Enhanced Autofill. For desktop users, Microsoft Edge can now autofill additional document types—including passports, driver's licenses, and other specialized forms—on top of your saved addresses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Open questions: saved documents and sync",
+      "type": "absence",
+      "claim": "Where saved autofill documents are stored and whether they roam remains an undocumented question.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/legal/microsoft-edge/privacy#autofill",
+      "quote": "If you're signed in and syncing, your autofill data is synced across all versions of Microsoft Edge where you're signed in with the same credentials. When syncing, all autofill data is stored on encrypted Microsoft servers.",
+      "severity": "blocker",
+      "fix": "Replace the storage/sync gap with: 'Microsoft's privacy page states that, when signed in and syncing, autofill data syncs across Edge versions signed in with the same credentials, and all autofill data is stored on encrypted Microsoft servers when syncing.' Cite https://learn.microsoft.com/legal/microsoft-edge/privacy#autofill. Narrow the open question to 'Where are identity documents stored locally?'"
+    },
+    {
+      "n": 19,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Microsoft Learn names no admin role or prerequisite specifically for Enhanced Autofill.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge Enhanced Autofill passports identity documents default enabled storage sync prerequisites; \"Microsoft Edge\" \"identity documents\" \"prerequisites\" \"role\". Read Stable notes, policy pages and Edge for Business; no feature-specific role or prerequisite found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].ui; Governance controls table; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Group Policy exposes AutofillSettings at Administrative Templates > Microsoft Edge > Block AutoFill data types for specific sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofillsettings",
+      "quote": "GP name: Block AutoFill data types for specific sites\nGP path (Mandatory): Administrative Templates/Microsoft Edge",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].api; Governance controls table; Governance guidance: At rollout",
+      "type": "command",
+      "claim": "The Windows registry configuration uses SOFTWARE\\Policies\\Microsoft\\Edge and the AutofillSettings REG_SZ value, with identity_docs in blocked_types.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofillsettings",
+      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\nValue name: AutofillSettings\nValue type: REG_SZ\n{\"blocked_types\": [\"identity_docs\"], \"url_pattern\": \"*\"}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].note and scope; summary; Risk assessment; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "AutofillSettings can block identity documents for the browser profiles in scope without any account-type qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofillsettings",
+      "quote": "Per Profile: Yes\nApplies to a profile that is signed in with a Microsoft account: No",
+      "severity": "blocker",
+      "fix": "Add to controls[0].note and the prose recommending this policy: 'This policy does not apply to profiles signed in with a personal Microsoft account.' Qualify the summary's policy claim the same way. Retain the documented Group Policy path and registry value."
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The identity_docs category includes passports, driver's licences and national IDs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofillsettings",
+      "quote": "\"identity_docs\": Blocks filling and saving of identity documents (for example, passports, driver's licenses, and national IDs).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure; controls[0].governs",
+      "type": "behaviour",
+      "claim": "The identity_docs blocked type blocks filling identity document data on matching sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofillsettings",
+      "quote": "Setting this policy allows you to specify which AutoFill data types are blocked on specific URL patterns.\n\"identity_docs\": Blocks filling and saving of identity documents",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The identity_docs blocked type also blocks saving identity document data on matching sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofillsettings",
+      "quote": "\"identity_docs\": Blocks filling and saving of identity documents (for example, passports, driver's licenses, and national IDs).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure; Governance controls; rationale: risk",
+      "type": "default",
+      "claim": "Unconfigured AutofillSettings blocks no AutoFill data types by domain.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofillsettings",
+      "quote": "If you don't configure this policy, no AutoFill data types are blocked by domain.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The URL pattern * matches any URL with any scheme, port and path.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofillsettings",
+      "quote": "The wildcard * is supported and matches any URL with any scheme, port, and path.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].note; Risk assessment: Change & support; Scope",
+      "type": "availability",
+      "claim": "AutofillSettings is supported on Windows from Edge 154.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofillsettings",
+      "quote": "Windows: ≥ 154",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Change & support; Scope",
+      "type": "availability",
+      "claim": "AutofillSettings is supported on macOS from Edge 154.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofillsettings",
+      "quote": "macOS: ≥ 154",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Change & support; Scope",
+      "type": "availability",
+      "claim": "AutofillSettings is supported on Android from Edge 154.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofillsettings",
+      "quote": "Android: ≥ 154",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Change & support; Scope",
+      "type": "availability",
+      "claim": "AutofillSettings is supported on iOS from Edge 154.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofillsettings",
+      "quote": "iOS: ≥ 154",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].note; Scope; Governance controls table",
+      "type": "behaviour",
+      "claim": "AutofillSettings can be configured as mandatory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofillsettings",
+      "quote": "Can be mandatory: Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].note; Scope; Governance controls table",
+      "type": "behaviour",
+      "claim": "AutofillSettings cannot be configured as recommended.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofillsettings",
+      "quote": "Can be recommended: No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].note; Scope; Governance controls table",
+      "type": "behaviour",
+      "claim": "AutofillSettings applies per profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofillsettings",
+      "quote": "Per Profile: Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "AutofillSettings is a dictionary policy with entries structured as a list of dictionaries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofillsettings",
+      "quote": "The policy is structured as a list of dictionaries.\nData type\nDictionary",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Each policy entry contains a url_pattern.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofillsettings",
+      "quote": "Each dictionary must contain:\n\"url_pattern\": A content setting URL pattern for the main frame",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Governance controls; controls[0].note",
+      "type": "behaviour",
+      "claim": "Each policy entry contains a blocked_types list of data categories, which can include identity_docs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofillsettings",
+      "quote": "\"blocked_types\": A list of strings representing the categories of AutoFill data to block.\n\"identity_docs\": Blocks filling and saving of identity documents",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Blocked types from multiple entries matching the same URL are combined.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofillsettings",
+      "quote": "If a URL matches multiple pattern entries in the list, the blocked types from all matching entries are combined.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Blocking a type disables the prompt to save or import new data of that type on matching sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofillsettings",
+      "quote": "If a data type is blocked for a site, both the generation of suggestions and the prompt to save or import new data of that type are disabled on that site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "AutofillAddressEnabled is deprecated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofilladdressenabled",
+      "quote": "DEPRECATED: This policy is deprecated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "availability",
+      "claim": "AutofillAddressEnabled is currently supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofilladdressenabled",
+      "quote": "It is currently supported but will become obsolete in a future release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "AutofillAddressEnabled will become obsolete in a future release.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofilladdressenabled",
+      "quote": "It is currently supported but will become obsolete in a future release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Edge 156's release notes list AutofillAddressEnabled among deprecated policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
+      "quote": "Deprecated policies\nAutofillAddressEnabled - Enable AutoFill for addresses (deprecated)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance controls; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The page recommends blocking contact_info, identity_docs and travel to preserve disabled address autofill but omits the required wildcard URL-pattern qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofilladdressenabled",
+      "quote": "To keep the current behavior of disabling AutoFill for addresses, configure AutofillSettings with \"url_pattern\" set to \"*\" and \"blocked_types\" set to [\"contact_info\", \"identity_docs\", \"travel\"].",
+      "severity": "blocker",
+      "fix": "Replace the final Governance controls sentence with: 'The deprecated AutofillAddressEnabled policy remains supported for now; its page says to configure AutofillSettings with url_pattern set to \"*\" and blocked_types set to [\"contact_info\", \"identity_docs\", \"travel\"] to preserve disabled address autofill.' Retain the cited AutofillAddressEnabled page."
+    },
+    {
+      "n": 45,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn does not state that AutofillSettings governs Enhanced Autofill identity documents.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofillsettings",
+      "quote": "\"identity_docs\": Blocks filling and saving of identity documents (for example, passports, driver's licenses, and national IDs).",
+      "severity": "blocker",
+      "fix": "Replace 'Its identity_docs type uses the same examples as the roadmap item, but Microsoft Learn does not state that Enhanced Autofill is governed by it, so confirm on a test device.' with 'The identity_docs type blocks filling and saving identity documents, including passports, driver's licences and national IDs, on matching sites. It does not apply to profiles signed in with a personal Microsoft account.' Keep the separate testing advice."
+    },
+    {
+      "n": 46,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Replacing * with narrower URL patterns allows identity documents on named sites only.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofillsettings",
+      "quote": "Setting this policy allows you to specify which AutoFill data types are blocked on specific URL patterns.\nIf a URL matches multiple pattern entries in the list, the blocked types from all matching entries are combined.",
+      "severity": "blocker",
+      "fix": "Replace the bullet with: 'Use narrower URL patterns instead of \"*\" to block identity documents only on matching sites; sites that match no entry remain unblocked by this policy. Blocked types from multiple matching entries are combined.' Do not describe these patterns as an allowlist."
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The Enhanced Autofill release note describes desktop document autofill, not an agent or autonomous action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
+      "quote": "Enhanced Autofill. For desktop users, Microsoft Edge can now autofill additional document types—including passports, driver's licenses, and other specialized forms—on top of your saved addresses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The Edge 156 change introduces document fields that Edge did not offer before.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel#version-1480396754-may-07,-2026-stable",
+      "quote": "Enhanced Autofill. For desktop users, Microsoft Edge can now autofill additional document types-including passports, driver's licenses, and other specialized forms-on top of your saved addresses. Note: This is a controlled feature rollout.",
+      "severity": "blocker",
+      "fix": "Replace 'Expect questions about why Edge offers document fields it did not before.' with 'Expect questions about Edge offering additional document fields.' Do not imply that this capability first appeared in Edge 156; the May 2026 Edge 148 Stable notes already describe its controlled rollout."
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: Before rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist asks administrators to check Edge update reporting, but the controls table has no reporting row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check which devices run Edge 156 or later on desktop, using your Edge update reporting\nTable: Which AutoFill data types, including identity documents, are blocked on specific sites",
+      "severity": "minor",
+      "fix": "Remove 'using your Edge update reporting' from the device-version check so it does not direct readers to a reporting control absent from the table. Do not add a control row."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T05:47:48.483Z",
+    "summary": {
+      "links": 4,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=554938",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofillsettings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofilladdressenabled",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which AutoFill data types, including identity documents, are blocked on specific sites",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofillsettings",
+        "reachable": true,
+        "segments": [
+          "Administrative Templates",
+          "Microsoft Edge",
+          "Block AutoFill data types for specific sites"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which AutoFill data types, including identity documents, are blocked on specific sites",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/autofillsettings",
+        "reachable": true,
+        "token": "Registry: SOFTWARE\\Policies\\Microsoft\\Edge,",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
