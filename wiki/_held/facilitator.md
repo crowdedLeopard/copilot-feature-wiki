@@ -5,7 +5,7 @@ slug: "facilitator"
 summary: "Facilitator is the AI agent in Teams meetings that takes shared notes and answers in the meeting chat. It comes with a Microsoft Copilot licence and is governed through Teams app settings, Loop settings and Purview."
 created: "2026-11-22"
 updated: "2026-11-22"
-version: 3
+version: 4
 tags: ["facilitator","teams","teams-rooms","m365-copilot","microsoft-loop","meeting-transcripts","meeting-policy","retention"]
 covers: []
 sources:
@@ -99,7 +99,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Data Lifecycle Management > Policies > Retention policies > New retention policy > Choose the type of retention policy to create > Static > Choose locations to apply the policy > location"
+      path: "Data Lifecycle Management > Policies > Retention policies > New retention policy > Choose the type of retention policy to create > Static > Choose locations to apply the policy (Teams chats) or Choose locations (OneDrive accounts)"
       docs: "https://learn.microsoft.com/purview/create-retention-policies"
     api:
       kind: "powershell"
@@ -121,18 +121,22 @@ changes:
     note: "Corrected after the independent check: who can see Facilitator output (replacing the claim that any licensed user can start it), open questions that named skills and a policy replacement no Microsoft page states, and the retention policy path."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 114 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-22"
+    note: "Corrected the retention control's admin path to give the separate location-page labels for Teams chats and OneDrive accounts."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 115 statements contradicted, 0 unconfirmed; taken offline until corrected"
 verification:
   status: "held"
   date: "2026-11-22"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 114
-  confirmed: 113
+  claims: 115
+  confirmed: 114
   unconfirmed: 0
   contradicted: 1
-  attempts: 3
-  hash: "0639b12e9d58e46a30e1b549c5dfff9c"
+  attempts: 4
+  hash: "0853434e8d3b1594a25a6489610933fb"
 ---
 
 ## What it is
@@ -188,7 +192,7 @@ The Facilitator setup page lists licences and user requirements as its prerequis
 <tr><td data-label="Control"><strong>AI-generated notes for meetings</strong><br><small>Tenant</small><br><small class="controls__note">Tenant-wide. Microsoft says the property does not apply to collaborative meeting notes in Teams New Calendar.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -IsCollabMeetingNotesFluidEnabled $false</code> <a href="https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether users can transcribe meetings, a Teams Rooms setup step</strong><br><small>User</small><br><small class="controls__note">Learn lists turning on transcription as a step for Facilitator in Teams Rooms.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Transcription <a href="https://learn.microsoft.com/microsoftteams/meeting-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -AllowTranscription $true</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Take notes button on a room's console home screen</strong><br><small class="controls__note">Preview; Teams Rooms Pro. The default setting is enabled.</small></td><td data-label="Admin UI"><strong>Pro Management portal</strong><br>Rooms › room › Settings › Device › Show Take notes button on the home screen <a href="https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Retention of Facilitator chat interactions and notes</strong><br><small>Tenant</small><br><small class="controls__note">Teams chats location for interactions, OneDrive accounts for notes; create separate policies for the two locations. The cmdlet adds a rule to an existing policy; duration is in days.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Lifecycle Management › Policies › Retention policies › New retention policy › Choose the type of retention policy to create › Static › Choose locations to apply the policy › location <a href="https://learn.microsoft.com/purview/create-retention-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RetentionComplianceRule -Policy &lt;policy name&gt; -RetentionDuration &lt;days&gt; -RetentionComplianceAction &lt;Keep, Delete or KeepAndDelete&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Retention of Facilitator chat interactions and notes</strong><br><small>Tenant</small><br><small class="controls__note">Teams chats location for interactions, OneDrive accounts for notes; create separate policies for the two locations. The cmdlet adds a rule to an existing policy; duration is in days.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Lifecycle Management › Policies › Retention policies › New retention policy › Choose the type of retention policy to create › Static › Choose locations to apply the policy (Teams chats) or Choose locations (OneDrive accounts) <a href="https://learn.microsoft.com/purview/create-retention-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RetentionComplianceRule -Policy &lt;policy name&gt; -RetentionDuration &lt;days&gt; -RetentionComplianceAction &lt;Keep, Delete or KeepAndDelete&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -217,5 +221,7 @@ Facilitator interactions in meetings fall under a retention policy for Teams cha
 <!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[6].ui / admin-path: The retention path uses Choose locations to apply the policy for both Teams chats interactions and OneDrive accounts notes. | Found: If you chose Static: On the Choose locations to apply the policy page, select one or more locations: Retention policy for all other services: If you chose Static: On the Choose locations page, toggle on or off any of the locations | Fix: Replace controls[6].ui.path and its rendered path with 'Data Lifecycle Management > Policies > Retention policies > New retention policy > Choose the type of retention policy to create > Static > Choose locations to apply the policy (Teams chats) or Choose locations (OneDrive accounts) > location'. Learn documents the two location-page labels separately at https://learn.microsoft.com/purview/create-retention-policies. | Source: https://learn.microsoft.com/purview/create-retention-policies
+- [contradicted, blocker] controls[6].api / command: New-RetentionComplianceRule -Policy <policy name> -RetentionDuration <days> -RetentionComplianceAction <Keep, Delete or KeepAndDelete> configures retention for both the Teams chats and OneDrive accounts locations shown in this row. | Found: Don't use these cmdlets when the locations are for ... Teams chats (without Copilot interactions) ... These locations have alternative cmdlets that are identified in the next section. | Fix: Keep the existing call for OneDrive notes, but replace the row note with: 'Teams chats location for interactions, OneDrive accounts for notes; create separate policies for the two locations. Automation shown configures OneDrive accounts only, not the newer Teams chats location. The cmdlet adds a rule to an existing policy; duration is in days.' Cite https://learn.microsoft.com/purview/retention-cmdlets. Microsoft documents New-AppRetentionComplianceRule for the newer Teams chats location; do not present New-RetentionComplianceRule as its automation. | Source: https://learn.microsoft.com/purview/retention-cmdlets
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[6].ui / admin-path: Static retention policies select Teams chats on Choose locations to apply the policy, or OneDrive accounts on Choose locations, after Data Lifecycle Management > Policies > Retention policies > New retention policy > Choose the type of retention policy to create > Static. | Found: Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies. ... If you chose Static: On the Choose locations to apply the policy page ... If you chose Static: On the Choose locations page | Fix: Add Solutions before Data Lifecycle Management in controls[6].ui and the rendered path: Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Choose the type of retention policy to create > Static > Choose locations to apply the policy (Teams chats) or Choose locations (OneDrive accounts). The two location-page labels are correct. Source: https://learn.microsoft.com/purview/create-retention-policies. | Source: https://learn.microsoft.com/purview/create-retention-policies
 -->

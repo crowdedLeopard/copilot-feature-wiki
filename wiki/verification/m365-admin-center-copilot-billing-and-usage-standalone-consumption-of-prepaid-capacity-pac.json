@@ -1,0 +1,823 @@
+{
+  "slug": "m365-admin-center-copilot-billing-and-usage-standalone-consumption-of-prepaid-capacity-pac",
+  "roadmapId": 557175,
+  "title": "Microsoft 365 admin center: pay for Copilot Chat from prepaid capacity packs alone",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "3 blocking findings (claims 28, 29, 59)"
+    ]
+  },
+  "counts": {
+    "claims": 62,
+    "confirmed": 58,
+    "unconfirmed": 2,
+    "contradicted": 2,
+    "blocker": 3,
+    "major": 0,
+    "minor": 6
+  },
+  "summary": "Held because Microsoft documents Global Administrator as required for creating a credit policy, but does not establish the same exclusive requirement for editing or deleting one. The cost classification also conflicts with the wiki's metered-cost definition; the standalone billing behaviour and the allocation API are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap plans prepaid capacity as the sole billing method for supported Copilot experiences, with no pay-as-you-go charges for users in the policy.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Admins can configure billing policies with prepaid capacity such that usage for users in the policy is deducted exclusively from prepaid capacity credits, with no pay as you go charges.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap status remains In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is April CY2026, not a committed availability date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap provides no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-02-19T00:15:25.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-02-19T00:15:25\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Why it matters; Governance controls",
+      "type": "behaviour",
+      "claim": "A Copilot credit policy connects prepaid capacity pack credits to a specified set of users, including teams or departments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "A Copilot credit policy connects your Prepaid Capacity pack credits to a specific set of users in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "A standalone credit policy consumes only prepaid credits and requires no pay-as-you-go billing policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "If you use a Prepaid Capacity pack by itself (without pairing it with a pay-as-you-go billing policy), users covered by the credit policy consume credits only from the prepaid credit pool.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: licensing.notes; What's changing; Why it matters; Cost and licensing",
+      "type": "licensing",
+      "claim": "A standalone credit policy requires no Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "You can create a Copilot credit policy to use capacity pack credits by themselves, without requiring a pay-as-you-go billing policy or an Azure subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope; controls[0].note",
+      "type": "availability",
+      "claim": "Copilot credit policies are currently available only for Microsoft Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "Copilot credit policies are currently only available for Microsoft Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope; Governance guidance: Before rollout",
+      "type": "cost",
+      "claim": "SharePoint agents continue to use the existing pay-as-you-go billing setup rather than Copilot credit policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "For SharePoint agents, continue using pay-as-you-go billing as described in the existing setup process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment; Scope; controls[0].note",
+      "type": "applicability",
+      "claim": "A credit policy can cover security groups, distribution groups or the entire tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "You can scope the policy to specific security groups, distribution groups, or the entire tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Scope; Governance guidance; controls[0].note",
+      "type": "behaviour",
+      "claim": "A tenant can have up to 10 Copilot credit policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "You can create up to 10 Copilot credit policies per tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The system uses the most specific credit policy when more than one covers a user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "If a user is covered by multiple policies, the system uses the most specific policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "summary; Why it matters; Cost and licensing; Governance guidance; rationales",
+      "type": "behaviour",
+      "claim": "With a standalone credit policy, covered users lose Copilot Chat when prepaid credits run out until the next monthly billing period.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "when your prepaid credits are exhausted, Copilot Chat is unavailable for users covered by the policy until credits replenish at the start of the next monthly billing period.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The credit policy is an optional admin-configured control, so its default state is admin-opt-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "Your existing configuration continues to work. You can optionally create a Copilot credit policy to take advantage of user group scoping and the policy management features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Existing billing configurations continue working without creating a credit policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "Your existing configuration continues to work.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is consumption through prepaid Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "Copilot Credits are the unit of consumption in Microsoft Copilot Chat and SharePoint agents for AI interactions. Credits are available in quantities of 25,000 per month per pack.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "A Microsoft Copilot Studio capacity pack is a prepaid subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "A Microsoft Copilot Studio capacity pack is a prepaid subscription that provides credits for Copilot Chat and SharePoint agent usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Each capacity pack is a tenant licence including 25,000 Copilot Credits per month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "Each Prepaid Capacity pack is a tenant license that includes 25,000 Copilot Credits per month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Users do not need individually assigned capacity pack licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "Because it's a tenant-wide resource, users don't need licenses individually assigned to them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: licensing.notes",
+      "type": "admin-path",
+      "claim": "Capacity packs can be purchased in Marketplace in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "In the Microsoft 365 admin center, go to Marketplace. In the search box, type \"Microsoft Copilot Studio.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Cost and licensing; Scope; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Global Administrators or Billing Administrators can buy capacity packs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "You must be a Global Administrator or Billing Administrator to buy capacity packs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment; Cost and licensing; Scope; controls[1].note",
+      "type": "role",
+      "claim": "Enabling capacity pack usage requires Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "You must be a Global Administrator to enable capacity pack usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "summary; Risk assessment; Scope; Governance controls; controls[0].note",
+      "type": "role",
+      "claim": "Creating a standalone Copilot credit policy requires Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "Option A: Create a standalone Copilot credit billing policy. You must be a Global Administrator to complete the following steps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Editing a Copilot credit policy requires Global Administrator.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Copilot credit policy\" \"edit\" \"Global Administrator\"; opened capacity-packs and usage-based-billing-copilot-credits-setup. The creation procedure requires Global Administrator; the credit-policy edit procedure states no exclusive role requirement.",
+      "severity": "blocker",
+      "fix": "Remove 'edit' from the Scope role requirement. Keep 'Global Administrator to create a policy and to enable capacity pack usage'; the cited capacity-packs page establishes those tasks, not an exclusive editing role."
+    },
+    {
+      "n": 29,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Deleting a Copilot credit policy requires Global Administrator.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Copilot credit policy\" \"delete\" \"role\"; opened capacity-packs and usage-based-billing-copilot-credits-setup. No passage establishes an exclusive Global Administrator requirement for deleting a Copilot credit policy.",
+      "severity": "blocker",
+      "fix": "Remove 'delete' from the Scope role requirement. Keep 'Global Administrator to create a policy and to enable capacity pack usage'; do not transfer the creation requirement to deletion."
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Copilot Credits are the unit of consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "Copilot Credits are the unit of consumption in Microsoft Copilot Chat and SharePoint agents for AI interactions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing: Meter; Why it matters",
+      "type": "cost",
+      "claim": "The pack's credits replenish at the start of every monthly billing period.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "At the start of every monthly billing period, your 25,000 credits are replenished.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Autonomy & actions; Cost and licensing: Indirect cost",
+      "type": "behaviour",
+      "claim": "Agent credit consumption depends on its design, frequency of interaction and features used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "The number of credits consumed by a Microsoft Copilot Chat agent or a SharePoint agent depends on the design of the agent, how often customers interact with it, and the features they use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing: Indirect cost",
+      "type": "cost",
+      "claim": "The capacity packs page links to the Copilot Studio billing rates page for credit rates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "For more information about the billing rates for credits, see Billing rates and management - Microsoft Copilot Studio | Microsoft Learn.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Saving the policy automatically provisions a Microsoft Copilot Chat environment if one does not exist.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "After you save the policy, the system provisions a Microsoft Copilot Chat environment in the Power Platform admin center if one doesn't already exist.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment; Cost and licensing; Scope; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Capacity must be allocated separately to the Copilot Chat environment in the Power Platform admin center after policy creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "You must then allocate capacity to this environment as described in Step 3. Allocate capacity to the Copilot Chat environment in the Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Prepaid Capacity pack consumption can only be monitored in the Power Platform admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "You can only monitor Prepaid Capacity pack consumption in the Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "The Copilot Studio licensing Summary tab in the Power Platform admin center shows consumed and remaining prepaid credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "In the Power Platform admin center, go to Licensing > Copilot Studio. On the Summary tab, the Capacity summary section reflects Prepaid Capacity pack usage, shows how many credits were consumed in total, and shows how many remain available for the current period.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing: What happens at the limit; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends additional packs, pay-as-you-go overage, or monitoring and capacity notifications to avoid interruption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "Buy more capacity packs to increase your prepaid credits. Add a pay-as-you-go billing policy for automated overage billing. Monitor usage closely and set up capacity notifications in the Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The printed Microsoft 365 admin center path reaches creation of a credit policy that scopes prepaid usage to users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "go to Copilot > Billing & usage. Select the Pay-as-you-go services tab, and then select Microsoft Copilot Chat. In the Copilot credit policies section, select Create a Copilot credit policy.",
+      "severity": "minor",
+      "fix": "Extend the existing path with '> Scope' to reach the scoping control documented on the cited page. Add a note that https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-copilot gives the alternate entry 'Copilot > Cost management > Classic Billing & usage', whereas the capacity-packs page gives 'Copilot > Billing & usage', and cite that page."
+    },
+    {
+      "n": 40,
+      "where": "controls[0].api; Open questions",
+      "type": "absence",
+      "claim": "No API for creating or editing these Copilot credit policies is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Copilot credit policies create edit API Microsoft Graph prepaid capacity user groups; opened capacity-packs, Cost Management API overview and the Power Platform allocations tutorial. Found spending-policy APIs, not an API identified as these credit policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[1].ui; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The printed Microsoft 365 admin center route reaches the billing policy Connection status toggle for Copilot Chat overage billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "On the Pay-as-you-go services tab for Microsoft Copilot Chat, find the billing policy name to bill for any overage, then switch the Connection status toggle to Connected.",
+      "severity": "minor",
+      "fix": "Keep the supported path but note the alternative 'Copilot > Cost management > Classic Billing & usage' entry in https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-copilot, which differs from the capacity-packs page's 'Copilot > Billing & usage' entry. Cite that page; the same navigation note can cover both Microsoft 365 control rows."
+    },
+    {
+      "n": 42,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No API is documented for the classic Copilot Chat billing-policy connection toggle.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Copilot Chat pay as you go billing policy Connection status API connect disconnect Graph; Copilot billing policy connect API Power Platform. Opened Cost Management API overview and pay-as-you-go-setup-copilot; no API for the classic connection toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "The printed Power Platform admin center route reaches Draw from the available capacity in my tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "On the Summary tab, under Capacity summary, find the Prepaid Capacity card. In the License type column, select Manage capacity. Under Capacity overages, select the options for what happens when capacity reaches zero.",
+      "severity": "minor",
+      "fix": "Keep the path supported by the capacity-packs page. Add: 'The programmatic-allocation tutorial gives another UI route: Licensing > Products > Copilot Studio > Manage Copilot Credits > environment > Capacity overages > Draw from the available capacity in my tenant.' The tutorial is already cited at https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations."
+    },
+    {
+      "n": 44,
+      "where": "controls[2].api; controls[2].note",
+      "type": "command",
+      "claim": "PUT /licensing/allocationsV2?api-version=2024-10-01 writes the MCSMessages allocation and its TenantPool enforcement rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+      "quote": "All programmatic examples in this article use API version `2024-10-01`.\n...\nInvoke-RestMethod -Method Put `\n    -Uri \"$apiBaseUrl/licensing/allocationsV2?api-version=$apiVersion\" `",
+      "severity": "minor",
+      "fix": "Keep the call: the pre-check's literal-string miss is not a missing operation. Replace the first sentence of the note with 'For entitlementId MCSMessages, the request body sets allocatedEntitlements[].enforcementRules with ruleType TenantPool and enabled true or false.' The tutorial documents these properties in its PowerShell request body."
+    },
+    {
+      "n": 45,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The Capacity overages pane offers both tenant-capacity draw and Bill to my pay-as-you-go billing plan, and allows either or both.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "Under Capacity overages, select the options for what happens when capacity reaches zero. You can choose one or both of the following options: Draw from the available capacity in my tenant. Bill to my pay-as-you-go billing plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not explain the precedence between a standalone user credit policy and the environment's separate pay-as-you-go overage selection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: standalone Copilot credit policy Bill to my pay-as-you-go billing plan TenantPool capacity overages interaction. Opened capacity-packs and allocations tutorial; read billing-rates and harness cost-control results. No passage resolves standalone-policy precedence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance controls; controls[2].note",
+      "type": "behaviour",
+      "claim": "Draw from the available capacity in my tenant maps to the TenantPool enforcement rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+      "quote": "The Draw from the available capacity in my tenant option in the admin center maps to the TenantPool enforcement rule",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[2].governs; Governance controls",
+      "type": "behaviour",
+      "claim": "Enabling TenantPool permits consumption from unallocated tenant capacity after the environment allocation runs out.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+      "quote": "when it's enabled, the environment continues to draw from unallocated tenant capacity after its own allocation is exhausted",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Disabling TenantPool caps the environment at its allocation, as the tutorial states.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+      "quote": "when it's disabled, the environment is capped at its allocation.",
+      "severity": "minor",
+      "fix": "Replace the cap clause with 'when it is disabled, prepaid consumption is capped at the allocation; usage can still continue through a linked pay-as-you-go billing plan.' Cite https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness, whose Manage allocations across many environments section states that qualification, alongside the tutorial's broader wording."
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "A published environment group rule can lock the tenant-capacity setting and individual updates fail with TenantPoolLockedByPolicy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+      "quote": "Updates through the Power Platform admin center, Power Platform API, or administration SDKs are rejected with the TenantPoolLockedByPolicy error.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The cited allocation tutorial documents the tenant-capacity option, not automation for the separate pay-as-you-go overage option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"programmability-tutorial-manage-copilot-credit-allocations\" \"pay-as-you-go\"; read the entire tutorial, including all SDK examples. Its enforcement examples set TenantPool; none sets the separate pay-as-you-go option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Microsoft recommends using roles with the fewest permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "Microsoft recommends that you use roles with the fewest permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Microsoft advises limiting Global Administrator to emergency scenarios when an existing role cannot be used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "Global Administrator is a highly privileged role that should be limited to emergency scenarios when you can't use an existing role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Open questions",
+      "type": "cost",
+      "claim": "Copilot Cost Management spending policies can use prepaid capacity packs as their billing method.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-copilot-credits-setup",
+      "quote": "You can choose to apply Prepaid Capacity packs at the individual spending policy level in the Review billing method step.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Open questions",
+      "type": "cost",
+      "claim": "The spending-policy setup page recommends enabling a pay-as-you-go meter for continuity after capacity pack credits are exhausted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-copilot-credits-setup",
+      "quote": "Enable a pay-as-you-go meter to ensure your services continue once Prepaid Capacity pack credits are exhausted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "The Learn capacity-packs page does not describe credit policies as granting access to data.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot credit policy Global Administrator edit delete data access permissions grants. Read capacity-packs in full and the returned permission excerpts; it describes credit funding, user scope and service availability, not new data permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "The groups' membership determines which users the credit policy covers and whose consumption uses its credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "Each Copilot credit policy is scoped to specific user groups. When a user interacts with Copilot Chat, the system uses credits from the policy that covers that user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "What's changing; Scope; front matter: changes",
+      "type": "date",
+      "claim": "Learn's what's-new page lists standalone capacity pack usage under April 2026 and describes it as supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-whats-new",
+      "quote": "April 2026. Copilot capacity pack without pay-as-you-go. Microsoft 365 Copilot now supports standalone capacity pack usage, enabling organizations to consume prepaid Copilot Credits without requiring pay-as-you-go billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "front matter: cost; rationale: cost",
+      "type": "consistency",
+      "claim": "The medium cost rating fits the documented Copilot Credits consumption model.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Front matter: cost: \"medium\"; licensing.model: \"consumption\". Body: \"Copilot Credits are the unit of consumption.\" The standard defines variable as \"metered (Copilot Credits, pay-as-you-go, Azure). Always name the meter.\"",
+      "severity": "blocker",
+      "fix": "Set cost to 'variable'. Replace the cost rationale with 'Variable. Copilot Credits meter usage against prepaid capacity packs of 25,000 credits per month per pack; a standalone policy draws only on that prepaid pool.' Keep licensing.model as consumption."
+    },
+    {
+      "n": 60,
+      "where": "Governance guidance: At rollout and After rollout; Governance controls",
+      "type": "consistency",
+      "claim": "Every control the checklist tells readers to configure or monitor has a corresponding controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: \"Allocate capacity\"; \"Monitor credits consumed and remaining\"; \"Set the Overage notification\". Rows govern user credit policies, pay-as-you-go connections and tenant-capacity draw, not allocation quantities, usage monitoring or notifications.",
+      "severity": "minor",
+      "fix": "The checklist steps 'Allocate capacity to the Copilot Chat environment', 'Monitor credits consumed and remaining' and 'Set the Overage notification' have no corresponding control rows. Row 3 covers tenant-capacity overages, not allocation quantities, usage monitoring or notifications."
+    },
+    {
+      "n": 61,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The Overage notification setting can notify administrators when capacity usage nears a selected percentage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "Under Overage notification, select the Send notification when nearing capacity usage checkbox, and then select a percentage value from the drop-down list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Risk assessment: Security & identity; controls[1].note",
+      "type": "role",
+      "claim": "Billing and AI administrators can set up pay-as-you-go billing but cannot activate a capacity pack.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "Billing administrators or AI administrators can set up pay-as-you-go billing but can't activate a capacity pack.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T06:41:18.239Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=557175",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-whats-new",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-copilot-credits-setup",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users draw only on prepaid capacity pack credits (Copilot credit policy)",
+        "docs": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Billing & usage",
+          "Pay-as-you-go services",
+          "Microsoft Copilot Chat",
+          "Copilot credit policies",
+          "Create a Copilot credit policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether a pay-as-you-go billing policy is connected to Copilot Chat as overage billing",
+        "docs": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Billing & usage",
+          "Pay-as-you-go services",
+          "Microsoft Copilot Chat",
+          "billing policy",
+          "Connection status"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether an environment keeps drawing tenant capacity after its prepaid allocation is used",
+        "docs": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+        "reachable": true,
+        "segments": [
+          "Licensing",
+          "Copilot Studio",
+          "Summary",
+          "Capacity summary",
+          "Prepaid Capacity",
+          "Manage capacity",
+          "Capacity overages",
+          "Draw from the available capacity in my tenant"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether an environment keeps drawing tenant capacity after its prepaid allocation is used",
+        "docs": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+        "reachable": true,
+        "token": "PUT /licensing/allocationsV2?api-version=2024-10-01",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

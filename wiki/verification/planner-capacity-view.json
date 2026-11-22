@@ -1,0 +1,658 @@
+{
+  "slug": "planner-capacity-view",
+  "roadmapId": 569733,
+  "title": "Planner: Capacity view shows who is working on what",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "4 major findings"
+    ]
+  },
+  "counts": {
+    "claims": 49,
+    "confirmed": 44,
+    "unconfirmed": 4,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 4,
+    "minor": 5
+  },
+  "summary": "The rollout, default state and main licensing table are supported. Hold the briefing because it adds undocumented assurances about read-only behaviour, automated actions and storage, and predicts specific timeline results for incomplete tasks that Microsoft's notice does not establish.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "Planner Capacity view shows a timeline of who is working on what.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Capacity view shows a timeline of who's working on what",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Governance guidance",
+      "type": "record",
+      "claim": "The view helps team leads see work distribution and spot overload or open capacity.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "so you can see how work is distributed across your team and spot overload or open capacity at a glance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; Scope; Open questions; changes",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap and notice identify Worldwide (Standard Multi-Tenant) environments.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Desktop and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap was modified on 26 October 2026 at 23:15:50.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-26T23:15:50\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Capacity view is a live staffing matrix built from existing Planner task data.",
+      "status": "supported",
+      "source": "Message Center post MC1474110",
+      "quote": "Capacity view is a new view in Planner that presents a live staffing matrix built from existing Planner task data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Why it matters; Scope; Governance guidance",
+      "type": "record",
+      "claim": "Capacity view appears on existing plans alongside Board, Grid and Schedule.",
+      "status": "supported",
+      "source": "Message Center post MC1474110",
+      "quote": "Capacity view appears as a new view on existing plans, alongside Board, Grid, and Schedule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "The view is populated entirely from existing Planner task data and creates no new data.",
+      "status": "supported",
+      "source": "Message Center post MC1474110",
+      "quote": "The view is populated entirely from existing Planner task data. No new data is created.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Capacity view appears in Planner in Teams on web and desktop.",
+      "status": "supported",
+      "source": "Message Center post MC1474110",
+      "quote": "Planner in Teams (web and desktop)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Capacity view appears in Planner in Outlook on web and desktop.",
+      "status": "supported",
+      "source": "Message Center post MC1474110",
+      "quote": "Planner in Outlook (web and desktop)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Capacity view is not included on mobile.",
+      "status": "supported",
+      "source": "Message Center post MC1474110",
+      "quote": "Capacity view is not included on mobile",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment; Scope; Governance guidance",
+      "type": "record",
+      "claim": "Accuracy depends on assignees and start and finish dates; tasks missing either are not represented reliably.",
+      "status": "supported",
+      "source": "Message Center post MC1474110",
+      "quote": "Accuracy depends on tasks having assignees and start and finish dates. Tasks missing either will not be represented reliably in the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: defaultState; summary; Risk assessment; rationale: impact",
+      "type": "default",
+      "claim": "Capacity view is on by default for eligible users.",
+      "status": "supported",
+      "source": "Message Center post MC1474110",
+      "quote": "The view is on by default for eligible users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[2].ui; controls[2].api; summary; Why it matters; Risk assessment; Governance controls",
+      "type": "absence",
+      "claim": "There is no documented tenant UI or automation control specifically disabling Capacity view.",
+      "status": "supported",
+      "source": "Message Center post MC1474110",
+      "quote": "there is no admin control to disable it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "summary; Why it matters",
+      "type": "record",
+      "claim": "Microsoft says no admin action is required to enable or prepare for the change.",
+      "status": "supported",
+      "source": "Message Center post MC1474110",
+      "quote": "No admin action is required to enable or prepare for this change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "licensing notes; Why it matters; Cost and licensing; Risk assessment; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The notice says users with Plan 3 are affected and users without Plan 3 will not see Capacity view.",
+      "status": "supported",
+      "source": "Message Center post MC1474110",
+      "quote": "Users with a Planner Plan 3 license in Worldwide (Standard Multi-Tenant) environments - Users without a Plan 3 license will not see Capacity view",
+      "severity": "minor",
+      "fix": "After the notice's licensing statement in Cost and licensing, add: 'The service description also says existing Planner and Project Plan 5 subscriptions include all Plan 3 capabilities, whereas the notice says users without Plan 3 will not see the view.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description. Replace the first Before rollout bullet with: 'Identify Planner users with Planner and Project Plan 3, whom the notice identifies as affected.'"
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice was last updated on 15 October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1474110",
+      "quote": "last updated 2026-10-15; Updated October 15, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice targets Targeted Release beginning and completing in late October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1474110",
+      "quote": "Targeted Release: Beginning in late October 2026 (previously early October) and expected to complete late October 2026 (previously mid-October)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The notice targets Worldwide General Availability beginning in late October and completing by early November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1474110",
+      "quote": "General availability (Worldwide): Beginning in late October 2026 (previously mid-October) and expected to complete by early November 2026 (previously late October)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice still recommends warning users about the view appearing in early October 2026, unlike its updated schedule.",
+      "status": "supported",
+      "source": "Message Center post MC1474110",
+      "quote": "Notify Planner users that a new Capacity view will appear on their plans in early October 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice's Microsoft end date is 14 December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1474110",
+      "quote": "Microsoft's end date 2026-12-14",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft recommends notifying Planner users about the new view.",
+      "status": "supported",
+      "source": "Message Center post MC1474110",
+      "quote": "Notify Planner users that a new Capacity view will appear on their plans in early October 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft recommends updating training material and Planner guidance.",
+      "status": "supported",
+      "source": "Message Center post MC1474110",
+      "quote": "Update internal training material and Planner guidance to include the new view.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Microsoft recommends keeping assignees and start and finish dates current.",
+      "status": "supported",
+      "source": "Message Center post MC1474110",
+      "quote": "Encourage plan owners and team leads to keep assignees and start and finish dates current so the view reflects actual workload.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn has no dedicated Capacity view page at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Capacity view\" \"Planner\"; Planner Capacity view permissions rows read-only automated actions missing assignees dates. Opened Planner for admins and the Planner service description; results show the licensing row, not a dedicated feature article.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: licensing.model; licensing notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Capacity view is a user-license-gated capability listed as Yes for Planner and Project Plan 3.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description",
+      "quote": "Capacity view^3^ | No | No | Yes | No | ... The features available to each user in a unified plan depend on their license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "licensing notes; Why it matters; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The service description lists Capacity view as No for Microsoft 365, Planner Plan 1 and Microsoft 365 Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description",
+      "quote": "Microsoft Planner Included in Microsoft 365 | Planner Plan 1 | Planner and Project Plan 3 | Microsoft 365 Copilot ... Capacity view^3^ | No | No | Yes | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Cost and licensing; Scope",
+      "type": "availability",
+      "claim": "Capacity view is currently available only in unified plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description",
+      "quote": "Capacity view^3^ ... ^3^Currently available only in unified plans.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters; Cost and licensing",
+      "type": "licensing",
+      "claim": "Different users can have different feature entitlements in the same unified plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description",
+      "quote": "All users with Microsoft 365, Planner Plan 1, Planner and Project Plan 3, or Microsoft 365 Copilot can use unified plans. The features available to each user in a unified plan depend on their license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "licensing notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The cited service description and notice give no Plan 3 price, Capacity view meter, credit rate or separate charge.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner\" \"Capacity view\" licensing price meter storage. Read the full Planner service description and supplied MC1474110; neither gives a subscription price, Capacity view meter, credit rate or separate feature charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Capacity view adds no new storage.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Planner Capacity view\" \"read-only\" \"storage\"; \"Planner\" \"Capacity view\" licensing price meter storage. Read MC1474110 and the service description; 'No new data is created' does not state whether the view adds storage.",
+      "severity": "major",
+      "fix": "Delete 'so it adds no new storage'. Retain: 'Microsoft's notice says the view is populated entirely from existing Planner task data and creates no new data.'"
+    },
+    {
+      "n": 36,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Plan owners leaving assignees or dates blank will show up as open capacity or be missing from the timeline.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Planner Capacity view\" \"missing\" \"automated\"; Planner Capacity view permissions rows read-only automated actions missing assignees dates. MC1474110 says tasks are 'not represented reliably', not which rows disappear or show open capacity.",
+      "severity": "major",
+      "fix": "Replace the clause after 'communication and data quality:' with 'the notice says tasks missing assignees or start and finish dates will not be represented reliably in the timeline.'"
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Microsoft Learn does not describe which users within a plan see which Capacity view rows.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner\" \"Capacity view\" permissions rows read-only automated actions missing assignees dates. Opened Planner for admins, the Planner service description and Manage the Planner app in Teams; none states Capacity view row visibility.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The notice and Learn do not describe a Capacity view change to sign-in or permissions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner\" \"Capacity view\" permissions rows read-only automated actions missing assignees dates. Read MC1474110, Planner for admins and the service description; none describes a feature-specific sign-in or permission change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The notice describes Capacity view as read-only.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Planner Capacity view\" \"read-only\" \"storage\"; Planner Capacity view permissions rows read-only automated actions missing assignees dates. Read MC1474110 and the service description; neither calls Capacity view read-only.",
+      "severity": "major",
+      "fix": "Replace the Autonomy & actions bullet with: 'The notice describes a timeline built from existing Planner task data; it does not specify whether users can edit tasks from this view.'"
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The notice establishes that Capacity view has no automated actions.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Planner Capacity view\" \"missing\" \"automated\"; \"Planner\" \"Capacity view\" admin disable control API PowerShell Graph. Read MC1474110 and the service description; neither states that the view performs no automated actions.",
+      "severity": "major",
+      "fix": "Remove 'No change' and 'no automated actions' from the Autonomy & actions bullet; use the replacement sentence supplied for the read-only claim."
+    },
+    {
+      "n": 41,
+      "where": "controls[0].ui; Governance controls table; Risk assessment",
+      "type": "admin-path",
+      "claim": "Teams admin center > Teams apps > Manage apps > Planner > Block disables the whole Planner app in Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "In the left pane of the Teams admin center, go to Teams apps > Manage apps. ... To turn off Planner for your organization, search for the Planner app, select it, and then select Block.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "MicrosoftTeams Update-M365TeamsApp -Id <app-id> -IsBlocked <Boolean> changes the app's tenant state.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "Module: MicrosoftTeams PowerShell module ... -Id <String> [-IsBlocked <Boolean>] ... -Id: Application ID of Microsoft Teams app. ... -IsBlocked: The state of the app in the tenant.",
+      "severity": "minor",
+      "fix": "Add to controls[0].note: 'The cmdlet reference describes -IsBlocked as the tenant app state, but its examples inconsistently describe both $true and $false as unblocking; verify the resulting state before using it operationally.' Keep the Boolean placeholder, which does not claim a particular value blocks the app."
+    },
+    {
+      "n": 43,
+      "where": "controls[1].api; controls[1].note; Governance controls table and prose",
+      "type": "command",
+      "claim": "A global admin can use Set-PlannerConfiguration -IsPlannerAllowed $false to turn Planner off within the documented scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/disable-planner",
+      "quote": "If you're a global admin and you want to turn off Microsoft Planner for your organization, you can use Windows PowerShell. ... Set-PlannerConfiguration -IsPlannerAllowed $false",
+      "severity": "minor",
+      "fix": "Append to controls[1].note: 'Applies to basic plans in Teams and Web and all plans in other Planner endpoints; the page refers premium plans to separate guidance. Its procedure labels this command as turning off Outlook calendar sync despite the page title and introduction describing disabling Planner.' Replace 'The controls in the table below switch Planner off wholesale' with 'The table lists coarse controls for the Teams app and for Planner within the PowerShell page's documented scope.'"
+    },
+    {
+      "n": 44,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "absence",
+      "claim": "No admin UI equivalent for the organisation-wide IsPlannerAllowed setting is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner\" \"IsPlannerAllowed\" admin center turn off UI Outlook. Opened disable-planner and manage-planner-app; read FAQ and Project disable search excerpts. The Teams app and Project controls are distinct; no UI for IsPlannerAllowed is shown.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Settings configured for Planner for web also apply to Planner in Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "Settings and policies that you configure for Planner for web will also apply to Planner in Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The cited controls pages do not name Capacity view or expressly describe removing that view from Planner in Outlook.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner\" \"Capacity view\" admin disable control API PowerShell Graph; \"Planner\" \"IsPlannerAllowed\" admin center turn off UI Outlook. Read manage-planner-app and disable-planner: no Capacity view named; disable-planner states all other endpoints.",
+      "severity": "minor",
+      "fix": "Narrow the final Open questions control question to: 'Does blocking the Planner app in the Teams admin center also affect Planner in Outlook? The Teams page does not say.' Keep the PowerShell scope already stated in Governance controls rather than suggesting that no reach beyond Teams and Web is documented."
+    },
+    {
+      "n": 47,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The disable-Planner page applies to basic plans in Teams and Web and all plans in other Planner endpoints.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/disable-planner",
+      "quote": "This article applies to: Basic plans in the Planner app in Teams and Web; All plans in other Planner endpoints (including Planner mobile, and Planner connectors).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].note; Governance controls table",
+      "type": "role",
+      "claim": "The disable-Planner instructions are for a global admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/disable-planner",
+      "quote": "If you're a global admin and you want to turn off Microsoft Planner for your organization, you can use Windows PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: Before rollout and At rollout",
+      "type": "consistency",
+      "claim": "The checklist asks administrators to take stock of and check user licences, but no controls row covers that control.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Identify which Planner users hold Planner and Project Plan 3 ... check the user's licence before anything else. The table contains Teams app blocking, IsPlannerAllowed and the absent Capacity view switch, but no licence control.",
+      "severity": "minor",
+      "fix": "The first Before rollout bullet and the second At rollout bullet tell readers to inventory or check licence assignments without a corresponding controls row. Remove those control-check instructions; retain the licensing facts and the instruction to monitor missing-view support requests."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T06:41:23.491Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=569733",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1474110",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/planner/planner-for-admins",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/planner/disable-planner",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether the Planner app is available in Teams (coarse alternative; not specific to Capacity view)",
+        "docs": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Planner",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether the Planner app is available in Teams (coarse alternative; not specific to Capacity view)",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "reachable": true,
+        "token": "Update-M365TeamsApp",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether Planner is turned on for the organisation (coarse alternative; not specific to Capacity view)",
+        "docs": "https://learn.microsoft.com/planner/disable-planner",
+        "reachable": true,
+        "token": "Set-PlannerConfiguration",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

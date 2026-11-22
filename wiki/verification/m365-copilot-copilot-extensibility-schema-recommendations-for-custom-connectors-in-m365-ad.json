@@ -1,0 +1,594 @@
+{
+  "slug": "m365-copilot-copilot-extensibility-schema-recommendations-for-custom-connectors-in-m365-ad",
+  "roadmapId": 498911,
+  "title": "Microsoft 365 Copilot connectors: schema recommendations for custom connectors in the admin centre",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "1 blocking finding (claim 15)"
+    ]
+  },
+  "counts": {
+    "claims": 44,
+    "confirmed": 42,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "The briefing's mixed licensing classification does not match an administrative view inside the already licensed connectors product. The roadmap facts, navigation and schema-update API are supported, but the licensing field needs correction and several qualifications should be tightened.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "The roadmap associates this capability with Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development, although Learn documents the recommendations as an admin-center feature.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is September CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Targeted Release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Developer and Web platforms.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Developer\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap proposes schema suggestions tailored to the connector being built.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Proposed schema suggestions tailored to the connector you’re building.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap plans real-time recommendations to identify schema gaps or errors.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Real-time recommendations to identify gaps or errors in your schema design to help improve search and chat results in Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Scope; changes",
+      "type": "behaviour",
+      "claim": "The Microsoft 365 admin center provides schema recommendations for published custom Copilot connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "To help you get started, the Microsoft 365 admin center provides schema recommendations for published custom connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Recommendations analyse the schema and highlight missing labels used by Copilot to understand, rank and cite content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Schema recommendations analyze your connector schema and highlight missing semantic labels for key properties that Copilot relies on to understand, rank, and cite content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Accessing and managing connectors requires the AI administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "To access and manage your Microsoft 365 Copilot connectors, you must be an AI administrator for your organization.",
+      "severity": "minor",
+      "fix": "Keep the AI administrator requirement, but add: 'The cited Graph connection-management guide instead says a search admin can view and manage all tenant connections; the Microsoft guidance differs on the role.' The differing page is https://learn.microsoft.com/graph/connecting-external-content-manage-connections."
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing; Governance guidance; Open questions",
+      "type": "behaviour",
+      "claim": "The current check covers title, url, lastModifiedBy and lastModifiedDateTime.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Schema recommendations currently check for four missing semantic labels:\n- **`title`**\n- **`url`**\n- **`lastModifiedBy`**\n- **`lastModifiedDateTime`**",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The recommendations are not exhaustive and do not replace full schema design guidance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Schema recommendations aren't exhaustive and don't replace the full schema design guidance for Copilot connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: licensing.model",
+      "type": "consistency",
+      "claim": "The administrative schema-recommendations feature has a mixed licensing model.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Page field: model: \"mixed\". Microsoft: \"Your tenant must have Microsoft 365 licenses.\" The standard assigns included to a new option inside a product covered by its general licensing requirement.",
+      "severity": "blocker",
+      "fix": "Set licensing.model to 'included'. Keep the existing notes naming Microsoft 365 licenses and distinguishing the unpublished recommendation-specific licence; the table's alternative licences govern downstream connector experiences, not a mixed entitlement for this administrative view."
+    },
+    {
+      "n": 16,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "absence",
+      "claim": "Microsoft has not stated the recommendations' default state on arrival.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'custom Copilot connectors schema recommendations API read recommendations disable default automatically admin center' and '\"schema recommendations\" rollout future additional labels custom connectors default'; read manage-connector, view-details and roadmap. No default stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The title label is required for meaningful rendering and relevant Copilot results.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "**`title`** – Semantically indexes the primary display name of an item. Required for meaningful result rendering and relevant Copilot results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The url label is required for Copilot citations linking to the source system.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "**`url`** – Identifies the canonical link to the source item. Required for Copilot citations to link back to the source system.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].ui; What's changing; Governance guidance; Governance controls",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Copilot > Connectors > Your Connections > connection reaches the detail panel containing recommendations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Go to **Copilot** > **Connectors** > **Your Connections**. Select the connection that you want to modify. Schema recommendations can be accessed via the connection detail panel.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Adding labels changes how connector content is indexed and surfaced.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "When you build a custom Copilot connector, the schema you define determines how your content is indexed and surfaced in Microsoft 365 Copilot.",
+      "severity": "minor",
+      "fix": "Replace the opening clause with 'Semantic labels help Copilot understand, rank and cite connector content'. The cited overview at https://learn.microsoft.com/plugins/overview-copilot-connector explicitly says 'Semantic labels are used for filtering and don't affect semantic indexing', so do not imply that label changes alter semantic indexing."
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "applicability",
+      "claim": "Deployed connectors are tenant-wide unless external item security is restricted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/overview-copilot-connector",
+      "quote": "Deployed connectors are tenant-wide unless external item security is restricted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "A person or application changes the schema to assign missing semantic labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/connecting-external-content-manage-schema",
+      "quote": "You can assign or remove semantic labels. These labels influence experiences such as **Relevance** and **Viva Topics**.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/graph/connecting-external-content-manage-schema to sources, titled 'Register and manage schema for the Microsoft 365 Copilot connectors'; it explicitly documents adding or removing labels on an existing schema."
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Editing a connection might trigger a full crawl where applicable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Editing a connection might trigger a full crawl, where applicable. However, during the initial full crawl, editing the connection doesn't trigger another full crawl.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Syncing is the displayed connection state for a connector crawling source data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Syncing - The connector crawls the data from the source to index the existing items and make any updates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "A connectors tenant must have Microsoft 365 licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Your tenant must have Microsoft 365 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The available Microsoft Search, Copilot grounding and Copilot Chat agent experiences depend on licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "The surfaces available to your users (Microsoft Search, Microsoft 365 Copilot grounding, Copilot Chat agents) and the connector types you can deploy depend on your organization's licensing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 plus the Microsoft 365 Copilot add-on supports synced connector grounding and agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "| Microsoft 365 + Microsoft 365 Copilot add-on | ✅ | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 E7 supports synced connector grounding and agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "| Microsoft 365 E7 | ✅ | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Indexing synced connector data incurs no extra cost for tenants with Microsoft 365 licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "PATCH /v1.0/external/connections/{id}/schema updates a connection schema and can add labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-patch-schema?view=graph-rest-1.0",
+      "quote": "Create a new or update an existing schema for a Microsoft Search connection. PATCH https://graph.microsoft.com/v1.0/external/connections/contosohr/schema",
+      "severity": "minor",
+      "fix": "Keep the call unchanged. Replace the first sentence of controls[1].note with 'The request body sets properties[].labels on the schema properties to add the missing semantic labels.' The cited reference's example uses properties entries containing labels."
+    },
+    {
+      "n": 31,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "The schema-update request body supplies a schema object.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-patch-schema?view=graph-rest-1.0",
+      "quote": "In the request body, supply a JSON representation of a schema object.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].note; Risk assessment: Security & identity",
+      "type": "command",
+      "claim": "ExternalConnection.ReadWrite.OwnedBy is the least privileged permission for schema updates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-patch-schema?view=graph-rest-1.0",
+      "quote": "| Application | ExternalConnection.ReadWrite.OwnedBy | ExternalConnection.ReadWrite.All |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity",
+      "type": "command",
+      "claim": "ExternalConnection.ReadWrite.All is a higher privileged permission for schema updates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-patch-schema?view=graph-rest-1.0",
+      "quote": "| Delegated (work or school account) | ExternalConnection.ReadWrite.OwnedBy | ExternalConnection.ReadWrite.All |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].api; Open questions",
+      "type": "absence",
+      "claim": "An API for reading schema recommendations is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'custom Copilot connectors schema recommendations API read recommendations disable default automatically admin center'; read manage-connector, Graph patch-schema, schema resource and manage-connections. Found reading/updating schemas, not recommendation retrieval.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[1].ui",
+      "type": "absence",
+      "claim": "An admin-center control for updating a published custom connector's schema to add labels is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'custom Copilot connector edit schema semantic labels Microsoft 365 admin center UI'; read manage-connector, manage-search-schema and Graph manage-schema. UI update guidance covers Microsoft-built connectors; SDK label assignment describes setup, not published custom schema updates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "summary; Open questions; Governance controls",
+      "type": "absence",
+      "claim": "No switch to turn schema recommendations off is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'custom Copilot connectors schema recommendations API read recommendations disable default automatically admin center'; read manage-connector and Graph schema references. The Copilot Visibility toggle governs connector content, not schema recommendations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No licence specific to the schema-recommendations view is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot connector schema recommendations licensing price meter Microsoft 365'; read connectors prerequisites and manage-connector, plus returned licensing excerpts. Product and connector-experience licences are stated, but no recommendation-specific licence is named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to schema recommendations is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot connector schema recommendations licensing price meter Microsoft 365'; read prerequisites and manage-connector and search excerpts for Plan licensing and cost. No meter for analysing schemas or viewing recommendations was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The record and feature documentation do not state rollout mechanics for schema recommendations.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"schema recommendations\" rollout future additional labels custom connectors default'; read the roadmap and manage-connector. The record gives target, phases and platforms; neither gives a rollout sequence or deployment mechanism for recommendations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "Learn does not state whether the recommendation checks will expand beyond the current four labels.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"schema recommendations\" rollout future additional labels custom connectors default'; read manage-connector and returned schema-guidance excerpts. Found current checks and broader label guidance, not a plan to expand recommendation checks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The connection-operations table lists schema editing for connectors by Microsoft.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "| Edit a published connection | ✔️ Name and description ✔️ Connection settings ✔️ Property labels ✔️ Schema ✔️ Refresh schedule ✔️ Query string (ServiceNow) ✔️ Advanced criteria (ServiceNow) ✔️ User mapping (ServiceNow) | ✔️ Name ✔️ Description |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The connection-operations table lists only name and description editing for connectors by partners.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Connectors by partners: ✔️ Name ✔️ Description",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The connection-operations table does not list custom connectors as a separate category.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "| Operation | Connectors by Microsoft | Connectors by partners |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist tells readers to confirm AI administrator assignments without a corresponding role-assignment control row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Confirm who holds the AI administrator role'. The controls table contains only viewing recommendations and changing schemas.",
+      "severity": "minor",
+      "fix": "Replace that checklist bullet with 'Arrange for an AI administrator to review the recommendations.' This preserves the verified prerequisite without asking readers to inspect an unlisted role-assignment control."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T06:41:21.394Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=498911",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/view-details",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/plugins/overview-copilot-connector",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-patch-schema?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/connecting-external-content-manage-connections",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Viewing schema recommendations for a published custom connector",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Connectors",
+          "Your Connections",
+          "connection"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Changing a connection's schema to add the missing labels",
+        "docs": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-patch-schema?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/external/connections",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

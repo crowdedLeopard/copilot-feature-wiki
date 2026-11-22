@@ -1,0 +1,878 @@
+{
+  "slug": "m365-admin-center-m365-copilot-billing-and-usage-usage-insights",
+  "roadmapId": 492616,
+  "title": "Microsoft 365 admin center: usage insights for Copilot Chat pay-as-you-go billing",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "2 blocking findings (claims 59, 65)"
+    ]
+  },
+  "counts": {
+    "claims": 67,
+    "confirmed": 64,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "Hold: disconnecting a billing policy is not the only documented way to prevent metered agent use; Microsoft also documents blocking agents. The briefing also treats the newer Cost Management dashboard as a Copilot Chat monitoring surface without establishing that coverage. The roadmap facts, published message-meter rate and budget warning are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap plans Copilot Chat billing and usage insights in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft 365 Admin Center: M365 Copilot - Billing and usage - Usage insights",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The intended viewers are AI administrators in organisations that enable Copilot Chat pay-as-you-go billing.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "As you enable M365 Copilot Chat pay-as-you-go billing, AI administrators can view usage insights to inform agent management decisions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The planned insights display cost in total and per agent.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature displays the cost and number of messages in total and per agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing; Risk assessment: Data exposure; rationale: impact",
+      "type": "record",
+      "claim": "The planned insights display message counts in total and per agent.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature displays the cost and number of messages in total and per agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance",
+      "type": "record",
+      "claim": "Cost and usage details can be filtered by billing policy.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Cost and usage details can be filtered by billing policy and date range.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Cost and usage details can be filtered by date range.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Cost and usage details can be filtered by billing policy and date range.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The stated purpose is to inform agent management decisions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "AI administrators can view usage insights to inform agent management decisions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The record still says In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is May CY2025, earlier than the run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"May CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview target is October CY2025, earlier than the run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"October CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only listed cloud; US Government clouds are not listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Web is the listed platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Web\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: roadmapModified; What's changing",
+      "type": "record",
+      "claim": "The record was last modified on 2026-03-16.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-03-16T23:00:10\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap description names no licence for the insights view.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "As you enable M365 Copilot Chat pay-as-you-go billing, AI administrators can view usage insights to inform agent management decisions. This feature displays the cost and number of messages in total and per agent. Cost and usage details can be filtered by billing policy and date range.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; front matter: changes; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn does not identify this roadmap usage-insights view by name as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat usage insights 492616 cost messages per agent billing policy date range default roles license price. Opened view-cost, microsoft-365-copilot-credits and usage-based-billing-copilot-credits-monitor-spending; none identifies the roadmap view.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "default",
+      "claim": "The default state of the usage-insights view is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat usage insights view enable disable switch default. Read the roadmap, pay-as-you-go overview, both setup pages, Credits report and monitor-spending; no default for this particular view is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Why it matters",
+      "type": "licensing",
+      "claim": "The underlying Copilot Chat pay-as-you-go agent usage has a consumption licensing model and is billed to the configured Azure subscription through an Azure meter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/pay-as-you-go-overview",
+      "quote": "the service gets billed through the Azure subscription that you specified when you set up pay-as-you-go billing. The Azure subscription uses the Azure meter set up for the service.",
+      "severity": "minor",
+      "fix": "Retain the underlying consumption model, but add to the licensing notes: 'The Copilot-node setup page also requires the tenant to have at least one SharePoint licence, or a licence that includes SharePoint.' Cite https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-copilot. This requirement appears on that cited setup page but not on the other setup page summarised in Scope."
+    },
+    {
+      "n": 19,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No licence specific to the usage-insights view is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat usage insights 492616 cost messages per agent billing policy date range default roles license price. Opened overview, meters, both setup pages and Credits report; no separate insights-view entitlement is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate price or charge specific to the usage-insights view is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat usage insights 492616 cost messages per agent billing policy date range default roles license price. Opened pay-as-you-go-overview, pay-as-you-go-meters, view-cost and Credits report; no separate price for this planned view is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Copilot > Billing & usage > Pay-as-you-go services > Microsoft Copilot Chat reaches the billing-policy connection surface in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/setup-pay-as-you-go",
+      "quote": "go to Copilot > Billing & usage. On the Billing & usage page, select the Pay-as-you-go services tab. Select Microsoft Copilot Chat or SharePoint agents and select the billing policy you created.",
+      "severity": "minor",
+      "fix": "The path stops on the correct service page. To give the disconnect control named in the note, use 'Copilot > Cost management > Classic Billing & usage > Pay-as-you-go services > Microsoft Copilot Chat > Connected', set docs to https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-copilot, and say that the Connected toggle is turned off in Manage billing policy connections. That page is already cited."
+    },
+    {
+      "n": 22,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "No API or PowerShell equivalent is documented for connecting or disconnecting the classic Copilot Chat pay-as-you-go billing policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph beta Copilot Chat billing policy connect disconnect API PowerShell. Opened both classic setup pages and Cost Management API overview; the latter documents spending-policy service settings, not a classic Copilot Chat billing-policy connection operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].note; Scope",
+      "type": "role",
+      "claim": "The setup page requires Billing Administrator, AI Administrator or Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/setup-pay-as-you-go",
+      "quote": "You must have one of the following roles to complete the tasks in this article: Billing Administrator; AI Administrator; Global Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].note; Cost and licensing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Disconnecting the billing policy removes access to the service's metered agents for users linked to that policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/pay-as-you-go-overview",
+      "quote": "Upon disconnection, users linked to that billing policy lose access to the metered agents in the Copilot service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].note; Governance controls table",
+      "type": "admin-path",
+      "claim": "Another cited page reaches classic Billing & usage through Copilot > Cost management > Classic Billing & usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-copilot",
+      "quote": "go to Copilot > Cost management . In the banner at the top of the dashboard, select Classic Billing & usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[1].ui; What's changing; Governance guidance; Governance controls table",
+      "type": "admin-path",
+      "claim": "Reports > Usage > Microsoft Copilot > Credits reaches the Copilot Credits report in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "In the navigation menu, select Reports. If you don't see Reports, select Show all, and then select Reports. Select Usage. On the Usage page, under Reports, select Microsoft Copilot, and then select Credits.",
+      "severity": "minor",
+      "fix": "Use 'Reports > Usage > Reports > Microsoft Copilot > Credits' to retain the page's Reports heading, and add the qualifier 'If Reports is hidden in navigation, select Show all first.' The printed selectable steps are otherwise correct."
+    },
+    {
+      "n": 27,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "No API equivalent is documented for the Copilot Credits report's per-agent and per-classic-billing-policy figures.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Copilot Credits report per agent billing policy Microsoft Graph API export. Opened Credits report, Cost Management API overview and usage-reports-overview; the API reports users, groups, governed services and funding classes, not this report's agent/policy breakdown.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Credits report lists credits used per user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "Credits used per user, per agent, per billing policy, and per agent-user pair",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1].governs; What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "The Credits report lists credits used per agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "Credits used per user, per agent, per billing policy, and per agent-user pair",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[1].governs; What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "The Credits report lists credits used per billing policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "Credits used per user, per agent, per billing policy, and per agent-user pair",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Credits report lists credits used per agent-user pair.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "Credits used per user, per agent, per billing policy, and per agent-user pair",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The Credits report offers the last 7 or 30 days as reporting windows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "You can view the Copilot Credits report over the last 7 or 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[1].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "The Credits report documentation describes a preview displaying at most 30 days of history.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "During preview, the report displays a maximum of 30 days of Copilot Credits history.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].note; Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "default",
+      "claim": "User-specific information, including usernames, display names, groups and sites, is hidden in usage reports by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "By default, user-specific information like usernames, display names, groups, and sites is hidden in usage reports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[1].note; Governance controls table",
+      "type": "default",
+      "claim": "The Credits report anonymises billing policy IDs by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "By default, the Copilot credits report anonymizes the Billing Policy ID, just like the username and display name.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "When a user is covered by multiple billing policies, the Credits report attributes usage to the oldest configured policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "If a user is covered by multiple billing policies, this report attributes the usage to the oldest configured billing policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Copilot Cost Management dashboard has Overview and Consumption tabs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending",
+      "quote": "Use the Overview and Consumption tabs in the Cost Management dashboard to review Copilot Credit usage, funding sources, spending policies, users, groups, agents, and services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Consumption tab's Agents and services view shows usage for supported services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending",
+      "quote": "In the Agents and services view, review usage for supported services. For example, Cowork and Work IQ API. This view shows active users, credits used, cost, and session count for each supported service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The cited meters page lists one meter, Copilot Studio.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/pay-as-you-go-meters",
+      "quote": "| Meter | What is counted? | What is billed? | ... | Copilot Studio | A billable Copilot Studio message is a request or message sent to the Copilot triggering an action or response.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The cited Copilot Chat and SharePoint agents meters page says any agent or custom Copilot usage is billed through the Copilot Studio message meter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/pay-as-you-go-meters",
+      "quote": "Any agent or custom Copilot usage is billed through Copilot Studio message meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing; Governance guidance: At rollout; Open questions; rationale: cost",
+      "type": "cost",
+      "claim": "The cited meters page gives a rate of $0.01 per message.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/pay-as-you-go-meters",
+      "quote": "| Copilot Studio | A billable Copilot Studio message is a request or message sent to the Copilot triggering an action or response. Any agent or custom Copilot usage is billed through Copilot Studio message meter. | $0.01 per message |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The mapping between the planned insights view's message count and the Credits report's credit count is not stated for this particular view.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat usage insights credits messages conversion billing rate. Read meters, Credits report and Billing rates and management excerpts. General agent credit rates are documented, but no passage defines what this roadmap view's message count measures or its conversion to credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[2].note; Cost and licensing; Governance controls",
+      "type": "behaviour",
+      "claim": "A classic billing-policy budget triggers email notifications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/setup-pay-as-you-go",
+      "quote": "When you set a budget amount, it triggers email notifications based on your organization's spending relative to that limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[2].note; Cost and licensing; Governance guidance: At rollout; Governance controls",
+      "type": "cost",
+      "claim": "The classic billing-policy budget does not enforce a cap or stop usage when exceeded.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/setup-pay-as-you-go",
+      "quote": "the system doesn't enforce the budget or prevent your organization from exceeding it. Usage can continue uninterrupted even after the budget is surpassed",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[2].ui; Governance controls table; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Copilot > Cost management > Classic Billing & usage > Billing policies > billing policy > Budget reaches the billing-policy budget and spending view.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-copilot",
+      "quote": "go to Copilot > Cost management . In the banner at the top of the dashboard, select Classic Billing & usage. On the Billing policies tab, select a billing policy. In the side panel, select the Budget tab. The Spending option displays data for the current month",
+      "severity": "minor",
+      "fix": "For the spending view described by this row, append ' > Spending' to controls[2].ui.path. The current path stops on the correct page. Keep the budget's alert-only qualification."
+    },
+    {
+      "n": 46,
+      "where": "controls[2].api; Governance controls table",
+      "type": "absence",
+      "claim": "No API equivalent is documented for the classic billing-policy budget and spending view.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Copilot billing policy budget spending API Microsoft Graph beta. Read classic setup, budget search excerpt, Cost Management API overview and usage reports. Spending-policy credit limits and threshold settings are not identified as the classic dollar-budget control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[2].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "The Spending option shows data for the current month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-copilot",
+      "quote": "The Spending option displays data for the current month and includes a chart that displays data for the last six months.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[2].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "The Spending option includes a chart for the last six months.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-copilot",
+      "quote": "The Spending option displays data for the current month and includes a chart that displays data for the last six months.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Scope",
+      "type": "licensing",
+      "claim": "Setting up pay-as-you-go requires an Azure subscription in the same tenant as Microsoft 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/setup-pay-as-you-go",
+      "quote": "You must have an Azure subscription in the same tenant as Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Setting up pay-as-you-go requires a resource group in that Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/setup-pay-as-you-go",
+      "quote": "You must have an Azure resource group in that subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Scope",
+      "type": "role",
+      "claim": "The administrator needs Owner or Contributor rights to the Azure subscription and resource group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/setup-pay-as-you-go",
+      "quote": "You must have Owner or Contributor rights to the Azure subscription and resource group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "A tenant can create up to 50 billing policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/setup-pay-as-you-go",
+      "quote": "You can create up to 50 billing policies for your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Scope; Governance controls",
+      "type": "role",
+      "claim": "The view-costs page names Global administrator and Billing administrator for accessing its Cost Management page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/view-cost",
+      "quote": "Sign in to the Microsoft 365 admin center with one of the following administrator roles: Global administrator; Billing administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout; Governance controls",
+      "type": "role",
+      "claim": "The pay-as-you-go overview lists Global administrator, Billing administrator, AI administrator and Global reader for viewing and managing pay-as-you-go services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/pay-as-you-go-overview",
+      "quote": "The following administrator roles can view and manage pay-as-you-go services in the Microsoft 365 admin center: Global administrator; Billing administrator; AI administrator; Global reader (read-only access)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Global reader has read-only access to pay-as-you-go services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/pay-as-you-go-overview",
+      "quote": "Global reader (read-only access)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Establishing usage patterns is a use case named in Microsoft's pay-as-you-go overview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/pay-as-you-go-overview",
+      "quote": "Establish usage patterns - Admins can understand adoption patterns for new apps to determine if prepaid licenses make financial sense for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Security & identity; Scope; Open questions",
+      "type": "absence",
+      "claim": "Learn does not document the complete access-role list for this particular planned insights view.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat usage insights 492616 cost messages per agent billing policy date range default roles license price. Read overview, view-cost and Credits report; these describe surrounding surfaces. The roadmap names AI administrators but gives no complete access-role list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "No on/off switch is documented for the planned usage-insights view itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat usage insights view enable disable switch default. Read roadmap, overview, both setup pages, Credits report and monitor-spending. The documented toggles concern billing or service access, not availability of this planned insights view.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The billing-policy connection toggle is the only documented control that ends metered use.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-copilot-agents-integrated-apps",
+      "quote": "You can enable, disable, assign, block, or remove agents for your organization ... Members of your organization can only access the agents that you have allowed.",
+      "severity": "blocker",
+      "fix": "Replace 'The connection toggle is the only documented control that ends metered use' with 'Disconnecting a billing policy removes access to the metered agents in that service for users linked to the policy.' The narrower statement is supported by the already cited https://learn.microsoft.com/copilot/plan/pay-as-you-go-overview. Do not imply that agent blocking or other access controls are unavailable."
+    },
+    {
+      "n": 60,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Cost Management API usage reports are beta.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/usage-reports-overview",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Cost Management API documents credit-consumption reports by user, security group, governed service and funding class.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/usage-reports-overview",
+      "quote": "Use the Cost Management API usage reports to analyze consumption of Copilot Credits by user, security group, governed service, or funding class.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Those Cost Management API reports do not document a per-agent view equivalent to the Credits report.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Copilot Credits report per agent billing policy Microsoft Graph API export. Read the full Cost Management API overview and usage-reports-overview; dimensions are user, group, service, funding and raw user service/session detail, with no agent report operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Copilot > Billing & usage > Pay-as-you-go services reaches the page from which administrators inspect service billing-policy connections.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/setup-pay-as-you-go",
+      "quote": "In the Microsoft 365 admin center, go to Copilot > Billing & usage. On the Billing & usage page, select the Pay-as-you-go services tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "What's changing; Why it matters; Governance controls",
+      "type": "applicability",
+      "claim": "The Credits report is a documented way to monitor the Copilot Chat metered consumption underlying this roadmap item.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "The Microsoft Copilot Credits report helps you manage metered consumption costs for Microsoft Copilot Chat. This report gives you visibility into credits used for your Microsoft Copilot pay-as-you-go billing policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "What's changing; Why it matters",
+      "type": "applicability",
+      "claim": "The newer Copilot Cost Management dashboard's Overview and Consumption surfaces monitor the same Copilot Chat pay-as-you-go spend.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Chat usage insights 492616 cost messages per agent billing policy date range default roles license price. Read monitor-spending and usage-based-billing overview excerpts; no passage establishes Copilot Chat coverage in the newer dashboard.",
+      "severity": "blocker",
+      "fix": "Remove the Overview/Consumption dashboard sentences from What's changing, rather than presenting them as surrounding surfaces for the same billing. Replace 'Until the feature is documented, the Credits report and Cost Management pages below are the documented ways to watch this spend' with 'Until the feature is documented, the Credits report and the service-level page at Billing > Cost Management are documented ways to watch Copilot Chat pay-as-you-go spend.' The latter is supported by the already cited https://learn.microsoft.com/copilot/manage/view-cost."
+    },
+    {
+      "n": 66,
+      "where": "Governance guidance: Before rollout",
+      "type": "consistency",
+      "claim": "Every control the governance checklist tells administrators to take stock of is represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Check who holds the Global administrator, Billing administrator, AI administrator and Global reader roles'. Table rows: billing-policy connection; Credits report; billing-policy Budget view. No role-assignment control row is present.",
+      "severity": "minor",
+      "fix": "Remove the checklist bullet beginning 'Check who holds the Global administrator, Billing administrator, AI administrator and Global reader roles'. Retain the sourced role information in Security & identity; do not add an unverified role-assignment control row."
+    },
+    {
+      "n": 67,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes reporting and does not describe any new agent action, data access or user-control setting caused by these insights.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "As you enable M365 Copilot Chat pay-as-you-go billing, AI administrators can view usage insights to inform agent management decisions. This feature displays the cost and number of messages in total and per agent. Cost and usage details can be filtered by billing policy and date range.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T06:41:19.352Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=492616",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/pay-as-you-go-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/pay-as-you-go-meters",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/setup-pay-as-you-go",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-copilot",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/view-cost",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/usage-reports-overview",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether Microsoft Copilot Chat agent usage is billed to a pay-as-you-go billing policy",
+        "docs": "https://learn.microsoft.com/copilot/implement/setup-pay-as-you-go",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Billing & usage",
+          "Pay-as-you-go services",
+          "Microsoft Copilot Chat"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Credits used per agent and per billing policy (read-only report)",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+        "reachable": true,
+        "segments": [
+          "Reports",
+          "Usage",
+          "Microsoft Copilot",
+          "Credits"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Budget and spending view for a billing policy",
+        "docs": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-copilot",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost management",
+          "Classic Billing & usage",
+          "Billing policies",
+          "billing policy",
+          "Budget"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

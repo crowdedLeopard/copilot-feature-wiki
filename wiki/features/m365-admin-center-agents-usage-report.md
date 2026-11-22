@@ -12,13 +12,13 @@ platforms: ["Web"]
 targetDate: "July CY2026"
 previewDate: "August CY2025"
 risk: "low"
-cost: "low"
+cost: "medium"
 impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published: the Learn report page and the usage reports overview name roles, not a licence, for viewing the report. The report splits users by Microsoft Copilot licence; agent access is licensed on its own pages."
+  model: "mixed"
+  notes: "The Microsoft Agent 365 service description lists basic active-user insights in the MAC agent usage report as core capability included with a Microsoft cloud subscription for Microsoft Services (1P) agents, and as premium capability only for Non-Microsoft Services (3P) agents."
 audiences: ["m365-admin","service-owner","finops","change-adoption"]
 tags: ["usage-reports","agents","m365-admin-center","copilot-chat","m365-copilot","analytics","adoption"]
 sources:
@@ -49,6 +49,15 @@ sources:
   - title: "copilotReportRoot resource type"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/reports/resources/copilotreportroot"
     kind: "learn"
+  - title: "Microsoft Agent 365"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365"
+    kind: "learn"
+  - title: "Microsoft Copilot Credits report"
+    url: "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits"
+    kind: "learn"
+  - title: "Assign Microsoft 365 admin roles"
+    url: "https://learn.microsoft.com/microsoft-365/admin/add-users/assign-admin-roles"
+    kind: "learn"
 videos: []
 related: ["usage-reports","m365-admin-center-copilot-credits-usage-report","m365-copilot-new-m365-copilot-usage-reports-for-copilot-search-connectors-and-agents-for-u","m365-admin-center-usage-reports-m365-copilot-connectors","m365-copilot-agent-365-business-analytics-experience"]
 controls:
@@ -62,7 +71,7 @@ controls:
       kind: "graph"
       call: "PATCH https://graph.microsoft.com/beta/admin/reportSettings"
       docs: "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta"
-    note: "Global administrators can change it. The request body sets displayConcealedNames (true conceals). Also applies to Graph, Power BI and Teams admin center reports."
+    note: "Global administrators can change it. The request body sets displayConcealedNames (true conceals). Also applies to Graph, Power BI and Teams reports. This Graph API is beta; Microsoft does not support its use in production applications."
   - governs: "Whether an agent listed in the report is available to anyone in the organisation"
     scope: "agent"
     ui:
@@ -73,7 +82,7 @@ controls:
       kind: "graph"
       call: "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
-    note: "Acts on the agent, not on the report. The Graph API requires a Microsoft Agent 365 licence and is beta."
+    note: "Acts on the agent, not the report. Graph API is beta and needs an Agent 365 licence. Admin center actions fail for agents in a Power Platform environment whose firewall is in active enforcement mode; run them against the Power Platform API."
 confidence: "medium"
 created: "2026-11-22"
 updated: "2026-11-22"
@@ -83,19 +92,23 @@ changes:
     note: "First briefing: the Agents usage report as Learn documents it, with the name-concealing setting and the agent block control, and the licence and default left as not yet published."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 81 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after verification: licensing now mixed and cost medium per the Agent 365 service description; added the firewall enforcement caveat on blocking; removed an unsupported 'first' claim."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 84 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 81
-  confirmed: 76
-  unconfirmed: 1
-  contradicted: 4
-  attempts: 1
-  hash: "adb0c5238a9e0eb3fefaaad29ce5f36a"
+  claims: 84
+  confirmed: 83
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "69257288e522eca1d381617d282cd543"
 ---
 
 ## What's changing
@@ -108,7 +121,7 @@ To open it, go to Reports, then Usage, then under Reports select Microsoft Copil
 
 ## Why it matters
 
-This is the first place the record shows agent adoption across licensed and unlicensed users together, and by who built the agent. Creator type matters most for the **Your Users** group: Learn describes these agents as not listed in the organisation-wide catalogue, usable by their creator or shared by link within the organisation. A rising Your Users count tells you where unmanaged agents are spreading before you decide to block any.
+The report shows agent adoption across licensed and unlicensed users together, and by who built the agent. Creator type matters most for the **Your Users** group: Learn describes these agents as not listed in the organisation-wide catalogue, usable by their creator or shared by link within the organisation. A rising Your Users count tells you where unmanaged agents are spreading before you decide to block any.
 
 The report also gives finance and licensing owners a basis for the licensing conversation. Learn's Copilot Chat page says access to agents that use shared tenant data is pay-as-you-go only for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) users, so unlicensed agent users in this report are the people to compare against your Copilot Credits reporting. Microsoft has not stated whether the report appears in a tenant with no admin action, so treat it as something to open and check, not something that will reach you.
 
@@ -135,7 +148,7 @@ The report also gives finance and licensing owners a basis for the licensing con
 
 ## Cost and licensing
 
-**Licence to view the report.** The Learn report page and the usage reports overview give roles as the prerequisite for viewing and name no licence, meter or charge for the report itself. A licence statement for the report is not yet published; this briefing does not conclude that none is needed.
+**Licence.** The Microsoft Agent 365 service description lists basic active-user insights in the MAC agent usage report for Microsoft Services (1P) agents as core capability included with a Microsoft cloud subscription, and for Non-Microsoft Services (3P) agents as premium capability only. Microsoft Agent 365 is available as a stand-alone subscription with eligible Microsoft 365 subscriptions and is included with Microsoft 365 E7. These service categories should not be equated with the report's Creator type categories.
 
 **What the report segments by.** It splits users by whether they hold a Microsoft Copilot licence. Learn's Copilot Chat page says agents using public data are available for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) licences, access to agents that use shared tenant data is pay-as-you-go only, pay-as-you-go agents are turned off by default for those users, and agent use comes with a Microsoft 365 Copilot (Premium) licence.
 
@@ -165,7 +178,7 @@ The report also gives finance and licensing owners a basis for the licensing con
 
 ### After rollout
 
-- Review the agent details table for agents with unlicensed active users and decide whether any should be blocked through All agents.
+- Review the agent details table for agents with unlicensed active users and decide whether any should be blocked through All agents. Admin center actions fail for agents in a Power Platform environment whose firewall is in active enforcement mode; Microsoft directs administrators to run the action directly against the Power Platform API in that case.
 - Compare unlicensed agent usage with the Microsoft Copilot credits report to see where pay-as-you-go consumption could arise.
 - Check the Learn page for the 90-day and 180-day periods it says will be added.
 
@@ -176,12 +189,12 @@ The report also gives finance and licensing owners a basis for the licensing con
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether usage reports, including the Agents report, conceal user, group and site names</strong><br><small>Tenant</small><br><small class="controls__note">Global administrators can change it. The request body sets displayConcealedNames (true conceals). Also applies to Graph, Power BI and Teams admin center reports.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Org settings › Services › Reports › Conceal user, group, and site names in all reports <a href="https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/admin/reportSettings</code> <a href="https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether an agent listed in the report is available to anyone in the organisation</strong><br><small>Agent</small><br><small class="controls__note">Acts on the agent, not on the report. The Graph API requires a Microsoft Agent 365 licence and is beta.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether usage reports, including the Agents report, conceal user, group and site names</strong><br><small>Tenant</small><br><small class="controls__note">Global administrators can change it. The request body sets displayConcealedNames (true conceals). Also applies to Graph, Power BI and Teams reports. This Graph API is beta; Microsoft does not support its use in production applications.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Org settings › Services › Reports › Conceal user, group, and site names in all reports <a href="https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/admin/reportSettings</code> <a href="https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether an agent listed in the report is available to anyone in the organisation</strong><br><small>Agent</small><br><small class="controls__note">Acts on the agent, not the report. Graph API is beta and needs an Agent 365 licence. Admin center actions fail for agents in a Power Platform environment whose firewall is in active enforcement mode; run them against the Power Platform API.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The conceal setting is tenant-wide and Learn says Global administrators can change it. The block control governs the availability of an agent the report lists, not the report: the report page links to Copilot controls in the Microsoft 365 admin center as the place to manage agents and documents no action inside the report. For agents built in Agent Builder or Copilot Studio, Learn says blocking also affects host products such as Outlook and Teams; for agents built in SharePoint or Microsoft Foundry it affects availability in Copilot Chat. Learn states that the Package Management API behind the Graph call requires a Microsoft Agent 365 licence. Assigning the roles that can view the report is done through Microsoft Entra roles in the admin centre; its path is not given here.
+The conceal setting is tenant-wide and Learn says Global administrators can change it. The block control governs the availability of an agent the report lists, not the report: the report page links to Copilot controls in the Microsoft 365 admin center as the place to manage agents and documents no action inside the report. For agents built in Agent Builder or Copilot Studio, Learn says blocking also affects host products such as Outlook and Teams; for agents built in SharePoint or Microsoft Foundry it affects availability in Copilot Chat. Learn states that the Package Management API behind the Graph call requires a Microsoft Agent 365 licence. Admin center actions fail for agents in a Power Platform environment whose firewall is in active enforcement mode; Microsoft directs administrators to run the action directly against the Power Platform API in that case. Assigning the roles that can view the report is done through Microsoft Entra roles in the admin centre; its path is not given here.
 
 ## Open questions
 
@@ -189,25 +202,18 @@ The conceal setting is tenant-wide and Learn says Global administrators can chan
 - When will the 90-day and 180-day periods arrive? Learn says only "a future update".
 - Will the report reach GCC and GCC High? The roadmap lists Worldwide only, and the overview lists those clouds as to be released in the future.
 - Is there a Microsoft Graph report method for agent usage data? At the time of writing (November 2026) the Copilot usage report API reference lists four methods, none for the agents report.
-- Is a licence needed to view the report beyond the admin role? Neither Learn page says.
+- Which agents in the report fall under the service description's Microsoft Services (1P) and Non-Microsoft Services (3P) categories? Watch the Microsoft Agent 365 service description.
 
 <!-- rationale
 risk: Low. The report counts agent usage and takes no action; the one exposure is that usernames are hidden by default and a Global administrator can reveal them for every usage report.
-cost: Low. The Learn report page lists roles as its prerequisite and names no licence or charge for viewing it, so the known cost is admin time; spend for agent use is metered elsewhere.
+cost: Medium. The Microsoft Agent 365 service description lists basic active-user insights for Non-Microsoft Services (3P) agents in the admin center agent usage report as premium capability only; Microsoft Services (1P) insights are included as core capability with a Microsoft cloud subscription. Reviewing the report also takes admin time.
 impact: Low. Administrators and report readers see it; end users notice nothing because the report observes usage and changes no agent's availability.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters, first sentence / behaviour: This is the first place the record shows adoption across licensed and unlicensed users together and by agent creator. | Found: Searched: '"Agents usage report" "first" licensed unlicensed publisher type'; read the roadmap and new and deprecated Agents report pages. They describe coverage but do not establish a first. | Fix: Replace the sentence with 'The report shows agent adoption across licensed and unlicensed users together, and by who built the agent.'
-- [contradicted, blocker] front matter: licensing.model; Cost and licensing: Licence to view the report; Open questions / licensing: Licensing for the report is not yet published, so its licensing model is unknown. | Found: Basic usage insights for Microsoft Services (1P) agents (active users) in MAC agent usage report | Microsoft 365 admin center | Yes | Yes | Yes | Fix: Set licensing.model to 'mixed'. Replace the unpublished-licensing statement and corresponding open question with 'The Microsoft Agent 365 service description lists basic active-user insights in the MAC agent usage report for Microsoft Services (1P) agents as core capability included with a Microsoft cloud subscription, and for Non-Microsoft Services (3P) agents as premium capability only. Microsoft Agent 365 is available as a stand-alone subscription with eligible Microsoft 365 subscriptions and is included with Microsoft 365 E7. These service categories should not be equated with the report's Creator type categories.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
-- [contradicted, blocker] controls[1].governs; Governance controls; Governance guidance: After rollout / applicability: The admin center block control prevents organisation-wide use of an agent listed in the report without an enforcement qualification. | Found: Active enforcement mode – Admin actions that you initiate from the Microsoft 365 admin center fail and aren't applied to the agent. | Fix: Keep the supported block path, but append to controls[1].note and the blocking guidance: 'Admin center actions fail for agents in a Power Platform environment whose firewall is in active enforcement mode; Microsoft directs administrators to run the action directly against the Power Platform API in that case.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions. Do not add an unverified replacement API call. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
-- [contradicted, blocker] front matter: cost; rationale: cost; Cost and licensing / consistency: Cost is low because admin time is the only known cost and report licensing is unpublished. | Found: Basic usage insights for Non-Microsoft Services (3P) agents (active users) in MAC agent usage report | Microsoft 365 admin center | No | Yes | Yes | Fix: Set cost to 'medium' and replace its rationale with 'Medium. The Microsoft Agent 365 service description lists basic active-user insights for Non-Microsoft Services (3P) agents in the admin center agent usage report as premium capability only; Microsoft Services (1P) insights are included as core capability with a Microsoft cloud subscription. Reviewing the report also takes admin time.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365; do not infer that all Third-party creator-type agents require premium licensing. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing, third paragraph; Governance guidance: At rollout / admin-path: The report opens at Microsoft 365 admin center > Reports > Usage > Microsoft Copilot > Agents. | Found: Select Usage. On the Usage page, under Reports, select Microsoft Copilot, and then select Agents. | Fix: Give the heading-inclusive path as 'Microsoft 365 admin center > Reports > Usage > Reports > Microsoft Copilot > Agents'; the second Reports is the heading on the Usage page. | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new
-- [supported, minor] Cost and licensing: Spend; Why it matters; Governance guidance: After rollout; rationale: cost / cost: Copilot Credits consumption is reported separately in the Microsoft Copilot Credits report. | Found: The Microsoft Copilot Credits report helps you manage metered consumption costs for Microsoft Copilot Chat. This report gives you visibility into credits used for your Microsoft Copilot pay-as-you-go billing policies. | Fix: Add https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits to sources for the statement about what the separate credits report measures. | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits
-- [supported, minor] controls[0].api; rendered controls table / command: PATCH https://graph.microsoft.com/beta/admin/reportSettings updates tenant reporting settings. | Found: PATCH https://graph.microsoft.com/beta/admin/reportSettings | Fix: Append to controls[0].note: 'This Graph API is beta; Microsoft does not support its use in production applications.' | Source: https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta
-- [supported, minor] Governance controls, final sentence; summary / role: Administrators assign report-viewing Microsoft Entra roles through the Microsoft 365 admin center. | Found: In the Microsoft 365 admin center, go to Roles > Role assignments. To view the administrator roles available for your organization, choose the Microsoft Entra ID, Exchange, Intune, or Billing tab. | Fix: Add https://learn.microsoft.com/microsoft-365/admin/add-users/assign-admin-roles to sources for the statement about assigning roles in the admin center. | Source: https://learn.microsoft.com/microsoft-365/admin/add-users/assign-admin-roles
-- [contradicted, minor] Governance guidance: Before rollout, At rollout and After rollout; controls / consistency: Every control or monitoring view the governance checklist asks administrators to review has a corresponding controls row. | Found: Decide which of the roles Learn lists for usage reports will read this report; Open Reports > Usage > Microsoft Copilot > Agents; Compare unlicensed agent usage with the Microsoft Copilot credits report. The table contains only concealment and blocking. | Fix: The checklist's report-reader role decision, opening the Agents report, and comparing the Copilot Credits report have no corresponding controls rows. Record this table/checklist gap; do not add new rows as part of this correction.
+- [supported, minor] What's changing; Governance guidance: At rollout / admin-path: The report is reached through Microsoft 365 admin center > Reports > Usage > Microsoft Copilot > Agents. | Found: In the navigation menu, select Reports. ... Select Usage. ... On the Usage page, under Reports, select Microsoft Copilot, and then select Agents. | Fix: Use 'Microsoft 365 admin center > Reports > Usage > Reports > Microsoft Copilot > Agents' in the rollout checklist, retaining the Reports heading that the What's changing prose already gives. | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new
+- [supported, minor] Scope: Who and where; Open questions / availability: The overview lists Agent usage as Public Yes, GCC and GCC High N/A with future-release note 1, and DoD N/A with no-plan note 2. | Found: Microsoft Copilot Agent usage ... Yes | N/A^1^ | N/A^1^ | N/A^2^ | N/A^2^ ... N/A^1^: The report will be released in the future. ... N/A^2^: The service isn't available in the environment; hence, there's no plan to release the report. | Fix: Add: 'The Agent 365 service description separately marks GCC availability as Yes for basic 1P and 3P active-user insights in the MAC agent usage report, while the usage reports overview still lists GCC as a future release.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365. Retain the roadmap and overview statements as attributed facts. | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports
+- [contradicted, minor] Governance guidance; Governance controls / consistency: Every control the governance checklist asks readers to check or decide appears in the controls table. | Found: Decide which of the roles Learn lists for usage reports will read this report ... Open Reports > Usage > Microsoft Copilot > Agents ... Compare unlicensed agent usage with the Microsoft Copilot credits report ... Table rows: conceal names; block agent. | Fix: The role-assignment decision and the Agents and Copilot Credits report checks have no corresponding controls rows. Do not add rows during correction; remove those checklist bullets or retain the report comparisons as analytical advice outside the governance checklist. The two existing controls rows can remain unchanged.
 -->

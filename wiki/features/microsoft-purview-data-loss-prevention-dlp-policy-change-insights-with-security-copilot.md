@@ -4,7 +4,7 @@ slug: "microsoft-purview-data-loss-prevention-dlp-policy-change-insights-with-se
 roadmapId: 559106
 topic: "governance"
 products: ["Microsoft Purview"]
-summary: "Planned Security Copilot summaries of what changed after each DLP policy update in Microsoft Purview. Optional and admin-facing; licensing and any switch are not yet published, so no action is needed yet."
+summary: "Planned Security Copilot summaries of what changed after each DLP policy update in Microsoft Purview. Admin-facing; arrival behaviour is not stated. Security Copilot licensing applies; a feature-specific switch is not yet documented."
 status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -37,6 +37,15 @@ sources:
   - title: "Microsoft Security Copilot Frequently Asked Questions"
     url: "https://learn.microsoft.com/copilot/security/faq-security-copilot"
     kind: "learn"
+  - title: "Microsoft Security Copilot Security Compute Units and capacity"
+    url: "https://learn.microsoft.com/copilot/security/security-compute-units-capacity"
+    kind: "learn"
+  - title: "Configure Copilot settings with the owner role"
+    url: "https://learn.microsoft.com/copilot/security/owner-settings"
+    kind: "learn"
+  - title: "Learn about data loss prevention"
+    url: "https://learn.microsoft.com/purview/dlp-learn-about-dlp"
+    kind: "learn"
 videos: []
 related: ["data-loss-prevention-dlp-policy-change-insights-with-security-copilot","microsoft-purview-data-loss-prevention-new-guided-experience-to-diagnose-and-resolve-dlp-i","microsoft-purview-data-loss-prevention-data-security-triage-agent-summaries-and-categoriza","microsoft-purview-endpoint-data-loss-prevention-policy-sync-and-device-health-ai-powered-i","endpoint-dlp"]
 controls:
@@ -44,7 +53,7 @@ controls:
     scope: "tenant"
     ui: null
     api: null
-    note: "No setting is documented for this feature. The Purview source in Security Copilot is a related control; Learn does not say it governs this feature alone."
+    note: "No setting is documented for this feature. The Purview source in Security Copilot is a prerequisite for Security Copilot experiences in Purview, not a switch for this feature alone."
 confidence: "low"
 created: "2026-11-22"
 updated: "2026-11-22"
@@ -54,19 +63,23 @@ changes:
     note: "New briefing: Security Copilot explanations of DLP policy changes in Microsoft Purview, with Security Copilot licensing and SCU rules and no documented switch yet."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 62 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Correction: removed the unsupported 'optional' and read-only claims, stated that Security Copilot licensing applies and that SCU use is documented, and clarified the Purview source toggle."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 55
-  unconfirmed: 3
-  contradicted: 4
-  attempts: 1
-  hash: "85ba558549f915dd013dd19184da9fbc"
+  claims: 65
+  confirmed: 65
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "6834fc8acac5c484bd2c770aaa7b910e"
 ---
 
 ## What's changing
@@ -94,11 +107,11 @@ Microsoft has not stated what happens on arrival or whether an administrator has
 - An AI summary of enforcement implications can be wrong or incomplete. Compare it with the policy itself before relying on it for an approval or audit decision.
 
 **Autonomy & actions**
-- The roadmap describes explanations only. It states no action that edits, rolls back or approves a policy, so the briefing assumes none.
+- The roadmap describes explanations only. It states no action that edits, rolls back or approves a policy; those actions are not described.
 
 **Change & support**
 - The roadmap lists both Preview and General Availability, and the target dates have passed with the status still In development. Expect the behaviour, wording and licensing to be settled only when Learn documents it.
-- Each explanation may draw on the tenant's Security Copilot capacity. SCU use for this feature is not yet published.
+- Microsoft documents SCU consumption for Security Copilot experiences and capabilities; an SCU amount per DLP policy change explanation is not yet published.
 
 ## Cost and licensing
 
@@ -106,9 +119,9 @@ Licence: the roadmap names Microsoft Security Copilot as the engine. For the rel
 
 Meter: Security Copilot is measured in Security Compute Units (SCUs). Microsoft's inclusion page says Microsoft 365 E5 and E7 customers get 400 SCUs each month for every 1,000 paid user licences, up to 10,000 SCUs each month, at no additional cost, and that allocations reset monthly and do not roll over. The same page says usage beyond the allocation will be throttled at a future date, after which customers can scale beyond it at $6 USD for each SCU on a pay-as-you-go basis, with 30 days' advance notice.
 
-Customers without Microsoft 365 E5 or E7 licences continue to use the existing Security Copilot pricing model. Microsoft's Security Copilot FAQ says provisioned SCUs are billed hourly and overage SCUs can be set from 0 to 999 and are billed only when used. Usage can be tracked in the in-product usage dashboard in the Security Copilot standalone portal.
+Customers without Microsoft 365 E5 or E7 licences continue to use the existing Security Copilot pricing model. Microsoft's Security Copilot FAQ says provisioned SCUs are billed hourly and overage SCUs can be set from 0 to 999 and are billed only when used. The [capacity reference](https://learn.microsoft.com/copilot/security/security-compute-units-capacity) additionally documents an unlimited overage setting. Usage can be tracked in the in-product usage dashboard in the Security Copilot standalone portal.
 
-Not yet published: whether this feature consumes SCUs and how many per explanation.
+Microsoft documents SCU consumption for Security Copilot experiences and capabilities, including [embedded experiences](https://learn.microsoft.com/copilot/security/security-compute-units-capacity); an SCU amount per DLP policy change explanation is not yet published.
 
 ## Scope
 
@@ -131,7 +144,6 @@ Prerequisites: none are published for this feature. The related Get insights wit
 - Read the Learn page for this feature when it appears, and note the role and licence it names.
 
 ### After rollout
-- Watch SCU consumption in the Security Copilot usage dashboard once the feature is in use.
 - Ask reviewers whether the explanations matched the real change, and report mismatches to Microsoft through the feedback option Security Copilot provides.
 - Re-read this briefing when the roadmap status moves from In development.
 
@@ -142,42 +154,30 @@ Prerequisites: none are published for this feature. The related Get insights wit
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Separate on/off switch for DLP policy change explanations</strong><br><small>Tenant</small><br><small class="controls__note">No setting is documented for this feature. The Purview source in Security Copilot is a related control; Learn does not say it governs this feature alone.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Separate on/off switch for DLP policy change explanations</strong><br><small>Tenant</small><br><small class="controls__note">No setting is documented for this feature. The Purview source in Security Copilot is a prerequisite for Security Copilot experiences in Purview, not a switch for this feature alone.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 Microsoft Learn documents no setting or API for policy change explanations at the time of writing (November 2026), so the table shows the gap. Nothing is documented that lets an administrator turn this feature on or off separately.
 
-Two related controls exist for Security Copilot in Purview. In the Security Copilot portal, the Purview source is switched on the Manage plugins page, and Learn states that it is enabled by default and that the embedded experiences need it on. Learn does not say that this toggle governs this feature. Security Copilot owners can also control whether Microsoft 365 service data is shared with Security Copilot in Owner settings, which Learn says affects use with Purview. Neither is a control over this feature alone.
+Two related controls exist for Security Copilot in Purview. In the Security Copilot portal, open Sources in the prompt bar, then on Manage plugins set the Purview toggle to On or Off. Learn states that it is enabled by default and that the embedded experiences need it on. This is a prerequisite for Security Copilot standalone and embedded experiences in Purview, not a switch for policy change explanations alone. Security Copilot owners can also control whether Microsoft 365 service data is shared with Security Copilot in Owner settings, which Learn says affects use with Purview. Neither is a control over this feature alone.
 
 ## Open questions
 
-- Does the feature consume SCUs, and how many per explanation? Watch the Security Copilot SCU and capacity pages on Learn.
+- How many SCUs does each explanation consume? Watch the Security Copilot SCU and capacity pages on Learn.
 - Which role is required to see the explanations: Information protection admin, as for Get insights with Copilot, or another? Watch the Purview DLP pages on Learn.
 - Is there a tenant setting to turn the explanations on or off, and is it on by default? Watch Message center and Learn.
 - The Preview and General Availability targets (September and October CY2026) have passed with the status still In development. When will it reach tenants? Watch the Microsoft 365 roadmap item.
 - Where are the explanations stored, and are they kept as part of the policy's version history? Not yet described by Microsoft.
 
 <!-- rationale
-risk: Low. The roadmap describes read-only explanations of DLP policy changes for admins, with no stated change to enforcement; the default state is not stated, so this rates today's behaviour continuing.
-cost: Variable. The roadmap says it uses Security Copilot, which is metered in Security Compute Units (SCUs); Microsoft has not published a rate or SCU use for this feature.
-impact: Low. Only compliance and security administrators who edit or review DLP policies would see the explanations; end users are not described as affected.
+risk: Low. The roadmap describes explanations of DLP policy changes for admins, with no stated change to enforcement; the default state is not stated, so this rates today's behaviour continuing.
+cost: Variable. The roadmap says it uses Security Copilot, which is metered in Security Compute Units (SCUs); Microsoft has not published an SCU amount per explanation for this feature.
+impact: Low. The roadmap identifies compliance and security administrators as the intended audience for the explanations. End users are not described as affected.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] summary / default: The capability is optional. | Found: Searched: 'DLP policy change insights' Security Copilot SCU license default on off. Read roadmap, DLP testing, Purview Copilot overview and inclusion pages; none states this capability is optional or requires a user's choice. | Fix: Replace 'Optional and admin-facing' with 'Admin-facing; arrival behaviour is not stated'. Keep defaultState as unknown.
-- [contradicted, blocker] summary / consistency: Licensing is not yet published. | Found: summary: 'licensing and any switch are not yet published'; licensing.model: 'mixed'; licensing.notes: 'Security Copilot is included for Microsoft 365 E5 and E7 customers ... or provisioned in SCUs otherwise.' | Fix: Replace 'licensing and any switch are not yet published' with 'Security Copilot licensing applies; a feature-specific switch is not yet documented'. This preserves the published product-level entitlement and the narrower feature-specific gap.
-- [contradicted, blocker] Cost and licensing; Risk assessment: Change & support; Open questions / absence: Whether the feature consumes SCUs is not yet published. | Found: You consume SCUs in the following scenarios: ... Running embedded Security Copilot experiences ... Running other Security Copilot features and capabilities | Fix: Replace the unresolved consumption statement with: 'Microsoft documents SCU consumption for Security Copilot experiences and capabilities; an SCU amount per DLP policy change explanation is not yet published.' Cite https://learn.microsoft.com/copilot/security/security-compute-units-capacity. In Open questions, ask only 'How many SCUs does each explanation consume?' | Source: https://learn.microsoft.com/copilot/security/security-compute-units-capacity
-- [contradicted, blocker] Governance controls: second paragraph / absence: Learn does not say the Purview source toggle governs this Security Copilot capability in Purview. | Found: Security Copilot in Purview must be enabled for both the standalone and embedded experiences to work. | Fix: Replace 'Learn does not say that this toggle governs this feature' with 'This is a prerequisite for Security Copilot standalone and embedded experiences in Purview, not a switch for policy change explanations alone.' Retain the narrower statement that no separate feature-only switch is documented. | Source: https://learn.microsoft.com/purview/copilot-in-purview-overview
-- [unsupported, major] rationale: risk; Risk assessment: Autonomy & actions / behaviour: The feature is read-only and performs no policy edits, rollbacks or approvals. | Found: Searched: 'DLP' 'policy change' 'Copilot'; DLP policy change insights enable disable PowerShell Set-DlpCompliancePolicy API. Read roadmap and Purview overview; the roadmap describes explanations but does not state read-only operation or prohibit policy actions. | Fix: Replace 'read-only explanations' in the risk rationale with 'explanations'. Replace 'so the briefing assumes none' with 'those actions are not described'. Keep the supported statement that the roadmap describes no policy-editing action.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing / cost: The FAQ says provisioned SCUs are billed hourly. | Found: Provisioned SCUs are required to activate capacity and are billed hourly. | Fix: Add: 'The FAQ also calls provisioned SCUs billed monthly elsewhere; the capacity reference specifies hourly provisioned-capacity billing.' Cite https://learn.microsoft.com/copilot/security/security-compute-units-capacity, which states 'Provisioned capacity is billed per hour'. | Source: https://learn.microsoft.com/copilot/security/faq-security-copilot
-- [supported, minor] Cost and licensing / cost: The FAQ says overage SCUs can be set from 0 to 999. | Found: Overage SCUs can be set from 0 to 999 and are billed only when used. | Fix: Append: 'The capacity reference additionally documents an unlimited overage setting.' Cite https://learn.microsoft.com/copilot/security/security-compute-units-capacity, which says overage capacity 'Can be configured with a maximum limit or set to unlimited'. | Source: https://learn.microsoft.com/copilot/security/faq-security-copilot
-- [supported, minor] Governance controls / role: Security Copilot owners manage Owner settings. | Found: You need the Security Copilot owner role to manage owner settings. | Fix: Add https://learn.microsoft.com/copilot/security/owner-settings to sources to support the owner-role statement. | Source: https://learn.microsoft.com/copilot/security/owner-settings
-- [supported, minor] Governance controls / admin-path: The Purview source toggle is on the Manage plugins page in the Security Copilot portal. | Found: Open https://securitycopilot.microsoft.com/. Open Sources in the prompt bar. On the Manage plugins page, set the Purview toggle to On to enable or Off to disable. | Fix: Replace the location-only sentence with: 'In the Security Copilot portal, open Sources in the prompt bar, then on Manage plugins set the Purview toggle to On or Off.' | Source: https://learn.microsoft.com/purview/copilot-in-purview-overview
-- [unsupported, minor] rationale: impact / behaviour: Only compliance and security administrators who edit or review DLP policies would see the explanations. | Found: Searched: 'DLP policy' 'change insights' permissions default storage; 'Security Copilot' 'DLP' 'policy changes' license role storage. The roadmap identifies intended audiences but supplies no exhaustive viewer restriction. | Fix: Replace the first sentence of the impact rationale with: 'Low. The roadmap identifies compliance and security administrators as the intended audience for the explanations.' Keep 'end users are not described as affected'.
-- [supported, minor] Why it matters / behaviour: DLP policies determine protective actions such as monitoring and blocking, and edits to their conditions or scope can change enforcement. | Found: DLP policies monitor the activities that users take on sensitive items and, if the policy conditions are met, take protective actions. | Fix: Add https://learn.microsoft.com/purview/dlp-learn-about-dlp to sources to support the explanation of DLP enforcement. | Source: https://learn.microsoft.com/purview/dlp-learn-about-dlp
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist directs readers to monitor SCU consumption, but the controls table has no usage-monitoring row. | Found: After rollout: 'Watch SCU consumption in the Security Copilot usage dashboard once the feature is in use.' The controls table contains only 'Separate on/off switch for DLP policy change explanations'. | Fix: Remove the 'Watch SCU consumption in the Security Copilot usage dashboard once the feature is in use' checklist bullet because it names a control absent from the table. The cost section may retain the documented dashboard information.
+- [supported, minor] Scope: Prerequisites / absence: No prerequisites specific to policy-change explanations have been published, although the paragraph names related and general requirements. | Found: Searched: DLP policy change Copilot default role license prerequisites storage. Read DLP testing prerequisites and Purview Copilot overview. No feature-specific prerequisite list was found; the overview documents the Purview source requirement for standalone and embedded experiences. | Fix: Replace 'Prerequisites: none are published for this feature.' with 'Feature-specific prerequisites are not yet published.' Keep the following related-skill requirements and general Purview source prerequisite.
 -->

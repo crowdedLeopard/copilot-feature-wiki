@@ -18,7 +18,7 @@ defaultState: "on"
 action: "prepare"
 licensing:
   model: "included"
-  notes: "Microsoft Learn describes the Calls app, with call history and voicemail, as part of native Teams calling for Teams users. A licence or price specific to this upgrade is not yet published."
+  notes: "Microsoft Learn describes the Calls app, with call history and voicemail, as part of native Teams calling for Teams users, and says the Microsoft Teams Enterprise license includes native calling features. A licence or price specific to this upgrade is not yet published."
 audiences: ["m365-admin","service-owner","change-adoption","end-user"]
 tags: ["teams","teams-phone","user-experience","retention","admin-controls","gcc","gcc-high","dod"]
 sources:
@@ -37,6 +37,12 @@ sources:
   - title: "Learn about retention for Microsoft Teams"
     url: "https://learn.microsoft.com/purview/retention-policies-teams"
     kind: "learn"
+  - title: "Teams Calling features"
+    url: "https://learn.microsoft.com/microsoftteams/here-s-what-you-get-with-phone-system"
+    kind: "learn"
+  - title: "Create and configure retention policies"
+    url: "https://learn.microsoft.com/purview/create-retention-policies"
+    kind: "learn"
   - title: "Whether users can use calling at all, including seeing the Calls app (PowerShell)"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy"
     kind: "learn"
@@ -50,7 +56,7 @@ controls:
     scope: "user"
     ui:
       surface: "Teams admin center"
-      path: "Voice > Calling policies > policy > Make private calls"
+      path: "Voice > Calling policies > policy > Edit > Make private calls"
       docs: "https://learn.microsoft.com/microsoftteams/teams-calling-policy"
     api:
       kind: "powershell"
@@ -61,7 +67,7 @@ controls:
     scope: "user"
     ui:
       surface: "Teams admin center"
-      path: "Voice > Calling policies > policy > Voicemail for inbound calls"
+      path: "Voice > Calling policies > policy > Edit > Voicemail for inbound calls"
       docs: "https://learn.microsoft.com/microsoftteams/set-up-phone-system-voicemail"
     api:
       kind: "powershell"
@@ -82,19 +88,23 @@ changes:
     note: "First briefing for the Calls app call history upgrade: rolling out in November 2026, no admin action required, no dedicated admin setting documented."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 48 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected the Teams admin center paths for the two calling policy settings to include Edit, added the Teams Enterprise native calling licence statement and the PowerShell-only call log retention note, and removed a checklist item with no controls row."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 46
+  claims: 53
+  confirmed: 53
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "214299852145d8bb7016fc2f870860e4"
+  contradicted: 0
+  attempts: 0
+  hash: "d9bb0d6b471da7713e3de29b971b912c"
 ---
 
 ## What's changing
@@ -129,7 +139,7 @@ Microsoft has described no admin setting for this upgrade, so if nobody acts the
 
 ## Cost and licensing
 
-**Licence.** The Teams calling overview on Microsoft Learn says the Calls app lets users place calls to other Teams users, view call history and access voicemail that is automatically set up for all Teams users. The roadmap item and MC1485056 name no licence for the upgrade. A licence requirement specific to this upgrade is not yet published.
+**Licence.** The Teams calling overview on Microsoft Learn says the Calls app lets users place calls to other Teams users, view call history and access voicemail that is automatically set up for all Teams users. The Microsoft Teams Enterprise license includes native calling features, according to the [Teams Calling features](https://learn.microsoft.com/microsoftteams/here-s-what-you-get-with-phone-system) page. The roadmap item and MC1485056 name no licence for the upgrade. A licence requirement specific to this upgrade is not yet published.
 
 **Meter.** The roadmap item and notice describe no meter or charge for the upgraded call history.
 
@@ -146,7 +156,6 @@ The calling policy setting **Make private calls** controls whether users see the
 ### Before rollout
 - Brief service desk staff on the consolidated missed call and voicemail entry and on the 3,000-record or 6-month history, using the rollout dates in MC1485056.
 - Check which Teams calling policies turn off **Make private calls**, because users on those policies do not see the Calls app and will not see this change.
-- Confirm with your compliance team how Teams call logs are covered by your Microsoft Purview retention policies and eDiscovery practice, given that the display limit is changing.
 
 ### At rollout
 - Send users a short note that missed calls and voicemails now appear as one entry in the Calls app and that the history list is longer.
@@ -163,17 +172,17 @@ The calling policy setting **Make private calls** controls whether users see the
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether users can use calling at all, including seeing the Calls app</strong><br><small>User</small><br><small class="controls__note">Existing control, not specific to call history. Turning it off removes all Teams calling functionality, including the Calls app, for users on that policy.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Calling policies › policy › Make private calls <a href="https://learn.microsoft.com/microsoftteams/teams-calling-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsCallingPolicy -Identity Global -AllowPrivateCalling $false</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether inbound calls can route to voicemail</strong><br><small>User</small><br><small class="controls__note">Existing control, not specific to call history. It changes whether voicemails are left, not how they are displayed in the Calls app.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Calling policies › policy › Voicemail for inbound calls <a href="https://learn.microsoft.com/microsoftteams/set-up-phone-system-voicemail" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsCallingPolicy -Identity Global -AllowVoicemail AlwaysDisabled</code> <a href="https://learn.microsoft.com/microsoftteams/set-up-phone-system-voicemail" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether users can use calling at all, including seeing the Calls app</strong><br><small>User</small><br><small class="controls__note">Existing control, not specific to call history. Turning it off removes all Teams calling functionality, including the Calls app, for users on that policy.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Calling policies › policy › Edit › Make private calls <a href="https://learn.microsoft.com/microsoftteams/teams-calling-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsCallingPolicy -Identity Global -AllowPrivateCalling $false</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether inbound calls can route to voicemail</strong><br><small>User</small><br><small class="controls__note">Existing control, not specific to call history. It changes whether voicemails are left, not how they are displayed in the Calls app.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Calling policies › policy › Edit › Voicemail for inbound calls <a href="https://learn.microsoft.com/microsoftteams/set-up-phone-system-voicemail" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsCallingPolicy -Identity Global -AllowVoicemail AlwaysDisabled</code> <a href="https://learn.microsoft.com/microsoftteams/set-up-phone-system-voicemail" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch to turn the upgraded call history on or off for a tenant or user</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no such setting at the time of writing (November 2026). MC1485056 says no admin action is required.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-Microsoft Learn documents no setting that turns this upgrade on or off, so the two rows below are today's alternatives. They do not change how the upgraded history looks.
+Microsoft Learn documents no setting that turns this upgrade on or off, so the two rows above are today's alternatives. They do not change how the upgraded history looks.
 
 **Make private calls** is all-or-nothing: Microsoft's calling policy page says it controls all calling capabilities in Teams, and the calling overview says users with it off cannot see the Calls app. Use it only if you intend to remove calling from those users. **Voicemail for inbound calls** controls whether calls route to voicemail, not how history is displayed.
 
-Call log retention is set in Microsoft Purview, not in the Teams admin center. The retention page says Teams call logs are retained indefinitely by default and that a retention policy for call logs deletes them; see the [Teams retention page](https://learn.microsoft.com/purview/retention-policies-teams). Both calling policy settings are changed by someone with a Teams administration role; Microsoft's calling overview says a privileged role is needed to administer Teams features.
+Teams call log retention policies are created and modified only with PowerShell and are visible but read-only in the Microsoft Purview portal; see [Create and configure retention policies](https://learn.microsoft.com/purview/create-retention-policies). The retention page says Teams call logs are retained indefinitely by default and that a retention policy for call logs deletes them; see the [Teams retention page](https://learn.microsoft.com/purview/retention-policies-teams). Both calling policy settings are changed by someone with a Teams administration role; Microsoft's calling overview says a privileged role is needed to administer Teams features.
 
 ## Open questions
 
@@ -188,13 +197,9 @@ cost: Low. The only cost the sources show is admin and help-desk time to brief u
 impact: High. It changes what every user of the Calls app sees in call history by default, as missed calls and voicemails merge into one entry and the history list grows.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: An administrator reaches Make private calls through Teams admin center > Voice > Calling policies > policy > Make private calls. | Found: In the left navigation of the Microsoft Teams admin center, select Voice > Calling policies. Select the policy or policies that you want to modify, and then select Edit. | Fix: Replace controls[0].ui.path and its rendered table path with 'Voice > Calling policies > policy > Edit > Make private calls'. The cited page requires selecting Edit after choosing the existing policy. | Source: https://learn.microsoft.com/microsoftteams/teams-calling-policy
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model, licensing.notes; Cost and licensing / licensing: The upgrade is an included option in native Teams calling rather than a separately documented entitlement. | Found: The Microsoft Teams Enterprise license includes native calling features, and the Teams Phone license unlocks even more features. | Fix: Keep model included. Add to licensing notes and the Licence paragraph: 'The Microsoft Teams Enterprise license includes native calling features.' Cite https://learn.microsoft.com/microsoftteams/here-s-what-you-get-with-phone-system in sources; retain the narrower statement that no requirement specific to this upgrade is published. | Source: https://learn.microsoft.com/microsoftteams/here-s-what-you-get-with-phone-system
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: An administrator reaches Voicemail for inbound calls through Teams admin center > Voice > Calling policies > policy > Voicemail for inbound calls. | Found: go to Voice > Calling Policies Choose the policy you would like to update or select Add to create a new policy. For Voicemail for inbound calls, select one of the following options: | Fix: The voicemail page supports the printed route, but https://learn.microsoft.com/microsoftteams/teams-calling-policy explicitly requires Edit for an existing policy. Replace controls[1].ui.path and its rendered path with 'Voice > Calling policies > policy > Edit > Voicemail for inbound calls', retaining both cited pages. | Source: https://learn.microsoft.com/microsoftteams/set-up-phone-system-voicemail
-- [supported, minor] Governance controls / applicability: Teams call log retention is managed through Microsoft Purview rather than the Teams admin center. | Found: This separate retention policy for call logs can be created and modified only by using PowerShell. After you create the retention policy for Teams call logs, it's displayed in Data Lifecycle Management > Policies in the Microsoft Purview portal, where it's visible but read-only. | Fix: Cite https://learn.microsoft.com/purview/create-retention-policies in sources and beside the sentence about where retention is managed. To make the surface unambiguous, replace that sentence with 'Teams call log retention policies are created and modified only with PowerShell and are visible but read-only in the Microsoft Purview portal.' | Source: https://learn.microsoft.com/purview/create-retention-policies
-- [contradicted, minor] Governance guidance: Before rollout / consistency: Every control the checklist asks administrators to check appears in the controls table. | Found: Confirm with your compliance team how Teams call logs are covered by your Microsoft Purview retention policies and eDiscovery practice The table lists calling availability, inbound voicemail routing and an undocumented upgrade switch, but no retention control. | Fix: The Before rollout bullet asking readers to confirm coverage by Microsoft Purview retention policies has no corresponding controls row. Remove that checklist bullet; retain the already documented retention explanation and open question. Do not add a control row as part of this correction.
+- [supported, minor] front matter: licensing.model and notes; Cost and licensing / licensing: The upgrade is an included native Teams calling capability under the Microsoft Teams Enterprise license. | Found: The Microsoft Teams Enterprise license includes native calling features. [...] Support: Your call history is available if you have an Enterprise Voice or Business Voice license as part of your Microsoft 365 subscription. | Fix: Keep the documented native-calling entitlement, but add: 'Microsoft's call-history support page separately says call history is available with an Enterprise Voice or Business Voice license as part of a Microsoft 365 subscription; the pages use different licensing wording.' Cite https://support.microsoft.com/teams/calls-devices/view-your-call-history-in-microsoft-teams. | Source: https://learn.microsoft.com/microsoftteams/here-s-what-you-get-with-phone-system
+- [supported, minor] Risk assessment: Data exposure; Governance controls / applicability: A retention policy for Teams call logs is the documented mechanism for deleting those logs. | Found: Use a retention policy for call logs if you need to delete this data for compliance reasons. [...] Configuration page: The policy applies only to new call logs that are created after the policy is configured and active. | Fix: Add this qualification to the retention-policy statement: 'The policy applies only to new call logs created after it is configured and active.' The qualification is documented at https://learn.microsoft.com/purview/create-retention-policies. | Source: https://learn.microsoft.com/purview/retention-policies-teams
 -->

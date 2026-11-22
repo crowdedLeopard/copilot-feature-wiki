@@ -46,6 +46,9 @@ sources:
   - title: "Manage access permissions for connectors"
     url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions"
     kind: "learn"
+  - title: "Microsoft 365 Copilot connectors overview"
+    url: "https://learn.microsoft.com/plugins/overview-copilot-connector"
+    kind: "learn"
   - title: "Whether a connection's data is used in Copilot Search and Copilot Chat results (Microsoft 365 admin center)"
     url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector"
     kind: "learn"
@@ -80,19 +83,23 @@ changes:
     note: "New briefing: roadmap item 502537 still shows In development, while a May 19, 2026 Learn release note says the options are available."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 70 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after the independent check: the schema call is described as setting descriptions and label mappings, not connector icons; three checklist steps with no controls row were removed; risk rationale reworded."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 70 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 70
-  confirmed: 65
-  unconfirmed: 2
-  contradicted: 3
-  attempts: 1
-  hash: "b8d0afc43c55bcfb1bbdb0a11957575b"
+  confirmed: 68
+  unconfirmed: 0
+  contradicted: 2
+  attempts: 2
+  hash: "0803a79cf610c7d902efa6543968322e"
 ---
 
 ## What's changing
@@ -142,15 +149,12 @@ The people affected are developers who build custom connectors with the Copilot 
 
 ### Before rollout
 - Inventory custom connections in Copilot > Connectors > Your Connections and note who built each one (row 1).
-- Check each connection's **Permissions** setting, because the connector page shows whether it respects source access control lists or is visible to everyone.
 - Ask connector builders which of icons, descriptions, labels and metadata they plan to set, and which Graph version they will call (row 2).
 
 ### At rollout
-- Review the admin centre's schema recommendations for custom connectors, which flag missing title, url, lastModifiedBy and lastModifiedDateTime labels.
 - Test relevance with a pilot group before widening, allowing up to 30 minutes after a visibility change.
 
 ### After rollout
-- Re-check connection state and last sync time on the Your Connections tab after schema updates.
 - Revisit the Copilot Visibility toggle for any connection whose results look wrong (row 1).
 - Watch the roadmap item and the Microsoft 365 Copilot release notes for the status change.
 
@@ -166,7 +170,7 @@ The people affected are developers who build custom connectors with the Copilot 
 </tbody>
 </table>
 
-The Copilot Visibility toggle is described on Learn for partner data sources, and turning it off excludes the connection from Copilot Search and Copilot Chat results without affecting declarative agents and their data. The admin centre also shows schema recommendations for published custom connectors; these are a view of missing labels, and Learn gives no path to edit labels for custom connectors there. Property descriptions, labels and icons for a custom connector are set by its developer through the Graph schema call in row 2. Learn documents the Microsoft 365 admin center role needed as AI administrator.
+The Copilot Visibility toggle is described on Learn for partner data sources, and turning it off excludes the connection from Copilot Search and Copilot Chat results without affecting declarative agents and their data. The admin centre also shows schema recommendations for published custom connectors; these are a view of missing labels, and Learn gives no path to edit labels for custom connectors there. Property descriptions and semantic label mappings, including the iconUrl label, are set by the developer through the Graph schema call in row 2. Whether a connection-level icon can be set is an open question below. Learn documents the Microsoft 365 admin center role needed as AI administrator.
 
 ## Open questions
 
@@ -177,7 +181,7 @@ The Copilot Visibility toggle is described on Learn for partner data sources, an
 - Is any licence or meter specific to these options planned? Watch the Copilot connectors prerequisites page.
 
 <!-- rationale
-risk: Low. The roadmap describes display and relevance metadata for custom connectors, not new data sources or actions; the exposure that remains is the connector's existing access permissions, which this item does not change.
+risk: Low. The roadmap describes display and relevance metadata for custom connectors, not new data sources or actions; review existing connector access permissions before builders tune relevance.
 cost: Low. Only admin and developer time is known; Microsoft Learn publishes no charge or meter specific to these options, and connector licensing follows the Copilot connectors prerequisites page.
 impact: Low. Developers and AI administrators of custom connectors notice first; end users may see different icons, titles and relevance in Copilot results once connector builders apply the options.
 -->
@@ -185,11 +189,7 @@ impact: Low. Developers and AI administrators of custom connectors notice first;
 <!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Governance controls / command: Icons for a custom connector are set through the Graph schema call in row 2. | Found: Searched: Microsoft Graph custom connector iconUrl schema label icon value externalItem properties. Read schema PATCH, property resource, schema guide, externalItem resource and SDK overview; these establish label mapping, not setting connector icons with schema PATCH. | Fix: Replace 'Property descriptions, labels and icons for a custom connector are set by its developer through the Graph schema call in row 2.' with 'Property descriptions and semantic label mappings, including the iconUrl label, are set by the developer through the Graph schema call in row 2.' Keep the connection-level icon question open; do not claim that schema PATCH sets a connector icon.
+- [contradicted, blocker] controls[1].ui / absence: No admin UI is documented for semantic labels and property descriptions in a custom connector's schema. | Found: When you use the Microsoft 365 Copilot connectors ... SDK, you can publish your custom connectors through the Microsoft 365 admin center ... On the Assign property labels page, assign semantic labels to your source properties. | Fix: Narrow controls[1].governs and its rendered table text to 'Semantic labels and property descriptions in a custom connector built directly with the Graph API (not the SDK)'. Retain ui: null for that narrower case. Add to its note: 'SDK-built custom connectors have an Assign property labels page during admin-center publishing.' Cite https://learn.microsoft.com/graph/custom-connector-sdk-publish. | Source: https://learn.microsoft.com/graph/custom-connector-sdk-publish
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure / behaviour: Deployed connectors are accessible tenant-wide unless external item security is locked down. | Found: Any deployed Microsoft Graph connector is accessible tenant-wide unless the external items security is locked down. | Fix: Add https://learn.microsoft.com/plugins/overview-copilot-connector to sources. Its 'Create your own synced Copilot connector' section states 'Deployed connectors are tenant-wide unless external item security is restricted.' The older overview URL supplied in the evidence list is not cited in the briefing and did not fetch, but its supporting passage was independently returned by Learn search. | Source: https://learn.microsoft.com/microsoft-365-copilot/extensibility/overview-graph-connector#create-your-own-custom-microsoft-graph-connection
-- [unsupported, minor] rationale: risk / behaviour: This item does not change the connector's existing access permissions. | Found: Searched: custom Copilot connectors Graph API enhancements icons visibility metadata default enabled admin switch rollout; custom connectors visibility actions. Read roadmap, release note, schema guide and manage-access-permissions; no explicit unchanged-permissions guarantee for this item. | Fix: Replace the risk rationale with 'Low. The roadmap describes display and relevance metadata for custom connectors, not new data sources or actions; review existing connector access permissions before builders tune relevance.' This retains the documented scope and the wiki's advice without asserting an undocumented guarantee.
-- [contradicted, minor] Governance guidance: Before rollout; controls table / consistency: The checklist tells administrators to check Permissions, but the controls table has no Permissions row. | Found: Check each connection's Permissions setting; table rows: Whether a connection's data is used in Copilot Search and Copilot Chat results; Semantic labels and property descriptions in a custom connector's schema. | Fix: Remove the Before rollout checklist bullet beginning 'Check each connection's Permissions setting'. Retain the existing permission-risk discussion; do not add a control row as part of this correction.
-- [contradicted, minor] Governance guidance: At rollout; controls table / consistency: The checklist asks administrators to review schema recommendations, but the table has no schema-recommendations row. | Found: Review the admin centre's schema recommendations for custom connectors; the table contains only Copilot Visibility and the developer-side schema PATCH operation. | Fix: Remove the At rollout checklist bullet beginning 'Review the admin centre's schema recommendations'. Keep the existing supported description of recommendations in Governance controls; do not add a row.
-- [contradicted, minor] Governance guidance: After rollout; controls table / consistency: The checklist asks administrators to check connection state and last sync time, but the table has no connection-monitoring row. | Found: Re-check connection state and last sync time on the Your Connections tab after schema updates; the table contains only Copilot Visibility and schema PATCH. | Fix: Remove the After rollout checklist bullet beginning 'Re-check connection state and last sync time'. Do not add a monitoring row as part of this correction.
+- [contradicted, minor] Risk assessment: Data exposure; Governance controls / consistency: The instruction to review each custom connection's Permissions setting has no corresponding controls-table row. | Found: Review each custom connection's Permissions setting before its builders tune relevance (row 1 covers the visibility toggle). The table contains only Copilot Visibility and schema labels/descriptions. | Fix: Remove the Risk assessment bullet 'Review each custom connection's Permissions setting before its builders tune relevance (row 1 covers the visibility toggle).' It directs a control check not represented in the table; do not add a row.
 -->

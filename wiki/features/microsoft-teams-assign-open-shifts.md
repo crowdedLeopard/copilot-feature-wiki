@@ -37,6 +37,15 @@ sources:
   - title: "Update-M365TeamsApp"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp"
     kind: "learn"
+  - title: "shift resource type"
+    url: "https://learn.microsoft.com/graph/api/resources/shift?view=graph-rest-1.0"
+    kind: "learn"
+  - title: "Update shiftsRoleDefinition"
+    url: "https://learn.microsoft.com/graph/api/shiftsroledefinition-update?view=graph-rest-beta"
+    kind: "learn"
+  - title: "Use app permission policies to control user access to apps"
+    url: "https://learn.microsoft.com/microsoftteams/teams-app-permission-policies"
+    kind: "learn"
   - title: "MC1324280: (Updated) Assign open shifts in Microsoft Teams Shifts"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1324280"
     kind: "message-center"
@@ -51,9 +60,9 @@ controls:
       docs: "https://learn.microsoft.com/microsoftteams/expand-teams-across-your-org/shifts/manage-the-shifts-app-for-your-organization-in-teams"
     api:
       kind: "powershell"
-      call: "Update-M365TeamsApp -Id <app-id> -IsBlocked $true"
+      call: "Update-M365TeamsApp -Id <app-id> -IsBlocked <Boolean>"
       docs: "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp"
-    note: "Blocks or allows the whole Shifts app, not just this feature. Learn says Shifts is enabled by default for all Teams users."
+    note: "Whole Shifts app, not just this feature. IsBlocked is described as the app state, but examples using $true and $false are both labelled unblocking; use the documented Status toggle for Blocked or Allowed."
   - governs: "Which Shifts settings frontline managers may change, including the Open shifts setting"
     scope: "other"
     ui: null
@@ -61,7 +70,7 @@ controls:
       kind: "graph"
       call: "PATCH /beta/teams/{team-id}/schedule/shiftsRoleDefinition/teamowner"
       docs: "https://learn.microsoft.com/microsoft-365/frontline/manage-shifts-permissions-frontline-managers"
-    note: "Beta. Use scheduleowner for the schedule owner role. The body's allowedResourceActions list holds CanModifyShiftRequestsCapabilities, which covers Open shifts, Swap shifts and Offer shift. Not stated to govern the Assign open shifts button."
+    note: "Beta. Not stated to govern the Assign open shifts button. Graph's update reference prints PATCH /beta/team/{teamId}/schedule/shiftsRoleDefinitions/{roleId} with shiftsRolePermissions, so the pages disagree on route and body."
   - governs: "Dedicated switch to turn off Assign open shifts"
     scope: "tenant"
     ui: null
@@ -76,19 +85,23 @@ changes:
     note: "First briefing for roadmap item 562535: optional Assign open shifts button in Teams Shifts; Learn still says public preview while the roadmap says Launched."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 68 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after verification: removed the unsupported spending-cap statement, changed the Update-M365TeamsApp call to -IsBlocked <Boolean> with a note on the documented examples, and noted the Graph route disagreement."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 69 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 65
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "4f0bd9ff2caf983832395212e1873e57"
+  claims: 69
+  confirmed: 69
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "ab179b95327d3186f656f8d6081b2f53"
 ---
 
 ## What's changing
@@ -127,7 +140,7 @@ The point worth a view is accountability. The assignment is a draft until the ma
 
 **Licence.** The Learn page "Manage the Shifts app for your organization in Microsoft Teams" says users must have a Teams licence to use Shifts. The Auto-assign open shifts page and notice MC1324280 name no other licence, and neither publishes a separate price or meter for Assign open shifts. At the time of writing (November 2026) Microsoft has not published a licence or charge specific to this feature.
 
-**Meter and caps.** Microsoft documents no meter for this feature at the time of writing (November 2026), so there is no spending cap to set.
+**Meter and caps.** Microsoft documents no meter for this feature at the time of writing (November 2026).
 
 **Indirect costs.** Admin time to brief managers, and manager time to review each draft before publishing.
 
@@ -145,7 +158,6 @@ The point worth a view is accountability. The assignment is a draft until the ma
 
 ### Before rollout
 - Confirm the Shifts app is allowed in the Teams admin center (Teams apps > Manage apps) for the managers who should use the feature.
-- Check which people hold the team owner or schedule owner role on frontline teams, since Learn describes those users as frontline managers and the notice ties the button to scheduling permissions.
 - Decide whether to restrict the Open shifts setting for managers with the shiftsRoleDefinition Graph API (beta); read the note under the table first.
 
 ### At rollout
@@ -163,15 +175,15 @@ The point worth a view is accountability. The assignment is a draft until the ma
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether the Shifts app, which hosts Assign open shifts, is available in the organisation</strong><br><small>Tenant</small><br><small class="controls__note">Blocks or allows the whole Shifts app, not just this feature. Learn says Shifts is enabled by default for all Teams users.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Shifts › Status <a href="https://learn.microsoft.com/microsoftteams/expand-teams-across-your-org/shifts/manage-the-shifts-app-for-your-organization-in-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app-id&gt; -IsBlocked $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which Shifts settings frontline managers may change, including the Open shifts setting</strong><br><small class="controls__note">Beta. Use scheduleowner for the schedule owner role. The body's allowedResourceActions list holds CanModifyShiftRequestsCapabilities, which covers Open shifts, Swap shifts and Offer shift. Not stated to govern the Assign open shifts button.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/teams/{team-id}/schedule/shiftsRoleDefinition/teamowner</code> <a href="https://learn.microsoft.com/microsoft-365/frontline/manage-shifts-permissions-frontline-managers" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the Shifts app, which hosts Assign open shifts, is available in the organisation</strong><br><small>Tenant</small><br><small class="controls__note">Whole Shifts app, not just this feature. IsBlocked is described as the app state, but examples using $true and $false are both labelled unblocking; use the documented Status toggle for Blocked or Allowed.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Shifts › Status <a href="https://learn.microsoft.com/microsoftteams/expand-teams-across-your-org/shifts/manage-the-shifts-app-for-your-organization-in-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app-id&gt; -IsBlocked &lt;Boolean&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which Shifts settings frontline managers may change, including the Open shifts setting</strong><br><small class="controls__note">Beta. Not stated to govern the Assign open shifts button. Graph's update reference prints PATCH /beta/team/{teamId}/schedule/shiftsRoleDefinitions/{roleId} with shiftsRolePermissions, so the pages disagree on route and body.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/teams/{team-id}/schedule/shiftsRoleDefinition/teamowner</code> <a href="https://learn.microsoft.com/microsoft-365/frontline/manage-shifts-permissions-frontline-managers" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Dedicated switch to turn off Assign open shifts</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no such setting at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-No setting dedicated to Assign open shifts is documented. The Shifts app block applies to the whole Shifts app, so using it also removes scheduling, swap and time-off features. Learn says specific users can be allowed or blocked by creating a custom app permission policy and assigning it to them, the steps are on the Learn page Use app permission policies to control user access to apps.
+No setting dedicated to Assign open shifts is documented. The Shifts app block applies to the whole Shifts app, so using it also removes scheduling, swap and time-off features. The Update-M365TeamsApp reference describes IsBlocked as the app state, but labels examples using both $true and $false as unblocking. Use the documented Status toggle for a Blocked or Allowed choice until Microsoft clarifies the examples. For organisations still using app permission policies, Learn says specific users can be allowed or blocked by creating a custom app permission policy and assigning it to them; Shifts must be allowed at the org level. Microsoft says permission policies no longer apply after moving to app-centric management.
 
-The Graph row is the closest control on the input side. Learn lists Open shifts (turn on or turn off the ability to create and request open shifts) among the capabilities whose manager permission is controlled with the shiftsRoleDefinition Graph API. The Learn page does not say this governs the Assign open shifts button itself, and the API is documented under /beta/.
+The Graph row is the closest control on the input side. Learn lists Open shifts (turn on or turn off the ability to create and request open shifts) among the capabilities whose manager permission is controlled with the shiftsRoleDefinition Graph API. The Learn page does not say this governs the Assign open shifts button itself, and the API is documented under /beta/. Use scheduleowner in place of teamowner for the schedule owner role; the frontline article's body lists CanModifyShiftRequestsCapabilities in allowedResourceActions, which covers Open shifts, Swap shifts and Offer shift. Microsoft's Graph update reference instead prints PATCH /beta/team/{teamId}/schedule/shiftsRoleDefinitions/{roleId}, with allowedResourceActions nested in shiftsRolePermissions. The two Microsoft pages disagree on the route and body wrapper.
 
 ## Open questions
 
@@ -186,14 +198,10 @@ cost: Low. The only cost the sources show is admin and manager time; Learn says 
 impact: Medium. Frontline managers with scheduling permissions see a new button and build schedules differently; their teams see the published result. Admins and other users are not affected.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Cost and licensing: Meter and caps / cost: There is no spending cap to set. | Found: Searched: Assign open shifts maximum spending cap; "Assign open shifts" licensing price meter billing. Opened Auto-assign open shifts and Manage the Shifts app. Neither states that no spending cap exists. | Fix: Delete ', so there is no spending cap to set'. Retain the verified statement: 'Microsoft documents no meter for this feature at the time of writing (November 2026).'
-- [contradicted, blocker] controls[0].api; Governance controls table / command: Update-M365TeamsApp -Id <app-id> -IsBlocked $true is the documented PowerShell call to block the app. | Found: Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true Unblocks Bookings app (App ID 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b). | Fix: Replace the call in both representations with 'Update-M365TeamsApp -Id <app-id> -IsBlocked <Boolean>'. Add to the note: 'The reference describes IsBlocked as the app state, but labels examples using both $true and $false as unblocking. Use the documented Status toggle for a Blocked or Allowed choice until Microsoft clarifies the examples.' Do not claim the printed $true example is verified to block. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters; Risk assessment: Autonomy & actions; Scope: Users; rationale: impact / behaviour: Workers see published assignments, not the manager's unshared draft. | Found: Draft changes are only visible to managers. The changes are visible to employees when they're shared, which copies the changes from the draftShift to the sharedShift property. | Fix: Add https://learn.microsoft.com/graph/api/resources/shift?view=graph-rest-1.0 to sources for the statement that workers cannot see the unshared draft. | Source: https://learn.microsoft.com/graph/api/resources/shift?view=graph-rest-1.0
-- [supported, minor] controls[1].api; Governance controls table and prose; Governance guidance / command: PATCH /beta/teams/{team-id}/schedule/shiftsRoleDefinition/teamowner updates the manager role permissions as documented in the cited frontline-manager article. | Found: PATCH https://graph.microsoft.com/beta/teams/fb963991-69a8-4d2c-8465-cd8e374891c4/schedule/shiftsRoleDefinition/teamowner | Fix: Add https://learn.microsoft.com/graph/api/shiftsroledefinition-update?view=graph-rest-beta to sources and append to the row note: 'Microsoft's Graph update reference instead prints PATCH /beta/team/{teamId}/schedule/shiftsRoleDefinitions/{roleId}, with allowedResourceActions nested in shiftsRolePermissions. The two Microsoft pages disagree on the route and body wrapper.' Preserve the existing call's attribution to the frontline-manager article rather than silently choosing one. | Source: https://learn.microsoft.com/microsoft-365/frontline/manage-shifts-permissions-frontline-managers
-- [supported, minor] Governance controls / applicability: The cited Shifts management page says specific users can be allowed or blocked using a custom app permission policy assigned to them. | Found: To allow or block specific users in your organization from using Shifts, make sure Shifts is turned on for your organization on the Manage apps page. Then create a custom policy for app permissions and assign it to those users. | Fix: Replace the sentence with: 'For organisations still using app permission policies, Learn says specific users can be allowed or blocked by creating a custom app permission policy and assigning it to them; Shifts must be allowed at the org level. Microsoft says permission policies no longer apply after moving to app-centric management.' Add https://learn.microsoft.com/microsoftteams/teams-app-permission-policies to sources; its Important note states that qualification. | Source: https://learn.microsoft.com/microsoftteams/expand-teams-across-your-org/shifts/manage-the-shifts-app-for-your-organization-in-teams
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist asks readers to take stock of team-owner and schedule-owner assignments, but the table has no row for that role control. | Found: Check which people hold the team owner or schedule owner role on frontline teams. The table lists Shifts app availability, manager-setting permissions and a dedicated Assign open shifts switch, but not role assignments. | Fix: Remove the Before rollout bullet beginning 'Check which people hold the team owner or schedule owner role'. Keep the verified role description in Scope; do not add a control row as part of this correction.
+- [supported, minor] summary / default: Nothing is switched on for the reader. | Found: A new “Assign open shifts” button appears for users with scheduling permissions. ... Using the feature is optional. | Fix: Replace 'Nothing is switched on for you' with 'Managers choose whether to use it': the button appears without an administrator enabling it, although assignment is optional.
+- [supported, minor] controls[1].api; rendered controls table; Governance guidance: Before rollout / command: The frontline-manager article documents PATCH /beta/teams/{team-id}/schedule/shiftsRoleDefinition/teamowner to update manager permissions. | Found: PATCH https://graph.microsoft.com/beta/teams/fb963991-69a8-4d2c-8465-cd8e374891c4/schedule/shiftsRoleDefinition/teamowner ... "allowedResourceActions": [ "CanModifyShiftRequestsCapabilities" | Fix: Append to controls[1].note: 'The frontline article sets allowedResourceActions; CanModifyShiftRequestsCapabilities controls permission to change Open shifts, Swap shifts and Offer shift settings.' Keep the existing warning about the conflicting Graph reference. | Source: https://learn.microsoft.com/microsoft-365/frontline/manage-shifts-permissions-frontline-managers
+- [supported, minor] What's changing; Scope: Rollout; Risk assessment: Change & support / record: The notice gives Worldwide general availability rollout beginning mid-June 2026 and expected completion by end of October 2026. | Found: General Availability (Worldwide): Rollout begins in mid-June 2026 and is expected to complete by end of October 2026 (previously mid-September). | Fix: In Scope replace 'General Availability in Worldwide began in mid-June 2026' with 'Microsoft's notice gives General Availability rollout in Worldwide beginning mid-June 2026'. In Risk assessment replace 'The rollout window in MC1324280 ran to end of October 2026' with 'MC1324280 expected rollout to complete by end of October 2026'.
 -->

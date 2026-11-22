@@ -52,6 +52,9 @@ sources:
   - title: "Microsoft Teams Rooms on Windows and Teams Android device security"
     url: "https://learn.microsoft.com/microsoftteams/rooms/security"
     kind: "learn"
+  - title: "Bluetooth beaconing on a Teams Rooms device, which proximity join uses to find the room (Teams Rooms Pro Management portal)"
+    url: "https://learn.microsoft.com/microsoftteams/rooms/device-settings-available?tabs=WindowsSettings"
+    kind: "learn"
 videos: []
 related: ["microsoft-teams-chat-for-organizers-and-presenters-in-structured-meetings-and-webinars-on","microsoft-teams-chat-for-organizers-and-presenters-in-structured-meetings-and-webin-557165","microsoft-teams-front-of-room-view-control-for-webinars-and-structured-meetings-in-teams-r","microsoft-teams-standard-and-basic-licensed-teams-rooms-on-windows-in-the-pro-management-p"]
 controls:
@@ -60,7 +63,7 @@ controls:
     ui:
       surface: "Teams Rooms Pro Management portal"
       path: "Rooms/ Phones > device > Settings > Device > Allow Bluetooth beaconing"
-      docs: "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings"
+      docs: "https://learn.microsoft.com/microsoftteams/rooms/device-settings-available?tabs=WindowsSettings"
     api:
       kind: "other"
       call: "SkypeSettings.xml element <BluetoothAdvertisementEnabled>"
@@ -79,19 +82,23 @@ changes:
     note: "Corrected the events licensing statement to the comparison footnote's Windows with Pro requirement, noted the Android listing conflict, removed a licence checklist step and completed the portal path."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 64 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-22"
+    note: "Corrected the Bluetooth beaconing row's admin UI link to the Teams Rooms Pro management portal settings reference that documents Device > Allow Bluetooth beaconing."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 64
-  confirmed: 63
+  confirmed: 64
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "c8baab7a41e3c64513ae4c23481cf6f1"
+  contradicted: 0
+  attempts: 0
+  hash: "e349459300de89237a1d1837c1a0b9fd"
 ---
 
 ## What's changing
@@ -177,7 +184,7 @@ Indirect costs are admin time, user communication and helpdesk load. Remote conf
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Bluetooth beaconing on a Teams Rooms device, which proximity join uses to find the room</strong><br><small class="controls__note">The Allow Bluetooth beaconing toggle is in the Device category for Windows (enabled by default). The XML file applies to Teams Rooms on Windows; Learn recommends the portal instead.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Rooms/ Phones › device › Settings › Device › Allow Bluetooth beaconing <a href="https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>SkypeSettings.xml element &lt;BluetoothAdvertisementEnabled&gt;</code> <a href="https://learn.microsoft.com/microsoftteams/rooms/xml-config-file" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Bluetooth beaconing on a Teams Rooms device, which proximity join uses to find the room</strong><br><small class="controls__note">The Allow Bluetooth beaconing toggle is in the Device category for Windows (enabled by default). The XML file applies to Teams Rooms on Windows; Learn recommends the portal instead.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Rooms/ Phones › device › Settings › Device › Allow Bluetooth beaconing <a href="https://learn.microsoft.com/microsoftteams/rooms/device-settings-available?tabs=WindowsSettings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>SkypeSettings.xml element &lt;BluetoothAdvertisementEnabled&gt;</code> <a href="https://learn.microsoft.com/microsoftteams/rooms/xml-config-file" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -201,8 +208,8 @@ cost: Low. The roadmap record, Microsoft's notice MC1461157 and the Learn pages 
 impact: Medium. It is on by default for people who join Teams events and use Teams Rooms on Windows or Android, so event attendees and room owners will notice it, but other users will not.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: Rooms/ Phones > device > Settings > Device > Allow Bluetooth beaconing is documented by the row's pro-portal-settings link. | Found: Use the left navigation in the device panels to browse settings categories (About, Account, Meetings, Device, Network, etc.). Modify the desired settings using the form fields. | Fix: Keep the printed path, which is supported by the portal navigation page together with the Device table. Set controls[0].ui.docs and its rendered Learn link to https://learn.microsoft.com/microsoftteams/rooms/device-settings-available?tabs=WindowsSettings: that page documents Device > Allow Bluetooth beaconing. The current link gives generic navigation but neither names nor documents this setting. | Source: https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Cost and licensing; Open questions / availability: The same comparison table lists Teams Rooms on Android as able to join as an attendee or presenter, in conflict with its footnote. | Found: Microsoft Teams Rooms (Android) can join as an attendee or presenter | Fix: After the existing conflict sentence, add: 'The Plan for Teams events page also lists Teams Rooms on Android as having "No support" for joining large-audience events as a presenter or attendee (https://learn.microsoft.com/microsoftteams/plan-events#reference).' Cite that page. | Source: https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison
 -->

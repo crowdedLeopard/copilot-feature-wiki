@@ -15,10 +15,10 @@ risk: "medium"
 cost: "low"
 impact: "medium"
 defaultState: "on"
-action: "prepare"
+action: "act-now"
 licensing:
   model: "included"
-  notes: "Outlook for Windows with a work address needs a plan that includes the desktop Microsoft 365 apps (Learn, Understand licensing in new Outlook for Windows). A licence or charge specific to All Accounts view is not yet published."
+  notes: "For multiple-account use in new Outlook, any signed-in account with desktop-app licence rights qualifies the app; secondary accounts can use plans without desktop apps, such as Business Basic or E1. A licence or charge specific to All Accounts view is not yet published."
 audiences: ["m365-admin","service-owner","change-adoption","end-user"]
 tags: ["outlook","new-outlook","cloud-policy","admin-controls","exchange","copilot","user-experience"]
 sources:
@@ -68,24 +68,28 @@ changes:
     note: "First briefing: All Accounts view is rolling out on by default in new Outlook for Windows, with a Cloud Policy setting for the default and user override."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected the licensing statement for multiple accounts, added the Cloud Policy limit for Microsoft 365 Apps for business, narrowed two behaviour statements, set action to act-now and removed the audit-log checklist item."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 66 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 56
+  claims: 66
+  confirmed: 65
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "98653f275b00a49c21312ab644fe6261"
+  contradicted: 1
+  attempts: 0
+  hash: "0a501df3e54401512b2502f57a9bcf7a"
 ---
 
 ## What's changing
 
-The All Accounts view, also known as Unified Inbox, lets a user see email from several connected accounts in one inbox list in new Outlook for Windows. Each account's inbox stays separate: Microsoft's notice MC1519843 and the roadmap item both say the view does not merge mailboxes, and the Learn page says it does not move messages between accounts or delete email.
+The All Accounts view, also known as Unified Inbox, lets a user see email from several connected accounts in one inbox list in new Outlook for Windows. Each account's inbox stays separate: Microsoft's notice MC1519843 and the roadmap item both say the view does not merge mailboxes, and the Learn page says the policy itself does not move messages between accounts or delete email.
 
 The roadmap item says users can read, delete, move, archive and mark messages across accounts from the view, and that it works with Copilot. The roadmap item says Immersive Search finds messages across the primary account and that cross-account search and shared mailbox support follow in later releases. MC1519843 describes the same search as "Search with Copilot" for the user's primary account and lists search among the actions across accounts, so the two Microsoft texts differ on search.
 
@@ -112,14 +116,14 @@ The control is a single Cloud Policy setting, so the decision is small: leave th
 - Actions are taken by the user (read, delete, move, archive, mark). The roadmap item describes no autonomous action in the view; Copilot integration is described only as AI-assisted email workflows.
 
 **Change & support**
-- Where the policy is left unconfigured, a user can show or hide the view from the View tab or under Settings > Mail > Folder pane. Where the policy sets override to Disabled, Learn says the user cannot change it, and the checkbox "See emails from all your accounts in one place" is unavailable.
+- Where the policy is left unconfigured, a user can show or hide the view from the View tab or under Settings > Mail > Folder pane. Where the policy sets override to Disabled, Learn says the user cannot change it. For example, when the view is Enabled and override is Disabled, the checkbox "See emails from all your accounts in one place" is selected and unavailable.
 - Policies apply to user objects in the targeted Microsoft Entra groups. Where a user is in several groups with conflicting settings, Cloud Policy priority decides.
 
 ## Cost and licensing
 
-Learn's licensing page for new Outlook for Windows says that using Outlook for Windows (classic or new) with a Microsoft 365 organisational address needs a plan that includes the desktop Microsoft 365 apps. The Learn page for managing All Accounts view names no licence or charge of its own, and a licence or meter specific to this view is not yet published.
+For multiple-account use in new Outlook, any signed-in account with desktop-app licence rights qualifies the app; secondary accounts can use plans without desktop apps, such as Business Basic or E1 (Learn, Understand licensing in new Outlook for Windows). The Learn page for managing All Accounts view names no licence or charge of its own, and a licence or meter specific to this view is not yet published.
 
-Cloud Policy, the service that manages the setting, supports most Microsoft 365 subscription plans that include Microsoft 365 Apps; the Cloud Policy overview says to check licensing documentation for specifics. Indirect cost is admin time to configure the policy and communicate the change.
+Cloud Policy, the service that manages the setting, supports most Microsoft 365 subscription plans that include Microsoft 365 Apps; the Cloud Policy overview says to check licensing documentation for specifics. For Microsoft 365 Apps for business, only policy settings related to privacy controls are supported. Indirect cost is admin time to configure the policy and communicate the change.
 
 ## Scope
 
@@ -142,7 +146,6 @@ Cloud Policy, the service that manages the setting, supports most Microsoft 365 
 
 ### After rollout
 - Compare a targeted user's view with the behaviour table on the Learn page, and check group membership and policy priority if it differs.
-- Search the Microsoft Purview audit log for policy configuration changes if auditing is enabled.
 
 ## Governance controls
 
@@ -175,14 +178,10 @@ cost: Low. The only cost the sources show is admin time to set the policy and br
 impact: Medium. Users of new Outlook for Windows with two or more eligible connected accounts see a changed inbox by default; users with one account are not described as affected.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.notes; Cost and licensing / licensing: Using Outlook for Windows with a Microsoft 365 organisational address requires a plan including desktop Microsoft 365 apps, without a multiple-account qualification. | Found: if any account logged into the app has a license to use the desktop applications, you can add other types of accounts to the app. | Fix: Keep model included. Replace the desktop entitlement sentence in licensing.notes and Cost and licensing with: 'For multiple-account use in new Outlook, any signed-in account with desktop-app licence rights qualifies the app; secondary accounts can use plans without desktop apps, such as Business Basic or E1.' Cite https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options. | Source: https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options
-- [contradicted, blocker] Cost and licensing / licensing: Cloud Policy supports most Microsoft 365 plans including Microsoft 365 Apps, with no explicit restriction on non-privacy settings for Apps for business. | Found: You can create a policy configuration for Microsoft 365 Apps for business, but only policy settings related to privacy controls are supported. | Fix: Add after the Cloud Policy licensing sentence: 'For Microsoft 365 Apps for business, only policy settings related to privacy controls are supported.' Cite https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy. This view setting is described as an inbox-display control, not a privacy control. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Governance controls / behaviour: Learn says it does not move messages between accounts or delete email. | Found: What this policy doesn't control ... It doesn't merge mailboxes, move messages between accounts, or delete email. | Fix: In What's changing, replace 'the Learn page says it does not move messages between accounts or delete email' with 'the Learn page says the policy itself does not move messages between accounts or delete email'. Its statement concerns the policy, not user actions in the view. | Source: https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view
-- [supported, minor] Risk assessment: Change & support / behaviour: The See emails from all your accounts in one place checkbox is unavailable when user override is Disabled. | Found: For example, when the unified inbox view is Enabled and user override is Disabled, All Accounts is shown and the See emails from all your accounts in one place checkbox is selected and unavailable. | Fix: Replace the checkbox clause with: 'For example, when the view is Enabled and override is Disabled, the checkbox "See emails from all your accounts in one place" is selected and unavailable.' This preserves the documented example's qualification without changing the enforcement statement. | Source: https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-all-accounts-view
-- [contradicted, minor] front matter: action / consistency: Prepare is the appropriate action for this medium-risk, on-by-default change already rolling out with an available control. | Found: status: rolling-out; risk: medium; defaultState: on; action: prepare. The action scale assigns act-now to a rolling-out change reaching users without admin action when risk or cost is medium or higher and a control or decision exists. | Fix: Set action to act-now: on the 22 November 2026 run, rollout is underway, the notice expects completion by late November, risk is medium and both configuration controls are available.
-- [contradicted, minor] Governance guidance: After rollout / consistency: Every control the checklist asks administrators to check appears in the controls table. | Found: Search the Microsoft Purview audit log for policy configuration changes if auditing is enabled. The controls table contains only the view-default and user-override rows. | Fix: Remove the After rollout bullet 'Search the Microsoft Purview audit log for policy configuration changes if auditing is enabled.' The audit capability can remain described in Governance controls; do not add a row in this correction.
+- [supported, minor] summary / record: No administrator action is required. | Found: No admin action is required unless you want to manage this experience for your users. | Fix: Replace 'no action is required' in the summary with 'action is needed only to manage the experience', preserving the notice's qualification and distinguishing optional management from a mandatory rollout task.
+- [supported, minor] Governance controls / behaviour: Purview auditing records creation, deletion and modification of Cloud Policy configurations. | Found: When auditing is enabled, events such as the creation, deletion, modification of policy configurations, changes to configured policy settings, and adjustments to priority order are tracked. | Fix: Replace the auditing clause with 'when auditing is enabled, Purview auditing records creation, deletion and modification of policy configurations', retaining the condition stated in https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy#microsoft-purview-support. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
+- [contradicted, minor] Governance guidance: After rollout; controls / consistency: Every control that the governance checklist tells readers to check appears in the controls table. | Found: check group membership and policy priority if it differs. The table contains only 'Whether All Accounts view is shown or hidden by default' and 'Whether users can change the configured All Accounts view'. | Fix: Remove 'and policy priority' from the After rollout checklist bullet. Keep the documented explanation of priority in Risk assessment; do not add a control row as part of this correction.
 -->
