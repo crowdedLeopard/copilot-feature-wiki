@@ -4,7 +4,7 @@ slug: "m365-copilot-makers-can-build-da-s-with-flexible-layouts-and-rich-ux-comp
 roadmapId: 497844
 topic: "m365-copilot"
 products: ["Microsoft Copilot (Microsoft 365)"]
-summary: "Planned for May CY2027: makers building declarative agents get flexible layouts and rich UX components. Microsoft has published no feature page, default or licence yet, so admins should watch for details and use existing agent controls."
+summary: "Planned for May CY2027: makers building declarative agents get flexible layouts and rich UX components. Microsoft has published no feature page, default or feature-specific licence requirement yet, so watch for details and use existing agent controls."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -97,19 +97,23 @@ changes:
     note: "Corrected the User access control: Microsoft Graph preview TCM automation is documented, so it is added; removed an unsupported sentence about a layout switch."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 69 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-22"
+    note: "Corrected the licence wording: the summary, cost and scope text and cost rationale now say only that no feature-specific licence requirement is published, consistent with the included Microsoft 365 Copilot entitlement."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 75 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-22"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 69
-  confirmed: 68
+  claims: 75
+  confirmed: 75
   unconfirmed: 0
-  contradicted: 1
-  attempts: 3
-  hash: "fbd56806ce2b643aa4163f879d53ed95"
+  contradicted: 0
+  attempts: 0
+  hash: "ca64d0dc97a855242cb113dc897aec57"
 ---
 
 ## What's changing
@@ -143,13 +147,13 @@ The practical effect for a service owner is that agent review needs to cover how
 
 ## Cost and licensing
 
-No licence, meter or price for this capability is published at the time of writing (November 2026). Microsoft's extensibility FAQ says that with a Microsoft 365 Copilot licence you don't need additional licences to build declarative agents with extra capabilities, including Copilot connectors and plugins, and that declarative agents based on web search with limited capabilities can be built without one.
+No licence requirement, meter or price specific to the planned layouts is published at the time of writing (November 2026). Microsoft's extensibility FAQ says that with a Microsoft 365 Copilot licence you don't need additional licences to build declarative agents with extra capabilities, including Copilot connectors and plugins, and that declarative agents based on web search with limited capabilities can be built without one.
 
 For background only: the Copilot UX components page says those components require the Microsoft 365 Copilot add-on licence on top of the user's E3, E5 or E7 licence, and that they have no consumption-based charges. APIs or services called inside a component's implementation can have their own charges, separate from the component capability. Learn does not say this roadmap item is that feature, so do not budget from it. Indirect cost is admin and communications time.
 
 ## Scope
 
-The roadmap record lists the Worldwide (Standard Multi-Tenant) cloud only, platforms Desktop and Web, and release phase General Availability, with a target of May CY2027 and status In development. It names makers as the audience. Microsoft has not said which licences, roles or prerequisites apply, or how it will roll out.
+The roadmap record lists the Worldwide (Standard Multi-Tenant) cloud only, platforms Desktop and Web, and release phase General Availability, with a target of May CY2027 and status In development. It names makers as the audience. Microsoft has not said which additional licence requirements, roles or prerequisites apply specifically to the planned layouts, or how it will roll out.
 
 The record does not list GCC, GCC High or DoD. That is a record fact, not a statement that the feature is unavailable there.
 
@@ -193,12 +197,6 @@ Preview Tenant Configuration Management (TCM) automation for User access support
 
 <!-- rationale
 risk: Low. The roadmap item describes layouts and UX components for agents and states no new data access; Microsoft has not said how the feature works, so the rating rests on today's agent controls continuing to apply.
-cost: Low. The only cost the sources show is admin time; the licence and any meter for this capability are not yet published.
+cost: Low. The only cost the sources show is admin time; any additional licence requirement or meter specific to the planned layouts is not yet published.
 impact: Medium. Makers are the people who gain the capability, and the roadmap says the aim is more engagement from agent users; Microsoft has not said how many users it reaches or whether it is on by default.
--->
-
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] summary; Cost and licensing; Scope; rationale: cost / consistency: The page says no licence is published, while its licensing field says the entitlement is included and names Microsoft 365 Copilot. | Found: licensing: model: "included"; "A Microsoft 365 Copilot licence covers building declarative agents with extra capabilities" versus "Microsoft has published no feature page, default or licence yet" and "No licence, meter or price for this capability is published". | Fix: Keep licensing.model as included and retain the FAQ entitlement. In the summary replace 'default or licence yet' with 'default or feature-specific licence requirement yet'. Replace the opening Cost and licensing sentence with 'No licence requirement, meter or price specific to the planned layouts is published at the time of writing (November 2026).' In Scope replace 'which licences, roles or prerequisites apply' with 'which additional licence requirements, roles or prerequisites apply specifically to the planned layouts'. In the cost rationale replace 'the licence and any meter for this capability are not yet published' with 'any additional licence requirement or meter specific to the planned layouts is not yet published'.
 -->

@@ -67,7 +67,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Teams Rooms Pro Management portal"
-      path: "Settings > Integrations > Create Incident Webhook"
+      path: "Settings > Integrations > Create Incident Webhook > General > Endpoint configuration > Event Subscription > Room group selection > Signals selection"
       docs: "https://learn.microsoft.com/microsoftteams/rooms/pmp-incident-webhook-integration"
     api: null
     note: "Roles: Teams Rooms Pro Manager, Teams Administrator, Global Administrator. Max 10 integrations per portal; not in GCC High or DoD. The wizard selects device types, ticket states, severities, room groups and signals."
@@ -92,19 +92,23 @@ changes:
     note: "Correction: licensing set to included (Teams Rooms Pro) with the published entitlement wording, default-state wording aligned with unknown, health-impact wording narrowed to Learn's descriptions, control paths extended, per-device suppression step removed from the checklist."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 85 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-22"
+    note: "Correction: removed the 'portal-only' conclusion, extended the webhook path and noted the Add incident webhook label, and removed the role-membership checklist bullet."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 96 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 85
-  confirmed: 83
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 2
-  hash: "383e80229cc5e84cbddd7473d28fe01a"
+  claims: 96
+  confirmed: 96
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "df1bcf5360e64f39f6052f7955dfe150"
 ---
 
 ## What's changing
@@ -159,7 +163,6 @@ Portal access needs a Microsoft Entra built-in role (Global Administrator, Teams
 ### Before rollout
 
 - Identify which Android rooms are video bars and which are touch consoles, because Secondary display health is listed for video bars only.
-- Confirm who holds Global Administrator or Teams Administrator, the built-in roles shown with View and Modify on Settings > Signals.
 - Decide where Critical and Important incidents should go: the portal, the ServiceNow integration (Settings > ServiceNow) or an incident notification webhook (Settings > Integrations).
 
 ### At rollout
@@ -181,14 +184,14 @@ Portal access needs a Microsoft Entra built-in role (Global Administrator, Teams
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Which health signals are enabled for all applicable devices</strong><br><small>Tenant</small><br><small class="controls__note">The same page also offers Enable and Reset to default. Disabling closes active tickets for the signal. The built-in roles table shows View and Modify for Global Administrator and Teams Administrator.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Settings › Signals › signal › Disable <a href="https://learn.microsoft.com/microsoftteams/rooms/signal-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which incidents are sent to an outside system by webhook</strong><br><small>Tenant</small><br><small class="controls__note">Roles: Teams Rooms Pro Manager, Teams Administrator, Global Administrator. Max 10 integrations per portal; not in GCC High or DoD. The wizard selects device types, ticket states, severities, room groups and signals.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Settings › Integrations › Create Incident Webhook <a href="https://learn.microsoft.com/microsoftteams/rooms/pmp-incident-webhook-integration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which incidents are sent to an outside system by webhook</strong><br><small>Tenant</small><br><small class="controls__note">Roles: Teams Rooms Pro Manager, Teams Administrator, Global Administrator. Max 10 integrations per portal; not in GCC High or DoD. The wizard selects device types, ticket states, severities, room groups and signals.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Settings › Integrations › Create Incident Webhook › General › Endpoint configuration › Event Subscription › Room group selection › Signals selection <a href="https://learn.microsoft.com/microsoftteams/rooms/pmp-incident-webhook-integration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether incidents create ServiceNow tickets</strong><br><small>Tenant</small><br><small class="controls__note">Commercial Cloud only. The form needs a passing Test before Submit, then the enable toggle.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Settings › ServiceNow › Do you want to enable ServiceNow? <a href="https://learn.microsoft.com/microsoftteams/rooms/microsoft-teams-rooms-configure-servicenow" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The signal settings page enables or disables a signal for all applicable devices; it is not a per-room control. Microsoft's portal page describes a separate Suppress ticket function in a room's Status tab that silences notifications about one signal on one device. Microsoft Learn documents no API for the signal settings, ServiceNow integration or webhook subscriptions at the time of writing (November 2026), so these are portal-only.
+The signal settings page enables or disables a signal for all applicable devices; it is not a per-room control. Microsoft's portal page describes a separate Suppress ticket function in a room's Status tab that silences notifications about one signal on one device. Microsoft Learn documents no API for the signal settings, ServiceNow integration or webhook subscriptions at the time of writing (November 2026).
 
-The webhook route is limited to the roles Teams Rooms Pro Manager, Teams Administrator and Global Administrator, allows 10 integrations per portal and is unavailable in GCC High and DoD; the ServiceNow integration is Commercial Cloud only. The roadmap item lists Worldwide only.
+The webhook route is limited to the roles Teams Rooms Pro Manager, Teams Administrator and Global Administrator, allows 10 integrations per portal and is unavailable in GCC High and DoD; the ServiceNow integration is Commercial Cloud only. The roadmap item lists Worldwide only. The authentication guide labels the entry button Add incident webhook.
 
 ## Open questions
 
@@ -201,13 +204,4 @@ The webhook route is limited to the roles Teams Rooms Pro Manager, Teams Adminis
 risk: Low. The roadmap describes admin-side health monitoring and alerts in the Pro Management portal, not a change to meeting features or to what participants see.
 cost: Low. For rooms already licensed with Teams Rooms Pro, the operational work is incident triage and integration maintenance; no price or meter specific to these signals is published.
 impact: Low. Room administrators and IT support see the new signals and incidents; meeting participants are not described as affected.
--->
-
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Governance controls: 'so these are portal-only' / applicability: Signal settings, ServiceNow integration and webhook subscriptions can be managed only through the portal. | Found: Searched: Teams Rooms Pro Management signal settings API Microsoft Graph PowerShell enable disable signals; ServiceNow integration configuration API; incident webhook subscription create manage API. Read those guides and searched Graph beta and MicrosoftTeams references; no exclusivity statement. | Fix: Delete ', so these are portal-only' from the sentence. Retain: 'Microsoft Learn documents no API for the signal settings, ServiceNow integration or webhook subscriptions at the time of writing (November 2026).'
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls table; Governance guidance / admin-path: Webhook incident routing is reached through Settings > Integrations > Create Incident Webhook. | Found: select Settings then Integrations. ... Select Create Incident Webhook. A wizard is presented ... Event Subscription ... Room group selection ... Signals selection | Fix: Extend the path to 'Settings > Integrations > Create Incident Webhook > General > Endpoint configuration > Event Subscription > Room group selection > Signals selection'. Retain the existing filter note. Add: 'The authentication guide labels the entry button Add incident webhook.' That guide is already cited at https://learn.microsoft.com/microsoftteams/rooms/pmp-webhook-auth; the incident guide uses Create Incident Webhook. | Source: https://learn.microsoft.com/microsoftteams/rooms/pmp-incident-webhook-integration
-- [contradicted, minor] Governance guidance: Before rollout, role-membership bullet / consistency: The checklist asks readers to take stock of administrator role membership, but the controls table has no row governing role assignment or access. | Found: Confirm who holds Global Administrator or Teams Administrator ... Controls govern signal enablement, webhook routing and ServiceNow tickets; none governs role membership. | Fix: Remove the Before rollout bullet 'Confirm who holds Global Administrator or Teams Administrator, the built-in roles shown with View and Modify on Settings > Signals.' Keep the verified role facts in the signal-setting note and Scope; do not add a control row.
 -->

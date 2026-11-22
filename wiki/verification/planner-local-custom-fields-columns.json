@@ -2,39 +2,33 @@
   "slug": "planner-local-custom-fields-columns",
   "roadmapId": 566867,
   "title": "Planner: local custom fields on plan tasks",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-22",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-22",
-    "reasons": [
-      "1 blocking finding (claim 67)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 68,
-    "confirmed": 67,
+    "claims": 74,
+    "confirmed": 74,
     "unconfirmed": 0,
-    "contradicted": 1,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 2
+    "minor": 0
   },
-  "summary": "Hold: the low cost rating conflicts with the briefing's documented need for additional licences for field creators. The feature description, rollout information and control calls are supported; the licence-request path needs a small completion.",
+  "summary": "The briefing accurately reports the launched feature, Microsoft's rollout notice and the documented governance routes. It preserves the difference between the licensing sources and distinguishes blocking the Teams app from the broader Planner PowerShell control.",
   "claims": [
     {
       "n": 1,
       "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "Planner adds plan-specific custom fields to tasks.",
+      "claim": "Planner adds plan-local custom fields to tasks.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Custom Fields let you tailor your plans to match the way your team works.",
@@ -45,7 +39,7 @@
       "n": 2,
       "where": "summary; What's changing; Governance guidance",
       "type": "record",
-      "claim": "The five field types are Text, Number, Date, Yes/No and Choice.",
+      "claim": "The field types are Text, Number, Date, Yes/No and Choice.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Add Text, Number, Date, Yes/No, and Choice fields to capture the information that matters most.",
@@ -56,7 +50,7 @@
       "n": 3,
       "where": "What's changing",
       "type": "record",
-      "claim": "Custom field values can be viewed on Board, Grid and Task details.",
+      "claim": "Custom field values can be viewed and updated on the Board.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "View and update custom fields across Board, Grid, and Task details",
@@ -67,7 +61,7 @@
       "n": 4,
       "where": "What's changing",
       "type": "record",
-      "claim": "Custom field values can be updated on Board, Grid and Task details.",
+      "claim": "Custom field values can be viewed and updated in the Grid.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "View and update custom fields across Board, Grid, and Task details",
@@ -78,10 +72,10 @@
       "n": 5,
       "where": "What's changing",
       "type": "record",
-      "claim": "Custom fields support sorting.",
+      "claim": "Custom field values can be viewed and updated in Task details.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "with support for sorting, filtering, grouping, and bulk editing",
+      "quote": "View and update custom fields across Board, Grid, and Task details",
       "severity": null,
       "fix": null
     },
@@ -89,7 +83,7 @@
       "n": 6,
       "where": "What's changing",
       "type": "record",
-      "claim": "Custom fields support filtering.",
+      "claim": "Custom fields support sorting.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "with support for sorting, filtering, grouping, and bulk editing",
@@ -100,7 +94,7 @@
       "n": 7,
       "where": "What's changing",
       "type": "record",
-      "claim": "Custom fields support grouping.",
+      "claim": "Custom fields support filtering.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "with support for sorting, filtering, grouping, and bulk editing",
@@ -111,7 +105,7 @@
       "n": 8,
       "where": "What's changing",
       "type": "record",
-      "claim": "Custom fields support bulk editing.",
+      "claim": "Custom fields support grouping.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "with support for sorting, filtering, grouping, and bulk editing",
@@ -120,9 +114,20 @@
     },
     {
       "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Custom fields support bulk editing.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "with support for sorting, filtering, grouping, and bulk editing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
       "where": "What's changing; Why it matters; Governance guidance",
       "type": "record",
-      "claim": "MC1492955 sets a limit of 10 custom fields per plan.",
+      "claim": "There is a limit of 10 custom fields per plan.",
       "status": "supported",
       "source": "Message Center post MC1492955",
       "quote": "Inform users about the supported field types, the limit of 10 fields per plan",
@@ -130,7 +135,7 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 11,
       "where": "What's changing",
       "type": "record",
       "claim": "Field names can be up to 255 characters.",
@@ -141,7 +146,7 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 12,
       "where": "What's changing; Governance guidance",
       "type": "record",
       "claim": "Choice fields are single-select.",
@@ -152,7 +157,7 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 13,
       "where": "What's changing; Governance guidance",
       "type": "record",
       "claim": "Choice fields can contain 2 to 25 options.",
@@ -163,10 +168,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 14,
       "where": "What's changing",
       "type": "record",
-      "claim": "Choice options are coloured.",
+      "claim": "Choice field options are coloured.",
       "status": "supported",
       "source": "Message Center post MC1492955",
       "quote": "Choice fields are single-select and can contain 2 to 25 colored options.",
@@ -174,10 +179,10 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing; licensing.notes; Risk assessment; Cost and licensing; Scope",
+      "n": 15,
+      "where": "summary; What's changing; Risk assessment; Cost and licensing; licensing.notes",
       "type": "record",
-      "claim": "MC1492955 gives Planner Premium P1, P3 or P5 users the ability to create, edit and manage fields and values.",
+      "claim": "MC1492955 gives Planner Premium P1, P3 or P5 users the ability to create, edit and manage fields and their values.",
       "status": "supported",
       "source": "Message Center post MC1492955",
       "quote": "Users with a Planner Premium P1, P3, or P5 license will be able to create, edit, and manage Custom Fields and their values.",
@@ -185,10 +190,10 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "summary; What's changing; Risk assessment; Cost and licensing; Scope; rationale: impact",
+      "n": 16,
+      "where": "summary; What's changing; Risk assessment; Scope; rationale: impact",
       "type": "record",
-      "claim": "MC1492955 gives Microsoft 365 users read-only access and says they cannot create or edit fields or values.",
+      "claim": "MC1492955 gives Microsoft 365 users read-only access to fields and values.",
       "status": "supported",
       "source": "Message Center post MC1492955",
       "quote": "Users with a Microsoft 365 license can view Custom Fields and values as read-only and export them but cannot create or edit them.",
@@ -196,18 +201,40 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 17,
       "where": "What's changing; Risk assessment; Scope; rationale: impact",
       "type": "record",
-      "claim": "Microsoft 365 read-only users can export custom field values to Excel.",
+      "claim": "Read-only Microsoft 365 users can export custom fields and values.",
       "status": "supported",
       "source": "Message Center post MC1492955",
-      "quote": "Users with a Microsoft 365 license can view Custom Fields and values as read-only and export them but cannot create or edit them. ... Users can view, edit, and export custom field values (Export to Excel)",
+      "quote": "Users with a Microsoft 365 license can view Custom Fields and values as read-only and export them but cannot create or edit them.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 17,
+      "n": 18,
+      "where": "What's changing; Cost and licensing; Scope; rationale: cost",
+      "type": "record",
+      "claim": "Microsoft 365 read-only entitlement does not allow creating custom fields.",
+      "status": "supported",
+      "source": "Message Center post MC1492955",
+      "quote": "Users with a Microsoft 365 license can view Custom Fields and values as read-only and export them but cannot create or edit them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment; Scope; rationale: impact",
+      "type": "record",
+      "claim": "Microsoft 365 read-only entitlement does not allow editing custom fields.",
+      "status": "supported",
+      "source": "Message Center post MC1492955",
+      "quote": "Users with a Microsoft 365 license can view Custom Fields and values as read-only and export them but cannot create or edit them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
       "where": "summary; What's changing; Why it matters; rationale: risk",
       "type": "record",
       "claim": "Custom fields are optional.",
@@ -218,7 +245,7 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 21,
       "where": "What's changing; Why it matters; Scope; rationale: risk",
       "type": "record",
       "claim": "Existing plans are unaffected unless users add custom fields.",
@@ -229,8 +256,8 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "summary; controls[0].note; What's changing; Why it matters; Scope; Governance controls",
+      "n": 22,
+      "where": "summary; What's changing; Why it matters; Scope; controls[0].note",
       "type": "record",
       "claim": "No tenant-level configuration or admin setup is required to enable custom fields.",
       "status": "supported",
@@ -240,8 +267,8 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
+      "n": 23,
+      "where": "What's changing; Risk assessment; Governance guidance",
       "type": "record",
       "claim": "Deleting a custom field is permanent and cannot be undone.",
       "status": "supported",
@@ -251,7 +278,7 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 24,
       "where": "What's changing; Risk assessment; Governance guidance",
       "type": "record",
       "claim": "Deleting a choice option is permanent and cannot be undone.",
@@ -262,10 +289,10 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 25,
       "where": "What's changing; Risk assessment",
       "type": "record",
-      "claim": "Deleting a choice option clears affected values.",
+      "claim": "Deleting a choice option clears the affected values.",
       "status": "supported",
       "source": "Message Center post MC1492955",
       "quote": "deleting a choice option clears affected values.",
@@ -273,7 +300,7 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 26,
       "where": "front matter: status; What's changing; changes",
       "type": "record",
       "claim": "The roadmap status is Launched.",
@@ -284,7 +311,7 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 27,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is October CY2026.",
@@ -295,7 +322,40 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 28,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) only and does not list a US Government cloud.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Desktop, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
       "where": "front matter: previewDate",
       "type": "record",
       "claim": "The roadmap supplies no preview date.",
@@ -306,40 +366,18 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "front matter: releasePhase; What's changing",
+      "n": 32,
+      "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The release phase is General Availability.",
+      "claim": "The roadmap record was modified on 2026-11-06T23:04:41.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "quote": "\"modified\": \"2026-11-06T23:04:41\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 27,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and no US Government cloud.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The listed platforms are Desktop, Mac and Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Desktop\", \"Mac\", \"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
+      "n": 33,
       "where": "What's changing",
       "type": "record",
       "claim": "MC1492955 was published on 2026-10-09.",
@@ -350,10 +388,10 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 34,
       "where": "What's changing; Scope",
       "type": "record",
-      "claim": "The notice gives the Worldwide rollout start as late October 2026.",
+      "claim": "The notice gives a Worldwide rollout beginning in late October 2026.",
       "status": "supported",
       "source": "Message Center post MC1492955",
       "quote": "General Availability (Worldwide): Rollout begins in late October 2026",
@@ -361,10 +399,10 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 35,
       "where": "What's changing; Scope",
       "type": "record",
-      "claim": "The notice expects rollout completion by early November 2026.",
+      "claim": "The notice expects the Worldwide rollout to complete by early November 2026.",
       "status": "supported",
       "source": "Message Center post MC1492955",
       "quote": "is expected to complete by early November 2026.",
@@ -372,21 +410,21 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 36,
       "where": "What's changing; Open questions",
       "type": "absence",
-      "claim": "At November 2026 Microsoft Learn has no dedicated admin page for local custom fields.",
+      "claim": "At the time of writing Microsoft Learn has no dedicated admin page for local custom fields.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Planner\" \"local custom fields\" \"admin\"; Planner local custom fields admin documentation role permissions text field maximum characters. Opened Planner for admins and customFieldDefinition; results cover licensing, API resources and export, not a dedicated feature admin guide.",
+      "quote": "Searched: Planner local custom fields Text 255 characters limits admin documentation; Planner custom fields admin role. Opened Planner for admins, service description and export-user-data; found export schema, not a dedicated local-field administration page.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
+      "n": 37,
       "where": "Why it matters; Risk assessment",
       "type": "record",
-      "claim": "Custom field names and values are stored as plan/task data.",
+      "claim": "Custom field names and values are stored as plan and task data.",
       "status": "supported",
       "source": "Message Center post MC1492955",
       "quote": "Custom field names and values that users create on tasks (up to 10 fields per plan) are stored as part of plan/task data.",
@@ -394,10 +432,10 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 38,
       "where": "Risk assessment: Data exposure",
       "type": "record",
-      "claim": "Text fields hold user-entered information.",
+      "claim": "Text fields contain user-entered information and may therefore contain sensitive values.",
       "status": "supported",
       "source": "Message Center post MC1492955",
       "quote": "Users can add Text, Number, Date, Yes/No, and Choice fields to capture information that matters to their workflows",
@@ -405,10 +443,10 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Risk assessment: Data exposure",
+      "n": 39,
+      "where": "Risk assessment: Data exposure; Governance guidance",
       "type": "record",
-      "claim": "Microsoft recommends reminding users to follow organisational data-handling policies.",
+      "claim": "The notice recommends reminding users of organisational data-handling policies.",
       "status": "supported",
       "source": "Message Center post MC1492955",
       "quote": "Remind users to follow your organization's data-handling policies.",
@@ -416,43 +454,43 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Risk assessment; Governance controls; rationale: risk",
+      "n": 40,
+      "where": "Risk assessment: Data exposure; rationale: risk",
       "type": "record",
-      "claim": "Custom field edits are logged in Task History and flow to the Unified Audit Log.",
+      "claim": "Unified Audit Log covers custom field data.",
       "status": "supported",
       "source": "Message Center post MC1492955",
-      "quote": "Custom field edits are logged in Task History and flow to the Unified Audit Log.",
+      "quote": "Existing compliance capabilities cover custom field data, including Unified Audit Log",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
-      "where": "Risk assessment; rationale: risk",
+      "n": 41,
+      "where": "Risk assessment: Data exposure; rationale: risk",
       "type": "record",
-      "claim": "Existing eDiscovery capabilities cover custom field data.",
+      "claim": "eDiscovery covers custom field data.",
       "status": "supported",
       "source": "Message Center post MC1492955",
-      "quote": "Existing compliance capabilities cover custom field data, including Unified Audit Log, eDiscovery, Microsoft Information Protection through inherited plan-level labels, and Data Lifecycle Management.",
+      "quote": "Existing compliance capabilities cover custom field data, including Unified Audit Log, eDiscovery",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Risk assessment; rationale: risk",
+      "n": 42,
+      "where": "Risk assessment: Data exposure; rationale: risk",
       "type": "record",
       "claim": "Microsoft Information Protection covers custom field data through inherited plan-level labels.",
       "status": "supported",
       "source": "Message Center post MC1492955",
-      "quote": "Existing compliance capabilities cover custom field data, including Unified Audit Log, eDiscovery, Microsoft Information Protection through inherited plan-level labels, and Data Lifecycle Management.",
+      "quote": "Microsoft Information Protection through inherited plan-level labels",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
-      "where": "Risk assessment; rationale: risk",
+      "n": 43,
+      "where": "Risk assessment: Data exposure; rationale: risk",
       "type": "record",
-      "claim": "Existing Data Lifecycle Management covers custom field data.",
+      "claim": "Data Lifecycle Management covers custom field data.",
       "status": "supported",
       "source": "Message Center post MC1492955",
       "quote": "Existing compliance capabilities cover custom field data, including Unified Audit Log, eDiscovery, Microsoft Information Protection through inherited plan-level labels, and Data Lifecycle Management.",
@@ -460,10 +498,21 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 44,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Export to Excel can export custom field values.",
+      "status": "supported",
+      "source": "Message Center post MC1492955",
+      "quote": "Users can view, edit, and export custom field values (Export to Excel)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
       "where": "Risk assessment: Security & identity",
       "type": "record",
-      "claim": "The notice says the feature does not modify Conditional Access policies.",
+      "claim": "The notice says the change does not modify Conditional Access policies.",
       "status": "supported",
       "source": "Message Center post MC1492955",
       "quote": "Conditional Access policies- No.",
@@ -471,10 +520,10 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 46,
       "where": "Risk assessment: Security & identity",
       "type": "record",
-      "claim": "The notice says the feature does not modify DLP policies or enforcement.",
+      "claim": "The notice says the change does not modify DLP policies or enforcement.",
       "status": "supported",
       "source": "Message Center post MC1492955",
       "quote": "Data Loss Prevention (DLP) policies or enforcement- No.",
@@ -482,10 +531,10 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 47,
       "where": "Risk assessment: Security & identity",
       "type": "record",
-      "claim": "The notice says the feature does not modify encryption.",
+      "claim": "The notice says encryption is unchanged.",
       "status": "supported",
       "source": "Message Center post MC1492955",
       "quote": "Encryption methods or key management- No. Data uses existing service encryption.",
@@ -493,10 +542,10 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 48,
       "where": "Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "The described capability consists of fields users create and fill, rather than an autonomous action.",
+      "claim": "The described feature consists of fields users create and populate rather than autonomous actions.",
       "status": "supported",
       "source": "Message Center post MC1492955",
       "quote": "Users with a Planner Premium P1, P3, or P5 license will be able to create, edit, and manage Custom Fields and their values.",
@@ -504,51 +553,18 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The service description lists Local custom fields as View only with Planner included in Microsoft 365.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description",
-      "quote": "| Feature name | Microsoft Planner Included in Microsoft 365 | Planner Plan 1 | Planner and Project Plan 3 | Microsoft 365 Copilot | ... | Local custom fields | View only | Yes | Yes | Yes |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "summary; licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
-      "type": "licensing",
-      "claim": "The service description lists Local custom fields as Yes with Planner Plan 1.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description",
-      "quote": "| Feature name | Microsoft Planner Included in Microsoft 365 | Planner Plan 1 | Planner and Project Plan 3 | Microsoft 365 Copilot | ... | Local custom fields | View only | Yes | Yes | Yes |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "summary; licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
-      "type": "licensing",
-      "claim": "The service description lists Local custom fields as Yes with Planner and Project Plan 3.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description",
-      "quote": "| Feature name | Microsoft Planner Included in Microsoft 365 | Planner Plan 1 | Planner and Project Plan 3 | Microsoft 365 Copilot | ... | Local custom fields | View only | Yes | Yes | Yes |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
+      "n": 49,
       "where": "licensing.notes; Risk assessment; Cost and licensing; Open questions",
       "type": "licensing",
-      "claim": "The service description also lists Local custom fields as Yes with Microsoft 365 Copilot, unlike the notice's premium-only list.",
+      "claim": "The service description lists local custom fields as View only with Microsoft 365 and Yes with Plan 1, Plan 3 and Microsoft 365 Copilot.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description",
-      "quote": "| Feature name | Microsoft Planner Included in Microsoft 365 | Planner Plan 1 | Planner and Project Plan 3 | Microsoft 365 Copilot | ... | Local custom fields | View only | Yes | Yes | Yes |",
+      "quote": "| Capability | Feature name | Microsoft Planner Included in Microsoft 365 | Planner Plan 1 | Planner and Project Plan 3 | Microsoft 365 Copilot |\n|  | Local custom fields | View only | Yes | Yes | Yes |",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
+      "n": 50,
       "where": "Cost and licensing",
       "type": "date",
       "claim": "Planner and Project Plan 5 reached end of sale on May 1, 2026.",
@@ -559,7 +575,7 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 51,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Plan 5 includes all Planner and Project Plan 3 capabilities.",
@@ -570,109 +586,164 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 52,
       "where": "Cost and licensing",
       "type": "absence",
-      "claim": "The cited pages name no meter or separate charge for custom fields.",
+      "claim": "The cited pages name no meter for local custom fields.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Planner local custom fields licensing pricing meter separate charge; \"Planner\" \"custom fields\" \"price\" meter. Opened Planner service description, trial/licence assignments and Planner for admins; no custom-field meter or separate charge stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "Scope",
-      "type": "absence",
-      "claim": "Microsoft Learn and the notice name no admin role specific to managing local custom fields.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Planner\" \"custom fields\" \"role\" permissions; Planner local custom fields admin documentation role permissions text field maximum characters. Opened Planner for admins and customFieldDefinition; read MC1492955. None names a custom-field-specific admin role.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "controls[0].ui; controls[0].api; Governance controls",
-      "type": "absence",
-      "claim": "No tenant-wide control specific to Planner custom fields is documented on either UI or automation surfaces.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Planner local custom fields tenant admin disable restrict Set-PlannerConfiguration Microsoft Graph settings. Opened Planner for admins, disable-planner, manage-planner-app, customFieldDefinition and plannerPlanConfiguration-update; no field-specific tenant switch.",
+      "quote": "Searched: Planner local custom fields pricing meter separate charge licensing. Opened service description, Planner for admins, trials and license assignments, and Graph customFieldDefinition. No local-field meter found; the general Graph metering caveat names no meter for these fields.",
       "severity": null,
       "fix": null
     },
     {
       "n": 53,
-      "where": "controls[1].ui; controls[1].note; Governance controls table",
-      "type": "admin-path",
-      "claim": "Microsoft 365 admin center > Billing > Licenses > Requests is the licence-request assignment route after a Planner trial.",
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The cited pages name no separate charge for custom fields.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/planner/understand-planner-trial-and-license-assignments",
-      "quote": "Within the Requests tab, you can see all the submitted requests and assign the licenses either one at a time or in bulk. ... Select a request and then choose from an available license via the drop-down menu under Select a product.",
-      "severity": "minor",
-      "fix": "Complete controls[1].ui.path as 'Billing > Licenses > Requests > request > Select a product', keeping the note that this route handles requests after a trial, as documented at https://learn.microsoft.com/planner/understand-planner-trial-and-license-assignments."
+      "source": null,
+      "quote": "Searched: Planner local custom fields pricing meter separate charge licensing. Opened service description and trials and license assignments; read MC1492955. Sources specify licence entitlements, not a separate custom-field charge.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 54,
-      "where": "controls[1].api; controls[1].note; Governance controls table",
-      "type": "command",
-      "claim": "POST /v1.0/users/{id | userPrincipalName}/assignLicense assigns user licences using addLicenses to specify the SKU.",
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Learn and the notice name no role specifically responsible for managing local custom fields.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/user-assignlicense",
-      "quote": "POST /users/{id | userPrincipalName}/assignLicense ... addLicenses ... objects that specify the licenses to add. ... POST https://graph.microsoft.com/v1.0/me/assignLicense ... \"skuId\"",
+      "source": null,
+      "quote": "Searched: Planner custom fields admin role; Planner local custom fields tenant admin enable disable Set-PlannerConfiguration custom fields role management. Opened Planner for admins, service description, Graph customFieldDefinition and export-user-data; read MC1492955. No managing role found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 55,
-      "where": "controls[2].ui; Governance guidance; Governance controls table",
-      "type": "admin-path",
-      "claim": "Microsoft Purview portal > Audit > Search reaches audit search.",
+      "where": "controls[0]; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft documents no tenant-wide UI or API switch specifically for Planner local custom fields.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-search",
-      "quote": "Sign in to the Microsoft Purview portal. ... Select the Audit solution card. ... On the Search page, configure the following search criteria as applicable:",
+      "source": null,
+      "quote": "Searched: Planner local custom fields tenant admin enable disable Set-PlannerConfiguration; Planner custom fields disable Graph. Opened Planner for admins, disable-planner, manage-planner-app and Graph customFieldDefinition. Found whole-app controls and read APIs, not a custom-field tenant switch.",
       "severity": null,
       "fix": null
     },
     {
       "n": 56,
-      "where": "controls[2].api; controls[2].note; Governance controls table",
-      "type": "command",
-      "claim": "Search-UnifiedAuditLog searches audit records and runs in Exchange Online PowerShell, rather than restricting fields.",
+      "where": "front matter: defaultState; summary; Why it matters; Scope",
+      "type": "default",
+      "claim": "The user-opt-in default matches optional fields users add without administrator enablement.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-search",
-      "quote": "The underlying cmdlet used to search the audit log is an Exchange Online cmdlet, which is Search-UnifiedAuditLog. ... You have to run this cmdlet in Exchange Online PowerShell.",
+      "source": "Message Center post MC1492955",
+      "quote": "This feature is optional. Existing plans are not affected unless users add Custom Fields.",
       "severity": null,
       "fix": null
     },
     {
       "n": 57,
-      "where": "controls[2].note; Governance controls",
-      "type": "role",
-      "claim": "Searching in the Purview portal requires the Audit Logs or View-Only Audit Logs role there.",
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Mixed licensing describes Microsoft 365 read-only access and fuller access under additional qualifying subscriptions.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-search",
-      "quote": "You must be assigned the Audit Logs or View-Only Audit Logs roles in the Microsoft Purview portal to search the audit log.",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description",
+      "quote": "Microsoft Planner includes capabilities available through Microsoft 365 and Office 365 suites, with additional capabilities available through Planner Plan 1, Planner and Project Plan 3 subscriptions, and Microsoft 365 Copilot, depending on licensing.",
       "severity": null,
       "fix": null
     },
     {
       "n": 58,
-      "where": "controls[2].note",
-      "type": "role",
-      "claim": "The audit-search cmdlet needs the Audit Logs or View-Only Audit Logs role.",
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "A medium cost rating reflects qualifying licences for the subset of users who need to create fields.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-search",
-      "quote": "To access audit cmdlets, you must be assigned the Audit Logs or View-Only Audit Logs roles in the Exchange admin center.",
+      "source": "Message Center post MC1492955",
+      "quote": "Ensure users who need to create or edit Custom Fields have a Planner Premium P1, P3, or P5 license. Microsoft 365 users will have read-only access.",
       "severity": null,
       "fix": null
     },
     {
       "n": 59,
+      "where": "controls[1].ui; Governance guidance; Governance controls table",
+      "type": "admin-path",
+      "claim": "Trial licence requests are handled at Microsoft 365 admin center > Billing > Licenses > Requests > request > Select a product.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/understand-planner-trial-and-license-assignments",
+      "quote": "You can accept or deny each request using the Licenses tab located under Billing. Within the Requests tab, you can see all the submitted requests ... Select a request and then choose from an available license via the drop-down menu under Select a product.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "POST /v1.0/users/{id | userPrincipalName}/assignLicense assigns user licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/user-assignlicense",
+      "quote": "Add or remove licenses for the user to enable or disable their use of Microsoft cloud offerings that the company has licenses to.\nPOST /users/{id | userPrincipalName}/assignLicense\nPOST https://graph.microsoft.com/v1.0/me/assignLicense",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[1].note; Governance controls table",
+      "type": "command",
+      "claim": "The assignLicense request body's addLicenses collection specifies licences by SKU.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/user-assignlicense",
+      "quote": "addLicenses ... A collection of assignedLicense objects that specify the licenses to add.\n\"addLicenses\": [\n        {\n            \"disabledPlans\": [\n                \"8a256a2b-b617-496d-b51b-e76466e88db0\"\n            ],\n            \"skuId\": \"84a661c4-e949-4bd2-a560-ed7766fcaf2b\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[2].ui; Governance guidance; Governance controls table",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Audit > Search reaches audit search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Sign in to the Microsoft Purview portal.\nSelect the Audit solution card.\nOn the Search page, configure the following search criteria as applicable:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog searches audit records and does not restrict custom fields.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "The underlying cmdlet used to search the audit log is an Exchange Online cmdlet, which is Search-UnifiedAuditLog. That means you can use this cmdlet to search the audit log instead of using the search tool on the Audit page in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[2].note; Governance controls",
+      "type": "role",
+      "claim": "Audit search needs the Audit Logs or View-Only Audit Logs role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "You must be assigned the Audit Logs or View-Only Audit Logs roles in the Microsoft Purview portal to search the audit log. ... To access audit cmdlets, you must be assigned the Audit Logs or View-Only Audit Logs roles in the Exchange admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[2].note; Governance controls table",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog must be run in Exchange Online PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "You have to run this cmdlet in Exchange Online PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
       "where": "controls[3].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Teams admin center > Teams apps > Manage apps > Planner > Block turns off the Planner app in Teams.",
+      "claim": "Teams admin center > Teams apps > Manage apps > Planner > Block turns off the Planner app.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
       "quote": "In the left pane of the Teams admin center, go to Teams apps > Manage apps. ... To turn off Planner for your organization, search for the Planner app, select it, and then select Block.",
@@ -680,21 +751,21 @@
       "fix": null
     },
     {
-      "n": 60,
+      "n": 67,
       "where": "controls[3].api; Governance controls table",
       "type": "command",
-      "claim": "Set-PlannerConfiguration -IsPlannerAllowed $false is the documented organisation-level Planner disable call.",
+      "claim": "Set-PlannerConfiguration -IsPlannerAllowed $false is the documented Planner on/off command.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/disable-planner",
-      "quote": "Turn off Planner for your organization using PowerShell ... Set-PlannerConfiguration -IsPlannerAllowed $false",
+      "quote": "Turn off Planner for your organization using PowerShell\nSet-PlannerConfiguration -IsPlannerAllowed $false\nTo turn on Planner back:\nSet-PlannerConfiguration -IsPlannerAllowed $true",
       "severity": null,
       "fix": null
     },
     {
-      "n": 61,
-      "where": "controls[3].note",
+      "n": 68,
+      "where": "controls[3].note; Governance controls table",
       "type": "role",
-      "claim": "The Planner disable PowerShell instructions are for a global admin.",
+      "claim": "The Planner tenant-admin PowerShell command requires a global admin.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/disable-planner",
       "quote": "If you're a global admin and you want to turn off Microsoft Planner for your organization, you can use Windows PowerShell.",
@@ -702,85 +773,74 @@
       "fix": null
     },
     {
-      "n": 62,
-      "where": "controls[3].note; Governance controls",
+      "n": 69,
+      "where": "Governance controls",
       "type": "applicability",
-      "claim": "The Teams Block action governs the Planner app in Teams, not a custom-field-specific setting.",
+      "claim": "The Teams admin center Block action governs the Planner app in Teams.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
-      "quote": "You can turn off or turn on the app at the org level on the Manage apps page in the Teams admin center.",
+      "quote": "Planner is enabled by default for all Teams users in your organization. You can turn off or turn on the app at the org level on the Manage apps page in the Teams admin center.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 63,
-      "where": "controls[3].note; Governance controls",
+      "n": 70,
+      "where": "Governance controls",
       "type": "applicability",
-      "claim": "The PowerShell disable page covers basic plans in Teams and Web and all plans in other Planner endpoints.",
+      "claim": "The PowerShell page covers basic plans in Teams and Web and all plans in other Planner endpoints.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/disable-planner",
-      "quote": "This article applies to: ... Basic plans in the Planner app in Teams and Web ... All plans in other Planner endpoints (including Planner mobile, and Planner connectors).",
+      "quote": "This article applies to:\n- Basic plans in the Planner app in Teams and Web\n- All plans in other Planner endpoints (including Planner mobile, and Planner connectors).",
       "severity": null,
       "fix": null
     },
     {
-      "n": 64,
-      "where": "Governance controls",
-      "type": "absence",
-      "claim": "The cited Planner disable and Teams app-management pages do not mention custom fields.",
+      "n": 71,
+      "where": "controls[3].note; Governance controls",
+      "type": "applicability",
+      "claim": "The last row gives coarse Planner availability controls, not a switch specifically for custom fields.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Planner local custom fields tenant admin disable restrict Set-PlannerConfiguration Microsoft Graph settings. Opened and read https://learn.microsoft.com/planner/disable-planner and https://learn.microsoft.com/microsoftteams/manage-planner-app; neither mentions custom fields.",
+      "source": "https://learn.microsoft.com/planner/disable-planner",
+      "quote": "If you're a global admin and you want to turn off Microsoft Planner for your organization, you can use Windows PowerShell.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 65,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters; Scope",
-      "type": "default",
-      "claim": "The default state is user-opt-in: users choose to add fields and no admin enablement is required.",
+      "n": 72,
+      "where": "Governance controls",
+      "type": "record",
+      "claim": "Custom field edits are logged in Task History.",
       "status": "supported",
       "source": "Message Center post MC1492955",
-      "quote": "This feature is optional. Existing plans are not affected unless users add Custom Fields. ... No tenant-level configuration or admin setup is required to enable Custom Fields.",
+      "quote": "Custom field edits are logged in Task History and flow to the Unified Audit Log.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 66,
-      "where": "front matter: licensing.model; licensing.notes",
-      "type": "licensing",
-      "claim": "Licensing is mixed between Microsoft 365 read-only entitlement and the qualifying licences for fuller custom-field capabilities.",
+      "n": 73,
+      "where": "Governance controls; Governance guidance",
+      "type": "record",
+      "claim": "Custom field edits flow to the Unified Audit Log and can be monitored as task-edit activity.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description",
-      "quote": "| Feature name | Microsoft Planner Included in Microsoft 365 | Planner Plan 1 | Planner and Project Plan 3 | Microsoft 365 Copilot | ... | Local custom fields | View only | Yes | Yes | Yes |",
+      "source": "Message Center post MC1492955",
+      "quote": "Custom field edits are logged in Task History and flow to the Unified Audit Log. ... custom field activity appears in audit logs like other task edits.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 67,
-      "where": "front matter: cost; Cost and licensing; rationale: cost",
-      "type": "consistency",
-      "claim": "Cost is Low despite the rationale identifying spending on licences for users who must create fields.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "cost: \"low\" ... Low. Viewing needs a Microsoft 365 licence; creating fields needs Planner Plan 1 or Planner and Project Plan 3, so spend depends on how many people must create fields.",
-      "severity": "blocker",
-      "fix": "Set cost to 'medium' under the scale for additional licences for a subset of users. Replace the cost rationale with 'Medium. Users who need to create fields need a qualifying licence beyond Microsoft 365 read-only access, so spend depends on how many creators need licensing.' In Cost and licensing, replace 'The indirect cost is licensing for people who need to create fields, plus the time to brief users and handle support requests.' with 'Direct costs are licences for people who need to create fields; indirect costs are the time to brief users and handle support requests.'"
-    },
-    {
-      "n": 68,
-      "where": "Governance guidance: Before rollout",
-      "type": "admin-path",
-      "claim": "Microsoft 365 admin center > Billing > Licenses is the place to check qualifying licence assignments.",
+      "n": 74,
+      "where": "Governance guidance; Open questions",
+      "type": "record",
+      "claim": "MC1492955 says Microsoft will update the post with new documentation.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/planner/understand-planner-trial-and-license-assignments",
-      "quote": "You can accept or deny each request using the Licenses tab located under Billing. Within the Requests tab, you can see all the submitted requests and assign the licenses either one at a time or in bulk.",
-      "severity": "minor",
-      "fix": "Narrow the checklist bullet to the cited request workflow: 'Review licence requests from plan owners after a trial (Microsoft 365 admin center > Billing > Licenses > Requests > request > Select a product).' The cited page documents processing requests, not reviewing every existing licence holder."
+      "source": "Message Center post MC1492955",
+      "quote": "We will update this post with new documentation.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-22T04:02:11.254Z",
+    "at": "2026-11-22T04:51:16.742Z",
     "summary": {
       "links": 10,
       "unreachable": 0,
@@ -852,7 +912,9 @@
         "segments": [
           "Billing",
           "Licenses",
-          "Requests"
+          "Requests",
+          "request",
+          "Select a product"
         ],
         "missing": []
       },
@@ -912,5 +974,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-22",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

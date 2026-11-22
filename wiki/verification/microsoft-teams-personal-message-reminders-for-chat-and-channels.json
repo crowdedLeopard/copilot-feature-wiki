@@ -2,181 +2,42 @@
   "slug": "microsoft-teams-personal-message-reminders-for-chat-and-channels",
   "roadmapId": 565869,
   "title": "Microsoft Teams: personal message reminders for chat and channels",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-22",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-22",
-    "reasons": [
-      "1 blocking finding (claim 7)",
-      "3 major findings"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 48,
-    "confirmed": 44,
-    "unconfirmed": 3,
-    "contradicted": 1,
-    "blocker": 1,
-    "major": 3,
+    "claims": 59,
+    "confirmed": 59,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
     "minor": 0
   },
-  "summary": "Hold: the impact rationale says every user will see toast notifications, whereas Microsoft's notice makes these conditional on reminders being due and existing notification settings. The sources also do not establish the claimed absence of prerequisites, the restriction to already-visible messages, or that the notification settings are exclusively personal.",
+  "summary": "The briefing agrees with Microsoft's roadmap and tenant notice on rollout, default availability and user behaviour. Its statements about undocumented reminder controls, pricing and compliance details were confirmed by targeted searches; no correction is required.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; Risk assessment",
+      "where": "title; front matter: products",
       "type": "record",
-      "claim": "Teams users can create personal reminders on chat and channel messages.",
+      "claim": "The change is Microsoft Teams personal message reminders for chat and channels.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Teams now lets you set and manage reminders directly on chat and channel messages, helping you keep track of important items.",
+      "quote": "Microsoft Teams: Personal message reminders for chat and channels",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "Users can update reminders.",
-      "status": "supported",
-      "source": "Message Center post MC1470887",
-      "quote": "Users can create, update, complete, and delete reminders.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "Users can mark reminders complete.",
-      "status": "supported",
-      "source": "Message Center post MC1470887",
-      "quote": "Users can create, update, complete, and delete reminders.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "Users can delete their own reminders.",
-      "status": "supported",
-      "source": "Message Center post MC1470887",
-      "quote": "Yes. Users can create, manage, and delete their own reminders.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "What's changing; Why it matters; Governance guidance; rationale: impact",
-      "type": "record",
-      "claim": "Reminders appear in a dedicated Reminders view.",
-      "status": "supported",
-      "source": "Message Center post MC1470887",
-      "quote": "Reminders will appear in a dedicated Reminders view with upcoming, active, and completed items.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The Reminders view groups items as upcoming, active and completed.",
-      "status": "supported",
-      "source": "Message Center post MC1470887",
-      "quote": "Reminders will appear in a dedicated Reminders view with upcoming, active, and completed items.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "What's changing; Governance guidance; rationale: impact",
-      "type": "behaviour",
-      "claim": "Users get toast notifications when reminders are due, but the impact rationale says every user will see toast notifications.",
-      "status": "contradicted",
-      "source": "Message Center post MC1470887",
-      "quote": "Users will receive toast notifications when reminders are due, along with badge counts on the Teams chat icon. ... The feature will be enabled by default and will respect existing Teams notification settings.",
-      "severity": "blocker",
-      "fix": "In the impact rationale, replace ', a Reminders view and toast notifications' with ' and a Reminders view. Users receive toast notifications when their reminders are due, subject to existing Teams notification settings.' Keep the correctly qualified due-time statements elsewhere."
-    },
-    {
-      "n": 8,
-      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
-      "type": "record",
-      "claim": "Reminder notifications include badge counts on the Teams chat icon.",
-      "status": "supported",
-      "source": "Message Center post MC1470887",
-      "quote": "Users will receive toast notifications when reminders are due, along with badge counts on the Teams chat icon.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "summary; What's changing; Risk assessment: Data exposure; Governance guidance; rationale: risk",
-      "type": "record",
-      "claim": "Reminders are private to each user.",
-      "status": "supported",
-      "source": "Message Center post MC1470887",
-      "quote": "Reminders are private to each user and include message context for quick follow-up.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "What's changing; Why it matters; Risk assessment: Data exposure; Open questions",
-      "type": "record",
-      "claim": "Reminders include message context for quick follow-up.",
-      "status": "supported",
-      "source": "Message Center post MC1470887",
-      "quote": "Reminders are private to each user and include message context for quick follow-up.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What's changing; Risk assessment: Change & support; Governance guidance; Governance controls",
-      "type": "record",
-      "claim": "Reminders respect existing Teams notification settings.",
-      "status": "supported",
-      "source": "Message Center post MC1470887",
-      "quote": "The feature will be enabled by default and will respect existing Teams notification settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "The notice lists Desktop (Windows, Mac) and Mobile (iOS, Android).",
-      "status": "supported",
-      "source": "Message Center post MC1470887",
-      "quote": "Desktop (Windows, Mac)- Mobile (iOS, Android)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Android, Desktop, iOS, Mac and Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "front matter: status; What's changing; changes",
+      "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is Rolling out.",
       "status": "supported",
@@ -186,7 +47,7 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 3,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is November CY2026.",
@@ -197,7 +58,7 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 4,
       "where": "front matter: previewDate",
       "type": "record",
       "claim": "The roadmap gives no preview date.",
@@ -208,10 +69,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 5,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap release phases are General Availability and Targeted Release.",
+      "claim": "The roadmap lists General Availability and Targeted Release.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
@@ -219,7 +80,7 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 6,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
@@ -230,10 +91,197 @@
       "fix": null
     },
     {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Android, Desktop, iOS, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-04T23:59:50.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-04T23:59:50\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing; Governance guidance",
+      "type": "record",
+      "claim": "Users can set personal reminders on chat and channel messages.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Teams now lets you set and manage reminders directly on chat and channel messages",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Users can create reminders.",
+      "status": "supported",
+      "source": "Message Center post MC1470887",
+      "quote": "Users can create, update, complete, and delete reminders.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Users can update reminders.",
+      "status": "supported",
+      "source": "Message Center post MC1470887",
+      "quote": "Users can create, update, complete, and delete reminders.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Users can mark reminders complete.",
+      "status": "supported",
+      "source": "Message Center post MC1470887",
+      "quote": "Users can create, update, complete, and delete reminders.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Users can delete their own reminders.",
+      "status": "supported",
+      "source": "Message Center post MC1470887",
+      "quote": "Yes. Users can create, manage, and delete their own reminders.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Why it matters; Governance guidance; rationale: impact",
+      "type": "record",
+      "claim": "Reminders appear in a dedicated Reminders view.",
+      "status": "supported",
+      "source": "Message Center post MC1470887",
+      "quote": "Reminders will appear in a dedicated Reminders view with upcoming, active, and completed items.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance; rationale: impact",
+      "type": "record",
+      "claim": "Users receive toast notifications when reminders are due, subject to existing Teams notification settings.",
+      "status": "supported",
+      "source": "Message Center post MC1470887",
+      "quote": "Users will receive toast notifications when reminders are due, along with badge counts on the Teams chat icon. The feature will be enabled by default and will respect existing Teams notification settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The Reminders view includes upcoming items.",
+      "status": "supported",
+      "source": "Message Center post MC1470887",
+      "quote": "Reminders will appear in a dedicated Reminders view with upcoming, active, and completed items.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The Reminders view includes active items.",
+      "status": "supported",
+      "source": "Message Center post MC1470887",
+      "quote": "Reminders will appear in a dedicated Reminders view with upcoming, active, and completed items.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The Reminders view includes completed items.",
+      "status": "supported",
+      "source": "Message Center post MC1470887",
+      "quote": "Reminders will appear in a dedicated Reminders view with upcoming, active, and completed items.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 19,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "record",
+      "claim": "Reminder badge counts appear on the Teams chat icon.",
+      "status": "supported",
+      "source": "Message Center post MC1470887",
+      "quote": "Users will receive toast notifications when reminders are due, along with badge counts on the Teams chat icon.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "summary; What's changing; Risk assessment: Data exposure; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "Reminders are private to each user.",
+      "status": "supported",
+      "source": "Message Center post MC1470887",
+      "quote": "Reminders are private to each user and include message context for quick follow-up.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Reminders include message context for quick follow-up.",
+      "status": "supported",
+      "source": "Message Center post MC1470887",
+      "quote": "Reminders are private to each user and include message context for quick follow-up.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance; Governance controls",
+      "type": "record",
+      "claim": "The reminder feature respects existing Teams notification settings.",
+      "status": "supported",
+      "source": "Message Center post MC1470887",
+      "quote": "The feature will be enabled by default and will respect existing Teams notification settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice lists Desktop (Windows, Mac) and Mobile (iOS, Android).",
+      "status": "supported",
+      "source": "Message Center post MC1470887",
+      "quote": "- Desktop (Windows, Mac)- Mobile (iOS, Android)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
       "where": "What's changing; Governance guidance: After rollout",
       "type": "record",
-      "claim": "MC1470887 was updated on 3 November 2026 to revise the timeline.",
+      "claim": "Microsoft updated the notice's rollout timeline on 3 November 2026.",
       "status": "supported",
       "source": "Message Center post MC1470887",
       "quote": "Updated November 3, 2026: We have updated the timeline. Thank you for your patience.",
@@ -241,10 +289,10 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing; Scope; Governance guidance",
+      "n": 25,
+      "where": "What's changing; Scope",
       "type": "record",
-      "claim": "The notice schedules Targeted Release to begin in mid-November 2026.",
+      "claim": "The notice schedules Targeted Release to begin mid-November 2026.",
       "status": "supported",
       "source": "Message Center post MC1470887",
       "quote": "Targeted Release: Beginning mid-November 2026 (previously early November)",
@@ -252,8 +300,8 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing; Scope; Governance guidance",
+      "n": 26,
+      "where": "What's changing; Scope",
       "type": "record",
       "claim": "The notice expects Targeted Release to complete in mid-November 2026.",
       "status": "supported",
@@ -263,10 +311,10 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What's changing; Scope; Governance guidance",
+      "n": 27,
+      "where": "What's changing; Scope",
       "type": "record",
-      "claim": "The notice schedules General Availability to begin in mid-November 2026.",
+      "claim": "The notice schedules General Availability to begin mid-November 2026.",
       "status": "supported",
       "source": "Message Center post MC1470887",
       "quote": "General Availability (Worldwide, GCC, GCC High, and DoD): Beginning mid-November 2026 (previously October)",
@@ -274,8 +322,8 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing; Scope; Governance guidance",
+      "n": 28,
+      "where": "What's changing; Scope",
       "type": "record",
       "claim": "The notice schedules General Availability to complete in December 2026.",
       "status": "supported",
@@ -285,10 +333,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 29,
       "where": "Scope",
       "type": "record",
-      "claim": "The notice names Worldwide, GCC, GCC High and DoD for General Availability.",
+      "claim": "The notice's General Availability rollout covers Worldwide, GCC, GCC High and DoD.",
       "status": "supported",
       "source": "Message Center post MC1470887",
       "quote": "General Availability (Worldwide, GCC, GCC High, and DoD)",
@@ -296,18 +344,18 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "front matter: defaultState; summary; Why it matters; Risk assessment; rationale: impact; changes",
+      "n": 30,
+      "where": "front matter: defaultState; summary; Why it matters; Risk assessment; rationale: impact",
       "type": "default",
-      "claim": "The feature is enabled by default, represented by defaultState on.",
+      "claim": "The feature is on by default without an administrator enabling it.",
       "status": "supported",
       "source": "Message Center post MC1470887",
-      "quote": "The feature will be enabled by default and will respect existing Teams notification settings.",
+      "quote": "The feature will be enabled by default and will respect existing Teams notification settings. No admin controls or configuration are required.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
+      "n": 31,
       "where": "Why it matters; Scope; rationale: impact",
       "type": "record",
       "claim": "All Microsoft Teams users in the organisation are affected.",
@@ -318,10 +366,10 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "summary; controls[0].note; What's changing; Scope; Governance controls",
+      "n": 32,
+      "where": "summary; controls[0].note; Scope; Governance controls",
       "type": "record",
-      "claim": "The notice says no admin controls or configuration are required.",
+      "claim": "Microsoft's notice says no admin configuration is required.",
       "status": "supported",
       "source": "Message Center post MC1470887",
       "quote": "No admin controls or configuration are required.",
@@ -329,10 +377,21 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 33,
+      "where": "controls[0].note; Governance controls",
+      "type": "record",
+      "claim": "Microsoft's notice says no admin controls are required.",
+      "status": "supported",
+      "source": "Message Center post MC1470887",
+      "quote": "No admin controls or configuration are required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
       "where": "summary; Why it matters",
       "type": "record",
-      "claim": "The notice says no action is required.",
+      "claim": "Microsoft's notice requires no administrator action.",
       "status": "supported",
       "source": "Message Center post MC1470887",
       "quote": "[Action Required/Recommendations]\n\nNo action is required.",
@@ -340,10 +399,10 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 35,
       "where": "Why it matters; Cost and licensing; Governance guidance; rationale: cost",
       "type": "record",
-      "claim": "Microsoft suggests informing users about the new capability.",
+      "claim": "Microsoft suggests informing users about the capability.",
       "status": "supported",
       "source": "Message Center post MC1470887",
       "quote": "You may consider the following:\n\n- Inform users about this new capability.",
@@ -351,21 +410,32 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 36,
       "where": "Why it matters; Cost and licensing; Governance guidance; rationale: cost",
       "type": "record",
-      "claim": "Microsoft suggests updating internal training materials or documentation.",
+      "claim": "Microsoft suggests updating internal training material or documentation.",
       "status": "supported",
       "source": "Message Center post MC1470887",
-      "quote": "Update internal training materials or documentation.",
+      "quote": "- Update internal training materials or documentation.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
-      "where": "Why it matters; Risk assessment: Data exposure; Open questions; rationale: risk",
+      "n": 37,
+      "where": "Why it matters; Risk assessment: Change & support; Governance guidance; rationale: impact",
       "type": "record",
-      "claim": "User-created reminders are stored as new customer data associated with message context.",
+      "claim": "The notice introduces a Message Reminder menu item.",
+      "status": "supported",
+      "source": "Message Center post MC1470887",
+      "quote": "Message Reminder menu item:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "User-created reminders are stored as new customer data.",
       "status": "supported",
       "source": "Message Center post MC1470887",
       "quote": "Does the change store new customer data?Yes. User-created reminders are stored to support the feature and associated with message context.",
@@ -373,10 +443,21 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 39,
+      "where": "Why it matters; Risk assessment: Data exposure; Open questions; rationale: risk",
+      "type": "record",
+      "claim": "Stored reminders are associated with message context.",
+      "status": "supported",
+      "source": "Message Center post MC1470887",
+      "quote": "User-created reminders are stored to support the feature and associated with message context.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
       "where": "Why it matters; Risk assessment: Data exposure",
       "type": "record",
-      "claim": "User-defined reminders provide another way to access message content.",
+      "claim": "Reminders provide another way to access message content.",
       "status": "supported",
       "source": "Message Center post MC1470887",
       "quote": "Yes. Messages can now be associated with user-defined reminders, providing another way to access message content.",
@@ -384,43 +465,21 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 41,
       "where": "What's changing",
       "type": "absence",
-      "claim": "Microsoft Learn has no page describing this feature at the time of writing in November 2026.",
+      "claim": "Microsoft Learn has no feature page for personal message reminders at the time of writing.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams personal message reminders; \"Teams\" \"Reminders view\"; Teams message reminders permissions prerequisites. Read deployment page and search excerpts; results described calendar reminders, unrelated apps or general Teams guidance, not this feature.",
+      "quote": "Searched: \"Microsoft Teams\" \"message reminders\"; \"Teams\" \"personal reminders\" licensing price notification retention eDiscovery. Opened Teams chat deployment and messaging policies pages; results concerned other reminder features or general Teams documentation.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
-      "where": "controls[0] (ui and api null); summary; Why it matters; Governance controls; rationale: risk",
-      "type": "absence",
-      "claim": "No tenant or policy switch for enabling or disabling personal message reminders is documented on either surface.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams message reminders policy; Teams reminders Set-CsTeamsMessagingConfiguration Graph. Read messaging-policies-in-teams, Set-CsTeamsMessagingPolicy (no remind matches), configuration syntax and MC1470887; no feature switch or operation found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "controls[0].note; Governance controls",
-      "type": "absence",
-      "claim": "The existing Teams messaging policies documentation lists no reminders setting.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Teams\" \"message reminders\" \"policy\". Read the complete Messaging policy settings list on messaging-policies-in-teams and the Set-CsTeamsMessagingPolicy syntax; neither lists a reminders setting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "front matter: licensing.model",
+      "n": 42,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; Open questions",
       "type": "licensing",
-      "claim": "Message reminders are an included option in the licensed Teams product, with no separate feature entitlement published.",
+      "claim": "The licensing model is included under the existing Teams product entitlement, with no reminder-specific requirement published.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/deploy-chat-teams-channels-microsoft-teams-landing-page",
       "quote": "Teams is provided as part of many Microsoft 365 licenses.",
@@ -428,10 +487,10 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 43,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Microsoft Learn says Teams is provided as part of many Microsoft 365 licenses.",
+      "claim": "Microsoft Learn says Teams is provided as part of many Microsoft 365 licences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/deploy-chat-teams-channels-microsoft-teams-landing-page",
       "quote": "Teams is provided as part of many Microsoft 365 licenses.",
@@ -439,10 +498,10 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 44,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The Teams deployment page points to the Microsoft Teams service description for licensing requirements.",
+      "claim": "The Teams deployment page points to the Teams service description for licensing requirements.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/deploy-chat-teams-channels-microsoft-teams-landing-page",
       "quote": "To learn about licensing requirements, read Microsoft Teams service description.",
@@ -450,118 +509,173 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "No licence or add-on requirement specific to message reminders is published in the record, notice or licensing documentation.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Teams\" \"message reminders\" \"license\" \"price\"; personal message reminders licensing. Read roadmap, MC1470887, Teams deployment licensing and Teams service description; only general Teams licensing, no reminder-specific entitlement found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No meter specific to message reminders is published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams personal message reminders licensing price retention eDiscovery; Teams message reminders license price. Read roadmap, MC1470887, Teams deployment and service description, and search excerpts; no reminder-specific meter found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
+      "n": 45,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "absence",
-      "claim": "No price or rate specific to message reminders is published.",
+      "claim": "The roadmap record and notice name no licence or add-on specific to message reminders.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Teams\" \"message reminders\" \"license\" \"price\"; Teams personal message reminders licensing price. Read roadmap, MC1470887, Teams service description and deployment licensing; returned prices concerned other Teams services, not message reminders.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Risk assessment: Security & identity",
-      "type": "absence",
-      "claim": "The roadmap record and notice describe no change to sign-in or permissions.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams message reminders permissions prerequisites. Read complete roadmap description and MC1470887, including compliance answers; neither describes a sign-in or permissions change. Search excerpts covered unrelated apps and general Teams permissions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Risk assessment: Security & identity; rationale: risk",
-      "type": "behaviour",
-      "claim": "Reminders only link back to messages the user can already see.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Teams message reminders source message permissions deleted prerequisites; Teams message reminders permissions. Read roadmap and MC1470887; they say reminders include message context, not that access is limited to messages currently visible to the user.",
-      "severity": "major",
-      "fix": "Remove 'The reminder follows the message context the user already has.' In the risk rationale, replace 'Reminders are private to each user and only link back to messages the user can already see' with 'Reminders are private to each user'."
-    },
-    {
-      "n": 44,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "The sources describe no autonomous behaviour beyond the user-managed reminders and due notifications.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams personal message reminders Reminders view; Teams message reminders source message permissions. Read roadmap and MC1470887: user-created, managed and deleted reminders and due notifications are described; no further autonomous action is specified.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Why it matters; Risk assessment: Data exposure; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not documented how reminder data itself is retained or whether Teams retention policies cover it.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams personal message reminders retention eDiscovery. Read MC1470887 and Learn about retention for Microsoft Teams (including included/excluded data; no remind matches). General message retention is documented, but reminder-record retention is not stated.",
+      "quote": "Searched: \"Teams\" \"message reminders\" licence license price meter. Read the complete roadmap record and MC1470887, plus Teams deployment and service description; neither supplied record names reminder-specific licensing or an add-on.",
       "severity": null,
       "fix": null
     },
     {
       "n": 46,
-      "where": "Why it matters; Risk assessment: Data exposure; Open questions",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "Microsoft has not documented whether reminder data itself is searchable through eDiscovery.",
+      "claim": "No meter specific to message reminders is published in the supplied records or the documentation found.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams personal message reminders licensing price retention eDiscovery. Read MC1470887, Purview Teams retention guidance and security/compliance search excerpts. They document eDiscovery for message copies but do not identify reminders as searchable content.",
+      "quote": "Searched: \"Teams\" \"message reminders\" licence license price meter; \"Teams\" \"personal reminders\" licensing price notification retention eDiscovery. Read roadmap record, MC1470887, Teams deployment and service description; found no reminder meter.",
       "severity": null,
       "fix": null
     },
     {
       "n": 47,
-      "where": "Scope",
-      "type": "behaviour",
-      "claim": "The notice states that there are no prerequisites.",
-      "status": "unsupported",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "A price or rate specific to message reminders is not yet published.",
+      "status": "supported",
       "source": null,
-      "quote": "Searched: \"Teams\" \"message reminders\" \"permissions\" \"prerequisites\". Read MC1470887 and Teams deployment/service description. The notice says no admin configuration is required but does not state that there are no prerequisites.",
-      "severity": "major",
-      "fix": "Replace 'The notice states no prerequisites and no admin configuration.' with 'The notice names no prerequisites and says no admin configuration is required.'"
+      "quote": "Searched: \"Teams\" \"message reminders\" licence license price meter. Read roadmap record, MC1470887 and Teams service description; results concerned SMS, calling or interoperability prices, not personal message reminders.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 48,
-      "where": "Governance controls; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "The existing Teams notification settings that reminders respect are the user's own settings.",
-      "status": "unsupported",
+      "where": "controls[0].ui and api; summary; Why it matters; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft documents no tenant or policy switch for personal message reminders on either the admin UI or automation surface.",
+      "status": "supported",
       "source": null,
-      "quote": "Searched: Teams message reminders source message permissions deleted prerequisites notification settings user. Read MC1470887 and Teams mobile Intune notification excerpts. The notice does not identify personal settings; Intune also documents notification controls.",
-      "severity": "major",
-      "fix": "Replace the last Governance controls paragraph with 'The notice says reminders respect existing Teams notification settings; it does not specify which settings.' In At rollout, replace 'each user's existing Teams notification settings' with 'existing Teams notification settings'."
+      "quote": "Searched: \"Teams\" \"message reminders\" admin policy disable Microsoft Graph PowerShell. Read MC1470887 and Manage messaging policies in Teams; searched the full Set-CsTeamsMessagingPolicy reference for remind, finding none. No reminder switch or endpoint found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Teams messaging policies exist.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams",
+      "quote": "Messaging policies are used to control which chat and channel messaging features are available to users (owners and members) in Microsoft Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "The Teams messaging policies documentation lists no personal reminders setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"message reminders\" admin policy disable Microsoft Graph PowerShell. Read every messaging policy setting at learn.microsoft.com/microsoftteams/messaging-policies-in-teams; searched Set-CsTeamsMessagingPolicy for remind. Neither lists reminders.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "MC1470887 does not say how reminder data is retained.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"message reminders\" retention eDiscovery source message deleted. Read the complete supplied MC1470887 and Manage retention policies for Microsoft Teams; the notice discusses storage but gives no reminder retention period or mechanism.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "MC1470887 does not say how reminder data is searched with eDiscovery.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"message reminders\" retention eDiscovery source message deleted. Read the complete MC1470887; its compliance answers cover storage, message access and user management, but not searches or eDiscovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented how Teams retention policies cover the separately stored reminder data.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"message reminders\" retention eDiscovery source message deleted. Read Manage retention policies for Microsoft Teams and Learn about retention for Microsoft Teams excerpts; they cover chat/channel messages, not separately stored personal reminders.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented whether eDiscovery searches cover the separately stored reminder data.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"personal reminders\" licensing price notification retention eDiscovery; \"Teams\" \"message reminders\" retention eDiscovery source message deleted. Read Teams security/compliance excerpts and Content search guidance; no reminder-data coverage found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "No change to sign-in is described in the roadmap record or notice.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Microsoft Teams\" \"message reminders\". Read the full roadmap description and MC1470887, including compliance answers; neither describes sign-in changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "No change to permissions is described in the roadmap record or notice.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Microsoft Teams\" \"message reminders\". Read the full roadmap description and MC1470887; the notice describes another way to access message content but no permission changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The sources describe user-managed reminders, not autonomous actions beyond the documented due-time notifications.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Microsoft Teams\" \"message reminders\". Read roadmap description and MC1470887: users create, update, complete and delete reminders; the automatic behaviour described is due-time notifications and badges, not independent actions on message content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The notice names no prerequisites.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Microsoft Teams\" \"message reminders\". Read MC1470887 in full, including platforms, impact, recommendations and compliance considerations; it names no prerequisite and says no admin configuration is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The notice does not specify which existing Teams notification settings reminders respect.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"reminders\" \"notification settings\" \"muted\". Read full MC1470887: it says existing Teams notification settings, naming none. Results describe general mobile settings or other reminder features, not this feature's setting mapping.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-22T04:02:08.691Z",
+    "at": "2026-11-22T04:51:15.183Z",
     "summary": {
       "links": 5,
       "unreachable": 0,
@@ -601,5 +715,12 @@
     "controlChecks": [],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-22",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

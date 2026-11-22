@@ -50,7 +50,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic"
+      path: "Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Choose who can access Anthropic models for Copilot and generative AI experiences"
       docs: "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor"
     api: null
     note: "AI Administrator or Global Administrator role. Applied per AI provider, not per model. Not confirmed to cover every model Agent Mode will offer."
@@ -68,19 +68,23 @@ changes:
     note: "New briefing: roadmap item 545012, model choice in Agent Mode in Word on the web; no Learn page or default yet."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 49 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Correction: reworded the opening of Why it matters, the pilot bullet and the Anthropic path, and added the apps-only regional default."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 61 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 49
-  confirmed: 47
-  unconfirmed: 2
+  claims: 61
+  confirmed: 61
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "ecc28b81b680f077229c0d6a86c06c6e"
+  attempts: 0
+  hash: "a69ad6e8fd8322c40f794f05a4b82a49"
 ---
 
 ## What's changing
@@ -95,7 +99,7 @@ Separately, the Microsoft 365 Copilot release notes for 11 August 2026 list a Wo
 
 ## Why it matters
 
-Model choice moves a decision about which AI provider handles a document prompt from Microsoft's routing to the individual user. The control Microsoft documents for third-party providers is the AI provider setting in the Microsoft 365 admin center, which is applied at the provider level, not the model level. Plan around that control now, because Learn describes no switch specific to this feature.
+The roadmap plans to give users a choice of model for their Word task. The control Microsoft documents for third-party providers is the AI provider setting in the Microsoft 365 admin center, which is applied at the provider level, not the model level. Plan around that control now, because Learn describes no switch specific to this feature.
 
 Microsoft has not stated what happens on arrival, so base planning on no source saying existing behaviour changes, and do not assume that nothing will change. Check Message center and the Learn page before the item moves beyond In development.
 
@@ -129,7 +133,7 @@ A licence requirement or credit rate specific to choosing a model in Agent Mode 
 
 The roadmap lists Word and Microsoft Copilot (Microsoft 365) as the products, Web as the platform, Worldwide (Standard Multi-Tenant) as the cloud and General Availability as the release phase. The users in scope, the licence they need and any prerequisites are not stated.
 
-For Anthropic models in general, Learn says Microsoft enables Claude models by default for most customers in the commercial cloud, excluding the EU, EFTA and the UK, where they are disabled by default. Changing the provider setting needs the AI Administrator or Global Administrator role. These statements are about Anthropic models and the provider setting, not about this feature.
+For Anthropic models in general, Learn says Microsoft enables Claude models by default for most customers in the commercial cloud, excluding the EU, EFTA and the UK, where they are disabled by default. The separate apps-only guidance says the setting is enabled by default for EU, EFTA and UK tenants created after 25 March 2026; check the actual tenant setting. Changing the provider setting needs the AI Administrator or Global Administrator role. These statements are about Anthropic models and the provider setting, not about this feature.
 
 ## Governance guidance
 
@@ -144,7 +148,7 @@ For Anthropic models in general, Learn says Microsoft enables Claude models by d
 
 - Watch Message center and the Microsoft 365 Copilot release notes for this item moving beyond In development.
 - Confirm with Microsoft which models the picker lists before widening access.
-- Pilot with a security group if you restrict the provider by user or group, so that the pilot users are the only ones who see third-party models.
+- Pilot Anthropic access with a security group: when access to that provider is restricted by user or group assignment, only the assigned users can use Copilot features that rely on Anthropic.
 
 ### After rollout
 
@@ -158,7 +162,7 @@ For Anthropic models in general, Learn says Microsoft enables Claude models by d
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users can access Anthropic models in Copilot experiences</strong><br><small>Tenant</small><br><small class="controls__note">AI Administrator or Global Administrator role. Applied per AI provider, not per model. Not confirmed to cover every model Agent Mode will offer.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › AI providers operating as Microsoft subprocessors › Available subprocessors for your organization › Anthropic <a href="https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users can access Anthropic models in Copilot experiences</strong><br><small>Tenant</small><br><small class="controls__note">AI Administrator or Global Administrator role. Applied per AI provider, not per model. Not confirmed to cover every model Agent Mode will offer.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › AI providers operating as Microsoft subprocessors › Available subprocessors for your organization › Anthropic › Choose who can access Anthropic models for Copilot and generative AI experiences <a href="https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Tenant or per-app switch for model choice in Agent Mode in Word</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no such switch at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -181,12 +185,8 @@ cost: Low. No licence or meter specific to model choice in Agent Mode is publish
 impact: Medium. Users of Agent Mode in Word on the web would see a choice of models; Microsoft has not stated whether the picker is on by default.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: This change moves selection of the AI provider handling a document prompt from Microsoft's routing to the individual user. | Found: Searched: Copilot Agent Mode Word choose model picker license admin default; Word Agent Mode default. Read copilot-overview, release-notes and Support Get started editing with Copilot in Office. No passage establishes prior provider routing or that this item's model choice changes provider. | Fix: Replace the first sentence of Why it matters with: 'The roadmap plans to give users a choice of model for their Word task.'
-- [unsupported, blocker] Governance guidance: At rollout, pilot bullet / applicability: Restricting the provider to a pilot security group makes pilot users the only users who see third-party models. | Found: Searched: Word Agent Mode model picker admin policy. Read copilot-ai-provider-user-sec-group-access and connect-to-ai-subprocessor: restriction controls use of that provider, not visibility of all third-party models. | Fix: Replace the pilot bullet with: 'Pilot Anthropic access with a security group: when access to that provider is restricted by user or group assignment, only the assigned users can use Copilot features that rely on Anthropic.' Keep the citation https://learn.microsoft.com/copilot/implement/copilot-ai-provider-user-sec-group-access. Do not claim that the assignment hides every third-party model.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Microsoft 365 admin center path reaches the Anthropic control used to assign provider access. | Found: select Copilot > Settings > View all. Select AI providers operating as Microsoft subprocessors. under Available subprocessors for your organization, select Anthropic Under Choose who can access Anthropic models for Copilot and generative AI experiences, select your users or groups | Fix: Extend controls[0].ui.path and its rendered path to 'Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Choose who can access Anthropic models for Copilot and generative AI experiences > users or groups', as documented at https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor. | Source: https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor
-- [supported, minor] Scope: Anthropic regional default / default: The Anthropic overview says Claude models are disabled by default in the EU, EFTA and UK. | Found: Customers within the EU Data Boundary and customers in the UK have Claude models disabled by default. | Fix: After this regional-default statement, add: 'The separate apps-only guidance says the setting is enabled by default for EU, EFTA and UK tenants created after 25 March 2026; check the actual tenant setting.' Cite https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps, which states 'This setting is enabled by default for tenants in the EU, EFTA, and UK that were created after March 25, 2026.' | Source: https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor
+- [supported, minor] Cost and licensing; Open questions / absence: The documentation found does not establish whether changing models in this particular Agent Mode picker changes credit consumption. | Found: Searched: Word Agent Mode model selection Copilot Credits billing rate; Word model usage-based billing. Read USL/UBB and billing overview: general model selection is included in USL and frontier models can use credits, but this picker is not identified. | Fix: Replace 'the sources read do not say whether choosing a different model changes consumption' with 'Microsoft documents general Copilot model selection as part of the user subscription licence, while advanced AI and frontier models can require usage-based billing and consume Copilot Credits. How those rules map to the models offered by this specific Agent Mode picker is not stated.' Cite https://learn.microsoft.com/copilot/plan/user-subscription-license-usage-based-billing and https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits.
 -->

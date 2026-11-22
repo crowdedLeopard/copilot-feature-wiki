@@ -12,7 +12,7 @@ platforms: ["Desktop","Mac","Web"]
 targetDate: "October CY2026"
 previewDate: null
 risk: "low"
-cost: "low"
+cost: "medium"
 impact: "medium"
 defaultState: "user-opt-in"
 action: "review"
@@ -49,7 +49,7 @@ sources:
   - title: "customFieldDefinition resource type (planner)"
     url: "https://learn.microsoft.com/graph/api/resources/customfielddefinition?view=graph-rest-beta"
     kind: "learn"
-  - title: "Which users hold a licence that allows creating and editing custom fields (Microsoft Graph)"
+  - title: "user: assignLicense"
     url: "https://learn.microsoft.com/graph/api/user-assignlicense"
     kind: "learn"
 videos: []
@@ -64,7 +64,7 @@ controls:
     scope: "user"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Billing > Licenses > Requests"
+      path: "Billing > Licenses > Requests > request > Select a product"
       docs: "https://learn.microsoft.com/planner/understand-planner-trial-and-license-assignments"
     api:
       kind: "graph"
@@ -102,19 +102,23 @@ changes:
     note: "First briefing for this item: Planner local custom fields have launched; creating needs a Planner licence, Microsoft 365 users get read-only access and no admin setup is required."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 68 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected cost to medium (licences for people who create fields) and completed the licence-request path and checklist wording."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 74 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 67
+  claims: 74
+  confirmed: 74
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "25560848a7c0840f6c8ce5a704a4743b"
+  contradicted: 0
+  attempts: 0
+  hash: "e35cbbd6e47397f62998f1c9f9df6f0b"
 ---
 
 ## What's changing
@@ -154,7 +158,7 @@ Microsoft has described the feature as optional and additive, so if nobody acts,
 
 Microsoft's Planner service description lists Local custom fields as View only for users with Planner included in Microsoft 365, and Yes for Planner Plan 1, Planner and Project Plan 3 and Microsoft 365 Copilot. MC1492955 says users with a Planner Premium P1, P3 or P5 licence can create and edit fields, and users with a Microsoft 365 licence get read-only access.
 
-The service description also states that Planner and Project Plan 5 reached end of sale on May 1, 2026 and that Plan 5 includes all Planner and Project Plan 3 capabilities. The pages cited here name no meter and no separate charge for custom fields. The indirect cost is licensing for people who need to create fields, plus the time to brief users and handle support requests.
+The service description also states that Planner and Project Plan 5 reached end of sale on May 1, 2026 and that Plan 5 includes all Planner and Project Plan 3 capabilities. The pages cited here name no meter and no separate charge for custom fields. Direct costs are licences for people who need to create fields; indirect costs are the time to brief users and handle support requests.
 
 ## Scope
 
@@ -165,7 +169,7 @@ Rollout: Microsoft's notice gives late October 2026 to early November 2026 for t
 ## Governance guidance
 
 ### Before rollout
-- Identify which plan owners will need to create custom fields and check they hold a Planner Plan 1, Planner and Project Plan 3 or Planner Premium licence (Microsoft 365 admin center > Billing > Licenses).
+- Review licence requests from plan owners after a trial (Microsoft 365 admin center > Billing > Licenses > Requests > request > Select a product).
 - Draft user guidance covering the five field types, the 10-field limit per plan, single-select Choice fields with 2 to 25 options and the permanent deletion of fields and options.
 - Tell plan owners which data may not go into Text fields under your data-handling policies.
 
@@ -186,7 +190,7 @@ Rollout: Microsoft's notice gives late October 2026 to early November 2026 for t
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Tenant-wide switch for Planner custom fields</strong><br><small>Tenant</small><br><small class="controls__note">MC1492955 says no tenant-level configuration or admin setup is required to enable Custom Fields.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which users hold a licence that allows creating and editing custom fields</strong><br><small>User</small><br><small class="controls__note">The UI page covers licence requests after a Planner and Project Plan 3 trial. The Graph call assigns any licence; the request body addLicenses names the SKU.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Licenses › Requests <a href="https://learn.microsoft.com/planner/understand-planner-trial-and-license-assignments" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/users/{id | userPrincipalName}/assignLicense</code> <a href="https://learn.microsoft.com/graph/api/user-assignlicense" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users hold a licence that allows creating and editing custom fields</strong><br><small>User</small><br><small class="controls__note">The UI page covers licence requests after a Planner and Project Plan 3 trial. The Graph call assigns any licence; the request body addLicenses names the SKU.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Licenses › Requests › request › Select a product <a href="https://learn.microsoft.com/planner/understand-planner-trial-and-license-assignments" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/users/{id | userPrincipalName}/assignLicense</code> <a href="https://learn.microsoft.com/graph/api/user-assignlicense" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Searching the audit log for custom field edits</strong><br><small>Tenant</small><br><small class="controls__note">Needs the Audit Logs or View-Only Audit Logs role. Run the cmdlet in Exchange Online PowerShell. This searches records; it does not restrict custom fields.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog</code> <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether Planner is available to the organisation (coarse alternative; not specific to custom fields)</strong><br><small>Tenant</small><br><small class="controls__note">Global admin for the cmdlet. Turns Planner off, not custom fields. The two surfaces have different reach, as described under the table.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Planner › Block <a href="https://learn.microsoft.com/microsoftteams/manage-planner-app" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PlannerConfiguration -IsPlannerAllowed $false</code> <a href="https://learn.microsoft.com/planner/disable-planner" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -205,15 +209,6 @@ The Planner on/off switches in the last row are blunt tools. They turn Planner o
 
 <!-- rationale
 risk: Low. Custom fields are optional metadata that users add to tasks; Microsoft's notice MC1492955 says existing plans are unaffected and that audit, eDiscovery, labels and lifecycle processes cover the data.
-cost: Low. Viewing needs a Microsoft 365 licence; creating fields needs Planner Plan 1 or Planner and Project Plan 3, so spend depends on how many people must create fields.
+cost: Medium. Users who need to create fields need a qualifying licence beyond Microsoft 365 read-only access, so spend depends on how many creators need licensing.
 impact: Medium. Plan owners with a qualifying Planner licence will use the fields; users with only a Microsoft 365 licence will see and export the values but not edit them.
--->
-
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: cost; Cost and licensing; rationale: cost / consistency: Cost is Low despite the rationale identifying spending on licences for users who must create fields. | Found: cost: "low" ... Low. Viewing needs a Microsoft 365 licence; creating fields needs Planner Plan 1 or Planner and Project Plan 3, so spend depends on how many people must create fields. | Fix: Set cost to 'medium' under the scale for additional licences for a subset of users. Replace the cost rationale with 'Medium. Users who need to create fields need a qualifying licence beyond Microsoft 365 read-only access, so spend depends on how many creators need licensing.' In Cost and licensing, replace 'The indirect cost is licensing for people who need to create fields, plus the time to brief users and handle support requests.' with 'Direct costs are licences for people who need to create fields; indirect costs are the time to brief users and handle support requests.'
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; controls[1].note; Governance controls table / admin-path: Microsoft 365 admin center > Billing > Licenses > Requests is the licence-request assignment route after a Planner trial. | Found: Within the Requests tab, you can see all the submitted requests and assign the licenses either one at a time or in bulk. ... Select a request and then choose from an available license via the drop-down menu under Select a product. | Fix: Complete controls[1].ui.path as 'Billing > Licenses > Requests > request > Select a product', keeping the note that this route handles requests after a trial, as documented at https://learn.microsoft.com/planner/understand-planner-trial-and-license-assignments. | Source: https://learn.microsoft.com/planner/understand-planner-trial-and-license-assignments
-- [supported, minor] Governance guidance: Before rollout / admin-path: Microsoft 365 admin center > Billing > Licenses is the place to check qualifying licence assignments. | Found: You can accept or deny each request using the Licenses tab located under Billing. Within the Requests tab, you can see all the submitted requests and assign the licenses either one at a time or in bulk. | Fix: Narrow the checklist bullet to the cited request workflow: 'Review licence requests from plan owners after a trial (Microsoft 365 admin center > Billing > Licenses > Requests > request > Select a product).' The cited page documents processing requests, not reviewing every existing licence holder. | Source: https://learn.microsoft.com/planner/understand-planner-trial-and-license-assignments
 -->

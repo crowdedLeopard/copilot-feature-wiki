@@ -61,19 +61,23 @@ changes:
     note: "Corrected after the independent check: removed the unsupported 'not a new data path' claim, added the Microsoft 365 E7 alternative, removed four checklist steps without control rows, and restated licensing."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 43 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-22"
+    note: "Corrected after the independent check: narrowed the connector role statement to deployment and replaced the data-reach claim with the connectors overview's statement on authorised access."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 43 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 43
-  confirmed: 41
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 2
-  hash: "657693ec87826595826c1141d0324388"
+  confirmed: 43
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "29854de7c077b2531021a44818543ee5"
 ---
 
 ## What's changing
@@ -93,7 +97,7 @@ Microsoft has not stated what happens on arrival, so base planning on no source 
 ## Risk assessment
 
 **Data exposure**
-- The roadmap describes prompts, not new data access. Answers to a connector prompt can only draw on whatever connector content Copilot already reaches for that user; the roadmap does not say otherwise.
+- The roadmap describes prompts, not new data access. The connectors overview states that users only see content they are authorised to access.
 - Prompt text a user saves or shares from the gallery is stored in collections in the Microsoft 365 Substrate data store, within the tenant boundary, according to the Prompt Gallery page.
 
 **Security & identity**
@@ -142,7 +146,7 @@ Which users see the prompts, and whether a connector must be deployed or a licen
 </tbody>
 </table>
 
-No tenant switch, per-connector setting or API for graph connector prompts in the Prompt Gallery is documented at the time of writing (November 2026), so the row above is empty on both sides. Connectors themselves are deployed and governed separately by an AI administrator in the Microsoft 365 admin center.
+No tenant switch, per-connector setting or API for graph connector prompts in the Prompt Gallery is documented at the time of writing (November 2026), so the row above is empty on both sides. Connectors themselves are deployed separately by an AI administrator in the Microsoft 365 admin center.
 
 For monitoring, the Prompt Gallery page says admins can track saved, liked and shared prompts of a specific user and prompts shared with a specific team; the export is a PowerShell script run by a Global Administrator and does not govern the feature.
 
@@ -155,14 +159,7 @@ For monitoring, the Prompt Gallery page says admins can track saved, liked and s
 - Will the June CY2026 target be revised, given the item is still In development?
 
 <!-- rationale
-risk: Low. The roadmap describes only extra prompts in an existing gallery; no new data source, agent or action is described. Connector data stays governed by the connectors already deployed.
+risk: Low. The roadmap describes only extra prompts in an existing gallery; no new data source, agent or action is described. The connectors overview states that users only see content they are authorised to access.
 cost: Low. No licence or meter specific to this feature is published; the only known cost is admin time, plus the Copilot licence connector grounding already depends on.
 impact: Low. Users with Copilot Chat would see extra suggested prompts; nothing in the record says existing behaviour changes, and administrators have nothing to configure so far.
--->
-
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls / role: Connectors themselves are governed by an AI administrator in the Microsoft 365 admin center. | Found: To manage federated connectors, you need one of the following administrator roles: Global Administrator; Search Administrator. | Fix: Narrow the sentence to the operation supported by the cited prerequisites page: 'Connectors themselves are deployed separately by an AI administrator in the Microsoft 365 admin center.' Remove 'and governed'; deployment prerequisites do not establish the role for every connector governance operation. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors
-- [unsupported, blocker] Risk assessment: Data exposure; rationale: risk / applicability: Answers to the new connector prompts can only draw on connector content Copilot already reaches for the user, so existing deployed connectors completely determine their data reach. | Found: Searched: Copilot connector prompts Prompt Gallery answers existing data access permissions connector content. Read connectors overview and Prompt Gallery. Permission filtering is stated, but no text establishes unchanged connector reach or the new prompts' retrieval mechanism. | Fix: Replace the second sentence of the Data exposure bullet with 'The connectors overview states that users only see content they are authorised to access.' Replace the last sentence of the risk rationale with the same narrower statement. Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/overview; do not infer unchanged data reach from roadmap silence.
 -->

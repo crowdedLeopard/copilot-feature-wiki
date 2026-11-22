@@ -54,19 +54,23 @@ changes:
     note: "First briefing for this item: Rolling out, on by default per MC1470887, no admin control documented."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 48 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after the independent check: removed the claim that reminders only link to messages a user can already see, narrowed the notification-settings and prerequisites statements to what MC1470887 says, and qualified the toast notification wording."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 59 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 44
-  unconfirmed: 3
-  contradicted: 1
-  attempts: 1
-  hash: "e0dd59a766cae1a488ae5d4e1880cf7d"
+  claims: 59
+  confirmed: 59
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "a3e0d86a6bd4abf07b386c6089af7d88"
 ---
 
 ## What's changing
@@ -90,7 +94,7 @@ The notice answers its own compliance questions: reminders are stored as new cus
 - Microsoft's notice does not say how reminder data is retained or searched. Treat that as unconfirmed until Microsoft says otherwise.
 
 **Security & identity**
-- No change to sign-in or permissions is described in the roadmap item or the notice. The reminder follows the message context the user already has.
+- No change to sign-in or permissions is described in the roadmap item or the notice.
 
 **Autonomy & actions**
 - No autonomous behaviour is described. Reminders are created, changed, completed and deleted by the user, and the notice says users can manage their own reminders.
@@ -109,7 +113,7 @@ The cost the sources show is indirect: admin and helpdesk time for informing use
 
 Microsoft's notice says all Microsoft Teams users in the organisation are affected. The roadmap item lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD; the notice names the same four clouds for General Availability.
 
-Platforms: the roadmap item lists Android, Desktop, iOS, Mac and Web. The notice lists Desktop (Windows, Mac) and Mobile (iOS, Android). Rollout is through Targeted Release then General Availability on the timeline given above. The notice states no prerequisites and no admin configuration.
+Platforms: the roadmap item lists Android, Desktop, iOS, Mac and Web. The notice lists Desktop (Windows, Mac) and Mobile (iOS, Android). Rollout is through Targeted Release then General Availability on the timeline given above. The notice names no prerequisites and says no admin configuration is required.
 
 ## Governance guidance
 
@@ -120,7 +124,7 @@ Platforms: the roadmap item lists Android, Desktop, iOS, Mac and Web. The notice
 
 ### At rollout
 - Compare what pilot users in Targeted Release see with the notice: the Message Reminder menu item, the Reminders view, toast notifications and the chat icon badge.
-- Brief the helpdesk on how reminder alerts follow each user's existing Teams notification settings.
+- Brief the helpdesk on how reminder alerts follow existing Teams notification settings.
 
 ### After rollout
 - Watch Message center and the Microsoft 365 Roadmap item 565869 for changes to the timeline, which MC1470887 has already revised.
@@ -139,7 +143,7 @@ Platforms: the roadmap item lists Android, Desktop, iOS, Mac and Web. The notice
 
 Microsoft's notice MC1470887 says no admin controls or configuration are required, and the Teams messaging policies page lists no reminders setting at the time of writing (November 2026). The row above records that gap: no tenant or policy switch is documented, so users cannot be kept from using reminders by policy as far as Microsoft has said.
 
-The notice says reminders respect existing Teams notification settings, which are the user's own. These are not an administrator control over the feature.
+The notice says reminders respect existing Teams notification settings; it does not specify which settings.
 
 ## Open questions
 
@@ -149,16 +153,7 @@ The notice says reminders respect existing Teams notification settings, which ar
 - Will message reminders need any licence beyond the Teams licence a user already has? Watch the Teams service description.
 
 <!-- rationale
-risk: Low. Reminders are private to each user and only link back to messages the user can already see, but they store new data tied to message context and Microsoft documents no admin switch for them.
+risk: Low. Reminders are private to each user, but they store new data tied to message context and Microsoft documents no admin switch for them.
 cost: Low. No licence or meter is published for this feature; the known cost is admin time for user communication and training material updates, which Microsoft's notice MC1470887 suggests.
-impact: High. Microsoft's notice says all Teams users are affected and the feature is enabled by default, so every user will see a new Message Reminder option, a Reminders view and toast notifications.
--->
-
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing; Governance guidance; rationale: impact / behaviour: Users get toast notifications when reminders are due, but the impact rationale says every user will see toast notifications. | Found: Users will receive toast notifications when reminders are due, along with badge counts on the Teams chat icon. ... The feature will be enabled by default and will respect existing Teams notification settings. | Fix: In the impact rationale, replace ', a Reminders view and toast notifications' with ' and a Reminders view. Users receive toast notifications when their reminders are due, subject to existing Teams notification settings.' Keep the correctly qualified due-time statements elsewhere.
-- [unsupported, major] Risk assessment: Security & identity; rationale: risk / behaviour: Reminders only link back to messages the user can already see. | Found: Searched: Teams message reminders source message permissions deleted prerequisites; Teams message reminders permissions. Read roadmap and MC1470887; they say reminders include message context, not that access is limited to messages currently visible to the user. | Fix: Remove 'The reminder follows the message context the user already has.' In the risk rationale, replace 'Reminders are private to each user and only link back to messages the user can already see' with 'Reminders are private to each user'.
-- [unsupported, major] Scope / behaviour: The notice states that there are no prerequisites. | Found: Searched: "Teams" "message reminders" "permissions" "prerequisites". Read MC1470887 and Teams deployment/service description. The notice says no admin configuration is required but does not state that there are no prerequisites. | Fix: Replace 'The notice states no prerequisites and no admin configuration.' with 'The notice names no prerequisites and says no admin configuration is required.'
-- [unsupported, major] Governance controls; Governance guidance: At rollout / behaviour: The existing Teams notification settings that reminders respect are the user's own settings. | Found: Searched: Teams message reminders source message permissions deleted prerequisites notification settings user. Read MC1470887 and Teams mobile Intune notification excerpts. The notice does not identify personal settings; Intune also documents notification controls. | Fix: Replace the last Governance controls paragraph with 'The notice says reminders respect existing Teams notification settings; it does not specify which settings.' In At rollout, replace 'each user's existing Teams notification settings' with 'existing Teams notification settings'.
+impact: High. Microsoft's notice says all Teams users are affected and the feature is enabled by default, so every user will see a new Message Reminder option and a Reminders view. Users receive toast notifications when their reminders are due, subject to existing Teams notification settings.
 -->

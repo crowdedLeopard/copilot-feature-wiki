@@ -18,7 +18,7 @@ defaultState: "admin-opt-in"
 action: "review"
 licensing:
   model: "included"
-  notes: "Learn names no licence specific to this feature. It relies on Customer Key, which the Purview service description lists as included in Microsoft 365 E5/A5/G5 and Office 365 E5/A5/G5 plans, among others. Exporting needs an eDiscovery user with a Microsoft 365 Enterprise E3 or E5 licence."
+  notes: "Learn names no licence specific to this feature. It relies on Customer Key, which the Purview service description lists as included in Microsoft 365 E5/A5/G5 and Office 365 E5/A5/G5 plans, among others. Customer Key for Multiple Workloads needs at least as many licences as Exchange or Teams users. Exporting needs an eDiscovery user with a Microsoft 365 Enterprise E3 or E5 licence."
 audiences: ["security","compliance","m365-admin"]
 tags: ["purview","ediscovery","encryption","customer-key","data-export","data-governance","gcc","gcc-high","dod"]
 sources:
@@ -71,19 +71,23 @@ changes:
     note: "First briefing for CMK on eDiscovery direct export in GCC, GCC High and DoD (roadmap item 565373); the Worldwide item is 557684."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 44 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after verification: added the tenant licence-count rule for Customer Key for Multiple Workloads, reworded the DEP assignment note and removed the checklist pointer to a controls row."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 44
-  confirmed: 42
+  claims: 53
+  confirmed: 53
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "7c625f8d47a830f59162e61e5fc4bac4"
+  contradicted: 0
+  attempts: 0
+  hash: "1992d54221f0da5bc6235c1aa5e496f9"
 ---
 
 ## What's changing
@@ -123,7 +127,7 @@ If nobody acts, no source says existing export behaviour changes: the Learn page
 
 ## Cost and licensing
 
-Learn names no licence and no charge specific to CMK on direct export. The prerequisite is Customer Key, and the [Microsoft Purview service description](https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description) says each user who benefits from Customer Key requires a licence. Its plan table lists Customer Key as included in Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW, Microsoft 365 E5/A5/F5/G5 Information Protection and Governance, and Office 365 E5/A5/G5. That page does not say how it applies to the US Government clouds.
+Learn names no licence and no charge specific to CMK on direct export. The prerequisite is Customer Key, and the [Microsoft Purview service description](https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description) says each user who benefits from Customer Key requires a licence. For Customer Key for Multiple Workloads, the tenant must have at least as many Customer Key licences as users assigned Exchange or Teams licences, whichever is greater. SharePoint is licensed separately and excluded from that count. Microsoft periodically validates the count; insufficient eligible licences cause encryption to revert to default service encryption. Its plan table lists Customer Key as included in Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW, Microsoft 365 E5/A5/F5/G5 Information Protection and Governance, and Office 365 E5/A5/G5. That page does not say how it applies to the US Government clouds.
 
 Customer Key setup lists two paid Azure subscriptions (Free, Trial, Sponsorship, MSDN and Legacy Support are not eligible) as a prerequisite, per [Set up Customer Key](https://learn.microsoft.com/purview/customer-key-set-up); Azure charges are outside this briefing.
 
@@ -144,7 +148,7 @@ To export, the [Export search results in eDiscovery](https://learn.microsoft.com
 ### Before rollout
 
 - Decide with security and compliance leads whether direct export packages need to sit under your own keys, and name who will make the request to Microsoft Support.
-- Confirm that Customer Key is configured and that your DEP is in PolicyAssigned state, using the Customer Key controls row below. Do not run the assignment cmdlet as a status check: it assigns a policy at the tenant level.
+- Confirm that Customer Key is configured and that your DEP is in PolicyAssigned state. Do not run the assignment cmdlet as a status check: it assigns a policy at the tenant level.
 - Check Customer Key licensing against the Purview service description, and check that exporting users hold the Microsoft 365 Enterprise E3 or E5 licence the export page requires.
 - Ask your Microsoft contact which DEP type satisfies the PolicyAssigned prerequisite and whether GCC, GCC High or DoD changes the request route, because the export page names neither.
 
@@ -172,7 +176,7 @@ To export, the [Export search results in eDiscovery](https://learn.microsoft.com
 </tbody>
 </table>
 
-Nothing in Microsoft's pages read for this briefing gives an administrator a switch for the feature: Learn describes enablement as a request to Microsoft Support or your Customer Success Account Manager. The only control an administrator runs is the DEP assignment, which is a prerequisite for the feature, not a setting on it.
+Nothing in Microsoft's pages read for this briefing gives an administrator a switch for the feature: Learn describes enablement as a request to Microsoft Support or your Customer Success Account Manager. DEP assignment is a prerequisite for the feature, not its enablement setting.
 
 The Customer Key manage page says all DEP operations run through Exchange Online PowerShell and need Exchange admin permissions. It documents the assignment cmdlet for a multi-workload DEP; the eDiscovery page does not say which DEP type it requires, so confirm that before relying on it. The cmdlet changes the tenant's assigned policy and is not a read-only check.
 
@@ -189,11 +193,10 @@ cost: Low. Learn names no charge specific to CMK on direct export; the cost is C
 impact: Low. Only administrators who set up Customer Key and the eDiscovery users who run direct exports are involved; Learn describes no change to the export steps.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: Customer Key licensing requirements / licensing: The Customer Key licensing requirement is presented as a licence for each benefiting user without the workload-specific tenant licence-count qualification. | Found: your tenant must have at least as many Customer Key licenses as users assigned Exchange or Teams licenses—whichever is greater. ... If your tenant doesn't have enough eligible licenses, encryption reverts to the default service encryption. | Fix: After 'each user who benefits from Customer Key requires a licence', add: 'For Customer Key for Multiple Workloads, the tenant must have at least as many Customer Key licences as users assigned Exchange or Teams licences, whichever is greater. SharePoint is licensed separately and excluded from that count. Microsoft periodically validates the count; insufficient eligible licences cause encryption to revert to default service encryption.' Keep the existing service-description citation. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls / behaviour: DEP assignment is an administrator-run prerequisite rather than the switch enabling the feature, described misleadingly as the only administrator-run control. | Found: After setting up Customer Key, create and assign one or more data encryption policies (DEPs) ... For example, you can verify encryption status, view DEP details, disable a DEP, restore keys, or roll back to Microsoft-managed keys. | Fix: Replace 'The only control an administrator runs is the DEP assignment, which is a prerequisite for the feature, not a setting on it' with 'DEP assignment is a prerequisite for the feature, not its enablement setting.' | Source: https://learn.microsoft.com/purview/customer-key-manage
-- [contradicted, minor] Governance guidance: Before rollout, DEP confirmation bullet / consistency: The checklist directs readers to confirm DEP status using a controls row that provides only assignment, not verification. | Found: Confirm that Customer Key is configured and that your DEP is in PolicyAssigned state, using the Customer Key controls row below. / It assigns the policy, so do not use it as a status check. | Fix: Remove 'using the Customer Key controls row below' from the confirmation bullet. Keep its warning that the assignment cmdlet is not a status check; the checklist's verification step has no corresponding verification control row.
+- [supported, minor] What's changing; Governance guidance: Before rollout / absence: The export documentation does not name U.S. government clouds for the CMK feature or specify a cloud-specific enablement route. | Found: Searched: GCC, DoD, CMK and MDEP in edisc-search-export; read its CMK prerequisites and download guidance. The CMK section has no government-cloud qualification, although later download guidance names GCC and GCCH. | Fix: Replace 'The page does not name the US Government clouds' with 'The CMK section does not specify availability or an enablement route for GCC, GCC High or DoD.' In the checklist, refer to the CMK section rather than the whole export page.
+- [supported, minor] controls[1].note; Governance controls; Governance guidance: Before rollout; Open questions / applicability: The correctly documented multi-workload assignment control is qualified with a caveat that the export page does not explicitly name its DEP type. | Found: | -Scenario | Workload: MDEP (Multiple Workloads) or EXO (Exchange) | MDEP or EXO | | Fix: Keep the correct command, but replace the DEP-type caveat in the note and prose with 'The export page requires a DEP assigned through MDEP; Customer Key setup identifies MDEP as Multiple Workloads.' Remove the first Open questions bullet and the checklist request to identify the DEP type. The existing cited setup page documents this mapping. | Source: https://learn.microsoft.com/purview/customer-key-set-up
+- [supported, minor] Open questions: final bullet / date: The final open question describes general availability in January CY2027 without identifying that date as a target. | Found: "status": "In development", "targetDate": "January CY2027", "releasePhase": ["General Availability"] | Fix: Replace the final question with 'Will the feature stay request-only at general availability, currently targeted for January CY2027, or become available without a support request? Watch the roadmap item and Message center.'
 -->

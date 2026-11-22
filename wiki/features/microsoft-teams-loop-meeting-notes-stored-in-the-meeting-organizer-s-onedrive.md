@@ -15,10 +15,10 @@ risk: "medium"
 cost: "low"
 impact: "medium"
 defaultState: "on"
-action: "prepare"
+action: "act-now"
 licensing:
   model: "included"
-  notes: "Microsoft Learn says Loop components need a OneDrive or SharePoint licence, and that Facilitator is included with a Microsoft Copilot licence. No licence or charge specific to organiser-owned storage is published."
+  notes: "Microsoft Learn says Loop components need a OneDrive or SharePoint licence, and that Facilitator is included with a Microsoft Copilot licence, with an eligible Microsoft 365 base licence and Teams licence also required. No licence or charge specific to organiser-owned storage is published."
 audiences: ["m365-admin","compliance","service-owner","change-adoption"]
 tags: ["teams","microsoft-loop","onedrive","facilitator","data-governance","retention","gcc"]
 sources:
@@ -49,6 +49,18 @@ sources:
   - title: "Update-M365TeamsApp"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp"
     kind: "docs"
+  - title: "Common settings for retention policies and retention label policies"
+    url: "https://learn.microsoft.com/purview/retention-settings"
+    kind: "learn"
+  - title: "Use Microsoft Purview to manage data security & compliance for Microsoft Facilitator"
+    url: "https://learn.microsoft.com/purview/ai-teams-facilitator"
+    kind: "learn"
+  - title: "Learn about retention for SharePoint and OneDrive"
+    url: "https://learn.microsoft.com/purview/retention-policies-sharepoint"
+    kind: "learn"
+  - title: "Create holds in eDiscovery"
+    url: "https://learn.microsoft.com/purview/edisc-hold-create"
+    kind: "learn"
 videos: []
 related: ["microsoft-teams-facilitator-in-gcc","cloud-policy","ediscovery"]
 controls:
@@ -68,9 +80,9 @@ controls:
       docs: "https://learn.microsoft.com/microsoftteams/facilitator-teams"
     api:
       kind: "powershell"
-      call: "Update-M365TeamsApp -Id <app id> -IsBlocked $true"
+      call: "Update-M365TeamsApp -Id <app id> -IsBlocked <Boolean>"
       docs: "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp"
-    note: "Governs Facilitator only. Facilitator is allowed by default; it does not stop other collaborative notes."
+    note: "Facilitator only. Allowed by default, but blocked if all apps are blocked. The reference calls both its $true and $false examples unblocking, so use Allow or Block in the Teams admin center to block."
   - governs: "Choice between organiser's and note-starter's OneDrive for new meeting notes"
     scope: "tenant"
     ui: null
@@ -85,19 +97,23 @@ changes:
     note: "New briefing: new non-channel Teams meeting notes move to the organiser's OneDrive; rollout mid to late November 2026 per MC1523076."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 57 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected Facilitator licence prerequisites, the Update-M365TeamsApp call and note, the rollout wording and the action rating; added Purview retention and hold references."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 52
+  claims: 67
+  confirmed: 66
   unconfirmed: 0
-  contradicted: 5
-  attempts: 1
-  hash: "4be9196dbe3d9d1c62805fd1c3abc71f"
+  contradicted: 1
+  attempts: 0
+  hash: "3e95f14639bd73a409d6a629bdc2ab44"
 ---
 
 ## What's changing
@@ -120,7 +136,8 @@ The change arrives on its own: the default is on and the notice names no setting
 
 **Data exposure**
 
-- New non-channel notes, including text other participants type and Facilitator's AI-generated notes, sit in one person's OneDrive Meetings folder: the organiser's (MC1523076). Anything scoped to the note-starter's OneDrive, such as a retention policy, an eDiscovery custodian list or a hold, will not cover new notes unless it also covers the organiser.
+- New non-channel notes, including text other participants type and Facilitator's AI-generated notes, sit in one person's OneDrive Meetings folder: the organiser's (MC1523076). Anything scoped to the note-starter's OneDrive, such as a retention policy, an eDiscovery custodian list or a hold, will not cover new notes unless it also covers the organiser. Microsoft Learn says retention policies can be scoped to individual OneDrive accounts (https://learn.microsoft.com/purview/retention-settings#locations) and that an eDiscovery hold is placed on the OneDrive accounts of the people in a case (https://learn.microsoft.com/purview/edisc-hold-create).
+- The SharePoint and OneDrive retention page marks Facilitator notes support as preview (https://learn.microsoft.com/purview/retention-policies-sharepoint#what's-included-for-retention-and-deletion), while the Facilitator Purview page lists it as supported (https://learn.microsoft.com/purview/ai-teams-facilitator).
 - Notes created before the change are not moved, so the same meeting series can have notes in more than one OneDrive. Check both locations when searching or placing holds.
 
 **Security & identity**
@@ -141,7 +158,7 @@ The change arrives on its own: the default is on and the notice names no setting
 
 Microsoft's notice and the roadmap item name no new licence, meter or charge for this change. The cost the sources show is admin time to update guidance and retention scoping.
 
-Licence: Microsoft Learn's requirements page for Loop says users need a OneDrive or SharePoint licence for Loop components (https://learn.microsoft.com/microsoft-365/loop/loop-requirements). Facilitator is included with a Microsoft Copilot licence and subject to available capacity (https://learn.microsoft.com/microsoftteams/facilitator-teams). Neither page says anything about organiser-owned storage.
+Licence: Microsoft Learn's requirements page for Loop says users need a OneDrive or SharePoint licence for Loop components (https://learn.microsoft.com/microsoft-365/loop/loop-requirements). Facilitator is included with a Microsoft Copilot licence and subject to available capacity; to use it a user also needs an eligible Microsoft 365 base licence and an eligible Microsoft Teams licence (https://learn.microsoft.com/microsoftteams/facilitator-teams). Neither page says anything about organiser-owned storage.
 
 Storage: Microsoft Learn says Loop files in OneDrive and SharePoint locations follow the quotas of those storage locations (https://learn.microsoft.com/microsoft-365/loop/loop-compliance-summary). With notes now created in the organiser's OneDrive, expect their size to count against that location. A licence or price specific to this change is not yet published.
 
@@ -155,7 +172,7 @@ Storage: Microsoft Learn says Loop files in OneDrive and SharePoint locations fo
 
 **Platforms:** Android, Desktop, iOS, Mac and Web, per the record.
 
-**Prerequisites:** the notes feature must be available in the tenant; see the controls below. Facilitator also needs Facilitator allowed for the user and a Microsoft Copilot licence.
+**Prerequisites:** the notes feature must be available in the tenant; see the controls below. To initiate Facilitator, a user needs an eligible Microsoft 365 base licence, an eligible Microsoft Teams licence and a Microsoft Copilot licence, with Facilitator allowed for that user and Loop experiences in Teams turned on.
 
 ## Governance guidance
 
@@ -167,7 +184,7 @@ Storage: Microsoft Learn says Loop files in OneDrive and SharePoint locations fo
 
 ### At rollout
 
-- Brief Teams champions and the helpdesk that notes created from mid-November 2026 appear in the organiser's OneDrive Meetings folder, and that older notes stay where they are.
+- Brief Teams champions and the helpdesk that, as the storage update reaches users during the rollout beginning in mid-November 2026 and expected to complete by late November 2026, newly created notes appear in the organiser's OneDrive Meetings folder; older notes stay where they are.
 - Run a test meeting in which someone other than the organiser starts notes and Facilitator, then confirm which OneDrive holds the file and that participants can open it.
 
 ### After rollout
@@ -183,7 +200,7 @@ Storage: Microsoft Learn says Loop files in OneDrive and SharePoint locations fo
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether collaborative meeting notes can be created in Teams (tenant-wide, not where they are stored)</strong><br><small>Tenant</small><br><small class="controls__note">Applies to the entire tenant; not configurable per user. Does not apply to notes in Teams New Calendar, which use Cloud Policy. Needs the latest SharePoint PowerShell module. Does not choose the storage location.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -IsCollabMeetingNotesFluidEnabled $true</code> <a href="https://learn.microsoft.com/microsoft-365/loop/loop-components-configuration" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether Facilitator is allowed or blocked for the organisation</strong><br><small>App</small><br><small class="controls__note">Governs Facilitator only. Facilitator is allowed by default; it does not stop other collaborative notes.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Facilitator › Allow or Block <a href="https://learn.microsoft.com/microsoftteams/facilitator-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app id&gt; -IsBlocked $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Facilitator is allowed or blocked for the organisation</strong><br><small>App</small><br><small class="controls__note">Facilitator only. Allowed by default, but blocked if all apps are blocked. The reference calls both its $true and $false examples unblocking, so use Allow or Block in the Teams admin center to block.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Facilitator › Allow or Block <a href="https://learn.microsoft.com/microsoftteams/facilitator-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app id&gt; -IsBlocked &lt;Boolean&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Choice between organiser's and note-starter's OneDrive for new meeting notes</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no such setting at the time of writing (November 2026); the notice says no configuration is required.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -207,16 +224,8 @@ cost: Low. Microsoft's notice and the roadmap item name no new licence or charge
 impact: Medium. Anyone who starts notes in a meeting they did not organise stops owning the file, and organisers become owners of files others created. The notes experience in Teams is described as unchanged for participants.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope: Prerequisites; Cost and licensing / licensing: The stated Facilitator prerequisites are availability for the user, enabled notes and a Microsoft Copilot licence. | Found: Users must meet all of the following requirements: ... An eligible Microsoft 365 base license. ... Have an eligible Microsoft Teams license. ... Have a Microsoft Copilot license. | Fix: Replace the Facilitator prerequisite sentence with: 'To initiate Facilitator, a user needs an eligible Microsoft 365 base licence, an eligible Microsoft Teams licence and a Microsoft Copilot licence, with Facilitator allowed for that user and Loop experiences in Teams turned on.' Add the eligible base and Teams licence requirements to the Facilitator licensing sentence, citing https://learn.microsoft.com/microsoftteams/facilitator-teams. | Source: https://learn.microsoft.com/microsoftteams/facilitator-teams
-- [contradicted, blocker] controls[1].api / command: Update-M365TeamsApp -Id <app id> -IsBlocked $true is the automation equivalent of blocking Facilitator. | Found: Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true ... Unblocks Bookings app | Fix: Replace controls[1].api.call with 'Update-M365TeamsApp -Id <app id> -IsBlocked <Boolean>' and add to its note: 'The reference documents a Boolean app-state parameter, but describes both its $true and $false examples as unblocking. Use the documented Teams admin center Allow or Block action for blocking rather than inferring the Boolean value.' This removes the unsupported assertion that the printed $true value blocks. Cite https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters; Risk assessment: Data exposure; Governance guidance; rationale: risk / applicability: Retention policies scoped to the note-starter's OneDrive do not cover files created instead in the organiser's OneDrive unless their scope includes that location. | Found: To specify individual OneDrive accounts, see Get a list of all user OneDrive URLs in your organization. | Fix: Cite https://learn.microsoft.com/purview/retention-settings#locations for individual OneDrive scoping and https://learn.microsoft.com/purview/ai-teams-facilitator for retention of Facilitator notes. Add: 'The SharePoint and OneDrive retention page marks Facilitator notes support as preview, while the Facilitator Purview page lists it as supported.' Cite https://learn.microsoft.com/purview/retention-policies-sharepoint#what's-included-for-retention-and-deletion for that qualification. | Source: https://learn.microsoft.com/purview/retention-settings#locations
-- [supported, minor] Why it matters; Risk assessment: Data exposure; Governance guidance / applicability: A hold or eDiscovery selection scoped to the starter's OneDrive must also reach the organiser's location to cover new organiser-owned notes. | Found: Place a hold on the Exchange mailboxes and OneDrive accounts of people you're investigating in the case. | Fix: Cite https://learn.microsoft.com/purview/edisc-hold-create for the location-scoped hold statement. | Source: https://learn.microsoft.com/purview/edisc-hold-create
-- [supported, minor] controls[1].note / default: Facilitator is allowed by default. | Found: Facilitator is allowed by default. However, if all apps are blocked for your organization, Facilitator is also blocked. | Fix: Replace the default sentence in the row note with: 'Facilitator is allowed by default, but is blocked if all apps are blocked for the organisation.' | Source: https://learn.microsoft.com/microsoftteams/facilitator-teams
-- [contradicted, minor] Governance guidance: At rollout, first bullet / date: Notes created from mid-November 2026 appear in the organiser's OneDrive Meetings folder. | Found: We will begin rolling out in mid-November 2026 and expect to complete by late November 2026. | Fix: Replace the bullet with: 'Brief Teams champions and the helpdesk that, as the storage update reaches users during the rollout beginning in mid-November 2026 and expected to complete by late November 2026, newly created notes appear in the organiser's OneDrive Meetings folder; older notes stay where they are.'
-- [contradicted, minor] front matter: action / consistency: The prepare action rating fits an automatic, medium-risk change already rolling out on the run date. | Found: action: prepare; risk: medium; defaultState: on; status: rolling-out. The standard assigns act-now to an automatic medium-risk rollout with a decision to take. | Fix: Set action to 'act-now': on 22 November 2026 the automatic rollout is under way and the page identifies retention and governance decisions to take.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every control that the governance instructions ask readers to check has a controls-table row. | Found: Check that the retention policies, holds and eDiscovery collections ... reach organisers' OneDrive locations ... so check both properties. The table contains collaborative meeting notes, Facilitator availability and storage choice only. | Fix: The Before rollout instruction to check retention policies, holds and eDiscovery collections has no corresponding controls-table rows. The Governance controls instruction to 'check both properties' also lacks a row for IsLoopEnabled. Record these omissions; do not add control rows as part of this correction.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every control that the page tells readers to check is represented in its controls table. | Found: Check that the retention policies, holds and eDiscovery collections you use for meeting content reach organisers' OneDrive locations; check both properties. The table contains only collaborative notes creation, Facilitator availability and the storage-choice gap. | Fix: The retention-policy, hold and eDiscovery-collection scoping checklist step has no corresponding row; replace it with 'Ask compliance owners to review the effect of organiser-owned storage on meeting-content governance, as MC1523076 recommends.' In Governance controls, remove 'so check both properties' because IsLoopEnabled has no row. Do not add control rows in this correction.
 -->
