@@ -1,0 +1,604 @@
+{
+  "slug": "microsoft-purview-data-loss-prevention-reduce-policy-sync-status-sla-on-the-us-government",
+  "roadmapId": 562994,
+  "title": "Microsoft Purview DLP: policy sync status within 30 minutes (GCC, GCC High and DoD)",
+  "status": "verified-with-gaps",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 46,
+    "confirmed": 45,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "The briefing passes: the planned timing, government-cloud scope, documented status path, Graph query and Endpoint DLP licensing are supported. Minor corrections are needed to cite the advanced hunting access requirement and align the rollout checklist with the controls table.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft plans to reduce Purview DLP policy sync status waiting time from up to 2 hours to 30 minutes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview: Data Loss Prevention - Reduce policy sync status SLA on the Purview UI from 2 hours to 30 mins",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes policy updates syncing faster so protections take effect more quickly.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Policy updates in Microsoft Purview now sync faster, reducing wait times from up to 2 hours to just 30 minutes, so your protections stay up to date and take effect more quickly across your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: clouds; title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The item lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The item's status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: targetDate; summary; What's changing; Scope; Governance guidance",
+      "type": "record",
+      "claim": "The target is December CY2026, not a committed rollout date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"; \"targetDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The government-cloud item has no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "The listed product is Microsoft Purview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-08-25T23:13:41.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-08-25T23:13:41\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; Why it matters; controls[1].note",
+      "type": "record",
+      "claim": "The roadmap item names no required administrator action or faster-sync switch.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Policy updates in Microsoft Purview now sync faster, reducing wait times from up to 2 hours to just 30 minutes, so your protections stay up to date and take effect more quickly across your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Microsoft lists the corresponding policy sync status improvement under separate item 558682.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "558682: Microsoft Purview: Data Loss Prevention – Reduce policy sync status SLA on the Purview UI from 2 hours to 30 mins",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Item 558682 lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "558682: \"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Item 558682 has a November CY2026 target.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "558682: \"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The two roadmap records differ in clouds, targets and release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "558682: Worldwide (Standard Multi-Tenant), November CY2026, General Availability and Preview. 562994: GCC, GCC High, DoD, December CY2026, General Availability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet document the 30-minute target.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Purview\" \"policy sync\" \"30 minutes\"; Endpoint DLP policy synchronization sync interval 30 minutes setting. Opened dlp-edlp-tshoot-sync and endpoint-dlp-learn-about; neither states the new target.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The Endpoint DLP troubleshooting page is the only Learn page found stating the current two-hour policy sync status figure.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Purview\" \"policy sync\" \"30 minutes\"; Endpoint DLP policy synchronization sync interval 30 minutes setting. Read troubleshooting and Endpoint DLP overview and search excerpts; no other DLP status page stating two hours surfaced.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Governance controls",
+      "type": "date",
+      "claim": "For Not updated devices, Learn says the devices-list status might take up to 2 hours to update.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "This device isn't synced the latest policy updates. It might take up to 2 hours for the status in the devices list to update.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Cost and licensing",
+      "type": "record",
+      "claim": "Item 562994 does not specify whether the improvement is limited to Endpoint DLP.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Policy updates in Microsoft Purview now sync faster, reducing wait times from up to 2 hours to just 30 minutes, so your protections stay up to date and take effect more quickly across your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The Endpoint DLP overview says policy updates generally take about an hour to synchronise across the service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "When a policy is updated in Microsoft Purview portal, it generally takes about an hour for those updates to be synchronized across the service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Security & identity; Governance controls; Governance guidance",
+      "type": "behaviour",
+      "claim": "Policy sync status indicates whether a device received the latest policy, with Updated indicating success.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "The Policy sync status shows you if the device received the latest policy version, or if the corresponding policies synced successfully to the device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Policy sync status has the values Updated, Not updated and Not available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Configuration status and the Policy sync status of all your onboarded devices have three possible values. Updated; Not updated; Not available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "behaviour",
+      "claim": "Devices must be online for policy updates to happen; offline devices cannot synchronise those updates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Devices must be online for the policy update to happen. If the status isn't updating, check the last time the device was seen.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "date",
+      "claim": "Learn says Authorized Groups changes need 24 hours to sync.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "For Authorized Groups changes, the policy needs 24 hours to sync.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not specified whether the 30-minute target covers Authorized Groups changes.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Purview\" \"30\" \"sync\" \"default\" \"Authorized Groups\"; Endpoint DLP policy synchronization sync interval 30 minutes setting. Read endpoint-dlp-learn-about and both roadmap records; no Authorized Groups exception to 24 hours was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Included is the licensing model for the existing Endpoint DLP capability described as background.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Endpoint Data Loss Prevention (DLP) | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The service description includes Endpoint DLP in Microsoft 365 E5/A5/G5 and the other suite and Information Protection & Governance plans named in the briefing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance |\n| Endpoint Data Loss Prevention (DLP) | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A licence statement specific to faster policy sync is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Purview\" \"policy sync\" licensing price meter. Read the Purview service description's Endpoint DLP table and searched its text for sync; read Endpoint DLP overview and roadmap records. No faster-sync-specific entitlement surfaced.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A meter specific to faster policy sync is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Purview\" \"policy sync\" licensing price meter. Read the service description, Endpoint DLP overview and Purview billing-model search excerpts; none names a faster-policy-sync meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Scope; Governance guidance",
+      "type": "record",
+      "claim": "The supplied material gives no rollout window beyond the roadmap target.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\"; \"previewDate\": null; \"moreInfoLink\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].ui; Scope; Governance guidance; Governance controls table",
+      "type": "admin-path",
+      "claim": "Per-device Endpoint DLP policy sync status is accessible in Microsoft Purview portal > Settings > Device onboarding > Devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Sign in to the Microsoft Purview portal > Settings (gear icon in the upper right corner) > Device onboarding > Devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "POST /v1.0/security/runHuntingQuery runs a read-only advanced hunting query suitable for retrieving the documented device data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-security-runhuntingquery",
+      "quote": "This method is for advanced hunting in Microsoft 365 Defender. This method includes a query in Kusto Query Language (KQL).\nPOST https://graph.microsoft.com/v1.0/security/runHuntingQuery",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].note; Governance controls table",
+      "type": "command",
+      "claim": "The Graph request body sets Query.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-security-runhuntingquery",
+      "quote": "In the request body, provide a JSON object with the Query property, and optionally include the Timespan and workspaceId properties.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].note; Governance controls table",
+      "type": "applicability",
+      "claim": "DeviceInfo's DlpInfo column contains the Endpoint DLP device information corresponding to the onboarding page, including policy synchronisation status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "The JSON object can be used to query and report on device configuration status, policy synchronization status, Endpoint DLP enablement, and other configuration details for onboarded devices. These values correspond to the device information available in the DLP device onboarding page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Viewing policy sync status is read-only and does not change enforcement timing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Select a device to open the details pane for more information on the policy sync status. If the status is Updated, the device successfully received the latest policy version.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The advanced hunting UI route runs in the Microsoft Defender portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Go to the Microsoft Defender portal. Navigate to Investigation & response > Hunting > Advanced hunting. Query the DeviceInfo table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].note; Governance controls table",
+      "type": "role",
+      "claim": "The advanced hunting route requires advanced hunting access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-overview",
+      "quote": "You need to be assigned permissions before you can run advanced hunting queries.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/defender-xdr/advanced-hunting-overview to sources as 'Proactively hunt for threats with advanced hunting in Microsoft Defender' to support the access requirement."
+    },
+    {
+      "n": 38,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "The Graph call requires ThreatHunting.Read.All or the listed higher permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-security-runhuntingquery",
+      "quote": "Delegated (work or school account): ThreatHunting.Read.All; ThreatHunting.ReadWrite.All. Application: ThreatHunting.Read.All; ThreatHunting.ReadWrite.All.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[1]; Governance controls; Why it matters",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no UI or API switch to turn the faster sync on or off.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Purview\" faster policy sync enable disable interval setting PowerShell; Endpoint DLP policy synchronization sync interval 30 minutes setting. Read both Endpoint DLP pages and searched Set-DlpCompliancePolicy for sync and interval; no such switch surfaced.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "default",
+      "claim": "The faster-sync default state is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Purview\" \"30\" \"sync\" \"default\" \"Authorized Groups\"; \"Purview\" faster policy sync enable disable interval setting PowerShell. Read item 562994 and both cited Endpoint DLP pages; none states a default for the planned faster sync.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope; Open questions",
+      "type": "record",
+      "claim": "Beyond its named clouds, item 562994 does not identify particular tenants or DLP locations covered by the improvement.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Policy updates in Microsoft Purview now sync faster, reducing wait times from up to 2 hours to just 30 minutes, so your protections stay up to date and take effect more quickly across your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes no new data access, reading or storage.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Policy updates in Microsoft Purview now sync faster, reducing wait times from up to 2 hours to just 30 minutes, so your protections stay up to date and take effect more quickly across your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes no new automated action other than changed sync timing.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Policy updates in Microsoft Purview now sync faster, reducing wait times from up to 2 hours to just 30 minutes, so your protections stay up to date and take effect more quickly across your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap does not say that the meanings of the three device sync status values change.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview: Data Loss Prevention - Reduce policy sync status SLA on the Purview UI from 2 hours to 30 mins",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "rationale: impact",
+      "type": "record",
+      "claim": "The roadmap describes no change to what users see or do beyond a shorter policy-sync wait.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Policy updates in Microsoft Purview now sync faster, reducing wait times from up to 2 hours to just 30 minutes, so your protections stay up to date and take effect more quickly across your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance guidance: At rollout",
+      "type": "consistency",
+      "claim": "The rollout checklist tells administrators to change a DLP policy, but the table contains only status viewing and the absent faster-sync switch.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Change one DLP policy in a pilot scope and note how long Policy sync status takes to show Updated for a test device. Table: Per-device policy sync status for Endpoint DLP; Switch to turn the faster policy sync on or off.",
+      "severity": "minor",
+      "fix": "Replace the At rollout bullet with 'Note how long Policy sync status takes to show Updated for a test device after a pilot policy change.' The policy-changing step has no controls-table row; do not add a row in this correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T02:58:59.414Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=562994",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=558682",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/security-security-runhuntingquery",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Per-device policy sync status for Endpoint DLP",
+        "docs": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Device onboarding",
+          "Devices"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Per-device policy sync status for Endpoint DLP",
+        "docs": "https://learn.microsoft.com/graph/api/security-security-runhuntingquery",
+        "reachable": true,
+        "token": "/v1.0/security/runHuntingQuery",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

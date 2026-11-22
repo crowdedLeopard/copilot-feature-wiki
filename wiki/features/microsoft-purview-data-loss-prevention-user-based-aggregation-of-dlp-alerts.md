@@ -46,17 +46,23 @@ sources:
   - title: "Microsoft 365 Roadmap item 564765"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=564765"
     kind: "roadmap"
+  - title: "Whether a DLP rule sends an alert to admins when it matches (Microsoft Purview portal)"
+    url: "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-detect-pii-data-exposure"
+    kind: "learn"
 videos: []
 related: ["microsoft-purview-data-loss-prevention-rule-based-tagging-and-auto-resolution-of-alerts-ba","microsoft-purview-data-loss-prevention-sla-based-alert-reporting-dashboard","microsoft-purview-data-loss-prevention-data-security-triage-agent-summaries-and-categoriza"]
 controls:
-  - governs: "Tenant-level user-based alert aggregation"
-    scope: "tenant"
-    ui: null
+  - governs: "Whether a DLP rule sends an alert to admins when it matches"
+    scope: "other"
+    ui:
+      surface: "Microsoft Purview portal"
+      path: "Data loss prevention > Policies > policy > Edit policy > Customize advanced DLP rules > rule > Incident reports > Send an alert to admins when a rule match occurs"
+      docs: "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-detect-pii-data-exposure"
     api:
       kind: "powershell"
-      call: "Set-PolicyConfig -IsUserBaseDlpAlertAggregationEnabled $true"
-      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig"
-    note: "Security & Compliance PowerShell only. Parameter descriptions are placeholders; -AggregationTimeWindowForDlpAlerts (System.UInt32) is also listed. Cloud applicability not stated."
+      call: "Set-DlpComplianceRule -GenerateAlert <email address or SiteAdmin>"
+      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule"
+    note: "Existing rule-level alert setting, not specific to user-based aggregation; it does not set the tenant-level aggregation. Path is from Learn's endpoint DLP example policy. Security & Compliance PowerShell."
 confidence: "medium"
 created: "2026-11-21"
 updated: "2026-11-22"
@@ -70,19 +76,23 @@ changes:
     note: "Corrected after the independent check: the Set-PolicyConfig aggregation parameters are now noted, the control row that said no automation exists is removed, and the Defender XDR conditions are stated."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 63 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-22"
+    note: "Corrected after the independent check: the Set-PolicyConfig control row (placeholder parameter descriptions) is replaced by the rule-level alert setting; the prose listing the parameters is unchanged."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 62
-  unconfirmed: 1
-  contradicted: 0
-  attempts: 2
-  hash: "01814a603b460a54ba15a5c43fd84082"
+  claims: 64
+  confirmed: 63
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "489f6a8aee026bf376e1f847d48f8d70"
 ---
 
 ## What's changing
@@ -151,7 +161,7 @@ Learn says viewing the DLP alert management dashboard or editing alert configura
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Tenant-level user-based alert aggregation</strong><br><small>Tenant</small><br><small class="controls__note">Security &amp; Compliance PowerShell only. Parameter descriptions are placeholders; -AggregationTimeWindowForDlpAlerts (System.UInt32) is also listed. Cloud applicability not stated.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PolicyConfig -IsUserBaseDlpAlertAggregationEnabled $true</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether a DLP rule sends an alert to admins when it matches</strong><br><small class="controls__note">Existing rule-level alert setting, not specific to user-based aggregation; it does not set the tenant-level aggregation. Path is from Learn's endpoint DLP example policy. Security &amp; Compliance PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › policy › Edit policy › Customize advanced DLP rules › rule › Incident reports › Send an alert to admins when a rule match occurs <a href="https://learn.microsoft.com/purview/endpoint-dlp-create-policy-detect-pii-data-exposure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-DlpComplianceRule -GenerateAlert &lt;email address or SiteAdmin&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -172,8 +182,8 @@ cost: Low. Learn lists no separate licence or meter for user-based aggregation; 
 impact: Low. Mainly the compliance and security administrators and analysts who triage DLP alerts notice it.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[0].api; Governance controls: rendered API column / command: Set-PolicyConfig -IsUserBaseDlpAlertAggregationEnabled $true is a documented operation that enables tenant-level user-based alert aggregation. | Found: Searched: "IsUserBaseDlpAlertAggregationEnabled" "AggregationTimeWindowForDlpAlerts"; "Set-PolicyConfig" "IsUserBaseDlpAlertAggregationEnabled" "$true" enable. Read Set-PolicyConfig: syntax and Boolean type exist, but the description is a placeholder; no passage documents the enabling effect. | Fix: Remove controls[0] and its rendered table row rather than present this call as verified enablement. Retain the existing prose listing the two real parameters and explaining that their descriptions are placeholders at https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig. Do not replace the call with a claim that no automation parameter exists.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [contradicted, minor] Governance guidance: At rollout; controls / consistency: The checklist refers to checking tenant-level aggregation and choosing its time window, but the controls table contains only rule-level alert notifications. | Found: Check whether the tenant-level DLP setting for user-based alert aggregation is present ... Choose a time window ... Existing rule-level alert setting ... it does not set the tenant-level aggregation. | Fix: The At rollout bullets about checking the tenant-level user-based aggregation setting and choosing its time window have no corresponding controls-table row. Remove those two bullets; retain the existing behaviour explanation and Open questions without adding an unverified control row.
 -->

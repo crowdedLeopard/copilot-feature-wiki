@@ -1,0 +1,830 @@
+{
+  "slug": "m365-admin-center-organizational-messages-now-supports-hybrid-joined-devices",
+  "roadmapId": 503564,
+  "title": "Microsoft 365 admin center: Organizational messages now supports hybrid-joined devices",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "2 blocking findings (claims 47, 48)"
+    ]
+  },
+  "counts": {
+    "claims": 62,
+    "confirmed": 59,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: the Windows delivery automation creates a policy object but does not configure the delivery setting it claims to control. The Intune navigation also omits the Create step that opens the configuration wizard. The roadmap facts, device requirements and stated licence requirements are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Organizational messages now supports hybrid-joined devices.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Organizational Messages now supports Hybrid-joined Devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is December CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"December CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-08-24T22:41:12.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-08-24T22:41:12\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Organizational messages are customised in-product messages that administrators create and manage in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "By using organizational messages in the Microsoft 365 admin center, you can connect with your organization through customized, in-product messages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Scope",
+      "type": "availability",
+      "claim": "For Windows delivery, only Microsoft Entra ID-joined and Microsoft Entra hybrid joined devices are supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "Only Microsoft Entra ID–joined devices and Microsoft Entra hybrid joined devices are supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope; Governance guidance: Before rollout",
+      "type": "availability",
+      "claim": "Recipients of Windows-channel messages need Windows 11, version 25H2 or 24H2 Enterprise.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "any message configured to be delivered to a Windows channel, like Windows Spotlight or Taskbar requires that recipients use Windows 11, version 25H2 and 24H2 Enterprise.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "Access to the taskbar experience requires KB5094126.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "Access to the Taskbar experience requires KB5094126 for Windows 11, version 25H2 and 24H2.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "The Learn FAQ says government environments such as GCC and GCC-H are not supported at this time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq",
+      "quote": "No, government environments such as GCC or GCC-H aren't supported at this time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Learn gives no hybrid-specific configuration or separate admin switch, and its Devices requirement only names supported device types.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"organizational messages\" \"hybrid\" configuration unmanaged devices license. Read the organizational-messages-microsoft-365 page and FAQ in full; their Windows configuration is general and the Devices bullet only lists the two join types.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated the arrival default for the hybrid-joined support change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"organizational messages\" \"hybrid\" \"default\". Read roadmap description, organizational-messages-microsoft-365 and its FAQ; none states how this support expansion affects existing delivery on arrival.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No source says that hybrid-joined support changes existing message behaviour.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"organizational messages\" \"hybrid\" \"default\", and organizational messages hybrid joined devices default automatic existing messages configuration unmanaged prerequisites licenses pricing meter. Read roadmap, main Learn page and FAQ; no existing-message transition is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; rationales: risk and impact",
+      "type": "behaviour",
+      "claim": "Delivery of an organisational message follows author creation and scheduling rather than the feature composing and sending messages on its own.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "Schedule: Configure the start date, end date, and frequency when the message is sent to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Why it matters; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Windows delivery depends on tenant policies, including Intune policies assigned to groups containing the intended users or devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "In the Assignments page, select the groups that should be targeted by this policy and then select Next. Include any users or devices that might receive organizational messages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Messages contain text and links chosen by the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "Customize: Add customization to the message including full text and custom URLs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Data exposure; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Messages can target specific Microsoft Entra groups, including recipients on supported hybrid-joined devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "Deliver messages to specific Microsoft Entra groups, or use advanced targeting by department, location, company, or usage behavior",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Data exposure; Cost and licensing; licensing notes",
+      "type": "behaviour",
+      "claim": "Advanced targeting supports department, location, company and usage group-level aggregates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "Advanced targeting by group level aggregates, including Department, Location, Company, and Usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Security & identity; Scope; controls[1].note; rationale: risk",
+      "type": "role",
+      "claim": "Authors need the Organizational Messages Writer Microsoft Entra role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "To access the organizational messages experiences, you need the Organizational Messages Writer Microsoft Entra role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Security & identity; Scope; controls[1].note; rationale: risk",
+      "type": "role",
+      "claim": "Approvers need the Organizational Messages Approver role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "Assign the Organizational Messages Approver admin role in the Microsoft 365 admin center to anyone in your organization who is a designated responsible party for approving customized messages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "An author can include a custom URL in messages displayed on Windows lock screen or taskbar surfaces.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "Reach employees on the Windows lock screen, taskbar, notification center, in Microsoft Teams, or by email. Choose from pre-made Microsoft templates, such as \"Welcome to Copilot,\" and add your logo and URL.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Windows delivery requires the firewall to allow fd.api.orgmsg.microsoft.com.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "Firewall - (For Windows) To ensure users can communicate with organizational messages, open the following endpoints: fd.api.orgmsg.microsoft.com",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Windows delivery requires the firewall to allow ris.prod.api.personalization.ideas.microsoft.com.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "Firewall - (For Windows) To ensure users can communicate with organizational messages, open the following endpoints: ris.prod.api.personalization.ideas.microsoft.com",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Custom messages require approval before delivery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "approvers must approve custom messages before the system delivers them to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Pre-made messages do not require approval before delivery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "Selecting a pre-made message doesn't require any approval before the message can be delivered to end users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Device restriction policies that block the listed Windows Spotlight or Windows Tips settings can block organisational messages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "ensure that none of the following settings are set to Block: Windows Spotlight. Windows Spotlight on lock screen. Windows Tips. Windows Spotlight in action center. Windows Spotlight personalization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "Disable Cloud Optimized Content is one of the settings relevant to allowing Windows organisational-message delivery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "Make sure Disable Cloud Optimized Content is set to Disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Windows delivers organisational messages on a pull model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq",
+      "quote": "Windows delivers messages on a pull model, so the system buffers messages on a set period for each of the channels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Windows messages might take 24 or more hours to arrive, so the suggested test allows at least 24 hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq",
+      "quote": "Since devices might be configured to request content at different times, messages might take 24 or more hours before the message is received and rendered.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The organisational messages Learn page describes no meter, Copilot Credits consumption or separate charge for the feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"organizational messages\" pricing meter credits licensing. Read organizational-messages-microsoft-365 and its FAQ in full; both describe licence requirements but neither publishes a meter, credit rate or separate charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "licensing notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Advanced customised creation and aggregate targeting require the tenant to have at least one Microsoft 365 E3/E5, Office 365 E3/E5 or Windows Enterprise E3/E5 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "Admins and users can access these advanced features for organizational messages when the tenant has at least one of the following licenses: Microsoft 365 E3, or E5 license. Office 365 E3 or Office 365 E5 license. Windows Enterprise E3 or E5 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Windows custom messages require Windows E3/E5 or Microsoft 365 E3/E5.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq",
+      "quote": "Windows custom messages require Windows E3 or E5, or Microsoft 365 E3, or E5.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Teams custom messages require Office 365 E3/E5 or Microsoft 365 E3/E5.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq",
+      "quote": "Microsoft Teams custom messages require Office 365 E3 or Office 365 E5, or Microsoft 365 E3 or Microsoft 365 E5.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "licensing notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Pre-made messages might still be available without the listed custom-message licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq",
+      "quote": "Pre-made messages might still be available without these licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Usage targeting includes Microsoft Copilot-licensed users who have not recently used Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "Inactive Copilot users: all users with a Microsoft Copilot license that have not used Copilot in the prior 28 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The cited pages publish no licence requirement specific to hybrid-joined devices.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"organizational messages\" \"hybrid\" configuration unmanaged devices license; \"organizational messages\" pricing meter credits licensing. Read organizational-messages-microsoft-365 and FAQ; licence passages do not distinguish device join types.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope",
+      "type": "licensing",
+      "claim": "Recipients need access to the Microsoft products the messages are configured for.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "Recipients must have access to the Microsoft products the messages are configured for delivery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Recipients do not need Microsoft Entra roles to receive messages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "end users aren't required to have any Microsoft Entra roles to receive organizational messages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope; controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "The Windows tenant-policy requirements do not apply to sending Teams notifications or email messages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "Set tenant policies only if you need to deliver messages to Windows surfaces such as Windows Spotlight, Windows Notification Center, and Windows Taskbar. You don't need to set tenant policies for sending messages to Teams Teaching notifications or to Email.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Teams notification channels support recipient selection only through Microsoft Entra groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "Teams notification channels only support recipient selection via Microsoft Entra groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Tenants that have not scheduled a message in the past 30 days can need additional initialisation time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "the organizational messages system might take up to 24 to 48 hours to initialize for tenants where a message wasn't scheduled in the past 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Review activity reports Messages seen, Clicks and Dismisses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "The Review activity page opens where you can review insights data for your messages including: Three time-series data charts showing daily changes in the total Messages seen. Total Clicks. Total Dismisses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "Learn does not explain how hybrid-joined devices that are not Intune-managed should be configured for delivery.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"organizational messages\" \"hybrid\" configuration unmanaged devices license. Read organizational-messages-microsoft-365 and FAQ; they give Intune policy steps but no handling of unmanaged hybrid-joined recipients.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The printed Intune route goes from Settings catalog directly to Configuration settings and then to Enable delivery of organizational messages (User).",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "Under Profile type, select Settings catalog. Select Create. The Create profile wizard opens.",
+      "severity": "blocker",
+      "fix": "Replace the path with 'Devices > Manage devices > Configuration > Policies > Create > New Policy > Windows 10 and later > Settings catalog > Create > Configuration settings > Add settings > Experience > Enable delivery of organizational messages (User)'. The second Create opens the wizard, as documented at https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365."
+    },
+    {
+      "n": 48,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "POST /beta/deviceManagement/configurationPolicies is the automation equivalent for enabling Windows organisational-message delivery.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationpolicy-create?view=graph-rest-beta",
+      "quote": "Create a new deviceManagementConfigurationPolicy object. In the request body, supply a JSON representation for the deviceManagementConfigurationPolicy object.",
+      "severity": "blocker",
+      "fix": "Set controls[0].api to null and remove its Graph-create explanation from the row note and Governance controls prose. The cited operation creates the policy container; its documented request properties do not set Enable delivery of organizational messages (User), so it is not the equivalent delivery control."
+    },
+    {
+      "n": 49,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Microsoft 365 admin center role-assignment path reaches Organizational Messages Writer through Users, Active users and Manage roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq",
+      "quote": "From the left navigation bar, select ... Show all, and then select Users to expand it. Under Users, select Active users.",
+      "severity": "minor",
+      "fix": "Use the full documented path 'Show all > Users > Active users > user > Manage roles > Admin center access > Show all by category > Other > Organizational Messages Writer'. The omitted Show all is the navigation-expansion step; the remaining printed labels match https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq."
+    },
+    {
+      "n": 50,
+      "where": "controls[1].api; controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "POST /v1.0/roleManagement/directory/roleAssignments assigns an Entra role using principalId, roleDefinitionId and directoryScopeId.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+      "quote": "POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments\n{\"@odata.type\": \"#microsoft.graph.unifiedRoleAssignment\", \"principalId\": \"<Object ID of user or group>\", \"roleDefinitionId\": \"<ID of role definition>\", \"directoryScopeId\": \"/\"}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[2].ui; Governance controls table; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Show all > Reports > Organizational messages > Manage messages reaches the documented area for managing and cancelling messages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "From the left navigation bar, select ... Show all, and then select Reports to expand it. Under Reports, select Organizational messages. In the Organizational messages page, you can access the three experiences: Manage messages. Create a message. Review activity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[2].api; Governance controls",
+      "type": "absence",
+      "claim": "No API for cancelling or deleting messages managed by this organisational-message experience is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: organizational messages cancel delete message Microsoft Graph API organizationalMessage Intune; site:learn.microsoft.com/graph \"organizationalMessage\" cancel delete. Read main page and FAQ; Graph results concerned mailbox messages, notification templates, meetings or Teams channel messages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls",
+      "type": "licensing",
+      "claim": "The Microsoft Graph API for Intune requires an active Intune licence for the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationpolicy-create?view=graph-rest-beta",
+      "quote": "The Microsoft Graph API for Intune requires an active Intune license for the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The cited Intune Graph API is beta and subject to change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationpolicy-create?view=graph-rest-beta",
+      "quote": "Microsoft supports Intune /beta APIs, but they are subject to more frequent change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Role assignment needs an administrator with permission to assign roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+      "quote": "Prerequisites: Privileged Role Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The row 1 Graph operation creates the configuration-policy object rather than choosing the Experience settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationpolicy-create?view=graph-rest-beta",
+      "quote": "Create a new deviceManagementConfigurationPolicy object.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[2].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "Manage messages allows cancelling, deleting, approving and copying messages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "From Manage messages, your team can perform the following actions on messages: Cancel, delete, approve, and copy messages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The mixed licensing notes distinguish licensed advanced/custom features from pre-made messages that might be available without those licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq",
+      "quote": "Windows custom messages require Windows E3 or E5, or Microsoft 365 E3, or E5. Microsoft Teams custom messages require Office 365 E3 or Office 365 E5, or Microsoft 365 E3 or Microsoft 365 E5. Pre-made messages might still be available without these licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance guidance: Before rollout and After rollout",
+      "type": "consistency",
+      "claim": "Every control the governance checklist asks the reader to check or configure has a controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: Check that no Intune device restriction policy sets ... to Block; Open the two Windows delivery endpoints; Review Messages seen, Clicks and Dismisses. Table: Windows delivery setting, author/approver roles, and stopping/removing messages only.",
+      "severity": "minor",
+      "fix": "Remove the checklist bullets beginning 'Check that no Intune device restriction policy', 'Open the two Windows delivery endpoints', and 'Review Messages seen, Clicks and Dismisses'. Their factual explanations can remain in the body; these checklist controls have no corresponding table rows. Do not add rows as part of this correction."
+    },
+    {
+      "n": 60,
+      "where": "controls[2].governs; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "An administrator can cancel a message before or during its delivery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq",
+      "quote": "Canceled - An admin stopped and canceled the message. The cancellation could be either prior or during the delivery of the message.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft 365 admin center\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Custom-message approval must come from someone other than the message's creator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+      "quote": "Approvers can't approve or reject a message that they created.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T02:58:53.879Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=503564",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationpolicy-create?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether Windows devices can receive organizational messages",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+        "reachable": true,
+        "segments": [
+          "Devices",
+          "Manage devices",
+          "Configuration",
+          "Policies",
+          "Create",
+          "New Policy",
+          "Windows 10 and later",
+          "Settings catalog",
+          "Configuration settings",
+          "Add settings",
+          "Experience",
+          "Enable delivery of organizational messages"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether Windows devices can receive organizational messages",
+        "docs": "https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationpolicy-create?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/deviceManagement/configurationPolicies",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Who can write and approve organizational messages",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq",
+        "reachable": true,
+        "segments": [
+          "Users",
+          "Active users",
+          "Manage roles",
+          "Admin center access",
+          "Show all by category",
+          "Other",
+          "Organizational Messages Writer"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Who can write and approve organizational messages",
+        "docs": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+        "reachable": true,
+        "token": "/v1.0/roleManagement/directory",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Stopping or removing a scheduled or active message",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365",
+        "reachable": true,
+        "segments": [
+          "Show all",
+          "Reports",
+          "Organizational messages",
+          "Manage messages"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

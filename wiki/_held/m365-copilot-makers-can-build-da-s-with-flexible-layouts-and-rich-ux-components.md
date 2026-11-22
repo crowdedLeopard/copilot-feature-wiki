@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for this item. Microsoft's extensibility FAQ says a Microsoft 365 Copilot licence needs no additional licences to build declarative agents with extra capabilities, but it says nothing specific to layouts or UX components."
+  model: "included"
+  notes: "A Microsoft 365 Copilot licence covers building declarative agents with extra capabilities, according to the extensibility FAQ. No requirement specific to the planned layouts or UX components is published."
 audiences: ["m365-admin","maker","change-adoption"]
 tags: ["m365-copilot","declarative-agents","agents","extensibility","user-experience","app-management","agent-governance"]
 sources:
@@ -43,6 +43,9 @@ sources:
   - title: "Frequently asked questions for Microsoft 365 Copilot extensibility"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/faq"
     kind: "learn"
+  - title: "Declarative agents for Microsoft 365 Copilot"
+    url: "https://learn.microsoft.com/plugins/overview-declarative-agent"
+    kind: "learn"
 videos: []
 related: ["m365-copilot-app-blocks","microsoft-copilot-studio-deliver-rich-interactive-app-experiences-in-copilot-studio-agents","m365-copilot-support-for-mcp-agents-with-interactive-ui-widgets-in-government-clouds","mcp"]
 controls:
@@ -56,7 +59,7 @@ controls:
       kind: "graph"
       call: "POST /beta/copilot/admin/catalog/packages/{id}/block"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
-    note: "Agent-level, not specific to this feature. The Graph reference says access to the Package Management API requires a Microsoft Agent 365 licence and the API is beta."
+    note: "Blocks access to the selected agent across the organization; it is not a separate layout switch. The Graph reference says access to the Package Management API requires a Microsoft Agent 365 licence and the API is beta."
   - governs: "Which users or groups can access agents and plugins"
     scope: "tenant"
     ui:
@@ -64,7 +67,7 @@ controls:
       path: "Agents > Settings > User access"
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings"
     api: null
-    note: "Applies to agents generally, not specifically to this feature. Default is All users."
+    note: "Controls how members of the organization access and install agents and plugins. Default is All users."
 confidence: "low"
 created: "2026-11-22"
 updated: "2026-11-22"
@@ -74,24 +77,28 @@ changes:
     note: "First briefing: roadmap-only item with no Learn page of its own; covers today's agent block and user access controls."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 53 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected the governance controls wording so the block and User access controls are described as agent-level controls, not feature switches; licensing model set to included per the extensibility FAQ."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 59 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 53
-  confirmed: 51
+  claims: 59
+  confirmed: 57
   unconfirmed: 0
   contradicted: 2
-  attempts: 1
-  hash: "661509838eeb5cc7eed478f78e94207c"
+  attempts: 2
+  hash: "e68a1185d97069a44572196024a086f8"
 ---
 
 ## What's changing
 
-The roadmap item states that makers will be able to build declarative agents (Microsoft 365 Copilot agents defined by instructions, knowledge and actions) with flexible layouts and rich UX components. It says the purpose is to let makers build "highly expressive agents", ultimately driving more user engagement and virality.
+The roadmap item states that makers will be able to build declarative agents (Microsoft 365 Copilot agents defined by instructions, knowledge and actions, as [Learn describes them](https://learn.microsoft.com/plugins/overview-declarative-agent)) with flexible layouts and rich UX components. It says the purpose is to let makers build "highly expressive agents", ultimately driving more user engagement and virality.
 
 Microsoft Learn has no page that names this roadmap item, so what the roadmap says is all that is known about how it behaves. The roadmap does not say what a layout or component is, which tool makers use, or what the default is. Microsoft Learn does document two related ways to render interactive UI in declarative agents: Copilot UX components built with the SharePoint Framework, which Learn says are generally available with SPFx 1.24 released on October 28, 2026, and MCP-based UI with inline and side-by-side chat surfaces. Learn does not say either one is this roadmap item, so treat them as background only.
 
@@ -122,7 +129,7 @@ The practical effect for a service owner is that agent review needs to cover how
 
 No licence, meter or price for this capability is published at the time of writing (November 2026). Microsoft's extensibility FAQ says that with a Microsoft 365 Copilot licence you don't need additional licences to build declarative agents with extra capabilities, including Copilot connectors and plugins, and that declarative agents based on web search with limited capabilities can be built without one.
 
-For background only: the Copilot UX components page says those components require the Microsoft 365 Copilot add-on licence on top of the user's E3, E5 or E7 licence, and that they have no consumption-based charges. Learn does not say this roadmap item is that feature, so do not budget from it. Indirect cost is admin and communications time.
+For background only: the Copilot UX components page says those components require the Microsoft 365 Copilot add-on licence on top of the user's E3, E5 or E7 licence, and that they have no consumption-based charges. APIs or services called inside a component's implementation can have their own charges, separate from the component capability. Learn does not say this roadmap item is that feature, so do not budget from it. Indirect cost is admin and communications time.
 
 ## Scope
 
@@ -152,12 +159,12 @@ The record does not list GCC, GCC High or DoD. That is a record fact, not a stat
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether a specific agent is available to anyone in the organisation</strong><br><small>Agent</small><br><small class="controls__note">Agent-level, not specific to this feature. The Graph reference says access to the Package Management API requires a Microsoft Agent 365 licence and the API is beta.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users or groups can access agents and plugins</strong><br><small>Tenant</small><br><small class="controls__note">Applies to agents generally, not specifically to this feature. Default is All users.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether a specific agent is available to anyone in the organisation</strong><br><small>Agent</small><br><small class="controls__note">Blocks access to the selected agent across the organization; it is not a separate layout switch. The Graph reference says access to the Package Management API requires a Microsoft Agent 365 licence and the API is beta.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users or groups can access agents and plugins</strong><br><small>Tenant</small><br><small class="controls__note">Controls how members of the organization access and install agents and plugins. Default is All users.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-Neither control below is documented as governing this feature; they are today's agent-level controls and apply to agents generally. The Learn page says blocking an agent created with Microsoft Copilot Agent Builder or Microsoft Copilot Studio affects its availability in Microsoft Copilot and other host products such as Outlook and Teams, while blocking an agent created by SharePoint or Microsoft Foundry affects only its availability in Microsoft Copilot Chat. A switch that turns the new layouts or components off is not yet documented.
+Blocking restricts access to the selected agent across the organization. User access controls how organization members access and install agents and plugins. Neither is a separate switch for layouts or components. The Learn page says blocking an agent created with Microsoft Copilot Agent Builder or Microsoft Copilot Studio affects its availability in Microsoft Copilot and other host products such as Outlook and Teams, while blocking an agent created by SharePoint or Microsoft Foundry affects only its availability in Microsoft Copilot Chat. A switch that turns the new layouts or components off is not yet documented.
 
 ## Open questions
 
@@ -175,12 +182,7 @@ impact: Medium. Makers are the people who gain the capability, and the roadmap s
 <!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: prose / applicability: Agent blocking is not documented as governing agents using this planned feature. | Found: Block and unblock | Restrict access to an agent across the organization, preventing any user from using it. | Fix: Replace 'Neither control below is documented as governing this feature; they are today's agent-level controls and apply to agents generally.' with 'Blocking restricts access to the selected agent across the organization. User access controls how organization members access and install agents and plugins. Neither is a separate switch for layouts or components.' Cite the existing agent-actions and agent-settings pages. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
-- [contradicted, blocker] Governance controls: prose / applicability: User access is not documented as governing access to agents using this planned feature. | Found: Use User access to control how members of your organization access and install agents and plugins. | Fix: Replace the opening governance-controls sentence with: 'Blocking restricts access to the selected agent across the organization. User access controls how organization members access and install agents and plugins. Neither is a separate switch for layouts or components.' Keep both existing control citations. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings
+- [contradicted, blocker] controls[1].api / absence: Microsoft has not documented automation for the User access control. | Found: These resources also support remediation and applyOnce. ... userAssignmentCategory | Write | String | Specifies whether all users or no users can access agents and plugins. | everyone, noOne | Fix: Replace controls[1].api null with kind graph, call 'POST /beta/admin/configurationManagement/configurationMonitors', docs 'https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta'. Add to the note: 'Preview TCM automation supports All users or No users: set mode to applyOnce and supply a baseline resource with resourceType microsoft.agent.useraccess, resourceVersion 1, and properties.valueObject.userAssignmentCategory set to everyone or noOne. Specific-user/group selection is not documented in this resource. applyOnce requires delegated ConfigurationMonitoring.ReadWrite.All for the calling app, delegated CopilotPolicySettings.ReadWrite for the TCM service principal, and AI Administrator for the signed-in user.' Cite https://learn.microsoft.com/graph/utcm-agent-resources and https://learn.microsoft.com/graph/utcm-authentication-setup. The operation reference states that an active applyOnce monitor applies the baseline in a background job, then becomes inactive. | Source: https://learn.microsoft.com/graph/utcm-agent-resources
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: definition / behaviour: Declarative agents are Microsoft 365 Copilot agents defined by instructions, knowledge and actions. | Found: You define the agent's purpose, instructions, knowledge, and supported actions to address a business scenario. | Fix: Cite https://learn.microsoft.com/plugins/overview-declarative-agent for the definition; its configuration list includes instructions, knowledge and capabilities such as actions. | Source: https://learn.microsoft.com/plugins/overview-declarative-agent
-- [supported, minor] front matter: licensing.model; licensing.notes / licensing: The licensing model is unknown because no licensing specific to the layouts capability is published. | Found: If you have a Microsoft 365 Copilot license, you don't need additional licenses to build declarative agents with extra capabilities, including Copilot connectors and plugins. | Fix: Set licensing.model to included. Replace the notes with: 'A Microsoft 365 Copilot licence covers building declarative agents with extra capabilities, according to the extensibility FAQ. No requirement specific to the planned layouts or UX components is published.' Keep the FAQ citation. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/faq
-- [supported, minor] Cost and licensing: background / cost: The documented SPFx Copilot UX components have no consumption-based charges. | Found: Copilot UX components don't fall under a consumption-based plan and have no consumption-based charges. APIs or services called inside a component's implementation can have their own charges. | Fix: Append to the background sentence: 'APIs or services called inside a component's implementation can have their own charges, separate from the component capability.' | Source: https://learn.microsoft.com/sharepoint/dev/spfx/copilot/overview-copilot-apps
-- [supported, minor] controls[0].note / applicability: Blocking is an agent-level control, not a control specifically documented for this layouts feature. | Found: Block or unblock agents for the entire organization by using the same controls that work for any other app in the Microsoft 365 admin center. | Fix: Replace 'Agent-level, not specific to this feature.' with 'Blocks access to the selected agent across the organization; it is not a separate layout switch.' | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
-- [supported, minor] controls[1].note / applicability: User access applies to agents generally, not specifically to this feature. | Found: Use User access to control how members of your organization access and install agents and plugins. | Fix: Replace 'Applies to agents generally, not specifically to this feature.' with 'Controls how members of the organization access and install agents and plugins.' | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings
+- [contradicted, minor] Governance controls: final sentence; controls / consistency: The separate layout/component switch described as absent in the prose has no corresponding controls row. | Found: A switch that turns the new layouts or components off is not yet documented. / controls contains only the agent Block row and the User access row. | Fix: Remove the final sentence 'A switch that turns the new layouts or components off is not yet documented.' from Governance controls; the same uncertainty already appears in Open questions. Do not add another control row.
 -->

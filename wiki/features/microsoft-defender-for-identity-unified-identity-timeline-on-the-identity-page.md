@@ -37,6 +37,9 @@ sources:
   - title: "Create custom roles with Microsoft Defender unified RBAC"
     url: "https://learn.microsoft.com/defender-xdr/create-custom-rbac-roles"
     kind: "learn"
+  - title: "Configure scoped access for identity security in Microsoft Defender"
+    url: "https://learn.microsoft.com/defender-for-identity/configure-scoped-access"
+    kind: "learn"
   - title: "Extend advanced hunting coverage with the right settings"
     url: "https://learn.microsoft.com/defender-xdr/advanced-hunting-extend-data"
     kind: "learn"
@@ -50,13 +53,13 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Defender portal"
-      path: "Permissions > Microsoft Defender XDR > Roles > Create custom role > Assign users and data sources > Add assignment > Data sources"
+      path: "Permissions > Microsoft Defender XDR > Roles > Create custom role > Choose permissions > Security operations > Assign users and data sources > Add assignment > Data sources"
       docs: "https://learn.microsoft.com/defender-xdr/create-custom-rbac-roles"
     api:
       kind: "graph"
       call: "POST /beta/roleManagement/defender/roleAssignments"
       docs: "https://learn.microsoft.com/graph/api/rbacapplicationmultiple-post-roleassignments?view=graph-rest-beta"
-    note: "Unified RBAC; enforced only after activation. Creating roles needs Security Administrator or Authorization permissions. The request body sets appScopeIds (workload id Mdi). Beta API."
+    note: "Enforced only after activation. Creating roles needs at least Security Administrator in Microsoft Entra ID or all Authorization permissions in unified RBAC. The request body sets appScopeIds (workload id Mdi). Beta API."
   - governs: "Tenant-wide switch to turn the unified identity timeline on or off"
     scope: "tenant"
     ui: null
@@ -71,19 +74,23 @@ changes:
     note: "New briefing: roadmap item 568784 (In development, September CY2026 target), with the Learn description of the Timeline tab and the access control for the Identity page."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 8 of 65 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after verification: removed the claim that the timeline replaces separate tables, narrowed access wording to unified RBAC, added role, path and custom-role qualifications."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 57 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 57
-  unconfirmed: 0
-  contradicted: 8
-  attempts: 1
-  hash: "0730c85abf530097b5de0c87181e7829"
+  claims: 57
+  confirmed: 55
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 0
+  hash: "3a3bfcd082653a3a5efed6c175dc802e"
 ---
 
 ## What's changing
@@ -98,7 +105,7 @@ The roadmap record lists the item as In development with a target of September C
 
 ## Why it matters
 
-For service owners, this changes what an analyst sees when they open an identity during an investigation: sign-ins, audit events, cloud app events, device logons and Conditional Access results appear in one timeline rather than in separate tables. That is a gain for investigation speed, and it means more tenant activity, including policy evaluation detail, is visible from one page.
+For service owners, the updated timeline brings sign-ins, audit events, cloud app events, device logons and Conditional Access results into one investigation view. That is a gain for investigation speed, and it means more tenant activity, including policy evaluation detail, is visible from one page.
 
 Microsoft has not stated what happens on arrival, so the wiki cannot say whether analysts get the new view automatically. No source says existing behaviour changes for other users. The practical step is to confirm who can open the Identity page and to brief the security operations team on the new columns before they meet them mid-incident.
 
@@ -106,13 +113,13 @@ Microsoft has not stated what happens on arrival, so the wiki cannot say whether
 
 **Data exposure**
 
-- The timeline combines Entra sign-ins, Microsoft Graph activity events, cloud app events, device logons and directory changes for every account linked to an identity. Anyone who can open the Identity page sees that cross-source activity in one place, so review the roles that reach the page (see the permissions row below).
+- The timeline combines Entra sign-ins, Microsoft Graph activity events, cloud app events, device logons and directory changes for every account linked to an identity. The timeline consolidates activity from its source tables in one place, so review the roles that reach the page (see the permissions row below).
 - Session ID and Unique token identifier are available as columns. They are not shown by default, but an analyst can add them from Customize columns.
 
 **Security & identity**
 
-- For Entra ID sign-in events, the event pane shows the Conditional Access policies evaluated, with names, grant controls and results. That reveals policy design to every analyst with access, so treat the page as sensitive security operations data.
-- No setting is documented to switch the timeline on or off; access is governed through Microsoft Defender unified role-based access control (RBAC).
+- For Entra ID sign-in events, the event pane shows the Conditional Access policies evaluated, with names, grant controls and results. These event details reveal policy design, so treat the page as sensitive security operations data.
+- No setting is documented to switch the timeline on or off. Microsoft Defender unified RBAC governs custom-role access where it is activated; tenants with roles assigned or exported before March 2, 2025 retain their current configuration.
 
 **Autonomy & actions**
 
@@ -143,9 +150,8 @@ Indirect cost is analyst time to learn the new view and update runbooks. A price
 
 ### Before rollout
 
-- Review who holds Entra roles and unified RBAC roles that reach the Identity page, and remove access that analysts do not need (permissions row).
-- Check the data sources and Defender for Identity scopes in each unified RBAC assignment, so analysts see only the sources their role requires.
-- Confirm that unified RBAC is activated in the tenant, because the portal enforces custom roles only after activation.
+- Review who holds unified RBAC roles that reach the Identity page, and remove access that analysts do not need (permissions row).
+- Check the data sources and Defender for Identity scopes in each unified RBAC assignment. Custom roles apply only to new alerts and activities; alerts and activities triggered before a custom role was created are not retroactively tagged or filtered.
 
 ### At rollout
 
@@ -164,12 +170,12 @@ Indirect cost is analyst time to learn the new view and update runbooks. A price
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Who can read Defender data, including Defender for Identity, by role and data source</strong><br><small>Tenant</small><br><small class="controls__note">Unified RBAC; enforced only after activation. Creating roles needs Security Administrator or Authorization permissions. The request body sets appScopeIds (workload id Mdi). Beta API.</small></td><td data-label="Admin UI"><strong>Microsoft Defender portal</strong><br>Permissions › Microsoft Defender XDR › Roles › Create custom role › Assign users and data sources › Add assignment › Data sources <a href="https://learn.microsoft.com/defender-xdr/create-custom-rbac-roles" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/roleManagement/defender/roleAssignments</code> <a href="https://learn.microsoft.com/graph/api/rbacapplicationmultiple-post-roleassignments?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who can read Defender data, including Defender for Identity, by role and data source</strong><br><small>Tenant</small><br><small class="controls__note">Enforced only after activation. Creating roles needs at least Security Administrator in Microsoft Entra ID or all Authorization permissions in unified RBAC. The request body sets appScopeIds (workload id Mdi). Beta API.</small></td><td data-label="Admin UI"><strong>Microsoft Defender portal</strong><br>Permissions › Microsoft Defender XDR › Roles › Create custom role › Choose permissions › Security operations › Assign users and data sources › Add assignment › Data sources <a href="https://learn.microsoft.com/defender-xdr/create-custom-rbac-roles" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/roleManagement/defender/roleAssignments</code> <a href="https://learn.microsoft.com/graph/api/rbacapplicationmultiple-post-roleassignments?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tenant-wide switch to turn the unified identity timeline on or off</strong><br><small>Tenant</small><br><small class="controls__note">No setting is documented for the timeline. Role assignment above is the available access control.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-Access to the Identity page is the control that exists. Microsoft's role page for Defender for Identity lists the permissions to view the Assets / Identities page as permissions to access Defender for Cloud Apps or one of the Microsoft Entra roles required by Microsoft Defender. The unified RBAC row covers who is assigned a custom role and which data sources the assignment reaches; creating a role needs at least Security Administrator in Microsoft Entra ID or the Authorization permissions.
+Access to the Identity page is the control that exists. Microsoft's role page for Defender for Identity lists the permissions to view the Assets / Identities page as permissions to access Defender for Cloud Apps or one of the Microsoft Entra roles required by Microsoft Defender. The unified RBAC row covers who is assigned a custom role and which data sources the assignment reaches; creating a role needs at least Security Administrator in Microsoft Entra ID or all Authorization permissions.
 
 The portal enforces unified RBAC assignments only after the model is activated. The Graph call is a beta API and Microsoft says beta APIs are subject to change. No tenant-wide switch for the timeline is documented, so the second row records that gap.
 
@@ -186,16 +192,10 @@ cost: Low. The only cost the sources show is analyst and admin time; Defender fo
 impact: Low. Security analysts who investigate identities in the Microsoft Defender portal notice it; nothing in the sources reaches end users.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters: first paragraph / behaviour: This change moves sign-ins, cloud app events and device logons into one timeline rather than their previously separate tables. | Found: The timeline represents activities and alerts from the last 30 days, and it unifies the user's identity entries across all available workloads (Defender for Identity/Defender for Cloud Apps/Defender for Endpoint). | Fix: Replace the first sentence of Why it matters with: 'For service owners, the updated timeline brings sign-ins, audit events, cloud app events, device logons and Conditional Access results into one investigation view.' Remove 'rather than in separate tables'; the cross-workload timeline already existed. | Source: https://learn.microsoft.com/defender-for-identity/whats-new-archive#february-2023
-- [contradicted, blocker] Risk assessment: Data exposure and Security & identity / applicability: Anyone who can open the Identity page sees the combined cross-source activity and Conditional Access policy details. | Found: If you assigned read-only permissions for a single data source, such as Microsoft Defender for Endpoint, the assigned users can't read alerts in the other services, such as Microsoft Defender for Office 365 or Microsoft Defender for Identity. | Fix: Replace 'Anyone who can open the Identity page sees that cross-source activity in one place' with 'The timeline consolidates activity from its source tables in one place.' Replace 'That reveals policy design to every analyst with access' with 'These event details reveal policy design.' Do not equate permission to open the page with permission to read every source. | Source: https://learn.microsoft.com/defender-xdr/create-custom-rbac-roles
-- [contradicted, blocker] Risk assessment: Security & identity; Governance controls / applicability: Access is governed through Microsoft Defender unified RBAC without a tenant-model qualification. | Found: Starting March 2, 2025, new Microsoft Defender for Identity tenants can only configure permissions through Microsoft Defender XDR Unified Role-Based Access Control (RBAC). Tenants with roles assigned or exported before this date will retain their current configuration. | Fix: Replace 'access is governed through Microsoft Defender unified role-based access control (RBAC)' with 'Microsoft Defender unified RBAC governs custom-role access where it is activated; tenants with roles assigned or exported before March 2, 2025 retain their current configuration.' Cite https://learn.microsoft.com/defender-for-identity/role-groups. | Source: https://learn.microsoft.com/defender-for-identity/role-groups
-- [contradicted, blocker] Governance guidance: Before rollout, second bullet / applicability: Checking data sources and Defender for Identity scopes ensures analysts see only the sources their role requires, without a historical-data qualification. | Found: Custom roles apply only to new alerts and activities. Alerts and activities triggered before a custom role was created aren't retroactively tagged or filtered. | Fix: Replace the bullet with: 'Check the data sources and Defender for Identity scopes in each unified RBAC assignment. Custom roles apply only to new alerts and activities; alerts and activities triggered before a custom role was created are not retroactively tagged or filtered.' Cite https://learn.microsoft.com/defender-for-identity/configure-scoped-access. | Source: https://learn.microsoft.com/defender-for-identity/configure-scoped-access
-- [contradicted, blocker] controls[0].note; Governance controls / role: Having Authorization permissions, without specifying all of them, qualifies a user to create custom roles. | Found: All Authorization permissions assigned in Microsoft Defender Unified RBAC. ... Read-only. Users can access and view roles and permissions in a read-only mode. | Fix: Replace 'Creating roles needs Security Administrator or Authorization permissions' in the row note with 'Creating roles needs at least Security Administrator in Microsoft Entra ID or all Authorization permissions in Microsoft Defender unified RBAC.' Replace 'or the Authorization permissions' in the prose with 'or all Authorization permissions'. | Source: https://learn.microsoft.com/defender-xdr/create-custom-rbac-roles
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: The custom-role wizard goes from Create custom role directly to Assign users and data sources, without a permission-selection page or choice. | Found: On the Choose permissions page, select each of the following as needed to configure permissions for that area: ... Security operations ... After you select your permissions for any relevant permission group ... Next to assign users and data sources. | Fix: Replace controls[0].ui.path and its rendered copy with 'Permissions > Microsoft Defender XDR > Roles > Create custom role > Choose permissions > Security operations > Assign users and data sources > Add assignment > Data sources'. Add to the existing note: 'Configure the required Security operations permissions before continuing to Assign users and data sources.' The omitted Basics fields and Apply/Next buttons need not be path steps. | Source: https://learn.microsoft.com/defender-xdr/create-custom-rbac-roles
+- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: There is no change to autonomy and actions from the timeline update. | Found: Searched: identity Timeline tab Actions menu remediation no change unified timeline. Read roadmap, investigate-users and remediation-actions search excerpts; they describe the view and action mechanisms but do not establish unchanged behaviour before and after this update. | Fix: Remove 'No change:' from the Autonomy & actions bullet. Retain the documented description of the Timeline tab and the Overview Actions menu.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout, third bullet / consistency: The checklist asks administrators to check unified RBAC activation, but neither controls row represents activation. | Found: Confirm that unified RBAC is activated in the tenant ... controls: Who can read Defender data ... Tenant-wide switch to turn the unified identity timeline on or off | Fix: Remove the Before rollout bullet 'Confirm that unified RBAC is activated in the tenant, because the portal enforces custom roles only after activation.' Keep the verified activation prerequisite in the existing row note and Governance controls prose; do not add a row.
-- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: The checklist asks administrators to review and remove Entra-role assignments, but the permissions row covers only unified RBAC assignments. | Found: Review who holds Entra roles and unified RBAC roles ... (permissions row). ... The unified RBAC row covers who is assigned a custom role and which data sources the assignment reaches | Fix: Replace the first Before rollout bullet with: 'Review who holds unified RBAC roles that reach the Identity page, and remove access that analysts do not need (permissions row).' Keep the separately verified Entra-role access facts in Scope and Governance controls.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: Every control the governance checklist asks the reader to check has a corresponding controls-table row. | Found: Checklist: 'Check the data sources and Defender for Identity scopes in each unified RBAC assignment.' Table: role and data-source assignment, and tenant-wide timeline switch; no identity-scoping row. | Fix: Remove 'and Defender for Identity scopes' from the Before rollout checklist bullet so it asks only to check data sources in each unified RBAC assignment. The identity-scoping check has no table row.
 -->

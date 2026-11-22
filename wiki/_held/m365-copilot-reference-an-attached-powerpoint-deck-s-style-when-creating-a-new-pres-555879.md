@@ -17,7 +17,7 @@ impact: "low"
 defaultState: "user-opt-in"
 action: "review"
 licensing:
-  model: "add-on"
+  model: "included"
   notes: "Learn says the Microsoft 365 Copilot add-on licence gives the full experience of Copilot in PowerPoint, and users without it can use Copilot in PowerPoint with fair use limits. Which experience includes this capability is not yet published."
 audiences: ["m365-admin","change-adoption","end-user"]
 tags: ["powerpoint","m365-copilot","microsoft-365-apps","licensing","user-experience"]
@@ -64,19 +64,23 @@ changes:
     note: "Corrected after verification: default state is now user-opt-in, and the claim that no source says existing behaviour changes was removed."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 50 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-22"
+    note: "Corrected after verification: the licensing model is now 'included', as the check found no separate add-on entitlement for this option."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 43 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 49
-  unconfirmed: 1
-  contradicted: 0
-  attempts: 2
-  hash: "8c5bd52c599483fdb80bc357bd10d020"
+  claims: 43
+  confirmed: 41
+  unconfirmed: 0
+  contradicted: 2
+  attempts: 3
+  hash: "138e86b72c472c9e6a1bf245866a6c2e"
 ---
 
 ## What's changing
@@ -165,5 +169,8 @@ impact: Low. Only people building decks with Copilot in PowerPoint on the web no
 <!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: licensing.model / licensing: The entitlement model for this capability is add-on. | Found: Searched: PowerPoint Copilot Agent Mode licensing prerequisites attached reference deck style. Opened release notes, Copilot overview and license options. Add-on describes the full product experience; no source establishes a separate add-on entitlement for this option. | Fix: Set licensing.model to "included", the standard's model for a new option inside an already licensed product. Retain the notes describing Microsoft 365 Copilot Basic and the Microsoft 365 Copilot add-on full experience, and retain the qualification that the experience containing this specific option is not yet published. Do not assert that the option requires a separate add-on purchase. Source: https://learn.microsoft.com/copilot/plan/copilot-overview.
+- [contradicted, blocker] front matter: licensing notes; Cost and licensing; Scope; controls[0].note; Open questions / absence: Microsoft has not published which licence tier covers this Agent Mode capability. | Found: Edit with Copilot in Word, Excel, PowerPoint, and OneNote² ... ²Microsoft 365 Copilot (Premium) features: A Microsoft 365 Copilot license is required to access this feature. | Fix: Replace the repeated unresolved-tier statements with: 'Microsoft's service description lists Edit with Copilot in PowerPoint as a Microsoft 365 Copilot (Premium) feature requiring a Microsoft 365 Copilot licence. Microsoft's support guidance says this experience was previously called Agent Mode.' Cite https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot and https://support.microsoft.com/office/copilot-frontier/get-started-editing-with-copilot-in-office. Remove the open question about whether Basic includes this Agent Mode capability. Keep licensing.model as included: this option is inside the licensed product, not a separately documented add-on. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] title; summary; What's changing; rationale: risk / record: The roadmap describes referencing an existing PowerPoint file when creating a presentation using Agent Mode. | Found: When creating a presentation with Copilot in PowerPoint using Agent Mode, you can reference an existing PowerPoint file | Fix: Keep Agent Mode as the roadmap's terminology, but qualify its first use: 'Microsoft now calls the experience Edit with Copilot; the roadmap calls it Agent Mode.' Cite https://support.microsoft.com/office/copilot-frontier/get-started-editing-with-copilot-in-office, which says the former name is no longer used.
+- [contradicted, minor] summary; Governance controls; controls table / consistency: The prose reports an undocumented capability-specific admin setting, but the controls table contains only licence assignment. | Found: No admin setting specific to this capability is documented ... the table lists the licence control | Fix: The capability-specific admin-setting gap stated in the summary and Governance controls has no corresponding table row. Do not add a row during correction; remove the repeated gap statements, retaining the existing open question asking whether a capability-specific admin setting exists.
 -->

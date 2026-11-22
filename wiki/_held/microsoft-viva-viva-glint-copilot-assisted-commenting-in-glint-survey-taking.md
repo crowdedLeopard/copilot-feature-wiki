@@ -65,19 +65,23 @@ changes:
     note: "New briefing: Rewrite with Copilot in Viva Glint surveys, its off-by-default setting and the gaps in its documented controls."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 56 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected after verification: the data-processing bullet now states what the Copilot in Viva Glint privacy page says, and the guest-user restriction is stated as Learn gives it."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 50 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 54
-  unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "ebb8cd9ba30668829558b251d660de01"
+  claims: 50
+  confirmed: 49
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 2
+  hash: "dc56ba672aa19b81732280e4216ebb80"
 ---
 
 ## What's changing
@@ -98,12 +102,12 @@ If nobody acts, Learn says the setting stays off, so survey takers see no change
 
 **Data exposure**
 - The comment text is sent to Copilot to produce suggestions. Learn says the feature temporarily uses the original text, that the text is not retained after the survey taker submits the response, and that unaccepted suggestions are not saved as survey data. The interactions are not used to train generative AI foundation models.
-- Where the text is processed for this feature is not described on the pages that cover it. The Copilot in Viva Glint privacy page describes processing for that product's features (Azure OpenAI Service, Microsoft 365 service boundary, regional data residency) but does not name Rewrite with Copilot, so confirm before telling employees that those statements apply.
+- Microsoft states that Copilot in Viva Glint features process raw survey responses, prompts and respondent user attributes within the Microsoft 365 service boundary, use Microsoft-hosted models through Azure OpenAI Service, and align LLM processing with Viva Glint data-residency commitments for the tenant region.
 - Rewritten text can differ from what the person wrote. Learn says the aim is to preserve intent, not that it always does, and reports cannot show which comments were rewritten. Expect some submitted comments to carry wording the respondent did not originally choose.
 
 **Security & identity**
 - Access follows the survey taker's Microsoft Entra ID sign-in. Surveys opened through personalised links or attribute-based authentication do not offer the feature, so those respondents are outside any pilot or communication about it.
-- Learn says Copilot in Viva Glint is unavailable to Microsoft Entra cross-tenant guest users. It lists Copilot Highlights, the chat panel and comment summarisation as hidden for them and does not mention Rewrite with Copilot, so how this applies to guest survey takers is not stated.
+- Copilot in Viva Glint is unavailable to Microsoft Entra cross-tenant guest users regardless of the organisation-wide setting or any custom policy.
 
 **Autonomy & actions**
 - The feature acts only on request and only on text the survey taker wrote. Learn states that Rewrite with Copilot provides rewritten versions of the survey taker's own comments and does not write comments for them. The survey taker chooses whether to accept a suggestion.
@@ -126,7 +130,7 @@ The indirect cost is admin time to configure the setting, communications to empl
 - **Not available:** surveys opened through personalised links or with attribute-based authentication, and any user or organisation for whom Copilot is disabled. It cannot be enabled per survey or per programme.
 - **Who configures it:** the Copilot access page says Copilot in Viva Glint can be managed by Global Administrators, Viva Glint Tenant Administrators and AI Administrators.
 - **Clouds and platform:** the roadmap item lists Worldwide (Standard Multi-Tenant) and GCC, and the Web platform.
-- **Guests:** how cross-tenant guest survey takers are treated is not stated for this feature.
+- **Guests:** Copilot in Viva Glint is unavailable to Microsoft Entra cross-tenant guest users regardless of the organisation-wide setting or any custom policy.
 
 ## Governance guidance
 
@@ -166,8 +170,7 @@ The Copilot access page says Global Administrators, Viva Glint Tenant Administra
 
 - Where does the Copilot in Viva Glint Survey Taking setting appear in the Microsoft 365 admin center, and is it manageable through Viva Feature Access Management PowerShell with a documented featureId? Watch the Manage Viva Glint Copilot access page.
 - The Rewrite with Copilot page lists Copilot being disabled for the user or organisation as a case where the feature is unavailable. Does that mean the existing Copilot in Viva Glint setting, the Survey Taking setting, or both?
-- Do the data processing, residency and EU Data Boundary statements on the Copilot in Viva Glint privacy page apply to Rewrite with Copilot?
-- Is the feature available to cross-tenant guest survey takers, and do survey takers need a Viva Glint licence of their own to use it?
+- Do survey takers need a Viva Glint licence of their own to use it?
 
 <!-- rationale
 risk: Low. Microsoft Learn says the Copilot in Viva Glint Survey Taking setting is off by default, and the feature only rewrites text the survey taker has already written.
@@ -178,6 +181,5 @@ impact: Low. Nobody sees the feature until an administrator turns the setting on
 <!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure; Open questions: processing, residency and EU Data Boundary / absence: Microsoft has not described processing or established the applicability of its Copilot in Viva Glint processing and residency statements to this feature. | Found: When using Copilot in Viva Glint features (such as comment summarization in Copilot in Viva Glint), raw survey responses, prompts, and respondent user attributes are processed entirely within the Microsoft 365 service boundary. | Fix: Replace the second Data exposure bullet with: 'Microsoft states that Copilot in Viva Glint features process raw survey responses, prompts and respondent user attributes within the Microsoft 365 service boundary, use Microsoft-hosted models through Azure OpenAI Service, and align LLM processing with Viva Glint data-residency commitments for the tenant region.' Keep the existing citation https://learn.microsoft.com/viva/glint/setup/copilot-privacy. Remove the Open question asking whether these product-wide statements apply to Rewrite with Copilot; the page states their reach for Copilot in Viva Glint features, not only its summarisation example. | Source: https://learn.microsoft.com/viva/glint/setup/copilot-privacy
-- [contradicted, blocker] Risk assessment: Security & identity; Scope: Guests; Open questions: guests / absence: How the cross-tenant guest restriction applies to guest survey takers using this feature is not stated. | Found: Cross-tenant guest users are evaluated separately from VFAM precedence. Copilot in Viva Glint is unavailable to these users regardless of the organization-wide setting or any custom policy. | Fix: Replace the guest caveat in Risk assessment and Scope with: 'Copilot in Viva Glint is unavailable to Microsoft Entra cross-tenant guest users regardless of the organisation-wide setting or any custom policy.' Cite https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access. Remove the guest-availability part of the final Open question. The page's examples introduced by 'including' do not limit its product-wide guest restriction. | Source: https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access
+- [unsupported, blocker] controls[0].ui; Governance controls; Governance guidance: At rollout / admin-path: Settings > Viva > Viva Glint > Manage settings for Microsoft Copilot in Viva Glint is the controls-table route for managing the separate Survey Taking setting. | Found: Searched: Viva Glint Copilot Survey Taking enable disable individual surveys programs setting Microsoft 365 admin center. Read rewrite-comments-copilot-viva-glint and mac-copilot-access: the latter documents the existing Copilot pane, not the separate Survey Taking control. | Fix: Remove controls[0].ui and the corresponding rendered path; because the setting exists but its route has not been documented, remove that row rather than render its UI as 'Not yet documented'. Retain the named setting and the Microsoft guidance link in Governance controls. Replace 'using the control in the table below' in At rollout with 'Microsoft documents the setting but does not give its exact navigation path'. The feature page at https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint states that the setting is independent of the existing Copilot in Viva Glint setting; do not present the existing setting's route as its location.
 -->

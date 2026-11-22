@@ -12,7 +12,7 @@ platforms: ["Web"]
 targetDate: "November CY2026"
 previewDate: "August CY2026"
 risk: "medium"
-cost: "low"
+cost: "variable"
 impact: "low"
 defaultState: "admin-opt-in"
 action: "review"
@@ -27,6 +27,9 @@ sources:
     kind: "learn"
   - title: "Microsoft.AAD domainServices"
     url: "https://learn.microsoft.com/azure/templates/microsoft.aad/domainservices"
+    kind: "learn"
+  - title: "Microsoft Entra licensing"
+    url: "https://learn.microsoft.com/entra/fundamentals/licensing"
     kind: "learn"
   - title: "Management concepts for user accounts, passwords, and administration in Microsoft Entra Domain Services"
     url: "https://learn.microsoft.com/entra/identity/domain-services/administration-concepts"
@@ -46,11 +49,8 @@ controls:
       surface: "Microsoft Entra admin center"
       path: "Microsoft Entra Domain Services > managed domain > Security settings > sAMAccountName synchronization from on-premises"
       docs: "https://learn.microsoft.com/entra/identity/domain-services/security-account-name"
-    api:
-      kind: "other"
-      call: "Microsoft.AAD/domainServices@2026-08-31-preview: properties.domainSecuritySettings.syncOnPremSamAccountName"
-      docs: "https://learn.microsoft.com/azure/templates/microsoft.aad/domainservices"
-    note: "Per managed domain; preview API version. Portal change needs Application Administrator and Groups Administrator."
+    api: null
+    note: "Per managed domain. Portal change needs Application Administrator and Groups Administrator. The ARM template reference documents properties.domainSecuritySettings.syncOnPremSamAccountName (Enabled, Disabled) in 2026-08-31-preview."
 confidence: "high"
 created: "2026-11-22"
 updated: "2026-11-22"
@@ -60,19 +60,23 @@ changes:
     note: "First briefing for this roadmap item, based on the Learn feature page and the preview ARM template reference."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 47 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Correction: the Resource Manager property is now stated as documented in the template reference, not as a scripted control; cost rating set to variable, with hourly SKU-based billing named."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 49 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 45
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "7f3aa7b6ae0fabaeb7d82d24d0a5de17"
+  claims: 49
+  confirmed: 47
+  unconfirmed: 0
+  contradicted: 2
+  attempts: 2
+  hash: "448702a3e9a77f94de7ab293c2dcb63c"
 ---
 
 ## What's changing
@@ -111,7 +115,7 @@ The same switch is a change of identity source. If nobody acts on an existing do
 
 Microsoft Learn lists a Microsoft Entra Domain Services managed domain on the Enterprise or Premium SKU as a prerequisite, and says the feature is not available with the Standard SKU. The page names no separate charge for the feature.
 
-Domain Services is a paid service ([FAQ](https://learn.microsoft.com/entra/identity/domain-services/faqs)), billed by SKU; the SKU can be switched after a domain is created, and prices are on the Azure pricing page. A domain on the Standard SKU would therefore carry the cost of a SKU change before it can use this feature. Indirect cost is administrator time for the pre-enable review and post-enable validation.
+Domain Services is a paid service ([FAQ](https://learn.microsoft.com/entra/identity/domain-services/faqs)). Charges accrue per hour based on the SKU the tenant owner selects ([Microsoft Entra licensing](https://learn.microsoft.com/entra/fundamentals/licensing)); the SKU can be switched after a domain is created, and prices are on the Azure pricing page. A domain on the Standard SKU would therefore carry the cost of a SKU change before it can use this feature. Indirect cost is administrator time for the pre-enable review and post-enable validation.
 
 ## Scope
 
@@ -143,11 +147,11 @@ The roadmap lists Worldwide (Standard Multi-Tenant) and the Web platform. The re
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether sAMAccountName is synchronised from onPremisesSamAccountName</strong><br><small class="controls__note">Per managed domain; preview API version. Portal change needs Application Administrator and Groups Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Microsoft Entra Domain Services › managed domain › Security settings › sAMAccountName synchronization from on-premises <a href="https://learn.microsoft.com/entra/identity/domain-services/security-account-name" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Microsoft.AAD/domainServices@2026-08-31-preview: properties.domainSecuritySettings.syncOnPremSamAccountName</code> <a href="https://learn.microsoft.com/azure/templates/microsoft.aad/domainservices" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether sAMAccountName is synchronised from onPremisesSamAccountName</strong><br><small class="controls__note">Per managed domain. Portal change needs Application Administrator and Groups Administrator. The ARM template reference documents properties.domainSecuritySettings.syncOnPremSamAccountName (Enabled, Disabled) in 2026-08-31-preview.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Microsoft Entra Domain Services › managed domain › Security settings › sAMAccountName synchronization from on-premises <a href="https://learn.microsoft.com/entra/identity/domain-services/security-account-name" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The portal setting and the Azure Resource Manager property control the same switch. The Learn template reference documents the property under a preview API version, so treat the scripted route as preview. Learn states the two-role requirement (Application Administrator and Groups Administrator) for the portal procedure; it does not state the roles for the Resource Manager route.
+The ARM template reference for Microsoft.AAD/domainServices@2026-08-31-preview documents properties.domainSecuritySettings.syncOnPremSamAccountName, with values Enabled and Disabled.
 
 The setting is per managed domain. The pages read describe no per-user or per-group selection of which hybrid users switch source.
 
@@ -159,15 +163,15 @@ The setting is per managed domain. The pages read describe no per-user or per-gr
 
 <!-- rationale
 risk: Medium. Enabling the setting changes the sAMAccountName source for existing hybrid users, so applications, scripts and access-control entries that rely on the generated value can break.
-cost: Low. The feature page names Enterprise or Premium SKU as a prerequisite and no separate charge; Standard SKU domains would need a SKU change first, and prices are on the Azure pricing page.
+cost: Variable. Domain Services charges accrue per hour based on the selected SKU; Standard domains need Enterprise or Premium to use this feature. For domains already on an eligible SKU, the feature page names no separate charge and the rollout work is administrator time.
 impact: Low. An administrator has to enable it on an existing domain; users notice only if their sAMAccountName changes and a dependent application or script is affected.
 -->
 
 <!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[0].api; Governance controls table / command: Microsoft.AAD/domainServices@2026-08-31-preview: properties.domainSecuritySettings.syncOnPremSamAccountName is an API call that sets the synchronization control. | Found: Searched: 'Microsoft.AAD domainServices 2026-08-31-preview syncOnPremSamAccountName update PATCH PUT'; read the cited ARM reference and update-operation results. The printed string names a resource and property, not an operation. | Fix: Remove the printed string as an API call and the claim that it is a scripted route. Retain it only as the documented fact: 'The ARM template reference for Microsoft.AAD/domainServices@2026-08-31-preview documents properties.domainSecuritySettings.syncOnPremSamAccountName, with values Enabled and Disabled.' Do not replace it with a claim that no automation is documented: the property is real.
-- [contradicted, blocker] front matter: cost; Cost and licensing; rationale: cost / consistency: The low cost rating covers administrator time and the paid SKU change needed for a Standard domain to use the feature. | Found: cost: "low"; "A domain on the Standard SKU would therefore carry the cost of a SKU change before it can use this feature." The assessment scale defines low as "indirect cost only: admin time, communications, training." | Fix: Set cost to variable and replace the cost rationale with: 'Variable. Domain Services charges accrue per hour based on the selected SKU; Standard domains need Enterprise or Premium to use this feature. For domains already on an eligible SKU, the feature page names no separate charge and the rollout work is administrator time.' Name the Azure Domain Services hourly SKU-based billing in Cost and licensing, citing https://learn.microsoft.com/entra/fundamentals/licensing.
+- [contradicted, blocker] controls[0].api; Governance controls: API and automation / absence: Microsoft has not documented automation that sets enhanced sAMAccountName synchronisation. | Found: begin_update(resource_group_name: str, domain_service_name: str, domain_service: _models.DomainService, *, content_type: str = 'application/json', **kwargs: Any) -> LROPoller[_models.DomainService] | Fix: Replace controls[0].api null with kind other, call 'client.domain_services.begin_update(resource_group_name, domain_service_name, domain_service)', and docs https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.operations.domainservicesoperations?view=azure-python-preview. In the note say: 'The preview Python SDK accepts a DomainService whose properties.domain_security_settings.sync_on_prem_sam_account_name sets Enabled or Disabled.' Cite the DomainService, DomainServiceProperties and DomainSecuritySettings model references at https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.models.domainservice?view=azure-python-preview, https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.models.domainserviceproperties?view=azure-python-preview and https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.models.domainsecuritysettings?view=azure-python-preview. These pages explicitly connect the update argument to the setting; this does not assert rollback behaviour. | Source: https://learn.microsoft.com/python/api/azure-mgmt-domainservices/azure.mgmt.domainservices.operations.domainservicesoperations?view=azure-python-preview
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing / cost: Domain Services billing depends on the selected SKU. | Found: Microsoft Entra Domain Services charges accrue per hour based on the SKU the tenant owner selects. | Fix: Add https://learn.microsoft.com/entra/fundamentals/licensing to sources and cite its Microsoft Entra Domain Services section for billing by SKU. | Source: https://learn.microsoft.com/entra/fundamentals/licensing
+- [supported, minor] controls[0].ui; Governance controls: Admin UI / admin-path: The portal route is Microsoft Entra admin center > Microsoft Entra Domain Services > managed domain > Security settings > sAMAccountName synchronization from on-premises. | Found: Search for and select Microsoft Entra Domain Services. Select your managed domain. In the left navigation, select Security settings. For sAMAccountName synchronization from on-premises, select Enable. | Fix: Extend controls[0].ui.path to 'Microsoft Entra Domain Services > managed domain > Security settings > sAMAccountName synchronization from on-premises > Enable'. The printed route reaches the correct setting but omits its Enable option. | Source: https://learn.microsoft.com/entra/identity/domain-services/security-account-name
+- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist tells readers to check the domain SKU, but the controls table has no SKU row. | Found: Check that the domain is on the Enterprise or Premium SKU; the feature is not available with the Standard SKU. | The table's only control is Whether sAMAccountName is synchronised from onPremisesSamAccountName. | Fix: Remove the checklist bullet 'Check that the domain is on the Enterprise or Premium SKU; the feature is not available with the Standard SKU.' The prerequisite already appears in Scope and Cost and licensing; no new control row is needed.
 -->

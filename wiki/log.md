@@ -618,3 +618,12 @@ Append-only record of ingests, compiles and lint passes. One line per event.
 - 2026-11-22 lint: 528 briefings ok, 0 errors (0 quarantined), 26 warnings, 490 notes; 550 checked, 0 awaiting correction, 22 held
 - 2026-11-22 index: 527 briefings, 1 archived, 22 concepts indexed
 - 2026-11-22 digest: 2026-w47 written (527 updated briefings)
+- 2026-11-22 message-center: 918 posts read (federated credential (GitHub Actions OIDC)), 656 in scope and published, 0 new, 0 changed, 240 outside the topics, 22 withheld by the tenant screen (12 targeted-wording, 4 tenant-word, 1 tenant-domain, 1 email-address, 5 guid); 668 in the ledger, 20 with an act-by date ahead (4s)
+- 2026-11-22 ingest: 2401 roadmap items fetched, 1915 in scope, 0 new, 0 changed, 1387 queued for compile (copilot-studio 4, power-platform 2, governance 277, m365-copilot 379, modern-work 725; 0 review due; 0 refresh after a Message Center post), 247 with Message Center posts, 1 duplicate listing(s) covered by another item's page, 0 archived, 0 briefed item(s) missing from the feed (1s)
+- 2026-11-22 source watch: 800 of 1970 Microsoft pages cited by 549 live pages re-read in 154s (800 read earlier today), 18 read for the first time, 0 changed, 370 not reached (SOURCE_WATCH_LIMIT)
+- 2026-11-22 compile: 22 briefings written, 1 concept page written and 1 declined, 0 rejected by schema, 0 not reached, 24 attempted (copilot, claude-sonnet-5.5, 1,092 AI credits)
+- 2026-11-22 verify: 23 checked (2 verified, 8 verified with gaps, 12 held, 1 not reached, 1 held as unverified) on copilot gpt-6.1-sol; 22 page(s) held in total
+- 2026-11-22 spend: 2,095 AI credits this run (1,092 writing, 1,003 checking); 4,254 of 15,000 today over 2 runs; next run starts when this one finishes
+- 2026-11-22 lint: 538 briefings ok, 0 errors (0 quarantined), 26 warnings, 501 notes; 560 checked, 0 awaiting correction, 22 held
+- 2026-11-22 index: 537 briefings, 1 archived, 22 concepts indexed
+- 2026-11-22 digest: 2026-w47 written (537 updated briefings)

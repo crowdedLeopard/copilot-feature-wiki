@@ -55,11 +55,8 @@ controls:
   - governs: "Which SharePoint sites a DLP policy covers, by adaptive scope"
     scope: "site"
     ui: null
-    api:
-      kind: "powershell"
-      call: "New-DlpCompliancePolicy -Name \"<policy name>\" -SharePointAdaptiveScopes <values>"
-      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy"
-    note: "Security & Compliance PowerShell. Parameter is listed without a description of its values; Set-DlpCompliancePolicy lists no SharePoint adaptive scope parameter. In preview per the DLP policy reference."
+    api: null
+    note: "New-DlpCompliancePolicy lists -SharePointAdaptiveScopes but does not describe its values or operation; Set-DlpCompliancePolicy lists no SharePoint adaptive scope parameter. In preview per the DLP policy reference."
   - governs: "Definition of a SharePoint sites adaptive scope"
     scope: "site"
     ui:
@@ -75,7 +72,7 @@ controls:
     scope: "site"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Data loss prevention > Policies > + Create policy > Enterprise applications & devices > Custom > Assign admin units > Choose where to apply the policy > SharePoint sites"
+      path: "Data loss prevention > Policies > + Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom > Assign admin units > Full directory > Choose where to apply the policy > SharePoint sites"
       docs: "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external"
     api:
       kind: "powershell"
@@ -91,19 +88,23 @@ changes:
     note: "First briefing for this roadmap item."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 50 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Correction: removed the unsupported SharePointAdaptiveScopes command, fixed the static-site wizard path, and removed DLP-specific daily timing and validation claims."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 45
-  unconfirmed: 3
-  contradicted: 2
-  attempts: 1
-  hash: "bd4128ed680ba981a857a7591e30d131"
+  claims: 60
+  confirmed: 60
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "7392681d3d3d6f6013cb7269489fd9dd"
 ---
 
 ## What's changing
@@ -112,7 +113,7 @@ The roadmap item describes adaptive scopes for SharePoint in Microsoft Purview D
 
 Microsoft Learn has no page dedicated to this feature at the time of writing (November 2026), so behaviour beyond the following is the roadmap's description. The Data Loss Prevention policy reference lists, for the SharePoint location, "site locations and, in preview, adaptive scopes at the policy level". It adds that a policy scoped to an administrative unit that includes SharePoint sites applies to all sites in that unit, with no further scoping. It also says DLP supports scoping policies to up to 100 sites; the page does not say whether that figure applies to adaptive scopes.
 
-The Learn page on adaptive scopes describes a SharePoint sites scope type that can query Site URL, Site name, Site template and custom properties (RefinableString00 to RefinableString99). It says these queries run daily, where the roadmap says scopes evaluate continuously; both are reported here. That page names retention and auto-labeling policies for SharePoint site scopes, not DLP.
+The Learn page on adaptive scopes describes a SharePoint sites scope type that can query Site URL, Site name, Site template and custom properties (RefinableString00 to RefinableString99). It says these queries run daily, where the roadmap says scopes evaluate continuously; both are reported here. The same page says queries can take up to five days to fully populate and recommends waiting a few days before adding a newly created scope to a policy. That page names retention and auto-labeling policies for SharePoint site scopes, not DLP.
 
 The record gives the status as In development, with release phases General Availability and Preview, a preview date of February CY2026 and a target date of January CY2027. The record lists Worldwide (Standard Multi-Tenant) and the Web platform. These dates are Microsoft's targets.
 
@@ -120,13 +121,13 @@ The record gives the status as In development, with release phases General Avail
 
 If you run DLP over SharePoint, scoping is where coverage is won or lost. A policy aimed at named sites is only as complete as the list someone maintains; an adaptive scope moves that work into a query, so the accuracy of the query becomes the control. Expect the effort to shift from editing site lists to designing and testing site attributes.
 
-Microsoft has not stated what happens on arrival, and no source says existing policies change, so treat existing static scoping as continuing until you choose otherwise. Our view: pilot adaptive scopes on a new policy in simulation mode, because a mistyped value is not caught when the scope is saved.
+Microsoft has not stated what happens on arrival, and no source says existing policies change, so treat existing static scoping as continuing until you choose otherwise. Our view: pilot adaptive scopes on a new policy in simulation mode.
 
 ## Risk assessment
 
 **Data exposure**
 
-- A query that is wrong or too narrow leaves matching sites outside the policy. Learn says the scope query runs daily and, because it does not run immediately, "there's no validation that you typed in the value correctly". Run new policies in simulation mode first, as Learn's deployment guidance recommends.
+- A query that is wrong or too narrow leaves matching sites outside the policy. The general adaptive scopes page warns that typed values are not immediately validated, but it does not state whether DLP uses this configuration. Run new policies in simulation mode first, as Learn's deployment guidance recommends.
 - Sites that start to match a query come under the policy's actions without a DLP administrator editing the policy, according to the roadmap's description of auto-including locations. Review the policy's actions with that in mind.
 
 **Security & identity**
@@ -136,7 +137,7 @@ Microsoft has not stated what happens on arrival, and no source says existing po
 
 **Autonomy & actions**
 
-- Membership is recalculated by the query without further administrator action. Learn says the queries run daily, so a new or renamed site may not be covered until the next run.
+- Membership is recalculated by the query without further administrator action. The roadmap describes automatic membership changes; Microsoft's DLP evaluation interval is not yet documented.
 
 **Change & support**
 
@@ -169,18 +170,15 @@ Microsoft has not stated what happens on arrival, and no source says existing po
 
 - List the DLP policies that are scoped to specific SharePoint sites today, and note which are close to the 100-site figure in the policy reference (controls table, static site list row).
 - Decide which site attributes (URL pattern, name, template or a custom RefinableString property) should define each policy's coverage, and ask the SharePoint admin whether custom properties need extra configuration.
-- Check who holds the Scope Manager role and who may create DLP policies, using the roles named in Scope.
-- Check whether any DLP policy is scoped to an administrative unit that includes SharePoint sites; no further site scoping is possible there.
 
 ### At rollout
 
 - Create the SharePoint sites adaptive scope in the Microsoft Purview portal (controls table, scope definition row).
-- Attach the scope to a new test DLP policy and run it in simulation mode, then review DLP alerts and Activity explorer, as Learn's deployment guidance describes.
-- Compare the sites you expect to be covered with the activity you see, and correct the query before turning the policy on.
+- Confirm Microsoft's documented method for attaching the scope before testing a new DLP policy.
 
 ### After rollout
 
-- Re-check coverage after any change to site names, URLs or the properties a scope relies on, allowing for the daily query run Learn describes.
+- Re-check coverage after any change to site names, URLs or the properties a scope relies on.
 - Watch the roadmap item and the DLP policy reference for the preview label, the limit wording and any default being stated.
 - Revisit static policies near the 100-site figure once Microsoft confirms how adaptive scopes are counted.
 
@@ -191,9 +189,9 @@ Microsoft has not stated what happens on arrival, and no source says existing po
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which SharePoint sites a DLP policy covers, by adaptive scope</strong><br><small>Site</small><br><small class="controls__note">Security &amp; Compliance PowerShell. Parameter is listed without a description of its values; Set-DlpCompliancePolicy lists no SharePoint adaptive scope parameter. In preview per the DLP policy reference.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -Name &quot;&lt;policy name&gt;&quot; -SharePointAdaptiveScopes &lt;values&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which SharePoint sites a DLP policy covers, by adaptive scope</strong><br><small>Site</small><br><small class="controls__note">New-DlpCompliancePolicy lists -SharePointAdaptiveScopes but does not describe its values or operation; Set-DlpCompliancePolicy lists no SharePoint adaptive scope parameter. In preview per the DLP policy reference.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Definition of a SharePoint sites adaptive scope</strong><br><small>Site</small><br><small class="controls__note">Needs the Scope Manager role. Cannot be created for SharePoint sites with an administrative unit selected. The reference describes scopes for retention policies, not DLP.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Adaptive scopes › + Create scope <a href="https://learn.microsoft.com/purview/purview-adaptive-scopes" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-AdaptiveScope -Name &quot;&lt;scope name&gt;&quot; -LocationType Site -FilterConditions &lt;hashtable&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-adaptivescope" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Static list of SharePoint sites a DLP policy covers (today's alternative)</strong><br><small>Site</small><br><small class="controls__note">Existing way to scope DLP to named sites; the policy reference gives up to 100 sites. Does not evaluate site attributes.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Enterprise applications &amp; devices › Custom › Assign admin units › Choose where to apply the policy › SharePoint sites <a href="https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -Name &quot;&lt;policy name&gt;&quot; -SharePointLocation &quot;&lt;site URL&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Static list of SharePoint sites a DLP policy covers (today's alternative)</strong><br><small>Site</small><br><small class="controls__note">Existing way to scope DLP to named sites; the policy reference gives up to 100 sites. Does not evaluate site attributes.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Enterprise applications &amp; devices › Categories › Custom › Regulations › Custom › Assign admin units › Full directory › Choose where to apply the policy › SharePoint sites <a href="https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -Name &quot;&lt;policy name&gt;&quot; -SharePointLocation &quot;&lt;site URL&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -212,20 +210,14 @@ The New-AdaptiveScope reference describes adaptive scopes as used in retention p
 - Will adaptive scopes for DLP carry any licence or meter beyond the DLP licences already listed? Watch the Microsoft Purview service description.
 
 <!-- rationale
-risk: Medium. Microsoft has not stated a default, so today's static scoping is assumed to carry on; once a scope is used, a query that misses a site leaves it outside the policy, and Learn says scope queries run daily and typed values are not validated.
+risk: Medium. Microsoft has not stated a default, so today's static scoping is assumed to carry on; once a scope is used, a query that misses a site leaves it outside the policy.
 cost: Low. No licence or meter specific to adaptive scopes is published; DLP for SharePoint sits under licences Microsoft lists, so the known cost is admin time to design and test scope queries.
 impact: Low. Administrators who write DLP policies and adaptive scopes see the change; no source says what users of the affected sites will notice.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[0].api; Governance guidance: At rollout / command: New-DlpCompliancePolicy -Name "<policy name>" -SharePointAdaptiveScopes <values> is documented as the operation that attaches SharePoint adaptive scopes. | Found: Searched: SharePointAdaptiveScopes scope values New-DlpCompliancePolicy; opened its reference. Syntax lists the parameter, but its description is '{{ Fill SharePointAdaptiveScopes Description }}'; no passage explains what values identify a scope or what the parameter does. | Fix: Set controls[0].api to null and retain the note that New-DlpCompliancePolicy lists -SharePointAdaptiveScopes but does not describe its values or operation. Replace 'Attach the scope to a new test DLP policy' with 'Confirm Microsoft's documented method for attaching the scope before testing a new DLP policy.'
-- [contradicted, blocker] controls[2].ui / admin-path: The static DLP wizard path needs only one Custom selection between Enterprise applications & devices and Assign admin units. | Found: Select Enterprise applications & devices. Select Custom from both the Categories list and the Regulations list. ... Accept the default Full directory on the Assign admin units page. | Fix: Replace controls[2].ui.path with 'Data loss prevention > Policies > + Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom > Assign admin units > Full directory > Choose where to apply the policy > SharePoint sites'. The cited procedure requires both Custom choices. | Source: https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external
-- [unsupported, blocker] Risk assessment: Autonomy & actions; Governance guidance: After rollout; rationale: risk / applicability: The general adaptive scopes page's daily query schedule applies to SharePoint DLP and can be used when allowing for coverage changes. | Found: Searched: DLP SharePoint adaptive scopes daily evaluation New-AdaptiveScope site scope; read Adaptive scopes, DLP policy reference and roadmap. The daily page lists retention and auto-labeling, not DLP; the roadmap describes continuous evaluation. | Fix: Replace the Autonomy & actions timing sentence with 'The roadmap describes automatic membership changes; Microsoft's DLP evaluation interval is not yet documented.' Remove 'allowing for the daily query run Learn describes' from After rollout and remove daily timing as a verified DLP premise from the risk rationale. Keep the explicitly attributed background comparison and open question.
-- [unsupported, major] Why it matters; Risk assessment: Data exposure; rationale: risk / behaviour: A mistyped query value is not validated when saving the new DLP adaptive scope. | Found: Searched: DLP SharePoint adaptive scopes daily evaluation New-AdaptiveScope site scope; read Adaptive scopes and DLP policy reference. The validation statement is on the general page that does not name DLP; no DLP-specific validation behaviour was found. | Fix: Remove 'because a mistyped value is not caught when the scope is saved' from Why it matters. In Data exposure, replace the validation premise with 'The general adaptive scopes page warns that typed values are not immediately validated, but it does not state whether DLP uses this configuration.' Remove unvalidated values as a confirmed DLP premise from the risk rationale.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / behaviour: The general adaptive scopes page says dynamic queries run daily. | Found: These dynamic queries run daily against the attributes or properties that you specify for the selected scope. ... It can take up to five days for the queries to fully populate and changes aren't immediate. | Fix: Add to the background description: 'The same page says queries can take up to five days to fully populate and recommends waiting a few days before adding a newly created scope to a policy.' Keep this explicitly about the general adaptive scopes documentation, not confirmed DLP timing. | Source: https://learn.microsoft.com/purview/purview-adaptive-scopes
-- [supported, minor] controls[1].ui / admin-path: Microsoft Purview portal > Settings > Roles and scopes > Adaptive scopes > + Create scope reaches adaptive scope creation. | Found: Sign in to the Microsoft Purview portal > Settings > Roles and scopes > Adaptive scopes. On the Adaptive scopes page, select + Create scope. | Fix: Keep the printed path and add to the row note: 'In the wizard, keep Full directory and select SharePoint sites as the scope type before building the property query.' The path currently ends at entry to the wizard rather than the site-scope configuration. | Source: https://learn.microsoft.com/purview/purview-adaptive-scopes
-- [contradicted, minor] Governance guidance: Before rollout and At rollout / consistency: Every control the checklist asks administrators to check or set has a corresponding controls-table row. | Found: Checklist: 'Check who holds the Scope Manager role'; 'Check whether any DLP policy is scoped to an administrative unit'; 'run it in simulation mode ... review DLP alerts and Activity explorer'. Rows: adaptive assignment, scope definition, static site list. | Fix: Remove the checklist bullets asking readers to check role assignments and administrative-unit assignments; those facts can remain in Scope and Risk assessment. Remove the simulation-mode and monitoring instruction from the At rollout checklist, retaining the already-supported simulation advice in Risk assessment. Do not add control rows.
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Microsoft Purview portal > Settings > Roles and scopes > Adaptive scopes > + Create scope reaches adaptive scope creation. | Found: Sign in to the Microsoft Purview portal > Settings > Roles and scopes > Adaptive scopes. On the Adaptive scopes page, select + Create scope. | Fix: Extend the path to 'Settings > Roles and scopes > Adaptive scopes > + Create scope > Full directory > SharePoint sites'. Add to the row note: 'Then select the attributes or properties and enter their values to build the dynamic membership.' The cited page documents these remaining choices. | Source: https://learn.microsoft.com/purview/purview-adaptive-scopes
+- [supported, minor] controls[2].ui; Governance controls table / admin-path: The printed Microsoft Purview DLP wizard path follows the cited Custom policy procedure through the SharePoint sites location selector. | Found: Select Data loss prevention > Policies > + Create policy. Select Enterprise applications & devices. Select Custom from both the Categories list and the Regulations list. Accept the default Full directory on the Assign admin units page. Choose where to apply the policy. | Fix: Keep the supported path and add to controls[2].note: 'The UI path reaches the SharePoint sites location selector; the cited procedure does not show selection of individual SharePoint sites.' This narrows the UI's claim without inventing further labels. | Source: https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external
 -->

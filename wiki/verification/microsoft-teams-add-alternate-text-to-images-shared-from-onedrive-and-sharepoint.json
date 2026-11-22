@@ -2,33 +2,27 @@
   "slug": "microsoft-teams-add-alternate-text-to-images-shared-from-onedrive-and-sharepoint",
   "roadmapId": 571687,
   "title": "Microsoft Teams: alternate text for images shared from OneDrive and SharePoint",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-22",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-22",
-    "reasons": [
-      "1 blocking finding (claim 32)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 40,
-    "confirmed": 39,
+    "claims": 42,
+    "confirmed": 42,
     "unconfirmed": 0,
-    "contradicted": 1,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 3
+    "minor": 1
   },
-  "summary": "Hold: the messaging-policy path omits the Edit action needed to reach its settings. The feature description and rollout dates match Microsoft's notice and roadmap; licensing should state the published Teams requirement while keeping feature-specific licensing open.",
+  "summary": "The briefing accurately distinguishes the roadmap's November target from Microsoft's December Worldwide rollout notice. The editing control and its PowerShell command are documented; the broader file-permissions statement needs one additional citation.",
   "claims": [
     {
       "n": 1,
@@ -45,7 +39,7 @@
       "n": 2,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "record",
-      "claim": "Users can add alt text to image attachments while composing a message.",
+      "claim": "Users can add alt text while composing a message.",
       "status": "supported",
       "source": "Message Center post MC1523086",
       "quote": "Users can add alt text to an image attachment while composing a message",
@@ -54,9 +48,9 @@
     },
     {
       "n": 3,
-      "where": "What's changing; controls[0].note; Governance guidance",
+      "where": "What's changing; controls[0].note; Governance controls",
       "type": "record",
-      "claim": "Users can add or update descriptions later by editing their sent message.",
+      "claim": "Users can add or update the description later by editing their sent message.",
       "status": "supported",
       "source": "Message Center post MC1523086",
       "quote": "can add or update the description later by editing their sent message.",
@@ -65,9 +59,9 @@
     },
     {
       "n": 4,
-      "where": "summary; What's changing; Governance guidance; rationale: impact",
+      "where": "summary; What's changing",
       "type": "record",
-      "claim": "Screen readers can announce the saved description when a user encounters the image in the Teams message.",
+      "claim": "Screen readers can announce the saved description when encountering the image in the Teams message.",
       "status": "supported",
       "source": "Message Center post MC1523086",
       "quote": "Screen readers can announce the saved description when users encounter the image in the Teams message.",
@@ -100,7 +94,7 @@
       "n": 7,
       "where": "What's changing; Scope: Who; rationale: impact",
       "type": "record",
-      "claim": "The notice identifies Microsoft 365 users who share or receive OneDrive and SharePoint image attachments through Teams as affected.",
+      "claim": "The affected people are Microsoft 365 users who share or receive image attachments stored in OneDrive and SharePoint through Teams.",
       "status": "supported",
       "source": "Message Center post MC1523086",
       "quote": "Microsoft 365 users who share or receive image attachments stored in OneDrive and SharePoint through Microsoft Teams.",
@@ -142,6 +136,17 @@
     },
     {
       "n": 11,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap provides no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
       "where": "front matter: releasePhase; What's changing; Scope: Release phase",
       "type": "record",
       "claim": "The roadmap lists General Availability and Targeted Release.",
@@ -152,21 +157,10 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "front matter: clouds; What's changing; Scope: Clouds; Open questions",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 13,
       "where": "front matter: platforms; What's changing; Scope: Platforms",
       "type": "record",
-      "claim": "The roadmap lists Desktop, Mac and Web.",
+      "claim": "The roadmap platforms are Desktop, Mac and Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Desktop\", \"Mac\", \"Web\"]",
@@ -175,12 +169,12 @@
     },
     {
       "n": 14,
-      "where": "front matter: previewDate",
+      "where": "front matter: clouds; What's changing; Scope: Clouds; Open questions",
       "type": "record",
-      "claim": "The roadmap provides no preview date.",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"previewDate\": null",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
       "severity": null,
       "fix": null
     },
@@ -197,9 +191,9 @@
     },
     {
       "n": 16,
-      "where": "What's changing; Scope: Timing; Governance guidance",
+      "where": "What's changing; Scope: Timing; Governance guidance: Before rollout",
       "type": "record",
-      "claim": "The notice schedules Worldwide General Availability rollout to begin in early December 2026.",
+      "claim": "The notice says Worldwide General Availability rollout begins in early December 2026.",
       "status": "supported",
       "source": "Message Center post MC1523086",
       "quote": "General Availability (Worldwide): We will begin rolling out in early December 2026",
@@ -208,9 +202,9 @@
     },
     {
       "n": 17,
-      "where": "What's changing; Scope: Timing; Governance guidance",
+      "where": "What's changing; Scope: Timing; Governance guidance: Before rollout",
       "type": "record",
-      "claim": "The notice expects Worldwide General Availability rollout to complete by mid-December 2026.",
+      "claim": "The notice expects Worldwide rollout to complete by mid-December 2026.",
       "status": "supported",
       "source": "Message Center post MC1523086",
       "quote": "expect to complete by mid-December 2026.",
@@ -219,17 +213,28 @@
     },
     {
       "n": 18,
-      "where": "What's changing; Scope: Clouds; Governance guidance; Open questions",
+      "where": "What's changing; Scope: Clouds; Governance guidance: After rollout; Open questions",
       "type": "record",
-      "claim": "The notice gives a Worldwide schedule only, not schedules for GCC, GCC High or DoD.",
+      "claim": "The notice gives a schedule only for Worldwide, not for GCC, GCC High or DoD.",
       "status": "supported",
       "source": "Message Center post MC1523086",
-      "quote": "[Rollout Schedule:]\nGeneral Availability (Worldwide): We will begin rolling out in early December 2026 and expect to complete by mid-December 2026.",
+      "quote": "[Rollout Schedule:] General Availability (Worldwide): We will begin rolling out in early December 2026 and expect to complete by mid-December 2026.",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe this particular alt-text feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"alt text\" \"OneDrive\" \"SharePoint\"; Teams alternate text image messaging policy disable Set-CsTeamsMessagingPolicy Microsoft Graph. Read accessibility-guide-admin, messaging-policies-in-teams and Set-CsTeamsMessagingPolicy; no feature-specific description found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
       "where": "summary; Why it matters",
       "type": "record",
       "claim": "Microsoft's notice says no admin action is required.",
@@ -240,21 +245,21 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "Why it matters; Risk assessment: Change & support; Cost and licensing; Governance guidance",
+      "n": 21,
+      "where": "Why it matters; Governance guidance: Before rollout",
       "type": "record",
-      "claim": "Microsoft recommends notifying help desk staff and end users about the change.",
+      "claim": "Microsoft recommends notifying help desk staff and end users.",
       "status": "supported",
       "source": "Message Center post MC1523086",
-      "quote": "You may want to:\n- Notify help desk staff and end users about the change.",
+      "quote": "You may want to: - Notify help desk staff and end users about the change.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 21,
+      "n": 22,
       "where": "Why it matters; Risk assessment: Change & support; Cost and licensing; Governance guidance",
       "type": "record",
-      "claim": "Microsoft recommends updating accessibility guidance to encourage concise, meaningful image descriptions.",
+      "claim": "Microsoft recommends updating accessibility guidance to encourage concise, meaningful descriptions.",
       "status": "supported",
       "source": "Message Center post MC1523086",
       "quote": "Update your organization's accessibility guidance to encourage concise, meaningful descriptions when sharing images in Microsoft Teams.",
@@ -262,18 +267,29 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 23,
+      "where": "Why it matters; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The Teams accessibility guide for admins recommends sharing Microsoft's guide on writing effective alt text.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/accessibility-guide-admin",
+      "quote": "Share the link how to write effective alt text with your organization to help users understand non-text messages shared in chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
       "where": "Risk assessment: Data exposure; Open questions",
       "type": "record",
       "claim": "MC1523086 identifies no compliance considerations.",
       "status": "supported",
       "source": "Message Center post MC1523086",
-      "quote": "[Compliance considerations:]\nNo compliance considerations identified. Review as appropriate for your organization.",
+      "quote": "[Compliance considerations:] No compliance considerations identified. Review as appropriate for your organization.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 23,
+      "n": 25,
       "where": "Risk assessment: Security & identity",
       "type": "record",
       "claim": "The notice describes no new permissions, sharing links or identities.",
@@ -284,10 +300,32 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 26,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Access to the original shared file continues to depend on OneDrive and SharePoint permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoftteams/files/guests-cannot-access-files#summary",
+      "quote": "In Teams chat and channels, the file sharing settings are based on the sharing settings for SharePoint and OneDrive in the SharePoint admin center.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/troubleshoot/microsoftteams/files/guests-cannot-access-files to sources to support the OneDrive-and-SharePoint file-access statement; retain the existing limits-specifications-teams citation for SharePoint permissions."
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The Teams limits page says permissions and file security options set in SharePoint are automatically reflected within Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/limits-specifications-teams#storage",
+      "quote": "Files shared within a conversation are automatically added to the document library, and permissions and file security options set in SharePoint are automatically reflected within Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
       "where": "Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "The notice describes users writing descriptions, not automatic or generated alt text.",
+      "claim": "The notice describes user-written descriptions, not generated or automatic alt text.",
       "status": "supported",
       "source": "Message Center post MC1523086",
       "quote": "Users can add alt text to an image attachment while composing a message, and can add or update the description later by editing their sent message.",
@@ -295,139 +333,139 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "Microsoft Learn does not yet describe this OneDrive and SharePoint image-alt-text feature.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams alt text OneDrive SharePoint; Teams alternate text image description sent message. Read accessibility-guide-admin and messaging-policies-in-teams; results cover general accessibility, file sharing and messaging, not this feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "front matter: defaultState; Why it matters",
-      "type": "default",
-      "claim": "The default is user-opt-in: users choose to add descriptions without an admin enabling the feature.",
-      "status": "supported",
-      "source": "Message Center post MC1523086",
-      "quote": "Users can add alt text to an image attachment while composing a message ... No admin action is required.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "front matter: licensing.model; Cost and licensing; Open questions; rationale: cost",
-      "type": "licensing",
-      "claim": "Licensing is unknown because Microsoft has not published licensing specific to this change.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/user-access",
-      "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
-      "severity": "minor",
-      "fix": "Set licensing.model to included. Replace licensing notes and the feature-licence gap wording in Cost and licensing, Open questions and the cost rationale with: 'Users need a Teams license to use Teams. Microsoft has not published a licensing requirement specific to this alt-text option.' Cite https://learn.microsoft.com/microsoftteams/user-access."
-    },
-    {
-      "n": 28,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "record",
-      "claim": "Neither the roadmap record nor MC1523086 names a licence for this change.",
-      "status": "supported",
-      "source": "Message Center post MC1523086",
-      "quote": "Who is affected:\n- Microsoft 365 users who share or receive image attachments stored in OneDrive and SharePoint through Microsoft Teams.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 29,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "The Teams Premium licensing page does not mention alternate text for image attachments.",
+      "where": "controls[0].note; Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "Edit sent messages lets users edit messages they sent in chat.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams alternate text OneDrive SharePoint images licensing price prerequisites. Read the full Microsoft Teams Premium licensing page and its feature tables; no alternate-text image-attachment entry appears.",
+      "source": "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams",
+      "quote": "Edit sent messages - Use this setting to let users edit the messages that they sent in chat.",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No price or meter specific to this change is documented as of November 2026.",
+      "where": "controls[0].ui; Governance controls: table",
+      "type": "admin-path",
+      "claim": "The editing control is at Teams admin center > Messaging policies > policy > Edit > Edit sent messages.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams alternate text OneDrive SharePoint images licensing price prerequisites; Teams alternate text image description sent message price meter. Read Teams Premium licensing and Manage Teams licenses; no feature-specific meter or price appears.",
+      "source": "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams",
+      "quote": "In the left navigation of the Microsoft Teams admin center, go to Messaging policies. Select the policy by clicking to the left of the policy name, and then select Edit. Edit sent messages - Use this setting to let users edit the messages that they sent in chat.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "Scope: Roles",
-      "type": "absence",
-      "claim": "No admin role or prerequisite specific to this change is documented.",
+      "where": "controls[0].api; Governance controls: table",
+      "type": "command",
+      "claim": "Set-CsTeamsMessagingPolicy -Identity <policy name> -AllowUserEditMessage $true enables editing own messages in the specified policy.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams alternate text image description sent message admin roles prerequisites; Teams alternate text OneDrive SharePoint images prerequisites. Read accessibility-guide-admin and messaging-policies-in-teams; no feature-specific role or prerequisite appears.",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingpolicy",
+      "quote": "-Identity: Identity for the teams messaging policy you're modifying. -AllowUserEditMessage: Determines whether a user is allowed to edit their own messages. Set this to TRUE to allow. Set this to FALSE to prohibit.",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
-      "where": "controls[0].ui",
-      "type": "admin-path",
-      "claim": "Teams admin center > Messaging policies > policy > Edit sent messages is the route to the message-editing control.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams",
-      "quote": "In the left navigation of the Microsoft Teams admin center, go to Messaging policies. Select the policy by clicking to the left of the policy name, and then select Edit.",
-      "severity": "blocker",
-      "fix": "Replace controls[0].ui.path and the rendered table path with 'Messaging policies > policy > Edit > Edit sent messages'. Keep Teams admin center as the surface and https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams as docs."
+      "where": "controls[1]; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No separate tenant or policy switch for this alt-text option is documented on the admin UI or automation surface.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams alternate text image messaging policy disable Set-CsTeamsMessagingPolicy Microsoft Graph; \"Teams\" \"alt text\" \"admin\" \"policy\". Read messaging-policies-in-teams, accessibility-guide-admin and Set-CsTeamsMessagingPolicy syntax/parameters; no separate alt-text switch found.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 33,
-      "where": "controls[0].api",
-      "type": "command",
-      "claim": "MicrosoftTeams PowerShell supports Set-CsTeamsMessagingPolicy -Identity <policy name> -AllowUserEditMessage $true to enable editing one's own messages.",
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The capability is user-opt-in: users choose to add descriptions, without a documented admin enablement switch.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingpolicy",
-      "quote": "-AllowUserEditMessage: Determines whether a user is allowed to edit their own messages. Set this to TRUE to allow. Set this to FALSE to prohibit. -Identity: Identity for the teams messaging policy you're modifying.",
+      "source": "Message Center post MC1523086",
+      "quote": "Users can add alt text to an image attachment while composing a message. No admin action is required. Searched: Teams alternate text image messaging policy disable Set-CsTeamsMessagingPolicy Microsoft Graph; read messaging policy and cmdlet references, no separate enablement switch found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 34,
-      "where": "controls[0].note; Risk assessment: Change & support; Governance controls",
-      "type": "applicability",
-      "claim": "Edit sent messages governs message editing in general, but its applicability to later image-description updates is not confirmed.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Users need a Teams license to use Teams.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams",
-      "quote": "Edit sent messages - Use this setting to let users edit the messages that they sent in chat.",
-      "severity": "minor",
-      "fix": "Replace the control note and its repeated caveat in Governance controls with: 'Existing control, not a separate alt-text switch. Edit sent messages lets users edit messages they sent in chat. MC1523086 describes later description updates as editing the sent message.' Keep the pilot-test advice without asserting undocumented field-specific behaviour."
+      "source": "https://learn.microsoft.com/microsoftteams/user-access",
+      "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 35,
-      "where": "controls[1].ui and controls[1].api; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No dedicated tenant or policy switch for alternate text on OneDrive and SharePoint images in Teams is documented on either admin UI or automation.",
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is included in the Teams license the product already requires.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams alternate text OneDrive SharePoint images admin switch policy PowerShell; Set-CsTeamsMessagingPolicy Set-CsTeamsMessagingConfiguration alternate text image descriptions enable disable. Read messaging policy settings and both cmdlet syntaxes; no alt-text switch.",
+      "source": "https://learn.microsoft.com/microsoftteams/user-access",
+      "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
       "severity": null,
       "fix": null
     },
     {
       "n": 36,
-      "where": "controls[0].scope; Governance controls",
-      "type": "behaviour",
-      "claim": "Messaging policies apply per user.",
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a licensing requirement specific to this alt-text option.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams",
-      "quote": "You can assign a policy directly to users, either individually or at scale through a batch assignment ... or to a group that the users are members of",
+      "source": null,
+      "quote": "Searched: Teams alternate text OneDrive SharePoint licensing pricing admin roles prerequisites; \"Teams\" \"alternate text\" license price. Read user-access, licensing search excerpts, roadmap and MC1523086; none names a license specific to the option.",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No meter or price is documented specifically for this option in November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams alternate text OneDrive SharePoint licensing pricing admin roles prerequisites; \"Teams\" \"alternate text\" license price. Read user-access, pricing search excerpts, roadmap and MC1523086; no option-specific meter or price found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Scope: Platforms",
+      "type": "record",
+      "claim": "Mobile is not listed in either the roadmap record or the notice.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Roadmap: \"platforms\": [\"Desktop\", \"Mac\", \"Web\"]. MC1523086: \"Microsoft Teams (Windows, Mac, and web)\".",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope: Roles",
+      "type": "absence",
+      "claim": "No admin role or prerequisite specific to this alt-text change is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams alternate text OneDrive SharePoint licensing pricing admin roles prerequisites. Read accessibility-guide-admin, messaging-policies-in-teams, user-access, roadmap and MC1523086; no change-specific admin role or prerequisite found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Messaging policies apply to users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams",
+      "quote": "Messaging policies are used to control which chat and channel messaging features are available to users (owners and members) in Microsoft Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
       "where": "Governance controls",
       "type": "behaviour",
       "claim": "A user can be assigned only one messaging policy at a time.",
@@ -438,43 +476,21 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Why it matters; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Microsoft's Teams accessibility guide for admins recommends sharing the guide on writing effective alt text.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/accessibility-guide-admin",
-      "quote": "Share the link how to write effective alt text with your organization to help users understand non-text messages shared in chat.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Risk assessment: Security & identity",
-      "type": "applicability",
-      "claim": "Access to the shared image continues to depend on OneDrive and SharePoint file permissions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/limits-specifications-teams#storage",
-      "quote": "Files shared within a conversation are automatically added to the document library, and permissions and file security options set in SharePoint are automatically reflected within Teams.",
-      "severity": "minor",
-      "fix": "Cite https://learn.microsoft.com/microsoftteams/limits-specifications-teams#storage for the existing file-permission boundary. Keep this about access to the original shared file, not access to the saved description."
-    },
-    {
-      "n": 40,
-      "where": "Scope: Platforms",
+      "n": 42,
+      "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "Mobile is not listed in the roadmap or the notice.",
+      "claim": "The roadmap record was modified at 2026-11-12T01:50:56.",
       "status": "supported",
-      "source": "Message Center post MC1523086",
-      "quote": "Microsoft Teams (Windows, Mac, and web)",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-12T01:50:56\"",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-22T02:05:11.820Z",
+    "at": "2026-11-22T02:58:55.689Z",
     "summary": {
-      "links": 6,
+      "links": 7,
       "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
@@ -509,7 +525,12 @@
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+        "url": "https://learn.microsoft.com/microsoftteams/user-access",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/limits-specifications-teams#storage",
         "ok": true,
         "status": 200
       }
@@ -523,6 +544,7 @@
         "reachable": true,
         "segments": [
           "Messaging policies",
+          "Edit",
           "Edit sent messages"
         ],
         "missing": []
@@ -539,5 +561,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-22",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }
