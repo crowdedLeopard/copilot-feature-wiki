@@ -17,7 +17,7 @@ impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "mixed"
+  model: "included"
   notes: "The connectors prerequisites page says the tenant must have Microsoft 365 licenses and lists which experiences each licence supports; no licence specific to schema recommendations is published."
 audiences: ["m365-admin","service-owner"]
 tags: ["m365-copilot","copilot-connectors","extensibility","m365-admin-center","microsoft-graph","admin-controls"]
@@ -43,6 +43,9 @@ sources:
   - title: "Create, update, and delete connections in Microsoft Graph"
     url: "https://learn.microsoft.com/graph/connecting-external-content-manage-connections"
     kind: "learn"
+  - title: "Register and update schema for the Microsoft Graph connection"
+    url: "https://learn.microsoft.com/graph/connecting-external-content-manage-schema"
+    kind: "learn"
 videos: []
 related: ["m365-copilot-copilot-extensibility-admins-can-govern-and-manage-federated-copilot-connecto","m365-copilot-copilot-extensibility-devx-compliance-sensitivity-labels-for-custom-connector","m365-copilot-streamlined-authentication-process-with-oauth-for-connector-admins","m365-admin-center-usage-reports-m365-copilot-connectors"]
 controls:
@@ -53,7 +56,7 @@ controls:
       path: "Copilot > Connectors > Your Connections > connection"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector"
     api: null
-    note: "Needs the AI administrator role. Schema recommendations are shown in the connection detail panel."
+    note: "Needs the AI administrator role. The Graph connection guide instead says a search admin can view and manage all tenant connections; Microsoft's guidance differs on the role."
   - governs: "Changing a connection's schema to add the missing labels"
     scope: "app"
     ui: null
@@ -61,7 +64,7 @@ controls:
       kind: "graph"
       call: "PATCH /v1.0/external/connections/{id}/schema"
       docs: "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-patch-schema?view=graph-rest-1.0"
-    note: "The request body supplies the schema object. Least privileged permission is ExternalConnection.ReadWrite.OwnedBy."
+    note: "The request body sets properties[].labels on the schema properties to add the missing semantic labels. Least privileged permission is ExternalConnection.ReadWrite.OwnedBy."
 confidence: "medium"
 created: "2026-11-22"
 updated: "2026-11-22"
@@ -71,19 +74,23 @@ changes:
     note: "First briefing: Learn documents schema recommendations for custom connectors that check four semantic labels, while the roadmap item is still In development."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 44 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Correction: licensing model set to included, the role difference between Learn pages noted, label wording and schema-call note aligned with Learn, and the role checklist step reworded."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 51 statements contradicted, 2 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 44
-  confirmed: 42
-  unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "d5d7bacbe233168f91cea186fc922437"
+  claims: 51
+  confirmed: 48
+  unconfirmed: 2
+  contradicted: 1
+  attempts: 2
+  hash: "9694dfa3920b3bae4bdad771bf578312"
 ---
 
 ## What's changing
@@ -105,7 +112,7 @@ Microsoft has not stated what happens on arrival, so this page makes no claim ab
 ## Risk assessment
 
 **Data exposure**
-- Adding labels changes how connector content is indexed and surfaced in Microsoft 365 Copilot, according to Learn, so a schema change can make more items citable. Learn says deployed connectors are tenant-wide unless external item security is restricted, so check item permissions on the connector before relying on better citations.
+- Semantic labels help Copilot understand, rank and cite connector content, so a schema change can make more items citable. Learn says deployed connectors are tenant-wide unless external item security is restricted, so check item permissions on the connector before relying on better citations.
 
 **Security & identity**
 - Viewing and managing Copilot connectors needs the AI administrator role, per Learn. Changing a schema through Microsoft Graph uses the `ExternalConnection.ReadWrite.OwnedBy` permission or the higher `ExternalConnection.ReadWrite.All`, so review which applications hold either.
@@ -125,7 +132,7 @@ A licence or meter specific to schema recommendations is not yet published. Indi
 
 ## Scope
 
-Learn describes the recommendations for published custom Copilot connectors, shown in the Microsoft 365 admin center. Managing connectors needs the AI administrator role.
+Learn describes the recommendations for published custom Copilot connectors, shown in the Microsoft 365 admin center. Managing connectors needs the AI administrator role. The Graph connection-management guide instead says a search admin can view and manage all the connections in the tenant, so Microsoft's guidance differs on the role.
 
 The roadmap record lists Worldwide (Standard Multi-Tenant) as the cloud, with General Availability and Targeted Release phases and Developer and Web platforms. Rollout mechanics are not stated in the record or on the Learn page.
 
@@ -133,7 +140,7 @@ The roadmap record lists Worldwide (Standard Multi-Tenant) as the cloud, with Ge
 
 ### Before rollout
 - Inventory the custom connectors in your tenant and name the developer who owns each schema.
-- Confirm who holds the AI administrator role, which Learn requires to manage connectors.
+- Arrange for an AI administrator to review the recommendations.
 - Check the semantic label guidance linked from the Learn page, so developers know what `title`, `url`, `lastModifiedBy` and `lastModifiedDateTime` should map to.
 
 ### At rollout
@@ -151,8 +158,8 @@ The roadmap record lists Worldwide (Standard Multi-Tenant) as the cloud, with Ge
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Viewing schema recommendations for a published custom connector</strong><br><small>App</small><br><small class="controls__note">Needs the AI administrator role. Schema recommendations are shown in the connection detail panel.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Your Connections › connection <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Changing a connection's schema to add the missing labels</strong><br><small>App</small><br><small class="controls__note">The request body supplies the schema object. Least privileged permission is ExternalConnection.ReadWrite.OwnedBy.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /v1.0/external/connections/{id}/schema</code> <a href="https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-patch-schema?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Viewing schema recommendations for a published custom connector</strong><br><small>App</small><br><small class="controls__note">Needs the AI administrator role. The Graph connection guide instead says a search admin can view and manage all tenant connections; Microsoft's guidance differs on the role.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Your Connections › connection <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Changing a connection's schema to add the missing labels</strong><br><small>App</small><br><small class="controls__note">The request body sets properties[].labels on the schema properties to add the missing semantic labels. Least privileged permission is ExternalConnection.ReadWrite.OwnedBy.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /v1.0/external/connections/{id}/schema</code> <a href="https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-patch-schema?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -178,11 +185,9 @@ impact: Low. AI administrators and the developers of custom connectors see the r
 <!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model / consistency: The administrative schema-recommendations feature has a mixed licensing model. | Found: Page field: model: "mixed". Microsoft: "Your tenant must have Microsoft 365 licenses." The standard assigns included to a new option inside a product covered by its general licensing requirement. | Fix: Set licensing.model to 'included'. Keep the existing notes naming Microsoft 365 licenses and distinguishing the unpublished recommendation-specific licence; the table's alternative licences govern downstream connector experiences, not a mixed entitlement for this administrative view. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites
+- [unsupported, blocker] Why it matters / default: The recommendations are not a change to existing behaviour, so nobody needs to act before they appear. | Found: Searched: Copilot connectors schema recommendations automatically change schema apply recommendations. Read manage-connector and schema guide; also searched recommendations' default and rollout. Neither source states that existing behaviour is unchanged on arrival. | Fix: Replace 'The recommendations are guidance rather than a change to existing behaviour, so nobody needs to act before they appear.' with 'No source says existing behaviour changes, so plan for the connector developer to review the guidance rather than assuming a required pre-rollout change.' Keep defaultState as unknown.
+- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: A person or an application still has to change the schema rather than the recommendations making changes. | Found: Searched: Copilot connectors schema recommendations automatically change schema apply recommendations; schema recommendations Copilot read-only automatically. Read manage-connector, schema guide and PATCH reference. They document highlighting and schema updates, not this mandatory intervention rule. | Fix: Replace 'A person or an application still has to change the schema.' with 'Microsoft Graph documents a separate operation to change the schema.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].note; Risk assessment: Security & identity; Scope; Governance guidance / role: Accessing and managing connectors requires the AI administrator role. | Found: To access and manage your Microsoft 365 Copilot connectors, you must be an AI administrator for your organization. | Fix: Keep the AI administrator requirement, but add: 'The cited Graph connection-management guide instead says a search admin can view and manage all tenant connections; the Microsoft guidance differs on the role.' The differing page is https://learn.microsoft.com/graph/connecting-external-content-manage-connections. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector
-- [supported, minor] Risk assessment: Data exposure / behaviour: Adding labels changes how connector content is indexed and surfaced. | Found: When you build a custom Copilot connector, the schema you define determines how your content is indexed and surfaced in Microsoft 365 Copilot. | Fix: Replace the opening clause with 'Semantic labels help Copilot understand, rank and cite connector content'. The cited overview at https://learn.microsoft.com/plugins/overview-copilot-connector explicitly says 'Semantic labels are used for filtering and don't affect semantic indexing', so do not imply that label changes alter semantic indexing. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector
-- [supported, minor] Risk assessment: Autonomy & actions; Governance guidance / behaviour: A person or application changes the schema to assign missing semantic labels. | Found: You can assign or remove semantic labels. These labels influence experiences such as **Relevance** and **Viva Topics**. | Fix: Add https://learn.microsoft.com/graph/connecting-external-content-manage-schema to sources, titled 'Register and manage schema for the Microsoft 365 Copilot connectors'; it explicitly documents adding or removing labels on an existing schema. | Source: https://learn.microsoft.com/graph/connecting-external-content-manage-schema
-- [supported, minor] controls[1].api; Governance controls / command: PATCH /v1.0/external/connections/{id}/schema updates a connection schema and can add labels. | Found: Create a new or update an existing schema for a Microsoft Search connection. PATCH https://graph.microsoft.com/v1.0/external/connections/contosohr/schema | Fix: Keep the call unchanged. Replace the first sentence of controls[1].note with 'The request body sets properties[].labels on the schema properties to add the missing semantic labels.' The cited reference's example uses properties entries containing labels. | Source: https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-patch-schema?view=graph-rest-1.0
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist tells readers to confirm AI administrator assignments without a corresponding role-assignment control row. | Found: Checklist: 'Confirm who holds the AI administrator role'. The controls table contains only viewing recommendations and changing schemas. | Fix: Replace that checklist bullet with 'Arrange for an AI administrator to review the recommendations.' This preserves the verified prerequisite without asking readers to inspect an unlisted role-assignment control.
+- [supported, minor] Risk assessment: Change & support; Governance guidance: After rollout / behaviour: Editing a connection might trigger a full crawl, where applicable. | Found: Editing a connection might trigger a full crawl, where applicable. However, during the initial full crawl, editing the connection doesn't trigger another full crawl. Changes made during the first crawl are applied during the next scheduled full crawl. | Fix: Add after the full-crawl statement: 'During the initial full crawl, edits do not trigger another full crawl; changes are applied during the next scheduled full crawl.' | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist tells administrators to monitor connection state, but that monitoring control has no table row. | Found: After rollout: 'Watch the connection state after a schema change'. The table's rows cover only 'Viewing schema recommendations for a published custom connector' and 'Changing a connection's schema to add the missing labels'. | Fix: Remove the After rollout bullet 'Watch the connection state after a schema change, because editing a connection might trigger a full crawl.' The full-crawl consideration remains in Risk assessment; do not add a control row in this correction.
 -->

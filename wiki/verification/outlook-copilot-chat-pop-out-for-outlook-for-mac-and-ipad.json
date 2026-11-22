@@ -1,0 +1,608 @@
+{
+  "slug": "outlook-copilot-chat-pop-out-for-outlook-for-mac-and-ipad",
+  "roadmapId": 568368,
+  "title": "Outlook for Mac and iPad: pop out Copilot Chat into a floating window",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "2 blocking findings (claims 35, 45)"
+    ]
+  },
+  "counts": {
+    "claims": 47,
+    "confirmed": 44,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 1,
+    "minor": 2
+  },
+  "summary": "Hold: the briefing incorrectly presents Integrated Apps as the only documented way to block Copilot in Outlook and treats enterprise data protection as unconfirmed for the floating chat. Microsoft documents broader privacy controls and enterprise protections for Copilot Chat; its pages also disagree about whether the Integrated Apps block affects Teams and can be scoped.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap product is Outlook.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Outlook\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists iOS and Mac as the platforms.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"iOS\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "title; summary; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap title identifies the pop-out as an Outlook for Mac and iPad feature.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Outlook: Copilot Chat pop-out for Outlook for Mac and iPad",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is August CY2026, a month already past on the run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap cloud is Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The record lists no US Government clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified; What's changing",
+      "type": "record",
+      "claim": "The record was last modified on 2026-10-23 and still had status Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-23T21:59:27\"; \"status\": \"Rolling out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says Copilot Chat remains accessible inside the Outlook app window.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Copilot Chat remains accessible within an Outlook app window",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes a display change that lets Copilot Chat float over the main Outlook window.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "now can also be popped out to float over the main Outlook app window.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Why it matters; Governance guidance",
+      "type": "record",
+      "claim": "Clicking the pop-out button opens Copilot separately over the main Outlook window.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When you open Copilot chat and click the pop-out button, Copilot will open separately over the main Outlook window.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says popping out Chat lets people switch contexts, have more working space and control Chat's space and form.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Popping out Copilot Chat allows people to switch contexts or have more space for what they are working on in Outlook and control the space and form that Copilot Chat takes on screen.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The pop-out is user-opt-in: users choose to click its button, and no source says nonusers' existing behaviour changes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When you open Copilot chat and click the pop-out button, Copilot will open separately over the main Outlook window.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Microsoft 365 admin center path is Settings > Integrated Apps > Available Apps > app > Block app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "Select Settings, and then select Integrated Apps. ... Select the Available Apps list. ... Select an app from the Available Apps list to open the overview pane. ... Select Block app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft documents no automation equivalent for this Integrated Apps Copilot app block.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Integrated Apps block Copilot Microsoft Graph PowerShell; Integrated Apps PowerShell block Outlook. Opened Integrated Apps and Manage Copilot Chat; read Update-M365TeamsApp and copilotPackage:block results, neither identifying an equivalent for this Copilot app control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[1].ui and controls[1].api; summary; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no tenant UI or API switch targeting the Mac and iPad pop-out alone in November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook Copilot Chat pop-out Mac iPad disable policy; Copilot Chat Outlook Mac iPad pop-out disable admin policy. Opened Manage Copilot Chat, Integrated Apps and Copilot release notes; no pop-out switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "The documented Integrated Apps controls require the Global Administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "The following controls on the integrated apps portal in the Microsoft 365 Admin Center are only available to Global Admins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].note; Risk assessment; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Blocking the Copilot app through Integrated Apps blocks Copilot Chat in Outlook and the Copilot app, rather than just its pop-out.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+      "quote": "If you block the Copilot app using the Integrated app control, you block the Copilot app tenant-wide across the Microsoft Copilot app, Outlook, and the web, including for users assigned a Microsoft 365 Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].note; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "The Integrated Apps block also blocks Copilot Chat in Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+      "quote": "This setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web for all users.",
+      "severity": "minor",
+      "fix": "Add: 'Manage Copilot Chat says this block includes Teams, but https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365 says the app is blocked only in the Microsoft Copilot application and Outlook, with Teams continuing to honour its Teams admin center settings.'"
+    },
+    {
+      "n": 22,
+      "where": "controls[0].note; Governance controls table",
+      "type": "applicability",
+      "claim": "The tenant-wide Integrated Apps block can be scoped to specific users or groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+      "quote": "Blocking Copilot through Integrated Apps is a tenant-wide control that you can scope to specific users or groups, including licensed users.",
+      "severity": "minor",
+      "fix": "Replace 'scopable to users or groups' with 'Manage Copilot Chat describes user/group scoping, but the linked Integrated Apps instructions say Block app blocks all users; those instructions document user/group selection separately under Edit Users or the Users tab.' Cite both https://learn.microsoft.com/copilot/manage/manage-copilot-chat and https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365."
+    },
+    {
+      "n": 23,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The Integrated Apps Copilot app settings apply to both Microsoft Copilot and Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "On the Integrated Apps page, the CoPilot app settings apply to both Microsoft Copilot and the Copilot Chat apps. Any changes made to this app from the integrated apps portal apply to both.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: licensing.model and licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing model is included because Copilot Chat (Basic) is included with eligible Microsoft 365 licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Copilot Chat (Basic) is the standalone baseline experience included with eligible Microsoft 365 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "availability",
+      "claim": "Copilot Chat in Outlook and Teams is an access point for Copilot Chat (Basic).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "You can access Copilot Chat (Basic) through: ... Copilot Chat in Outlook and Teams",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Chat experiences in Microsoft 365 apps vary with tenant configuration and licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Chat experiences in Microsoft 365 apps vary depending on your tenant configuration and license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No separate licence requirement specific to the pop-out is published in November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat Outlook pop-out licensing price meter release channel version; Outlook Copilot Chat pop-out Mac iPad license price. Opened Microsoft Copilot overview, Manage Copilot Chat and Copilot release notes; no separate pop-out licence found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No meter specific to the pop-out is published in November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat Outlook pop-out licensing price meter release channel version. Opened Microsoft Copilot overview, including usage-based billing capabilities, and Copilot release notes; no pop-out meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate pop-out price or charge is published in November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat Outlook pop-out licensing price meter release channel version; Outlook Copilot Chat pop-out Mac iPad license price. Opened Microsoft Copilot overview and Copilot release notes; no pop-out price found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not describe this pop-out feature in November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook Copilot Chat pop-out Mac iPad floating window; \"Copilot Chat\" \"Outlook\" \"pop-out\"; \"568368\". Opened overview, management and release notes; searched release notes for pop.out, 568368 and floating, finding no matching feature entry.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Scope; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not published the Outlook versions carrying this button.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat Outlook pop-out licensing price meter release channel version; \"568368\". Opened Copilot release notes and searched for pop.out and 568368; no Mac or iPad pop-out build requirement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not published release channels specific to this pop-out.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat Outlook pop-out licensing price meter release channel version. Opened Copilot release notes and searched for pop.out and 568368; general Current Channel language does not identify this Mac and iPad feature's release channels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Microsoft Learn describes Copilot Chat in Outlook as able to work with content the user has open.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Use Copilot Chat in select Microsoft 365 apps like Teams and Outlook with content you have open. In this context, Copilot Chat is aware of your open content and can use it",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Copilot Chat is protected by Enterprise Data Protection when users sign in with Microsoft Entra accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Copilot Chat (Basic), Microsoft 365 Copilot (Basic), and Microsoft 365 Copilot (Premium) are protected by Enterprise Data Protection (EDP) when you sign in with Microsoft Entra accounts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether enterprise data protection applies to Copilot Chat in the floating window.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Copilot Chat (Basic), Microsoft 365 Copilot (Basic), and Microsoft 365 Copilot (Premium) are protected by Enterprise Data Protection (EDP) when you sign in with Microsoft Entra accounts.",
+      "severity": "blocker",
+      "fix": "Replace 'Confirm that the pop-out window keeps the same sign-in and protection, which Microsoft has not stated' with 'Confirm that the pop-out window is signed in with the intended work account; Microsoft states that Copilot Chat has Enterprise Data Protection when signed in with Microsoft Entra accounts.' Replace the final Open questions bullet with 'Does the floating window retain the same signed-in account and open-content behaviour as Copilot Chat inside the Outlook window?' Keep the cited overview URL."
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not described whether the pop-out retains the same signed-in account as the in-window chat.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat pop-out Outlook enterprise data protection open content sign in. Opened Manage Copilot Chat, Microsoft Copilot overview, Privacy and protections and release notes; account-based protections are described but pop-out account continuity is not.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not described whether popping out changes handling of open email content.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat pop-out Outlook enterprise data protection open content sign in. Opened Microsoft Copilot overview, Privacy and protections and release notes; these describe Outlook grounding but not how popping out affects open-content handling.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "summary",
+      "type": "absence",
+      "claim": "No administrator action specific to rolling out this pop-out is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook Copilot Chat pop-out Mac iPad disable admin policy; \"568368\". Opened Manage Copilot Chat, Integrated Apps and Copilot release notes; no pop-out rollout action found. The supplied record describes clicking a button, not admin enablement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap record gives no administrator setting for the pop-out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When you open Copilot chat and click the pop-out button, Copilot will open separately over the main Outlook window.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap describes no new identity mechanism.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Copilot Chat remains accessible within an Outlook app window but now can also be popped out to float over the main Outlook app window.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap describes no new permission.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When you open Copilot chat and click the pop-out button, Copilot will open separately over the main Outlook window.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes changing the chat's window, rather than new autonomous actions or data access.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Popping out Copilot Chat allows people to switch contexts or have more space for what they are working on in Outlook and control the space and form that Copilot Chat takes on screen.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The change does not change what Copilot Chat can do.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Outlook Copilot Chat pop-out Mac iPad floating window; Copilot Chat pop-out Outlook enterprise data protection open content sign in. Opened overview, management, privacy and release notes; the roadmap describes layout but does not state capabilities are unchanged.",
+      "severity": "major",
+      "fix": "Replace 'This is a change to the window Copilot Chat appears in, not to what it can do' with 'The roadmap describes a change to the window Copilot Chat appears in; it does not describe changes to its capabilities.'"
+    },
+    {
+      "n": 44,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "The roadmap presents the floating window as a new option.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Copilot Chat remains accessible within an Outlook app window but now can also be popped out to float over the main Outlook app window.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance guidance: Before rollout",
+      "type": "absence",
+      "claim": "Integrated Apps is the only documented block for Copilot Chat in Outlook.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+      "quote": "If you turn off connected experiences that analyze your content on devices in your organization, Microsoft Copilot features won't be available ... Outlook ... This applies ... on Windows, Mac, iOS, or Android devices.",
+      "severity": "blocker",
+      "fix": "Replace 'the only documented block is the Integrated Apps control in controls table row 1' with 'the Integrated Apps control in controls table row 1 is a documented block'. Do not claim it is the only block: Microsoft also documents connected-experience privacy controls affecting Copilot features in Outlook on Mac and iOS at https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy."
+    },
+    {
+      "n": 46,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The cost rating is none on the basis of the existing included Copilot Chat entitlement, not a new add-on or meter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Copilot Chat (Basic) is the standalone baseline experience included with eligible Microsoft 365 licenses. ... You can access Copilot Chat (Basic) through: ... Copilot Chat in Outlook and Teams",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Why it matters; Risk assessment: Security & identity; Scope",
+      "type": "availability",
+      "claim": "The Copilot app already provides Copilot Chat in Outlook on web, desktop and mobile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+      "quote": "The Copilot app is an integrated app that provides Copilot Chat via web, in the Microsoft Copilot app (web, desktop, mobile) and in Outlook (web, desktop, mobile).",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T07:35:32.660Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=568368",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether Copilot Chat (the Copilot app) is available in Outlook",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Integrated Apps",
+          "Available Apps",
+          "Block app"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

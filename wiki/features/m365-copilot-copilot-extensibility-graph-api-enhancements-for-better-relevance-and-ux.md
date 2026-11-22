@@ -55,6 +55,9 @@ sources:
   - title: "Semantic labels and property descriptions in a custom connector's schema (Microsoft Graph)"
     url: "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-patch-schema"
     kind: "learn"
+  - title: "Publish custom Copilot connectors to the Microsoft 365 admin center"
+    url: "https://learn.microsoft.com/graph/custom-connector-sdk-publish"
+    kind: "learn"
 videos: []
 related: ["m365-copilot-copilot-extensibility-admins-can-govern-and-manage-federated-copilot-connecto","m365-admin-center-usage-reports-m365-copilot-connectors","m365-copilot-federated-copilot-connectors-in-m365-copilot","m365-copilot-copilot-people-connectors-introduces-people-data-ingestions-with-differentiat"]
 controls:
@@ -66,14 +69,14 @@ controls:
       docs: "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector"
     api: null
     note: "AI administrator role. Learn describes this toggle for partner data sources; visible by default; changes can take up to 30 minutes."
-  - governs: "Semantic labels and property descriptions in a custom connector's schema"
+  - governs: "Semantic labels and property descriptions in a custom connector built directly with the Graph API (not the SDK)"
     scope: "app"
     ui: null
     api:
       kind: "graph"
       call: "PATCH /v1.0/external/connections/{id}/schema"
       docs: "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-patch-schema"
-    note: "Developer-side. The property resource documents labels and description; the request body carries them."
+    note: "Developer-side. The property resource documents labels and description; the request body carries them. SDK-built custom connectors have an Assign property labels page during admin-center publishing."
 confidence: "medium"
 created: "2026-11-22"
 updated: "2026-11-22"
@@ -87,19 +90,23 @@ changes:
     note: "Corrected after the independent check: the schema call is described as setting descriptions and label mappings, not connector icons; three checklist steps with no controls row were removed; risk rationale reworded."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 70 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-22"
+    note: "Corrected after the independent check: the schema row is narrowed to connectors built directly with the Graph API, noting the SDK's Assign property labels page; removed an unbacked Permissions review bullet."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 62 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 68
+  claims: 62
+  confirmed: 62
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "0803a79cf610c7d902efa6543968322e"
+  contradicted: 0
+  attempts: 0
+  hash: "daac07c2b651544ac75428ca9be905da"
 ---
 
 ## What's changing
@@ -120,7 +127,6 @@ If nobody acts, no source says existing behaviour changes, so this is a review i
 
 **Data exposure**
 - Labels, descriptions and icons are metadata about indexed content; the roadmap does not describe new data sources. Better relevance can still surface more of an over-shared connection: Learn warns that granting access to Everyone can lead to oversharing of sensitive content, and that deployed connectors are accessible tenant-wide unless external item security is locked down.
-- Review each custom connection's **Permissions** setting before its builders tune relevance (row 1 covers the visibility toggle).
 
 **Security & identity**
 - The schema operation that carries labels and property descriptions lists ExternalConnection.ReadWrite.OwnedBy as its least privileged permission, with ExternalConnection.ReadWrite.All as the higher one. Whether the new options need further permissions is a question for the reference pages.
@@ -166,11 +172,11 @@ The people affected are developers who build custom connectors with the Copilot 
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether a connection's data is used in Copilot Search and Copilot Chat results</strong><br><small>App</small><br><small class="controls__note">AI administrator role. Learn describes this toggle for partner data sources; visible by default; changes can take up to 30 minutes.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Your Connections › connection › Copilot Visibility <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Semantic labels and property descriptions in a custom connector's schema</strong><br><small>App</small><br><small class="controls__note">Developer-side. The property resource documents labels and description; the request body carries them.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /v1.0/external/connections/{id}/schema</code> <a href="https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-patch-schema" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Semantic labels and property descriptions in a custom connector built directly with the Graph API (not the SDK)</strong><br><small>App</small><br><small class="controls__note">Developer-side. The property resource documents labels and description; the request body carries them. SDK-built custom connectors have an Assign property labels page during admin-center publishing.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /v1.0/external/connections/{id}/schema</code> <a href="https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-patch-schema" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The Copilot Visibility toggle is described on Learn for partner data sources, and turning it off excludes the connection from Copilot Search and Copilot Chat results without affecting declarative agents and their data. The admin centre also shows schema recommendations for published custom connectors; these are a view of missing labels, and Learn gives no path to edit labels for custom connectors there. Property descriptions and semantic label mappings, including the iconUrl label, are set by the developer through the Graph schema call in row 2. Whether a connection-level icon can be set is an open question below. Learn documents the Microsoft 365 admin center role needed as AI administrator.
+The Copilot Visibility toggle is described on Learn for partner data sources, and turning it off excludes the connection from Copilot Search and Copilot Chat results without affecting declarative agents and their data. The admin centre also shows schema recommendations for published custom connectors; these are a view of missing labels. Property descriptions and semantic label mappings, including the iconUrl label, are set by the developer through the Graph schema call in row 2. Whether a connection-level icon can be set is an open question below. Learn documents the Microsoft 365 admin center role needed as AI administrator.
 
 ## Open questions
 
@@ -184,12 +190,4 @@ The Copilot Visibility toggle is described on Learn for partner data sources, an
 risk: Low. The roadmap describes display and relevance metadata for custom connectors, not new data sources or actions; review existing connector access permissions before builders tune relevance.
 cost: Low. Only admin and developer time is known; Microsoft Learn publishes no charge or meter specific to these options, and connector licensing follows the Copilot connectors prerequisites page.
 impact: Low. Developers and AI administrators of custom connectors notice first; end users may see different icons, titles and relevance in Copilot results once connector builders apply the options.
--->
-
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui / absence: No admin UI is documented for semantic labels and property descriptions in a custom connector's schema. | Found: When you use the Microsoft 365 Copilot connectors ... SDK, you can publish your custom connectors through the Microsoft 365 admin center ... On the Assign property labels page, assign semantic labels to your source properties. | Fix: Narrow controls[1].governs and its rendered table text to 'Semantic labels and property descriptions in a custom connector built directly with the Graph API (not the SDK)'. Retain ui: null for that narrower case. Add to its note: 'SDK-built custom connectors have an Assign property labels page during admin-center publishing.' Cite https://learn.microsoft.com/graph/custom-connector-sdk-publish. | Source: https://learn.microsoft.com/graph/custom-connector-sdk-publish
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Risk assessment: Data exposure; Governance controls / consistency: The instruction to review each custom connection's Permissions setting has no corresponding controls-table row. | Found: Review each custom connection's Permissions setting before its builders tune relevance (row 1 covers the visibility toggle). The table contains only Copilot Visibility and schema labels/descriptions. | Fix: Remove the Risk assessment bullet 'Review each custom connection's Permissions setting before its builders tune relevance (row 1 covers the visibility toggle).' It directs a control check not represented in the table; do not add a row.
 -->

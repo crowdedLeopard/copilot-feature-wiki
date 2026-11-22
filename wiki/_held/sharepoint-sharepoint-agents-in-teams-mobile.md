@@ -12,7 +12,7 @@ platforms: ["Web"]
 targetDate: "September CY2025"
 previewDate: "August CY2025"
 risk: "low"
-cost: "low"
+cost: "variable"
 impact: "low"
 defaultState: "unknown"
 action: "review"
@@ -27,6 +27,9 @@ sources:
     kind: "learn"
   - title: "Upgrade agents in SharePoint and OneDrive"
     url: "https://learn.microsoft.com/sharepoint/upgrade-sharepoint-agents"
+    kind: "learn"
+  - title: "Use agents with pay-as-you-go billing"
+    url: "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing"
     kind: "learn"
   - title: "Governance and lifecycle actions for agents available in Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions"
@@ -91,19 +94,23 @@ changes:
     note: "First briefing: roadmap-only description of the feature, with the existing SharePoint agent controls and the .agent upgrade timeline around it."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 54 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-22"
+    note: "Corrected cost to variable, with the Copilot Studio meter named for pay-as-you-go use, and removed two checklist items that had no matching control row."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 55 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-22"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 51
+  claims: 55
+  confirmed: 54
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "b0e0f14121644632f8492ba0df24cc69"
+  contradicted: 1
+  attempts: 2
+  hash: "6bd5b29dddd4ad09e6cc81d8a92d2aa1"
 ---
 
 ## What's changing
@@ -145,6 +152,8 @@ Microsoft publishes no licence or meter specific to this feature. For SharePoint
 
 For users who are not assigned a Microsoft Copilot licence, the same page says access can be controlled through pay-as-you-go billing, and that only users in the security group assigned to the billing policy have access to agents. That page is not specific to this feature, so whether this feature changes any of those charges is not yet published.
 
+For the existing .agent experience, pay-as-you-go charges appear under the Copilot Studio meter on the Azure invoice.
+
 Indirect cost is admin time: checking who holds the licence, which sites agents draw on, and how block and Restricted Content Discovery settings behave.
 
 ## Scope
@@ -156,9 +165,9 @@ The roadmap does not say which users see the feature or how it rolls out. For Sh
 ## Governance guidance
 
 ### Before rollout
-- Inventory which sites hold .agent files and which users can open them, since Learn says the permissions on the .agent file determine who can access or edit the agent.
+- Inventory which sites hold .agent files.
 - Identify sites that are not ready for agent use and decide whether to apply Restricted Content Discovery to them (controls table, row 2).
-- Confirm which pilot users hold a Microsoft Copilot licence, and whether a pay-as-you-go billing policy is connected to SharePoint agents, so you know who could reach an agent from Teams (controls table, row 3).
+- Confirm which pilot users hold a Microsoft Copilot licence (controls table, row 3).
 
 ### At rollout
 - Test with a small pilot group whether a SharePoint agent can be used in a Teams mobile group chat or meeting, and note what the agent can read there.
@@ -194,15 +203,12 @@ Restricted Content Discovery changes discoverability and AI entry points on a si
 
 <!-- rationale
 risk: Low. The roadmap describes a new place to use SharePoint agents, not new data access; Learn says agent responses follow each user's permissions to the agent's data sources.
-cost: Low. No licence or meter specific to this feature is published; the known cost is admin time, plus the Microsoft Copilot licence or pay-as-you-go billing that Learn gives for SharePoint agents generally.
+cost: Variable. SharePoint agent usage by users without a Microsoft Copilot licence uses pay-as-you-go billing and appears under the Copilot Studio meter on the Azure invoice; no separate Teams mobile rate is published.
 impact: Low. The roadmap describes use in Teams mobile group chats and meetings, and Microsoft has not said who sees it first or whether it appears by default.
 -->
 
 <!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: cost; Cost and licensing; rationale: cost / consistency: The low cost rating describes indirect cost only despite including the documented pay-as-you-go route for SharePoint agent usage. | Found: Page: "cost: low"; "plus the Microsoft Copilot licence or pay-as-you-go billing". Learn: "Charges of SharePoint agent usage appear under the Copilot Studio meter in your invoice." | Fix: Set cost to "variable". Replace the cost rationale with "Variable. SharePoint agent usage by users without a Microsoft Copilot licence uses pay-as-you-go billing and appears under the Copilot Studio meter on the Azure invoice; no separate Teams mobile rate is published." Cite https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing. In Cost and licensing, add "For the existing .agent experience, pay-as-you-go charges appear under the Copilot Studio meter on the Azure invoice." | Source: https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: The checklist asks administrators to inventory access permissions on .agent files, but the controls table has no file-permissions row. | Found: Checklist: "Inventory which sites hold .agent files and which users can open them". Table rows: agent block, Restricted Content Discovery, Copilot licence assignment; none covers .agent file permissions. | Fix: Remove "and which users can open them, since Learn says the permissions on the .agent file determine who can access or edit the agent" from this checklist bullet, leaving "Inventory which sites hold .agent files." Do not add a control row.
-- [contradicted, minor] Governance guidance: Before rollout, third bullet / consistency: The checklist asks administrators to check a pay-as-you-go billing-policy connection, but the cited licence-assignment row does not cover billing connections. | Found: Checklist: "whether a pay-as-you-go billing policy is connected to SharePoint agents" (row 3). Row 3 governs "Which users hold a Microsoft Copilot licence" and provides only licence assignment. | Fix: Replace this bullet with "Confirm which pilot users hold a Microsoft Copilot licence (controls table, row 3)." Do not add a control row.
+- [contradicted, blocker] Risk assessment: Security & identity / absence: Microsoft has not said whose permissions apply when several people in one chat or meeting prompt the same agent. | Found: The agent responds based on the permissions of the person asking the question. When you share an agent with others, they can only access the sources for which they have permissions. | Fix: Replace this bullet with: 'For existing SharePoint agents shared in Teams, Microsoft says the agent responds based on the permissions of the person asking the question; sharing the agent does not automatically change permissions on its sources.' Cite https://learn.microsoft.com/training/modules/use-no-code-agents-sharepoint/3-share-agent-microsoft-teams and add that page to sources. | Source: https://learn.microsoft.com/training/modules/use-no-code-agents-sharepoint/3-share-agent-microsoft-teams
 -->

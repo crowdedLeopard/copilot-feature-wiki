@@ -89,19 +89,23 @@ changes:
     note: "Correction: added the roles Microsoft documents for Copilot licence requests and the partner (AOBO) Global Administrator requirement, fixed the cost rationale, removed claims the check could not support, and set action to prepare."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 55 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-22"
+    note: "Correction: removed the clause saying no source says existing behaviour changes, since the release note describes changed request discovery."
+  - date: "2026-11-22"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 61 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-22"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 54
+  claims: 61
+  confirmed: 61
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "71a7944ee0a01bbc49198e854d737691"
+  contradicted: 0
+  attempts: 0
+  hash: "c0e05b221e6723fb1ce6476418cac6a6"
 ---
 
 ## What's changing
@@ -118,7 +122,7 @@ Microsoft Learn has no dedicated article for the page at the time of writing (No
 
 Licence requests decide who gets Microsoft 365 Copilot, so the queue is where licensing, cost and access decisions meet. Microsoft's November 2026 partner announcement says that, in most organisations, Copilot Chat limit notifications include an upgrade option through which users can request a Microsoft 365 Copilot licence; admins can approve or deny it in the Microsoft 365 admin center. Requests that nobody reviews leave users waiting.
 
-Microsoft has not stated whether the page is on by default or whether it needs any admin action, so no source says existing behaviour changes. The practical step is to learn where the page is, who in your organisation can open it and who owns the queue.
+Microsoft has not stated whether the page is on by default or whether it needs any admin action. The practical step is to learn where the page is, who in your organisation can open it and who owns the queue.
 
 ## Risk assessment
 
@@ -193,8 +197,8 @@ cost: Low. The only cost the sources show is admin time. The release note names 
 impact: Low. Admins who handle licensing notice it. Microsoft has not said whether it changes anything users see.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters / absence: No source says existing behaviour changes. | Found: Previously, admins had to locate license requests through multiple menus or notifications. This new page centralizes all Copilot license requests, improving visibility and management efficiency. | Fix: Remove only ', so no source says existing behaviour changes' from the first sentence of the second paragraph of Why it matters. Retain the statement that Microsoft has not stated the page's default or required admin action; the release note does describe changed request discovery. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[1].ui; rendered table; What's changing; Governance guidance; Governance controls / admin-path: Billing > Licenses > Requests in the Microsoft 365 admin center reaches the existing self-service request process. | Found: select Billing > Licenses. On the Licenses page, select the Requests tab. Select the row that contains the request you want to review. Assign licenses to each user through the default Approve the selected license requests option. | Fix: For the all-users approval route, extend controls[1].ui.path to 'Billing > Licenses > Requests > request > Approve the selected license requests > Approve'. Add to its note: 'Select all user checkboxes before choosing Approve.' Keep the existing qualification that this process is not confirmed as the new page. Source: https://learn.microsoft.com/microsoft-365/commerce/licenses/manage-license-requests. | Source: https://learn.microsoft.com/microsoft-365/commerce/licenses/manage-license-requests
 -->

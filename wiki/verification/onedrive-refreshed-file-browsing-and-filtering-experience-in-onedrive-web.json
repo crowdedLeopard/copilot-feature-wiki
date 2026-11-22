@@ -1,0 +1,603 @@
+{
+  "slug": "onedrive-refreshed-file-browsing-and-filtering-experience-in-onedrive-web",
+  "roadmapId": 566316,
+  "title": "OneDrive web: refreshed file browsing and filtering on the SharePoint library layout",
+  "status": "verified-with-gaps",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 48,
+    "confirmed": 47,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "The rollout dates, default state, filtering changes and PowerShell control are supported. Two minor corrections remain: give OneDrive's published product-level licensing instead of an unknown entitlement, and remove the instruction to use sharing and access settings supposedly listed in the controls table, which does not contain them.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: products; title; summary",
+      "type": "record",
+      "claim": "This change concerns OneDrive.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"OneDrive\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "title; summary; What's changing; changes; rationale: risk",
+      "type": "record",
+      "claim": "OneDrive web adopts the modern SharePoint document library experience for browsing and managing files.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We're also bringing the modern SharePoint document library experience to OneDrive Web, with an updated layout, improved navigation, and familiar file management capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Why it matters; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The refresh changes the layout and improves navigation.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "with an updated layout, improved navigation, and familiar file management capabilities",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The refresh provides familiar file management capabilities and more closely aligns OneDrive and SharePoint.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Together, these updates make it easier to browse, filter, and manage content, while providing a more seamless experience across OneDrive and SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "summary; What's changing; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Existing filters in Home, Shared, People, Meetings and Favorites support multiple filters simultaneously.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "updating existing filters in views like Home, Shared, People, Meetings, and Favorites to support multiple filters at once",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "The same filtering capabilities extend to folder-based views including My files and shared folders.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "bringing those same filtering capabilities to folder-based experiences such as My files and shared folders",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "summary; What's changing; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Users can filter by file type using filter pills.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users can also filter content by file type using both filter pills and the filter pane.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Users can filter by file type using the filter pane.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users can also filter content by file type using both filter pills and the filter pane.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is August CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The release phases are General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-23T21:59:27.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-23T21:59:27\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft's notice MC1457226 was last updated on 20 October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1457226",
+      "quote": "Updated October 20, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice gives a Targeted Release rollout beginning in mid-August 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1457226",
+      "quote": "Targeted Release: Beginning in mid-August 2026 and expected to complete by late August 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice expects Targeted Release rollout completion by late August 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1457226",
+      "quote": "Targeted Release: Beginning in mid-August 2026 and expected to complete by late August 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice gives a General Availability (Worldwide) rollout beginning in late August 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1457226",
+      "quote": "General Availability (Worldwide): Beginning in late August 2026 and expected to complete by late October 2026 (previously mid-September)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Why it matters; Governance guidance: Before rollout; Open questions",
+      "type": "record",
+      "claim": "The notice expects General Availability rollout completion by late October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1457226",
+      "quote": "General Availability (Worldwide): Beginning in late August 2026 and expected to complete by late October 2026 (previously mid-September)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice says the previous General Availability completion estimate was mid-September.",
+      "status": "supported",
+      "source": "Message Center post MC1457226",
+      "quote": "expected to complete by late October 2026 (previously mid-September)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: defaultState; summary; controls[0].note; What's changing; rationale: impact",
+      "type": "default",
+      "claim": "The refreshed experience is enabled by default.",
+      "status": "supported",
+      "source": "Message Center post MC1457226",
+      "quote": "The feature will be enabled by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "summary; controls[0].note; What's changing; Why it matters; Governance controls",
+      "type": "record",
+      "claim": "Microsoft requires no action to receive the refreshed experience.",
+      "status": "supported",
+      "source": "Message Center post MC1457226",
+      "quote": "No action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "Existing permissions are unchanged.",
+      "status": "supported",
+      "source": "Message Center post MC1457226",
+      "quote": "Existing permissions, sharing settings, and policies are unchanged.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment: Data exposure; Governance controls; rationale: risk",
+      "type": "record",
+      "claim": "Existing sharing settings are unchanged.",
+      "status": "supported",
+      "source": "Message Center post MC1457226",
+      "quote": "Existing permissions, sharing settings, and policies are unchanged.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment: Data exposure; Governance controls; rationale: risk",
+      "type": "record",
+      "claim": "Existing policies are unchanged.",
+      "status": "supported",
+      "source": "Message Center post MC1457226",
+      "quote": "Existing permissions, sharing settings, and policies are unchanged.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters; Scope; rationale: impact",
+      "type": "record",
+      "claim": "All users of OneDrive web are affected.",
+      "status": "supported",
+      "source": "Message Center post MC1457226",
+      "quote": "Who is affected\n\n- All users of OneDrive Web",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The notice lists OneDrive for the web among the platforms and services.",
+      "status": "supported",
+      "source": "Message Center post MC1457226",
+      "quote": "Platforms and services\n\n- OneDrive for the web- SharePoint Online",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The notice lists SharePoint Online among the platforms and services.",
+      "status": "supported",
+      "source": "Message Center post MC1457226",
+      "quote": "Platforms and services\n\n- OneDrive for the web- SharePoint Online",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Scope",
+      "type": "record",
+      "claim": "Microsoft's end date for the post is 30 November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1457226",
+      "quote": "Published 2026-08-18; last updated 2026-10-20; Microsoft's end date 2026-11-30",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters; Risk assessment: Change & support; Cost and licensing; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft recommends reviewing and updating training materials referencing the current OneDrive experience.",
+      "status": "supported",
+      "source": "Message Center post MC1457226",
+      "quote": "Review and update internal training materials that reference the current OneDrive experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters; Cost and licensing; Governance guidance; rationale: cost",
+      "type": "record",
+      "claim": "Microsoft recommends informing help desk and support teams about updated navigation and filtering.",
+      "status": "supported",
+      "source": "Message Center post MC1457226",
+      "quote": "Inform help desk and support teams about the updated navigation and filtering experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters; Cost and licensing; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft recommends communicating the change to regular users of OneDrive for the web.",
+      "status": "supported",
+      "source": "Message Center post MC1457226",
+      "quote": "Communicate the upcoming changes to users who regularly use OneDrive for the web.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Microsoft Learn does not describe this specific refreshed OneDrive web browsing and filtering feature at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive refreshed file browsing filtering experience web; \"OneDrive\" \"filter pills\" \"filter pane\" 566316. Read OneDrive overview, Set-SPOTenant and Change the default list and library experience; results describe older libraries, APIs or sync, not this refresh.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The supplied roadmap record and notice describe no sign-in or identity change.",
+      "status": "supported",
+      "source": "Message Center post MC1457226",
+      "quote": "Existing permissions, sharing settings, and policies are unchanged.\n\n[Compliance considerations]\n\nNo compliance considerations identified. Review as appropriate for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The supplied sources describe user-operated browsing and filters rather than autonomous behavior.",
+      "status": "supported",
+      "source": "Message Center post MC1457226",
+      "quote": "Users can filter content by file type.\n\nUsers can apply multiple filters simultaneously.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing model is unknown because no licensing specific to the refreshed layout and filters is published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description",
+      "quote": "OneDrive for work and school accounts is online storage space in the cloud that's provided for individual licensed users in an organization.\n\nOneDrive is included in Microsoft 365 and Office 365 plans, in SharePoint plans, and can also be purchased as a standalone plan.",
+      "severity": "minor",
+      "fix": "Set licensing.model to 'included' and cite https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description. Replace the licensing notes and the conclusion in Cost and licensing with: 'OneDrive is provided for individual licensed users and is included in Microsoft 365 and Office 365 plans and SharePoint plans, or purchased as a standalone plan. No separate licensing requirement specific to this layout and filtering refresh is published.' Replace 'licensing is not yet published' in the cost rationale with 'no separate feature-specific licensing requirement is published'. Replace the licensing open question with 'Will Microsoft publish a licensing requirement specific to this refresh?'"
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No price or meter specific to this refreshed browsing and filtering change is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive refreshed web layout filtering 566316 licensing price meter. Read roadmap, MC1457226, OneDrive overview, Set-SPOTenant and OneDrive service description; search excerpts on storage billing concern storage, backup and archive, not browsing or filters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The OneDrive overview says most advanced enterprise-focused features are available for every subscription type but does not name this refresh.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/onedrive-overview",
+      "quote": "Unlike other cloud storage providers, most of the advanced enterprise-focused features in OneDrive are available for every subscription type, enabling organizations to use OneDrive in whatever way benefits them the most.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The cited sources state no role, licence or prerequisite specific to using the new layout.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive refreshed file browsing web filtering feature licensing prerequisites role 566316. Read roadmap, MC1457226, OneDrive overview, Set-SPOTenant and OneDrive service description. Product licensing is published; no additional refresh-specific prerequisite was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[0].ui and api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No tenant UI or API setting to keep or defer this refreshed OneDrive web layout is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive refreshed file browsing web disable opt out admin setting; Set-SPOTenant OneDrive web refreshed layout filtering tenant disable defer parameter 566316. Read OneDrive overview, Set-SPOTenant and Change the default list and library experience; no refresh-specific switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "absence",
+      "claim": "No admin UI path for the tenant DisableBackToClassic link setting is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: DisableBackToClassic Return to classic SharePoint admin center UI setting; \"DisableBackToClassic\" \"admin center\". Read Set-SPOTenant, OneDrive overview and Change the default list and library experience; other classic-experience settings do not configure this link.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].api; Governance controls; Open questions",
+      "type": "command",
+      "claim": "Set-SPOTenant -DisableBackToClassic <Boolean> in Microsoft.Online.SharePoint.PowerShell enables or disables the Return to classic SharePoint link on modern SharePoint list and library pages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+      "quote": "Module: Microsoft.Online.SharePoint.PowerShell Module\n[-DisableBackToClassic <Boolean>]\nEnables or disables the link \"Return to classic SharePoint\" on modern SharePoint list and library pages.\nType: System.Boolean",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Running Set-SPOTenant requires a SharePoint Online administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+      "quote": "You must be a SharePoint Online administrator to run the cmdlet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[1].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Learn does not confirm that DisableBackToClassic governs this new OneDrive web layout.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: DisableBackToClassic Return to classic SharePoint OneDrive web; Set-SPOTenant OneDrive web refreshed layout 566316. Read DisableBackToClassic in Set-SPOTenant and Change the default list and library experience; neither states that this link controls the refreshed OneDrive web app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The OneDrive overview's management list includes sharing, sync, storage limit, retention, access control, compliance and notifications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/onedrive-overview",
+      "quote": "Many organizations use OneDrive without changing any of the options. To change these settings, use the SharePoint admin center.\nSharing.\nSync.\nStorage limit.\nRetention.\nAccess control.\nCompliance.\nNotifications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The refresh changes file discovery rather than who has access to files.",
+      "status": "supported",
+      "source": "Message Center post MC1457226",
+      "quote": "Users will see a refreshed file browsing and filtering experience in OneDrive for the web.\n\nExisting permissions, sharing settings, and policies are unchanged.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Security & identity; Governance guidance: After rollout",
+      "type": "consistency",
+      "claim": "The briefing tells readers to check sharing and access using settings in its controls table, but that table contains no sharing or access control row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "confirm after rollout that your sharing and access settings behave as before, using the settings listed in the controls table.\nControl rows: Setting to keep or defer the refreshed OneDrive web layout; \"Return to classic SharePoint\" link on modern list and library pages.",
+      "severity": "minor",
+      "fix": "Delete ', using the settings listed in the controls table' from Risk assessment: Security & identity. In Governance guidance: After rollout, replace 'Confirm that sharing and access behave as before, since MC1457226 says permissions, sharing settings and policies are unchanged.' with 'Ask the pilot group to confirm that the same files remain accessible, since MC1457226 says permissions, sharing settings and policies are unchanged.' Do not add a control row."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T07:35:30.100Z",
+    "summary": {
+      "links": 4,
+      "unreachable": 0,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=566316",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1457226",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/onedrive-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "\"Return to classic SharePoint\" link on modern list and library pages (existing SharePoint setting)",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+        "reachable": true,
+        "token": "Set-SPOTenant",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

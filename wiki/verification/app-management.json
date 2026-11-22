@@ -1,0 +1,1019 @@
+{
+  "slug": "app-management",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "Agent and app management: who can use which Teams app or agent?",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "2 blocking findings (claims 6, 63)"
+    ]
+  },
+  "counts": {
+    "claims": 72,
+    "confirmed": 69,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "Hold: the instruction to block everything third-party with the org-wide setting overlooks individually managed apps, which retain their assignments. The tenant-settings PowerShell example exists, but Microsoft does not establish that GlobalApp changes the org-wide app-type defaults shown beside it.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "App availability is configured through the printed Teams apps > Manage apps > app > Users and groups > Availability route.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "Select the Users and groups tab. Under Select to manage who this app is installed for or available to in your organization, select Availability. Select Edit availability. Select the required option from Available to menu.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "Update-M365TeamsApp -Id <app-id> -AppAssignmentType UsersAndGroups -OperationType Add -Groups <group-ids> changes the app's group availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "This cmdlet allows administrators to modify app state, availability and installation status by adding or removing users and groups or changing assignment type or installation status.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Teams apps > Manage apps > app > Allow or Block controls the app's organisation-level status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "Sign in to the Teams admin center and access Teams apps > Manage apps. Select the app on the Manage apps page and select Allow or Block option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Update-M365TeamsApp -Id <app-id> -IsBlocked $true changes app state, with the reference describing that example as unblocking.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true\nUnblocks Bookings app (App ID 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Teams apps > Manage apps > Actions > Org-wide app settings reaches the org-wide defaults.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "On Manage apps page, under the Actions menu, select Org-wide app settings. You can then configure the settings in the pane.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Update-M365UnifiedTenantSettings -SettingName GlobalApp -SettingValue None is the automation equivalent for org-wide default availability by app type.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Update-M365UnifiedTenantSettings GlobalApp DefaultApp PrivateApp org-wide app settings mapping; GlobalApp third-party. Read update-m365unifiedtenantsettings, manage-apps, app-centric-management and release-notes excerpts; no mapping to the UI control was stated.",
+      "severity": "blocker",
+      "fix": "Set controls[2].api to null. Replace its mapping note with 'Update-M365UnifiedTenantSettings documents a GlobalApp setting, but Microsoft has not documented which Org-wide app setting it changes; no equivalent call for this control is established.' Retain the documented UI route."
+    },
+    {
+      "n": 7,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Teams apps > Built-in Teams agents > Edit availability configures built-in agent availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "Sign in to the Teams admin center and go to Teams apps > Built-in Teams agents. To change who can use an agent, select one or more agents and choose Edit availability.",
+      "severity": "minor",
+      "fix": "Replace the path with 'Teams apps > Built-in Teams agents > agent > Edit availability' to include selection of the agent being managed."
+    },
+    {
+      "n": 8,
+      "where": "controls[3].api",
+      "type": "absence",
+      "claim": "An automation equivalent for availability on the Built-in Teams agents page is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: built-in Teams agents PowerShell availability Channel Agent Facilitator; built-in Teams agents Graph availability. Read manage-apps, facilitator-teams and Update-M365TeamsApp; no call explicitly targets availability on the dedicated built-in agent page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "Teams apps > Manage apps > Move to unified app management starts the tenant unification process.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/uam-tac-mac",
+      "quote": "Go to Teams apps > Manage apps. Select Move to unified app management. A dialog box appears to ask for your consent to move to the unified agent and app management experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "controls[4].api",
+      "type": "absence",
+      "claim": "No PowerShell or API operation to move a tenant to unified management is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: unified app management migration consent API PowerShell; Move to unified app management cmdlet API. Read uam-tac-mac and Update-M365UnifiedTenantSettings; the latter modifies settings but does not document tenant unification or migration consent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[5].ui",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Agents > All agents > agent > Block reaches the organisation-wide agent block control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select Agents > All agents. In the All agents page, select an agent from the list of agents. In the agent details pane that opens, immediately under the agent's name, select Block or Unblock.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[5].api",
+      "type": "command",
+      "claim": "POST /beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage.\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary",
+      "type": "behaviour",
+      "claim": "Teams agent and app management controls which apps and agents the organisation allows and which users or groups can use them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "From the Manage apps page, you can review agents and apps before allowing them, access support information, and control their availability across your organization, either per user or per app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What it is: availability types",
+      "type": "applicability",
+      "claim": "Everyone makes an app available to all organisation users, including new users and guests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "Everyone | Available to all org users, new users, and guests.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What it is: availability types",
+      "type": "applicability",
+      "claim": "Specific users or groups restricts app use to selected users and groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "Specific users or groups | Only the users and groups that you select can use the app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0].note",
+      "type": "applicability",
+      "claim": "Guests cannot use an app set to Specific users or groups even when assigned to it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "Guests can't use the app if this option is selected and even if guests are assigned to the app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What it is: availability types",
+      "type": "applicability",
+      "claim": "No one makes the app unavailable to any user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "No one | Not available to any user | Same as a blocked app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What it is: first paragraph",
+      "type": "behaviour",
+      "claim": "Microsoft calls per-app access management app centric management, which replaces app permission policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "Use the feature if already auto-migrated or manually migrate to app centric management. It replaces app permission policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What it is: first paragraph",
+      "type": "behaviour",
+      "claim": "Microsoft describes the previous app permission policies as deprecated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "The previous App permission policies is deprecated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What it is: settings table",
+      "type": "applicability",
+      "claim": "Org-wide defaults apply to new apps made available in the Teams app store.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "The Org-wide app settings apply to: All the new apps made available in Teams app store.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What it is: settings table",
+      "type": "applicability",
+      "claim": "Org-wide defaults apply to existing apps whose availability has not been actively managed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "All the existing apps that you didn't actively manage, that is, you didn't change the availability of.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What it is: settings table",
+      "type": "behaviour",
+      "claim": "Org-wide availability settings distinguish Microsoft, third-party and custom app types.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "Under Microsoft apps, a single control automatically enables users to install and use any available agents and apps by default. Under Third-party apps, a single control manages the bulk availability of both the new and existing third-party agents and apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What it is: paragraph after settings table",
+      "type": "behaviour",
+      "claim": "Microsoft states that allowing an app or agent requires all the relevant access settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "To allow an agent or app, you must do all of the following settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What it is: paragraph after settings table",
+      "type": "behaviour",
+      "claim": "Microsoft states that an app or agent can be blocked using any one of the relevant access settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "To block an agent or app, use any one of the following settings:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "summary",
+      "type": "behaviour",
+      "claim": "After tenant unification, org-wide settings, app status and availability changes synchronise in both directions between the two admin centres.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/uam-tac-mac",
+      "quote": "After your tenant is unified, all changes to org-wide settings, agent app, status, or availability in TAC are automatically synchronized in MAC and vice versa.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What it is: Unified management",
+      "type": "applicability",
+      "claim": "Unified management governs app availability across Teams, Outlook and Microsoft Copilot apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/uam-tac-mac",
+      "quote": "Ensures org-wide defaults for both admin centers are in sync and governs app availability across Teams, Outlook, and Microsoft Copilot apps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[4].note",
+      "type": "default",
+      "claim": "Tenants that never modified org-wide defaults, app availability or block settings in either admin centre are automatically unified.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/uam-tac-mac",
+      "quote": "If your tenant never modified its org-wide defaults, app availability, or app block or unblock settings in either TAC or MAC, then your tenant's app availability policies are automatically unified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What it is: Unified management",
+      "type": "behaviour",
+      "claim": "Tenants with previously modified settings can opt into unification through Manage apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/uam-tac-mac",
+      "quote": "If your tenant has custom app changes but no differences in app availability: Go to Teams apps > Manage apps. Select Move to unified app management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[3].note; What it is: Built-in Teams agents",
+      "type": "applicability",
+      "claim": "Built-in agents including Channel Agent and Facilitator are managed on their separate page, not Manage apps, and not by the Microsoft apps org-wide setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "Examples include Channel Agent, Facilitator, and other built-in agents. These agents are no longer controlled by the Microsoft apps setting. You now manage them from the dedicated Built-in Teams agents page in the Teams admin center.",
+      "severity": "minor",
+      "fix": "Add this qualification beside the built-in agent explanation: 'The Manage apps overview directs built-in agents to Built-in Teams agents; the Facilitator setup page still directs administrators to Teams apps > Manage apps > Facilitator > Allow or Block.' Cite https://learn.microsoft.com/microsoftteams/facilitator-teams."
+    },
+    {
+      "n": 30,
+      "where": "Why it matters: defaults",
+      "type": "default",
+      "claim": "For new organisations the documented default lets users install apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "For new organizations, the default setting is set to let users install apps by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing: first paragraph",
+      "type": "absence",
+      "claim": "The cited Manage apps, app centric management and unified management pages do not document a licence for the management settings themselves.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams app centric unified app management settings licensing meter cost. Read manage-apps, app-centric-management, uam-tac-mac and user-access; these pages name product access or frontline requirements, not a licence for the management settings themselves.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing: first paragraph",
+      "type": "absence",
+      "claim": "The cited management pages do not document a meter for these management settings themselves.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams app centric unified app management settings licensing meter cost. Read manage-apps, app-centric-management, uam-tac-mac and purchase-third-party-apps; no management-setting meter was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].note",
+      "type": "role",
+      "claim": "The Teams admin center requires the Teams Administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "To use Teams admin center, you must have a Teams Administrator role. Some admins with a higher privilege role can accomplish agent and app governance tasks but we recommend using the lower privilege role where possible.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing: first paragraph",
+      "type": "licensing",
+      "claim": "Each user needs a Teams licence to use Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-access",
+      "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
+      "severity": "minor",
+      "fix": "Replace the clause with 'Except for joining Teams meetings anonymously, each user in the organisation needs a Teams licence to use Teams.' The exception does not change licensing for the app management use case."
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing: Paid third-party apps",
+      "type": "licensing",
+      "claim": "Third-party app service licences can be purchased from Manage apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/purchase-third-party-apps",
+      "quote": "You can purchase licenses for services offered by third-party apps from the Manage apps page in the Teams admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing: Paid third-party apps",
+      "type": "cost",
+      "claim": "App purchases support credit card, debit card and invoice billing payment methods.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/purchase-third-party-apps",
+      "quote": "You can purchase apps using a credit card, debit card, or with invoice billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing: Paid third-party apps",
+      "type": "cost",
+      "claim": "Plans and pricing appear on the app details page in the admin centre.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/purchase-third-party-apps",
+      "quote": "Select Purchase on the Manage apps page to open the Plans and pricing tab on the app details page. You can review the plans and pricing information available in admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing: Paid third-party apps",
+      "type": "role",
+      "claim": "Invoice billing requires an admin account with Teams Administrator and Billing Administrator roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/purchase-third-party-apps",
+      "quote": "Invoice billing is only available for an admin account that has Teams Administrator and Billing Administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing: Frontline tailoring",
+      "type": "licensing",
+      "claim": "Show tailored apps applies to users with an F licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "Under Tailored apps, turn off or turn on Show tailored apps. When this setting is on, users with an F license get the tailored frontline agent and app experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[5].note",
+      "type": "licensing",
+      "claim": "The Package Management API requires a Microsoft Agent 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[0].note",
+      "type": "behaviour",
+      "claim": "Availability changes take up to 24 hours to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "It takes up to 24 hours for the availability changes to take effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risks and limits: Changes are not immediate",
+      "type": "behaviour",
+      "claim": "In rare cases availability changes take up to six days to appear in the client.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "In rare cases, it might take up to six days for the changes to reflect in the client.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risks and limits: Migration is one-way",
+      "type": "behaviour",
+      "claim": "After switching to app centric management, permission policies cannot be accessed, edited or used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "After you switch to this feature, you can't access, edit, or use permission policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risks and limits: Migration is one-way",
+      "type": "behaviour",
+      "claim": "Migration to app centric management cannot be reverted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "Once your organization migrates, you can't revert the migration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risks and limits: Org-wide settings skip managed apps",
+      "type": "applicability",
+      "claim": "Org-wide default changes do not override individually saved app availability assignments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "The Org-wide app settings don't apply to: All apps that have user assignment set to Specific users and groups and saved by you. All apps that were assigned to Everyone or to No one and saved individually. Any blocked apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risks and limits: Conflicting policies on auto-migration",
+      "type": "behaviour",
+      "claim": "If a custom policy blocked an app allowed by the Global policy, automatic migration makes the app available to all tenant users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "There's no change of app permissions during the migration, except where an app is allowed in the global policy but blocked in the custom app permission policy. Here, the app is available to all users of the tenant, except for EDU customers",
+      "severity": "minor",
+      "fix": "Add 'The same Learn page's Understand the auto-migration process section instead describes the app as allowed for the affected user and describes policy-specific security groups; the page gives inconsistent descriptions of the conflict outcome.' Keep the existing EDU qualification."
+    },
+    {
+      "n": 47,
+      "where": "Risks and limits: Conflicting policies on auto-migration",
+      "type": "applicability",
+      "claim": "For EDU customers the documented conflicting-policy migration outcome is availability to no one.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "Here, the app is available to all users of the tenant, except for EDU customers, for whom it will be available to none.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risks and limits: Two admin centres out of step",
+      "type": "behaviour",
+      "claim": "Microsoft advises keeping blocked apps and org-wide settings synchronised in both centres until unification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "Until your tenant is migrated to unified app management, ensure that the settings in both admin centers, such as blocked apps or org-wide app settings, remain synchronized.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risks and limits: Two admin centres out of step",
+      "type": "applicability",
+      "claim": "Before unification, an Integrated apps block affects Outlook and the Microsoft Copilot application rather than Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "The app is only be blocked in the Microsoft Copilot application and Outlook. Teams continues to honor the current setting for Teams Apps made in the Teams admin center and for Outlook apps made in the Exchange admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risks and limits: Bulk edits need PowerShell",
+      "type": "behaviour",
+      "claim": "Teams admin center cannot update app availability in bulk.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "You can't update app availability in bulk in Teams admin center, but you can do so through PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risks and limits: Bulk edits need PowerShell",
+      "type": "behaviour",
+      "claim": "PowerShell supports bulk app availability updates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "You can't update app availability in bulk in Teams admin center, but you can do so through PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risks and limits: Bulk edits need PowerShell",
+      "type": "behaviour",
+      "claim": "Up to 99 users or groups can be added to an app at a time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "You can add up to 99 users or groups at a time to an app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risks and limits: Release channel",
+      "type": "availability",
+      "claim": "Admins can view and manage only apps deployed in the tenant's release channel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "You can only view and manage agents and apps that are deployed in the same release channel as your tenant is.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risks and limits: Government clouds",
+      "type": "default",
+      "claim": "All third-party agents and apps are blocked by default in GCC, GCC High and DoD Teams deployments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "In a Microsoft 365 Government - GCC, GCCH and DoD deployment of Teams, all third-party agents and apps are blocked by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risks and limits: In-app purchases",
+      "type": "behaviour",
+      "claim": "Enabling app purchasing also enables in-app purchasing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/purchase-third-party-apps",
+      "quote": "When you enable app purchasing, it also turns on in-app purchasing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risks and limits: In-app purchases",
+      "type": "applicability",
+      "claim": "Blocking an app prevents users making in-app purchases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/purchase-third-party-apps",
+      "quote": "To prevent users from making in-app purchases, you can block the app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[2].note",
+      "type": "command",
+      "claim": "Update-M365UnifiedTenantSettings lists DefaultApp, GlobalApp, PrivateApp and EnableCopilotExtensibility as setting names.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365unifiedtenantsettings",
+      "quote": "-SettingName\nSetting Name to be changed.\nParameter sets\n(DefaultApp\nGlobalApp\nPrivateApp\nEnableCopilotExtensibility)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[2].note; Open questions",
+      "type": "absence",
+      "claim": "The tenant-settings cmdlet reference does not map its setting names to individual Org-wide app settings.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Update-M365UnifiedTenantSettings GlobalApp DefaultApp PrivateApp org-wide app settings mapping; GlobalApp third-party. Read the complete Update-M365UnifiedTenantSettings reference; its names, generic parameter descriptions and examples provide no UI mapping.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "Org-wide app settings take effect after a few hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "Select Save. The settings take effect after a few hours.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[4].note",
+      "type": "role",
+      "claim": "Only a Global admin can consent to and apply the final unification changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/uam-tac-mac",
+      "quote": "Only a Global admin can give consent and apply the final changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls: roles",
+      "type": "role",
+      "claim": "Any Teams or Global admin can prepare unification updates through the Review summary page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/uam-tac-mac",
+      "quote": "Any Teams or Global admin can make updates upto the Review summary page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls: roles",
+      "type": "role",
+      "claim": "The cited Integrated apps controls are available to Global Administrators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "The following controls on the integrated apps portal in the Microsoft 365 Admin Center are only available to Global Admins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls: To block everything third-party",
+      "type": "consistency",
+      "claim": "The org-wide third-party setting blocks everything third-party, despite the page saying that it skips individually managed apps.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "To block everything third-party, use the org-wide third-party setting; ... A change to the org-wide setting applies only to apps whose availability you did not change, so flipping the third-party toggle does not reach apps you have set individually.",
+      "severity": "blocker",
+      "fix": "Replace 'To block everything third-party, use the org-wide third-party setting' with 'The org-wide third-party setting blocks new and unmanaged third-party apps; individually saved availability assignments remain intact.' This qualification is documented at https://learn.microsoft.com/microsoftteams/app-centric-management."
+    },
+    {
+      "n": 64,
+      "where": "Governance controls: purchases",
+      "type": "applicability",
+      "claim": "Microsoft documents disabling third-party app purchases with the MSCommerce PowerShell module.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/purchase-third-party-apps",
+      "quote": "To prevent users from purchasing third-party apps, you can disable purchases using the MSCommerce PowerShell module.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls: reporting",
+      "type": "behaviour",
+      "claim": "The Usage reports page offers a Teams app usage report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "The Teams agent and app usage report provides information about which agents and apps in use, active users, and other usage information. | Usage reports | Teams app usage report",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance controls: reporting",
+      "type": "behaviour",
+      "claim": "Manage apps supports exporting the organisation's app catalogue as CSV.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "Export agent and app catalog as CSV\nAs an admin, you can export the entire agent and app catalog for your org from the Teams admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance controls: reporting; What to check",
+      "type": "command",
+      "claim": "Get-AllM365TeamsApps returns all Teams apps with their statuses and availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/get-allm365teamsapps",
+      "quote": "Get-AllM365TeamsApps retrieves a complete list of all Teams apps in an organization, their statuses, and their availability information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls: reporting",
+      "type": "behaviour",
+      "claim": "Get-AllM365TeamsApps reports the user who last updated an app's availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/get-allm365teamsapps",
+      "quote": "AssignedBy: UserID of the last user who updated the app available to value.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[5].note",
+      "type": "availability",
+      "claim": "The Graph package block operation is a beta API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[5].note",
+      "type": "command",
+      "claim": "The Graph package block API requires delegated CopilotPackages.ReadWrite.All permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Delegated (work or school account) | CopilotPackages.ReadWrite.All | Not available.\nApplication | Not available. | Not available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "What to check: Export the app catalogue; Run Get-AllM365TeamsApps",
+      "type": "consistency",
+      "claim": "The checklist requires catalogue inventory and availability reporting, but neither inventory surface has a controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Export the app catalogue from Manage apps and compare each app's availability with who should have it. Run Get-AllM365TeamsApps and look at apps set to Everyone that should be limited to groups.",
+      "severity": "minor",
+      "fix": "The Export the app catalogue and Run Get-AllM365TeamsApps checklist steps have no corresponding inventory or reporting control row. Remove these two imperative checklist steps; their documented capabilities can remain in the Governance controls notes."
+    },
+    {
+      "n": 72,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "AppAssignmentType also supports Everyone and Noone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "-AppAssignmentType\nApp availability type.\nParameter sets\n(Everyone\nUsersandGroups\nNoone)",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T07:35:27.633Z",
+    "summary": {
+      "links": 11,
+      "unreachable": 0,
+      "uiPaths": 6,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 4,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/uam-tac-mac",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365unifiedtenantsettings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/get-allm365teamsapps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/purchase-third-party-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/user-access",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users and groups can use each app or agent (Everyone, Specific users or groups, No one)",
+        "docs": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Users and groups",
+          "Select to manage who this app is installed for or available to in your organization",
+          "Availability",
+          "Edit availability",
+          "Available to"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which users and groups can use each app or agent (Everyone, Specific users or groups, No one)",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "reachable": true,
+        "token": "Update-M365TeamsApp",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether an individual app or agent is allowed or blocked for the organisation",
+        "docs": "https://learn.microsoft.com/microsoftteams/manage-apps",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Allow or Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether an individual app or agent is allowed or blocked for the organisation",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "reachable": true,
+        "token": "Update-M365TeamsApp",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Default availability of new and unmanaged apps, by app type (Org-wide app settings)",
+        "docs": "https://learn.microsoft.com/microsoftteams/manage-apps",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Actions",
+          "Org-wide app settings"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Default availability of new and unmanaged apps, by app type (Org-wide app settings)",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365unifiedtenantsettings",
+        "reachable": true,
+        "token": "Update-M365UnifiedTenantSettings",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Who can use built-in Teams agents such as Channel Agent and Facilitator",
+        "docs": "https://learn.microsoft.com/microsoftteams/manage-apps",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Built-in Teams agents",
+          "Edit availability"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Moving the tenant to unified agent and app management across the two admin centres",
+        "docs": "https://learn.microsoft.com/microsoftteams/uam-tac-mac",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Move to unified app management"
+        ],
+        "missing": []
+      },
+      {
+        "index": 5,
+        "side": "ui",
+        "governs": "Whether an agent is blocked for the whole organisation from the Microsoft 365 admin center",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 5,
+        "side": "api",
+        "governs": "Whether an agent is blocked for the whole organisation from the Microsoft 365 admin center",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

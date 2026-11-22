@@ -1,0 +1,762 @@
+{
+  "slug": "m365-copilot-copilot-extensibility-developers-can-build-custom-engine-agents-with-the-m365",
+  "roadmapId": 474445,
+  "title": "Microsoft 365 Copilot: build custom engine agents with the Microsoft 365 Agents SDK",
+  "status": "held",
+  "date": "2026-11-22",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-22",
+    "reasons": [
+      "1 blocking finding (claim 22)"
+    ]
+  },
+  "counts": {
+    "claims": 56,
+    "confirmed": 54,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold for a correction to the upload guidance: Microsoft documents choosing the audience before the permissions-review step, not afterwards. The roadmap facts, catalogue upload path and Graph calls are supported; the governance checklist also names controls missing from the table.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap describes developers building custom engine agents on their own AI stack with the Microsoft 365 Agents SDK.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Developers can use the Microsoft 365 Agents SDK to create custom engine agents. These agents, built on their own AI stack",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap says these agents can be deployed to Microsoft 365 Copilot, Microsoft Teams and other non-Microsoft channels.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "can be deployed to various platforms, including Microsoft 365 Copilot, Microsoft Teams, and other non-Microsoft channels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The record lists Microsoft Copilot (Microsoft 365) as the product.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; What's changing; Scope; Governance guidance; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing; Scope; Governance guidance; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is May CY2025, a month that has passed by the run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"May CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists General Availability as the release phase.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Developer as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Developer\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Risk assessment; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2025-01-10T23:15:46.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2025-01-10T23:15:46\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn describes the SDK as a framework for building full-stack, multi-channel agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/m365-agents-sdk",
+      "quote": "Microsoft 365 Agents SDK is a comprehensive framework for building full-stack, multi-channel agents",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Developers provide their own orchestration, with Semantic Kernel and LangChain named as examples.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "It's ideal for use cases that require custom orchestration using frameworks like Semantic Kernel or LangChain",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Agents SDK developers select their own AI models or services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "supports integration with any AI models or services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Custom engine agents require app manifest version 1.21 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "Custom engine agents are supported in app manifest version 1.21 and later versions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment; Scope",
+      "type": "availability",
+      "claim": "Publishing through the Microsoft 365 Agents Toolkit is not supported in Microsoft 365 Government tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/m365-agents-sdk",
+      "quote": "Publishing agents via the Microsoft 365 Agents Toolkit isn't supported in Microsoft 365 Government tenants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn documents building and deploying with the SDK in the present tense despite the record's In development status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/create-deploy-agents-sdk",
+      "quote": "The Microsoft 365 Agents SDK enables you to build custom engine agents by using the AI stack of your choice, then deploy them to Microsoft 365 Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Custom engine agents give developers control over data integrations and core processing rather than using Copilot's own orchestration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "Unlike standard Copilot experiences, custom engine agents provide full control over orchestration, AI models, and data integrations",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated a default availability for newly published Agents SDK custom engine agents, so defaultState is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Agents SDK custom engine agents default availability newly published agents admin enable switch. Read SDK, create-deploy, overview and agent-registry pages; audience selection is documented, but no SDK-agent default is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters; rationale: impact",
+      "type": "absence",
+      "claim": "No source states that introducing the SDK changes existing Copilot behaviour.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Agents SDK custom engine agents default availability newly published agents admin enable switch. Read SDK, overview, create-deploy and roadmap record; they describe a development capability, not an automatic change to existing Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Pro-code agents built with the Agents SDK can access Microsoft 365 data via Microsoft Graph APIs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "Pro-code agents, including those built with the Agents SDK or Foundry via Agents Toolkit, can access the same data via Microsoft Graph APIs",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Pro-code Agents SDK agents can use the Retrieval API for grounding in Microsoft 365 data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "and use the Retrieval API for grounding in Microsoft 365 data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Data exposure; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The Microsoft 365 admin center upload flow lets admins review agent permissions before choosing its audience.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
+      "quote": "4. Under Publish, select the users or groups who can install the agent. ... 5. Under Deploy (optional), select the users or groups who will have the agent preinstalled. ... 7. Review agent permissions. Then, select Next.",
+      "severity": "blocker",
+      "fix": "Replace 'before choosing its audience' with 'before finishing deployment' in Risk assessment. Replace 'review the agent permissions step before widening it' with 'review the agent permissions step before finishing deployment' in At rollout; the cited upload flow selects audiences before reviewing permissions."
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Custom engine agent prompts and responses in Copilot Chat and Teams are stored under Microsoft 365 product terms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "Custom engine agent prompts and responses in Copilot Chat and Teams are stored in compliance with Microsoft 365 product terms and conditions and are managed as per the customer's instructions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Admins can use Content Search or Microsoft Purview to view and manage these stored prompts and responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "To view and manage this stored data, admins can use Content Search or Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Data sent to the agent's own models or hosting is processed in its developer-controlled stack.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/custom-engine-agent-architecture",
+      "quote": "Components within your control enable prompt routing to multiple language models through multiple processing loops with complete output formatting control.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/custom-engine-agent-architecture to sources for the statement about processing in the agent's own models and hosting."
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "behaviour",
+      "claim": "Any user can submit a custom app for admin approval.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-custom-app-policies-and-settings",
+      "quote": "Submit option is available to all users and can't be turned off. Admins can disapprove any submission.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "behaviour",
+      "claim": "An admin-uploaded custom app becomes available in the organisation's catalogue without further approval.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-custom-app-policies-and-settings",
+      "quote": "If an admin uploads a custom app, it's available in the organization's catalog in the store without requiring any approval.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Learn lists programmatically triggered workflows and actions across enterprise applications as proactive automation capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "Proactive automation – Programmatically trigger workflows and take actions across enterprise applications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Autonomy & actions; summary; rationale: risk",
+      "type": "applicability",
+      "claim": "Catalogue publishing and agent blocking govern availability rather than the internal actions of the agent's code.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Agent approval or blocking doesn't necessarily grant or revoke connected-service permissions or credentials.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Change & support; Cost and licensing; rationale: cost",
+      "type": "behaviour",
+      "claim": "Pro-code agent builders provide their own hosting as well as orchestration and models.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "quote": "For pro-code custom engine development, choose a supported SDK and provide your own orchestration and hosting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.model and licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The cost guidance describes a mixed design with user and administrator licences, usage-based consumption and independently hosted services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/cost-considerations",
+      "quote": "User and administrator licenses for the target Microsoft experiences. ... Usage-based consumption for agents, Copilot connectors, APIs, models, or other metered services. ... A plugin can bring together components that use different licensing and billing models.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Costs vary by product and distribution route and include development tools as a separate category.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/cost-considerations",
+      "quote": "Costs vary by product and distribution route. ... Development tools, test environments, and developer subscriptions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing; front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "Custom engine agent builders should budget for orchestration, models and hosting, with Azure AI Foundry, App Service and Azure AI Bot Service pricing given as resources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/cost-considerations",
+      "quote": "budget for your own orchestration, models, and hosting. Existing service pricing resources include Azure AI Foundry pricing, App Service pricing, and Azure AI Bot Service pricing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 Copilot APIs are available at no additional cost to users with a Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/cost-considerations",
+      "quote": "The Microsoft 365 Copilot APIs are available at no additional cost to users with a Microsoft 365 Copilot license. Support for users without a Microsoft 365 Copilot license is currently not available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A licence or Copilot Credits rate specific to the Agents SDK, including a universal end-user licence for its agents, is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Agents SDK licensing custom engine agents end users Copilot license Copilot Credits pricing; SDK license prerequisites end users. Read cost, FAQ, overview, create-deploy and agent-management licensing; no SDK-specific licence or credit rate found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Teams admin center > Teams apps > Manage apps > Upload new app uploads a custom package to the organisation's catalogue.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-custom-app-policies-and-settings",
+      "quote": "Access Teams admin center and go to Teams apps > Manage apps. ... Select Upload new app, select Upload, and select the app package that the developer provided to you.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/v1.0/appCatalogs/teamsApps publishes a Teams app to the tenant catalogue.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/teamsapp-publish?view=graph-rest-1.0",
+      "quote": "Specifically, this API publishes the app to your organization's catalog (the tenant app catalog) ... POST /appCatalogs/teamsApps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].note; Scope; Governance controls table",
+      "type": "role",
+      "claim": "Global or Teams administrators can upload custom apps for the organisation in Teams admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-custom-app-policies-and-settings",
+      "quote": "Custom app upload by admin | Global or Teams administrators using Teams admin center or using Teams client | Available to entire org; no approval required",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].note; Governance controls table",
+      "type": "command",
+      "claim": "The publish API supports delegated permissions only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/teamsapp-publish?view=graph-rest-1.0",
+      "quote": "Application | Not supported. | Not supported. ... The AppCatalog.Submit permission allows you to submit apps for review only, not to publish them to the catalog.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].ui; controls[1].note; Governance controls; Open questions",
+      "type": "admin-path",
+      "claim": "Agents > All agents > agent > Block is the documented UI route; its effect examples name Agent Builder, Copilot Studio, SharePoint and Foundry, but not Agents SDK.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Block or unblock agents for the entire organization by using the same controls that work for any other app in the Microsoft 365 admin center. ... Select Agents > All agents. ... select an agent ... select Block or Unblock.",
+      "severity": "minor",
+      "fix": "Replace the final sentence of controls[1].note, including the rendered table copy, with 'The UI blocks the selected agent for the organisation; the documented effects across host products vary by agent type.' Remove the Open questions bullet questioning whether this general Block action covers Agents SDK agents."
+    },
+    {
+      "n": 41,
+      "where": "controls[1].api; controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage. ... Access to the Package Management API requires a Microsoft Agent 365 license. ... POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "The Teams Upload custom apps setup-policy option controls assigned users' custom app uploads.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-custom-app-policies-and-settings",
+      "quote": "The setting named Upload custom apps in the app setup policy lets assigned users upload custom apps. ... You granularly control which users have access to what particular custom app (also applies to third-party apps).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope; Governance guidance; Governance controls",
+      "type": "admin-path",
+      "claim": "The agent registry is at Microsoft 365 admin center > Agents > All agents > Registry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
+      "quote": "select Agents > All Agents > Registry. ... select Agents > All agents > Add agent. ... select Just me, or a single test group ... For administrators ... AI Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance guidance; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist names upload policy, org-wide settings, Microsoft 365 upload, registry and Content Search/Purview controls without corresponding table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: review the Upload custom apps option ... and the org-wide custom app settings; Use the Microsoft 365 admin center upload; Open Agents > All agents > Registry; Use Content Search or Microsoft Purview. Table: Publishing a custom app or agent package; Whether an agent is available.",
+      "severity": "minor",
+      "fix": "The named setup policy, org-wide settings, Microsoft 365 upload, registry and Content Search/Purview checklist steps have no matching controls-table rows. Do not add rows as part of this correction."
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "behaviour",
+      "claim": "The option to submit a custom app for admin approval cannot be turned off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-custom-app-policies-and-settings",
+      "quote": "Submit option is available to all users and can't be turned off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "behaviour",
+      "claim": "Admins can disapprove custom app submissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-custom-app-policies-and-settings",
+      "quote": "Admins can disapprove any submission.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].note; Governance controls table",
+      "type": "command",
+      "claim": "AppCatalog.Submit permits submission for review rather than publication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/teamsapp-publish?view=graph-rest-1.0",
+      "quote": "The AppCatalog.Submit permission allows you to submit apps for review only, not to publish them to the catalog.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].note; Governance controls",
+      "type": "licensing",
+      "claim": "The package block Graph API requires a Microsoft Agent 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].note; Governance controls table",
+      "type": "command",
+      "claim": "The package block call is a beta API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "App permission policies restrict which users can use a particular custom app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-custom-app-policies-and-settings",
+      "quote": "Restrict app access for a few users | Use app permission policy | You granularly control which users have access to what particular custom app (also applies to third-party apps).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "The combined Teams org-wide custom app settings and setup policy affect which users can upload custom apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-custom-app-policies-and-settings",
+      "quote": "This table summarizes the custom app settings and how the settings work together. The combined effect controls who in your organization can upload custom apps to Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "Agents > All agents > Add agent in Microsoft 365 admin center accepts an agent ZIP package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
+      "quote": "In Microsoft 365 admin center, select Agents > All agents > Add agent. ... Select Choose file to find and select the agent ZIP file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Microsoft 365 upload flow lets admins choose the users or groups who can install the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
+      "quote": "Under Publish, select the users or groups who can install the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Microsoft 365 upload flow lets admins choose who gets the agent preinstalled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
+      "quote": "Under Deploy (optional), select the users or groups who will have the agent preinstalled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft documents Just me or a single test group as small test audiences in the upload flow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
+      "quote": "You can select a small audience for testing purposes. For instance, select Just me, or a single test group to narrow the availability of the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Learn lists AI Administrator as the role required to pin agents in Microsoft Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
+      "quote": "For administrators - You, as the administrator, must have the following role and access: AI Administrator",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-22T07:35:26.457Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=474445",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/m365-agents-sdk",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/create-deploy-agents-sdk",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/cost-considerations",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/teams-custom-app-policies-and-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/teamsapp-publish?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Publishing a custom app or agent package to the organisation's catalogue",
+        "docs": "https://learn.microsoft.com/microsoftteams/teams-custom-app-policies-and-settings",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Upload new app"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Publishing a custom app or agent package to the organisation's catalogue",
+        "docs": "https://learn.microsoft.com/graph/api/teamsapp-publish?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/appCatalogs/teamsApps",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether an agent is available to anyone in the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether an agent is available to anyone in the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
