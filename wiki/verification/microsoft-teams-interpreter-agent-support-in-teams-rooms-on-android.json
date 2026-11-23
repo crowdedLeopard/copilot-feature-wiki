@@ -2,30 +2,602 @@
   "slug": "microsoft-teams-interpreter-agent-support-in-teams-rooms-on-android",
   "roadmapId": 562665,
   "title": "Microsoft Teams Rooms on Android: Interpreter agent for real-time meeting translation",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-23",
   "version": 1,
-  "model": "none",
-  "engine": "manual",
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
   "attempts": 0,
-  "hold": {
-    "reason": "unverified",
-    "since": "2026-11-23",
-    "reasons": [
-      "Written but not yet checked against Microsoft Learn."
-    ]
-  },
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
+    "claims": 47,
+    "confirmed": 47,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
-    "minor": 0
+    "minor": 2
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
-  "history": []
+  "summary": "The briefing passes: its roadmap facts, room entitlement and meeting-policy commands are supported, and it explicitly reports Microsoft's conflicting Android support statements. Two minor qualifications remain: other Microsoft documentation gives a different voice-simulation default and announces additional language support.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing; title; summary",
+      "type": "record",
+      "claim": "Interpreter translates Teams meetings in real time so participants can listen in their chosen language.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The Interpreter agent acts as a translator in Microsoft Teams meetings, allowing participants to listen to the meeting in their chosen language with real-time translation",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; summary; Scope: Users and licences",
+      "type": "record",
+      "claim": "The roadmap describes Interpreter as available in Teams Rooms on Android licensed for Teams Rooms Pro.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "It's now available in Teams Rooms on Android licensed for Teams Rooms Pro.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The roadmap target is August CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope: Clouds; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; Scope: Clouds",
+      "type": "record",
+      "claim": "The roadmap platform is Teams and Surface Devices.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Teams and Surface Devices\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Scope: Rollout; Governance guidance: At rollout",
+      "type": "date",
+      "claim": "The Android release notes introduce Interpreter support in build 1449/1.0.96.2026249711, dated September 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+      "quote": "### 1449/1.0.96.2026249711 (September 2026)\n\nIntroduced in this update:\n\n- **Interpreter agent support during meetings**",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "controls[0].governs; summary; What's changing; Governance controls",
+      "type": "applicability",
+      "claim": "The Teams meeting policy controls Interpreter in Teams Rooms on Android.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+      "quote": "This is controlled using the [Teams Meeting Policy](/en-us/microsoftteams/interpreter-agent-teams#manage-interpreter-using-powershell).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "type": "behaviour",
+      "claim": "An Android release-notes entry fixes Interpreter appearing on the in-meeting console despite a disabled Interpreter policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+      "quote": "Resolved an issue where Interpreter was shown on the in-meeting console despite the interpreter policy being set to disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Interpreter performs speech-to-speech translation, producing translated speech on participants' behalf.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Interpreter performs real-time speech-to-speech (STS) translation using Azure Cognitive Services, supporting multi-speaker, mixed-language conversations in Teams meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing: supported languages",
+      "type": "behaviour",
+      "claim": "The Interpreter admin page lists Chinese (Mandarin), English, French, German, Italian, Japanese, Korean, Portuguese and Spanish for speaking and listening.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Interpreter supports the following languages for speaking and listening: Chinese (Mandarin), English, French, German, Italian, Japanese, Korean, Portuguese, Spanish.",
+      "severity": "minor",
+      "fix": "After the language list, add: 'Microsoft's Teams admin release notes for May 20, 2026 also say Traditional Chinese is officially supported.' Cite https://learn.microsoft.com/officeupdates/teams-admin#may-20,-2026, which states 'Traditional Chinese is now officially supported.'"
+    },
+    {
+      "n": 14,
+      "where": "What's changing: voice options",
+      "type": "behaviour",
+      "claim": "Participants can choose a simulated personal voice or a preset automated voice.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "participants can choose to have Interpreter **simulate their own voice** when translating to others or select one of the following **preset automated voices**: Ava (female), Andrew (male), Fable Turbo (neutral).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing: Ava default",
+      "type": "default",
+      "claim": "Ava is the default when an automated voice is selected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "If an automated voice is selected, **Ava is the default.**",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "summary; What's changing; Risk assessment: Change & support; Open questions",
+      "type": "availability",
+      "claim": "The Interpreter admin page still lists Teams Rooms on Android as unsupported, conflicting with the roadmap and Android release notes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "### Not supported\n\nInterpreter isn't supported on the following platforms and clients:\n\n- 1:1 PSTN calls (Public Switched Telephone Network)\n- Teams events\n- Microsoft Teams Rooms on Android",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope: Related platforms",
+      "type": "availability",
+      "claim": "The Interpreter admin page lists Teams Rooms on Windows as supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Interpreter is supported on the following platforms and clients:\n- Teams Rooms on Windows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: defaultState; controls[0].note; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Interpreter availability is on by default through the AIInterpreter meeting-policy parameter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "The org-wide **`-AIInterpreter`** parameter controls whether your users can use simultaneous or consecutive interpretation during meetings in your organization. **This parameter is enabled by default.**",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Room interpretation is included with Teams Rooms Pro.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+      "quote": "20 hours of interpretation included per room account per month with a Teams Rooms Pro license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence; Risk assessment: Security & identity",
+      "type": "licensing",
+      "claim": "For Teams Rooms devices, Teams Rooms Pro is required in place of the Microsoft Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "For Teams Rooms devices, a *Teams Rooms Pro* license is required in place of the *Microsoft Copilot* license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "Teams Rooms Pro includes 20 hours of interpretation per room account per month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+      "quote": "20 hours of interpretation included per room account per month with a Teams Rooms Pro license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: licensing.notes; Cost and licensing: Beyond the included hours; Open questions",
+      "type": "licensing",
+      "claim": "Access beyond the included hours is subject to available capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+      "quote": "Access beyond included hours is subject to available capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Security & identity; Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The Interpreter page lists an eligible Microsoft 365 base licence among its prerequisites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "An eligible *Microsoft 365*base license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Security & identity; Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The Interpreter page lists an eligible Teams licence among its prerequisites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "An eligible *Microsoft Teams*license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].api; Governance controls table; Governance guidance: At rollout",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AIInterpreter Disabled disables Interpreter for the specified meeting policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "To turn off Interpreter for your entire organization, use the following script:\n\n```PowerShell\nSet-CsTeamsMeetingPolicy -Identity <policy name> -AIInterpreter Disabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].ui; Governance controls table and notes",
+      "type": "absence",
+      "claim": "An administrative UI for the Interpreter availability policy is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Interpreter\" \"Teams admin center\" \"AIInterpreter\" \"VoiceSimulationInInterpreter\". Opened learn.microsoft.com/microsoftteams/interpreter-agent-teams: 'You must use PowerShell to manage Interpreter for your entire organization.' No admin UI route returned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "The AIInterpreter meeting-policy setting governs both simultaneous and consecutive interpretation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "The meeting policy setting to turn Interpreter on or off applies to both modes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "Setting AIInterpreter to Enabled turns Interpreter back on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "To turn on Interpreter for your entire organization, use the following script:\n\n```PowerShell\nSet-CsTeamsMeetingPolicy -Identity <policy name> -AIInterpreter Enabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1].api; controls[1].note; Governance controls table; Governance guidance: At rollout",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -VoiceSimulationInInterpreter VoiceSimulationDisabled hides Simulate my voice.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "To hide the **Simulate my voice** option, use the following script:\n\n```PowerShell\nSet-CsTeamsMeetingPolicy -Identity <policy name> -VoiceSimulationInInterpreter VoiceSimulationDisabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[1].ui; Governance controls table and notes",
+      "type": "absence",
+      "claim": "An administrative UI for the voice-simulation policy is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Interpreter\" \"Teams admin center\" \"AIInterpreter\" \"VoiceSimulationInInterpreter\". Opened learn.microsoft.com/microsoftteams/interpreter-agent-teams, which requires PowerShell for organization-wide management and gives only PowerShell policy controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "default",
+      "claim": "Voice simulation is enabled by default, so translated speech uses the simulated personal voice unless changed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "**Enabled**: Sets the default value for **Choose your voice when interpreted** to **Simulate my voice**.",
+      "severity": "minor",
+      "fix": "Add: 'The Interpreter admin page says voice simulation defaults to Enabled, but the Set-CsTeamsMeetingPolicy reference lists Disabled as the default for VoiceSimulationInInterpreter; check the assigned policy.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps, whose parameter table says 'Default value: Disabled'."
+    },
+    {
+      "n": 32,
+      "where": "controls[1].note; Governance guidance: At rollout",
+      "type": "command",
+      "claim": "VoiceSimulationInInterpreter Disabled sets the default to Automated voice without removing the simulation option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "**Disabled**: Sets the default value for **Choose your voice when interpreted** to **Automated voice**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "The voice-simulation setting applies only to simultaneous interpretation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "The voice simulation setting and the calling policy settings below apply only to simultaneous interpretation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Voice samples and biometric data are never stored during voice simulation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "**Voice samples or biometric data are never stored.**",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Why it matters; Risk assessment: Data exposure; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Interpreter sends meeting audio to a cloud service for processing and returns translations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "A bot transmits meeting audio for cloud-based processing and returns translations instantly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Consecutive interpretation is usage-based and consumes Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Consecutive interpretation is a usage-based billing experience that consumes Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Consecutive interpretation charges the eligible meeting organiser's applicable billing policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "The eligible meeting organizer's applicable billing policy is charged for consecutive interpretation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing: Meter",
+      "type": "role",
+      "claim": "Only the meeting organiser can turn on consecutive interpretation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Only the meeting organizer can turn on consecutive interpretation, using Teams desktop.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing: Meter",
+      "type": "behaviour",
+      "claim": "The organiser activates consecutive interpretation using Teams desktop.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Only the meeting organizer can turn on consecutive interpretation, using Teams desktop.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Governance controls",
+      "type": "licensing",
+      "claim": "Enabling AIInterpreter does not replace the licence and Copilot Credits spending-policy prerequisites for consecutive interpretation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Turning on Interpreter through this policy doesn't replace the licensing and Copilot Credits spending policy prerequisites for consecutive interpretation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The Interpreter admin page describes translation output, not other actions on tenant data.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Android Interpreter agent tenant data actions simultaneous interpretation GCC GCC High DoD. Opened learn.microsoft.com/microsoftteams/interpreter-agent-teams in full; its workflow describes recognition, translation, speech synthesis and audio transport, not other tenant-data actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope: Related platforms",
+      "type": "availability",
+      "claim": "The Interpreter admin page lists 1:1 PSTN calls as unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Interpreter isn't supported on the following platforms and clients:\n\n- 1:1 PSTN calls (Public Switched Telephone Network)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope: Related platforms",
+      "type": "availability",
+      "claim": "The Interpreter admin page lists Teams events as unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Interpreter isn't supported on the following platforms and clients:\n\n- 1:1 PSTN calls (Public Switched Telephone Network)\n- Teams events",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope: Related platforms",
+      "type": "availability",
+      "claim": "The Interpreter admin page lists using personal peripherals with Teams Rooms as unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "- Using personal peripherals with Microsoft Teams Rooms",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls: calling policy",
+      "type": "applicability",
+      "claim": "AIInterpreter on the Teams calling policy governs 1:1 Teams VoIP calls rather than room meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "Use [CsTeamsCallingPolicy](/en-us/powershell/module/microsoftteams/set-csteamscallingpolicy) to configure Interpreter for supported 1:1 Teams-to-Teams VoIP calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Open questions: cloud coverage",
+      "type": "absence",
+      "claim": "The Android Interpreter release-notes entry does not split availability by cloud.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Android Interpreter agent tenant data actions simultaneous interpretation GCC GCC High DoD. Opened learn.microsoft.com/microsoftteams/rooms/rooms-release-note, Android build 1449/1.0.96.2026249711: the Interpreter entry names no cloud or cloud-specific rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing: Meter",
+      "type": "applicability",
+      "claim": "Simultaneous interpretation is the interpretation mode documented for Teams Rooms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+      "quote": "### Simultaneous interpretation\n\nSimultaneous interpretation is supported in Teams calls (VoIP only), Teams meetings, and Teams Rooms.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T20:02:37.202Z",
+    "summary": {
+      "links": 3,
+      "unreachable": 0,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=562665",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether Interpreter is available in meetings (including Teams Rooms on Android)",
+        "docs": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether users can choose voice simulation and the default voice option",
+        "docs": "https://learn.microsoft.com/microsoftteams/interpreter-agent-teams",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-23",
+      "status": "held",
+      "version": 1,
+      "model": "none"
+    }
+  ]
 }

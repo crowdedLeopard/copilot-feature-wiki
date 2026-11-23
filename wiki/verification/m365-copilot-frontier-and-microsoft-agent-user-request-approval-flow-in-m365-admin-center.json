@@ -2,30 +2,706 @@
   "slug": "m365-copilot-frontier-and-microsoft-agent-user-request-approval-flow-in-m365-admin-center",
   "roadmapId": 494809,
   "title": "Microsoft 365 admin center: user requests for blocked Microsoft-built Frontier agents",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-23",
   "version": 1,
-  "model": "none",
-  "engine": "manual",
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
   "attempts": 0,
-  "hold": {
-    "reason": "unverified",
-    "since": "2026-11-23",
-    "reasons": [
-      "Written but not yet checked against Microsoft Learn."
-    ]
-  },
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
+    "claims": 50,
+    "confirmed": 50,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
-    "minor": 0
+    "minor": 3
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
-  "history": []
+  "summary": "The roadmap facts, request workflow, roles and Graph operations are supported. Minor corrections should complete two navigation paths and cite the service description that supports the included licensing model; the briefing appropriately distinguishes approval from unblocking and installation.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap item is launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products, roadmapModified",
+      "type": "record",
+      "claim": "The record identifies Microsoft Copilot (Microsoft 365) and Microsoft 365 admin center and was modified on 10 July 2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-07-10T21:58:35\", \"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Microsoft 365 admin center\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "title; What's changing",
+      "type": "record",
+      "claim": "The roadmap describes user requests for Microsoft-built Frontier agents blocked by organisational policy and admin approval or rejection.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Agents built by Microsoft and available in the Frontier program will be displayed in the Agent Store. This feature will support users to request these agents if blocked by organizational policies. Admins will have the opportunity to further approve and reject these user request.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "controls[0].ui; summary; Governance controls; Governance guidance",
+      "type": "admin-path",
+      "claim": "The Microsoft-built agent request workflow is reached through Microsoft 365 admin center > Agents > All agents > Requests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests",
+      "quote": "The request is submitted to your administrators and appears in the Microsoft 365 admin center under **Agents** > **All agents** > **Requests**.",
+      "severity": "minor",
+      "fix": "The path stops on the correct list. Complete controls[0].ui.path and its rendered counterpart as 'Agents > All agents > Requests > agent > Requests > request > Approve', retaining the note that Reject is the alternative action."
+    },
+    {
+      "n": 10,
+      "where": "controls[0].api; controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The documented beta Graph approve operation approves one individual access or hiring request and takes requestId and packageVersion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-approve",
+      "quote": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{packageId}/approve\nApprove one current individual access or hiring request under the bound package.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "An agent can be blocked at Microsoft 365 admin center > Agents > All agents > agent > Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select **Agents** > **All agents**.\nIn the **All agents** page, select an agent from the list of agents.\nIn the agent details pane that opens, immediately under the agent's name, select **Block** or **Unblock**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package to prevent usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage.\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[2].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Frontier enrolment is managed through Settings > Org settings > Organization profile > Release preferences > Turn on Frontier.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Under the **Organization profile** tab, select **Release preferences**.\nTo opt in to Frontier preview, toggle **Turn on Frontier** to **On**.\nChoose how Frontier access is assigned in your organization:",
+      "severity": "minor",
+      "fix": "For the row about which users are enrolled, complete controls[2].ui.path and its rendered counterpart as 'Settings > Org settings > Organization profile > Release preferences > Turn on Frontier > All users or Specific users and groups'. The existing path reaches the correct panel but stops before audience selection."
+    },
+    {
+      "n": 14,
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "No API for assigning users to Frontier enrolment is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Frontier enrollment Turn on Frontier Microsoft Graph PowerShell API release preferences'; 'Frontier Graph settings enrollment'. Read get-started-frontier and graph/utcm-copilot-resources: the latter manages tenant OCPS policy values, not Frontier user enrolment assignments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "default",
+      "claim": "Microsoft has not stated the default state of the request option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft built agent request approval flow default enabled disable requests licensing price meter'; '\"agent requests\" \"Microsoft\" \"default\" \"admin\"'. Read agent-requests, agent-settings, get-started-frontier and the roadmap; none states a default for the request option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The admin request-approval capability has an included licensing model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365",
+      "quote": "| Admin agent governance actions (publish, deploy, block, delete, approve, assign, reassign owner, pin, etc.) | Microsoft 365 admin center | Yes | Yes | Yes |",
+      "severity": "minor",
+      "fix": "Keep licensing.model as 'included'. Add the Microsoft Agent 365 service description at https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365 to sources and add: 'The service description includes admin agent governance actions, including approval, with a Microsoft cloud subscription.'"
+    },
+    {
+      "n": 17,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Copilot-related Frontier features require a Microsoft Copilot licence or a licence including access to Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "However, to use Frontier features for Copilot, users need a Microsoft Copilot license or a license that includes access to Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Frontier-enrolled users without a Microsoft Copilot licence are not shown Copilot-related Frontier features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Users enrolled in Frontier without a Microsoft Copilot license aren't presented with Copilot-related Frontier features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "licensing.notes; controls[0].note; controls[1].note; Cost and licensing",
+      "type": "licensing",
+      "claim": "Access to the Graph Package Management API requires a Microsoft Agent 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-approve",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The agent requests page names no licence or meter for the request flow itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft built agent request approval flow default enabled disable requests licensing price meter'; '\"Microsoft-built\" \"request\" \"license\" admin center'. Read agent-requests in full: no licence, price or request meter is stated there.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; summary",
+      "type": "behaviour",
+      "claim": "A member can open a Microsoft-built agent unavailable due to admin policy in the store and select Request.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests",
+      "quote": "When Microsoft built agent is unavailable because of an admin policy, for example the agent is blocked, users in your organization can't install it. However, they can still request it:\n1. From the store, a member opens the blocked agent and selects **Request**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The resulting request has state Allow user to install, which administrators can filter on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests",
+      "quote": "Find the requested Microsoft built agents by going to the **Requests** tab and filtering by the state **Allow user to install**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The agent details pane's Requests tab shows the requesting user under Requested from and the request date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests",
+      "quote": "Select the agent, then open the **Requests** tab in the agent's details pane to see which users requested the agent. The user is listed under **Requested from** along with the date requested.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].note; What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "An administrator can approve a selected request to let the user install the agent or reject it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests",
+      "quote": "Select the request and choose **Approve** to let the user install the agent. You can also select **Reject** to deny the request.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "applicability",
+      "claim": "This request-and-approval workflow supports only Microsoft-built agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests",
+      "quote": "This request and approval workflow supports only Microsoft-built agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Users cannot request third-party agents through the admin center, and administrators including Global Administrators cannot approve their access there.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests",
+      "quote": "Users can't request access to third-party agents through the Microsoft 365 admin center, and administrators, including Global Administrators, can't approve access to third-party agents in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[1].note; What's changing; Risk assessment; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "A blocked agent must be unblocked before a request to install it can be accepted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests",
+      "quote": "If the agent is blocked, a banner reminds you that it must be unblocked before any request to install it can be accepted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Organisational settings blocking a member still prevent installation after request approval.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests",
+      "quote": "If your organization's settings block a member from access, they won't be able to install the agent even after you approve their request.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1].governs; Why it matters; Risk assessment; Governance guidance",
+      "type": "applicability",
+      "claim": "Blocking or unblocking an agent is an organisation-wide control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Block or unblock agents for the entire organization by using the same controls that work for any other app in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters; Risk assessment",
+      "type": "availability",
+      "claim": "Frontier features are preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Frontier features are preview and subject to change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters; Scope; Governance guidance: Before rollout",
+      "type": "date",
+      "claim": "Starting 29 March 2026, newly published Frontier agents are available only to Frontier-enrolled users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Starting March 29, 2026, newly published Frontier agents are available only to Frontier-enrolled users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Frontier agents published before 29 March 2026 remain accessible to all users with a Microsoft Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Frontier agents published before this date continue to be accessible to all users with a Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Frontier features do not comply with ISO 27001, ISO 27002 or ISO 27018 requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Frontier features do not comply with ISO 27001, ISO 27002, or ISO 27018 requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "HIPAA Business Associate Agreement coverage is not included for Frontier experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "HIPAA Business Associate Agreement coverage is not included for Frontier experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Global Administrator and AI Administrator can install, modify, approve and manage agent configurations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-roles-perms",
+      "quote": "| Role | View insights and organization data | View agent registry information | Install, modify, approve, and manage agent configurations |\n| Global Administrator | ✔ | ✔ | ✔ |\n| AI Administrator | ✔ | ✔ | ✔ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Security Administrator can view agent registry information but cannot approve agent configurations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-roles-perms",
+      "quote": "| Role | View insights and organization data | View agent registry information | Install, modify, approve, and manage agent configurations |\n| Security Administrator | ✔ | ✔ | ✖ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[2].note; Scope",
+      "type": "role",
+      "claim": "Frontier enrolment prerequisites name AI Administrator, Security Administrator or Office Apps Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "You need an account that includes one of the following roles:\n- AI Administrator\n- Security Administrator\n- Office Apps Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Graph approval does not activate a template, unblock a package, change settings, install an agent or grant consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-approve",
+      "quote": "This action doesn't activate a template, unblock a package, change settings, install an agent, or grant consent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "The request documentation does not describe the requesting user's pending-status experience.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft built agent Request Allow user to install user request status notification Frontier approval Graph'; '\"agent requests\" \"status\" \"user\" \"Microsoft built\"'. Read agent-requests: request state and dates are described for admins, not a requester-facing pending status.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Frontier experiences may be modified, suspended or discontinued.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "As preview features, Frontier experiences may be modified, suspended, or discontinued",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Frontier experiences may not be covered by standard support commitments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "may not be covered by standard support commitments or service level agreements",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Certain Frontier experiences may be paid, and the Frontier page points to the Microsoft Copilot Credits Guide for consumption requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Certain Frontier experiences may only be available on a paid basis. Copilot credit consumption requirements are described in the Microsoft Copilot Credits Guide.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The cited pages do not state a rate or meter for an individual Frontier agent.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Frontier\" \"agent\" \"rate\" \"credits\" \"request\"'. Read the cited Frontier, requests, roles, actions, settings, plugins, approve and block pages; none gives an individual Frontier agent's rate. This does not claim that rates are unpublished elsewhere.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].note; controls[1].note; Governance controls",
+      "type": "availability",
+      "claim": "The Graph calls are beta, and the approve contract's availability depends on the matching schema and backend release.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-approve",
+      "quote": "This reference describes the reviewed beta contract. Availability depends on the matching schema and backend release; API-review approval isn't evidence of deployed availability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls: Related settings",
+      "type": "admin-path",
+      "claim": "The Microsoft-built agent category setting is at Agents > Settings > Agent and plugin access > Allow agents and plugins built by Microsoft and permits Frontier agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "go to **Agent** > **Settings** > **Agent and plugin access**.\nVerify that **Allow agents and plugins built by Microsoft** is checked. This setting allows the use of Microsoft Frontier agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls: Related settings",
+      "type": "behaviour",
+      "claim": "Microsoft-built agents remain visible when their category setting is disabled, but users cannot install them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Users see agents and plugins built by Microsoft even if you disable the setting, but they can't install those agents and plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance controls: Related settings",
+      "type": "applicability",
+      "claim": "Frontier enrolment does not override an agent disabled in the admin center's Agent section.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "The Frontier admin control doesn't override the settings configured in the Agent section of the admin center. If an admin turned off a Frontier agent in the Agent view, that agent isn't available to users, regardless of a user's Frontier enrollment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[2].note; Governance guidance: After rollout",
+      "type": "date",
+      "claim": "The unified release preferences experience rolls out gradually from mid-November 2026 while the existing Copilot > Settings Frontier experience remains.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "The unified release preferences experience is rolling out gradually in mid-November 2026, so it might not be available in your organization yet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "The agent requests page does not specifically name Frontier agents, so the explicit Frontier connection comes from the roadmap.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft built agent Request Allow user to install user request status notification Frontier approval Graph'. Read agent-requests in full: it describes Microsoft-built agents without naming Frontier. The roadmap explicitly names Microsoft-built Frontier agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No separate setting to turn the user request option on or off is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft built agent request approval flow default enabled disable requests licensing price meter'; '\"agent requests\" \"Microsoft\" \"default\" \"admin\"'. Read agent-requests and agent-settings: category and user access controls are documented, but no request-option switch is given.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T20:02:36.889Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=494809",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-roles-perms",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-approve",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Approving or rejecting a user's request for a blocked Microsoft-built agent",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Requests"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Approving or rejecting a user's request for a blocked Microsoft-built agent",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-approve",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether a Microsoft-built agent is blocked for the whole organisation",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether a Microsoft-built agent is blocked for the whole organisation",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which users are enrolled in the Frontier program",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Org settings",
+          "Organization profile",
+          "Release preferences",
+          "Turn on Frontier"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-23",
+      "status": "held",
+      "version": 1,
+      "model": "none"
+    }
+  ]
 }

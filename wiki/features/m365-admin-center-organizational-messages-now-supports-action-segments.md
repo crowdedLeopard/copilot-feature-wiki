@@ -14,7 +14,7 @@ previewDate: "December CY2025"
 risk: "low"
 cost: "low"
 impact: "low"
-defaultState: "unknown"
+defaultState: "user-opt-in"
 action: "review"
 licensing:
   model: "included"
@@ -41,7 +41,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Show all > Reports > Organizational messages > Top actions > Create a message > Recipients > Select message recipients > Target audience > Usage"
+      path: "Show all > Reports > Organizational messages > Top actions > Create a message > Objective > Adoption > Location > Windows Spotlight > Template > Create your own > Customize > Recipients > Select message recipients > Target audience > Usage"
       docs: "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365"
     api: null
     note: "Offered only when the tenant has a qualifying E3 or E5 licence. Usage does not require Adoption Score group-level insights. Segments: Inactive Copilot users; Inactive Copilot users in Teams."
@@ -73,19 +73,23 @@ changes:
     note: "First briefing for roadmap item 503563: Action Segments targeting in organizational messages."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 59 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after the independent check: default state is now a per-message author choice, the Usage audience path includes the wizard steps, and the autonomy statement and two checklist items were narrowed."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 47 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 54
-  unconfirmed: 1
-  contradicted: 4
-  attempts: 1
-  hash: "c4633c213de439b18ee971b90974fb7a"
+  claims: 47
+  confirmed: 47
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "107d765b32fe5bfefa7b79485a5be1c3"
 ---
 
 ## What's changing
@@ -102,7 +106,7 @@ The roadmap record gives the status as Launched, with a preview target of Decemb
 
 For an administrator running a Copilot adoption campaign, the segments replace a manual step: instead of building and maintaining an Entra group of inactive users, an author can pick a Usage audience when scheduling the message. That makes the message list reflect Copilot usage that you did not curate, so expect recipients to change as people start or stop using Copilot.
 
-Microsoft has not stated what happens on arrival, so base planning on the fact that no source says existing messages change. Authors with the Organizational Messages Writer role will see a new audience choice if the tenant meets the licence condition. The practical decisions are who holds that role, whether approvers review messages, and whether your Windows and Teams surfaces are set up to receive them.
+Qualifying message authors can select Usage in the message wizard without enabling advanced targeting of organizational messages. Authors with the Organizational Messages Writer role will see a new audience choice if the tenant meets the licence condition. The practical decisions are who holds that role, whether approvers review messages, and whether your Windows and Teams surfaces are set up to receive them.
 
 ## Risk assessment
 
@@ -117,7 +121,7 @@ Microsoft has not stated what happens on arrival, so base planning on the fact t
 
 **Autonomy & actions**
 
-- No agent or automated action is involved: the segment only decides who receives a message an author has scheduled. Authors can cancel or delete a message from **Manage messages**.
+- Usage is an audience choice in a message that an author creates and schedules. Authors can cancel or delete a message from **Manage messages**.
 
 **Change & support**
 
@@ -149,7 +153,6 @@ The two predefined segments only include users who hold a Microsoft Copilot lice
 
 - Confirm the tenant holds one of the licences that unlock advanced targeting; if it does not, the Usage option is part of the advanced features that Learn says are restricted to those tenants.
 - Decide which people hold the Organizational Messages Writer and Organizational Messages Approver roles, and assign them in the Microsoft 365 admin center.
-- Check that Windows devices are Microsoft Entra ID-joined or hybrid joined and that the Intune tenant policies for Windows surfaces are set, as the Learn page describes.
 
 ### At rollout
 
@@ -159,7 +162,6 @@ The two predefined segments only include users who hold a Microsoft Copilot lice
 
 ### After rollout
 
-- Review activity in the **Review activity** experience and export the CSV to compare seen, clicked and dismissed counts per message.
 - Cancel any message that is no longer needed from **Manage messages**.
 - Re-check the Learn page for new predefined segments beyond the two listed for general availability.
 
@@ -170,7 +172,7 @@ The two predefined segments only include users who hold a Microsoft Copilot lice
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether a message is targeted by usage segment (Usage audience)</strong><br><small>Tenant</small><br><small class="controls__note">Offered only when the tenant has a qualifying E3 or E5 licence. Usage does not require Adoption Score group-level insights. Segments: Inactive Copilot users; Inactive Copilot users in Teams.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Show all › Reports › Organizational messages › Top actions › Create a message › Recipients › Select message recipients › Target audience › Usage <a href="https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether a message is targeted by usage segment (Usage audience)</strong><br><small>Tenant</small><br><small class="controls__note">Offered only when the tenant has a qualifying E3 or E5 licence. Usage does not require Adoption Score group-level insights. Segments: Inactive Copilot users; Inactive Copilot users in Teams.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Show all › Reports › Organizational messages › Top actions › Create a message › Objective › Adoption › Location › Windows Spotlight › Template › Create your own › Customize › Recipients › Select message recipients › Target audience › Usage <a href="https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Who can write and schedule organizational messages</strong><br><small>User</small><br><small class="controls__note">The Organizational Messages Approver role is assigned the same way. The request body sets principalId, roleDefinitionId and directoryScopeId.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Show all › Users › Active users › user › Roles › Manage roles › Admin center access › Show all by category › Other › Organizational Messages Writer <a href="https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Cancelling or deleting a scheduled or active message</strong><br><small>Tenant</small><br><small class="controls__note">Learn lists cancel, delete, approve and copy as the actions available from Manage messages.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Show all › Reports › Organizational messages › Manage messages <a href="https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
@@ -185,21 +187,9 @@ Microsoft Learn documents no API for authoring, targeting or cancelling organiza
 - Does Usage targeting work on Teams notifications? The Learn page lists Usage as available for Microsoft Teams notifications and also says Teams notification channels only support Microsoft Entra group selection. Watch the Learn page for a correction.
 - Which Action Segments beyond Inactive Copilot users and Inactive Copilot users in Teams will be added after general availability?
 - How often is segment membership recalculated, and can an author see which users are in a segment before scheduling?
-- Is Action Segments targeting enabled by default for qualifying tenants, or does Microsoft intend an admin switch? The roadmap record and Learn page do not say.
 
 <!-- rationale
 risk: Low. It adds a way for message authors to choose recipients by Copilot usage; the two segments hold only users with a Microsoft Copilot licence, and authoring is gated by the Organizational Messages Writer role.
 cost: Low. The Learn page ties advanced targeting, including Usage, to Microsoft 365, Office 365 or Windows Enterprise E3 or E5 licences and documents no separate meter; the cost is author and approver time.
 impact: Low. Admins and message authors choose it; end users notice only a message an author aims at them, which for these segments means Copilot-licensed users who have not used Copilot recently.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: defaultState; Why it matters; Open questions / default: Microsoft has not stated whether qualifying authors can use Action Segments without a separate enabling switch. | Found: If your tenant has the appropriate licenses ... the following options are available for a Target audience ... Usage. If the Target audience is Usage, then it is not required to enable advanced targeting of organizational messages. | Fix: Set defaultState to user-opt-in for this per-message author choice. Replace 'Microsoft has not stated what happens on arrival' with 'Qualifying message authors can select Usage in the message wizard without enabling advanced targeting of organizational messages.' Remove the final Open questions bullet asking whether a switch is needed. Source: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365#enabling-advanced-targeting-of-organizational-messages. | Source: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365
-- [contradicted, blocker] controls[0].ui; Governance controls: Usage audience row / admin-path: The route from Create a message goes directly to Recipients without specifying the preceding wizard choices. | Found: Objective: Select the nature or purpose of your new message. ... Location: ... choose where your message is displayed ... Template: Choose the format of the message. ... The available targeting options depend on the message location you select. | Fix: Replace controls[0].ui.path and its rendered table path with 'Show all > Reports > Organizational messages > Top actions > Create a message > Objective > Adoption > Location > Windows Spotlight > Template > Create your own > Customize > Recipients > Select message recipients > Target audience > Usage'. This is a documented Windows route that retains the choices before the audience step; keep the existing docs URL. | Source: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: No agent or automated action is involved. | Found: Searched: '"organizational messages" "agent" "automated actions"'. Read organizational-messages-microsoft-365 and returned excerpts. Learn describes an author-selected audience and scheduled delivery, not a blanket absence of automated actions. | Fix: Replace 'No agent or automated action is involved: the segment only decides who receives a message an author has scheduled' with 'Usage is an audience choice in a message that an author creates and schedules.' Source: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365#create-a-new-message.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist asks administrators to check Windows-delivery Intune policies, but no controls row represents that check. | Found: Check ... that the Intune tenant policies for Windows surfaces are set ...; controls contains only Usage audience, Writer role assignment, and message cancellation/deletion. | Fix: Remove the Before rollout bullet beginning 'Check that Windows devices' from the checklist; the existing body can retain the documented prerequisites. Do not add a controls row.
-- [contradicted, minor] Governance guidance: After rollout; controls / consistency: The checklist directs administrators to Review activity and CSV export, but no controls row represents this monitoring control. | Found: Review activity in the Review activity experience and export the CSV ...; controls contains only Usage audience, Writer role assignment, and message cancellation/deletion. | Fix: Remove the After rollout bullet beginning 'Review activity' from the checklist. Do not add a controls row.
 -->

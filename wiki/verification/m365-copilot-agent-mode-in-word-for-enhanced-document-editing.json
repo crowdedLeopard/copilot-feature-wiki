@@ -2,39 +2,33 @@
   "slug": "m365-copilot-agent-mode-in-word-for-enhanced-document-editing",
   "roadmapId": 499428,
   "title": "Word: Copilot Agent Mode edits documents through chat",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-23",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-23",
-    "reasons": [
-      "6 blocking findings (claims 17, 23, 24, 29, 30, 34)"
-    ]
-  },
+  "hold": null,
   "counts": {
     "claims": 40,
-    "confirmed": 34,
+    "confirmed": 40,
     "unconfirmed": 0,
-    "contradicted": 6,
-    "blocker": 6,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 1
+    "minor": 0
   },
-  "summary": "Hold: Microsoft documents the licensed editing capability formerly called Agent Mode, so its licence tier and prerequisites should not be described as unpublished. The licence-assignment path and command are correct, but the stated PowerShell permission requirement omits documented alternatives.",
+  "summary": "The briefing passes: its roadmap facts, licence requirement and licence-assignment controls are supported. Searches did not establish a separate tenant switch, default state or usage rate for this roadmap item; the briefing appropriately distinguishes the later editing-by-default announcement.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; Why it matters; Risk assessment; rationale: risk",
+      "where": "summary; What's changing; Why it matters; rationale: risk",
       "type": "record",
-      "claim": "Agent Mode supports document editing in Word through chat-based interactions.",
+      "claim": "Agent Mode supports editing a Word document through chat.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Copilot supports document editing in Word through chat-based interactions with Agent Mode.",
@@ -43,12 +37,12 @@
     },
     {
       "n": 2,
-      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: risk",
+      "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "Users can initiate document edits.",
+      "claim": "Users initiate the edits.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Users can initiate edits, share clarifying directions, and review a summary of changes within the document.",
+      "quote": "Users can initiate edits",
       "severity": null,
       "fix": null
     },
@@ -59,7 +53,7 @@
       "claim": "Users can give clarifying directions.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Users can initiate edits, share clarifying directions, and review a summary of changes within the document.",
+      "quote": "share clarifying directions",
       "severity": null,
       "fix": null
     },
@@ -70,13 +64,13 @@
       "claim": "Users can review a summary of changes within the document.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Users can initiate edits, share clarifying directions, and review a summary of changes within the document.",
+      "quote": "review a summary of changes within the document.",
       "severity": null,
       "fix": null
     },
     {
       "n": 5,
-      "where": "front matter: status; summary; What's changing; Scope; changes",
+      "where": "front matter: status; summary; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap status is Launched.",
       "status": "supported",
@@ -109,7 +103,7 @@
     },
     {
       "n": 8,
-      "where": "front matter: platforms; What's changing; Risk assessment; Scope; Governance guidance; rationale: impact",
+      "where": "front matter: platforms; What's changing; Risk assessment; Scope; rationale: impact",
       "type": "record",
       "claim": "The roadmap lists Desktop, Mac and Web.",
       "status": "supported",
@@ -122,7 +116,7 @@
       "n": 9,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and no US Government clouds.",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -131,12 +125,12 @@
     },
     {
       "n": 10,
-      "where": "front matter: previewDate",
+      "where": "Scope: Cloud",
       "type": "record",
-      "claim": "The record supplies no preview date.",
+      "claim": "The record lists no US Government clouds.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"previewDate\": null",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
       "severity": null,
       "fix": null
     },
@@ -164,17 +158,193 @@
     },
     {
       "n": 13,
-      "where": "What's changing",
+      "where": "front matter: previewDate",
       "type": "record",
-      "claim": "No Message Center post was supplied with the record.",
+      "claim": "The record supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "The supplied record contains roadmap fields and no Message Center post; the pre-check contains no Message Center posts.",
+      "quote": "\"previewDate\": null",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The record associates the item with Word and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Word\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Current Channel notes describe Agent mode in Word as conversational chat for creating, editing and refining content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/officeupdates/current-channel",
+      "quote": "Agent mode in Word adds a conversational chat experience that helps you create, edit, and refine document content as you work.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Scope: Rollout and prerequisites",
+      "type": "date",
+      "claim": "Current Channel notes place Agent mode in Word under Version 2602: March 10, Build 19725.20172.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/officeupdates/current-channel",
+      "quote": "## Version 2602: March 10\n\n*Version 2602 (Build 19725.20172)*\n\nSecurity updates listed here.\n\n### Feature updates\n\n### Word\n\n- **Agent mode in Word:**",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "The Copilot release notes contain a separate entry titled Copilot can edit your document by default in Word.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "**Copilot can edit your document by default in Word** [Web]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "That separate release-note entry identifies Roadmap ID 557673.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "**Roadmap ID:**[557673](https://www.microsoft.com/microsoft-365/roadmap?filters=&searchterms=557673)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "The separate editing-by-default release-note entry is labelled Web.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "**Copilot can edit your document by default in Word** [Web]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "The release notes do not identify the editing-by-default announcement as the same change as roadmap item 499428.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: fetched Copilot release notes for 557673, Agent Mode and editing by default; read the Word entry and its details. It identifies 557673 and does not equate that item with 499428.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: defaultState; Why it matters; Open questions; rationale: impact",
+      "type": "default",
+      "claim": "The default state for this roadmap item is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Word Agent mode default; Agent mode Word admin disable policy default license limits meter. Read roadmap, Current Channel, service description and Copilot notes; the explicit editing-by-default statement identifies a different roadmap item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "summary; licensing.notes; Risk assessment; Cost and licensing; Scope; rationale: cost and impact",
+      "type": "licensing",
+      "claim": "The service description requires a Microsoft 365 Copilot licence for Edit with Copilot in Word, Excel, PowerPoint, and OneNote.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "Edit with Copilot in Word, Excel, PowerPoint, and OneNote^2^ ... ^2^Microsoft 365 Copilot (Premium) features: A Microsoft 365 Copilot license is required to access this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Editing is included within the named Microsoft 365 Copilot entitlement rather than a separately identified Agent Mode licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "Edit with Copilot in Word, Excel, PowerPoint, and OneNote^2^ ... ^2^Microsoft 365 Copilot (Premium) features: A Microsoft 365 Copilot license is required to access this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Governance guidance: Before rollout",
+      "type": "licensing",
+      "claim": "Microsoft 365 Copilot is an add-on licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].governs; Why it matters",
+      "type": "licensing",
+      "claim": "The Microsoft 365 Copilot add-on licence gives the full Copilot in Word experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "You have the Microsoft 365 Copilot add-on license with access to the full experience of Copilot in Word, Excel, PowerPoint, and OneNote.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No separate licence requirement specific to Agent Mode, beyond the stated editing entitlement, is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Agent mode Word license limits; Word Agent mode licensing. Read service description, Copilot overview and Get started editing with Copilot in Office; no separate Agent Mode entitlement beyond the documented editing/product plans was established.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "A usage meter specific to Agent Mode in Word is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Word Agent Mode pricing credits meter default. Read service description, Copilot overview and usage-based billing overview and management pages; none identifies a meter specifically for Agent Mode in Word.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "A credit rate specific to Agent Mode in Word is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Word Agent Mode pricing credits meter default. Read service description and Copilot usage-based billing overview and management pages; no Agent Mode in Word credit rate was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The service description names no usage meter for the editing feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Agent mode Word license limits and pricing credits meter. Read the full Microsoft Copilot service description, including the editing row, plan information and footnotes; it names a licence but no editing meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
       "where": "Cost and licensing",
       "type": "record",
       "claim": "The roadmap record names no licence.",
@@ -185,10 +355,10 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 31,
       "where": "Risk assessment: Data exposure",
       "type": "record",
-      "claim": "The roadmap description does not specify what other content Agent Mode reads.",
+      "claim": "The roadmap does not describe what other content Agent Mode reads.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Copilot supports document editing in Word through chat-based interactions with Agent Mode. Users can initiate edits, share clarifying directions, and review a summary of changes within the document.",
@@ -196,10 +366,10 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 32,
       "where": "Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "The roadmap description does not explain how edits are tracked or reversed.",
+      "claim": "The roadmap item does not explain change tracking.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Users can initiate edits, share clarifying directions, and review a summary of changes within the document.",
@@ -207,186 +377,65 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "Microsoft Learn has no page describing Agent Mode in Word.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/officeupdates/current-channel#version-2603-march-24",
-      "quote": "Agent mode in Word adds a conversational chat experience that helps you create, edit, and refine document content as you work.",
-      "severity": "blocker",
-      "fix": "Replace the sentence beginning 'Microsoft Learn has no page' with 'Microsoft Learn's Current Channel release notes also describe Agent mode in Word as a conversational chat experience for creating, editing and refining document content.' Cite https://learn.microsoft.com/officeupdates/current-channel."
-    },
-    {
-      "n": 18,
-      "where": "What's changing; Open questions",
-      "type": "behaviour",
-      "claim": "The Copilot release notes list an item titled 'Copilot can edit your document by default in Word'.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
-      "quote": "Copilot can edit your document by default in Word",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing; Open questions",
+      "n": 33,
+      "where": "Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "The release-notes item is identified as Roadmap ID 557673 rather than this item's ID.",
+      "claim": "The roadmap item does not explain how changes are reversed.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
-      "quote": "Roadmap ID: 557673",
+      "source": "roadmap record",
+      "quote": "Users can initiate edits, share clarifying directions, and review a summary of changes within the document.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing",
-      "type": "availability",
-      "claim": "The release-notes item about editing by default is marked Web.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
-      "quote": "Copilot can edit your document by default in Word [Web]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing; Open questions",
-      "type": "absence",
-      "claim": "The Copilot release notes do not identify their editing-by-default item as the same change as roadmap item 499428.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot release notes for 499428, 557673, and Agent Mode in Word; read the editing-by-default entry. It identifies 557673 and gives no equivalence to 499428.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "front matter: defaultState; Why it matters; Open questions; changes; rationale: impact",
-      "type": "default",
-      "claim": "The default state of this roadmap capability is not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Word\" \"Agent Mode\" default rollout Anthropic. Read roadmap, Copilot release notes, overview, Agent Mode Support overview and linked Word guidance. No explicit arrival default for 499428; 557673 is separately identified.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "front matter: licensing.model",
+      "n": 34,
+      "where": "Risk assessment: Change & support",
       "type": "licensing",
-      "claim": "Agent Mode in Word has a mixed licensing model based on Basic and full Copilot experiences.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
-      "quote": "Edit with Copilot in Word, Excel, PowerPoint, and OneNote ... Microsoft 365 Copilot (Premium) features: A Microsoft 365 Copilot license is required to access this feature.",
-      "severity": "blocker",
-      "fix": "Set licensing.model to 'included' and state 'The Microsoft Copilot service description lists Edit with Copilot in Word as a Microsoft 365 Copilot (Premium) feature requiring a Microsoft 365 Copilot license.' Cite https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot and https://support.microsoft.com/en-us/office/copilot-frontier/get-started-editing-with-copilot-in-office, which explicitly identifies editing with Copilot as formerly marketed as Agent Mode."
-    },
-    {
-      "n": 24,
-      "where": "summary; licensing.notes; Risk assessment; Cost and licensing; Scope; controls[0].note; rationales; changes",
-      "type": "absence",
-      "claim": "Microsoft has not published which licence tier users need for Agent Mode in Word.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
-      "quote": "Edit with Copilot in Word, Excel, PowerPoint, and OneNote ... Microsoft 365 Copilot (Premium) features: A Microsoft 365 Copilot license is required to access this feature.",
-      "severity": "blocker",
-      "fix": "Replace statements that the licence tier is unpublished with 'The Microsoft Copilot service description lists Edit with Copilot in Word as a Premium feature requiring a Microsoft 365 Copilot license.' Cite https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot. Cite https://support.microsoft.com/en-us/office/copilot-frontier/get-started-editing-with-copilot-in-office for 'In previous releases, this was marketed as \"Agent Mode\" but is now integrated into the regular Copilot experience.' Remove the corresponding open question about the licence tier, retaining its meter and limit questions."
-    },
-    {
-      "n": 25,
-      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "A usage meter specific to Agent Mode in Word is not published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Word\" \"Agent Mode\" meter credits fair use limits. Read Copilot overview, licensing options, service description, Agent Mode and editing Support pages, and fair use guidance; none names a Word Agent Mode-specific meter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "A price or credit rate specific to Agent Mode in Word is not published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Word\" \"Agent Mode\" meter credits fair use limits. Read Copilot overview, license options, service description and Agent Mode Support overview; no Word Agent Mode-specific price or credit rate is stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "Risk assessment: Change & support; Cost and licensing",
-      "type": "cost",
-      "claim": "The Copilot overview says some features are subject to fair use limits in the Basic and full experiences.",
+      "claim": "The Copilot overview says some Microsoft 365 Copilot (Basic) features are subject to fair use limits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
-      "quote": "Some features are subject to fair use limits.",
+      "quote": "Microsoft 365 Copilot (Basic) refers to users without the Copilot add-on license, but who have access to Copilot capabilities inside apps (for example, Word or Excel). It doesn't include full chat integration. Some features are subject to fair use limits.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 28,
+      "n": 35,
       "where": "Risk assessment: Change & support; Open questions",
       "type": "absence",
-      "claim": "Microsoft does not state a fair use limit specific to Agent Mode in Word.",
+      "claim": "An applicable fair use limit specific to Agent Mode in Word is not stated.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Word Agent Mode fair use limits; read Copilot overview, service description and Limits for features in Microsoft Copilot Chat. They do not identify a Word Agent Mode-specific limit.",
+      "quote": "Searched: Word Agent mode fair use; Agent mode Word license limits. Read Copilot overview, service description and Limits for features in Microsoft Copilot Chat; those pages do not specify an Agent Mode in Word limit.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
-      "where": "Scope: Rollout and prerequisites",
-      "type": "absence",
-      "claim": "Rollout information is not documented for Agent Mode in Word.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/officeupdates/current-channel#version-2603-march-24",
-      "quote": "Version 2602: March 10 ... Version 2602 (Build 19725.20172) ... Word ... Agent mode in Word",
-      "severity": "blocker",
-      "fix": "Replace the Scope rollout-and-prerequisites bullet with 'Rollout and prerequisites: Learn's Current Channel release notes list Agent mode in Word under Version 2602: March 10 (Build 19725.20172); the Microsoft Copilot service description requires a Microsoft 365 Copilot license for Edit with Copilot in Word.' Cite https://learn.microsoft.com/officeupdates/current-channel and https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot. Retain the roadmap's November CY2025 target separately."
-    },
-    {
-      "n": 30,
-      "where": "Scope: Rollout and prerequisites",
-      "type": "absence",
-      "claim": "Prerequisites are not documented for this feature.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
-      "quote": "Microsoft 365 Copilot (Premium) features: A Microsoft 365 Copilot license is required to access this feature.",
-      "severity": "blocker",
-      "fix": "Replace the Scope rollout-and-prerequisites bullet with 'Rollout and prerequisites: Learn's Current Channel release notes list Agent mode in Word under Version 2602: March 10 (Build 19725.20172); the Microsoft Copilot service description requires a Microsoft 365 Copilot license for Edit with Copilot in Word.' Cite https://learn.microsoft.com/officeupdates/current-channel and https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot."
-    },
-    {
-      "n": 31,
+      "n": 36,
       "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "The licence-assignment control is at Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses.",
+      "claim": "Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses reaches user licence assignment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
-      "quote": "go to the Users > Active users page. ... Select the row of the user ... In the right pane, select Licenses and Apps. ... Expand the Licenses section",
+      "quote": "go to the Users > Active users page. ... Select the row of the user ... select Licenses and Apps. ... Expand the Licenses section, select the boxes for the licenses that you want to assign",
       "severity": null,
       "fix": null
     },
     {
-      "n": 32,
+      "n": 37,
       "where": "controls[0].api; Governance controls table",
       "type": "command",
-      "claim": "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @() assigns a licence using Microsoft Graph PowerShell.",
+      "claim": "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @() assigns a user licence through Microsoft Graph PowerShell.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
-      "quote": "To assign a license to a user, use the following command in PowerShell. Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
+      "quote": "To assign a license to a user, use the following command in PowerShell.\nSet-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
+      "n": 38,
       "where": "controls[0].note; Governance controls",
       "type": "role",
-      "claim": "Assigning licences in the admin center requires at least a License Administrator or User Administrator.",
+      "claim": "Assigning licences in the admin centre requires at least License Administrator or User Administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
       "quote": "You must be at least a License or User Administrator to assign licenses.",
@@ -394,85 +443,30 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "controls[0].note; Governance controls table",
+      "n": 39,
+      "where": "controls[0].note",
       "type": "role",
-      "claim": "Graph PowerShell licence changes require User.ReadWrite.All.",
-      "status": "contradicted",
+      "claim": "Graph PowerShell licence assignment requires User.ReadWrite.All or another permission listed in the Assign license Graph reference.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
       "quote": "Assigning and removing licenses for a user requires the User.ReadWrite.All permission scope or one of the other permissions listed in the 'Assign license' Microsoft Graph API reference page.",
-      "severity": "blocker",
-      "fix": "Replace 'Graph PowerShell needs User.ReadWrite.All.' with 'Graph PowerShell requires User.ReadWrite.All or one of the other permissions listed in the Assign license Microsoft Graph API reference.' Keep the existing PowerShell documentation citation."
-    },
-    {
-      "n": 35,
-      "where": "controls[0].governs; Why it matters; Governance controls; rationale: risk",
-      "type": "applicability",
-      "claim": "Licence assignment is a user-scoped control over who holds a Copilot licence, rather than a switch that toggles Agent Mode alone.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
-      "quote": "When you use the Active users page to assign or unassign licenses, you assign or unassign users licenses to products.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "controls[1].ui; controls[1].api; summary; Why it matters; Governance controls; rationale: risk",
-      "type": "absence",
-      "claim": "Microsoft Learn documents no dedicated tenant switch for Agent Mode in Word in the admin UI or an API.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Word\" \"Agent Mode\" disable admin Cloud Policy Graph API; \"Word\" \"agent mode\" admin setting Microsoft Graph. Read Copilot controls overview/management, copilotAdminSetting and Anthropic app settings; no dedicated Word Agent Mode switch is documented.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Open questions: Anthropic models",
-      "type": "behaviour",
-      "claim": "The separate Word, Excel and PowerPoint Agents in the Microsoft Copilot app exclusively use Anthropic models.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
-      "quote": "These agents exclusively use Anthropic's AI models.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Open questions: Anthropic models",
-      "type": "absence",
-      "claim": "No page identifies Agent Mode in Word as the separate Word, Excel and PowerPoint Agents in the Microsoft Copilot app.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Word\" \"Agent Mode\" default rollout Anthropic. Read the app agents Learn page and Agent Mode Support overview. No explicit identity with the app agents; Support nevertheless states that Agent Mode's Office Agent runs on Anthropic models.",
-      "severity": "minor",
-      "fix": "Remove the open-question bullet beginning 'Does Agent Mode in Word use Anthropic models?': https://support.microsoft.com/en-us/topic/get-started-with-agent-mode-in-word-excel-and-powerpoint-4d322d7f-5e89-4f66-9fa4-57d328b156ff already says 'Office Agent runs on Anthropic models.' The absence of a link to the separate app agents does not leave that question unanswered."
-    },
-    {
-      "n": 39,
-      "where": "licensing.notes; controls[0].governs; Risk assessment; Cost and licensing",
-      "type": "licensing",
-      "claim": "The Copilot overview gives users with the Microsoft 365 Copilot add-on licence the full experience in Word, Excel, PowerPoint and OneNote.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
-      "quote": "You have the Microsoft 365 Copilot add-on license with access to the full experience of Copilot in Word, Excel, PowerPoint, and OneNote.",
       "severity": null,
       "fix": null
     },
     {
       "n": 40,
-      "where": "licensing.notes; Risk assessment; Cost and licensing",
-      "type": "licensing",
-      "claim": "The Copilot overview describes a Microsoft 365 Copilot (Basic) experience allowing users without the add-on licence to use Copilot in Word, Excel, PowerPoint and OneNote.",
+      "where": "controls[1]; summary; Why it matters; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no tenant admin UI or API switch specifically for Agent Mode in Word; licence assignment is a general product control instead.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
-      "quote": "You don't have the Microsoft 365 Copilot add-on license but can use Copilot in Word, Excel, PowerPoint, and OneNote.",
+      "source": null,
+      "quote": "Searched: Agent mode Word policy; Word Agent mode admin settings Office Cloud Policy; Agent mode Word Graph disable; Word Agent mode PowerShell. Read Current Channel, Copilot notes and licence-assignment pages; no feature-specific switch was established.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-23T14:03:17.550Z",
+    "at": "2026-11-23T20:02:37.943Z",
     "summary": {
       "links": 7,
       "unreachable": 0,
@@ -485,6 +479,16 @@
     "linkChecks": [
       {
         "url": "https://www.microsoft.com/microsoft-365/roadmap?id=499428",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/officeupdates/current-channel",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
         "ok": true,
         "status": 200
       },
@@ -505,16 +509,6 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
-        "ok": true,
-        "status": 200
-      },
-      {
-        "url": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
-        "ok": true,
-        "status": 200
-      },
-      {
-        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/resources/copilotadminsetting",
         "ok": true,
         "status": 200
       }
@@ -546,5 +540,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-23",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

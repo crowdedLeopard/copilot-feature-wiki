@@ -1,0 +1,841 @@
+{
+  "slug": "microsoft-purview-compliance-portal-communication-compliance-ability-to-set-a-retention-pe",
+  "roadmapId": 68688,
+  "title": "Microsoft Purview Communication Compliance: set how long policy matches are retained",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "3 blocking findings (claims 26, 27, 48)"
+    ]
+  },
+  "counts": {
+    "claims": 61,
+    "confirmed": 56,
+    "unconfirmed": 1,
+    "contradicted": 4,
+    "blocker": 3,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold: the table presents an automation command without documentation establishing that its parameter changes this setting. The permissions advice also overlooks restrictions on administrators scoped by administrative units, and today's preservation setting does not necessarily determine the period already stamped on older matches.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; title",
+      "type": "record",
+      "claim": "The roadmap plans the ability to define how long content captured by a Communication Compliance policy is retained.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Introducing the ability to define how long content captured by a Communication Compliance policy is retained.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap preview target is December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Why it matters; Scope",
+      "type": "record",
+      "claim": "The roadmap release target is January CY2027, not a commitment.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The record lists General Availability as the release phase.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\n    \"General Availability\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\n    \"Web\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "The roadmap description names SEC and FINRA as examples of regulatory compliance violations the product helps detect.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview Communication Compliance provides the tools to help organizations detect regulatory compliance violations (e.g. SEC or FINRA)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: defaultState; Why it matters; Open questions; rationale: risk",
+      "type": "default",
+      "claim": "What roadmap item 68688 does on arrival, including its effect on existing policies and its default, is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Communication Compliance\" \"68688\" retention default rollout'; read the roadmap description and Learn Investigate and remediate. The record gives no arrival default; Learn describes an existing setting without identifying it as item 68688.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; controls[0].note; Open questions",
+      "type": "absence",
+      "claim": "Neither the record nor the documentation confirms whether item 68688 is the existing Policy Match Preservation setting or a further change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Communication Compliance\" \"68688\" retention default rollout'; read the record and Learn Investigate and remediate. Neither connects the numbered roadmap item to Policy Match Preservation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "Scope: Rollout",
+      "type": "absence",
+      "claim": "No rollout mechanics beyond the roadmap targets are stated for item 68688.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Communication Compliance\" \"68688\" retention default rollout'; opened Investigate and remediate and read the record. The record supplies preview and target months but no tenant rollout mechanics; Learn's dates concern its existing setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment; rationale: impact",
+      "type": "behaviour",
+      "claim": "A policy match stores a copy of the matching message rather than the original.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-investigate-remediate",
+      "quote": "When a Communication Compliance policy finds a message that matches the policy, the solution stores a copy of the message (not the original message).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "Learn says Policy Match Preservation can be used starting June 1, 2025.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-investigate-remediate",
+      "quote": "Starting June 1, 2025, you can use the Policy Match Preservation setting to specify how long to save policy matches in Communication Compliance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Why it matters; Risk assessment; controls[0].note",
+      "type": "behaviour",
+      "claim": "The documented preservation options are 1 month, 6 months, 1 year and 7 years.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-investigate-remediate",
+      "quote": "You can choose 1 month, 6 months, 1 year, or 7 years.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; What's changing; Why it matters; controls[0].note; rationale: risk",
+      "type": "default",
+      "claim": "The documented global Policy Match Preservation default is 1 year.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-investigate-remediate",
+      "quote": "The default value is 1 year.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "A preservation period selected within a policy takes precedence over the global period.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-investigate-remediate",
+      "quote": "The preservation period you select within a policy takes precedence over the global Policy Match Preservation setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "The system automatically and permanently deletes policy matches older than the selected period.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-investigate-remediate",
+      "quote": "The system automatically deletes policy matches that are older than the selected time period.",
+      "severity": "minor",
+      "fix": "Keep the cited deletion behavior, but add: 'The channel-signals page still says copies are retained for as long as a policy is in place, which differs from the preservation-period behavior documented here.' Cite https://learn.microsoft.com/purview/communication-compliance-channels, whose text says 'Communication Compliance policies retain copies of messages used for analysis and investigation for as long as a policy is in place'."
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Preservation deletion affects the Communication Compliance copies, not the original messages in user shards.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-investigate-remediate",
+      "quote": "Only the policy matches in Communication Compliance are deleted because they're copies of the original messages. This process doesn't delete original copies from user shards.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Microsoft Purview Data Lifecycle Management can set retention policies for the original messages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-investigate-remediate",
+      "quote": "You can use Microsoft Purview Data Lifecycle Management to set up a retention policy for original messages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "type": "date",
+      "claim": "The same Learn page gives both April 1, 2025 and June 1, 2025 as dates the global setting takes effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-investigate-remediate",
+      "quote": "When the global Policy Match Preservation setting goes into effect on April 1, 2025:\n\nOn June 1, 2025, the new Policy Match Preservation setting goes into effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters; rationale: impact",
+      "type": "behaviour",
+      "claim": "Reviewers read policy matches and investigators can escalate them for investigation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-investigate-remediate",
+      "quote": "Escalate for investigation: Use Escalate for investigation to create a new eDiscovery (Premium) case for single or multiple messages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Flagged messages can contain sensitive or confidential information.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "such as sensitive or confidential information, harassing or threatening language, and sharing of adult content",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Deletion after the preservation period is automatic rather than dependent on reviewer approval.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-investigate-remediate",
+      "quote": "The system automatically deletes policy matches that are older than the selected time period.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "Changing the global time period applies going forward.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-investigate-remediate",
+      "quote": "If you change the time period in the setting after September 1, the preservation period applies going forward.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Matches already stamped with an earlier global preservation period keep that earlier period.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-investigate-remediate",
+      "quote": "if you select 1 year as the time period on September 1, then change the setting to 7 years on September 3, policy matches from September 1 and September 2 are preserved for 1 year, and policy matches starting on September 3 are preserved for 7 years.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters: final sentence",
+      "type": "behaviour",
+      "claim": "What is configured today governs how long matches are kept.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-investigate-remediate",
+      "quote": "if you select 1 year as the time period on September 1, then change the setting to 7 years on September 3, policy matches from September 1 and September 2 are preserved for 1 year",
+      "severity": "blocker",
+      "fix": "Replace 'what is configured today is what governs how long matches are kept' with 'changes to the global period apply going forward; earlier matches keep their previously stamped period', as documented at https://learn.microsoft.com/purview/communication-compliance-investigate-remediate."
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity; Scope: Roles; Governance guidance; controls[2].note",
+      "type": "role",
+      "claim": "Whoever holds Communication Compliance or Communication Compliance Admins membership can configure both global settings and policy settings.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+      "quote": "| Configure policies | Scoped | Scoped | No | No | No |\n| Configure settings (including notice templates) | No | No | No | No | No |",
+      "severity": "blocker",
+      "fix": "Qualify the role statements and controls[2].note with: 'Members scoped by administrative units can configure policies only within their assigned scope and cannot configure global settings. Use an unrestricted administrator for the global period.' This restriction is documented at https://learn.microsoft.com/purview/communication-compliance-permissions."
+    },
+    {
+      "n": 28,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "The Microsoft Entra Global Administrator role has the same solution permissions as Communication Compliance Admins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+      "quote": "Members of the following roles have the same solution permissions included with the Communication Compliance Admins role group:\n\n- Microsoft Entra ID Global Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "The Microsoft Entra Compliance Administrator role has the same solution permissions as Communication Compliance Admins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+      "quote": "Members of the following roles have the same solution permissions included with the Communication Compliance Admins role group:\n\n- Microsoft Entra ID Global Administrator\n- Microsoft Entra ID Compliance Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "The Purview Organization Management role group has the same solution permissions as Communication Compliance Admins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+      "quote": "- Microsoft Entra ID Global Administrator\n- Microsoft Entra ID Compliance Administrator\n- Microsoft Purview portal Organization Management\n- Microsoft Purview portal Compliance Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "The Purview Compliance Administrator role group has the same solution permissions as Communication Compliance Admins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+      "quote": "- Microsoft Entra ID Global Administrator\n- Microsoft Entra ID Compliance Administrator\n- Microsoft Purview portal Organization Management\n- Microsoft Purview portal Compliance Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.model; rationale: cost",
+      "type": "licensing",
+      "claim": "The preservation setting is an option inside Communication Compliance, which is included in named qualifying product licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Communication Compliance | Included | Included | Included | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The service description includes Communication Compliance in Microsoft 365 E5/A5/G5.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Communication Compliance | Included | Included | Included | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The service description includes Communication Compliance in Microsoft Purview Suite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Communication Compliance | Included | Included | Included | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The service description includes Communication Compliance in Office 365 E5/A5/G5.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Communication Compliance | Included | Included | Included | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The planning page requires covered users to have Purview Suite, Office 365 Enterprise E3 with Advanced Compliance, or Office 365 Enterprise E5.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-plan",
+      "quote": "Users covered by Communication Compliance policies must have either a Microsoft Purview Suite (formerly known as Microsoft 365 E5 Compliance) license, an Office 365 Enterprise E3 license with the Advanced Compliance add-on, or be included in an Office 365 Enterprise E5 subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Detecting inappropriate or risky interactions for non-Microsoft 365 AI data requires enabling pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "Additionally, to detect inappropriate or risky interactions for non-Microsoft 365 AI data, you need to enable pay-as-you-go billing in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "The Get started page states there are no pay-as-you-go requirements or charges for detecting risky interactions in Microsoft 365 Copilot data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "There aren't any pay-as-you-go billing requirements or charges for Microsoft 365 detecting inappropriate or risky interaction for Microsoft 365 Copilot data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing: Meter; rationale: cost",
+      "type": "absence",
+      "claim": "No licence specific to the Policy Match Preservation setting is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'communication compliance policy match preservation separate license meter pricing'; read Investigate and remediate, Get started, Plan, and the Purview service description. These give product-level licensing, not a separate preservation-setting licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing: Meter; rationale: cost",
+      "type": "absence",
+      "claim": "The preservation documentation publishes no separate meter for the setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Policy Match Preservation\" licensing billing price' and 'communication compliance policy match preservation separate license meter pricing'; opened Investigate and remediate, Get started and the service description. No preservation-setting meter was specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing: Indirect cost",
+      "type": "behaviour",
+      "claim": "Policy matches are stored in a scoped mailbox for each policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-reports-audits",
+      "quote": "Communication Compliance policy matches are stored in a scoped mailbox for each policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing: Indirect cost",
+      "type": "behaviour",
+      "claim": "The documented current scoped-mailbox storage limit is 100 GB.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-reports-audits",
+      "quote": "the current 100-GB storage size or 1 million message limit",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing: Indirect cost",
+      "type": "behaviour",
+      "claim": "The documented current scoped-mailbox message limit is 1 million.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-reports-audits",
+      "quote": "the current 100-GB storage size or 1 million message limit",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing: Indirect cost",
+      "type": "behaviour",
+      "claim": "The system stops capturing policy matches when the policy's mailbox limit is reached.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-reports-audits",
+      "quote": "If you reach the mailbox limit, the system doesn't capture policy matches and you need to create a new policy (with the same settings) to continue to capture matches for the same activities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The global setting is at Microsoft Purview portal > Settings > Communication Compliance > Policy Match Preservation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-investigate-remediate",
+      "quote": "Select the Settings button in the upper-right corner of the page, then select Communication Compliance to go to the Communication Compliance global settings.\n3. Select the Policy Match Preservation setting, then select a new time period.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].api; Open questions",
+      "type": "absence",
+      "claim": "No API or PowerShell operation for the global Policy Match Preservation setting is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Communication Compliance\" \"Policy Match Preservation\" PowerShell global API' and 'communication compliance global preservation Set-SupervisoryReviewConfig Microsoft Graph API'; read Investigate, Set-SupervisoryReviewPolicyV2 and Graph TCM search excerpts; no global-period call found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "A policy preservation selection is at Communication Compliance > Policies > policy > More actions > Edit > Name and describe your policy > Preserve policy matches.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-investigate-remediate",
+      "quote": "Select the More actions (ellipsis) button in the row for the policy you want to change, then select Edit.\n4. On the Name and describe your policy page in the policy workflow, under Preserve policy matches, make a selection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Set-SupervisoryReviewPolicyV2 -Identity <policy name> -PreservationPeriodInDays <days> changes the per-policy Preserve policy matches control.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"PreservationPeriodInDays\" \"Communication\"'; opened Set-SupervisoryReviewPolicyV2 and Create and manage policies. The parameter exists but its description is '{{ Fill PreservationPeriodInDays Description }}'; no text establishes its mapping to this control.",
+      "severity": "blocker",
+      "fix": "Set controls[1].api to null and remove the executable call from the rendered table. Keep the existing caveat as prose: 'The Set-SupervisoryReviewPolicyV2 reference lists -PreservationPeriodInDays without describing what it sets; Learn says PowerShell is not supported for managing Communication Compliance policies.' References: https://learn.microsoft.com/powershell/module/exchangepowershell/set-supervisoryreviewpolicyv2 and https://learn.microsoft.com/purview/communication-compliance-policies."
+    },
+    {
+      "n": 49,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Role-group membership is edited at Microsoft Purview portal > Settings > Roles and groups > Role groups > role group > Edit > Choose users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+      "quote": "Select Settings in the upper-right corner of the page, select Roles and groups, then select Role groups in the left navigation pane.\n3. Select the Communication Compliance role group, then select Edit.\n4. Select Choose users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity <role group> -Member <user> adds a user to a management role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group.\n\nThe Identity parameter specifies the role group to add a member to.\n\nThe Member parameter specifies who you want to add to the role group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].note; Governance controls; Open questions",
+      "type": "behaviour",
+      "claim": "The Set-SupervisoryReviewPolicyV2 reference lists PreservationPeriodInDays but leaves its description unfilled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-supervisoryreviewpolicyv2",
+      "quote": "### -PreservationPeriodInDays\n\nApplicable: Security & Compliance\n\n{{ Fill PreservationPeriodInDays Description }}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The policies page says PowerShell is not supported for creating and managing Communication Compliance policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "PowerShell isn't supported for creating and managing Communication Compliance policies. To create and manage these policies, use the policy management controls in the Communication Compliance solution.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[2].note",
+      "type": "absence",
+      "claim": "The Add-RoleGroupMember reference does not name the Communication Compliance role groups specifically.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Communication Compliance\" \"Add-RoleGroupMember\"'; read the complete Add-RoleGroupMember reference. Its description covers management role groups generally and its examples do not name Communication Compliance groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "A policy left on Global Setting uses the global preservation period.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-investigate-remediate",
+      "quote": "If you leave the Global Setting selection, the policy uses the time period selected in the global Policy Match Preservation setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls: audit paragraph",
+      "type": "behaviour",
+      "claim": "Policy creation is audited as SupervisionPolicyCreated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-reports-audits",
+      "quote": "To audit when Communication Compliance policies are created, updated, or deleted, run the following command:\n\nSearch-UnifiedAuditLog -StartDate $startDate -EndDate $endDate -RecordType Discovery -Operations SupervisionPolicyCreated,SupervisionPolicyUpdated,SupervisionPolicyDeleted",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls: audit paragraph",
+      "type": "behaviour",
+      "claim": "Policy updates are audited as SupervisionPolicyUpdated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "| Policy update | SupervisionPolicyCreated, SupervisionPolicyUpdated, SupervisionPolicyDeleted | A communication compliance administrator performed a policy update. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls: audit paragraph",
+      "type": "behaviour",
+      "claim": "Policy deletion is audited as SupervisionPolicyDeleted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-reports-audits",
+      "quote": "To audit when Communication Compliance policies are created, updated, or deleted, run the following command:\n\nSearch-UnifiedAuditLog -StartDate $startDate -EndDate $endDate -RecordType Discovery -Operations SupervisionPolicyCreated,SupervisionPolicyUpdated,SupervisionPolicyDeleted",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls: audit paragraph; Governance guidance: After rollout",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog can retrieve the Communication Compliance audit activities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "You can see these activities when you use the Search-UnifiedAuditLog PowerShell cmdlet. You can't see these activities in the Activities drop-down list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls: audit paragraph; Open questions",
+      "type": "absence",
+      "claim": "The documented Communication Compliance audit activities do not name an operation for the global Policy Match Preservation setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'communication compliance global policy match preservation audit event operation'; opened Audit log activities and Use Communication Compliance reports and audits. The Communication compliance table names policy match, policy update and tagging, but no global-preservation operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance guidance: At rollout",
+      "type": "consistency",
+      "claim": "The checklist asks readers to confirm a Data Lifecycle Management retention policy, but the controls table has no corresponding row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm that original messages are retained under a separate Data Lifecycle Management retention policy where you need them.\n\nTable rows: global preservation, per-policy preservation, and configuration role groups.",
+      "severity": "minor",
+      "fix": "Remove the checklist bullet beginning 'Confirm that original messages are retained under a separate Data Lifecycle Management retention policy'. Keep the existing explanation in What's changing and Risk assessment; no new control row is requested."
+    },
+    {
+      "n": 61,
+      "where": "Governance guidance: After rollout",
+      "type": "consistency",
+      "claim": "The checklist asks readers to review policy changes in the unified audit log, but the controls table has no audit row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review policy changes in the unified audit log, using the operations Learn lists for policy updates.\n\nTable rows: global preservation, per-policy preservation, and configuration role groups.",
+      "severity": "minor",
+      "fix": "Remove the checklist bullet beginning 'Review policy changes in the unified audit log'. Retain the existing audit information under Governance controls; no new control row is requested."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T20:02:40.388Z",
+    "summary": {
+      "links": 11,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=68688",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/communication-compliance-investigate-remediate",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/communication-compliance-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/communication-compliance-configure",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/communication-compliance-plan",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/communication-compliance-reports-audits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-log-activities",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-supervisoryreviewpolicyv2",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Global time period for preserving Communication Compliance policy matches",
+        "docs": "https://learn.microsoft.com/purview/communication-compliance-investigate-remediate",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Communication Compliance",
+          "Policy Match Preservation"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Preservation period for the policy matches of one policy",
+        "docs": "https://learn.microsoft.com/purview/communication-compliance-investigate-remediate",
+        "reachable": true,
+        "segments": [
+          "Communication Compliance",
+          "Policies",
+          "More actions",
+          "Edit",
+          "Name and describe your policy",
+          "Preserve policy matches"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Preservation period for the policy matches of one policy",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-supervisoryreviewpolicyv2",
+        "reachable": true,
+        "token": "Set-SupervisoryReviewPolicyV2",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Who can configure Communication Compliance policies and settings",
+        "docs": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and groups",
+          "Role groups",
+          "role group",
+          "Edit",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Who can configure Communication Compliance policies and settings",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

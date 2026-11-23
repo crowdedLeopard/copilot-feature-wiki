@@ -89,7 +89,21 @@ roadmapModified: "2026-07-10T21:58:35"
 changes:
   - date: "2026-11-23"
     note: "First briefing: documents the user request and admin approve or reject flow for Microsoft-built agents, its controls and the open question on Frontier."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
 version: 1
+verification:
+  status: "verified-with-gaps"
+  date: "2026-11-23"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 50
+  confirmed: 50
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "106153f15fa80f031efb5bc5163c5ec6"
 ---
 
 ## What's changing
@@ -188,4 +202,12 @@ Related settings read on Learn: **Agents** > **Settings** > **Agent and plugin a
 risk: Low. Approval is a manual admin step on Microsoft-built agents only, and Learn says a blocked agent must be unblocked before a request to install it can be accepted.
 cost: Low. The agent requests page names no licence or meter for the request flow, so the known cost is admin time, plus the Microsoft Copilot licence users need for Copilot-related Frontier features.
 impact: Low. Admins who review requests and users who find a blocked Microsoft-built agent notice it; nothing changes for other users.
+-->
+
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; summary; Governance controls; Governance guidance / admin-path: The Microsoft-built agent request workflow is reached through Microsoft 365 admin center > Agents > All agents > Requests. | Found: The request is submitted to your administrators and appears in the Microsoft 365 admin center under **Agents** > **All agents** > **Requests**. | Fix: The path stops on the correct list. Complete controls[0].ui.path and its rendered counterpart as 'Agents > All agents > Requests > agent > Requests > request > Approve', retaining the note that Reject is the alternative action. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests
+- [supported, minor] controls[2].ui; Governance controls / admin-path: Frontier enrolment is managed through Settings > Org settings > Organization profile > Release preferences > Turn on Frontier. | Found: Under the **Organization profile** tab, select **Release preferences**. To opt in to Frontier preview, toggle **Turn on Frontier** to **On**. Choose how Frontier access is assigned in your organization: | Fix: For the row about which users are enrolled, complete controls[2].ui.path and its rendered counterpart as 'Settings > Org settings > Organization profile > Release preferences > Turn on Frontier > All users or Specific users and groups'. The existing path reaches the correct panel but stops before audience selection. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier
+- [supported, minor] front matter: licensing.model / licensing: The admin request-approval capability has an included licensing model. | Found: | Admin agent governance actions (publish, deploy, block, delete, approve, assign, reassign owner, pin, etc.) | Microsoft 365 admin center | Yes | Yes | Yes | | Fix: Keep licensing.model as 'included'. Add the Microsoft Agent 365 service description at https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365 to sources and add: 'The service description includes admin agent governance actions, including approval, with a Microsoft cloud subscription.' | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
 -->

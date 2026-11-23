@@ -55,7 +55,7 @@ controls:
     scope: "other"
     ui:
       surface: "Exchange admin center"
-      path: "Roles > Outlook web app policies > policy > Access > Manage access > Offline access"
+      path: "Roles > Outlook web app policies > policy > Details > Access > Manage access > Edit access > Offline access"
       docs: "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-on-the-web/configure-outlook-web-app-mailbox-policy-properties"
     api:
       kind: "powershell"
@@ -71,19 +71,23 @@ changes:
     note: "First briefing for this item: users get 1-year and 2-year offline sync options, targeted November CY2026; Learn documents no admin control for the value yet."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 37 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after the independent check: the existing offline switch is described as allowing or blocking offline use, the Exchange admin center path is given in full, and an unmatched checklist bullet was removed."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 36 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 37
-  confirmed: 35
+  claims: 36
+  confirmed: 36
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "34838b76d04d8f2822f6400f42d4554b"
+  contradicted: 0
+  attempts: 0
+  hash: "78c133be1ac56c310b000290f35b5bb9"
 ---
 
 ## What's changing
@@ -104,7 +108,7 @@ The roadmap says users can choose the new options. Microsoft has not said that t
 
 **Data exposure**
 
-- Choosing 1 or 2 years keeps more of a mailbox cached on each Windows device. Mail older than the current window becomes available offline, which widens what is on the device if it is lost or shared. No admin control over the window is documented; the existing offline switch is the only related control (see the controls table).
+- Choosing 1 or 2 years keeps more of a mailbox cached on each Windows device. Mail older than the current window becomes available offline, which widens what is on the device if it is lost or shared. No admin control over the window is documented; the existing OfflineEnabledWin switch allows or blocks offline use altogether (see the controls table).
 
 **Security & identity**
 
@@ -135,7 +139,6 @@ Who can use the longer options, whether any account type is excluded, and how mu
 
 ### Before rollout
 
-- Record the current "Days of email to save" value on a pilot device under Settings > General > Offline, so you know what users see today.
 - Check whether `OfflineEnabledWin` is set on your Outlook on the web mailbox policies, because it allows or blocks offline use of new Outlook for Windows altogether.
 - Check free disk space on the device models that run new Outlook, since a 1-year or 2-year window caches more mail locally.
 
@@ -157,7 +160,7 @@ Who can use the longer options, whether any account type is excluded, and how mu
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Which values of &quot;Days of email to save&quot; users can choose (admin setting)</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no admin setting or API for the offline sync window at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether new Outlook for Windows can be used offline at all (existing control)</strong><br><small class="controls__note">Existing control: allows or blocks offline use of new Outlook for Windows. It does not set the number of days to save.</small></td><td data-label="Admin UI"><strong>Exchange admin center</strong><br>Roles › Outlook web app policies › policy › Access › Manage access › Offline access <a href="https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-on-the-web/configure-outlook-web-app-mailbox-policy-properties" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-OwaMailboxPolicy -Identity &lt;policy name&gt; -OfflineEnabledWin $false</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-owamailboxpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether new Outlook for Windows can be used offline at all (existing control)</strong><br><small class="controls__note">Existing control: allows or blocks offline use of new Outlook for Windows. It does not set the number of days to save.</small></td><td data-label="Admin UI"><strong>Exchange admin center</strong><br>Roles › Outlook web app policies › policy › Details › Access › Manage access › Edit access › Offline access <a href="https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-on-the-web/configure-outlook-web-app-mailbox-policy-properties" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-OwaMailboxPolicy -Identity &lt;policy name&gt; -OfflineEnabledWin $false</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-owamailboxpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -176,13 +179,4 @@ The EAC route and the cmdlet come from two different Learn pages; the EAC page l
 risk: Low. It extends a setting users already choose in Offline settings, so no new data source or permission appears; the exposure is more cached mail on each device if users pick the longer windows.
 cost: Low. The only costs the sources show are admin time and the extra local storage and sync traffic of longer windows; no licence or meter specific to this option is published.
 impact: Low. Only users who open Settings > General > Offline and pick a longer window notice it; nothing in the record says existing values change.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure / absence: The existing offline switch is the only related control. | Found: The AttachmentsOfflineEnabledWin parameter specifies whether file attachments are available for offline use in Outlook (formerly known as the new Outlook for Windows). This parameter only applies when offline capabilities are enabled in Outlook. | Fix: Replace 'the existing offline switch is the only related control (see the controls table)' with 'the existing OfflineEnabledWin switch allows or blocks offline use altogether (see the controls table)'. Do not add another control row. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/set-owamailboxpolicy
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; rendered controls table; Governance controls / admin-path: Exchange admin center > Roles > Outlook web app policies > policy > Access > Manage access > Offline access reaches the documented offline-access section. | Found: In the EAC, go to Roles > Outlook web app policies. ... In the Details flyout that opens ... Access: Select Manage access. In the Edit access flyout ... File access ... Offline access | Fix: Use the fuller path 'Roles > Outlook web app policies > policy > Details > Access > Manage access > Edit access > Offline access'. Keep the route described as reaching the Offline access section; the cited page does not name an individual switch within that section. | Source: https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-on-the-web/configure-outlook-web-app-mailbox-policy-properties
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks readers to check the user-side Days of email to save control, but the controls table has no user-side row. | Found: Record the current "Days of email to save" value on a pilot device under Settings > General > Offline; table rows: Which values ... (admin setting); Whether new Outlook for Windows can be used offline at all (existing control). | Fix: The checklist's user-side 'Days of email to save' control has no table row. Remove the 'Record the current "Days of email to save" value' checklist bullet; do not add another row.
 -->

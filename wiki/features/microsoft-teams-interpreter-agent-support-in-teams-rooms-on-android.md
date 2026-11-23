@@ -57,7 +57,21 @@ roadmapModified: "2026-08-20T22:38:45"
 changes:
   - date: "2026-11-23"
     note: "New briefing: Interpreter agent in Teams Rooms on Android, including the conflict between the release notes and the Interpreter admin page."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 47 statements not yet confirmed"
 version: 1
+verification:
+  status: "verified-with-gaps"
+  date: "2026-11-23"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 47
+  confirmed: 47
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "9a2606ade8178e2c21f159f98708ff75"
 ---
 
 ## What's changing
@@ -160,4 +174,11 @@ The Interpreter page also gives -AIInterpreter on the Teams calling policy for 1
 risk: Medium. Meeting audio is sent to a cloud service for translation and the -AIInterpreter meeting policy parameter is enabled by default, but the same policy can turn it off.
 cost: Low. Learn says Teams Rooms Pro includes 20 hours of interpretation per room account per month, so the cost it shows is the Pro licence the room needs and admin time.
 impact: Medium. People in Pro-licensed Android rooms and the remote participants who share their meetings notice it; it does not touch users who never join through such a room.
+-->
+
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] What's changing: supported languages / behaviour: The Interpreter admin page lists Chinese (Mandarin), English, French, German, Italian, Japanese, Korean, Portuguese and Spanish for speaking and listening. | Found: Interpreter supports the following languages for speaking and listening: Chinese (Mandarin), English, French, German, Italian, Japanese, Korean, Portuguese, Spanish. | Fix: After the language list, add: 'Microsoft's Teams admin release notes for May 20, 2026 also say Traditional Chinese is officially supported.' Cite https://learn.microsoft.com/officeupdates/teams-admin#may-20,-2026, which states 'Traditional Chinese is now officially supported.' | Source: https://learn.microsoft.com/microsoftteams/interpreter-agent-teams
+- [supported, minor] Risk assessment: Autonomy & actions / default: Voice simulation is enabled by default, so translated speech uses the simulated personal voice unless changed. | Found: **Enabled**: Sets the default value for **Choose your voice when interpreted** to **Simulate my voice**. | Fix: Add: 'The Interpreter admin page says voice simulation defaults to Enabled, but the Set-CsTeamsMeetingPolicy reference lists Disabled as the default for VoiceSimulationInInterpreter; check the assigned policy.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps, whose parameter table says 'Default value: Disabled'. | Source: https://learn.microsoft.com/microsoftteams/interpreter-agent-teams
 -->

@@ -55,6 +55,15 @@ sources:
   - title: "copilotPackage: block"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
     kind: "learn"
+  - title: "Supported Agent resources for Tenant Configuration Management (preview)"
+    url: "https://learn.microsoft.com/graph/utcm-agent-resources"
+    kind: "learn"
+  - title: "Supported resources for remediation and applyOnce (preview)"
+    url: "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources"
+    kind: "learn"
+  - title: "Plan Licensing and Cost for Microsoft 365 Copilot Extensibility"
+    url: "https://learn.microsoft.com/plugins/cost-considerations"
+    kind: "learn"
 videos: []
 related: ["declarative-agents","plugins","mcp","m365-copilot-mcp-based-agent-enablement-for-u-s-government-clouds","m365-admin-center-control-settings-for-agents-with-actions-in-teams-toolkit"]
 controls:
@@ -68,7 +77,7 @@ controls:
       kind: "graph"
       call: "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
-    note: "Beta API. The reference requires a Microsoft Agent 365 licence and marks US Government L4 and L5 (DOD) as not supported. Blocking an agent doesn't necessarily cover its whole plugin package."
+    note: "Beta API. Use of beta APIs in production applications is not supported. Requires a Microsoft Agent 365 licence; US Government L4 and L5 (DOD) are marked not supported."
   - governs: "Which users or groups can access agents and plugins"
     scope: "tenant"
     ui:
@@ -76,7 +85,7 @@ controls:
       path: "Agents > Settings > User access"
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings"
     api: null
-    note: "Options are All users (the default), No users, or specific users or groups. Whether it is offered in GCC High or DoD isn't stated."
+    note: "Options are All users (the default), No users, or specific users or groups. No supported User access automation is documented for GCC High or DoD; the documented TCM preview is global-service only."
 confidence: "medium"
 created: "2026-11-23"
 updated: "2026-11-23"
@@ -86,19 +95,23 @@ changes:
     note: "First briefing: roadmap status Launched for GCC High and DoD, with Learn's conflicting cloud-support statements, controls and open questions set out."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 60 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected: the User access setting has documented preview TCM automation (global service only); the first Why it matters sentence is narrowed to the outside-hosted API or MCP server; beta-API and cost-planning notes added."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 67 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 58
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "956f02ab3a5d643c25be55f40fd13a13"
+  claims: 67
+  confirmed: 67
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "78c1d99df9ba766b291b1ba17d982016"
 ---
 
 ## What's changing
@@ -111,7 +124,7 @@ Learn's government-cloud statements do not match each other, and this briefing r
 
 ## Why it matters
 
-In GCC High and DoD tenants an action is the point where a Copilot conversation reaches a system the tenant does not run. Whoever approves an agent is approving a call path to that system, so the decision belongs with service owners and security, not only with makers.
+In GCC High and DoD tenants an action is the point where a Copilot conversation reaches an API or MCP server hosted outside Microsoft 365. Whoever approves an agent is approving a call path to that system, so the decision belongs with service owners and security, not only with makers.
 
 Microsoft has not stated what happens on arrival, and the roadmap item names no default, so base your plan on no source saying existing behaviour changes. Because Learn's pages disagree about what each government cloud supports, test in your own tenant before telling makers that actions are available, and treat the roadmap's Launched status as the claim to verify.
 
@@ -167,14 +180,14 @@ The Learn pages differ on what GCC High and DoD support (see What's changing), a
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether an agent that carries actions is available to anyone in the organisation</strong><br><small>Agent</small><br><small class="controls__note">Beta API. The reference requires a Microsoft Agent 365 licence and marks US Government L4 and L5 (DOD) as not supported. Blocking an agent doesn't necessarily cover its whole plugin package.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users or groups can access agents and plugins</strong><br><small>Tenant</small><br><small class="controls__note">Options are All users (the default), No users, or specific users or groups. Whether it is offered in GCC High or DoD isn't stated.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether an agent that carries actions is available to anyone in the organisation</strong><br><small>Agent</small><br><small class="controls__note">Beta API. Use of beta APIs in production applications is not supported. Requires a Microsoft Agent 365 licence; US Government L4 and L5 (DOD) are marked not supported.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users or groups can access agents and plugins</strong><br><small>Tenant</small><br><small class="controls__note">Options are All users (the default), No users, or specific users or groups. No supported User access automation is documented for GCC High or DoD; the documented TCM preview is global-service only.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 Blocking acts on the selected agent. Learn says that if an agent is included in a plugin you should not assume the action also applies to the whole plugin package, and that blocking doesn't necessarily revoke connected-service permissions or credentials. Plugins, skills and MCP servers are managed under Agents > Tools, which this briefing does not give a row for.
 
-Microsoft Learn documents no API for the tenant-wide User access setting at the time of writing (November 2026). The Learn pages read do not state whether the Agents pages in the Microsoft 365 admin center are available in GCC High or DoD; the agent actions page says GCCH environments support publishing agents to the organisation. The confirmation prompt for data-modifying operations is set by the plugin developer, not by a documented admin setting.
+Learn documents preview Tenant Configuration Management (TCM) automation for microsoft.agent.useraccess, using properties.valueObject.userAssignmentCategory with everyone or noOne. TCM is available only in the global service, not in national clouds. The Learn pages read do not state whether the Agents pages in the Microsoft 365 admin center are available in GCC High or DoD; the agent actions page says GCCH environments support publishing agents to the organisation. The confirmation prompt for data-modifying operations is set by the plugin developer, not by a documented admin setting.
 
 ## Open questions
 
@@ -187,14 +200,4 @@ Microsoft Learn documents no API for the tenant-wide User access setting at the 
 risk: Medium. Actions send requests to an API or MCP server that Learn says is hosted outside Microsoft 365, and data-modifying calls can be set by the developer not to prompt; blocking and user-access controls exist but need configuring.
 cost: Low. Learn's prerequisites table lists custom actions for Copilot Chat users without usage-based billing, so the known cost is admin time; usage-based billing isn't supported in GCC or GCCH, and external API hosting is separate.
 impact: Medium. Makers and the users of agents with actions in GCC High and DoD tenants notice it; Learn's pages give different pictures of what each cloud supports, which will generate support questions.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].api; Governance controls, second paragraph / absence: Microsoft Learn documents no API for the tenant-wide User access setting. | Found: These resources also support remediation and applyOnce. useraccess resource type Controls which users or groups can use agents built by Microsoft and the organization, including plugins within agents. | Fix: Replace the sentence with 'Learn documents preview Tenant Configuration Management automation for microsoft.agent.useraccess, using properties.valueObject.userAssignmentCategory with everyone or noOne. TCM is available only in the global service, not in national clouds.' Cite https://learn.microsoft.com/graph/utcm-agent-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. Keep controls[1].api null only with a note stating 'No supported User access automation is documented for GCC High or DoD; the documented TCM preview is global-service only.' | Source: https://learn.microsoft.com/graph/utcm-agent-resources
-- [unsupported, major] Why it matters, first paragraph / behaviour: An action reaches a system the tenant does not run. | Found: Searched: Copilot API MCP plugin API hosting own organization external system. Read overview-plugins, overview and MCP servers as plugin capabilities excerpt; separate hosting does not establish that the tenant organization does not run the system. | Fix: Replace the first sentence with 'In GCC High and DoD tenants an action is the point where a Copilot conversation reaches an API or MCP server hosted outside Microsoft 365.'
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing, second paragraph; rationale: cost / cost: External API or MCP hosting and licensing must be accounted for separately from Copilot licensing. | Found: Don't assume that a plugin is free to use in every product or that a user license covers every component and external service. | Fix: Add https://learn.microsoft.com/plugins/cost-considerations to sources; it supports the separate external-service cost statement. | Source: https://learn.microsoft.com/plugins/cost-considerations
-- [supported, minor] controls[0].api / command: POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block is the beta package-blocking operation. | Found: POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block APIs under the `/beta` version are subject to change. Use of these APIs in production applications is not supported. | Fix: Add 'Use of beta APIs in production applications is not supported.' to controls[0].note, retaining its existing license and national-cloud restrictions. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block
 -->

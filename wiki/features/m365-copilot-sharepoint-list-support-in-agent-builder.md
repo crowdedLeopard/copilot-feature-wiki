@@ -43,10 +43,13 @@ sources:
   - title: "Restrict discovery of SharePoint sites and content"
     url: "https://learn.microsoft.com/sharepoint/restricted-content-discovery"
     kind: "learn"
-  - title: "Whether an agent grounded in a SharePoint list is available to anyone in the organisation (Microsoft 365 admin center)"
+  - title: "Manage access to agents in SharePoint"
+    url: "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint"
+    kind: "learn"
+  - title: "Governance and lifecycle actions for agents available in Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions"
     kind: "learn"
-  - title: "Whether an agent grounded in a SharePoint list is available to anyone in the organisation (Microsoft Graph)"
+  - title: "copilotPackage: block"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
     kind: "learn"
 videos: []
@@ -62,7 +65,7 @@ controls:
       kind: "graph"
       call: "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
-    note: "Applies to the selected agent. The Graph API is /beta and requires a Microsoft Agent 365 licence. Existing alternative: blocking does not change the list's own permissions."
+    note: "The beta API is subject to change; Microsoft does not support its use in production applications. Agent approval or blocking does not necessarily grant or revoke connected-service permissions or credentials."
 confidence: "high"
 created: "2026-11-23"
 updated: "2026-11-23"
@@ -72,19 +75,23 @@ changes:
     note: "First briefing for this item: one SharePoint list per Agent Builder agent, up to 20,000 items, with licence-dependent cost."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 60 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after verification: the blocking note now reflects the agent-actions page, the risk rationale and Restricted Content Discovery question are narrowed, and checklist steps without a controls row were removed."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 70 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 57
-  unconfirmed: 2
-  contradicted: 1
-  attempts: 1
-  hash: "bb47d118f61e0b8dee091e3dd6100544"
+  claims: 70
+  confirmed: 70
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "1dbaa3dc438a0baac5ea68e87315f398"
 ---
 
 ## What's changing
@@ -147,19 +154,16 @@ A credit rate specific to grounding an agent in a SharePoint list is not yet pub
 ### Before rollout
 
 - Identify which SharePoint lists hold sensitive or regulated data, and tell makers which lists must not be used as agent knowledge.
-- Confirm whether Restricted SharePoint Search is enabled in the tenant, because Microsoft states that SharePoint can't be used as a knowledge source while it is on.
-- Confirm which users hold a Microsoft 365 Copilot licence and whether pay-as-you-go billing is enabled, so the owners of agents grounded in lists know who can use them and how usage is paid for.
+- Tell agent owners that SharePoint knowledge requires a Microsoft 365 Copilot licence or tenant usage-based billing, as described under Cost and licensing.
 
 ### At rollout
 
 - Brief makers on the documented limits: one list per agent, 20,000 items and 50 MB, attachments ignored, and the list's own URL needed rather than the site URL.
 - Ask makers to test each list-grounded agent with a user who does not have access to the list before sharing it, and report the result.
-- Decide who may share Agent Builder agents with the whole organisation, using the Sharing setting described in the notes under the controls table.
 
 ### After rollout
 
 - Review agents in Agents > All agents and block any agent that exposes list content it should not, using the Block action.
-- Watch Copilot Credits consumption if pay-as-you-go billing is enabled, and ask makers whose agents use lists heavily to explain the use case.
 
 ## Governance controls
 
@@ -168,7 +172,7 @@ A credit rate specific to grounding an agent in a SharePoint list is not yet pub
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether an agent grounded in a SharePoint list is available to anyone in the organisation</strong><br><small>Agent</small><br><small class="controls__note">Applies to the selected agent. The Graph API is /beta and requires a Microsoft Agent 365 licence. Existing alternative: blocking does not change the list's own permissions.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether an agent grounded in a SharePoint list is available to anyone in the organisation</strong><br><small>Agent</small><br><small class="controls__note">The beta API is subject to change; Microsoft does not support its use in production applications. Agent approval or blocking does not necessarily grant or revoke connected-service permissions or credentials.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -183,21 +187,10 @@ No control specific to list knowledge is described: the list's own permissions a
 - How are SharePoint list permissions, including any item-level permissions, applied when an agent answers from a list? Watch the Agent Builder knowledge page on Microsoft Learn.
 - Is there a Copilot Credits rate specific to grounding an agent in a SharePoint list, and does it differ from other SharePoint knowledge? Watch the Copilot Credits and prerequisites pages.
 - When will lookup columns be supported? The roadmap item says they are not yet available and gives no date.
-- Does Restricted Content Discovery on a site stop a list on that site being chosen as agent knowledge? Watch the Restricted Content Discovery page on Microsoft Learn.
+- Microsoft's Manage access to agents in SharePoint page says that once a site is flagged with restricted content discovery, users don't have access to use the ready-made agent, create new agents, or add content from that site to any other agents. Does this restriction also block the list picker in Agent Builder? Watch the Restricted Content Discovery page on Microsoft Learn.
 
 <!-- rationale
-risk: Medium. Makers can point an agent at a list's contents, and Microsoft's page says existing permissions apply only for files; how list permissions apply is not stated, so check before agents are shared widely.
+risk: Medium. Makers can point an agent at a list's contents. Microsoft's knowledge page explicitly describes existing permissions for SharePoint and OneDrive files but does not separately explain list-level or item-level enforcement, so test before sharing widely.
 cost: Variable. Microsoft's prerequisites page says users with a Microsoft 365 Copilot licence, or in tenants with pay-as-you-go billing (Copilot Credits), can use SharePoint data as agent knowledge; a rate for list grounding is not yet published.
 impact: Medium. Makers who build agents see a new knowledge option, and anyone using an agent grounded in a list gets answers drawn from it; admins see no new setting.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[0].note; rendered table / applicability: Blocking an agent does not change the SharePoint list's own permissions. | Found: Searched: "Agent Builder" "block" "permissions" SharePoint list. Read agent-actions and share-manage-agents. The former says blocking doesn't necessarily revoke connected-service permissions; the latter describes unchanged shared-file access, not list permissions after blocking. | Fix: Replace 'Existing alternative: blocking does not change the list's own permissions' with 'Agent approval or blocking does not necessarily grant or revoke connected-service permissions or credentials', as stated at https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].api; rendered table; Governance controls / command: POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks the selected Copilot package. | Found: POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported. | Fix: Keep the call and add to the control note: 'The beta API is subject to change; Microsoft does not support its use in production applications.' | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block
-- [supported, minor] Open questions: Restricted Content Discovery / absence: The cited Restricted Content Discovery page does not explicitly settle selection of SharePoint lists in Agent Builder. | Found: Users don't see entry points such as the Copilot button, AI actions menus (including creating agents), or Create pages with AI. | Fix: Narrow the question to 'Does this restriction also block the list picker in Agent Builder?' and precede it with 'Microsoft's Manage access to agents in SharePoint page says Restricted Content Discovery prevents adding content from the site to any other agents.' Cite https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint#turn-off-agents-on-sites-with-restricted-content-discovery alongside the existing source; that page does not explicitly name the Agent Builder list picker. | Source: https://learn.microsoft.com/sharepoint/restricted-content-discovery
-- [unsupported, minor] rationale: risk / applicability: Microsoft's page says existing permissions apply only for files. | Found: Searched: "Agent Builder" "list" "permissions" "only"; Agent Builder SharePoint list knowledge permissions item-level list-level permissions. Read add-knowledge and share-manage-agents. Neither says permissions apply only to files or excludes lists from permission enforcement. | Fix: Replace the risk rationale with 'Medium. Makers can point an agent at a list's contents. Microsoft's knowledge page explicitly describes existing permissions for SharePoint and OneDrive files but does not separately explain list-level or item-level enforcement, so test before sharing widely.' Keep https://learn.microsoft.com/plugins/agent-builder-add-knowledge as the supporting citation.
-- [contradicted, minor] Governance guidance; controls / consistency: The governance checklist names controls that have no corresponding controls-table row. | Found: Confirm whether Restricted SharePoint Search is enabled in the tenant; Confirm which users hold a Microsoft 365 Copilot licence and whether pay-as-you-go billing is enabled; Decide who may share Agent Builder agents; Watch Copilot Credits consumption. The table contains only agent blocking. | Fix: The Restricted SharePoint Search, licence/billing, Sharing and consumption-check steps have no table rows. Without adding rows, remove the first, third and consumption-check bullets; replace the licence/billing bullet with 'Tell agent owners that SharePoint knowledge requires a Microsoft 365 Copilot licence or tenant usage-based billing, as described under Cost and licensing.'
 -->

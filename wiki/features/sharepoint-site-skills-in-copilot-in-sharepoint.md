@@ -14,7 +14,7 @@ previewDate: null
 risk: "medium"
 cost: "low"
 impact: "medium"
-defaultState: "unknown"
+defaultState: "user-opt-in"
 action: "review"
 licensing:
   model: "mixed"
@@ -100,19 +100,23 @@ changes:
     note: "Corrected after verification: site-skill edit and restore attributed to site owners, Graph file-content API added to the site skills row, audit-event and permission statements narrowed, spending-policy path completed."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 99 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-23"
+    note: "Corrected after verification: default state set to user-opt-in per Learn, open question on a default removed, and two governance checklist steps that had no controls-table row removed."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 100 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 99
-  confirmed: 96
+  claims: 100
+  confirmed: 100
   unconfirmed: 0
-  contradicted: 3
-  attempts: 2
-  hash: "a667adf443289744d7d316ae5ef1441a"
+  contradicted: 0
+  attempts: 0
+  hash: "3244959ce4bb687faadc2dd17d1ed13c"
 ---
 
 ## What's changing
@@ -129,7 +133,7 @@ Learn's Get started page says Copilot in SharePoint is in public preview, with g
 
 Site skills turn a repeatable workflow into a shared instruction set that Copilot follows for everyone on the site. Editing, versions, restore and copy to other sites make those instruction sets easier to change and to spread, so a skill written for one team can end up on many sites. Treat each skill as shared configuration that deserves an owner and a review habit.
 
-Microsoft has not stated what happens on arrival, so base your plan on no source saying that existing behaviour changes. Learn documents no separate admin switch for skills, so the practical levers are site permissions, Restricted Content Discovery and the credit policy for advanced work.
+Site skills are available within Copilot in SharePoint without a separate skills admin switch; users choose to create or use them, subject to site permissions. Learn documents no separate admin switch for skills, so the practical levers are site permissions, Restricted Content Discovery and the credit policy for advanced work.
 
 ## Risk assessment
 
@@ -168,8 +172,7 @@ Copilot in SharePoint is in public preview per Learn, with general availability 
 ## Governance guidance
 
 ### Before rollout
-- Decide who may create site skills: by default every user with Edit permission can, so review Edit membership on sites where a shared skill would change how documents or lists are handled.
-- Plan to break permission inheritance on the Agent Assets library for sites that need tighter control, as Learn describes.
+- Decide whether site skills fit the site's shared document and list workflows.
 - Identify sites that must stay out of Copilot and add them to Restricted Content Discovery.
 - Check whether a spending policy covering **Advanced work in SharePoint** exists before owners build skills for scheduled automations.
 
@@ -180,7 +183,7 @@ Copilot in SharePoint is in public preview per Learn, with general availability 
 
 ### After rollout
 - Review the Site skills list (name, source, status, last modified, creator) on key sites for unexpected skills or recent edits.
-- Search the Microsoft Purview audit log for activity on the Agent Assets library files; dedicated site-skill lifecycle audit event names are not yet documented as of November 2026.
+- Note that dedicated site-skill lifecycle audit event names are not yet documented as of November 2026.
 - Watch Copilot Credits consumption in Cost management for advanced work.
 
 ## Governance controls
@@ -208,21 +211,11 @@ Learn documents breaking permission inheritance on the Agent Assets library and 
 - What does the roadmap's "publishing" mean for a site skill, and is a draft separate from the version Copilot runs? Watch the Extend Copilot in SharePoint with skills page and the roadmap item.
 - Does copying a skill to other sites need any permission on the target site beyond what Learn lists for creating skills?
 - Will Microsoft publish dedicated site-skill lifecycle audit events beyond standard SharePoint file auditing?
-- Will Microsoft state a default for these management features, or add a tenant-level switch for skills?
+- Will Microsoft add a tenant-level switch for skills?
 - Does a Copilot Credits rate apply to skill management actions, or only to running skills in advanced work?
 
 <!-- rationale
 risk: Medium. By default anyone with Edit permission on a site can create a site skill and anyone with View can run it, and Learn documents no separate admin control to turn skills off; existing controls (permissions, Restricted Content Discovery) mostly cover it.
 cost: Low. Learn lists "Create and manage skills" among the capabilities included with the Microsoft 365 Copilot licence; skills used in scheduled AI automations fall under advanced work billed in Copilot Credits.
 impact: Medium. Site owners and members of sites that use skills notice it; it reaches users with a Microsoft 365 Copilot licence on sites where Copilot in SharePoint is available, not every user.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: defaultState; Why it matters; Open questions / default: Microsoft has not stated the default availability of the site-skill management capability. | Found: There are no separate admin controls to turn skills on or off. By default, any user with Edit permissions on the site can create a site skill, and any user with View permissions can use it. | Fix: Set defaultState to 'user-opt-in'. Replace 'Microsoft has not stated what happens on arrival, so base your plan on no source saying that existing behaviour changes' with 'Site skills are available within Copilot in SharePoint without a separate skills admin switch; users choose to create or use them, subject to site permissions.' In Open questions, remove 'Will Microsoft state a default for these management features, or' and retain the question about a future tenant-level switch. Sources: https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills and https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started. | Source: https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; What's changing; Governance guidance / admin-path: Site owners reach the site-skill management page through Settings > Site skills. | Found: To manage the skills associated with a site, select Settings > Site skills. To review or restore an earlier version, open the skill and select the Versions tab. | Fix: The path reaches the correct list but stops before individual controls. Keep 'Settings > Site skills' and add to its note: 'For version restore, select the skill name or Open, then Versions.' This route is documented at https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills. | Source: https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The governance checklist's site and Agent Assets permission controls are represented in the controls table. | Found: Checklist: 'review Edit membership' and 'break permission inheritance on the Agent Assets library'. Table: availability, Site skills management, tenant skills switch, advanced-work spending limits; no permissions row. | Fix: Remove the checklist bullet beginning 'Plan to break permission inheritance' and replace the first Before rollout bullet with 'Decide whether site skills fit the site's shared document and list workflows.' Keep the verified permissions explanation in Risk assessment and Governance controls; do not add a new row.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The audit control named in the governance checklist is represented in the controls table. | Found: Checklist: 'Search the Microsoft Purview audit log for activity on the Agent Assets library files'. The four controls rows contain no audit-search control. | Fix: Remove 'Search the Microsoft Purview audit log for activity on the Agent Assets library files; ' from the After rollout bullet, leaving 'Dedicated site-skill lifecycle audit event names are not yet documented as of November 2026.' Do not add a new control row.
 -->

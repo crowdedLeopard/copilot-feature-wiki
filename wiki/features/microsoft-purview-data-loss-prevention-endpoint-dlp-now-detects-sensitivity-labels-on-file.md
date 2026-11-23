@@ -15,7 +15,7 @@ risk: "medium"
 cost: "low"
 impact: "medium"
 defaultState: "unknown"
-action: "prepare"
+action: "act-now"
 licensing:
   model: "included"
   notes: "The Microsoft Purview service description lists Endpoint Data Loss Prevention (DLP) as included in Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and the other plans it names. A licence or charge specific to this change is not yet published."
@@ -40,6 +40,9 @@ sources:
   - title: "Set-PolicyConfig"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig"
     kind: "learn"
+  - title: "Create and deploy data loss prevention policies"
+    url: "https://learn.microsoft.com/purview/dlp-create-deploy-policy"
+    kind: "learn"
 videos: []
 related: ["endpoint-dlp","sensitivity-labels","microsoft-purview-endpoint-data-loss-prevention-archive-file-classification-behavior-chang","microsoft-purview-endpoint-data-loss-prevention-ability-to-protect-files-stored-in-the-exc"]
 controls:
@@ -63,19 +66,23 @@ changes:
     note: "First briefing: the roadmap plans Endpoint DLP label detection and changed enforcement for archives; Learn does not yet describe the change."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 48 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after the independent check: removed the Windows Server availability claim, set the action to act-now, dropped checklist steps with no controls-table row, and added the DLP policy deployment page as a source."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 44 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 45
+  claims: 44
+  confirmed: 44
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "793bdaba78b09839fda810e93a4ae3cc"
+  contradicted: 0
+  attempts: 0
+  hash: "4d5eb5c175656c88cf10abe3637c668a"
 ---
 
 ## What's changing
@@ -120,7 +127,7 @@ A licence, meter or charge specific to archive label detection is not yet publis
 
 ## Scope
 
-- **Who is affected:** organisations using Endpoint DLP on onboarded devices. Learn lists archive monitoring as supported on Windows 10/11, Windows Server 2019 and later, and macOS, but the roadmap does not say which operating systems the change covers.
+- **Who is affected:** organisations using Endpoint DLP on onboarded devices. Learn lists archive monitoring support on Windows 10/11 and macOS (the three latest released major versions), but the roadmap does not say which operating systems this change covers.
 - **Cloud:** the roadmap lists Worldwide (Standard Multi-Tenant). Other clouds are not listed on the item.
 - **Platform:** the roadmap record lists the platform as Web, which does not match an endpoint feature; confirm the operating systems in the preview.
 - **Rollout:** preview targeted for December CY2026 and general availability for January CY2027. Microsoft has not stated rollout mechanics or prerequisites.
@@ -130,7 +137,6 @@ A licence, meter or charge specific to archive label detection is not yet publis
 
 ### Before rollout
 
-- Identify device DLP rules that use a sensitivity label as a condition, and note which of them have Block or Block with override actions.
 - Find the teams and workflows that store or send .zip and other archives from onboarded devices.
 - Review the Endpoint settings listed in the controls table, including how your file extension and classification settings treat archive extensions.
 - Plan to brief the service desk about possible changes to what is blocked or flagged.
@@ -138,11 +144,9 @@ A licence, meter or charge specific to archive label detection is not yet publis
 ### At rollout
 
 - Test the change on a small group of onboarded devices when the preview becomes available, using archives that contain labelled files.
-- Compare the Activity explorer events for those archives with what you saw before.
 
 ### After rollout
 
-- Re-check Endpoint DLP alerts and reports for changes in volume on archive files.
 - Update your policy documentation with how archives are now evaluated, using what Microsoft Learn says once it describes the change.
 
 ## Governance controls
@@ -171,15 +175,4 @@ The Endpoint settings page also describes a Disable classification setting that 
 risk: Medium. The roadmap says Endpoint DLP is changing how archives are classified and enforced, so existing device rules may match archive content differently; Microsoft has not said whether it is on by default.
 cost: Low. The Microsoft Purview service description lists Endpoint DLP as included in Microsoft 365 E5 and the other plans it names; the only cost the sources show is admin time, and nothing specific to this change is published.
 impact: Medium. Compliance and security teams who tune device policies, and users who store or send archives on onboarded devices, are the people who would notice changed matches.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope: Who is affected / availability: Learn lists archive monitoring as supported on Windows 10/11, Windows Server 2019 and later, and macOS. | Found: By default, Endpoint DLP isn't enabled for Windows servers when they're initially onboarded. ... Endpoint DLP is not supported on Windows Servers configured as Domain Controllers or Windows Servers with the Core Server option selected during installation. | Fix: Replace the sentence with: 'Learn lists archive monitoring support on Windows 10/11 and macOS (the three latest released major versions), but the roadmap does not say which operating systems this change covers.' This removes the unqualified Windows Server availability claim; see https://learn.microsoft.com/purview/endpoint-dlp-learn-about. | Source: https://learn.microsoft.com/purview/endpoint-dlp-learn-about
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity / role: Configuring Endpoint DLP settings and device policies requires the existing Purview permissions for those tasks. | Found: The account you use to create and deploy policies must be a member of one of these role groups: Compliance administrator; Compliance data administrator; Information Protection; Information Protection Admin; Security administrator | Fix: Add https://learn.microsoft.com/purview/dlp-create-deploy-policy to sources for the device-policy permissions statement. The already cited Set-PolicyConfig reference separately states that permissions must be assigned to configure endpoint restrictions. | Source: https://learn.microsoft.com/purview/dlp-create-deploy-policy
-- [contradicted, minor] front matter: action / consistency: The prepare action rating fits a medium-risk change to existing behaviour with a December 2026 preview target. | Found: action: "prepare"; risk: "medium"; previewDate: "December CY2026"; 'classification and enforcement of archives change' | Fix: Set action to 'act-now': the December preview target is within about 60 days of 2026-11-23, the record describes changed existing behaviour, and the briefing already identifies policy-review and communication decisions to take before it lands.
-- [contradicted, minor] Governance guidance: Before rollout, At rollout, After rollout; controls / consistency: All controls the governance checklist asks administrators to take stock of or check appear in the controls table. | Found: 'Identify device DLP rules that use a sensitivity label as a condition'; 'Compare the Activity explorer events'; 'Re-check Endpoint DLP alerts and reports'; the table has only an Endpoint DLP settings row. | Fix: The checklist's device-rule conditions/actions and Activity explorer/alert-monitoring steps have no corresponding table rows. Remove those checklist bullets to align the checklist with the existing table; do not add unverified control rows.
-- [supported, minor] Why it matters; Governance guidance: After rollout / behaviour: DLP policies can generate alerts that administrators can review. | Found: Monitor DLP alerts and DLP activity explorer. Address alerts. | Fix: Add https://learn.microsoft.com/purview/dlp-create-deploy-policy to sources for the DLP alert-monitoring premise. | Source: https://learn.microsoft.com/purview/dlp-create-deploy-policy
 -->

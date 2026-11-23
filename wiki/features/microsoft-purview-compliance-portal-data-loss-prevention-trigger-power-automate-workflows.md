@@ -12,7 +12,7 @@ platforms: ["Web"]
 targetDate: "September CY2026"
 previewDate: null
 risk: "medium"
-cost: "low"
+cost: "medium"
 impact: "low"
 defaultState: "unknown"
 action: "review"
@@ -37,6 +37,9 @@ sources:
   - title: "Troubleshoot Power Automate trigger problems and errors"
     url: "https://learn.microsoft.com/troubleshoot/power-platform/power-automate/flow-run-issues/triggers-troubleshoot"
     kind: "learn"
+  - title: "Impact of data policies on apps and flows"
+    url: "https://learn.microsoft.com/power-platform/admin/dlp-impact-policies-apps-flows"
+    kind: "learn"
   - title: "Microsoft 365 Roadmap item 380721"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=380721"
     kind: "roadmap"
@@ -47,13 +50,10 @@ controls:
     scope: "other"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Data loss prevention > Policies"
-      docs: "https://learn.microsoft.com/purview/dlp-create-policy-cc-email"
-    api:
-      kind: "powershell"
-      call: "Set-DlpComplianceRule -Identity <rule> -TriggerPowerAutomateFlow <string>"
-      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule"
-    note: "In the rule authoring page, the feature page has you add Start a Power Automate workflow as an action. Security & Compliance PowerShell only; parameter description is a placeholder in the reference."
+      path: "Data loss prevention > Policies > + Create policy > Enterprise applications & devices > Custom > Custom > Create or customize advanced DLP rules > Create rule > Add an action > Start a Power Automate workflow"
+      docs: "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started"
+    api: null
+    note: "The Set-DlpComplianceRule reference lists -TriggerPowerAutomateFlow <String>, but its description is a placeholder and does not document how to configure the linked workflow."
 confidence: "medium"
 created: "2026-11-23"
 updated: "2026-11-23"
@@ -63,19 +63,23 @@ changes:
     note: "First briefing for roadmap item 380721: DLP rule action that starts a Power Automate workflow, with licensing and supported locations from Learn."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 63 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after verification: data policy suspension of flows now stated from Learn, plan price claim removed, cost raised to medium, API side set to Not yet documented, and the control's docs link and path updated."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 57
-  unconfirmed: 3
-  contradicted: 3
-  attempts: 1
-  hash: "0ae10c1702dc840a900dec950fee5543"
+  claims: 60
+  confirmed: 60
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "dc917e98ad329f75bb7189ffc667cdbe"
 ---
 
 ## What's changing
@@ -103,7 +107,7 @@ Microsoft has not stated what happens on arrival, and no source says existing ru
 - The page says there is "no change to required role for DLP policy authoring", so anyone who can author rules can add the action; the role groups are under Governance controls. The page also says a flow is by default only available to the user who created it, so plan who owns and shares each flow linked to a rule.
 
 **Autonomy & actions**
-- The action starts a workflow when a rule matches, and what that workflow does is whatever its builder configures. Power Automate's troubleshooting page says that if a flow violates a DLP policy, the service suspends the flow and the trigger does not fire. Whether that applies to flows using the Microsoft Purview connector is not stated on the feature page.
+- The action starts a workflow when a rule matches, and what that workflow does is whatever its builder configures. Power Automate's troubleshooting page says that if a flow violates a DLP policy, the service suspends the flow and the trigger does not fire. Power Platform data policies govern connector combinations in Power Automate flows. A flow using connectors that are blocked or cannot be used together is suspended and cannot execute until the violation is resolved; runtime suspension is not instantaneous ([Impact of data policies on apps and flows](https://learn.microsoft.com/power-platform/admin/dlp-impact-policies-apps-flows)).
 - For SharePoint and OneDrive files, only new or modified content triggers a flow, so existing matching files do not produce a workflow run.
 
 **Change & support**
@@ -115,7 +119,7 @@ Microsoft has not stated what happens on arrival, and no source says existing ru
 
 **Power Automate.** To access premium connectors when configuring custom flows, the page says you need a Power Automate plan. It says a Power Automate licence is not needed to access the templates. The page does not say whether the Microsoft Purview connector counts as a premium connector, and it names no meter or price for the action.
 
-**Indirect cost.** Admin time to build, share and test flows, and any Power Automate plan a custom flow needs. A price for the plan is on the Power Automate plan comparison the page links to, not on the feature page.
+**Indirect cost.** Admin time to build, share and test flows, and any Power Automate plan a custom flow needs.
 
 ## Scope
 
@@ -129,9 +133,7 @@ The page does not describe a release channel, rollout wave or tenant prerequisit
 
 ### Before rollout
 - Confirm with Microsoft (Message center, the Learn page, roadmap item 380721) that the action is available in your US Government cloud before you plan the work.
-- Decide who builds and owns the flows, and who they are shared with, because the page says a flow is by default only available to the user who created it.
 - Check whether your custom flows will use premium connectors, which the page says need a Power Automate plan; the Notify manager template does not.
-- Ask your Power Platform administrators whether data policies could suspend a flow that uses the Microsoft Purview connector, since Power Automate's troubleshooting page describes suspension for flows that violate a data policy.
 
 ### At rollout
 - Link the Notify manager template to one pilot rule on the DLP rule authoring page, using the **Start a Power Automate workflow** action, before adding the action elsewhere.
@@ -149,7 +151,7 @@ The page does not describe a release channel, rollout wave or tenant prerequisit
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether a DLP rule starts a Power Automate workflow</strong><br><small class="controls__note">In the rule authoring page, the feature page has you add Start a Power Automate workflow as an action. Security &amp; Compliance PowerShell only; parameter description is a placeholder in the reference.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies <a href="https://learn.microsoft.com/purview/dlp-create-policy-cc-email" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-DlpComplianceRule -Identity &lt;rule&gt; -TriggerPowerAutomateFlow &lt;string&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether a DLP rule starts a Power Automate workflow</strong><br><small class="controls__note">The Set-DlpComplianceRule reference lists -TriggerPowerAutomateFlow &lt;String&gt;, but its description is a placeholder and does not document how to configure the linked workflow.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Enterprise applications &amp; devices › Custom › Custom › Create or customize advanced DLP rules › Create rule › Add an action › Start a Power Automate workflow <a href="https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -163,23 +165,16 @@ The Set-DlpComplianceRule reference lists the -TriggerPowerAutomateFlow paramete
 - Is the action in preview or generally available? The roadmap lists both phases and the Learn page does not label itself.
 - Which event details does the DLP trigger pass to a flow beyond the user name and policy name in the template?
 - Is the Microsoft Purview connector a premium connector, so that custom flows need a Power Automate plan?
-- Do Power Platform data policies apply to flows that use the Microsoft Purview connector, and what happens to a rule's action if such a flow is suspended?
+- What does the Purview rule show when its linked Power Automate flow is suspended?
 
 <!-- rationale
 risk: Medium. The action hands a DLP match to a workflow that a flow builder designs in Power Automate, and the page does not list which event details the workflow receives. Nothing is documented as switching on by itself.
-cost: Low. The Learn page says no other Purview licence is required for existing DLP customers; a Power Automate plan is needed for premium connectors in custom flows, but not for the template. Admin time is the cost the page shows.
+cost: Medium. Existing DLP customers need no additional Purview licence, but custom flows using premium connectors require a Power Automate plan; the templates do not require a Power Automate licence.
 impact: Low. Mainly DLP policy authors and flow builders notice it; a manager receives an email only if the notify-manager template is linked to a rule.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Open questions; Governance guidance: Before rollout; Risk assessment: Autonomy & actions / absence: Whether Power Platform data policies apply to flows using the Microsoft Purview connector remains unconfirmed. | Found: Power Automate makers and users won't be able to start a flow that uses connectors that don't belong together or have been blocked by data policies. A background system process marks the flow as Suspended | Fix: Replace the applicability caveat and the Before rollout question with: 'Power Platform data policies govern connector combinations in Power Automate flows. A flow using connectors that are blocked or cannot be used together is suspended and cannot execute until the violation is resolved; runtime suspension is not instantaneous.' Cite https://learn.microsoft.com/power-platform/admin/dlp-impact-policies-apps-flows. Narrow the final Open question to: 'What does the Purview rule show when its linked Power Automate flow is suspended?' | Source: https://learn.microsoft.com/power-platform/admin/dlp-impact-policies-apps-flows
-- [unsupported, blocker] Cost and licensing: Indirect cost / cost: The Power Automate plan comparison linked by the feature page gives a price for the plan. | Found: Searched: price, Price and $ in the fetched power-platform/admin/power-automate-licensing/types page. Read its licence descriptions and comparison table: they give entitlements and link to Power Automate pricing, but give no numerical plan price. | Fix: Remove 'A price for the plan is on the Power Automate plan comparison the page links to, not on the feature page.'
-- [unsupported, blocker] controls[0].api; Governance controls table / command: Set-DlpComplianceRule -Identity <rule> -TriggerPowerAutomateFlow <string> is documented to set whether a rule starts the workflow. | Found: Searched: "TriggerPowerAutomateFlow" DLP workflow parameter. Read Set-DlpComplianceRule syntax, Identity and TriggerPowerAutomateFlow sections, and New-DlpComplianceRule search excerpt: String is documented, but the setting operation and value semantics are not. | Fix: Set controls[0].api to null. Replace the parameter-related row note with: 'The Set-DlpComplianceRule reference lists -TriggerPowerAutomateFlow <String>, but its description is a placeholder and does not document how to configure the linked workflow.' Retain the prose identifying the parameter and advising confirmation before scripting; do not present it as a verified configuring call.
-- [contradicted, blocker] front matter: cost; rationale: cost; Cost and licensing / consistency: Cost low characterizes the change as indirect cost only despite the documented plan requirement for premium custom flows. | Found: cost: "low" ... 'a Power Automate plan is needed for premium connectors in custom flows' ... 'Admin time is the cost the page shows.' | Fix: Set cost to 'medium' under the standard's add-on-licences-for-a-subset scale. Replace its rationale with: 'Medium. Existing DLP customers need no additional Purview licence, but custom flows using premium connectors require a Power Automate plan; the templates do not require a Power Automate licence.'
-- [unsupported, blocker] controls[0].ui.docs / admin-path: The cited credit-card-email policy page documents the workflow control's own UI steps. | Found: Searched: Purview DLP Power Automate workflow default existing rules tenant switch rollout. Read dlp-create-policy-cc-email in full: its action is Restrict access or encrypt the content in Microsoft 365 locations, not Start a Power Automate workflow. | Fix: Change controls[0].ui.docs and the rendered UI Learn link to https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started, which explicitly documents adding Start a Power Automate workflow on the DLP rule authoring page. Retain the policy-creation page in sources for the route into rule authoring.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Microsoft Purview portal > Data loss prevention > Policies reaches the policy list used to configure the rule action. | Found: Sign in to the Microsoft Purview portal. ... Open the Data loss prevention solution and go to Policies > + Create policy. | Fix: Extend the path for the documented custom-policy creation route to 'Data loss prevention > Policies > + Create policy > Enterprise applications & devices > Custom (Categories) > Custom (Regulations) > Define policy settings > Create or customize advanced DLP rules > Create rule > Actions > Add an action > Start a Power Automate workflow'. Keep the existing policy-creation source and use https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started as ui.docs for the workflow action. | Source: https://learn.microsoft.com/purview/dlp-create-policy-cc-email
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks readers to review flow sharing and Power Platform data policies without corresponding control rows. | Found: 'Decide who builds and owns the flows, and who they are shared with' ... 'Ask your Power Platform administrators whether data policies could suspend a flow' ... 'flow-side settings ... are not a row here.' | Fix: The Before rollout steps concerning flow sharing and Power Platform data policies have no corresponding controls-table rows. Move those statements out of the governance checklist into the existing Security & identity and Autonomy & actions discussion, respectively; do not add new control rows as part of this correction.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Microsoft Purview portal path reaches the Start a Power Automate workflow rule action. | Found: DLP rule authoring page: Add Start a Power Automate workflow as an action, and then create the workflow using a template or a custom workflow using DLP trigger. | Fix: Include the omitted scope steps and headings: Data loss prevention > Policies > + Create policy > Enterprise applications & devices > Custom > Custom > Assign admin units > location > Define policy settings > Create or customize advanced DLP rules > Create rule > Actions > Add an action > Start a Power Automate workflow. The preceding route is documented at https://learn.microsoft.com/purview/dlp-create-policy-cc-email, already cited; the final action is documented at the existing docs URL. Update both the structured path and rendered table. | Source: https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started
 -->

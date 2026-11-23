@@ -1,0 +1,613 @@
+{
+  "slug": "microsoft-entra-upcoming-changes-to-federatedtokenvalidationpolicy-default-settings",
+  "roadmapId": 566869,
+  "title": "Microsoft Entra: stricter default blocks cross-domain federated sign-ins",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "2 blocking findings (claims 39, 43)"
+    ]
+  },
+  "counts": {
+    "claims": 45,
+    "confirmed": 41,
+    "unconfirmed": 1,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: Microsoft now documents a v1.0 policy update API, so the statement that administration is documented through Graph beta only is incorrect. The advice to identify affected users through the blocking error before enforcement is unsupported; Microsoft documents monitoring that error after enforcement.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans to change the policy default to block federation-to-UPN domain mismatches.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "we will change the default rule for federatedTokenValidationPolicy to block logins where internalDomainFederation does not match UPN domain.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes the current prohibition of cross-domain logins as requiring manual tenant configuration.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The feature by default requires manual configuration in the tenant to prohibit cross-domain logins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The internalDomainFederation object is typically created automatically during federation setup with AD FS or another identity provider.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This internalDomainFederation object is typically created automatically during federation setup with AD federation server or other IdPs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is August CY2026, not a committed tenant rollout date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Android, Desktop, iOS, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: products, roadmapModified",
+      "type": "record",
+      "claim": "The Microsoft Entra roadmap record was modified on 2026-07-01T23:03:18.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-07-01T23:03:18\", \"products\": [\"Microsoft Entra\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: defaultState; summary; rationale: risk",
+      "type": "default",
+      "claim": "The stricter validation is on by default when the change arrives.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/strengthen-federated-sign-in-security",
+      "quote": "Microsoft uses a stricter default that blocks cross-domain sign-ins when the federation realm root domain and the mapped user UPN root domain don't match.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk, impact",
+      "type": "behaviour",
+      "claim": "With strict validation, a root-domain mismatch blocks sign-in, while matching root domains can continue through the other checks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/strengthen-federated-sign-in-security",
+      "quote": "If the root domains match, sign-in can continue, subject to all other authentication and policy checks. If the root domains don't match, Microsoft Entra ID rejects the authentication request.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope",
+      "type": "applicability",
+      "claim": "The default change applies to federated domains with an associated internalDomainFederation object.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/strengthen-federated-sign-in-security",
+      "quote": "The change applies to federated domains that have an associated `internalDomainFederation` object.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment; Governance guidance; controls[1]",
+      "type": "behaviour",
+      "claim": "Blocked requests are expected to return AADSTS5000820 with an instruction to contact the administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/strengthen-federated-sign-in-security",
+      "quote": "A blocked authentication request is expected to return error `AADSTS5000820`: **Sign-in blocked by Federated Token Validation policy. Contact your administrator for details.**",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment; Governance guidance; rationale: impact",
+      "type": "behaviour",
+      "claim": "Root-domain comparison treats child.contoso.com as contoso.com rather than as an unrelated root.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/strengthen-federated-sign-in-security",
+      "quote": "Federated Token Validation Policy compares root domains. A child domain such as `child.contoso.com` resolves to the `contoso.com` root domain for this comparison.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Scope; controls[0].note",
+      "type": "availability",
+      "claim": "The cited beta policy API is preview, subject to change and not supported in production applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/federatedtokenvalidationpolicy?view=graph-rest-beta",
+      "quote": "APIs under the `/beta` version in Microsoft Graph are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Why it matters; Governance guidance",
+      "type": "behaviour",
+      "claim": "A custom less-restrictive configuration can restore previous cross-domain sign-in behaviour while removing the additional validation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/strengthen-federated-sign-in-security",
+      "quote": "A custom configuration can permit cross-domain sign-in for intentional scenarios. However, allowing cross-domain sign-in restores previous behavior and removes this additional domain-consistency validation layer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; controls[0].note",
+      "type": "behaviour",
+      "claim": "The rootDomains options are all, allFederated, allManaged, enumerated, allManagedAndEnumeratedFederated and none.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/strengthen-federated-sign-in-security",
+      "quote": "### `all`\n...\n### `allFederated`\n...\n### `allManaged`\n...\n### `enumerated`\n...\n### `allManagedAndEnumeratedFederated`\n...\n### `none`",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "A controller of a trusted federation realm who can assert a target's source anchor can attempt cross-realm impersonation, which matching root domains helps block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/strengthen-federated-sign-in-security",
+      "quote": "If all prerequisites are met, an attacker who controls one trusted federation realm might attempt to issue a token that maps to a user in another realm by asserting that user's source anchor.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters; Governance guidance; rationale: impact",
+      "type": "behaviour",
+      "claim": "Microsoft identifies mergers and acquisitions, coexistence, shared identity providers and migration projects as cross-domain dependencies to review.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/strengthen-federated-sign-in-security",
+      "quote": "Review intentional cross-domain sign-in scenarios, including:\n- Mergers and acquisitions.\n- Coexistence environments.\n- Shared identity providers.\n- Migration projects.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The change adds token validation after identity-provider authentication, rather than changing the provider's authentication or introducing new data access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/strengthen-federated-sign-in-security",
+      "quote": "The identity provider continues to perform its configured authentication. The additional protection is applied when Microsoft Entra ID validates and maps the returned federation token.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "This is a sign-in validation check, not an autonomous account action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/strengthen-federated-sign-in-security",
+      "quote": "Federated Token Validation Policy can apply an additional domain-consistency validation before sign-in completes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Using none disables root-domain matching and can extend the impact of a compromised, malicious or misconfigured identity provider beyond its intended domain.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/strengthen-federated-sign-in-security",
+      "quote": "If a trusted federated identity provider is compromised, malicious, or improperly configured, the impact could extend beyond its intended domain scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment; Governance guidance",
+      "type": "applicability",
+      "claim": "Microsoft recommends evaluating compensating controls including MFA and Conditional Access for allowed cross-domain sign-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/strengthen-federated-sign-in-security",
+      "quote": "Organizations that allow cross-domain sign-in should evaluate compensating controls such as multifactor authentication, Conditional Access, trusted identity-provider governance, privileged access controls, and application-authorization policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment",
+      "type": "behaviour",
+      "claim": "Microsoft says to promote a subdomain to a root domain first if it needs a distinct federation configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/strengthen-federated-sign-in-security",
+      "quote": "If a distinct federation configuration is required, first [promote the subdomain to a root domain](domains-verify-custom-subdomain#change-subdomain-to-a-root-domain).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment",
+      "type": "behaviour",
+      "claim": "Microsoft warns that successful testing does not guarantee every sign-in path was exercised.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/strengthen-federated-sign-in-security",
+      "quote": "Successful testing doesn't guarantee that every sign-in path in the tenant has been exercised or that all users are unaffected after enforcement is enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "PUT /beta/policies/federatedTokenValidationPolicy updates the validation policy through the validatingDomains request-body property.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/federatedtokenvalidationpolicy-update?view=graph-rest-beta",
+      "quote": "PUT https://graph.microsoft.com/beta/policies/federatedTokenValidationPolicy\n\nvalidatingDomains | [validatingDomains](resources/validatingdomains?view=graph-rest-beta) | Verified domains that Microsoft Entra validates whether the federated account's root domain matches",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].ui; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No Microsoft Entra admin centre setting for this policy is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Federated Token Validation Policy\" \"admin center\" configure. Read the feature's Policy administration and FAQ sections and the beta and v1.0 update references; these document Graph operations, not a portal path.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Scope; controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Security Administrator, Hybrid Identity Administrator and External Identity Provider Administrator support delegated policy operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/federatedtokenvalidationpolicy-update?view=graph-rest-beta",
+      "quote": "This operation supports the following built-in roles, which provide only the least privilege necessary:\n- Security Administrator\n- Hybrid Identity Administrator\n- External Identity Provider Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].scope; controls[1].scope",
+      "type": "applicability",
+      "claim": "Policy domain selection and the sign-in log collection are tenant-scoped.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/strengthen-federated-sign-in-security",
+      "quote": "Validates every verified domain in the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Sign-in logs are reached in the Microsoft Entra admin center through Entra ID > Monitoring & health > Sign-in logs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/monitoring-health/concept-sign-ins",
+      "quote": "To view the sign-in logs from the Microsoft Entra admin center:\n...\n2. Browse to **Entra ID** > **Monitoring & health** > **Sign-in logs**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "GET /v1.0/auditLogs/signIns retrieves tenant sign-in records for monitoring.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/signin-list?view=graph-rest-1.0",
+      "quote": "Retrieve the Microsoft Entra user [sign-ins](resources/signin?view=graph-rest-1.0) for your tenant.\n\nGET https://graph.microsoft.com/v1.0/auditLogs/signIns?$filter=createdDateTime ge 2024-07-01T00:00:00Z and createdDateTime le 2024-07-14T23:59:59Z",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope; controls[1].note",
+      "type": "role",
+      "claim": "Portal access to the sign-in logs requires at least Reports Reader.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/monitoring-health/concept-sign-ins",
+      "quote": "Sign in to the [Microsoft Entra admin center](https://entra.microsoft.com) as at least a [Reports Reader](../role-based-access-control/permissions-reference#reports-reader).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].note; Governance controls; Governance guidance",
+      "type": "applicability",
+      "claim": "Sign-in logs monitor policy blocks after enforcement and do not configure the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/strengthen-federated-sign-in-security",
+      "quote": "After enforcement is enabled, monitor Microsoft Entra sign-in logs for `AADSTS5000820` errors. Investigate affected users to identify previously undiscovered cross-domain sign-in dependencies or configuration issues.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "The policy's licensing model is unknown: its feature documentation names roles but no licence, and the Entra licensing page does not list it.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"federatedTokenValidationPolicy\" \"license\" pricing. Read the feature and Graph policy pages and searched Entra licensing for federat and token validation; no feature entitlement found. General Entra Free/P1/P2 options do not identify this policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft documents no feature-specific meter, charge or price; the known preparation cost is administrative work.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: federatedTokenValidationPolicy license pricing meter admin center portal rollout existing configuration default; \"federatedTokenValidationPolicy\" \"license\" pricing. Read feature, policy resource, update and Entra licensing pages; no feature meter or price found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn gives no date for an individual tenant to receive the new default.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Federated Token Validation Policy\" rollout existing configuration AADSTS5000820 before enforcement. Read the feature page in full and the update references; no tenant rollout date found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not say whether previously configured validatingDomains values are preserved when the default changes.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Federated Token Validation Policy\" rollout existing configuration AADSTS5000820 before enforcement. Read feature and update pages; update-body preservation rules describe explicit API updates, not migration of existing policies when the default changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance controls; Open questions; Scope; Governance guidance: After rollout",
+      "type": "absence",
+      "claim": "Microsoft documents administration of the policy through Graph beta only, with leaving preview still a future event.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/api/federatedtokenvalidationpolicy-update?view=graph-rest-1.0",
+      "quote": "PUT https://graph.microsoft.com/v1.0/policies/federatedTokenValidationPolicy\n\nDelegated (work or school account) | Policy.ReadWrite.FedTokenValidation | Not available.",
+      "severity": "blocker",
+      "fix": "Replace the beta-only sentence with: 'The cited feature guide describes Graph preview, but Microsoft also documents PUT /v1.0/policies/federatedTokenValidationPolicy with Policy.ReadWrite.FedTokenValidation for delegated work or school accounts and application access.' Cite https://learn.microsoft.com/graph/api/federatedtokenvalidationpolicy-update?view=graph-rest-1.0. In Scope, qualify the preview statement as applying to the cited beta reference. Replace the After rollout bullet with 'Re-read the Graph reference before changing policy automation.' In Open questions, replace 'The documentation describes Graph beta only at the time of writing (November 2026).' with 'The documentation gives Graph operations rather than a portal path.' The existing documented beta call can remain."
+    },
+    {
+      "n": 40,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The cited beta update reference displays Not supported in its permissions table.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/federatedtokenvalidationpolicy-update?view=graph-rest-beta",
+      "quote": "Delegated (work or school account) | Not supported. | Not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The feature guide names Policy.ReadWrite.FedTokenValidation as a higher-privileged policy permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/strengthen-federated-sign-in-security",
+      "quote": "For Get and List operations, the documented least-privileged permission is `Policy.Read.All`. The higher-privileged permission is `Policy.ReadWrite.FedTokenValidation`.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The enumerated option supports phased rollout by validating selected mapped-account domains.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/strengthen-federated-sign-in-security",
+      "quote": "Blocks sign-in if the user's mapped account domain is included in the specified domain list and the incoming token's root domain doesn't match. This option supports phased rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Administrators can find users affected by AADSTS5000820 in the sign-in logs before enforcement reaches the tenant.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"AADSTS5000820\" \"before\" enforcement report only; \"Federated Token Validation Policy\" rollout existing configuration AADSTS5000820 before enforcement. Read feature monitoring guidance: it documents the blocking error after enforcement, not a pre-enforcement signal.",
+      "severity": "blocker",
+      "fix": "Replace 'Find them in the Microsoft Entra sign-in logs before enforcement reaches the tenant.' with 'After enforcement is enabled, monitor Microsoft Entra sign-in logs for AADSTS5000820 to identify affected users.'"
+    },
+    {
+      "n": 44,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The controls table supplies the federation-configuration inventory control referenced by the Before rollout checklist.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "confirm which have an `internalDomainFederation` configuration (Microsoft Entra admin center and the Graph reference in the controls table).\n\nPUT /beta/policies/federatedTokenValidationPolicy",
+      "severity": "minor",
+      "fix": "Remove '(Microsoft Entra admin center and the Graph reference in the controls table)' from the inventory bullet. The table's update operation does not inventory federation configurations; retain the inventory advice without implying that this table supplies that control."
+    },
+    {
+      "n": 45,
+      "where": "Governance guidance: At rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The controls table covers the Conditional Access or MFA control that the At rollout checklist tells administrators to pair with an exception.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "pair it with Conditional Access or multifactor authentication.\n\nThe sign-in log row is a monitoring control for blocked sign-ins, not a control over the policy itself.",
+      "severity": "minor",
+      "fix": "Replace 'and pair it with Conditional Access or multifactor authentication' in the At rollout bullet with 'and evaluate compensating controls'. Retain the sourced examples in Risk assessment, without making the checklist direct readers to set controls missing from its table."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T20:02:39.160Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/entra/identity/users/strengthen-federated-sign-in-security",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/federatedtokenvalidationpolicy?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/federatedtokenvalidationpolicy-update?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/monitoring-health/concept-sign-ins",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/signin-list?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/fundamentals/licensing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=566869",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which domains the federated token root-domain check applies to, including turning it off",
+        "docs": "https://learn.microsoft.com/graph/api/federatedtokenvalidationpolicy-update?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/policies/federatedTokenValidationPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Where blocked federated sign-ins (AADSTS5000820) can be seen",
+        "docs": "https://learn.microsoft.com/entra/identity/monitoring-health/concept-sign-ins",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Monitoring & health",
+          "Sign-in logs"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Where blocked federated sign-ins (AADSTS5000820) can be seen",
+        "docs": "https://learn.microsoft.com/graph/api/signin-list?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/auditLogs/signIns",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

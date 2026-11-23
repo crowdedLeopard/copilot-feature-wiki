@@ -78,7 +78,21 @@ roadmapModified: "2026-07-13T23:07:14"
 changes:
   - date: "2026-11-23"
     note: "First briefing: records the Confluence and ServiceNow parent-level permission change, the Confluence page that disagrees with it, and that Jira is named only in the roadmap title."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 54 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-23"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 54
+  confirmed: 51
+  unconfirmed: 0
+  contradicted: 3
+  attempts: 1
+  hash: "c6982002c1ed5f7bd34b35da0d7a21b1"
 ---
 
 ## What's changing
@@ -179,4 +193,17 @@ The Simple or Advanced flow applies to ServiceNow Knowledge. A July 1, 2026 rele
 risk: Medium. The change alters which indexed ServiceNow and Confluence items users see in Copilot, and Learn says the ServiceNow Simple flow can skip or over-block script-based criteria; the connector's access setting covers it.
 cost: Low. Learn states indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses; the cost is admin time to review permissions. No meter is documented for this feature.
 impact: Medium. Only people whose tenant has a ServiceNow or Confluence connector notice it, but for them search and Copilot answers can show or hide items.
+-->
+
+<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] summary; changes[0].note / record: Jira is named only in the roadmap title. | Found: Support for hierarchical ACLs for SNOW, Confluence, Jira connectors. | Fix: Replace 'Jira is in the roadmap title only' with 'The roadmap title and description include Jira; the July 15 release note names only Confluence and ServiceNow.' Make the same correction in changes[0].note.
+- [contradicted, blocker] Cost and licensing: first paragraph / licensing: The prerequisites page's Microsoft 365 Copilot add-on requirement is for federated connectors, not synced connectors such as Confluence and ServiceNow. | Found: | Microsoft 365 (any plan) | ✅ | ❌ | ❌ | | Microsoft 365 + Microsoft 365 Copilot add-on | ✅ | ✅ | ✅ | | Microsoft 365 E7 | ✅ | ✅ | ✅ | | Fix: Replace the final sentence of the first licensing paragraph with 'Microsoft 365 alone supports synced connectors in Microsoft Search, not Copilot grounding. The table lists Microsoft 365 plus the Microsoft 365 Copilot add-on, or Microsoft 365 E7, for synced connector Copilot grounding.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] What's changing: Confluence paragraph / behaviour: The Confluence setup page describes synced nested groups as usable for ACLs, separately from parent-page permissions. | Found: You can use synced nested groups to manage access control lists (ACLs), provided the nested group's members are part of a Confluence user group. | Fix: Append 'provided the nested group's members are part of a Confluence user group' to the sentence describing synced nested groups. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-admin-setup
+- [supported, minor] What's changing: Jira paragraph / behaviour: Jira Cloud connector documentation describes project permission schemes and issue-level security. | Found: In Atlassian Jira, security permissions are defined using project permission schemes containing site-level groups and project roles. Issue-level security can also be defined using issue-level permission schemes. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/connectors/jira-cloud-deployment to sources; it states the project permission-scheme fact. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/jira-cloud-deployment
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: The ServiceNow Simple/Advanced control is reached through Copilot > Connectors > Connectors > Gallery > ServiceNow Knowledge. | Found: choose Copilot > Connectors. Go to the Connectors tab, and in the left pane, choose Gallery. From the list of available connectors, choose ServiceNow Knowledge. Choose flow based on user criteria | Fix: Extend controls[1].ui.path and its rendered table cell to 'Copilot > Connectors > Connectors > Gallery > ServiceNow Knowledge > Choose flow based on user criteria'. The existing path stops early on the correct connector page. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment
+- [supported, minor] Risk assessment: Security & identity; Governance guidance: Before rollout / behaviour: When those identities differ, a mapping must be configured or some content might not appear for intended users. | Found: Without this mapping, some content might not appear for intended users because the service can't verify that they have access. | Fix: Replace the identity-mapping risk bullet with 'The Confluence overview says email-to-UPN mismatches require manual mapping and can hide intended content. The setup page instead describes default matching against either the Entra ID UPN or email address; check both before configuring a mapping.' Both https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-overview and https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-admin-setup are already cited. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-overview
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks readers to check ServiceNow service-account access and HR roles and Confluence identity mapping, but these controls have no table rows. | Found: Confirm ... service account can read sys_properties, and holds an HR Service Delivery role ... Check that Confluence user emails match ... or that a mapping rule exists. The table contains only connection visibility and Simple/Advanced flow. | Fix: The service-account table access, HR Service Delivery roles and Confluence identity-mapping checklist steps have no corresponding controls rows. Record this table-coverage limitation without adding rows in this correction.
 -->

@@ -5,27 +5,729 @@
   "status": "held",
   "date": "2026-11-23",
   "version": 1,
-  "model": "none",
-  "engine": "manual",
-  "attempts": 0,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
   "hold": {
-    "reason": "unverified",
+    "reason": "failed",
     "since": "2026-11-23",
     "reasons": [
-      "Written but not yet checked against Microsoft Learn."
+      "2 blocking findings (claims 2, 48)"
     ]
   },
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
+    "claims": 54,
+    "confirmed": 51,
     "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
+    "contradicted": 3,
+    "blocker": 2,
     "major": 0,
-    "minor": 0
+    "minor": 5
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
-  "history": []
+  "summary": "Hold: the licensing paragraph incorrectly implies that synced connector grounding does not require the Copilot entitlement shown in Microsoft's licensing table. Jira is also present in the roadmap description, not just its title. The permission risks and the reported disagreement about Confluence parent permissions are otherwise supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing: first sentence",
+      "type": "record",
+      "claim": "The roadmap describes hierarchical ACL support for ServiceNow, Confluence and Jira connectors.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Support for hierarchical ACLs for SNOW, Confluence, Jira connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; changes[0].note",
+      "type": "record",
+      "claim": "Jira is named only in the roadmap title.",
+      "status": "contradicted",
+      "source": "roadmap record",
+      "quote": "Support for hierarchical ACLs for SNOW, Confluence, Jira connectors.",
+      "severity": "blocker",
+      "fix": "Replace 'Jira is in the roadmap title only' with 'The roadmap title and description include Jira; the July 15 release note names only Confluence and ServiceNow.' Make the same correction in changes[0].note."
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; summary; What's changing",
+      "type": "record",
+      "claim": "Roadmap item 503587 is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is March CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"March CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap was modified at 2026-07-13T23:07:14.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-07-13T23:07:14\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing: first paragraph; Risk assessment: Change & support",
+      "type": "date",
+      "claim": "The July 15, 2026 release-note entry for this feature names Confluence and ServiceNow, not Jira.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#july-15,-2026",
+      "quote": "## July 15, 2026\nAdmins can manage access more precisely with support for nested permissions in Confluence and ServiceNow",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing: first and third paragraphs",
+      "type": "behaviour",
+      "claim": "The release note says Confluence now evaluates parent-level permissions for child items, while the briefing also reports the conflicting setup documentation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "The connectors for Confluence and ServiceNow now evaluate parent-level permissions when determining access to child items.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing: ServiceNow paragraph; rationale: risk",
+      "type": "behaviour",
+      "claim": "ServiceNow Knowledge hierarchical permissions evaluate knowledge base parent permissions together with article child permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-admin-setup",
+      "quote": "ServiceNow Knowledge supports setting permissions at both the knowledge base (parent) level and the individual article (child) level. The system evaluates these permissions together to determine whether a user has access to an article.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing: first paragraph",
+      "type": "behaviour",
+      "claim": "Previously the Confluence and ServiceNow connectors considered only child item permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Previously, only child item permissions were considered, which could lead to inconsistent access control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Why it matters: first paragraph",
+      "type": "behaviour",
+      "claim": "Microsoft describes the earlier permission evaluation as capable of inconsistent access control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Previously, only child item permissions were considered, which could lead to inconsistent access control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing: ServiceNow paragraph",
+      "type": "behaviour",
+      "claim": "The July 1, 2026 release note says admins previously had to create new ServiceNow Knowledge and Catalog connections to adopt hierarchical permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#july-01,-2026",
+      "quote": "Previously, admins had to create new connections to adopt hierarchical permissions for ServiceNow Knowledge and Catalog Copilot Connectors because editing was not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing: ServiceNow paragraph; Governance controls: closing prose",
+      "type": "behaviour",
+      "claim": "The July 1, 2026 release note for roadmap item 505438 says existing ServiceNow Knowledge and Catalog connections can switch between Simple and Advanced handling.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#july-01,-2026",
+      "quote": "Now, admins can easily edit their existing connections to switch between the permission handling option i.e. Simple vs Advanced to quickly adopt to the hierarchical permission feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing: Confluence paragraph; Why it matters; Open questions",
+      "type": "behaviour",
+      "claim": "The Confluence Cloud setup page says parent page permissions are not considered, conflicting with the release note.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-admin-setup",
+      "quote": "Permissions are managed only at the space and page level. Parent page permissions aren't considered.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing: Confluence paragraph",
+      "type": "behaviour",
+      "claim": "The Confluence setup page describes synced nested groups as usable for ACLs, separately from parent-page permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-admin-setup",
+      "quote": "You can use synced nested groups to manage access control lists (ACLs), provided the nested group's members are part of a Confluence user group.",
+      "severity": "minor",
+      "fix": "Append 'provided the nested group's members are part of a Confluence user group' to the sentence describing synced nested groups."
+    },
+    {
+      "n": 19,
+      "where": "What's changing: Jira paragraph",
+      "type": "behaviour",
+      "claim": "Jira Cloud connector documentation describes project permission schemes and issue-level security.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/jira-cloud-deployment",
+      "quote": "In Atlassian Jira, security permissions are defined using project permission schemes containing site-level groups and project roles. Issue-level security can also be defined using issue-level permission schemes.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365/copilot/connectors/jira-cloud-deployment to sources; it states the project permission-scheme fact."
+    },
+    {
+      "n": 20,
+      "where": "What's changing: Jira paragraph; Open questions",
+      "type": "absence",
+      "claim": "The Jira Cloud connector pages checked do not document hierarchical or nested permissions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Jira Cloud\" \"permission schemes\" \"nested\"; read jira-cloud-overview and the jira-cloud-deployment and jira-cloud-admin-setup search excerpts. Found project schemes and issue-level security, not hierarchical or nested permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The synced ServiceNow and Confluence connectors index external content for Microsoft 365 search and Copilot grounding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Synced connectors index content from an external data source into the Microsoft 365 substrate on a recurring schedule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not explicitly stated whether existing connections automatically adopt parent-level evaluation without admin action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot connectors hierarchical parent permissions existing connections automatic default ServiceNow Confluence; read roadmap, July release notes, ServiceNow setup/deployment and Confluence setup/overview. No explicit automatic adoption statement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].ui; Governance controls table; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Connection permissions can be reviewed in Microsoft 365 admin center at Copilot > Connectors > Your Connections > connection > Permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
+      "quote": "go to Copilot > Connectors > Your Connections.\nSelect the connector you want to review to open the details pane.\nUnder Permissions, you can view the permissions set for the connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "No API or PowerShell operation is documented for choosing a prebuilt connection's source-ACL versus Visible to everyone mode.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"externalConnection\" \"access permissions\" \"Everyone\"; Graph connector access permissions everyone source ACL PowerShell API. Opened manage-access-permissions, externalConnection update v1.0/beta and beta resource; no connection visibility-mode setter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].note; Scope; Governance controls prose",
+      "type": "role",
+      "claim": "Configuring and deploying Copilot connectors in Microsoft 365 admin center requires the AI administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "To configure and deploy Copilot connectors, you must be an AI administrator in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].note; Governance guidance: After rollout; Governance controls prose",
+      "type": "behaviour",
+      "claim": "Connection access permissions cannot currently be updated after creation; the documented remedy is deleting and recreating through Custom setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
+      "quote": "In the connector pane, choose Delete to delete the existing connection.\nRecreate the connection using the Custom setup flow and explicitly configure access permissions.\nUpdating access permissions after you create the connection isn't currently supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The ServiceNow Simple/Advanced control is reached through Copilot > Connectors > Connectors > Gallery > ServiceNow Knowledge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment",
+      "quote": "choose Copilot > Connectors.\nGo to the Connectors tab, and in the left pane, choose Gallery.\nFrom the list of available connectors, choose ServiceNow Knowledge.\nChoose flow based on user criteria",
+      "severity": "minor",
+      "fix": "Extend controls[1].ui.path and its rendered table cell to 'Copilot > Connectors > Connectors > Gallery > ServiceNow Knowledge > Choose flow based on user criteria'. The existing path stops early on the correct connector page."
+    },
+    {
+      "n": 28,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "No Graph or PowerShell setter is documented for selecting the prebuilt ServiceNow Knowledge connector's Simple or Advanced flow.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"ServiceNow\" \"Simple\" \"Advanced\" \"Graph\" \"connection\" permissions API; \"ServiceNow Knowledge\" \"permission\" \"PowerShell\". Read deployment/setup and externalConnection update v1.0/beta and beta resource; no flow-selector operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1].note; Governance controls table",
+      "type": "default",
+      "claim": "Simple is the default ServiceNow Knowledge user-criteria flow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment",
+      "quote": "The ServiceNow Knowledge connector supports two flows for user criteria permissions: Simple (default) and Advanced.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "ServiceNow Simple flow does not evaluate advanced script-based user criteria.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment",
+      "quote": "The default is Simple. In this flow, advanced script-based user criteria aren't evaluated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Simple flow skips an advanced script-based Can Read criterion, which can cause oversharing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment",
+      "quote": "If an advanced script-based user criterion exists on the Can Read (allow) path of a knowledge base or article, the Simple flow can't evaluate the script to determine which users are allowed, so it skips that user criterion, which might result in oversharing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Simple flow treats an advanced script-based Cannot Read criterion as deny all, blocking the affected content for all users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment",
+      "quote": "the connector conservatively treats the criterion as deny all, so the affected knowledge base or article content is blocked for all users in Copilot and search results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[1].note; Risk assessment; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Advanced flow evaluates script-based criteria by calling a Scripted REST API that must be set up in ServiceNow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment",
+      "quote": "This flow evaluates script-based user criteria by calling the Scripted REST API in ServiceNow, which ensures accurate permissions handling when content is ingested into Microsoft Graph. For the Advanced option to work properly, you need to Set up REST API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Without read access to sys_properties, the ServiceNow connector defaults to the most restrictive property settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-admin-setup",
+      "quote": "If the service account can't read these properties, the connector silently defaults to the most restrictive settings (true for both)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "That restrictive fallback blocks articles without explicit user criteria from search results.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-admin-setup",
+      "quote": "which blocks articles without explicit user criteria from appearing in search results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "For HR Service Delivery knowledge bases in sn_hr_core scope, the service account needs sn_hr_core.content_reader or sn_hr_core.admin to read the scoped user criteria.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment",
+      "quote": "verify that the service account has the sn_hr_core.content_reader or sn_hr_core.admin role. Without one of these roles, the service account can't read HR-scoped user criteria.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Missing an HR-scoped role can cause HR-restricted articles to be indexed as accessible to all users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment",
+      "quote": "Because the connector receives empty results rather than an error, it might interpret HR-restricted articles as having no access restrictions and index them as accessible to all users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].governs; Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Visible to everyone makes indexed connector content accessible to all users in the organisation instead of enforcing source ACLs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
+      "quote": "Only people with access to this data source: The connector respects source system access control lists (ACLs).\nVisible to everyone: The connector grants access to all users in the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Confluence connector identity mapping matches Confluence email addresses to Microsoft Entra ID user principal names.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-overview",
+      "quote": "The connector maps Confluence user accounts to Microsoft 365 (Entra ID) identities. If Confluence users' emails match their Entra ID UPNs, this mapping is automatic.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "When those identities differ, a mapping must be configured or some content might not appear for intended users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-overview",
+      "quote": "Without this mapping, some content might not appear for intended users because the service can't verify that they have access.",
+      "severity": "minor",
+      "fix": "Replace the identity-mapping risk bullet with 'The Confluence overview says email-to-UPN mismatches require manual mapping and can hide intended content. The setup page instead describes default matching against either the Entra ID UPN or email address; check both before configuring a mapping.' Both https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-overview and https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-admin-setup are already cited."
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "ServiceNow incremental crawls do not update article permissions when knowledge-base parent permissions change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment",
+      "quote": "Doesn't update user-to-criteria mappings (identity sync) or permissions for articles where knowledge base (parent) level permissions changed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Security & identity; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Confluence permission changes are picked up only by full crawls, not incremental syncs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-overview",
+      "quote": "Permission changes are picked up only during a full crawl (once every 24 hours by default), not during the 15-minute incremental syncs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The default Confluence full-crawl interval is 24 hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-overview",
+      "quote": "once every 24 hours by default",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.model and licensing.notes",
+      "type": "licensing",
+      "claim": "Hierarchical permissions are an included option within the existing synced connector licensing rather than a separately documented entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The connector prerequisites require the tenant to have Microsoft 365 licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Your tenant must have Microsoft 365 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing: first paragraph",
+      "type": "licensing",
+      "claim": "The available connector types and user surfaces depend on the organisation's licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "The surfaces available to your users (Microsoft Search, Microsoft 365 Copilot grounding, Copilot Chat agents) and the connector types you can deploy depend on your organization's licensing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Indexing synced connector data incurs no extra cost for tenants with Microsoft 365 licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing: first paragraph",
+      "type": "licensing",
+      "claim": "The prerequisites page's Microsoft 365 Copilot add-on requirement is for federated connectors, not synced connectors such as Confluence and ServiceNow.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "| Microsoft 365 (any plan) | ✅ | ❌ | ❌ |\n| Microsoft 365 + Microsoft 365 Copilot add-on | ✅ | ✅ | ✅ |\n| Microsoft 365 E7 | ✅ | ✅ | ✅ |",
+      "severity": "blocker",
+      "fix": "Replace the final sentence of the first licensing paragraph with 'Microsoft 365 alone supports synced connectors in Microsoft Search, not Copilot grounding. The table lists Microsoft 365 plus the Microsoft 365 Copilot add-on, or Microsoft 365 E7, for synced connector Copilot grounding.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites."
+    },
+    {
+      "n": 49,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate licence, price or meter specific to hierarchical connector permissions is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot connectors hierarchical permissions license price meter; \"hierarchical permissions\" \"license\" \"connectors\". Read connector prerequisites/licensing, July release notes and ServiceNow setup/deployment; no hierarchical-permission-specific charge or entitlement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope: first paragraph",
+      "type": "availability",
+      "claim": "ServiceNow Knowledge hierarchical permissions are unavailable in government or sovereign clouds or dedicated forests in multitenant environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-admin-setup",
+      "quote": "The ServiceNow Knowledge connector supports hierarchical permissions. This feature isn't available in government or sovereign clouds or dedicated forests in multitenant environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Scope: second paragraph",
+      "type": "role",
+      "claim": "Prebuilt synced connectors such as Confluence and ServiceNow require admin access to the external service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "for prebuilt synced connectors (such as Google Drive, Confluence, ServiceNow), you must have admin access to the external service",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope: second paragraph",
+      "type": "availability",
+      "claim": "The Confluence Cloud connector supports Cloud only; Server and Data Center require a separate on-premises connector.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-overview",
+      "quote": "This connector works with Atlassian Confluence Cloud. It doesn't support Confluence Server or Data Center deployments - those require a separate on-premises connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends reviewing source permissions, configuring parent and child permissions and verifying access-control behaviour in Microsoft Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Review your Confluence or ServiceNow catalog permissions.\nConfigure parent and child item permissions to reflect your organizational hierarchy.\nVerify access control behavior in Microsoft Copilot to confirm hierarchical permissions are enforced.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist asks readers to check ServiceNow service-account access and HR roles and Confluence identity mapping, but these controls have no table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm ... service account can read sys_properties, and holds an HR Service Delivery role ... Check that Confluence user emails match ... or that a mapping rule exists. The table contains only connection visibility and Simple/Advanced flow.",
+      "severity": "minor",
+      "fix": "The service-account table access, HR Service Delivery roles and Confluence identity-mapping checklist steps have no corresponding controls rows. Record this table-coverage limitation without adding rows in this correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T20:02:36.257Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=503587",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-admin-setup",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-admin-setup",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/confluence-cloud-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/jira-cloud-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-update",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a connection honours source ACLs or is visible to everyone",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Connectors",
+          "Your Connections",
+          "connection",
+          "Permissions"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether the ServiceNow Knowledge connector evaluates advanced script-based user criteria",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Connectors",
+          "Connectors",
+          "Gallery",
+          "ServiceNow Knowledge"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-23",
+      "status": "held",
+      "version": 1,
+      "model": "none"
+    }
+  ]
 }

@@ -65,19 +65,23 @@ changes:
     note: "New briefing: roadmap plan for a Microsoft-managed list of default Windows file path exclusions in Endpoint DLP, with what Learn documents today."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 40 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Correction after the independent check: removed three unsupported statements on identity, coexistence of exclusion layers and restored monitoring, and replaced them with points to confirm."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 46 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 40
-  confirmed: 37
-  unconfirmed: 3
+  claims: 46
+  confirmed: 46
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "4e34883eaa8d5b8fa9fe59063c2dbe89"
+  attempts: 0
+  hash: "1169e3ecf73396b93c18f2eab9a8dc3f"
 ---
 
 ## What's changing
@@ -98,16 +102,16 @@ Because Microsoft has not stated the default, assume no source says existing beh
 
 **Data exposure**
 - Files in excluded paths are not audited and are not subject to DLP policy enforcement, per Learn. Including a Microsoft-managed list widens that unmonitored area to whatever the list contains, which Microsoft has not yet published for this control.
-- Excluding the list leaves system paths subject to DLP monitoring. The roadmap gives no information about the performance effect of doing so.
+- Confirm whether excluding the Microsoft-managed list restores monitoring for the system paths you need to cover. The roadmap gives no information about the performance effect of doing so.
 
 **Security & identity**
-- No change to identity or access: the roadmap describes a path-exclusion setting and no new data access or permissions.
+- The roadmap describes a path-exclusion setting and does not describe new data access or permissions.
 
 **Autonomy & actions**
 - No autonomous actions are described. The roadmap says the list is managed by Microsoft, so confirm whether Microsoft can change the list's contents without an administrator action and how changes are announced.
 
 **Change & support**
-- Two layers of exclusion will coexist: paths administrators add themselves under File path exclusions for Windows, and the Microsoft-managed default list. When a file is not audited, check both before raising a support case.
+- Confirm how the Microsoft-managed default list interacts with administrator-entered Windows path exclusions before using it to troubleshoot missing audit activity.
 - The Learn page already lists two Windows paths as excluded by default, so an existing tenant has default exclusions today; confirm how the new list relates to them.
 
 ## Cost and licensing
@@ -165,12 +169,4 @@ The PowerShell example values for Set-PolicyConfig show `PathExclusion` entries 
 risk: Low. The roadmap describes a new control over exclusions, and the default state is not stated, so this rates today's behaviour continuing; Learn says files in excluded paths are not audited or enforced.
 cost: Low. The only cost the sources show is admin time to review exclusions; Endpoint DLP is listed as included in several plans, and no licence or charge specific to this control is published.
 impact: Low. This is an Endpoint DLP setting that DLP and security administrators configure; end users would only notice a change in which files DLP audits or restricts.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Security & identity / behaviour: The new control makes no change to identity or access. | Found: Searched: "Endpoint DLP" "file path exclusions" "identity" "permissions". Read roadmap and Configure endpoint DLP settings. Neither describes the new control's identity or access implications; a roadmap that mentions no such change does not establish that none occurs. | Fix: Replace the bullet with: "The roadmap describes a path-exclusion setting and does not describe new data access or permissions."
-- [unsupported, major] Risk assessment: Change & support / behaviour: Administrator-entered Windows exclusions and the Microsoft-managed default list will coexist as two layers. | Found: Searched: "Endpoint DLP" "exclusions" "coexist" "default". Read Configure endpoint DLP settings and roadmap. They document existing manual exclusions and a planned managed list separately, but do not describe coexistence or their interaction. | Fix: Replace "Two layers of exclusion will coexist: paths administrators add themselves under File path exclusions for Windows, and the Microsoft-managed default list. When a file is not audited, check both before raising a support case." with "Confirm how the Microsoft-managed default list interacts with administrator-entered Windows path exclusions before using it to troubleshoot missing audit activity."
-- [unsupported, blocker] Risk assessment: Data exposure / applicability: Excluding the managed list leaves system paths subject to DLP monitoring. | Found: Searched: "Endpoint DLP" "exclude" "default" "system paths" monitoring. Read roadmap and Configure endpoint DLP settings. No passage establishes restored monitoring from this new control, or how it interacts with manual and existing default exclusions. | Fix: Replace "Excluding the list leaves system paths subject to DLP monitoring." with "Confirm whether excluding the Microsoft-managed list restores monitoring for the system paths you need to cover."
 -->

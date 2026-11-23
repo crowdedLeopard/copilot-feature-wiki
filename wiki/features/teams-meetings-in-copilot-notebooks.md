@@ -43,6 +43,9 @@ sources:
   - title: "Admins - Manage transcription and captions for Teams meetings"
     url: "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions"
     kind: "learn"
+  - title: "Set-CsTeamsMeetingPolicy"
+    url: "https://learn.microsoft.com/powershell/module/teams/set-csteamsmeetingpolicy"
+    kind: "learn"
   - title: "Supported Copilot resources for Tenant Configuration Management (preview)"
     url: "https://learn.microsoft.com/graph/utcm-copilot-resources"
     kind: "learn"
@@ -95,19 +98,23 @@ changes:
     note: "Corrected: added the preview Graph route for the Notebooks policy, fixed what disabling that policy does, noted the licence difference between two Learn pages, and removed checklist steps with no controls row."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-23"
+    note: "Corrected: added that sharing links to Copilot Notebooks do not work while the Notebooks creation policy is disabled; added the Set-CsTeamsMeetingPolicy reference as a source."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 69 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 59
+  claims: 69
+  confirmed: 69
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "4f21047150b236ccdd2c294178853750"
+  contradicted: 0
+  attempts: 0
+  hash: "9d93941fe917284e0ded5866acdbc81b"
 ---
 
 ## What's changing
@@ -194,7 +201,7 @@ Microsoft has not stated an admin-side default for meeting references, and the r
 </tbody>
 </table>
 
-Microsoft Learn documents the Notebooks creation policy and the Teams transcription policy, but no setting aimed at meeting references. The Cloud Policy row governs Notebooks as a whole: disabling it prevents new notebooks and hides the Notebooks module in the Microsoft Copilot app, but existing items are not deleted and can still be viewed and edited with permission. It is set in the Microsoft 365 Apps admin center and can be scoped to groups with the priority ordering the admin policies page describes.
+Microsoft Learn documents the Notebooks creation policy and the Teams transcription policy, but no setting aimed at meeting references. The Cloud Policy row governs Notebooks as a whole: disabling it prevents new notebooks and hides the Notebooks module in the Microsoft Copilot app, but existing items are not deleted and can still be viewed and edited with permission. However, sharing links to Copilot Notebooks do not work when creation is disabled. It is set in the Microsoft 365 Apps admin center and can be scoped to groups with the priority ordering the admin policies page describes.
 
 The Graph route in that row is preview and covers tenant-level policies only; it fails if the target setting is configured in any group-level policy. Use mode applyOnce and a baseline resourceType microsoft.copilot.copilotpagesnotebooks, resourceVersion 1, with properties.value set to the string "0" to disable or "1" to enable. AI Administrator is the least-privileged signed-in role; the calling app needs delegated ConfigurationMonitoring.ReadWrite.All and the TCM service principal needs delegated CopilotPolicySettings.ReadWrite.
 
@@ -211,12 +218,4 @@ The Teams transcription row is an existing control over whether transcripts can 
 risk: Medium. Meeting transcripts, notes and chats become grounding material in notebooks that can be shared, and Microsoft documents no meeting-specific switch or sharing behaviour for them.
 cost: Low. Notebooks need the Microsoft Copilot or Copilot Chat licence the requirements page names; no separate meter or price for meeting references is published, so the known cost is admin time.
 impact: Medium. People who use Copilot Notebooks and add meetings as references notice it; it is a step each user chooses, not a change to what everyone sees.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls / behaviour: After disabling the policy, existing notebooks can still be viewed and edited with permission. | Found: Users can still view and edit existing items if they have permission. ... Important: Sharing links to Copilot Notebooks don't work when creation is disabled via the policy in this article. | Fix: After 'existing items are not deleted and can still be viewed and edited with permission', add: 'However, sharing links to Copilot Notebooks do not work when creation is disabled.' This qualification is stated at https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].api; controls[1].note; Governance controls / command: Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowTranscription $false prevents meeting transcription under the selected policy. | Found: ### -AllowTranscription Determines whether post-meeting captions and transcriptions are allowed in a user's meetings. Set this to TRUE to allow. Set this to FALSE to prohibit. | Fix: Add https://learn.microsoft.com/powershell/module/teams/set-csteamsmeetingpolicy to sources; its reference explicitly supports the printed $false value. Keep the existing call and control docs link. | Source: https://learn.microsoft.com/powershell/module/teams/set-csteamsmeetingpolicy
 -->
