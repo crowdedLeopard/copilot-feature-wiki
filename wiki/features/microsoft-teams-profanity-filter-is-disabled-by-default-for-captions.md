@@ -40,6 +40,9 @@ sources:
   - title: "Teams Rooms and Copilot overview"
     url: "https://learn.microsoft.com/microsoftteams/rooms/copilot-admin-mtr"
     kind: "learn"
+  - title: "Configure call recording, transcription, and captions in Teams"
+    url: "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions"
+    kind: "learn"
 videos: []
 related: ["microsoft-teams-admins-can-control-profanity-filtering-in-meeting-transcripts","microsoft-teams-enhanced-live-captions-settings-and-right-side-panel-view","meeting-policy","meeting-transcripts"]
 controls:
@@ -63,19 +66,23 @@ changes:
     note: "First briefing for this item: the captions profanity filter default moves from On to Off, with what the Live captions policy does and does not cover."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 48 statements contradicted, 5 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Correction: removed unsupported statements on data, identity, autonomy, Rooms displays and translated captions; risk rationale now reflects the conflicting release notes on admin control of the captions filter."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 41
-  unconfirmed: 5
-  contradicted: 2
-  attempts: 1
-  hash: "2fe103227865aa2c3336c87f929c88be"
+  claims: 50
+  confirmed: 50
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "c2ec4d8fa179af24a8c0b9b06cc5e528"
 ---
 
 ## What's changing
@@ -98,24 +105,24 @@ The wiki's view is that this is a communication task rather than a configuration
 
 **Data exposure**
 
-- No change to what data captions read or store: the Teams admin documentation says Teams doesn't save captions. The difference is how spoken words are displayed to people already in the meeting.
+- The Teams admin documentation says Teams does not save live captions.
 
 **Security & identity**
 
-- No change to identity or access. Unfiltered profanity in captions can reach users who never changed the setting; this is a conduct and communications concern, not an access one.
+- Unfiltered profanity in captions can reach users who never changed the setting; this is a conduct and communications concern.
 
 **Autonomy & actions**
 
-- No change: nothing acts on its own. The setting changes what a captioning display shows.
+- The roadmap describes a change to the default profanity filtering of live captions.
 
 **Change & support**
 
 - Expect help-desk questions from users who see profanity where words were masked before. Users who set a preference keep it, so complaints will come from those who never opened the setting.
-- Rooms are in scope: the roadmap item names Microsoft Teams Rooms devices, so shared room displays can show unfiltered captions to everyone in the room. Which preference a room device uses is not stated.
+- Rooms are in scope: the roadmap item names Microsoft Teams Rooms devices. Confirm which preference a room device uses and what appears on shared displays.
 
 ## Cost and licensing
 
-Microsoft's Teams Rooms and Copilot overview lists "Live meeting captions and transcript" under Microsoft Teams in its feature-versus-licence table, so live captions are not shown as needing Teams Premium or Microsoft 365 Copilot there. Live translated captions are a separate Teams Premium feature, on the live captions section of the transcription and captions page, and this change does not touch them.
+Microsoft's Teams Rooms and Copilot overview lists "Live meeting captions and transcript" under Microsoft Teams in its feature-versus-licence table, so live captions are not shown as needing Teams Premium or Microsoft 365 Copilot there.
 
 No meter, price or credit rate is attached to this default change in the roadmap record or in the pages read. The cost to plan for is admin time and user communication.
 
@@ -166,22 +173,16 @@ The profanity filter for captions has a conflicting record. Microsoft's Teams Ro
 - Which release date applies to each cloud, given the roadmap target of June CY2026 and the Government Channel release notes listing it for GCC?
 
 <!-- rationale
-risk: Medium. Users who never set a preference may see unfiltered profanity in live captions, and Microsoft Learn documents no admin policy for the captions filter at the time of writing (November 2026).
+risk: Medium. Users who never set a preference may see unfiltered profanity in live captions. Microsoft release notes disagree about administrator control of caption filtering, and the linked caption-policy pages do not give a profanity-filter setting.
 cost: Low. The only cost the sources show is admin time and user communication; no licence or meter is tied to this default change in anything read for this briefing.
 impact: High. The default changes for every user who has never set the preference, across meetings, calls, events and Microsoft Teams Rooms devices.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Data exposure / behaviour: This default change does not change what data captions read. | Found: Searched: Teams live captions profanity filter default change translated captions data access identity. Opened teams-admin, meeting-transcription-captions and Microsoft's Use live captions support page; none states that the change leaves all data inputs and storage behaviour unchanged. | Fix: Replace the bullet with 'The Teams admin documentation says Teams does not save live captions.'
-- [unsupported, major] Risk assessment: Security & identity / behaviour: The default change makes no change to identity or access. | Found: Searched: Teams live captions profanity filter default change translated captions data access identity. Opened teams-admin, meeting-transcription-captions and Microsoft's Use live captions support page; none explicitly describes the change's identity or access effects. | Fix: Remove 'No change to identity or access.' Keep the conduct and communications assessment grounded in users seeing unfiltered captions.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: Nothing acts on its own as a result of this change. | Found: Searched: Teams live captions profanity filter default change translated captions data access identity. Opened teams-admin and meeting-transcription-captions; the default and displayed output are described, but no passage states the blanket absence of autonomous actions. | Fix: Replace 'No change: nothing acts on its own. The setting changes what a captioning display shows.' with 'The roadmap describes a change to the default profanity filtering of live captions.'
-- [unsupported, major] Risk assessment: Change & support / behaviour: Shared Teams Rooms displays can show unfiltered captions to everyone in the room. | Found: Searched: Teams Rooms captions profanity filtering preference device settings admin LiveCaptions. Opened rooms-release-note and rooms/copilot-admin-mtr; they discuss Rooms captions but do not state which shared display uses which profanity preference or who sees that output. | Fix: Replace the Rooms bullet with 'Rooms are in scope: the roadmap item names Microsoft Teams Rooms devices. Confirm which preference a room device uses and what appears on shared displays.'
-- [contradicted, blocker] Cost and licensing / licensing: Live translated captions are a separate Teams Premium feature. | Found: For events optimized for large audiences, such as town halls, organizers can preselect up to ten languages for attendees to use during the event without Teams Premium. | Fix: Remove 'Live translated captions are a separate Teams Premium feature, on the live captions section of the transcription and captions page'. The cited page gives a town-hall exception, and https://support.microsoft.com/en-us/office/use-live-captions-in-microsoft-teams-meetings-4be2d304-f675-4b57-8347-cbd000a21260 also identifies Microsoft Copilot licensing for translated meeting captions. | Source: https://learn.microsoft.com/microsoftteams/meeting-transcription-captions
-- [unsupported, major] Cost and licensing / behaviour: The default profanity-filter change does not affect live translated captions. | Found: Searched: Teams live captions profanity filter default change translated captions data access identity. Opened teams-admin, meeting-transcription-captions and rooms-release-note; none explicitly excludes translated captions from this default change. | Fix: Remove 'and this change does not touch them.'
-- [contradicted, blocker] rationale: risk; Governance controls / absence: Microsoft Learn documents no admin policy for the captions profanity filter as of November 2026. | Found: IT admins can turn on captions by default for all calls and meetings, as well as turn off the filtering of any profanity in captions and transcripts as necessary. | Fix: Replace the risk rationale with 'Medium. Users who never set a preference may see unfiltered profanity in live captions. Microsoft release notes disagree about administrator control of caption filtering, and the linked caption-policy pages do not give a profanity-filter setting.' This preserves the conflict already reported in Governance controls. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] title; summary; What's changing; Governance guidance; changes / record: The live captions profanity filter default changes from On to Off. | Found: We are updating the default profanity filter setting for live captions from On to Off | Fix: Keep the roadmap default statement, but add: 'Microsoft's user support page still says obscenities are obscured by asterisks, which differs from the roadmap and June 2026 release note.' Cite https://support.microsoft.com/en-us/office/use-live-captions-in-microsoft-teams-meetings-4be2d304-f675-4b57-8347-cbd000a21260.
-- [supported, minor] controls[0].note; Governance controls table / applicability: Call captions are controlled through a separate calling policy. | Found: To enable real-time captions for calls: ... select Voice > Calling policies. ... Turn Real-time captions in Teams calls to On. | Fix: Add https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions to sources for the existing sentence 'Call captions use a separate calling policy.' | Source: https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions
+- [supported, minor] title; summary; What's changing; Governance guidance / record: The live captions profanity filter default changes from On to Off. | Found: We are updating the default profanity filter setting for live captions from On to Off | Fix: Keep the roadmap statement. Add: 'The Microsoft Support article still says "Obscenities are obscured by asterisks", which differs from the roadmap and June 2026 release notes.' Cite https://support.microsoft.com/en-us/office/use-live-captions-in-microsoft-teams-meetings-4be2d304-f675-4b57-8347-cbd000a21260.
+- [supported, minor] front matter: platforms; What's changing; Scope / record: The roadmap lists Android, Desktop, iOS, Mac, Teams and Surface Devices, and Web. | Found: "platforms": ["Android", "Desktop", "iOS", "Mac", "Teams and Surface Devices", "Web"] | Fix: Keep the roadmap platform list. Add in Scope: 'The Microsoft Support captions article separately says captions are not yet available in government clouds on the Teams mobile app; this differs from the roadmap scope.' Cite https://support.microsoft.com/en-us/office/use-live-captions-in-microsoft-teams-meetings-4be2d304-f675-4b57-8347-cbd000a21260.
+- [supported, minor] Why it matters; Open questions / absence: The pages read leave central administrator control of the captions profanity preference unresolved. | Found: Searched: 'Teams profanity filtering live captions centrally administrator Set-CsTeamsMeetingPolicy profanity captions'; read the cmdlet's profanity and captions parameters, both caption-policy pages and Rooms/admin release notes. No usable captions-filter setting resolves their differing descriptio | Fix: Replace 'Which settings menu holds the preference, and whether an admin can set it centrally, is not documented in the pages read, so confirm both before telling users where to click.' with 'The pages read give no menu path for the user preference or admin setting for the captions profanity filter; release notes disagree about administrator control, so confirm both before telling users where to click.'
+- [supported, minor] Governance controls / behaviour: The November 04, 2026 Teams admin release note says a meeting policy controls profanity masking in live transcription and saved meeting transcripts. | Found: ## November 04, 2026 Teams admins can use a meeting policy to control whether profane words are masked in live transcription and saved meeting transcripts. | Fix: Keep the attributed release-note statement. Add: 'The Set-CsTeamsMeetingPolicy reference, however, still says of FilterProfanityInTranscript: "This feature has not been fully released yet, so the setting will have no effect."' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps. | Source: https://learn.microsoft.com/officeupdates/teams-admin
 -->

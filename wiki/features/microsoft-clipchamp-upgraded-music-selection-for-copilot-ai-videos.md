@@ -97,19 +97,23 @@ changes:
     note: "New briefing: Clipchamp Copilot AI video audio upgrade, with its Copilot Credits listing and the licence and spending-policy controls."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 76 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after verification: replaced the 'no prerequisites' statement, used the full licence-assignment path, qualified the License administrator role, and removed checklist items that had no control row."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 86 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 76
-  confirmed: 72
+  claims: 86
+  confirmed: 86
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "bf9adf34d6f2237dad43bc312b1b3e18"
+  contradicted: 0
+  attempts: 0
+  hash: "efea0113ac34117c776e52654e15a758"
 ---
 
 ## What's changing
@@ -134,7 +138,7 @@ Microsoft has not stated what happens on arrival for this audio upgrade, and no 
 
 **Security & identity**
 
-- The roadmap item describes audio output only and names no new permission, connector or sign-in. Access follows the Microsoft 365 Copilot licence it names, which you assign under Users > Active users in the Microsoft 365 admin center.
+- The roadmap item describes audio output only and names no new permission, connector or sign-in. Access follows the Microsoft 365 Copilot licence it names, which you assign under Users > Active users > user > Licenses and Apps > Licenses in the Microsoft 365 admin center.
 
 **Autonomy & actions**
 
@@ -147,7 +151,7 @@ Microsoft has not stated what happens on arrival for this audio upgrade, and no 
 
 ## Cost and licensing
 
-**Licence.** The roadmap item says the improved audio comes with a Microsoft 365 Copilot licence. Assign it per user under Users > Active users > Licenses and Apps in the Microsoft 365 admin center; Learn says you must be at least a License or User Administrator to assign licenses.
+**Licence.** The roadmap item says the improved audio comes with a Microsoft 365 Copilot licence. Assign it per user under Users > Active users > user > Licenses and Apps > Licenses in the Microsoft 365 admin center; Learn says you must be at least a License or User Administrator to assign licenses.
 
 **Meter.** Learn's usage-based billing overview lists Clipchamp: Copilot video creation among the services managed by usage-based billing in the admin center. It describes Copilot Credits as the common currency for such services, and says organisations can use fixed licensing, the Copilot Credit Pre-purchase Plan (P3), pay-as-you-go billing, prepaid capacity packs or combinations, depending on the service. Charges and consumption are managed in the Cost management dashboard (Copilot > Cost management). The same page marks several other rows "(Copilot license required)" and gives the Clipchamp row no such note, so it does not settle whether the licence alone covers use or credits are consumed as well.
 
@@ -157,27 +161,25 @@ Microsoft has not stated what happens on arrival for this audio upgrade, and no 
 
 ## Scope
 
-Users: those holding the Microsoft 365 Copilot licence the roadmap item names. Roles: a License or User Administrator assigns licences; per Learn, Global and Billing administrators create spending policies and set billing methods, and AI administrators and License administrators can edit policies but not create them.
+Users: those holding the Microsoft 365 Copilot licence the roadmap item names. Roles: a License or User Administrator assigns licences; per Learn, Global and Billing administrators create spending policies and set billing methods. The setup page says AI administrators and License administrators can edit policies but not create them, but it also lists License Administrator among read-only roles that cannot change policies, so its role guidance is inconsistent.
 
-Cloud and platforms: the record lists Worldwide (Standard Multi-Tenant) and the platforms Mac and Web. Rollout: the record's status is Launched, and no rollout mechanics or prerequisites are stated for the audio upgrade.
+Cloud and platforms: the record lists Worldwide (Standard Multi-Tenant) and the platforms Mac and Web. Rollout: the record's status is Launched. Beyond the Microsoft 365 Copilot licence named in the roadmap, no upgrade-specific prerequisites or rollout mechanics are stated.
 
 ## Governance guidance
 
 ### Before rollout
 
 - Open Copilot > Cost management in the Microsoft 365 admin center and list the spending policies and the services each one covers; a Global or Billing administrator creates policies, and an AI administrator can edit them.
-- Check the Auto-apply new services setting on each policy, which Learn says is on by default, to see whether newly supported services join it automatically.
 - Check which users hold the Microsoft 365 Copilot licence, and decide who should be creating Copilot AI videos in Clipchamp.
 
 ### At rollout
 
-- Test with one licensed pilot user: create a Copilot AI video in Clipchamp and look in the Cost management Consumption tab for credit usage by service and user.
-- Set a limited monthly budget on the policy that covers the pilot group if you want a ceiling, and note that a different billing method setting decides what happens when the subscription's credits run out.
+- Test with one licensed pilot user: create a Copilot AI video in Clipchamp.
+- Set a limited monthly budget on the policy that covers the pilot group if you want a ceiling.
 - Tell authors to listen to the AI voiceover and sound effects before they share a video.
 
 ### After rollout
 
-- Review the Consumption tab by service and user each month to see what Clipchamp video creation costs.
 - Watch the roadmap item and Message center for a published credit rate and any admin setting for this feature.
 
 ## Governance controls
@@ -195,7 +197,7 @@ Cloud and platforms: the record lists Worldwide (Standard Multi-Tenant) and the 
 
 The three rows govern the licence, which services a spending policy covers and the policy's spending limit. They are the general controls for Copilot Credit services; Learn's billing page lists Clipchamp: Copilot video creation as such a service, but the pages read do not show how that service is labelled in the policy's service list.
 
-Creating a policy needs the Global administrator or Billing administrator role; the AI administrator and License administrator roles can edit existing policies but not create them. Both Graph operations are beta and delegated-only; the service-selection call needs the parent policy's ETag in an If-Match header.
+Creating a policy needs the Global administrator or Billing administrator role. The setup page says the AI administrator and License administrator roles can edit existing policies but not create them, and also lists License Administrator among read-only roles, so its role guidance is inconsistent. Both Graph operations are beta and delegated-only; the service-selection call needs the parent policy's ETag in an If-Match header.
 
 ## Open questions
 
@@ -211,16 +213,9 @@ cost: Variable. Learn lists Clipchamp: Copilot video creation as a service manag
 impact: Low. People who create Copilot AI videos in Clipchamp (Web and Mac, per the roadmap) notice the audio change; the roadmap describes no change for other users.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope: Rollout / absence: No prerequisites are stated for the audio upgrade. | Found: With a Microsoft365 Copilot license, Copilot AI-generated video projects have improved audio | Fix: Replace 'no rollout mechanics or prerequisites are stated for the audio upgrade' with 'Beyond the Microsoft 365 Copilot licence named in the roadmap, no upgrade-specific prerequisites or rollout mechanics are stated.' This removes the conflict with the licence requirement already reported elsewhere in the briefing.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure / behaviour: The generated output is a file in the author's own storage. | Found: Any videos generated by the video creator feature will be saved to the user’s corporate OneDrive in a folder called Clipchamp. | Fix: Cite https://support.microsoft.com/clipchamp/how-to-create-video-with-copilot for the statement that generated videos are saved to the user's corporate OneDrive; the release notes establish exportability, not whose storage is used. | Source: https://support.microsoft.com/clipchamp/how-to-create-video-with-copilot
-- [supported, minor] Cost and licensing: Licence; Risk assessment: Security & identity / admin-path: The prose directs licence assignment through Users > Active users > Licenses and Apps, or just Users > Active users. | Found: go to the Users > Active users page. Select the row of the user that you want to assign a license to. In the right pane, select Licenses and Apps. Expand the Licenses section | Fix: Use 'Users > Active users > user > Licenses and Apps > Licenses' for the prose assignment paths, matching controls[0].ui. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users
-- [supported, minor] front matter: licensing.model; licensing.notes; Why it matters; Open questions / licensing: Mixed licensing reflects the roadmap's Copilot licence statement and Learn's usage-based listing, without establishing whether the licence and credits are both required. | Found: Depending on the service, organizations can use fixed licensing ... or supported combinations of these billing methods. Clipchamp: Copilot video creation | Fix: Keep the qualified mixed model, but distinguish base video creation from the audio upgrade: 'Microsoft Support describes base video creation for commercial users with a Microsoft 365 plan and access to Copilot Chat, with Clipchamp enabled. The roadmap names a Microsoft 365 Copilot licence for this audio upgrade; Learn lists video creation under usage-based billing.' Cite https://support.microsoft.com/clipchamp/how-to-create-video-with-copilot. Do not imply that the Support page establishes the audio upgrade's credit entitlement. | Source: https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits
-- [supported, minor] Scope; Governance controls / role: License administrators can edit spending policies but cannot create them. | Found: AI administrator and License administrator roles can edit spending policies ... However, they can't create spending policies. AI Reader, Global Reader, License Administrator ... These roles provide read-only access ... | Fix: Qualify the License administrator statement: 'The setup page says License administrators can edit policies but not create them, but also lists License Administrator among read-only consumption roles that cannot change policies; its role guidance is inconsistent.' Cite https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup#roles-and-requirements. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist tells administrators to check Auto-apply new services, but that setting has no control row. | Found: Check the Auto-apply new services setting on each policy ... The three rows govern the licence, which services a spending policy covers and the policy's spending limit. | Fix: Remove the separate 'Check the Auto-apply new services setting on each policy' checklist bullet; it has no corresponding control row. Do not add a row in this correction.
-- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The checklist asks readers to take stock of the separate billing-method setting, which has no control row. | Found: note that a different billing method setting decides what happens when the subscription's credits run out. The three rows govern the licence, which services a spending policy covers and the policy's spending limit. | Fix: Remove the checklist clause 'and note that a different billing method setting decides what happens when the subscription's credits run out'; the billing-method control has no row. Keep the verified policy-limit versus billing-method explanation in Cost and licensing.
-- [contradicted, minor] Governance guidance: At rollout; After rollout; Governance controls / consistency: The checklist tells readers to inspect and review the Consumption tab, but monitoring has no control row. | Found: look in the Cost management Consumption tab for credit usage by service and user. Review the Consumption tab by service and user each month ... The three rows govern the licence ... services ... spending limit. | Fix: Remove the Consumption-tab instruction from the pilot checklist bullet and remove the separate monthly Consumption-tab review bullet; monitoring has no corresponding control row. Keep the supported dashboard description in Cost and licensing.
+- [supported, minor] Risk assessment: Data exposure / behaviour: The generated output is a file in the author's own storage. | Found: Any videos generated by the video creator feature will be saved to the user's corporate OneDrive in a folder called Clipchamp. | Fix: Cite https://support.microsoft.com/clipchamp/how-to-create-video-with-copilot for 'the output is a file in the author's own storage'; the cited release note establishes exportability but not the user's storage location. | Source: https://support.microsoft.com/clipchamp/how-to-create-video-with-copilot
+- [supported, minor] Risk assessment: Security & identity; Scope: Users / licensing: Access follows the Microsoft 365 Copilot licence the roadmap names. | Found: With a Microsoft365 Copilot license, Copilot AI-generated video projects have improved audio | Fix: Replace 'Access follows the Microsoft 365 Copilot licence it names' with 'The roadmap names a Microsoft 365 Copilot licence for the improved audio. Microsoft's general video-creation support page describes access for commercial users with a Microsoft 365 plan and access to Copilot Chat, and requires Clipchamp to be enabled for the organisation.' Cite https://support.microsoft.com/clipchamp/how-to-create-video-with-copilot; distinguish the general creation requirements from this upgrade's roadmap requirement.
 -->

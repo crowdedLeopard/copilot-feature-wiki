@@ -1,0 +1,723 @@
+{
+  "slug": "m365-copilot-updates-to-memory-and-personalization-in-m365-copilot",
+  "roadmapId": 503955,
+  "title": "Microsoft 365 Copilot: memory now uses chat history, with refreshed Memory settings",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "2 blocking findings (claims 42, 55)"
+    ]
+  },
+  "counts": {
+    "claims": 57,
+    "confirmed": 53,
+    "unconfirmed": 0,
+    "contradicted": 4,
+    "blocker": 2,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: the memory discovery guidance omits that custom instructions cannot be discovered by administrators, which could leave a data subject request incomplete. Delegated changes also require both the Graph permission and a supported administrator role, not either one alone. The roadmap details and the documented beta Graph control are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "Copilot uses chat history to personalise responses.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Copilot now uses chat history to provide more relevant, contextual responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "title; summary; What's changing; Risk assessment",
+      "type": "record",
+      "claim": "Users get a redesigned Memory settings page to view and manage what Copilot remembers.",
+      "status": "supported",
+      "source": "Message Center post MC1158329",
+      "quote": "Users will see a redesigned Memory settings page that improves visibility and control over what Copilot remembers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is November CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"November CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target date is December CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Android, Desktop, iOS, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Cost and licensing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The notice says the update is available to all Copilot Chat users, affecting tenants where Memory is enabled.",
+      "status": "supported",
+      "source": "Message Center post MC1158329",
+      "quote": "This will be available to all Copilot Chat users. ... All users of Microsoft 365 Copilot in tenants where Memory is enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Existing admin and user Memory settings are respected, and Memory that is off stays off.",
+      "status": "supported",
+      "source": "Message Center post MC1158329",
+      "quote": "Existing admin and user-level Memory settings are respected. If Memory is toggled off, it will remain off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The update makes no changes to admin controls or policy enforcement.",
+      "status": "supported",
+      "source": "Message Center post MC1158329",
+      "quote": "No changes to admin controls or policy enforcement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap and notice were updated on 1 September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1158329",
+      "quote": "Updated September 1, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "Public Preview (Frontier) begins rolling out in mid-November 2025.",
+      "status": "supported",
+      "source": "Message Center post MC1158329",
+      "quote": "Public Preview (Frontier): Begins rolling out mid-November 2025.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Scope: Rollout; Open questions",
+      "type": "record",
+      "claim": "The later notice gives a General Availability start of mid-September 2026, previously early January.",
+      "status": "supported",
+      "source": "Message Center post MC1158329",
+      "quote": "General Availability: Begins mid-September 2026 (previously early January)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Scope: Rollout; Open questions",
+      "type": "record",
+      "claim": "General Availability is expected to complete by late October 2026, previously late July.",
+      "status": "supported",
+      "source": "Message Center post MC1158329",
+      "quote": "is expected to complete by late October 2026 (previously late July).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice has an end date of 2026-11-30.",
+      "status": "supported",
+      "source": "Message Center post MC1158329",
+      "quote": "Published 2025-09-23; last updated 2026-09-01; Microsoft's end date 2026-11-30",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1158329",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "Using chat history changes how existing customer data is processed to generate contextual replies.",
+      "status": "supported",
+      "source": "Message Center post MC1158329",
+      "quote": "Copilot will now use chat history to personalize responses, which changes how existing customer data is processed to generate contextual replies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "summary; Cost and licensing; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "The notice requires no admin action unless updating internal documentation or training materials.",
+      "status": "supported",
+      "source": "Message Center post MC1158329",
+      "quote": "No admin action is required unless you wish to update internal documentation or training materials.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "Enhanced personalization is on by default and no action is needed to turn on memory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "No action is required to turn on Copilot memory; you only need to turn off Copilot memory for end-users or the tenant if desired. ... By default, Enhanced personalization is turned on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "Copilot memory is available to Copilot Chat users with and without a Microsoft Copilot license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "Copilot memory is available to Copilot Chat users with and without a Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The memory management page names no separate licence, price or meter for memory.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot memory licensing price meter separate license personalization'; opened Manage Copilot personalization and memory and read its full licensing and management text; no separate memory licence, price or meter is named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Memory is included in the Copilot Chat entitlement rather than requiring a separate memory licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "Copilot memory is available to Copilot Chat users with and without a Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Memories include saved memories, details inferred from chat history and custom instructions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "Memories, which include saved memories, details inferred from chat history and custom instructions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Memories are stored in a hidden folder in the user's Exchange mailbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "are stored in the user's Exchange mailbox in a hidden folder.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Memory follows mailbox security and compliance policies such as Customer Lockbox and encryption at rest.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "Thus, memories follow the same security and compliance policies as other mailbox data, such as Customer Lockbox and encryption at rest.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Scope; Governance guidance; Open questions",
+      "type": "availability",
+      "claim": "Learn marks Copilot personalization and memory as preview and subject to change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "Copilot personalization and memory are in preview and subject to change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization updates Enhanced personalization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta",
+      "quote": "Update the properties of an enhancedPersonalizationSetting object. ... PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The request body uses isEnabledInOrganization to enable or disable the tenant control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta",
+      "quote": "isEnabledInOrganization | Boolean | If true, enables the enhanced personalization control and therefore related features as defined in control enhanced personalization privacy Required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].note; Why it matters; Governance guidance",
+      "type": "command",
+      "claim": "The optional disabledForGroup property takes a Microsoft Entra group ID and disables the control for its users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta",
+      "quote": "disabledForGroup | String | The ID of a Microsoft Entra group to which the value is used to disable the control for populated users. Optional.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].governs; summary; Why it matters",
+      "type": "applicability",
+      "claim": "Enhanced personalization governs Copilot memory for the tenant or a group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/control-enhanced-personalization-privacy",
+      "quote": "The option to disable all linked features for the tenant or a group of users through this scenario control is available anytime ... In some cases, this renders a feature disabled for use, such as Copilot memory",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].note; Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "PeopleSettings.ReadWrite.All is the permission for delegated work or school and application access to the update.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta",
+      "quote": "Delegated (work or school account) | PeopleSettings.ReadWrite.All | Not available. ... Application | PeopleSettings.ReadWrite.All | Not available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "People Administrator is the least privileged supported role for delegated updates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta",
+      "quote": "For delegated access using work or school accounts, the admin must be assigned a supported Microsoft Entra role. People Administrator is the least privileged role supported for this operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Learn describes tenant administrators such as Global Administrators using the control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/control-enhanced-personalization-privacy",
+      "quote": "Tenant administrators, such as the Global Administrator role, and users through requests to their tenant administrators, use the enhanced personalization control to manage this personalization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope: Cloud and platforms",
+      "type": "availability",
+      "claim": "The update API is available in the global service, not Government L4, Government L5 (DOD) or China operated by 21Vianet.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta",
+      "quote": "Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet\n| --- | --- | --- | --- |\n| ✅ | ❌ | ❌ | ❌ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].note; Governance controls; Open questions; rationale: risk",
+      "type": "availability",
+      "claim": "The cited API is beta, subject to change and not supported in production applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta",
+      "quote": "APIs under the /beta version in Microsoft Graph are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].ui; Why it matters; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "An admin centre switch for Enhanced personalization is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot memory Enhanced personalization Microsoft 365 admin center turn off tenant UI setting'; opened Configure Microsoft Copilot settings in the Microsoft 365 admin center and Manage Copilot personalization and memory; no memory admin UI route is given.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters; Governance controls",
+      "type": "applicability",
+      "claim": "Administrators cannot restrict what type of information is added to memory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "No, admins can't restrict what type of information is added to Copilot memory.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Purview retention policies and retention labels do not apply to Copilot memory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "Retention policies and retention labels configured in Purview by organization admins don't apply to Copilot memory.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "There are no admin controls to enforce retention rules specifically for Copilot memory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "There are no admin controls to enforce retention rules specifically for Copilot memory.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "A delete-after-three-months policy for Copilot Chat interactions does not delete users' memories.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "For example, if an admin set-up a \"delete after three months\" policy for Copilot Chat interactions, the users' memories aren't deleted after three months.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Administrators can search users' memory data with eDiscovery or Content Search to answer a data subject request.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "Saved memories and inferred memories from your chat history are discoverable using eDiscovery and Microsoft Graph Explorer. Custom instructions aren't accessible, but can manually be exported by the user through Settings > Personalization.",
+      "severity": "blocker",
+      "fix": "Add this qualification to the discovery sentence and the data subject request checklist item: 'Custom instructions are not discoverable through these tools; the user can manually export them through Settings > Personalization.' This qualification is stated at https://learn.microsoft.com/copilot/manage/copilot-personalization-memory."
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Memory is searched using item class IPM.Contact and found in the CopilotMemory folder on export.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "For Copilot memory, you need to search the item class <IPM.Contact>. ... If you export all items in this item class <IPM.Contact> for a user, their Copilot memory is located in the <'CopilotMemory'> folder.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "An administrator can delete memory data through Microsoft Graph Explorer in combination with Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "An admin can also delete memory data through Microsoft Graph Explorer in combination with Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support; Governance guidance; Governance controls; Open questions",
+      "type": "applicability",
+      "claim": "Memory and personalization actions generate no Purview audit log entries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "Memory and personalization actions don't generate audit log entries in Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout; Governance controls",
+      "type": "admin-path",
+      "claim": "Users manage Custom instructions, Saved memories and Chat history in Settings > Personalization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "the user-level controls for Custom instructions, Saved memories, and Chat history in Settings > Personalization",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Users with Enhanced personalization off see those controls off and cannot enable them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "End-users that have the Enhanced personalization control turned off see the user-level controls for Custom instructions, Saved memories, and Chat history in Settings > Personalization as turned off. They can't turn on these settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Disabling the admin control stops applying saved memories without removing them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "If the Enhanced personalization control is turned off at the admin-level, or if the Saved memories control is turned off at the end-user level, Copilot is stopped from applying saved memories to the chat, but doesn't remove saved memories.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Disabling the admin control stops applying custom instructions without removing them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "If the Enhanced personalization control is turned off at the admin-level, or if the Custom instruction control is turned off at the end-user level, Copilot is stopped from applying custom instructions, but doesn't remove those custom instructions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Disabling Enhanced personalization at admin level deletes chat history details after 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "If the Enhanced personalization control is turned off at the admin-level, or if the Chat history control is turned off at the end-user level, then all details from chat history are deleted after 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Disabling Chat history at user level deletes chat history details after 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "If the Enhanced personalization control is turned off at the admin-level, or if the Chat history control is turned off at the end-user level, then all details from chat history are deleted after 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The sources document no new actions Copilot takes because of this memory update.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot memory enhanced personalization tenant controls restrict information actions'; read the roadmap, MC1158329, Manage Copilot personalization and memory and Enhanced personalization control overview; the described update personalises replies, not new actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Enhanced personalization is the only documented tenant-level control over this memory update.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot memory enhanced personalization tenant controls restrict information actions' and 'Copilot memory Enhanced personalization Microsoft 365 admin center turn off tenant UI setting'; opened memory management, control overview, Graph references and admin centre settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "A rate or licence specific to this update is not published at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot memory licensing price meter separate license personalization'; read memory management and licensing search excerpts. Results describe general Copilot licensing or separately billed agent memory, not a rate or separate licence for this Copilot Chat update.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: Before rollout, second bullet",
+      "type": "role",
+      "claim": "Holding the People Administrator role or the PeopleSettings.ReadWrite.All permission is what changes the control.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta",
+      "quote": "Delegated (work or school account) | PeopleSettings.ReadWrite.All ... For delegated access using work or school accounts, the admin must be assigned a supported Microsoft Entra role.",
+      "severity": "blocker",
+      "fix": "Replace the bullet with: 'Agree who can change the control: delegated access requires PeopleSettings.ReadWrite.All and a supported Microsoft Entra role, with People Administrator the least privileged; application access requires PeopleSettings.ReadWrite.All.' See https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta."
+    },
+    {
+      "n": 56,
+      "where": "front matter: action",
+      "type": "consistency",
+      "claim": "The prepare action rating fits an on-by-default, medium-risk change whose roadmap status is Rolling out.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "action: \"prepare\"; status: \"rolling-out\"; risk: \"medium\"; defaultState: \"on\". The standard defines act-now for rolling-out changes that reach users automatically and need a decision with medium-or-higher risk or cost.",
+      "severity": "minor",
+      "fix": "Set action to 'act-now': the record still says Rolling out, the documented default is on, and the page identifies a medium-risk decision about whether to disable memory."
+    },
+    {
+      "n": 57,
+      "where": "Governance guidance: After rollout, first bullet; controls",
+      "type": "consistency",
+      "claim": "Every control the governance checklist asks readers to test appears in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "'Test eDiscovery for a pilot user's memory data (item class IPM.Contact)' appears in the checklist, but the controls table contains only Enhanced personalization.",
+      "severity": "minor",
+      "fix": "The After rollout instruction to test eDiscovery has no corresponding controls row. Remove that checklist item; retain the qualified discovery information in Risk assessment. Do not add a new control row as part of this correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T07:59:00.640Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=503955",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/control-enhanced-personalization-privacy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/enhancedpersonalizationsetting?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1158329",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether Enhanced personalization (and so Copilot memory) is on for the tenant, with an optional group to disable it for",
+        "docs": "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/copilot/settings",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

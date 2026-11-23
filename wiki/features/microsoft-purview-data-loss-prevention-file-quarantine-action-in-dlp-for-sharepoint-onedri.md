@@ -47,18 +47,15 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Data loss prevention > Policies > Create policy > Enterprise applications & devices > Custom > Custom policy > Create rule > Actions > Add an action > Restrict access or encrypt the content in Microsoft 365 locations"
+      path: "Data loss prevention > Policies > Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom policy > Define policy settings > Create or customize advanced DLP rules > Create rule"
       docs: "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine"
-    api:
-      kind: "powershell"
-      call: "Set-DlpComplianceRule -Identity <rule> -SharepointMoveToQuarantineLocation $true"
-      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule"
-    note: "There, select Block everyone and move file to quarantine location. Locations: SharePoint sites and OneDrive accounts. Simulation mode is supported. The cmdlet reference gives no description of the parameter."
+    api: null
+    note: "In the rule, Actions > Add an action > Restrict access or encrypt the content in Microsoft 365 locations > Block everyone and move file to quarantine location. Locations: SharePoint sites and OneDrive accounts."
   - governs: "Which SharePoint site receives quarantined files and what the tombstone file says"
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Data loss prevention > Settings > File quarantine"
+      path: "Data loss prevention > Settings > File quarantine > Quarantine folder path"
       docs: "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine"
     api: null
     note: "Set Quarantine folder path and Replacement file message. The action cannot be selected in a policy until this is configured."
@@ -82,19 +79,23 @@ changes:
     note: "First briefing on the DLP file quarantine action for SharePoint and OneDrive; roadmap says Launched while Learn pages still carry a preview note."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 92 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after the independent check: the tombstone is no longer called the only guidance for owners, row 1's admin path now follows the wizard in full, and its PowerShell call is withdrawn because the reference does not describe the parameter."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 87 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 92
-  confirmed: 88
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "d58deb9d886211b7385df48dbb869e1c"
+  claims: 87
+  confirmed: 85
+  unconfirmed: 0
+  contradicted: 2
+  attempts: 0
+  hash: "32a416d2f11ae774bdbc884725b91d4d"
 ---
 
 ## What's changing
@@ -132,7 +133,7 @@ Because it is something an administrator adds to a rule, nothing changes in a te
 
 **Change & support**
 
-- Expect help-desk contacts from file owners who find a `.txt` file in place of a document. The message in the tombstone is the only guidance they get, so write it to name a contact.
+- Expect help-desk contacts from file owners who find a `.txt` file in place of a document. Write the tombstone message to name a contact.
 - A file that is quarantined and later restored is not re-quarantined by the same rule, even if the file or rule changes. Other DLP rules still apply to it.
 
 ## Cost and licensing
@@ -181,15 +182,15 @@ Because it is something an administrator adds to a rule, nothing changes in a te
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether a DLP rule quarantines matching SharePoint and OneDrive files</strong><br><small>Tenant</small><br><small class="controls__note">There, select Block everyone and move file to quarantine location. Locations: SharePoint sites and OneDrive accounts. Simulation mode is supported. The cmdlet reference gives no description of the parameter.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › Create policy › Enterprise applications &amp; devices › Custom › Custom policy › Create rule › Actions › Add an action › Restrict access or encrypt the content in Microsoft 365 locations <a href="https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-DlpComplianceRule -Identity &lt;rule&gt; -SharepointMoveToQuarantineLocation $true</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which SharePoint site receives quarantined files and what the tombstone file says</strong><br><small>Tenant</small><br><small class="controls__note">Set Quarantine folder path and Replacement file message. The action cannot be selected in a policy until this is configured.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Settings › File quarantine <a href="https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether a DLP rule quarantines matching SharePoint and OneDrive files</strong><br><small>Tenant</small><br><small class="controls__note">In the rule, Actions &gt; Add an action &gt; Restrict access or encrypt the content in Microsoft 365 locations &gt; Block everyone and move file to quarantine location. Locations: SharePoint sites and OneDrive accounts.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › Create policy › Enterprise applications &amp; devices › Categories › Custom › Regulations › Custom policy › Define policy settings › Create or customize advanced DLP rules › Create rule <a href="https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which SharePoint site receives quarantined files and what the tombstone file says</strong><br><small>Tenant</small><br><small class="controls__note">Set Quarantine folder path and Replacement file message. The action cannot be selected in a policy until this is configured.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Settings › File quarantine › Quarantine folder path <a href="https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Finding the original path and activity of quarantined files in the audit log</strong><br><small>Tenant</small><br><small class="controls__note">Needs the Audit Logs or View-Only Audit Logs role. Search-UnifiedAuditLog runs in Exchange Online PowerShell. A read control for investigation, not a way to limit the action.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog</code> <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 The action has no tenant-wide switch of its own in the sources read: it takes effect through a DLP rule, so scoping the policy's locations and conditions is what limits it. The File quarantine settings must be complete before the wizard lets you select the action.
 
-Row 1's PowerShell call is the parameter name as the cmdlet reference lists it. At the time of writing (November 2026) its description in that reference is an unfilled placeholder, so confirm the behaviour in a test tenant before scripting it. The Learn walkthrough shows the wizard path only.
+At the time of writing (November 2026), the Set-DlpComplianceRule reference lists SharepointMoveToQuarantineLocation as Boolean but does not describe its behaviour; no verified call for configuring this action is documented. The Learn walkthrough shows the wizard path only.
 
 Audit search needs the Audit Logs or View-Only Audit Logs role. Configuring the quarantine action needs one of the Entra roles listed under Scope.
 
@@ -206,13 +207,10 @@ cost: Low. The Learn page says the feature is only available for E5 licenses and
 impact: Low. Admins configure it, and nobody else is affected until a policy is on; then the owners of matched files find a .txt tombstone file where their file was.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Change & support / behaviour: The tombstone message is the only guidance file owners get. | Found: Under User notifications, set the toggle to On if you want to notify users through policy tips. | Fix: Replace 'The message in the tombstone is the only guidance they get, so write it to name a contact' with 'Write the tombstone message to name a contact.' The documented optional policy tips mean the tombstone need not be the only guidance. | Source: https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine
-- [contradicted, blocker] controls[0].ui; Governance controls: row 1 / admin-path: The printed policy-creation path reaches Create rule after Custom policy without specifying the advanced-rule policy-settings choice. | Found: On the Define policy settings page, make sure the Create or customize advanced DLP rules option is selected. Select Next. Select + Create rule. | Fix: Replace the UI path in front matter and the rendered table with 'Data loss prevention > Policies > Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom policy > Define policy settings > Create or customize advanced DLP rules > Create rule > Actions > Add an action > Restrict access or encrypt the content in Microsoft 365 locations > Block everyone and move file to quarantine location', as documented at https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine. Retain the note specifying SharePoint sites and OneDrive accounts. | Source: https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine
-- [unsupported, blocker] controls[0].api; Governance controls: row 1 and PowerShell paragraph / command: Set-DlpComplianceRule -Identity <rule> -SharepointMoveToQuarantineLocation $true configures the rule to quarantine matching SharePoint and OneDrive files. | Found: Searched: Set-DlpComplianceRule SharepointMoveToQuarantineLocation Identity Boolean; "SharepointMoveToQuarantineLocation" quarantine true. Read Set-DlpComplianceRule reference and quarantine walkthrough: parameter is Boolean but description is a placeholder; no enabling semantics stated. | Fix: Set controls[0].api to null and render that side as 'Not yet documented'. Replace the PowerShell paragraph with 'At the time of writing (November 2026), the Set-DlpComplianceRule reference lists SharepointMoveToQuarantineLocation as Boolean but does not describe its behaviour; no verified call for configuring this action is documented.' Remove the instruction to test the proposed enabling call.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls: row 2 / admin-path: Microsoft Purview portal > Data loss prevention > Settings > File quarantine reaches the page holding destination and tombstone controls. | Found: Go to Data loss prevention > Settings. Select File quarantine. Under Quarantine folder path, select a SharePoint site from the list of available sites. | Fix: Extend controls[1].ui.path and the rendered path to 'Data loss prevention > Settings > File quarantine > Quarantine folder path'. Keep the note 'Set Quarantine folder path and Replacement file message' to identify the second setting on that page. | Source: https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine
-- [contradicted, minor] Governance guidance; Governance controls / consistency: Every control the governance checklist asks readers to set or review is represented in the controls table. | Found: Checklist: 'Review simulated matches in Activity explorer'; 'Turn on alerts for the rule'; 'Review quarantine alerts'. Table: quarantine rule action, quarantine destination/message, audit search only. | Fix: The Activity explorer review, per-match admin-alert configuration, and DLP-alert review steps have no corresponding controls-table rows. Record these as checklist/table omissions; this finding does not request additional rows.
+- [supported, minor] controls[0].ui; Governance controls table row 1 / admin-path: The printed Purview policy wizard path reaches Create rule, with the quarantine action supplied in the note. | Found: Select + Create rule. Name the rule and provide a description. Under Actions, select Add an action > Restrict access or encrypt the content in Microsoft 365 locations. Select Block everyone and move file to quarantine location. | Fix: Extend controls[0].ui.path to 'Data loss prevention > Policies > Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom policy > Define policy settings > Create or customize advanced DLP rules > Create rule > Actions > Add an action > Restrict access or encrypt the content in Microsoft 365 locations > Block everyone and move file to quarantine location', as documented at https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine. Its current endpoint is the correct rule page but not the action itself. | Source: https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine
+- [contradicted, minor] Governance guidance: At rollout, After rollout; Governance controls table / consistency: The checklist names simulation mode, Activity explorer, rule-alert configuration and DLP-alert review controls absent from the controls table. | Found: run the policy in simulation mode first; Review simulated matches in Activity explorer; Turn on alerts for the rule; Review quarantine alerts ... Data loss prevention > Alerts. Table rows: quarantine rule action, destination/message, audit search. | Fix: The simulation-mode instruction in At rollout bullet 1, Activity explorer and DLP alerts in bullet 2, rule-alert configuration in bullet 3, and DLP-alert review in After rollout bullet 1 have no corresponding table rows. Remove those checklist instructions to reconcile the checklist with the existing table; do not add unverified rows.
+- [contradicted, minor] Governance controls prose; Governance controls table / consistency: The prose reports a separate tenant-switch control as absent without a both-null control row showing that gap. | Found: The action has no tenant-wide switch of its own in the sources read. The controls table has only the rule action, quarantine destination/message and audit search rows. | Fix: Replace 'The action has no tenant-wide switch of its own in the sources read: it takes effect through a DLP rule, so scoping the policy's locations and conditions is what limits it.' with 'The action takes effect through a DLP rule, so scoping the policy's locations and conditions is what limits it.' This removes the unrepresented control-gap statement without adding a row.
 -->

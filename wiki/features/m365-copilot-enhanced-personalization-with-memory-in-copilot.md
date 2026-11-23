@@ -31,6 +31,9 @@ sources:
   - title: "Manage Copilot personalization and memory"
     url: "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory"
     kind: "learn"
+  - title: "Search for and delete AI application data in eDiscovery"
+    url: "https://learn.microsoft.com/purview/edisc-search-copilot-data"
+    kind: "learn"
   - title: "Enhanced personalization control overview"
     url: "https://learn.microsoft.com/graph/control-enhanced-personalization-privacy"
     kind: "learn"
@@ -39,6 +42,9 @@ sources:
     kind: "learn"
   - title: "Update enhancedPersonalizationSetting"
     url: "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta"
+    kind: "learn"
+  - title: "Get enhancedPersonalizationSetting"
+    url: "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-get?view=graph-rest-beta"
     kind: "learn"
   - title: "Configure Microsoft Copilot settings in the Microsoft 365 admin center"
     url: "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center"
@@ -63,19 +69,23 @@ changes:
     note: "First briefing: communication memory in Copilot, its Enhanced personalization control (Graph beta API only) and the open licensing and cloud questions."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 58 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after the independent check: custom instructions are not yet discoverable in eDiscovery, US Government clouds use PowerShell for deletion, and the Graph role and permission step is reworded."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 61 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 54
+  claims: 61
+  confirmed: 61
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "dee43977ec6f14acdbf5ea3ab5f1fd60"
+  contradicted: 0
+  attempts: 0
+  hash: "61b61bd536d1953ffc69cf57bd9b4b81"
 ---
 
 ## What's changing
@@ -104,7 +114,7 @@ The control to decide on is a single tenant setting that is documented only as a
 
 **Security & identity**
 
-- Administrators can search users' memory with Microsoft Purview eDiscovery or Content Search, so memories are reachable by people who hold those roles. The page locates them in the CopilotMemory folder under item class IPM.Contact.
+- Administrators can search users' memory with Microsoft Purview eDiscovery or Content Search, so memories are reachable by people who hold those roles. The page locates them in the CopilotMemory folder under item class IPM.Contact. Custom instructions are not yet discoverable in eDiscovery or Content Search; users can manually export them through Settings > Personalization.
 - Changing the control needs the Graph permission PeopleSettings.ReadWrite.All, and for delegated access the People Administrator role is the least privileged supported role. Restrict who holds it.
 
 **Autonomy & actions**
@@ -123,7 +133,7 @@ The control to decide on is a single tenant setting that is documented only as a
 
 **Meter.** No price, credit rate or separate meter for this feature is published on the pages read at the time of writing (November 2026).
 
-**Indirect cost.** Admin time to set the control through Microsoft Graph, user communication about what memory stores, and eDiscovery work if you answer data subject requests that involve memory. The Learn page documents eDiscovery and Microsoft Graph Explorer as the route to search, export and delete users' memory data.
+**Indirect cost.** Admin time to set the control through Microsoft Graph, user communication about what memory stores, and eDiscovery work if you answer data subject requests that involve memory. The Learn page documents eDiscovery and Microsoft Graph Explorer as the route to search, export and delete users' memory data. For US Government clouds, the deletion guide says to use PowerShell because Microsoft Graph Explorer is unavailable.
 
 ## Scope
 
@@ -139,7 +149,7 @@ The control to decide on is a single tenant setting that is documented only as a
 
 - Decide with your privacy and compliance leads whether Enhanced personalization stays on for the whole tenant, for some users, or for none. Disabling it turns off all Copilot memory and personalisation features, not communication memory alone.
 - Create or choose a Microsoft Entra group for users to exclude, and note its object ID for the disabledForGroup property.
-- Assign the People Administrator role, or have an administrator who can grant PeopleSettings.ReadWrite.All consent, to the person who will call the Graph API.
+- For delegated access, assign the caller a supported Microsoft Entra role (People Administrator is the least privileged) and ensure the application has the PeopleSettings.ReadWrite.All permission.
 - Brief your records and eDiscovery owners that Purview retention policies and labels do not apply to Copilot memory and that memory actions are not written to the Purview audit log.
 
 ### At rollout
@@ -150,7 +160,6 @@ The control to decide on is a single tenant setting that is documented only as a
 
 ### After rollout
 
-- Test a Purview eDiscovery search on item class IPM.Contact for one pilot user and confirm you can find the CopilotMemory folder, so you can answer a data subject request.
 - Re-read notice MC1127234 and the Learn page for Copilot memory each month until the end-of-December 2026 completion date has passed, because the date has already been revised once.
 - Check what changed for users when the control was turned off: saved memories and custom instructions are kept but not applied, and chat history details are deleted after 30 days.
 
@@ -169,7 +178,7 @@ There is one control for this feature at the time of writing (November 2026): th
 
 Microsoft Learn documents no admin centre setting for it, so the ui side is shown as not yet documented. Graph beta APIs are subject to change and Microsoft says they are not supported in production applications. Group exclusion is the disabledForGroup property of the same call, which takes the ID of one Microsoft Entra group.
 
-Purview retention policies and labels do not apply to Copilot memory, and eDiscovery is the documented route to search, export and delete memory data. Memory actions do not generate Purview audit log entries.
+Purview retention policies and labels do not apply to Copilot memory, and eDiscovery is the documented route to search, export and delete memory data. Custom instructions are not yet discoverable in eDiscovery or Content Search; users can manually export them through Settings > Personalization. Memory actions do not generate Purview audit log entries.
 
 ## Open questions
 
@@ -185,13 +194,9 @@ cost: Low. Indirect cost only: admin time to decide the setting and brief users.
 impact: High. The notice says the feature is on by default for Copilot-licensed users, so most Copilot users in a tenant will have memories built from their communications unless an administrator acts.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity; Governance controls / applicability: Administrators can search users' memory with Purview eDiscovery or Content Search without an exclusion for custom instructions. | Found: Admins can search their users' memory in Microsoft Copilot via Microsoft Purview eDiscovery or Content Search. Custom instructions aren't yet discoverable in these solutions. | Fix: Add to the search guidance in Risk assessment and Governance controls: 'Custom instructions are not yet discoverable in eDiscovery or Content Search; users can manually export them through Settings > Personalization.' Cite https://learn.microsoft.com/copilot/manage/copilot-personalization-memory. | Source: https://learn.microsoft.com/copilot/manage/copilot-personalization-memory
-- [contradicted, blocker] Cost and licensing: Indirect cost / availability: Microsoft Graph Explorer is the documented route to delete users' memory data across the briefing's listed clouds without a government-cloud qualification. | Found: Because Microsoft Graph Explorer isn't available in the US Government cloud (GCC, GCC High, and DOD), you must use PowerShell to accomplish these tasks. | Fix: Add after the Graph Explorer sentence: 'For US Government clouds, the deletion guide says to use PowerShell because Microsoft Graph Explorer is unavailable.' Cite https://learn.microsoft.com/purview/edisc-search-copilot-data. | Source: https://learn.microsoft.com/purview/edisc-search-copilot-data
-- [contradicted, blocker] Governance guidance: Before rollout, role assignment bullet / role: Assigning People Administrator or arranging PeopleSettings.ReadWrite.All consent are alternative preparations for the person calling Graph. | Found: Delegated (work or school account) | PeopleSettings.ReadWrite.All ... For delegated access using work or school accounts, the admin must be assigned a supported Microsoft Entra role. | Fix: Replace the bullet with: 'For delegated access, assign the caller a supported Microsoft Entra role (People Administrator is the least privileged) and ensure the application has admin consent for PeopleSettings.ReadWrite.All.' The update reference documents the role and permission; https://learn.microsoft.com/graph/permissions-reference#all-permissions marks this permission AdminConsentRequired: Yes. | Source: https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: At rollout / command: The setting can be read back using the Get method on the same resource. | Found: GET /copilot/settings/people/enhancedpersonalization | Fix: Cite https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-get?view=graph-rest-beta for the read-back instruction. | Source: https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-get?view=graph-rest-beta
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist asks administrators to test a Purview eDiscovery search, but the table contains only the Enhanced personalization setting. | Found: Test a Purview eDiscovery search on item class IPM.Contact for one pilot user ... Whether Enhanced personalization (and so Copilot memory) is on for the organisation or off for one Entra group | Fix: Remove the 'Test a Purview eDiscovery search on item class IPM.Contact' checklist bullet: it instructs readers to check a control that has no row in the controls table. Keep the existing descriptive eDiscovery information.
+- [supported, minor] Cost and licensing: Indirect cost / availability: The deletion guide says US Government clouds must use PowerShell because Graph Explorer is unavailable. | Found: Step 5: "isn't available in some US Government clouds (GCC High and DOD)". PowerShell section: "isn't available in the US Government cloud (GCC, GCC High, and DOD), you must use PowerShell". | Fix: Replace the US Government sentence with: 'The deletion guide gives inconsistent cloud guidance: Step 5 names GCC High and DOD as requiring PowerShell because Graph Explorer is unavailable, while its PowerShell section also lists GCC.' Keep the citation to https://learn.microsoft.com/purview/edisc-search-copilot-data. | Source: https://learn.microsoft.com/purview/edisc-search-copilot-data
+- [supported, minor] Governance controls / behaviour: There is one control for this feature: the Enhanced personalization administrator setting. | Found: Enhanced personalization is the control that allows Copilot memory to be used by end-users. ... user-level controls for Custom instructions, Saved memories, and Chat history in Settings > Personalization | Fix: Replace 'There is one control for this feature at the time of writing (November 2026)' with 'The documented administrator control for this feature at the time of writing (November 2026) is the Enhanced personalization setting'. Remove the repeated setting name immediately after that replacement, retaining 'documented as a Microsoft Graph beta API'. | Source: https://learn.microsoft.com/copilot/manage/copilot-personalization-memory
 -->

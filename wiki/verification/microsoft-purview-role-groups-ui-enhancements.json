@@ -1,0 +1,539 @@
+{
+  "slug": "microsoft-purview-role-groups-ui-enhancements",
+  "roadmapId": 562033,
+  "title": "Microsoft Purview: look up permissions by role and membership on the Role groups page",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "2 blocking findings (claims 11, 33)"
+    ]
+  },
+  "counts": {
+    "claims": 40,
+    "confirmed": 38,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 2,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "Hold: the summary attributes a no-admin-action statement to a roadmap record that makes no such statement. The scope section also casts doubt on the documented access requirement for the page containing the lookup. The navigation and PowerShell call are supported, but Microsoft pages disagree on which groups hold Role Management.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The Role groups page now allows administrators to look up permissions by roles and memberships.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The Role groups page in the Microsoft Purview compliance portal now allows admins to look up permissions by roles and memberships.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The general availability target is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The preview target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed clouds are Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists no platforms.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": []",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The record supplies no more-info link.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"moreInfoLink\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing: first paragraph",
+      "type": "record",
+      "claim": "The roadmap description gives only one sentence about the lookup and no instructions for opening it.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The Role groups page in the Microsoft Purview compliance portal now allows admins to look up permissions by roles and memberships.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing: last paragraph",
+      "type": "absence",
+      "claim": "No Message Center post was supplied for this item.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: the supplied pre-check, roadmap record and writer output for Message Center posts; none contains a supplied post or a post identifier.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary",
+      "type": "record",
+      "claim": "The roadmap states no admin action.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: the complete roadmap record for an admin-action statement; its description only says the page now allows permission lookups. Also searched 'Purview Role groups UI enhancements 562033 default rollout admin action disable PowerShell'; no such statement found.",
+      "severity": "blocker",
+      "fix": "Replace 'the roadmap states no admin action' with 'the roadmap does not state whether admin action is required'. This preserves the distinction between silence and an explicit no-action instruction and agrees with Why it matters."
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe the new Role groups lookup, its screens or its relationship to the permission model.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Purview\" \"Role groups\" \"lookup\"' and '\"Purview\" \"look up permissions\"'; read purview-permissions and purview-portal. They describe role management and a separate global search, not this Role groups lookup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing: second paragraph",
+      "type": "behaviour",
+      "claim": "A role grants permissions to perform a set of tasks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "A role grants permissions to perform a set of tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing: second paragraph",
+      "type": "behaviour",
+      "claim": "A role group is a set of roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "A role group is a set of roles that enable users to do their jobs across compliance and governance solutions in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing: second paragraph",
+      "type": "behaviour",
+      "claim": "Members are assigned to role groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Generally, add individual users as members to the default role groups as needed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Why it matters: first paragraph",
+      "type": "behaviour",
+      "claim": "Role group membership identifies users granted access to Purview compliance and security capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "By adding users to the Insider Risk Management role group, designated administrators, analysts, investigators, and auditors get the necessary insider risk management permissions in a single group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].governs; Risk assessment: Data exposure; Scope; Governance controls; rationale: risk",
+      "type": "role",
+      "claim": "Viewing Role groups requires global administrator or the Role Management role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "To view Role groups in the Roles and scopes area in the Microsoft Purview portal, users need to be a global administrator or need to be assigned the Role Management role (assigned only to the Organization Management role group).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Scope; controls[0].governs; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "The permissions page says Role Management is assigned only to Organization Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Role Management role (assigned only to the Organization Management role group).",
+      "severity": "minor",
+      "fix": "After the attributed statement in Scope, add: 'Microsoft's roles reference instead says Role Management is assigned to Organization Management and Purview Administrators by default.' Cite https://learn.microsoft.com/defender-office-365/scc-permissions#role-groups-in-microsoft-defender-for-office-365-and-microsoft-purview, which states both groups. Retain the attribution to the permissions page rather than silently choosing between the sources."
+    },
+    {
+      "n": 19,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Role Management allows users to view role groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "The Role Management role allows users to view, create, and modify role groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Role Management allows users to create role groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "The Role Management role allows users to view, create, and modify role groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Role Management allows users to modify role groups, including membership.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Sign in to the Microsoft Purview portal by using credentials for an admin account assigned the Role management role. ... On Edit members of the role group, select Choose users or Choose groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].ui; rendered Governance controls table",
+      "type": "admin-path",
+      "claim": "The printed Purview portal path reaches Choose users for editing a built-in role group's members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Go to Settings > Roles and scopes ... Select Role groups. ... On Role groups for Microsoft Purview solutions, select a Microsoft Purview role group ... Select Edit on the control bar. ... On Edit members of the role group, select Choose users or Choose groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].api; rendered Governance controls table",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\" adds the identified user to the identified role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. ... The Identity parameter specifies the role group to add a member to. ... User ID or user principal name (UPN)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].note",
+      "type": "role",
+      "claim": "The signed-in administrator editing role group membership needs Role Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Sign in to the Microsoft Purview portal by using credentials for an admin account assigned the Role management role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].note; Governance controls: last paragraph",
+      "type": "availability",
+      "claim": "Security groups are supported for these membership assignments only in Microsoft 365 commercial cloud organisations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Security groups are supported only in Microsoft 365 commercial cloud organizations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[1].ui; controls[1].api; Governance controls: last paragraph",
+      "type": "absence",
+      "claim": "No separate UI or automation setting to turn the Role groups lookup on or off is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview Role groups UI enhancements 562033 default rollout admin action disable PowerShell' and '\"Purview\" \"Role groups\" \"lookup\" \"PowerShell\" enable disable'; read purview-permissions, purview-portal and Add-RoleGroupMember; no lookup switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "default",
+      "claim": "Microsoft has not stated the lookup's default or what happens on arrival without administrator action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: the roadmap description; 'Purview Role groups UI enhancements 562033 default rollout admin action disable PowerShell'; '\"Purview\" \"Role groups\" \"lookup\" \"requirements\" \"default\"'; read purview-permissions and purview-portal; no lookup default stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters: second paragraph",
+      "type": "absence",
+      "claim": "Microsoft has not documented whether tenants must take action for this lookup.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: the roadmap record and 'Purview Role groups UI enhancements 562033 default rollout admin action disable PowerShell'; read purview-permissions and purview-portal; no lookup-specific tenant action found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The lookup is treated as an option inside Purview's existing licensed service, rather than a separately published entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Appropriate subscription licenses are required for use of each online service. ... Any user benefiting from the service requires a license. ... Users with a Purview role assigned for use in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Any user benefiting from Microsoft Purview requires a licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Any user benefiting from the service requires a license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The service description lists users with a Purview role assigned for portal use as users benefiting from the service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Following are some examples of users benefiting from the service in Microsoft Purview; however, this list isn't exhaustive: ... Users with a Purview role assigned for use in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No licence specific to the Role groups lookup is published in the record or relevant Learn documentation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview Role groups permissions lookup licensing price meter'; read the roadmap, purview-permissions, the Purview service description and purview-billing-models. The licensing and meter pages do not name the Role groups lookup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope: last sentence",
+      "type": "applicability",
+      "claim": "Learn does not establish whether the Role groups page's access requirement covers the new lookup on that page.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "To view Role groups in the Roles and scopes area in the Microsoft Purview portal, users need to be a global administrator or need to be assigned the Role Management role.",
+      "severity": "blocker",
+      "fix": "Replace 'That requirement is documented for viewing Role groups; Learn does not say whether it also covers the new lookup.' with 'That requirement governs access to the Role groups page containing the lookup; Microsoft has not documented any additional requirement specific to the lookup.' The page-wide access requirement is stated at https://learn.microsoft.com/purview/purview-permissions."
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft has not documented lookup-specific additional permissions or access beyond the Role groups page requirement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview Role groups lookup permissions roles memberships license pricing requirements read only role management' and '\"Purview\" \"Role groups\" \"lookup\" \"requirements\" \"default\"'; read purview-permissions and purview-portal; no lookup-specific additional role found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Settings > Roles and scopes > Role groups reaches the Role groups page in the Microsoft Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Go to Settings > Roles and scopes to view and manage compliance and governance roles in your organization. ... Select Role groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "A price specific to the Role groups lookup is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview Role groups permissions lookup licensing price meter'; read the Purview service description and purview-billing-models. Neither names a price for the Role groups lookup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The roadmap names no meter and the relevant documentation shows no lookup-specific consumption cost.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: the complete roadmap record and 'Purview Role groups permissions lookup licensing price meter'; read purview-billing-models and the service description. No listed meter names the Role groups lookup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes a lookup rather than an autonomous action.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The Role groups page in the Microsoft Purview compliance portal now allows admins to look up permissions by roles and memberships.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "rationale: impact",
+      "type": "role",
+      "claim": "The Role groups page is restricted to administrators with the documented roles, rather than ordinary end users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "To view Role groups in the Roles and scopes area in the Microsoft Purview portal, users need to be a global administrator or need to be assigned the Role Management role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-08-10T22:43:02.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-08-10T22:43:02\"",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T07:59:00.049Z",
+    "summary": {
+      "links": 4,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=562033",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who can open and edit Role groups (members of Organization Management, which holds Role Management)",
+        "docs": "https://learn.microsoft.com/purview/purview-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and scopes",
+          "Role groups",
+          "Role groups for Microsoft Purview solutions",
+          "role group",
+          "Edit",
+          "Edit members of the role group",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Who can open and edit Role groups (members of Organization Management, which holds Role Management)",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

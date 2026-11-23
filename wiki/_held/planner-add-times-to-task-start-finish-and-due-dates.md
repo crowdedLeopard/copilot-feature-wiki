@@ -4,7 +4,7 @@ slug: "planner-add-times-to-task-start-finish-and-due-dates"
 roadmapId: 570153
 topic: "modern-work"
 products: ["Planner"]
-summary: "Planner plans are due to get times on task dates, plus a plan time zone and working hours. It affects Planner users on the web and in Teams; Microsoft has published no admin setting, default or licence for it yet."
+summary: "Planner plans are due to get times on task dates, plus a plan time zone and working hours. It affects Planner users on the web and in Teams; Microsoft has published no default or feature-specific licence rule for it yet."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -17,7 +17,7 @@ impact: "medium"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "mixed"
+  model: "included"
   notes: "Planner is included with the Microsoft 365 plans Learn lists, and which Planner capabilities a user gets depends on assigned licences (Microsoft Copilot, Planner Plan 1, Planner and Project Plan 3). A licence rule for this feature is not yet published."
 audiences: ["m365-admin","service-owner","change-adoption","end-user"]
 tags: ["planner","teams","user-experience"]
@@ -34,6 +34,18 @@ sources:
   - title: "plannerTask resource type"
     url: "https://learn.microsoft.com/graph/api/resources/plannertask"
     kind: "learn"
+  - title: "planCalendar resource type"
+    url: "https://learn.microsoft.com/graph/api/resources/plancalendar?view=graph-rest-beta"
+    kind: "learn"
+  - title: "workDayDefaults resource type"
+    url: "https://learn.microsoft.com/graph/api/resources/workdaydefaults?view=graph-rest-beta"
+    kind: "learn"
+  - title: "Update plan"
+    url: "https://learn.microsoft.com/graph/api/plan-update?view=graph-rest-beta"
+    kind: "learn"
+  - title: "task resource type"
+    url: "https://learn.microsoft.com/graph/api/resources/task?view=graph-rest-beta"
+    kind: "learn"
   - title: "Update-M365TeamsApp"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp"
     kind: "learn"
@@ -49,16 +61,16 @@ controls:
       surface: "Teams admin center"
       path: "Teams apps > Manage apps > Planner > Block"
       docs: "https://learn.microsoft.com/microsoftteams/manage-planner-app"
-    api:
-      kind: "powershell"
-      call: "Update-M365TeamsApp -Id <app-id> -IsBlocked $true"
-      docs: "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp"
-    note: "Blocks the Planner app in Teams for the organisation, not Planner on the web. Existing control; it does not govern the new times or time-zone settings."
+    api: null
+    note: "Blocks Planner in Teams, not on the web; does not govern the new settings. Update-M365TeamsApp exists, but its reference describes the -IsBlocked $true example as unblocking the app: use the Block control, not an inferred value."
   - governs: "Plan time zone, working hours and default task times for this feature"
     scope: "other"
     ui: null
-    api: null
-    note: "Not yet documented on either surface at the time of writing (November 2026)."
+    api:
+      kind: "graph"
+      call: "PATCH /beta/planner/plans_v2/{planId}"
+      docs: "https://learn.microsoft.com/graph/api/plan-update?view=graph-rest-beta"
+    note: "The beta request body sets calendar.timeZone and calendar.workDayDefaults.startTime/endTime. Beta APIs are not supported for production use, and this operation currently lists no supported delegated or application permissions."
 confidence: "medium"
 created: "2026-11-23"
 updated: "2026-11-23"
@@ -68,26 +80,30 @@ changes:
     note: "New briefing: roadmap-only description of times on Planner task dates, a plan time zone and working hours; no admin setting, default or feature licence is documented yet."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 48 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after verification: added the beta Planner plan calendar settings and the Graph call that updates them, fixed the Teams app blocking row and the licensing model, and updated the open questions."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 66 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 43
-  unconfirmed: 1
-  contradicted: 4
-  attempts: 1
-  hash: "d8058f32de50d52e5c962d9babb07d97"
+  claims: 66
+  confirmed: 65
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 2
+  hash: "4fc87bc11bf19c2a5d3221da7bb631f0"
 ---
 
 ## What's changing
 
 Microsoft plans to let people add a specific time to a Planner task's start, finish and due dates. The roadmap item also describes two plan-level settings: a plan time zone and working hours, which supply default task times, and a choice of viewing times in the plan's time zone or in your own local time zone. The stated aim is to help distributed teams coordinate across time zones and keep deadlines clear.
 
-Microsoft Learn does not describe this feature yet, so what follows about its behaviour is the roadmap's description. Who can set the plan time zone and working hours, what the default times are, and whether existing tasks change are not stated.
+The roadmap remains In development. Microsoft Learn also documents beta Planner Unified plans API calendar settings for a plan time zone and default working-day start and end times; beta APIs are subject to change and are not supported for production use. See [planCalendar resource type](https://learn.microsoft.com/graph/api/resources/plancalendar?view=graph-rest-beta) and [workDayDefaults resource type](https://learn.microsoft.com/graph/api/resources/workdaydefaults?view=graph-rest-beta). Who can set the plan time zone and working hours, what the default times are, and whether existing tasks change are not stated.
 
 The roadmap record lists the status as In development, with a target of November CY2026 and release phase General Availability. The platforms are Teams and Surface Devices, and Web. The cloud listed is Worldwide (Standard Multi-Tenant). These are Microsoft's targets, not shipped behaviour.
 
@@ -95,7 +111,7 @@ The roadmap record lists the status as In development, with a target of November
 
 Per the roadmap item, adding times and a plan time zone changes what a deadline means for teams spread across regions. Service owners who run cross-region plans should decide which time zone their plans will use and tell their users before the change lands.
 
-Microsoft has not stated what happens on arrival, so the advice here rests on no source saying that existing tasks or dates change. Treat the plan time zone as a convention your teams agree, not a setting you can enforce centrally: no admin setting for it is documented at the time of writing (November 2026).
+Microsoft has not stated what happens on arrival, so the advice here rests on no source saying that existing tasks or dates change. Treat the plan time zone as a convention your teams agree with each plan's owners.
 
 ## Risk assessment
 
@@ -110,7 +126,7 @@ Microsoft has not stated what happens on arrival, so the advice here rests on no
 
 **Change & support**
 - Expect support questions about which time zone a deadline is in, because the roadmap item lets each person choose between the plan's time zone and their local one.
-- Scripts or flows that read start and due dates through Microsoft Graph or the Power Automate connector may meet new values. The v1.0 plannerTask reference describes `startDateTime` and `dueDateTime` as date-and-time values in UTC, and Microsoft Learn documents no plan time zone or working-hours property there at the time of writing (November 2026). Test any integration that parses task dates once the feature reaches your tenant.
+- Scripts or flows that read start and due dates through Microsoft Graph or the Power Automate connector may meet new values. The v1.0 plannerTask reference describes `startDateTime` and `dueDateTime` as date-and-time values in UTC. The beta Planner Unified plans task resource describes both as `dateWithOptionalTime`, with the plan's time zone and working-day defaults held in a `calendar` property on the plan. Test any integration that parses task dates once the feature reaches your tenant.
 
 ## Cost and licensing
 
@@ -147,12 +163,12 @@ The roadmap describes the settings as per plan (a plan's time zone and working h
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether the Planner app is available in Teams (coarse alternative; not specific to times on tasks)</strong><br><small>Tenant</small><br><small class="controls__note">Blocks the Planner app in Teams for the organisation, not Planner on the web. Existing control; it does not govern the new times or time-zone settings.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Planner › Block <a href="https://learn.microsoft.com/microsoftteams/manage-planner-app" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app-id&gt; -IsBlocked $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Plan time zone, working hours and default task times for this feature</strong><br><small class="controls__note">Not yet documented on either surface at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether the Planner app is available in Teams (coarse alternative; not specific to times on tasks)</strong><br><small>Tenant</small><br><small class="controls__note">Blocks Planner in Teams, not on the web; does not govern the new settings. Update-M365TeamsApp exists, but its reference describes the -IsBlocked $true example as unblocking the app: use the Block control, not an inferred value.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Planner › Block <a href="https://learn.microsoft.com/microsoftteams/manage-planner-app" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Plan time zone, working hours and default task times for this feature</strong><br><small class="controls__note">The beta request body sets calendar.timeZone and calendar.workDayDefaults.startTime/endTime. Beta APIs are not supported for production use, and this operation currently lists no supported delegated or application permissions.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/planner/plans_v2/{planId}</code> <a href="https://learn.microsoft.com/graph/api/plan-update?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-No admin setting for this feature is documented at the time of writing (November 2026), so the table has no tenant switch for it. The only controls listed are existing, coarse ones.
+The beta Graph operation in the second row changes a plan's calendar settings. Learn lists no supported delegated or application permissions for it, and beta APIs are not supported for production use. The only other control listed is an existing, coarse one.
 
 The Teams app control hides the Planner app from Teams users. It does not turn off Planner on the web. Learn also documents `Set-PlannerConfiguration -IsPlannerAllowed $false`, which turns Planner off for the organisation: the page says it applies to basic plans in the Planner app in Teams and Web, and to all plans in other Planner endpoints. Both are all-or-nothing and do not target this feature. The global admin role is named on the PowerShell page; the Teams admin center page does not name a role in the steps used here.
 
@@ -161,7 +177,7 @@ The Teams app control hides the Planner app from Teams users. It does not turn o
 - Is the feature on by default when it arrives, and will existing tasks keep their date-only deadlines? Watch Message center and the roadmap item.
 - Who can set a plan's time zone and working hours, and can a tenant administrator set or lock them centrally? Watch Microsoft Learn's Planner for admins page.
 - Which licence does the feature need, and does the plan time zone and working-hours setting need a premium licence? Watch the Planner service description and licensing page.
-- Will Microsoft Graph and the Power Automate connector expose the times and the plan time zone, and in what format? Watch the plannerTask reference on Microsoft Learn.
+- When will the documented beta Planner Unified plans API be supported for production use, and will the Power Automate connector expose the new task-time and calendar settings? Watch Microsoft Learn's [beta task](https://learn.microsoft.com/graph/api/resources/task?view=graph-rest-beta) and [planCalendar](https://learn.microsoft.com/graph/api/resources/plancalendar?view=graph-rest-beta) references.
 
 <!-- rationale
 risk: Low. The roadmap describes a change to how task dates are entered and shown, with no new data sources or autonomous actions; the main exposure is confusion over which time zone a deadline is in.
@@ -172,9 +188,5 @@ impact: Medium. People who set or read task dates in Planner on the web or in Te
 <!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing; front matter: changes / absence: Microsoft Learn does not yet describe this feature, so its behaviour is known only from the roadmap. | Found: Working-time calendar settings for a plan, including the plan's time zone and default working days. | Fix: Replace the roadmap-only sentence with: 'The roadmap remains In development. Microsoft Learn also documents beta Planner Unified plans API calendar settings for a plan time zone and default working-day start and end times; beta APIs are subject to change and are not supported for production use.' Cite https://learn.microsoft.com/graph/api/resources/plancalendar?view=graph-rest-beta and https://learn.microsoft.com/graph/api/resources/workdaydefaults?view=graph-rest-beta. Narrow the change note to remove 'roadmap-only'. | Source: https://learn.microsoft.com/graph/api/resources/plancalendar?view=graph-rest-beta
-- [contradicted, blocker] controls[1]; Governance controls table; front matter: changes / absence: Plan time zone, working hours and default task times are not documented on either UI or API surface. | Found: The following table specifies the properties that can be updated. ... calendar | planCalendar | Working-time calendar settings for the plan. | Fix: Keep controls[1].ui null. Set controls[1].api to kind 'graph', call 'PATCH /beta/planner/plans_v2/{planId}', docs 'https://learn.microsoft.com/graph/api/plan-update?view=graph-rest-beta'. Replace its note with: 'The beta request body sets calendar.timeZone and calendar.workDayDefaults.startTime/endTime. Beta APIs are not supported for production use, and this operation currently lists no supported delegated or application permissions.' Cite https://learn.microsoft.com/graph/api/resources/plancalendar?view=graph-rest-beta and https://learn.microsoft.com/graph/api/resources/workdaydefaults?view=graph-rest-beta. Remove the repeated assertion that neither surface is documented. | Source: https://learn.microsoft.com/graph/api/plan-update?view=graph-rest-beta
-- [unsupported, blocker] front matter: licensing.model / licensing: This feature has a mixed licensing model. | Found: Searched: Planner task start finish due specific times plan time zone working hours default admin settings licensing price; Planner time zone working hours task times default license price. Read Planner for admins and service description; neither establishes mixed entitlement for this feature. | Fix: Set licensing.model to 'included' under the standard's rule for a new option within a licensed product. Keep the existing notes that identify the product's qualifying Microsoft 365 plans and licence-dependent additional capabilities, and retain the narrower qualification that a licence rule specific to this feature is not yet published. Do not describe the feature as requiring a mixture of entitlements.
-- [contradicted, blocker] controls[0].api; Governance controls table / command: Update-M365TeamsApp -Id <app-id> -IsBlocked $true blocks the Planner app. | Found: Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true ... Unblocks Bookings app | Fix: Set controls[0].api to null and append this qualification to its note: 'No consistently documented blocking call is given here: Update-M365TeamsApp exists, but its reference describes the -IsBlocked $true example as unblocking the app. Use the documented Teams admin center Block control rather than infer a Boolean value.' Retain the verified UI path. Do not claim the cmdlet itself is undocumented, and do not replace $true with an unverified value. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp
-- [contradicted, blocker] Open questions: Microsoft Graph and Power Automate / absence: Whether Microsoft Graph exposes task times and the plan time zone, and their format, remains unpublished. | Found: dueDateTime | dateWithOptionalTime | Date and, optionally, time the task is due. ... startDateTime | dateWithOptionalTime | Date and, optionally, time the task is scheduled to start. | Fix: Replace the final open question with: 'When will the documented beta Planner Unified plans API be supported for production use, and will the Power Automate connector expose the new task-time and calendar settings? Watch Microsoft Learn's beta task and planCalendar references.' Cite https://learn.microsoft.com/graph/api/resources/task?view=graph-rest-beta and https://learn.microsoft.com/graph/api/resources/plancalendar?view=graph-rest-beta; the latter documents calendar.timeZone as String and workDayDefaults. | Source: https://learn.microsoft.com/graph/api/resources/task?view=graph-rest-beta
+- [contradicted, blocker] controls[0].api; Governance controls table / absence: Automation for changing the Planner app's Teams availability or app state is not yet documented. | Found: This cmdlet updates app state and app available values for the Microsoft Teams app. ... Update-M365TeamsApp -Id <String> [-IsBlocked <Boolean>] ... -IsBlocked: The state of the app in the tenant. | Fix: Set controls[0].api to kind powershell, call 'Update-M365TeamsApp -Id <app-id> -IsBlocked <boolean>', docs 'https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp'. Replace the note's final sentence with 'The reference documents -IsBlocked as Boolean, but describes examples using both $true and $false as unblocking; confirm the intended value before using this cmdlet, or use the documented Block control.' Do not infer a blocking Boolean value from the parameter name. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp
 -->

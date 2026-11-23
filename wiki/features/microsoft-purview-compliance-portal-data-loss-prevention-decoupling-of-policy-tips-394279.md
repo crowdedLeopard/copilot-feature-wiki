@@ -4,7 +4,7 @@ slug: "microsoft-purview-compliance-portal-data-loss-prevention-decoupling-of-po
 roadmapId: 394279
 topic: "governance"
 products: ["Microsoft Purview"]
-summary: "Admins can configure policy tips and email notifications independently in DLP rules for SharePoint and OneDrive. Worldwide item, launched. No admin action is needed unless you want to change how rules notify users."
+summary: "Admins can configure policy tips and email notifications independently in DLP rules for SharePoint and OneDrive. Worldwide item, launched. Microsoft has not stated what happens to existing rules; review notification choices before changing them."
 status: "launched"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -50,7 +50,7 @@ controls:
     scope: "other"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Data loss prevention > Policies > Create policy > Enterprise applications & devices > Custom > Customize advanced DLP rules > Create rule > User Notifications > Notify users in Office 365 services with a policy tip"
+      path: "Data loss prevention > Policies > Create policy > Enterprise applications & devices > Custom > Define policy settings > Customize advanced DLP rules > Create rule > User Notifications > Notify users in Office 365 services with a policy tip"
       docs: "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external"
     api:
       kind: "powershell"
@@ -61,7 +61,7 @@ controls:
     scope: "other"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Data loss prevention > Policies > Create policy > Enterprise applications & devices > Custom > Customize advanced DLP rules > Create rule > User overrides > Allow override from M365 services"
+      path: "Data loss prevention > Policies > Create policy > Enterprise applications & devices > Custom > Define policy settings > Customize advanced DLP rules > Create rule > User overrides > Allow override from M365 services"
       docs: "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external"
     api:
       kind: "powershell"
@@ -77,19 +77,23 @@ changes:
     note: "First briefing for the Worldwide roadmap item 394279: separate policy tip and email notification settings in DLP rules for SharePoint and OneDrive."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 48 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Correction: removed the unsupported claim about existing rules and users, expanded both portal paths to the full route on the Learn page, and dropped the checklist step on custom text."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 46
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "063e03af488ab6c6a56ac03abf4e771c"
+  claims: 60
+  confirmed: 60
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "e2335421eee05cda05ef32d0de61d1a3"
 ---
 
 ## What's changing
@@ -147,7 +151,6 @@ The account that creates and deploys DLP policies must be a member of one of the
 ### At rollout
 - Change the notification type on one pilot rule and confirm in the Microsoft Purview portal what users see on a matching file and whether the email arrives.
 - Test an edit to an existing file as well as a new file, since Learn says only new content triggers an email notification.
-- Review custom email and policy tip text separately, because Learn describes them as configured separately.
 
 ### After rollout
 - Re-check that overrides still work where you expect them on rules that no longer show policy tips.
@@ -160,8 +163,8 @@ The account that creates and deploys DLP policies must be a member of one of the
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether a SharePoint and OneDrive DLP rule shows a policy tip, sends an email notification, both or neither</strong><br><small class="controls__note">Per rule. The portal page documents the policy tip option while creating a rule, not the decoupled options. The reference lists NotSet, Email, PolicyTip and Email,PolicyTip as values; it does not tie them to this roadmap item.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › Create policy › Enterprise applications &amp; devices › Custom › Customize advanced DLP rules › Create rule › User Notifications › Notify users in Office 365 services with a policy tip <a href="https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-DlpComplianceRule -Identity &lt;rule&gt; -NotifyUserType Email,PolicyTip</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether users can override a rule's block from Microsoft 365 services</strong><br><small class="controls__note">Learn states overrides are enabled only when the policy tip option is enabled. Reference values: FalsePositive, WithAcknowledgement (Exchange only), WithoutJustification, WithJustification.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › Create policy › Enterprise applications &amp; devices › Custom › Customize advanced DLP rules › Create rule › User overrides › Allow override from M365 services <a href="https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-DlpComplianceRule -Identity &lt;rule&gt; -NotifyAllowOverride WithJustification</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether a SharePoint and OneDrive DLP rule shows a policy tip, sends an email notification, both or neither</strong><br><small class="controls__note">Per rule. The portal page documents the policy tip option while creating a rule, not the decoupled options. The reference lists NotSet, Email, PolicyTip and Email,PolicyTip as values; it does not tie them to this roadmap item.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › Create policy › Enterprise applications &amp; devices › Custom › Define policy settings › Customize advanced DLP rules › Create rule › User Notifications › Notify users in Office 365 services with a policy tip <a href="https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-DlpComplianceRule -Identity &lt;rule&gt; -NotifyUserType Email,PolicyTip</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether users can override a rule's block from Microsoft 365 services</strong><br><small class="controls__note">Learn states overrides are enabled only when the policy tip option is enabled. Reference values: FalsePositive, WithAcknowledgement (Exchange only), WithoutJustification, WithJustification.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › Create policy › Enterprise applications &amp; devices › Custom › Define policy settings › Customize advanced DLP rules › Create rule › User overrides › Allow override from M365 services <a href="https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-DlpComplianceRule -Identity &lt;rule&gt; -NotifyAllowOverride WithJustification</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -179,15 +182,13 @@ User overrides are a separate section of the rule. Learn states they are enabled
 <!-- rationale
 risk: Low. The roadmap describes a change to how a rule notifies users, and no source says existing rules change; the default is not stated, so this is rated on today's behaviour continuing.
 cost: Low. The only cost the sources show is admin time to review rules; the roadmap item and Learn publish no separate licence or meter for this option.
-impact: Low. DLP rule authors notice the new choices; end users notice only if an admin changes whether a rule shows a policy tip, sends an email, both or neither.
+impact: Low. DLP rule authors have new notification choices; the effect on existing rules and their users is not stated.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] summary; rationale: impact / default: No admin action is needed unless notification changes are wanted, and end users notice changes only if an admin changes a rule. | Found: Searched: '394279 decoupling existing rules default no admin action required'. Read the roadmap, dlp-use-notifications-and-policy-tips, dlp-policy-reference, dlp-create-deploy-policy and Set-DlpComplianceRule; none states the rollout effect on existing rules. | Fix: Replace the summary's final sentence with 'Microsoft has not stated what happens to existing rules; review notification choices before changing them.' Replace the impact rationale's final sentence with 'DLP rule authors have new notification choices; the effect on existing rules and their users is not stated.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Microsoft Purview portal path reaches the documented rule policy-tip setting. | Found: On the Define policy settings page, the Create or customize advanced DLP rules option should already be selected. Select Next. ... Set the User Notifications toggle to On. ... Select Notify users in Office 365 services with a policy tip | Fix: Expand both copies of the path to 'Data loss prevention > Policies > Create policy > Enterprise applications & devices > Categories: Custom > Regulations: Custom > Choose where to apply the policy: SharePoint sites and OneDrive accounts > Define policy settings > Customize advanced DLP rules > Create rule > User Notifications: On > Notify users in Office 365 services with a policy tip'. Keep the note that this documents the policy-tip setting, not all four portal combinations. | Source: https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The printed Microsoft Purview portal path reaches the Allow override from M365 services setting. | Found: Set the User Notifications toggle to On. ... Select Notify users in Office 365 services with a policy tip ... Under User overrides, make sure that Allow override from M365 services is NOT selected. | Fix: Expand both copies of the path to 'Data loss prevention > Policies > Create policy > Enterprise applications & devices > Categories: Custom > Regulations: Custom > Choose where to apply the policy: SharePoint sites and OneDrive accounts > Define policy settings > Customize advanced DLP rules > Create rule > User overrides > Allow override from M365 services'. Retain the note that overrides require the policy-tip setting. | Source: https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external
-- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The checklist's instruction to review custom email and policy-tip text has no corresponding text-customization control in the table. | Found: Checklist: 'Review custom email and policy tip text separately'. Table controls: notification type; whether users can override a rule's block. Neither row locates text customization. | Fix: Remove 'Review custom email and policy tip text separately, because Learn describes them as configured separately' from the checklist; neither existing table row documents text customization. Do not add a control row.
+- [supported, minor] Risk assessment: Change & support; Governance guidance: At rollout / behaviour: Learn states that only new content triggers an email notification. | Found: Only new content triggers an email notification. Editing existing content triggers policy tips, but not email notifications. | Fix: After the existing-content warning, add: 'Learn's DLP policy reference also says user notification emails are sent when sensitive information is added to a file for the external-sharing, block-only-external-users configuration. These pages disagree; test your rule.' Cite https://learn.microsoft.com/purview/dlp-policy-reference#blocking-and-notifications-in-sharepoint-in-microsoft-365-and-onedrive. That page states: 'User notification emails, policy tips, DLP alerts, and incident reports are sent when a file is uploaded or sensitive information is added to the file.' | Source: https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips
+- [supported, minor] controls[0].ui / admin-path: The printed Microsoft Purview portal route reaches the documented policy-tip option while creating a rule. | Found: Set the User Notifications toggle to On. Select Notify users in Office 365 services with a policy tip and then select Notify the user who sent, shared, or last modified the content. | Fix: In front matter and the rendered table, complete the route as 'Data loss prevention > Policies > Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom > Assign admin units > Full directory > Choose where to apply the policy > SharePoint sites > OneDrive accounts > Define policy settings > Create or customize advanced DLP rules > Customize advanced DLP rules > Create rule > User Notifications > Notify users in Office 365 services with a policy tip'. Retain the note that this route documents the policy-tip option rather than all four combinations, and add 'Set User Notifications to On.' The omitted items are headings, scope selections and an already-selected advanced-rule option, not a wrong route. Source: https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external. | Source: https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external
+- [supported, minor] controls[1].ui / admin-path: The printed Microsoft Purview portal route reaches Allow override from M365 services under User overrides. | Found: Under User overrides, make sure that Allow override from M365 services is NOT selected. | Fix: In front matter and the rendered table, complete the route as 'Data loss prevention > Policies > Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom > Assign admin units > Full directory > Choose where to apply the policy > SharePoint sites > OneDrive accounts > Define policy settings > Create or customize advanced DLP rules > Customize advanced DLP rules > Create rule > User overrides > Allow override from M365 services'. The omitted items are headings, scope selections and an already-selected advanced-rule option, not a wrong route. Source: https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external. | Source: https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external
 -->

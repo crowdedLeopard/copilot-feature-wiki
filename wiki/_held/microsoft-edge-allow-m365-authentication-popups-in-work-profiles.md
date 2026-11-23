@@ -13,7 +13,7 @@ targetDate: "November CY2026"
 previewDate: null
 risk: "low"
 cost: "low"
-impact: "medium"
+impact: "high"
 defaultState: "on"
 action: "prepare"
 licensing:
@@ -27,6 +27,12 @@ sources:
     kind: "learn"
   - title: "DefaultPopupsSetting"
     url: "https://learn.microsoft.com/deployedge/microsoft-edge-policies/defaultpopupssetting"
+    kind: "learn"
+  - title: "What's new in Microsoft Intune"
+    url: "https://learn.microsoft.com/intune/whats-new/"
+    kind: "learn"
+  - title: "Update deviceManagementConfigurationSetting"
+    url: "https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationsetting-update?view=graph-rest-beta"
     kind: "learn"
   - title: "Microsoft Edge: Allow M365 authentication popups in work profiles"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=561035"
@@ -65,19 +71,23 @@ changes:
     note: "First briefing for this item: covers the M365AuthPopupsInWorkEnabled policy, its Windows and macOS version 148 support and the existing pop-up setting."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 50 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Correction: removed unsupported data-exposure assurances, replaced the claim that no admin switch or API is documented with the Intune settings catalog and Graph references, and raised impact to high."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 49 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 44
-  unconfirmed: 3
-  contradicted: 3
-  attempts: 1
-  hash: "53ca9ad95d2b88c45a82d438232da44a"
+  claims: 49
+  confirmed: 48
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 2
+  hash: "1995774e1b7d413ebf8f6c273bb0a20a"
 ---
 
 ## What's changing
@@ -100,7 +110,7 @@ If nobody acts, the roadmap item and the policy page both say the pop-ups are al
 
 **Data exposure**
 
-- No new data is read or stored. The policy changes whether Edge lets a pop-up window open; it does not change what the Microsoft 365 sites can reach.
+- The policy changes whether Edge lets a pop-up window open.
 
 **Security & identity**
 
@@ -164,7 +174,7 @@ The indirect cost is admin time to decide whether to keep the default, communica
 
 The M365AuthPopupsInWorkEnabled policy is mandatory only: the policy page lists Can be recommended: No. It is a Boolean per-profile policy and the page lists Dynamic Policy Refresh as Yes.
 
-The DefaultPopupsSetting row is an existing control for pop-ups in general. It allows or blocks pop-ups on all sites and does not target Microsoft 365 sign-in pop-ups, so do not use it as a substitute for M365AuthPopupsInWorkEnabled. Microsoft Learn documents no admin centre switch or API for this policy at the time of writing (November 2026); the registry value and the macOS preference key are the documented automation surfaces.
+The DefaultPopupsSetting row is an existing control for pop-ups in general. It allows or blocks pop-ups on all sites and does not target Microsoft 365 sign-in pop-ups, so do not use it as a substitute for M365AuthPopupsInWorkEnabled. The setting is also listed in the Intune Windows settings catalog under Microsoft Edge > Identity and sign-in > Allow M365 authentication popups in work profiles ([What's new in Microsoft Intune](https://learn.microsoft.com/intune/whats-new/)), and Microsoft documents a Microsoft Graph beta operation, PATCH /deviceManagement/configurationPolicies/{deviceManagementConfigurationPolicyId}/settings/{deviceManagementConfigurationSettingId}, for updating Intune configuration settings ([Update deviceManagementConfigurationSetting](https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationsetting-update?view=graph-rest-beta)).
 
 ## Open questions
 
@@ -176,17 +186,14 @@ The DefaultPopupsSetting row is an existing control for pop-ups in general. It a
 <!-- rationale
 risk: Low. The change widens the pop-up blocker only for Microsoft 365 sign-in pop-ups in work profiles, and the M365AuthPopupsInWorkEnabled policy can switch it off.
 cost: Low. The only cost the sources show is admin time to review the policy; no licence or meter is named for this policy, and licensing is not yet published.
-impact: Medium. Behaviour changes by default for people signed in to Edge with a work account, but only for pop-ups that Microsoft 365 sites open to Microsoft sign-in endpoints.
+impact: High. Behaviour changes by default for people signed in to Edge with a work account, but only for pop-ups that Microsoft 365 sites open to Microsoft sign-in endpoints.
 -->
 
 <!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Data exposure / behaviour: No new data is read. | Found: Searched: M365AuthPopupsInWorkEnabled data read stored privacy first party services list. Opened the policy and Intune What's new; they describe pop-up permission and sign-in, not whether additional data is read. | Fix: Remove 'No new data is read or stored.' Neither cited source establishes that assurance.
-- [unsupported, major] Risk assessment: Data exposure / behaviour: No new data is stored. | Found: Searched: M365AuthPopupsInWorkEnabled data read stored privacy first party services list. Opened the policy and Intune What's new; neither states that this change stores no new data. | Fix: Remove 'No new data is read or stored.' Neither cited source establishes that assurance.
-- [unsupported, major] Risk assessment: Data exposure / behaviour: The policy does not change what Microsoft 365 sites can reach. | Found: Searched: M365AuthPopupsInWorkEnabled data read stored privacy first party services list. Read the policy and Intune What's new; they establish the pop-up exemption, but do not state an unchanged data-access boundary. | Fix: Remove '; it does not change what the Microsoft 365 sites can reach'. Keep the supported statement that the policy changes whether Edge lets a pop-up window open.
-- [contradicted, blocker] Governance controls: final paragraph / absence: Microsoft Learn documents no admin centre switch for this pop-up policy. | Found: To see and configure these settings in Intune, create a Windows settings catalog profile Microsoft Edge > Identity and sign-in > Allow M365 authentication popups in work profiles | Fix: Remove the sentence 'Microsoft Learn documents no admin centre switch or API for this policy at the time of writing (November 2026); the registry value and the macOS preference key are the documented automation surfaces.' Microsoft documents this setting in the Intune Windows settings catalog; the sentence is also ambiguous about which pop-up policy it means. | Source: https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new
-- [contradicted, blocker] Governance controls: final paragraph / absence: Microsoft Learn documents no API for this pop-up policy. | Found: Update the properties of a deviceManagementConfigurationSetting object. PATCH /deviceManagement/configurationPolicies/{deviceManagementConfigurationPolicyId}/settings/{deviceManagementConfigurationSettingId} settingInstance | Fix: Remove the same 'no admin centre switch or API' sentence. Microsoft documents Graph updates of Intune configuration settings, and its Intune documentation includes M365AuthPopupsInWorkEnabled in that settings catalog. Do not infer that no API exists from the policy reference listing registry and macOS settings. | Source: https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationsetting-update?view=graph-rest-beta
+- [contradicted, blocker] Governance controls: final paragraph, Graph call / command: The printed Graph call PATCH /deviceManagement/configurationPolicies/{deviceManagementConfigurationPolicyId}/settings/{deviceManagementConfigurationSettingId} updates Intune configuration settings. | Found: Microsoft supports Intune /beta APIs, but they are subject to more frequent change. PATCH /deviceManagement/configurationPolicies/{deviceManagementConfigurationPolicyId}/settings/{deviceManagementConfigurationSettingId} | Fix: Replace the printed call with 'PATCH /beta/deviceManagement/configurationPolicies/{deviceManagementConfigurationPolicyId}/settings/{deviceManagementConfigurationSettingId}'. The surrounding prose already identifies beta, but the call itself must carry the version. Retain the current Graph reference link. | Source: https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationsetting-update?view=graph-rest-beta
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] front matter: impact; rationale: impact / consistency: An impact rating of medium fits the stated change to default browser behaviour. | Found: impact: "medium" impact: Medium. Behaviour changes by default for people signed in to Edge with a work account | Fix: Set impact to 'high' and change the rationale's opening 'Medium.' to 'High.' The schema defines high impact as 'most users, or a change to default behaviour'; the stated rationale explicitly describes the latter.
+- [supported, minor] What's changing: final paragraph; Scope: Rollout; Open questions / availability: Microsoft documentation already describes the policy despite the roadmap's In development status. | Found: Supported versions Windows: ≥ 148 macOS: ≥ 148 | Fix: Add to the rollout paragraph: 'Microsoft's archived Stable-channel release notes also list this feature in Edge 148.0.3967.54 on May 07, 2026, noting a controlled feature rollout; the supplied roadmap nevertheless remains In development with a November CY2026 target.' Cite https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-stable-channel#version-1480396754-may-07,-2026-stable. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365authpopupsinworkenabled
+- [supported, minor] Governance controls: final paragraph, Intune sentence / admin-path: The authentication setting is in the Intune Windows settings catalog under Microsoft Edge > Identity and sign-in > Allow M365 authentication popups in work profiles. | Found: There are new Microsoft Edge 148 settings in the Windows settings catalog. Microsoft Edge > Identity and sign-in > Allow M365 authentication popups in work profiles | Fix: Replace 'The setting is also listed' with 'M365AuthPopupsInWorkEnabled is also listed'. The preceding sentences concern DefaultPopupsSetting, making 'The setting' misleading about which policy has the Identity and sign-in location. | Source: https://learn.microsoft.com/intune/whats-new/
 -->

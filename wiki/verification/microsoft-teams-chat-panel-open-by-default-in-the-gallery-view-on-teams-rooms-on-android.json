@@ -4,10 +4,10 @@
   "title": "Microsoft Teams Rooms on Android: chat panel opens by default in Gallery view",
   "status": "held",
   "date": "2026-11-23",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,22 +16,110 @@
     "reason": "failed",
     "since": "2026-11-23",
     "reasons": [
-      "3 blocking findings (claims 24, 25, 26)"
+      "1 blocking finding (claim 33)"
     ]
   },
   "counts": {
-    "claims": 31,
-    "confirmed": 27,
+    "claims": 36,
+    "confirmed": 35,
     "unconfirmed": 0,
-    "contradicted": 4,
-    "blocker": 3,
+    "contradicted": 1,
+    "blocker": 1,
     "major": 0,
-    "minor": 1
+    "minor": 0
   },
-  "summary": "Hold: the briefing incorrectly says Microsoft documents no administrative access requirement and describes the local setting as the only documented control. Microsoft documents local device administrator access and says settings for the June Android release can be managed through the Pro Management portal, with an agent-version requirement. The default, release build, roadmap scope and Meeting chat licensing are supported.",
+  "summary": "The default behaviour, release details and Teams Rooms Pro licensing are supported. However, the controls table tells administrators that no UI control is documented even though Microsoft's release notes explicitly document a local setting and portal management; the unpublished Android setting label must not be presented as an absence of configuration.",
   "claims": [
     {
       "n": 1,
+      "where": "front matter: defaultState; title; summary; What's changing; Why it matters; rationale: risk and impact",
+      "type": "default",
+      "claim": "The chat panel opens by default in Gallery view on Teams Rooms on Android.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android",
+      "quote": "Open chat panel by default on Gallery view: Chat panel now opens by default with Gallery and Large Gallery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Why it matters; Scope; rationale: impact",
+      "type": "default",
+      "claim": "The default-open behaviour also applies to Large Gallery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android",
+      "quote": "Chat panel now opens by default with Gallery and Large Gallery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Participants in the room see ongoing meeting chat when they join.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The chat panel will open by default in gallery view, allowing participants in Teams Room on Android to quickly see ongoing meeting chat when they join.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing; Risk assessment; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Room users can close the chat panel with one touch using the chat button.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android",
+      "quote": "Users can open or close the chat panel with one touch using the chat button",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Room users can open the chat panel with one touch using the chat button.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android",
+      "quote": "Users can open or close the chat panel with one touch using the chat button",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "summary; What's changing; Why it matters; controls[0].note; Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "IT administrators can change the chat panel default using a local device setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android",
+      "quote": "IT admins can change the chat panel default behavior using a local device setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "The chat button moved from the view switcher to the meeting utility bar.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android",
+      "quote": "the chat button which has been moved from the view switcher to the meeting utility bar for ease of discoverability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Scope; Governance guidance: Before rollout",
+      "type": "date",
+      "claim": "The change was introduced in Android app build 1449/1.0.96.2026129709, dated June 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android",
+      "quote": "1449/1.0.96.2026129709 (June 2026)\nIntroduced in this update:\nOpen chat panel by default on Gallery view",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
       "where": "front matter: status; What's changing; changes",
       "type": "record",
       "claim": "The roadmap status is Launched.",
@@ -42,7 +130,7 @@
       "fix": null
     },
     {
-      "n": 2,
+      "n": 10,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is June CY2026.",
@@ -53,7 +141,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 11,
       "where": "front matter: previewDate",
       "type": "record",
       "claim": "The roadmap supplies no preview date.",
@@ -64,7 +152,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 12,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The release phase is General Availability.",
@@ -75,7 +163,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 13,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
@@ -86,7 +174,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 14,
       "where": "front matter: platforms; Scope",
       "type": "record",
       "claim": "The roadmap platforms are Android and Teams and Surface Devices.",
@@ -97,32 +185,21 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "front matter: products; title",
+      "n": 15,
+      "where": "front matter: products",
       "type": "record",
-      "claim": "The feature belongs to Microsoft Teams and concerns Teams Rooms on Android.",
+      "claim": "The roadmap product is Microsoft Teams.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"title\": \"Microsoft Teams: Chat panel open by default in the gallery view on Teams Rooms on Android\", \"products\": [\"Microsoft Teams\"]",
+      "quote": "\"products\": [\"Microsoft Teams\"]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap record was modified at 2026-09-02T22:56:59.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-09-02T22:56:59\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "front matter: defaultState; title; summary; What's changing; Why it matters; rationales",
+      "n": 16,
+      "where": "summary; Why it matters",
       "type": "default",
-      "claim": "The chat panel opens by default without an administrator enabling it.",
+      "claim": "No administrator action is required for the new default-open behaviour to take effect.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android",
       "quote": "Chat panel now opens by default with Gallery and Large Gallery.",
@@ -130,87 +207,10 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "summary; What's changing; Scope; rationale: impact",
-      "type": "behaviour",
-      "claim": "The changed default applies to both Gallery and Large Gallery layouts.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android",
-      "quote": "Open chat panel by default on Gallery view: Chat panel now opens by default with Gallery and Large Gallery.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What's changing; Why it matters; Risk assessment: Data exposure",
-      "type": "record",
-      "claim": "Opening the panel lets participants in the room see ongoing meeting chat when they join.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "The chat panel will open by default in gallery view, allowing participants in Teams Room on Android to quickly see ongoing meeting chat when they join.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "summary; What's changing; Risk assessment; Governance guidance; rationale: risk",
-      "type": "behaviour",
-      "claim": "Room users can close the panel with one touch of the chat button.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android",
-      "quote": "Users can open or close the chat panel with one touch using the chat button",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Room users can also open the panel with one touch of the chat button.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android",
-      "quote": "Users can open or close the chat panel with one touch using the chat button",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing; Risk assessment; Cost and licensing; Governance guidance",
-      "type": "behaviour",
-      "claim": "The chat button moved from the view switcher to the meeting utility bar.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android",
-      "quote": "the chat button which has been moved from the view switcher to the meeting utility bar for ease of discoverability.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "summary; What's changing; controls[0].note; Governance guidance; rationale: risk",
-      "type": "behaviour",
-      "claim": "IT admins can change the chat panel default using a local device setting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android",
-      "quote": "IT admins can change the chat panel default behavior using a local device setting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing; Scope; Governance guidance: Before rollout; changes",
-      "type": "date",
-      "claim": "The change was introduced in Teams Rooms on Android build 1449/1.0.96.2026129709, dated June 2026.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android",
-      "quote": "1449/1.0.96.2026129709 (June 2026)\nIntroduced in this update:\nOpen chat panel by default on Gallery view:",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 17,
       "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Meeting chat is included with Microsoft Teams Rooms Pro.",
+      "claim": "Meeting chat is included in Microsoft Teams Rooms Pro.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
       "quote": "| - | Microsoft Teams Rooms Basic | Microsoft Teams Rooms Pro |\n| **Meeting chat** |  | ✔ |",
@@ -232,150 +232,205 @@
       "n": 19,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "absence",
-      "claim": "The roadmap and this release-note entry name no separate licence or meter for the change.",
+      "claim": "The roadmap record and the release note name no separate licence for this change.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Teams Rooms chat panel default licensing charge'; read the roadmap description and the June 2026 Open chat panel entry at learn.microsoft.com/microsoftteams/rooms/rooms-release-note. Neither names a separate licence or meter.",
+      "quote": "Searched: Teams Rooms Android chat panel default separate price meter license; read roadmap description, June 2026 Android release entry at rooms/rooms-release-note?tabs=Android and rooms/rooms-licensing. No separate licence is named for this change.",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "Cost and licensing; front matter: licensing.notes; rationale: cost",
+      "where": "front matter: licensing.notes",
       "type": "absence",
-      "claim": "The Teams Rooms licences page publishes no separate meter or charge for the chat-panel default change.",
+      "claim": "The release note names no separate meter for this change.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Teams Rooms chat panel default licensing charge'; opened learn.microsoft.com/microsoftteams/rooms/rooms-licensing in full and the release notes. The licence comparison covers Meeting chat but names no meter or separate charge for changing its default.",
+      "quote": "Searched: Teams Rooms Android chat panel default separate price meter license; read the June 2026 Android entry at learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android. Its chat-panel paragraph names no meter.",
       "severity": null,
       "fix": null
     },
     {
       "n": 21,
-      "where": "controls[0].ui and .api; controls[0].note; What's changing; Governance controls",
+      "where": "Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "An exact Android setting label, complete path and API call for changing the chat-panel default are not documented.",
+      "claim": "The Teams Rooms licences page publishes no separate meter or charge for this change as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Teams Rooms Android default chat panel setting PowerShell Set-CsTeamsMeetingPolicy Microsoft Graph remote configuration'; read rooms-release-note, device-settings-available, pro-portal-settings and PowerShell search excerpts. No exact Android call or setting label.",
+      "quote": "Searched: Teams Rooms Android chat panel default separate price meter license; opened learn.microsoft.com/microsoftteams/rooms/rooms-licensing in full and the Android release notes. No chat-default-specific charge or meter is published.",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "What's changing; Governance guidance: After rollout; Governance controls",
-      "type": "behaviour",
-      "claim": "The Android tab of the remote settings list says the full settings list documentation is coming soon and does not list this chat setting.",
+      "where": "What's changing; Governance controls",
+      "type": "absence",
+      "claim": "The release notes do not name the local chat-default setting's label.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/device-settings-available",
-      "quote": "# [Teams Android Devices](#tab/Android)\nThe full settings list documentation is coming soon.\n### Peripherals\n| Local PTZ camera control | Toggle | Disabled by default.",
+      "source": null,
+      "quote": "Searched: Teams Rooms Android \"chat\" \"default\" \"settings\" local device label; read June 2026 Android entry at rooms/rooms-release-note?tabs=Android. It says 'a local device setting' without naming its label.",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The remote settings page lists Open Chat by Default in its Windows tab, not its Android tab.",
+      "where": "controls[0].note; What's changing; Why it matters; Governance controls",
+      "type": "absence",
+      "claim": "The Android section of the settings list does not give the chat-default setting's label.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/device-settings-available",
-      "quote": "# [Teams Rooms on Windows](#tab/WindowsSettings)\n| Open Chat by Default | Checkbox | Enabled by default. | Checkbox won't be visible if Show Meeting Chat is disabled.",
+      "source": null,
+      "quote": "Searched: Teams Rooms Android \"chat\" \"default\" \"settings\" local device label; read rooms/device-settings-available in full and rooms/pro-portal-settings. The Android list contains Local PTZ camera control, not a chat-default label.",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "Scope; Governance controls",
-      "type": "absence",
-      "claim": "Microsoft Learn documents no role or administrative access requirement for changing the local device setting.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/security#software-security",
-      "quote": "Teams Android devices include an administrative account to access device settings, the local web server (if installed), and any OEM specific settings.",
-      "severity": "blocker",
-      "fix": "Replace both role-absence statements with: 'Teams Android devices use a local device administrator account to access device settings; obtain its initial username and password from the device manufacturer.' Cite https://learn.microsoft.com/microsoftteams/rooms/security#software-security."
+      "where": "Governance controls; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The Android settings page says full settings-list documentation is coming soon.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/device-settings-available",
+      "quote": "# [Teams Android Devices](#tab/Android)\nThe full settings list documentation is coming soon.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 25,
-      "where": "Scope",
-      "type": "absence",
-      "claim": "Microsoft Learn describes no other prerequisite relevant to managing this setting.",
-      "status": "contradicted",
+      "where": "controls[0].note; Why it matters; Scope; Governance controls",
+      "type": "behaviour",
+      "claim": "The June 2026 release notes place management of settings for this release in the Teams Rooms Pro management portal.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android",
       "quote": "Management of settings related to features in this release and future releases is only available within the Teams Rooms Pro management portal",
-      "severity": "blocker",
-      "fix": "Remove 'or any other prerequisite'. If retaining a statement about remote management, write: 'The June 2026 release notes say portal management of settings for this release requires Teams Admin Agent 1.0.0.202606082157 or greater.' The immediately following sentence at https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android states this version requirement."
+      "severity": null,
+      "fix": null
     },
     {
       "n": 26,
-      "where": "Governance controls; Why it matters; Open questions: remote option",
-      "type": "absence",
-      "claim": "The local device setting is the only documented control and Microsoft Learn has not said whether the default can be managed remotely.",
-      "status": "contradicted",
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Enabling portal management of these settings requires Teams Admin Agent 1.0.0.202606082157 or greater.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android",
-      "quote": "Management of settings related to features in this release and future releases is only available within the Teams Rooms Pro management portal",
-      "severity": "blocker",
-      "fix": "Replace the 'only documented control' and 'whether it can be set remotely' statements with: 'The June 2026 release notes also say settings for this release are managed through the Teams Rooms Pro management portal; the Android settings list does not yet give this setting's label.' Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android. Replace the remote-option question with: 'What is the exact Android chat-default setting label in the Pro Management portal? Watch the device settings list.' Do not copy the Windows checkbox label into an Android path."
+      "quote": "To enable this functionality, ensure devices are running Teams Admin Agent 1.0.0.202606082157 or greater.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 27,
-      "where": "Risk assessment: Security & identity; rationale: risk",
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "The release changes the default visibility of an existing Android meeting chat panel rather than introducing meeting chat for the first time.",
+      "claim": "The portal settings page lists a setting named Open Chat by Default.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android",
-      "quote": "1449/1.0.96.2023031201 (March 2023)\nIntroduced in this update:\nMeeting chat in Gallery, Large gallery, and Together mode",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/device-settings-available",
+      "quote": "| Open Chat by Default | Checkbox | Enabled by default. | Checkbox won't be visible if Show Meeting Chat is disabled.",
       "severity": null,
       "fix": null
     },
     {
       "n": 28,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "The release-note entry describes no change to sign-in, permissions or meeting admission for this feature.",
+      "where": "Governance controls",
+      "type": "availability",
+      "claim": "That page lists Open Chat by Default in its Windows section, not its Android section.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android",
-      "quote": "Chat panel now opens by default with Gallery and Large Gallery. Users can open or close the chat panel with one touch using the chat button",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/device-settings-available",
+      "quote": "# [Teams Rooms on Windows](#tab/WindowsSettings)\n### Meetings\n| Open Chat by Default | Checkbox | Enabled by default. |\n# [Teams Android Devices](#tab/Android)\nThe full settings list documentation is coming soon.",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "The release-note entry describes no agent or automated action beyond opening the panel by default.",
+      "where": "Scope; Governance controls",
+      "type": "role",
+      "claim": "Teams Android devices have a local device administrator account for access to device settings.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android",
-      "quote": "Chat panel now opens by default with Gallery and Large Gallery. Users can open or close the chat panel with one touch using the chat button",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/security#software-security",
+      "quote": "Teams Android devices include an administrative account to access device settings, the local web server (if installed), and any OEM specific settings.",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
-      "where": "Why it matters",
+      "where": "Scope; Governance controls",
       "type": "behaviour",
-      "claim": "Teams Rooms devices are shared meeting devices used by people in the room.",
+      "claim": "Initial local administrator credentials can be obtained from the device manufacturer.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
-      "quote": "A shared meeting device is a device used by users in a shared location to participate in Microsoft Teams meetings.",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/security#software-security",
+      "quote": "Initial device setup and configuration items such as the default username and password for this account can be obtained from the device manufacturer.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "front matter: impact; rationale: impact",
-      "type": "consistency",
-      "claim": "An impact rating of medium fits a change to default behaviour.",
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The chat-default release description describes no change to sign-in, permissions or meeting admission.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Android chat panel default local device setting Gallery PowerShell Microsoft Graph API configuration; read roadmap and June 2026 chat paragraph at rooms/rooms-release-note?tabs=Android. Neither describes identity or admission changes for this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The release description of this feature describes no agent or automated action beyond opening the panel by default.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Android chat panel default local device setting Gallery PowerShell Microsoft Graph API configuration; read the June 2026 chat paragraph at rooms/rooms-release-note?tabs=Android. It describes panel display and controls, not an agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].ui and api; Governance controls: rendered table and lead",
+      "type": "absence",
+      "claim": "No UI or automation control is documented for the Android chat-panel default, so there is nothing to configure on either surface yet.",
       "status": "contradicted",
-      "source": "page",
-      "quote": "impact: \"medium\"; rationale: \"the chat panel is now open when they join\". The standard defines high impact as \"most users, or a change to default behaviour\".",
-      "severity": "minor",
-      "fix": "Set impact to 'high' and replace the rationale with: 'High. This changes the default starting layout for people using Teams Rooms on Android in Gallery and Large Gallery meetings.'"
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android",
+      "quote": "IT admins can change the chat panel default behavior using a local device setting.\nManagement of settings related to features in this release and future releases is only available within the Teams Rooms Pro management portal",
+      "severity": "blocker",
+      "fix": "Replace controls[0].ui with surface 'Microsoft Teams Rooms Pro Management portal', path 'Rooms > device > Settings', docs 'https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings', and cite that page. Keep api null. Replace the row note with 'This path reaches the device settings page; the Android chat-default setting label is not yet documented. Settings management requires a signed-in device and Rooms Management permissions. The June 2026 release notes require Teams Admin Agent 1.0.0.202606082157 or greater.' Do not use the Windows-only 'Open Chat by Default' label for Android."
+    },
+    {
+      "n": 34,
+      "where": "Governance controls: prose",
+      "type": "absence",
+      "claim": "No API or PowerShell operation for setting the Android chat-panel default is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams PowerShell Microsoft Graph teamsDevice configuration \"chat\" \"default\" Android; read results for Get-MgBetaTeamworkDeviceConfiguration and teamworkdeviceconfiguration-get, plus rooms/pro-portal-settings. Results document reading configuration, not setting this default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity; rationale: risk",
+      "type": "behaviour",
+      "claim": "The chat panel existed before this default-state change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android",
+      "quote": "1449/1.0.96.2024020802 (February 2024)\nUsers can customize the views to show or hide the meeting chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Teams Rooms devices are shared meeting devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
+      "quote": "A shared meeting device is a device used by users in a shared location to participate in Microsoft Teams meetings.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-23T07:02:24.540Z",
+    "at": "2026-11-23T07:58:56.234Z",
     "summary": {
-      "links": 4,
+      "links": 6,
       "unreachable": 0,
       "uiPaths": 0,
       "uiPathsWithMissingWords": 0,
@@ -395,6 +450,11 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing",
         "ok": true,
         "status": 200
@@ -403,10 +463,22 @@
         "url": "https://learn.microsoft.com/microsoftteams/rooms/device-settings-available",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/security#software-security",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-23",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

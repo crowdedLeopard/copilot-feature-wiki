@@ -59,7 +59,7 @@ controls:
     scope: "other"
     ui:
       surface: "Teams admin center"
-      path: "Voice > Templates and resources > Templates > Automatic Recording > Add"
+      path: "Voice > Templates and resources > Templates > Automatic Recording > Add > Call recording"
       docs: "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic"
     api:
       kind: "powershell"
@@ -94,19 +94,23 @@ changes:
     note: "Corrected: Copilot access requires a recorded call and Copilot availability for the user; removed the open question on retention, search and audit of Copilot interactions."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 64 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-23"
+    note: "Corrected: removed the claim that recording-access settings govern who can query calls with Copilot, fixed the first Before rollout step, and extended the recording template path."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 64 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 64
-  confirmed: 62
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 3
-  hash: "ec63d9dcb1b3b4e7c4d141004fe61a2f"
+  confirmed: 64
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "10c87583b7a55adc680a26f24dbdd981"
 ---
 
 ## What's changing
@@ -119,7 +123,7 @@ The recordings come from the call queue's recording setup. Automatic Recording f
 
 ## Why it matters
 
-This puts an AI question-and-answer tool on top of recorded customer conversations that are already stored in SharePoint and opened in the Queues app. Leads and agents can ask about a call instead of listening back, so the practical change for a service owner is that the existing decisions about who records, who can open recordings and who holds Copilot now also decide who can interrogate call content.
+This puts an AI question-and-answer tool on top of recorded customer conversations that are already stored in SharePoint and opened in the Queues app. Review recording access and Copilot entitlement before piloting the feature.
 
 Microsoft has not stated what happens on arrival for tenants that do nothing, or whether an administrator can switch the Copilot option off for the Recap tab. Plan on the basis that no source says existing behaviour changes for users without Copilot, and that licensed users with access to recorded calls may see the option. Check this in a pilot before leads rely on it.
 
@@ -169,7 +173,7 @@ Microsoft has not stated what happens on arrival for tenants that do nothing, or
 
 ### Before rollout
 
-- List the call queues that have an automatic recording template and check who the template lets view recordings (Teams admin center > Voice > Templates and resources > Templates > Automatic Recording).
+- Review automatic recording templates and their agent-access choices (Teams admin center > Voice > Templates and resources > Templates > Automatic Recording).
 - Decide with your compliance owner how recordings and transcripts stored in SharePoint are to be retained.
 
 ### At rollout
@@ -190,7 +194,7 @@ Microsoft has not stated what happens on arrival for tenants that do nothing, or
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether call queue calls are recorded and transcribed, and whether representatives can access the recordings</strong><br><small class="controls__note">Recording, transcription and agent access are set on the new-template page; agent access can't be changed after creation. Assigning the template or managing authorised users needs SharePoint site admin rights for its site.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Templates and resources › Templates › Automatic Recording › Add <a href="https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-CsAutoRecordingTemplate -RecordingEnabled $true -TranscriptionEnabled $true -AgentViewPermission &lt;None or All&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether call queue calls are recorded and transcribed, and whether representatives can access the recordings</strong><br><small class="controls__note">Recording, transcription and agent access are set on the new-template page; agent access can't be changed after creation. Assigning the template or managing authorised users needs SharePoint site admin rights for its site.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Templates and resources › Templates › Automatic Recording › Add › Call recording <a href="https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-CsAutoRecordingTemplate -RecordingEnabled $true -TranscriptionEnabled $true -AgentViewPermission &lt;None or All&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether Copilot is available in Teams calls under a calling policy (documented for 1:1 and PSTN calls)</strong><br><small>User</small><br><small class="controls__note">Adjacent control. The Learn page covers 1:1 Teams calls and PSTN calls; whether it governs Copilot on queue calls in the Queues app is not stated.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Calling policies › policy › Copilot <a href="https://learn.microsoft.com/microsoftteams/copilot-teams-calling-transcription" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsCallingPolicy -Identity &lt;policy name&gt; -Copilot Disabled</code> <a href="https://learn.microsoft.com/microsoftteams/copilot-teams-calling-transcription" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -209,16 +213,7 @@ The Manage Queues app page does not mention Copilot. It documents a blunt option
 - Do calls recorded with Compliance Recording for Call Queue appear in the Queues app with a Recap tab and Copilot, or only calls from Automatic Recording for Call Queue?
 
 <!-- rationale
-risk: Medium. Copilot Chat answers questions about recorded customer calls, so the existing recording-access settings now also decide who can query call content; Microsoft Learn documents no switch specific to this feature.
+risk: Medium. Copilot Chat answers questions about recorded customer calls; access requires a recorded call and Copilot availability for the user, while Learn documents no switch specific to this feature.
 cost: Medium. The Queues app needs Teams Phone and Teams Premium licences, and Microsoft's general Teams Phone requirements name a Microsoft Copilot licence for Copilot in VoIP and PSTN calls; no feature-specific meter is published.
 impact: Medium. This targets call queue agents and authorised users who have Copilot available and access to recorded calls in the Queues app on desktop or Mac.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Why it matters; rationale: risk / applicability: Existing recording-access settings now decide who can query call content with Copilot. | Found: Searched: Queues app Copilot Recap permissions recorded call access scope compliance recording; "Queues" "Copilot" "permissions". Read release-notes, aa-cq-plan-recording, recording-template setup and Teams Phone support; none states that recording ACLs govern this Copilot sidecar. | Fix: Replace the last sentence of Why it matters' first paragraph with 'Review recording access and Copilot entitlement before piloting the feature.' Replace the risk rationale with 'Medium. Copilot Chat answers questions about recorded customer calls; access requires a recorded call and Copilot availability for the user, while Learn documents no switch specific to this feature.' Keep the pilot-based expectation in Data exposure as advice, not a verified permissions mechanism.
-- [contradicted, blocker] Governance guidance: Before rollout, first bullet / admin-path: The Automatic Recording templates path is where administrators list call queues with assigned recording templates. | Found: Assign the template to the call queue: go to Voice > Call queue. Select the call queue you want to have automatic recording for. On the Templates tab, scroll to find the Automatic recording template section. | Fix: Replace the first Before rollout bullet with 'Review automatic recording templates and their agent-access choices (Teams admin center > Voice > Templates and resources > Templates > Automatic Recording).' This removes the incorrect claim that the templates page lists queue assignments. | Source: https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Teams admin center > Voice > Templates and resources > Templates > Automatic Recording > Add reaches the page for recording, transcription and agent-access choices. | Found: Select Automatic Recording as the template type. Select Add to create a new Automatic Recording template. Call recording is enabled by default. Transcription is enabled by default. Select which call recordings call queue representatives (agents) can access. | Fix: Extend controls[0].ui.path to 'Voice > Templates and resources > Templates > Automatic Recording > Add > Call recording'. Keep the note explaining that transcription and agent access are also set on this page. The cited setup page gives these controls after Add. | Source: https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic
 -->

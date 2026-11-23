@@ -18,7 +18,7 @@ defaultState: "on"
 action: "prepare"
 licensing:
   model: "included"
-  notes: "The general Viva Insights requirement is applicable Viva Insights licensing and a Microsoft 365 or Office 365 tenant with Exchange Online Plan 1 or Plan 2. Microsoft Copilot plans include manager, leader, and advanced analysis for employees assigned a Copilot license; a license specific to the Cowork views is not yet published."
+  notes: "Viva Insights needs applicable licensing and a Microsoft 365 or Office 365 tenant with Exchange Online Plan 1 or 2. Advanced analysis, including consumption queries, needs at least 50 assigned Viva Insights licenses, which can be a combination of Copilot and Viva Insights licenses. A license specific to the Cowork views is not yet published."
 audiences: ["finops","m365-admin","change-adoption","service-owner"]
 tags: ["analytics","cowork","copilot-credits","finops","adoption","viva-insights","data-export","viva-feature-access-management","m365-copilot"]
 sources:
@@ -85,7 +85,7 @@ controls:
       path: "Settings > Manager settings > Grant managers scoped access to Consumption insights"
       docs: "https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings"
     api: null
-    note: "Viva Insights Administrator or AI admin; needs Copilot insights too; team of five or more. Includes export here, but the export page limits it to global-partition analysts and Global Administrators until manager export."
+    note: "Viva Insights Administrator or AI admin; needs Copilot insights too; team must meet the configured Minimum team size (at least five, includes the manager). Export page limits export to analysts and Global Administrators for now."
 confidence: "medium"
 created: "2026-11-23"
 updated: "2026-11-23"
@@ -99,19 +99,23 @@ changes:
     note: "Corrected the consumption query grouping, removed an unsupported feature-ID statement and two checklist steps with no controls row, set licensing to included, impact to medium, and added delegation and manager-export caveats."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 92 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-23"
+    note: "Corrected the licence statement: advanced analysis, including consumption queries, needs at least 50 assigned Viva Insights licenses; clarified the Copilot Dashboard threshold and the manager minimum team size."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 93 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 92
-  confirmed: 91
+  claims: 93
+  confirmed: 93
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "4d6d3a2edc0a7673ff3a25f0740c4849"
+  contradicted: 0
+  attempts: 0
+  hash: "1696a317b028d516f37d462c0a6ab6e5"
 ---
 
 ## What's changing
@@ -155,7 +159,7 @@ The viewing audience arrives without an admin switch for Cowork specifically: Le
 
 ## Cost and licensing
 
-**Licence.** The Consumption Dashboard page names roles and no licence. The general Viva Insights requirement is applicable Viva Insights licensing and a Microsoft 365 or Office 365 tenant with Exchange Online Plan 1 or Plan 2. Microsoft Copilot plans include manager, leader, and advanced analysis for employees assigned a Copilot license; a license specific to the Cowork views is not yet published ([Environment requirements for Viva Insights](https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements)). The Copilot Dashboard page says the dashboard is available to any customer with a Microsoft 365 or Office 365 subscription for business or enterprise and an active Exchange Online account.
+**Licence.** The Consumption Dashboard page names roles and no licence. The general Viva Insights requirement is applicable Viva Insights licensing and a Microsoft 365 or Office 365 tenant with Exchange Online Plan 1 or Plan 2. Microsoft Copilot plans include manager, leader, and advanced analysis for employees assigned a Copilot license; a license specific to the Cowork views is not yet published ([Environment requirements for Viva Insights](https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements)). For advanced analysis, including consumption queries, Microsoft requires at least 50 assigned Viva Insights service-plan licenses, which can be a combination of Copilot and Viva Insights licenses. The Copilot Dashboard page says the dashboard is available to any customer with a Microsoft 365 or Office 365 subscription for business or enterprise and an active Exchange Online account. Its guide says data processing requires 50 assigned Viva Insights licenses or one assigned Copilot license, whereas the environment requirements page still states 50 assigned licenses for advanced analysis and the Copilot Dashboard ([Copilot Dashboard guide](https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard)).
 
 **Meter.** These views do not add a meter of their own on any page read. They report Copilot Credits, which the metrics reference calls the common currency for eligible Microsoft services with usage-based billing. The Consumption Dashboard page says credit usage there is for reference only and that official billing and detailed charges are in the Microsoft 365 admin center for Copilot Credits.
 
@@ -198,7 +202,7 @@ The Viva Insights web app is on by default, so there is no separate rollout step
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Who can identify named users and see identified outputs, including Consumption Dashboard export</strong><br><small>Tenant</small><br><small class="controls__note">Global Administrator or AI Administrator. Group or user policies allow up to 20 users or groups per policy; one tenant-wide policy per feature.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Org settings › Viva feature access › Viva Insights › identification feature <a href="https://learn.microsoft.com/viva/insights/identification-copilot-analytics" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId &lt;FeatureId&gt; -Name &lt;PolicyName&gt; -IsFeatureEnabled $true</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-vivamodulefeaturepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether managers get team-scoped access to consumption insights, dashboard and export</strong><br><small>Group</small><br><small class="controls__note">Viva Insights Administrator or AI admin; needs Copilot insights too; team of five or more. Includes export here, but the export page limits it to global-partition analysts and Global Administrators until manager export.</small></td><td data-label="Admin UI"><strong>Viva Insights web app (Admin portal)</strong><br>Settings › Manager settings › Grant managers scoped access to Consumption insights <a href="https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether managers get team-scoped access to consumption insights, dashboard and export</strong><br><small>Group</small><br><small class="controls__note">Viva Insights Administrator or AI admin; needs Copilot insights too; team must meet the configured Minimum team size (at least five, includes the manager). Export page limits export to analysts and Global Administrators for now.</small></td><td data-label="Admin UI"><strong>Viva Insights web app (Admin portal)</strong><br>Settings › Manager settings › Grant managers scoped access to Consumption insights <a href="https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -222,11 +226,8 @@ cost: Low. Learn names no licence or meter for these views, so the known cost is
 impact: Medium. The reporting change reaches specific roles: Insights Analysts with global partition access, Managers and Microsoft 365 Global Administrators, rather than most users.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.notes; Cost and licensing: Licence / licensing: Assigned Copilot licenses include manager, leader and advanced analysis, with no minimum assigned-license qualification stated in the briefing. | Found: At least 50 assigned Viva Insights licenses are required to access advanced analysis and the Microsoft Copilot Dashboard. This minimum threshold can be achieved through a combination of licenses. | Fix: Append to licensing.notes and the Licence paragraph: 'For advanced analysis, including consumption queries, Microsoft requires at least 50 assigned Viva Insights service-plan licenses, which can be a combination of Copilot and Viva Insights licenses.' Cite https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements. Do not apply this threshold to basic Copilot Dashboard access, whose own guide gives a different threshold. | Source: https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing: Licence / licensing: The Copilot Dashboard is available to business or enterprise Microsoft 365 or Office 365 customers with an active Exchange Online account. | Found: The Microsoft Copilot Dashboard in Viva Insights is available to any customer with a Microsoft 365 or Office 365 subscription for business or enterprise, and who has an active Exchange Online account. | Fix: After this sentence add: 'Its guide says data processing requires 50 assigned Viva Insights licenses or one assigned Copilot license, whereas the environment requirements page still states 50 assigned licenses for advanced analysis and the Copilot Dashboard.' Both URLs are already cited; keep the advanced-analysis requirement distinct from basic dashboard access. | Source: https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard
-- [supported, minor] controls[1].note / behaviour: Managers need teams of five or more. | Found: Only managers whose team size meets or exceeds the Minimum team size setting can access insights in the Viva Insights web app. The minimum team size must be set to at least five. | Fix: Replace 'team of five or more' in the note and rendered table with 'team must meet the configured Minimum team size, which is at least five and includes the manager'. This preserves five as the lower bound without presenting it as every tenant's configured threshold. | Source: https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings
+- [supported, minor] controls[0].ui / admin-path: Identification policies are reached in Microsoft 365 admin center through Settings > Org settings > Viva feature access > Viva Insights > identification feature. | Found: Go to Settings > Org settings > Viva feature access, select Viva Insights, choose the identification feature, and add a policy. | Fix: Keep the documented route and append this instruction to the row note: 'After choosing the identification feature, add a policy.' The cited page gives this final policy-creation step. | Source: https://learn.microsoft.com/viva/insights/identification-copilot-analytics
 -->

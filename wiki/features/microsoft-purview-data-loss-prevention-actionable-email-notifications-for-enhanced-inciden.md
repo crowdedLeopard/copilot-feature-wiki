@@ -11,7 +11,7 @@ clouds: ["GCC","GCC High","DoD"]
 platforms: ["Web"]
 targetDate: "January CY2026"
 previewDate: null
-risk: "medium"
+risk: "low"
 cost: "low"
 impact: "medium"
 defaultState: "admin-opt-in"
@@ -50,13 +50,10 @@ controls:
     scope: "other"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Data loss prevention > Policies > + Create policy > Enterprise applications & devices > Custom > Create or customize advanced DLP rules > + Create rule > User Notifications"
+      path: "Data loss prevention > Policies > + Create policy > Enterprise applications & devices > Custom (Categories) > Custom (Regulations) > Create or customize advanced DLP rules > + Create rule > User Notifications"
       docs: "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external"
-    api:
-      kind: "powershell"
-      call: "Set-DlpComplianceRule -Identity <rule> -NotifyEmailOnedriveRemediationActions <value>"
-      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule"
-    note: "Actions are added where the email notification is configured (Preview and edit notification email). The reference gives the parameter no description, so confirm it before scripting."
+    api: null
+    note: "Actions are added where the email notification is configured (Preview and edit notification email). The Set-DlpComplianceRule reference lists -NotifyEmailOnedriveRemediationActions without explaining what it sets."
   - governs: "Audit records of actions users take from notification emails"
     scope: "tenant"
     ui:
@@ -77,19 +74,23 @@ changes:
     note: "New briefing: DLP notification emails can carry remediation actions; roadmap says Launched while Learn still marks the feature as preview."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 55 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Correction: fixed the policy-creation path, removed the unverified PowerShell parameter and the external-recipient claim, dropped the audit-ingestion checklist step and lowered risk to low."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 50
-  unconfirmed: 2
-  contradicted: 3
-  attempts: 1
-  hash: "acba6b0b314c9696b555d9f20a433f8a"
+  claims: 60
+  confirmed: 59
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "6c34c540c888e7d3c1f82833e4c228c9"
 ---
 
 ## What's changing
@@ -111,7 +112,7 @@ Learn describes the actions as something an admin selects in the email notificat
 **Data exposure**
 - Notification emails are sent unprotected, per the Learn page, and the body can include tokens such as %%Filename%% and %%MatchedSITAndSurroundingcontext%% (the matched sensitive information types and redacted values). Keep the body free of matched values you would not want in a mailbox.
 - Recipients are chosen per rule: the content owner, the person who last modified it, the site owner or a specific user, and only individuals, not groups. Confirm who actually receives the action buttons for each rule.
-- External senders receive a templated notification without full details, so actions are not a route for external parties.
+- External senders receive a templated notification without full details.
 
 **Security & identity**
 - **Override the policy** from email requires a business justification. Whether the action depends on the rule allowing overrides is a question to confirm before enabling it on a blocking rule.
@@ -149,7 +150,6 @@ A licence, price or meter specific to actionable notifications is not yet publis
 
 ### Before rollout
 - Choose the DLP rules whose notification emails should carry actions, and which of the six actions each rule needs.
-- Confirm that audit log search is on by running Get-AdminAuditLogConfig in Exchange Online PowerShell, because the actions are recorded there.
 - Decide who receives the emails per rule: the content owner, last modifier, site owner or a named user, as individuals and not groups.
 - Check that the people editing rules hold one of the role groups listed in Scope.
 
@@ -170,12 +170,12 @@ A licence, price or meter specific to actionable notifications is not yet publis
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which remediation actions a DLP rule's email notification offers to users</strong><br><small class="controls__note">Actions are added where the email notification is configured (Preview and edit notification email). The reference gives the parameter no description, so confirm it before scripting.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Enterprise applications &amp; devices › Custom › Create or customize advanced DLP rules › + Create rule › User Notifications <a href="https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-DlpComplianceRule -Identity &lt;rule&gt; -NotifyEmailOnedriveRemediationActions &lt;value&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which remediation actions a DLP rule's email notification offers to users</strong><br><small class="controls__note">Actions are added where the email notification is configured (Preview and edit notification email). The Set-DlpComplianceRule reference lists -NotifyEmailOnedriveRemediationActions without explaining what it sets.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Enterprise applications &amp; devices › Custom (Categories) › Custom (Regulations) › Create or customize advanced DLP rules › + Create rule › User Notifications <a href="https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Audit records of actions users take from notification emails</strong><br><small>Tenant</small><br><small class="controls__note">Read-only monitoring, not a control over the actions. Run the cmdlet in Exchange Online PowerShell; needs the Audit Logs or View-Only Audit Logs roles.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog</code> <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The Learn page says to select the actions when configuring the email notification, and gives no further navigation for them, so the path above ends at the rule's user notification settings. Existing rules are reached by editing the rule, which the page describes as where **Preview and edit notification email** appears. The PowerShell parameter in the first row appears in the Set-DlpComplianceRule reference without a description, so the reference does not confirm it governs these actions.
+The Learn page says to select the actions when configuring the email notification, and gives no further navigation for them, so the path above ends at the rule's user notification settings, where **Preview and edit notification email** appears. Existing rules are reached by editing the rule, which the page describes as where **Preview and edit notification email** appears. The Set-DlpComplianceRule reference lists a -NotifyEmailOnedriveRemediationActions parameter without explaining what it sets, so this briefing does not present it as automation for these actions.
 
 The audit row only reads records. It does not restrict or reverse an action. Audit search requires the Audit Logs or View-Only Audit Logs roles in the Microsoft Purview portal.
 
@@ -188,18 +188,14 @@ The audit row only reads records. It does not restrict or reverse an action. Aud
 - Is a deleted file recoverable after Delete file, and is a feature-specific licence published? Watch the Learn page and Microsoft's Purview service description.
 
 <!-- rationale
-risk: Medium. Users can delete a file, remove its sharing or override the policy from an email, and Learn notes that notification emails are sent unprotected, so rule and recipient choices need review.
+risk: Low. The remediation actions are unavailable until an admin selects them in the notification configuration. Before opting in, review destructive actions and recipients because notification emails are sent unprotected.
 cost: Low. The Learn page names no licence or meter for these notifications; the cost known is admin time, on top of the Microsoft Purview DLP licence the tenant already needs. A feature-specific licence is not yet published.
 impact: Medium. Only people who receive DLP notification emails for OneDrive and SharePoint rule matches see the actions, and only where an admin has added them to the email.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Risk assessment: Data exposure / availability: Actions are not a route for external parties. | Found: Searched: "actionable email notifications" "external" users recipients; "actionable email notifications" override permissions recovery GCC automation. Opened dlp-use-notifications-and-policy-tips: its external-sender note does not establish who can use SharePoint/OneDrive actions. | Fix: Remove ', so actions are not a route for external parties'. Keep only 'External senders receive a templated notification without full details.'
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: The creation route to notification settings contains a single Custom choice after Enterprise applications & devices. | Found: Select Custom from both the Categories list and the Regulations list. | Fix: Replace the path with 'Data loss prevention > Policies > + Create policy > Enterprise applications & devices > Custom (Categories) > Custom (Regulations) > Create or customize advanced DLP rules > + Create rule > User Notifications > Preview and edit notification email'. The final button is documented at https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips, which is already cited. Retain the note that actions are selected when configuring that email. | Source: https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external
-- [unsupported, blocker] controls[0].api; Governance controls table / command: Set-DlpComplianceRule -Identity <rule> -NotifyEmailOnedriveRemediationActions <value> configures the remediation actions offered by notification emails. | Found: Searched: "NotifyEmailOnedriveRemediationActions"; Purview DLP actionable email notifications licensing price meter NotifyEmailOnedriveRemediationActions external recipients. Opened Set-DlpComplianceRule: the parameter has a type and a placeholder description, but no documented effect. | Fix: Set controls[0].api to null and remove its rendered call. Retain only the existing note that the reference lists -NotifyEmailOnedriveRemediationActions without explaining what it sets; do not present it as verified automation for this control.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist tells readers to check audit ingestion, but the controls table contains only remediation configuration and audit record search. | Found: Confirm that audit log search is on by running Get-AdminAuditLogConfig ... Table rows: 'Which remediation actions a DLP rule's email notification offers to users'; 'Audit records of actions users take from notification emails'. | Fix: Remove the Before rollout bullet beginning 'Confirm that audit log search is on'. It names an ingestion-setting check that has no corresponding control row; the existing audit search row is read-only monitoring.
-- [contradicted, minor] front matter: risk; rationale: risk / consistency: The risk rating is Medium even though the verified admin-opt-in capability exposes no new actions until an admin configures it. | Found: defaultState: "admin-opt-in"; risk: "medium"; rationale: 'Medium. Users can delete a file, remove its sharing or override the policy from an email'. The scale rates nothing happening until admin opt-in as low. | Fix: Set risk to 'low' and replace its rationale with 'Low. The remediation actions are unavailable until an admin selects them in the notification configuration. Before opting in, review destructive actions and recipients because notification emails are sent unprotected.'
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The Purview route through Data loss prevention, Policies, custom policy creation and advanced rules ends at User Notifications. | Found: Select Data loss prevention > Policies > + Create policy. ... Select Enterprise applications & devices. ... Select Custom from both the Categories list and the Regulations list. ... select + Create rule. ... Set the User Notifications toggle to On. | Fix: Use 'Data loss prevention > Policies > + Create policy > Enterprise applications & devices > Custom (Categories) > Custom (Regulations) > Assign admin units > Choose where to apply the policy > Define policy settings > Create or customize advanced DLP rules > Customize advanced DLP rules > + Create rule > User Notifications > Preview and edit notification email'. The creation steps are at https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external and the final step at the already-cited https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips. Retain the note that actions are selected in the email configuration. | Source: https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist tells administrators to decide notification recipients, but no controls row governs recipient selection. | Found: Decide who receives the emails per rule ...; table rows: Which remediation actions a DLP rule's email notification offers to users; Audit records of actions users take from notification emails. | Fix: Remove the Before rollout checklist bullet 'Decide who receives the emails per rule: the content owner, last modifier, site owner or a named user, as individuals and not groups.' Recipient configuration has no corresponding controls row; retain the supported recipient facts in Scope and Risk assessment.
 -->

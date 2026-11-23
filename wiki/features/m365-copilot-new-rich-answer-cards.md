@@ -51,12 +51,12 @@ controls:
     ui:
       surface: "Microsoft 365 Apps admin center"
       path: "Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Allow web search in Copilot"
-      docs: "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy"
+      docs: "https://learn.microsoft.com/copilot/plan/manage-public-web-access"
     api:
       kind: "graph"
       call: "POST /beta/admin/configurationManagement/configurationMonitors"
       docs: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
-    note: "Policy applies to Microsoft Copilot and Copilot Chat; not stated whether it covers answer cards. Preview TCM: mode applyOnce, resourceType microsoft.copilot.allowwebsearch, value 0, 1 or 2. AI Administrator."
+    note: "Applies to Microsoft Copilot and Copilot Chat; not stated whether it covers answer cards. Preview TCM: applyOnce, microsoft.copilot.allowwebsearch, value 0, 1 or 2; fails if a group-level policy sets it. AI Administrator."
   - governs: "Switch for answer cards on their own, separate from web search"
     scope: "tenant"
     ui: null
@@ -71,19 +71,23 @@ changes:
     note: "First briefing for this item: roadmap status Rolling out; Learn has no page for it, so the web search policy is listed as the nearest control."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 49 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected the web search control's Learn link and added that Tenant Configuration Management fails if a group-level policy sets Allow web search in Copilot."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 56 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 49
-  confirmed: 47
+  claims: 56
+  confirmed: 56
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "12d28d82501bb7862365042925e864b6"
+  contradicted: 0
+  attempts: 0
+  hash: "6a490b33676f4cb6575a4633715100e4"
 ---
 
 ## What's changing
@@ -155,14 +159,14 @@ Learn's Microsoft Copilot requirements page says users must have a work or schoo
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Copilot can use web search, the nearest documented control to answer cards</strong><br><small>Tenant</small><br><small class="controls__note">Policy applies to Microsoft Copilot and Copilot Chat; not stated whether it covers answer cards. Preview TCM: mode applyOnce, resourceType microsoft.copilot.allowwebsearch, value 0, 1 or 2. AI Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Allow web search in Copilot <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Copilot can use web search, the nearest documented control to answer cards</strong><br><small>Tenant</small><br><small class="controls__note">Applies to Microsoft Copilot and Copilot Chat; not stated whether it covers answer cards. Preview TCM: applyOnce, microsoft.copilot.allowwebsearch, value 0, 1 or 2; fails if a group-level policy sets it. AI Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Allow web search in Copilot <a href="https://learn.microsoft.com/copilot/plan/manage-public-web-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch for answer cards on their own, separate from web search</strong><br><small>Tenant</small><br><small class="controls__note">Not yet documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 The **Allow web search in Copilot** policy is the nearest documented control. Learn says it applies to both Microsoft Copilot and Microsoft Copilot Chat. Whether answer cards fall under it is not stated on that page, so use the pilot test above. A user-level **Web content** toggle also exists; if an admin turns web search off, Learn says the toggle is turned off and appears dimmed.
 
-The API row uses Tenant Configuration Management (preview). Learn says the TCM service supports these Copilot settings only in tenant-level policies in the Microsoft 365 Apps admin center, and names AI Administrator as the least-privileged role for the signed-in user for remediation and applyOnce. The second row records that Microsoft Learn documents no setting for answer cards on their own at the time of writing (November 2026).
+The API row uses Tenant Configuration Management (preview). Learn says the TCM service supports these Copilot settings only in tenant-level policies in the Microsoft 365 Apps admin center, and names AI Administrator as the least-privileged role for the signed-in user for remediation and applyOnce. Before using TCM, ensure Allow web search in Copilot is not configured in any group-level policy in the Microsoft 365 Apps admin center; otherwise monitoring, snapshots, remediation and applyOnce fail for this resource. The second row records that Microsoft Learn documents no setting for answer cards on their own at the time of writing (November 2026).
 
 ## Open questions
 
@@ -177,9 +181,9 @@ cost: Low. The roadmap names no licence or meter, and the only cost the sources 
 impact: Medium. The roadmap says the cards appear across Desktop, Mobile, Teams and Surface Devices, and Web, so users who ask about the seven topics will see new layouts in Copilot answers.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: The printed Microsoft 365 Apps admin center path reaches Allow web search in Copilot and its docs link documents the control's own steps. | Found: On the Configure Settings page, select the policies that you want to include in the policy configuration. You can search for the policy by name, or you can create a custom filter. | Fix: Set controls[0].ui.docs and the rendered UI Learn link to https://learn.microsoft.com/copilot/plan/manage-public-web-access, which names Allow web search in Copilot and links to Cloud Policy. Keep overview-cloud-policy in sources for the route into the configuration; the current docs page never names the final setting. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
-- [contradicted, blocker] controls[0].api; controls[0].note; Governance controls / command: POST /beta/admin/configurationManagement/configurationMonitors with mode applyOnce applies the web search baseline, with only the tenant-level restriction stated. | Found: Before using TCM, ensure that the target setting isn't configured in any group-level policy in that admin center. If it is, monitoring, snapshots, remediation, and applyOnce fail for that resource. | Fix: Keep the API call. Add to controls[0].note and the TCM paragraph: 'Before using TCM, ensure Allow web search in Copilot is not configured in any group-level policy in the Microsoft 365 Apps admin center; otherwise monitoring, snapshots, remediation and applyOnce fail for this resource.' Cite https://learn.microsoft.com/graph/utcm-copilot-resources. | Source: https://learn.microsoft.com/graph/utcm-copilot-resources
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui / admin-path: The web search policy is reached in the Microsoft 365 Apps admin center through Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Allow web search in Copilot. | Found: Under Customization, select Policy Management. Open the configuration details of the policy configuration you want to change by selecting it. On the Choose the scope page On the Configure Settings page, select the policies that you want to include in the policy configuration. | Fix: The linked overview-cloud-policy page supplies the navigation missing from the control page; it is already cited. Restore its Policy configurations heading: 'Customization > Policy Management > Policy configurations > policy configuration > Choose the scope > Configure Settings > Allow web search in Copilot'. Keep the existing docs link, which documents the setting itself. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
+- [supported, minor] controls[0].api / command: POST /beta/admin/configurationManagement/configurationMonitors can apply the web search setting once using the preview TCM baseline. | Found: POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors mode | monitorMode | The monitor mode. The possible values are: monitorOnly, applyOnce, unknownFutureValue. | Fix: Keep the call. Replace 'Preview TCM: applyOnce, microsoft.copilot.allowwebsearch, value 0, 1 or 2' in the row note with 'Preview TCM: set mode to applyOnce; in baseline.resources, set resourceType to microsoft.copilot.allowwebsearch and properties.value to the string 0, 1 or 2'. The create reference documents mode; https://learn.microsoft.com/graph/utcm-copilot-resources documents the resource and value. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
 -->

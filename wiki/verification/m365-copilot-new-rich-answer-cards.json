@@ -2,37 +2,31 @@
   "slug": "m365-copilot-new-rich-answer-cards",
   "roadmapId": 567008,
   "title": "Microsoft Copilot: new rich answer cards for weather, sports, finance, images, video, places and news",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-23",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-23",
-    "reasons": [
-      "2 blocking findings (claims 35, 36)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 49,
-    "confirmed": 47,
+    "claims": 56,
+    "confirmed": 56,
     "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 2,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 0
+    "minor": 2
   },
-  "summary": "Hold: the web search control's UI link does not document the setting at the end of the printed path. The automation also omits a prerequisite that makes it fail when the same setting is configured in a group-level policy. The roadmap facts and the distinction from the earlier Bing answer cards are supported.",
+  "summary": "The briefing accurately reports the roadmap and keeps unconfirmed answer-card behaviour separate from documented web search controls. Minor corrections should restore the policy-page heading in the admin path and explicitly name the API's mode property.",
   "claims": [
     {
       "n": 1,
-      "where": "title; What's changing",
+      "where": "title; front matter: products; What's changing",
       "type": "record",
       "claim": "Microsoft plans new rich answer cards in Microsoft Copilot (Microsoft 365).",
       "status": "supported",
@@ -43,61 +37,6 @@
     },
     {
       "n": 2,
-      "where": "summary; What's changing",
-      "type": "record",
-      "claim": "The planned answer cards are model-driven.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Surface new model-driven, dynamically placed Answer Cards",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "What's changing; Risk assessment: Change & support",
-      "type": "record",
-      "claim": "The planned cards are dynamically placed.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Surface new model-driven, dynamically placed Answer Cards",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "title; What's changing; rationale: risk",
-      "type": "record",
-      "claim": "The roadmap names seven topics: weather, sports, finance, images, video, places and news.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "across top 7 segments: weather, sports, finance, images, video, places and news",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "What's changing; Risk assessment: Security & identity; Scope",
-      "type": "record",
-      "claim": "The roadmap describes the cards for Entra and MSA users.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "for Entra & MSA users across all surfaces.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "summary; front matter: platforms; Scope; rationale: impact",
-      "type": "record",
-      "claim": "The roadmap says all surfaces and lists Desktop, Mobile, Teams and Surface Devices, and Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Desktop\", \"Mobile\", \"Teams and Surface Devices\", \"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
       "where": "front matter: status; summary; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap status is Rolling out.",
@@ -108,10 +47,10 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 3,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "The roadmap target is September CY2026, which has passed at the supplied November 2026 run date.",
+      "claim": "The roadmap target is September CY2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"September CY2026\"",
@@ -119,7 +58,7 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 4,
       "where": "front matter: previewDate",
       "type": "record",
       "claim": "The record gives no preview date.",
@@ -130,7 +69,7 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 5,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
       "claim": "The release phase is General Availability.",
@@ -141,7 +80,7 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 6,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The cloud listed is Worldwide (Standard Multi-Tenant).",
@@ -152,10 +91,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 7,
       "where": "Scope",
       "type": "record",
-      "claim": "The roadmap record lists no US Government cloud.",
+      "claim": "The record lists no US Government cloud.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -163,7 +102,84 @@
       "fix": null
     },
     {
+      "n": 8,
+      "where": "front matter: platforms; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The platforms listed are Desktop, Mobile, Teams and Surface Devices, and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mobile\", \"Teams and Surface Devices\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap describes the cards as model-driven.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Surface new model-driven, dynamically placed Answer Cards",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The roadmap describes the cards as dynamically placed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Surface new model-driven, dynamically placed Answer Cards",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "title; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "The seven topics are weather, sports, finance, images, video, places and news.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "across top 7 segments: weather, sports, finance, images, video, places and news",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Security & identity; Scope",
+      "type": "record",
+      "claim": "The roadmap includes Entra users.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "for Entra & MSA users across all surfaces.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 13,
+      "where": "What's changing; Risk assessment: Security & identity; Scope",
+      "type": "record",
+      "claim": "The roadmap includes MSA users.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "for Entra & MSA users across all surfaces.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap describes the cards as spanning all surfaces.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "for Entra & MSA users across all surfaces.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
       "where": "front matter: roadmapModified; What's changing",
       "type": "record",
       "claim": "The record was last modified on 10 September 2026.",
@@ -174,43 +190,21 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing; Risk assessment: Data exposure",
-      "type": "record",
-      "claim": "The roadmap does not describe the source of card content or the data a card reads.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Surface new model-driven, dynamically placed Answer Cards across top 7 segments: weather, sports, finance, images, video, places and news for Entra & MSA users across all surfaces.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap does not specify what an individual card contains.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Surface new model-driven, dynamically placed Answer Cards across top 7 segments: weather, sports, finance, images, video, places and news for Entra & MSA users across all surfaces.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 16,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap does not say whether users can dismiss a card.",
+      "claim": "The target month has passed as of the run date, but the record still shows Rolling out.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Surface new model-driven, dynamically placed Answer Cards across top 7 segments: weather, sports, finance, images, video, places and news for Entra & MSA users across all surfaces.",
+      "quote": "\"status\": \"Rolling out\"; \"targetDate\": \"September CY2026\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "Risk assessment: Autonomy & actions",
+      "where": "What's changing; Risk assessment: Data exposure",
       "type": "record",
-      "claim": "The roadmap describes presenting answer cards and describes no actions taken on a user's behalf.",
+      "claim": "The roadmap does not identify the source of card content or the data a card reads.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Surface new model-driven, dynamically placed Answer Cards across top 7 segments: weather, sports, finance, images, video, places and news for Entra & MSA users across all surfaces.",
@@ -220,74 +214,129 @@
     {
       "n": 18,
       "where": "What's changing",
-      "type": "absence",
-      "claim": "No Message Center post was supplied for this item.",
+      "type": "record",
+      "claim": "The roadmap does not describe what a card contains beyond its topic.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: read the supplied task, roadmap record and pre-check in full; none supplies a Message Center post. This is about the supplied material, not whether a post exists.",
+      "source": "roadmap record",
+      "quote": "Surface new model-driven, dynamically placed Answer Cards across top 7 segments: weather, sports, finance, images, video, places and news for Entra & MSA users across all surfaces.",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
-      "where": "summary; What's changing; changes[0]",
-      "type": "absence",
-      "claim": "Microsoft Learn has no page specifically documenting roadmap item 567008.",
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap does not state whether users can dismiss a card.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Microsoft Copilot 567008 rich answer cards weather sports finance images video places news default disable policy license meter'; opened release notes and searched 567008, New Rich Answer, dynamically placed; found only the separate 500865 cards.",
+      "source": "roadmap record",
+      "quote": "Surface new model-driven, dynamically placed Answer Cards across top 7 segments: weather, sports, finance, images, video, places and news for Entra & MSA users across all surfaces.",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The release notes for 21 April 2026 describe Bing web answer cards such as Weather and Stocks under separate roadmap item 500865.",
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes information cards and no actions taken on a user's behalf.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
-      "quote": "## April 21, 2026\nRich Bing web answer cards in Copilot Chat [Windows, Web]\nMicrosoft 365 Copilot now displays rich, interactive Bing web answer cards-such as Weather and Stocks-directly in chat responses\nRoadmap ID: 500865",
+      "source": "roadmap record",
+      "quote": "Surface new model-driven, dynamically placed Answer Cards across top 7 segments: weather, sports, finance, images, video, places and news for Entra & MSA users across all surfaces.",
       "severity": null,
       "fix": null
     },
     {
       "n": 21,
-      "where": "What's changing; Open questions",
+      "where": "What's changing",
       "type": "absence",
-      "claim": "Whether item 567008 uses the same Bing source as item 500865 is not stated.",
+      "claim": "No Message Center post was supplied for this item.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Copilot rich answer cards weather sports finance places news Bing source organizational data MSA users admin roles license credit meter'; read web search and searched release notes for 567008; Bing card documentation names 500865, not 567008.",
+      "quote": "Searched: read the complete supplied pre-check, roadmap record and writer output; none supplies a Message Center post.",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "front matter: defaultState; Why it matters; Open questions",
+      "where": "summary; What's changing; changes",
       "type": "absence",
-      "claim": "The default state of these answer cards is not stated.",
+      "claim": "Microsoft Learn has no page specifically documenting this roadmap item at the time of writing.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Copilot new rich answer cards 567008 disable admin setting default state Allow web search Graph license pricing'; read roadmap, web search and requirements; searched release notes for 567008. No default or administrator-enablement requirement found.",
+      "quote": "Searched: Copilot \"567008\"; Copilot \"model-driven\" \"answer cards\" admin disable policy default. Read release-notes April 21, 2026, manage-public-web-access and microsoft-copilot-requirements; cards entry is 500865, not 567008.",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "controls[0].note; Why it matters; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Microsoft does not state whether the web search policy switches off the new answer cards.",
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "default",
+      "claim": "The default state of the new answer cards is unknown.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Copilot new rich answer cards 567008 disable admin setting default state Allow web search Graph license pricing'; read manage-public-web-access and utcm-copilot-resources. They cover web search, not whether 567008 cards require it.",
+      "quote": "Searched: Copilot \"answer cards\" \"default\"; Copilot \"model-driven\" \"answer cards\" admin disable policy default. Read roadmap description, release-notes April 21, 2026 and manage-public-web-access; none states the arrival default for 567008.",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No source says an administrator must act before the new answer cards appear.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot \"model-driven\" \"answer cards\" admin disable policy default; Microsoft Copilot new answer cards 567008 data source dismiss permissions administrator. Read roadmap, requirements and web search pages; no enablement prerequisite for this item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The cited release-notes entry about Bing answer cards is dated 21 April 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "## April 21, 2026\nUpdates released between April 7, 2026, April 21, 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "That release-notes entry concerns separate roadmap item 500865.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "**Rich Bing web answer cards in Copilot Chat** [Windows, Web]\n**Roadmap ID:**[500865]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The separate release-notes entry describes Bing web answer cards such as Weather and Stocks in Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Copilot Chat will now show Bing's rich and interactive answer cards-such as Weather, Stocks, and other structured information-when users ask related questions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Whether the new cards use the same Bing source as the separate documented cards is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Copilot new answer cards 567008 data source dismiss permissions administrator; Copilot \"567008\". Read roadmap, release-notes April 21, 2026 and manage-public-web-access; no linkage between 567008 and 500865 is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "When Copilot searches the web, it sends a generated query to the Bing search service.",
+      "claim": "Copilot web search sends a generated search query to the Bing search service.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
       "quote": "Based on these terms, Copilot generates a search query that it sends to the Bing search service asking for more information.",
@@ -295,10 +344,10 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 30,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "A Copilot web search request also sends the user's client IP address to Bing.",
+      "claim": "Copilot also sends the user's client IP address when making a Bing web search request.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
       "quote": "When Copilot sends a web search request to the Bing search service, it also sends the user's client IP address, which Bing uses to help localize results, such as nearby weather and events.",
@@ -306,18 +355,18 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 31,
       "where": "Risk assessment: Data exposure",
-      "type": "applicability",
+      "type": "behaviour",
       "claim": "The Data Protection Addendum does not apply to generated web search queries.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
-      "quote": "The Microsoft Products and Services Data Protection Addendum (DPA) doesn't apply to the use of generated web search queries in Microsoft Copilot, Microsoft Copilot Chat, or the Bing search service.",
+      "quote": "doesn't apply to the use of generated web search queries in Microsoft Copilot, Microsoft Copilot Chat, or the Bing search service.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 27,
+      "n": 32,
       "where": "Risk assessment: Security & identity; Scope",
       "type": "availability",
       "claim": "The Microsoft Copilot requirements page requires a work or school account in Microsoft Entra ID.",
@@ -328,18 +377,7 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "Risk assessment: Security & identity; Open questions",
-      "type": "absence",
-      "claim": "How the roadmap's MSA reference relates to the tenant-oriented Entra account requirement is not explained for this item.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Copilot rich answer cards weather sports finance places news Bing source organizational data MSA users admin roles license credit meter'; read requirements and roadmap; no explanation for MSA availability in item 567008 was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
+      "n": 33,
       "where": "front matter: licensing.notes; Cost and licensing; Scope",
       "type": "licensing",
       "claim": "Microsoft Copilot Chat is available to users with an eligible Microsoft 365 subscription.",
@@ -350,7 +388,7 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 34,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "A Microsoft Copilot licence is required for licensed Microsoft Copilot capabilities.",
@@ -361,87 +399,109 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 35,
       "where": "front matter: licensing.model; Cost and licensing",
       "type": "licensing",
-      "claim": "The included licensing model describes the entitlement of the Copilot experience the user is in, not a separate answer-card licence.",
+      "claim": "The cards are treated as included in the entitlement of the Copilot experience the user already has, rather than separately licensed.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
-      "quote": "Users need a Microsoft Copilot license and a qualifying prerequisite license.\nMicrosoft Copilot Chat is available to users with an eligible Microsoft 365 subscription.",
+      "quote": "Microsoft Copilot Chat is available to users with an eligible Microsoft 365 subscription.",
       "severity": null,
       "fix": null
-    },
-    {
-      "n": 32,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No licence specific to answer cards is published, and the cited requirements page has nothing specific to these cards.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Microsoft Copilot new rich answer cards license pricing billing credit rate 567008'; read microsoft-copilot-requirements and pay-as-you-go/meters; searched release notes for 567008. No answer-card-specific licence found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "A credit rate or other meter specific to these answer cards is not published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Microsoft Copilot new rich answer cards license pricing billing credit rate 567008'; read pay-as-you-go/meters and billing search excerpts. Published meters describe agents and AI tools, not these answer cards; roadmap names no meter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "The cited requirements page documents no answer-card charge at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Microsoft Copilot new rich answer cards license pricing billing credit rate 567008'; read microsoft-copilot-requirements and pay-as-you-go/meters. Requirements publishes no answer-card charge; this is an absence claim, not proof of free usage.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The printed Microsoft 365 Apps admin center path reaches Allow web search in Copilot and its docs link documents the control's own steps.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
-      "quote": "On the Configure Settings page, select the policies that you want to include in the policy configuration. You can search for the policy by name, or you can create a custom filter.",
-      "severity": "blocker",
-      "fix": "Set controls[0].ui.docs and the rendered UI Learn link to https://learn.microsoft.com/copilot/plan/manage-public-web-access, which names Allow web search in Copilot and links to Cloud Policy. Keep overview-cloud-policy in sources for the route into the configuration; the current docs page never names the final setting."
     },
     {
       "n": 36,
-      "where": "controls[0].api; controls[0].note; Governance controls",
-      "type": "command",
-      "claim": "POST /beta/admin/configurationManagement/configurationMonitors with mode applyOnce applies the web search baseline, with only the tenant-level restriction stated.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
-      "quote": "Before using TCM, ensure that the target setting isn't configured in any group-level policy in that admin center. If it is, monitoring, snapshots, remediation, and applyOnce fail for that resource.",
-      "severity": "blocker",
-      "fix": "Keep the API call. Add to controls[0].note and the TCM paragraph: 'Before using TCM, ensure Allow web search in Copilot is not configured in any group-level policy in the Microsoft 365 Apps admin center; otherwise monitoring, snapshots, remediation and applyOnce fail for this resource.' Cite https://learn.microsoft.com/graph/utcm-copilot-resources."
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No licence specific to these answer cards is published at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot \"rich answer cards\" licensing price meter Entra MSA; Copilot \"567008\". Read microsoft-copilot-requirements and copilot-license-options; they state product entitlements, not a separate answer-card licence.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 37,
-      "where": "controls[0].governs; controls[0].note; Governance controls; rationale: risk",
-      "type": "applicability",
-      "claim": "Allow web search in Copilot governs web search in both Microsoft Copilot and Microsoft Copilot Chat.",
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The requirements page documents no charge specific to answer cards as of November 2026.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
-      "quote": "This policy applies to both Microsoft Copilot and Microsoft Copilot Chat.",
+      "source": null,
+      "quote": "Searched: Copilot \"rich answer cards\" licensing price meter Entra MSA. Read microsoft-copilot-requirements, copilot-license-options, pay-as-you-go-overview and pay-as-you-go-meters; none publishes an answer-card charge.",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
-      "where": "controls[0].note; Governance controls",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "No credit rate or other meter specific to these answer cards is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot \"rich answer cards\" licensing price meter Entra MSA. Read pay-as-you-go-overview and pay-as-you-go-meters; published billing concerns agents or custom Copilot usage and names no meter for these cards.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Roles configuring the answer-card feature itself are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Copilot new answer cards 567008 data source dismiss permissions administrator. Read microsoft-copilot-requirements, overview-cloud-policy and utcm-copilot-resources; general administration roles exist, but no separate card configuration is documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The web search policy is reached in the Microsoft 365 Apps admin center through Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Allow web search in Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "Under Customization, select Policy Management.\nOpen the configuration details of the policy configuration you want to change by selecting it.\nOn the Choose the scope page\nOn the Configure Settings page, select the policies that you want to include in the policy configuration.",
+      "severity": "minor",
+      "fix": "The linked overview-cloud-policy page supplies the navigation missing from the control page; it is already cited. Restore its Policy configurations heading: 'Customization > Policy Management > Policy configurations > policy configuration > Choose the scope > Configure Settings > Allow web search in Copilot'. Keep the existing docs link, which documents the setting itself."
+    },
+    {
+      "n": 41,
+      "where": "controls[0].api",
       "type": "command",
-      "claim": "The TCM resource for web search is microsoft.copilot.allowwebsearch.",
+      "claim": "POST /beta/admin/configurationManagement/configurationMonitors can apply the web search setting once using the preview TCM baseline.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors\nmode | monitorMode | The monitor mode. The possible values are: monitorOnly, applyOnce, unknownFutureValue.",
+      "severity": "minor",
+      "fix": "Keep the call. Replace 'Preview TCM: applyOnce, microsoft.copilot.allowwebsearch, value 0, 1 or 2' in the row note with 'Preview TCM: set mode to applyOnce; in baseline.resources, set resourceType to microsoft.copilot.allowwebsearch and properties.value to the string 0, 1 or 2'. The create reference documents mode; https://learn.microsoft.com/graph/utcm-copilot-resources documents the resource and value."
+    },
+    {
+      "n": 42,
+      "where": "controls[0].governs; controls[0].note; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Allow web search in Copilot governs web search in Microsoft Copilot and Microsoft Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
+      "quote": "This policy allows IT admins to either turn on or turn off web search for users or user groups across the tenant they manage",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].note; Why it matters; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Whether the web search policy covers these new answer cards is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot \"answer cards\" \"Allow web search\" controls API; Copilot \"answer cards\" \"API\" \"policy\". Read manage-public-web-access, utcm-copilot-resources and release-notes April 21, 2026; neither the new cards' source nor their policy relationship is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "The TCM resource for this policy is microsoft.copilot.allowwebsearch.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
       "quote": "\"resourceType\": \"microsoft.copilot.allowwebsearch\"",
@@ -449,21 +509,32 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "controls[0].note; Governance controls",
-      "type": "role",
-      "claim": "AI Administrator is the least-privileged role for the signed-in user for TCM remediation and applyOnce.",
+      "n": 45,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "The resource's value accepts 0, 1 or 2.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
-      "quote": "AI Administrator is the least-privileged role for the signed-in user for remediation and applyOnce; don't assign that user-role requirement to the service principal.",
+      "quote": "value | Write | String | Controls web search. 0 enables it in Microsoft 365 Copilot and Microsoft 365 Copilot Chat. 1 disables it in both. 2 disables it in Microsoft 365 Copilot Work mode",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
+      "n": 46,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The TCM Copilot resource support is preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "This article lists the Copilot resource types supported in preview for monitoring and snapshots through the Tenant Configuration Management (TCM) APIs in Microsoft Graph beta.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
       "where": "controls[0].scope; Governance controls",
       "type": "applicability",
-      "claim": "TCM supports these Copilot settings only in tenant-level policies in the Microsoft 365 Apps admin center.",
+      "claim": "TCM supports these settings only in tenant-level policies in the Microsoft 365 Apps admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
       "quote": "TCM supports these settings only in tenant-level policies in the Microsoft 365 Apps admin center.",
@@ -471,32 +542,43 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "controls[1]; Governance controls",
-      "type": "absence",
-      "claim": "No separate switch for these answer cards is documented on either the admin UI or API surface.",
+      "n": 48,
+      "where": "controls[0].note; Governance controls; changes",
+      "type": "command",
+      "claim": "Configuring the target setting in any group-level policy causes TCM monitoring, snapshots, remediation and applyOnce to fail for that resource.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Microsoft 365 Copilot 567008 answer cards separate disable setting Microsoft Graph Cloud Policy administrator role'; read web search, Cloud Policy and TCM Copilot resources, searching the latter for answer/card; no separate answer-card switch found.",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "Before using TCM, ensure that the target setting isn't configured in any group-level policy in that admin center. If it is, monitoring, snapshots, remediation, and applyOnce fail for that resource.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Governance guidance: Before rollout",
-      "type": "default",
-      "claim": "If Allow web search in Copilot is unconfigured, web search is available unless Allow the use of additional optional connected experiences in Office is Disabled.",
+      "n": 49,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "AI Administrator is the least-privileged signed-in user role for TCM remediation and applyOnce on this resource.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
-      "quote": "If the IT admin doesn't configure the Allow web search in Copilot policy, web search will be available ... unless the IT admin has set the Allow the use of additional optional connected experiences in Office policy to Disabled.",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "AI Administrator is the least-privileged role for the signed-in user for remediation and applyOnce; don't assign that user-role requirement to the service principal.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
+      "n": 50,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "The Web content toggle is turned off and dimmed when an administrator turns off web search.",
+      "claim": "A user-level Web content toggle exists.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
+      "quote": "The Web content toggle gives users control over whether Microsoft Copilot includes real-time web content in responses and is now available to both Microsoft Copilot and Microsoft Copilot Chat users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "When an administrator turns off web search, the Web content toggle is turned off and dimmed.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
       "quote": "If the IT admin turns off web search, the Web content toggle is turned off and appears dimmed. Users can't turn on the toggle to use web search.",
@@ -504,74 +586,63 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "Scope",
-      "type": "absence",
-      "claim": "Microsoft Learn does not document a configuration role specific to these answer cards.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Microsoft 365 Copilot 567008 answer cards separate disable setting Microsoft Graph Cloud Policy administrator role'; read requirements, Cloud Policy and TCM Copilot resources. Roles cover general administration and web search, not a separate answer-card setting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "A user-level Web content toggle exists.",
+      "n": 52,
+      "where": "Governance guidance: Before rollout",
+      "type": "default",
+      "claim": "In the listed commercial cloud, an unconfigured Allow web search in Copilot policy leaves web search available, subject to the optional connected experiences exception.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
-      "quote": "Admin controls and a user-level Web content toggle are available for eligible Microsoft Copilot and Microsoft Copilot Chat users.",
+      "quote": "If the IT admin doesn't configure the Allow web search in Copilot policy, web search will be available to users in both Microsoft Copilot and Microsoft Copilot Chat",
       "severity": null,
       "fix": null
     },
     {
-      "n": 46,
+      "n": 53,
+      "where": "Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Setting Allow the use of additional optional connected experiences in Office to Disabled prevents that unconfigured-policy web search availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
+      "quote": "unless the IT admin has set the Allow the use of additional optional connected experiences in Office policy to Disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[1]; Governance controls",
+      "type": "absence",
+      "claim": "No separate tenant switch for the new answer cards, in either admin UI or API, is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot \"answer cards\" \"disable\"; Copilot \"answer cards\" \"API\" \"policy\"; Copilot \"model-driven\" \"answer cards\" admin disable policy default. Read web search and Cloud Policy pages; searched utcm-copilot-resources for answer cards and 567008; no separate switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
       "where": "rationale: risk",
       "type": "absence",
-      "claim": "Microsoft Learn documents no new organisational data access specific to these answer cards.",
+      "claim": "Microsoft Learn documents no new organisational data access specifically for this answer-card item.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Copilot rich answer cards weather sports finance places news Bing source organizational data MSA users admin roles license credit meter'; read web search and requirements, searched release notes for 567008. No new data access specific to this item found.",
+      "quote": "Searched: Microsoft Copilot new answer cards 567008 data source dismiss permissions administrator; Copilot \"567008\". Read requirements, web search and release-notes April 21, 2026; no new organisational data access is described for 567008.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Why it matters",
+      "n": 56,
+      "where": "Risk assessment: Security & identity; Open questions",
       "type": "absence",
-      "claim": "No source states that an administrator must act before these answer cards arrive.",
+      "claim": "How this roadmap item's MSA reference relates to tenant users is not explained.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Copilot new rich answer cards 567008 disable admin setting default state Allow web search Graph license pricing'; read roadmap, requirements and web search, searched release notes for 567008. No administrator-enablement requirement for this item found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "controls[0].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The TCM API and its Copilot resource support are preview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
-      "quote": "This article lists the Copilot resource types supported in preview for monitoring and snapshots through the Tenant Configuration Management (TCM) APIs in Microsoft Graph beta. These resources also support remediation and applyOnce.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "controls[0].note",
-      "type": "command",
-      "claim": "The allowwebsearch resource accepts value 0, 1 or 2.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
-      "quote": "0 enables it in Microsoft 365 Copilot and Microsoft 365 Copilot Chat. 1 disables it in both. 2 disables it in Microsoft 365 Copilot Work mode while enabling it in Microsoft 365 Copilot Web mode and Microsoft 365 Copilot Chat.",
+      "quote": "Searched: Copilot \"rich answer cards\" licensing price meter Entra MSA; Copilot \"567008\". Read requirements and overview search excerpts: they distinguish Entra work accounts and personal MSA entry points, but do not explain this item's tenant applicability.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-23T07:02:25.896Z",
+    "at": "2026-11-23T07:58:58.693Z",
     "summary": {
       "links": 7,
       "unreachable": 0,
@@ -623,7 +694,7 @@
         "index": 0,
         "side": "ui",
         "governs": "Whether Copilot can use web search, the nearest documented control to answer cards",
-        "docs": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+        "docs": "https://learn.microsoft.com/copilot/plan/manage-public-web-access",
         "reachable": true,
         "segments": [
           "Customization",
@@ -634,7 +705,11 @@
           "Allow web search in Copilot"
         ],
         "missing": [
-          "Allow web search in Copilot"
+          "Customization",
+          "Policy Management",
+          "policy configuration",
+          "Choose the scope",
+          "Configure Settings"
         ]
       },
       {
@@ -649,5 +724,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-23",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

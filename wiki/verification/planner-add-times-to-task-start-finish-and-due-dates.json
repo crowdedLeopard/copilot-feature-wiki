@@ -4,10 +4,10 @@
   "title": "Planner: add times to task start, finish and due dates",
   "status": "held",
   "date": "2026-11-23",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,25 +16,25 @@
     "reason": "failed",
     "since": "2026-11-23",
     "reasons": [
-      "5 blocking findings (claims 14, 20, 31, 37, 46)"
+      "1 blocking finding (claim 40)"
     ]
   },
   "counts": {
-    "claims": 48,
-    "confirmed": 43,
-    "unconfirmed": 1,
-    "contradicted": 4,
-    "blocker": 5,
+    "claims": 66,
+    "confirmed": 65,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 1,
     "major": 0,
     "minor": 0
   },
-  "summary": "Hold: Microsoft documents plan time zones and working-time settings in its beta Planner API, contrary to the briefing's claim that neither surface is documented. The cited PowerShell example describes unblocking rather than blocking, and the feature's mixed licensing model is not established by the published product licensing.",
+  "summary": "Hold: the Teams app control incorrectly reports that its automation is not documented, although Microsoft documents a cmdlet and its app-state parameter. The warning about contradictory example values is justified, but does not establish that the operation is absent. The roadmap facts, beta calendar operation and narrowly stated feature-specific documentation gaps are otherwise supported.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; Governance guidance; rationale: impact",
+      "where": "title; summary; What's changing; Governance guidance",
       "type": "record",
-      "claim": "Microsoft plans to add specific times to Planner task start, finish and due dates.",
+      "claim": "Microsoft plans to add specific times to Planner task start dates.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Add specific times to task start, finish, and due dates.",
@@ -43,6 +43,28 @@
     },
     {
       "n": 2,
+      "where": "title; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans to add specific times to Planner task finish dates.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Add specific times to task start, finish, and due dates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "title; summary; What's changing; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft plans to add specific times to Planner task due dates.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Add specific times to task start, finish, and due dates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
       "where": "summary; What's changing; Scope; rationale: impact",
       "type": "record",
       "claim": "The roadmap describes a time zone defined per plan.",
@@ -53,7 +75,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 5,
       "where": "summary; What's changing; Scope; rationale: impact",
       "type": "record",
       "claim": "The roadmap describes working hours defined per plan.",
@@ -64,10 +86,10 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance",
+      "n": 6,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "The plan's time zone and working hours automatically supply default task times.",
+      "claim": "The plan time zone and working hours automatically supply default task times.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Define a plan’s time zone and working hours to automatically provide default task times",
@@ -75,10 +97,10 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "What's changing; Scope; Risk assessment: Change & support; Governance guidance",
+      "n": 7,
+      "where": "What's changing; Scope; Risk assessment; Governance guidance",
       "type": "record",
-      "claim": "People can choose to view times in the plan's time zone or their local time zone.",
+      "claim": "A person can choose to view times in the plan's time zone.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "choose whether to view times in the plan’s time zone or your local time zone.",
@@ -86,8 +108,19 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "What's changing; Why it matters",
+      "n": 8,
+      "where": "What's changing; Scope; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "A person can choose to view times in their own local time zone.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "choose whether to view times in the plan’s time zone or your local time zone.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
       "type": "record",
       "claim": "Microsoft's stated aim is to help distributed teams coordinate across time zones and keep deadlines clear.",
       "status": "supported",
@@ -97,10 +130,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 10,
       "where": "front matter: status; What's changing; Governance guidance",
       "type": "record",
-      "claim": "The roadmap status is In development.",
+      "claim": "The roadmap status remains In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -108,18 +141,29 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 11,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "The roadmap target is November CY2026, not a shipping commitment.",
+      "claim": "The roadmap target is November CY2026, not a shipment commitment.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"targetDate\": \"November CY2026\"",
+      "quote": "\"targetDate\": \"November CY2026\", \"status\": \"In development\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 9,
+      "n": 12,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The roadmap release phase is General Availability.",
@@ -130,10 +174,10 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 14,
       "where": "front matter: platforms; summary; What's changing; Scope; rationale: impact",
       "type": "record",
-      "claim": "The roadmap lists Teams and Surface Devices and Web as the platforms.",
+      "claim": "The roadmap lists Teams and Surface Devices as a platform.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Teams and Surface Devices\", \"Web\"]",
@@ -141,10 +185,21 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 15,
+      "where": "front matter: platforms; summary; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap lists Web as a platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Teams and Surface Devices\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed, without establishing exclusion elsewhere.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record, without asserting exclusion elsewhere.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -152,139 +207,392 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap provides no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-09-08T22:57:21.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-09-08T22:57:21\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing; front matter: changes",
-      "type": "absence",
-      "claim": "Microsoft Learn does not yet describe this feature, so its behaviour is known only from the roadmap.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/graph/api/resources/plancalendar?view=graph-rest-beta",
-      "quote": "Working-time calendar settings for a plan, including the plan's time zone and default working days.",
-      "severity": "blocker",
-      "fix": "Replace the roadmap-only sentence with: 'The roadmap remains In development. Microsoft Learn also documents beta Planner Unified plans API calendar settings for a plan time zone and default working-day start and end times; beta APIs are subject to change and are not supported for production use.' Cite https://learn.microsoft.com/graph/api/resources/plancalendar?view=graph-rest-beta and https://learn.microsoft.com/graph/api/resources/workdaydefaults?view=graph-rest-beta. Narrow the change note to remove 'roadmap-only'."
-    },
-    {
-      "n": 15,
-      "where": "front matter: defaultState; summary; Why it matters; Open questions; rationale: impact",
-      "type": "default",
-      "claim": "Microsoft has not stated this feature's default state on arrival.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Planner plan time zone working hours default task times settings admin enable automatically existing tasks. Opened roadmap, Planner for admins, manage-planner-app, planCalendar, plan and task beta references; none states this feature's rollout default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing; Scope; Open questions",
-      "type": "absence",
-      "claim": "Who can change the new plan time zone and working hours is not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Planner plan time zone working hours default task times admin UI Set-PlannerConfiguration Graph plannerPlan Dataverse calendar. Opened Planner for admins, planCalendar and Update plan beta; Update plan lists no supported delegated or application permissions.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 17,
-      "where": "What's changing",
+      "where": "front matter: defaultState; summary; Why it matters; rationale: impact; Open questions",
       "type": "absence",
-      "claim": "The actual default task times are not stated.",
+      "claim": "Microsoft has not stated this feature's default state or what happens on arrival.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Planner plan time zone working hours default task times settings admin enable automatically existing tasks. Read roadmap, planCalendar and workDayDefaults beta text; they identify default start and end properties but publish no default clock values.",
+      "quote": "Searched: Planner task times plan time zone working hours default settings existing tasks who can configure; Planner timeZone default. Read roadmap, Planner for admins, Manage Planner app, planCalendar and workDayDefaults; no feature default stated.",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
-      "where": "What's changing; Why it matters; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not stated whether existing task dates change when this feature arrives.",
+      "where": "front matter: licensing.model and licensing.notes",
+      "type": "licensing",
+      "claim": "The included licensing model describes Planner's entitlement through qualifying Microsoft 365 subscriptions, with feature-specific entitlement left open.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Planner plan time zone working hours default task times settings admin enable automatically existing tasks. Opened roadmap, Planner for admins, planCalendar and task beta; none describes migration or changed dates on existing tasks.",
+      "source": "https://learn.microsoft.com/planner/planner-for-admins",
+      "quote": "Planner in Microsoft 365 is included with the following subscription plans:",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
-      "where": "summary; Why it matters; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No tenant admin switch or centrally enforced time-zone setting specific to this feature is documented.",
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 Business Basic includes Planner.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Planner plan time zone working hours default task times admin UI Set-PlannerConfiguration Graph plannerPlan Dataverse calendar. Opened Planner admin and turn-off pages plus planCalendar and Update plan beta; a per-plan calendar is documented, not a tenant enforcement switch.",
+      "source": "https://learn.microsoft.com/planner/planner-for-admins",
+      "quote": "Planner in Microsoft 365 is included with the following subscription plans:\n- Microsoft 365 Business Basic",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "controls[1]; Governance controls table; front matter: changes",
-      "type": "absence",
-      "claim": "Plan time zone, working hours and default task times are not documented on either UI or API surface.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/graph/api/plan-update?view=graph-rest-beta",
-      "quote": "The following table specifies the properties that can be updated. ... calendar | planCalendar | Working-time calendar settings for the plan.",
-      "severity": "blocker",
-      "fix": "Keep controls[1].ui null. Set controls[1].api to kind 'graph', call 'PATCH /beta/planner/plans_v2/{planId}', docs 'https://learn.microsoft.com/graph/api/plan-update?view=graph-rest-beta'. Replace its note with: 'The beta request body sets calendar.timeZone and calendar.workDayDefaults.startTime/endTime. Beta APIs are not supported for production use, and this operation currently lists no supported delegated or application permissions.' Cite https://learn.microsoft.com/graph/api/resources/plancalendar?view=graph-rest-beta and https://learn.microsoft.com/graph/api/resources/workdaydefaults?view=graph-rest-beta. Remove the repeated assertion that neither surface is documented."
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 Business Standard with Copilot includes Planner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-for-admins",
+      "quote": "Planner in Microsoft 365 is included with the following subscription plans:\n- Microsoft 365 Business Standard with Copilot",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 21,
-      "where": "Risk assessment: Data exposure; rationale: risk",
-      "type": "record",
-      "claim": "The roadmap describes task-date changes and names no new data source.",
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 Business Premium with Copilot includes Planner.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "Add specific times to task start, finish, and due dates. Define a plan’s time zone and working hours to automatically provide default task times",
+      "source": "https://learn.microsoft.com/planner/planner-for-admins",
+      "quote": "Planner in Microsoft 365 is included with the following subscription plans:\n- Microsoft 365 Business Premium with Copilot",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "Risk assessment: Security & identity",
-      "type": "record",
-      "claim": "The roadmap mentions no new permission, identity or sharing model.",
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Office 365 E1 includes Planner.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "Add specific times to task start, finish, and due dates. Define a plan’s time zone and working hours to automatically provide default task times and choose whether to view times in the plan’s time zone or your local time zone.",
+      "source": "https://learn.microsoft.com/planner/planner-for-admins",
+      "quote": "Planner in Microsoft 365 is included with the following subscription plans:\n- Office 365 E1",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "Risk assessment: Autonomy & actions; rationale: risk",
-      "type": "record",
-      "claim": "The roadmap describes no autonomous task action beyond supplying default times.",
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Office 365 E3 includes Planner.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "Define a plan’s time zone and working hours to automatically provide default task times and choose whether to view times in the plan’s time zone or your local time zone.",
+      "source": "https://learn.microsoft.com/planner/planner-for-admins",
+      "quote": "Planner in Microsoft 365 is included with the following subscription plans:\n- Office 365 E3",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Office 365 E5 includes Planner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-for-admins",
+      "quote": "Planner in Microsoft 365 is included with the following subscription plans:\n- Office 365 E5",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 A1 includes Planner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-for-admins",
+      "quote": "Planner in Microsoft 365 is included with the following subscription plans:\n- Microsoft 365 A1",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Capabilities available to a Planner user depend on assigned licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-for-admins",
+      "quote": "The capabilities available to users in Planner depend on their assigned licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Additional unified-plan capabilities depend on whether the user has Microsoft Copilot, Planner Plan 1 or Planner and Project Plan 3.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-for-admins",
+      "quote": "Additional capabilities in unified plans are available based on whether the user has Microsoft Copilot, Planner Plan 1 or Planner and Project Plan 3.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "summary; licensing.notes; Cost and licensing; Scope; rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "A licence rule specific to times on task dates and the new plan settings is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner plan time zone working hours licence pricing task times scheduling premium; Planner task times licensing. Read Planner for admins, Learn about Planner subscriptions and Microsoft Planner service description; none names this feature's entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no meter for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner working hours price meter; Planner plan time zone working hours licence pricing task times scheduling premium. Read Planner service description, Planner for admins and beta Update plan; no meter for task-time or calendar settings stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft publishes no price specific to this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner working hours price meter; Planner plan time zone working hours licence pricing task times scheduling premium. Read Planner service description, Planner for admins and Learn about Planner subscriptions; no feature-specific price stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Which Planner plan types receive this feature is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner Add times to task; Planner task times licensing; Planner plan time zone working hours licence pricing task times scheduling premium. Read roadmap, Planner for admins and Planner service description; no release scope by plan type stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Scope; Open questions",
+      "type": "absence",
+      "claim": "Who can set this feature's plan time zone and working hours is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner plan calendar timeZone workDayDefaults admin UI tenant setting permissions; planCalendar permissions default settings. Read Planner for admins, planCalendar, workDayDefaults and Update plan; no usable role or supported permission stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The actual default task times for this feature are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner task times plan time zone working hours default settings existing tasks who can configure; Planner timeZone default. Read roadmap, planCalendar and workDayDefaults; they describe configurable defaults but specify no initial times.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether existing tasks or dates change on arrival.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner task times plan time zone working hours default settings existing tasks who can configure; Planner Add times to task. Read roadmap, Planner for admins, beta task, planCalendar and workDayDefaults; no existing-task migration behaviour stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn documents a plan time zone in the beta planCalendar resource.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/plancalendar?view=graph-rest-beta",
+      "quote": "Working-time calendar settings for a plan, including the plan's time zone and default working days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn documents default working-day start and end times in the beta workDayDefaults resource.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/workdaydefaults?view=graph-rest-beta",
+      "quote": "Default working-day start and end times for a plan, used by planCalendar.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft Graph beta APIs are subject to change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/plancalendar?view=graph-rest-beta",
+      "quote": "APIs under the /beta version in Microsoft Graph are subject to change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; controls[1].note; Governance controls; Open questions",
+      "type": "behaviour",
+      "claim": "Use of these beta APIs in production applications is not supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/plan-update?view=graph-rest-beta",
+      "quote": "Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].ui; Governance controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "Planner can be blocked tenant-wide in Teams admin center at Teams apps > Manage apps > Planner > Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "In the left pane of the Teams admin center, go to Teams apps > Manage apps. ... To turn off Planner for your organization, search for the Planner app, select it, and then select Block.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "Automation for changing the Planner app's Teams availability or app state is not yet documented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "This cmdlet updates app state and app available values for the Microsoft Teams app. ... Update-M365TeamsApp -Id <String> [-IsBlocked <Boolean>] ... -IsBlocked: The state of the app in the tenant.",
+      "severity": "blocker",
+      "fix": "Set controls[0].api to kind powershell, call 'Update-M365TeamsApp -Id <app-id> -IsBlocked <boolean>', docs 'https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp'. Replace the note's final sentence with 'The reference documents -IsBlocked as Boolean, but describes examples using both $true and $false as unblocking; confirm the intended value before using this cmdlet, or use the documented Block control.' Do not infer a blocking Boolean value from the parameter name."
+    },
+    {
+      "n": 41,
+      "where": "controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "The Teams app Block control does not turn off Planner on the web.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "Planner is enabled by default for all Teams users in your organization. You can turn off or turn on the app at the org level on the Manage apps page in the Teams admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].governs and note; Governance controls",
+      "type": "applicability",
+      "claim": "The Teams app Block control is a coarse app-availability control, not a setting for task times or plan calendar values.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "To turn off Planner for your organization, search for the Planner app, select it, and then select Block.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "The Update-M365TeamsApp reference describes its -IsBlocked $true example as unblocking the app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true\nUnblocks Bookings app (App ID 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].ui; Governance controls table; front matter: changes",
+      "type": "absence",
+      "claim": "An admin UI control for this feature's plan time zone, working hours and default task times is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner plan calendar timeZone workDayDefaults admin UI tenant setting permissions; Planner time zone settings working hours plan. Read Planner for admins, planCalendar, workDayDefaults and Update plan; no UI path for these new settings documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[1].api; Governance controls table and prose",
+      "type": "command",
+      "claim": "PATCH /beta/planner/plans_v2/{planId} updates the plan's calendar settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/plan-update?view=graph-rest-beta",
+      "quote": "PATCH https://graph.microsoft.com/beta/planner/plans_v2/{planId}\nThe following table specifies the properties that can be updated.\ncalendar | planCalendar | Working-time calendar settings for the plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].note; Governance controls table",
+      "type": "command",
+      "claim": "The beta update request can set calendar.timeZone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/plancalendar?view=graph-rest-beta",
+      "quote": "The calendar property of the plan resource uses this type.\ntimeZone | String | Time zone the plan's calendar is expressed in.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].note; Governance controls table",
+      "type": "command",
+      "claim": "The beta update request can set calendar.workDayDefaults.startTime.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/workdaydefaults?view=graph-rest-beta",
+      "quote": "The workDayDefaults property of the planCalendar resource uses this type.\nstartTime | TimeOfDay | Default start time of the working day.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].note; Governance controls table",
+      "type": "command",
+      "claim": "The beta update request can set calendar.workDayDefaults.endTime.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/workdaydefaults?view=graph-rest-beta",
+      "quote": "The workDayDefaults property of the planCalendar resource uses this type.\nendTime | TimeOfDay | Default end time of the working day.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "The beta Update plan reference lists delegated work or school account permissions as not supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/plan-update?view=graph-rest-beta",
+      "quote": "Delegated (work or school account) | Not supported. | Not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "The beta Update plan reference lists delegated personal Microsoft account permissions as not supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/plan-update?view=graph-rest-beta",
+      "quote": "Delegated (personal Microsoft account) | Not supported. | Not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "The beta Update plan reference lists application permissions as not supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/plan-update?view=graph-rest-beta",
+      "quote": "Application | Not supported. | Not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "The v1.0 plannerTask startDateTime property is a UTC date-and-time value.",
@@ -295,7 +603,7 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 53,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "The v1.0 plannerTask dueDateTime property is a UTC date-and-time value.",
@@ -306,21 +614,43 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 54,
       "where": "Risk assessment: Change & support",
-      "type": "absence",
-      "claim": "The v1.0 plannerTask reference itself contains no plan time-zone or working-hours property.",
+      "type": "behaviour",
+      "claim": "The beta Planner Unified plans task resource represents startDateTime as dateWithOptionalTime.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Planner plan time zone working hours default task times admin UI Set-PlannerConfiguration Graph plannerPlan Dataverse calendar. Read the full v1.0 plannerTask properties and JSON; no calendar, timeZone or working-hours property appears on that resource.",
+      "source": "https://learn.microsoft.com/graph/api/resources/task?view=graph-rest-beta",
+      "quote": "A task in the Planner Unified plans Graph API.\nstartDateTime | dateWithOptionalTime | Date and, optionally, time the task is scheduled to start.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 27,
+      "n": 55,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The beta Planner Unified plans task resource represents dueDateTime as dateWithOptionalTime.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/task?view=graph-rest-beta",
+      "quote": "A task in the Planner Unified plans Graph API.\ndueDateTime | dateWithOptionalTime | Date and, optionally, time the task is due.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The beta plan calendar property holds its time zone and working-day defaults.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/plancalendar?view=graph-rest-beta",
+      "quote": "The calendar property of the plan resource uses this type.\ntimeZone | String | Time zone the plan's calendar is expressed in.\nworkDayDefaults | workDayDefaults | Default working-day start and end times for the plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
       "where": "Risk assessment: Change & support; Governance guidance",
       "type": "behaviour",
-      "claim": "Planner tasks have Microsoft Graph and Power Automate connector integrations.",
+      "claim": "Existing integrations can manage Planner tasks through Microsoft Graph and the Power Automate connector.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
       "quote": "Planner tasks can be managed using Microsoft Graph and the Power Automate connector.",
@@ -328,84 +658,7 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Planner is included with the seven Microsoft 365 and Office 365 subscription plans listed in the briefing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/planner/planner-for-admins",
-      "quote": "Planner in Microsoft 365 is included with the following subscription plans: Microsoft 365 Business Basic; Microsoft 365 Business Standard with Copilot; Microsoft 365 Business Premium with Copilot; Office 365 E1; Office 365 E3; Office 365 E5; Microsoft 365 A1",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The Planner capabilities available to users depend on assigned licences.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/planner/planner-for-admins",
-      "quote": "The capabilities available to users in Planner depend on their assigned licenses.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Additional capabilities in unified plans depend on Microsoft Copilot, Planner Plan 1 or Planner and Project Plan 3.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/planner/planner-for-admins",
-      "quote": "Additional capabilities in unified plans are available based on whether the user has Microsoft Copilot, Planner Plan 1 or Planner and Project Plan 3.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "This feature has a mixed licensing model.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Planner task start finish due specific times plan time zone working hours default admin settings licensing price; Planner time zone working hours task times default license price. Read Planner for admins and service description; neither establishes mixed entitlement for this feature.",
-      "severity": "blocker",
-      "fix": "Set licensing.model to 'included' under the standard's rule for a new option within a licensed product. Keep the existing notes that identify the product's qualifying Microsoft 365 plans and licence-dependent additional capabilities, and retain the narrower qualification that a licence rule specific to this feature is not yet published. Do not describe the feature as requiring a mixture of entitlements."
-    },
-    {
-      "n": 32,
-      "where": "summary; front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "A licence requirement specific to times on task dates and the new plan calendar settings is not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Planner task start finish due specific times plan time zone working hours default admin settings licensing price; Planner time zone working hours task times default license price. Read Planner for admins and service description; neither lists this specific feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "Microsoft has published no price specific to this feature.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Planner task start finish due specific times plan time zone working hours default admin settings licensing price; Planner time zone working hours task times default license price. Opened Planner for admins and Planner service description; no feature-specific price is stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "Microsoft has published no meter specific to this feature.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Planner task start finish due specific times plan time zone working hours default admin settings licensing price; Planner time zone working hours task times default license price. Read service description: some Graph APIs are metered, but no meter for these task-time settings is named.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
+      "n": 58,
       "where": "Scope",
       "type": "applicability",
       "claim": "Settings and policies configured for Planner on the web also apply to Planner in Teams.",
@@ -416,87 +669,32 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Teams admin center > Teams apps > Manage apps > Planner > Block turns off the Planner app for the organisation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
-      "quote": "In the left pane of the Teams admin center, go to Teams apps > Manage apps. ... To turn off Planner for your organization, search for the Planner app, select it, and then select Block.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "Update-M365TeamsApp -Id <app-id> -IsBlocked $true blocks the Planner app.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
-      "quote": "Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true ... Unblocks Bookings app",
-      "severity": "blocker",
-      "fix": "Set controls[0].api to null and append this qualification to its note: 'No consistently documented blocking call is given here: Update-M365TeamsApp exists, but its reference describes the -IsBlocked $true example as unblocking the app. Use the documented Teams admin center Block control rather than infer a Boolean value.' Retain the verified UI path. Do not claim the cmdlet itself is undocumented, and do not replace $true with an unverified value."
-    },
-    {
-      "n": 38,
-      "where": "controls[0].note; Governance controls",
-      "type": "applicability",
-      "claim": "The Teams app control restricts access to the Planner app in Teams at organisation scope.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
-      "quote": "You can turn off or turn on the app at the org level on the Manage apps page in the Teams admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "controls[0].note; Governance controls",
-      "type": "applicability",
-      "claim": "Blocking the Teams app is not the organisation-wide control for Planner on the web.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
-      "quote": "Manage the Planner app for your organization in Microsoft Teams ... You can turn off or turn on the app at the org level on the Manage apps page in the Teams admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "controls[0].governs; controls[0].note; Governance controls",
-      "type": "applicability",
-      "claim": "Blocking the Planner app is a coarse availability control, not a setting for task times or plan time zones.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
-      "quote": "To turn off Planner for your organization, search for the Planner app, select it, and then select Block.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
+      "n": 59,
       "where": "Governance controls",
       "type": "command",
-      "claim": "Learn documents Set-PlannerConfiguration -IsPlannerAllowed $false for turning off Planner for the organisation.",
+      "claim": "Learn documents Set-PlannerConfiguration -IsPlannerAllowed $false as the organisation-level Planner disable operation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/disable-planner",
-      "quote": "If you're a global admin and you want to turn off Microsoft Planner for your organization, you can use Windows PowerShell. ... Set-PlannerConfiguration -IsPlannerAllowed $false",
+      "quote": "If you're a global admin and you want to turn off Microsoft Planner for your organization, you can use Windows PowerShell.\nTurn off Planner for your organization using PowerShell\nSet-PlannerConfiguration -IsPlannerAllowed $false",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
+      "n": 60,
       "where": "Governance controls",
       "type": "applicability",
-      "claim": "The organisation-wide Planner PowerShell turn-off page applies to basic plans in the Planner app in Teams and Web.",
+      "claim": "The Planner disable page applies to basic plans in the Planner app in Teams and Web.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/disable-planner",
-      "quote": "This article applies to: Basic plans in the Planner app in Teams and Web",
+      "quote": "This article applies to:\n- Basic plans in the Planner app in Teams and Web",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
+      "n": 61,
       "where": "Governance controls",
       "type": "applicability",
-      "claim": "The Planner PowerShell turn-off page applies to all plans in other Planner endpoints.",
+      "claim": "The Planner disable page applies to all plans in other Planner endpoints.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/disable-planner",
       "quote": "All plans in other Planner endpoints (including Planner mobile, and Planner connectors).",
@@ -504,10 +702,10 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 62,
       "where": "Governance controls",
       "type": "role",
-      "claim": "The Planner PowerShell turn-off page names the global admin role.",
+      "claim": "The Planner PowerShell disable page names the global admin role.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/disable-planner",
       "quote": "If you're a global admin and you want to turn off Microsoft Planner for your organization, you can use Windows PowerShell.",
@@ -515,54 +713,54 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 63,
       "where": "Governance controls",
       "type": "absence",
-      "claim": "The cited Teams Planner app page does not name an admin role in its blocking steps.",
+      "claim": "The cited Teams admin center page does not name a role in its Planner blocking steps.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Planner plan time zone working hours default task times settings admin enable automatically existing tasks. Read manage-planner-app in full, including Enable or disable Planner in your organization; those steps name no role. This is not a claim that roles are undocumented elsewhere.",
+      "quote": "Searched: Teams block app PowerShell Update-M365TeamsApp IsBlocked Set-TeamsApp. Opened Manage the Planner app for your organization in Microsoft Teams and read Enable or disable Planner in your organization; its steps specify the path and Block, but no role.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 46,
-      "where": "Open questions: Microsoft Graph and Power Automate",
-      "type": "absence",
-      "claim": "Whether Microsoft Graph exposes task times and the plan time zone, and their format, remains unpublished.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/graph/api/resources/task?view=graph-rest-beta",
-      "quote": "dueDateTime | dateWithOptionalTime | Date and, optionally, time the task is due. ... startDateTime | dateWithOptionalTime | Date and, optionally, time the task is scheduled to start.",
-      "severity": "blocker",
-      "fix": "Replace the final open question with: 'When will the documented beta Planner Unified plans API be supported for production use, and will the Power Automate connector expose the new task-time and calendar settings? Watch Microsoft Learn's beta task and planCalendar references.' Cite https://learn.microsoft.com/graph/api/resources/task?view=graph-rest-beta and https://learn.microsoft.com/graph/api/resources/plancalendar?view=graph-rest-beta; the latter documents calendar.timeZone as String and workDayDefaults."
-    },
-    {
-      "n": 47,
+      "n": 64,
       "where": "Governance controls",
       "type": "applicability",
-      "claim": "The two named organisation-level blocking controls turn off their whole documented scope rather than selectively disabling this feature.",
+      "claim": "Set-PlannerConfiguration -IsPlannerAllowed $false is a coarse Planner service switch rather than a control over this feature's task-time settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/disable-planner",
-      "quote": "If you're a global admin and you want to turn off Microsoft Planner for your organization, you can use Windows PowerShell.",
+      "quote": "Turn off Planner for your organization using PowerShell\nSet-PlannerConfiguration -IsPlannerAllowed $false\nTo turn on Planner back:\nSet-PlannerConfiguration -IsPlannerAllowed $true",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
-      "where": "Scope",
-      "type": "absence",
-      "claim": "Microsoft has not published the complete set of plan types covered by this roadmap feature's rollout.",
+      "n": 65,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap description names no new data source beyond the task dates and plan settings it describes.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Planner task start finish due specific times plan time zone working hours default admin settings licensing price. Read roadmap, Planner for admins, service description and beta plan reference; the API describes unified plans but no source specifies this feature's full rollout by plan type.",
+      "source": "roadmap record",
+      "quote": "Add specific times to task start, finish, and due dates. Define a plan’s time zone and working hours to automatically provide default task times and choose whether to view times in the plan’s time zone or your local time zone.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap description mentions no new permission, identity or sharing model.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Add specific times to task start, finish, and due dates. Define a plan’s time zone and working hours to automatically provide default task times and choose whether to view times in the plan’s time zone or your local time zone.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-23T07:02:26.272Z",
+    "at": "2026-11-23T07:59:01.043Z",
     "summary": {
-      "links": 6,
+      "links": 10,
       "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
@@ -588,6 +786,26 @@
       },
       {
         "url": "https://learn.microsoft.com/graph/api/resources/plannertask",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/plancalendar?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/workdaydefaults?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/plan-update?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/task?view=graph-rest-beta",
         "ok": true,
         "status": 200
       },
@@ -618,16 +836,23 @@
         "missing": []
       },
       {
-        "index": 0,
+        "index": 1,
         "side": "api",
-        "governs": "Whether the Planner app is available in Teams (coarse alternative; not specific to times on tasks)",
-        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "governs": "Plan time zone, working hours and default task times for this feature",
+        "docs": "https://learn.microsoft.com/graph/api/plan-update?view=graph-rest-beta",
         "reachable": true,
-        "token": "Update-M365TeamsApp",
+        "token": "/beta/planner/plans_v2",
         "found": true
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-23",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

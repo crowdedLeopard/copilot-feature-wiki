@@ -1,0 +1,770 @@
+{
+  "slug": "sharepoint-admin-center-detailed-report-on-everyone-except-external-user-permissions",
+  "roadmapId": 561038,
+  "title": "SharePoint admin center: item-level report on Everyone and Everyone except external users permissions",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 46: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "1 blocking finding (claim 45)"
+    ]
+  },
+  "counts": {
+    "claims": 60,
+    "confirmed": 56,
+    "unconfirmed": 2,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 1,
+    "minor": 3
+  },
+  "summary": "Hold: the unqualified low-cost rating means indirect costs only, but the documented licensing routes can require a paid licence or add-on. The navigation, PowerShell commands, role requirements and report limits are supported; assurances about permission changes and end-user notifications need narrower wording.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is August CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in this roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap identifies this as a SharePoint feature.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"SharePoint\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-09-01T23:00:02.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-01T23:00:02\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "The report provides item-level permission details where Everyone or Everyone except external users are recipients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "This report provides exact item-level permission details for every item where the special SharePoint groups Everyone except external users (EEEU) or Everyone are the recipients.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Sites and files shared via special SharePoint groups is a SharePoint Advanced Management snapshot report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "The Sites and files shared via special SharePoint groups report is one of the Data access governance snapshot reports available with SharePoint Advanced Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "An administrator generates the report on demand.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "Select Run report under either Content shared with 'Everyone' group or Content shared with 'Everyone except external users' group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "The download is a ZIP containing a CSV of items with direct or indirect group access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "The download is a ZIP file that contains a CSV file listing all items where that group has direct or indirect access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Each report row identifies one item and its hierarchy of identifiers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "Each row identifies a single item that either group can access, along with the full hierarchy of identifiers from your organization down to that item",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The CSV identifies the permission level granted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "Role definition | Permission level on the item. Has values such as Full control, Read, Edit, Contributor, Creator, or Viewer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The CSV identifies a sharing link where applicable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "LinkId | ID of the sharing link, if applicable",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "ParentGroupName identifies the parent group when access is indirect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "ParentGroupName | Name of the parent group, when access is indirect",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "TotalUserCount is the number of users who accessed the item at least once.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "Number of users who accessed the item at least once. The item is already shared with all internal users or with everyone, so this number tells you the actual exposure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Everyone and Everyone except external users each have a separate report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "The report is available for two special SharePoint groups, and each group has its own report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope; controls[0].scope",
+      "type": "behaviour",
+      "claim": "The report covers SharePoint and OneDrive across the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/start-spodataaccessgovernanceinsight?view=sharepoint-ps",
+      "quote": "The above cmdlet generates a detailed report for all content shared with 'Everyone except external users' (Sites, groups and files) across both SharePoint sites and OneDrive accounts, as of report generation time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Scope; Governance controls",
+      "type": "behaviour",
+      "claim": "The report cannot be scoped to a single workload.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "The report covers both SharePoint and OneDrive. You can't scope the report to a single workload.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Permissions for system files and system groups are excluded.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "The report doesn't include permissions granted to EEEU or Everyone for system files and system groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "An exclusion is Everyone inside Style Resource Readers on classic publishing sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "For example, the report doesn't include the Everyone group inside the Style Resource Readers group. In classic publishing site templates, the Style Resource Readers group controls read permissions for the Master Page Gallery",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The existing site permissions report identifies overshared sites rather than the individual items this report identifies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-reports",
+      "quote": "While the site permissions for your organization report tells you which sites are overshared, this report tells you exactly which items are overshared and how access was granted",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Microsoft positions the report for scripted cleanup rather than relying on individual site owners.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "Use this report when you want to find exactly where oversharing happens in your organization and fix it through scripting, rather than depending on individual site owners to review and modify permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Content shared with these groups is visible to every internal user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "Content shared with these groups is visible to every internal user",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Content shared with these groups surfaces directly in Microsoft Copilot search results.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "it surfaces directly in Microsoft Copilot search results, which makes cleanup critical for Copilot adoption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The report is admin-opt-in: an administrator must assign its required role and initiate generation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "A Global administrator must assign the SharePoint Advanced Admin role before you can run this report. Select Run report under either Content shared with 'Everyone' group or Content shared with 'Everyone except external users' group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters; Governance controls",
+      "type": "absence",
+      "claim": "The report documentation states neither automatic execution nor a separate on/off switch.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint sites files special groups Everyone detailed permissions report automatic scheduled run enable disable notifications. Read the report page, DAG overview and PowerShell guidance/reference; no separate on/off switch or automatic execution was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; Cost and licensing; Governance guidance; Open questions",
+      "type": "behaviour",
+      "claim": "The downloaded report is limited to 1 million rows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "The downloaded file is limited to 1 million rows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Data exposure; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "The CSV contains item names, URLs and absolute paths.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "Item Url | URL that gives the name and the absolute path of the item",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment; Scope; controls[0].note; Governance controls; rationale: impact",
+      "type": "role",
+      "claim": "Running the report requires the SharePoint Advanced Management Administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/powershell-for-data-access-governance",
+      "quote": "You also need the SharePoint Advanced Management Administrator role, which a Global administrator must assign.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment; Scope; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "A Global administrator must assign the required role before the report can be run.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "A Global administrator must assign the SharePoint Advanced Admin role before you can run this report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure; Security & identity",
+      "type": "role",
+      "claim": "The advanced role permits viewing file names, paths and URLs across SharePoint content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "Standard SharePoint administrators and Global administrators can't view file properties across sites they don't own. The SharePoint Advanced Management Administrator role lets you view file names, paths, and URLs, and modify permissions as appropriate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The report can reflect data from up to 48 hours before generation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "Reports capture data from up to 48 hours before generation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment; Governance controls; rationale: risk and impact",
+      "type": "behaviour",
+      "claim": "Running the report is read-only, changes no permissions and starts no automated cleanup.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: SharePoint detailed EEEU Everyone snapshot report read only permission changes automatic remediation notifications. Read the report page, DAG overview and PowerShell guidance/reference; none explicitly guarantees no permission writes or automated cleanup.",
+      "severity": "major",
+      "fix": "Replace the read-only/no-permission-change/no-automated-cleanup assurances in Risk assessment, Governance controls and the rationales with: 'The report captures the permission state of these groups at a specific point in time; Microsoft describes remediation as a subsequent action.' Source: https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report."
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "applicability",
+      "claim": "Microsoft lists restricted access control, Change history and Site access review as remediation options for DAG findings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-reports",
+      "quote": "Use Restricted access control (RAC) to limit access to a specific group. Review the 'Change history' report to identify recent permission changes that might have led to oversharing. Use the Site access review feature to request that site owners review and update permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Change & support; Governance guidance; Open questions",
+      "type": "behaviour",
+      "claim": "Reports can be run again every 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "You can run reports again every 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Change & support; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "The site permissions for your organization report must have been generated at least once.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "Make sure that the site permissions for your organization report is generated at least once.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Licensing is mixed: the listed base subscriptions plus a Copilot licence assigned to at least one user, SharePoint K/P1/P2 with the Plan 1 add-on, or Microsoft 365 E7.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites",
+      "quote": "At least one user in your organization is assigned a Microsoft Copilot license. Your subscription includes SharePoint K, P1, or P2, and your organization purchases the SharePoint Advanced Management Plan 1 add-on. Your organization has Microsoft 365 E7",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The listed base subscriptions are Office 365 E3/E5/A5, Microsoft 365 E1/E3/E5/A5, or Microsoft 365 GCC/GCC-High/DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites",
+      "quote": "Your organization must have one of the following base licenses: Office 365 E3, E5, or A5; Microsoft 365 E1, E3, E5, or A5; Microsoft 365 GCC, GCC-High, or DoD",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "E5-only DAG access excludes snapshot reports and remedial actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-reports",
+      "quote": "IT administrators with Microsoft 365 E5 licensing can access Data access governance reporting, but can't view or use the other SharePoint Advanced Management features. The reports don't provide snapshot reports or remedial actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The pages read publish no separate price or meter for this particular report.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint Advanced Management detailed EEEU Everyone permissions report billing pricing charge meter. Read the report page, SAM prerequisites, DAG reports, PowerShell guidance/reference and SAM overview; no report-specific price or meter was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope: Clouds and platform",
+      "type": "availability",
+      "claim": "DAG reports are unavailable for Microsoft 365 operated by 21Vianet even with the required licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-reports",
+      "quote": "The reports are currently unavailable for Microsoft 365 operated by 21Vianet, even if you have the required licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope: PowerShell route; controls[0].note",
+      "type": "behaviour",
+      "claim": "The report requires Microsoft.Online.SharePoint.PowerShell 16.0.27215.12000 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/powershell-for-data-access-governance",
+      "quote": "This report requires module Microsoft.Online.SharePoint.PowerShell version 16.0.27215.12000 or later, published April 30, 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: cost; rationale: cost",
+      "type": "consistency",
+      "claim": "An unqualified low-cost rating, meaning indirect costs only, fits all the documented licensing routes.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "cost: \"low\"; licensing.model: \"mixed\"; 'a subscription that includes SharePoint K, P1 or P2 plus the SharePoint Advanced Management Plan 1 add-on'. The standard defines low as 'indirect cost only: admin time, communications, training'.",
+      "severity": "blocker",
+      "fix": "Set cost to 'medium'. Replace the cost rationale with: 'Medium. Tenants without an existing qualifying entitlement may need a Microsoft Copilot licence or the SharePoint Advanced Management Plan 1 add-on. For tenants already entitled, the work is admin time to run the report and act on findings.' Keep the published licensing conditions unchanged."
+    },
+    {
+      "n": 46,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "End users are not notified when the report runs.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"sites and files\" \"report\" \"notifications\"; SharePoint detailed EEEU Everyone snapshot report read only permission changes automatic remediation notifications. Read the report page, DAG overview and PowerShell guidance; no end-user notification guarantee was stated.",
+      "severity": "minor",
+      "fix": "Remove 'end users are not notified or changed by it' from the impact rationale. Retain 'Low. Only administrators who hold the SharePoint Advanced Management Administrator role see the report.'"
+    },
+    {
+      "n": 47,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The published SharePoint admin center path reaches Run report for Content shared with 'Everyone except external users' group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "expand Reports, and then select Data access governance. Under Snapshot reports, in the Sites and files shared via special SharePoint groups section, select View reports. Select Run report under either Content shared with 'Everyone' group or Content shared with 'Everyone except external users' group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Start-SPODataAccessGovernanceInsight -ReportEntity EveryoneExceptExternalUsers -ReportType Snapshot generates the detailed EEEU report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/start-spodataaccessgovernanceinsight?view=sharepoint-ps",
+      "quote": "Start-SPODataAccessGovernanceInsight -ReportEntity EveryoneExceptExternalUsers -ReportType Snapshot\nThe above cmdlet generates a detailed report for all content shared with 'Everyone except external users' (Sites, groups and files) across both SharePoint sites and OneDrive accounts",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].note; Governance controls table",
+      "type": "command",
+      "claim": "Using -ReportEntity Everyone instead generates the Everyone report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/powershell-for-data-access-governance",
+      "quote": "To generate the report for Everyone, change the ReportEntity parameter value: Start-SPODataAccessGovernanceInsight -ReportEntity Everyone -ReportType Snapshot",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "DetailedEEEUParameterSet takes ReportEntity and ReportType, with no Workload parameter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/start-spodataaccessgovernanceinsight?view=sharepoint-ps",
+      "quote": "DetailedEEEUParameterSet\nStart-SPODataAccessGovernanceInsight\n    -ReportEntity <ReportEntityEnum>\n    -ReportType <ReportTypeEnum>\n    [<CommonParameters>]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Open questions: government clouds",
+      "type": "absence",
+      "claim": "Availability of this specific detailed special-groups report in GCC, GCC High and DoD remains unconfirmed.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint detailed Everyone special groups report GCC High DoD availability. Read the report and DAG pages plus service-description and Copilot-licensing table excerpts; government support is listed for other linked reports, not this specific detailed report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "SharePoint admin center > Reports > Data access governance is the starting route for running these reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "In the SharePoint admin center, in the navigation pane, expand Reports, and then select Data access governance. Under Snapshot reports, in the Sites and files shared via special SharePoint groups section, select View reports.",
+      "severity": "minor",
+      "fix": "Expand the abbreviated route to: 'SharePoint admin center > Reports > Data access governance > Snapshot reports > Sites and files shared via special SharePoint groups > View reports > Content shared with the selected group > Run report'. The full route in controls[0].ui is already correct."
+    },
+    {
+      "n": 53,
+      "where": "Governance guidance compared with controls",
+      "type": "consistency",
+      "claim": "The controls table covers all the controls the governance checklist asks administrators to set or check.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Ask a Global administrator to assign ... the role'; 'Generate the site permissions ... report once'; 'using the remedial options'. Table: only 'Running the item-level report for Everyone except external users or Everyone'.",
+      "severity": "minor",
+      "fix": "The role assignment, prerequisite site-permissions report generation and referenced remedial options have no table rows. Do not add rows in this correction; label these checklist steps as prerequisites or follow-up actions documented in the cited Learn pages, rather than controls located by this table."
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Start-SPODataAccessGovernanceInsight reference requires a SharePoint Advanced Management licence to run DAG reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/start-spodataaccessgovernanceinsight?view=sharepoint-ps",
+      "quote": "SharePoint Advanced Management (SAM) license is required to run these reports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Scope: PowerShell route",
+      "type": "date",
+      "claim": "The required module version was published April 30, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/powershell-for-data-access-governance",
+      "quote": "This report requires module Microsoft.Online.SharePoint.PowerShell version 16.0.27215.12000 or later, published April 30, 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Standard SharePoint administrators and Global administrators cannot view file properties across sites they do not own.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "Standard SharePoint administrators and Global administrators can't view file properties across sites they don't own.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "One entitlement route is a Microsoft Copilot licence assigned to at least one user in the organization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites",
+      "quote": "At least one user in your organization is assigned a Microsoft Copilot license. (The user doesn't need to be a SharePoint administrator.)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Another entitlement route is SharePoint K, P1 or P2 with the SharePoint Advanced Management Plan 1 add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites",
+      "quote": "Your subscription includes SharePoint K, P1, or P2, and your organization purchases the SharePoint Advanced Management Plan 1 add-on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 E7 is the third listed entitlement route.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites",
+      "quote": "Your organization has Microsoft 365 E7, also known as The Frontier Suite.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "SiteId and ParentGroupName can distinguish site/group membership findings from individual files shared directly with the group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+      "quote": "filtering on a single site ID shows all permissions within that site across all scopes. EEEU is part of a SharePoint group: ParentGroupName | Contoso finance visitors. A single file is shared with EEEU: ParentGroupName | Empty.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T07:59:01.852Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=561038",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/data-access-governance-reports",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/powershell-for-data-access-governance",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/start-spodataaccessgovernanceinsight?view=sharepoint-ps",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Running the item-level report for Everyone except external users or Everyone",
+        "docs": "https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report",
+        "reachable": true,
+        "segments": [
+          "Reports",
+          "Data access governance",
+          "Snapshot reports",
+          "Sites and files shared via special SharePoint groups",
+          "View reports",
+          "Content shared with 'Everyone except external users' group",
+          "Run report"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Running the item-level report for Everyone except external users or Everyone",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/start-spodataaccessgovernanceinsight?view=sharepoint-ps",
+        "reachable": true,
+        "token": "Start-SPODataAccessGovernanceInsight",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

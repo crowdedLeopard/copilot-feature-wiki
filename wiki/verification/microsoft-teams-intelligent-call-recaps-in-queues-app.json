@@ -1,0 +1,803 @@
+{
+  "slug": "microsoft-teams-intelligent-call-recaps-in-queues-app",
+  "roadmapId": 569017,
+  "title": "Microsoft Teams: intelligent call recaps for call queue calls in the Queues app",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "3 blocking findings (claims 46, 56, 58)"
+    ]
+  },
+  "counts": {
+    "claims": 58,
+    "confirmed": 54,
+    "unconfirmed": 1,
+    "contradicted": 3,
+    "blocker": 3,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold for an incorrect administrator prerequisite and an inconsistent statement about who can see recaps. Microsoft says the template creator becomes its SharePoint site administrator; existing site administrator access is required to assign a template or manage authorized users. The impact rationale asserts a recap audience that the body correctly says is not documented.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "Intelligent recaps for recorded call queue calls include AI-generated summary notes, key discussion points and follow-up actions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "For recorded call queue calls, the Queues app now supports intelligent call recaps for recorded calls that includes AI-generated summary notes, key discussion points, and follow-up actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Users access the recap by opening the call record in the Queues app and selecting the Recap tab.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Navigate to the call record in the Queues app and select the Recap tab to access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; summary; What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The roadmap target is September CY2026, expressed as a target rather than a commitment.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The release phases are General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; summary; What's changing; Scope; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "This roadmap item lists Desktop and Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed clouds are Worldwide (Standard Multi-Tenant), GCC and GCC High.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap provides no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: products; Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap products are Microsoft Teams and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Teams\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-09-01T23:00:02.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-01T23:00:02\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: defaultState; summary; Why it matters; Open questions",
+      "type": "default",
+      "claim": "Microsoft has not stated whether queue-call recap appears without administrator action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Queues app\" \"recap\" \"default\" \"enable\" \"disable\"; read the roadmap, manage-queues-app and intelligent-recap-calls-meetings. App defaults and defaults for other recap call types are stated, but no queue-call recap default is specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "Queues app users require both Teams Phone and Teams Premium licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-queues-app",
+      "quote": "Users must have a Teams Phone and a Teams Premium license to use Queues app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: licensing.model; rationale: cost",
+      "type": "licensing",
+      "claim": "The documented Queues app entitlement involves an add-on license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Microsoft Teams Premium is a Teams add-on license that allows organizations with Microsoft 365 subscriptions to enhance their Teams experience",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams to sources as the evidence that Teams Premium is an add-on. Keep the existing qualification that queue-call recap-specific licensing is not published."
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The intelligent recap admin page requires Teams Premium or Microsoft Copilot for its documented call types.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "You must assign a Teams Premium license or Microsoft Copilot license to your users. For audio recap, you must assign a Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The intelligent recap admin page also requires Teams Phone and a calling plan for PSTN calls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "For Public Switched Telephone Network (PSTN) calls, you must also assign a Teams Phone license and have a calling plan for your users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: licensing.notes; controls[1].note; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "Which of the recap licenses covers intelligent recap specifically for queue calls is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Queues\" \"Recap\" \"license\" \"intelligent\" and \"call queue\" \"recap\" \"price\" \"meter\" \"license\"; read Queues app, intelligent recap, voice-applications licensing and Teams Premium licensing. None specifies a queue-call recap entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Cost and licensing: Meter and price; rationale: cost",
+      "type": "absence",
+      "claim": "No price or meter specific to the queue-call Recap tab is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"call queue\" \"recap\" \"price\" \"meter\" \"license\"; read voice-applications prerequisites and licensing, Teams Premium licensing, Queues app and intelligent recap. Product license requirements are documented, but no Recap-tab-specific price or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Cost and licensing: Indirect cost",
+      "type": "licensing",
+      "claim": "Automatic recording for call queues requires no extra Teams Phone licensing and points to the SharePoint service description.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-reference-prerequisites-licensing",
+      "quote": "### Automatic Recording for Call Queue\n- No extra Teams Phone licensing is required.\n- See SharePoint service description.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Risk assessment: Data exposure; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Recordings and transcripts from automatic recording templates are stored in SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "An automatic recording template for Call Queue defines where, in SharePoint, recordings and transcripts will be stored",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "The automatic recording template determines which call recordings agents can access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Select which call recordings call queue representatives (agents) can access. Authorized users have access by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "Authorized users have access to automatic call recordings by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Authorized users have access by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Security & identity; Scope: Users",
+      "type": "default",
+      "claim": "The Queues app is enabled by default for voice-enabled Teams users with both Teams Premium and Teams Phone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-queues-app",
+      "quote": "Queues app is enabled by default for all Teams users in your organization who are assigned both a Teams Premium and Teams Phone license and who are voice enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Scope: Users",
+      "type": "availability",
+      "claim": "Users must belong to at least one call queue to use the Queues app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-queues-app",
+      "quote": "In order to use Queues app, your users must be in at least one Call queue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Scope: Clouds and platforms",
+      "type": "availability",
+      "claim": "The surrounding Queues app supports desktop, Mac, VDI, Teams phones, iOS and Android, but not web.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-queues-app",
+      "quote": "The Queues app is currently supported on Teams desktop, Mac, and Virtualized Desktop Infrastructure (VDI) clients, Teams phones (touch devices only), and iOS and Android mobile clients. It's not supported on web clients.",
+      "severity": "minor",
+      "fix": "In the surrounding-app platform list, replace 'Teams phones' with 'Teams phones (touch devices only)'. This does not change this roadmap item's Desktop and Mac scope."
+    },
+    {
+      "n": 25,
+      "where": "Scope: Clouds and platforms",
+      "type": "availability",
+      "claim": "The surrounding Queues app is available in Commercial, GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-queues-app",
+      "quote": "Queues app is available in Commercial, GCC, GCC High, and DoD environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Scope: Clouds and platforms",
+      "type": "record",
+      "claim": "Intelligent call recap for call queue calls on mobile is a separate roadmap item.",
+      "status": "supported",
+      "source": "https://www.microsoft.com/microsoft-365/roadmap?id=578871",
+      "quote": "\"id\": 578871, \"title\": \"Microsoft Teams: Intelligent call recap for call queue calls on Mobile\", \"platforms\": [\"Android\", \"iOS\"]",
+      "severity": "minor",
+      "fix": "Add the Microsoft 365 Roadmap item 578871 URL, https://www.microsoft.com/microsoft-365/roadmap?id=578871, to sources. The separate mobile record was read directly; the related wiki page is not evidence."
+    },
+    {
+      "n": 27,
+      "where": "Scope: Prerequisites for recorded queue calls",
+      "type": "applicability",
+      "claim": "Automatic recording for call queues requires conference mode enabled on the queue.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Conference mode is enabled on the call queue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Change & support; Scope: Prerequisites for recorded queue calls",
+      "type": "applicability",
+      "claim": "Shared Call History must be enabled for automatic recording on a call queue.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Shared Call History in enabled on the call queue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Change & support; Scope: Prerequisites for recorded queue calls",
+      "type": "applicability",
+      "claim": "Explicit recording consent must be Off for automatic call queue recording.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Explicit recording consent must be Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].note; Scope: Prerequisites for recorded queue calls",
+      "type": "admin-path",
+      "claim": "The automatic recording template is assigned to a call queue on its Templates tab.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "On the Templates tab, scroll to find the Automatic recording template section. Select the automatic recoding template template from the dropdown.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].ui; Governance controls: first row",
+      "type": "admin-path",
+      "claim": "Call recording is configured at Teams admin center > Voice > Templates and resources > Templates > Automatic Recording > Add > Call recording.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "go to Voice > Templates and resources. Select Templates. Select Automatic Recording as the template type. Select Add to create a new Automatic Recording template. Enter a Name for the template. Enter a Description for the template. Call recording is enabled by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].api; Governance controls: first row",
+      "type": "command",
+      "claim": "New-CsAutoRecordingTemplate -RecordingEnabled $true -TranscriptionEnabled $true sets recording and transcription in a template assignable to a queue.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate",
+      "quote": "[-TranscriptionEnabled <Boolean>]\n[-RecordingEnabled <Boolean>]\nThis example creates a new Auto Recording template that enabled transcription and recording.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].note; Governance controls: first row",
+      "type": "admin-path",
+      "claim": "Transcription is the next toggle after call recording in the automatic recording template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "7. Call recording is enabled by default. Disable call recording if required.\n8. Transcription is enabled by default. Disable transcription if required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].ui; Governance controls: second row",
+      "type": "admin-path",
+      "claim": "User licenses are assigned at Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "go to the Users > Active users page. Select the row of the user that you want to assign a license to. In the right pane, select Licenses and Apps. Expand the Licenses section, select the boxes for the licenses that you want to assign",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[1].api; Governance controls: second row",
+      "type": "command",
+      "claim": "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @() assigns a license to a user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "To assign a license to a user, use the following command in PowerShell.\nSet-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[1].note; Governance controls: licence row and prose",
+      "type": "role",
+      "claim": "Assigning licenses requires at least License Administrator or User Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "You must be at least a License or User Administrator to assign licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[2].ui; Governance controls: third row",
+      "type": "admin-path",
+      "claim": "The org-wide Microsoft apps switch is at Teams admin center > Teams apps > Manage apps > Actions > Org-wide app settings > Microsoft apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-queues-app",
+      "quote": "Navigate to Teams apps > Manage apps. Select Actions > Org-wide app settings > Microsoft apps. Select Off and Save.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[2].note; Governance controls: third row and prose",
+      "type": "applicability",
+      "claim": "Turning off the Queues app with that org-wide switch also turns off other Microsoft apps such as Insights and Tasks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-queues-app",
+      "quote": "You can turn off the Queues app via the Teams admin center. However, doing so also turns off other Microsoft apps like Insights and Tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[2].api; Governance controls: third row",
+      "type": "absence",
+      "claim": "No API or PowerShell equivalent of the org-wide Microsoft apps switch is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams PowerShell org-wide app settings Microsoft apps disable Queues app Set-CsTeamsAppSettings; read manage-queues-app and search excerpts for manage-apps and Set-CsTeamsSettingsCustomApp. The returned cmdlet controls custom apps, not Microsoft apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[3]; Governance controls: fourth row; rationale: risk",
+      "type": "absence",
+      "claim": "No separate admin UI or API switch for the queue-call Recap tab is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Queues app\" \"recap\" \"default\" \"enable\" \"disable\" and \"Queues app\" \"Recap tab\" \"admin\" \"setting\" \"PowerShell\"; read Queues app and intelligent recap pages. Returned meeting recap controls do not cover call queues.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[0].note; Governance controls: first row and prose",
+      "type": "absence",
+      "claim": "Learn does not state that the automatic recording template governs the Recap tab itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Queues app\" \"Recap\" \"SharePoint\" \"recording\" and \"call queue\" \"recap\" \"transcription\" \"Copilot\" \"policy\"; read automatic recording setup and recording planning. They describe recording, transcription and recording access, not a Recap-tab control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "It is not documented whether recaps inherit the automatic recording template's recording-access setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Queues app\" \"Recap\" \"access\" \"permissions\" and \"Queues app\" \"Recap\" \"SharePoint\" \"recording\"; read Queues app, automatic recording setup and recording planning. They specify recording/transcript permissions, not recap permission inheritance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Security & identity; Scope: Users",
+      "type": "absence",
+      "claim": "The desktop/Mac roadmap item and the reviewed Learn pages do not specify which roles see queue-call recaps.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Queues app\" \"Recap\" \"access\" \"permissions\"; read roadmap 569017, Queues app, intelligent recap and automatic recording setup. The mobile record names representatives and supervisors, but does not establish the desktop/Mac audience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance controls: closing paragraph",
+      "type": "applicability",
+      "claim": "Teams calling policies control Copilot in one-to-one and group calls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-calling-transcription",
+      "quote": "Teams calling policies control Copilot in one-to-one and group calls. Teams meeting policies control Copilot in scheduled meetings and Meet now.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls: closing paragraph",
+      "type": "absence",
+      "claim": "The reviewed calling-policy pages do not state that their Copilot settings govern queue-call recap.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"call queue\" \"recap\" \"transcription\" \"Copilot\" \"policy\"; read copilot-teams-calling-transcription and call-recording-transcription-captions. Copilot is described for 1:1/PSTN and group calls, without specifying queue-call recap applicability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls: paragraph after table",
+      "type": "role",
+      "claim": "Creating an automatic recording template requires a Teams administrator who is already a SharePoint site administrator for the template's site.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "The Teams administrator creating the automatic recording template becomes the SharePoint site admin of the template's associated site.",
+      "severity": "blocker",
+      "fix": "Replace 'Creating the template needs a Teams administrator who is also a SharePoint site administrator for the template's site (Learn).' with 'The Teams administrator who creates the automatic recording template becomes the SharePoint site administrator of its associated site. Assigning the template to a call queue or managing its authorized users requires the Teams administrator to also be a SharePoint site administrator for that site (Learn).' Source: https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic."
+    },
+    {
+      "n": 47,
+      "where": "Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "A Teams administrator assigning an automatic recording template or managing its authorized users needs SharePoint site administrator access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "To assign an automatic recording template to a call queue or manage its authorized users list, the Teams administrator must also be a SharePoint site administrator for the site used by the template.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "What's changing: release notes paragraph; Open questions",
+      "type": "date",
+      "claim": "The related Queues app Copilot Chat entry is dated October 27, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "## October 27, 2026\n### Teams\n1. Use Copilot Chat after a call in Queues app [Windows, Mac]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "What's changing: release notes paragraph",
+      "type": "behaviour",
+      "claim": "The release notes direct users to a recorded call in unified call history and to the Copilot Chat sidecar in its Recap tab.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Open the Queues app and select a recorded call from unified call history. Select the Recap tab and launch the Copilot Chat sidecar.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "What's changing: release notes paragraph",
+      "type": "behaviour",
+      "claim": "Users can ask the related Copilot Chat sidecar to summarize the recorded call.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Ask Copilot to summarize the call or answer questions about specific details discussed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "What's changing: release notes paragraph",
+      "type": "behaviour",
+      "claim": "Users can ask the related Copilot Chat sidecar questions about details discussed on the call.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Ask Copilot to summarize the call or answer questions about specific details discussed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "What's changing: release notes paragraph; Open questions",
+      "type": "absence",
+      "claim": "The sources do not establish that the release-notes Copilot Chat capability is the same capability as this roadmap item.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"call queue\" \"intelligent recap\" \"569017\" and release-notes \"October 27, 2026\" \"Queues\"; read roadmap 569017 and the returned release-notes entry. The release notes identify roadmap 568933, without equating it to 569017.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "The reviewed sources do not say the new recap changes existing recording or access settings.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Queues app\" \"Recap\" \"access\" \"permissions\" and \"Queues app\" \"Recap\" \"SharePoint\" \"recording\"; read roadmap 569017, Queues app, automatic recording setup and recording planning. No change to existing settings is specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes recap content to read and does not describe an action the feature executes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "AI-generated summary notes, key discussion points, and follow-up actions. Navigate to the call record in the Queues app and select the Recap tab to access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "What's changing: Learn scope paragraph; Cost and licensing",
+      "type": "absence",
+      "claim": "The intelligent recap admin page lists PSTN, 1:1 and group peer-to-peer calls but has no call-queue recap section.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Queues\" \"Recap\" \"license\" \"intelligent\" and \"call queue\" \"intelligent recap\" \"569017\"; read intelligent-recap-calls-meetings in full. Its supported calls are PSTN, 1:1 and group peer-to-peer; it contains no call-queue recap section.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "rationale: impact; Risk assessment: Security & identity; Scope: Users",
+      "type": "consistency",
+      "claim": "The impact rationale asserts that agents and supervisors see the new Recap tab and other users are unaffected, while the body says the recap audience is not documented.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "rationale: 'Call queue agents and supervisors who open recorded calls in the Queues app are the people who see a new Recap tab; other users are not affected.' Body: 'Which roles see recaps is not documented.'",
+      "severity": "blocker",
+      "fix": "Replace the impact rationale with 'Medium. The change concerns recorded call queue calls viewed in the Queues app; Microsoft has not documented which roles can see a recap.' Keep the medium impact judgement and the existing audience caveat in the body."
+    },
+    {
+      "n": 57,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist asks readers to review agents' recording access and SharePoint site administrator membership, but neither setting has a corresponding controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'which recordings agents can access' and 'administrators of the SharePoint site the template uses'. Table: recording/transcription, user licenses, app availability and a separate Recap switch.",
+      "severity": "minor",
+      "fix": "Remove ', and which recordings agents can access' from the recording-template checklist bullet and remove the separate SharePoint site administrator checklist bullet. Keep the verified recording-access explanation and the corrected administrator requirement in the prose; do not add control rows."
+    },
+    {
+      "n": 58,
+      "where": "Governance controls: paragraph after table",
+      "type": "record",
+      "claim": "The roadmap names queue calls being recorded and transcribed as the condition for a recap.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"call queue\" \"recap\" \"transcription\" \"Copilot\" \"policy\"; read the complete roadmap description, intelligent recap and automatic recording setup. The roadmap says recorded call queue calls, without specifying transcription as a recap prerequisite.",
+      "severity": "blocker",
+      "fix": "Replace 'The automatic recording template controls whether queue calls are recorded and transcribed, which the roadmap names as the condition for a recap; Learn does not say the template governs the Recap tab itself.' with 'The automatic recording template controls whether queue calls are recorded and transcribed. The roadmap says recaps are for recorded call queue calls; it does not specify transcription as a prerequisite. Learn does not say the template governs the Recap tab itself.'"
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T07:59:02.152Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-queues-app",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/aa-cq-reference-prerequisites-licensing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/copilot-teams-calling-transcription",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=569017",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether call queue calls are recorded and transcribed",
+        "docs": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+        "reachable": true,
+        "segments": [
+          "Voice",
+          "Templates and resources",
+          "Templates",
+          "Automatic Recording",
+          "Add",
+          "Call recording"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether call queue calls are recorded and transcribed",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate",
+        "reachable": true,
+        "token": "New-CsAutoRecordingTemplate",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users hold the Teams Phone and Teams Premium licences the Queues app requires",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "reachable": true,
+        "segments": [
+          "Users",
+          "Active users",
+          "Licenses and Apps",
+          "Licenses"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which users hold the Teams Phone and Teams Premium licences the Queues app requires",
+        "docs": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "reachable": true,
+        "token": "Set-MgUserLicense",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether the Queues app is available in the organisation",
+        "docs": "https://learn.microsoft.com/microsoftteams/manage-queues-app",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Actions",
+          "Org-wide app settings",
+          "Microsoft apps"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
