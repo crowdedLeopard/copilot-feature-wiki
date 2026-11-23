@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "admin-opt-in"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published: the Learn pages on explicit recording consent name no licence or meter for it, and the roadmap item names none."
+  model: "included"
+  notes: "A consent option inside licensed Microsoft Teams: except for joining meetings anonymously, each user in the organisation must have a Teams license (Manage Teams licenses). No licence or meter specific to this consent extension is published as of November 2026."
 audiences: ["m365-admin","compliance","change-adoption"]
 tags: ["teams","meeting-policy","meeting-transcripts","recording-consent","pstn","gcc-high","dod"]
 sources:
@@ -33,6 +33,9 @@ sources:
     kind: "learn"
   - title: "Configure call recording, transcription, and captions in Teams"
     url: "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions"
+    kind: "learn"
+  - title: "Manage Teams licenses"
+    url: "https://learn.microsoft.com/microsoftteams/user-access"
     kind: "learn"
   - title: "Microsoft 365 Roadmap item 567304"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=567304"
@@ -50,7 +53,7 @@ controls:
       kind: "powershell"
       call: "Set-CsTeamsMeetingPolicy -Identity <policy name> -ExplicitRecordingConsent Enabled"
       docs: "https://learn.microsoft.com/microsoftteams/meeting-recording"
-    note: "Default is Off (Disabled) on Learn. Applies to meetings created by organisers with the assigned policy; the same parameter covers Audio Conferencing."
+    note: "Default is Off (Disabled) on Learn. The participant agreement page documents Teams admin center management; the Audio Conferencing page says PowerShell must be used for Audio Conferencing consent."
   - governs: "Whether users can record meetings (existing control; does not ask for consent)"
     scope: "user"
     ui:
@@ -71,19 +74,23 @@ changes:
     note: "New briefing: PSTN recording and transcription consent in GCC High and DoD, with the meeting policy setting Learn documents as Off by default."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 46 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after verification: removed the claim of an explicit choice from every participant, qualified attendance-report data, fixed the 1:1 PSTN wording, set licensing to included in Teams, and dropped the unmatched monitoring step."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 53 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 46
-  confirmed: 44
+  claims: 53
+  confirmed: 53
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "605762ca0134ea66e24b83b4bd57b6de"
+  contradicted: 0
+  attempts: 0
+  hash: "f20fd8523d4ec4356052ce09d047a57a"
 ---
 
 ## What's changing
@@ -98,7 +105,7 @@ The roadmap record gives the status as Launched, the target as August CY2026 and
 
 ## Why it matters
 
-This closes a gap for compliance teams in GCC High and DoD: Teams client users can already be asked to consent, and PSTN dial-in participants can now be asked as well. Recordings and transcripts of those meetings can then carry an explicit choice from every participant, and Learn says the consent choice is included in the attendance report and in the Purview audit logs.
+This closes a gap for compliance teams in GCC High and DoD: Teams client users can already be asked to consent, and PSTN dial-in participants can now be asked as well. PSTN dial-in participants can provide explicit consent before speaking. Learn says the consent choice for each participant is included in the attendance report, and that admins can see consent data in the Purview audit logs. When the attendance report is disabled or participants are excluded, organisers and co-organisers do not see that consent data; admins can still see it in audit logs.
 
 If nobody acts, Learn's documented default is that participants are not asked and are included in recordings and transcripts. Declining has a cost for the caller: they stay muted. Plan the user communication the roadmap item recommends before you turn the policy on for any group, especially for people who join by phone.
 
@@ -106,10 +113,10 @@ If nobody acts, Learn's documented default is that participants are not asked an
 
 **Data exposure**
 - Where the policy is Off, Learn says participants are not asked for consent and are included in recordings and transcripts. Turning on **Require participant agreement for recording and transcription** is the control that changes this.
-- Consent choices are recorded: Learn says they appear in the attendance report and that an admin can see them in the Purview audit logs.
+- Consent choices are recorded: Learn says they appear in the attendance report and that an admin can see them in the Purview audit logs. When the attendance report is disabled or participants are excluded, organisers and co-organisers do not see that consent data; admins can still see it in audit logs.
 
 **Security & identity**
-- No change to authentication or access is described. Learn lists "PSTN endpoints in 1:1 calls" as auto consented in meetings, so one-to-one calls follow the Calling policy instead of this setting.
+- No change to authentication or access is described. The participant agreement page lists PSTN endpoints in 1:1 calls as auto-consented, while the call recording page documents explicit consent for Teams 1:1 VoIP and PSTN calls under the Calling policy.
 
 **Autonomy & actions**
 - No change: the feature prompts a person and does not act on its own. Learn says a participant who declines is muted (view-only experience in the Teams client), and cannot start recording or transcription in meetings that require consent.
@@ -120,7 +127,7 @@ If nobody acts, Learn's documented default is that participants are not asked an
 
 ## Cost and licensing
 
-No licence, meter or charge for explicit recording consent is stated on the Learn pages read: the participant agreement and Audio Conferencing consent pages list no licence, and the roadmap item names none. A licence statement for this feature is therefore not yet published, and the briefing makes no claim that none is needed.
+This is a consent option inside licensed Microsoft Teams. Except for joining meetings anonymously, organisational users need a Teams license ([Manage Teams licenses](https://learn.microsoft.com/microsoftteams/user-access)). No licence or meter specific to this consent extension was found as of November 2026: the participant agreement and Audio Conferencing consent pages list none, and the roadmap item names none.
 
 The cost visible today is indirect: admin time to set the policy and assign it, and communication to dial-in users about pressing **1** to consent.
 
@@ -147,7 +154,6 @@ The cost visible today is indirect: admin time to set the policy and assign it, 
 - Confirm in your own tenant that the prompt behaves as the roadmap item describes, since the Learn pages read do not mention GCC High or DoD.
 
 ### After rollout
-- Review consent data in the attendance report and in the Purview Teams meeting audit logs.
 - Collect support feedback from callers who stayed muted, and update your user guidance.
 
 ## Governance controls
@@ -157,7 +163,7 @@ The cost visible today is indirect: admin time to set the policy and assign it, 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether meetings require participants, including PSTN dial-in callers, to consent to recording and transcription</strong><br><small>User</small><br><small class="controls__note">Default is Off (Disabled) on Learn. Applies to meetings created by organisers with the assigned policy; the same parameter covers Audio Conferencing.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Recording &amp; Transcription › Require participant agreement for recording and transcription <a href="https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -ExplicitRecordingConsent Enabled</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-recording" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether meetings require participants, including PSTN dial-in callers, to consent to recording and transcription</strong><br><small>User</small><br><small class="controls__note">Default is Off (Disabled) on Learn. The participant agreement page documents Teams admin center management; the Audio Conferencing page says PowerShell must be used for Audio Conferencing consent.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Recording &amp; Transcription › Require participant agreement for recording and transcription <a href="https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -ExplicitRecordingConsent Enabled</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-recording" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether users can record meetings (existing control; does not ask for consent)</strong><br><small>User</small><br><small class="controls__note">Allows or prevents recording. It does not prompt participants for consent.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Meeting recording <a href="https://learn.microsoft.com/microsoftteams/meeting-recording" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity Global -AllowCloudRecording $true</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-recording" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -170,22 +176,10 @@ The recording row is today's existing control and is not specific to consent: tu
 
 - Does the consent prompt for PSTN participants in GCC High and DoD depend on the **Require participant agreement for recording and transcription** policy, which Learn documents as Off by default, or does it apply on arrival as the roadmap description reads?
 - Does the Learn documentation for explicit consent, which does not mention GCC High or DoD, apply unchanged in those clouds?
-- Is any licence required for the feature? None is published at the time of writing (November 2026).
+- Is any licence or meter specific to this consent extension required? None is published at the time of writing (November 2026).
 
 <!-- rationale
 risk: Low. Learn documents the consent policy as Off by default, so recording behaviour stays as it is until an admin turns it on; what remains is PSTN callers being included in recordings without being asked.
-cost: Low. The cost shown is admin time and user communication. The Learn pages on explicit consent name no licence or meter, and a licence statement for this feature is not yet published.
+cost: Low. The cost shown is admin time and user communication. This is a consent option inside licensed Teams, and no licence or meter specific to this consent extension is published at the time of writing (November 2026).
 impact: Low. Admins and PSTN dial-in participants in meetings that are recorded or transcribed notice it, and only where the policy is on. Other participants already use the Teams client consent prompt.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters / behaviour: Recordings and transcripts of these meetings can carry an explicit choice from every participant. | Found: The following user types are auto consented for recording and transcription without any participant interaction. They get a consent notification, and their consent data is logged as 'not applicable' or 'auto consent': | Fix: Replace 'Recordings and transcripts of those meetings can then carry an explicit choice from every participant' with 'PSTN dial-in participants can provide explicit consent before speaking.' The cited participant agreement page documents auto-consented participants, so do not promise an explicit choice from everyone. | Source: https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table; Governance guidance: At rollout / admin-path: Teams admin center > Meetings > Meeting policies > policy > Recording & Transcription > Require participant agreement for recording and transcription manages consent, including Audio Conferencing. | Found: Under Meetings, select Meeting Policies. ... Within your chosen policy, navigate to the Recording & Transcription section. Toggle the Require participant agreement for recording and transcription setting On or Off. | Fix: Keep the documented path, but add to controls[0].note: 'The participant agreement page documents Teams admin center management; the Audio Conferencing page says PowerShell must be used for Audio Conferencing consent.' Both pages are already cited: https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription and https://learn.microsoft.com/microsoftteams/conferencing-recording-consent. | Source: https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription
-- [supported, minor] Why it matters; Risk assessment: Data exposure; Governance guidance: After rollout; Governance controls / behaviour: Consent choices appear in the attendance report. | Found: The consent choice for each participant is included in the attendance report. ... When the attendance report is disabled or participants aren't in the attendance report, organizers and co-organizers don't see consent data. | Fix: Qualify the first attendance-report statement with: 'When the attendance report is disabled or participants are excluded, organizers and co-organizers do not see that consent data; admins can still see it in audit logs.' Source: https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription. | Source: https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription
-- [supported, minor] Risk assessment: Security & identity / behaviour: The participant agreement page lists PSTN endpoints in 1:1 calls as auto-consented endpoints. | Found: Auto consent endpoints and platforms The following user types are auto consented for recording and transcription without any participant interaction. ... PSTN endpoints in 1:1 calls | Fix: Replace the security bullet's second sentence with: 'The participant agreement page lists PSTN endpoints in 1:1 calls as auto-consented, while the call recording page documents explicit consent for Teams 1:1 VoIP and PSTN calls under the Calling policy.' Both pages are already cited; remove 'in meetings' and the inferred 'so'. | Source: https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription
-- [supported, minor] front matter: licensing.model; Cost and licensing; Open questions; rationale: cost / licensing: Licensing is unknown because no licence statement specific to this consent feature is published. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to 'included' under the standard's rule for an option inside a licensed product. State: 'This is a consent option inside licensed Microsoft Teams. Except for joining meetings anonymously, organizational users need a Teams license. No licence or meter specific to this consent extension was found as of November 2026.' Cite https://learn.microsoft.com/en-us/microsoftteams/user-access and use that narrower gap in Cost and licensing, Open questions and the cost rationale; do not imply all product licensing is unpublished. | Source: https://learn.microsoft.com/en-us/microsoftteams/user-access
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist tells readers to review attendance-report and Purview audit consent data, but the controls table has no monitoring row. | Found: After rollout: 'Review consent data in the attendance report and in the Purview Teams meeting audit logs.' Controls table: only 'Whether meetings require participants ... to consent' and 'Whether users can record meetings'. | Fix: The 'Review consent data in the attendance report and in the Purview Teams meeting audit logs' checklist step has no corresponding controls row. Remove that checklist bullet and retain the already documented monitoring explanation in the prose; do not add a control row during correction.
 -->

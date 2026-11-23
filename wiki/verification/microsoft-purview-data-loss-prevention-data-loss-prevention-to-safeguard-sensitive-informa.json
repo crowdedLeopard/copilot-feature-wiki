@@ -1,0 +1,677 @@
+{
+  "slug": "microsoft-purview-data-loss-prevention-data-loss-prevention-to-safeguard-sensitive-informa",
+  "roadmapId": 565870,
+  "title": "Microsoft Purview DLP: block Copilot web search when prompts contain sensitive data (GCC, GCC High, DoD)",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "3 blocking findings (claims 13, 15, 46)"
+    ]
+  },
+  "counts": {
+    "claims": 52,
+    "confirmed": 48,
+    "unconfirmed": 0,
+    "contradicted": 4,
+    "blocker": 3,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: the briefing treats prompt-protection entitlement as unpublished, although Microsoft's Purview service description includes DLP to safeguard prompts for all Copilot and Copilot Chat users. It also incorrectly guarantees that prompts outside the selected sensitive information types reach web search, regardless of other web-search controls. The roadmap facts, documented policy route and PowerShell call are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes a real-time control preventing sensitive data use in external web search to mitigate leakage and oversharing.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This real-time control helps organizations mitigate data leakage and oversharing risks by preventing Microsoft 365 Copilot and Copilot Chat from using sensitive data for external web search.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap description names Microsoft 365 Copilot and Copilot Chat, not Cowork.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "preventing Microsoft 365 Copilot and Copilot Chat from using sensitive data for external web search",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-08-20T22:38:45.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-08-20T22:38:45\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The printed Microsoft Purview portal route reaches the Performing Web Searches rule action through the Custom policy and Copilot location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Go to Data Loss Prevention > Policies and select + Create policy. Select the Custom template, then Custom policy. On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "New-DlpComplianceRule accepts the printed Name, Policy and SIT hashtable parameters, with RestrictWebGrounding $true setting the web-grounding block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule?view=exchange-ps",
+      "quote": "The RestrictWebGrounding parameter specifies an action for the DLP rule that blocks web grounding. Valid values are: $true: Web grounding is blocked. $False: Web grounding isn't blocked. This value is the default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The web-search restriction is admin-opt-in and requires an administrator to configure and enable the rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule?view=exchange-ps",
+      "quote": "$False: Web grounding isn't blocked. This value is the default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model for this prompt-protection control is mixed.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Purview Data Loss Prevention (DLP) to safeguard prompts | Included* | Included* | Included* | Included* | Included* . *Purview DLP for prompts is available to all users of Microsoft Copilot and Copilot Chat",
+      "severity": "blocker",
+      "fix": "Set licensing.model to included. Replace the notes with: 'The Microsoft Purview service description lists DLP to safeguard prompts as included and available to all users of Microsoft Copilot and Copilot Chat, including the Microsoft 365 G3 and Office 365 G3 plan columns. A separate price or meter for Performing Web Searches is not yet published.'"
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "The Copilot service description says Purview controls require a Purview licence, available in Microsoft 365 G3/G5 or standalone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "Requires license for Microsoft Purview, available as part of Microsoft 365 G3/G5 or as a standalone.",
+      "severity": "minor",
+      "fix": "After quoting this general requirement, add: 'The more specific Microsoft Purview service description lists DLP to safeguard prompts as included and available to all users of Microsoft Copilot and Copilot Chat.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description ."
+    },
+    {
+      "n": 15,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "Entitlement for the web-search prompt safeguard is unpublished because Microsoft does not say which DLP licensing row covers it.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "DLP for Microsoft Copilot and Copilot Chat as a location allows organizations to identify and restrict the use of sensitive content in Copilot grounding and Copilot interactions based on sensitive information types and sensitivity labels.",
+      "severity": "blocker",
+      "fix": "Replace the entitlement gap and the question asking which licence row applies with: 'The Microsoft Purview service description lists DLP to safeguard prompts as included and available to all users of Microsoft Copilot and Copilot Chat.' Keep only the narrower unpublished separate price and meter statements."
+    },
+    {
+      "n": 16,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A separate price or rate specifically for Performing Web Searches is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Copilot Performing Web Searches DLP licensing price meter entitlement; read Copilot DLP Licensing and Purview service description DLP for Microsoft Copilot. No separate action price or rate stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A meter specifically for Performing Web Searches is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Copilot Performing Web Searches DLP licensing price meter entitlement; read Copilot DLP Licensing and searched the Purview service description for meter and web search. No action-specific meter stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Copilot DLP feature page's Licensing section links to Enterprise Plans and Service Descriptions without itself naming an entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "For information on licensing, see Microsoft 365 Enterprise Plans; Microsoft 365 Service Descriptions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Purview service description lists restricting files and emails and safeguarding prompts as separate licensing rows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Purview Data Loss Prevention (DLP) to restrict Copilot from processing files and emails; *Purview Data Loss Prevention (DLP) to safeguard prompts",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "title; summary; What's changing; Risk assessment; Scope; rationale: impact",
+      "type": "behaviour",
+      "claim": "Configured SIT matches block external web search for that prompt and prevent matching prompt text being sent to external search providers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "This prevents prompt text that matches the configured SITs from being sent to external search providers for that request.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "After blocking web search, the experience continues to generate responses using permitted internal Microsoft 365 data sources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Instead, they continue to generate responses using permitted internal Microsoft 365 data sources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Built-in sensitive information types and custom organisation-defined types can be chosen.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "such as credit card numbers, passport numbers, Social Security numbers, or custom SITs defined by your organization",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Learn includes Cowork alongside Copilot and Copilot Chat for the web-search restriction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Restrict Microsoft 365 Copilot, Copilot Chat, and Cowork from using external web search when prompts contain sensitive data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Risk assessment; Scope",
+      "type": "behaviour",
+      "claim": "The prompt evaluation checks only text typed into the prompt.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "DLP only checks the text you type into the prompt itself.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "DLP does not scan contents of files uploaded directly into prompts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "DLP can't scan the contents of files that you upload directly into prompts, so evaluation of the uploaded file for sensitive data doesn't occur.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "applicability",
+      "claim": "The documented web-search action uses Content contains > Sensitive information types, not the sensitivity-label condition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Add a rule with the Content contains > Sensitive information types condition and choose the SITs you want to detect. In the same rule, set the action to Prevent Copilot from processing content > Performing Web Searches.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Sensitivity labels use a different action to prevent processing labelled files and emails.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "You can create a DLP policy to prevent these Copilot experiences from using files and emails that have sensitivity labels when generating responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters; Scope; Governance guidance; rationale: risk",
+      "type": "default",
+      "claim": "The Copilot service description says web grounding is not enabled by default for government clouds.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "Web grounding isn't enabled by default for government clouds.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Scope: Clouds and platform",
+      "type": "availability",
+      "claim": "The Copilot service description lists Purview controls for Copilot and Copilot Chat as available in GCC, GCCH and DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "Feature | Commercial/Worldwide | GCC | GCCH | DoD; Microsoft Purview controls for Microsoft Copilot & Copilot chat | Yes | Yes | Yes | Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Microsoft Entra AI Admin can create or edit DLP policies for this location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Accounts with one of the following roles or role groups can create or edit a DLP policy for the Microsoft Copilot, Copilot Chat, and Copilot Cowork location: Microsoft Entra AI Admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Scope: Roles; controls[0].note; Risk assessment; Governance guidance",
+      "type": "role",
+      "claim": "Purview Data Security AI Admin can create or edit DLP policies for this location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Purview Data Security AI Admin - Role for editing Data Loss Prevention policies related to Copilot and viewing AI content in Data Security Posture Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Purview Compliance Administrator can create or edit DLP policies for this location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Accounts with one of the following roles or role groups can create or edit a DLP policy for the Microsoft Copilot, Copilot Chat, and Copilot Cowork location: ... Purview Compliance Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Purview Compliance Data Administrator can create or edit DLP policies for this location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Accounts with one of the following roles or role groups can create or edit a DLP policy for the Microsoft Copilot, Copilot Chat, and Copilot Cowork location: ... Purview Compliance Data Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Purview Information Protection can create or edit DLP policies for this location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Accounts with one of the following roles or role groups can create or edit a DLP policy for the Microsoft Copilot, Copilot Chat, and Copilot Cowork location: ... Purview Information Protection",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Purview Information Protection Admin can create or edit DLP policies for this location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Accounts with one of the following roles or role groups can create or edit a DLP policy for the Microsoft Copilot, Copilot Chat, and Copilot Cowork location: ... Purview Information Protection Admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Purview Security Administrator can create or edit DLP policies for this location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Accounts with one of the following roles or role groups can create or edit a DLP policy for the Microsoft Copilot, Copilot Chat, and Copilot Cowork location: ... Purview Security Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Scope: Roles; Risk assessment",
+      "type": "role",
+      "claim": "Microsoft Entra Global Admin can create or edit DLP policies for this location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Accounts with one of the following roles or role groups can create or edit a DLP policy for the Microsoft Copilot, Copilot Chat, and Copilot Cowork location: ... Microsoft Entra Global Admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Microsoft recommends choosing roles with the fewest permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Microsoft recommends that you use roles with the fewest permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "SIT and sensitivity-label conditions cannot coexist in one rule but can be in separate rules in the same policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "You can't use both content contains sensitive info types and content contains sensitivity labels conditions in the same rule. You can create a rule for each condition in the same policy, but not in the same rule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope: Prerequisites and limits",
+      "type": "availability",
+      "claim": "The Copilot location is available only in the Custom policy template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "The Microsoft Copilot, Copilot Chat, and Copilot Cowork policy location is only available in the Custom policy template.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment; Governance controls",
+      "type": "behaviour",
+      "claim": "Selecting the Copilot location disables all other locations in that policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "When you select the Microsoft Copilot, Copilot Chat, and Copilot Cowork policy location, all other locations for that policy are disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].note; Risk assessment; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Policy updates can take up to four hours to reach the Copilot experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Updates to a DLP policy can take up to four hours to reflect in the Microsoft Copilot, Copilot Chat, and Copilot Cowork experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance guidance: At rollout",
+      "type": "availability",
+      "claim": "Policy simulation mode is available for Microsoft 365 Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Policy simulation mode is available for Microsoft 365 Copilot and Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance guidance: After rollout",
+      "type": "availability",
+      "claim": "DLP alerts are supported for this location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "DLP alerts and DLP notifications are supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The PowerShell cmdlet is available only in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule?view=exchange-ps",
+      "quote": "This cmdlet is available only in Security & Compliance PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "A prompt containing data not described by the chosen SITs still reaches web search.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/plan/manage-public-web-access#controls-available-to-manage-web-search",
+      "quote": "If the IT admin disables web search, the Web content toggle isn't available to the user and web search is disabled. If a user turns off the Web content toggle, web content isn't included in Copilot responses.",
+      "severity": "blocker",
+      "fix": "Replace 'so a prompt containing data your SITs do not describe still reaches web search' with 'so data outside the configured SITs is not covered by this rule'."
+    },
+    {
+      "n": 47,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The feature page describes the DLP rule action, not a separate tenant switch specifically enabling this SIT-based action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Copilot DLP web search default enable tenant switch sensitive information user notification GCC. Read the feature page and web-search control excerpts; Allow web search in Copilot governs web search generally, not enabling this SIT rule action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Open questions: user message",
+      "type": "absence",
+      "claim": "The feature page does not describe the user message specifically when Performing Web Searches is skipped.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot web search DLP notification. Read feature page, Block sensitive information types in web search and Customize the link in Copilot policy tips. General blocked-interaction messaging is documented, but no message specifically for this action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "What's changing; Open questions: cloud availability",
+      "type": "absence",
+      "claim": "The Copilot DLP feature page does not give cloud-specific availability for the web-search action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Copilot DLP web search default enable tenant switch sensitive information user notification GCC. Read the full feature page, including Availability and Admin units; no cloud-specific availability stated for Performing Web Searches.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The call creates a rule in the existing policy identified by the Policy parameter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule?view=exchange-ps",
+      "quote": "The Policy parameter specifies the existing DLP policy that contains the new DLP rule. You can use any value that uniquely identifies the policy. For example: Name",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist asks administrators to check web-search availability, use simulation mode and review DLP alerts, but the table contains only the DLP web-search rule action.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm whether web search is turned on ... Run the policy in simulation mode first ... Review DLP alerts ... One control governs this feature: the DLP rule action.",
+      "severity": "minor",
+      "fix": "The checklist's web-search availability check, simulation-mode instruction and DLP-alert review have no corresponding controls-table rows. To retain the existing table without adding rows, remove those three checklist bullets."
+    },
+    {
+      "n": 52,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The RestrictWebGrounding parameter description does not mention the Copilot location or SITs.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: RestrictWebGrounding Copilot. Read the New-DlpComplianceRule RestrictWebGrounding entry: it describes blocking web grounding, $true and $False, but does not name a policy location or sensitive information types.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T06:06:28.635Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=565870",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule?view=exchange-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether Copilot may use external web search when a prompt contains chosen sensitive information types",
+        "docs": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+        "reachable": true,
+        "segments": [
+          "Data Loss Prevention",
+          "Policies",
+          "+ Create policy",
+          "Custom",
+          "Custom policy",
+          "Locations",
+          "Microsoft Copilot, Copilot Chat, and Copilot Cowork",
+          "Prevent Copilot from processing content",
+          "Performing Web Searches"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether Copilot may use external web search when a prompt contains chosen sensitive information types",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule?view=exchange-ps",
+        "reachable": true,
+        "token": "New-DlpComplianceRule",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

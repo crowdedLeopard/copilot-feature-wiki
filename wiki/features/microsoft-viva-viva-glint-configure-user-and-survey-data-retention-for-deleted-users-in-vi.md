@@ -83,19 +83,23 @@ changes:
     note: "Corrected scope to the Viva Glint instance, the Data retention policy description and the soft-delete update qualification; removed the Activity Audit Log checklist step."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 66 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-23"
+    note: "Corrected the first sentence of Why it matters to name the documented deletion routes (manual deletion in Glint and Microsoft Entra delete signals) instead of HR-system deletions."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 66 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 66
-  confirmed: 65
-  unconfirmed: 1
+  confirmed: 66
+  unconfirmed: 0
   contradicted: 0
-  attempts: 2
-  hash: "da3414dcceb4daf883a29479816d90c1"
+  attempts: 0
+  hash: "f89d55b1839b478f496bf3349162f2fa"
 ---
 
 ## What's changing
@@ -108,7 +112,7 @@ Learn also describes the Entra side. Its pages say processing of delete signals 
 
 ## Why it matters
 
-This setting decides whether a deletion in your HR or identity systems reaches survey data in Glint. With On, previous survey reports stay consistent, which is the reason the roadmap item gives. With Off, a deletion removes that person's responses and identifiers, and Learn says permanently deleted data can't be restored.
+This setting decides what happens to survey data when a user is deleted manually in Glint or through a Microsoft Entra delete signal. With On, previous survey reports stay consistent, which is the reason the roadmap item gives. With Off, a deletion removes that person's responses and identifiers, and Learn says permanently deleted data can't be restored.
 
 Because the control is documented as platform-wide, one value serves every survey program. Learn also says that anyone who had **Delete survey data for deleted users** set to Off has the new control set to On, and the reverse. Confirm today that the value matches your data protection policy, because Learn says Entra delete signals, including historical ones, are processed under whatever value is set.
 
@@ -184,10 +188,4 @@ Microsoft Learn documents no API for these settings at the time of writing (Nove
 risk: Medium. The default retains data, but setting it to Off erases survey responses and identifiers after a 30-day soft-delete, and Learn says permanently deleted data can't be restored.
 cost: Low. The only cost the pages show is admin time to review the setting; the Viva Glint licensing page names no separate charge for this control.
 impact: Low. Viva Glint admins configure it; survey takers and report readers notice only if the setting is Off and a deleted user's data disappears from reports.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Why it matters: first sentence / applicability: This setting decides whether a deletion in an HR system reaches survey data in Glint. | Found: Searched: Viva Glint HRIS employee data upload deleted status deleting users HR system data retention. Read manage-general-settings, delete-user-data, delete-user-data-faq and raw-data-request-response; they establish Glint/Entra deletion, not propagation of HR-system deletions. | Fix: Replace the first sentence of Why it matters with: 'This setting decides what happens to survey data when a user is deleted manually in Glint or through a Microsoft Entra delete signal.' These routes are documented at https://learn.microsoft.com/viva/glint/setup/raw-data-request-response and in the roadmap record.
 -->

@@ -4,7 +4,7 @@ slug: "microsoft-purview-compliance-portal-data-lifecycle-management-apply-a-ret
 roadmapId: 486828
 topic: "governance"
 products: ["Microsoft Purview"]
-summary: "The roadmap says compliance admins can create a retention policy for Planner tasks in plans tied to a Microsoft 365 Group. Nothing starts until an admin creates one, and Learn's Planner page still says retention isn't supported."
+summary: "The roadmap says compliance admins can create a retention policy for Planner tasks in plans tied to a Microsoft 365 Group. Microsoft has not stated what happens on arrival, and Learn's Planner page still says retention isn't supported."
 status: "launched"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -14,7 +14,7 @@ previewDate: null
 risk: "low"
 cost: "low"
 impact: "low"
-defaultState: "admin-opt-in"
+defaultState: "unknown"
 action: "review"
 licensing:
   model: "included"
@@ -69,19 +69,23 @@ changes:
     note: "New briefing: the roadmap says Planner retention policies launched, while Learn's Planner page still says retention policy isn't currently supported."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 58 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Correction: default state set to unknown (arrival default not stated), the content-access bullet narrowed to what Learn says, and the roadmap's Microsoft 365 Group wording corrected to an example, not an exclusive scope."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 55
-  unconfirmed: 2
+  claims: 63
+  confirmed: 62
+  unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "53ea1f987b8553092826b7278e36264c"
+  attempts: 0
+  hash: "d1a212d5ae5ec3870c3c6fc34167d834"
 ---
 
 ## What's changing
@@ -98,14 +102,14 @@ Because no Learn page describes Planner retention itself, how an admin selects P
 
 A Planner plan lives in a container. Where the container is a Microsoft 365 Group, group members see the plan. Planner's page says the data of a basic plan is stored in Azure, with file attachments in SharePoint and conversations in Exchange. A retention obligation that mentions tasks therefore touches more than one store, so confirm what a Planner policy actually reaches before you rely on it.
 
-If nobody acts, the roadmap describes no change to existing plans: it says admins can create a policy, not that one applies by default. Treat this as a capability to evaluate. Do not tell auditors that Planner is covered by retention until the Planner and Purview pages agree and a test in your tenant confirms it.
+Microsoft has not stated what happens on arrival; no source says existing plans will change. Do not tell auditors that Planner is covered by retention until the Planner and Purview pages agree and a test in your tenant confirms it.
 
 ## Risk assessment
 
 **Data exposure**
 
 - Learn describes retention policies as able to retain only, delete only, or retain then delete, and states "Delete-only: Permanently delete content after a specified period of time." Whether the Planner policy offers every option is not documented, so a delete setting scoped to group plans should be piloted on a small set of plans first.
-- Setting up the policy does not widen who can read plan content: Learn says the person configuring retention policies "doesn't require access to the content".
+- Learn says the person configuring retention policies doesn't require access to the content.
 
 **Security & identity**
 
@@ -117,8 +121,8 @@ If nobody acts, the roadmap describes no change to existing plans: it says admin
 
 **Change & support**
 
-- Two Learn pages disagree, so the help desk may be told retention for Planner is unsupported while compliance staff are told it launched. Agree one internal position and review it when Microsoft updates either page.
-- The roadmap limits scope to plans associated with a Microsoft 365 Group. Planner's Purview page lists personal (roster) plans, plans in Loop components, premium plans and shared and private channel plans as unsupported for the Purview capabilities it describes (eDiscovery). Whether the same list applies to retention is not documented.
+- The roadmap and Planner's compliance page disagree, so the help desk may be told retention for Planner is unsupported while compliance staff are told it launched. Agree one internal position and review it when Microsoft updates either page.
+- The roadmap names tasks for plans associated with a Microsoft 365 Group as an example; it does not state an exclusive scope. Planner's Purview page lists personal (roster) plans, plans in Loop components, premium plans and shared and private channel plans as unsupported for the Purview capabilities it describes (eDiscovery). Whether the same list applies to retention is not documented.
 
 ## Cost and licensing
 
@@ -183,17 +187,14 @@ Today's alternative: Planner's Purview page documents eDiscovery holds on Planne
 - Which part of the roadmap item is in Preview and which is General Availability? Watch the roadmap item and Message center.
 
 <!-- rationale
-risk: Low. The roadmap describes an admin-created retention policy, so nothing is retained or deleted until a compliance admin sets one up; the exposure is a mis-scoped policy, not new behaviour that arrives on its own.
+risk: Low. The arrival default is not stated, so this rating assumes today's behaviour continues; the roadmap describes an admin-created retention policy, so the exposure is a mis-scoped policy, not new behaviour that arrives on its own.
 cost: Low. The only cost the sources show is admin time and the Purview licences that already cover retention policies; no licence or meter specific to Planner is published at the time of writing.
 impact: Low. Compliance admins configure it; plan members would notice only if a policy they never saw removes or keeps tasks.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: defaultState; summary; Why it matters; rationale: risk / default: The default is admin-opt-in: nothing is retained or deleted and existing plans do not change until an admin creates a policy. | Found: Searched: Planner retention default admin policy enabled. Read the roadmap, Planner security/privacy/compliance, create-retention-policies and get-started-with-data-lifecycle-management. They describe policy creation, not Planner's arrival default or treatment by existing policies. | Fix: Set defaultState to "unknown". Replace "Nothing starts until an admin creates one" in the summary with "Microsoft has not stated what happens on arrival". Replace the first two sentences of the second Why it matters paragraph with "Microsoft has not stated what happens on arrival; no source says existing plans will change." Replace the risk rationale's assertion that nothing is retained or deleted until setup with "The arrival default is not stated, so this rating assumes today's behaviour continues."
-- [unsupported, major] Risk assessment: Data exposure / behaviour: Setting up a retention policy does not widen who can read plan content. | Found: Searched: retention policies do not change permissions access content Planner. Read get-started-with-data-lifecycle-management, Planner compliance and planner-in-purview. Not requiring content access to configure a policy does not establish its effect on readership. | Fix: Replace the bullet with "Learn says the person configuring retention policies doesn't require access to the content." Remove the inference about whether configuring a Planner policy changes who can read the content.
-- [contradicted, blocker] Risk assessment: Change & support / record: The roadmap limits scope to plans associated with a Microsoft 365 Group. | Found: manage content located in Microsoft Planner such as tasks for plans associated with an Microsoft 365 Group. | Fix: Replace "The roadmap limits scope to plans associated with a Microsoft 365 Group" with "The roadmap names tasks for plans associated with a Microsoft 365 Group as an example; it does not state an exclusive scope."
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Change & support / behaviour: Conflicting Microsoft information can leave help-desk and compliance staff with different positions on Planner retention. | Found: Retention policy isn't currently supported. | Fix: Replace "Two Learn pages disagree" with "The roadmap and Planner's compliance page disagree". The other cited Learn page omits Planner rather than stating that Planner retention launched. | Source: https://learn.microsoft.com/planner/planner-security-privacy-compliance
+- [supported, minor] Governance controls: Today's alternative / behaviour: An eDiscovery hold has no retention period. | Found: The start and end of the preservation period isn't configurable but dependent on individual administrator actions, without an option to automatically delete content when the hold is released. | Fix: Replace 'A hold is not a retention policy and has no retention period.' with 'An eDiscovery hold is not a retention policy: its preservation period has no configurable start or end and depends on administrator actions.' The distinction is documented at https://learn.microsoft.com/purview/retention#when-to-use-retention-policies-and-retention-labels-or-ediscovery-holds. | Source: https://learn.microsoft.com/purview/retention
+- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist tells readers to assign an administrative role group, but the controls table contains only retention-policy creation. | Found: Assign the Compliance Administrator role group, or a custom role group with the Retention Management role, only to the staff who will own Planner retention. / Creating a retention policy, the route for any Planner retention (no Planner location is named on the pages read) | Fix: The Before rollout role-group assignment step has no corresponding control row. Remove that assignment bullet; retain the verified role requirements in Scope and the existing retention-policy row's note.
 -->

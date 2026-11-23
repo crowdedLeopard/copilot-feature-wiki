@@ -53,7 +53,7 @@ controls:
       kind: "powershell"
       call: "Set-SPOTenant -EnableSensitivityLabelforPDF $true"
       docs: "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files"
-    note: "Existing setting. The banner shows only if PDF support is off. Not confirmed as a prerequisite for mobile annotation."
+    note: "Existing setting. If the Protect PDFs with Auto-labeling banner is visible, select it to turn on PDF protection for files in SharePoint and OneDrive. Not confirmed as a prerequisite for mobile annotation."
   - governs: "Switch for annotating protected PDFs in the OneDrive iOS and Android apps"
     scope: "tenant"
     ui: null
@@ -68,19 +68,23 @@ changes:
     note: "First briefing: mobile annotation of encrypted, sensitivity-label protected PDFs in OneDrive for iOS and Android, Launched."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 37 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected how label permissions are described (Assign permissions now versus users assigning permissions), reworded the PDF support banner note and removed the label-permissions review step."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 41 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 37
-  confirmed: 34
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "a1c487d099ab1d2fe2f26ac6299f9264"
+  claims: 41
+  confirmed: 41
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "0941a9a004d6e83e5b9a9b1cc266d376"
 ---
 
 ## What's changing
@@ -104,7 +108,7 @@ The roadmap ties annotation to edit or annotate rights, so the usage rights in y
 - Users with edit or annotate rights can add content, including signatures and form fields, to a protected PDF on a phone. Review who holds those rights in each encrypting label.
 
 **Security & identity**
-- The label's encryption settings, including which users get which permissions, are set when the label is configured under the label's access control settings. That is the control that decides who can annotate.
+- For labels configured with Assign permissions now, administrators define users and permissions in the label's Access control settings in the Microsoft Purview portal. Labels can instead let users assign permissions when they apply the label.
 - Sensitivity labels don't support signed PDFs, per the Purview page. Confirm how a PDF signed with the new signature annotation is treated.
 
 **Autonomy & actions**
@@ -133,7 +137,6 @@ SharePoint and OneDrive support labelled PDFs, with or without encryption, when 
 ## Governance guidance
 
 ### Before rollout
-- Review which sensitivity labels apply encryption and which users hold edit rights in each, using the label's access control settings in the Microsoft Purview portal.
 - Check whether PDF support for sensitivity labels is already on in SharePoint and OneDrive (first controls row) and note the auto-labeling effect before turning it on.
 - Confirm how signed PDFs and the new signature annotation behave with your labels before telling users to rely on them.
 
@@ -152,14 +155,14 @@ SharePoint and OneDrive support labelled PDFs, with or without encryption, when 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether SharePoint and OneDrive support sensitivity labels on PDFs (existing tenant setting)</strong><br><small>Tenant</small><br><small class="controls__note">Existing setting. The banner shows only if PDF support is off. Not confirmed as a prerequisite for mobile annotation.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Sensitivity labels › Policies › Auto-labeling policies › Protect PDFs with Auto-labeling <a href="https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -EnableSensitivityLabelforPDF $true</code> <a href="https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether SharePoint and OneDrive support sensitivity labels on PDFs (existing tenant setting)</strong><br><small>Tenant</small><br><small class="controls__note">Existing setting. If the Protect PDFs with Auto-labeling banner is visible, select it to turn on PDF protection for files in SharePoint and OneDrive. Not confirmed as a prerequisite for mobile annotation.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Sensitivity labels › Policies › Auto-labeling policies › Protect PDFs with Auto-labeling <a href="https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -EnableSensitivityLabelforPDF $true</code> <a href="https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch for annotating protected PDFs in the OneDrive iOS and Android apps</strong><br><small>Tenant</small><br><small class="controls__note">The roadmap says no new admin action is required.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 No feature-specific switch for mobile annotation of protected PDFs is documented, which the second row records. The roadmap says no new admin action is required.
 
-The first row is an existing tenant setting for PDF support with sensitivity labels. The Learn page shows it as a banner in the Purview portal that appears only if PDF support is not yet on. Microsoft does not state that it is a prerequisite for mobile annotation. Who can annotate is decided by the usage rights in each label's encryption settings, configured when you create or edit a label.
+The first row is an existing tenant setting for PDF support with sensitivity labels. If the Protect PDFs with Auto-labeling banner is visible, select it to turn on PDF protection for files in SharePoint and OneDrive. Microsoft does not state that it is a prerequisite for mobile annotation. For labels configured with Assign permissions now, administrators define users and permissions in the label's Access control settings in the Microsoft Purview portal. Labels can instead let users assign permissions when they apply the label.
 
 ## Open questions
 
@@ -172,13 +175,4 @@ The first row is an existing tenant setting for PDF support with sensitivity lab
 risk: Low. The roadmap says the label's encryption and usage rights are preserved end to end, so the change stays inside existing label protections; the open point is how mobile edits interact with your label rights.
 cost: Low. The OneDrive PDF features page lists annotation and markup tools as available free of cost; the only cost shown is admin time and user communication. No licence specific to this feature is published.
 impact: Medium. Users who open label-protected PDFs in the OneDrive iOS or Android apps and hold edit rights will see annotation tools; the roadmap says it is enabled by default for eligible users.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] controls[0].note; Governance controls / behaviour: The Protect PDFs with Auto-labeling banner appears only when PDF support is off. | Found: Searched: "Protect PDFs with Auto-labeling" banner only PDF support enabled; read the PDF-support section at learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files. It says "if you see" the banner, not that its visibility depends exclusively on support being off. | Fix: Replace the banner-visibility statements in controls[0].note and Governance controls with: 'If the Protect PDFs with Auto-labeling banner is visible, select it to turn on PDF protection for files in SharePoint and OneDrive.'
-- [contradicted, blocker] Risk assessment: Security & identity; Governance guidance: Before rollout; Governance controls / applicability: Which users get which permissions in an encrypting label is decided when an administrator creates or edits the label's access control settings. | Found: Assign permissions now, so that you determine exactly which users get which permissions to content with that label. Let users assign permissions when they apply the label to content. | Fix: Replace the permissions-configuration statements with: 'For labels configured with Assign permissions now, administrators define users and permissions in the label's Access control settings in the Microsoft Purview portal. Labels can instead let users assign permissions when they apply the label.' Remove the Before rollout checklist step about reviewing label permissions, which has no controls-table row. | Source: https://learn.microsoft.com/purview/encryption-sensitivity-labels
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist asks readers to review label access-control permissions, but the controls table has no row for that control. | Found: Review which sensitivity labels apply encryption and which users hold edit rights in each, using the label's access control settings ... Table rows: tenant PDF support; switch for mobile annotation. | Fix: The Before rollout checklist step about reviewing label Access control permissions has no corresponding controls-table row. Remove that checklist step to resolve the mismatch without adding an unverified row.
 -->

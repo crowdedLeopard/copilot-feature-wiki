@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "admin-opt-in"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for Outlook for Mac. Learn's Purview service description lists licences (Microsoft 365 E5/A5/G5, among others) for advanced DLP policy tips in Outlook for Microsoft 365 and does not name Mac."
+  model: "included"
+  notes: "The Purview service description licenses DLP for Exchange Online with plans including Microsoft 365 E3 and E5. It does not separately identify the advanced policy-tip entitlement for Outlook for Mac; its advanced policy-tip entry names Outlook for Microsoft 365."
 audiences: ["compliance","security","m365-admin"]
 tags: ["dlp","purview","outlook","macos","cloud-policy","exchange"]
 sources:
@@ -49,6 +49,9 @@ sources:
   - title: "Set-DlpComplianceRule"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule"
     kind: "learn"
+  - title: "Learn about data loss prevention"
+    url: "https://learn.microsoft.com/purview/dlp-learn-about-dlp"
+    kind: "learn"
 videos: []
 related: ["outlook-purview-dlp-wait-on-send-support-for-mac","outlook-purview-data-loss-prevention-support-for-calendar-events-in-outlook-for-mac","microsoft-purview-compliance-portal-dlp-policy-tip-support-in-outlook-mobile","cloud-policy"]
 controls:
@@ -70,7 +73,7 @@ controls:
       kind: "powershell"
       call: "Set-DlpComplianceRule -Identity <rule> -NotifyAllowOverride WithJustification"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule"
-    note: "Under Policy tips, select Allow override from M365 services. Override is per rule. Path is from the oversharing walkthrough, not a Mac page. Set BlockAccess true or no override option shows."
+    note: "Path is from the oversharing walkthrough, not a Mac page. For an override option to appear, set BlockAccess to true and give BlockAccessScope an appropriate value, as Learn requires."
 confidence: "medium"
 created: "2026-11-23"
 updated: "2026-11-23"
@@ -80,19 +83,23 @@ changes:
     note: "First briefing for this item: Launched; Learn documents the policy tip UI as off by default and enabled through Cloud Policy, with override set per DLP rule."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 51 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected the override requirement to include BlockAccessScope, and restated licensing: DLP for Exchange Online plans are published, the Mac advanced policy-tip entitlement is not."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 50
+  claims: 60
+  confirmed: 60
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "e8549f3de7016ff473e629fa3413231d"
+  contradicted: 0
+  attempts: 0
+  hash: "0892ed65278f55e18bbf67d4ebd35f55"
 ---
 
 ## What's changing
@@ -109,7 +116,7 @@ The roadmap record gives the status as Launched, with a preview target of Februa
 
 This extends existing DLP rules to another client. A rule that already evaluates Exchange email can now warn a Mac sender and, where the rule allows it, let them override. Because Learn documents the tip UI as off by default, a tenant that does nothing gets no policy tip UI on Mac from this change. The decisions are when to enable it, for which Mac users, and which rules may allow override.
 
-Override needs the most attention. Learn says the override option is per rule and overrides all of the actions in that rule, so a rule that allows override on content you treat as high risk lets the sender carry on. The Mac licence position is also open, so confirm entitlement before targeting users who do not hold E5-level licences.
+Override needs the most attention. Learn says the override option is per rule and overrides all of the actions in that rule, so a rule that allows override on content you treat as high risk lets the sender carry on. The advanced policy-tip entitlement for Mac is also not yet published, so confirm it before targeting users who do not hold E5-level licences.
 
 ## Risk assessment
 
@@ -126,13 +133,13 @@ Override needs the most attention. Learn says the override option is per rule an
 
 **Change & support**
 - The Learn troubleshooting article and the platform reference disagree on Mac support, so help desk staff may find the older advice. Tell them which page your tenant follows.
-- Learn says that if NotifyAllowOverride is set, BlockAccess must be true or the tip appears without an override option. Test every rule before widening the scope.
+- Learn says that if NotifyAllowOverride is set, BlockAccess must be true and BlockAccessScope must have an appropriate value, or the tip appears without an override option. Test every rule before widening the scope.
 
 ## Cost and licensing
 
-No licence statement specific to Outlook for Mac is published. The Mac reference has a "Licensing requirements" heading with no licence listed under it, and the support matrix says sensitive information type support on Outlook Mac "Varies by version and license".
+The Purview service description licenses DLP for Exchange Online with plans including Microsoft 365 E3 and E5. It does not separately identify the advanced policy-tip entitlement for Outlook for Mac. The Mac reference has a "Licensing requirements" heading with no licence listed under it, and the support matrix says sensitive information type support on Outlook Mac "Varies by version and license".
 
-For advanced DLP policy tip support in Outlook for Microsoft 365, which adds more conditions, advanced classifiers and the oversharing dialog, the Microsoft Purview service description requires licences for each scoped user, among them Microsoft 365 E5/A5/G5. That entry names Outlook for Microsoft 365, not Mac, so treat it as a lead and not as the Mac requirement. The troubleshooting article also points to Microsoft's "Outlook license requirements for Exchange features" page for the Outlook client licences that support policy tips.
+For advanced DLP policy tip support in Outlook for Microsoft 365, which adds more conditions, advanced classifiers and the oversharing dialog, the same service description requires licences for each scoped user, among them Microsoft 365 E5/A5/G5. That entry names Outlook for Microsoft 365, not Mac, so treat it as a lead and not as the Mac requirement. The troubleshooting article also points to Microsoft's "Outlook license requirements for Exchange features" page for the Outlook client licences that support policy tips.
 
 The cost Learn supports is indirect: admin time to enable the setting, tune rules and brief users and the help desk.
 
@@ -146,14 +153,14 @@ The tip UI setting is targeted at individuals or groups through Cloud Policy. DL
 
 ### Before rollout
 - Identify the DLP rules that cover Exchange email and decide which of them may allow override. Override is set per rule in the Microsoft Purview portal (controls table, second row).
-- Confirm with Microsoft or your account team which licences your Mac users need, since Learn lists none for Mac.
+- Confirm with Microsoft or your account team whether the advanced policy-tip entitlement applies to your Mac users, since Learn does not state it for Mac.
 - Choose a pilot Microsoft Entra group of Mac users to target in Cloud Policy.
 - Brief the help desk on the differing Learn guidance on Mac support.
 
 ### At rollout
 - Create a Cloud Policy configuration scoped to the pilot group that enables "Enable Purview Data Loss Prevention (DLP) policy tips in Outlook" (controls table, first row).
 - Test on a Mac with one rule that only notifies and one that blocks with override, checking that the override option appears.
-- Check that rules allowing override have BlockAccess set to true, as Learn requires for the override option to show.
+- Check that rules allowing override have BlockAccess set to true and BlockAccessScope set to an appropriate value, as Learn requires for the override option to show.
 
 ### After rollout
 - Widen the Cloud Policy scope in steps as the pilot confirms the tips behave as intended.
@@ -168,7 +175,7 @@ The tip UI setting is targeted at individuals or groups through Cloud Policy. DL
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether DLP policy tips are shown in Outlook for Mac</strong><br><small>User</small><br><small class="controls__note">Default Disabled: policy tips aren't shown. Can target individuals or groups. Cloud Policy steps are on the Cloud Policy overview page.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Start with the basics › Choose the scope › Configure Settings › Enable Purview Data Loss Prevention (DLP) policy tips in Outlook <a href="https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether a DLP rule lets users override its policy tip</strong><br><small>Tenant</small><br><small class="controls__note">Under Policy tips, select Allow override from M365 services. Override is per rule. Path is from the oversharing walkthrough, not a Mac page. Set BlockAccess true or no override option shows.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Custom › Custom › Full directory › Exchange email › Define policy settings › Create or customize advanced DLP rules › Create rule › User notifications › Policy tips <a href="https://learn.microsoft.com/purview/dlp-osp-get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-DlpComplianceRule -Identity &lt;rule&gt; -NotifyAllowOverride WithJustification</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether a DLP rule lets users override its policy tip</strong><br><small>Tenant</small><br><small class="controls__note">Path is from the oversharing walkthrough, not a Mac page. For an override option to appear, set BlockAccess to true and give BlockAccessScope an appropriate value, as Learn requires.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Custom › Custom › Full directory › Exchange email › Define policy settings › Create or customize advanced DLP rules › Create rule › User notifications › Policy tips <a href="https://learn.microsoft.com/purview/dlp-osp-get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-DlpComplianceRule -Identity &lt;rule&gt; -NotifyAllowOverride WithJustification</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -178,7 +185,7 @@ The override path comes from Learn's walkthrough for oversharing pop-ups in Outl
 
 ## Open questions
 
-- Which licences cover DLP policy tips in Outlook for Mac? The Mac reference has a Licensing requirements heading with nothing under it; watch that page and the Microsoft Purview service description.
+- Which licences cover advanced DLP policy tips in Outlook for Mac? The Mac reference has a Licensing requirements heading with nothing under it; watch that page and the Microsoft Purview service description.
 - Does Outlook for Mac show the option to remove non-compliant recipients that the roadmap describes, and where will Microsoft document it?
 - Which Outlook for Mac versions show policy tips? Learn's Mac reference names none.
 - Does Outlook for Mac show the pre-send oversharing dialog? The reference's oversharing section names Android and iOS only.
@@ -186,16 +193,12 @@ The override path comes from Learn's walkthrough for oversharing pop-ups in Outl
 
 <!-- rationale
 risk: Low. Learn documents the policy tip UI as off by default in Outlook for macOS, so nothing reaches Mac users until an administrator enables it. Rules that allow override are the exposure that remains.
-cost: Low. The documented cost is admin time to enable the tip UI and tune rules. A licence statement for Outlook for Mac is not yet published, so budget for it once Microsoft states it.
+cost: Low. The documented cost is admin time to enable the tip UI and tune rules. DLP for Exchange Online is licensed under plans such as Microsoft 365 E3 and E5; an advanced policy-tip entitlement for Outlook for Mac is not yet published.
 impact: Low. Mac users in the groups an administrator targets see tips where a DLP rule matches; the roadmap lists the Worldwide cloud and Learn documents the tip UI as off by default.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].note; Risk assessment: Change & support; Governance guidance: At rollout / command: The override configuration guidance names BlockAccess true as the required check but omits the accompanying BlockAccessScope requirement. | Found: If you set the NotifyAllowOverride action to WithoutJustification or WithJustification or FalsePositives, make sure BlockAccess is set to true and BlockAccessScope has appropriate value. | Fix: Add 'and BlockAccessScope has an appropriate value' to the BlockAccess requirement in controls[1].note, its rendered table note, Risk assessment and the At rollout checklist. Use: 'For an override option to appear, set BlockAccess to true and give BlockAccessScope an appropriate value, as Learn requires.' Cite https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips#user-override-support. | Source: https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model and notes; Cost and licensing; Governance guidance; rationale: cost / licensing: The licensing model is unknown because Microsoft has not published a Mac-specific policy-tip entitlement. | Found: Which licenses provide the rights for a user to benefit from the service? ... Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium ... Users benefit ... when their emails and files are being inspected for sensitive information | Fix: Set licensing.model to 'included' for the published baseline DLP service requirement. Replace the opening licensing statement and notes with: 'The Purview service description licenses DLP for Exchange Online with plans including Microsoft 365 E3 and E5. It does not separately identify the advanced policy-tip entitlement for Outlook for Mac.' Retain the distinction from advanced Outlook for Microsoft 365 licensing, and narrow repeated statements that Learn lists no licences for Mac to this Mac-specific advanced entitlement gap. Cite the existing Purview service-description URL. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The printed Microsoft Purview route reaches the rule's Policy tips area through the oversharing walkthrough. | Found: On the Define policy settings page, select Create or customize advanced DLP rules. ... Select Create rule. ... Set the User notifications toggle to On. ... Select Policy tips | Fix: The route stops on the right rule page rather than at the override option. For the cited oversharing walkthrough, the full labelled route is 'Data loss prevention > Policies > + Create policy > Categories > Custom > Regulations > Custom > Admin units > Full directory > Exchange email > Define policy settings > Create or customize advanced DLP rules > Create rule > User notifications > Policy tips > Show the policy tip as a dialog for the end user before send (available for Exchange workload only) > Allow override from M365 services'. Keep the explicit note that this is an oversharing walkthrough, not a Mac-specific route; do not describe its dialog selection as a requirement for basic Mac tips. Source: https://learn.microsoft.com/purview/dlp-osp-get-started. | Source: https://learn.microsoft.com/purview/dlp-osp-get-started
-- [supported, minor] Why it matters; Risk assessment: Autonomy & actions / applicability: Existing DLP policies covering Exchange email supply the rules and actions used by Outlook policy tips. | Found: The conditions and the actions to take are defined in an object called a rule. ... After you create a DLP policy, it's stored in a central policy store, and then synced to the various content sources, including: Exchange, and from there to Outlook on the web and Outlook | Fix: Add 'Learn about data loss prevention' at https://learn.microsoft.com/purview/dlp-learn-about-dlp to sources for the Exchange-to-Outlook policy and rule applicability statement. | Source: https://learn.microsoft.com/purview/dlp-learn-about-dlp
+- [supported, minor] controls[1].ui; Governance controls table and prose / admin-path: The Purview route through DLP Policies, the Custom policy wizard, Exchange email and Create rule reaches User notifications and Policy tips for configuring rule override. | Found: Set the User notifications toggle to On. Select Policy tips > Show the policy tip as a dialog for the end user before send (available for Exchange workload only). If already selected, uncheck the Allow override from M365 services option. | Fix: Extend controls[1].ui.path and the rendered table to 'Data loss prevention > Policies > + Create policy > Custom > Custom > Full directory > Exchange email > Define policy settings > Create or customize advanced DLP rules > Create rule > User notifications > Policy tips > Allow override from M365 services'. The cited walkthrough documents this option; select it when override is intended rather than following the walkthrough's no-override example. | Source: https://learn.microsoft.com/purview/dlp-osp-get-started
 -->

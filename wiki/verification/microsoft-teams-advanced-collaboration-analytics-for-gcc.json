@@ -1,0 +1,668 @@
+{
+  "slug": "microsoft-teams-advanced-collaboration-analytics-for-gcc",
+  "roadmapId": 493742,
+  "title": "Microsoft Teams: advanced collaboration analytics for GCC",
+  "status": "verified-with-gaps",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 51,
+    "confirmed": 50,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Pass: the roadmap facts, control paths, Graph operation and existing-feature licensing are supported, and the briefing distinguishes those documents from the planned GCC release. Minor corrections should clarify the reports setting's documented reach and remove a checklist instruction whose control is not in the table.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap plans advanced collaboration analytics for GCC with insights covering teams, federated domains, channels, guests and internal users.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Advanced Collaboration Analytics for GGC provides Teams admins with insights into external collaboration patterns - covering teams, federated domains, channels, guests, and internal users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Risk assessment",
+      "type": "record",
+      "claim": "The roadmap promises recommended actions to enhance security for external collaboration.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "along with recommended actions to enhance security for external collaboration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is March CY2027, not a committed availability date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"March CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap cloud list is GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Teams.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Teams\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-09-09T22:36:54.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-09T22:36:54\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[0].ui; What's changing; Governance guidance",
+      "type": "admin-path",
+      "claim": "The existing reports are at Teams admin center > Dashboard > Collaboration activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/advanced-collaboration-analytics",
+      "quote": "Advanced collaboration analytics can be found in the Teams admin center dashboard on the **Collaboration activity** tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].api; Open questions",
+      "type": "absence",
+      "claim": "An API or automation surface for the Collaboration activity dashboard is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Collaboration activity\" \"advanced collaboration analytics\" Graph API PowerShell reports' and '\"Collaboration activity\" \"Teams PowerShell\" analytics API'; read the feature page and Graph/PowerShell search excerpts. Results describe other usage reports, not this dashboard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The concealment setting is at Microsoft 365 admin center > Settings > Org Settings > Services > Reports > Conceal user, group, and site names in all reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "select **Settings**.\nSelect [Org Settings]\nOn the **Services** tab, select **Reports**.\nIn the **Reports** panel, uncheck the checkbox next to **Conceal user, group, and site names in all reports**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "PATCH /v1.0/admin/reportSettings updates the tenant reports setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/adminreportsettings-update",
+      "quote": "Update tenant-level settings for Microsoft 365 reports.\nPATCH https://graph.microsoft.com/v1.0/admin/reportSettings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "The request body property displayConcealedNames determines concealment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/adminreportsettings-update",
+      "quote": "displayConcealedNames | Boolean | If set to `true`, all reports conceal user information such as usernames, groups, and sites. If `false`, all reports show identifiable information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[1].scope; Risk assessment; Governance controls",
+      "type": "applicability",
+      "claim": "The organization-wide reports concealment setting governs revealing data in the collaboration cards and applies to Teams admin center usage reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Other reports, such as some reports in the Microsoft Teams admin center, follow this organization setting.\nThis setting also applies to the Microsoft 365 usage reports in [Microsoft Graph] and [Power BI] and to [the usage reports in Microsoft Teams Admin center].",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[1].note",
+      "type": "applicability",
+      "claim": "The correctly documented general reports setting is marked as not confirmed for GCC.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Admins can use an API in all environments to change this setting without needing to visit the Microsoft 365 admin center.",
+      "severity": "minor",
+      "fix": "Replace 'Not confirmed for GCC.' with 'The usage reports page documents changing this organization setting by API in all environments; the GCC collaboration dashboard itself remains a planned release.'"
+    },
+    {
+      "n": 18,
+      "where": "controls[1].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "The usage reports page identifies Global administrators as able to change the UI setting to display concealed information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Global administrators can update the settings to display concealed information if your organization's privacy practices allow it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Showing identifiable user information is logged in the Microsoft Purview portal audit log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Showing identifiable user information is a logged event in the Microsoft Purview portal audit log.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The existing feature's Teams Premium entitlement is an add-on licensing model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Microsoft Teams Premium is a Teams add-on license",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "summary; licensing.notes; controls[0].note; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "The existing feature requires a Teams Premium licence for each user about whom insights are wanted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/advanced-collaboration-analytics",
+      "quote": "Advanced collaboration analytics requires a Teams Premium license for each user you want to receive insights about.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The licensing page says customers must acquire and assign Teams Premium licences to each user in their tenant for its use of Advanced collaboration analytics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Customers must acquire and assign Teams Premium licenses to each user in their tenant for its use of Advanced collaboration analytics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Cost and licensing",
+      "type": "availability",
+      "claim": "GCC is among the tenant types eligible to purchase Teams Premium.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Must be a commercial, worldwide public sector, EDU, GCC, GCC High, DoD, or non-profit tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Cost and licensing; Open questions",
+      "type": "date",
+      "claim": "As of April 1, 2026, some previously Teams Premium-only features are included with Teams Enterprise.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "As of April 1, 2026, some features that were previously only available with Teams Premium are now included with Teams Enterprise.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap item names no licence for the GCC release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Advanced Collaboration Analytics for GGC provides Teams admins with insights into external collaboration patterns - covering teams, federated domains, channels, guests, and internal users - along with recommended actions to enhance security for external collaboration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Cost and licensing; rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "No separate GCC-specific licensing statement for this planned feature is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"advanced collaboration analytics\" \"GCC\" \"license\"' and '\"advanced collaboration analytics\" \"GCC\" licensing default rollout'; opened the feature and Teams Premium licensing pages. Found the general feature requirement and GCC purchase eligibility, not a separate GCC release rule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: defaultState; What's changing",
+      "type": "default",
+      "claim": "Microsoft has not stated the default state of the GCC change on arrival.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"advanced collaboration analytics\" \"default\" \"enable\" GCC' and '\"advanced collaboration analytics\" \"GCC\" licensing default rollout'; read the roadmap record, feature page and licensing page. No GCC arrival default is stated; card privacy defaults are separate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; controls[0].note",
+      "type": "absence",
+      "claim": "The Learn feature page describes the existing feature without GCC-specific behaviour.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"advanced collaboration analytics\" \"GCC\" licensing default rollout'; read https://learn.microsoft.com/microsoftteams/advanced-collaboration-analytics in full. It describes the dashboard and its cards without mentioning GCC.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "The existing reports show only users and teams owned by the organization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/advanced-collaboration-analytics",
+      "quote": "Reports only show users and teams owned by your organization",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The counts can include activity in cross-tenant collaborations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/advanced-collaboration-analytics",
+      "quote": "but the counts could include activities in cross-tenant collaborations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The inactive teams card covers inactivity over 30 or 60 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/advanced-collaboration-analytics",
+      "quote": "It shows you how many teams in your organization have been inactive for the last 30 or 60 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "The inactive external domains card shows activity for allowed domains and is available only with an external access allowlist.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/advanced-collaboration-analytics",
+      "quote": "The **Inactive external domains activity** card shows how many domains are allowed and how many of your allowed domains have been active and inactive for the last 30 or 60 days.\nThis card is only available if you've configured an allowlist in [external access]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Why it matters; Governance guidance",
+      "type": "behaviour",
+      "claim": "The Teams by user type card identifies active teams by internal, guest and external shared channel user composition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/advanced-collaboration-analytics",
+      "quote": "The **Teams by user type** card shows how many active teams have a particular user composition:\n- Your users only\n- Your users and guests\n- Your users and external shared channel users\n- All user types",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Why it matters; Governance guidance",
+      "type": "behaviour",
+      "claim": "The Channels by user type card identifies active channels by internal, guest and external participant composition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/advanced-collaboration-analytics",
+      "quote": "The **Channels by user type** card shows you how many active channels have a particular user composition:\nStandard and private channels\n- Only your users\n- Your users and guests\nShared channels\n- Only your users\n- Your users and external channel participants",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "A card identifies teams with the most external user and guest collaboration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/advanced-collaboration-analytics",
+      "quote": "The **Teams with the most external user and guest activity** card shows you which teams in your organization have the most collaboration with guests and external shared channel users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A card identifies internal users with the most external user and guest collaboration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/advanced-collaboration-analytics",
+      "quote": "The **Users with the most external user and guest collaboration** card shows you which of your users have the most collaboration with guests and external shared channel users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A card identifies guests with the most external user and guest collaboration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/advanced-collaboration-analytics",
+      "quote": "The **Guest with the most external user and guest collaboration** card shows you which guests have the most collaboration with other guests or external shared channel users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure; Governance controls; rationale: risk",
+      "type": "default",
+      "claim": "Data in the three most-external-collaboration cards is hidden by default for privacy and the feature page links to the reports setting to reveal it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/advanced-collaboration-analytics",
+      "quote": "Note that for privacy reasons the data is hidden by default in this card. To reveal the data, see [Show user details in the reports]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "An inactive team can be archived directly from the report's Action column.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/advanced-collaboration-analytics",
+      "quote": "You can also archive the team directly from the report.\nTo archive an inactive team, under the **Action** column, select the **bin** icon.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Archiving a team has no impact on connected workloads.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/advanced-collaboration-analytics",
+      "quote": "However, archiving a team has no impact on the connected workloads.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The archived team itself becomes read-only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/advanced-collaboration-analytics",
+      "quote": "Only the team itself will become read-only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The feature page says data becomes available 30 days after licences are purchased.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/advanced-collaboration-analytics",
+      "quote": "Note that it takes 30 days after licenses are purchased for the data to be available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Dashboard card location customizations are not saved across sessions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/advanced-collaboration-analytics",
+      "quote": "Card location customizations on dashboard aren't saved across sessions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "behaviour",
+      "claim": "CSV download is not enabled for the existing feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/advanced-collaboration-analytics",
+      "quote": "CSV download hasn't been enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Large events have a small chance of data categorization error.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/advanced-collaboration-analytics",
+      "quote": "Large events have a small chance of data categorization error.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "What's changing; Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "The roadmap's recommended security actions and their production mechanism are not described in Learn; the report action described is archiving.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"advanced collaboration analytics\" administrator role recommended actions security' and '\"advanced collaboration analytics\" \"GCC\" end users existing behavior changes recommended actions'; read the feature page. It describes report archiving, not a recommended-security-actions mechanism.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "The feature's Learn page does not name an administrator role required to view the Collaboration activity tab.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"advanced collaboration analytics\" administrator role recommended actions security'; read the feature and licensing pages and reports authorization reference. The feature page names the Teams admin center but no required viewing role; licensing describes admin-level features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "GCC rollout mechanics beyond the roadmap target are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"advanced collaboration analytics\" \"GCC\" licensing default rollout' and '\"advanced collaboration analytics\" \"GCC\" \"known issues\" rollout'; read the roadmap, feature page and returned government release-note excerpt. No rollout mechanism for this item is given.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Whether the planned GCC dashboard matches the documented cards and known issues is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"advanced collaboration analytics\" \"GCC\" \"known issues\" rollout'; read the feature page and returned government release-note excerpt. The existing cards and issues are documented without GCC-specific parity statements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Why it matters; rationale: impact",
+      "type": "absence",
+      "claim": "The sources describe admin insights and do not state an automatic change to existing end-user behaviour.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"advanced collaboration analytics\" \"GCC\" end users existing behavior changes recommended actions'; read the roadmap and feature page. They describe admin reports and report actions, not automatic changes to existing end-user behaviour.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist asks admins to review external access configuration, but that control has no row in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review your external access configuration, because the inactive external domains card needs an allowlist to appear.\nWhere admins view collaboration activity reports\nWhether reports conceal user, group and site names",
+      "severity": "minor",
+      "fix": "Remove the Before rollout bullet 'Review your external access configuration, because the inactive external domains card needs an allowlist to appear.' Keep the verified allowlist prerequisite in Risk assessment; do not add a control row."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T06:06:26.425Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=493742",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/advanced-collaboration-analytics",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/adminreportsettings-update",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Where admins view collaboration activity reports",
+        "docs": "https://learn.microsoft.com/microsoftteams/advanced-collaboration-analytics",
+        "reachable": true,
+        "segments": [
+          "Dashboard",
+          "Collaboration activity"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether reports conceal user, group and site names",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Org Settings",
+          "Services",
+          "Reports",
+          "Conceal user, group, and site names in all reports"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether reports conceal user, group and site names",
+        "docs": "https://learn.microsoft.com/graph/api/adminreportsettings-update",
+        "reachable": true,
+        "token": "/v1.0/admin/reportSettings",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

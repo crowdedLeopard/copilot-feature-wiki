@@ -98,19 +98,23 @@ changes:
     note: "Corrected the New-Label call and the publishing-policy row, which no longer claims a container default; noted that container labels are a one-time enablement and that the Viva compliance overview disagrees."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 70 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-23"
+    note: "Corrected the label-deletion guidance to include confirming the label is no longer visible before deleting it, and removed a default-label pointer to the publishing-policy row."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 76 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-23"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 68
+  claims: 76
+  confirmed: 74
   unconfirmed: 0
   contradicted: 2
-  attempts: 2
-  hash: "a1ee843f1f6fa1d5a61f7ab0f0d57d05"
+  attempts: 3
+  hash: "fb36703e12ed21bb6028444a397856a8"
 ---
 
 ## What's changing
@@ -144,7 +148,7 @@ If nobody acts, Microsoft's pages say labels are not available to select until t
 
 **Change & support**
 - Allow 24 hours for label and policy changes to propagate before troubleshooting. Learn advises against changing a label's site and group settings once it is applied to teams, groups or sites. The Entra group-label documentation differs: it says changes to published group settings are not automatically applied to labelled groups and require manually reapplying updates.
-- Learn says deleting a label with site and group settings that is still in a label policy can cause creation failures for new teams, groups and sites. Remove it from policies and wait at least one hour first.
+- Learn says deleting a label with site and group settings that is still in a label policy can cause creation failures for new teams, groups and sites. Remove the label from every label policy, wait at least one hour, then try creating a team, group, or site and confirm that the label is no longer visible. Delete the label only if it is no longer visible.
 - For Engage, Learn says PowerShell cmdlets don't directly support sensitivity labels, so scripted bulk labelling of communities goes through the connected SharePoint site.
 
 ## Cost and licensing
@@ -165,7 +169,7 @@ Learn lists these conditions for labelling Microsoft 365 groups: the label's sco
 
 ### Before rollout
 - Check whether sensitivity labels are already enabled for containers in your tenant by reading the EnableMIPLabels setting (first row of the controls table); it is a prerequisite for labelling communities.
-- Decide the Privacy and External user access settings for each label that has the Groups & sites scope, and choose which label is the Engage default and which is the SharePoint site default (label settings: second row; default labels: the publishing-policy UI in the third row).
+- Decide the Privacy and External user access settings for each label that has the Groups & sites scope, and choose which label is the Engage default and which is the SharePoint site default (label settings: second row).
 - Pilot with a label policy that applies to a few test users, wait for replication, then create a test community with the label. Learn's pilot steps use a team, group or SharePoint site, so adapt them for Engage.
 
 ### At rollout
@@ -175,7 +179,7 @@ Learn lists these conditions for labelling Microsoft 365 groups: the label's sco
 
 ### After rollout
 - Avoid changing the site and group settings of a label once communities carry it; if you must, wait at least 24 hours and check a labelled community.
-- Remove a label from every policy and wait at least one hour before deleting it.
+- Remove the label from every label policy, wait at least one hour, then try creating a team, group, or site and confirm that the label is no longer visible. Delete the label only if it is no longer visible.
 
 ## Governance controls
 
@@ -210,9 +214,9 @@ impact: Medium. Community admins and anyone creating a Viva Engage community see
 <!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Change & support; Governance guidance: After rollout / behaviour: The deletion guidance tells administrators to remove a label from every policy and wait at least one hour before deleting it, without verifying that it is no longer visible. | Found: After this wait period, try creating a team, group, or site and confirm that the label is no longer visible. ... If the sensitivity label isn't visible, you can now safely delete the label. | Fix: In both deletion instructions, say: 'Remove the label from every label policy, wait at least one hour, then try creating a team, group, or site and confirm that the label is no longer visible. Delete the label only if it is no longer visible.' Cite https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites#deleting-published-labels-that-are-configured-for-sites-and-groups. | Source: https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites
+- [contradicted, blocker] Cost and licensing: Manual Sensitivity Labeling plan list / licensing: Manual Sensitivity Labeling is included for the listed Microsoft 365, OneDrive, EMS, Office 365 and AIP plans without stating the additional Standard/Plan 1 assignment requirement for Premium/Plan 2. | Found: A standard/Plan 1 license must be assigned in addition to the premium/P2 license for users to have access to sensitivity labeling for Information Protection for Office 365 and AIP, even if the premium licenses/Plan 2 are assigned. | Fix: Keep the plan list, but immediately append: 'For Information Protection for Office 365 and AIP, a Standard/Plan 1 licence must also be assigned alongside a Premium/Plan 2 licence; for example, an AIP P2 user must also have AIP P1 assigned.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui / admin-path: Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels reaches the page holding label configuration. | Found: Sign in to the Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels | Fix: The path correctly stops on the labels page. Extend it for a classic label scheme to 'Solutions > Information Protection > Sensitivity labels > + Create a label > Define the scope for this label > Groups & sites > Define protection settings for groups and sites > Privacy and external user access settings > Privacy and external user access'. For a modern label scheme, replace '+ Create a label' with '+ Create > Label'. The last wizard steps are documented at https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites, already cited. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
-- [supported, minor] controls[2].ui / admin-path: Microsoft Purview portal > Solutions > Information Protection > Publishing policies reaches the page holding label publishing policies. | Found: Sign in to the Microsoft Purview portal > Solutions > Information Protection > Publishing policies. ... On the Label policies page, select Publish label ... On the Choose sensitivity labels to publish page, select the Choose sensitivity labels to publish link. | Fix: Extend the path to 'Solutions > Information Protection > Publishing policies > Publish label > Choose sensitivity labels to publish > Choose sensitivity labels to publish'. This reaches the label-selection control documented at https://learn.microsoft.com/purview/create-sensitivity-labels#publish-sensitivity-labels-by-creating-a-label-policy. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist's Engage and SharePoint default-label decision is represented by a table row governing labels included in a publishing policy. | Found: choose which label is the Engage default and which is the SharePoint site default ... default labels: the publishing-policy UI in the third row; controls[2]: Labels included in a publishing policy | Fix: Remove '(label settings: second row; default labels: the publishing-policy UI in the third row)' and replace it with '(label settings: second row)'. The default-label checklist decision has no dedicated controls-table row; do not add a row as part of this correction.
+- [supported, minor] controls[1].ui / admin-path: Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels reaches the page for configuring labels. | Found: Sign in to the Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels | Fix: The path is correct but stops on the labels page. For classic labels extend it to 'Solutions > Information Protection > Sensitivity labels > + Create a label > Define the scope for this label > Groups & sites > Define protection settings for groups and sites > Privacy and external user access settings > Privacy and external user access'. For modern labels use '+ Create > Label' instead of '+ Create a label'. These steps are documented by the cited create-sensitivity-labels page and https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites; both are already cited. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
+- [supported, minor] controls[2].ui / admin-path: Microsoft Purview portal > Solutions > Information Protection > Publishing policies reaches the page for publishing policies. | Found: Sign in to the Microsoft Purview portal > Solutions > Information Protection > Publishing policies. On the Label policies page, select Publish label to start the Create policy configuration. | Fix: Extend the path to 'Solutions > Information Protection > Publishing policies > Publish label > Choose sensitivity labels to publish > Choose sensitivity labels to publish' to reach the selector for labels included in the policy, as documented at https://learn.microsoft.com/purview/create-sensitivity-labels. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
+- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist's instruction to choose Engage and SharePoint default labels is not represented by a matching controls-table row. | Found: Choose which label is the Engage default and which is the SharePoint site default (label settings: second row). ... Second row: Privacy and guest access ... Third row: Labels included in a publishing policy. | Fix: Remove 'and choose which label is the Engage default and which is the SharePoint site default' from the Before rollout checklist item. The existing second row governs label privacy and guest settings, not the policy's default-label selection; do not add a row.
 -->

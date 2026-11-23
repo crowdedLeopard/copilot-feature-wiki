@@ -15,7 +15,7 @@ risk: "low"
 cost: "variable"
 impact: "medium"
 defaultState: "on"
-action: "prepare"
+action: "act-now"
 licensing:
   model: "consumption"
   notes: "eSignature needs an Azure subscription linked to pay-as-you-go billing, and the eSignature meter is $2.00 per request, with up to 10 recipients in each request. No separate licence or rate for recipient groups is published."
@@ -36,6 +36,12 @@ sources:
     kind: "learn"
   - title: "Create a signature request from Word"
     url: "https://learn.microsoft.com/microsoft-365/documentprocessing/esignature-create-request-word"
+    kind: "learn"
+  - title: "Create a signature request from a PDF in eSignature"
+    url: "https://learn.microsoft.com/microsoft-365/documentprocessing/esignature-send-requests"
+    kind: "learn"
+  - title: "Troubleshoot a signature request in eSignature"
+    url: "https://learn.microsoft.com/microsoft-365/documentprocessing/esignature-troubleshoot"
     kind: "learn"
   - title: "Search the audit log"
     url: "https://learn.microsoft.com/purview/audit-search"
@@ -98,19 +104,23 @@ changes:
     note: "First briefing: recipient groups for eSignature, with December 2026 General Availability rollout per MC1290821 and the existing eSignature controls."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 84 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after the independent check: reworded the external-guest question, aligned the Scope rollout wording, removed a misleading row reference and set action to act-now."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 65 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 84
-  confirmed: 81
+  claims: 65
+  confirmed: 64
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "6055cd542a4625e48b38e6c645806018"
+  contradicted: 1
+  attempts: 2
+  hash: "c713118ef1b292bf72720b56039a6ec9"
 ---
 
 ## What's changing
@@ -158,7 +168,7 @@ Indirect costs are admin time to brief requesters and helpdesk time for question
 
 **Cloud and platform:** the roadmap record lists Worldwide (Standard Multi-Tenant) and Desktop; GCC, GCC High and DoD are not listed on the item, which is a record fact, not a statement that they are excluded.
 
-**Release:** Current Channel and General Availability, per the roadmap record; status In development, target December CY2026. MC1290821 gives General Availability rollout beginning in early December 2026 and completing by mid-December 2026.
+**Release:** Current Channel and General Availability, per the roadmap record; status In development, target December CY2026. MC1290821 gives General Availability rollout beginning in early December 2026 and expected to complete by mid-December 2026.
 
 **Prerequisites that already apply to eSignature:** an Azure subscription linked to pay-as-you-go billing; eSignature set up in the Microsoft 365 admin center; the Word (Desktop) option turned on and the Office policy or registry setting applied; documents in a SharePoint site where eSignature is enabled. For multi-geo tenants Learn says the service is available in the home geo only.
 
@@ -173,7 +183,7 @@ Indirect costs are admin time to brief requesters and helpdesk time for question
 ### At rollout
 - Watch MC1290821 in Message center for further timeline changes; it has already moved once.
 - Send a test request from a Word document with a recipient group, using internal members first, and note who gets the document link and what the other members see after one signs.
-- Test one external member only if your Entra B2B and Conditional Access settings allow external signers (row 3 note).
+- Test one external member only if your Entra B2B and Conditional Access settings allow external signers.
 
 ### After rollout
 - Search the Purview audit log for eSignature* operations and check that the events you need for sign-off evidence record the signer (row 4).
@@ -202,7 +212,7 @@ The Org settings changes need the SharePoint Administrator or Global Administrat
 
 - Do people added to a recipient group slot count toward the 10 recipients allowed in each request, and does a group change the $2.00 per-request charge? Watch the pay-as-you-go pricing page and MC1290821.
 - Will audit events for a group request show which member signed, and what happens to the other members' notifications and access once one has signed? Watch the eSignature Learn pages and the Purview audit activities list.
-- Can group members be external guests, and does each need Microsoft Entra B2B integration and Conditional Access exceptions as individual external recipients do?
+- Can group members be external guests, and how do the existing external-signing requirements and Conditional Access policies affect them?
 - Will there be an admin setting to turn off recipient groups separately from eSignature, given that Microsoft describes the feature as on by default?
 - Will the General Availability rollout in December 2026 hold, given that the notice has already moved the dates from early September?
 
@@ -215,10 +225,7 @@ impact: Medium. People who create eSignature requests in Word Desktop notice it;
 <!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Open questions: external guests / applicability: Individual external recipients each need Conditional Access exceptions, as presumed by the question about external group members. | Found: In some cases, the admin might need to add the eSignature app (formally called Microsoft eSign service) to the Excluded Apps list in the Conditional Access policy > Target resources section so that the policy doesn't apply to the eSignature app. | Fix: Replace the external-guests question with 'Can group members be external guests, and how do the existing external-signing requirements and Conditional Access policies affect them?' Microsoft documents exceptions only as a possible remedy in some cases, not as a requirement for every external recipient. | Source: https://learn.microsoft.com/microsoft-365/documentprocessing/esignature-troubleshoot
+- [contradicted, blocker] Risk assessment: Change & support; controls[3].note; Open questions / absence: Whether eSignature audit events show which group member signed is not documented. | Found: When a user or admin performs an audited activity, the system generates an audit record ... User: The user account that performed the activity. | Fix: Replace the signer-identification absence in Risk assessment and controls[3].note with 'Purview audit search results include a User field identifying the account that performed the activity; group-specific audit details are not yet documented.' In Open questions, replace 'Will audit events for a group request show which member signed' with 'What additional group-specific details will audit events contain'. https://learn.microsoft.com/purview/audit-search documents the User field, and https://learn.microsoft.com/microsoft-365/documentprocessing/esignature-overview documents recipient-signing audit events. | Source: https://learn.microsoft.com/purview/audit-search
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Scope: Release / record: General Availability rollout completion is expected by mid-December 2026, although Scope states completion without that qualification. | Found: is expected to complete by mid-December 2026 | Fix: In Scope, replace 'and completing by mid-December 2026' with 'and expected to complete by mid-December 2026'.
-- [supported, minor] Why it matters / behaviour: Without a group, the signing requirement belongs to an individual named recipient. | Found: At least one required signature field is needed for each recipient. | Fix: Cite https://learn.microsoft.com/microsoft-365/documentprocessing/esignature-send-requests for the existing individual-recipient signing requirement. | Source: https://learn.microsoft.com/microsoft-365/documentprocessing/esignature-send-requests
-- [contradicted, minor] front matter: action / consistency: The prepare action rating fits an on-by-default, metered change targeted within about 60 days that needs a signing-process decision. | Found: action: "prepare"; defaultState: "on"; cost: "variable"; targetDate: "December CY2026"; Ask the legal or procurement owner of your signing processes whether a group slot, where any one member may sign, is acceptable for each document type. | Fix: Set action to 'act-now': on the 23 November 2026 run, the December target is within about 60 days, the change is on by default in enabled tenants, it is metered, and the checklist identifies a decision to take before rollout.
-- [contradicted, minor] Governance guidance: Before rollout; At rollout; After rollout / consistency: Every control the checklist asks readers to check appears in the controls table. | Found: Check ... the Allow the use of eSignature for Microsoft Word policy (row 3). Test one external member only if your Entra B2B and Conditional Access settings allow external signers (row 3 note). Review the pay-as-you-go invoice | Fix: The Word Office policy, Entra B2B settings, Conditional Access settings and pay-as-you-go invoice review have no dedicated control rows; row 3 documents only the admin-panel Word checkbox. Remove the misleading '(row 3 note)' reference from the external-member test. Do not add control rows as part of this correction.
+- [supported, minor] controls[1].ui; controls[1].note / admin-path: Site scope is configured at Settings > Org settings > Pay-as-you-go services > Settings > Document & image services > eSignature > Where can eSignature be used?, with All sites or Selected sites up to 100. | Found: On the eSignature panel, in the Where can eSignature be used? section, select All sites or Selected sites (up to 100). | Fix: Extend controls[1].ui.path to 'Settings > Org settings > Pay-as-you-go services > Settings > Document & image services > eSignature > Where can eSignature be used? > All sites or Selected sites (up to 100)' as documented at https://learn.microsoft.com/microsoft-365/documentprocessing/esignature-setup. The current path stops on the correct panel. | Source: https://learn.microsoft.com/microsoft-365/documentprocessing/esignature-setup
 -->

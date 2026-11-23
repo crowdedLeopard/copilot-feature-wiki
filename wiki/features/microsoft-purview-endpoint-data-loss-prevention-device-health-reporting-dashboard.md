@@ -4,7 +4,7 @@ slug: "microsoft-purview-endpoint-data-loss-prevention-device-health-reporting-d
 roadmapId: 561033
 topic: "governance"
 products: ["Microsoft Purview"]
-summary: "Microsoft Purview adds a device health dashboard for Endpoint DLP to GCC, GCC High and DoD, showing which onboarded devices may not receive policy updates. Admins in three roles can use it; nothing needs configuring."
+summary: "Microsoft Purview adds a device health dashboard for Endpoint DLP to GCC, GCC High and DoD, showing which onboarded devices may not receive policy updates. Access requires one of three admin roles; Microsoft has not stated its arrival or enablement behaviour."
 status: "launched"
 releasePhase: ["General Availability"]
 clouds: ["GCC","GCC High","DoD"]
@@ -52,7 +52,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Settings > Device onboarding > Devices"
+      path: "Settings > Device onboarding > Devices > device"
       docs: "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync"
     api:
       kind: "other"
@@ -68,26 +68,30 @@ changes:
     note: "New briefing for the US Government (GCC, GCC High, DoD) roadmap item for the Endpoint DLP device health reporting dashboard."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 60 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after the independent check: the summary no longer says nothing needs configuring, the View devices behaviour matches Learn, the Devices path now ends at the selected device, and the role-assignment checklist step is removed."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 62 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 57
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "f0282cd9a1ef053959b65d2187014aa3"
+  claims: 62
+  confirmed: 62
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "c7f0c955bd0e250cd9ed6b707dfb1bfb"
 ---
 
 ## What's changing
 
 Microsoft Purview has a device health reporting dashboard for Endpoint Data Loss Prevention (Endpoint DLP). Microsoft Learn describes it as a centralised view of device readiness that helps administrators find devices that might not be ready to receive or enforce Endpoint DLP policies because of configuration, connectivity or version issues. The roadmap item describes it as a way to view device health across all devices and to quickly identify devices that are not ready.
 
-The Learn page shows four sections. **Device onboarding** gives total onboarded devices, devices running Endpoint DLP and devices with configuration issues. **Device readiness to receive policy updates** flags devices that were offline during the past day, have outdated Microsoft Defender Antivirus versions or have configuration issues. **Last time devices were seen online** groups devices into non-cumulative buckets of 24 hours, 3 days, 7 days and 30 days. **Device readiness for feature** currently covers Just-in-time protection and Paste to supported browsers. Selecting **View devices** in a section opens a filtered list of matching devices. The dashboard shows data from devices that reported within the past 30 days.
+The Learn page shows four sections. **Device onboarding** gives total onboarded devices, devices running Endpoint DLP and devices with configuration issues. **Device readiness to receive policy updates** flags devices that were offline during the past day, have outdated Microsoft Defender Antivirus versions or have configuration issues. **Last time devices were seen online** groups devices into non-cumulative buckets of 24 hours, 3 days, 7 days and 30 days. **Device readiness for feature** currently covers Just-in-time protection and Paste to supported browsers. Selecting **View devices** in a section opens a side pane with device categories; select a category to open a filtered list of matching devices. The dashboard shows data from devices that reported within the past 30 days.
 
 This roadmap item (561033) covers GCC, GCC High and DoD, on the Web platform, at General Availability. Its status is Launched with a target of July CY2026, and the record was last modified on 2026-09-04. Microsoft lists the same feature under a second roadmap item, 559267, for Worldwide (Standard Multi-Tenant): Launched, target May CY2026, with a preview in April CY2026.
 
@@ -133,7 +137,6 @@ The indirect cost is administrator time to review the dashboard and fix flagged 
 ## Governance guidance
 
 ### Before rollout
-- Confirm which of your administrators hold the Compliance Administrator, Security Administrator or Global Administrator role, and use the least-privileged role that meets their need.
 - Check that the devices you expect to monitor are onboarded to Endpoint DLP and reporting telemetry, because the dashboard only shows devices that reported in the past 30 days.
 - Decide who owns remediation of flagged devices, since the dashboard helps you identify devices and root causes such as outdated versions, connectivity issues or invalid configurations.
 
@@ -154,7 +157,7 @@ The indirect cost is administrator time to review the dashboard and fix flagged 
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Viewing device onboarding and readiness in the device health reporting dashboard</strong><br><small>Tenant</small><br><small class="controls__note">Needs Compliance Administrator, Security Administrator or Global Administrator. Devices must be onboarded to Endpoint DLP and reporting telemetry.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Device onboarding › Device report <a href="https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Per-device configuration status and policy sync status (today's alternative to the dashboard)</strong><br><small>Tenant</small><br><small class="controls__note">Advanced hunting query in the Microsoft Defender portal. It reads device data and changes nothing; it is not an API for the dashboard.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Device onboarding › Devices <a href="https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>DeviceInfo | where DlpInfo != &quot;&quot;</code> <a href="https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Per-device configuration status and policy sync status (today's alternative to the dashboard)</strong><br><small>Tenant</small><br><small class="controls__note">Advanced hunting query in the Microsoft Defender portal. It reads device data and changes nothing; it is not an API for the dashboard.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Device onboarding › Devices › device <a href="https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>DeviceInfo | where DlpInfo != &quot;&quot;</code> <a href="https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -171,14 +174,4 @@ The dashboard has one documented way in: the Microsoft Purview portal, with one 
 risk: Low. It is a reporting view of device readiness for compliance and security administrators, built on devices already onboarded to Endpoint DLP. Microsoft has not stated a default, so the rating rests on today's behaviour continuing.
 cost: Low. Microsoft's Purview service description lists Endpoint DLP as included in the E5-level licences it names; the dashboard page names no separate licence, so the only cost the sources show is administrator time.
 impact: Low. Only administrators in the Compliance Administrator, Security Administrator or Global Administrator roles can open it; end users do not see it.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] summary; Why it matters; Open questions / default: Nothing needs configuring to use the dashboard. | Found: Searched: Purview Endpoint DLP device health reporting dashboard default enable automatically configuration; "device health" "Purview" "dashboard" "enable". Opened dashboard documentation; no arrival statement. Body says Microsoft has not stated what happens on arrival. | Fix: Replace 'Admins in three roles can use it; nothing needs configuring.' with 'Access requires one of three admin roles; Microsoft has not stated its arrival or enablement behaviour.' Keep defaultState as unknown.
-- [contradicted, blocker] What's changing / admin-path: Selecting View devices in a section opens a filtered list of matching devices. | Found: select View devices to open a side pane with device categories, then select a category to open a filtered list of matching devices. | Fix: Replace the sentence with 'Selecting View devices in a section opens a side pane with device categories; select a category to open a filtered list of matching devices.' | Source: https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls table; Risk assessment: Change & support / admin-path: Settings > Device onboarding > Devices in the Microsoft Purview portal is the route to per-device configuration and policy sync status. | Found: Sign in to the Microsoft Purview portal > Settings (gear icon in the upper right corner) > Device onboarding > Devices. Select a device to open the details pane for more information on the policy sync status. | Fix: Extend controls[1].ui.path to 'Settings > Device onboarding > Devices > device'. The printed path correctly reaches the device list but omits selecting the device to open its details. | Source: https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync
-- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: The checklist asks administrators to take stock of role assignments without a corresponding role-assignment control row. | Found: Confirm which of your administrators hold the Compliance Administrator, Security Administrator or Global Administrator role. Controls list dashboard viewing and per-device status, not role assignments. | Fix: Remove the checklist bullet beginning 'Confirm which of your administrators hold'. Keep the verified role requirement and least-privilege advice in Scope and Risk assessment.
 -->

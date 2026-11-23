@@ -1,10 +1,10 @@
 ---
-title: "Microsoft 365 Copilot mobile app: capture voice notes"
+title: "Microsoft Copilot mobile app: capture voice notes"
 slug: "m365-copilot-capture-voice-notes-in-the-m365-copilot-mobile-app"
 roadmapId: 498640
 topic: "m365-copilot"
 products: ["Microsoft 365","Microsoft Copilot (Microsoft 365)"]
-summary: "Launched for Android and iOS: licensed users can capture voice notes of offline discussions in the Microsoft 365 Copilot mobile app. Microsoft has published no Learn page, default or admin setting for it yet."
+summary: "Launched for Android and iOS: licensed users can capture voice notes of offline discussions in the Microsoft Copilot mobile app (formerly Microsoft 365 Copilot). No Learn page, default or admin setting is published yet."
 status: "launched"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -12,7 +12,7 @@ platforms: ["Android","iOS"]
 targetDate: "August CY2026"
 previewDate: "July CY2026"
 risk: "medium"
-cost: "low"
+cost: "medium"
 impact: "medium"
 defaultState: "unknown"
 action: "review"
@@ -25,6 +25,9 @@ sources:
   - title: "Microsoft 365 Roadmap item 498640"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=498640"
     kind: "roadmap"
+  - title: "Data protection and auditing for Microsoft Copilot"
+    url: "https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing"
+    kind: "learn"
   - title: "Microsoft 365 Copilot release notes"
     url: "https://learn.microsoft.com/microsoft-365/copilot/release-notes"
     kind: "learn"
@@ -84,24 +87,28 @@ changes:
     note: "Corrected after the independent check: added Intune app protection and the Copilot app blocking options, narrowed the licence-removal statement, and added the Microsoft 365 E7 licensing sentence."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 48 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-23"
+    note: "Corrected after the independent check: retention and eDiscovery are documented for Copilot prompts and responses, so the gap is narrowed to voice-note recordings; cost rating raised to medium; app named Microsoft Copilot mobile app."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 55 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 46
+  claims: 55
+  confirmed: 55
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "acfb2fbea8b241a3028aa4ec1dbf811d"
+  contradicted: 0
+  attempts: 0
+  hash: "d1f80fa05439a89baae8587e52c3656f"
 ---
 
 ## What's changing
 
-Voice notes let a user of the Microsoft 365 Copilot mobile app capture an in-person discussion and have Copilot turn it into content that is, in the roadmap's words, "structured, actionable, and searchable". The roadmap item (498640) says this needs a Microsoft 365 Copilot licence and lists Android and iOS as the platforms.
+Voice notes let a user of the Microsoft Copilot mobile app (formerly Microsoft 365 Copilot) capture an in-person discussion and have Copilot turn it into content that is, in the roadmap's words, "structured, actionable, and searchable". The roadmap item (498640) says this needs a Microsoft 365 Copilot licence and lists Android and iOS as the platforms.
 
 Microsoft Learn has no page for this feature at the time of writing (November 2026), so what follows about behaviour is the roadmap's description only. How a note is recorded, what Copilot produces from it, where the result is stored and who can read it are not stated.
 
@@ -109,14 +116,14 @@ The roadmap record shows status Launched, with a preview target of July CY2026 a
 
 ## Why it matters
 
-This is a new way for spoken, often unscripted conversation to enter your tenant's Copilot experience from personal phones. The content is meeting-room or corridor talk, which can include other people, customers and sensitive topics, so the questions that matter are where the output is stored, how long it is kept and which of your existing controls reach it. Microsoft has not yet answered those for this feature.
+This is a new way for spoken, often unscripted conversation to enter your tenant's Copilot experience from personal phones. The content is meeting-room or corridor talk, which can include other people, customers and sensitive topics, so the questions that matter are where voice-note recordings and any feature-specific saved output are stored and which of your existing controls reach them. Microsoft documents retention policies and eDiscovery for Copilot prompts and responses; handling of voice-note recordings and feature-specific saved artifacts is not yet documented.
 
 Microsoft has not stated what happens on arrival, so do not assume users are opted in or that they need to switch it on. Treat it as something licensed mobile users may already have, and decide what guidance to give them. Licence assignment governs access to licensed Copilot capabilities; Microsoft also documents blocking the Copilot app across web, desktop and mobile, or blocking the mobile app alone.
 
 ## Risk assessment
 
 **Data exposure**
-- The roadmap says voice notes make offline discussions "searchable". Microsoft Learn does not yet say where the notes and their structured output are stored, who else can open them or whether retention and sensitivity labels apply, so confirm these before encouraging use for confidential meetings.
+- The roadmap says voice notes make offline discussions "searchable". Microsoft documents that a hidden folder in the user's mailbox stores Copilot prompts and responses, which can be searched with eDiscovery, monitored with Communication Compliance and managed with retention policies (see [Data protection and auditing for Microsoft Copilot](https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing)). Microsoft Learn does not yet say where voice-note recordings and feature-specific saved artifacts are stored, who else can open them or whether sensitivity labels apply, so confirm these before encouraging use for confidential meetings.
 - Spoken discussions can carry other people's words and personal data. Decide your organisation's position on capturing colleagues, customers and external parties before users start.
 
 **Security & identity**
@@ -133,13 +140,13 @@ Microsoft has not stated what happens on arrival, so do not assume users are opt
 
 The roadmap says voice notes need a Microsoft 365 Copilot licence. Microsoft's service description page calls Microsoft 365 Copilot "an add-on plan with specific licensing prerequisites", and Microsoft's Copilot requirements page says users need a Microsoft Copilot licence and a qualifying prerequisite licence (see the sources). The License options for Microsoft Copilot page also says Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible plans.
 
-No price, meter or Copilot Credits rate specific to voice notes is published at the time of writing, and no spending control applies to it that Microsoft documents. Indirect costs are admin time to assign licences and communicate to users.
+No price, meter or Copilot Credits rate specific to voice notes is published at the time of writing, and no spending control applies to it that Microsoft documents. For tenants that already hold the required entitlement, indirect costs are admin time to assign licences and communicate to users.
 
 For a tenant that already holds Copilot licences, the licence is the only entitlement the roadmap names. Whether storing voice notes consumes storage or other capacity is not stated.
 
 ## Scope
 
-Users: those with a Microsoft 365 Copilot licence, per the roadmap. Platforms: Android and iOS, in the Microsoft 365 Copilot mobile app. Cloud: Worldwide (Standard Multi-Tenant); the record lists no US Government cloud. Release phases on the record: General Availability and Preview, with the status Launched.
+Users: those with a Microsoft 365 Copilot licence, per the roadmap. Platforms: Android and iOS, in the Microsoft Copilot mobile app. Cloud: Worldwide (Standard Multi-Tenant); the record lists no US Government cloud. Release phases on the record: General Availability and Preview, with the status Launched.
 
 Admin roles: assigning licences requires at least the License Administrator or User Administrator role. No roles or prerequisites specific to voice notes are published. Rollout is gradual across a tenant according to Microsoft's release notes page.
 
@@ -148,7 +155,7 @@ Admin roles: assigning licences requires at least the License Administrator or U
 ### Before rollout
 - Identify who holds a Microsoft 365 Copilot licence in your tenant, using the Active users licence view in the controls table, so you know who can use voice notes.
 - Draft guidance on recording discussions that involve other people, customers or confidential topics, and agree who approves it.
-- Ask your Microsoft account team or watch Message center for where voice notes are stored and which retention controls apply.
+- Ask your Microsoft account team or watch Message center for where voice-note recordings are stored and which retention controls apply to them.
 
 ### At rollout
 - Tell licensed Android and iOS users that the feature is launched, and that availability may differ between colleagues.
@@ -177,22 +184,13 @@ Licence assignment requires at least the License Administrator or User Administr
 
 ## Open questions
 
-- Where are voice notes and their structured output stored, and do retention policies, sensitivity labels and eDiscovery reach them? Watch the Microsoft 365 Copilot release notes and Learn for a feature page.
+- Where are voice-note recordings and feature-specific saved artifacts stored, and do retention policies, sensitivity labels and eDiscovery reach them? Watch the Microsoft 365 Copilot release notes and Learn for a feature page.
 - Does voice notes appear automatically for licensed users, or does each user turn it on? Microsoft has not stated the default.
 - Will Microsoft add an admin setting to turn voice notes off separately from Copilot as a whole?
 - How do the app's protection settings handle voice-note recordings and output?
 
 <!-- rationale
-risk: Medium. The feature turns spoken offline discussions into structured, searchable content, and Microsoft has not yet published where that content is kept or which controls cover it.
-cost: Low. The roadmap says a Microsoft 365 Copilot licence is needed and no separate price or meter is published for voice notes, so the known cost is licence assignment and admin time.
+risk: Medium. The feature turns spoken offline discussions into structured, searchable content, and Microsoft has not yet published where voice-note recordings and feature-specific saved artifacts are kept or which controls cover them.
+cost: Medium. Voice notes require the Microsoft 365 Copilot entitlement, available through an add-on or Microsoft 365 E7. Tenants that already hold the required entitlement mainly face licence-assignment and communication time; no separate voice-notes price or meter is published.
 impact: Medium. Licensed users on Android and iOS notice it, and the roadmap record does not say whether it arrives for them automatically or by choice.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters; Risk assessment: Data exposure; Open questions; rationale: risk / absence: Microsoft has not stated whether retention controls reach the content produced by this Copilot feature. | Found: A hidden folder in the user's mailbox stores user prompts and Copilot responses. You can search this content by using eDiscovery, monitor it by using Communication Compliance, and manage it by using retention policies. | Fix: Replace the broad retention-coverage gap with: 'Microsoft documents retention policies and eDiscovery for Copilot prompts and responses; handling of voice-note recordings and feature-specific saved artifacts is not yet documented.' Cite https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing. Narrow the corresponding Why it matters, risk rationale and Open questions wording to recordings and feature-specific artifacts. | Source: https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing
-- [contradicted, blocker] front matter: cost; Cost and licensing; rationale: cost / consistency: The low cost rating says the known cost is indirect licence-assignment and communication time only despite the documented add-on licence requirement. | Found: cost: "low"; licensing.model: "add-on". Cost rationale: 'the known cost is licence assignment and admin time.' Cost and licensing: 'Microsoft 365 Copilot "an add-on plan with specific licensing prerequisites"'. | Fix: Set cost to 'medium' and replace the cost rationale with: 'Medium. Voice notes require the Microsoft 365 Copilot entitlement, available through an add-on or Microsoft 365 E7. Tenants that already hold the required entitlement mainly face licence-assignment and communication time; no separate voice-notes price or meter is published.' Keep indirect-only costs qualified to tenants already entitled.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] title; summary; What's changing; Scope / behaviour: The app is described using its previous name, Microsoft 365 Copilot. | Found: Microsoft 365 Copilot is now named Microsoft Copilot, and Microsoft 365 Copilot Chat is now named Microsoft Copilot Chat. | Fix: Use 'Microsoft Copilot mobile app (formerly Microsoft 365 Copilot)' on first mention and 'Microsoft Copilot mobile app' thereafter, while retaining the roadmap's original title and licence wording when explicitly quoting it. | Source: https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements
 -->

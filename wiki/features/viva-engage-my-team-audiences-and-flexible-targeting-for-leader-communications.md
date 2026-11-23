@@ -101,7 +101,21 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 80 statements contradicted, 0 unconfirmed; taken offline until corrected"
   - date: "2026-11-23"
     note: "Corrected the claim about controls: the storyline creator setting does restrict who can post, and the gap is a separate control for My Team or publish-time targeting."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 77 statements confirmed"
 version: 5
+verification:
+  status: "verified"
+  date: "2026-11-23"
+  version: 5
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 77
+  confirmed: 77
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "f5d14e4cec46c4ef0a1a17961e25eaff"
 ---
 
 ## What's changing

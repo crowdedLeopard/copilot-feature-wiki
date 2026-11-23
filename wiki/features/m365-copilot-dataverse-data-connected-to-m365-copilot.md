@@ -15,7 +15,7 @@ risk: "medium"
 cost: "variable"
 impact: "medium"
 defaultState: "on"
-action: "prepare"
+action: "act-now"
 licensing:
   model: "mixed"
   notes: "Learn lists Power Apps premium plus Microsoft 365 Copilot, or Dynamics 365 Enterprise or Premium, for Copilot in model-driven apps; Cowork and Work IQ API use bills Copilot Credits. No rate for this feature is stated."
@@ -55,7 +55,13 @@ sources:
   - title: "Update spendingPolicy"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
     kind: "learn"
-  - title: "MC1483492"
+  - title: "SaveSettingValue Action"
+    url: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue"
+    kind: "learn"
+  - title: "Get or update a setting value using client API"
+    url: "https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code"
+    kind: "learn"
+  - title: "MC1483492: Business Skills in Work IQ - Default On"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1483492"
     kind: "message-center"
 videos: []
@@ -65,7 +71,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Microsoft 365 admin center > Copilot > Settings > View all > Business Applications data in Work IQ available to Copilot"
+      path: "Copilot > Settings > View all > Business Applications data in Work IQ available to Copilot > No users / All users / Specific groups"
       docs: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings"
     api: null
     note: "Options: No users, All users (the default), Specific groups. Tenant administrator per the page; the access page names the AI Administrator role."
@@ -73,7 +79,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Power Platform admin center > Manage > environment > Settings > Product > Features > Work IQ"
+      path: "Manage > environment > Settings > Product > Features > Work IQ"
       docs: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation"
     api: null
     note: "Environment administrator per the default settings page; the participation page names the Power Platform Administrator role."
@@ -81,15 +87,18 @@ controls:
     scope: "app"
     ui:
       surface: "Power Apps maker portal"
-      path: "Power Apps > Apps > app > Edit > Settings > Features > Enable Microsoft 365 Copilot in model-driven apps"
+      path: "Apps > app > Edit > Settings > Features > Enable Microsoft 365 Copilot in model-driven apps"
       docs: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings"
-    api: null
-    note: "Maker-side setting; the page's steps end with Save and Publish."
+    api:
+      kind: "rest"
+      call: "POST /api/data/v9.2/SaveSettingValue"
+      docs: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue"
+    note: "Maker-side setting; the portal steps end with Save and Publish. The request body uses SettingName m365copilotmodelappenabled, Value for the override, and AppUniqueName for the target app."
   - governs: "Whether the Work IQ MCP server is available at all"
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Microsoft 365 admin center > Agents > Tools > Work IQ MCP > Block"
+      path: "Agents > Tools > Work IQ MCP > Block"
       docs: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access"
     api: null
     note: "Applies to the entire server, separate from the Copilot audience setting and App Access. AI Administrator role per the page."
@@ -97,7 +106,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Microsoft 365 admin center > Copilot > Cost management"
+      path: "Copilot > Cost management"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits"
     api:
       kind: "graph"
@@ -113,19 +122,23 @@ changes:
     note: "New briefing: Business Applications in Work IQ is on by default in new public production environments, with tenant, environment and app controls."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 6 of 98 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected a held page: Dataverse access is bounded by permissions, participating apps and the selected view; solution-import rule qualified; documented Web API action added for the app-level setting; action now act-now."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 112 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 98
-  confirmed: 92
+  claims: 112
+  confirmed: 112
   unconfirmed: 0
-  contradicted: 6
-  attempts: 1
-  hash: "03f52a9227587c02aa2884d08610f147"
+  contradicted: 0
+  attempts: 0
+  hash: "3a32bbc352ada657cc9911881f7fd1a8"
 ---
 
 ## What's changing
@@ -140,7 +153,7 @@ The Learn default settings page says Business Applications in Work IQ is on by d
 
 ## Why it matters
 
-If your tenant creates new public production environments with Dynamics 365 or Power Apps, Copilot can reach business records in them without an administrator turning anything on. Learn states that the feature respects existing permissions and that enabling an experience does not grant access to business data. In practice, any record a user's Dataverse security roles already expose becomes reachable through natural-language questions, so permission mistakes that were hard to find in a model-driven app become easier to surface.
+If your tenant creates new public production environments with Dynamics 365 or Power Apps, Copilot can reach business records in them without an administrator turning anything on. Learn states that the feature respects existing permissions and that enabling an experience does not grant access to business data. Natural-language access is limited by existing permissions and participating apps; the selected view determines the records and fields returned.
 
 The cost side is indirect for most tenants: extra search-index storage and, for Cowork and Work IQ API use, Copilot Credits. The notice lists environments created before September 30, 2026 as not enabled, and Learn says the plan to turn it on for them is deferred, so the decision for those environments is still yours. Decide now which audience, environments and apps you want, because the controls cascade and are easiest to set before new environments appear.
 
@@ -152,13 +165,13 @@ The cost side is indirect for most tenants: extra search-index storage and, for 
 
 **Security & identity**
 - Learn says Work IQ respects the user, agent and application access already configured for the data. Check Dataverse security roles in each participating environment (/concepts/security-roles/), because those roles decide what a question can return.
-- Learn says participation settings do not prevent agentic access to environment data, and points to App Access controls (Power Platform admin center > Security > Identity & access > App Access Control) for that. Read that page before relying on the environment setting to keep agents out.
+- Learn says participation settings do not prevent agentic access to environment data, and points to App Access controls (Power Platform admin center > Security > Identity & access > App Access Control > environment > Enable) for that. Read that page before relying on the environment setting to keep agents out.
 
 **Autonomy & actions**
 - Learn says the Business Applications paths in the Work IQ MCP and business skills sit behind the environment-level **Work IQ** setting, and that users can only perform actions their permissions allow. Microsoft's notice says business skills automate and simplify complex business scenarios. The Work IQ MCP server has its own **Block** control for the whole server.
 
 **Change & support**
-- Learn says that when an app is imported in a solution and its **Enable Copilot in model-driven apps** setting is **On** or **Default**, the setting is **On** in the destination environment. Moving solutions between environments can therefore turn it on.
+- Learn says that when an app is imported in a solution into an environment where Business Applications in Work IQ is on, an **Enable Copilot in model-driven apps** setting of **On** or **Default** becomes **On** in the destination environment. Moving solutions between environments can therefore turn it on where Work IQ is already on.
 - Learn says Microsoft 365 Copilot Chat is automatically included in every new app created in an environment where the feature is on. Expect questions from makers.
 - The notice and the Learn pages describe eligibility and exceptions differently and the existing-environment date has moved, so confirm the state of each environment rather than relying on either text.
 
@@ -188,9 +201,8 @@ The cost side is indirect for most tenants: extra search-index storage and, for 
 
 ### Before rollout
 - List the environments in Power Platform admin center and note which are new public production environments created since September 30, 2026, which are existing, and which fall under the exceptions in MC1483492 and the Learn default settings page.
-- Review Dataverse security roles in each environment you intend to keep on, since Learn says Work IQ uses the permissions already configured on the data (/concepts/security-roles/).
 - Read the compliance notes on the Learn default settings page with your compliance team before enabling in any environment that holds regulated or FedRAMP-scoped data.
-- Ask makers which model-driven apps should keep **Enable Microsoft 365 Copilot in model-driven apps** on, and tell them about the solution import behaviour.
+- Ask makers which model-driven apps should keep **Enable Microsoft 365 Copilot in model-driven apps** on, and tell them about the solution import behaviour in environments where Work IQ is on.
 
 ### At rollout
 - Set the tenant audience to All users, Specific groups or No users in the Microsoft 365 admin center; use Specific groups for a pilot.
@@ -200,7 +212,6 @@ The cost side is indirect for most tenants: extra search-index storage and, for 
 
 ### After rollout
 - Review Copilot Credit consumption for Cowork and Work IQ API in Microsoft 365 admin center > Copilot > Cost management, and adjust the spending policy that covers those services.
-- Check the Dataverse capacity page for growth from search indexes in participating environments.
 - Re-read the Learn default settings page and Message center for the new date on which existing environments are switched on.
 
 ## Governance controls
@@ -210,11 +221,11 @@ The cost side is indirect for most tenants: extra search-index storage and, for 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users can use Business Applications data in Work IQ through Microsoft 365 Copilot</strong><br><small>Tenant</small><br><small class="controls__note">Options: No users, All users (the default), Specific groups. Tenant administrator per the page; the access page names the AI Administrator role.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Microsoft 365 admin center › Copilot › Settings › View all › Business Applications data in Work IQ available to Copilot <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether Work IQ features are on in an environment</strong><br><small>Environment</small><br><small class="controls__note">Environment administrator per the default settings page; the participation page names the Power Platform Administrator role.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Power Platform admin center › Manage › environment › Settings › Product › Features › Work IQ <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether a model-driven app's tables, forms and views are available to Microsoft 365 Copilot Chat</strong><br><small>App</small><br><small class="controls__note">Maker-side setting; the page's steps end with Save and Publish.</small></td><td data-label="Admin UI"><strong>Power Apps maker portal</strong><br>Power Apps › Apps › app › Edit › Settings › Features › Enable Microsoft 365 Copilot in model-driven apps <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether the Work IQ MCP server is available at all</strong><br><small>Tenant</small><br><small class="controls__note">Applies to the entire server, separate from the Copilot audience setting and App Access. AI Administrator role per the page.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Microsoft 365 admin center › Agents › Tools › Work IQ MCP › Block <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Copilot Credit spending for Cowork and Work IQ API use of business data</strong><br><small>Tenant</small><br><small class="controls__note">Beta API. Updatable body properties include displayName, periodLimit, perUserLimit and billingMethods. Covers the consuming experience, not a business applications category.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Microsoft 365 admin center › Copilot › Cost management <a href="https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users can use Business Applications data in Work IQ through Microsoft 365 Copilot</strong><br><small>Tenant</small><br><small class="controls__note">Options: No users, All users (the default), Specific groups. Tenant administrator per the page; the access page names the AI Administrator role.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › Business Applications data in Work IQ available to Copilot › No users / All users / Specific groups <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether Work IQ features are on in an environment</strong><br><small>Environment</small><br><small class="controls__note">Environment administrator per the default settings page; the participation page names the Power Platform Administrator role.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › environment › Settings › Product › Features › Work IQ <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether a model-driven app's tables, forms and views are available to Microsoft 365 Copilot Chat</strong><br><small>App</small><br><small class="controls__note">Maker-side setting; the portal steps end with Save and Publish. The request body uses SettingName m365copilotmodelappenabled, Value for the override, and AppUniqueName for the target app.</small></td><td data-label="Admin UI"><strong>Power Apps maker portal</strong><br>Apps › app › Edit › Settings › Features › Enable Microsoft 365 Copilot in model-driven apps <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST /api/data/v9.2/SaveSettingValue</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the Work IQ MCP server is available at all</strong><br><small>Tenant</small><br><small class="controls__note">Applies to the entire server, separate from the Copilot audience setting and App Access. AI Administrator role per the page.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Block <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Copilot Credit spending for Cowork and Work IQ API use of business data</strong><br><small>Tenant</small><br><small class="controls__note">Beta API. Updatable body properties include displayName, periodLimit, perUserLimit and billingMethods. Covers the consuming experience, not a business applications category.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost management <a href="https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -222,7 +233,7 @@ The three levels cascade. Learn says that if the tenant setting is off, data is 
 
 The Learn pages name the tenant setting differently: **Business Applications data in Work IQ available to Copilot** in the steps, **Dataverse Data Available in Microsoft 365 Copilot** in the list of defaults, and **Enable Microsoft 365 Copilot Chat and Dataverse** in the cascade description. The path above follows the steps on the default settings page.
 
-Microsoft Learn documents no API, PowerShell cmdlet or CLI command for the tenant audience, the environment-level **Work IQ** setting, the app-level setting or the Work IQ MCP block at the time of writing (November 2026). The spending-policy call is the one automation reference found, and it is a beta API that Learn says is subject to change. Reading and changing these settings is done in the portals.
+Microsoft Learn documents no API, PowerShell cmdlet or CLI command for the tenant audience, the environment-level **Work IQ** setting or the Work IQ MCP block at the time of writing (November 2026). The app-level setting has a documented Dataverse Web API action and the spending policy has a documented Graph call, both in the controls table; the spending-policy call is a beta API that Learn says is subject to change. The tenant audience, environment-level and MCP settings are changed in the portals.
 
 ## Open questions
 
@@ -230,7 +241,7 @@ Microsoft Learn documents no API, PowerShell cmdlet or CLI command for the tenan
 - Does the licence condition in MC1483492 (Microsoft Copilot Premium plus Power Apps Premium or Dynamics 365) apply to the default-on state of new environments, as the notice says, or do all new public production environments qualify, as the Learn page reads?
 - Does App Access control cover Microsoft 365 Copilot Chat access to Dataverse data, or only agentic applications such as Cowork? Learn names Cowork as an example of the latter.
 - How many Copilot Credits does a typical business-data request use in Cowork or through the Work IQ API? Learn says the cost varies by task.
-- Will Microsoft document an API or CLI for the tenant, environment and app settings so they can be audited and scripted?
+- Will Microsoft document an API or CLI for the tenant and environment settings so they can be audited and scripted?
 
 <!-- rationale
 risk: Medium. Microsoft says it is on by default in new public production environments and opens Dataverse data to Copilot, but it works within existing permissions and has tenant, environment and app switches.
@@ -238,19 +249,9 @@ cost: Variable. Copilot Cowork and Work IQ API use of business data is metered i
 impact: Medium. People who use model-driven apps and Dynamics 365 in new production environments, plus makers and environment admins, notice it; Microsoft's notice does not say it changes anything for users elsewhere.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters: first paragraph / applicability: Any record exposed by a user's Dataverse security roles becomes reachable through natural-language questions. | Found: The selected view determines the records and fields that are returned. | Fix: Replace 'In practice, any record a user's Dataverse security roles already expose becomes reachable through natural-language questions' with 'Natural-language access is limited by existing permissions and participating apps; the selected view determines the records and fields returned.' The app participation boundary is also stated at https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings. | Source: https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq
-- [contradicted, blocker] Risk assessment: Change & support; Governance guidance: Before rollout / default: Importing an app whose Copilot setting is On or Default makes the setting On in the destination environment. | Found: When you import a solution that contains an app into an environment where Business Applications in Work IQ is on, the following rules apply: | Fix: Replace the import sentence with 'When an app is imported in a solution into an environment where Business Applications in Work IQ is on, an Enable Copilot in model-driven apps setting of On or Default becomes On in the destination environment.' Qualify 'Moving solutions between environments can therefore turn it on' with 'where Work IQ is already on'. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
-- [contradicted, blocker] controls[2].api; Governance controls: automation absence; Open questions: API / absence: Microsoft documents no API for the app-level Copilot setting, so reading and changing it is done in the portal. | Found: Creates or updates app/organization level override. ... SettingName ... Setting definition unique name (Required). ... Value ... Overridden value that needs to be set (Required). | Fix: Replace controls[2].api with kind 'rest', call 'POST /api/data/v9.2/SaveSettingValue', docs https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue. Add to its note: 'The request body uses SettingName m365copilotmodelappenabled, Value for the override, and AppUniqueName for the target app; publish the app for setting changes to take effect.' The setting name is documented at https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq and generic setting automation at https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code. Remove the app setting from the automation-absence sentence and narrow the final open question to the tenant and Work IQ environment switches. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: defaultState; summary; What's changing; Why it matters; rationale: risk / default: Work IQ is on by default in new public production environments, subject to the stated exceptions. | Found: Business Applications in Work IQ is on by default for new public production environments created for new or existing tenants. | Fix: Keep defaultState on and the new-environment qualification. Add: 'The Manage feature settings article still lists Off for Allow data availability in Microsoft 365 Copilot and Turn on Dataverse intelligence (Work IQ) for agents and AI experiences; the Business Applications default settings article describes new-environment default enablement.' Cite https://learn.microsoft.com/power-platform/admin/settings-features#dataverse-intelligence-preview. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
-- [supported, minor] What's changing: Status / availability: Business Applications access through Microsoft Copilot Studio is generally available. | Found: Access to Business Applications through Work IQ Model Context Protocol (MCP) and Microsoft Copilot Studio is generally available. | Fix: After this statement add: 'The Work IQ in Copilot Studio article separately labels Business apps as a preview workload that requires Enable preview workloads.' Cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq#turn-on-preview-workloads, whose text says 'The Business apps (preview) workload provides context from Dynamics 365 and Power Apps.' | Source: https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq
-- [supported, minor] Risk assessment: Security & identity: App Access path / admin-path: App Access is found at Power Platform admin center > Security > Identity & access > App Access Control. | Found: Select Security > Identity & access. Select App Access Control. Select the environment in which you want to enable app access. | Fix: The printed path reaches the right page but stops early. Replace it with 'Power Platform admin center > Security > Identity & access > App Access Control > environment > Enable'; add 'Select Save, return to the environment, and select the applications to block' if retaining instructions for blocking applications. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access
-- [supported, minor] controls[0].ui; Governance guidance: At rollout; rendered controls table / admin-path: The tenant audience setting is at Microsoft 365 admin center > Copilot > Settings > View all > Business Applications data in Work IQ available to Copilot. | Found: In the left navigation pane, select Copilot > Settings. In Copilot settings, select View all > Business Applications data in Work IQ available to Copilot. | Fix: The path reaches the setting pane but omits the deciding audience option. Use path 'Copilot > Settings > View all > Business Applications data in Work IQ available to Copilot > No users / All users / Specific groups' with surface 'Microsoft 365 admin center'. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
-- [supported, minor] controls[3].ui; Governance guidance: At rollout; rendered controls table / admin-path: Blocking Work IQ MCP uses Microsoft 365 admin center > Agents > Tools > Work IQ MCP > Block. | Found: Select Agents > Tools. Select Work IQ MCP. Review its current availability. To block access to the server, select Block. | Fix: Keep the cited feature-specific route, but note that the general MCP management article explicitly selects the Registry tab. Use path 'Agents > Tools > Registry > Work IQ MCP > Block' and cite https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers#review-and-approve-mcp-requests alongside the feature-specific page. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access
-- [contradicted, minor] Governance guidance: Before rollout: security roles / consistency: The checklist asks readers to review Dataverse security roles, but the controls table has no security-roles row. | Found: Review Dataverse security roles in each environment you intend to keep on ... Controls list tenant audience, Work IQ, app participation, MCP blocking and spending only. | Fix: Remove the security-role review bullet from the governance checklist; retain the existing permissions discussion and concept link in Risk assessment. This correction does not require adding a control row.
-- [contradicted, minor] Governance guidance: After rollout: Dataverse capacity / consistency: The checklist asks readers to check the Dataverse capacity page, but the controls table has no capacity row. | Found: Check the Dataverse capacity page for growth from search indexes in participating environments. ... No capacity row appears in controls. | Fix: Remove the Dataverse capacity-page check from the governance checklist; retain the supported storage and capacity statements in Cost and licensing. Do not add an unverified control row.
-- [contradicted, minor] front matter: action / consistency: The action rating prepare fits an already-launched, default-on capability with medium risk and available controls. | Found: status: launched; defaultState: on; risk: medium; action: prepare. The act-now scale includes launched changes that reach users or data without admin action and have a control or decision to take. | Fix: Set action to 'act-now' for the already-launched default-on new-environment capability. Keep the distinction that automatic enablement of existing environments has been deferred.
+- [supported, minor] What's changing: Status / availability: The user guide says access to Business Applications through Microsoft Copilot Studio is generally available. | Found: Access to Business Applications through Work IQ Model Context Protocol (MCP) and Microsoft Copilot Studio is generally available. | Fix: Replace the Studio availability clause with: 'The Business Applications user guide says access through Microsoft Copilot Studio is generally available, but the Copilot Studio Work IQ page labels Business apps as preview and requires preview workloads to be enabled.' Cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq. | Source: https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq
+- [supported, minor] controls[2].api; Governance controls table and prose / command: POST /api/data/v9.2/SaveSettingValue sets an app-level setting override. | Found: SaveSettingValue Action ... Creates or updates app/organization level override. | Fix: Keep the call and add https://learn.microsoft.com/power-apps/developer/data-platform/webapi/use-web-api-actions to sources. It documents POST for Web API actions and the /api/data/v9.2/ unbound-action route; the cited action reference documents the operation and parameters. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue
 -->

@@ -1,0 +1,778 @@
+{
+  "slug": "m365-copilot-ask-copilot-about-highlighted-response-content",
+  "roadmapId": 522616,
+  "title": "Microsoft Copilot: ask about highlighted text in a response",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "3 blocking findings (claims 57, 58, 59)"
+    ]
+  },
+  "counts": {
+    "claims": 62,
+    "confirmed": 58,
+    "unconfirmed": 1,
+    "contradicted": 3,
+    "blocker": 3,
+    "major": 1,
+    "minor": 1
+  },
+  "summary": "Hold: the briefing understates the controls that govern Copilot prompts and responses, despite Microsoft's documented enterprise protections. The roadmap facts and app-blocking path are supported, but the broad claims that no admin setting is documented and only the whole-app block governs the feature need narrowing.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the record, without establishing exclusion elsewhere.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: roadmapModified; What's changing",
+      "type": "record",
+      "claim": "The roadmap record was last modified on 22 September 2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-22T22:57:16\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "title; front matter: roadmapId, products",
+      "type": "record",
+      "claim": "Roadmap item 522616 concerns Microsoft Copilot (Microsoft 365) and asking about highlighted response content.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 522616, \"title\": \"Microsoft Copilot (Microsoft 365): Ask Copilot about highlighted response content\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; summary; Governance guidance",
+      "type": "record",
+      "claim": "The roadmap describes highlighting a sentence, paragraph or table from a Copilot response.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Highlight a sentence, paragraph, or table from the response",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; summary; Why it matters; Risk assessment",
+      "type": "record",
+      "claim": "The roadmap describes asking Copilot to work only on the selection.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "ask Copilot to work only on that selection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Focused explanations are an example in the roadmap.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Get focused explanations",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Concise summaries are an example in the roadmap.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "concise summaries",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Quick translations are an example in the roadmap.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "quick translations",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Next steps for the selected passage are an example in the roadmap.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "or next steps for the exact passage you're reviewing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap says the selection is previewed in the prompt.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Your selection is previewed in the prompt",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap says users can edit the selection before sending.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "so you can edit before you send.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes no new data source.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Highlight a sentence, paragraph, or table from the response and ask Copilot to work only on that selection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap names no new permission.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Highlight a sentence, paragraph, or table from the response and ask Copilot to work only on that selection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Risk assessment: Security & identity; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap names no new connector.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Get focused explanations, concise summaries, quick translations, or next steps for the exact passage",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap names no new identity.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Your selection is previewed in the prompt so you can edit before you send.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes no action taken in another app.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Get focused explanations, concise summaries, quick translations, or next steps for the exact passage",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes no autonomous behaviour.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Your selection is previewed in the prompt so you can edit before you send.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap states no licence or credit rate.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "It's a faster, more controlled way to get help right where you're working.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Governance controls",
+      "type": "absence",
+      "claim": "At the time of writing, Learn does not describe this feature and the release notes contain no entry for 522616.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '522616', 'Ask Copilot highlighted response 522616 default licensing admin', 'highlighted response content prerequisites role default'; opened release notes and searched full text for 522616, highlighted response, highlight-and-ask and ask selection; no matching entry.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "The default is unknown because Microsoft has not stated what this feature does on arrival.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Ask Copilot highlighted response 522616 default licensing admin', 'highlighted response licensing price meter default admin setting'; read roadmap, release notes, Manage Copilot Chat and Configure Microsoft Copilot settings; no feature default found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is included for a new option inside the licensed Copilot product.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Users need a Microsoft Copilot license and a qualifying prerequisite license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft Copilot requires a Microsoft Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Users need a Microsoft Copilot license and a qualifying prerequisite license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft Copilot also requires a qualifying prerequisite licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Users need a Microsoft Copilot license and a qualifying prerequisite license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Copilot Chat is available with an eligible Microsoft 365 subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Microsoft Copilot Chat is available to users with an eligible Microsoft 365 subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "A Microsoft Copilot licence is not required for eligible Copilot Chat users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Microsoft Copilot license | Required for licensed Microsoft Copilot capabilities | Not required for eligible users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Both enterprise Copilot experiences require a Microsoft Entra ID account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Microsoft Entra ID account | Required | Required",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Cost and licensing; Scope; rationale: impact",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether this option is available in Microsoft Copilot, Copilot Chat, or both.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'highlight response selection Copilot Chat licence price', 'highlighted response licensing price meter default admin setting'; opened Copilot requirements, License options and release notes; no feature-specific comparison found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.notes; Cost and licensing; summary; changes",
+      "type": "absence",
+      "claim": "No licence requirement specific to highlighted-response questions has been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'highlight response selection Copilot Chat licence price', 'highlighted response licensing price meter default admin setting'; opened Copilot requirements, License options and release notes; product-level requirements but no separate feature licence found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a separate price for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'highlighted response licensing price meter default admin setting', 'highlight response selection Copilot Chat licence price'; opened Copilot requirements, License options, pay-as-you-go overview and meters; no separate selection-question price found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a meter or credit rate specific to this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'highlighted response licensing price meter default admin setting'; opened pay-as-you-go overview and Meters for Microsoft Copilot pay-as-you-go services: agent usage is metered, but no meter for highlighted-response questions is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Microsoft has not published a prerequisite specific to this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'highlighted response content prerequisites role default'; opened Copilot requirements and searched release notes for 522616 and highlighted response; only general product requirements found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Microsoft has not published an admin role specific to this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'highlighted response content prerequisites role default'; opened Copilot requirements, Configure Microsoft Copilot settings and Integrated Apps documentation; product/control roles found but no role specific to highlighted-response questions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].ui; Governance controls; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "The app-blocking path is Microsoft 365 admin center > Settings > Integrated Apps > Available Apps > app > Block app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "Select Settings, and then select Integrated Apps. Select the Available Apps list. Select an app from the Available Apps list to open the overview pane. Select Block app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].api",
+      "type": "absence",
+      "claim": "No automation for the whole Copilot app block in Integrated Apps is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Integrated Apps block Graph Copilot API PowerShell', 'Microsoft Graph beta Integrated apps block Copilot app availability PowerShell', 'Copilot app block API Integrated'; read Integrated Apps and copilotPackage:block search excerpts; package API not identified as the Copilot app block.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].ui and api; What's changing; Governance guidance; Governance controls",
+      "type": "absence",
+      "claim": "At the time of writing, Microsoft documents no dedicated switch for highlighted-response questions alone.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Ask Copilot highlighted response 522616 default licensing admin', 'highlighted response licensing price meter default admin setting'; opened Manage Copilot Chat, Configure Microsoft Copilot settings and Integrated Apps; no selection-question switch or API found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[0].governs and note; Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "Integrated Apps blocking controls availability of the whole Copilot app rather than highlighted-response questions separately.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+      "quote": "This setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web for all users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "The cited Integrated Apps controls are documented for Global Administrators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "The following controls on the integrated apps portal in the Microsoft 365 Admin Center are only available to Global Admins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "The Integrated Apps Copilot app settings apply to both Microsoft Copilot and Copilot Chat apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "On the Integrated Apps page, the CoPilot app settings apply to both Microsoft Copilot and the Copilot Chat apps. Any changes made to this app from the integrated apps portal apply to both.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].scope; Governance controls",
+      "type": "applicability",
+      "claim": "Manage Copilot Chat describes the block as tenant-wide and scopeable to users or groups, including licensed users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+      "quote": "Blocking Copilot through Integrated Apps is a tenant-wide control that you can scope to specific users or groups, including licensed users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].governs; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Integrated Apps blocking removes Copilot Chat on the web.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+      "quote": "This setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web for all users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "applicability",
+      "claim": "Integrated Apps blocking removes access in the Microsoft Copilot app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+      "quote": "This setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web for all users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "applicability",
+      "claim": "Integrated Apps blocking removes access in Outlook.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+      "quote": "This setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web for all users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "applicability",
+      "claim": "Manage Copilot Chat says the Integrated Apps block also blocks Copilot in Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+      "quote": "This setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web for all users.",
+      "severity": "minor",
+      "fix": "Add: 'The Integrated Apps page also says the app is blocked only in the Microsoft Copilot application and Outlook, while Teams continues to honor Teams admin center settings; the two pages differ on Teams reach as well as scoping.' Cite https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365."
+    },
+    {
+      "n": 49,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The Integrated Apps page says blocking an app blocks it for all users, differing from Manage Copilot Chat on scoping.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "When you choose to block an app, it is blocked for all users in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Enterprise Copilot and Copilot Chat prompts and responses are protected under the DPA and Product Terms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/enterprise-data-protection",
+      "quote": "The use of Microsoft Copilot and Microsoft Copilot Chat, as used by organizations, is covered by the terms of the Microsoft Products and Services Data Protection Addendum (DPA) and Microsoft Product Terms, with Microsoft acting as a data processor.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Specific enterprise data protection controls and policies vary by subscription plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/enterprise-data-protection",
+      "quote": "The specific controls and policies will vary depending on the underlying subscription plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Copilot respects the organization's identity model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/enterprise-data-protection",
+      "quote": "Copilot respects your identity model and permissions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Copilot respects the organization's permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/enterprise-data-protection",
+      "quote": "Copilot respects your identity model and permissions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Copilot inherits sensitivity labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/enterprise-data-protection",
+      "quote": "inherits your sensitivity labels",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Copilot applies retention policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/enterprise-data-protection",
+      "quote": "applies your retention policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Copilot supports audit of interactions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/enterprise-data-protection",
+      "quote": "supports audit of interactions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Whether enterprise data protection controls apply to this feature remains unconfirmed without a separate statement.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/plan/enterprise-data-protection",
+      "quote": "Enterprise data protection (EDP) refers to controls and commitments, under the Data Protection Addendum (DPA) and Product Terms, that apply to customer data for users of Microsoft Copilot and Microsoft Copilot Chat.",
+      "severity": "blocker",
+      "fix": "Replace 'Whether that page's controls apply to this feature has not been separately stated' with 'That page covers customer data, including prompts and responses, for users of Microsoft Copilot and Copilot Chat'. Keep the existing qualification that specific controls vary with the subscription plan."
+    },
+    {
+      "n": 58,
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "absence",
+      "claim": "The whole-app block is the only documented control affecting this feature or removing access to its web chat.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+      "quote": "To prevent access to the Copilot app for unlicensed users, including US government customers, don't deploy the Copilot app to these users.",
+      "severity": "blocker",
+      "fix": "Change 'The only documented admin control that removes Copilot's web chat is the whole-app block in Integrated Apps' to 'The controls table documents the whole-app block in Integrated Apps'. Change 'The only documented control that affects this feature is blunt' to 'The whole-app block documented here is blunt'. Other general access and enterprise data protection controls are documented, so do not claim exclusivity."
+    },
+    {
+      "n": 59,
+      "where": "summary; What's changing",
+      "type": "absence",
+      "claim": "No admin setting is documented and Microsoft has not stated whether an admin setting governs the feature.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+      "quote": "This setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web for all users.",
+      "severity": "blocker",
+      "fix": "Replace summary's 'no admin setting is documented' with 'no setting for highlighted-response questions alone is documented'. In What's changing, replace 'or whether an admin setting governs it' with 'or whether a setting for highlighted-response questions alone is available'. This preserves the confirmed narrow absence without denying the whole-app setting already documented in the table."
+    },
+    {
+      "n": 60,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "This change is not a new data source.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Ask Copilot highlighted response 522616 default licensing admin', 'highlighted response licensing price meter default admin setting'; opened release notes, Manage Copilot Chat and enterprise data protection; no feature-specific statement rules out a new data source.",
+      "severity": "major",
+      "fix": "Replace 'This is a change to how users write prompts, not a new data source' with 'The roadmap describes a change to how users write prompts and names no new data source'."
+    },
+    {
+      "n": 61,
+      "where": "What's changing; Why it matters; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Microsoft describes Copilot features as gradually rolling out to a subset of users within a tenant before expanding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Copilot features are introduced using a safe deployment model, gradually rolling out to a subset of users within a tenant before expanding across the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No source found says existing behaviour changes if nobody acts.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Ask Copilot highlighted response 522616 default licensing admin', 'highlighted response licensing price meter default admin setting'; read roadmap and release notes, Manage Copilot Chat and Configure Microsoft Copilot settings; no replacement of existing behaviour stated for this feature.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T06:06:23.303Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=522616",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/enterprise-data-protection",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether the Copilot app, and so Copilot on the web, is available to users",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Integrated Apps",
+          "Available Apps",
+          "Block app"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

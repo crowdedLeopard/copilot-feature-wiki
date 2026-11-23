@@ -25,6 +25,9 @@ sources:
   - title: "Get started with the data loss prevention alerts"
     url: "https://learn.microsoft.com/purview/dlp-alerts-get-started"
     kind: "learn"
+  - title: "Learn about data loss prevention"
+    url: "https://learn.microsoft.com/purview/dlp-learn-about-dlp"
+    kind: "learn"
   - title: "Investigate data loss alerts with Microsoft Defender XDR"
     url: "https://learn.microsoft.com/defender-xdr/dlp-investigate-alerts-defender"
     kind: "learn"
@@ -63,19 +66,23 @@ changes:
     note: "First briefing for the Worldwide roadmap item for user-based aggregation of DLP alerts, launched per the roadmap while Learn still labels it preview."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 57 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after the independent check: removed the unsupported 'no new data' and 'end users see no change' statements and the claim that the table lists the only documented alert control; added Learn's alert retention periods."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 59 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 53
-  unconfirmed: 2
+  claims: 59
+  confirmed: 57
+  unconfirmed: 0
   contradicted: 2
-  attempts: 1
-  hash: "7d0b4728aafd5de35d6a97b32269e057"
+  attempts: 0
+  hash: "2ce088260e0d5f9e96d959c42977c39c"
 ---
 
 ## What's changing
@@ -97,8 +104,8 @@ Microsoft has not stated whether the feature is on when it arrives in a tenant, 
 ## Risk assessment
 
 **Data exposure**
-- No new data source: the feature groups alert events that DLP rules already raise. Alert content is gated by roles: Learn says the Content preview and Matched sensitive content and context features need membership of the Content Explorer Content Viewer role group. Larger consolidated alerts put more matches behind one open alert, so check who holds that role group.
-- Learn says an organisation's audit log retention policy configuration controls how long an alert remains visible in the console, so a long-running aggregated alert is bounded by that setting.
+- The feature groups alert events that DLP rules already raise. Alert content is gated by roles: Learn says the Content preview and Matched sensitive content and context features need membership of the Content Explorer Content Viewer role group. Larger consolidated alerts put more matches behind one open alert, so check who holds that role group.
+- Learn says an organisation's audit log retention policy configuration controls how long an alert remains visible in the console, so a long-running aggregated alert is bounded by that setting. Another Learn page states that DLP alerts are available for six months in Defender and 30 days in the Purview DLP alerts dashboard; confirm which limit applies to your console.
 
 **Security & identity**
 - Learn says that if an alert is closed within the aggregation window and a new match occurs for the same user and rule, the new match is aggregated into the same alert. An analyst who closes an alert early can therefore have later matches attached to it; agree a rule for reopening and review.
@@ -154,7 +161,7 @@ Learn describes the setting as a DLP setting at the tenant level.
 </tbody>
 </table>
 
-The table lists the one control Learn documents for how DLP alerts are raised: the rule-level alert setting. It is an existing control, not a switch for user-based aggregation, and it does not enable or disable the aggregation.
+The table lists an existing rule-level alert setting documented by Learn. Learn also describes tenant-level aggregation and alert threshold configuration on [Get started with the data loss prevention alerts](https://learn.microsoft.com/purview/dlp-alerts-get-started). The rule-level setting is an existing control, not a switch for user-based aggregation, and it does not enable or disable the aggregation.
 
 Learn describes user based alert aggregation as a DLP setting at the tenant level but gives no navigation path for it. The Set-PolicyConfig reference lists the parameters -IsUserBaseDlpAlertAggregationEnabled and -AggregationTimeWindowForDlpAlerts in its syntax, but its parameter descriptions are unfilled placeholders at the time of writing (November 2026), so this page does not present them as the documented switch for the feature. Confirm in a test tenant before scripting.
 
@@ -169,18 +176,14 @@ In Microsoft Defender XDR, Learn says the built-in alert tuning rule for DLP sig
 - Will Learn drop the preview label now that the roadmap item is Launched with General Availability as a release phase?
 
 <!-- rationale
-risk: Low. It changes how existing DLP alerts are grouped and reads no new data; Learn describes a tenant-level DLP setting, and no source says existing alert behaviour changes without an administrator acting.
+risk: Low. It changes how existing DLP alerts are grouped; Learn describes a tenant-level DLP setting, and no source says existing alert behaviour changes without an administrator acting.
 cost: Low. Learn lists the licences for single-event alert configuration, which this feature modifies, and publishes no separate licence or price for user-based aggregation; the known cost is analyst and administrator time.
-impact: Low. Mainly security and compliance analysts who triage DLP alerts notice it, through different alert counts and groupings; end users see no change.
+impact: Low. Mainly security and compliance analysts who triage DLP alerts notice it, through different alert counts and groupings.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: first paragraph after table / absence: The rule-level alert setting is the one control Learn documents for how DLP alerts are raised. | Found: This time window is configurable by the admin at the tenant level. ... If you're licensed for aggregated alert configuration options, then you'll see options to generate alerts for each rule match, when thresholds are met, and within a defined time window | Fix: Replace 'The table lists the one control Learn documents for how DLP alerts are raised: the rule-level alert setting.' with 'The table lists an existing rule-level alert setting documented by Learn.' Learn also describes tenant-level aggregation and alert threshold configuration at https://learn.microsoft.com/purview/dlp-alerts-get-started; do not imply that the table exhausts the documented controls. | Source: https://learn.microsoft.com/purview/dlp-alerts-get-started
-- [unsupported, major] Risk assessment: Data exposure; rationale: risk / behaviour: The feature uses no new data source and reads no new data. | Found: Searched: Purview user rule alert aggregation new data source end users impact actions; read roadmap 564765 and dlp-alerts-get-started. These describe grouping rule-match events but do not state that the implementation reads no new data. | Fix: Remove 'No new data source:' from Risk assessment and 'and reads no new data' from the risk rationale. Retain the supported statement that the feature groups alert events raised by DLP rules.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure / applicability: Learn says audit log retention policy configuration controls how long an alert remains visible in the console. | Found: Your organization's audit log retention policy configuration controls for how long an alert remains visible in the console. | Fix: After this sentence add: 'Another Learn page states that DLP alerts are available for six months in Defender and 30 days in the Purview DLP alerts dashboard; confirm which limit applies to your console.' Cite https://learn.microsoft.com/purview/dlp-learn-about-dlp#viewing-policy-application-results, whose excerpt states those two periods. | Source: https://learn.microsoft.com/purview/dlp-alerts-get-started
-- [unsupported, minor] rationale: impact / behaviour: End users see no change. | Found: Searched: Purview user rule alert aggregation new data source end users impact actions; read roadmap 564765 and dlp-alerts-get-started. Neither states that end users see no change. | Fix: Remove '; end users see no change' from the impact rationale. Keep the assessment of the analyst audience and changed alert groupings.
-- [contradicted, minor] Governance guidance: Before rollout and At rollout; controls / consistency: The checklist asks readers to check role membership and tenant aggregation enablement, but neither control appears in the controls table. | Found: 'Confirm which analysts hold the Manage alerts role ... and who holds the Content Explorer Content Viewer role group.' 'Ask the DLP administrator whether user based alert aggregation is enabled for the tenant.' The table contains only the rule-level alert setting. | Fix: The Before rollout step checking analyst dashboard roles and Content Explorer Content Viewer membership, and the At rollout step checking tenant aggregation enablement, have no corresponding rows in the controls table. These are the checklist/table omissions; this finding does not request new control rows.
+- [contradicted, minor] Governance guidance: Before rollout, analyst permissions / consistency: Every control the checklist asks readers to check appears in the controls table. | Found: Confirm which analysts hold the Manage alerts role and DLP Compliance Management or View-Only DLP Compliance Management, and who holds the Content Explorer Content Viewer role group. The table contains only Whether a DLP rule sends an alert to admins when it matches. | Fix: The Before rollout step checking analyst permissions has no controls-table row. Remove that checklist bullet; retain the verified role requirements in Scope and Risk assessment.
+- [contradicted, minor] Governance guidance: At rollout, tenant aggregation setting / consistency: The tenant-level aggregation control the checklist asks readers to check appears in the controls table. | Found: Ask the DLP administrator whether user based alert aggregation is enabled for the tenant. The table contains only Whether a DLP rule sends an alert to admins when it matches, with a note that it does not enable aggregation. | Fix: The At rollout step checking the tenant-level aggregation setting has no controls-table row. Remove that checklist bullet; retain the existing explanation of the setting and documentation gap in Governance controls.
 -->
