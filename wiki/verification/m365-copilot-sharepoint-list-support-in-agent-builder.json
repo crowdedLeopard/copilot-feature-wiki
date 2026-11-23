@@ -1,0 +1,781 @@
+{
+  "slug": "m365-copilot-sharepoint-list-support-in-agent-builder",
+  "roadmapId": 561920,
+  "title": "Microsoft 365 Copilot: SharePoint list as a knowledge source in Agent Builder",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 58: severity blocker on a rationale: risk rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "1 blocking finding (claim 47)"
+    ]
+  },
+  "counts": {
+    "claims": 60,
+    "confirmed": 57,
+    "unconfirmed": 2,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold for two unsupported statements about permission boundaries: Microsoft does not say permissions apply only to files or guarantee that blocking an agent leaves list permissions unchanged. The roadmap facts, list limits, licensing alternatives and blocking paths are supported; the beta API warning and several governance omissions also need small corrections.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "Agent Builder in Microsoft 365 Copilot supports a SharePoint list as a knowledge source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#july-29,-2026",
+      "quote": "Agent Builder now supports using a SharePoint list as a knowledge source for agents in Microsoft 365 Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: impact",
+      "type": "behaviour",
+      "claim": "Makers can ground an agent in structured list data so users receive answers based on the selected list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#july-29,-2026",
+      "quote": "Makers can ground an agent in structured list data so users can ask questions and get responses based on information stored in a selected SharePoint list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Each Agent Builder agent can reference one SharePoint list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-add-knowledge",
+      "quote": "Select up to 1 SharePoint list for each agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing; Risk assessment; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "A list knowledge source has a maximum of 20,000 items or rows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-add-knowledge",
+      "quote": "A list can have a maximum of 20,000 items (rows) and 50 MB of raw text.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Risk assessment; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "A list knowledge source has a maximum of 50 MB of raw text.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-add-knowledge",
+      "quote": "A list can have a maximum of 20,000 items (rows) and 50 MB of raw text.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The agent truncates a list that exceeds either documented limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-add-knowledge",
+      "quote": "If your list exceeds either limit, the agent truncates it and notes the truncation in its response.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The agent notes list truncation in its response.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-add-knowledge",
+      "quote": "If your list exceeds either limit, the agent truncates it and notes the truncation in its response.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Risk assessment; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "The Attachments column is not indexed or used for grounding, and attachment contents do not supply answers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-add-knowledge",
+      "quote": "The Attachments column (list attachments) isn't indexed or used for grounding; agents don't answer from attachment contents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Selecting a SharePoint site does not include its lists; the maker must select the specific list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-add-knowledge",
+      "quote": "Selecting a SharePoint site doesn't include its lists. To use a list as knowledge, select the specific list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Risk assessment; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap says lookup columns are not yet supported.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Support for list attachments and lookup columns is not yet available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A maker can add the list using its own URL without query parameters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-add-knowledge",
+      "quote": "You can also add a SharePoint list by URL. On the list, select Share or Copy link to get the link, then paste the list URL (without query parameters).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "The maker adds list knowledge in the Knowledge section of the Configure tab in Agent Builder.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-add-knowledge",
+      "quote": "After you add knowledge sources, verify that they appear in the Knowledge section on the Configure tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "A maker can select Recent lists in the file picker to add a SharePoint list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-add-knowledge",
+      "quote": "To browse for a SharePoint list, select Recent lists in the left pane of the picker, and then select the list that you want to add.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "An agent can reference its SharePoint list alongside other knowledge source types.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "For this release, each agent can reference one SharePoint list with up to 20,000 items, alongside other knowledge source types.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), without claiming other clouds are unavailable.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Desktop is a platform listed on the roadmap.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Web is a platform listed on the roadmap.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-07-15T22:55:27.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-07-15T22:55:27\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "Microsoft's release notes list SharePoint list support in Agent Builder under July 29, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#july-29,-2026",
+      "quote": "## July 29, 2026\n### Microsoft 365 Copilot extensibility\n1. SharePoint list support in Agent Builder [Windows, Web]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: defaultState; summary; Why it matters; Scope",
+      "type": "default",
+      "claim": "List grounding is user-opt-in: the maker chooses the list rather than enabling a new administrative switch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-add-knowledge",
+      "quote": "Selecting a SharePoint site doesn't include its lists. To use a list as knowledge, select the specific list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "The new capability does not expose a newly created list-grounded agent to other users until the maker shares it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
+      "quote": "After your agent is created, a confirmation message indicates that the agent is private and only available to you. To share the agent with others, select Share to open the share dialog.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters",
+      "type": "applicability",
+      "claim": "Administrators cannot disable Agent Builder creation separately while keeping agents enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
+      "quote": "Admins can't disable agent creation in Agent Builder separately while keeping agents enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "The knowledge page says the agent respects existing permissions and sensitivity labels for files already in SharePoint or OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-add-knowledge",
+      "quote": "The agent respects existing permissions and sensitivity labels for files already uploaded to SharePoint or OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure; Scope: Who can use it",
+      "type": "applicability",
+      "claim": "An agent excludes knowledge-source content when the user lacks access to that source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
+      "quote": "if the user doesn't have access to a knowledge source, the agent doesn't include the content that knowledge source contains when generating a response.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft does not separately explain list-level and item-level permission enforcement for this Agent Builder capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Agent Builder SharePoint list knowledge permissions item-level list-level permissions; \"Agent Builder\" \"list\" \"permissions\" \"only\". Read add-knowledge and share-manage-agents; results for Copilot Studio and SharePoint permissions did not explain Agent Builder list enforcement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Sharing an agent alone does not grant access to all its source content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
+      "quote": "Access to an agent and access to its knowledge sources are distinct",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "An agent owner can separately share selected SharePoint files and folders if the owner has permission to share them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
+      "quote": "Owners can separately share selected SharePoint files and folders if they have permission to do so.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity; Scope: Prerequisites; Governance guidance",
+      "type": "applicability",
+      "claim": "Restricted SharePoint Search prevents using SharePoint as an Agent Builder knowledge source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-add-knowledge",
+      "quote": "If Restricted SharePoint Search is enabled, you can't use SharePoint as a knowledge source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The documented list-grounding capability introduces no documented new actions on list data.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Agent Builder SharePoint list knowledge source write update delete actions. Read add-knowledge and release notes; overview search excerpt describes action-authoring limitations. SharePoint write tools found were separate APIs or Copilot Studio tools, not this list-grounding release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Agent Builder knowledge page says capabilities vary by licence and links to licensing and agent licensing models.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-add-knowledge",
+      "quote": "Knowledge sources and capabilities differ by license; for details, see Microsoft 365 Copilot licensing and Agent capabilities and licensing models.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.model; licensing.notes; summary; Why it matters; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "The mixed licensing model reflects access through a Microsoft 365 Copilot licence or tenant pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "Users in tenants that have Copilot Studio pay-as-you-go billing enabled (consumed as Copilot Credits) and users with Microsoft 365 Copilot licenses have access to agents with enhanced capabilities, such as grounding with SharePoint data and Microsoft 365 Copilot connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing; front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "Pay-as-you-go usage is measured in Copilot Credits, supporting a variable cost rating.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "Usage-based billing (pay-as-you-go) - Tenants can enable agent access without a full license, with some limitations to agent configuration options. Consumption is measured in Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing; Why it matters",
+      "type": "licensing",
+      "claim": "SharePoint custom knowledge is unavailable to Copilot Chat users without usage-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "| Capability | Copilot Chat (no usage-based billing)* | Copilot Chat (usage-based billing)** | Microsoft 365 Copilot (licensed) |\n| Custom knowledge: SharePoint data | ❌ | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "SharePoint custom knowledge is available to Copilot Chat users with usage-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "| Capability | Copilot Chat (no usage-based billing)* | Copilot Chat (usage-based billing)** | Microsoft 365 Copilot (licensed) |\n| Custom knowledge: SharePoint data | ❌ | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "SharePoint custom knowledge is available to licensed Microsoft 365 Copilot users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "| Capability | Copilot Chat (no usage-based billing)* | Copilot Chat (usage-based billing)** | Microsoft 365 Copilot (licensed) |\n| Custom knowledge: SharePoint data | ❌ | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Usage billing applies to agents grounded in tenant data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "Usage billing applies to agents grounded in tenant data, while agents grounded in public data or instructions are free to use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The prerequisites page says agents grounded in public data or instructions are free to use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+      "quote": "Usage billing applies to agents grounded in tenant data, while agents grounded in public data or instructions are free to use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A separate Copilot Credits rate specific to SharePoint list grounding in Agent Builder is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Agent Builder SharePoint list grounding Copilot Credits billing rate. Read prerequisites, add-knowledge and Billing rates and management. Rates include generative answers and tenant graph grounding, but no separate Agent Builder list-grounding rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].ui; rendered table; Risk assessment; Governance guidance",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Agents > All agents > agent > Block reaches the agent blocking control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select Agents > All agents.\nIn the All agents page, select an agent from the list of agents.\nIn the agent details pane that opens, immediately under the agent's name, select Block or Unblock.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].api; rendered table; Governance controls",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks the selected Copilot package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block\nAPIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": "minor",
+      "fix": "Keep the call and add to the control note: 'The beta API is subject to change; Microsoft does not support its use in production applications.'"
+    },
+    {
+      "n": 45,
+      "where": "controls[0].note; rendered table; Governance controls",
+      "type": "licensing",
+      "claim": "Access to the Graph Package Management API requires a Microsoft Agent 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].governs; controls[0].note; Risk assessment; Governance controls",
+      "type": "applicability",
+      "claim": "Blocking applies to the selected Agent Builder agent across the organisation and affects Copilot and other hosts such as Outlook and Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Blocking or unblocking an agent that you created by using Microsoft Copilot Agent Builder and Microsoft Copilot Studio affects its availability and functionality in Microsoft Copilot. It also affects availability and functionality in other host products, such as Microsoft Outlook, Microsoft Teams",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].note; rendered table",
+      "type": "applicability",
+      "claim": "Blocking an agent does not change the SharePoint list's own permissions.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Agent Builder\" \"block\" \"permissions\" SharePoint list. Read agent-actions and share-manage-agents. The former says blocking doesn't necessarily revoke connected-service permissions; the latter describes unchanged shared-file access, not list permissions after blocking.",
+      "severity": "blocker",
+      "fix": "Replace 'Existing alternative: blocking does not change the list's own permissions' with 'Agent approval or blocking does not necessarily grant or revoke connected-service permissions or credentials', as stated at https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions."
+    },
+    {
+      "n": 48,
+      "where": "Governance controls: User access",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Agents > Settings > User access reaches the agent access control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Open the Microsoft 365 admin center in your browser.\nSelect Agents > Settings > User access to manage your organization's agents and plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls: User access",
+      "type": "behaviour",
+      "claim": "User access offers All users, No users, or Specific users or groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
+      "quote": "Choose All users, No users, or Specific users or groups to control who can access and install agents and plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls: User access",
+      "type": "default",
+      "claim": "All users is the default User access option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "All users - This option is the default. It means that all users in the organization can access agents and plugins, subject to the existing app policies and user assignments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls: User access",
+      "type": "applicability",
+      "claim": "User access controls agent and plugin access rather than Agent Builder creation independently.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
+      "quote": "This setting controls agent and plugin access, not Agent Builder creation independently.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls: Sharing",
+      "type": "admin-path",
+      "claim": "Agents > Settings > Sharing in the Microsoft 365 admin center reaches org-wide Agent Builder sharing settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
+      "quote": "Org-wide sharing: In Agents > Settings > Sharing, control who can share agents built in Agent Builder with the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls: Sharing; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Sharing controls who can share agents built in Agent Builder with the whole organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
+      "quote": "Org-wide sharing: In Agents > Settings > Sharing, control who can share agents built in Agent Builder with the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls: Sharing",
+      "type": "behaviour",
+      "claim": "Changes to Sharing settings apply only to new sharing actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
+      "quote": "Changes to the sharing setting apply only to new sharing actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls: Sharing",
+      "type": "behaviour",
+      "claim": "Existing shared agents stay accessible after a Sharing setting change unless their sharing settings are manually updated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
+      "quote": "Existing shared agents remain accessible unless you manually update their sharing settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls; summary; rationale: impact",
+      "type": "absence",
+      "claim": "Microsoft does not document a new administrator control specific to SharePoint list grounding in Agent Builder.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Agent Builder SharePoint list knowledge source admin disable setting Microsoft Graph. Read add-knowledge, agent-settings, agent-actions and share-manage-agents. Results show maker selection and general agent/SharePoint controls, not a list-grounding-specific admin switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Open questions: Restricted Content Discovery",
+      "type": "absence",
+      "claim": "The cited Restricted Content Discovery page does not explicitly settle selection of SharePoint lists in Agent Builder.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Users don't see entry points such as the Copilot button, AI actions menus (including creating agents), or Create pages with AI.",
+      "severity": "minor",
+      "fix": "Narrow the question to 'Does this restriction also block the list picker in Agent Builder?' and precede it with 'Microsoft's Manage access to agents in SharePoint page says Restricted Content Discovery prevents adding content from the site to any other agents.' Cite https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint#turn-off-agents-on-sites-with-restricted-content-discovery alongside the existing source; that page does not explicitly name the Agent Builder list picker."
+    },
+    {
+      "n": 58,
+      "where": "rationale: risk",
+      "type": "applicability",
+      "claim": "Microsoft's page says existing permissions apply only for files.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Agent Builder\" \"list\" \"permissions\" \"only\"; Agent Builder SharePoint list knowledge permissions item-level list-level permissions. Read add-knowledge and share-manage-agents. Neither says permissions apply only to files or excludes lists from permission enforcement.",
+      "severity": "minor",
+      "fix": "Replace the risk rationale with 'Medium. Makers can point an agent at a list's contents. Microsoft's knowledge page explicitly describes existing permissions for SharePoint and OneDrive files but does not separately explain list-level or item-level enforcement, so test before sharing widely.' Keep https://learn.microsoft.com/plugins/agent-builder-add-knowledge as the supporting citation."
+    },
+    {
+      "n": 59,
+      "where": "Scope: Limits",
+      "type": "behaviour",
+      "claim": "Other knowledge-source types have their own documented limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/agent-builder-add-knowledge",
+      "quote": "Agent Builder supports public websites, SharePoint and OneDrive content, Teams chats and meetings, Outlook email, embedded files, and Microsoft 365 Copilot connectors. Limits vary by source type.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance guidance; controls",
+      "type": "consistency",
+      "claim": "The governance checklist names controls that have no corresponding controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm whether Restricted SharePoint Search is enabled in the tenant; Confirm which users hold a Microsoft 365 Copilot licence and whether pay-as-you-go billing is enabled; Decide who may share Agent Builder agents; Watch Copilot Credits consumption. The table contains only agent blocking.",
+      "severity": "minor",
+      "fix": "The Restricted SharePoint Search, licence/billing, Sharing and consumption-check steps have no table rows. Without adding rows, remove the first, third and consumption-check bullets; replace the licence/billing bullet with 'Tell agent owners that SharePoint knowledge requires a Microsoft 365 Copilot licence or tenant usage-based billing, as described under Cost and licensing.'"
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T14:03:23.686Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=561920",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/plugins/agent-builder-add-knowledge",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/plugins/agent-builder-share-manage-agents",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether an agent grounded in a SharePoint list is available to anyone in the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether an agent grounded in a SharePoint list is available to anyone in the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

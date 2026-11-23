@@ -1,0 +1,543 @@
+{
+  "slug": "microsoft-viva-viva-glint-enhanced-multiple-choice-questions-with-up-to-500-options",
+  "roadmapId": 569606,
+  "title": "Viva Glint: multiple-choice questions with up to 500 options",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "7 blocking findings (claims 3, 6, 8, 23, 26, 34, 40)"
+    ]
+  },
+  "counts": {
+    "claims": 42,
+    "confirmed": 33,
+    "unconfirmed": 5,
+    "contradicted": 4,
+    "blocker": 7,
+    "major": 1,
+    "minor": 2
+  },
+  "summary": "Hold: Microsoft documents confidentiality protections for multiple-choice items, contrary to the briefing's claim that small-group treatment is undocumented. The search threshold and expanded reporting promise could not be verified, and the suggestion of re-uploading options on a live question conflicts with Microsoft's editing restrictions.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "Viva Glint multiple-choice questions support up to 500 options.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/questions-setup",
+      "quote": "Supports up to 500 options per question.",
+      "severity": "minor",
+      "fix": "Replace the first sentence of What's changing with: 'Microsoft Learn documents multiple-choice questions with up to 500 options and CSV upload of response options.' The supplied roadmap record has a matching title but no description supporting the attributed CSV and behaviour details."
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "Survey administrators can upload multiple-choice response options from a CSV file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/questions-setup",
+      "quote": "Survey admins can upload a CSV file to add multiple choice response options in bulk, rather than entering each option individually.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary",
+      "type": "default",
+      "claim": "No admin action is needed.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Viva Glint CSV multiple choice 500 options \"default\" \"admin action\". Opened Questions setup and Advanced Configuration; neither states that this rollout requires no admin action. The roadmap record contains no rollout instructions.",
+      "severity": "blocker",
+      "fix": "Replace 'No admin action is needed' with 'Survey admins choose whether to use CSV upload when editing questions'."
+    },
+    {
+      "n": 4,
+      "where": "controls[0].ui and controls[0].api; summary; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft documents no separate tenant or survey-level UI or API switch for long option lists, CSV upload and response search.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Glint multiple choice CSV 500 options tenant survey enable disable PowerShell Graph API switch; Viva Glint survey questions options API Microsoft Graph PowerShell configuration CSV. Opened Questions setup and Advanced Configuration; no separate switch or operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "licensing.notes; summary; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A licence or charge specific to the 500-option capability is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Glint 500 options CSV upload additional license price meter. Opened Viva Glint licensing and Questions setup; results state product subscriptions but identify no separate entitlement, price or meter for this capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: defaultState; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The default state of the CSV and long-option-list capability is unknown.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/viva/glint/setup/questions-setup",
+      "quote": "CSV upload for option fields | Survey admins can upload a CSV file to add multiple choice response options in bulk, rather than entering each option individually. Supports up to 500 options per question. | Multiple Choice | Editable",
+      "severity": "blocker",
+      "fix": "Set defaultState to 'user-opt-in': Learn describes an editable question capability the survey author chooses to use, and the targeted switch search found no separate enablement control. Replace the arrival-state sentence with 'Survey admins choose whether to use CSV upload when editing questions; rollout mechanics for response search are not stated.'"
+    },
+    {
+      "n": 7,
+      "where": "front matter: licensing.model and licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The capability is inside Viva Glint under its existing Viva Suite or Viva Glint subscription requirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/glint-order-teams",
+      "quote": "The purchase of a Viva Suite or Viva Glint subscription plan is required for using Microsoft Viva Glint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Why it matters; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Survey takers get search and filter only when a question has more than 50 options, according to the roadmap.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Viva Glint multiple choice 500 options search filter 50 default existing questions rollout; \"Viva Glint\" \"500\" \"50\"; \"569606\" \"Glint\". Read supplied roadmap record, Questions setup and roadmap landing page; none supplies this threshold.",
+      "severity": "blocker",
+      "fix": "Remove the statements that search and filter appear above 50 options, including the 'only' claim and the threshold-specific testing rationale. The supplied roadmap record has no description, and the Microsoft text retrieved does not establish that limit."
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap item says reporting will support the expanded option set.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"569606\" \"Glint\"; Viva Glint multiple choice 500 options search filter 50 default existing questions rollout. Read roadmap record and roadmap landing page; neither provides this promise. Multiple Choice Question Report describes general reporting, not 500-option support.",
+      "severity": "major",
+      "fix": "Remove 'The item also says reporting will support the expanded option set.'"
+    },
+    {
+      "n": 10,
+      "where": "What's changing; controls[0].note",
+      "type": "behaviour",
+      "claim": "Questions setup lists CSV upload for option fields as an editable multiple-choice question field.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/questions-setup",
+      "quote": "CSV upload for option fields | Survey admins can upload a CSV file to add multiple choice response options in bulk, rather than entering each option individually. Supports up to 500 options per question. | Multiple Choice | Editable",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Bulk upload replaces entering response options individually.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/questions-setup",
+      "quote": "Survey admins can upload a CSV file to add multiple choice response options in bulk, rather than entering each option individually.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope",
+      "type": "applicability",
+      "claim": "The Questions setup documentation applies only to Engagement survey programs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/questions-setup",
+      "quote": "This documentation applies only to Engagement survey programs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope; Open questions",
+      "type": "absence",
+      "claim": "The Engagement page points to separate 360 guidance, which does not establish the 500-option capability for 360.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Glint 360 multiple choice 500 options CSV upload. Opened Questions setup and 360 Survey Questions setup; the former directs 360 authors to separate documentation, and the latter lists rating and open-ended types without a 500-option or CSV-option capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Learn does not describe the claimed response search and filter behaviour for lists over 50 options.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Glint multiple choice 500 options search filter 50 default existing questions rollout; \"Viva Glint\" \"500\" \"50\". Opened Questions setup and Multiple Choice Question Report; their search/filter passages do not describe respondent search above 50 choices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: status; What's changing; Governance guidance; Open questions",
+      "type": "record",
+      "claim": "The roadmap record still lists the item as In development despite Learn documenting CSV upload.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "September CY2026 is the roadmap target, and that month has passed as of November 2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) only.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-08-20T22:38:45.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-08-20T22:38:45\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No source states that existing surveys change as part of this capability's rollout.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Glint multiple choice 500 options search filter 50 default existing questions rollout. Read supplied record, Questions setup and Advanced Configuration; none states that rollout modifies existing surveys.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "Current questions will not change until an administrator builds a question with a long list.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Viva Glint multiple choice 500 options search filter 50 default existing questions rollout. Opened Questions setup and live survey editing guidance; neither states that this rollout leaves every existing question unchanged until a new question is built.",
+      "severity": "blocker",
+      "fix": "Remove 'Plan on nothing changing for current questions until an admin builds a question with a long list'. Replace the impact rationale's exclusivity claim with 'Low. The documented CSV capability is chosen by survey authors when editing multiple-choice questions.'"
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The Multiple Choice Question Report lists response options vertically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/reports/multi-choice-report",
+      "quote": "The Multiple Choice Question Report shows a table for each question, listing the response options from the question vertically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The report shows response percentages broken down by the attribute selected for a section.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/reports/multi-choice-report",
+      "quote": "Horizontally, each response shows a percentage broken down by the attribute selected for the section.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "How Viva Glint treats small groups in reporting for this multiple-choice feature is not described.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/viva/glint/setup/privacy-protection-reporting",
+      "quote": "By default, the minimum response threshold for rating or multiple-choice items is five. ... If the minimum response threshold isn't met for a user's team, their responses aren't reported. Instead, responses are aggregated with and rolled up to the next level.",
+      "severity": "blocker",
+      "fix": "Replace the absence clause with: 'Microsoft documents a default minimum response threshold of five for multiple-choice items; responses below a team threshold are aggregated and rolled up to the next level.' Cite https://learn.microsoft.com/viva/glint/setup/privacy-protection-reporting. Do not imply that a new option count leaves these general protections unconfirmed."
+    },
+    {
+      "n": 27,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "Viva Glint Service Administrators set up programs, surveys, distribution lists and reporting features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/start/role-definitions",
+      "quote": "Sets up programs and surveys, distribution lists, and reporting features",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity; rationale: risk",
+      "type": "record",
+      "claim": "The supplied roadmap item names no new identity, permission, sign-in or data access.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"title\": \"Microsoft Viva: Viva Glint - Enhanced multiple-choice questions with up to 500 options\"; the supplied record contains metadata and no description or new identity, permission, sign-in or data-access fields.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The supplied roadmap record describes no automated action.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The supplied record contains title, status, dates, products, clouds, releasePhase, platforms and ingestion metadata; it has no description or automated-action statement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Microsoft instructs authors to use '+ Add new choice' to add a multiple-choice or multi-select response option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/questions-setup",
+      "quote": "To add a new response option to Multiple Choice/Multi-Select questions, always use the \"+ Add new choice\" feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Microsoft instructs authors to switch Show to Hide to retire a response option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/questions-setup",
+      "quote": "Switch the \"Show\" toggle to \"Hide\" to retire an option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Overwriting an existing response option with a different label causes report trend issues.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/questions-setup",
+      "quote": "Overwriting an existing option with a different/new label causes trend issues in reports and confusion in raw data exports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Relabelling an existing response option causes confusion in raw data exports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/questions-setup",
+      "quote": "Overwriting an existing option with a different/new label causes trend issues in reports and confusion in raw data exports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "A CSV option re-upload on a live question can be handled with the same care as ordinary option editing.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/viva/glint/setup/change-live-survey",
+      "quote": "To ensure the integrity of the survey results, don't adjust any rating scale or multiple-choice options. ... You can edit language text, instruction text, and comment placeholder text only. Other fields are disabled and can't be edited until the survey is no longer live.",
+      "severity": "blocker",
+      "fix": "Replace 'A CSV re-upload on a live question needs the same care' with 'Do not change multiple-choice options during a live survey; Microsoft documents those fields as disabled until the survey is no longer live.' Cite https://learn.microsoft.com/viva/glint/setup/change-live-survey."
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Individual user licence assignment is not required for using Viva Glint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/glint-order-teams",
+      "quote": "Individual user license assignment isn't required for using Viva Glint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Individual user licence assignment is required for the Pulse-Glint integration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/glint-order-teams",
+      "quote": "Individual user license assignment is required if you're planning on using the Pulse-Glint integration to take actions with Viva Pulse after Viva Glint engagement surveys.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The Questions setup page gives no price or meter for CSV upload.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Glint 500 options CSV upload additional license price meter. Read Questions setup in full and Viva Glint licensing; the Questions setup page documents CSV upload without a price or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Multilingual question editing involves updating translations for each survey language.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/questions-setup",
+      "quote": "If your survey uses multiple languages, select each language from the Language dropdown menu to update translations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Global Administrators or Viva Glint Tenant Administrators assign Service Administrators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/start/role-definitions",
+      "quote": "Assigned by the M365 Global Administrator or the Viva Glint Tenant Administrator to have responsibility for admin tasks in the Viva Glint platform",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "There is nothing that turns this capability off centrally.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Viva Glint multiple choice CSV 500 options tenant survey enable disable PowerShell Graph API switch. Opened Questions setup and Advanced Configuration. No separate switch was found, but neither page states that central restriction is impossible.",
+      "severity": "blocker",
+      "fix": "Delete 'so there is nothing to turn off centrally'. Keep the narrower, dated statement that Microsoft Learn documents no separate feature switch."
+    },
+    {
+      "n": 41,
+      "where": "Governance guidance: At rollout; controls",
+      "type": "consistency",
+      "claim": "The checklist's option-editing controls are represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Use \"+ Add new choice\" for later additions and the \"Show\" toggle set to \"Hide\" to retire options.' The only controls row covers a missing tenant or survey-level switch.",
+      "severity": "minor",
+      "fix": "Remove the At rollout checklist bullet beginning 'Use \"+ Add new choice\"'. The same documented option-editing advice already appears under Change & support; do not add a control row as part of this correction."
+    },
+    {
+      "n": 42,
+      "where": "Scope",
+      "type": "role",
+      "claim": "The Questions setup page is written for a Viva Glint Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/questions-setup",
+      "quote": "As a Microsoft Viva Glint Administrator, use the Questions section to manage survey items",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T14:03:16.771Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=569606",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/glint/setup/questions-setup",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/glint/setup/glint-order-teams",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/glint/start/role-definitions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/glint/reports/multi-choice-report",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/glint/setup/360-add-edit-cycle-questions",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [],
+    "roadmapDrift": []
+  },
+  "history": []
+}

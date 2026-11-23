@@ -1,0 +1,796 @@
+{
+  "slug": "microsoft-purview-compliance-portal-data-loss-prevention-trigger-power-automate-workflows",
+  "roadmapId": 380721,
+  "title": "Microsoft Purview DLP: start a Power Automate workflow when a rule matches (GCC, GCC High, DoD)",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "5 blocking findings (claims 38, 45, 52, 55, 57)"
+    ]
+  },
+  "counts": {
+    "claims": 63,
+    "confirmed": 57,
+    "unconfirmed": 3,
+    "contradicted": 3,
+    "blocker": 5,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: the briefing understates potential licence costs and leaves documented Power Platform data-policy enforcement as an open question. The PowerShell parameter exists, but its reference does not explain how it configures the action; the UI reference also does not document the workflow action itself.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap introduces a DLP rule action that triggers custom Power Automate workflows when a rule is violated.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This introduces a new DLP rule action to trigger custom Power automate workflows when a DLP rule is violated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "title; summary; front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The target month has passed by the November 2026 run while the supplied record remains In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Learn documents triggering custom Power Automate workflows as a DLP rule action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+      "quote": "With Power Automate integration, you can now trigger custom Power Automate workflows as a DLP rule action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Scope; Open questions",
+      "type": "absence",
+      "claim": "The feature's Learn page does not name a cloud.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Power Automate integration DLP GCC GCC High DoD rollout tenant prerequisites. Read dlp-powerautomate-int-get-started in full; it names policy locations but no cloud.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "The feature's Learn page does not label this integration as preview or generally available.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Power Automate integration DLP GCC GCC High DoD rollout tenant prerequisites. Read dlp-powerautomate-int-get-started in full; no preview or general-availability label appears.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; controls[0].note; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "On the DLP rule authoring page, an author adds Start a Power Automate workflow as an action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+      "quote": "DLP rule authoring page: Add Start a Power Automate workflow as an action, and then create the workflow using a template or a custom workflow using DLP trigger.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The workflow can be created from a template or as a custom workflow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+      "quote": "create the workflow using a template or a custom workflow using DLP trigger.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "Custom workflows use a DLP trigger provided by the Microsoft Purview connector.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+      "quote": "Create a custom workflow using the DLP trigger provided as part of Microsoft Purview connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A workflow linked to a DLP rule can be selected or updated like another rule action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+      "quote": "You can select or update the Power Automate workflow linked to a DLP rule just like any other rule action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Scope; Governance guidance: At rollout",
+      "type": "availability",
+      "claim": "Exchange emails are a supported policy location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+      "quote": "Power Automate integration for DLP supports the following policy locations: ... Exchange emails",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Files in SharePoint Online and OneDrive are supported policy locations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+      "quote": "Files in SharePoint Online & OneDrive",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Windows devices on 24H2 and above are a supported policy location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+      "quote": "Windows devices (24H2 and above)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "The feature page describes a template named Notify manager when a DLP policy is violated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+      "quote": "The following Power Automate template is available to support process automation for DLP rule violations: Notify manager when a DLP policy is violated",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; rationale: impact",
+      "type": "behaviour",
+      "claim": "When the notify-manager flow is configured and selected, it emails the manager of the violating user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+      "quote": "When the Notify manager when a DLP policy is violated flow is configured and selected, the manager of the violating user is sent an email message",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The template email includes the user name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+      "quote": "the following information about the event: ... User name",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The template email includes the policy name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+      "quote": "the following information about the event: ... Policy name",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Editing the workflow in Power Automate can customize its sender.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+      "quote": "You can customize the sender and add additional information by editing the workflow in Power Automate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Editing the workflow in Power Automate can add information to the notification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+      "quote": "You can customize the sender and add additional information by editing the workflow in Power Automate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "SharePoint and OneDrive workflows run only for new or modified content, not preexisting matching files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+      "quote": "For files in SharePoint and OneDrive, Power Automate workflows are executed only for new or modified content. Preexisting files matching the rules don't trigger a flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "default",
+      "claim": "By default a flow is available only to its creator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+      "quote": "By default, a Power Automate flow is only available to the user who created it. For other administrators to access and use a flow, the flow creator must share it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity; Scope; Governance controls",
+      "type": "role",
+      "claim": "Using the action does not change the required role for DLP policy authoring.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+      "quote": "There is no change to required role for DLP policy authoring in Microsoft Purview portal to use Power Automate integration as a DLP rule action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Compliance administrator is one of the role groups permitted to create and deploy DLP policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+      "quote": "The account you use to create and deploy policies must be a member of one of these role groups: ... Compliance administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Compliance data administrator is one of the role groups permitted to create and deploy DLP policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+      "quote": "The account you use to create and deploy policies must be a member of one of these role groups: ... Compliance data administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Information Protection is one of the role groups permitted to create and deploy DLP policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+      "quote": "The account you use to create and deploy policies must be a member of one of these role groups: ... Information Protection",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Information Protection Admin is one of the role groups permitted to create and deploy DLP policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+      "quote": "The account you use to create and deploy policies must be a member of one of these role groups: ... Information Protection Admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Security administrator is one of the role groups permitted to create and deploy DLP policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+      "quote": "The account you use to create and deploy policies must be a member of one of these role groups: ... Security administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The feature page refers readers to Power Automate documentation for its roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+      "quote": "See Get started with Power Automate for information about Power Automate roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure; Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "A custom flow is built in Power Automate with chosen tasks and available connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+      "quote": "Create a flow that performs one or more tasks after a data loss prevention event. ... Choose from available Power Automate connectors for your flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "The feature page does not list the DLP trigger's event output fields.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Microsoft Purview\" \"connector\" \"DLP\" \"outputs\". Read dlp-powerautomate-int-get-started and its search excerpt: template email fields are listed, but no trigger-output schema is given.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "The feature page does not name one place to see both the DLP rule and its Power Automate flow.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview DLP Power Automate integration monitoring workflows rules single view trigger event fields rollout release channel tenant prerequisites. Read dlp-powerautomate-int-get-started: no combined monitoring view is named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Power Automate suspends a flow that violates a data policy, and its trigger does not fire.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/power-platform/power-automate/flow-run-issues/triggers-troubleshoot",
+      "quote": "If your flow violates a DLP policy, the service suspends the flow and the trigger doesn't fire.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Open questions; Governance guidance: Before rollout; Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Whether Power Platform data policies apply to flows using the Microsoft Purview connector remains unconfirmed.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/dlp-impact-policies-apps-flows",
+      "quote": "Power Automate makers and users won't be able to start a flow that uses connectors that don't belong together or have been blocked by data policies. A background system process marks the flow as Suspended",
+      "severity": "blocker",
+      "fix": "Replace the applicability caveat and the Before rollout question with: 'Power Platform data policies govern connector combinations in Power Automate flows. A flow using connectors that are blocked or cannot be used together is suspended and cannot execute until the violation is resolved; runtime suspension is not instantaneous.' Cite https://learn.microsoft.com/power-platform/admin/dlp-impact-policies-apps-flows. Narrow the final Open question to: 'What does the Purview rule show when its linked Power Automate flow is suspended?'"
+    },
+    {
+      "n": 39,
+      "where": "summary; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Existing DLP customers need no additional Purview licence for the integration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+      "quote": "Power Automate integration in Microsoft Purview DLP is available for all existing DLP customers with no other Purview license requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "summary; licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "Accessing premium connectors while configuring custom flows requires a Power Automate plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+      "quote": "The access premium connectors when configuring custom flows you need a Power Automate plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "licensing.notes; Cost and licensing; Governance guidance: Before rollout; rationale: cost",
+      "type": "licensing",
+      "claim": "A Power Automate licence is not needed to access the templates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+      "quote": "A Power Automate licenses is not needed to access the templates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The mixed licensing model combines existing DLP entitlement with a Power Automate plan for custom premium-connector use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+      "quote": "available for all existing DLP customers with no other Purview license requirements. ... configuring custom flows you need a Power Automate plan. A Power Automate licenses is not needed to access the templates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The feature page does not identify whether the Microsoft Purview connector is premium.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Microsoft Purview\" \"connector\" \"Premium\" Power Automate; Microsoft Purview connector Power Automate premium GCC DLP trigger properties. Read the feature page: it names the connector without a tier.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The feature page names no price or meter for the DLP workflow action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview connector Power Automate premium GCC DLP trigger properties. Read dlp-powerautomate-int-get-started and the linked Power Automate licensing/types page; the feature page gives licensing prerequisites, not an action price or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing: Indirect cost",
+      "type": "cost",
+      "claim": "The Power Automate plan comparison linked by the feature page gives a price for the plan.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: price, Price and $ in the fetched power-platform/admin/power-automate-licensing/types page. Read its licence descriptions and comparison table: they give entitlements and link to Power Automate pricing, but give no numerical plan price.",
+      "severity": "blocker",
+      "fix": "Remove 'A price for the plan is on the Power Automate plan comparison the page links to, not on the feature page.'"
+    },
+    {
+      "n": 46,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The feature page does not specify a release channel.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview DLP Power Automate integration monitoring workflows rules single view trigger event fields rollout release channel tenant prerequisites. Read dlp-powerautomate-int-get-started in full: no release channel is specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The feature page does not specify a rollout wave.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Power Automate integration DLP GCC GCC High DoD rollout tenant prerequisites. Read dlp-powerautomate-int-get-started in full: no rollout wave is specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No source found states that the introduction changes existing DLP rules.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview DLP Power Automate workflow default existing rules tenant switch rollout. Read the roadmap record, dlp-powerautomate-int-get-started and returned feature excerpts: none states existing rules acquire the action automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "front matter: defaultState; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The integration's state on arrival is unknown; sources do not state it switches on by itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview DLP Power Automate workflow default existing rules tenant switch rollout. Read the roadmap and feature page: rule authors add the action, but neither states an arrival default or automatic change to rules.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "No separate tenant-wide switch specific to this rule action is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Purview\" \"Power Automate\" \"tenant-wide\" switch; Purview DLP Power Automate workflow default existing rules tenant switch rollout. Read feature documentation, Set-DlpComplianceRule and tenant-settings search excerpt; no action-specific tenant switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Data loss prevention > Policies reaches the policy list used to configure the rule action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-cc-email",
+      "quote": "Sign in to the Microsoft Purview portal. ... Open the Data loss prevention solution and go to Policies > + Create policy.",
+      "severity": "minor",
+      "fix": "Extend the path for the documented custom-policy creation route to 'Data loss prevention > Policies > + Create policy > Enterprise applications & devices > Custom (Categories) > Custom (Regulations) > Define policy settings > Create or customize advanced DLP rules > Create rule > Actions > Add an action > Start a Power Automate workflow'. Keep the existing policy-creation source and use https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started as ui.docs for the workflow action."
+    },
+    {
+      "n": 52,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-DlpComplianceRule -Identity <rule> -TriggerPowerAutomateFlow <string> is documented to set whether a rule starts the workflow.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"TriggerPowerAutomateFlow\" DLP workflow parameter. Read Set-DlpComplianceRule syntax, Identity and TriggerPowerAutomateFlow sections, and New-DlpComplianceRule search excerpt: String is documented, but the setting operation and value semantics are not.",
+      "severity": "blocker",
+      "fix": "Set controls[0].api to null. Replace the parameter-related row note with: 'The Set-DlpComplianceRule reference lists -TriggerPowerAutomateFlow <String>, but its description is a placeholder and does not document how to configure the linked workflow.' Retain the prose identifying the parameter and advising confirmation before scripting; do not present it as a verified configuring call."
+    },
+    {
+      "n": 53,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The Set-DlpComplianceRule reference lists TriggerPowerAutomateFlow as a String parameter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+      "quote": "[-TriggerPowerAutomateFlow <String>] ... {{ Fill TriggerPowerAutomateFlow Description }} ... Type: String",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].note; Governance controls table",
+      "type": "command",
+      "claim": "Set-DlpComplianceRule is available only in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+      "quote": "This cmdlet is available only in Security & Compliance PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "front matter: cost; rationale: cost; Cost and licensing",
+      "type": "consistency",
+      "claim": "Cost low characterizes the change as indirect cost only despite the documented plan requirement for premium custom flows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "cost: \"low\" ... 'a Power Automate plan is needed for premium connectors in custom flows' ... 'Admin time is the cost the page shows.'",
+      "severity": "blocker",
+      "fix": "Set cost to 'medium' under the standard's add-on-licences-for-a-subset scale. Replace its rationale with: 'Medium. Existing DLP customers need no additional Purview licence, but custom flows using premium connectors require a Power Automate plan; the templates do not require a Power Automate licence.'"
+    },
+    {
+      "n": 56,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist asks readers to review flow sharing and Power Platform data policies without corresponding control rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "'Decide who builds and owns the flows, and who they are shared with' ... 'Ask your Power Platform administrators whether data policies could suspend a flow' ... 'flow-side settings ... are not a row here.'",
+      "severity": "minor",
+      "fix": "The Before rollout steps concerning flow sharing and Power Platform data policies have no corresponding controls-table rows. Move those statements out of the governance checklist into the existing Security & identity and Autonomy & actions discussion, respectively; do not add new control rows as part of this correction."
+    },
+    {
+      "n": 57,
+      "where": "controls[0].ui.docs",
+      "type": "admin-path",
+      "claim": "The cited credit-card-email policy page documents the workflow control's own UI steps.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Purview DLP Power Automate workflow default existing rules tenant switch rollout. Read dlp-create-policy-cc-email in full: its action is Restrict access or encrypt the content in Microsoft 365 locations, not Start a Power Automate workflow.",
+      "severity": "blocker",
+      "fix": "Change controls[0].ui.docs and the rendered UI Learn link to https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started, which explicitly documents adding Start a Power Automate workflow on the DLP rule authoring page. Retain the policy-creation page in sources for the route into rule authoring."
+    },
+    {
+      "n": 58,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The feature page does not describe a tenant-level rollout prerequisite.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Power Automate integration DLP GCC GCC High DoD rollout tenant prerequisites. Read dlp-powerautomate-int-get-started: licensing, permissions and locations are listed, but no tenant-level rollout prerequisite is described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "The creator must share a flow for other administrators to access and use it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+      "quote": "For other administrators to access and use a flow, the flow creator must share it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The TriggerPowerAutomateFlow parameter description is a placeholder at the time of writing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+      "quote": "{{ Fill TriggerPowerAutomateFlow Description }}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Cost and licensing: Licence",
+      "type": "behaviour",
+      "claim": "The feature page points to Microsoft 365 Enterprise Plans and Microsoft 365 Service Descriptions for DLP licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+      "quote": "For information on licensing, see ... Microsoft 365 Enterprise Plans ... Microsoft 365 Service Descriptions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The supplied roadmap record was modified at 2026-07-15T22:55:27.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-07-15T22:55:27\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Purview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T14:03:17.183Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-powerautomate-int-get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-create-policy-cc-email",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/troubleshoot/power-platform/power-automate/flow-run-issues/triggers-troubleshoot",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=380721",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a DLP rule starts a Power Automate workflow",
+        "docs": "https://learn.microsoft.com/purview/dlp-create-policy-cc-email",
+        "reachable": true,
+        "segments": [
+          "Data loss prevention",
+          "Policies"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether a DLP rule starts a Power Automate workflow",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+        "reachable": true,
+        "token": "Set-DlpComplianceRule",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -4,7 +4,7 @@ slug: "m365-copilot-admins-can-now-edit-user-mappings-and-query-filters-for-serv
 roadmapId: 503590
 topic: "m365-copilot"
 products: ["Microsoft Copilot (Microsoft 365)"]
-summary: "Admins can now change the user mapping and query filter of a ServiceNow Copilot connector without recreating it. Nothing changes until an AI administrator edits the connection, and an edit may trigger a full crawl."
+summary: "Admins can now change the user mapping and query filter of a ServiceNow Copilot connector without recreating it. Microsoft has not stated what happens on arrival, and an edit may trigger a full crawl."
 status: "launched"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -14,7 +14,7 @@ previewDate: "February CY2026"
 risk: "low"
 cost: "low"
 impact: "low"
-defaultState: "admin-opt-in"
+defaultState: "unknown"
 action: "review"
 licensing:
   model: "mixed"
@@ -40,6 +40,9 @@ sources:
   - title: "Prerequisites for deploying connectors"
     url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites"
     kind: "learn"
+  - title: "Microsoft 365 Copilot connectors FAQ"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/frequently-asked-questions"
+    kind: "learn"
   - title: "Update externalConnection"
     url: "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-update?view=graph-rest-1.0"
     kind: "learn"
@@ -50,7 +53,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Connectors > Your Connections > connection"
+      path: "Copilot > Connectors > Your Connections > connection > Edit connection"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector"
     api: null
     note: "Requires the AI administrator role. Release notes describe choosing Edit connection on the ServiceNow connector; the manage page lists the editable ServiceNow settings."
@@ -63,19 +66,23 @@ changes:
     note: "New briefing: admins can edit ServiceNow connector user mapping and query filters on a published connection; Microsoft's pages disagree on whether a mapping can be changed."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 59 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after verification: default state is now Not stated, the Copilot Studio licence row keeps its Microsoft 365 prerequisite, the connector FAQ conflict is noted and the path ends at Edit connection."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 69 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 57
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "10d3035146cebad7905f76a411c7b67b"
+  claims: 69
+  confirmed: 66
+  unconfirmed: 0
+  contradicted: 3
+  attempts: 0
+  hash: "67aeca5c4492e0cf6dbf3f2ddd2ab551"
 ---
 
 ## What's changing
@@ -86,13 +93,13 @@ Microsoft's release notes explain the change: previously, once the ServiceNow co
 
 The Learn page on managing connections lists, for a published connection from Microsoft, these editable items: name and description, connection settings, property labels, schema, refresh schedule, and for ServiceNow the query string, advanced criteria and user mapping. It adds that editing a connection might trigger a full crawl, where applicable. That page names "ServiceNow" without saying which of the ServiceNow connectors (Knowledge, Catalog, Tickets) it covers; the query string setting for ServiceNow Knowledge is documented as a custom setup option whose default is `active=true^workflow_state=published`.
 
-The page on mapping non-Microsoft Entra ID identities still says "You can't change your mapping after the connection is published". That conflicts with the manage page, and this briefing reports both. The roadmap record gives the status as Launched, with a preview target of February CY2026 and a general availability target of March CY2026, for Web in the Worldwide (Standard Multi-Tenant) cloud. The release notes list the item under their section dated July 29, 2026.
+The page on mapping non-Microsoft Entra ID identities still says "You can't change your mapping after the connection is published". That conflicts with the manage page, and this briefing reports both. The connector FAQ also conflicts with the release notes and manage page: it says editing a query string after publishing isn't supported and requires a new connection. The roadmap record gives the status as Launched, with a preview target of February CY2026 and a general availability target of March CY2026, for Web in the Worldwide (Standard Multi-Tenant) cloud. The release notes list the item under their section dated July 29, 2026.
 
 ## Why it matters
 
 Before this change, correcting a wrong user mapping or an over-broad query filter meant recreating the connection. An edit in place lets an administrator tighten what a ServiceNow connection indexes without rebuilding it, which is the control readers most often want after a connector has been live for a while.
 
-Nothing happens to a tenant unless an AI administrator makes an edit, so the decision for a service owner is whether to review existing ServiceNow connections against current needs. Plan for the cost of an edit: Microsoft says it might trigger a full crawl, so schedule changes rather than making them casually.
+Microsoft has not stated this change's arrival default; no source says existing connection behaviour changes. Review existing ServiceNow connections against current needs. Plan for the cost of an edit: Microsoft says it might trigger a full crawl, so schedule changes rather than making them casually.
 
 ## Risk assessment
 
@@ -115,7 +122,7 @@ Nothing happens to a tenant unless an AI administrator makes an edit, so the dec
 
 Microsoft publishes no separate licence or price for editing a connection. The prerequisites page for connectors states: "Indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses." ServiceNow is named there as a prebuilt synced connector.
 
-The same page's licensing table shows which Copilot experiences each licence supports for synced connectors: Microsoft 365 (any plan) supports Microsoft Search only; Microsoft 365 with the Microsoft 365 Copilot add-on, or Microsoft 365 E7, supports Microsoft Search and Copilot grounding and agents; a Copilot Studio licence or Microsoft 365 Copilot pay-as-you-go supports agents only. The page also states that if your organisation has Microsoft 365 Copilot licences, connector grounding in Copilot is included and no extra charges apply.
+The same page's licensing table shows which Copilot experiences each licence supports for synced connectors: Microsoft 365 (any plan) supports Microsoft Search only; Microsoft 365 with the Microsoft 365 Copilot add-on, or Microsoft 365 E7, supports Microsoft Search and Copilot grounding and agents; Microsoft 365 with a Copilot Studio licence, or Microsoft 365 Copilot pay-as-you-go, supports agents but not Copilot grounding. The page also states that if your organisation has Microsoft 365 Copilot licences, connector grounding in Copilot is included and no extra charges apply.
 
 Indirect cost is admin time, plus the possible full crawl after an edit.
 
@@ -151,7 +158,7 @@ Which connectors: the manage page says "ServiceNow" without naming the connector
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Edit a published ServiceNow connection's query string, advanced criteria and user mapping</strong><br><small>Tenant</small><br><small class="controls__note">Requires the AI administrator role. Release notes describe choosing Edit connection on the ServiceNow connector; the manage page lists the editable ServiceNow settings.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Your Connections › connection <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Edit a published ServiceNow connection's query string, advanced criteria and user mapping</strong><br><small>Tenant</small><br><small class="controls__note">Requires the AI administrator role. Release notes describe choosing Edit connection on the ServiceNow connector; the manage page lists the editable ServiceNow settings.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Your Connections › connection › Edit connection <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -167,17 +174,17 @@ Microsoft Learn's Graph reference for updating an external connection lists conf
 - The roadmap targets General Availability in March CY2026 while the release notes list the item under July 29, 2026; which date should tenants treat as availability?
 
 <!-- rationale
-risk: Low. This is an admin-side edit to an existing connection and nothing changes until an administrator makes one; the exposure to watch is that a changed query string alters what is indexed and a changed user mapping alters how people are matched.
+risk: Low. This is an admin-side edit to an existing connection and no source says existing connection behaviour changes on arrival; the exposure to watch is that a changed query string alters what is indexed and a changed user mapping alters how people are matched.
 cost: Low. The only cost the sources show is admin time and a possible full crawl; Microsoft's prerequisites page states that indexing synced connector data incurs no extra cost for tenants with Microsoft 365 licences.
-impact: Low. Only AI administrators and ServiceNow admins notice; end users see a difference only if an edit changes what the connection indexes or who is matched to it.
+impact: Low. This is an administrator-side connection-editing capability.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: defaultState; summary; Why it matters; rationale: risk, impact / default: The change is admin-opt-in and nothing changes in a tenant until an AI administrator edits a connection. | Found: Searched: '503590 default'; 'Microsoft 365 ServiceNow connection edit user mapping query filter default rollout admin opt in'. Read the roadmap, release notes, manage-connector and ServiceNow Knowledge deployment pages; none explicitly states this change's arrival default. | Fix: Set defaultState to 'unknown'. Replace 'Nothing changes until an AI administrator edits the connection' in the summary with 'Microsoft has not stated what happens on arrival'. Replace the opening of the second paragraph of Why it matters with 'Microsoft has not stated this change's arrival default; no source says existing connection behaviour changes. Review existing ServiceNow connections against current needs.' In the risk rationale replace 'and nothing changes until an administrator makes one' with 'and no source says existing connection behaviour changes on arrival'. Remove the impact rationale's assertion that end users see a difference only if an edit is made; retain 'Low. This is an administrator-side connection-editing capability.' The documented manual editing procedure does not itself establish a rollout default.
-- [contradicted, blocker] Cost and licensing / licensing: A Copilot Studio licence supports synced connector agents, with no Microsoft 365 prerequisite stated for that option. | Found: Your tenant must have Microsoft 365 licenses. Microsoft 365 + Copilot Studio license | ✅ | Agents only (no Copilot grounding) | ❌ | Fix: Replace 'a Copilot Studio licence or Microsoft 365 Copilot pay-as-you-go supports agents only' with 'Microsoft 365 with a Copilot Studio licence, or Microsoft 365 Copilot pay-as-you-go, supports agents but not Copilot grounding'. This preserves the Microsoft 365 prerequisite in the licensing table at https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] title; summary; What's changing; Why it matters; controls[0] / behaviour: Administrators can edit a published ServiceNow connector's query filter without recreating the connection. | Found: Previously, once the ServiceNow connector was configured, user mappings and query filters could not be changed without recreating the connection. Now, admins can edit these settings directly within the connector configuration. | Fix: After the existing documentation-conflict paragraph in What's changing, add: "The connector FAQ also conflicts with the release notes and manage page: it says editing a query string after publishing isn't supported and requires a new connection." Cite and add to sources https://learn.microsoft.com/microsoft-365/copilot/connectors/frequently-asked-questions, whose 'Can I edit the query string after the connection is published?' answer says exactly that. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes
-- [supported, minor] controls[0].ui; What's changing; Governance guidance; Governance controls / admin-path: The Microsoft 365 admin center route to the connection is Copilot > Connectors > Your Connections > connection. | Found: Go to Copilot > Connectors > Your Connections. Select the connection that you want to modify. | Fix: The row stops on the correct connection page. Complete controls[0].ui.path and the rendered table path as 'Copilot > Connectors > Your Connections > connection > Edit connection', combining the cited manage page's navigation with 'Select the ServiceNow connector and choose Edit connection' at https://learn.microsoft.com/microsoft-365/copilot/release-notes. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector
+- [supported, minor] Why it matters; Risk assessment: Data exposure; rationale: risk / behaviour: Changing the query filter can narrow what a ServiceNow connection indexes without rebuilding it. | Found: You can modify this filter to index only specific articles based on your organizational needs. | Fix: Add after the narrowing-filter advice: 'The manage page also says that excluding items already indexed requires deleting the existing connection and creating a new one with a data source exclusion filter; this conflicts with its edit-support table.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment
+- [contradicted, minor] Governance guidance: At rollout / consistency: The checklist asks readers to use mapping Preview, but the controls table contains only the connection-edit row. | Found: Run the mapping preview where you change the user mapping ... The table has one row because the manage page documents the edit itself as the control. | Fix: The 'Run the mapping preview' checklist step has no corresponding controls-table row. Remove that checklist bullet; the documented Preview advice can remain in Risk assessment.
+- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist asks readers to check connection state, but the controls table contains no monitoring row. | Found: Check the connection state on the Your Connections tab returns to Ready after any crawl the edit triggers. ... The table has one row because the manage page documents the edit itself as the control. | Fix: The connection-state checklist step has no corresponding controls-table row. Remove that checklist bullet.
+- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist asks readers to validate indexed content and user access, but the controls table contains no index-browser row. | Found: Validate indexed content by searching for a known record and checking who can see it, using the Search and validate indexed content guidance for connectors. ... The table has one row | Fix: The indexed-content validation checklist step has no corresponding controls-table row. Remove that checklist bullet.
+- [supported, minor] Governance guidance: After rollout / behaviour: The Search and validate indexed content guidance documents checking a known indexed item and its user access. | Found: To search for indexed content, enter the unique identifier of the item in the index browser. ... Check user access - Search for a specific user to verify their access to the item. | Fix: If the validation advice is retained outside the checklist, cite 'Search and validate indexed content' at https://learn.microsoft.com/microsoft-365/copilot/connectors/indexed-content; that supporting page is missing from sources. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/indexed-content
 -->

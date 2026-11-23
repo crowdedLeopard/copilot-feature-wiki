@@ -1,0 +1,541 @@
+{
+  "slug": "microsoft-purview-endpoint-data-loss-prevention-add-control-to-include-or-exclude-default",
+  "roadmapId": 560057,
+  "title": "Microsoft Purview Endpoint DLP: include or exclude default file path exclusions on Windows",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "1 blocking finding (claim 38)"
+    ]
+  },
+  "counts": {
+    "claims": 40,
+    "confirmed": 37,
+    "unconfirmed": 3,
+    "contradicted": 0,
+    "blocker": 1,
+    "major": 2,
+    "minor": 0
+  },
+  "summary": "Hold: Microsoft has not documented that excluding the managed list restores monitoring of system paths, so the briefing gives administrators an assurance they cannot yet rely on. The existing configuration path, PowerShell call, licensing and roadmap dates are supported, but coexistence with manual exclusions and an unchanged identity model are also asserted beyond the available evidence.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "Microsoft plans an Endpoint DLP control to include or exclude default Windows file path exclusions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview: Endpoint Data Loss Prevention: Add control to include or exclude Default file paths exclusions for Windows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says customers previously configured system-file inclusions or exclusions manually.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Previously customers would have system files either included or excluded manually configured.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes providing the list by default with an option to include or exclude those paths.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With this feature there is now a capability to provide this by default and have the option of including or excluding those paths.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft manages the list to ensure accuracy and ease of management.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This list is managed by Microsoft to ensure accuracy and ease of management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development, not Rolling out or Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The preview target is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The general availability target is August CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2026\", \"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Open questions",
+      "type": "date",
+      "claim": "Both target months have passed as of November 23, 2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2026\", \"previewDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The record lists platform Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The record lists release phases General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-07-14T22:41:38.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-07-14T22:41:38\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Manual Windows path exclusions are reached in Microsoft Purview portal through Data loss prevention > Overview > Data loss prevention settings > Endpoint settings > File path exclusions for Windows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "To configure path exclusions in DLP settings, go to Microsoft Purview portal > Data loss prevention > Overview > Data loss prevention settings > Endpoint settings > File path exclusions for Windows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "Set-PolicyConfig -EndpointDlpGlobalSettings @{\"Setting\"=\"PathExclusion\"; \"Value\"=\"C:\\Windows\";} configures an administrator-entered path exclusion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig",
+      "quote": "Use the Set-PolicyConfig cmdlet to modify the endpoint restrictions that are configured in the organization. Example values: @{\"Setting\"=\"PathExclusion\"; \"Value\"=\"C:\\Windows\";}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "Set-PolicyConfig is available only in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig",
+      "quote": "This cmdlet is available only in Security & Compliance PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; controls[0].governs; Governance controls",
+      "type": "behaviour",
+      "claim": "The existing Windows file path exclusion setting lets administrators specify their own paths.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "To exclude certain paths from DLP monitoring, DLP alerts, and DLP policy enforcement on your devices, set up file path exclusions to turn off those configuration settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Files in excluded locations are not audited.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "Files in excluded locations aren't audited.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Files created or modified in excluded locations are not subject to DLP policy enforcement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "Any files that you create or modify in those locations aren't subject to DLP policy enforcement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment; Governance guidance; Open questions",
+      "type": "default",
+      "claim": "Learn lists %SystemDrive%\\\\Users\\\\*(1)\\\\AppData\\\\Roaming as a Windows path excluded by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "Windows file paths excluded by default: %SystemDrive%\\\\Users\\\\*(1)\\\\AppData\\\\Roaming",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment; Governance guidance; Open questions",
+      "type": "default",
+      "claim": "Learn lists %SystemDrive%\\\\Users\\\\*(1)\\\\AppData\\\\Local as the other Windows path excluded by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "Windows file paths excluded by default: %SystemDrive%\\\\Users\\\\*(1)\\\\AppData\\\\Local",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; controls[1].note",
+      "type": "behaviour",
+      "claim": "Learn documents an Include recommended file path exclusions for Mac toggle.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "If you set the Include recommended file path exclusions for Mac toggle to On, the following paths are also excluded:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].scope; controls[1].scope; Why it matters; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "Endpoint DLP settings, including file path exclusions, are centrally configured and apply to all DLP policies for devices rather than one policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "Centrally configured settings control many aspects of endpoint data loss prevention (DLP) behavior. These settings apply to all DLP policies for devices. Use these settings to control the following behaviors: File path exclusions for Windows and macOS devices",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Learn documents Windows exclusion path construction for Windows 10 and Windows 11 devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "Use the following logic to construct your exclusion paths for Windows 10 and Windows 11 devices:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Scope",
+      "type": "applicability",
+      "claim": "Devices must be onboarded for Endpoint DLP monitoring to apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-getting-started",
+      "quote": "Microsoft Endpoint DLP allows you to monitor onboarded Windows 10, and Windows 11 and onboarded macOS devices running any of the three latest released versions. Once a device is onboarded, DLP detects when sensitive items are used and shared.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Endpoint DLP is included in the product licences named by the service description, supporting an included licensing model for a new option within Endpoint DLP.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance | Endpoint Data Loss Prevention (DLP) | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The listed plans are Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW, Microsoft Defender + Purview Suite FLW and Microsoft 365 E5/A5/F5/G5 Information Protection & Governance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Endpoint DLP getting-started page links to licensing guidance without naming a licence of its own.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-getting-started",
+      "quote": "SKU/subscriptions licensing: For information on licensing, see Microsoft 365 Enterprise Plans; Microsoft 365 Service Descriptions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No licence, meter or charge specific to the new managed Windows exclusions control is published, and the roadmap names none.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview Endpoint DLP default file path exclusions licensing pricing meter. Opened Purview service description, Configure endpoint DLP settings and Endpoint DLP getting-started; read roadmap. No pricing or licence for this particular control was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: defaultState; What's changing; Why it matters; Open questions; rationale: risk",
+      "type": "default",
+      "claim": "Microsoft has not stated whether the new managed list is included or excluded before an administrator chooses, so defaultState is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Endpoint DLP Windows Microsoft managed default file path exclusions include exclude toggle default state roles permissions. Read roadmap and Configure endpoint DLP settings. Providing the list by default does not specify its initial selection; no Windows toggle default was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[1].ui; controls[1].api; controls[1].note; What's changing; Governance controls",
+      "type": "absence",
+      "claim": "No UI control or automation to include or exclude the Microsoft-managed default Windows list is yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Endpoint DLP Windows default file path exclusions Set-PolicyConfig EndpointDlpGlobalSettings Microsoft Graph API recommended exclusions. Read Configure endpoint DLP settings and Set-PolicyConfig: manual PathExclusion and a Mac toggle, no managed Windows switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not published the contents or display mechanism of the new managed Windows list; Learn currently lists only two default Windows paths.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Endpoint DLP\" \"default\" \"Windows\" \"Microsoft-managed\". Read Configure endpoint DLP settings and roadmap; neither supplies the new list's contents or viewing method. The settings page lists two existing default Windows exclusions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; Open questions",
+      "type": "record",
+      "claim": "The roadmap does not explain how the managed list changes over time, how changes are announced or how administrators view it.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With this feature there is now a capability to provide this by default and have the option of including or excluding those paths. This list is managed by Microsoft to ensure accuracy and ease of management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The roadmap gives no information about the performance effect of excluding the list.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Previously customers would have system files either included or excluded manually configured. With this feature there is now a capability to provide this by default and have the option of including or excluding those paths.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap describes a path-exclusion control without describing new data access or permissions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview: Endpoint Data Loss Prevention: Add control to include or exclude Default file paths exclusions for Windows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "No autonomous actions are described in the roadmap.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This list is managed by Microsoft to ensure accuracy and ease of management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The new control makes no change to identity or access.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Endpoint DLP\" \"file path exclusions\" \"identity\" \"permissions\". Read roadmap and Configure endpoint DLP settings. Neither describes the new control's identity or access implications; a roadmap that mentions no such change does not establish that none occurs.",
+      "severity": "major",
+      "fix": "Replace the bullet with: \"The roadmap describes a path-exclusion setting and does not describe new data access or permissions.\""
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Administrator-entered Windows exclusions and the Microsoft-managed default list will coexist as two layers.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Endpoint DLP\" \"exclusions\" \"coexist\" \"default\". Read Configure endpoint DLP settings and roadmap. They document existing manual exclusions and a planned managed list separately, but do not describe coexistence or their interaction.",
+      "severity": "major",
+      "fix": "Replace \"Two layers of exclusion will coexist: paths administrators add themselves under File path exclusions for Windows, and the Microsoft-managed default list. When a file is not audited, check both before raising a support case.\" with \"Confirm how the Microsoft-managed default list interacts with administrator-entered Windows path exclusions before using it to troubleshoot missing audit activity.\""
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Excluding the managed list leaves system paths subject to DLP monitoring.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Endpoint DLP\" \"exclude\" \"default\" \"system paths\" monitoring. Read roadmap and Configure endpoint DLP settings. No passage establishes restored monitoring from this new control, or how it interacts with manual and existing default exclusions.",
+      "severity": "blocker",
+      "fix": "Replace \"Excluding the list leaves system paths subject to DLP monitoring.\" with \"Confirm whether excluding the Microsoft-managed list restores monitoring for the system paths you need to cover.\""
+    },
+    {
+      "n": 39,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Activity explorer can be used to review audit activity from onboarded devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-getting-started",
+      "quote": "Once a device is onboarded, it should be visible in the devices list, and should start reporting audit activity to Activity explorer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not published role requirements specifically for changing the new managed Windows exclusions control.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Endpoint DLP settings\" \"permissions\" \"role\". Read Purview permissions and Configure endpoint DLP settings, and searched for the managed Windows exclusions control; no role requirement for that specific new control was found.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T14:03:22.402Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/endpoint-dlp-getting-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=560057",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which Windows file paths Endpoint DLP excludes (administrator-entered exclusions)",
+        "docs": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+        "reachable": true,
+        "segments": [
+          "Data loss prevention",
+          "Overview",
+          "Data loss prevention settings",
+          "Endpoint settings",
+          "File path exclusions for Windows"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which Windows file paths Endpoint DLP excludes (administrator-entered exclusions)",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig",
+        "reachable": true,
+        "token": "Set-PolicyConfig",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

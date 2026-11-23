@@ -1,0 +1,624 @@
+{
+  "slug": "m365-copilot-surveys-agent-and-copilot-chat-in-microsoft-forms",
+  "roadmapId": 553136,
+  "title": "Microsoft Forms: Copilot Chat pane and Surveys Agent for form authors",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "3 blocking findings (claims 30, 34, 40)"
+    ]
+  },
+  "counts": {
+    "claims": 44,
+    "confirmed": 40,
+    "unconfirmed": 0,
+    "contradicted": 4,
+    "blocker": 3,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "Hold: the low cost rating conflicts with the documented add-on licence requirement. The briefing also overlooks Microsoft's general controls for Microsoft-built agents when describing the Surveys Agent as having no documented admin control; a separate switch for the Forms pane remains undocumented.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; title",
+      "type": "behaviour",
+      "claim": "Microsoft Forms includes an integrated Copilot Chat pane.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "The Copilot chat pane is now built into Microsoft Forms",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Users can enable the Surveys Agent from within Forms.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft 365 Copilot Chat is now integrated in Microsoft Forms, including enabling the Surveys Agent from within Forms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; summary",
+      "type": "record",
+      "claim": "The Surveys Agent recommends improvements to forms and quizzes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "from recommending and applying improvements to your form or quiz",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Why it matters; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Copilot can apply changes to a form.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Use Copilot to make changes to your form or to draft and send invitations to respondents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "The pane helps draft invitations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "helping users improve forms and quizzes, draft and send invitations, and analyze responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "summary; What's changing; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "The pane helps send invitations to respondents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Use Copilot to make changes to your form or to draft and send invitations to respondents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "summary; What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The pane analyses form responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Request analysis of form responses through the chat interface.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Why it matters; Scope: Prerequisites; rationale: impact",
+      "type": "behaviour",
+      "claim": "Users open the pane through the Copilot icon in Forms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Open Microsoft Forms and click the 'Copilot' icon.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap says the Surveys Agent is available to users with a Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Surveys Agent is available to users with a Microsoft 365 Copilot license",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "licensing.notes; Scope: Users and licences; controls[0].note; rationale: impact",
+      "type": "licensing",
+      "claim": "The release notes identify Microsoft 365 Copilot licensed business users as recipients of the Forms pane.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Available to Microsoft 365 Copilot licensed business users through the Copilot icon in Forms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: status; What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: targetDate; What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The roadmap target is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: platforms; summary; What's changing; Scope: Platform and cloud",
+      "type": "record",
+      "claim": "The roadmap lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: clouds; What's changing; Scope: Platform and cloud",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Scope: Platform and cloud",
+      "type": "record",
+      "claim": "The roadmap record does not list US Government clouds for this item.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope: Rollout",
+      "type": "date",
+      "claim": "The release notes list the Forms pane under September 23, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "September 23, 2026\nUpdates released between August 26, 2026, and September 22, 2026.\nCopilot chat pane available in Microsoft Forms [Web]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "Use is user-opt-in: licensed users choose to open the pane using the Copilot icon.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Open Microsoft Forms and click the 'Copilot' icon.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "The roadmap and the pane's release-notes entry do not say it changes behaviour for users who do not open it.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Forms Copilot Chat pane default enable admin policy prerequisites. Read the full roadmap description and Forms release-notes entry; neither states changes for users who do not open the pane.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "A dedicated Learn admin page for the Forms pane or Surveys Agent was not found as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Surveys Agent Microsoft Forms Copilot administrator disable pane tenant switch Graph PowerShell; \"Surveys Agent\" \"Forms\". Opened release notes, Forms administrator settings, Copilot settings, agent management and agent settings; no dedicated Forms-pane admin page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Microsoft 365 Copilot (Premium) is an add-on licensed experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Microsoft 365 Copilot (Premium) is the full add-on licensed experience",
+      "severity": "minor",
+      "fix": "Keep the cited overview's add-on description, but add: 'The license-options page also says Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible subscription plans.' Cite https://learn.microsoft.com/copilot/plan/copilot-license-options so the alternative entitlement is not silently omitted."
+    },
+    {
+      "n": 23,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Licence assignment is at Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "go to the Users > Active users page. Select the row of the user ... In the right pane, select Licenses and Apps. Expand the Licenses section",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "Microsoft Graph PowerShell assigns a user licence with Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @().",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "To assign a license to a user, use the following command in PowerShell.\nSet-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].note; Cost and licensing",
+      "type": "role",
+      "claim": "Assigning licences requires at least License Administrator or User Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "You must be at least a License or User Administrator to assign licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Forms can be disabled for a user at Users > Active users > user > Manage product licenses > Licenses and Apps > Apps > Microsoft Forms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-forms/turn-off-turn-on-microsoft-forms",
+      "quote": "choose Users > Active users. Select the box next to the name ... click Manage product licenses. ... on the Licenses and Apps tab, expand the Apps section and scroll down to the Microsoft Forms option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Set-MgUserLicense -UserId $userUPN -AddLicenses $addLicenses -RemoveLicenses @() disables Forms when $addLicenses specifies its service plan in DisabledPlans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "DisabledPlans = $disabledPlans\nSet-MgUserLicense -UserId \"belinda@litwareinc.com\" -AddLicenses $addLicenses -RemoveLicenses @()",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[1].note; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Turning Forms off removes the user's access to Forms altogether rather than only the Copilot pane.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-forms/administrator-settings-microsoft-forms",
+      "quote": "When you turn off Microsoft Forms for a user, that person can't use Microsoft Forms. The Forms tile will be hidden in the Microsoft 365 app launcher and homepage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "The documented Microsoft 365 E5 example disables Forms using FORMS_PLAN_E5 while preserving previously disabled plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "turns off the Sway and Forms service plans while leaving the user's existing disabled plans in their current state:\nWhere ServicePlanName -in (\"SWAY\", \"FORMS_PLAN_E5\")",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[2]; summary; rationale: risk",
+      "type": "absence",
+      "claim": "No tenant-wide admin control is documented for either the Forms Copilot pane or the Surveys Agent.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Agents > Settings > User access ... No users - This option means that no users in the organization can access agents and plugins.",
+      "severity": "blocker",
+      "fix": "Narrow controls[2].governs to 'Tenant-wide switch specific to the Copilot pane in Forms', retaining its null sides. Replace the summary's last clause with 'no separate switch for the Forms pane is documented'. Do not extend this absence to agent governance: https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings documents tenant agent access controls."
+    },
+    {
+      "n": 31,
+      "where": "controls[2].note; Risk assessment: Change & support; rationale: risk",
+      "type": "absence",
+      "claim": "The Forms administrator settings page and Copilot settings page list no setting specific to hiding the Forms pane.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Surveys Agent Microsoft Forms Copilot administrator disable pane tenant switch Graph PowerShell; Microsoft Forms Copilot Chat pane default enable admin policy prerequisites. Read Forms administrator settings and Configure Microsoft Copilot settings; neither lists a Forms-pane switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Forms administrator page lists external sharing, name recording, phishing protection, YouTube and Bing, and user licence assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-forms/administrator-settings-microsoft-forms",
+      "quote": "External sharing; Record names of people in your org; Phishing protection; Allow YouTube and Bing; Turn off or turn on Microsoft Forms user license assignment",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Copilot settings page has an Agents setting controlling agent installation and use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+      "quote": "Agents | Control access to agents and which agents users can install or use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Governance controls; Risk assessment: Security & identity; rationale: risk",
+      "type": "applicability",
+      "claim": "Microsoft does not document agent governance covering the Surveys Agent, leaving licence assignment and disabling Forms as the controls.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-copilot-agents-integrated-apps",
+      "quote": "You can enable, disable, assign, block, or remove agents for your organization ... Microsoft agents: Developed by Microsoft and integrated with Microsoft 365 services.",
+      "severity": "blocker",
+      "fix": "Replace the final governance sentence with: 'Microsoft documents governance for Microsoft agents developed by Microsoft and integrated with Microsoft 365 services, including enabling, disabling, assigning, blocking and removing agents. This does not establish a separate switch for the Forms pane.' Cite https://learn.microsoft.com/microsoft-365/admin/manage/manage-copilot-agents-integrated-apps. Replace the risk rationale's final clause with 'licence assignment and disabling Forms are documented controls, alongside general Microsoft-agent governance'. Keep the inventory question as a question rather than asserting an inventory entry."
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Record names by default is the Forms org setting for recording responders' names with responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-forms/administrator-settings-microsoft-forms",
+      "quote": "the Record names by default setting under Record names of people in your org is checked by default. Uncheck this option if you don't want names recorded with responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Forms is used for surveys, quizzes and feedback and collects responses from other people.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-forms/set-up-microsoft-forms",
+      "quote": "Microsoft Forms is a simple, lightweight app that lets you easily create surveys, quizzes, and polls. ... In business organizations, it can be used to collect customer feedback, measure employee satisfaction",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-forms/set-up-microsoft-forms to sources for the Forms background facts."
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Forms responses can include free-text answers.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/forms/create-a-quiz-with-microsoft-forms",
+      "quote": "Choose what kind of question you want to add, such as Choice, Text, Rating, Date, Ranking, Likert, File upload, or Net Promoter Score",
+      "severity": "minor",
+      "fix": "Cite https://support.microsoft.com/forms/create-a-quiz-with-microsoft-forms for Forms text questions, or narrow the sentence to 'Responses to internal surveys can include names', which the existing Forms administrator source supports."
+    },
+    {
+      "n": 38,
+      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A price, meter or credit rate specific to the Forms pane or Surveys Agent is not published in the documentation checked.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Surveys Agent Forms license pricing meter credits prerequisites; Copilot Forms pricing license prerequisites responses text names. Read Copilot overview, license options, usage-based billing services and Forms release notes; no Forms-pane or Surveys Agent specific price or rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope: Prerequisites",
+      "type": "absence",
+      "claim": "Learn names no additional pane-specific prerequisite beyond the licensed access described in the release notes.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Forms Copilot Chat pane default enable admin policy prerequisites; Surveys Agent Forms license pricing meter credits prerequisites. Read the Forms release-notes entry and Copilot license options; no additional prerequisite specific to this pane was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: cost; rationale: cost",
+      "type": "consistency",
+      "claim": "Cost low is consistent with a rationale identifying a required Copilot add-on licence as a direct cost.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "cost: \"low\"; licensing.model: \"add-on\"; 'Low. The only cost shown is the Microsoft 365 Copilot add-on licence users must hold'. The scale defines low as indirect cost only and medium as add-on licences for a subset of users.",
+      "severity": "blocker",
+      "fix": "Set cost to 'medium'. Replace the cost rationale with: 'Medium. The release notes require a Microsoft 365 Copilot licence for business users of the pane, and the Copilot overview describes an add-on licensed experience. No separate Forms-pane meter is documented; admin time is an additional indirect cost.'"
+    },
+    {
+      "n": 41,
+      "where": "Governance guidance: Before rollout; controls",
+      "type": "consistency",
+      "claim": "Every control that the governance checklist asks readers to review appears in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "'Review ... the Record names by default setting in the Microsoft Forms org settings.' The controls rows cover Copilot licence assignment, disabling Forms, and the missing pane/agent switch, not name recording.",
+      "severity": "minor",
+      "fix": "Remove 'and the Record names by default setting in the Microsoft Forms org settings' from the Before rollout bullet. Keep the instruction to review which forms collect names or sensitive free text; do not add a control row."
+    },
+    {
+      "n": 42,
+      "where": "Open questions",
+      "type": "admin-path",
+      "claim": "Copilot > Settings is a location for Copilot settings in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+      "quote": "In the left navigation, expand Copilot, and then select Settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Open questions",
+      "type": "behaviour",
+      "claim": "An administrator can block an agent listed in the Microsoft 365 admin center agent inventory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select Agents > All agents. ... select an agent from the list of agents. ... immediately under the agent's name, select Block or Unblock.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions to sources for the inventory-blocking premise. Keep whether Surveys Agent appears there as an open question."
+    },
+    {
+      "n": 44,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is July 13, 2026 at 23:07:14.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-07-13T23:07:14\"",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T14:03:24.302Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=553136",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-forms/administrator-settings-microsoft-forms",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-forms/turn-off-turn-on-microsoft-forms",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users hold the Microsoft 365 Copilot licence that gives access to the Forms pane",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "reachable": true,
+        "segments": [
+          "Users",
+          "Active users",
+          "Licenses and Apps",
+          "Licenses"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which users hold the Microsoft 365 Copilot licence that gives access to the Forms pane",
+        "docs": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "reachable": true,
+        "token": "Set-MgUserLicense",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether a user can use Microsoft Forms at all (existing alternative, not specific to Copilot)",
+        "docs": "https://learn.microsoft.com/microsoft-forms/turn-off-turn-on-microsoft-forms",
+        "reachable": true,
+        "segments": [
+          "Users",
+          "Active users",
+          "Manage product licenses",
+          "Licenses and Apps",
+          "Apps",
+          "Microsoft Forms"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether a user can use Microsoft Forms at all (existing alternative, not specific to Copilot)",
+        "docs": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "reachable": true,
+        "token": "Set-MgUserLicense",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

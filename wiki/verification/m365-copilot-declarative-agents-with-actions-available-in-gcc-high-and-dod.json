@@ -1,0 +1,802 @@
+{
+  "slug": "m365-copilot-declarative-agents-with-actions-available-in-gcc-high-and-dod",
+  "roadmapId": 564606,
+  "title": "Microsoft 365 Copilot: declarative agents with actions in GCC High and DoD",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "1 blocking finding (claim 52)"
+    ]
+  },
+  "counts": {
+    "claims": 60,
+    "confirmed": 58,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 1,
+    "minor": 2
+  },
+  "summary": "Hold: the briefing says Microsoft documents no automation for User access, but Learn documents preview Tenant Configuration Management automation for that setting. That automation is global-service only, so the absence must be narrowed to the government clouds rather than asserted generally. The roadmap facts, cited control paths and explicitly reported disagreements about cloud support are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; summary; What's changing; Scope; changes",
+      "type": "record",
+      "claim": "The roadmap lists this feature as Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "title; front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC High and DoD, and does not list GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Desktop and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target date is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-07-20T22:37:15.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-07-20T22:37:15\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing, first paragraph",
+      "type": "record",
+      "claim": "The roadmap describes declarative-agent actions invoking APIs, plugins and enterprise workflows within chat.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Declarative Agents with Actions enable Microsoft 365 Copilot to take real-world actions by invoking APIs, plugins, and enterprise workflows directly within the chat experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing, first paragraph",
+      "type": "record",
+      "claim": "The roadmap says actions are powered through API plugins, MCP tools and enterprise connectors.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "These actions are powered through API plugins, MCP tools, and enterprise connectors, allowing seamless integration with line-of-business applications and services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing, first paragraph",
+      "type": "record",
+      "claim": "The roadmap says Copilot selects the appropriate action to fulfill user intent.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The Copilot platform dynamically reasons over available actions and selects the appropriate tool to fulfill user intent",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing, second paragraph",
+      "type": "behaviour",
+      "claim": "MCP and API plugins provide custom actions for declarative agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/overview-plugins",
+      "quote": "MCP and API plugins are custom actions that enable declarative agents in Microsoft 365 Copilot to interact with Model Context Protocol (MCP) servers or REST APIs that have an OpenAPI description.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing, second paragraph",
+      "type": "behaviour",
+      "claim": "A plugin manifest tells Copilot about the API or MCP server available to the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/overview-plugins",
+      "quote": "An API or MCP plugin uses a plugin manifest that Copilot reads to learn about the API or MCP server available to the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing, second paragraph",
+      "type": "behaviour",
+      "claim": "Copilot decides when the agent should use the integration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/overview-plugins",
+      "quote": "Copilot can then decide when the agent should use that integration to answer a prompt.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "On first use of a plugin, Copilot asks the user to allow or cancel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/plugin-confirmation-prompts",
+      "quote": "The first time Microsoft 365 Copilot uses a Model Context Protocol (MCP) or API plugin, it notifies the user and asks them to allow or cancel the operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing, second paragraph",
+      "type": "behaviour",
+      "claim": "After the initial connection confirmation, operations that only retrieve data do not require confirmation by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/overview-plugins",
+      "quote": "After the user confirms the connection, MCP server tools and APIs that only retrieve data don't require confirmation, while tools and APIs that modify data do. Plugin developers can override these defaults.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Data-modifying operations require confirmation by default, but developers can override that behavior per operation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/overview-plugins",
+      "quote": "After the user confirms the connection, MCP server tools and APIs that only retrieve data don't require confirmation, while tools and APIs that modify data do. Plugin developers can override these defaults.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Risk assessment: Autonomy & actions; Governance controls",
+      "type": "behaviour",
+      "claim": "API plugin developers control confirmation with x-openai-isConsequential in the OpenAPI document.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/plugin-confirmation-prompts",
+      "quote": "Developers can control whether Microsoft 365 Copilot asks the user for confirmation (after the initial first-time prompt) for a specific operation by adding the `x-openai-isConsequential` property in the OpenAPI document for their API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Risk assessment: Autonomy & actions; Governance controls",
+      "type": "behaviour",
+      "claim": "MCP developers control confirmation per tool using readOnlyHint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/plugin-confirmation-prompts",
+      "quote": "Developers can control whether Microsoft 365 Copilot asks the user for confirmation (after the initial first-time prompt) for a specific tool by setting the `readOnlyHint` property to `true` for the tool in the MCP server's `tools/list` response.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The agent sends requests to an API or MCP server hosted outside Microsoft 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/overview-plugins",
+      "quote": "The agent sends a request to the plugin's MCP server or API, which is hosted outside of Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Copilot maps parts of the user's request to function parameters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/overview-plugins",
+      "quote": "It maps parts of the user's question to the parameters of the function: `budgetName=\"\"`.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The declarative-agent overview says GCC has full declarative-agent support.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/overview-declarative-agent",
+      "quote": "Government Community Cloud (GCC): Full declarative agent support is available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing, cloud-support paragraph; summary; rationale: impact",
+      "type": "availability",
+      "claim": "The overview says GCC High supports pro-code agents built with Microsoft 365 Agents Toolkit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/overview-declarative-agent",
+      "quote": "Government Community Cloud High (GCCH): Pro-code agents built with Microsoft 365 Agents Toolkit are supported. Agent Builder is also now available in GCCH.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing, cloud-support paragraph",
+      "type": "availability",
+      "claim": "The overview says Agent Builder is available in GCC High.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/overview-declarative-agent",
+      "quote": "Agent Builder is also now available in GCCH.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing, cloud-support paragraph; summary; rationale: impact",
+      "type": "availability",
+      "claim": "The overview says DoD support is limited to Toolkit-built pro-code declarative agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/overview-declarative-agent",
+      "quote": "Department of Defense (DoD): Limited support - only pro-code agents built with Microsoft 365 Agents Toolkit are supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing, cloud-support paragraph",
+      "type": "availability",
+      "claim": "The overview says Agent Builder is not available for declarative agents in DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/overview-declarative-agent",
+      "quote": "Agent Builder isn't available for declarative agents in DoD.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing, cloud-support paragraph; summary; Scope; rationale: impact",
+      "type": "availability",
+      "claim": "The service description says GCC High currently supports only Agent Builder declarative agents and agents published via admin controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "Declarative agents: GCC-High currently only supports declarative agents created using Agent Builder and those published via admin controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing, cloud-support paragraph; summary; Scope; rationale: impact",
+      "type": "availability",
+      "claim": "The service description lists declarative agents as not currently available in DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "| Feature | Commercial/Worldwide | GCC | GCCH | DoD |\n| Declarative agents | Yes | Yes | Yes^8^ | Not currently available |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Risk assessment: Security & identity; Open questions",
+      "type": "availability",
+      "claim": "Known issues lists authenticated custom actions as not currently supported in Microsoft 365 Government tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues",
+      "quote": "The following features aren't currently supported in Microsoft 365 Government tenants:\n- Authenticated custom actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing, cloud-support paragraph",
+      "type": "availability",
+      "claim": "Known issues lists publishing agents through Microsoft 365 Agents Toolkit as not currently supported in Government tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues",
+      "quote": "The following features aren't currently supported in Microsoft 365 Government tenants:\n- Support for publishing agents via the Microsoft 365 Agents Toolkit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Known issues lists usage billing for extensibility features as not supported in Government tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues",
+      "quote": "The following features aren't currently supported in Microsoft 365 Government tenants:\n- Support for usage billing for extensibility features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.model and licensing.notes; rationale: cost; Scope",
+      "type": "licensing",
+      "claim": "The included licensing model rests on custom actions being listed for Copilot Chat without usage-based billing and licensed Microsoft 365 Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/prerequisites",
+      "quote": "| Capability | Copilot Chat (no usage-based billing)* | Copilot Chat (usage-based billing)** | Microsoft 365 Copilot (licensed) |\n| Custom actions | ✅ | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing, first paragraph",
+      "type": "licensing",
+      "claim": "The capabilities table lists custom actions in all three licensing and billing columns.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/prerequisites",
+      "quote": "| Capability | Copilot Chat (no usage-based billing)* | Copilot Chat (usage-based billing)** | Microsoft 365 Copilot (licensed) |\n| Custom actions | ✅ | ✅ | ✅ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing, first paragraph",
+      "type": "licensing",
+      "claim": "The prerequisites page says Microsoft 365 Copilot Chat is available to all Microsoft 365 users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/prerequisites",
+      "quote": "Microsoft 365 Copilot Chat is a broadly accessible AI chat interface that is available to all Microsoft 365 users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing, first paragraph",
+      "type": "licensing",
+      "claim": "Usage limits apply to the included features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/prerequisites",
+      "quote": "* Usage limits apply to all included features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The prerequisites page says usage-based billing is not supported in GCC and GCCH.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/prerequisites",
+      "quote": "Usage-based billing isn't supported in Microsoft 365 Government Community Cloud High (GCCH) and Government Community Cloud (GCC) environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing, second paragraph",
+      "type": "licensing",
+      "claim": "That usage-based-billing note on the prerequisites page does not name DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/prerequisites",
+      "quote": "Usage-based billing isn't supported in Microsoft 365 Government Community Cloud High (GCCH) and Government Community Cloud (GCC) environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Scope, second paragraph",
+      "type": "availability",
+      "claim": "The prerequisites page says agents grounded in shared tenant work data are not currently available in GCC, GCCH or DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/prerequisites",
+      "quote": "Agents grounded in shared tenant work data aren't currently available in Microsoft 365 Government Community Cloud (GCC), Government Community Cloud High (GCCH), or Department of Defense (DoD) environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope, second paragraph",
+      "type": "admin-path",
+      "claim": "Toolkit development needs admin-enabled custom-app sideloading at Teams admin center > Teams apps > Setup policies > Global (Org-wide default) > Upload custom apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/prerequisites",
+      "quote": "To enable sideloading, from Teams admin center, select Teams apps > Setup policies > Global (Org-wide default), and switch the Upload custom apps toggle to On.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing, second paragraph; rationale: cost",
+      "type": "behaviour",
+      "claim": "The plugin's API or MCP server runs separately from the Copilot package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/overview",
+      "quote": "The API or MCP server runs separately.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing, second paragraph; rationale: cost",
+      "type": "cost",
+      "claim": "External API or MCP hosting and licensing must be accounted for separately from Copilot licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/cost-considerations",
+      "quote": "Don't assume that a plugin is free to use in every product or that a user license covers every component and external service.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/plugins/cost-considerations to sources; it supports the separate external-service cost statement."
+    },
+    {
+      "n": 42,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The documented block path is Microsoft 365 admin center > Agents > All agents > agent > Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select Agents > All agents.\nIn the All agents page, select an agent from the list of agents.\nIn the agent details pane that opens, immediately under the agent's name, select Block or Unblock.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].governs and scope; Governance guidance: After rollout; Governance controls",
+      "type": "applicability",
+      "claim": "Blocking restricts access to the selected agent across the organization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "These actions apply to the selected agent.\nBlock and unblock | Restrict access to an agent across the organization, preventing any user from using it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "Blocking a packaged agent should not be assumed to block the entire plugin package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "If the agent is included in a plugin, don't assume the action also applies to the whole plugin package, its skills, shared MCP servers, or connections.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Blocking does not necessarily revoke connected-service permissions or credentials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Agent approval or blocking doesn't necessarily grant or revoke connected-service permissions or credentials.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block is the beta package-blocking operation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block\nAPIs under the `/beta` version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": "minor",
+      "fix": "Add 'Use of beta APIs in production applications is not supported.' to controls[0].note, retaining its existing license and national-cloud restrictions."
+    },
+    {
+      "n": 47,
+      "where": "controls[0].note; Cost and licensing; Governance guidance: Before rollout",
+      "type": "licensing",
+      "claim": "Access to the package-management API requires a Microsoft Agent 365 license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[0].note; Open questions",
+      "type": "availability",
+      "claim": "The package-block API is marked unsupported in US Government L4 and L5 (DOD).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "| Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet |\n| ✅ | ❌ | ❌ | ❌ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "User access is documented at Microsoft 365 admin center > Agents > Settings > User access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Open the Microsoft 365 admin center in your browser.\nSelect Agents > Settings > User access to manage your organization's agents and plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].note; Governance guidance: Before rollout",
+      "type": "default",
+      "claim": "All users is the default option for the documented User access setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "All users - This option is the default. It means that all users in the organization can access agents and plugins, subject to the existing app policies and user assignments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].governs and note; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Tenant User access can select No users or Specific users or groups for access to agents and plugins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "No users - This option means that no users in the organization can access agents and plugins.\nSpecific users or groups - This option lets you select specific users or groups in your organization to have access to agents and plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[1].api; Governance controls, second paragraph",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no API for the tenant-wide User access setting.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "These resources also support remediation and applyOnce.\nuseraccess resource type\nControls which users or groups can use agents built by Microsoft and the organization, including plugins within agents.",
+      "severity": "blocker",
+      "fix": "Replace the sentence with 'Learn documents preview Tenant Configuration Management automation for microsoft.agent.useraccess, using properties.valueObject.userAssignmentCategory with everyone or noOne. TCM is available only in the global service, not in national clouds.' Cite https://learn.microsoft.com/graph/utcm-agent-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. Keep controls[1].api null only with a note stating 'No supported User access automation is documented for GCC High or DoD; the documented TCM preview is global-service only.'"
+    },
+    {
+      "n": 53,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "default",
+      "claim": "The arrival default for declarative agents with actions in GCC High and DoD is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: declarative agents actions GCC High DoD \"default\". Read roadmap, declarative-agent overview, service description, known issues, prerequisites and returned feature excerpts; no arrival default found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The prerequisites page and cited pages read publish no price specific to declarative-agent actions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Copilot custom actions API MCP plugin price hosting license confirmation admin setting. Read prerequisites, service description, plugin overviews and package-block reference; no separate custom-actions price found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Learn does not specify which identity an action uses in GCC High and DoD.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: declarative agents API plugins authentication GCC High DoD user identity. Read known issues, overview-plugins and plugin-authentication; general authentication uses signed-in-user credentials, but no GCC High/DoD-specific identity behavior was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1].note; Governance controls, second paragraph",
+      "type": "absence",
+      "claim": "The pages read do not establish whether the Agents admin-center pages, including User access, are available in GCC High or DoD.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Agents Settings User access Microsoft Graph API tenant setting GCC High DoD availability. Read agent-settings, agent-actions and Copilot service description; no GCCH/DoD User access availability stated. Agent 365 service-description excerpt lists GCC only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls, second paragraph",
+      "type": "absence",
+      "claim": "No admin setting is documented to set the confirmation prompt for data-modifying API or MCP actions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot\" \"confirmation\" \"admin\" \"x-openai-isConsequential\". Read plugin-confirmation-prompts, agent-settings and returned Copilot admin-settings excerpts; no admin setting for action-confirmation overrides found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls, first paragraph",
+      "type": "admin-path",
+      "claim": "Plugins, skills and MCP servers are managed under Agents > Tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "To manage plugins, skills, and MCP servers, use Agents > Tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls, second paragraph",
+      "type": "availability",
+      "claim": "The agent-actions page says GCCH supports publishing agents to the organization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Microsoft 365 for government Community Cloud High (GCCH) and Government Community Cloud Moderate (GCCM) environments support publishing agents to the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Why it matters, first paragraph",
+      "type": "behaviour",
+      "claim": "An action reaches a system the tenant does not run.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot API MCP plugin API hosting own organization external system. Read overview-plugins, overview and MCP servers as plugin capabilities excerpt; separate hosting does not establish that the tenant organization does not run the system.",
+      "severity": "major",
+      "fix": "Replace the first sentence with 'In GCC High and DoD tenants an action is the point where a Copilot conversation reaches an API or MCP server hosted outside Microsoft 365.'"
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T14:03:18.667Z",
+    "summary": {
+      "links": 11,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=564606",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/plugins/overview-declarative-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/plugins/prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/plugins/overview-plugins",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/plugins/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/plugins/plugin-confirmation-prompts",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether an agent that carries actions is available to anyone in the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether an agent that carries actions is available to anyone in the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users or groups can access agents and plugins",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Settings",
+          "User access"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

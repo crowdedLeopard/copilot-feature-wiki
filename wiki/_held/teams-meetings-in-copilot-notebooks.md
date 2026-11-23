@@ -18,7 +18,7 @@ defaultState: "user-opt-in"
 action: "review"
 licensing:
   model: "included"
-  notes: "Learn's requirements page says Copilot Notebooks users need the Microsoft Copilot or Copilot Chat licence. No separate licence, meter or price for meeting references is published."
+  notes: "Learn's requirements page says Copilot Notebooks users need the Microsoft Copilot or Copilot Chat licence. The Graph TCM resource reference says Notebooks also require a Microsoft 365 Copilot licence. No separate licence, meter or price for meeting references is published."
 audiences: ["m365-admin","compliance","security","change-adoption"]
 tags: ["copilot-notebooks","onenote","m365-copilot","meeting-transcripts","teams","cloud-policy","sharepoint-embedded"]
 sources:
@@ -43,6 +43,15 @@ sources:
   - title: "Admins - Manage transcription and captions for Teams meetings"
     url: "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions"
     kind: "learn"
+  - title: "Supported Copilot resources for Tenant Configuration Management (preview)"
+    url: "https://learn.microsoft.com/graph/utcm-copilot-resources"
+    kind: "learn"
+  - title: "Supported resources for remediation and applyOnce (preview)"
+    url: "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources"
+    kind: "learn"
+  - title: "Whether users can create and use Copilot Notebooks, including adding meeting references (Microsoft Graph)"
+    url: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
+    kind: "learn"
 videos: []
 related: ["meeting-transcripts","cloud-policy","meeting-policy","m365-copilot-csv-and-tsv-references-in-copilot-notebooks","m365-copilot-jpg-and-png-references-in-copilot-notebooks"]
 controls:
@@ -52,8 +61,11 @@ controls:
       surface: "Microsoft 365 Apps admin center"
       path: "Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Create and view Copilot Pages and Copilot Notebooks"
       docs: "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration"
-    api: null
-    note: "Whole-Notebooks control, not meeting-specific. Disabled hides the Notebooks module; existing items are kept. Scope to All users or a group."
+    api:
+      kind: "graph"
+      call: "POST /beta/admin/configurationManagement/configurationMonitors"
+      docs: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
+    note: "Preview, tenant-level policies only; fails if set in a group-level policy. Use applyOnce, resourceType microsoft.copilot.copilotpagesnotebooks, value \"0\" or \"1\". Role: AI Administrator. Details below."
   - governs: "Whether users can transcribe Teams meetings"
     scope: "user"
     ui:
@@ -79,19 +91,23 @@ changes:
     note: "First briefing: Teams meetings as Copilot Notebooks references, with the Notebooks Cloud Policy and Teams transcription controls."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 54 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected: added the preview Graph route for the Notebooks policy, fixed what disabling that policy does, noted the licence difference between two Learn pages, and removed checklist steps with no controls row."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 51
+  claims: 60
+  confirmed: 59
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "43f8985ef0f5e93baece5480683994aa"
+  contradicted: 1
+  attempts: 2
+  hash: "4f21047150b236ccdd2c294178853750"
 ---
 
 ## What's changing
@@ -133,7 +149,7 @@ Microsoft has not stated an admin-side default for meeting references, and the r
 
 ## Cost and licensing
 
-**Licence.** The requirements page says users need the Microsoft Copilot or Copilot Chat licence to use Copilot Notebooks. Meeting references are a capability inside Notebooks, and that page names no other licence.
+**Licence.** The requirements page says users need the Microsoft Copilot or Copilot Chat licence to use Copilot Notebooks. Meeting references are a capability inside Notebooks, and that page names no other licence. Microsoft documentation differs here: the Graph Tenant Configuration Management (TCM) resource reference says Copilot Notebooks also require a Microsoft 365 Copilot license, so the Copilot Chat entitlement is not settled across the two pages.
 
 **Meter.** No separate licence, meter or price for meeting references is published at the time of writing (November 2026).
 
@@ -151,10 +167,9 @@ Microsoft has not stated an admin-side default for meeting references, and the r
 
 ### Before rollout
 
-- Identify who holds the Microsoft Copilot or Copilot Chat licence, since those users can use Notebooks.
+- Identify who holds the Microsoft Copilot licence, and confirm whether Copilot Chat users alone are entitled, since the two Learn pages differ (see Cost and licensing).
 - Decide whether the Notebooks policy stays enabled for everyone, using the Cloud Policy row in the controls table.
 - Review the Teams transcription policy in the controls table, because transcripts are one of the content types the release notes name.
-- Ask your Purview and SharePoint owners to confirm that retention, eDiscovery and audit settings cover SharePoint Embedded containers.
 
 ### At rollout
 
@@ -164,8 +179,6 @@ Microsoft has not stated an admin-side default for meeting references, and the r
 
 ### After rollout
 
-- Search the Microsoft Purview audit log for Copilot Notebooks activity; Copilot Notebooks create and update .pod files.
-- Watch SharePoint storage, since notebook content counts toward the quota.
 - Re-read the Learn release notes and the Notebooks admin policies page for a meeting-specific control.
 
 ## Governance controls
@@ -175,13 +188,15 @@ Microsoft has not stated an admin-side default for meeting references, and the r
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether users can create and use Copilot Notebooks, including adding meeting references</strong><br><small>User</small><br><small class="controls__note">Whole-Notebooks control, not meeting-specific. Disabled hides the Notebooks module; existing items are kept. Scope to All users or a group.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Create and view Copilot Pages and Copilot Notebooks <a href="https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether users can create and use Copilot Notebooks, including adding meeting references</strong><br><small>User</small><br><small class="controls__note">Preview, tenant-level policies only; fails if set in a group-level policy. Use applyOnce, resourceType microsoft.copilot.copilotpagesnotebooks, value &quot;0&quot; or &quot;1&quot;. Role: AI Administrator. Details below.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Create and view Copilot Pages and Copilot Notebooks <a href="https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether users can transcribe Teams meetings</strong><br><small>User</small><br><small class="controls__note">Existing control over whether transcripts are created. Not documented as governing what Copilot Notebooks can reference.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Transcription <a href="https://learn.microsoft.com/microsoftteams/meeting-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -AllowTranscription $false</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>A switch for meeting references in Copilot Notebooks, separate from the Notebooks policy</strong><br><small>Tenant</small><br><small class="controls__note">The admin policies page lists two settings, creation and code previews; neither is specific to meeting references.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-Microsoft Learn documents the Notebooks creation policy and the Teams transcription policy, but no setting aimed at meeting references. The Cloud Policy row governs Notebooks as a whole, so using it also removes every other Notebooks capability for the users in scope. It is set in the Microsoft 365 Apps admin center and can be scoped to groups with the priority ordering the admin policies page describes.
+Microsoft Learn documents the Notebooks creation policy and the Teams transcription policy, but no setting aimed at meeting references. The Cloud Policy row governs Notebooks as a whole: disabling it prevents new notebooks and hides the Notebooks module in the Microsoft Copilot app, but existing items are not deleted and can still be viewed and edited with permission. It is set in the Microsoft 365 Apps admin center and can be scoped to groups with the priority ordering the admin policies page describes.
+
+The Graph route in that row is preview and covers tenant-level policies only; it fails if the target setting is configured in any group-level policy. Use mode applyOnce and a baseline resourceType microsoft.copilot.copilotpagesnotebooks, resourceVersion 1, with properties.value set to the string "0" to disable or "1" to enable. AI Administrator is the least-privileged signed-in role; the calling app needs delegated ConfigurationMonitoring.ReadWrite.All and the TCM service principal needs delegated CopilotPolicySettings.ReadWrite.
 
 The Teams transcription row is an existing control over whether transcripts can be created. No page read says that it governs what Notebooks can reference, so treat it as a related control, not an enforcement point for this feature.
 
@@ -189,7 +204,7 @@ The Teams transcription row is an existing control over whether transcripts can 
 
 - Is a meeting added to a notebook linked or copied, and do the meeting's own permissions still decide who can read it? Watch the Notebooks permissions page and the Message center.
 - When a notebook is shared, do recipients gain access to referenced meeting transcripts, notes and chats, as the permissions page says they do for files?
-- Will Microsoft add a setting that turns off meeting references without disabling Notebooks, and a PowerShell or Graph route to the Cloud Policy setting?
+- Will Microsoft add a setting that turns off meeting references without disabling Notebooks?
 - Do the Teams transcription and recording policies affect which meetings can be added, and what happens to a reference if the transcript later expires?
 
 <!-- rationale
@@ -201,9 +216,7 @@ impact: Medium. People who use Copilot Notebooks and add meetings as references 
 <!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Open questions / absence: No PowerShell or Graph route to the Notebooks Cloud Policy setting is documented. | Found: These resources also support remediation and applyOnce. Controls whether users can create and view Copilot Pages and Copilot Notebooks through Microsoft 365 Copilot Chat and Copilot Actions. | Fix: Replace the automation gap with the documented preview Graph route: kind graph, call 'POST /beta/admin/configurationManagement/configurationMonitors', docs https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta. The note must say: 'Preview, tenant-level policies only; fails if the target setting is configured in any group-level policy. Use mode applyOnce and a baseline resourceType microsoft.copilot.copilotpagesnotebooks, resourceVersion 1, with properties.value set to the string "0" to disable or "1" to enable. AI Administrator is the least-privileged signed-in role; the calling app needs delegated ConfigurationMonitoring.ReadWrite.All and the TCM service principal needs delegated CopilotPolicySettings.ReadWrite.' Cite https://learn.microsoft.com/graph/utcm-copilot-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. Remove the Open questions wording that asks whether Microsoft will publish a Graph route to this setting. | Source: https://learn.microsoft.com/graph/utcm-copilot-resources
-- [contradicted, blocker] Governance controls / applicability: Using the Notebooks policy removes every other Notebooks capability for users in scope. | Found: Existing Copilot Pages and Notebooks aren't deleted. Users can still view and edit existing items if they have permission. | Fix: Replace 'so using it also removes every other Notebooks capability for the users in scope' with 'disabling it prevents new notebooks and hides the Notebooks module in the Microsoft Copilot app, but existing items are not deleted and can still be viewed and edited with permission'. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration
+- [contradicted, blocker] Governance controls / behaviour: After disabling the policy, existing notebooks can still be viewed and edited with permission. | Found: Users can still view and edit existing items if they have permission. ... Important: Sharing links to Copilot Notebooks don't work when creation is disabled via the policy in this article. | Fix: After 'existing items are not deleted and can still be viewed and edited with permission', add: 'However, sharing links to Copilot Notebooks do not work when creation is disabled.' This qualification is stated at https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing; Cost and licensing; Scope; Governance guidance; rationale: cost / licensing: The requirements page says Notebooks users need the Microsoft Copilot or Copilot Chat licence, supporting an included licensing model for this capability. | Found: ### Copilot Notebooks Users need the Microsoft Copilot or Copilot Chat license. | Fix: Retain the attributed requirements-page statement and included model, but add: 'Microsoft documentation differs: the Graph TCM resource reference says Copilot Notebooks also require a Microsoft 365 Copilot license.' Cite https://learn.microsoft.com/graph/utcm-copilot-resources#copilotpagesnotebooks-resource-type. Do not present Copilot Chat eligibility as settled across both sources. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements
-- [contradicted, minor] Governance guidance: Before rollout and After rollout; controls / consistency: The governance checklist asks readers to check retention, eDiscovery, audit and SharePoint storage controls that have no corresponding controls-table rows. | Found: confirm that retention, eDiscovery and audit settings cover SharePoint Embedded containers; Search the Microsoft Purview audit log; Watch SharePoint storage. The table contains only Notebooks policy, Teams transcription and the meeting-reference switch gap. | Fix: The retention, eDiscovery, audit and SharePoint-storage checklist steps lack control rows. Without adding rows, remove the Before rollout bullet asking owners to confirm retention, eDiscovery and audit settings and the After rollout bullets asking readers to search the audit log and watch storage. Keep the separately supported explanatory facts in the risk and cost sections.
+- [supported, minor] controls[1].api; controls[1].note; Governance controls / command: Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowTranscription $false prevents meeting transcription under the selected policy. | Found: ### -AllowTranscription Determines whether post-meeting captions and transcriptions are allowed in a user's meetings. Set this to TRUE to allow. Set this to FALSE to prohibit. | Fix: Add https://learn.microsoft.com/powershell/module/teams/set-csteamsmeetingpolicy to sources; its reference explicitly supports the printed $false value. Keep the existing call and control docs link. | Source: https://learn.microsoft.com/powershell/module/teams/set-csteamsmeetingpolicy
 -->

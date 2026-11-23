@@ -11,7 +11,7 @@ clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
 targetDate: "June CY2026"
 previewDate: "December CY2025"
-risk: "medium"
+risk: "low"
 cost: "variable"
 impact: "low"
 defaultState: "admin-opt-in"
@@ -70,7 +70,7 @@ controls:
       path: "Agents > Explore agents > View agent > Performance"
       docs: "https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started"
     api: null
-    note: "Shows consumption only; SCU capacity is changed in Security Copilot by an Azure capacity owner or contributor."
+    note: "Shows consumption only. In the Security Copilot portal, changing provisioned or overage SCUs requires an Azure capacity owner or contributor who is also a Security Copilot owner."
   - governs: "Audit records of agent runs and result views"
     scope: "tenant"
     ui:
@@ -91,19 +91,23 @@ changes:
     note: "First briefing for the Data Security Posture Agent in DSPM: licensing, SCU metering, roles, controls and the preview/launched difference."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 77 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Correction: risk lowered to low, SCU capacity role and E5 inclusion wording fixed, limits and administrative-unit caveats added, deployment path completed and checklist limited to tabled controls."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 102 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 77
-  confirmed: 73
+  claims: 102
+  confirmed: 101
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "7166ebda17f73ede0bee15edd104babd"
+  contradicted: 1
+  attempts: 0
+  hash: "4486d361663d1b8bbac108887d14ca71"
 ---
 
 ## What's changing
@@ -128,14 +132,14 @@ Microsoft's Security Copilot inclusion page says agents are not enabled automati
 
 **Security & identity**
 - The agent is deployed either with its own Microsoft Entra agent identity (recommended, and the deploying account needs the Role Management role) or with the identity of the admin who sets it up, in which case all activities are associated with that user.
-- Learn's agents overview says agents aren't administrative unit aware, so do not assume a restricted admin's searches are limited to their units.
+- Learn's agents overview says agents aren't administrative unit aware, so do not assume a restricted admin's searches are limited to their units. The DSPM considerations page separately says restricted administrators viewing asset explorer see data for users in their assigned administrative units only; the relationship to agent searches is unclear.
 
 **Autonomy & actions**
 - A scheduled prompt re-runs daily, weekly or monthly without a person starting it, and each run consumes SCUs.
 - Labelling is a user action on the results: up to 10 files at a time, by users holding the Data Classification Content Viewer or Purview Content Analyst role.
 
 **Change & support**
-- Learn marks the agent as preview, so behaviour and limits can change. Results can be partial: in some cases the agent scans at most 5 GB or 10K items and returns only the top 1,000 matched items, and only two prompts can run concurrently.
+- Learn marks the agent as preview, so behaviour and limits can change. Results can be partial: in some cases the agent scans at most 5 GB or 10K items and returns only the top 1,000 matched items, and only two prompts can run concurrently. The DSPM considerations page instead says search supports content up to 1 GB of data; Microsoft does not reconcile these limits.
 - Vague or contradictory prompts return an invalid result with a reason, which is a likely source of support questions.
 
 ## Cost and licensing
@@ -144,7 +148,7 @@ Microsoft's Security Copilot inclusion page says agents are not enabled automati
 
 **Meter.** The agent consumes SCUs every time it runs, based on the complexity of the analysis, and SCUs must be provisioned for it to work. Consumption can be tracked on the agent's Performance tab and in the Security Copilot usage monitoring tool. A per-run SCU figure for this agent is not yet published.
 
-**Included capacity and limits.** Microsoft's Security Copilot inclusion page says Microsoft 365 E5 and E7 customers have 400 SCUs each month for every 1,000 paid user licences, up to 10,000 SCUs each month, at no additional cost, and lists agentic scenarios in Microsoft Purview among the core experiences. Allocations reset monthly and do not roll over. The same page says usage beyond the allocation will be throttled at a future date, with an option to scale at $6 USD for each SCU on a pay-as-you-go basis at that time. For provisioned capacity, Learn says overage SCUs can be set as unlimited or to a maximum, and that when provisioned and overage SCUs are exhausted analysts see an error and cannot submit more prompts.
+**Included capacity and limits.** Microsoft's Security Copilot inclusion page says Microsoft 365 E5 and E7 customers have 400 SCUs each month for every 1,000 paid user licences, up to 10,000 SCUs each month, at no additional cost, and covers all agentic scenarios in Microsoft Purview, including this Security Copilot agent. Allocations reset monthly and do not roll over. The same page says usage beyond the allocation will be throttled at a future date, with an option to scale at $6 USD for each SCU on a pay-as-you-go basis at that time. For provisioned capacity, Learn says overage SCUs can be set as unlimited or to a maximum, and that when provisioned and overage SCUs are exhausted analysts see an error and cannot submit more prompts.
 
 Admin time to deploy, assign roles and review results is the other cost.
 
@@ -161,14 +165,10 @@ Admin time to deploy, assign roles and review results is the other cost.
 ## Governance guidance
 
 ### Before rollout
-- Decide whether to deploy with an agent identity or your own identity, and line up an account with the Role Management role if you choose the agent identity.
-- Confirm the Security Copilot prerequisites with the Security Copilot owner: tenant onboarding, Microsoft 365 data sharing and the Microsoft Purview plug-in.
-- Check SCU capacity with the Security Copilot capacity owner, including any overage limit, before the first scheduled prompt.
-- Choose who gets Data Classification Content Viewer or Purview Content Analyst, which allow viewing matched files and labelling, and who gets summary-only roles.
+- Check SCU capacity with the Security Copilot capacity owner before the first scheduled prompt.
 
 ### At rollout
-- Deploy the agent from Agents > Explore agents in the Microsoft Purview portal and record which identity option was chosen.
-- Confirm that auditing is turned on so label status and agent activity can be seen.
+- Deploy from Agents > Explore agents > agent > Add > Setup > Deploy agent > Create and use agent identity (recommended) or Assign and use my identity, and record which identity option was chosen.
 - Start with prompts restricted to named users, groups or sites, which Learn says are more efficient than tenant-wide searches.
 - Hold off scheduling prompts until a few manual runs show the SCU cost.
 
@@ -186,7 +186,7 @@ Admin time to deploy, assign roles and review results is the other cost.
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether the Data Security Posture Agent is active in the tenant</strong><br><small>Tenant</small><br><small class="controls__note">Deactivate stops the agent without removing it; Remove agent deletes it. Needs the roles the page lists; one agent instance per tenant.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Agents › Explore agents › View agent › ellipsis next to Edit agent › Deactivate agent <a href="https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Security compute unit consumption by the agent</strong><br><small>Tenant</small><br><small class="controls__note">Shows consumption only; SCU capacity is changed in Security Copilot by an Azure capacity owner or contributor.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Agents › Explore agents › View agent › Performance <a href="https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Security compute unit consumption by the agent</strong><br><small>Tenant</small><br><small class="controls__note">Shows consumption only. In the Security Copilot portal, changing provisioned or overage SCUs requires an Azure capacity owner or contributor who is also a Security Copilot owner.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Agents › Explore agents › View agent › Performance <a href="https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Audit records of agent runs and result views</strong><br><small>Tenant</small><br><small class="controls__note">Needs the Audit Logs or View-Only Audit Logs role. Other agent operations include AgentResultViewed and AgentRunDeleted.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog -StartDate &lt;start&gt; -EndDate &lt;end&gt; -Operations AgentRan</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -198,25 +198,18 @@ Who can run the agent, view content snippets, view matched files and label files
 ## Open questions
 
 - When will Learn drop the preview label, given the roadmap lists the item as Launched with a June CY2026 target? Watch the get-started page and Message center.
-- How many SCUs does a typical run of this agent consume, and does it draw on the Microsoft 365 E5 inclusion allocation? Watch the get-started page and the Security Copilot inclusion page.
+- How many SCUs does a typical run of this agent consume? Watch the get-started page.
 - Are searches by an administrative-unit-restricted admin limited to their units, given Learn says agents aren't administrative unit aware?
 - Will Microsoft document an API or PowerShell command for deploying or deactivating the agent?
 
 <!-- rationale
-risk: Medium. Once an admin deploys it, the agent searches content across SharePoint, OneDrive, Exchange, Teams and Copilot interactions, and some roles can view matched files and label them; nobody gets it until it is deployed.
+risk: Low. Nobody can use the agent until an administrator deploys it; review content access and SCU consumption before opting in.
 cost: Variable. The agent consumes security compute units (SCUs) every time it runs, on top of the Microsoft 365 E5 licence Learn names; a per-run SCU figure for this agent is not yet published.
 impact: Low. It is aimed at data security admins and is run from the Microsoft Purview portal; the roadmap lists the Web platform only.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].note; Governance controls table / role: An Azure capacity owner or contributor can change SCU capacity in Security Copilot. | Found: Security Copilot portal required role: Azure capacity owner or contributor who are also Security Copilot owners. | Fix: Replace the note's second sentence with: 'In the Security Copilot portal, changing provisioned or overage SCUs requires an Azure capacity owner or contributor who is also a Security Copilot owner.' Apply the same wording in the rendered table. | Source: https://learn.microsoft.com/copilot/security/manage-usage
-- [contradicted, blocker] Open questions: E5 inclusion allocation / absence: Whether this agent can draw on the Microsoft 365 E5 inclusion allocation is unresolved. | Found: Core Experiences: All chat, promptbook, and agentic scenarios across Microsoft Entra, Microsoft Intune, Microsoft Purview, Microsoft Defender, and the standalone Security Copilot portal. | Fix: Change the open question to 'How many SCUs does a typical run of this agent consume? Watch the get-started page.' In Cost and licensing, replace 'and lists agentic scenarios in Microsoft Purview among the core experiences' with 'and covers all agentic scenarios in Microsoft Purview, including this Security Copilot agent'. The feature-specific page's provisioned-SCU wording may remain attributed alongside the inclusion model. | Source: https://learn.microsoft.com/copilot/security/security-copilot-inclusion
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity; Open questions / applicability: The agents overview says agents aren't administrative unit aware, leaving the briefing cautious about restricted-admin searches. | Found: Agents aren't administrative unit aware. | Fix: After this caveat add: 'The DSPM considerations page separately says restricted administrators viewing asset explorer see data for users in their assigned administrative units only; the relationship to agent searches is unclear.' Cite https://learn.microsoft.com/purview/data-security-posture-management-considerations. | Source: https://learn.microsoft.com/purview/copilot-in-purview-agents-overview
-- [supported, minor] Risk assessment: Change & support / behaviour: In some cases the agent scans a maximum of 5 GB or 10K items. | Found: In some cases, the Agent downloads and scans max 5 GB or 10K items from the selected data sources. | Fix: Keep the attributed get-started limit and add: 'The DSPM considerations page instead says search supports content up to 1 GB of data; Microsoft does not reconcile these limits.' Cite https://learn.microsoft.com/purview/data-security-posture-management-considerations. | Source: https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started
-- [supported, minor] Governance guidance: At rollout, deployment bullet / admin-path: The agent is deployed from Agents > Explore agents in the Microsoft Purview portal. | Found: select Agents. ... Select Explore agents. ... Select the agent to enable, and then select Add. ... Select Setup ... opens the Deploy agent ... Choose Create and use agent identity (recommended) or Assign and use my identity. | Fix: Replace the deployment bullet with: 'Deploy from Agents > Explore agents > agent > Add > Setup > Deploy agent > Create and use agent identity (recommended) or Assign and use my identity, and record which identity option was chosen.' The existing path stops on the right agent-list page but omits the deployment controls. | Source: https://learn.microsoft.com/purview/copilot-in-purview-posture-agent-get-started
-- [contradicted, minor] Governance guidance versus Governance controls / consistency: Every control the governance checklist asks administrators to check is represented in the controls table. | Found: Checklist: 'including any overage limit', 'Microsoft 365 data sharing and the Microsoft Purview plug-in', 'Choose who gets', 'Confirm that auditing is turned on'. Table: agent activation, consumption monitoring, audit searching. | Fix: The checklist steps for identity selection, data sharing, the Purview plug-in, role assignment, overage capacity and enabling auditing have no corresponding control rows. Remove those checklist bullets; retain their already documented facts in Scope, Risk assessment and Cost and licensing. Do not add rows as part of this correction.
-- [contradicted, minor] front matter: risk; rationale: risk / consistency: Medium risk fits the assessment scale for a tenant where nobody has deployed the agent. | Found: risk: medium; rationale: 'nobody gets it until it is deployed'. The assessment scale defines low as 'nothing happens until an admin opts in'. | Fix: Set risk to low and replace its rationale with: 'Low. Nobody can use the agent until an administrator deploys it; review content access and SCU consumption before opting in.'
+- [contradicted, minor] Governance guidance; Governance controls / consistency: Every control the governance checklist asks readers to check or configure appears in the controls table. | Found: Checklist: 'Check SCU capacity'; 'Deploy ... record which identity option was chosen'; 'Start with prompts restricted'; 'Hold off scheduling prompts'. Table: agent deactivation, consumption monitoring, audit search. | Fix: The Before rollout capacity check and the At rollout deployment/identity, prompt-scope and scheduling steps have no corresponding controls-table rows. Remove those checklist steps or recast them as planning advice outside the checklist; do not add control rows in this correction.
 -->

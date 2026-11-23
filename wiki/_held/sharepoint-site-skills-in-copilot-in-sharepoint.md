@@ -37,6 +37,15 @@ sources:
   - title: "Update spendingPolicy"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
     kind: "learn"
+  - title: "Upload or replace the contents of a driveItem"
+    url: "https://learn.microsoft.com/graph/api/driveitem-put-content?view=graph-rest-1.0"
+    kind: "learn"
+  - title: "Understand usage-based billing and cost management for Copilot Credits"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits"
+    kind: "learn"
+  - title: "Audit log activities"
+    url: "https://learn.microsoft.com/purview/audit-log-activities"
+    kind: "learn"
 videos: []
 related: ["m365-copilot-copilot-in-sharepoint","restricted-content-discovery","spending-policies","copilot-credits"]
 controls:
@@ -57,8 +66,11 @@ controls:
       surface: "SharePoint site (site owner)"
       path: "Settings > Site skills"
       docs: "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills"
-    api: null
-    note: "Site owners; edit, replace, download and version restore are on the Skill detail page only. Microsoft Learn documents no API for site skills at the time of writing (November 2026)."
+    api:
+      kind: "graph"
+      call: "PUT /v1.0/drives/{drive-id}/items/{item-id}/content"
+      docs: "https://learn.microsoft.com/graph/api/driveitem-put-content?view=graph-rest-1.0"
+    note: "Site owners; edit, replace, download and version restore are on the Skill detail page only. The API replaces existing SKILL.md contents; it is not a skill lifecycle API. Keep the file format; labelled files need delegated auth."
   - governs: "Tenant-wide switch to turn site skills on or off"
     scope: "tenant"
     ui: null
@@ -68,7 +80,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Cost management > Add spending policy > Agents and services > Advanced work in SharePoint"
+      path: "Copilot > Cost management > Add spending policy > Access scope > Agents and services > Advanced work in SharePoint > Limits and alerts"
       docs: "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started"
     api:
       kind: "graph"
@@ -84,19 +96,23 @@ changes:
     note: "First briefing for roadmap item 570155: documents the Site skills page actions Learn already describes and the gaps around publishing, defaults and admin switches."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 76 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after verification: site-skill edit and restore attributed to site owners, Graph file-content API added to the site skills row, audit-event and permission statements narrowed, spending-policy path completed."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 99 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 76
-  confirmed: 71
-  unconfirmed: 2
+  claims: 99
+  confirmed: 96
+  unconfirmed: 0
   contradicted: 3
-  attempts: 1
-  hash: "3009083518589a5d86033041452ab02b"
+  attempts: 2
+  hash: "a667adf443289744d7d316ae5ef1441a"
 ---
 
 ## What's changing
@@ -122,7 +138,7 @@ Microsoft has not stated what happens on arrival, so base your plan on no source
 - Copying a skill to other sites moves the instructions, not access: Learn says a skill can act only on content the person running it can already access.
 
 **Security & identity**
-- By default anyone with Edit permission on a site can create a site skill and anyone with View permission can use it. Edit and version restore let any such creator change what Copilot does for everyone on the site; restricting this means breaking permission inheritance on the Agent Assets library, as Learn describes.
+- By default anyone with Edit permission on a site can create a site skill and anyone with View permission can use it. Learn documents skill editing and version restore for site owners. If you need a different creation and use model, Learn describes breaking permission inheritance on the Agent Assets library and applying more restrictive permissions.
 - Skills do not expand user permissions, so a skill cannot reach content its runner cannot already open.
 
 **Autonomy & actions**
@@ -164,7 +180,7 @@ Copilot in SharePoint is in public preview per Learn, with general availability 
 
 ### After rollout
 - Review the Site skills list (name, source, status, last modified, creator) on key sites for unexpected skills or recent edits.
-- Search the Microsoft Purview audit log for activity on the Agent Assets library files; the audit event names for skill actions are not yet documented.
+- Search the Microsoft Purview audit log for activity on the Agent Assets library files; dedicated site-skill lifecycle audit event names are not yet documented as of November 2026.
 - Watch Copilot Credits consumption in Cost management for advanced work.
 
 ## Governance controls
@@ -175,9 +191,9 @@ Copilot in SharePoint is in public preview per Learn, with general availability 
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether Copilot in SharePoint and its AI entry points appear on a site</strong><br><small>Site</small><br><small class="controls__note">Existing setting. Get started says Copilot in SharePoint and AI actions don't appear on a restricted site. By default only SharePoint administrators manage it.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Sites › Active sites › site › Settings › Restrict content from Microsoft Copilot <a href="https://learn.microsoft.com/sharepoint/restricted-content-discovery" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOSite -Identity &lt;site-url&gt; -RestrictContentOrgWideSearch $true</code> <a href="https://learn.microsoft.com/sharepoint/restricted-content-discovery" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which site skills exist, are enabled, edited, restored or copied on a site</strong><br><small>Site</small><br><small class="controls__note">Site owners; edit, replace, download and version restore are on the Skill detail page only. Microsoft Learn documents no API for site skills at the time of writing (November 2026).</small></td><td data-label="Admin UI"><strong>SharePoint site (site owner)</strong><br>Settings › Site skills <a href="https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which site skills exist, are enabled, edited, restored or copied on a site</strong><br><small>Site</small><br><small class="controls__note">Site owners; edit, replace, download and version restore are on the Skill detail page only. The API replaces existing SKILL.md contents; it is not a skill lifecycle API. Keep the file format; labelled files need delegated auth.</small></td><td data-label="Admin UI"><strong>SharePoint site (site owner)</strong><br>Settings › Site skills <a href="https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PUT /v1.0/drives/{drive-id}/items/{item-id}/content</code> <a href="https://learn.microsoft.com/graph/api/driveitem-put-content?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tenant-wide switch to turn site skills on or off</strong><br><small>Tenant</small><br><small class="controls__note">Learn says there are no separate admin controls to turn skills on or off.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Spending limits for advanced work in Copilot in SharePoint</strong><br><small>Tenant</small><br><small class="controls__note">Beta API; the request body sets periodLimit, perUserLimit or billingMethods. The Graph page does not name which services a policy covers.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost management › Add spending policy › Agents and services › Advanced work in SharePoint <a href="https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Spending limits for advanced work in Copilot in SharePoint</strong><br><small>Tenant</small><br><small class="controls__note">Beta API; the request body sets periodLimit, perUserLimit or billingMethods. The Graph page does not name which services a policy covers.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost management › Add spending policy › Access scope › Agents and services › Advanced work in SharePoint › Limits and alerts <a href="https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -185,13 +201,13 @@ Learn says there are no separate admin controls to turn skills on or off, so the
 
 The preview tenant availability parameters (`KnowledgeAgentScope` on `Set-SPOTenant`) are being retired; Learn says existing settings are honoured until November 1, 2026 and afterwards availability is managed with Site AI settings (Settings > Site AI, site owners) and Restricted Content Discovery. Site AI settings can hide the Copilot button for site visitors only; they are not a skills control.
 
-Permissions on the Agent Assets library are the only documented way to change who can create or use site skills. A spending policy governs credit use for advanced work, not skill editing or versioning.
+Learn documents breaking permission inheritance on the Agent Assets library and applying more restrictive permissions to change the default creation and use model. A spending policy governs credit use for advanced work, not skill editing or versioning.
 
 ## Open questions
 
 - What does the roadmap's "publishing" mean for a site skill, and is a draft separate from the version Copilot runs? Watch the Extend Copilot in SharePoint with skills page and the roadmap item.
 - Does copying a skill to other sites need any permission on the target site beyond what Learn lists for creating skills?
-- Which audit events record skill edits, restores and copies in the Microsoft Purview audit log?
+- Will Microsoft publish dedicated site-skill lifecycle audit events beyond standard SharePoint file auditing?
 - Will Microsoft state a default for these management features, or add a tenant-level switch for skills?
 - Does a Copilot Credits rate apply to skill management actions, or only to running skills in advanced work?
 
@@ -204,12 +220,9 @@ impact: Medium. Site owners and members of sites that use skills notice it; it r
 <!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Risk assessment: Security & identity / role: Any user permitted to create a site skill can also edit and restore its versions through the management experience. | Found: Searched: SharePoint Copilot site skills edit restore permissions site members Edit Skill detail; SharePoint restore previous version permissions Edit Contribute version history. Read skills page: Edit is specified for creation; management actions are attributed to site owners. | Fix: Replace 'Edit and version restore let any such creator change what Copilot does for everyone on the site' with 'Learn documents skill editing and version restore for site owners.' Keep the separately supported creation and use permissions.
-- [contradicted, blocker] controls[1].api; controls[1].note; Governance controls table / absence: Microsoft Learn documents no API for managing site skills, including their editing. | Found: Provide the contents of a new file or update the contents of an existing file in a single API call. ... PUT /drives/{drive-id}/items/{item-id}/content | Fix: Replace controls[1].api with kind 'graph', call 'PUT /v1.0/drives/{drive-id}/items/{item-id}/content', docs 'https://learn.microsoft.com/graph/api/driveitem-put-content?view=graph-rest-1.0'. Replace the no-API note with 'The API replaces the existing SKILL.md file contents; it is not a dedicated skill lifecycle API. Preserve the skill file format. Sensitivity-labeled files require delegated authentication for content replacement.' The skills page explicitly documents direct .md editing; do not claim this API enables or disables skills. Add the Graph reference to sources and update the rendered row. | Source: https://learn.microsoft.com/graph/api/driveitem-put-content?view=graph-rest-1.0
-- [unsupported, blocker] Governance controls / absence: Permissions on the Agent Assets library are the only documented way to change who can create or use site skills. | Found: Searched: Copilot SharePoint site skills permissions Agent Assets library only control restrict create use. Read skills governance and prerequisites plus site-access search excerpts. Learn documents library permissions, but does not state their exclusivity over site-access controls. | Fix: Replace the sentence with 'Learn documents breaking permission inheritance on the Agent Assets library and applying more restrictive permissions to change the default creation and use model.'
-- [contradicted, blocker] Governance guidance: After rollout; Open questions / absence: Audit event names for skill actions are not documented. | Found: Modified file | FileModified | User or system account modifies the content or the properties of a document on a site. | Fix: Narrow the checklist clause to 'dedicated site-skill lifecycle audit event names are not yet documented as of November 2026'. Narrow the open question to 'Will Microsoft publish dedicated site-skill lifecycle audit events beyond standard SharePoint file auditing?' The skills page expressly applies standard file auditing to skill files; generic file event names are documented. | Source: https://learn.microsoft.com/purview/audit-log-activities
+- [contradicted, blocker] front matter: defaultState; Why it matters; Open questions / default: Microsoft has not stated the default availability of the site-skill management capability. | Found: There are no separate admin controls to turn skills on or off. By default, any user with Edit permissions on the site can create a site skill, and any user with View permissions can use it. | Fix: Set defaultState to 'user-opt-in'. Replace 'Microsoft has not stated what happens on arrival, so base your plan on no source saying that existing behaviour changes' with 'Site skills are available within Copilot in SharePoint without a separate skills admin switch; users choose to create or use them, subject to site permissions.' In Open questions, remove 'Will Microsoft state a default for these management features, or' and retain the question about a future tenant-level switch. Sources: https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills and https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started. | Source: https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[3].ui; Governance controls table; Cost and licensing / admin-path: The spending-policy route is Copilot > Cost management > Add spending policy > Agents and services > Advanced work in SharePoint. | Found: Under Access scope, choose whether the policy applies to all users or to specific security groups. ... Under Agents and services, select Advanced work in SharePoint. ... Set Limits and alerts for the policy | Fix: Expand controls[3].ui.path and the rendered route to 'Copilot > Cost management > Add spending policy > Access scope > Agents and services > Advanced work in SharePoint > Limits and alerts'. The current route correctly reaches the wizard but omits the scope section and ends before the limits named by the row. | Source: https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started
-- [supported, minor] Governance guidance: After rollout / admin-path: Administrators can monitor advanced-work Copilot Credits consumption in Cost management. | Found: In the Microsoft admin center, Copilot > Cost management, admins can monitor Copilot Credit consumption and manage spending associated with the supported services | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits to sources for the monitoring instruction. | Source: https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: The governance checklist directs readers to controls that are missing from the controls table. | Found: Plan to break permission inheritance on the Agent Assets library ... Search the Microsoft Purview audit log ... Watch Copilot Credits consumption in Cost management | Fix: The checklist steps for Agent Assets permission inheritance, Purview audit searching and credit-consumption monitoring have no corresponding control rows.
+- [supported, minor] controls[1].ui; What's changing; Governance guidance / admin-path: Site owners reach the site-skill management page through Settings > Site skills. | Found: To manage the skills associated with a site, select Settings > Site skills. To review or restore an earlier version, open the skill and select the Versions tab. | Fix: The path reaches the correct list but stops before individual controls. Keep 'Settings > Site skills' and add to its note: 'For version restore, select the skill name or Open, then Versions.' This route is documented at https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills. | Source: https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The governance checklist's site and Agent Assets permission controls are represented in the controls table. | Found: Checklist: 'review Edit membership' and 'break permission inheritance on the Agent Assets library'. Table: availability, Site skills management, tenant skills switch, advanced-work spending limits; no permissions row. | Fix: Remove the checklist bullet beginning 'Plan to break permission inheritance' and replace the first Before rollout bullet with 'Decide whether site skills fit the site's shared document and list workflows.' Keep the verified permissions explanation in Risk assessment and Governance controls; do not add a new row.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The audit control named in the governance checklist is represented in the controls table. | Found: Checklist: 'Search the Microsoft Purview audit log for activity on the Agent Assets library files'. The four controls rows contain no audit-search control. | Fix: Remove 'Search the Microsoft Purview audit log for activity on the Agent Assets library files; ' from the After rollout bullet, leaving 'Dedicated site-skill lifecycle audit event names are not yet documented as of November 2026.' Do not add a new control row.
 -->

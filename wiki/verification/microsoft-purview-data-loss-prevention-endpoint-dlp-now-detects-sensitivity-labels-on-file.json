@@ -1,0 +1,633 @@
+{
+  "slug": "microsoft-purview-data-loss-prevention-endpoint-dlp-now-detects-sensitivity-labels-on-file",
+  "roadmapId": 566617,
+  "title": "Microsoft Purview Endpoint DLP: detect sensitivity labels on files inside archives",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "1 blocking finding (claim 33)"
+    ]
+  },
+  "counts": {
+    "claims": 48,
+    "confirmed": 45,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 1,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: the Windows Server support statement omits Microsoft's restrictions and the requirement to enable Endpoint DLP after onboarding. The roadmap dates, general licensing, portal path and PowerShell call are supported; the action rating and governance checklist need minor corrections.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans Endpoint DLP detection of sensitivity labels on files inside archives.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview: Data Loss Prevention - Endpoint DLP now detects sensitivity labels on files inside archives",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "The planned update changes how .zip archives and similar container formats are classified and enforced.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Endpoint Data Loss Prevention (DLP) is changing the way archive files, such as  .zip  and similar container formats, are classified and enforced.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes improved detection accuracy.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This update  improves detection accuracy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap promises finer administrative control over protection of content within archives.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "gives administrators finer control over how content within archives is protected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The preview target is December CY2026, not a committed rollout date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The general availability target is January CY2027, not a committed rollout date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The listed release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed on this roadmap item.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: roadmapId",
+      "type": "record",
+      "claim": "The briefing identifies roadmap item 566617.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 566617",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap does not enumerate covered archive formats beyond the .zip example.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "archive files, such as  .zip  and similar container formats",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap does not define the finer control.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This update  improves detection accuracy and gives administrators finer control over how content within archives is protected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The roadmap does not state whether detecting labels inside archives depends on label protection settings.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Endpoint Data Loss Prevention (DLP) is changing the way archive files, such as  .zip  and similar container formats, are classified and enforced.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; front matter: changes",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe the planned detection of sensitivity labels on files inside archives.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Endpoint DLP archive sensitivity labels inside zip default setting licensing rollout 566617; \"Endpoint DLP\" \"archives\" \"sensitivity labels\" settings default licensing. Read endpoint-dlp-learn-about, dlp-sensitivity-label-as-condition and dlp-configure-endpoint-settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Why it matters; Risk assessment; Governance guidance",
+      "type": "applicability",
+      "claim": "Sensitivity labels can be used as conditions in DLP policies for the Devices location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-sensitivity-label-as-condition",
+      "quote": "You can use sensitivity labels as a condition in DLP policies for these locations: ... Devices",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Learn's supported endpoint file types for sensitivity-label conditions are .docx, .xlsx, .pptx, .pdf and .pfile, without archive formats.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-sensitivity-label-as-condition",
+      "quote": "| endpoint devices | .docx, .xlsx, .pptx, .pdf, .pfile |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Endpoint DLP's monitored Windows file types include .zip, .rar, .7z and .tar.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "| Archive | Zip, RAR, 7z, TAR | `.zip, .rar, .7z, .tar, .gz, .arj, .bz2, .cab, .chm, .lzh, .lzma, .mhtml, .xar, .xz` |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: defaultState; Why it matters; rationale: risk; Open questions",
+      "type": "default",
+      "claim": "Microsoft has not stated the default state of this archive label detection change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Endpoint DLP archive sensitivity labels inside zip default setting licensing rollout 566617; \"Endpoint DLP\" \"archives\" \"sensitivity labels\" settings default licensing. Read roadmap, endpoint-dlp-learn-about and dlp-configure-endpoint-settings; no change-specific default found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].governs, scope; Risk assessment; Governance controls",
+      "type": "applicability",
+      "claim": "Centrally configured Endpoint DLP settings apply to all DLP policies for devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "Centrally configured settings control many aspects of endpoint data loss prevention (DLP) behavior. These settings apply to all DLP policies for devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "In the Microsoft Purview portal, Endpoint settings are reached through Data loss prevention > Overview > Data loss prevention settings > Endpoint settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "To access these settings, from the Microsoft Purview portal, go to Data loss prevention > Overview > Data loss prevention settings > Endpoint settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-PolicyConfig -EndpointDlpGlobalSettings <PswsHashtable[]> modifies organization-wide endpoint restrictions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig",
+      "quote": "Use the Set-PolicyConfig cmdlet to modify the endpoint restrictions that are configured in the organization. ... [-EndpointDlpGlobalSettings <PswsHashtable[]>]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].note; Governance controls table",
+      "type": "command",
+      "claim": "Set-PolicyConfig runs only in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig",
+      "quote": "This cmdlet is available only in Security & Compliance PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].note; Risk assessment; Governance controls",
+      "type": "absence",
+      "claim": "No documented Endpoint setting specifically switches or configures sensitivity-label detection inside archives.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Endpoint DLP archive sensitivity label detection Disable classification Set-PolicyConfig EndpointDlpGlobalSettings. Read dlp-configure-endpoint-settings and set-policyconfig, searching archive and sensitivity; no archive-label-specific setting found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Disable classification excludes monitored file extensions from content scanning.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "For files that are on the Monitored files list, you can disable classification through this setting. When you add a file extension to this setting, Endpoint DLP doesn't scan content in files with this extension.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Microsoft has not documented the effect of Disable classification on this planned archive label detection change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Endpoint DLP archive sensitivity label detection Disable classification Set-PolicyConfig EndpointDlpGlobalSettings. Read dlp-configure-endpoint-settings, including Disable classification, and endpoint-dlp-learn-about; neither explains this planned interaction.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The included licensing model reflects Endpoint DLP's inclusion in the plans named by the Purview service description.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Endpoint Data Loss Prevention (DLP) | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing; front matter: licensing.notes",
+      "type": "licensing",
+      "claim": "The listed Endpoint DLP entitlements include Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW, Microsoft Defender + Purview Suite FLW and Microsoft 365 E5/A5/F5/G5 Information Protection & Governance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft has not published a licence specific to archive label detection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Endpoint DLP archive sensitivity labels inside zip default setting licensing rollout 566617; \"Endpoint DLP\" \"archive\" \"sensitivity\" rollout prerequisites licensing meter. Read Purview service description and endpoint-dlp-getting-started; no change-specific licence found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a meter specific to archive label detection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Endpoint DLP\" \"archive\" \"sensitivity\" rollout prerequisites licensing meter. Read Purview service description's Endpoint DLP section and endpoint-dlp-getting-started; no archive-label-specific meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a charge specific to archive label detection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Endpoint DLP archive sensitivity labels inside zip default setting licensing rollout 566617; \"Endpoint DLP\" \"archive\" \"sensitivity\" rollout prerequisites licensing meter. Read Purview service description; no change-specific charge found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap item names no licence, meter or charge.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This update  improves detection accuracy and gives administrators finer control over how content within archives is protected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope: Who is affected",
+      "type": "availability",
+      "claim": "Learn lists archive monitoring as supported on Windows 10/11, Windows Server 2019 and later, and macOS.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "By default, Endpoint DLP isn't enabled for Windows servers when they're initially onboarded. ... Endpoint DLP is not supported on Windows Servers configured as Domain Controllers or Windows Servers with the Core Server option selected during installation.",
+      "severity": "blocker",
+      "fix": "Replace the sentence with: 'Learn lists archive monitoring support on Windows 10/11 and macOS (the three latest released major versions), but the roadmap does not say which operating systems this change covers.' This removes the unqualified Windows Server availability claim; see https://learn.microsoft.com/purview/endpoint-dlp-learn-about."
+    },
+    {
+      "n": 34,
+      "where": "Scope: Prerequisite; Scope: Who is affected; Governance guidance",
+      "type": "applicability",
+      "claim": "Devices must be onboarded to Microsoft Purview to use them as locations in Endpoint DLP policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "You need to onboard all the devices you want to use as locations in your DLP policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Configuring Endpoint DLP settings and device policies requires the existing Purview permissions for those tasks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+      "quote": "The account you use to create and deploy policies must be a member of one of these role groups: Compliance administrator; Compliance data administrator; Information Protection; Information Protection Admin; Security administrator",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/purview/dlp-create-deploy-policy to sources for the device-policy permissions statement. The already cited Set-PolicyConfig reference separately states that permissions must be assigned to configure endpoint restrictions."
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Microsoft has not described an identity or role change specific to archive label detection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Endpoint DLP permissions configure endpoint settings DLP policies roles; \"Endpoint DLP\" \"archive\" \"sensitivity\" rollout prerequisites licensing meter. Read roadmap, endpoint-dlp-learn-about, endpoint-dlp-getting-started and dlp-configure-endpoint-settings; no change-specific details.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Existing device rules can have Block and Block with override actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "When you configure a rule to Block or Block with override when a user attempts the Copy to clipboard activity on content from a file that matches the policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Endpoint DLP activities can be reviewed in Activity explorer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "Once a device is onboarded, information about audited activities flows into Activity explorer even before you configure and deploy any DLP policies that have devices as a location.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: action",
+      "type": "consistency",
+      "claim": "The prepare action rating fits a medium-risk change to existing behaviour with a December 2026 preview target.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "action: \"prepare\"; risk: \"medium\"; previewDate: \"December CY2026\"; 'classification and enforcement of archives change'",
+      "severity": "minor",
+      "fix": "Set action to 'act-now': the December preview target is within about 60 days of 2026-11-23, the record describes changed existing behaviour, and the briefing already identifies policy-review and communication decisions to take before it lands."
+    },
+    {
+      "n": 40,
+      "where": "Governance guidance: Before rollout, At rollout, After rollout; controls",
+      "type": "consistency",
+      "claim": "All controls the governance checklist asks administrators to take stock of or check appear in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "'Identify device DLP rules that use a sensitivity label as a condition'; 'Compare the Activity explorer events'; 'Re-check Endpoint DLP alerts and reports'; the table has only an Endpoint DLP settings row.",
+      "severity": "minor",
+      "fix": "The checklist's device-rule conditions/actions and Activity explorer/alert-monitoring steps have no corresponding table rows. Remove those checklist bullets to align the checklist with the existing table; do not add unverified control rows."
+    },
+    {
+      "n": 41,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap lists Microsoft Purview as the product.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-07-06T23:00:50.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-07-06T23:00:50\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap does not identify the operating systems covered by the change.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap does not explain changes for rules that already exist.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Endpoint Data Loss Prevention (DLP) is changing the way archive files, such as  .zip  and similar container formats, are classified and enforced.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Microsoft has not described the enforcement actions of this change in detail.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Endpoint DLP\" \"archive\" \"sensitivity\" rollout prerequisites licensing meter. Read roadmap, endpoint-dlp-learn-about and dlp-configure-endpoint-settings; existing actions are documented, but not the archive-label update's detailed enforcement behaviour.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope: Rollout",
+      "type": "absence",
+      "claim": "Microsoft has not stated rollout mechanics specific to the archive label detection change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Endpoint DLP archive sensitivity labels inside zip default setting licensing rollout 566617; \"Endpoint DLP\" \"archive\" \"sensitivity\" rollout prerequisites licensing meter. Read roadmap and endpoint-dlp-learn-about; no change-specific rollout mechanism found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope: Rollout",
+      "type": "absence",
+      "claim": "Microsoft has not stated prerequisites specific to this change, beyond existing Endpoint DLP prerequisites.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Endpoint DLP\" \"archive\" \"sensitivity\" rollout prerequisites licensing meter. Read roadmap, endpoint-dlp-getting-started, endpoint-dlp-learn-about and dlp-configure-endpoint-settings; existing onboarding requirements are documented, not archive-label-specific prerequisites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Why it matters; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "DLP policies can generate alerts that administrators can review.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+      "quote": "Monitor DLP alerts and DLP activity explorer. Address alerts.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/purview/dlp-create-deploy-policy to sources for the DLP alert-monitoring premise."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T14:03:18.249Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=566617",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-sensitivity-label-as-condition",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Endpoint DLP settings that apply to all DLP policies for devices",
+        "docs": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+        "reachable": true,
+        "segments": [
+          "Data loss prevention",
+          "Overview",
+          "Data loss prevention settings",
+          "Endpoint settings"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Endpoint DLP settings that apply to all DLP policies for devices",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig",
+        "reachable": true,
+        "token": "Set-PolicyConfig",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -56,7 +56,7 @@ controls:
       kind: "powershell"
       call: "Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true"
       docs: "https://learn.microsoft.com/purview/audit-log-enable-disable"
-    note: "Needs the Audit Logs role in Exchange Online. Run in Exchange Online PowerShell. Auditing is on by default for Microsoft 365 organisations but not for SMB licences."
+    note: "Needs the Audit Logs role in Exchange Online. Run in Exchange Online PowerShell. On by default except for SMB licences and unmanaged tenants on free trials of enterprise licences, which need manual enablement."
   - governs: "Searching the audit records that feed Activity Explorer"
     scope: "tenant"
     ui:
@@ -77,19 +77,23 @@ changes:
     note: "First briefing: Exchange Online DLP alerts and Activity Explorer now show matched non-SIT conditions; no on/off setting is documented."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 54 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after verification: auditing default now notes the free-trial exception, the rule-actions sentence is attributed to Microsoft's description, and two checklist steps without table rows were removed."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 51
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "df1378105e2841d048fc0ea0331729ce"
+  claims: 64
+  confirmed: 63
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "adfdcb18c0c5169558c7488d489dcb2c"
 ---
 
 ## What's changing
@@ -117,7 +121,7 @@ Because Microsoft has not stated a default, no source says existing behaviour ch
 - Turning auditing off makes audit log searches return no results, and Activity Explorer takes its data from the unified audit log, so keep auditing on (see the controls table).
 
 **Autonomy & actions**
-- No autonomous action is described. The feature adds detail to alerts and events and does not add or change rule actions.
+- No autonomous action is described. Microsoft describes the feature as adding detail to alerts and events; it describes no change to rule actions.
 
 **Change & support**
 - Expect questions from analysts about new fields in **Other matched conditions** and the three levels of detail. Activity Explorer is not real time: Microsoft says to allow 60 to 90 minutes for Exchange activity to appear, so an empty view soon after a test is not proof of failure.
@@ -138,8 +142,6 @@ Viewing alerts needs the *Manage alerts* role plus either *DLP Compliance Manage
 
 ### Before rollout
 - Confirm that auditing is on for the organisation, using the Audit row in the controls table; Activity Explorer reads from the unified audit log, and Business Premium and other SMB licences do not have auditing on by default.
-- Review who holds the *Manage alerts*, *DLP Compliance Management* and Activity Explorer roles, because they will now see matched values from message content and addresses.
-- Decide how long alert history must stay visible and check the audit log retention policy that governs it.
 
 ### At rollout
 - Brief DLP analysts on the **Other matched conditions** section on the alert's **Events** tab and on the condition name, matched value and source fields.
@@ -156,7 +158,7 @@ Viewing alerts needs the *Manage alerts* role plus either *DLP Compliance Manage
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether the unified audit log, the data source for Activity Explorer, records activity</strong><br><small>Tenant</small><br><small class="controls__note">Needs the Audit Logs role in Exchange Online. Run in Exchange Online PowerShell. Auditing is on by default for Microsoft 365 organisations but not for SMB licences.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Start recording user and admin activity <a href="https://learn.microsoft.com/purview/audit-log-enable-disable" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true</code> <a href="https://learn.microsoft.com/purview/audit-log-enable-disable" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the unified audit log, the data source for Activity Explorer, records activity</strong><br><small>Tenant</small><br><small class="controls__note">Needs the Audit Logs role in Exchange Online. Run in Exchange Online PowerShell. On by default except for SMB licences and unmanaged tenants on free trials of enterprise licences, which need manual enablement.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Start recording user and admin activity <a href="https://learn.microsoft.com/purview/audit-log-enable-disable" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true</code> <a href="https://learn.microsoft.com/purview/audit-log-enable-disable" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Searching the audit records that feed Activity Explorer</strong><br><small>Tenant</small><br><small class="controls__note">Needs the Audit Logs or View-Only Audit Logs role. Read-only: it finds records and does not change this feature.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog</code> <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -178,11 +180,8 @@ cost: Low. No separate licence or meter for this detail is published; the cost i
 impact: Low. Compliance and security staff who work DLP alerts and Activity Explorer notice it; mail senders and recipients see no change described.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The enhancement does not add or change rule actions. | Found: Searched: Exchange enhanced matched conditions DLP does not change rule actions enforcement; opened the Exchange conditions reference, Activity Explorer and alerts dashboard. None explicitly states that rule actions are unchanged. | Fix: Replace 'The feature adds detail to alerts and events and does not add or change rule actions.' with 'Microsoft describes the feature as adding detail to alerts and events; it describes no change to rule actions.'
-- [contradicted, blocker] controls[0].note; Governance controls: rendered first row / default: Auditing is on by default for Microsoft 365 organizations other than those using SMB licences. | Found: Additionally, unmanaged tenants that use free trials of enterprise licenses don't have auditing enabled by default. In both these cases, you must manually enable auditing for your organization. | Fix: In controls[0].note and the rendered first-row note, replace the default sentence with 'Auditing is on by default for Microsoft 365 organisations except those using SMB licences and unmanaged tenants using free trials of enterprise licences; these exceptions require manual enablement.' | Source: https://learn.microsoft.com/purview/audit-log-enable-disable
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every control that the governance checklist asks readers to review has a corresponding controls-table row. | Found: Review who holds the Manage alerts, DLP Compliance Management and Activity Explorer roles ... check the audit log retention policy that governs it. The table contains only auditing enablement and audit search. | Fix: The Before rollout checklist steps to review alert/Activity Explorer role assignments and check audit log retention have no corresponding controls-table rows. Remove those two checklist steps if retaining the current table; this finding does not request additional rows.
+- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist's instruction to tune DLP rules is covered by the controls table. | Found: Checklist: Use the matched values to tune rules that fire on common sender domains or attachment extensions. Table: Whether the unified audit log ... records activity; Searching the audit records that feed Activity Explorer. | Fix: Remove the After rollout bullet beginning 'Use the matched values to tune rules': DLP rule configuration has no row in the controls table. Do not add a control row as part of this correction.
 -->
