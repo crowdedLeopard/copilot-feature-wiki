@@ -4,7 +4,7 @@ slug: "microsoft-purview-compliance-portal-dlp-policy-tip-support-in-outlook-mob
 roadmapId: 491017
 topic: "governance"
 products: ["Microsoft Purview"]
-summary: "Outlook for Android and iOS can show Purview DLP policy tips; this roadmap item covers GCC, GCC High and DoD. Learn says the tip UI is off until an admin enables a Cloud Policy setting. Advanced tips need E5-level licences."
+summary: "Outlook for Android and iOS can show Purview DLP policy tips; this roadmap item covers GCC, GCC High and DoD. Learn says the tip UI is off until an admin enables a Cloud Policy setting."
 status: "launched"
 releasePhase: ["General Availability"]
 clouds: ["GCC","GCC High","DoD"]
@@ -12,13 +12,13 @@ platforms: ["Web"]
 targetDate: "January CY2026"
 previewDate: null
 risk: "low"
-cost: "medium"
+cost: "low"
 impact: "medium"
 defaultState: "admin-opt-in"
 action: "review"
 licensing:
-  model: "mixed"
-  notes: "Microsoft's Purview service description lists licences required for each scoped user for advanced DLP policy tip support in Outlook for Microsoft 365, including E5 suites and an add-on. A licence list specific to Outlook mobile is not yet published."
+  model: "included"
+  notes: "Cloud Policy supports most Microsoft 365 subscription plans that include Microsoft 365 Apps; each targeted user needs a supported licence. A licence list specific to Outlook mobile policy tips is not yet published."
 audiences: ["security","compliance","m365-admin","change-adoption"]
 tags: ["dlp","outlook","mobile","purview","exchange","cloud-policy","licensing","gcc","gcc-high","dod"]
 sources:
@@ -87,19 +87,23 @@ changes:
     note: "Correction: controls row 1 now links the mobile reference page, row 2 gives the full Purview portal route, the default email policy tip text is corrected, and the risk rationale no longer says anything about data paths."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 68 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-23"
+    note: "Correction: licensing model now rests on Cloud Policy's plan and licence requirement, cost lowered to low, and the desktop E5-level licence list is labelled as Outlook for Microsoft 365 background, not a mobile requirement."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 62 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 66
-  unconfirmed: 2
-  contradicted: 0
-  attempts: 2
-  hash: "f44a646b476b0edfd533470aa9aa5ec3"
+  claims: 62
+  confirmed: 61
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "e572612543b96d08f31a066045393058"
 ---
 
 ## What's changing
@@ -138,7 +142,9 @@ The benefit is that a sender sees the conflict while still writing, on the devic
 
 ## Cost and licensing
 
-**Licence.** Microsoft's Purview service description says that advanced DLP policy tip support, which makes additional DLP conditions, advanced classifiers, the oversharing dialog and more available, requires one of these licences for each scoped user: Microsoft 365 E5/A5/G5; Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW; or Microsoft 365 E5/A5/F5/G5 Information Protection & Governance. That section is headed for Outlook for Microsoft 365. The support matrix for Outlook mobile says sensitive information type support "Varies by version and license" and points to the Outlook for Microsoft 365 reference. A licence list written for Outlook mobile is not yet published.
+**Licence.** The Cloud Policy overview says Cloud Policy supports most Microsoft 365 subscription plans that include Microsoft 365 Apps, and that user objects must be present in Microsoft Entra ID and have a supported licence assigned. A licence list specific to advanced policy tips on Outlook mobile is not yet published: the mobile reference page says the oversharing dialog is available "when used with the necessary licenses and configuration", and its Licensing requirements heading shows no text.
+
+**Background: Outlook for Microsoft 365 (desktop).** Microsoft's Purview service description, under policy tips for Outlook for Microsoft 365, says advanced DLP policy tip support, which makes additional DLP conditions, advanced classifiers, the oversharing dialog and more available, requires one of these licences for each scoped user: Microsoft 365 E5/A5/G5; Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW; or Microsoft 365 E5/A5/F5/G5 Information Protection & Governance. That list is written for Outlook for Microsoft 365 and is not presented here as the Outlook mobile requirement; whether it applies to mobile is not stated.
 
 **Meter.** The service description lists licences for advanced policy tips and names no meter or per-use charge. No separate meter is documented for policy tips on Outlook mobile at the time of writing (November 2026).
 
@@ -157,7 +163,7 @@ The benefit is that a sender sees the conflict while still writing, on the devic
 ## Governance guidance
 
 ### Before rollout
-- Check that every user you plan to scope holds one of the licences in the Purview service description for advanced policy tips, and that Cloud Policy supports their plan.
+- Check that Cloud Policy supports each targeted user's plan; confirm the mobile advanced-policy-tip licence requirement before expanding the pilot.
 - List the DLP rules in the Microsoft Purview portal that have user notifications and policy tips turned on, and decide which of them mobile users should see.
 - Create a pilot Microsoft Entra group and name an owner with the Office Apps Administrator role for the Cloud Policy configuration.
 - Write plain-text tip text of no more than 256 characters, and decide whether each rule allows override.
@@ -197,17 +203,15 @@ Cloud Policy roles are Office Apps Administrator (recommended), Security Adminis
 
 <!-- rationale
 risk: Low. Learn says the policy tip UI is turned off by default in Outlook mobile, so nothing new reaches users until an administrator enables the Cloud Policy setting.
-cost: Medium. Advanced policy tip support needs a licence for each scoped user (Microsoft 365 E5/A5/G5, a Purview suite or the E5 Information Protection & Governance add-on); no separate meter is published.
+cost: Low. Known costs are admin time, pilot testing and user communication; licensing specific to advanced Outlook mobile policy tips is not yet published.
 impact: Medium. Only the users or groups an administrator targets will see tips in Outlook for Android and iOS, so the people who notice are those in the scope you choose.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: licensing.model / licensing: Outlook mobile policy tips have a mixed licensing model based on the desktop advanced-policy-tip suites and add-ons. | Found: Searched: Outlook mobile DLP policy tips licensing requirements; Outlook mobile policy tips license meter. Read mobile reference, support matrix, desktop reference and service description; desktop licence alternatives are published, but mobile entitlement via those alternatives is not stated. | Fix: Set licensing.model to 'included' on the documented product-level prerequisite, and replace notes with: 'Cloud Policy supports most Microsoft 365 subscription plans that include Microsoft 365 Apps; each targeted user needs a supported licence. A licence list specific to Outlook mobile policy tips is not yet published.' Cite https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy. Do not describe the desktop suite/add-on alternatives as established mobile entitlement.
-- [unsupported, blocker] summary; Governance guidance: Before rollout; rationale: cost / licensing: Every Outlook mobile user scoped for advanced policy tips must hold one of the desktop E5-level licences in the Purview service description. | Found: Searched: Outlook mobile DLP policy tips licensing requirements. Read mobile reference ('necessary licenses'), mobile support matrix ('Varies by version and license'), desktop reference and service description; the explicit advanced licence list is headed Outlook for Microsoft 365. | Fix: Remove 'Advanced tips need E5-level licences' from the summary. Replace the first Before rollout bullet with: 'Check that Cloud Policy supports each targeted user's plan; confirm the mobile advanced-policy-tip licence requirement before expanding the pilot.' Replace the cost rationale with: 'Low. Known costs are admin time, pilot testing and user communication; licensing specific to advanced Outlook mobile policy tips is not yet published.' Set cost to 'low'. Keep the existing desktop licence list only as explicitly labelled background, not a mandatory mobile requirement.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] title; summary; What's changing; Scope / behaviour: Outlook for Android, iOS and macOS supports DLP policy tips. | Found: Outlook for Android, iOS, and macOS now supports data loss prevention (DLP) policy tips | Fix: Add: 'The mobile reference documents support, but the cited troubleshooting article still says "Policy tips are currently not supported for Outlook for Mac iOS clients" (https://learn.microsoft.com/troubleshoot/microsoft-365/purview/data-loss-prevention/data-loss-prevention-policy-tips).' | Source: https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref
-- [supported, minor] What's changing; Risk assessment: Data exposure / behaviour: The mobile page states that all actions and information types for email communications are supported. | Found: All actions and information types for email communications are supported. | Fix: Add: 'The general support matrix instead describes Outlook Mobile conditions and actions as "Subset" and sensitive information type support as "Varies by version and license" (https://learn.microsoft.com/purview/dlp-policy-tips-reference); the mobile reference gives the broader statement.' | Source: https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref
-- [supported, minor] Cost and licensing; licensing.notes; rationale: cost / licensing: The service description lists E5/A5/G5, the named Purview suites, and E5/A5/F5/G5 Information Protection & Governance as alternative licences for advanced policy tips for Outlook for Microsoft 365. | Found: Microsoft 365 E5/A5/G5; Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW; Microsoft 365 E5/A5/F5/G5 Information Protection & Governance | Fix: Add to the desktop licensing paragraph: 'The oversharing setup guide instead states that oversharing pop-ups require a Microsoft 365 E5 subscription (https://learn.microsoft.com/purview/dlp-osp-get-started), while the service description lists these alternatives.' Keep this explicitly scoped to Outlook for Microsoft 365. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
+- [supported, minor] title; summary; What's changing; Scope / behaviour: Outlook for Android and iOS supports Purview DLP policy tips; the reference also covers macOS. | Found: Outlook for Android, iOS, and macOS now supports data loss prevention (DLP) policy tips with commonly used predicates and exceptions, advanced classifiers, and override capabilities. | Fix: Add: 'The current mobile reference documents support, while the older troubleshooting article still says policy tips are not supported for Outlook for Mac iOS clients.' Cite https://learn.microsoft.com/troubleshoot/microsoft-365/purview/data-loss-prevention/data-loss-prevention-policy-tips. | Source: https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref
+- [supported, minor] What's changing; Risk assessment: Data exposure / behaviour: The mobile reference says all actions and information types for email communications are supported. | Found: All actions and information types for email communications are supported. | Fix: Add: 'The general DLP support matrix instead describes mobile conditions and actions as a subset and sensitive-information-type support as varying by version and licence.' Cite https://learn.microsoft.com/purview/dlp-policy-tips-reference. | Source: https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref
+- [supported, minor] front matter: licensing.model and notes; Cost and licensing / licensing: The feature's licensing model is included, with a supported Cloud Policy licence required for targeted users. | Found: Which licenses provide the rights for a user to benefit from the service? ... Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2), Exchange Online Plan 2 | Fix: Keep model included, but add to licensing notes: 'The Purview service description lists Microsoft 365 E5/A5/G5/E3/A3/G3 and Exchange Online Plan 2 among the licences providing rights to DLP for Exchange Online; Cloud Policy licensing alone does not establish DLP entitlement. A mobile-specific advanced-policy-tip licence list is not yet published.' Retain the cited Purview service description URL. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
+- [contradicted, minor] Governance guidance: Before rollout and After rollout; controls[1] / consistency: The governance checklist's instruction to decide and revisit rule override settings has no corresponding override control in the table. | Found: decide whether each rule allows override ... Revisit rule text and override settings ... controls[1] gives User notifications > Policy tips and -NotifyPolicyTipCustomText, not an override-setting path or parameter. | Fix: Remove 'and decide whether each rule allows override' from Before rollout, and replace 'Revisit rule text and override settings after the first weeks of user questions' with 'Revisit rule text after the first weeks of user questions.' No additional control row is requested.
 -->

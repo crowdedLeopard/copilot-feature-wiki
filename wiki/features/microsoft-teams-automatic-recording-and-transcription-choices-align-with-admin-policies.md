@@ -49,8 +49,11 @@ sources:
   - title: "Manage Teams licenses"
     url: "https://learn.microsoft.com/microsoftteams/user-access"
     kind: "learn"
+  - title: "Manage participant agreement for recording and transcription"
+    url: "https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription"
+    kind: "learn"
 videos: []
-related: ["work-iq-real-time-transcripts"]
+related: ["meeting-policy","meeting-transcripts"]
 controls:
   - governs: "Whether organisers have the Record and transcribe automatically setting at all"
     scope: "user"
@@ -102,19 +105,23 @@ changes:
     note: "Correction: licensing now starts from the Teams licence requirement; Edu A1 auto-record limit and Teams Premium requirement for label and template enforcement stated as Learn gives them; removed the policy-assignment checklist item."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 87 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-23"
+    note: "Correction: replaced the unsupported claim that Microsoft has not said how explicit recording consent interacts with auto-recording with what Learn documents; removed an unsupported Record only template statement."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 90 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 87
-  confirmed: 85
+  claims: 90
+  confirmed: 90
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "b6a47964a30b1fb4ae41252b0569ade5"
+  contradicted: 0
+  attempts: 0
+  hash: "e1035dff81141f5e0b2fd05e36c485d2"
 ---
 
 ## What's changing
@@ -141,7 +148,7 @@ Record only is a content decision as well as a menu change. Learn says that when
 
 **Security & identity**
 - The effective meeting policy now decides which automatic options appear, including policies inherited through groups or the global policy. An organiser with several assignments sees the result of the effective policy, so check assignments before relying on a block.
-- Explicit recording consent is a separate meeting policy setting (`-ExplicitRecordingConsent`) that Learn says applies to recording or transcribing in meetings that organisers with the policy create. Microsoft has not said how it interacts with the new options.
+- Explicit recording consent is a separate meeting policy setting (`-ExplicitRecordingConsent`) that Learn says applies to recording or transcribing in meetings that organisers with the policy create. Learn documents consent behaviour for auto-recorded meetings: when the recording agreement policy is on, everyone who joins is muted with their cameras off.
 
 **Autonomy & actions**
 - Once an organiser chooses an automatic option, recording or transcription starts without anyone in the meeting pressing a button. Record only extends that to recording alone. Learn says that when the auto recording policy is on, the meeting option is Off by default and organisers must turn it on for each meeting, and that for webinars and town halls it is On by default.
@@ -153,7 +160,7 @@ Record only is a content decision as well as a menu change. Learn says that when
 
 Teams users need a Teams license; Microsoft has not published a licence requirement specific to this menu change. Microsoft has not published a price or meter for it either at the time of writing (November 2026). Neither the roadmap item nor MC1508234 names one, and the Learn pages on auto recording and recording policies name no licence for the setting. The Teams licensing statement is on [Manage Teams licenses](https://learn.microsoft.com/microsoftteams/user-access).
 
-Two documented limits sit beside it. On the auto recording page, Learn says only organisers with a Teams Premium licence can use assigned meeting templates, which are one way to manage the setting. On the page about recording options for sensitive meetings, Learn says customers with a Microsoft 365 Education A1 subscription don't have the option to record and transcribe meetings automatically. Learn also says users assigned only an Edu A1 licence can record manually but cannot use meeting options to auto-record ([Introduction to Teams recording](https://learn.microsoft.com/microsoftteams/teams-recording-policy)). Whether the Teams Premium template limit applies to Record only is not stated, and Microsoft has not said how the aligned menu presents for Edu A1 users.
+Two documented limits sit beside it. On the auto recording page, Learn says only organisers with a Teams Premium licence can use assigned meeting templates, which are one way to manage the setting. On the page about recording options for sensitive meetings, Learn says customers with a Microsoft 365 Education A1 subscription don't have the option to record and transcribe meetings automatically. Learn also says users assigned only an Edu A1 licence can record manually but cannot use meeting options to auto-record ([Introduction to Teams recording](https://learn.microsoft.com/microsoftteams/teams-recording-policy)). Microsoft has not said how the aligned menu presents for Edu A1 users.
 
 The cost the sources show is indirect: communication to organisers and support time. Learn notes that `-AllowCloudRecording` doesn't configure or validate recording storage, so confirm OneDrive and SharePoint capacity as you would for any recording.
 
@@ -208,11 +215,4 @@ Learn says there is no admin policy for **Record and transcribe automatically** 
 risk: Low. The change narrows the automatic choices organisers see to those their meeting policies allow; the only new choice, Record only, appears only where recording is permitted by policy.
 cost: Low. The only cost the sources show is admin and communication time; Microsoft has not published a licence requirement or meter for this change at the time of writing (November 2026).
 impact: Medium. Meeting organisers see a changed Record and transcribe automatically menu, and the setting disappears where both policies block it. It arrives without admin action.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity / absence: Microsoft has not said how explicit recording consent interacts with the new automatic options. | Found: In auto-recorded meetings, everyone who joins is muted with their cameras off. For organizers with this policy, all their meetings require participants to provide consent to be recorded and transcribed. | Fix: Replace 'Microsoft has not said how it interacts with the new options' with 'Learn documents consent behavior for auto-recorded meetings: when the recording agreement policy is on, everyone who joins is muted with their cameras off.' Cite https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription. | Source: https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription
-- [contradicted, blocker] Cost and licensing / absence: Whether the Teams Premium template limit applies to Record only is not stated. | Found: Only organizers with a Teams Premium license can use assigned meeting templates. | Fix: Remove 'Whether the Teams Premium template limit applies to Record only is not stated, and' and begin the remaining sentence 'Microsoft has not said how the aligned menu presents for Edu A1 users.' The published template entitlement is not conditional on the recording choice; do not imply that Record only requires Premium outside templates. | Source: https://learn.microsoft.com/microsoftteams/manage-teams-auto-recording
 -->

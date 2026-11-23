@@ -1,0 +1,809 @@
+{
+  "slug": "m365-copilot-copilot-extensibility-improved-discovery-of-copilot-connector-sources-in-m365",
+  "roadmapId": 502541,
+  "title": "Microsoft 365 Copilot Chat: filter responses by content source",
+  "status": "verified-with-gaps",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 63,
+    "confirmed": 61,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 1,
+    "minor": 2
+  },
+  "summary": "The briefing passes: the rollout, default, licensing and federated connector controls are supported by Microsoft's notice and documentation. The statement that users see connector health in the selector needs narrowing: Microsoft describes missing unhealthy connectors, not a health display. Two small governance corrections remain.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap describes improved discovery of Copilot connector sources with content source filters and includes the wording 'optionally add chat'.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Improved discovery of Copilot connector sources in Microsoft 365 Copilot (optionally add chat) with Content Source filter(s).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed on the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap provides no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-07T23:01:35.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-07T23:01:35\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1548004 was published on 2026-11-10.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "Published 2026-11-10; last updated 2026-11-10",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "title; summary; What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "Users can select one or more sources to limit retrieval and grounding for a prompt to those sources.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "Users can select one or more available content sources to limit retrieval and grounding for a specific prompt to those sources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; rationale: impact",
+      "type": "record",
+      "claim": "A source selection control appears in the Copilot Chat prompt area.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "Users will see a source selection control in the Copilot Chat prompt area.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Security & identity; Scope; Governance controls",
+      "type": "record",
+      "claim": "Available sources reflect the content sources enabled in the tenant.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "Available sources reflect the content sources enabled in your tenant, including Graph connectors and federated connectors available to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing; Scope; Governance controls",
+      "type": "record",
+      "claim": "The source list includes Graph connectors and federated connectors available to users.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "Available sources reflect the content sources enabled in your tenant, including Graph connectors and federated connectors available to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "Selecting no source leaves behaviour unchanged and uses default orchestration across available sources.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "If no source is selected, Copilot Chat behavior remains unchanged and will use its default orchestration across available sources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Responses continue to include citations reflecting the selected sources.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "Responses will continue to include citations that reflect the selected sources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Source selection applies only to the current prompt.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "Source selection applies only to the current prompt and does not persist across sessions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Source selection does not persist across sessions.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "Source selection applies only to the current prompt and does not persist across sessions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: defaultState; summary; licensing.notes; controls[0].note; Why it matters; Governance controls",
+      "type": "default",
+      "claim": "The feature is on by default for Microsoft 365 Copilot-licensed users, without administrator action.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "This feature is enabled by default for users with a Microsoft 365 Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "summary; Cost and licensing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The affected users are Microsoft 365 Copilot-licensed users in Microsoft 365 Copilot Chat.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "Who is affected\n- Users licensed for Microsoft 365 Copilot.Platforms and services\n- Microsoft 365 Copilot Chat",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice gives mid-November 2026 as the start of General Availability rollout in Worldwide.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "General Availability (Worldwide): Rollout will begin in mid-November 2026 and is expected to complete by mid-November 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice expects rollout completion by mid-November 2026, later than the roadmap's September target.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "General Availability (Worldwide): Rollout will begin in mid-November 2026 and is expected to complete by mid-November 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft says no action is required.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "No action is required. We recommend that you:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "The filter does not change what content a user is permitted to access; existing permissions remain in force.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "This feature changes where Copilot retrieves information for a prompt and does not change what content a user is permitted to access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "Compliance boundaries remain unchanged.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "Data access, compliance boundaries, and tenant data handling remain unchanged.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "Tenant data handling remains unchanged.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "Data access, compliance boundaries, and tenant data handling remain unchanged.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "summary; Why it matters; Risk assessment: Change & support; Governance guidance",
+      "type": "record",
+      "claim": "Published Graph connector display names appear in the selector.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "Review the display names of published Graph connectors, ensuring that they are clear and recognizable, as these names will appear in the source selection experience for users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "summary; Why it matters; Risk assessment: Change & support; Scope; Governance guidance",
+      "type": "record",
+      "claim": "Connectors in an error or unpublished state do not appear.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "Verify the health and search permissions of connectors that should be available to users. Connectors in an error or unpublished state will not appear.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Connector health becomes visible to users in the selector.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Copilot Chat source selection filter connector health status error unpublished selector. Read MC1548004 and Learn's Monitor Microsoft 365 Copilot connector errors excerpts; neither describes user-visible health information in the selector.",
+      "severity": "major",
+      "fix": "Replace the sentence with: 'Connector display names appear in the selector, and connectors in an error or unpublished state do not appear, per MC1548004.'"
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Federated connectors fetch data from the source at runtime.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Federated connectors use MCP to access data in real time, so Copilot can retrieve up-to-date information directly from external systems.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Federated connectors access source data using the signed-in user's identity and permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Access data using the user's identity and permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The notice describes no new identity or permission model.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "This helps users focus responses on the most relevant Microsoft 365 content, as well as connected or available third-party sources, while maintaining existing permission and access controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The notice describes prompt-level source selection rather than a new autonomous capability.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "Users can select one or more available content sources to limit retrieval and grounding for a specific prompt to those sources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "Sources available to the affected licensed users are offered in the selector, including a connector left available to all of them.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "Available sources reflect the content sources enabled in your tenant, including Graph connectors and federated connectors available to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The source filter is included in the Microsoft 365 Copilot experience for licensed users.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "This feature is enabled by default for users with a Microsoft 365 Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Connector grounding in Copilot is included with Microsoft 365 Copilot licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "No extra charges apply to connector grounding in Copilot for an organisation with Microsoft 365 Copilot licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Federated Copilot connectors are available only to tenants and users with a Microsoft 365 Copilot add-on licence or Microsoft 365 E7.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Federated Copilot connectors are available only to tenants and users with a Microsoft 365 Copilot add-on license (or Microsoft 365 E7).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No price, charge or meter specific to the content source filter is published at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Copilot Chat content source selector filter pricing licensing charges. Read Prerequisites for deploying connectors, MC1548004 and License options for Microsoft Copilot excerpts; no filter-specific price or meter was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn has no page describing this prompt-level content source filter at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot Chat\" \"content source\" \"filter\"; \"Microsoft 365 Copilot Chat\" \"source selection\"; \"502541\" \"content\". Read Manage Copilot Chat and connector documentation; results concerned other filters or general sources, not this selector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].ui; controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No tenant UI switch or automation to turn this content source selector on or off is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Copilot Chat content source filters tenant disable selector admin switch API. Opened Configure Microsoft Copilot settings in the Microsoft 365 admin center and Manage Copilot Chat; neither documents a selector-specific switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Publisher-type availability is managed in Microsoft 365 admin center > Agents > Settings > Agent and plugin access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "In the Microsoft 365 admin center, go to Agents > Settings > Agent and plugin access. Clear the publisher types you want to block:",
+      "severity": "minor",
+      "fix": "The path reaches the correct page but stops before the deciding checkbox. Set controls[1].ui.path to 'Agents > Settings > Agent and plugin access > publisher type'. In its note, name the choices: 'Allow agents and plugins built by Microsoft', 'Allow agents and plugins built by your organization', and 'Allow agents and plugins built by external publishers', as documented at https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors."
+    },
+    {
+      "n": 44,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "No automation for the Agent and plugin access publisher-type setting is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com/graph \"Agent and plugin access\"; Microsoft Graph beta API Agent and plugin access User access federated connectors staged rollout settings. Opened Agent settings and Manage federated connector availability; found UI controls, not an equivalent operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The tenant-wide access ceiling is managed in Microsoft 365 admin center > Agents > Settings > User access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "User access | Agents > Settings > User access | Tenant-wide ceiling on who can use any agent or plugin, including MOS connector packages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[2].api; Governance controls table",
+      "type": "absence",
+      "claim": "No automation for the tenant-wide User access setting is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com/graph \"User access\" \"agents\" \"settings\". Read Agent settings and Manage federated connector availability; results describe the admin UI or separate Entra agent identity permissions, not this tenant-wide setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "An individual federated connector's audience is managed in Microsoft 365 admin center > Copilot > Connectors > Your connections > connector > Staged rollout.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "Staged rollout | Copilot > Connectors > Your connections > Staged rollout | Which users or groups get an individual connector, within the User access population.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[3].api; Governance controls table",
+      "type": "absence",
+      "claim": "No automation for an individual federated connector's staged audience is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com/graph federated connector staged rollout update API; \"Microsoft Graph\" \"federated\" \"staged rollout\". Read connector management and externalConnection beta reference; neither provides the federated connector audience operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "Clearing a publisher type sets that type's existing federated connectors' staged rollout to No users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "When you clear an option, existing connectors of that type remain visible to admins in Copilot connectors > Your connections, but their staged rollout is set to No users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "An individual connector setting takes precedence over the bulk Agent and plugin access setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "A setting you make on an individual connector takes precedence over the bulk Agent and plugin access setting. User access always applies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[2].governs; Governance controls",
+      "type": "applicability",
+      "claim": "User access sets the maximum population for agents, plugins and federated connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "User access doesn't turn connectors on or off; it sets the maximum population. A connector whose details pane shows Everyone is still unavailable to users excluded by User access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[2].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "User access offers All users, Specific users or groups, and No users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "Options: All users (default), Specific users or groups, No users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[2].note; Governance controls table",
+      "type": "default",
+      "claim": "All users is the default User access option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "All users (default) | Connector-level staging decides who gets each connector. New connectors are available to all users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[3].note; Governance controls table",
+      "type": "applicability",
+      "claim": "Connector staging can narrow but cannot widen the User access population.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "Specific users or groups | Only these users can use any connector. Connector staging can narrow but not widen this population.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Microsoft recommends checking Settings > Sources in Copilot Chat as a test user to verify federated connector availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "then sign in as a test user and check Settings > Sources in Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Federated connector setting changes can take up to 10 minutes to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "Changes can take up to 10 minutes to take effect across Microsoft 365 experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No page specifically about the new prompt-level filter describes how changing the federated connector controls removes sources from its selector.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Copilot Chat content source selector federated connector availability Agent plugin access User access. Read Manage federated connector availability and Federated connectors overview; they document general connector visibility, not a page for this new filter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The documented availability controls in these rows govern federated connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "Use Agent and plugin access to allow or block connectors in bulk by publisher type, User access to set which users can use connectors, and connector-level settings to enable, disable, or stage individual connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance guidance: Before rollout; After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to review and change connector display names, health and search permissions, but the controls table has no corresponding rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review the display names of published Graph connectors; Check the health and search permissions; Re-check connector health regularly. The table contains only the selector switch and federated connector availability controls.",
+      "severity": "minor",
+      "fix": "The Before rollout display-name and health/search-permissions steps, and After rollout connector-health and name/state correction steps, have no matching controls row. Remove those checklist instructions; retain the notice's verified recommendations in the prose. Do not add unverified control rows."
+    },
+    {
+      "n": 60,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft recommends reviewing published Graph connector display names for clarity.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "Review the display names of published Graph connectors, ensuring that they are clear and recognizable, as these names will appear in the source selection experience for users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft recommends verifying the health of connectors that should be available to users.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "Verify the health and search permissions of connectors that should be available to users. Connectors in an error or unpublished state will not appear.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft recommends verifying the search permissions of connectors that should be available to users.",
+      "status": "supported",
+      "source": "Message Center post MC1548004",
+      "quote": "Verify the health and search permissions of connectors that should be available to users. Connectors in an error or unpublished state will not appear.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "User access always applies, including when an individual connector overrides the bulk publisher-type setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "A setting you make on an individual connector takes precedence over the bulk Agent and plugin access setting. User access always applies.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T04:15:44.760Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=502541",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1548004",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which publisher types of federated connectors are available to users",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Settings",
+          "Agent and plugin access"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Tenant-wide ceiling on who can use agents, plugins and federated connectors",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Settings",
+          "User access"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Which users or groups get an individual federated connector",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Connectors",
+          "Your connections",
+          "Staged rollout"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

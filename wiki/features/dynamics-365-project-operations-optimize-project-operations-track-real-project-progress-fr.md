@@ -34,6 +34,9 @@ sources:
   - title: "Project effort tracking"
     url: "https://learn.microsoft.com/dynamics365/project-operations/project-management/project-tracking-overview"
     kind: "learn"
+  - title: "Project time task tracking"
+    url: "https://learn.microsoft.com/dynamics365/project-operations/project-management/project-time-task-tracking"
+    kind: "learn"
   - title: "Security and approvals"
     url: "https://learn.microsoft.com/dynamics365/project-operations/approvals/approvals-security"
     kind: "learn"
@@ -87,24 +90,28 @@ changes:
     note: "Corrected after verification: added the related-table access requirement for approvers, qualified the approved-time statements with reprojection, extended the install path to Install, added the Approvals overview source and removed an approver-inventory checklist step."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 71 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-23"
+    note: "Corrected after verification: risk rationale no longer says progress moves only on approval; added the Delayed update timing and the Time and Material versus Fixed Price unbilled-sales qualification; removed the Approvals view checklist step."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 70 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 69
+  claims: 70
+  confirmed: 70
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "323df7d90a339904fb51c6f3694f6fe1"
+  contradicted: 0
+  attempts: 0
+  hash: "6df211ad38b4c5f7c740406dff7df12c"
 ---
 
 ## What's changing
 
-Approved time entries captured in Dynamics 365 Field Service now count towards task progress in the Project Operations work breakdown structure (WBS). This applies when the Field Service and Project Operations integration is enabled and the time is captured against a project task. Microsoft Learn states that approved time entries are the only signal used to update task execution progress in the WBS: when project managers approve time entries, the system reduces remaining effort by the approved hours and recalculates effort completed, percent complete and estimate at completion. Learn's effort tracking page adds that a project manager can also reproject effort by updating Remaining Effort on a task, which recalculates the task's estimate at completion and progress percentage.
+Approved time entries captured in Dynamics 365 Field Service now count towards task progress in the Project Operations work breakdown structure (WBS). This applies when the Field Service and Project Operations integration is enabled and the time is captured against a project task. Microsoft Learn states that approved time entries are the only signal used to update task execution progress in the WBS: when project managers approve time entries, the system reduces remaining effort by the approved hours and recalculates effort completed, percent complete and estimate at completion. The Project time task tracking page also documents that, when Delayed update is selected, Remaining Effort, Effort Completed and Effort Estimate at Complete are not updated with approved time until a Project for the Web session is opened. Learn's effort tracking page adds that a project manager can also reproject effort by updating Remaining Effort on a task, which recalculates the task's estimate at completion and progress percentage.
 
 The calculation happens on leaf tasks, and Learn says the Effort tracking and Cost tracking views show progress at the project root, summary and leaf task levels. The roadmap item states that no new execution logic or formulas are introduced: field labour is handled under the same native rules as time entered directly in Project Operations. Submitted but unapproved time entries do not affect task effort completed, project progress or project actual hours until they are approved.
 
@@ -112,7 +119,7 @@ The roadmap item lists the status as Launched with a target date of July CY2026,
 
 ## Why it matters
 
-Project health figures now depend on how quickly field time is approved. Because only approved time contributes actual effort to task progress, a backlog of unapproved Field Service time leaves effort completed, percent complete and schedule indicators behind the real work. Approval is also a financial event: Learn says approved time generates actual labour cost and unbilled sales based on project pricing rules, and that approved entries are included in the project's actual hours.
+Project health figures now depend on how quickly field time is approved. Because only approved time contributes actual effort to task progress, a backlog of unapproved Field Service time leaves effort completed, percent complete and schedule indicators behind the real work. Approval is also a financial event: Learn says approved time generates actual labour cost and unbilled sales based on project pricing rules, and that approved entries are included in the project's actual hours. For Time and Material contract lines, approved transactions create cost and unbilled sales actuals; Fixed Price contract lines create cost actuals only.
 
 For service owners this means progress reporting and billing inputs share one approval step, owned by project approvers rather than dispatchers. The roadmap states the behaviour is enabled automatically where the integration is enabled, so organisations already running the integration should expect their effort tracking views to reflect approved field time and should tell project managers.
 
@@ -138,7 +145,7 @@ Learn says that managing project tasks happens in Project Operations, which requ
 
 The install page also says the integration package includes a flow that runs regularly under the installing user, and asks administrators to confirm that user and the flow are licensed appropriately under Power Automate licensing. That applies to the integration as a whole rather than to this behaviour.
 
-Approved time creates actual labour cost and, under project pricing rules, unbilled sales. Admin time for approvals is the main indirect cost. A price or meter specific to this behaviour is not yet published.
+Approved time creates actual labour cost and, under project pricing rules, unbilled sales. For Time and Material contract lines, approved transactions create cost and unbilled sales actuals; Fixed Price contract lines create cost actuals only. Admin time for approvals is the main indirect cost. A price or meter specific to this behaviour is not yet published.
 
 ## Scope
 
@@ -156,10 +163,9 @@ Approved time creates actual labour cost and, under project pricing rules, unbil
 
 ### At rollout
 - Compare effort completed, percent complete and estimate at completion on a sample project before and after a batch of Field Service time is approved.
-- Explain to finance staff that approved Field Service time also creates actual labour cost and, under project pricing rules, unbilled sales.
+- Explain to finance staff that approved Field Service time also creates actual labour cost and, under project pricing rules, unbilled sales: Time and Material contract lines create cost and unbilled sales actuals, and Fixed Price contract lines create cost actuals only.
 
 ### After rollout
-- Review the Approvals view for submitted Field Service time that is still waiting, since it holds back task progress.
 - Reconcile work order totals with project actuals, because time entries do not appear in work order-level financial totals at the time of writing.
 - Watch Message center and the project task integration page for changes to the behaviour.
 
@@ -187,17 +193,7 @@ The install command is documented for Dataverse applications from Microsoft Mark
 - Will time entries be added to work order-level financial summaries, which Learn says they do not currently appear in?
 
 <!-- rationale
-risk: Low. The roadmap says no new execution logic or formulas are added, and progress moves only when a project approver approves time that Field Service technicians submitted.
+risk: Low. The roadmap says no new execution logic or formulas are added, and Field Service time contributes actual effort only after approval.
 cost: Low. The Learn page for this behaviour names no separate licence or meter; the integration needs a Project Operations licence for project task management, so the cost is mainly approval time.
 impact: Medium. Project managers and time approvers on projects that use the integration see task progress and project actual hours change as field time is approved.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] rationale: risk; What's changing / consistency: The risk rationale says progress moves only when a project approver approves submitted time. | Found: Rationale: 'progress moves only when a project approver approves time'. What's changing: 'a project manager can also reproject effort by updating Remaining Effort on a task, which recalculates the task's estimate at completion and progress percentage.' | Fix: Replace the risk rationale with: 'Low. The roadmap says no new execution logic or formulas are added, and Field Service time contributes actual effort only after approval.' This narrows the claim to the verified time-entry mechanism without denying the manual reprojection documented at https://learn.microsoft.com/dynamics365/project-operations/project-management/project-tracking-overview.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Risk assessment: Change & support; Governance guidance: At rollout / behaviour: Approval automatically recalculates estimate at completion as approved field time arrives. | Found: The project automatically recalculates metrics such as effort completed, percent complete, and estimate at completion. | Fix: After the approval-recalculation sentence, add: 'The Project time task tracking page also documents Delayed update: Remaining Effort, Effort Completed and Effort Estimate at Complete are not updated with approved time until a Project for the Web session is opened.' Cite https://learn.microsoft.com/dynamics365/project-operations/project-management/project-time-task-tracking. This qualifies the timing of the sample-project comparison without changing the approval requirement. | Source: https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-time
-- [supported, minor] Why it matters; Cost and licensing; Governance guidance: At rollout / behaviour: Approved time creates unbilled sales based on project pricing rules. | Found: After approval, time entries generate full financial impact on the project, including: Actual labor cost; Unbilled sales based on project pricing rules | Fix: Qualify each unbilled-sales statement with: 'For Time and Material contract lines, approved transactions create cost and unbilled sales actuals; Fixed Price contract lines create cost actuals only.' The already-cited https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-projects gives this narrower billing-method rule, unlike the time-entry page's general statement. | Source: https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-time
-- [contradicted, minor] Governance guidance: After rollout; controls / consistency: The checklist tells readers to review the Approvals view, but the controls table has no approval-review row. | Found: Checklist: 'Review the Approvals view for submitted Field Service time that is still waiting'. Controls rows cover only integration enablement and integration-package installation. | Fix: Remove the After rollout bullet 'Review the Approvals view for submitted Field Service time that is still waiting, since it holds back task progress.' This removes the checklist/table mismatch without adding an unverified control row.
 -->

@@ -1,0 +1,894 @@
+{
+  "slug": "microsoft-purview-endpoint-data-loss-prevention-expand-protection-to-copilot-pc-devices-fo",
+  "roadmapId": 560396,
+  "title": "Microsoft Purview Endpoint DLP: protect Recall snapshots on Copilot+ PCs",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "1 blocking finding (claim 11)"
+    ]
+  },
+  "counts": {
+    "claims": 65,
+    "confirmed": 63,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold: the Purview creation path skips the template, device-location and rule choices needed to reach the Recall restriction. The documented behaviour and Windows policy controls are supported, but the briefing also understates the published Endpoint DLP licensing and omits Recall's preview qualification.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-09-15T23:00:36.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-15T23:00:36\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The roadmap describes Purview administrators authoring Endpoint DLP custom policies for restricted labels and SITs in Recall windows.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "determining whether policies exist to prevent capture of windows containing restricted sensitivity labels and Sensitive information types (SITs). Purview admins will author Endpoint DLP custom policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; summary",
+      "type": "record",
+      "claim": "The roadmap describes integration with Recall set up by Intune administrators.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "to integrate with Windows Copilot + PC Recall setup by Intune admins",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Scope: Devices",
+      "type": "record",
+      "claim": "The roadmap describes Copilot+ PC devices exclusively.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "for Copilot + PC devices exclusively.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The printed creation route reaches Actions directly after Enterprise applications & devices.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-device-scoping",
+      "quote": "Select the Custom from the Categories then Custom policy template from Regulations. Select Next. ... Scope the location to only the Devices location. ... Create a rule with the following values:",
+      "severity": "blocker",
+      "fix": "Replace controls[0].ui.path and its rendered copy with the documented existing-policy route: 'Data loss prevention > policies > policy > Edit policy > Customize advanced DLP rules > rule > Actions > Audit or restrict activities on devices > Restrictions in Windows Recall in Copilot+ PCs > Restrict content in Windows Recall'. Replace the wizard-gap note with 'Edit an existing rule; choices are Audit only or Block.' Retain the Recall docs link and cite https://learn.microsoft.com/purview/endpoint-dlp-create-policy-detect-pii-data-exposure for the route to editing a rule."
+    },
+    {
+      "n": 12,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No documented PowerShell or Graph operation specifically sets the Recall restriction in a DLP rule.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Set-DlpComplianceRule Recall Restrict content Windows Recall EndpointDlpRestrictions Graph. Read the Set-DlpComplianceRule reference, including EndpointDlpRestrictions, and Recall DLP guidance; no Recall setting value or Graph policy-setting operation was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Local Group Policy Editor exposes Set Data Loss Prevention Provider under Computer Configuration > Administrative Templates > Windows Components > Windows AI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/manage-recall",
+      "quote": "Computer Configuration > Administrative Templates > Windows Components > Windows AI > Set Data Loss Prevention Provider",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "The device CSP URI is ./Device/Vendor/MSFT/Policy/Config/WindowsAI/SetDataLossPreventionProvider.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-windowsai",
+      "quote": "./Device/Vendor/MSFT/Policy/Config/WindowsAI/SetDataLossPreventionProvider",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[1].note; Risk assessment: Security & identity; Scope",
+      "type": "availability",
+      "claim": "The DLP provider setting applies to Enterprise and Education client SKUs only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-windowsai",
+      "quote": "This setting applies to Enterprise and Education client SKUs only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Local Group Policy Editor exposes Turn off saving snapshots for Recall under Computer Configuration > Administrative Templates > Windows Components > Windows AI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/manage-recall",
+      "quote": "Computer Configuration > Administrative Templates > Windows Components > Windows AI > Turn off saving snapshots for Recall",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "The device CSP URI is ./Device/Vendor/MSFT/Policy/Config/WindowsAI/DisableAIDataAnalysis.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/manage-recall",
+      "quote": "./Device/Vendor/MSFT/Policy/Config/WindowsAI/[DisableAIDataAnalysis]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[2].note; Governance guidance: Before rollout; Scope: Users",
+      "type": "behaviour",
+      "claim": "Disabling Turn off saving snapshots for Recall lets users choose to save snapshots.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/manage-recall",
+      "quote": "If you set this policy to disabled, end users will have a choice to save snapshots of their screen and use Recall to find things they've seen on their device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[2].note; Why it matters; Risk assessment: Autonomy & actions; Scope: Users",
+      "type": "behaviour",
+      "claim": "Administrators cannot enable snapshot saving for users; individual user opt-in consent is required.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/manage-recall",
+      "quote": "Administrators can't enable saving snapshots on behalf of their users. The choice to enable saving snapshots requires individual user opt-in consent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Local Group Policy Editor exposes Allow Recall to be enabled under Computer Configuration > Administrative Templates > Windows Components > Windows AI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/manage-recall",
+      "quote": "Computer Configuration > Administrative Templates > Windows Components > Windows AI > Allow Recall to be enabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[3].api; Governance controls table",
+      "type": "command",
+      "claim": "The device CSP URI is ./Device/Vendor/MSFT/Policy/Config/WindowsAI/AllowRecallEnablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/manage-recall",
+      "quote": "./Device/Vendor/MSFT/Policy/Config/WindowsAI/[AllowRecallEnablement]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[3].note; Why it matters",
+      "type": "default",
+      "claim": "Recall is disabled and removed by default on managed devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/manage-recall",
+      "quote": "By default, Recall is disabled and removed for managed devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[3].note",
+      "type": "behaviour",
+      "claim": "Disabling Allow Recall to be enabled deletes previously saved snapshots.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/manage-recall",
+      "quote": "If snapshots were previously saved on the device, they'll be deleted when this policy is disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Recall DLP protection requires administrator configuration of both the Windows integration and the DLP restriction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-recall-get-started",
+      "quote": "Set the following Group Policy settings on the Copilot+ PC to enable DLP protections for Recall using either Microsoft Intune or Local Group Policy Editor. ... The setting to enable DLP protections for Recall is available when you create or edit a DLP policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is unknown because no Recall-specific entitlement is published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-data-loss-prevention-endpoint-data-loss-protection-dlp",
+      "quote": "Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance ... Endpoint Data Loss Prevention (DLP) | Included",
+      "severity": "minor",
+      "fix": "Set licensing.model to 'included'. Replace the licensing notes with 'Endpoint DLP is included with Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, and Microsoft 365 E5/A5/F5/G5 Information Protection & Governance. No additional Recall-specific licence requirement is published at the time of writing (November 2026).' Give this same product-level requirement in Cost and licensing and cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-data-loss-prevention-endpoint-data-loss-protection-dlp."
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The Recall DLP page's Licensing section links to Enterprise Plans and security/compliance guidance without naming a licence itself.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-recall-get-started",
+      "quote": "Licensing\nFor information on licensing, see\n- Microsoft 365 Enterprise Plans\n- Microsoft 365 Service Descriptions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing; licensing.notes; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A separate licence requirement specific to the Recall restriction is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Recall DLP licensing Endpoint data loss prevention license Microsoft 365 E5. Read Recall DLP Licensing, Microsoft 365 Security and the Endpoint DLP service-description excerpt; they give product licensing, not a separate Recall-specific entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The Recall DLP page names no meter, credit or usage charge for the restriction.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Recall DLP protections GCC GCC High DoD supported content licensing meter default; Purview Recall DLP licensing Endpoint data loss prevention license Microsoft 365 E5. Read the full Recall DLP page and its Licensing section; no meter, credit or usage charge is named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Recall lets Copilot+ PC users search locally saved screen snapshots.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-recall-get-started",
+      "quote": "Recall is a Copilot+ PC feature that allows users to search locally saved and locally analyzed snapshots of their screen using natural language.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "title; summary; What's changing; Governance controls",
+      "type": "applicability",
+      "claim": "Endpoint DLP policies support auditing or blocking sensitive content in Recall snapshots.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-recall-get-started",
+      "quote": "Restrictions in Windows Recall in Copilot+ PCs > Restrict content in Windows Recall. You can select Audit only or Block.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Audit only does not notify the user when a snapshot contains sensitive information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-recall-get-started",
+      "quote": "If you select Audit only, then the user doesn't see any notification when a snapshot is taken that contains sensitive information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Audit only records the event in DLP reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-recall-get-started",
+      "quote": "However, the event is logged in the DLP reports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The Audit only DLP action allows capture rather than excluding the content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+      "quote": "Audit only: The user activity is allowed to occur, so no business processes are impacted. You get audit data",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: impact",
+      "type": "behaviour",
+      "claim": "Block excludes sensitive content from the snapshot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-recall-get-started",
+      "quote": "If you select Block, then when a snapshot is taken that contains sensitive information, then the sensitive content isn't included in the snapshot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; rationale: impact",
+      "type": "behaviour",
+      "claim": "DLP enforcement removes the blocked windows while retaining the rest of a snapshot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/manage-recall",
+      "quote": "DLP enforcement is applied at the window level—Recall removes only the specific window(s) identified by the DLP provider as containing sensitive data blocked by policy, while retaining the rest of the snapshot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing: covered content; Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Recall DLP covers sensitivity-labelled Teams channels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-recall-get-started",
+      "quote": "Sensitivity labeled Teams channels",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing: covered content; Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Recall DLP covers sensitivity-labelled Teams meeting chats.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-recall-get-started",
+      "quote": "Sensitivity labeled Teams meeting chats",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing: covered content; Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Recall DLP covers labelled Outlook emails.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-recall-get-started",
+      "quote": "Labeled emails Outlook",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing: covered content; Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Recall DLP covers locally stored files with sensitivity labels or SITs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-recall-get-started",
+      "quote": "Locally stored files with sensitivity labels or SITs",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing: covered content; Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Recall DLP covers labelled or SIT-matching files opened in Word, Excel or PowerPoint on the device.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-recall-get-started",
+      "quote": "Files stored in the cloud that with sensitivity labels or SITS that get opened in Office apps (Word, Excel, PowerPoint) on the device",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing: covered content; Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Recall DLP covers labelled or SIT-matching files in Microsoft 365 Copilot App Office web apps using Edge for Business.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-recall-get-started",
+      "quote": "SIT or sensitivity labeled files that are opened with Microsoft 365 Copilot App (Word, Excel PowerPoint web apps) using Microsoft Edge for Business",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Purview Recall coverage outside the listed content types is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Recall DLP protections GCC GCC High DoD supported content licensing meter default; Recall sensitive information filtering DLP provider Purview filtering interaction. Read Recall DLP and Manage Recall; provider-extension examples do not document additional Purview coverage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "default",
+      "claim": "Recall Sensitive information filtering is enabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/manage-recall",
+      "quote": "When using Recall, the Sensitive information filtering setting is enabled by default to help ensure your data's confidentiality.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not describe how Recall's sensitive-information filtering combines with a Purview policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Recall sensitive information filtering DLP provider Purview filtering interaction. Read Manage Recall, Recall DLP and Reference for sensitive information filtering in Recall; none states ordering or conflict resolution between built-in filtering and Purview actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "behaviour",
+      "claim": "Without the provider policy, or after clearing it, Recall does not invoke the DLP provider.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/manage-recall",
+      "quote": "To enable DLP integration, set the Set Data Loss Prevention Provider policy on managed devices. ... Removing or clearing this policy stops Recall from invoking a DLP provider",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Clearing the provider policy leaves previously stored snapshots unaffected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/manage-recall",
+      "quote": "Removing or clearing this policy stops Recall from invoking a DLP provider; previously stored snapshots remain unaffected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope: Prerequisites; Risk assessment: Change & support; Governance guidance",
+      "type": "availability",
+      "claim": "Recall DLP requires Teams version 25290.205.4069.4 or higher.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-recall-get-started",
+      "quote": "Teams version 25290.205.4069.4 or higher",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope: Prerequisites; Risk assessment: Change & support; Governance guidance",
+      "type": "availability",
+      "claim": "Recall DLP requires Office desktop apps Word, Excel and PowerPoint version 19127 or higher.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-recall-get-started",
+      "quote": "Office desktop apps (Word, Excel, PowerPoint) version 19127 or higher",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Scope: Prerequisites; Governance guidance: Before rollout",
+      "type": "availability",
+      "claim": "The Recall DLP prerequisites include minimum Windows and anti-malware client versions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-recall-get-started",
+      "quote": "Windows build greater than 262100.67225\nAnti-malware Client version greater than 4.18.2508.5 or higher",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope: Prerequisites; Risk assessment: Change & support",
+      "type": "availability",
+      "claim": "Microsoft Edge for Business is a Recall DLP prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-recall-get-started",
+      "quote": "Copilot+ PC must be running ... Microsoft Edge for Business.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing; Scope: Devices; Governance guidance: Before rollout",
+      "type": "availability",
+      "claim": "The Copilot+ PC must meet Recall prerequisites and be onboarded to a tenant with Endpoint DLP enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-recall-get-started",
+      "quote": "meet all device prerequisites for Recall as described in Manage Recall.\nMicrosoft Purview endpoint DLP is enabled for the tenant the Copilot+ PC is onboarded to endpoint data loss prevention.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing; summary",
+      "type": "availability",
+      "claim": "The Recall DLP page requires Microsoft Intune running on the tenant to create Windows tenant policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-recall-get-started",
+      "quote": "Microsoft Intune is running on the tenant to create Windows tenant policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Scope: Roles; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "DLP policy creation and deployment require membership in one of the five listed administrator role groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+      "quote": "The account you use to create and deploy policies must be a member of one of these role groups:\nCompliance administrator\nCompliance data administrator\nInformation Protection\nInformation Protection Admin\nSecurity administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Scope: Roles; Governance controls; Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "Recall DLP device settings can be configured using Microsoft Intune or Local Group Policy Editor.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-recall-get-started",
+      "quote": "Set the following Group Policy settings on the Copilot+ PC to enable DLP protections for Recall using either Microsoft Intune or Local Group Policy Editor.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Recall-related events can be viewed in Microsoft Purview Activity Explorer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-recall-get-started",
+      "quote": "View Recall related events in Microsoft Purview Activity Explorer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "availability",
+      "claim": "Purview is currently the only supported DLP provider for Recall.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/manage-recall",
+      "quote": "Purview is currently the only supported DLP provider for Recall.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[1].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The cited Recall device-policy pages give no Intune navigation path.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Intune Set Data Loss Prevention Provider Recall settings catalog path. Read Manage Recall, Recall DLP and the provider CSP section; they give Group Policy paths and CSP URIs, but no Intune route to this setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Scope: Clouds and platform; Open questions",
+      "type": "absence",
+      "claim": "The Recall DLP Learn page does not state cloud availability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Recall DLP protections GCC GCC High DoD supported content licensing meter default. Read the full Recall DLP page; it contains no cloud-availability statement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Manage Recall supplies a Purview provider value for Set Data Loss Prevention Provider.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/manage-recall",
+      "quote": "key:HKEY_LOCAL_MACHINE\\software\\microsoft\\windows defender; value:InstallLocation; binary:endpointdlp.dll; minversion:4.18.25080.5",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft's deployment guidance recommends incremental deployment starting with simulation mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+      "quote": "Always take an incremental approach to deploying a policy, starting from the least impactful DLP simulation mode through full enforcement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance guidance: At rollout; After rollout",
+      "type": "applicability",
+      "claim": "Endpoint DLP policies can be scoped to pilot devices and then widened.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-device-scoping",
+      "quote": "This scenario shows how to scope a Microsoft Purview Endpoint DLP policy to specific device groups. ... Select Specific devices and device groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The change's known indirect cost is administrator configuration time, supporting the low rating without claiming it is free.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-recall-get-started",
+      "quote": "The following sections walk you through the prerequisites and configuration steps you perform to start using DLP protections for Recall.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The briefing describes Recall's behaviour without flagging its preview status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/manage-recall",
+      "quote": "Recall (preview) allows users to search locally saved and locally analyzed snapshots of their screen using natural language.",
+      "severity": "minor",
+      "fix": "Change the Recall definition in What's changing to 'Recall (preview) is a Copilot+ PC feature that lets users search locally saved snapshots of their screen.' Keep the roadmap's General Availability phase for the DLP change; the preview qualification is for Recall."
+    },
+    {
+      "n": 64,
+      "where": "Governance guidance: At rollout; After rollout",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to check policy state and scope and review Activity Explorer and DLP reports, but those controls have no corresponding table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm the policy state and scope ... starting from simulation mode. / Review Recall events in Microsoft Purview Activity Explorer and the DLP reports. / The table contains the Recall action, provider, snapshot-saving and Recall-availability controls only.",
+      "severity": "minor",
+      "fix": "The 'Confirm the policy state and scope' and 'Review Recall events in Microsoft Purview Activity Explorer and the DLP reports' checklist steps lack corresponding controls-table rows. Remove these two checklist bullets; do not add rows in this correction."
+    },
+    {
+      "n": 65,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Sensitive labelled or SIT-matching content can be included in Recall snapshots without a restriction preventing capture.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-recall-get-started",
+      "quote": "To help protect against the inclusion of sensitive content in these snapshots, you can use DLP policies. ... If you select Block ... the sensitive content isn't included in the snapshot.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T04:15:51.084Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=560396",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-recall-get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/windows/client-management/manage-recall",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-windowsai",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-device-scoping",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether DLP audits or blocks sensitive content in Recall snapshots",
+        "docs": "https://learn.microsoft.com/purview/dlp-recall-get-started",
+        "reachable": true,
+        "segments": [
+          "Data loss prevention",
+          "policies",
+          "Create policy",
+          "Enterprise applications & devices",
+          "Actions",
+          "Audit or restrict activities on devices",
+          "Restrictions in Windows Recall in Copilot+ PCs",
+          "Restrict content in Windows Recall"
+        ],
+        "missing": [
+          "Create policy"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which DLP provider Recall asks about sensitive windows",
+        "docs": "https://learn.microsoft.com/windows/client-management/manage-recall",
+        "reachable": true,
+        "segments": [
+          "Computer Configuration",
+          "Administrative Templates",
+          "Windows Components",
+          "Windows AI",
+          "Set Data Loss Prevention Provider"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which DLP provider Recall asks about sensitive windows",
+        "docs": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-windowsai",
+        "reachable": true,
+        "token": "./Device/Vendor/MSFT/Policy/Config/WindowsAI/SetDataLossPreventionProvider",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether users may choose to save Recall snapshots",
+        "docs": "https://learn.microsoft.com/windows/client-management/manage-recall",
+        "reachable": true,
+        "segments": [
+          "Computer Configuration",
+          "Administrative Templates",
+          "Windows Components",
+          "Windows AI",
+          "Turn off saving snapshots for Recall"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether users may choose to save Recall snapshots",
+        "docs": "https://learn.microsoft.com/windows/client-management/manage-recall",
+        "reachable": true,
+        "token": "./Device/Vendor/MSFT/Policy/Config/WindowsAI/DisableAIDataAnalysis",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Whether Recall is available on a managed device",
+        "docs": "https://learn.microsoft.com/windows/client-management/manage-recall",
+        "reachable": true,
+        "segments": [
+          "Computer Configuration",
+          "Administrative Templates",
+          "Windows Components",
+          "Windows AI",
+          "Allow Recall to be enabled"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Whether Recall is available on a managed device",
+        "docs": "https://learn.microsoft.com/windows/client-management/manage-recall",
+        "reachable": true,
+        "token": "./Device/Vendor/MSFT/Policy/Config/WindowsAI/AllowRecallEnablement",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

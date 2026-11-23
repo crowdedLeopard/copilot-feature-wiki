@@ -55,6 +55,12 @@ sources:
   - title: "What is Dataverse intelligence? (preview)"
     url: "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-intelligence"
     kind: "learn"
+  - title: "Managing AI experiences enabled by usage-based billing"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits"
+    kind: "learn"
+  - title: "Business Applications in Work IQ default settings"
+    url: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings"
+    kind: "learn"
   - title: "Create spendingPolicyServiceSetting"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create"
     kind: "learn"
@@ -74,8 +80,8 @@ controls:
     scope: "group"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Cost Management > Configuration > policy > Select agents and services > Cowork"
-      docs: "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-admin-governance"
+      path: "Copilot > Cost Management > Configuration > policy > Agents and services > Cowork"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits"
     api:
       kind: "graph"
       call: "POST /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings"
@@ -99,7 +105,7 @@ controls:
       path: "Copilot > Settings > Dataverse data available in Microsoft Copilot"
       docs: "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp"
     api: null
-    note: "AI administrator or Global administrator. Changes can take up to one hour to propagate. Another Learn page labels it 'Business Applications data in Work IQ available to Copilot'."
+    note: "AI administrator or Global administrator. Changes can take up to one hour to propagate. The Work IQ default-settings page gives Copilot > Settings > View all > Business Applications data in Work IQ available to Copilot."
 confidence: "high"
 created: "2026-11-23"
 updated: "2026-11-23"
@@ -113,19 +119,23 @@ changes:
     note: "Corrected the Cowork ERP MCP billing rate and premium exemptions, the environment requirement (Tier 2 or above, or a Unified Developer Environment), and the checklist; added the spending-policy request body."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 98 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-23"
+    note: "Corrected the Cowork spending-policy path to 'Agents and services', added the Work IQ alternative route for the Dataverse setting, and reworded a checklist bullet to match the controls table."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 105 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 98
-  confirmed: 96
+  claims: 105
+  confirmed: 105
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "33ac560d1ba6176c184ba553476263da"
+  contradicted: 0
+  attempts: 0
+  hash: "c64333308538b9b089fa892b9cd9fe58"
 ---
 
 ## What's changing
@@ -182,7 +192,7 @@ Cowork, Copilot Studio agents and Work IQ API can draw on a shared tenant credit
 
 ### Before rollout
 - Identify which users hold both a Microsoft 365 Copilot licence and a qualifying finance and operations apps licence, and which environments meet the version and tier requirements.
-- Decide who receives Cowork by scoping the spending policy that selects Cowork, and set per-user limits there (access and spend controls are the first row of the table).
+- Decide who receives Cowork by scoping the spending policy that selects Cowork (the access control is the first row of the table).
 - Check that the Dataverse data setting is enabled for the pilot users, and allow up to one hour for it to propagate; in EU countries with Works Council requirements Learn says Dataverse might be disabled by default.
 
 ### At rollout
@@ -200,9 +210,9 @@ Cowork, Copilot Studio agents and Work IQ API can draw on a shared tenant credit
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users can use Copilot Cowork, and so the ERP apps plugin</strong><br><small>Group</small><br><small class="controls__note">Beta API; adds a service to an existing policy and needs the policy's If-Match ETag. The request body sets serviceId to cowork and state to enabled. A low credit limit does not block access; scope does.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › policy › Select agents and services › Cowork <a href="https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-admin-governance" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users can use Copilot Cowork, and so the ERP apps plugin</strong><br><small>Group</small><br><small class="controls__note">Beta API; adds a service to an existing policy and needs the policy's If-Match ETag. The request body sets serviceId to cowork and state to enabled. A low credit limit does not block access; scope does.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › policy › Agents and services › Cowork <a href="https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether the plugin is available to all users, to specific users or groups, or blocked</strong><br><small>Tenant</small><br><small class="controls__note">Needs a tenant or Copilot administrator. The Users tab also offers Available to all users and Available to specific users or groups. The API needs a Microsoft Agent 365 licence; confirm the plugin's package id.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › plugin › Users › Block <a href="https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-manage-plugins" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether Dataverse data is available to Microsoft Copilot, which the plugin requires</strong><br><small>Tenant</small><br><small class="controls__note">AI administrator or Global administrator. Changes can take up to one hour to propagate. Another Learn page labels it 'Business Applications data in Work IQ available to Copilot'.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › Dataverse data available in Microsoft Copilot <a href="https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether Dataverse data is available to Microsoft Copilot, which the plugin requires</strong><br><small>Tenant</small><br><small class="controls__note">AI administrator or Global administrator. Changes can take up to one hour to propagate. The Work IQ default-settings page gives Copilot &gt; Settings &gt; View all &gt; Business Applications data in Work IQ available to Copilot.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › Dataverse data available in Microsoft Copilot <a href="https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -222,13 +232,4 @@ Inside the finance and operations environment, the Allowed MCP clients page (Sys
 risk: Medium. The plugin can create, update and delete ERP records for licensed users, bounded by their ERP security roles and by Cowork's approval prompts.
 cost: Variable. Cowork usage is metered in Copilot Credits, on top of a Microsoft 365 Copilot licence and a qualifying Dynamics 365 finance and operations apps licence for each user.
 impact: Medium. Only users who hold both licences and are given Cowork access notice it, mainly finance and supply chain staff; administrators carry the setup.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: An existing policy's Cowork selection is at Copilot > Cost Management > Configuration > policy > Select agents and services > Cowork. | Found: Select the spending policy you want to edit. ... The spending policy details fly-out opens, where you can modify its settings. This includes: ... Agents and services | Fix: Replace controls[0].ui.path with 'Copilot > Cost Management > Configuration > policy > Agents and services > Cowork' and set its docs to https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits. Add that URL to sources. The existing-policy editor uses 'Agents and services'; 'Select agents and services' is a creation-wizard step. | Source: https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui; Governance controls table; Open questions / admin-path: The enable page gives Microsoft 365 admin center > Copilot > Settings > Dataverse data available in Microsoft Copilot. | Found: Go to the Microsoft 365 Admin Center. ... Navigate to Copilot > Settings. ... Enable Dataverse data available in Microsoft Copilot. | Fix: Keep the path supported by the enable page. Add to controls[2].note: 'The Work IQ default-settings page gives Copilot > Settings > View all > Business Applications data in Work IQ available to Copilot.' Cite https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings, which supplies that alternative route. | Source: https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp
-- [contradicted, minor] Governance guidance: Before rollout; controls[0] / consistency: The checklist presents the first control row as the control for setting per-user spending limits, although the row configures Cowork service access. | Found: set per-user limits there (access and spend controls are the first row of the table). ... governs: Which users can use Copilot Cowork ... The request body sets serviceId to cowork and state to enabled. | Fix: Replace the second Before rollout bullet with: 'Decide who receives Cowork by scoping the spending policy that selects Cowork (the access control is the first row of the table).' This removes the checklist instruction whose spending-limit control has no row; do not add a row.
 -->

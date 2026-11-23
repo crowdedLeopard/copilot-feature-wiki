@@ -18,7 +18,7 @@ defaultState: "admin-opt-in"
 action: "review"
 licensing:
   model: "consumption"
-  notes: "Billing in Data Security Investigations rests on stored data and AI compute capacity, not a dedicated enterprise plan or licence. The evidence collection page points to Microsoft 365 licensing guidance and names no plan."
+  notes: "Billing in Data Security Investigations rests on stored data and AI compute capacity, not a dedicated enterprise plan or licence. The evidence collection page points to Microsoft 365 licensing guidance and names no Microsoft 365 plan for evidence collection; it separately notes Microsoft Entra ID P1 or P2 for creating custom RBAC."
 audiences: ["security","compliance","finops","m365-admin"]
 tags: ["data-security-investigations","endpoint-dlp","dlp","purview","insider-risk-management","pay-as-you-go","device-onboarding"]
 sources:
@@ -40,7 +40,7 @@ sources:
   - title: "Get started with collecting files that match data loss prevention policies from devices"
     url: "https://learn.microsoft.com/purview/dlp-copy-matched-items-get-started"
     kind: "learn"
-  - title: "Learn about evidence collection for file activities on devices"
+  - title: "Learn about collecting files that match DLP policies from devices"
     url: "https://learn.microsoft.com/purview/dlp-copy-matched-items-learn"
     kind: "learn"
   - title: "Privacy FAQ for Data Security Investigations"
@@ -49,7 +49,13 @@ sources:
   - title: "Permissions in the Microsoft Purview portal"
     url: "https://learn.microsoft.com/purview/purview-permissions"
     kind: "learn"
-  - title: "Who can create investigations and add endpoint DLP evidence to scope (PowerShell)"
+  - title: "Use AI analysis in Data Security Investigations"
+    url: "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis"
+    kind: "learn"
+  - title: "Learn about the Data Security Investigations workflow"
+    url: "https://learn.microsoft.com/purview/data-security-investigations-workflow"
+    kind: "learn"
+  - title: "Add-RoleGroupMember"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember"
     kind: "learn"
 videos: []
@@ -59,7 +65,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Settings > Data Loss Prevention > Endpoint DLP settings > Setup evidence collection for file activities on devices"
+      path: "Settings > Data Loss Prevention > Endpoint DLP settings > Setup evidence collection for file activities on devices > On > Select storage type > Microsoft managed storage"
       docs: "https://learn.microsoft.com/purview/dlp-copy-matched-items-get-started"
     api: null
     note: "Toggle must be On with Microsoft-managed storage. Each DLP rule also needs Collect original file as evidence selected."
@@ -95,19 +101,23 @@ changes:
     note: "Corrected after verification: added the Summary step to the endpoint search route, narrowed one autonomy statement, fixed the impact rationale and open questions, and trimmed checklist items with no controls-table row."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 96 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-23"
+    note: "Corrected after verification: added the Data Security Investigations Admins requirement for configuring AI capacity, the storage proration qualification, the licensing wording and the full evidence collection path."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 103 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 96
-  confirmed: 95
+  claims: 103
+  confirmed: 103
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "be7bbc679c98f31abfeac3a08030ed1e"
+  contradicted: 0
+  attempts: 0
+  hash: "c067f952616f5cb5c4040cbdca6edff6"
 ---
 
 ## What's changing
@@ -124,7 +134,7 @@ The roadmap record shows status Launched, a preview date of June CY2026, a targe
 
 This gives investigators the content of the files, not only the alert, so they can judge a leak quickly and look for patterns such as mass exfiltration across many events. Learn describes it as an alternative to triaging individual endpoint DLP alerts one by one.
 
-For a service owner the decision is whether to switch on the plumbing it depends on: evidence collection in Microsoft-managed storage, Data Security Investigations billing and the right role groups. If nobody acts, nothing is configured for this feature, because Learn lists these as prerequisites and says both billing models must be configured before DSI can be used.
+For a service owner the decision is whether to switch on the plumbing it depends on: evidence collection in Microsoft-managed storage, Data Security Investigations billing and the right role groups. Use requires configured DSI billing and endpoint evidence collection; tenants that already meet these prerequisites need no additional endpoint-search configuration. Learn lists these as prerequisites and says both billing models must be configured before DSI can be used.
 
 ## Risk assessment
 
@@ -146,11 +156,11 @@ For a service owner the decision is whether to switch on the plumbing it depends
 
 ## Cost and licensing
 
-Data Security Investigations is billed on stored data and AI capacity, not on a dedicated enterprise plan or licence (Billing in Data Security Investigations; Learn about Data Security Investigations). The evidence collection page refers readers to Microsoft 365 licensing guidance for endpoint evidence collection and names no plan.
+Data Security Investigations is billed on stored data and AI capacity, not on a dedicated enterprise plan or licence (Billing in Data Security Investigations; Learn about Data Security Investigations). The evidence collection page refers readers to Microsoft 365 licensing guidance and names no Microsoft 365 plan for evidence collection; it separately notes Microsoft Entra ID P1 or P2 for creating custom RBAC.
 
-- **Storage meter:** pay-as-you-go, per GB per month for data in all investigations. Storage charges start when items are added to an investigation's scope, and stop for an investigation when it is deleted. Storage rates are on the pricing page the billing article links.
+- **Storage meter:** pay-as-you-go, per GB per month for data in all investigations. Storage charges start when items are added to an investigation's scope, and stop for an investigation when it is deleted. Charges are prorated by days stored; deleting an investigation after 00:00 UTC still incurs storage charges for the full day. Storage rates are on the pricing page the billing article links.
 - **AI capacity:** pay-as-you-go compute units. The billing article lists add to scope as a processing step whose cost depends on the size of data and extracted text.
-- **Setup:** both billing models must be configured before use. Configuration needs an Azure subscription in the same tenant as Microsoft Purview, a resource group, the Global Administrator role and the resource group Owner or Contributor role.
+- **Setup:** both billing models must be configured before use. Configuration needs an Azure subscription in the same tenant as Microsoft Purview, a resource group, the Global Administrator role and the resource group Owner or Contributor role. Configuring AI capacity also requires membership of the Data Security Investigations Admins role group.
 - **Controls on spend:** the billing article recommends Azure budgets and alerts, the in-product cost estimator and the usage dashboard. It does not say use stops when a budget is reached.
 - **Indirect:** Microsoft-managed storage for evidence collection has its own usage view under Endpoint DLP settings.
 
@@ -183,7 +193,7 @@ Clouds and platforms: the roadmap lists Worldwide (Standard Multi-Tenant) and We
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether endpoint DLP evidence files are collected and available to query</strong><br><small>Tenant</small><br><small class="controls__note">Toggle must be On with Microsoft-managed storage. Each DLP rule also needs Collect original file as evidence selected.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Data Loss Prevention › Endpoint DLP settings › Setup evidence collection for file activities on devices <a href="https://learn.microsoft.com/purview/dlp-copy-matched-items-get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether endpoint DLP evidence files are collected and available to query</strong><br><small>Tenant</small><br><small class="controls__note">Toggle must be On with Microsoft-managed storage. Each DLP rule also needs Collect original file as evidence selected.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Data Loss Prevention › Endpoint DLP settings › Setup evidence collection for file activities on devices › On › Select storage type › Microsoft managed storage <a href="https://learn.microsoft.com/purview/dlp-copy-matched-items-get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Who can create investigations and add endpoint DLP evidence to scope</strong><br><small>Group</small><br><small class="controls__note">Endpoint queries also need the Insider Risk Management role group and View-Only DLP Compliance Management role. The cmdlet page does not name DSI role groups.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and groups › Role groups › Data Security Investigations Admins › Edit › Choose users <a href="https://learn.microsoft.com/purview/data-security-investigations-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tracking storage and compute unit spend per investigation</strong><br><small>Tenant</small><br><small class="controls__note">Visible only to Data Security Investigations Admins. Reports spend; it does not cap it.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Security Investigations › Usage dashboard <a href="https://learn.microsoft.com/purview/data-security-investigations-billing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
@@ -203,17 +213,4 @@ The usage dashboard is visible only to Data Security Investigations Admins. Glob
 risk: Medium. Copies of files that matched endpoint DLP policies are pulled into investigations where AI analysis runs, but nothing happens until an admin sets up billing, evidence collection and roles.
 cost: Variable. Data Security Investigations bills a pay-as-you-go storage meter (per GB per month) and compute units for AI analysis, with no dedicated plan or licence.
 impact: Low. Investigation data is accessible to Data Security Investigations Administrators, Investigators and Reviewers; only Admins and Investigators can create searches and add items.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: Setup / role: The billing setup's AI-capacity role requirements omit a DSI Admins membership qualification. | Found: To configure the AI capacity for Data Security Investigations, you must be a member of the Data Security Investigations Admins role group. | Fix: Keep the listed billing prerequisites and append to the Setup bullet: 'Configuring AI capacity also requires membership of the Data Security Investigations Admins role group.' The requirement is stated at https://learn.microsoft.com/purview/data-security-investigations-billing#ai-capacity. | Source: https://learn.microsoft.com/purview/data-security-investigations-billing
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: defaultState; summary; Why it matters; rationale: risk / default: The capability is admin-opt-in because evidence collection and DSI billing must be configured before use. | Found: Before you can use Data Security Investigations in your organization, you must configure both billing models. | Fix: Keep admin-opt-in, but replace 'If nobody acts, nothing is configured for this feature' with 'Use requires configured DSI billing and endpoint evidence collection; tenants that already meet these prerequisites need no additional endpoint-search configuration.' Cite https://learn.microsoft.com/purview/dlp-copy-matched-items-learn, which states that no additional configuration is required beyond enabling evidence collection. | Source: https://learn.microsoft.com/purview/data-security-investigations-billing
-- [supported, minor] Risk assessment: Autonomy & actions / behaviour: Analysts run categorisation after Add to scope completes. | Found: When you first open the Analysis page, items aren't categorized. Configure categorization first because it's helpful to start your triage by grouping items by risk. Add to scope must complete before you can configure categorization. | Fix: Add https://learn.microsoft.com/purview/data-security-investigations-ai-analysis to sources for the statement about analysts running categorisation after ingestion. | Source: https://learn.microsoft.com/purview/data-security-investigations-ai-analysis
-- [supported, minor] Risk assessment: Autonomy & actions / behaviour: Analysts run examination after Add to scope completes. | Found: After Add to scope completes for the data items in the investigation, start using AI-related tools to help narrow the focus of your investigation to only the most impactful and critical items. Use built-in and custom examination areas for selected items. | Fix: Add https://learn.microsoft.com/purview/data-security-investigations-workflow to sources for the statement about examination after Add to scope. | Source: https://learn.microsoft.com/purview/data-security-investigations-workflow
-- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: The evidence collection setup page links to Microsoft 365 licensing guidance without naming a plan for endpoint evidence collection. | Found: For information on licensing, see Microsoft 365 Enterprise Plans; Microsoft 365 Service Descriptions. See the prerequisites licensing requirements for Microsoft Entra ID P1 or P2 needed to create custom role-based access control (RBAC). | Fix: Replace 'names no plan' with 'names no Microsoft 365 plan for evidence collection; it separately notes Microsoft Entra ID P1 or P2 for creating custom RBAC' in licensing.notes and Cost and licensing. | Source: https://learn.microsoft.com/purview/dlp-copy-matched-items-get-started
-- [supported, minor] Cost and licensing: Storage meter / cost: Deleting an investigation stops charges for its associated storage. | Found: When you delete an investigation, you stop paying for the associated data storage amount. The charges are prorated to the number of days the data was stored in the billing cycle. | Fix: Append: 'Charges are prorated by days stored; deleting an investigation after 00:00 UTC still incurs storage charges for the full day.' This qualification is in https://learn.microsoft.com/purview/data-security-investigations-billing. | Source: https://learn.microsoft.com/purview/data-security-investigations-billing
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Evidence collection is configured at Microsoft Purview portal > Settings > Data Loss Prevention > Endpoint DLP settings > Setup evidence collection for file activities on devices. | Found: Choose Data Loss Prevention. Select Endpoint DLP settings. Expand Setup evidence collection for file activities on devices and set the toggle to On. Under Select storage type, choose Microsoft managed storage. | Fix: Extend controls[0].ui.path to 'Settings > Data Loss Prevention > Endpoint DLP settings > Setup evidence collection for file activities on devices > On > Select storage type > Microsoft managed storage'. The printed route is correct but stops before the toggle and storage choice. | Source: https://learn.microsoft.com/purview/dlp-copy-matched-items-get-started
 -->

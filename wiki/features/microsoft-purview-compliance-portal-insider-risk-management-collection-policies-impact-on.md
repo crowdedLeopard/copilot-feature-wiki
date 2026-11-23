@@ -43,6 +43,15 @@ sources:
   - title: "Microsoft Purview data security and governance APIs"
     url: "https://learn.microsoft.com/graph/security-datasecurityandgovernance-overview"
     kind: "learn"
+  - title: "Configure endpoint data loss prevention settings"
+    url: "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings"
+    kind: "learn"
+  - title: "New-FeatureConfiguration"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration?view=exchange-ps"
+    kind: "learn"
+  - title: "Set-FeatureConfiguration"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-featureconfiguration?view=exchange-ps"
+    kind: "learn"
 videos: []
 related: ["insider-risk-management","endpoint-dlp","microsoft-purview-compliance-portal-insider-risk-management-policy-tuning-analysis-for-pri","microsoft-purview-insider-risk-management-irm-alerts-in-xdr","sensitive-information-types"]
 controls:
@@ -52,8 +61,11 @@ controls:
       surface: "Microsoft Purview portal"
       path: "Solutions > Data Loss Prevention > Classifiers > Collection policies"
       docs: "https://learn.microsoft.com/purview/collection-policies-solution-overview"
-    api: null
-    note: "Learn lists DLP Compliance Management as a role and Insider Risk Management Admin among the role groups. Also reachable under Solutions > Information Protection > Classifiers > Collection policies."
+    api:
+      kind: "powershell"
+      call: "New-FeatureConfiguration -Name <name> -FeatureScenario KnowYourData -Mode Enable -ScenarioConfig <configuration-json> -Locations <locations-json>"
+      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration?view=exchange-ps"
+    note: "Security & Compliance PowerShell; Public Preview, not available in all organizations. ScenarioConfig sets Activities and EnforcementPlanes; the device example uses Devices and an EndpointDevices location in Locations."
 confidence: "medium"
 created: "2026-11-23"
 updated: "2026-11-23"
@@ -63,19 +75,23 @@ changes:
     note: "First briefing for this item: how Purview collection policies can override what Insider Risk Management policies collect from devices."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 6 of 60 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Correction: added the New-FeatureConfiguration and Set-FeatureConfiguration cmdlets, limited the Devices data source to Windows devices, and removed an unsupported claim and checklist items without table rows."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 68 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 53
+  claims: 68
+  confirmed: 67
   unconfirmed: 1
-  contradicted: 6
-  attempts: 1
-  hash: "ee8a0ae46aae6211cc717cbcaa479cec"
+  contradicted: 0
+  attempts: 0
+  hash: "1b4b1689f06f94ff6b25e96b0b776fe4"
 ---
 
 ## What's changing
@@ -88,7 +104,7 @@ Learn says this applies only to device indicators in IRM policies, and only when
 
 ## Why it matters
 
-The practical consequence is a possible blind spot. An IRM policy can be configured to monitor an activity such as copying files to removable media, while a collection policy created by another Purview administrator filters that activity out. In that case the IRM policy raises no signal for it, and nothing in the IRM policy itself shows why. Microsoft's roadmap text makes the same point by recommending a review so that collection policies are set up to detect the activities IRM policies require.
+The practical consequence is a possible blind spot. An IRM policy can be configured to monitor an activity such as copying files to removable media, while a collection policy created by another Purview administrator filters that activity out. In that case the IRM policy raises no signal for it. Microsoft's roadmap text makes the same point by recommending a review so that collection policies are set up to detect the activities IRM policies require.
 
 Microsoft has not stated what a tenant gets on arrival, so no source says existing IRM behaviour changes by itself. The risk starts when a device collection policy is deployed, including by someone outside the IRM team. Learn also says one-click policies in Data Security Posture Management (DSPM) and DSPM for AI can create collection policies on your behalf, so a new policy can appear without an IRM administrator creating it.
 
@@ -105,7 +121,7 @@ Microsoft has not stated what a tenant gets on arrival, so no source says existi
 - Collection policies decide what is collected and do not enforce on it. Learn states they can't impact the behaviour of DLP policies, only what is collected and recorded for audit file events on devices.
 
 **Change & support**
-- Learn says if Always audit file activity for devices is not enabled, activities are not collected from devices even where a collection policy is scoped to devices. Missing IRM device alerts therefore have two possible causes to check: that setting and the collection policies.
+- Learn says if Always audit file activity for devices is not enabled, activities are not collected from devices even where a collection policy is scoped to devices. The Endpoint DLP settings page also says to turn this setting off to audit activity only when onboarded devices are included in an active policy; confirm the applicable collection behaviour before treating it as a complete stop. Missing IRM device alerts therefore have two possible causes to check: that setting and the collection policies.
 - Several collection policies for one data source are merged on the back end, so a support case may need every policy reviewed, not just the newest.
 
 ## Cost and licensing
@@ -118,18 +134,16 @@ The Create and deploy collection policies page says the feature uses pay-as-you-
 
 Who is affected: tenants that use Insider Risk Management policies with device indicators and that have, or will deploy, a collection policy for the Devices data source. Collection policies can be scoped to all users and groups (the default), specific users and groups, or all except specific ones, and exclusions take precedence over inclusions.
 
-The Devices data source covers devices onboarded to Microsoft 365 and managed by your organisation. The roadmap record lists the clouds GCC, GCC High and DoD, the platform Web and the phase General Availability. Collection policies are managed in the Microsoft Purview portal; the roles that Learn lists for them are given under Risk assessment.
+The collection policy reference lists Windows devices onboarded to Microsoft 365 and managed by your organisation for the Devices data source. The roadmap record lists the clouds GCC, GCC High and DoD, the platform Web and the phase General Availability. Collection policies are managed in the Microsoft Purview portal; the roles that Learn lists for them are given under Risk assessment.
 
 ## Governance guidance
 
 ### Before rollout
 - Ask each Purview solution administrator whether any collection policy exists or is planned, including policies created by one-click DSPM recommendations.
-- List the device indicators enabled in each IRM policy and compare them with the activities selected in every device collection policy.
-- Ask the Endpoint DLP owner to confirm whether the Always audit file activity for devices setting is enabled, because Learn says device activity is not collected without it, even with a device collection policy.
 
 ### At rollout
 - Create or edit collection policies under Classifiers > Collection policies, and include in every device policy the activities your IRM policies monitor.
-- Review who holds the role groups that Learn lists for collection policies, and agree that IRM administrators are told before a device policy is deployed.
+- Agree that IRM administrators are told before a device policy is deployed.
 
 ### After rollout
 - Test that a monitored device activity such as File copied to removable media appears in IRM once a device collection policy is deployed.
@@ -142,11 +156,13 @@ The Devices data source covers devices onboarded to Microsoft 365 and managed by
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which device activities and data collection policies pass to Insider Risk Management</strong><br><small>Tenant</small><br><small class="controls__note">Learn lists DLP Compliance Management as a role and Insider Risk Management Admin among the role groups. Also reachable under Solutions &gt; Information Protection &gt; Classifiers &gt; Collection policies.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Loss Prevention › Classifiers › Collection policies <a href="https://learn.microsoft.com/purview/collection-policies-solution-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which device activities and data collection policies pass to Insider Risk Management</strong><br><small>Tenant</small><br><small class="controls__note">Security &amp; Compliance PowerShell; Public Preview, not available in all organizations. ScenarioConfig sets Activities and EnforcementPlanes; the device example uses Devices and an EndpointDevices location in Locations.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Loss Prevention › Classifiers › Collection policies <a href="https://learn.microsoft.com/purview/collection-policies-solution-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-FeatureConfiguration -Name &lt;name&gt; -FeatureScenario KnowYourData -Mode Enable -ScenarioConfig &lt;configuration-json&gt; -Locations &lt;locations-json&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The only control the Learn pages read give a path for is the collection policies page, and Microsoft Learn documents no API or PowerShell cmdlet for creating or changing collection policies at the time of writing (November 2026). Changes therefore go through the portal.
+Microsoft documents [New-FeatureConfiguration](https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration?view=exchange-ps) for creating collection policies and [Set-FeatureConfiguration](https://learn.microsoft.com/powershell/module/exchangepowershell/set-featureconfiguration?view=exchange-ps) for modifying them in Security & Compliance PowerShell. These cmdlets are Public Preview and are not available in all organizations.
+
+Learn lists DLP Compliance Management as a role and Insider Risk Management Admin among the role groups. Collection policies are also reachable under Solutions > Information Protection > Classifiers > Collection policies.
 
 The IRM policy that is affected is configured separately in Insider Risk Management, and Always audit file activity for devices is an Endpoint DLP setting described on Learn's [Configure endpoint data loss prevention settings](https://learn.microsoft.com/purview/dlp-configure-endpoint-settings) page. Role groups are listed on Learn's Create and deploy collection policies page.
 
@@ -162,16 +178,10 @@ cost: Low. Learn's Purview service description says there are no licensing requi
 impact: Medium. Insider Risk Management analysts and the admins who create collection policies notice; end users see nothing change. Only device indicators are affected, and only when a device collection policy is deployed.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters: first paragraph / behaviour: Nothing in the IRM policy itself shows why a collection policy has filtered an activity out. | Found: Searched: 'Insider risk management collection policy device indicators mismatch warning alert policy health'; opened the collection policies overview, policy indicators page and Create and manage Insider Risk Management policies, including its Policy health notification table. | Fix: Remove 'and nothing in the IRM policy itself shows why'. The sources do not establish what the UI can never display; the narrower documentation gap is already covered in Open questions.
-- [contradicted, blocker] Scope: second paragraph / availability: The Devices data source covers Microsoft 365-onboarded, organization-managed devices without an operating-system qualification. | Found: Devices | Devices onboarded to Microsoft 365 and managed by your org. | Windows devices onboarded into Microsoft 365. | Fix: Replace the sentence with 'The collection policy reference lists Windows devices onboarded to Microsoft 365 and managed by your organisation for the Devices data source.' Keep the reference citation; do not imply that every platform supported by IRM device indicators is covered. | Source: https://learn.microsoft.com/purview/collection-policies-policy-reference
-- [contradicted, blocker] controls[0].api; Governance controls: first paragraph / absence: Microsoft documents no API or PowerShell for creating or changing collection policies, so changes must go through the portal. | Found: Use the New-FeatureConfiguration cmdlet to create Microsoft Purview feature configurations within your organization, including: - Collection policies. ... This example creates a disabled collection policy named "Scoped collection policies for browser and devices" | Fix: Replace controls[0].api with kind 'powershell', call 'New-FeatureConfiguration -Name <name> -FeatureScenario KnowYourData -Mode Enable -ScenarioConfig <configuration-json> -Locations <locations-json>', and docs https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration?view=exchange-ps. Add to the note: 'Security & Compliance PowerShell; Public Preview, not available in all organizations. ScenarioConfig sets Activities and EnforcementPlanes; the device example uses Devices and an EndpointDevices location in Locations.' Replace the portal-only prose with 'Microsoft documents New-FeatureConfiguration for creating collection policies and Set-FeatureConfiguration for modifying them in Security & Compliance PowerShell. These cmdlets are Public Preview and are not available in all organizations.' Cite the New reference and https://learn.microsoft.com/powershell/module/exchangepowershell/set-featureconfiguration?view=exchange-ps. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration?view=exchange-ps
-- [contradicted, blocker] Governance controls: first paragraph / absence: The collection policies page is the only control for which the cited Learn pages provide a path. | Found: To access these settings, from the Microsoft Purview portal, go to Data loss prevention > Overview > Data loss prevention settings > Endpoint settings. | Fix: Remove 'The only control the Learn pages read give a path for is the collection policies page, and'. The Endpoint DLP page already linked in the next paragraph gives the route to endpoint settings, including Always audit file activity for devices. | Source: https://learn.microsoft.com/purview/dlp-configure-endpoint-settings
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Change & support; Governance guidance: Before rollout / applicability: Learn says device activities are not collected when Always audit file activity for devices is disabled, even with a device collection policy. | Found: If Always audit file activity for devices isn't enabled, activities aren't collected from devices, even if a collection policy is created scoped to devices. | Fix: Keep the attribution to the collection-policies overview, but add: 'The Endpoint DLP settings page also says to turn this setting off to audit activity only when onboarded devices are included in an active policy; confirm the applicable collection behaviour before treating it as a complete stop.' Cite https://learn.microsoft.com/purview/dlp-configure-endpoint-settings#always-audit-file-activity-for-devices. | Source: https://learn.microsoft.com/purview/collection-policies-solution-overview
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist asks administrators to check Always audit file activity for devices, but that control has no table row. | Found: Ask the Endpoint DLP owner to confirm whether the Always audit file activity for devices setting is enabled ...; the table has only 'Which device activities and data collection policies pass to Insider Risk Management'. | Fix: Remove the Before rollout checklist bullet beginning 'Ask the Endpoint DLP owner'. The missing control is Always audit file activity for devices; its existing explanatory prose and link can remain.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist asks administrators to take stock of enabled IRM device indicators, but that control has no table row. | Found: List the device indicators enabled in each IRM policy ...; the table has only 'Which device activities and data collection policies pass to Insider Risk Management'. | Fix: Remove the Before rollout checklist bullet beginning 'List the device indicators'. The missing control is IRM device-indicator configuration; retain the comparison advice already present in Risk assessment.
-- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist asks administrators to review role-group membership, but that access control has no table row. | Found: Review who holds the role groups that Learn lists for collection policies ...; the sole control row describes collection policies and only mentions roles in its note. | Fix: Replace the At rollout bullet beginning 'Review who holds' with 'Agree that IRM administrators are told before a device policy is deployed.' The missing control is Purview role-group membership; keep the documented role list in Risk assessment.
+- [supported, minor] Cost and licensing; front matter: licensing.notes; rationale: cost / cost: Some collection policy data sources use pay-as-you-go and require a linked Azure subscription. | Found: Some collection policy data sources and features are pay-as-you-go and require an Azure subscription to be linked before creating a policy. Copilot experiences; Enterprise AI; Unmanaged cloud app activity detected through non-Microsoft SASE and secure enterprise browser integrations | Fix: Narrow the cost rationale to the change being rated: 'Low. Applying device collection policies has no separate licensing requirement; endpoint DLP licensing applies. The indirect cost is administrator time to review policies.' Keep the existing explanation of other data sources in Cost and licensing. | Source: https://learn.microsoft.com/purview/collection-policies-policy-reference
+- [supported, minor] controls[0].ui; Governance controls table; Scope; Governance guidance: At rollout / admin-path: In the Microsoft Purview portal, Solutions > Data Loss Prevention > Classifiers > Collection policies reaches the collection policy list. | Found: In the Microsoft Purview portal, select Solutions > Data Loss Prevention > Classifiers > Collection policies. | Fix: Extend controls[0].ui.path to 'Solutions > Data Loss Prevention > Classifiers > Collection policies > + Create policy > + Add activities' to reach activity selection, and set controls[0].ui.docs to https://learn.microsoft.com/purview/collection-policies-create-deploy-policy. That page describes the intervening optional conditions and Next steps. | Source: https://learn.microsoft.com/purview/collection-policies-solution-overview
+- [unsupported, minor] rationale: impact / behaviour: End users see nothing change. | Found: Searched: Microsoft Purview device collection policies end user experience no change enforce activities; read collection policies overview, reference and service description. They describe filtering and lack of enforcement, not an assurance that end users see no change. | Fix: Remove 'end users see nothing change' from the impact rationale.
 -->

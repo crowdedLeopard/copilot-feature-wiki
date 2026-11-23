@@ -90,19 +90,23 @@ changes:
     note: "Corrected after the independent check: removed an unsupported claim about where the addition would show, added the commercial-cloud limit on security groups, and narrowed the description of Global Reader's reach."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 48 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-23"
+    note: "Corrected after the independent check: the first Before rollout bullet no longer says Global Reader and Security Reader read every setting."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 48 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 48
-  confirmed: 47
+  confirmed: 48
   unconfirmed: 0
-  contradicted: 1
-  attempts: 3
-  hash: "8340568b43e4ea284618ebe0417fa1d0"
+  contradicted: 0
+  attempts: 0
+  hash: "ccde9271da8e3d1d837a83c339a00ba9"
 ---
 
 ## What's changing
@@ -149,7 +153,7 @@ The roadmap says the role is added to Global Reader and Security Reader in Purvi
 ## Governance guidance
 
 ### Before rollout
-- Review who holds Global Reader and Security Reader in the Microsoft Entra admin center, and remove accounts that no longer need read access to every setting.
+- Review who holds Global Reader and Security Reader in the Microsoft Entra admin center, and remove accounts that no longer need their assigned reader role.
 - Identify who holds the Role Management role through the Organization Management and Purview Administrators role groups, so you know who can already manage role group membership.
 - Agree with your security and compliance leads whether visibility of all role assignments is acceptable for every Global Reader and Security Reader holder.
 
@@ -191,8 +195,8 @@ cost: Low. The only cost the sources show is admin time to review who holds Glob
 impact: Low. Only administrators who hold Global Reader or Security Reader, and the admins who manage those assignments, notice the change; end users do not.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance guidance: Before rollout, first bullet / role: The access-review advice treats Global Reader and Security Reader as roles providing read access to every setting. | Found: The primary difference between Global Reader and Security Reader is that a Global Reader can access **configuration and settings**. | Fix: Replace the first Before rollout bullet with: 'Review who holds Global Reader and Security Reader in the Microsoft Entra admin center, and remove accounts that no longer need their assigned reader role.' Security Reader is not an every-setting reader, and the cited Entra reference also documents Global Reader limitations. | Source: https://learn.microsoft.com/defender-office-365/scc-permissions
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Scope / role: The Purview permissions page maps the Entra Global Reader role to the Global Reader Purview role group. | Found: | Global Reader | The read-only version of the Global administrator role. View all settings and administrative information across Microsoft 365. ... | Global Reader | | Fix: After the mapping sentence add: 'The Entra Global Reader reference also says "Microsoft Purview doesn't support the Global Reader role", which conflicts with the Purview page's mapping.' The conflicting text is at https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference#global-reader. | Source: https://learn.microsoft.com/purview/purview-permissions
 -->

@@ -1,0 +1,770 @@
+{
+  "slug": "microsoft-teams-delete-meeting-generated-content-in-recap",
+  "roadmapId": 557170,
+  "title": "Microsoft Teams: organisers can delete meeting recording, transcript and AI notes from the recap",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "5 blocking findings (claims 25, 26, 33, 39, 51)"
+    ]
+  },
+  "counts": {
+    "claims": 55,
+    "confirmed": 48,
+    "unconfirmed": 3,
+    "contradicted": 4,
+    "blocker": 5,
+    "major": 1,
+    "minor": 3
+  },
+  "summary": "Hold: the briefing treats retention protection as unconfirmed even though Microsoft's retention rules cover deleted files in OneDrive and SharePoint. It also assigns an unsupported add-on requirement to the delete button and omits important exceptions for recording storage and recap without transcripts.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Teams has a new delete button on the meeting recap page.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "through the new delete button in recap page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "title; summary; What's changing; Scope; rationale: risk",
+      "type": "record",
+      "claim": "Meeting organisers can use the new recap delete button.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Meeting organizers can now easily delete meeting generated content",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "title; summary; What's changing; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "The recap button deletes the meeting recording.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "delete meeting generated content including recording, transcript, AI summary, and notes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "title; summary; What's changing; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "The recap button deletes the meeting transcript.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "delete meeting generated content including recording, transcript, AI summary, and notes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "summary; What's changing; Governance guidance",
+      "type": "record",
+      "claim": "The recap button deletes the meeting AI summary.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "delete meeting generated content including recording, transcript, AI summary, and notes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "title; summary; What's changing; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "The recap button deletes the meeting notes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "delete meeting generated content including recording, transcript, AI summary, and notes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance",
+      "type": "record",
+      "claim": "Files shared in the meeting are not deleted by the recap button.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Shared files in the meeting won't be deleted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phases are General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\", \"Targeted Release\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC and GCC High without asserting exclusion of other clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Desktop.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Desktop\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: defaultState; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "The launched button is available to meeting organisers without a separately documented admin enablement step.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Meeting organizers can now easily delete meeting generated content including recording, transcript, AI summary, and notes through the new delete button in recap page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[0]; summary; Why it matters; Governance controls",
+      "type": "absence",
+      "claim": "No tenant or meeting-policy switch specifically governing the recap delete button is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams delete recap content meeting organizers delete button admin policy license retention; Set-CsTeamsMeetingPolicy recap deletion prevent delete recap content. Read meeting memory, recap without transcripts, transcription and Set-CsTeamsMeetingPolicy syntax; no button-specific switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Learn has no dedicated page describing the full roadmap delete feature; the cited nearby actions do not identify this roadmap item.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams recap delete button \"557170\" \"organizers\"; Teams delete recap content meeting organizers delete button admin policy license retention. Opened intelligent recap, meeting memory and recap without transcripts; none identifies the roadmap item or enumerates its full delete scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "The meeting memory page tells organisers to open the recap menu and select Delete recap content to delete meeting memory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "The meeting organizer can delete meeting memory by deleting the meeting recap. First, navigate to the meeting recap. Then, open the ... menu, and select Delete recap content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "Meeting memory is in preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "Meeting memory is in preview and only available to organizations in the Teams TAP program.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "Meeting memory is available only to organisations in the Teams TAP programme.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "Meeting memory is in preview and only available to organizations in the Teams TAP program.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Organisers can delete the AI summary for recap without saved transcripts from the Recap tab.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Meeting organizers can delete the AI summary from the Recap tab or the corresponding Word document in OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Organisers can delete that AI summary through the corresponding Word document in OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Meeting organizers can delete the AI summary from the Recap tab or the corresponding Word document in OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Deleting that AI summary in either location deletes it in the other.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Deleting the AI summary from either location also deletes it from the other location.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Deleting the generated content is one click from the recap.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Teams recap delete button \"557170\" \"organizers\"; Teams \"Delete recap content\" \"policy\" \"delete\". Read meeting memory and recap without transcripts; neither gives a one-click procedure for the roadmap button.",
+      "severity": "major",
+      "fix": "Remove 'one click from the recap' and retain 'The decision to remove a meeting's recording, transcript and AI notes now sits with each organiser.'"
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Users can manually delete recordings before expiry unless a Purview retention policy prevents it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-teams-recording-compliance",
+      "quote": "Users can manually delete their recordings before the expiration date unless there's a Purview retention policy that prevents it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters; Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "A recording manually deleted during its retention period is held in the Preservation Hold library.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-teams-recording-compliance",
+      "quote": "If a user manually deletes a recording that's still in the retention period, the recording is held in the Preservation Hold library. However, the recording shows as deleted to the end user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters; Risk assessment; Governance guidance; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "Purview protection for content deleted through the recap is unconfirmed because Learn documents retention only for manually deleted recordings.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/retention-policies-sharepoint",
+      "quote": "All files stored in SharePoint (and SharePoint Embedded) or OneDrive sites can be retained by applying a retention policy or retention label.",
+      "severity": "blocker",
+      "fix": "Replace the broad caveat with 'Purview retention covers files in OneDrive, SharePoint and SharePoint Embedded; deleting an item subject to retention preserves its original content for compliance. The exact set of artifacts removed by the recap button remains to be confirmed.' Cite https://learn.microsoft.com/purview/retention-policies-sharepoint. Remove the assertion that expiry, retention and eDiscovery all assume content leaves on a chosen schedule. Keep pilot testing as advice, not as evidence that file retention is unconfirmed."
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure; Scope",
+      "type": "behaviour",
+      "claim": "Recordings of meetings and events are saved to the organiser's OneDrive.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/tmr-meeting-recording-change",
+      "quote": "For Channel meetings, the recording is stored in the SharePoint Teams site documentation library in a folder named Recordings.",
+      "severity": "blocker",
+      "fix": "In both places replace the unconditional storage statement with 'For non-channel meetings, recordings normally save to the organiser's OneDrive; channel meeting recordings save to the channel's SharePoint site. If the organiser has no OneDrive, storage falls back to a co-organiser or the recording initiator.' Cite https://learn.microsoft.com/microsoftteams/tmr-meeting-recording-change."
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Attendees in the organiser's organisation were given read access to the recording.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/tmr-meeting-recording-change",
+      "quote": "All other members of the meeting from the same organization as the organizer have read access, but no sharing and download permissions.",
+      "severity": "minor",
+      "fix": "Narrow the sentence to 'For ordinary non-channel meetings, other internal attendees normally have read access to the recording; some participants in large meetings may not receive access automatically, and channel meetings inherit channel permissions.'"
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure; rationale: impact",
+      "type": "behaviour",
+      "claim": "Deleting content removes it from attendees' ordinary view even if a compliance copy is retained.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-teams-recording-compliance",
+      "quote": "If a user manually deletes a recording that's still in the retention period, the recording is held in the Preservation Hold library. However, the recording shows as deleted to the end user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The exact eligibility for the new delete button beyond the roadmap's word organisers is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams recap delete content retention legal hold recover recording transcript organizers co-organizers; Teams recap delete button \"557170\" \"organizers\". Read meeting memory, recap without transcripts and recording permissions; no eligibility definition for the full roadmap button.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity; Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes organiser-driven deletion, not new data access or automatic or agent-driven deletion.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Meeting organizers can now easily delete meeting generated content including recording, transcript, AI summary, and notes through the new delete button in recap page. Shared files in the meeting won't be deleted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "Deleting or expiring a transcript or recording does not automatically delete meeting memory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "Meeting memory won't automatically be deleted if the transcript or recording is deleted or expired.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[2].note; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Users can change the expiration of recordings they control, so expiration is not legal protection on its own.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-teams-recording-compliance",
+      "quote": "End users can modify the expiration date of any recordings they control, so you shouldn't rely on meeting expiration settings for legal protection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost; Open questions",
+      "type": "licensing",
+      "claim": "The delete capability is an add-on because the recap it sits in requires Teams Premium or Microsoft Copilot.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Teams \"delete\" \"recap\" \"license\" \"charge\"; Teams delete recap content licensing basic recap Teams Premium meeting recording delete. Read recap licensing and Teams Premium comparison: they license intelligent experiences, not this delete operation or all recap access.",
+      "severity": "blocker",
+      "fix": "Set licensing.model to 'included'. Replace the notes with 'Teams use requires a Teams licence. No requirement specific to the recap delete button is published. Intelligent recap separately requires Teams Premium or Microsoft Copilot; recap without saved transcripts requires Microsoft Copilot.' Cite https://learn.microsoft.com/microsoftteams/user-access. Replace 'The recap it sits in needs a Teams Premium or Microsoft Copilot licence' with 'Intelligent recap requires Teams Premium or Microsoft Copilot.' Remove the premise in Open questions that all recap already requires that add-on."
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Intelligent recap requires Teams Premium or Microsoft Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "You must assign a Teams Premium license or Microsoft Copilot license to your users. For audio recap, you must assign a Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "AI-generated recap experiences including audio and video recap require Microsoft Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-recaps-app",
+      "quote": "AI-generated recap experiences, including audio recap and video recap, require a Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Generating recap without saved transcripts requires an organiser with Microsoft Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Organizers with a Microsoft Copilot license can generate AI summaries of Teams meetings without saving a recording or persistent transcript.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No licence requirement specific to the delete button is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams \"delete\" \"recap\" \"license\" \"charge\"; Teams delete recap content licensing basic recap Teams Premium meeting recording delete. Read intelligent recap, recap without transcripts, Meeting Recaps app and Teams licensing; none names a delete-button-specific entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter is documented for the delete button as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams \"delete\" \"recap\" \"license\" \"charge\"; Teams delete recap content licensing basic recap Teams Premium meeting recording delete. Read intelligent recap, recap without transcripts, Meeting Recaps app and Teams licensing; no deletion meter is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope",
+      "type": "applicability",
+      "claim": "Intelligent recap needs transcription turned on.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "With this feature, an AI summary is generated even when recording and transcription aren't enabled.",
+      "severity": "blocker",
+      "fix": "Replace 'Learn says intelligent recap needs transcription turned on' with 'The full intelligent recap experience requires transcription; intelligent recap without saving transcripts can generate an AI summary even when recording and transcription are not enabled.' Keep both existing recap sources."
+    },
+    {
+      "n": 40,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "When recording is turned off, the documented full recap experience omits the recording, speakers, topics and chapters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "If recording is turned off, users experience recap without the recording, speakers, topics, and chapters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "AI summaries for recap without saved transcripts are stored in the organiser's OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "The AI summary is stored as a read-only Word document in the organizer's OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Teams admin center > Meetings > Meeting policies > policy > Transcription reaches the transcription control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "In the left navigation of the Teams admin center, go to Meetings > Meeting policies. Select the policy that you want to edit or create a new one. Toggle Transcription On or Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].api; controls[1].note; Governance guidance",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowTranscription $true enables transcription under that meeting policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "Set-CsTeamsMeetingPolicy -Identity \"Your Policy Name\" -AllowTranscription $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Teams admin center > Meetings > Meeting policies > Recording & transcription > Recordings and transcriptions automatically expire reaches automatic expiry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-teams-recording-expiration-policy",
+      "quote": "You can turn off the Recordings and transcriptions automatically expire setting in the Teams admin center under Meetings > Meeting policies > Recording & transcription.",
+      "severity": "minor",
+      "fix": "Use 'Meetings > Meeting policies > policy > Recording & transcription > Recordings and transcriptions automatically expire'. The policy selection is an omitted target-picking step, not a wrong route."
+    },
+    {
+      "n": 45,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -NewMeetingRecordingExpirationDays <days> sets the recording and transcript expiration period.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-teams-recording-expiration-policy",
+      "quote": "To set the expiration time using PowerShell, run the following command: Set-CsTeamsMeetingPolicy -Identity <policy name> -NewMeetingRecordingExpirationDays <days>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Changing the recording expiration setting affects only newly created recordings and transcripts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-teams-recording-expiration-policy",
+      "quote": "Any changes to this setting only affect newly created recordings and transcripts. You can't change the expiration time on existing meeting recordings and transcripts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The stated policy route through Copilot and other AI reaches the default Intelligent Recap .docx expiration control for non-transcribed meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Under Copilot and other AI, next to Set a default expiration time for Intelligent Recap .docx files for non-transcribed meetings, enter the number of days that documents are retained.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[3].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policyname> -IntelligentRecapDocxFileExpirationDays 180 sets the AI summary document expiration to 180 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "The following example sets the default expiration time to 180 days. Set-CsTeamsMeetingPolicy -Identity <policyname> -IntelligentRecapDocxFileExpirationDays 180",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[3].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "The document expiration control accepts 1 to 9999 days, or -1 for no expiration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "You can specify a value from 1 to 9999 days, or -1 for no expiration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "A Teams admin can delete a meeting memory file using Remove-AIGeneratedKnowledge -ThreadId <String> -CallId <String>.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "A Microsoft Teams admin can also delete a meeting memory file through PowerShell: ... Run the following command (ThreadId is required; CallId is optional) ... Remove-AIGeneratedKnowledge -ThreadId <String> -CallId <String>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance: At rollout; controls notes; Governance controls",
+      "type": "applicability",
+      "claim": "A request to disable the button cannot be met by any policy change today, and the listed policies cannot stop its use.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Set-CsTeamsMeetingPolicy recap deletion prevent delete recap content. Read recap without transcripts, meeting memory and policy syntax. AllowIntelligentRecap can disable intelligent recap for all meetings; no source establishes the effect on the new delete button.",
+      "severity": "blocker",
+      "fix": "Replace the absolute policy claim with 'No policy setting specifically for the recap delete button is documented as of November 2026.' In the notes say 'These rows document transcription and expiration controls, not a button-specific switch.' Do not infer that no broader policy change can affect its availability."
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: Before rollout",
+      "type": "consistency",
+      "claim": "The checklist calls transcription the first controls row and the expiry controls the second and third rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Transcription ... (first controls row)' and expiry '(second and third controls rows)'. Table first row: 'Tenant or policy switch for the recap delete button'.",
+      "severity": "minor",
+      "fix": "Change '(first controls row)' to '(second controls row)' and '(second and third controls rows)' to '(third and fourth controls rows)'."
+    },
+    {
+      "n": 53,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Purview file retention takes precedence over Teams recording expiration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-teams-recording-compliance",
+      "quote": "File retention takes precedence over file deletion. A Teams meeting recording expiration policy can't delete a Teams meeting recording with a Purview retention policy until after the retention period is completed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap publishes no preview date for this item.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap associates this item with Microsoft Teams and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [ \"Microsoft Teams\", \"Microsoft Copilot (Microsoft 365)\" ]",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T04:15:50.592Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=557170",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-meeting-recaps-app",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-teams-recording-compliance",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-teams-recording-expiration-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/tmr-meeting-recording-change",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether users can transcribe meetings",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Transcription"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether users can transcribe meetings",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether recordings and transcripts expire automatically, and after how many days",
+        "docs": "https://learn.microsoft.com/microsoftteams/manage-teams-recording-expiration-policy",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Recording & transcription",
+          "Recordings and transcriptions automatically expire"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether recordings and transcripts expire automatically, and after how many days",
+        "docs": "https://learn.microsoft.com/microsoftteams/manage-teams-recording-expiration-policy",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Expiry of AI summary documents for meetings without saved transcripts",
+        "docs": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Copilot and other AI",
+          "Set a default expiration time for Intelligent Recap .docx files for non-transcribed meetings"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Expiry of AI summary documents for meetings without saved transcripts",
+        "docs": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

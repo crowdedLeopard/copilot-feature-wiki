@@ -56,7 +56,7 @@ controls:
     scope: "user"
     ui:
       surface: "Microsoft 365 Apps admin center"
-      path: "Customization > Policy Management > Policy configurations > Create > Choose the scope > Configure Settings > Enable Purview Data Loss Prevention (DLP) policy tips in Outlook"
+      path: "Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Enable Purview Data Loss Prevention (DLP) policy tips in Outlook"
       docs: "https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref"
     api: null
     note: "Default Disabled. Target individuals or groups. Roles: Office Apps Administrator (recommended), Security Administrator or Global Administrator. Governs the tip UI, not the DLP rules."
@@ -64,13 +64,13 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Data loss prevention > Policies > + Create policy > Create or customize advanced DLP rules > Create rule > User notifications > Policy tips > Show the policy tip as a dialog for the end user before send > Allow override from M365 services"
+      path: "Data loss prevention > Policies > + Create policy > Custom > Custom > Full directory > Exchange email > Define policy settings > Create or customize advanced DLP rules > Create rule > User notifications > Policy tips"
       docs: "https://learn.microsoft.com/purview/dlp-osp-get-started"
     api:
       kind: "powershell"
       call: "New-DlpComplianceRule -Name <rule name> -Policy <policy name> -BlockAccess $true -NotifyAllowOverride WithJustification"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule"
-    note: "Oversharing procedure, not a separate documented Mac dialog path. Wizard steps before Create or customize: Custom, Custom, Full directory, Exchange email, Define policy settings. Override is per rule."
+    note: "Under Policy tips, select Show the policy tip as a dialog for the end user before send, then Allow override from M365 services. Oversharing procedure, not a Mac-specific path. Override is per rule."
 confidence: "medium"
 created: "2026-11-23"
 updated: "2026-11-23"
@@ -84,19 +84,23 @@ changes:
     note: "Corrected the override portal path and the Cloud Policy route, narrowed the licence-varies statements to the support matrix, removed a disputed parameter value and an unsupported data-access claim, and dropped the DLP-report checklist step."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 57 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-23"
+    note: "Corrected the override control's Purview portal path to include the Custom template and wizard choices (the last step is now in the note), and added the Start with the basics step to the Cloud Policy path."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 56
+  claims: 70
+  confirmed: 70
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "5bc32cfbbec39cad7ee341457f122f4d"
+  contradicted: 0
+  attempts: 0
+  hash: "4e07a2a6ee079b0534e68b9d55c0cd93"
 ---
 
 ## What's changing
@@ -169,8 +173,8 @@ The tip UI setting is targeted at individuals or groups through Cloud Policy, wh
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether DLP policy tips appear in Outlook for Mac</strong><br><small>User</small><br><small class="controls__note">Default Disabled. Target individuals or groups. Roles: Office Apps Administrator (recommended), Security Administrator or Global Administrator. Governs the tip UI, not the DLP rules.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Choose the scope › Configure Settings › Enable Purview Data Loss Prevention (DLP) policy tips in Outlook <a href="https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether a DLP rule lets users override its policy tip, and whether a justification is required</strong><br><small>Tenant</small><br><small class="controls__note">Oversharing procedure, not a separate documented Mac dialog path. Wizard steps before Create or customize: Custom, Custom, Full directory, Exchange email, Define policy settings. Override is per rule.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Create or customize advanced DLP rules › Create rule › User notifications › Policy tips › Show the policy tip as a dialog for the end user before send › Allow override from M365 services <a href="https://learn.microsoft.com/purview/dlp-osp-get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpComplianceRule -Name &lt;rule name&gt; -Policy &lt;policy name&gt; -BlockAccess $true -NotifyAllowOverride WithJustification</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether DLP policy tips appear in Outlook for Mac</strong><br><small>User</small><br><small class="controls__note">Default Disabled. Target individuals or groups. Roles: Office Apps Administrator (recommended), Security Administrator or Global Administrator. Governs the tip UI, not the DLP rules.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Start with the basics › Choose the scope › Configure Settings › Enable Purview Data Loss Prevention (DLP) policy tips in Outlook <a href="https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether a DLP rule lets users override its policy tip, and whether a justification is required</strong><br><small>Tenant</small><br><small class="controls__note">Under Policy tips, select Show the policy tip as a dialog for the end user before send, then Allow override from M365 services. Oversharing procedure, not a Mac-specific path. Override is per rule.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Custom › Custom › Full directory › Exchange email › Define policy settings › Create or customize advanced DLP rules › Create rule › User notifications › Policy tips <a href="https://learn.microsoft.com/purview/dlp-osp-get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpComplianceRule -Name &lt;rule name&gt; -Policy &lt;policy name&gt; -BlockAccess $true -NotifyAllowOverride WithJustification</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -191,10 +195,8 @@ cost: Low. Learn documents no meter or separate price for Mac policy tips; the c
 impact: Low. Only Mac Outlook users in the groups an admin targets see the tips, and only when they match a DLP rule; admins choose the pilot scope.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls: second table row / admin-path: The printed route goes directly from + Create policy to Create or customize advanced DLP rules, then to the override option. | Found: Select Custom from the Categories list. Select Custom from the Regulations list. Select Full directory under Admin units. Select only the Exchange email location. On the Define policy settings page, select Create or customize advanced DLP rules. | Fix: Replace controls[1].ui.path and its rendered route with 'Data loss prevention > Policies > + Create policy > Custom > Custom > Full directory > Exchange email > Define policy settings > Create or customize advanced DLP rules > Create rule > User notifications > Policy tips > Show the policy tip as a dialog for the end user before send > Allow override from M365 services'. The note lists the missing choices, but they must be in the navigable route itself; the Custom template selections decide how the wizard proceeds. | Source: https://learn.microsoft.com/purview/dlp-osp-get-started
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls: first table row / admin-path: The printed Microsoft 365 Apps admin center route reaches the policy-tip setting through Customization, Policy Management and the configuration wizard. | Found: On the Start with the basics page, enter a name (required) and a description (optional), then select Next. | Fix: Insert 'Start with the basics' after 'Create' in controls[0].ui.path and the rendered first table row. The omitted page only collects a name and description; the remaining wizard steps are documented here, and the cited Mac reference supplies the final policy name. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
+- [supported, minor] controls[1].ui / admin-path: The printed Purview portal route reaches Policy tips in the documented oversharing rule creation procedure. | Found: Select Full directory under Admin units. ... Select only the Exchange email location. ... On the Define policy settings page, select Create or customize advanced DLP rules. ... Select Create rule. ... Set the User notifications toggle to On. ... Select Policy tips | Fix: Extend controls[1].ui.path to 'Data loss prevention > Policies > + Create policy > Custom > Custom > Admin units > Full directory > Exchange email > Define policy settings > Create or customize advanced DLP rules > Create rule > User notifications > Policy tips > Show the policy tip as a dialog for the end user before send (available for Exchange workload only) > Allow override from M365 services'. Keep the note that this is the oversharing procedure, not a Mac-specific route. Source: https://learn.microsoft.com/purview/dlp-osp-get-started. | Source: https://learn.microsoft.com/purview/dlp-osp-get-started
 -->

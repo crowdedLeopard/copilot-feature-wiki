@@ -1,0 +1,732 @@
+{
+  "slug": "microsoft-viva-viva-glint-configure-user-and-survey-data-retention-for-deleted-users-in-vi",
+  "roadmapId": 560548,
+  "title": "Viva Glint: choose whether to retain or erase survey data for deleted users",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "2 blocking findings (claims 21, 50)"
+    ]
+  },
+  "counts": {
+    "claims": 55,
+    "confirmed": 52,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: the briefing describes instance-specific settings as covering the whole tenant, although Microsoft documents independent settings and deletion requests for each Viva Glint experience. It also incorrectly excludes deleted users from the survey data retention policy, which Microsoft says applies to all Glint survey data.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-10-01T23:00:07.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-01T23:00:07\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "This is a Microsoft Viva feature for Viva Glint.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"title\": \"Microsoft Viva: Viva Glint - Configure user and survey data retention for deleted users in Viva Glint\", \"products\": [\"Microsoft Viva\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; summary",
+      "type": "record",
+      "claim": "The roadmap describes a control allowing service administrators to retain or delete data for users deleted manually from Glint or through Microsoft Entra signals.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "service administrators can now configure whether to retain or delete survey and relevant indefinable user data for users who are manually deleted from Glint or deleted via the signals received via Microsoft Entra.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "The roadmap gives preservation of consistency in previously generated survey reports as a reason for the control.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This will ensure that the consistency of previously generate Glint survey reports is retained and user data is handled in accordance with the relevant organizational policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The deleted-user retention control is at Configuration > Service Configuration > General Settings > User Data > Retain survey responses and identifiable data for deleted users in the Viva Glint admin dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "Select the **Configuration** symbol on your Viva Glint admin dashboard and then **General Settings** in the **Service Configuration** section. | ## User Data | ### Retain survey responses and identifiable data for deleted users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No API or automation for configuring deleted-user survey and identifiable data retention is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Glint retain survey responses identifiable deleted users settings Microsoft Graph REST API PowerShell. Opened manage-general-settings, delete-user-data, delete-user-data-faq and raw-data-request-response; no operation configuring this setting found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[1].ui; Governance controls; Scope",
+      "type": "admin-path",
+      "claim": "Manual deletion is available at Configuration > Employees > People > user > Actions > Delete User in the Viva Glint admin dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/raw-data-request-response",
+      "quote": "From the admin dashboard, select the **Configuration** symbol, then in **Employees** choose **People**. | On the user's profile, select **Delete User** from the **Actions** dropdown menu.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "No API equivalent for manual deletion of a Glint user and their data is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Glint delete user API Microsoft Graph PowerShell endpoint; site:learn.microsoft.com/viva/glint Viva Glint delete user REST API Graph PowerShell. Opened Glint deletion and DSR pages; Graph user-delete results delete directory accounts, not Glint users directly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[2].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The survey retention policy is at Configuration > Service Configuration > General Settings > User Data > Data retention policy in the Viva Glint admin dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "Select the **Configuration** symbol on your Viva Glint admin dashboard and then **General Settings** in the **Service Configuration** section. | ## User Data | ### Data retention policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[2].api; Governance controls",
+      "type": "absence",
+      "claim": "No API or automation configuring the Glint Data retention policy is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Glint Data retention policy API REST PowerShell configuration; site:learn.microsoft.com/viva/glint \"Data retention policy\" API. Opened manage-general-settings and read data-residency-for-viva-glint search excerpts; no setting operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: defaultState; summary; controls[0].note; rationale: risk",
+      "type": "default",
+      "claim": "The deleted-user retention control defaults to On, retaining data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "| **On** (default) | Retain all survey responses and identifiable data for deleted users, including first and last name, email address and employee ID. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "On retains all survey responses and identifiable data, including first and last name, email address and employee ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "Retain all survey responses and identifiable data for deleted users, including first and last name, email address and employee ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Why it matters; Risk assessment; controls[0].note; rationale: risk",
+      "type": "behaviour",
+      "claim": "Off erases all data related to the requester, including survey responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "| **Off** | Erase all data related to the requester, including survey responses. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "summary; What's changing; Why it matters; controls[0].note; Governance guidance",
+      "type": "applicability",
+      "claim": "The control is platform-level and applies equally to all requests and all survey programs within the Glint instance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "Any initial actions or subsequent changes in General Settings apply to all survey programs in your Viva Glint platform. | This configuration is set at the platform level and applies to all requests equally.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Scope; controls[0].scope; controls[2].scope; Governance controls: Tenant labels",
+      "type": "applicability",
+      "claim": "The retention settings apply to the whole tenant.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/viva/glint/setup/multi-glint-exp-overview",
+      "quote": "Microsoft Viva Glint supports the ability to install multiple instances of Viva Glint to one Microsoft Entra tenant. | Each Viva Glint experience allows Viva Glint Admins to independently manage: 1. In-app settings",
+      "severity": "blocker",
+      "fix": "Set controls[0].scope and controls[2].scope to 'other', and replace their rendered 'Tenant' labels with 'Viva Glint instance'. Replace 'The setting applies to the whole Viva Glint platform for the tenant, not per survey program' with 'The setting applies to all survey programs in the selected Viva Glint instance. Multiple experiences in one tenant have independent in-app settings.' Cite https://learn.microsoft.com/viva/glint/setup/multi-glint-exp-overview."
+    },
+    {
+      "n": 22,
+      "where": "Scope; What's changing",
+      "type": "applicability",
+      "claim": "The control handles Data Subject Requests and Microsoft Entra ID delete signals.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "Manage survey and user data in response to a Data Subject Request (DSR) or a delete signal from Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; controls[1].note; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "A deleted employee record remains soft-deleted for 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "A user's employee record is in a soft-deleted state for 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "During soft-delete, the employee record can be updated back to the status supplied in the HRIS file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "During this period, the employee record can be modified from its soft-deleted state and updated to the status provided in the HRIS file. | **Off** | Update the already soft deleted records with the status provided in the HRIS file.",
+      "severity": "minor",
+      "fix": "Qualify that sentence with: 'This depends on the separate Disregard Employee IDs of previously deleted employees control: Off permits the update when uploaded employee IDs and email addresses match; On, the default, excludes those records from uploads.' Source: https://learn.microsoft.com/viva/glint/setup/manage-general-settings#disregard-employee-ids-of-previously-deleted-employees."
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment: Autonomy & actions; controls[1].note",
+      "type": "behaviour",
+      "claim": "After 30 days, permanent deletion occurs in accordance with the User Data control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "After the 30-day period, all data related to the employee is permanently deleted in accordance with this controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters; controls[1].note; rationale: risk",
+      "type": "behaviour",
+      "claim": "Permanently deleted survey responses and identifiable data cannot be restored.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/delete-user-data",
+      "quote": "Permanently deleted survey responses and identifiable data can't be restored.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Risk assessment: Security & identity; Open questions",
+      "type": "date",
+      "claim": "Learn still states that Microsoft Entra delete-signal processing is paused until September 30, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "Processing of delete signals from Microsoft Entra in Viva Glint is paused until September 30, 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Open questions",
+      "type": "date",
+      "claim": "The FAQ says live Microsoft Entra delete-signal processing starts again from October 1, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/delete-user-data-faq",
+      "quote": "Starting October 1, 2026, we will start processing these live signals once again.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance; Open questions",
+      "type": "date",
+      "claim": "Historical Microsoft Entra delete signals received from June 2025 to September 2026 are processed under the same user data settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/delete-user-data-faq",
+      "quote": "We will also be processing the historical delete signals received from Microsoft Entra for the period June 2025 - September 2026 following the same user data control settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Historical processing does not delete records where detected hierarchy changes caused user statuses to change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/delete-user-data-faq",
+      "quote": "During historical signal processing, user records will not be deleted if hierarchy changes were detected that caused user statuses to be modified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Microsoft advises reviewing active and inactive users for records that should have Deleted status but have not been deleted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/delete-user-data-faq",
+      "quote": "Review the list of active and inactive users to identify any users who should have a Deleted status but have not yet been deleted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Risk assessment: Data exposure; Open questions",
+      "type": "date",
+      "claim": "From September 1, 2026, Microsoft offers only retain or erase, with no deleted-user de-identification option that preserves responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/delete-user-data-faq",
+      "quote": "No, starting September 1, 2026 we only offer the ability for customers to either retain all survey responses and identifiable data for deleted users, including first and last name, email address and employee ID or erase all data related to the requester, including survey responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The old Delete survey data for deleted users value carries over to the new retention control with its On/Off value inverted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "If you previously had **Delete survey data for deleted users** set to Off, we will toggle this new control **Retain survey responses and identifiable data for deleted users** to On and vice-versa.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope; controls[0].note; Open questions",
+      "type": "applicability",
+      "claim": "Learn says changes apply to users deleted from feature release onward, not retrospectively.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "Changes only apply to deleted users from the point of feature release and going forward, not retrospectively.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Deleted Glint users are removed from distribution lists and future surveys.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/delete-user-data",
+      "quote": "When a user is deleted from Glint, they are removed from distribution lists and future surveys.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Deletion removes the user's role definitions and reporting permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/delete-user-data",
+      "quote": "The user's role definitions and their reporting permissions are removed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "A deleted user's direct reports are assigned to a placeholder name that can be updated later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/delete-user-data",
+      "quote": "If the user has direct reports, their reports are assigned to a placeholder name, which can be updated later.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Learn says not to create a new record using the same email address or employee ID during the 30-day soft-delete period.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/delete-user-data",
+      "quote": "When a user is deleted, their employee record remains in a soft-deleted state for 30 days. During this period, don't create a new user record with the same email address or employee ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Reusing identifiers during soft-delete can cause upload failures or conflicts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/delete-user-data-faq",
+      "quote": "Don't create a new user record or reuse the same identifiers for another user during the 30-day soft-delete period. Reusing identifiers too soon can cause sign-in, sync, or upload conflicts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Activity Audit Log is in the Service Configuration section of the admin dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/delete-user-data",
+      "quote": "Return to the admin dashboard and select **Activity Audit Log** in the **Service Configuration** section.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The audit log should list the manual user deletion event with status Success.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/delete-user-data",
+      "quote": "The user deletion action should be listed in the **Event** column and its status should read **Success**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The audit event's Details column shows Deleted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/delete-user-data",
+      "quote": "The **Details** column shows **Deleted**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The control has licensing model included as an option within the already licensed Viva Glint product.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/glint-order-teams",
+      "quote": "The purchase of a Viva Suite or Viva Glint subscription plan is required for using Microsoft Viva Glint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Using Viva Glint requires a Viva Suite or Viva Glint subscription plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/glint-order-teams",
+      "quote": "The purchase of a Viva Suite or Viva Glint subscription plan is required for using Microsoft Viva Glint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The total active license count should be at least the number of active Viva Glint users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/glint-order-teams",
+      "quote": "The total number of active licenses in your subscriptions should be greater than or equal to the number of active users in the app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Individual user license assignment is not required to use Viva Glint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/glint-order-teams",
+      "quote": "Individual user license assignment isn't required for using Viva Glint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: licensing.notes; Cost and licensing; front matter: cost; rationale: cost",
+      "type": "absence",
+      "claim": "The licensing and General Settings pages publish no separate license, meter or price for this control; the known incremental cost is administrative time.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Glint deleted users retention setting license pricing meter charge. Opened glint-order-teams and manage-general-settings; neither names a separate license, meter or price for this control. Results describe data handling, not feature-specific billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[2].note; Governance controls",
+      "type": "default",
+      "claim": "The Data retention policy defaults to Until subscription ends.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "| **Until subscription ends** (default) | Glint data is retained indefinitely as long as the tenant has an active Viva Glint subscription. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "A custom survey retention period must be between 6 and 1000 months.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "Enter a numerical retention period (in months) to define the data retention time period. The value must be between 6-1000 months.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The Data retention policy is not a rule for deleted users.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "This will apply to all Glint survey data including programs, 360 data, associated reporting conversations, actions, and more. | When the retention period is met, applicable Glint survey data is permanently deleted.",
+      "severity": "blocker",
+      "fix": "Replace 'and is not a rule for deleted users, so it does not replace the control above' with 'and applies to all Glint survey data; it does not replace the separate decision whether to retain or erase data when a user is deleted'. Source: https://learn.microsoft.com/viva/glint/setup/manage-general-settings#data-retention-policy."
+    },
+    {
+      "n": 51,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "No per-program or per-user value for the deleted-user retention setting is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Glint general settings user data permissions roles per survey program retain deleted users. Opened manage-general-settings and deletion pages; they state platform-level scope and all requests, with no program-specific or user-specific override.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope; Governance guidance: At rollout; rationale: impact",
+      "type": "role",
+      "claim": "Viva Glint Admins, as data controllers, can choose retain or erase.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/delete-user-data",
+      "quote": "Viva Glint Admins, as data controllers, can choose to either: retain all survey responses and identifiable data for deleted users, including first and last name, email address and employee ID, or erase all data related to the requester, including survey responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "The feature pages do not list additional role permissions for changing this particular setting beyond naming Viva Glint Admins as data controllers.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Glint general settings user roles permissions service admin. Opened role-definitions and feature pages; read set-up-user-roles and post-provisioning-next-steps excerpts. Service Admin has all permissions; no additional role for this specific control was identified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "consistency",
+      "claim": "Every control the checklist tells readers to check is represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check the Activity Audit Log in the Service Configuration section after a manual deletion. | The controls table lists deleted-user retention, manual user deletion and Data retention policy, but not Activity Audit Log.",
+      "severity": "minor",
+      "fix": "Remove the Activity Audit Log checklist bullet from Governance guidance: After rollout; that checklist control has no corresponding table row."
+    },
+    {
+      "n": 55,
+      "where": "controls[2].governs; controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Data retention policy is a separate control defining how long Glint holds survey data, rather than the deleted-user retain-or-erase switch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+      "quote": "### Data retention policy | Define how long you would like Viva Glint to hold onto your Glint survey data for. | Use the **Data retention policy** control to define the data retention policy for your Glint instance.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T04:15:48.613Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=560548",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/glint/setup/delete-user-data",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/glint/setup/delete-user-data-faq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/glint/setup/raw-data-request-response",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/glint/setup/glint-order-teams",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether survey responses and identifiable data are retained or erased for deleted users",
+        "docs": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+        "reachable": true,
+        "segments": [
+          "Configuration",
+          "Service Configuration",
+          "General Settings",
+          "User Data",
+          "Retain survey responses and identifiable data for deleted users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Manual deletion of a user and their data",
+        "docs": "https://learn.microsoft.com/viva/glint/setup/raw-data-request-response",
+        "reachable": true,
+        "segments": [
+          "Configuration",
+          "Employees",
+          "People",
+          "Actions",
+          "Delete User"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "How long Glint holds survey data, separate from deleted-user handling",
+        "docs": "https://learn.microsoft.com/viva/glint/setup/manage-general-settings",
+        "reachable": true,
+        "segments": [
+          "Configuration",
+          "Service Configuration",
+          "General Settings",
+          "User Data",
+          "Data retention policy"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
