@@ -12,13 +12,13 @@ platforms: ["Desktop"]
 targetDate: "October CY2026"
 previewDate: "April CY2026"
 risk: "medium"
-cost: "low"
+cost: "variable"
 impact: "medium"
 defaultState: "on"
 action: "act-now"
 licensing:
-  model: "included"
-  notes: "Learn says the Word plugin is enabled for Microsoft 365 Copilot commercial subscribers, and that users of Cowork plugins must have Microsoft 365 Copilot licences. The Manage Copilot for legal page names no separate price or meter."
+  model: "mixed"
+  notes: "The Word legal plugin is enabled for Microsoft 365 Copilot commercial subscribers. Cowork also uses usage-based billing through Copilot Credits, including consumption from skill calls; Cowork access requires a spending policy that includes the user and selects Cowork. Manage Copilot for legal names no separate legal-plugin price or meter."
 audiences: ["m365-admin","compliance","security","change-adoption"]
 tags: ["m365-copilot","word","cowork","plugins","cloud-policy","microsoft-365-apps","m365-admin-center"]
 sources:
@@ -34,8 +34,20 @@ sources:
   - title: "Available plugins for Copilot Cowork"
     url: "https://learn.microsoft.com/copilot/cowork/cowork-available-plugins"
     kind: "learn"
+  - title: "Manage Copilot Cowork for your organization"
+    url: "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance"
+    kind: "learn"
+  - title: "Plan Licensing and Cost for Microsoft 365 Copilot Extensibility"
+    url: "https://learn.microsoft.com/plugins/cost-considerations"
+    kind: "learn"
+  - title: "Package Management API overview"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview"
+    kind: "learn"
   - title: "copilotPackage: block"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
+    kind: "learn"
+  - title: "Update Copilot package"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update"
     kind: "learn"
   - title: "MC1509799: Microsoft 365 Copilot: Legal plugins in Word and Cowork"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1509799"
@@ -60,38 +72,48 @@ controls:
       surface: "Microsoft 365 admin center"
       path: "Agents > Tools > plugin > Users > Block"
       docs: "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins"
-    api: null
-    note: "Needs a tenant administrator or the Copilot administrator role. Takes effect for new conversations; those in progress continue. Does not govern the Word plugin."
+    api:
+      kind: "graph"
+      call: "POST /beta/copilot/admin/catalog/packages/{id}/block"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
+    note: "Tenant or Copilot administrator role. New conversations only. Not the Word plugin. Package Management API preview; needs a Microsoft Agent 365 licence and delegated CopilotPackages.ReadWrite.All; beta not supported in production."
   - governs: "Which users or groups can find the Legal for Cowork plugin"
     scope: "group"
     ui:
       surface: "Microsoft 365 admin center"
       path: "Agents > Tools > plugin > Users > Available to specific users or groups"
       docs: "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins"
-    api: null
-    note: "Admins can also deploy the plugin with Installed for: All users or Specific users/groups. Country or region scoping is not supported; use security groups."
+    api:
+      kind: "graph"
+      call: "PATCH /beta/copilot/admin/catalog/packages/{id}"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update"
+    note: "Body sets allowedUsersAndGroups and required availableTo (allowedForSome for a selected audience). Preview API: needs a Microsoft Agent 365 licence and delegated CopilotPackages.ReadWrite.All; beta not supported in production."
 confidence: "high"
 created: "2026-11-22"
-updated: "2026-11-22"
+updated: "2026-11-23"
 roadmapModified: "2026-10-20T23:00:34"
 changes:
   - date: "2026-11-22"
     note: "First briefing for the Worldwide legal plugins in Word and Cowork: Word plugin on by default, Cowork plugin added by users, with the separate admin control for each."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 6 of 76 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected: added the beta Graph block and availability operations for the Cowork plugin, licensing now mixed with Cowork usage-based billing (cost variable), softened rollout wording and removed the audit checklist step."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 76 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-22"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-23"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 76
-  confirmed: 70
+  confirmed: 74
   unconfirmed: 0
-  contradicted: 6
-  attempts: 1
-  hash: "00aaade5ae398f6178fbb3c308966bd5"
+  contradicted: 2
+  attempts: 0
+  hash: "9faa408de94bb907d94640f8869c48f9"
 ---
 
 ## What's changing
@@ -106,7 +128,7 @@ MC1509799 also says the Legal Agent is being retired and that existing Legal Age
 
 If nobody acts, the Word plugin is available to Microsoft 365 Copilot commercial subscribers in Word desktop, because Learn says it is enabled by default. The Cowork plugin does not appear for users on its own: Learn says users must add it, although an administrator can also deploy it. Legal teams handle privileged and confidential material, so the decision is whether you want AI legal skills available to every licensed Word user, or only to selected groups.
 
-The two plugins sit in two different admin centres and need two separate decisions. Microsoft's notice names both controls and says each can be turned off for all users, so settle the answer with your legal and compliance leads before the rollout completes in mid-December 2026.
+The two plugins sit in two different admin centres and need two separate decisions. Microsoft's notice names both controls and says each can be turned off for all users, so settle the answer with your legal and compliance leads before the rollout is expected to complete by mid-December 2026.
 
 ## Risk assessment
 
@@ -134,7 +156,9 @@ The two plugins sit in two different admin centres and need two separate decisio
 
 Learn's Manage Copilot for legal page says the Word plugin is enabled for all Microsoft 365 Copilot commercial subscribers, and the Manage plugins for Copilot Cowork page says users of Cowork plugins must have Microsoft 365 Copilot licences assigned. MC1509799 says users with Microsoft 365 Copilot commercial licences are affected and asks administrators to make sure licences are assigned to eligible users.
 
-The Manage Copilot for legal page names no separate licence, price or meter for the legal plugins. Any charge for the third-party legal sources the plugins can connect to is not covered by these pages.
+Cowork also uses usage-based billing through Copilot Credits, including consumption from skill calls. Learn says Cowork access requires a spending policy that includes the user and selects Cowork. See [Manage Copilot Cowork for your organization](https://learn.microsoft.com/copilot/cowork/cowork-admin-governance) and [Plan Licensing and Cost for Microsoft 365 Copilot Extensibility](https://learn.microsoft.com/plugins/cost-considerations).
+
+The Manage Copilot for legal page names no separate legal-plugin price or meter. Any charge for the third-party legal sources the plugins can connect to is not covered by these pages.
 
 Indirect costs are admin time to decide and configure the two controls, communication to legal teams, and updated help desk guidance. Learn says Audit Standard provides Cowork plugin activity logs at no extra cost.
 
@@ -146,7 +170,7 @@ Indirect costs are admin time to decide and configure the two controls, communic
 
 **Roles.** Learn says Cloud Policy can be managed with the Office Apps Administrator role (recommended), Security Administrator or Global Administrator. Managing Cowork plugins needs a tenant administrator or the Copilot administrator role.
 
-**Rollout.** Public preview began in late April 2026 and general availability began in mid-October 2026; MC1509799 expects both to complete by mid-December 2026.
+**Rollout.** Public preview began in late April 2026 and MC1509799 scheduled general availability (Worldwide) to begin rolling out in mid-October 2026; MC1509799 expects both to complete by mid-December 2026.
 
 ## Governance guidance
 
@@ -166,7 +190,6 @@ Indirect costs are admin time to decide and configure the two controls, communic
 
 ### After rollout
 
-- Search the Microsoft Purview audit log for Copilot activities to see interactions with Cowork plugins.
 - Update help desk guidance for the retirement of the Legal Agent.
 - Check MC1509799 and the Manage Copilot for legal page for changes before mid-December 2026.
 
@@ -178,14 +201,14 @@ Indirect costs are admin time to decide and configure the two controls, communic
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether the legal plugin is available in Copilot in Word desktop, per user group</strong><br><small>Group</small><br><small class="controls__note">Policy name given on the Manage Copilot for legal page. Applies only when the Office app is restarted. Does not govern the Cowork plugin.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Start with the basics › Choose the scope › Configure Settings › Legal Skills in M365 Copilot in Word <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether the Legal for Cowork plugin can be used by anyone in the tenant</strong><br><small>Tenant</small><br><small class="controls__note">Needs a tenant administrator or the Copilot administrator role. Takes effect for new conversations; those in progress continue. Does not govern the Word plugin.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › plugin › Users › Block <a href="https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which users or groups can find the Legal for Cowork plugin</strong><br><small>Group</small><br><small class="controls__note">Admins can also deploy the plugin with Installed for: All users or Specific users/groups. Country or region scoping is not supported; use security groups.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › plugin › Users › Available to specific users or groups <a href="https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether the Legal for Cowork plugin can be used by anyone in the tenant</strong><br><small>Tenant</small><br><small class="controls__note">Tenant or Copilot administrator role. New conversations only. Not the Word plugin. Package Management API preview; needs a Microsoft Agent 365 licence and delegated CopilotPackages.ReadWrite.All; beta not supported in production.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › plugin › Users › Block <a href="https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users or groups can find the Legal for Cowork plugin</strong><br><small>Group</small><br><small class="controls__note">Body sets allowedUsersAndGroups and required availableTo (allowedForSome for a selected audience). Preview API: needs a Microsoft Agent 365 licence and delegated CopilotPackages.ReadWrite.All; beta not supported in production.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › plugin › Users › Available to specific users or groups <a href="https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/admin/catalog/packages/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 Learn says the two legal plugins are each managed differently, and the rows above are separate controls: the Word policy does not govern the Cowork plugin, and the Cowork settings do not govern Word. The roadmap item and MC1509799 describe no single switch for both.
 
-At the time of writing (November 2026), Microsoft Learn documents no PowerShell or Graph operation for the Cloud Policy configuration, and no scripted operation for the Cowork plugin's availability. A Graph operation exists to block a Copilot package (beta), but Learn does not say it covers Legal for Cowork, so no row relies on it.
+At the time of writing (November 2026), Microsoft Learn documents no PowerShell or Graph operation for the Cloud Policy configuration. For Cowork plugins in the organization catalog, the Package Management API documents beta blocking and availability updates. These APIs require a Microsoft Agent 365 licence, and production use of beta APIs is not supported.
 
 A Cowork block takes effect for new conversations; conversations already in progress continue until they end.
 
@@ -198,20 +221,14 @@ A Cowork block takes effect for new conversations; conversations already in prog
 
 <!-- rationale
 risk: Medium. The Word plugin is on by default for Microsoft 365 Copilot commercial subscribers, and Microsoft says the plugins can use work context from Microsoft 365 and connect to third-party legal sources; a control exists for each plugin.
-cost: Low. Learn ties the plugins to Microsoft 365 Copilot licences already assigned and names no separate licence, price or meter for them; the known cost is admin and communication time.
+cost: Variable. Cowork consumes Copilot Credits, including for skill calls; legal-plugin rollout also needs admin and communication time.
 impact: Medium. Legal teams are the intended users, but the Word plugin is enabled for all Microsoft 365 Copilot commercial subscribers in Word desktop, so any licensed user can meet it.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].api; Governance controls table / absence: There is no documented API or automation for blocking the Legal for Cowork plugin. | Found: A package represents an agent or a tool, such as a plugin, MCP server, or skill, in the organization catalog. Block, unblock, and reassign ownership of packages. | Fix: Set controls[1].api to kind 'graph', call 'POST /beta/copilot/admin/catalog/packages/{id}/block', docs 'https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block'. Add to its note: 'Package Management API preview; requires a Microsoft Agent 365 licence and delegated CopilotPackages.ReadWrite.All permission; production use of beta APIs is not supported.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview for its plugin reach. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview
-- [contradicted, blocker] controls[2].api; Governance controls / absence: Microsoft Learn documents no scripted operation for the Cowork plugin's user or group availability. | Found: PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} allowedUsersAndGroups: Users/groups for whom the package is available. availableTo: Enum value specifying which users or groups within the tenant can access this package. Required if updating allowedUsersAndGroups. | Fix: Set controls[2].api to kind 'graph', call 'PATCH /beta/copilot/admin/catalog/packages/{id}', docs 'https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update'. Add to its note: 'The request body sets allowedUsersAndGroups and the required availableTo property; use allowedForSome for a selected audience. Package Management API preview; requires a Microsoft Agent 365 licence and delegated CopilotPackages.ReadWrite.All permission; production use of beta APIs is not supported.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview for plugin reach. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update
-- [contradicted, blocker] Governance controls / absence: Learn does not establish that the Copilot package block API covers Legal for Cowork. | Found: A package represents an agent or a tool, such as a plugin, MCP server, or skill, in the organization catalog. The Package Management API enables IT administrators to view and manage agents and tools across your organization. | Fix: Replace the automation paragraph with: 'At the time of writing (November 2026), Microsoft Learn documents no PowerShell or Graph operation for the Cloud Policy configuration. For Cowork plugins in the organization catalog, the Package Management API documents beta blocking and availability updates. These APIs require a Microsoft Agent 365 licence, and production use of beta APIs is not supported.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview and the block and update references. Manage plugins for Copilot Cowork explicitly places Cowork plugins in the Microsoft 365 app-package class. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview
-- [contradicted, blocker] front matter: licensing.model; licensing.notes; Cost and licensing / consistency: The licensing model for the combined Word and Cowork briefing is included, with Microsoft 365 Copilot licensing as its entitlement description. | Found: Cowork uses a usage-based billing model. Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption. | Fix: Set licensing.model to 'mixed'. Append to licensing.notes and Cost and licensing: 'The Word legal plugin is enabled for Microsoft 365 Copilot commercial subscribers. Cowork also uses usage-based billing through Copilot Credits, including consumption from skill calls; Cowork access requires a spending policy that includes the user and selects Cowork.' Cite https://learn.microsoft.com/copilot/cowork/cowork-admin-governance and https://learn.microsoft.com/plugins/cost-considerations. Retain the narrower statement that Manage Copilot for legal names no separate legal-plugin price or meter. | Source: https://learn.microsoft.com/copilot/cowork/cowork-admin-governance
-- [contradicted, blocker] front matter: cost; rationale: cost; Cost and licensing / consistency: The cost rating is Low and the known cost is only admin and communication time. | Found: Cowork uses a usage-based billing model. Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption. | Fix: Set cost to 'variable'. Replace the cost rationale with: 'Variable. Cowork consumes Copilot Credits, including for skill calls; legal-plugin rollout also needs admin and communication time.' Cite https://learn.microsoft.com/copilot/cowork/cowork-admin-governance and https://learn.microsoft.com/plugins/cost-considerations for the meter and its reach. Do not infer a separate legal-plugin rate. | Source: https://learn.microsoft.com/copilot/cowork/cowork-admin-governance
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Scope: Rollout / record: General availability in Worldwide begins in mid-October 2026, described in Scope as having begun. | Found: General Availability (Worldwide): We will begin rolling out in mid-October 2026 and expect to complete by mid-December 2026 | Fix: Replace 'general availability began in mid-October 2026' in Scope with 'MC1509799 scheduled general availability (Worldwide) to begin rolling out in mid-October 2026'. The notice states the schedule, not confirmation that the start occurred.
-- [supported, minor] What's changing; Why it matters; Scope / record: General availability is expected to complete by mid-December 2026, but Why it matters describes that completion as firm. | Found: General Availability (Worldwide): We will begin rolling out in mid-October 2026 and expect to complete by mid-December 2026 | Fix: In Why it matters, replace 'before the rollout completes in mid-December 2026' with 'before the rollout is expected to complete by mid-December 2026'.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist tells administrators to search Cowork plugin audit activity, but the controls table has no audit row. | Found: Search the Microsoft Purview audit log for Copilot activities to see interactions with Cowork plugins. The controls table contains only Word availability, Cowork blocking and Cowork user/group availability. | Fix: Remove the 'Search the Microsoft Purview audit log for Copilot activities to see interactions with Cowork plugins' checklist bullet, which has no corresponding controls row. Keep the supported audit information in Cost and licensing.
+- [contradicted, minor] Governance guidance: At rollout, deployment bullet; controls / consistency: The governance checklist's instruction to deploy the Cowork plugin has a corresponding control row. | Found: Tell legal-team users to add the legal plugin in Cowork, or deploy it to them from the same page. The table covers Word availability, Cowork blocking and Cowork availability, not deployment. | Fix: Remove ', or deploy it to them from the same page' from that checklist bullet; the deployment step has no control row.
+- [contradicted, minor] Governance guidance: Before rollout, licence bullet; controls / consistency: The governance checklist's instruction to check users' licence assignments has a corresponding control row. | Found: Confirm which legal-team users hold Microsoft 365 Copilot licences, as MC1509799 asks and Learn requires for Cowork plugins. No licence-assignment control appears in the table. | Fix: Remove the 'Confirm which legal-team users hold Microsoft 365 Copilot licences' checklist bullet, which has no control row; retain the documented licence requirement in Cost and licensing.
+- [supported, minor] What's changing; Scope: Clouds and platforms / record: A separate roadmap item covers the GCC Word legal plugin. | Found: Roadmap item 571885: "title": "Word: legal plugin", "clouds": ["GCC"], "platforms": ["Desktop"] | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=571885 to sources for the separate GCC roadmap claim.
 -->

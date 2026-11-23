@@ -89,18 +89,20 @@ changes:
     note: "Correction: the provider-configuration row now lists PAC CLI deployment of site configuration (pac pages upload) and names Registration and Login claims mapping."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 42 statements not yet confirmed"
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 47 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-16"
+  status: "held"
+  date: "2026-11-23"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 42
-  confirmed: 42
-  unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  claims: 47
+  confirmed: 45
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 1
   hash: "43f59f4a3367147f8f610ab961814431"
 ---
 
@@ -207,8 +209,14 @@ cost: Low. Licensing for this feature is not yet published; the only cost the so
 impact: Low. Site makers and identity administrators notice it when connecting a provider that encrypts ID tokens; the roadmap says sign-in flows are not changed for existing users.
 -->
 
-<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, major] Risk assessment: Security & identity / behaviour: Today's documented signature-verification model needs only the provider's public JWKS URI. | Found: Searched: "Power Pages" "OpenID Connect" encryption key algorithms prerequisites pricing licensing. Opened openid-faqs and openid-provider; they require public signing keys and discovery metadata but do not state the exclusive 'only' requirement. | Fix: Replace 'Today's documented model needs only the provider's public JWKS URI to verify signatures.' with 'The current OpenID Connect FAQ requires a public JWKS URI endpoint where the provider publishes keys to verify ID-token signatures.' Keep the existing FAQ citation.
+- [contradicted, blocker] Governance controls: final sentence; Risk assessment: Change & support / applicability: The OpenID Connect governance control does not restrict encryption, and Learn does not say it governs token encryption. | Found: When a governance setting that blocks an authentication option takes effect, users can no longer sign in or register by using that authentication option. | Fix: Replace 'It does not restrict encryption.' with 'This is a protocol control, not a documented encryption-specific switch; blocking OpenID Connect prevents sign-in through that protocol.' Replace 'Learn does not say it governs token encryption.' with 'Learn documents a protocol control, not an encryption-specific switch.' The control's documented reach includes OIDC sign-in regardless of token format, rather than permitting encrypted sign-in to bypass a protocol block. | Source: https://learn.microsoft.com/power-pages/security/external-auth-control
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].note; Risk assessment: Change & support; Governance controls: final sentence / applicability: The documented governance setting restricts the OpenID Connect protocol rather than providing a selective token-encryption control. | Found: Use the parent control to restrict external authentication as a whole, or use the child controls to restrict individual protocols, providers, or local authentication. | Fix: Replace the final sentence 'It does not restrict encryption.' with 'This is a protocol control, not a documented encryption-specific switch.' This preserves the documented distinction without suggesting that encrypted-token sign-in could bypass a protocol block. | Source: https://learn.microsoft.com/power-pages/security/external-auth-control
+- [supported, minor] controls[0].ui; Governance controls / admin-path: The governance control is reached at Power Platform admin center > Manage > Products > Power Pages > Settings > Authentication > OpenID Connect > environment > Manage. | Found: Under Authentication, select the authentication option you want to manage. Select an environment, and then select Manage. Choose the sites where makers can configure the authentication option. | Fix: Extend the path to 'Manage > Products > Power Pages > Settings > Authentication > OpenID Connect > environment > Manage > site preference' and say the preference chooses all sites, all except selected sites, specific sites, or none. The cited operational page supports this route; the release-plan page https://learn.microsoft.com/power-platform/release-plan/2025wave2/power-pages/manage-external-authentication-provider-governance instead gives 'Manage > Power Pages > Governance settings > Authentication providers', so retain the operational route and note that the release plan uses different labels. | Source: https://learn.microsoft.com/power-pages/security/external-auth-control
+- [supported, minor] controls[1].ui; Governance guidance: Before rollout; Governance controls / admin-path: Power Pages design studio > Security > Identity providers reaches the page for configuring OpenID Connect providers and claims mappings. | Found: In your Power Pages site, select Security > Identity providers. | Fix: For editing an existing provider, extend the path to 'Security > Identity providers > provider > Edit configuration > Registration claims mapping / Login claims mapping'. The provider is selected using More Commands, an omitted icon permitted by the standard. Add https://learn.microsoft.com/power-pages/security/authentication/configure-site#edit-an-identity-provider to sources for the edit step; the currently cited openid-provider page documents the mapping settings. The shorter path can remain in the inventory checklist. | Source: https://learn.microsoft.com/power-pages/security/authentication/openid-provider
+- [supported, minor] controls[0].note; Governance controls: row 1 / applicability: The correctly documented protocol control is not confirmed to apply to encrypted-ID-token support. | Found: Each protocol control determines whether makers can configure identity providers that use that protocol on the targeted sites. | Fix: Replace 'They restrict the OpenID Connect protocol, not encrypted tokens; Microsoft has not confirmed they apply to this feature.' with 'They govern OpenID Connect providers on targeted sites; this is a protocol control, not a documented encryption-specific switch.' Keep the prerelease qualification. | Source: https://learn.microsoft.com/power-pages/security/external-auth-control
+- [supported, minor] front matter: licensing.model and notes; Cost and licensing; rationale: cost / licensing: Licensing is unknown because no requirement specific to encrypted-ID-token support is published. | Found: The Authenticated user capacity subscription license can be purchased for the anticipated number of unique, authenticated users. | Fix: Set licensing.model to 'included' for this new option inside Power Pages. Replace the notes with 'Power Pages uses Authenticated user capacity subscriptions or the Authenticated user pay-as-you-go meter for authenticated website access. A separate licence or price specific to encrypted-ID-token support is not yet published.' Retain the existing licensing FAQ citation and narrow the opening licensing sentence and rationale to the absence of a feature-specific requirement. | Source: https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq
 -->

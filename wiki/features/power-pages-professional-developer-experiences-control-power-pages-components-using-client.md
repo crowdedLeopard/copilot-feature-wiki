@@ -120,15 +120,17 @@ changes:
     note: "Corrected after verification: Web API capacity licensing now stated as applying to $pages.webAPI (licensing model mixed), and the Portal Management app role note carries its system customizer qualification."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 81 statements confirmed"
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 86 statements not yet confirmed"
 version: 4
 verification:
-  status: "verified"
-  date: "2026-11-16"
+  status: "verified-with-gaps"
+  date: "2026-11-23"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 81
-  confirmed: 81
+  claims: 86
+  confirmed: 86
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -235,4 +237,11 @@ No administrator switch for the client API itself is documented at the time of w
 risk: Medium. Site script can create, update and delete Dataverse records through $pages.webAPI, so exposure rests on table permissions and web roles; Microsoft Learn documents no switch that turns the client API off.
 cost: Low. The client API pages name no licence or meter, so the known cost is developer and review time; Web API calls remain subject to Power Pages capacity licensing.
 impact: Low. Developers and makers who write site script notice it; site visitors see a change only when a developer ships script that uses the API.
+-->
+
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance guidance; rendered controls table / admin-path: Power Pages design studio > Security > Table permissions reaches the control for assigning table permissions. | Found: In your Power Pages site, select Security > Table permissions. ... Select the ellipse (...) next to the table you wish to assign permissions to and choose Edit. ... Select the role or roles to assign the table permission to. | Fix: Extend controls[0].ui.path and its rendered path to 'Security > Table permissions > table > Edit'. Add to the existing note: 'Select the role or roles to assign the table permission to.' The cited assign-table-permissions page supplies these final steps. | Source: https://learn.microsoft.com/power-pages/security/assign-table-permissions
+- [supported, minor] controls[1].ui; Governance guidance; rendered controls table / admin-path: Portal Management app > Website > Site settings reaches the page for editing Web API site settings. | Found: Using the Portal Management app, select Site settings under the Website section. ... To edit an existing setting, select the Site Setting listed in the grid. ... Value: The setting | Fix: Extend controls[1].ui.path and its rendered path to 'Website > Site settings > site setting > Value'. The cited configure-site-settings page supplies these final edit steps. | Source: https://learn.microsoft.com/power-pages/configure/configure-site-settings
 -->

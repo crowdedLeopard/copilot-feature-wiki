@@ -1,0 +1,935 @@
+{
+  "slug": "microsoft-purview-data-lifecycle-management-auto-archive-for-exchange-online",
+  "roadmapId": 543427,
+  "title": "Microsoft Purview: auto-archiving for Exchange Online mailboxes (GCC, GCC High and DoD)",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "1 blocking finding (claim 51)"
+    ]
+  },
+  "counts": {
+    "claims": 71,
+    "confirmed": 69,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: the E5 archive-capacity statement omits Microsoft's instruction to keep Records Management enabled in the user's licence settings. The documented controls and roadmap facts check out, including the explicitly reported differences over the threshold and organisation-wide disabling.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; rationale: impact",
+      "type": "behaviour",
+      "claim": "Exchange Online auto-archiving moves the oldest primary-mailbox items into the archive when mailbox usage crosses a threshold.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "Auto-archiving automatically moves the oldest items, excluding those items tagged with \"Never Move to Archive\" from the primary mailbox to the archive mailbox",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "Roadmap item 543427 is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 543427, \"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is February CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"February CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record has no previewDate value.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "title; summary; front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "This roadmap item lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"GCC\", \"GCC High\", \"DoD\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Web\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-09-30T23:31:03.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-30T23:31:03\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Scope; Open questions; front matter: changes",
+      "type": "record",
+      "claim": "The roadmap description gives the triggering and safe threshold as 95% of mailbox quota.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When a user's mailbox utilization exceeds 95% of its quota and archive mailbox is present",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Items or folders tagged Never Move to Archive are excluded.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "No, items or folders tagged with \"Never Move to Archive\" are excluded from auto-archiving.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: defaultState; summary; controls[1].note; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Auto-archiving is enabled by default per mailbox, so qualifying mailboxes need no enabling action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "Auto-archiving feature can be enabled or disabled at mailbox level (the default setting is enabled):",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope; controls[0].note; Open questions",
+      "type": "default",
+      "claim": "Learn gives the organisation's default threshold as 96%.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "**Default Value:** 96 **Valid Range:** 80–100",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0].note; Scope",
+      "type": "behaviour",
+      "claim": "The organisation threshold has a valid range of 80 to 100.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "**Default Value:** 96 **Valid Range:** 80–100",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[0].note; Risk assessment; Governance controls; Open questions",
+      "type": "behaviour",
+      "claim": "Learn's threshold section and archive-mailboxes page say 100 disables auto-archiving, while its considerations say it cannot be disabled at organisation level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "Auto-archiving can't be disabled at the organization level, however autoarchive threshold can be configured for organization. ... Setting the threshold to **100 disables auto-archiving for the tenant**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "The Managed Folder Assistant monitors mailbox size and performs the move automatically without a separate approval step.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "The Managed Folder Assistant continuously monitors the primary mailbox size. ... Managed Folder Assistant automatically archives the **oldest** items first until usage drops below the threshold.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; rationale: impact",
+      "type": "behaviour",
+      "claim": "Auto-archiving works towards bringing mailbox usage below the threshold and does not trigger for usage below it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "When mailbox utilization exceeds 96% of its quota, items are automatically moved to the archive mailbox until usage drops below the threshold.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Each run attempts to move 3% of the applicable quota.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "Auto-Archiving attempts to move 3% of data in each run until mailbox size is below the threshold. Percentage is calculated based on ProhibitSendReceiveQuota/RecoverableItemsQuota.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "Data received less than 60 days ago is not archived.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "Auto-Archiving doesn't archive data received less than 60 days ago.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The same threshold-based approach applies to Recoverable Items folders approaching their quota.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "The same concept applies to Recoverable Items (\"Dumpster\") folders when they near their quota.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Threshold-based auto-archiving complements existing time-based archiving policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "Auto-archiving introduces threshold-based archiving that complements existing time-based archiving policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "Auto-archiving does not change deletion policies or behaviour.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "No, auto-archiving relocates items to the archive to prevent primary mailbox quota lockouts but doesn't change deletion or retention behaviors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "Auto-archiving does not change retention policies or behaviour.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "The feature doesn't change deletion or retention policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; controls[2].note; Cost and licensing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Auto-archiving itself does not provision archive mailboxes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "Auto-archiving feature doesn't provision archive mailboxes. Exchange Online Administrators must enable these archives manually.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "Auto-archiving does not enable auto-expanding archives; these are a separate capability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "Does auto-archiving enable auto-expanding archives? No, auto-expanding archives must be enabled manually to ensure no disruptions when the main archive is full.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Open questions",
+      "type": "date",
+      "claim": "Learn still describes entry into public preview in November 2025.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "Auto-archiving is a new feature for Exchange Online that enters public preview in November 2025.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The auto-archiving Learn page links to roadmap item 515172.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "Available on the [Microsoft Roadmap](https://www.microsoft.com/microsoft-365/roadmap?id=515172).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 515172 lists this feature for Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 515172, \"title\": \"Microsoft Purview: Data Lifecycle Management-Auto-Archive for Exchange Online\", \"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": "minor",
+      "fix": "Add https://www.microsoft.com/microsoft-365/roadmap?id=515172 to sources, titled 'Microsoft 365 Roadmap 515172', with kind roadmap."
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 515172 is also Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 515172, \"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Scope; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "The auto-archiving Learn page does not identify the clouds it covers.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"auto-archiving\" \"GCC\" \"clouds\"'; opened the auto-archiving and archive-mailboxes pages. The feature page's Availability section only links to roadmap 515172 and names no clouds.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "ProhibitSendReceiveQuota for visible items and RecoverableItemsQuota for Recoverable Items are evaluated independently.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "values of ProhibitSendReceiveQuota (for visible mailbox items) and RecoverableItemsQuota (for items in Recoverable Items folders) are evaluated. But both are applied independently.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Scope; What's changing; Why it matters; rationale: impact",
+      "type": "behaviour",
+      "claim": "Auto-archiving requires a provisioned archive mailbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "The archive mailbox must be provisioned for the user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Scope; Why it matters",
+      "type": "behaviour",
+      "claim": "The archive mailbox must have remaining storage capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "The archive mailbox must have remaining storage capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The Exchange Online user must be enabled unless RecipientTypeDetails is SharedMailbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "Exchange Online user must be enabled, unless RecipientTypeDetails is SharedMailbox.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Auto-archiving processes mailboxes under retention hold.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "Yes, auto-archiving process mailboxes under retention hold to prevent mail flow disruptions while preserving compliance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Both primary and archive mailboxes are considered the user's mailbox for Content search, Microsoft 365 retention and Litigation Hold.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/archive-mailboxes",
+      "quote": "Both mailboxes are considered a user's mailbox for compliance features such as Content search from the Microsoft Purview portal, Microsoft 365 retention, and Litigation Hold.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Learn describes no new permission introduced by auto-archiving.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"auto-archiving\" \"admin center\" threshold mailbox diagnostics permissions consent identity'; opened auto-archiving and enable-archive-mailboxes. No new auto-archiving permission is stated; the existing Mail Recipients role covers archive enablement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Learn describes no new app consent for auto-archiving.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"auto-archiving\" \"admin center\" threshold mailbox diagnostics permissions consent identity'; opened auto-archiving and enable-archive-mailboxes. No app-consent requirement for auto-archiving is documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Learn describes no new identity for auto-archiving.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"auto-archiving\" \"admin center\" threshold mailbox diagnostics permissions consent identity'; opened auto-archiving and enable-archive-mailboxes. The feature names the existing Managed Folder Assistant, not a new identity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Auto-archiving temporarily overrides existing archiving policies when triggered.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "Auto-archiving temporarily overrides existing archiving policies when triggered.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The excluded item classes are IPM.Appointment, IPM.AppointmentSeries, IPM.Task, IPM.Contact, IPM.DistList, IPM.File and IPM.File.Document.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "All item classes are supported except \"IPM.Appointment,\" \"IPM.AppointmentSeries,\" \"IPM.Task,\" \"IPM.Contact,\" \"IPM.DistList,\" \"IPM.File,\" and \"IPM.File.Document.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Change & support; Why it matters; rationale: impact",
+      "type": "behaviour",
+      "claim": "Moved items appear under Online Archive with folder structure preserved.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "the oldest items are being moved to the \"Online Archive\" tree while preserving the folder structure",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Moved mail remains accessible.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "ensuring mail remains accessible and searchable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Moved mail remains searchable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "ensuring mail remains accessible and searchable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Why it matters; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Auto-archiving does not move items if the main archive is full and auto-expanding archive is not enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "If the main archive mailbox is full and auto-expanding archive isn't enabled, auto-archiving isn't moving items.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[2].note; Risk assessment; Scope; Governance controls",
+      "type": "role",
+      "claim": "Enabling an archive mailbox requires the Mail Recipients role in Exchange Online.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/enable-archive-mailboxes",
+      "quote": "You must be assigned the Mail Recipients role in Exchange Online to enable or disable archive mailboxes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Recipient Management and Organization Management have the Mail Recipients role by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/enable-archive-mailboxes",
+      "quote": "By default, this role is assigned to the Recipient Management and Organization Management role groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The auto-archiving page specifies the same licence requirements as time-based archiving and links to email-archiving licensing guidance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "Same licenses requirements for time-based archiving [Microsoft 365 licensing guidance for security & compliance.]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Auto-archiving entitlement is included with the archive-capable licences the page names rather than a separately specified auto-archiving licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "Same licenses requirements for time-based archiving",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The service description lists a 50 GB archive limit for Exchange Online Plan 1 and Office 365 E1.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Archive mailbox limited to 50 GB\n    - Exchange Online Plan 1\n    - Office 365 E1",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The service description lists a 1.5 TB archive limit with Exchange Online Archiving, Exchange Online Plan 2, Microsoft 365 E3/A3/G3, Business Premium and Office 365 E3/A3/G3.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Archive mailbox limited to 1.5 TB\n    - Exchange Online Archiving\n    - Exchange Online Plan 2\n    - Microsoft 365 E3/A3/G3\n    - Microsoft 365 Business Premium\n    - Office 365 E3/A3/G3",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing: 3 TB tier",
+      "type": "licensing",
+      "claim": "Microsoft 365 E5/A5/G5 and Office 365 E5/A5/G5 provide a 3 TB archive limit without any stated service-plan qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/archive-mailboxes",
+      "quote": "For E5 licenses, verify that **Records Management** is selected and remains enabled in the user's license settings.",
+      "severity": "blocker",
+      "fix": "After the archive-limit sentence, add: 'For E5 licences, verify that Records Management is selected and remains enabled in the user's licence settings.' Cite https://learn.microsoft.com/purview/archive-mailboxes."
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing: 3 TB tier",
+      "type": "licensing",
+      "claim": "The service description lists Microsoft Purview Suite/EDU/GOV/FLW in the 3 TB archive tier.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Archive mailbox limited to 3 TB\n    - Microsoft 365 E5/A5/G5\n    - Office 365 E5/A5/G5\n    - Microsoft Purview Suite/EDU/GOV/FLW",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The auto-archiving page publishes no separate price for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"auto-archiving\" \"price\" \"meter\" Exchange Online'; opened auto-archiving, archive-mailboxes and the Purview service description's email-archiving licensing section. The feature page's Pricing section names existing archiving licences, not a separate price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The auto-archiving page publishes no separate meter for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"auto-archiving\" \"price\" \"meter\" Exchange Online'; opened auto-archiving, archive-mailboxes and the Purview service description's email-archiving licensing section. No auto-archiving meter is stated; returned SharePoint meters concern different services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[0].api; Governance guidance; Governance controls",
+      "type": "command",
+      "claim": "Set-OrganizationConfig -AutoArchivingThresholdPercentage 90 sets the tenant-wide auto-archiving threshold using Exchange PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-organizationconfig",
+      "quote": "Module: Exchange PowerShell ... -AutoArchivingThresholdPercentage ... Applicable: Exchange Online ... Type: Int16",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[0].ui; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "An admin-centre UI for the auto-archiving threshold is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Exchange Online auto-archiving AutoArchivingThresholdPercentage AutoArchivingEnabled admin center UI diagnostics'; opened auto-archiving and Set-OrganizationConfig. The documented threshold control is PowerShell; no matching admin-centre route was returned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[1].api; Governance guidance; Governance controls",
+      "type": "command",
+      "claim": "Set-Mailbox <user mailbox> -AutoArchivingEnabled $false disables auto-archiving for that mailbox using Exchange PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-mailbox",
+      "quote": "Module: Exchange PowerShell ... -AutoArchivingEnabled ... Applicable: Exchange Online ... Type: Boolean ... The Identity parameter specifies the mailbox that you want to modify.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[1].ui; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "An admin-centre UI for the per-mailbox auto-archiving switch is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Exchange Online auto-archiving AutoArchivingThresholdPercentage AutoArchivingEnabled admin center UI diagnostics'; opened auto-archiving and Set-Mailbox. Only the PowerShell enable/disable setting was documented; Outlook AutoArchive is a different feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The archive switch is at Exchange admin center > Recipients > Mailboxes > mailbox > Others > Mailbox archive > Manage mailbox archive > Mailbox archive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/enable-archive-mailboxes",
+      "quote": "navigate to **Recipients** > **Mailboxes**. ... select the user ... select **Others**, and under **Mailbox archive**, select **Manage mailbox archive** ... turn on **Mailbox archive**",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[2].api; Governance guidance",
+      "type": "command",
+      "claim": "Enable-Mailbox -Identity <username> -Archive enables an archive mailbox using Exchange Online PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/enable-archive-mailboxes",
+      "quote": "Run the following command to enable the archive mailbox for a single user.\nEnable-Mailbox -Identity <username> -Archive",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[3].api; Governance controls table",
+      "type": "command",
+      "claim": "Enable-Mailbox <user mailbox> -AutoExpandingArchive enables auto-expanding archiving for a user with a cloud-based primary mailbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
+      "quote": "To enable auto-expanding archiving for a specific user, run the following command. ... Enable-Mailbox <user mailbox> -AutoExpandingArchive",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[3].ui",
+      "type": "absence",
+      "claim": "No admin-centre UI is documented for enabling auto-expanding archiving.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"auto-expanding archiving\" \"Exchange admin center\" enable'; opened enable-autoexpanding-archiving, which states: 'You can't use the Exchange admin center or the Microsoft Purview portal to enable auto-expanding archiving.'",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[3].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "Auto-expanding archiving cannot be turned off once enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
+      "quote": "After you turn on auto-expanding archiving for your organization or for a specific user, it can't be turned off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[3].note",
+      "type": "behaviour",
+      "claim": "The archive mailbox must already be enabled before enabling auto-expanding archiving for that user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
+      "quote": "A user's mailbox must already be enabled for archive before you can enable auto-expanding archiving.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[3].governs; Governance controls",
+      "type": "behaviour",
+      "claim": "Auto-expanding archiving adds archive storage, providing a separate way to address archive-capacity pressure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
+      "quote": "When auto-expanding archiving is turned on, additional storage space is automatically added to a user's archive mailbox until it reaches the storage limit of 1.5 TB.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[4].api; Governance guidance",
+      "type": "command",
+      "claim": "Export-MailboxDiagnosticLogs -Identity <user mailbox> -ComponentName MRM retrieves auto-archiving diagnostics using the Exchange Online shell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "Administrators can access detailed diagnostics using the Exchange Online shell for individual mailbox:\nExport-MailboxDiagnosticLogs -Identity <user mailbox> -ComponentName MRM",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[4].ui",
+      "type": "absence",
+      "claim": "No admin-centre UI is documented for diagnostics showing what auto-archiving moved and its trigger.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"auto-archiving\" \"admin center\" threshold mailbox diagnostics permissions consent identity'; opened auto-archiving and enable-archive-mailboxes. Archive-mailbox troubleshooting tests are documented, but no UI for the feature's movement log and trigger was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[4].note",
+      "type": "behaviour",
+      "claim": "The diagnostics are read-only and report archived items and the triggering threshold.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+      "quote": "Items archived till date: <Date>. Total items archived: <ItemCount>, Total bytes archived: <Size>. Auto-Archiving was triggered to move <xyz GB> of data because mailbox utilization crossed 96%.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The documented automation for these controls is Exchange Online PowerShell, with no other automation surface documented for auto-archiving.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"AutoArchivingEnabled\" \"Graph\" \"REST\"'; opened auto-archiving, archive enablement, auto-expanding enablement, Set-Mailbox and Set-OrganizationConfig. The returned Graph mail overview does not document an auto-archiving setting; the controls use Exchange PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Learn gives no named role for the auto-archiving threshold cmdlet.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"AutoArchivingThresholdPercentage\" \"role\" permissions'; opened auto-archiving and Set-OrganizationConfig. The reference says permissions are required and links to cmdlet-permission discovery, but names no role for this threshold parameter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance guidance: At rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist tells readers to check holds and retention policies, but these controls have no table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check holds and retention policies cover the archive mailbox for users who will be auto-archived. ... Table rows cover threshold, mailbox enablement, archive enablement, auto-expanding archiving and diagnostics, not holds or retention policies.",
+      "severity": "minor",
+      "fix": "Remove the At rollout checklist bullet 'Check holds and retention policies cover the archive mailbox for users who will be auto-archived.' It names controls absent from the table; do not add a row as part of this correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T02:05:35.882Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 5,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=543427",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/archive-mailboxes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/enable-archive-mailboxes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-organizationconfig",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-mailbox",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Organisation-wide auto-archiving threshold (percentage of mailbox quota)",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-organizationconfig",
+        "reachable": true,
+        "token": "Set-OrganizationConfig",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether auto-archiving runs for a given mailbox",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-mailbox",
+        "reachable": true,
+        "token": "Set-Mailbox",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether a user has an archive mailbox for auto-archiving to move items into",
+        "docs": "https://learn.microsoft.com/purview/enable-archive-mailboxes",
+        "reachable": true,
+        "segments": [
+          "Recipients",
+          "Mailboxes",
+          "mailbox",
+          "Others",
+          "Mailbox archive",
+          "Manage mailbox archive",
+          "Mailbox archive"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether a user has an archive mailbox for auto-archiving to move items into",
+        "docs": "https://learn.microsoft.com/purview/enable-archive-mailboxes",
+        "reachable": true,
+        "token": "Enable-Mailbox",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Whether the archive can keep growing so auto-archiving can keep moving items",
+        "docs": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
+        "reachable": true,
+        "token": "Enable-Mailbox",
+        "found": true
+      },
+      {
+        "index": 4,
+        "side": "api",
+        "governs": "Diagnostics for what auto-archiving moved in a mailbox",
+        "docs": "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving",
+        "reachable": true,
+        "token": "Export-MailboxDiagnosticLogs",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

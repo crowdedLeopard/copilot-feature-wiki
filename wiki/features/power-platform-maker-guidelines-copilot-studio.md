@@ -86,15 +86,17 @@ changes:
     note: "Corrected after verification: custom guidance path now includes the Copilot Studio section; removed the environment-admin role gap and the unsupported claim that the feature moves no data."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 47 statements not yet confirmed"
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 59 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-16"
+  date: "2026-11-23"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 47
+  claims: 59
+  confirmed: 59
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -184,8 +186,12 @@ cost: Low. The known cost is admin time to write and maintain the message. Featu
 impact: Low. The audience is Copilot Studio makers in managed environments where an admin has configured the message.
 -->
 
-<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Governance guidance: At rollout; controls[2].note / behaviour: The related custom guidance message preview replaces Contact your admin when a maker encounters blocked connectors or channels. | Found: This article describes features used in agents or agent flows powered by the standard harness. As an admin, you can set an environment-level guidance message for users when they encounter a blocked or disabled capability. This plain-text message replaces the default Contact your admin prompt. | Fix: Replace the first custom-guidance sentence with: 'For agents and agent flows powered by the standard harness, a related preview, custom guidance message, replaces the generic "Contact your admin" prompt that appears when a maker hits a blocked connector or channel.' | Source: https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status
+- [supported, minor] What's changing; Governance guidance: At rollout; controls[2].note / behaviour: The related custom guidance message preview replaces Contact your admin when makers encounter blocked connectors or channels. | Found: This article describes features used in agents or agent flows powered by the standard harness. As an admin, you can set an environment-level guidance message for users when they encounter a blocked or disabled capability. This plain-text message replaces the default Contact your admin prompt. | Fix: Replace the first custom-guidance sentence with: 'For agents and agent flows powered by the standard harness, a related preview, custom guidance message, replaces the generic "Contact your admin" prompt that appears when a maker hits a blocked connector or channel.' | Source: https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status
+- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost / licensing: The licensing model is unknown because no feature-specific licence has been published. | Found: To create and manage agents with Copilot Studio, you need: - A license for each user, also known as a per user license (or Copilot Studio User License - A license for your organization, also known as a tenant license | Fix: Set licensing.model to 'included'. Replace licensing.notes with: 'Maker guidelines is an option inside Copilot Studio. For the standard harness, creating and managing agents requires a Copilot Studio User License and a Copilot Studio tenant license. Maker guidelines also requires Managed Environments with qualifying standalone licensing or meters. No feature-specific licence or price is published.' Cite https://learn.microsoft.com/microsoft-copilot-studio/requirements-licensing. Replace 'Feature-specific licensing is not yet published' in the cost rationale with 'No feature-specific licence or price is published; product-level licensing requirements are documented.' | Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-licensing
+- [supported, minor] controls[0].ui; Governance controls: row 1 / admin-path: The environment-level control is in Power Platform admin center at Copilot > Settings > Maker guidelines > Environments > environment > Edit setting. | Found: Select Copilot > Settings, and then select Maker guidelines. Select the Environments tab, select the environment, and then select Edit setting. Under Where to show the message, select Maker selects Review. | Fix: Set controls[0].ui.path and the matching table path to 'Copilot > Settings > Maker guidelines > Environments > environment > Edit setting > Where to show the message > Maker selects Review'. The existing path reaches the configuration panel but stops before its display option. | Source: https://learn.microsoft.com/power-platform/admin/maker-guidelines
+- [supported, minor] controls[1].ui; Governance controls: row 2 / admin-path: The group rule is in Power Platform admin center at Manage > Environment groups > group > Rules > Add rules > Maker guidelines > Save > Publish rules, with Add rules needed only when the rule is missing. | Found: If Maker guidelines isn't listed, select Add rules, find Maker guidelines, and add it to the group. Open Maker guidelines. Under Where to show the message, select Maker selects Review. | Fix: Set controls[1].ui.path and the matching table path to 'Manage > Environment groups > group > Rules > Add rules > Maker guidelines > Where to show the message > Maker selects Review'. Keep the note that Add rules is needed only if Maker guidelines is not already listed, and add: 'Select Save and then Publish rules to apply the rule.' | Source: https://learn.microsoft.com/power-platform/admin/maker-guidelines
+- [supported, minor] controls[2].ui; Governance controls: row 3 / admin-path: Custom guidance is in Power Platform admin center at Copilot > Settings > Copilot Studio > Maker guidance. | Found: On the sidebar, select Copilot, and then select Settings. From the Settings menu, under the Copilot Studio section, select Maker guidance. The Maker guidance panel opens. | Fix: Set controls[2].ui.path and the matching table path to 'Copilot > Settings > Copilot Studio > Maker guidance > environment or environment group > Edit setting > Agent status > Display guidance messaging in popovers for blocked items'. The existing path reaches the right panel but stops before the blocked-items display control. | Source: https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status#custom-guidance-message-preview
 -->

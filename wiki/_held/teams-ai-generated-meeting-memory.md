@@ -114,18 +114,20 @@ changes:
     note: "Corrected: the Meeting memory policy now lists -AllowMeetingKnowledgeGeneration (documented, but no effect until release); the retention call is limited to the rule cmdlet; the checklist no longer names expiry as a table control."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 77 statements confirmed"
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 80 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified"
-  date: "2026-11-16"
+  status: "held"
+  date: "2026-11-23"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 77
-  confirmed: 77
+  claims: 80
+  confirmed: 78
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "c277ad489108d26e3f1710fb57a5163d"
 ---
 
@@ -218,4 +220,14 @@ The Purview retention call is a sequence in Security & Compliance PowerShell: a 
 risk: High. Default-on, five-year, user-invisible AI-derived records that outlive transcripts and lack Information Barriers support.
 cost: Low. Compliance review, configuration and communication are the known costs; additional memory licensing and storage billing are not yet published.
 impact: High. Memory generation begins four weeks after the controls arrive, for eligible meetings with Intelligent Recap enabled and a Copilot-licensed invitee, so most recapped meetings are affected unless an admin changes the default.
+-->
+
+<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[0].api; rendered controls table / command: Set-CsTeamsMeetingPolicy -Identity <policy> -AllowMeetingKnowledgeGeneration <Boolean> controls both whether memory is generated and which meetings generate it. | Found: -KnowledgeGenerationMeetingTypes: Specifies which meetings organized by users assigned this policy can generate an AI-generated meeting knowledge file. AllMeetings: Allow generation for all meetings; TranscribedMeetings: Allow generation only for meetings with transcription. | Fix: Replace controls[0].api.call and its rendered equivalent with 'Set-CsTeamsMeetingPolicy -Identity <policy> -AllowMeetingKnowledgeGeneration <Boolean> -KnowledgeGenerationMeetingTypes <AllMeetings|TranscribedMeetings|None>'. Add to its note: 'The meeting-type choice applies only when AllowIntelligentRecap and AllowMeetingKnowledgeGeneration are both $True.' Keep the existing unreleased/no-effect warning. Reference: https://learn.microsoft.com/powershell/module/teams/set-csteamsmeetingpolicy. | Source: https://learn.microsoft.com/powershell/module/teams/set-csteamsmeetingpolicy
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[1].api; Governance guidance; rendered controls table / command: Get-AIGeneratedKnowledgeContainer -ThreadId <id> finds the memory container URL and Remove-AIGeneratedKnowledge -ThreadId <id> deletes meeting memory. | Found: Get-AIGeneratedKnowledgeContainer -ThreadId <String> -CallId <String> ... Remove-AIGeneratedKnowledge -ThreadId <String> -CallId <String> | Fix: Make controls[1].api.call a single operation: 'Remove-AIGeneratedKnowledge -ThreadId <id>', and update its rendered equivalent. Keep the already documented Get-AIGeneratedKnowledgeContainer procedure in the governance guidance. | Source: https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings
+- [supported, minor] controls[3].ui; rendered controls table / admin-path: Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy is the entry route for configuring memory retention. | Found: Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies. 2. Select New retention policy to start the Create retention policy configuration | Fix: Keep the documented entry path, but add to controls[3].note: 'This opens the retention-policy wizard. Keep Full directory on Assign admin units; choose Static on Choose the type of retention policy to create; on Choose locations select SharePoint classic and communication sites and include the memory container URLs; configure retention on Decide if you want to retain content, delete it, or both.' These steps are documented at https://learn.microsoft.com/purview/create-retention-policies and the memory location at https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings. | Source: https://learn.microsoft.com/purview/create-retention-policies#create-and-configure-a-retention-policy
+- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The checklist tells administrators to decide and review memory expiry, but the controls table has no memory-expiry row. | Found: Decide ... what expiry applies. / Review expiry annually alongside transcript and recording retention. / The Learn page ... gives no navigation path for it, so it is not a row in the table. | Fix: The checklist steps 'Decide ... what expiry applies' and 'Review expiry annually alongside transcript and recording retention' name memory expiry without a corresponding controls row. Remove those expiry-specific checklist clauses; retain the existing documented expiry explanation in the body. Do not add a control row as part of this correction.
 -->

@@ -76,18 +76,21 @@ roadmapModified: "2026-11-03T00:14:11"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this roadmap item, covering the planned customisable block list and the PowerShell parameters already documented on Learn."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 67 statements not yet confirmed"
 version: 1
 verification:
-  status: "verified"
-  date: "2026-11-16"
+  status: "verified-with-gaps"
+  date: "2026-11-23"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 57
-  unconfirmed: 0
+  claims: 67
+  confirmed: 66
+  unconfirmed: 1
   contradicted: 0
   attempts: 0
+  hash: "ce9bade5b3d46f290bf8afd236689332"
 ---
 
 ## What's changing
@@ -190,4 +193,12 @@ The cmdlet reference lists these parameters as not available in GCC, GCCH and DO
 risk: Low. Tenants stay on the Microsoft-recommended list by default, so nothing weakens until an administrator edits the list; the exposure comes from a custom list that blocks fewer types.
 cost: Low. The only cost the sources show is administrator time to decide and maintain a list; no licence or meter is mentioned, and licensing is not yet published.
 impact: Low. Microsoft's notice says the user experience does not change; administrators who choose to customise the list are the people who notice.
+-->
+
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The feature takes no autonomous action beyond blocking messages based on a list. | Found: Searched: "Weaponizable File Protection" "autonomous" "actions". Read the full feature page, cmdlet reference and MC1509801. They describe scanning, blocking and notifications, but do not state an exhaustive boundary on autonomous actions. | Fix: Replace the bullet with: 'Teams automatically scans messages for weaponizable extensions and blocks delivery when it detects a blocked file type.' The existing cited https://learn.microsoft.com/microsoftteams/weaponizable-file-protection-teams supports this wording.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost / licensing: Licensing is unknown because Microsoft has not published a requirement specific to this feature. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to included. Replace the licensing notes and 'Licensing is not yet published' with: 'Teams users need a Microsoft Teams licence, except for joining meetings anonymously. No requirement specific to customising Weaponizable File Protection was found at the time of checking (November 2026).' Cite https://learn.microsoft.com/microsoftteams/user-access. Keep the warning not to promise that the feature is free, and narrow the licensing open question and cost rationale to feature-specific requirements. | Source: https://learn.microsoft.com/microsoftteams/user-access
 -->

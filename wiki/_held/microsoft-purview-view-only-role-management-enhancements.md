@@ -15,10 +15,10 @@ risk: "low"
 cost: "low"
 impact: "low"
 defaultState: "unknown"
-action: "prepare"
+action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published. The Purview permissions page names no licence among its requirements, and no page read describes a licence or meter for this role."
+  model: "included"
+  notes: "Existing Purview subscription requirements apply: Microsoft lists users assigned a Purview role for use in the portal among users who need a licence. A licence or meter specific to this new role is not yet published."
 audiences: ["m365-admin","security","compliance"]
 tags: ["purview","entra-id","least-privilege","admin-controls","governance","gcc","gcc-high","dod"]
 sources:
@@ -40,6 +40,9 @@ sources:
   - title: "Add-RoleGroupMember"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember"
     kind: "learn"
+  - title: "Microsoft Purview service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
+    kind: "learn"
 videos: []
 related: ["microsoft-purview-endpoint-data-loss-prevention-view-only-access-to-device-onboarding-with","microsoft-purview-permissions-audit-log-improvements","microsoft-purview-permissions-audit-log-improvements-us-government"]
 controls:
@@ -53,12 +56,12 @@ controls:
       kind: "graph"
       call: "POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments"
       docs: "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal"
-    note: "Requires at least Privileged Role Administrator. The request body names the role and principal; select Global Reader or Security Reader as the role."
+    note: "Requires at least Privileged Role Administrator. The request body sets roleDefinitionId to the Global Reader or Security Reader role definition ID and principalId to the assignee object ID; directoryScopeId is / for tenant scope."
   - governs: "Who can manage Purview role group membership (members of role groups holding the Role Management role)"
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Settings > Roles and scopes > Role groups > role group > Edit > Choose users"
+      path: "Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group > Choose users"
       docs: "https://learn.microsoft.com/purview/purview-permissions"
     api:
       kind: "powershell"
@@ -72,26 +75,30 @@ controls:
     note: "No separate setting is documented at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-22"
-updated: "2026-11-22"
+updated: "2026-11-23"
 roadmapModified: "2026-10-01T23:00:07"
 changes:
   - date: "2026-11-22"
     note: "First briefing for this item: the view-only role management role, its Launched status and what Learn does and does not yet document."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 36 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after the independent check: risk rationale no longer says permissions are unchanged, action is now review, licensing now reflects existing Purview licence requirements, and two control rows give fuller path and request-body detail."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 42 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
-  date: "2026-11-22"
-  version: 1
+  date: "2026-11-23"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 36
-  confirmed: 34
-  unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "21370d66c8f875fa769f713f5029f94b"
+  claims: 42
+  confirmed: 40
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 2
+  hash: "23cfe540b9031fbb619ccdfcfc881aa5"
 ---
 
 ## What's changing
@@ -125,7 +132,7 @@ Microsoft has not stated whether tenants must do anything for the role to take e
 
 ## Cost and licensing
 
-Microsoft has not published a licence requirement or meter for this role. The Purview permissions page read for this briefing names no licence among its requirements, and the roadmap item names none. The role is delivered through Global Reader and Security Reader, so the licensing question that matters is the one already attached to your existing use of those roles in Purview and Entra.
+Existing Purview subscription requirements apply: Microsoft lists users assigned a Purview role for use in the Microsoft Purview portal among the users who need a licence. A licence or meter specific to this new role is not yet published. The Purview permissions page read for this briefing names no licence among its requirements, and the roadmap item names none. The role is delivered through Global Reader and Security Reader, so the licensing question that matters is the one already attached to your existing use of those roles in Purview and Entra.
 
 The only cost the sources show is indirect: admin time to review who holds Global Reader and Security Reader, and to update role documentation. A licence or price for this specific role is not yet published.
 
@@ -157,8 +164,8 @@ The roadmap says the role is added to Global Reader and Security Reader in Purvi
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Who holds Global Reader and Security Reader, the roles the new view-only role is added to</strong><br><small>Tenant</small><br><small class="controls__note">Requires at least Privileged Role Administrator. The request body names the role and principal; select Global Reader or Security Reader as the role.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Identity › Roles &amp; admins › role › Add assignments <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Who can manage Purview role group membership (members of role groups holding the Role Management role)</strong><br><small>Tenant</small><br><small class="controls__note">The signed-in admin needs the Role Management role. The portal page also offers Choose groups. Role Management is an existing role, not the new view-only role.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › role group › Edit › Choose users <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who holds Global Reader and Security Reader, the roles the new view-only role is added to</strong><br><small>Tenant</small><br><small class="controls__note">Requires at least Privileged Role Administrator. The request body sets roleDefinitionId to the Global Reader or Security Reader role definition ID and principalId to the assignee object ID; directoryScopeId is / for tenant scope.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Identity › Roles &amp; admins › role › Add assignments <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who can manage Purview role group membership (members of role groups holding the Role Management role)</strong><br><small>Tenant</small><br><small class="controls__note">The signed-in admin needs the Role Management role. The portal page also offers Choose groups. Role Management is an existing role, not the new view-only role.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › Role groups for Microsoft Purview solutions › role group › Edit › Edit members of the role group › Choose users <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch to grant or withhold the new view-only role separately from Global Reader and Security Reader</strong><br><small>Tenant</small><br><small class="controls__note">No separate setting is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -175,18 +182,16 @@ The Purview permissions page says an admin account assigned the *Role management
 - Is any licence or meter attached to the role? None is published at the time of writing (November 2026).
 
 <!-- rationale
-risk: Low. The role is read-only and goes to roles that already read settings across Microsoft 365; the exposure is wider visibility of who holds which role, not a change to anyone's permissions.
-cost: Low. The only cost the sources show is admin time to review who holds Global Reader and Security Reader; no licence or meter for this role is stated, so licensing is not yet published.
+risk: Low. The role is read-only and goes to roles that already read settings across Microsoft 365; the exposure is wider visibility of who holds which role, not a grant of permission to change assignments.
+cost: Low. The only cost the sources show is admin time to review who holds Global Reader and Security Reader; no licence or meter specific to this role is published.
 impact: Low. Only administrators who hold Global Reader or Security Reader, and the admins who manage those assignments, notice the change; end users do not.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] rationale: risk; What's changing; Why it matters / consistency: The risk rationale says the change is not a change to anyone's permissions, although the body says the new role grants permission to see assignments and extends what the reader roles can see. | Found: the exposure is wider visibility of who holds which role, not a change to anyone's permissions. ... Adding a role that lists role group members extends what those two roles can see, without changing what they can change. | Fix: In the risk rationale, replace 'not a change to anyone's permissions' with 'not a grant of permission to change assignments'. The change adds read permission; it is not documented as adding write permission.
+- [unsupported, major] Scope: 'which is where the addition would show' / behaviour: The new role would appear in the mapped Global Reader and Security Reader Purview role groups. | Found: Searched: Purview view-only role management Global Reader Security Reader; read purview-permissions and searched scc-permissions for the new role. Mapping is documented, but neither page nor the roadmap describes how this addition appears in the portal. | Fix: Delete ', which is where the addition would show' from the Scope sentence; retain the documented mapping only.
+- [contradicted, blocker] controls[1].note: Choose groups; rendered controls table / availability: The portal also offers Choose groups without a cloud restriction stated in this government-inclusive briefing. | Found: On Edit members of the role group, select Choose users or Choose groups. Important: Security groups are supported only in Microsoft 365 commercial cloud organizations. | Fix: Replace 'The portal page also offers Choose groups.' in controls[1].note and the rendered note with 'The portal page also offers Choose groups; security groups are supported only in Microsoft 365 commercial cloud organizations.' Keep the Choose users path unchanged. Source: https://learn.microsoft.com/purview/purview-permissions#add-users-or-groups-to-a-microsoft-purview-built-in-role-group. | Source: https://learn.microsoft.com/purview/purview-permissions
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].api; controls[0].note; Governance controls table / command: POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments assigns the chosen Entra role to a principal at tenant scope. | Found: POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments { "@odata.type": "#microsoft.graph.unifiedRoleAssignment", "principalId": "<Object ID of user or group>", "roleDefinitionId": "<ID of role definition>", "directoryScopeId": "/" } | Fix: Keep the endpoint. Replace 'The request body names the role and principal; select Global Reader or Security Reader as the role' with 'The request body sets roleDefinitionId to the Global Reader or Security Reader role definition ID and principalId to the assignee object ID; directoryScopeId is / for tenant scope.' | Source: https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal
-- [supported, minor] controls[1].ui; Governance controls table; Governance guidance / admin-path: The Purview role group membership control is at Settings > Roles and scopes > Role groups > role group > Edit > Choose users. | Found: On **Role groups for Microsoft Purview solutions**, select a Microsoft Purview role group you want to add users to. Select **Edit** on the control bar. 4. On **Edit members of the role group**, select **Choose users** or **Choose groups**. | Fix: Include the omitted page headings in controls[1].ui.path and the rendered table: 'Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group > Choose users'. The printed steps are correct and in order. | Source: https://learn.microsoft.com/purview/purview-permissions
-- [supported, minor] front matter: licensing; Cost and licensing; Open questions / licensing: The licensing model is unknown because no licence specific to this new role has been published. | Found: appropriate subscription licenses are required for use of each online service. ... Any user benefiting from the service requires a license. ... Users with a Purview role assigned for use in the Microsoft Purview portal. | Fix: Set licensing.model to 'included' for an option within existing Purview licensing. Replace the notes with 'Existing Purview subscription requirements apply: Microsoft lists users assigned a Purview role for use in the portal among users who need a licence. A licence or meter specific to this new role is not yet published.' Add the cited Microsoft Purview service description to sources and give the same qualification in Cost and licensing. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
-- [contradicted, minor] front matter: action; Why it matters / consistency: The action rating is prepare even though the briefing says the default is unknown and no source says existing behaviour changes for administrators who do not act. | Found: action: "prepare" ... Microsoft has not stated whether tenants must do anything for the role to take effect, so no source says existing behaviour changes for administrators who do not act. | Fix: Set action to 'review'. The assessment scale places a new capability with unknown default and no stated change to existing behaviour in review; retain the advice to assess reader-role membership.
+- [supported, minor] Why it matters; rationale: risk / role: Microsoft describes Global Reader as able to view all settings and administrative information across Microsoft 365. | Found: Global Reader | The read-only version of the Global administrator role. View all settings and administrative information across Microsoft 365. | Fix: Replace the quoted breadth with 'Microsoft describes Global Reader as able to read settings and administrative information across Microsoft 365 services, with documented limitations.' Cite https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference#global-reader, which lists exceptions including Defender content search and Secure Score and several Teams admin center areas. | Source: https://learn.microsoft.com/purview/purview-permissions
 -->

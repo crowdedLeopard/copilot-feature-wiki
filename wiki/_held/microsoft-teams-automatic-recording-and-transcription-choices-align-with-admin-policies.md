@@ -87,18 +87,21 @@ changes:
     note: "First briefing for this item, using the roadmap record, MC1508234 (updated 10 November 2026) and the Teams recording, transcription and auto recording pages on Learn."
   - date: "2026-11-16"
     note: "Added the documented Microsoft 365 Education A1 exclusion and the sensitivity label and template enforcement routes for automatic recording; narrowed the licensing question to this change."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 77 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-16"
+  status: "held"
+  date: "2026-11-23"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 78
-  confirmed: 77
-  unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  claims: 77
+  confirmed: 73
+  unconfirmed: 1
+  contradicted: 3
+  attempts: 1
+  hash: "5182a0c47fb1609a205d91d2f2045cec"
 ---
 
 ## What's changing
@@ -195,8 +198,13 @@ cost: Low. The only cost the sources show is admin and communication time; Micro
 impact: Medium. Meeting organisers see a changed Record and transcribe automatically menu, and the setting disappears where both policies block it. It arrives without admin action.
 -->
 
-<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] Governance controls: sensitivity label enforcement / applicability: A sensitivity label can enforce automatic recording. | Found: If all of a particular type of meeting must be recorded (for example, all sensitive meetings), consider enforcing this option by using a sensitivity label. | Fix: After naming the enforcement routes, add 'Meeting options in sensitivity labels also require Teams Premium.' Cite https://learn.microsoft.com/microsoftteams/meeting-templates-sensitivity-labels-policies, which states 'Meeting options in sensitivity labels and custom meeting templates require Teams Premium.' Keep this separate from licensing of the new menu. | Source: https://learn.microsoft.com/microsoftteams/manage-meeting-recording-options
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: Every control the governance checklist asks readers to review is represented in the controls table. | Found: 'Review policy assignments to users and groups so the effective policy for each organiser group is the one you intend.' The four table rows cover automatic-setting visibility, recording, transcription and a tenant switch, but none covers assignments. | Fix: Add a meeting-policy-assignment row. Cite https://learn.microsoft.com/microsoftteams/meeting-recording and use Teams admin center > Meetings > Meeting policies > policy > Manage users > Assign users. In the note, give the Group policy assignment > Add route for groups.
+<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, major] Cost and licensing: Two documented limits / behaviour: The Teams Premium template requirement and Education A1 exclusion both predate this change. | Found: Searched: Teams automatic recording Teams Premium templates Education A1 exclusion before November 2026. Read auto recording, sensitive-meeting options and custom-meeting-template/Premium excerpts; these state current restrictions but do not establish when both restrictions began. | Fix: Replace 'Two documented limits sit beside it, and both predate this change' with 'Two documented limits sit beside it.'
+- [contradicted, blocker] Cost and licensing: Whether either limit applies; Open questions / absence: Whether the Education A1 automatic-recording restriction applies to Record only is not stated. | Found: Users assigned with Edu A1 license only, can record manually but can't use meeting options to auto-record. | Fix: Replace the A1 portion of the uncertainty sentence with 'Learn also says users assigned only an Edu A1 licence can record manually but cannot use meeting options to auto-record.' Cite https://learn.microsoft.com/microsoftteams/teams-recording-policy. Keep uncertainty only about the aligned menu's presentation. | Source: https://learn.microsoft.com/microsoftteams/teams-recording-policy
+- [contradicted, blocker] Governance controls: sensitivity-label enforcement / licensing: Automatic recording can be enforced with a sensitivity label, with no licence qualification stated for that route. | Found: Meeting options in sensitivity labels and custom meeting templates require Teams Premium. | Fix: Qualify the existing enforcement sentence as 'Learn also says automatic recording can be enforced with a meeting template or a sensitivity label; meeting options in sensitivity labels and custom meeting templates require Teams Premium.' Cite https://learn.microsoft.com/microsoftteams/meeting-templates-sensitivity-labels-policies. Do not attribute that requirement to the new menu itself. | Source: https://learn.microsoft.com/microsoftteams/meeting-templates-sensitivity-labels-policies
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model and licensing.notes; Cost and licensing / licensing: The licensing model is unknown because no entitlement specific to this menu change is published. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to included. Begin the notes and licensing paragraph with 'Teams users need a Teams license; Microsoft has not published a licence requirement specific to this menu change.' Cite https://learn.microsoft.com/microsoftteams/user-access and retain the separately documented restrictions. | Source: https://learn.microsoft.com/microsoftteams/user-access
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: Every control the checklist asks administrators to review is represented in the controls table. | Found: Review policy assignments to users and groups so the effective policy for each organiser group is the one you intend. | Table rows: automatic-setting visibility, recording permission, transcription permission, and a separate tenant switch; none covers assignment. | Fix: Remove 'Review policy assignments to users and groups so the effective policy for each organiser group is the one you intend' from the Before rollout checklist, because assignments are not represented in its controls table. Do not add a control row in this correction.
 -->

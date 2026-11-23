@@ -105,15 +105,17 @@ changes:
     note: "Corrected: Copilot hub row note and text now say it controls maker AI features and that no separate security agent switch is documented; removed redirect settings from what the agent configures; action set to act-now; dropped an unmatched review step."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 59 statements confirmed"
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 62 statements not yet confirmed"
 version: 4
 verification:
-  status: "verified"
-  date: "2026-11-16"
+  status: "verified-with-gaps"
+  date: "2026-11-23"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 59
+  claims: 62
+  confirmed: 62
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -202,4 +204,13 @@ The Learn FAQ describes a wider security agent system that includes scheduled vu
 risk: Medium. The agent can change authentication and permission settings, but every write needs explicit maker approval and Microsoft advises using it in development or test first.
 cost: Low. The roadmap and Learn pages state no separate licence or meter; the main cost is admin and maker time for review. Pricing is not yet published for general availability.
 impact: Medium. It is aimed at makers and site owners who configure Power Pages sites, not at end users or site visitors.
+-->
+
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown. | Found: As you work on projects and need to establish permanent sites that don't expire, you can apply Power Pages subscriptions and convert websites from trial to production. | Fix: Set licensing.model to included. Set the notes to: 'The design-studio capability sits within Power Pages; the product licensing page describes Power Pages subscriptions for permanent sites and a free trial. No separate security-agent licence or consumption model is published as of November 2026. Confirm before general availability.' Keep https://learn.microsoft.com/power-pages/go-live/assign-licensing as the source. | Source: https://learn.microsoft.com/power-pages/go-live/assign-licensing
+- [supported, minor] front matter: licensing.notes; Cost and licensing; rationale: cost / absence: The roadmap, preview documentation and cited product licensing page specify no separate security-agent licence. | Found: Searched: Power Pages security agent licensing Copilot Credits pricing consumption; "Power Pages" "security agent" "license". Read the roadmap, security/security-agent, faq-security-agent and go-live/assign-licensing; none specifies a separate agent licence. | Fix: Replace the cost rationale sentence 'The roadmap and Learn pages state no separate licence or meter' with 'The roadmap and preview documentation do not specify a separate security-agent licence or meter as of November 2026'. This records an absence, not a statement that use is free.
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Power Pages environment AI settings are reached through Power Platform admin center > Copilot Hub > Power Pages > Settings. | Found: To view or update these settings, navigate to Copilot hub > Power Pages > Settings in the Power Platform admin center. | Fix: The path reaches the correct settings page but stops before the setting. Extend it to 'Copilot Hub > Power Pages > Settings > Power Pages > feature > environment > Set up/Edit > Set up > option', following the cited Admin experience instructions; the second Power Pages is the product filter and option is the applicable choice on the Set up page. | Source: https://learn.microsoft.com/power-pages/admin/copilot-hub#admin-experience
+- [supported, minor] controls[2].ui; Governance controls table / admin-path: Makers reach site security scanning in Power Pages design studio at Security workspace > Run scan. | Found: Use the Security workspace to run the scan. ... Select the Run Deep Scan button. ... returning to the Run scan section of the Security workspace. | Fix: The path reaches the scan section but stops before the initiating control. Replace it with 'Security workspace > Run scan > Run Deep Scan'. Add https://learn.microsoft.com/power-pages/getting-started/use-security-workspace to sources for the navigation into Security; the existing security-scan link documents the scan control. | Source: https://learn.microsoft.com/power-pages/security/security-scan
 -->

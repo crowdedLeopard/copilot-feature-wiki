@@ -3,27 +3,40 @@
   "roadmapId": 570967,
   "title": "Power Platform: maker guidelines shown inside the Copilot Studio Review pane",
   "status": "verified-with-gaps",
-  "date": "2026-11-16",
+  "date": "2026-11-23",
   "version": 4,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "pass",
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 47,
-    "confirmed": 47,
+    "claims": 59,
+    "confirmed": 59,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
-    "minor": 1
+    "minor": 5
   },
-  "summary": "The briefing passes: the roadmap facts, documented settings, licensing caveats and control paths are supported. One minor qualification is missing: the custom guidance documentation describes agents and agent flows powered by the standard harness.",
+  "summary": "The briefing passes: the roadmap facts, preview behaviour and control locations are supported. Minor corrections should complete the configuration paths, acknowledge Copilot Studio's published product-level licensing and qualify custom guidance for the standard harness. Instructions addressed to the verifier in the historical findings comment were ignored.",
   "claims": [
     {
       "n": 1,
+      "where": "front matter: roadmapId; sources",
+      "type": "record",
+      "claim": "This briefing describes roadmap item 570967.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 570967",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
       "where": "front matter: products",
       "type": "record",
       "claim": "The roadmap product is Microsoft Power Platform governance and administration.",
@@ -34,10 +47,10 @@
       "fix": null
     },
     {
-      "n": 2,
+      "n": 3,
       "where": "front matter: status; What's changing",
       "type": "record",
-      "claim": "The roadmap status is In development.",
+      "claim": "The roadmap item is In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -45,40 +58,7 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "front matter: releasePhase",
-      "type": "record",
-      "claim": "The roadmap lists General Availability and Preview release phases.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 4,
-      "where": "front matter: clouds; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: platforms",
-      "type": "record",
-      "claim": "The roadmap platform is Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The General Availability target is November CY2026.",
@@ -89,7 +69,7 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 5,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The preview target is September CY2026.",
@@ -100,10 +80,43 @@
       "fix": null
     },
     {
+      "n": 6,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 8,
+      "where": "front matter: platforms",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap record was modified at 2026-09-25T22:37:50.",
+      "claim": "The roadmap modification timestamp is 2026-09-25T22:37:50.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-09-25T22:37:50\"",
@@ -111,32 +124,21 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "What's changing; summary; Risk assessment; rationale: risk",
-      "type": "behaviour",
-      "claim": "Maker guidelines lets Power Platform administrators share organizational guidance and help links with Copilot Studio makers while they build.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
-      "quote": "Maker guidelines let Power Platform administrators share organization-specific guidance with Copilot Studio makers while they build. Use the message to explain what is available in an environment and direct makers to internal guidance, request processes, or support.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 10,
-      "where": "summary; What's changing; Why it matters",
+      "where": "title; summary; What's changing; Scope; rationale: risk",
       "type": "behaviour",
-      "claim": "The message appears in Copilot Studio's Review pane alongside the agent's blockers and warnings.",
+      "claim": "Maker guidelines lets Power Platform administrators share organisation-specific guidance with Copilot Studio makers while they build.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
-      "quote": "When a maker selects Review for an agent in Copilot Studio, the pane shows the agent's blockers and warnings together with A message from your admin.",
+      "quote": "Maker guidelines let Power Platform administrators share organization-specific guidance with Copilot Studio makers while they build.",
       "severity": null,
       "fix": null
     },
     {
       "n": 11,
-      "where": "What's changing",
+      "where": "title; summary; What's changing; Why it matters; rationale: risk",
       "type": "behaviour",
-      "claim": "The heading shown to makers is A message from your admin.",
+      "claim": "The message appears in the Copilot Studio Review pane alongside the agent's blockers and warnings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
       "quote": "When a maker selects Review for an agent in Copilot Studio, the pane shows the agent's blockers and warnings together with A message from your admin.",
@@ -147,7 +149,18 @@
       "n": 12,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Maker guidelines remain available when the agent has no issues.",
+      "claim": "The guidance heading is A message from your admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
+      "quote": "the pane shows the agent's blockers and warnings together with A message from your admin.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Maker guidelines remain available when the agent has no blockers or warnings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
       "quote": "Maker guidelines remain available when the agent has no blockers or warnings, giving makers a consistent place to find organizational expectations and help.",
@@ -155,10 +168,10 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "Cost and licensing; licensing.notes; Scope; rationale: cost",
+      "n": 14,
+      "where": "summary; What's changing; licensing.notes; Cost and licensing; Scope; rationale: cost and impact",
       "type": "licensing",
-      "claim": "Maker guidelines requires Managed Environments.",
+      "claim": "Maker guidelines require Managed Environments.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
       "quote": "Maker guidelines is available only for managed environments.",
@@ -166,10 +179,10 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "summary; What's changing; Scope; rationale: impact",
+      "n": 15,
+      "where": "summary; What's changing; Scope; controls[0].scope; controls[1].scope",
       "type": "behaviour",
-      "claim": "Administrators configure maker guidelines for an individual managed environment or an environment group.",
+      "claim": "Maker guidelines can be configured for an individual managed environment or an environment group.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
       "quote": "You can configure maker guidelines for an individual managed environment or for an environment group.",
@@ -177,10 +190,10 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "What's changing; controls notes",
-      "type": "availability",
-      "claim": "The documented maker guidelines behavior is preview content subject to change.",
+      "n": 16,
+      "where": "What's changing; controls[0].note; controls[1].note",
+      "type": "behaviour",
+      "claim": "Maker guidelines are documented as preview and subject to change.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
       "quote": "Configure maker guidelines for Copilot Studio (preview)\n[This article is prerelease documentation and is subject to change.]",
@@ -188,7 +201,7 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 17,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "The maker guidelines message is plain text.",
@@ -199,10 +212,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 18,
       "where": "summary; What's changing; Why it matters",
       "type": "behaviour",
-      "claim": "The maker guidelines message limit is 400 characters.",
+      "claim": "The maker guidelines message supports up to 400 characters.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
       "quote": "Enter a plain-text message of up to 400 characters.",
@@ -210,21 +223,21 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "What's changing; Risk assessment: Security & identity",
+      "n": 19,
+      "where": "summary; What's changing; Risk assessment: Security & identity; Governance controls",
       "type": "behaviour",
-      "claim": "Administrators can optionally provide an HTTPS Button link.",
+      "claim": "Maker guidelines support an optional HTTPS button link to guidance or a request process.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
-      "quote": "Optionally, add:\nAn HTTPS Button link to guidance or a request process.",
+      "quote": "Optionally, add:\n- An HTTPS Button link to guidance or a request process.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 19,
+      "n": 20,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The optional button label allows up to 50 characters.",
+      "claim": "The optional button label supports up to 50 characters.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
       "quote": "A Button label of up to 50 characters.",
@@ -232,21 +245,21 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "summary; What's changing; Why it matters",
+      "n": 21,
+      "where": "summary; What's changing; Why it matters; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Administrators can optionally provide a contact email that makers can use for help.",
+      "claim": "Maker guidelines can provide a contact email for help.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
-      "quote": "A Contact email that makers can use for help.\nThe maker can use the configured link or email without leaving the Review experience.",
+      "quote": "A Contact email that makers can use for help.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing",
+      "n": 22,
+      "where": "What's changing; Governance controls",
       "type": "behaviour",
-      "claim": "Published environment-group rules override environment-level maker guidelines messages.",
+      "claim": "Published environment-group rules override the corresponding environment-level guidance setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/environment-groups",
       "quote": "When a rule is published at the environment group level, it's enforced across every environment within that group. This means the corresponding setting or policy becomes locked (read-only) within individual environments",
@@ -254,10 +267,10 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 23,
       "where": "What's changing; Governance guidance: At rollout; controls[2].note",
       "type": "behaviour",
-      "claim": "The related custom guidance message preview replaces Contact your admin when a maker encounters blocked connectors or channels.",
+      "claim": "The related custom guidance message preview replaces Contact your admin when makers encounter blocked connectors or channels.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
       "quote": "This article describes features used in agents or agent flows powered by the standard harness.\nAs an admin, you can set an environment-level guidance message for users when they encounter a blocked or disabled capability. This plain-text message replaces the default Contact your admin prompt.",
@@ -265,21 +278,21 @@
       "fix": "Replace the first custom-guidance sentence with: 'For agents and agent flows powered by the standard harness, a related preview, custom guidance message, replaces the generic \"Contact your admin\" prompt that appears when a maker hits a blocked connector or channel.'"
     },
     {
-      "n": 23,
+      "n": 24,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The related Maker guidance panel uses field labels different from those on the maker guidelines page.",
+      "claim": "The custom guidance documentation uses Maker guidance and different field labels from the Maker guidelines documentation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
-      "quote": "In the Your message field, set the custom guidance message.\nIn the URL name and URL link fields, set the display name for the custom URL and the link URL respectively.",
+      "quote": "select Maker guidance. The Maker guidance panel opens.\nIn the Your message field, set the custom guidance message.\nIn the URL name and URL link fields, set the display name for the custom URL and the link URL respectively.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 24,
+      "n": 25,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The custom guidance panel offers an option to display guidance from Agent status.",
+      "claim": "Custom guidance has an option to display messaging from Agent status.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
       "quote": "Under Agent status, select either or both of the Display guidance messaging when makers select View on Agent status and Display guidance messaging in popovers for blocked items check boxes.",
@@ -287,10 +300,10 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 26,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Custom guidance messages are not localized.",
+      "claim": "The custom guidance message preview is not localised.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
       "quote": "Custom guidance messages aren't localized. The message appears exactly as configured, regardless of users' language settings.",
@@ -298,10 +311,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 27,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Custom guidance links remain functional as links even when their destination is unreachable.",
+      "claim": "Custom guidance links remain clickable even if the destination URL is unreachable.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
       "quote": "Link functionality remains available even if the destination URL is unreachable. Maintain valid links for the best experience.",
@@ -309,10 +322,10 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 28,
       "where": "Risk assessment: Security & identity",
       "type": "role",
-      "claim": "Editing group-governed settings requires appropriate edit rights at the environment-group level.",
+      "claim": "Group-level changes require tenant administrators with appropriate environment-group edit rights.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/environment-groups",
       "quote": "Any subsequent changes can only be made by a tenant administrator with appropriate edit rights at the environment group level.",
@@ -320,10 +333,10 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "Scope: Roles",
+      "n": 29,
+      "where": "Scope",
       "type": "role",
-      "claim": "Microsoft documents creating environment groups and configuring their rules for Power Platform tenant administrators.",
+      "claim": "Learn documents environment-group creation and rule configuration for Power Platform tenant administrators.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/environment-groups",
       "quote": "Sign in to the Power Platform Admin center as a Power Platform tenant administrator.\nAfter you create the environment group, Power Platform tenant administrators can immediately add managed environments or configure the group's rules.",
@@ -331,65 +344,10 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "Feature-specific licensing for maker guidelines is not yet published, so the licensing model is unknown.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"maker guidelines\" licensing; \"maker guidelines\" licensing pricing GCC government default enabled. Opened learn.microsoft.com/power-platform/admin/maker-guidelines and /managed-environment-licensing; no feature-specific licensing found.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 30,
-      "where": "Cost and licensing; licensing.notes; rationale: cost",
-      "type": "absence",
-      "claim": "Feature-specific pricing for maker guidelines is not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"maker guidelines\" licensing pricing GCC government default enabled; \"maker guidelines\" licensing. Opened learn.microsoft.com/power-platform/admin/maker-guidelines and /managed-environment-licensing; no feature-specific price found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Cost and licensing",
+      "where": "licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "The maker guidelines preview page lists Managed Environments as its prerequisite and names no other licence or charge.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
-      "quote": "Prerequisites\nMaker guidelines is available only for managed environments.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Managed Environments is an entitlement in the listed Power Apps, Power Automate, Copilot Studio, Power Pages and Dynamics 365 licences.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-licensing",
-      "quote": "Power Apps Premium, Power Automate Premium, Microsoft Copilot Studio, Copilot Studio for Microsoft 365 Copilot (only for features related to Copilot Studio), Power Pages, Dynamics 365 Premium, Enterprise, Team Members, and Dynamics 365 Customer Insights.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Cost and licensing; licensing.notes",
-      "type": "licensing",
-      "claim": "Pay-as-you-go meters for Power Apps per app, Power Pages and Copilot Studio qualify for Managed Environments.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-licensing",
-      "quote": "Pay-as-you-go meters for Power Apps per app, Power Pages, and Copilot Studio also qualify.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Cost and licensing; licensing.notes",
-      "type": "licensing",
-      "claim": "Activating Managed Environments requires all active usage to have qualifying standalone licences or pay-as-you-go meters.",
+      "claim": "Managed Environments require qualifying standalone licensing or pay-as-you-go meters.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-licensing",
       "quote": "When you activate managed environments in an environment, all active usage requires one of these standalone licenses or pay-as-you-go meters.",
@@ -397,10 +355,164 @@
       "fix": null
     },
     {
+      "n": 31,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing model is unknown because no feature-specific licence has been published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-licensing",
+      "quote": "To create and manage agents with Copilot Studio, you need:\n- A license for each user, also known as a per user license (or Copilot Studio User License\n- A license for your organization, also known as a tenant license",
+      "severity": "minor",
+      "fix": "Set licensing.model to 'included'. Replace licensing.notes with: 'Maker guidelines is an option inside Copilot Studio. For the standard harness, creating and managing agents requires a Copilot Studio User License and a Copilot Studio tenant license. Maker guidelines also requires Managed Environments with qualifying standalone licensing or meters. No feature-specific licence or price is published.' Cite https://learn.microsoft.com/microsoft-copilot-studio/requirements-licensing. Replace 'Feature-specific licensing is not yet published' in the cost rationale with 'No feature-specific licence or price is published; product-level licensing requirements are documented.'"
+    },
+    {
+      "n": 32,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The maker guidelines preview page names Managed Environments as its prerequisite but no separate licence, price or charge for the feature is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: maker guidelines Copilot Studio pricing license requirements; \"maker guidelines\" \"licensing\" pricing. Opened maker-guidelines, managed-environment-licensing, requirements-licensing-subscriptions and requirements-licensing on Learn; no feature-specific licence or price found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Power Apps Premium includes a Managed Environments entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-licensing",
+      "quote": "Managed environments are included as an entitlement in the following licenses: Power Apps Premium",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Power Automate Premium includes a Managed Environments entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-licensing",
+      "quote": "Managed environments are included as an entitlement in the following licenses: Power Apps Premium, Power Automate Premium",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 35,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The Managed Environments licensing page refers readers to the Power Platform Licensing Guide for the current qualifying licence list.",
+      "claim": "Microsoft Copilot Studio includes a Managed Environments entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-licensing",
+      "quote": "Managed environments are included as an entitlement in the following licenses: Power Apps Premium, Power Automate Premium, Microsoft Copilot Studio",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Power Pages includes a Managed Environments entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-licensing",
+      "quote": "Power Pages, Dynamics 365 Premium, Enterprise, Team Members, and Dynamics 365 Customer Insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Dynamics 365 Premium is listed among licences with a Managed Environments entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-licensing",
+      "quote": "Power Pages, Dynamics 365 Premium, Enterprise, Team Members, and Dynamics 365 Customer Insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Dynamics 365 Enterprise is listed among licences with a Managed Environments entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-licensing",
+      "quote": "Power Pages, Dynamics 365 Premium, Enterprise, Team Members, and Dynamics 365 Customer Insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Dynamics 365 Team Members is listed among licences with a Managed Environments entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-licensing",
+      "quote": "Power Pages, Dynamics 365 Premium, Enterprise, Team Members, and Dynamics 365 Customer Insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Dynamics 365 Customer Insights includes a Managed Environments entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-licensing",
+      "quote": "Power Pages, Dynamics 365 Premium, Enterprise, Team Members, and Dynamics 365 Customer Insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Power Apps per app pay-as-you-go meter qualifies for Managed Environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-licensing",
+      "quote": "Pay-as-you-go meters for Power Apps per app, Power Pages, and Copilot Studio also qualify.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Power Pages pay-as-you-go meter qualifies for Managed Environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-licensing",
+      "quote": "Pay-as-you-go meters for Power Apps per app, Power Pages, and Copilot Studio also qualify.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Copilot Studio pay-as-you-go meter qualifies for Managed Environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-licensing",
+      "quote": "Pay-as-you-go meters for Power Apps per app, Power Pages, and Copilot Studio also qualify.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Activating Managed Environments makes all active usage subject to the qualifying standalone licence or meter requirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-licensing",
+      "quote": "When you activate managed environments in an environment, all active usage requires one of these standalone licenses or pay-as-you-go meters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Managed Environments licensing page refers readers to the Microsoft Power Platform Licensing Guide for the current qualifying list.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-licensing",
       "quote": "For the complete and current list of qualifying licenses, refer to the Microsoft Power Platform Licensing Guide.",
@@ -408,32 +520,76 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Scope",
+      "n": 46,
+      "where": "controls[0].ui; Governance controls: row 1",
+      "type": "admin-path",
+      "claim": "The environment-level control is in Power Platform admin center at Copilot > Settings > Maker guidelines > Environments > environment > Edit setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
+      "quote": "Select Copilot > Settings, and then select Maker guidelines. Select the Environments tab, select the environment, and then select Edit setting.\nUnder Where to show the message, select Maker selects Review.",
+      "severity": "minor",
+      "fix": "Set controls[0].ui.path and the matching table path to 'Copilot > Settings > Maker guidelines > Environments > environment > Edit setting > Where to show the message > Maker selects Review'. The existing path reaches the configuration panel but stops before its display option."
+    },
+    {
+      "n": 47,
+      "where": "controls[0].api; Governance controls: row 1 and automation paragraph",
       "type": "absence",
-      "claim": "Government cloud dates for maker guidelines are not published.",
+      "claim": "No automation equivalent for the environment-level maker guidelines message, link and contact setting is documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"maker guidelines\" government availability; \"maker guidelines\" licensing pricing GCC government default enabled. Read roadmap record and learn.microsoft.com/power-platform/admin/maker-guidelines; no government cloud dates found.",
+      "quote": "Searched: \"maker guidelines\" \"PowerShell\" \"API\" \"pac admin\"; maker guidelines Power Platform API programmability governance configuration; maker guidelines Dataverse entity table reference. Read maker-guidelines, pac admin set-governance-config and powerapps-powershell excerpts; no equivalent found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
-      "where": "Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Environments added to a group inherit its published rules.",
+      "n": 48,
+      "where": "controls[1].ui; Governance controls: row 2",
+      "type": "admin-path",
+      "claim": "The group rule is in Power Platform admin center at Manage > Environment groups > group > Rules > Add rules > Maker guidelines > Save > Publish rules, with Add rules needed only when the rule is missing.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/environment-groups",
-      "quote": "When an environment is added to the group, it inherits the group's published rules.",
+      "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
+      "quote": "If Maker guidelines isn't listed, select Add rules, find Maker guidelines, and add it to the group. Open Maker guidelines.\nUnder Where to show the message, select Maker selects Review.",
+      "severity": "minor",
+      "fix": "Set controls[1].ui.path and the matching table path to 'Manage > Environment groups > group > Rules > Add rules > Maker guidelines > Where to show the message > Maker selects Review'. Keep the note that Add rules is needed only if Maker guidelines is not already listed, and add: 'Select Save and then Publish rules to apply the rule.'"
+    },
+    {
+      "n": 49,
+      "where": "controls[1].api; Governance controls: row 2 and automation paragraph",
+      "type": "absence",
+      "claim": "No automation equivalent for configuring maker guidelines as an environment-group rule is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: maker guidelines environment group rule Power Platform API PowerShell automation; maker guidelines Power Platform API programmability governance configuration. Read maker-guidelines, environment-groups, pac admin and powerapps-powershell excerpts; no operation setting this rule found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Governance controls",
-      "type": "applicability",
-      "claim": "A published maker guidelines environment-group rule applies the same configuration to every environment in that group.",
+      "n": 50,
+      "where": "controls[2].ui; Governance controls: row 3",
+      "type": "admin-path",
+      "claim": "Custom guidance is in Power Platform admin center at Copilot > Settings > Copilot Studio > Maker guidance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status#custom-guidance-message-preview",
+      "quote": "On the sidebar, select Copilot, and then select Settings.\nFrom the Settings menu, under the Copilot Studio section, select Maker guidance. The Maker guidance panel opens.",
+      "severity": "minor",
+      "fix": "Set controls[2].ui.path and the matching table path to 'Copilot > Settings > Copilot Studio > Maker guidance > environment or environment group > Edit setting > Agent status > Display guidance messaging in popovers for blocked items'. The existing path reaches the right panel but stops before the blocked-items display control."
+    },
+    {
+      "n": 51,
+      "where": "controls[2].api; Governance controls: row 3 and automation paragraph",
+      "type": "absence",
+      "claim": "No automation equivalent for the Copilot Studio custom guidance message for blocked items is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"maker guidance\" \"custom guidance\" \"Power Platform API\" \"PowerShell\" Dataverse table; Copilot Studio maker guidance message Set-AdminPowerAppEnvironmentGovernanceConfiguration API. Read authoring-agent-status, pac admin and powerapps-powershell excerpts; no equivalent found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: At rollout; Scope; Governance controls",
+      "type": "behaviour",
+      "claim": "Published group rules apply across all member environments.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/environment-groups",
       "quote": "When a rule is published at the environment group level, it's enforced across every environment within that group.",
@@ -441,10 +597,10 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 53,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Environment groups can contain only managed environments.",
+      "claim": "Environment groups can only contain managed environments.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/environment-groups",
       "quote": "Environment groups can only contain managed environments.",
@@ -452,10 +608,10 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 54,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Maker welcome content is a separate experience that sets expectations when makers first enter the product.",
+      "claim": "Maker welcome content is separate from maker guidelines and sets expectations when makers first enter the product.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
       "quote": "Maker welcome content sets expectations when makers first enter the product. Maker guidelines keeps that guidance close at hand while they work.",
@@ -463,85 +619,63 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "controls[0].ui",
-      "type": "admin-path",
-      "claim": "The environment setting is at Power Platform admin center > Copilot > Settings > Maker guidelines > Environments > environment > Edit setting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
-      "quote": "Environment: Select Copilot > Settings, and then select Maker guidelines. Select the Environments tab, select the environment, and then select Edit setting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "controls[0].api; Governance controls",
+      "n": 55,
+      "where": "Scope",
       "type": "absence",
-      "claim": "No automation equivalent is documented for environment-level maker guidelines.",
+      "claim": "Government cloud dates for maker guidelines are not published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"maker guidelines\" \"API\" \"PowerShell\"; site:learn.microsoft.com/power-platform \"maker guidelines\" automation API. Read maker-guidelines and searched connectors/powerplatformadminv2 for guideline/guidance; no equivalent found.",
+      "quote": "Searched: maker guidelines government cloud release date; \"maker guidelines\" government GCC availability preview localization rich text Power Apps Power Automate. Read maker-guidelines and government search excerpts; roadmap record lists Worldwide only and no government dates were found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
-      "where": "controls[1].ui",
-      "type": "admin-path",
-      "claim": "The group rule is at Manage > Environment groups > group > Rules > Add rules > Maker guidelines > Save > Publish rules, with Add rules conditional on the rule not already being listed.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
-      "quote": "Select Manage > Environment groups, select the environment group, and then select the Rules tab. If Maker guidelines isn't listed, select Add rules, find Maker guidelines, and add it to the group.\nOn the environment group's Rules tab, select Save, and then select Publish rules.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "controls[1].api; Governance controls",
-      "type": "absence",
-      "claim": "No automation equivalent is documented for the maker guidelines environment-group rule.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"maker guidelines\" \"environment group\" API. Read maker-guidelines and environment-groups; searched connectors/powerplatformadminv2 for guideline/guidance. Generic rule operations do not document this setting; no equivalent found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "controls[2].ui; What's changing",
-      "type": "admin-path",
-      "claim": "The custom guidance panel is at Power Platform admin center > Copilot > Settings > Copilot Studio > Maker guidance.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status#custom-guidance-message-preview",
-      "quote": "On the sidebar, select Copilot, and then select Settings.\nFrom the Settings menu, under the Copilot Studio section, select Maker guidance. The Maker guidance panel opens.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "controls[2].api; Governance controls",
-      "type": "absence",
-      "claim": "No automation equivalent is documented for the custom guidance message setting.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Maker guidance\" \"custom guidance\" API PowerShell environment group; site:learn.microsoft.com \"custom guidance message\" PowerShell REST API. Read authoring-agent-status; searched connectors/powerplatformadminv2 for guidance; no equivalent found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "front matter: defaultState",
+      "n": 56,
+      "where": "front matter: defaultState; Scope; rationale: impact",
       "type": "default",
-      "claim": "Maker guidelines is admin-opt-in: the organization-specific message is configured and saved by an administrator.",
+      "claim": "The admin-authored maker guidelines message is admin-opt-in, displayed through an administrator's configuration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
-      "quote": "Under Where to show the message, select Maker selects Review.\nEnter a plain-text message of up to 400 characters.\nApply the setting:\nIn the Copilot area, select Save.",
+      "quote": "Under Where to show the message, select Maker selects Review.\nEnter a plain-text message of up to 400 characters.\nApply the setting:\n- In the Copilot area, select Save.\n- On the environment group's Rules tab, select Save, and then select Publish rules.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "What's changing; Why it matters; Governance guidance: Before rollout; Governance controls",
+      "type": "record",
+      "claim": "The guidance can explain approved tools, models, connectors and channels and point makers to policy, request processes or support contacts.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Administrators can explain which tools, models, connectors, and channels are approved for an environment and point makers to the right policy, request process, or support contact.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "An environment added to an environment group inherits its published rules.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/environment-groups",
+      "quote": "When an environment is added to the group, it inherits the group's published rules.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "What's changing; controls[2].scope",
+      "type": "behaviour",
+      "claim": "Custom guidance messages can be configured for individual environments and environment groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
+      "quote": "You can configure different messages for different environments and environment groups to tailor guidance by governance zone.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-16T22:41:22.011Z",
+    "at": "2026-11-23T02:05:44.050Z",
     "summary": {
       "links": 6,
       "unreachable": 0,
@@ -644,6 +778,12 @@
       "date": "2026-11-16",
       "status": "held",
       "version": 3,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-16",
+      "status": "verified-with-gaps",
+      "version": 4,
       "model": "gpt-6.1-sol"
     }
   ]

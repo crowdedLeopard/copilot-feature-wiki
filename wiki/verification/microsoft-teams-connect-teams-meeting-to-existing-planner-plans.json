@@ -1,0 +1,777 @@
+{
+  "slug": "microsoft-teams-connect-teams-meeting-to-existing-planner-plans",
+  "roadmapId": 561490,
+  "title": "Microsoft Teams: connect a meeting to an existing Planner plan",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "1 blocking finding (claim 43)"
+    ]
+  },
+  "counts": {
+    "claims": 59,
+    "confirmed": 57,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: the cited PowerShell reference describes the proposed Facilitator blocking command as unblocking an app, so its blocking effect cannot safely be asserted. The roadmap and supplied notice support the planned feature, default availability and rollout window; the rollout wording and Planner licence names also need small corrections.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; front matter: products",
+      "type": "record",
+      "claim": "Roadmap item 561490 concerns connecting Microsoft Teams meetings to existing Microsoft Planner plans.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Teams: Connect Teams meeting to existing Planner Plans",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "Teams meetings currently automatically create corresponding Planner plans for meeting tasks.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Teams meetings automatically create a corresponding Planner plan to capture meeting tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "Tasks for a long-running initiative can become scattered across multiple automatically generated plans.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "when teams use meetings as their primary collaboration surface for long-running initiatives, tasks from the same project can become scattered across multiple auto-generated plans.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Microsoft plans to give users the choice to link a meeting to an existing Planner plan.",
+      "status": "supported",
+      "source": "Message Center post MC1392571",
+      "quote": "Users can choose whether to link a meeting to an existing plan or continue using the default behavior.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Tasks created during a linked meeting can be added to the selected existing plan.",
+      "status": "supported",
+      "source": "Message Center post MC1392571",
+      "quote": "Tasks created during meetings can be added to the selected existing plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: impact",
+      "type": "record",
+      "claim": "Meetings continue creating a new Planner plan if no existing plan is selected.",
+      "status": "supported",
+      "source": "Message Center post MC1392571",
+      "quote": "If no plan is selected, meetings will continue to create a new Planner plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Risk assessment: Data exposure; Scope; rationale: risk",
+      "type": "record",
+      "claim": "The change does not alter existing or previously created plans.",
+      "status": "supported",
+      "source": "Message Center post MC1392571",
+      "quote": "No changes to existing plans or previously created plans.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "The feature is available by default without an administrator enabling this option, supporting defaultState on.",
+      "status": "supported",
+      "source": "Message Center post MC1392571",
+      "quote": "This feature will be available by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft's notice requires no administrator action.",
+      "status": "supported",
+      "source": "Message Center post MC1392571",
+      "quote": "No action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Facilitator is an AI-powered meeting agent in Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Facilitator is an AI-powered agent that helps keep meetings focused, organized, and action-oriented by surfacing agendas, tracking progress, and capturing key highlights in real time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Autonomy & actions; controls[0].governs",
+      "type": "record",
+      "claim": "Enabled Facilitator can create and associate tasks with the user-selected plan.",
+      "status": "supported",
+      "source": "Message Center post MC1392571",
+      "quote": "Facilitator can create and associate tasks with user selected Planner plans when enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment; controls[0].note; Governance controls",
+      "type": "record",
+      "claim": "Users can still create tasks manually if Facilitator is disabled.",
+      "status": "supported",
+      "source": "Message Center post MC1392571",
+      "quote": "Users can manually create tasks if Facilitator is disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Desktop and Teams and Surface Devices.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Teams and Surface Devices\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-05T23:03:05.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-05T23:03:05\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; front matter: changes",
+      "type": "record",
+      "claim": "Microsoft updated the notice's timeline on 12 October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1392571",
+      "quote": "Updated October 12, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "summary; What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "Worldwide Targeted Release is due to begin in late December 2026, previously late September.",
+      "status": "supported",
+      "source": "Message Center post MC1392571",
+      "quote": "Targeted Release (Worldwide): We will begin rolling out in late December 2026 (previously late September)",
+      "severity": "minor",
+      "fix": "Replace the summary's last sentence with 'Microsoft's notice plans Worldwide Targeted Release to begin in late December 2026.' In Risk assessment, change 'Targeted Release begins' to 'Microsoft plans Targeted Release to begin'."
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "Targeted Release completes by the end of January 2027, previously the end of September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1392571",
+      "quote": "expect to complete by end of January 2027 (previously end of September 2026).",
+      "severity": "minor",
+      "fix": "In What's changing, replace 'and completes by end of January 2027' with 'and is expected to complete by end of January 2027'. In Risk assessment, replace 'and completes by end of January 2027' with 'with completion expected by end of January 2027'."
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment; Scope; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Microsoft will announce General Availability through Message center when ready.",
+      "status": "supported",
+      "source": "Message Center post MC1392571",
+      "quote": "General Availability (Worldwide): We will announce via Message center when we are ready to proceed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1392571",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Scope: Who is affected; rationale: impact",
+      "type": "record",
+      "claim": "Affected users create or participate in Teams meetings and use Planner.",
+      "status": "supported",
+      "source": "Message Center post MC1392571",
+      "quote": "Users who create or participate in Microsoft Teams meetings and use Microsoft Planner",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Scope; Governance guidance: Before rollout; Governance controls",
+      "type": "record",
+      "claim": "The notice identifies organisations with Teams, Planner and Loop enabled as affected.",
+      "status": "supported",
+      "source": "Message Center post MC1392571",
+      "quote": "Organizations with Teams, Planner, and Loop enabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The notice identifies a change to how meeting task data is organised across plans.",
+      "status": "supported",
+      "source": "Message Center post MC1392571",
+      "quote": "Tasks created in Teams meetings can now be stored in an existing Planner plan instead of a new auto-generated plan, changing how task data is organized across plans.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The notice does not describe a change to sign-in, roles or permissions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: full supplied MC1392571, including Who is affected, What will happen and Compliance considerations; no sign-in, role or permission change is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure; rationale: risk; Open questions",
+      "type": "absence",
+      "claim": "The notice does not explain whether linking a meeting changes plan access for attendees.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: full MC1392571 and 'meeting existing plan Planner admin control licensing access'; read planner-security-privacy-compliance excerpt: container membership governs plans, but it does not explain membership changes when a meeting is linked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "The identity Facilitator uses to write tasks to the linked plan is not described.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Facilitator Planner permissions tasks user identity' and 'Facilitator tasks on behalf permissions Planner'; opened facilitator-teams and manage-planner-app. Results about Cowork's signed-in identity concern a different feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "absence",
+      "claim": "No Microsoft Learn page describing this meeting-to-existing-plan linking feature was found as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Teams meeting existing Planner', 'connect Teams meetings existing Planner plans license pricing meter', and 'meeting existing plan Planner admin control licensing access'; opened facilitator-teams, manage-planner-app, licensing and Planner service description.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "Learn lists Facilitator's Task tracking integration with Planner as public preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "The following Facilitator capabilities are currently in public preview: - Task tracking integration with Planner",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.notes; Cost and licensing: Planner",
+      "type": "licensing",
+      "claim": "The cited Planner in Teams page entitles Microsoft 365 licence holders to the Planner app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "Users with a Microsoft 365 license are entitled to the Planner app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing: Planner",
+      "type": "licensing",
+      "claim": "Premium capabilities require a premium licence such as Planner Plan 1, Project Plan 3 or Project Plan 5.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "Users with a Planner premium license such as Planner Plan 1, Project Plan 3, or Project Plan 5, can use the premium capabilities in Planner.",
+      "severity": "minor",
+      "fix": "Replace the premium-licence clause with 'premium capabilities need a Planner premium licence such as Planner Plan 1 or Planner and Project Plan 3' and cite https://learn.microsoft.com/planner/licensing. The current service description at https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description uses the updated names and says Plan 5 reached end of sale on May 1, 2026, while existing subscriptions can continue."
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing: Facilitator",
+      "type": "licensing",
+      "claim": "Facilitator is included with a Microsoft Copilot licence and subject to available capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Facilitator is included with a Microsoft Copilot license and subject to available capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing: Facilitator",
+      "type": "licensing",
+      "claim": "Facilitator users also require an eligible Microsoft 365 base licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Users must meet all of the following requirements: ... An eligible Microsoft 365 base license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing: Facilitator",
+      "type": "licensing",
+      "claim": "Facilitator users also require an eligible Teams licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Have an eligible Microsoft Teams license. Teams licenses might be included in your Microsoft 365 subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Scope: Facilitator; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Loop experiences in Teams must be enabled for Facilitator in meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Loop experiences in Teams need to be turned on in order for Facilitator to be used in meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Change & support; Scope: Facilitator",
+      "type": "licensing",
+      "claim": "Unlicensed users cannot prompt Facilitator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Unlicensed users can't prompt Facilitator, but they can see others' prompts to Facilitator and Facilitator's responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Change & support",
+      "type": "availability",
+      "claim": "Facilitator is not supported in 1:1 chats, group chats or external chats and meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Currently, Facilitator isn't supported in 1:1 chats, group chats, or external chats and meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[0].note; Governance guidance: Before rollout",
+      "type": "default",
+      "claim": "Facilitator is allowed by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Facilitator is allowed by default. However, if all apps are blocked for your organization, Facilitator is also blocked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Teams admin center > Teams apps > Manage apps > Facilitator > Allow or Block controls Facilitator availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "In the left rail navigation, select Teams apps > Manage apps. ... Select Facilitator from the app list. In the actions menu, select Allow or Block.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Update-M365TeamsApp -Id <app id> -IsBlocked $true is the documented automation for blocking Facilitator.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true ... Unblocks Bookings app (App ID 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b).",
+      "severity": "blocker",
+      "fix": "Remove the blocking call from controls[0].api and its rendered table cell. Set the side to null and append to the note: 'Automation for blocking Facilitator is not verified: the cited Update-M365TeamsApp reference labels its -IsBlocked $true example as unblocking. Use the documented admin UI.' Do not replace $true with $false: the reference does not establish that correction. This finding concerns contradictory documentation, not verified runtime behaviour."
+    },
+    {
+      "n": 44,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Teams admin center > Teams apps > Manage apps > Planner > Block disables the Planner app for the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "In the left pane of the Teams admin center, go to Teams apps > Manage apps. ... To turn off Planner for your organization, search for the Planner app, select it, and then select Block.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-PlannerConfiguration -IsPlannerAllowed $false is documented for turning off Planner for the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/disable-planner",
+      "quote": "Turn off Planner for your organization using PowerShell ... Set-PlannerConfiguration -IsPlannerAllowed $false ... To turn on Planner back: Set-PlannerConfiguration -IsPlannerAllowed $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls: Facilitator row",
+      "type": "role",
+      "claim": "The Facilitator setup page tells administrators to sign in with Teams admin credentials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Sign in to the Teams admin center with your Teams admin credentials.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance controls: Planner row",
+      "type": "role",
+      "claim": "The Planner PowerShell disable page is written for a global administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/disable-planner",
+      "quote": "If you're a global admin and you want to turn off Microsoft Planner for your organization, you can use Windows PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].note; Governance controls: Planner row",
+      "type": "applicability",
+      "claim": "The Planner PowerShell disable page covers basic plans in Teams and web, with premium plans directed elsewhere.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/disable-planner",
+      "quote": "This article applies to: - Basic plans in the Planner app in Teams and Web ... premium plans, see Disable Project for the web or Roadmap from Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls: Planner row",
+      "type": "applicability",
+      "claim": "The same Planner disable page covers all plans in other Planner endpoints.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/disable-planner",
+      "quote": "All plans in other Planner endpoints (including Planner mobile, and Planner connectors).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No separately documented admin setting or automation turns off meeting-to-existing-plan linking itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Teams meeting existing Planner plan disable admin Set-CsTeamsMeetingPolicy link plan' and 'meeting existing plan Planner admin control licensing access'; read MC1392571, facilitator-teams, manage-planner-app and returned meeting-policy reference excerpts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a licence requirement specific to the linking option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'connect Teams meetings existing Planner plans license pricing meter' and 'meeting existing plan Planner admin control licensing access'; opened Planner licensing, service description, manage-planner-app and facilitator-teams; no linking-specific entitlement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft has not published a meter specific to linking a meeting to an existing plan.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'connect Teams meetings existing Planner plans license pricing meter'; opened Planner service description, licensing, manage-planner-app and facilitator-teams. The service description mentions some metered Graph APIs but does not meter this linking option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing: final paragraph",
+      "type": "absence",
+      "claim": "The supplied roadmap record and notice describe no meter or additional charge.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: full roadmap record and full supplied MC1392571, including preparation and compliance sections; neither names a meter, price or additional charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The mixed licensing model distinguishes ordinary Planner entitlement from the additional Copilot entitlement for optional Facilitator use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Users must meet all of the following requirements: ... An eligible Microsoft 365 base license. ... Have an eligible Microsoft Teams license. ... Have a Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "front matter: cost; Cost and licensing: Indirect cost; rationale: cost",
+      "type": "cost",
+      "claim": "The known preparation cost is indirect administrator time and communications, while linking-specific licensing remains unpublished.",
+      "status": "supported",
+      "source": "Message Center post MC1392571",
+      "quote": "Review whether Facilitator should be enabled for automated task creation scenarios. ... Update internal documentation or task management guidance if applicable. ... Inform helpdesk staff and users about this new option for organizing meeting tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing: Indirect cost; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft suggests updating internal guidance and informing helpdesk staff and users.",
+      "status": "supported",
+      "source": "Message Center post MC1392571",
+      "quote": "Update internal documentation or task management guidance if applicable. ... Inform helpdesk staff and users about this new option for organizing meeting tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope: Facilitator; Governance controls; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Facilitator is optional for the linking feature, and Microsoft suggests reviewing its availability for automatic task creation.",
+      "status": "supported",
+      "source": "Message Center post MC1392571",
+      "quote": "Availability depends on enabling Teams, Planner, Loop, and optionally Facilitator in the tenant. ... Review whether Facilitator should be enabled for automated task creation scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[0].scope and note; Risk assessment: Autonomy & actions; Governance controls",
+      "type": "applicability",
+      "claim": "Blocking the Facilitator app removes its availability, and hence its task automation, without removing the notice's manual task option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "As an admin, you control whether Facilitator is available to your entire organization or to a certain group of users. ... To allow or block Facilitator for users, complete the following steps:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance guidance: Before rollout, first bullet",
+      "type": "consistency",
+      "claim": "The checklist asks administrators to check Teams and Loop enablement, but the controls table contains only Facilitator and Planner rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm that Teams, Planner and Loop experiences in Teams are turned on in the tenant ... Table rows: Whether Facilitator ... is available; Whether the Planner app is available in Teams",
+      "severity": "minor",
+      "fix": "The first Before rollout checklist bullet names Teams and Loop enablement without corresponding table rows. Remove that checklist bullet; Scope already records the notice's prerequisite. Do not add unverified control rows."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T02:05:35.577Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1392571",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=561490",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/planner/disable-planner",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether Facilitator, which can create meeting tasks in the selected plan, is available",
+        "docs": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Facilitator",
+          "Allow or Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether Facilitator, which can create meeting tasks in the selected plan, is available",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "reachable": true,
+        "token": "Update-M365TeamsApp",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether the Planner app is available in Teams (coarse alternative; not specific to linking meetings to plans)",
+        "docs": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Planner",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether the Planner app is available in Teams (coarse alternative; not specific to linking meetings to plans)",
+        "docs": "https://learn.microsoft.com/planner/disable-planner",
+        "reachable": true,
+        "token": "Set-PlannerConfiguration",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

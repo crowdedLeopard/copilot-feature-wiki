@@ -1,0 +1,1168 @@
+{
+  "slug": "dynamics-365-finance-and-operations-cross-app-boost-productivity-with-copilot-use-copilot",
+  "roadmapId": 576838,
+  "title": "Dynamics 365 ERP apps plugin for Copilot Cowork: work with finance and operations data in Cowork",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "2 blocking findings (claims 14, 53)"
+    ]
+  },
+  "counts": {
+    "claims": 90,
+    "confirmed": 87,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: the risk section's environment requirement omits the supported Unified Developer Environment exception. The briefing also treats ERP MCP billing in Cowork as unresolved even though the Cowork documentation explicitly applies the published MCP licensing rules. The control endpoints exist; the spending-policy note needs its deciding request properties.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; licensing.notes; Cost and licensing; Scope; rationale: cost and impact",
+      "type": "licensing",
+      "claim": "Each user needs an active Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "Each user has an active Microsoft 365 Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; licensing.notes; Cost and licensing; Scope; rationale: cost and impact",
+      "type": "licensing",
+      "claim": "Each user needs a qualifying Dynamics 365 finance and operations apps licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "Each user who installs or uses the Dynamics 365 ERP apps plugin must have a qualifying Dynamics 365 license for finance and operations apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Dynamics 365 Finance and Supply Chain Management are qualifying licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "Qualifying licenses include:\n- Dynamics 365 Finance\n- Dynamics 365 Supply Chain Management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Environment, sandbox, storage and capacity add-ons do not qualify.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "The following licenses and add-ons don't qualify:\n- On-premises ERP licenses\n- Device-only plans\n- Environment, sandbox, storage, or capacity add-ons",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Licences for Dynamics 365 products other than finance and operations apps do not qualify.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "The following licenses and add-ons don't qualify: ... Licenses for Dynamics 365 products that aren't finance and operations apps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Administrator deployment does not bypass licensing, billing or security prerequisites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "Administrator deployment doesn't bypass Microsoft 365 Copilot licensing, finance and operations apps licensing, usage-based billing, or finance and operations apps security requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed, combining user licences with consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/copilot/use-copilot-cowork-erp",
+      "quote": "Each user needs an active Microsoft 365 Copilot license and a qualifying Dynamics 365 license for finance and operations apps. Configure usage-based billing and Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "summary; front matter: cost; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Cowork usage is metered in Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/copilot/use-copilot-cowork-erp",
+      "quote": "Configure usage-based billing and Copilot Credits. Calls to the Dynamics 365 ERP MCP server can consume Copilot Credits according to the current MCP licensing rules",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Model responses, tool calls, skill calls and other Cowork activities count towards consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-admin-governance",
+      "quote": "Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "cost",
+      "claim": "The Cowork ERP use page applies current MCP credit rules and qualifying premium licence exemptions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/copilot/use-copilot-cowork-erp",
+      "quote": "Calls to the Dynamics 365 ERP MCP server can consume Copilot Credits according to the current MCP licensing rules, with applicable exemptions for qualifying premium licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "Cost and licensing; Open questions",
+      "type": "cost",
+      "claim": "ERP MCP tool execution on clients other than Copilot Studio costs 0.1 Copilot Credits per tool call.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/copilot-mcp",
+      "quote": "For agents built on other agent clients, usage of the Dynamics 365 ERP MCP server incurs a cost of one copilot credit per 10 tool calls to the server (or 0.1 credits per tool call).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "Finance Premium and Supply Chain Management Premium users are exempt from ERP MCP tool execution billing on clients other than Copilot Studio.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/copilot-mcp",
+      "quote": "The following premium licenses are exempt from the tool execution billing for agents built on clients other than Copilot Studio.\n- Dynamics 365 Finance Premium\n- Dynamics 365 Supply Chain Management Premium",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The MCP licensing section does not name Cowork explicitly.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot Cowork Dynamics 365 ERP MCP licensing 0.1 premium tool calls'; opened copilot-mcp and use-copilot-cowork-erp. The MCP Licensing section names Copilot Studio, Foundry and other clients, not Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Cost and licensing; Open questions: first bullet",
+      "type": "applicability",
+      "claim": "Whether the published other-client MCP execution rate and premium exemptions apply in Cowork remains unresolved.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/copilot/use-copilot-cowork-erp",
+      "quote": "Calls to the Dynamics 365 ERP MCP server can consume Copilot Credits according to the current MCP licensing rules, with applicable exemptions for qualifying premium licenses. Learn more in Licensing.",
+      "severity": "blocker",
+      "fix": "Remove the first Open questions bullet. Replace the final sentence of the MCP billing paragraph with: 'The Cowork ERP use page applies these MCP licensing rules: ERP MCP tool execution on clients other than Copilot Studio costs 0.1 Copilot Credits per tool call, with Dynamics 365 Finance Premium and Dynamics 365 Supply Chain Management Premium users exempt from tool execution billing; Cowork orchestration consumption is separate.' Cite https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/copilot/use-copilot-cowork-erp and https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/copilot-mcp#licensing."
+    },
+    {
+      "n": 15,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Cowork, Copilot Studio agents and Work IQ API can consume a shared tenant credit pool.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/cost-considerations",
+      "quote": "Copilot Cowork, Copilot Studio agents, and Work IQ API can consume Copilot credits from a shared tenant pool.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Credit limits are spending safeguards evaluated asynchronously, not real-time access gates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-access",
+      "quote": "Credit limits are a spending safeguard, not a real-time access gate. Credit consumption and limit enforcement are evaluated asynchronously",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "title; summary; What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The plugin connects Cowork through ERP MCP to retrieve and change ERP data alongside Microsoft 365 data in cross-application workflows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/copilot/use-copilot-cowork-erp",
+      "quote": "Copilot Cowork combines these ERP capabilities with its built-in Work IQ features (email, calendar, documents, spreadsheets) to orchestrate workflows that span multiple systems.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The plugin uses the dynamic Dynamics 365 ERP MCP server.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "The Dynamics 365 ERP apps plugin uses the dynamic Dynamics 365 ERP MCP server.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Data tools create, read, update and delete ERP records through data entities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/copilot/use-copilot-cowork-erp",
+      "quote": "Data tools – Read, create, update, and delete records in finance and operations apps data entities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Form tools perform operations available on application pages, including operations that change records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/copilot/use-copilot-cowork-erp",
+      "quote": "Form tools – Navigate application pages, set field values, select actions, and perform operations just as you would in the application.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Action tools invoke secured business logic explicitly exposed by developers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/copilot/use-copilot-cowork-erp",
+      "quote": "Action tools – Invoke secured business logic that developers explicitly expose through the MCP server.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Users install the ERP apps plugin from Discover in Cowork.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "Select the + button, select Customize, and then select Discover. ... Locate the Dynamics 365 ERP apps plugin, and then select Install.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Users configure the Finance & Operations connector and complete sign-in or consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "Find the Finance & Operations connector, and then select Configure. ... Complete the sign-in or consent flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Administrators can deploy the ERP plugin to selected users or groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "An administrator can deploy the Dynamics 365 ERP apps plugin to selected users or groups from the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "An administrator-deployed ERP plugin still requires each user to configure and sign in to the connector.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "Still requires each user to configure and sign in to the Finance & Operations connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target date is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: previewDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap preview date is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: releasePhase; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap cloud list is Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap preview scope is an initial set of finance and supply chain scenarios.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Preview scope\n\n- Initial set of scenarios across finance and supply chain.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap preview has limited action coverage for transactional workflows.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "- Limited action coverage for transactional workflows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap preview is available to selected preview customers.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "- Available to selected preview customers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "The ERP plugin enable and use pages have no preview label or selected-customer restriction.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Dynamics 365 ERP apps plugin Copilot Cowork preview rollout release channel'; read enable-copilot-cowork-erp and use-copilot-cowork-erp in full. Neither labels this plugin preview or restricts it to selected customers; Work IQ preview results describe a different integration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "The configured plugin works in Cowork web, Outlook, Teams, desktop and mobile experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "you can use it in Copilot Cowork on the web, in Outlook and Teams, in the Microsoft Copilot desktop app for Windows and Mac, and in the Microsoft Copilot mobile app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Installation and connector configuration use the Cowork web experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "Use the Cowork web experience to install the plugin and configure its connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "ERP MCP requests run under the authenticated user's identity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/mcp/mcp-security",
+      "quote": "Operations run under the authenticated user's identity and security context in finance and operations apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The MCP server does not elevate privilege.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/mcp/mcp-security",
+      "quote": "The MCP server doesn't elevate privilege.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Why it matters; Risk assessment; Scope; Governance guidance; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Existing ERP roles, duties and privileges bound the user's data and operations through Cowork.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/mcp/mcp-security",
+      "quote": "The roles, duties, privileges, record-level security, and data security policies assigned to that user apply to every request.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: defaultState; summary; Why it matters",
+      "type": "default",
+      "claim": "The feature is admin-opt-in, requiring Cowork enablement, billing and the Dataverse prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "An administrator enabled Copilot Cowork in the Microsoft 365 admin center. ... The Dynamics 365 ERP apps plugin requires that the Dataverse integration setting is enabled in the Microsoft 365 Admin Center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Why it matters; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "After prerequisites are met, eligible users can acquire the plugin themselves subject to administrator availability controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-manage-plugins",
+      "quote": "Available to all users: All licensed Copilot users in your tenant can find and acquire the plugin. ... Available to specific users or groups: Only the users or security groups you specify can view the plugin.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The MCP server does not store customer data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/mcp/mcp-security",
+      "quote": "The MCP server doesn't store customer data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Data movement and retention outside the ERP environment depend on the agent client's policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/mcp/mcp-security",
+      "quote": "Any data movement or retention outside the customer's finance and operations environment would be dependent on the data storage and retention policies of the agent client",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Microsoft Purview is available to secure and govern worldwide Cowork.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-admin-governance",
+      "quote": "Microsoft Purview is available to secure and govern Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Cowork uses Anthropic models as a subprocessor for some capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "Copilot Cowork uses Anthropic models as a subprocessor for some capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "Anthropic capability is off by default in the EU, EFTA and UK and requires administrator enablement there.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "This capability is off by default in the European Union (EU), European Free Trade Association (EFTA), and United Kingdom (UK), so administrators in those regions must enable it for their users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Security & identity",
+      "type": "availability",
+      "claim": "The MCP server excludes specified system administration forms for security, user setup and Feature Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/copilot-mcp",
+      "quote": "The MCP server doesn't provide access to some forms related to system admin tasks, like feature management, user management, and managing security.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout; Open questions",
+      "type": "applicability",
+      "claim": "The enable page instructs administrators to add Cowork client ID 6ab48b67-cd74-4ad4-81af-5932984589be to Allowed MCP Clients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "Open the Allowed MCP Clients page.\n4. Add the Cowork Client App ID: 6ab48b67-cd74-4ad4-81af-5932984589be.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "default",
+      "claim": "The MCP security page lists Microsoft Cowork and that client ID among platforms allowed by default, unlike the enable page's add instruction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/mcp/mcp-security",
+      "quote": "By default, only the following platforms can access the MCP server: ... Microsoft Cowork | 6ab48b67-cd74-4ad4-81af-5932984589be",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Cowork asks for approval before taking actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/copilot/use-copilot-cowork-erp",
+      "quote": "Copilot Cowork asks for approval before it takes actions on your behalf.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Always allow skips later approval prompts for similar actions in the current conversation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/copilot/use-copilot-cowork-erp",
+      "quote": "In a conversation, you can select Always allow to skip subsequent approval prompts for similar actions in that conversation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Change & support",
+      "type": "availability",
+      "claim": "The plugin needs a Tier 2 or above environment, without the Unified Developer Environment exception given later in Scope.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "The environment must be Tier 2 or above, or a Unified Developer Environment. Cloud Hosted Environments (CHE) and on-premises environments aren't supported.",
+      "severity": "blocker",
+      "fix": "Replace the first sentence of the Change & support bullet with: 'The plugin needs a supported environment meeting the minimum version requirement: Tier 2 or above, or a Unified Developer Environment; CHE and on-premises environments are not supported.'"
+    },
+    {
+      "n": 54,
+      "where": "Scope: Environments; Governance guidance: Before rollout",
+      "type": "availability",
+      "claim": "The minimum supported versions are 10.0.47, 10.0.46 PQU-2 or 10.0.45 PQU-7.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "The product version must be at least 10.0.47, 10.0.46 PQU-2, or 10.0.45 PQU-7.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Scope: Environments; Governance guidance: Before rollout",
+      "type": "availability",
+      "claim": "Tier 2 or above environments and Unified Developer Environments are supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "The environment must be Tier 2 or above, or a Unified Developer Environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Change & support",
+      "type": "availability",
+      "claim": "Cloud Hosted Environments and on-premises environments are unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "Cloud Hosted Environments (CHE) and on-premises environments aren't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope: Environments",
+      "type": "default",
+      "claim": "The Dynamics 365 ERP Model Context Protocol server feature must be enabled in Feature Management and is enabled by default in supported environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "The Dynamics 365 ERP Model Context Protocol server feature must be enabled in Feature Management. The feature is enabled by default in supported environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Learn's troubleshooting table covers disabled-plugin, no-compatible-environment and unable-to-connect errors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "Plugin shows \"Your admin has disabled this plugin.\" ... Plugin shows \"No compatible Dynamics environment found in your tenant.\" ... Plugin shows \"Unable to connect\" after an environment is selected",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Risk assessment: Change & support",
+      "type": "availability",
+      "claim": "The MCP server is unavailable during environment downtime and requests fail during servicing windows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/copilot-mcp",
+      "quote": "The MCP server is unavailable during environment downtime, such as servicing windows. Any MCP requests that agents make during these servicing windows fail.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Scope: Clouds and platforms",
+      "type": "availability",
+      "claim": "Anthropic models are unavailable in government and sovereign clouds.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "Anthropic models aren't available in government or sovereign clouds.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Scope: Clouds and platforms",
+      "type": "availability",
+      "claim": "The ERP plugin is available in regions where Copilot Cowork is deployed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/copilot/use-copilot-cowork-erp",
+      "quote": "The plugin is currently available in regions where Copilot Cowork is deployed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Scope: Rollout",
+      "type": "absence",
+      "claim": "The cited pages give no ERP plugin rollout wave or release channel.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Dynamics 365 ERP apps plugin Copilot Cowork preview rollout release channel'; read the enable, use, MCP and Cowork governance pages. No plugin-specific rollout wave or release channel is stated; the roadmap's June CY2026 dates are reported separately.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[0].ui; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Cowork service selection is under Microsoft 365 admin center > Copilot > Cost Management > Configuration > policy > Select agents and services > Cowork.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-admin-governance",
+      "quote": "go to Copilot > Cost Management > Configuration ... On the Select agents and services step, select Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "POST /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings adds Cowork as a governed service to an existing policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create",
+      "quote": "Create a new spendingPolicyServiceSetting object to add a service to an existing spending policy. ... Required properties are serviceId and state.",
+      "severity": "minor",
+      "fix": "Keep the call. Add to controls[0].note: 'The request body sets serviceId to cowork and state to enabled.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create and https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/resources/spendingpolicyservicesetting. The existing overview documents the operation, but these additional references supply its request contract and Cowork service category."
+    },
+    {
+      "n": 65,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "The beta service-setting API needs the parent spending policy's If-Match ETag.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+      "quote": "To mutate an existing policy and its child resources (service settings and reference links), include an If-Match header with the parent policy's ETag.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[0].note; Scope; Governance controls; Governance guidance",
+      "type": "applicability",
+      "claim": "Spending policy scope and Cowork service selection grant access; a low credit limit does not block access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-access",
+      "quote": "Any user in the scope of a spending policy that selects Cowork can use Cowork, regardless of how small the credit limit is. ... A low credit limit doesn't block access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[1].ui; controls[1].note",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Agents > Tools > plugin > Users provides all-user or specific-user/group availability and Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-manage-plugins",
+      "quote": "select Agents > Tools. ... Find the plugin you want to manage and go to the Users tab. ... Available to all users ... Available to specific users or groups ... Select Block: No users in your tenant can access the plugin.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "POST /beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package to prevent usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage.\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[1].note; Scope",
+      "type": "role",
+      "claim": "Plugin management requires a tenant administrator or the Copilot administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-manage-plugins",
+      "quote": "You must be a tenant administrator, or have the Copilot administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[1].note",
+      "type": "licensing",
+      "claim": "The package-management API requires a Microsoft Agent 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "The plugin enable page gives Microsoft 365 admin center > Copilot > Settings > Dataverse data available in Microsoft Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "Go to the Microsoft 365 Admin Center. ... Navigate to Copilot > Settings. ... Enable Dataverse data available in Microsoft Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "No API or cmdlet for this Microsoft 365 tenant Dataverse setting is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Dataverse data available in Microsoft Copilot Graph PowerShell tenant setting' and 'Business Applications data in Work IQ available to Copilot API tenant settings'; opened data-platform-intelligence and searched graph/utcm-copilot-resources. No operation for this tenant setting was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "controls[2].note; Scope",
+      "type": "role",
+      "claim": "The Copilot tenant Dataverse setting requires AI administrator or Global administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-intelligence",
+      "quote": "Microsoft 365 admin role (AI administrator or Global administrator) to access Microsoft 365 admin center Copilot settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "controls[2].note; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Enabling the Dataverse setting can take up to one hour to propagate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "After you enable the Dataverse setting, it can take up to one hour for the change to propagate due to caching.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "controls[2].note; Governance controls; Open questions",
+      "type": "admin-path",
+      "claim": "The Dataverse intelligence page labels the tenant setting Business Applications data in Work IQ available to Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-intelligence",
+      "quote": "Locate and select Business Applications data in Work IQ available to Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The tenant Dataverse setting can be scoped to All users or specified Entra security groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-intelligence",
+      "quote": "Select All users, or ... Select Specific groups and enter the list of Entra security groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "controls[2].governs; Why it matters; Governance controls",
+      "type": "applicability",
+      "claim": "The Dataverse tenant setting is required for plugin eligibility, not for the mechanism used to access ERP data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "The Dataverse setting controls whether the plugin is offered and eligible in Copilot Cowork. It doesn't control how the plugin accesses ERP data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The Cowork entry under Agents > All agents no longer controls access; only a spending policy selecting Cowork grants it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-admin-governance",
+      "quote": "any configuration on it has no effect on who can use Cowork. Access is granted only through a spending policy that selects Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Blocking a plugin affects new conversations while existing conversations continue until they end.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-manage-plugins",
+      "quote": "Blocking takes effect for new conversations. Conversations already in progress that use the plugin continue until they end.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "Plugin deployment uses Agents > Tools > plugin > Installed for, then All users or Specific users/groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-manage-plugins",
+      "quote": "Select Agents along with either All agents or Tools. ... Select the plugin to open its details. ... Select Installed for, and select All users or Specific users/groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "System administration > Setup > Allowed MCP clients opens the ERP page that controls permitted agent clients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/mcp/mcp-foundry",
+      "quote": "Go to System administration > Setup > Allowed MCP clients to open the Allowed MCP clients page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Allowed MCP client changes can take up to one minute to apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "Changes to the allowed MCP clients can take up to one minute to take effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Governance guidance: Before rollout",
+      "type": "default",
+      "claim": "Dataverse might be disabled by default in EU countries or regions with Works Council requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+      "quote": "This condition is common in EU countries or regions with Works Council requirements (such as Germany, France, and Sweden), where Dataverse might be disabled by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Administrators cannot sign in to plugin connectors on users' behalf.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-manage-plugins",
+      "quote": "You can't sign in on behalf of your users. Each user must complete the sign-in or consent flow themselves the first time they use that connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Administrators can review Cowork usage and consumption in admin dashboards and configure per-user or per-group limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-admin-governance",
+      "quote": "Admins see usage in the Microsoft 365 admin center and can set per-user or per-group limits. ... Gain visibility into how users engage with Cowork in the Copilot Cowork usage dashboard",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Microsoft Purview audit entries under Copilot activities include Cowork plugin interactions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-manage-plugins",
+      "quote": "Microsoft Purview audit logs capture Copilot activities for your organization, including interactions with Cowork and its plugins. Audit entries appear under Copilot activities in Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "Governance guidance; Governance controls",
+      "type": "consistency",
+      "claim": "The governance checklist directs readers to review controls that are absent from the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review the ERP security roles, duties and privileges of the pilot group ... Confirm ... Allowed MCP clients ... Review ... Cowork usage dashboard ... Search the Microsoft Purview audit log. The table contains only Cowork access, plugin availability and the Dataverse setting.",
+      "severity": "minor",
+      "fix": "The ERP security-role review, Allowed MCP clients check, Cowork usage-dashboard review and Purview audit search have no controls-table rows. Remove those checklist bullets, including the later ERP role reassessment bullet, to satisfy the checklist/table rule without adding unverified rows; retain the existing explanatory prose."
+    },
+    {
+      "n": 88,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "Microsoft Copilot (Microsoft 365) is a product listed on this roadmap item.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Finance and Operations cross-app\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 89,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "Dynamics 365 Finance and Operations cross-app is a product listed on this roadmap item.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Finance and Operations cross-app\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "ERP business logic remains enforced, including rejecting transactions that the application client would reject.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/mcp/mcp-security",
+      "quote": "A transaction that would be rejected in the application client is also rejected when attempted through the MCP server.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T02:05:36.112Z",
+    "summary": {
+      "links": 13,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=576838",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/copilot/use-copilot-cowork-erp",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/copilot-mcp",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/mcp/mcp-security",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/mcp/mcp-foundry",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-admin-governance",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-access",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-manage-plugins",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/plugins/cost-considerations",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-intelligence",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users can use Copilot Cowork, and so the ERP apps plugin",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-admin-governance",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost Management",
+          "Configuration",
+          "Select agents and services",
+          "Cowork"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which users can use Copilot Cowork, and so the ERP apps plugin",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+        "reachable": true,
+        "token": "/beta/copilot/costManagement",
+        "found": false
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether the plugin is available to all users, to specific users or groups, or blocked",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-manage-plugins",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Tools",
+          "plugin",
+          "Users",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether the plugin is available to all users, to specific users or groups, or blocked",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether Dataverse data is available to Microsoft Copilot, which the plugin requires",
+        "docs": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Settings",
+          "Dataverse data available in Microsoft Copilot"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

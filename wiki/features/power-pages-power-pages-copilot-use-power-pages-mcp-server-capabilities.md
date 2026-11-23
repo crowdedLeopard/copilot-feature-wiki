@@ -119,17 +119,19 @@ changes:
     note: "Correction: fixed the site-settings, Entra and Power Platform admin center paths, narrowed the Web API data-exposure and setup-error statements, and removed two checklist items with no table row."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 50 statements confirmed"
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
 version: 4
 verification:
-  status: "verified"
-  date: "2026-11-16"
+  status: "verified-with-gaps"
+  date: "2026-11-23"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 50
+  claims: 53
+  confirmed: 52
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
   hash: "c378ae9883b777eab14589b1b9bcbe77"
 ---
@@ -210,4 +212,12 @@ The site-visibility row covers only the policy for non-production sites; Microso
 risk: High. It opens site data and write operations to AI agents, so a weak table permission or web role could expose or alter Dataverse records.
 cost: Medium. Learn lists a Microsoft 365 Copilot licence as a prerequisite for end users of the Copilot agent example, so a subset of users needs it; no charge for the server itself is published.
 impact: Medium. It affects site makers and the users or agents that connect to site data.
+-->
+
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Microsoft Entra admin center > Entra ID > App registrations reaches the app-registration control. | Found: Browse to Entra ID > App registrations and select New registration. | Fix: Extend controls[1].ui.path and the rendered path to 'Entra ID > App registrations > New registration', as given at https://learn.microsoft.com/entra/identity-platform/quickstart-register-app#register-an-application. | Source: https://learn.microsoft.com/entra/identity-platform/quickstart-register-app#register-an-application
+- [supported, minor] controls[1].api; Governance controls table / command: POST https://graph.microsoft.com/v1.0/applications with displayName in the request body creates an application. | Found: POST https://graph.microsoft.com/v1.0/applications The request body must contain displayName, which is a required property. | Fix: Set controls[1].api.call and its rendered call to 'POST https://graph.microsoft.com/v1.0/applications'. Prepend 'The request body must contain displayName.' to the existing note. | Source: https://learn.microsoft.com/graph/api/application-post-applications?view=graph-rest-1.0
+- [contradicted, minor] Governance guidance: At rollout; controls[1].note / consistency: The checklist instructs readers to grant admin consent without a row for that control. | Found: Grant admin consent only for the required MCP, openid and profile scopes. The call creates the application object only; MCP scope, delegated permissions, consent and redirect URIs are configured separately. | Fix: Remove the At rollout checklist bullet 'Grant admin consent only for the required MCP, openid and profile scopes.' The existing app-registration row does not document the consent control.
 -->

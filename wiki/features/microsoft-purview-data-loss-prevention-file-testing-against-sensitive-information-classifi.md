@@ -4,7 +4,7 @@ slug: "microsoft-purview-data-loss-prevention-file-testing-against-sensitive-inf
 roadmapId: 566323
 topic: "governance"
 products: ["Microsoft Purview"]
-summary: "Purview is adding a file test that checks an uploaded file against one or all classifiers. This item covers GCC, GCC High and DoD. No source names an admin action; review who can reach it."
+summary: "Purview is adding a file test against one or all classifiers. This item covers GCC, GCC High and DoD. No source names an admin action; review who can reach it."
 status: "launched"
 releasePhase: ["General Availability"]
 clouds: ["GCC","GCC High","DoD"]
@@ -64,35 +64,39 @@ controls:
     scope: "user"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Settings > Roles and scopes > Role groups > role group > Edit > Choose users"
+      path: "Settings > Roles and scopes > Role groups > role group > Edit > Edit members of the role group > Choose users"
       docs: "https://learn.microsoft.com/purview/purview-permissions"
     api:
       kind: "powershell"
       call: "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user>\""
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember"
-    note: "Needs the Role Management role to view role groups. Entra roles can also give access. Learn does not say which role runs the new test."
+    note: "To view role groups, be a global administrator or have the Role Management role (assigned only to the Organization Management role group). Entra roles can also give access. Learn does not say which role runs the new test."
 confidence: "medium"
 created: "2026-11-22"
-updated: "2026-11-22"
+updated: "2026-11-23"
 roadmapModified: "2026-10-05T23:03:05"
 changes:
   - date: "2026-11-22"
     note: "First briefing for the GCC, GCC High and DoD item; Learn does not yet describe the all-classifier test, so the page rests on the roadmap and the per-type test documentation."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 57 statements contradicted, 4 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after the independent check: the Role Management role statement, the role-group path, and unsupported claims about who can submit files, result volume, uploaded input and policy independence."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 60 statements confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-22"
-  version: 1
+  status: "verified"
+  date: "2026-11-23"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 52
-  unconfirmed: 4
-  contradicted: 1
-  attempts: 1
-  hash: "d265c241745ebf39b396f9a994d81d1c"
+  claims: 60
+  confirmed: 60
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "c61e20804c5a915f4b92c9c5bdb1641e"
 ---
 
 ## What's changing
@@ -105,14 +109,14 @@ The roadmap record lists this item as Launched, with a target of August CY2026, 
 
 ## Why it matters
 
-A file test on the Classifiers page gives compliance and security teams a way to check why a document was or was not detected without building or changing a policy first. If you troubleshoot missed or unexpected DLP matches, expect this to shorten that work, provided its results match what your policies see.
+The roadmap describes the new test as a way to find sensitive content and troubleshoot classification issues. If you troubleshoot missed or unexpected DLP matches, expect this to shorten that work, provided its results match what your policies see.
 
 Microsoft has not stated what happens on arrival, and no source says existing behaviour changes, so treat this as an optional capability to check rather than a change that lands on users. Keep one caution in view: Learn says the same sensitive information type can produce different results depending on where content is evaluated (email in transit, files at rest, files on managed devices), and that an uploaded-file test does not refresh classification for existing SharePoint or OneDrive files. A test result is evidence about one file, not a guarantee about a policy.
 
 ## Risk assessment
 
 **Data exposure**
-- Anyone who can open the test can submit a file to it. Use sample or redacted files where you can, because a test of real contracts or customer records puts that content in front of the person running it. Access to the Classifiers page comes from Entra administrator or Microsoft Purview role-group membership (see the controls table).
+- Confirm who can submit files to the new test before widening access. Use sample or redacted files where you can, because a test of real contracts or customer records puts that content in front of the person running it. Access to the Classifiers page comes from Entra administrator or Microsoft Purview role-group membership (see the controls table).
 - Learn says the existing per-type test shows match results for the file you upload and does not refresh classification for existing SharePoint or OneDrive files, so testing a file does not by itself reclassify stored content.
 
 **Security & identity**
@@ -123,7 +127,7 @@ Microsoft has not stated what happens on arrival, and no source says existing be
 
 **Change & support**
 - Test results can differ from live policy results, as Learn notes for different workloads. Tell help desk and compliance staff that a clean test is not proof that a SharePoint, Exchange or endpoint policy will not match.
-- Testing against all classifiers produces more results to read than testing one. Agree who interprets them and what happens to files that match.
+- Check how the new test presents results when all classifiers are selected. Agree who interprets them and what happens to files that match.
 
 ## Cost and licensing
 
@@ -131,7 +135,7 @@ No licence or meter for the all-classifier test is published at the time of writ
 
 For the existing per-type Test option, the Learn page on sensitive information types says that to test any custom or default sensitive information type, at least one Exchange Online licence must be added to the tenant, otherwise the Test option is greyed out. Whether the new test carries the same condition is not stated.
 
-The cost Microsoft documents is therefore indirect: administrator and analyst time to run tests and read results. A price or rate specific to this feature is not yet published.
+Plan for administrator and analyst time to run tests and read results. A price or rate specific to this feature is not yet published.
 
 ## Scope
 
@@ -164,7 +168,7 @@ Learn does not say whether its Classifiers and sensitive information type test p
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Testing one uploaded file against one sensitive information type (today's per-type test)</strong><br><small class="controls__note">Existing test, not a control over the new all-classifier test. The cmdlet tests a text string, not an uploaded file; the portal test takes one unencrypted file at a time.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Information Protection › Classifiers › Sensitive info types › sensitive information type › Test <a href="https://learn.microsoft.com/purview/sit-test-a-sit" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Test-DataClassification -ClassificationNames &lt;names&gt; -TextToClassify &lt;text&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/test-dataclassification" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Who can reach the Classifiers page (Purview role-group membership)</strong><br><small>User</small><br><small class="controls__note">Needs the Role Management role to view role groups. Entra roles can also give access. Learn does not say which role runs the new test.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › role group › Edit › Choose users <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &quot;&lt;user&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who can reach the Classifiers page (Purview role-group membership)</strong><br><small>User</small><br><small class="controls__note">To view role groups, be a global administrator or have the Role Management role (assigned only to the Organization Management role group). Entra roles can also give access. Learn does not say which role runs the new test.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › role group › Edit › Edit members of the role group › Choose users <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &quot;&lt;user&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -182,19 +186,6 @@ The per-type Test option and the Test-DataClassification cmdlet are today's alte
 
 <!-- rationale
 risk: Low. The roadmap describes a test of a file for sensitive information, and no source says it changes labels, policies or existing files; its default state is not stated.
-cost: Low. No price or meter is published for the new test; the cost Microsoft documents for the existing per-type Test option is an Exchange Online licence in the tenant, plus admin time.
+cost: Low. No price or meter is published for the new test; Learn requires an Exchange Online licence in the tenant for the existing per-type Test option; plan for admin time to run tests.
 impact: Low. Administrators and analysts who can open the Classifiers page are the people who would use it; the roadmap describes no change for end users.
--->
-
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].note; Governance controls table / role: Viewing role groups needs the Role Management role. | Found: To view Role groups in the Roles and scopes area in the Microsoft Purview portal, users need to be a global administrator or need to be assigned the Role Management role (assigned only to the Organization Management role group). | Fix: Replace 'Needs the Role Management role to view role groups' in controls[1].note and the rendered table with 'To view role groups, be a global administrator or have the Role Management role (assigned only to the Organization Management role group)'. | Source: https://learn.microsoft.com/purview/purview-permissions
-- [unsupported, blocker] Risk assessment: Data exposure / role: Anyone who can open the new test can submit a file to it. | Found: Searched: '"Purview" "Classifiers" "test" "all" default permissions tenant enable file testing'; read Classifiers overview, Purview permissions and SIT testing. Page-access roles are documented, but opening the new test is not stated to confer permission to submit. | Fix: Replace 'Anyone who can open the test can submit a file to it' with 'Confirm who can submit files to the new test before widening access'. Keep the sample/redacted-file advice.
-- [unsupported, major] Risk assessment: Change & support / behaviour: Testing all classifiers produces more results to read than testing one. | Found: Searched: '"Purview" "test" "all classifiers" results matches file'; read Classifiers overview and SIT testing. The roadmap permits testing all classifiers but does not specify result presentation or guarantee more returned results. | Fix: Replace 'Testing against all classifiers produces more results to read than testing one' with 'Check how the new test presents results when all classifiers are selected'. Keep the advice to agree who interprets results.
-- [unsupported, major] summary / behaviour: The new all-classifier test operates on an uploaded file. | Found: Searched: '"Purview" "test" "all classifiers" results matches file'; read Classifiers overview and SIT testing. The roadmap says 'test files' without describing input selection; uploading is documented only for the existing per-type workflow. | Fix: Replace 'Purview is adding a file test that checks an uploaded file against one or all classifiers' in the summary with 'Purview is adding a file test against one or all classifiers'.
-- [unsupported, major] Why it matters / behaviour: The new test checks why a document was or was not detected without first building or changing a policy. | Found: Searched: 'Microsoft Purview classifiers uploaded file testing labels blocks moves deletes file policy test results'; read Classifiers overview and SIT testing. The existing SIT procedure is independent of policy creation, but the new test's policy dependencies are not stated. | Fix: Replace 'A file test on the Classifiers page gives compliance and security teams a way to check why a document was or was not detected without building or changing a policy first' with 'The roadmap describes the new test as a way to find sensitive content and troubleshoot classification issues'.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance guidance / admin-path: Purview role-group membership is managed at Settings > Roles and scopes > Role groups > role group > Edit > Choose users. | Found: Go to Settings > Roles and scopes ... Select Role groups. ... select a Microsoft Purview role group ... Select Edit on the control bar. ... On Edit members of the role group, select Choose users or Choose groups. | Fix: Include the documented wizard-page heading in controls[1].ui.path and its rendered table path: 'Settings > Roles and scopes > Role groups > role group > Edit > Edit members of the role group > Choose users'. | Source: https://learn.microsoft.com/purview/purview-permissions
-- [supported, minor] Cost and licensing; rationale: cost / cost: Running tests and reading their results entails administrator or analyst time, presented as a cost Microsoft documents. | Found: Upload a file and choose Test. ... On the Match results page, review the results and choose Finish. ... Perform the same steps for the second file. | Fix: Present the time cost as wiki analysis, not Microsoft's published cost: replace 'The cost Microsoft documents is therefore indirect: administrator and analyst time to run tests and read results' with 'Plan for administrator and analyst time to run tests and read results'. In the cost rationale, replace 'the cost Microsoft documents for the existing per-type Test option is an Exchange Online licence in the tenant, plus admin time' with 'Learn requires an Exchange Online licence in the tenant for the existing per-type Test option; plan for admin time to run tests'. | Source: https://learn.microsoft.com/purview/sit-test-a-sit
 -->

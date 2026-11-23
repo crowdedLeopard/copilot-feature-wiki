@@ -40,6 +40,9 @@ sources:
   - title: "Determine access controls for Copilot Cowork"
     url: "https://learn.microsoft.com/copilot/cowork/cowork-access"
     kind: "learn"
+  - title: "Understand your Copilot Credit usage across usage-based billing features"
+    url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-cost"
+    kind: "learn"
   - title: "Create spendingPolicyServiceSetting"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create"
     kind: "learn"
@@ -62,14 +65,14 @@ controls:
     scope: "group"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Cost Management > Configuration > + Add spending policy > Select agents and services"
+      path: "Copilot > Cost Management > Configuration > + Add spending policy > Scope user and group > Specific groups > Select agents and services"
       docs: "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance"
     api:
       kind: "graph"
       call: "POST /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create"
     note: "Select Cowork on the Select agents and services step. The request body sets serviceId and state. Beta API."
-  - governs: "Which users the Service app (and so the Customer Service plugin) is available to and installed for"
+  - governs: "Which users can install or use the Service app and its Customer Service plugin"
     scope: "group"
     ui:
       surface: "Microsoft 365 admin center"
@@ -93,26 +96,30 @@ controls:
     note: "Blocking can also affect Service Agent. Requires a Microsoft Agent 365 licence. Beta API; the reference page does not name the Service app."
 confidence: "high"
 created: "2026-11-22"
-updated: "2026-11-22"
+updated: "2026-11-23"
 roadmapModified: "2026-10-16T19:09:47"
 changes:
   - date: "2026-11-22"
     note: "New briefing: Customer Service plugin in Copilot Cowork, with the Service app and Cowork spending-policy controls, and the sources' conflicting statements on its default."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 81 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Correction: the Service app availability row now covers installing or using the app only, the spending-policy path is complete, the controls note no longer denies other Cowork plugin settings, and checklist steps without a table row were removed."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 84 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-22"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-23"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 81
-  confirmed: 78
+  claims: 84
+  confirmed: 83
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "64d74bef38c965189b1f3c1f7d427405"
+  contradicted: 1
+  attempts: 0
+  hash: "222ab15f02ed511d2002414fa17eaa49"
 ---
 
 ## What's changing
@@ -173,22 +180,20 @@ Administrators who manage plugins need to be a tenant administrator or hold the 
 
 ### Before rollout
 
-- Check the Service app in Microsoft 365 admin center > Agents > All agents > Registry. Compare **Installed to** and **Available to** on its **Users** tab, because the app might already be installed.
+- Check the Service app in Microsoft 365 admin center > Agents > All agents > Registry. Compare its **Available to** setting on the **Users** tab, because the app might already be installed.
 - List every spending policy that selects Cowork (Copilot > Cost Management > Configuration). Any user in scope of one of them can use Cowork, whatever its credit limit.
-- Ask the Dynamics 365 administrator to confirm the Customer Service licensing for the pilot representatives, their security roles ([Dataverse security roles](/concepts/security-roles/)) and the Customer Service MCP configuration the Learn page says must be in place.
+- Ask the Dynamics 365 administrator to confirm the Customer Service licensing for the pilot representatives and the Customer Service MCP configuration the Learn page says must be in place.
 - Confirm that pilot representatives hold Microsoft 365 Copilot licences, as the plugin management page requires.
 
 ### At rollout
 
-- Align **Installed to** and **Available to** to the pilot group; Microsoft says changing only **Available to** does not narrow a broader deployment.
+- Set **Available to** to the pilot group; Microsoft says changing only **Available to** does not narrow a broader deployment.
 - Test with a representative's regular account rather than an administrator account, as Microsoft advises.
 - Brief representatives on selecting the environment in the plugin's Settings and on approving or rejecting checkpoints before updates are committed.
 
 ### After rollout
 
-- Review Cowork consumption and per-user limits in Copilot > Cost Management, and remember that lowering a limit does not remove access.
-- Search the Microsoft Purview audit log for Copilot activities to see how Cowork and its plugins are used.
-- Weigh any decision to block or uninstall the Service app against its effect on Service Agent before acting.
+- Weigh any decision to block the Service app against its effect on Service Agent before acting.
 
 ## Governance controls
 
@@ -197,13 +202,13 @@ Administrators who manage plugins need to be a tenant administrator or hold the 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users can use Cowork at all (spending policies that select Cowork)</strong><br><small>Group</small><br><small class="controls__note">Select Cowork on the Select agents and services step. The request body sets serviceId and state. Beta API.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › + Add spending policy › Select agents and services <a href="https://learn.microsoft.com/copilot/cowork/cowork-admin-governance" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users the Service app (and so the Customer Service plugin) is available to and installed for</strong><br><small>Group</small><br><small class="controls__note">The request body sets availableTo and allowedUsersAndGroups. Requires a Microsoft Agent 365 licence. Beta API; the reference page does not name the Service app.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Registry › Service › Users › Available to <a href="https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/admin/catalog/packages/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users can use Cowork at all (spending policies that select Cowork)</strong><br><small>Group</small><br><small class="controls__note">Select Cowork on the Select agents and services step. The request body sets serviceId and state. Beta API.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › + Add spending policy › Scope user and group › Specific groups › Select agents and services <a href="https://learn.microsoft.com/copilot/cowork/cowork-admin-governance" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users can install or use the Service app and its Customer Service plugin</strong><br><small>Group</small><br><small class="controls__note">The request body sets availableTo and allowedUsersAndGroups. Requires a Microsoft Agent 365 licence. Beta API; the reference page does not name the Service app.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Registry › Service › Users › Available to <a href="https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/admin/catalog/packages/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether the Service app is blocked for the whole organisation</strong><br><small>Tenant</small><br><small class="controls__note">Blocking can also affect Service Agent. Requires a Microsoft Agent 365 licence. Beta API; the reference page does not name the Service app.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Registry › Service › Block <a href="https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-No setting specific to the Customer Service plugin inside Cowork is documented beyond the Service app's own scopes, so the rows combine the controls Microsoft documents for the app and for Cowork access. Microsoft calls the Service app's deployment and availability scopes independent, and says organisation-wide installation can override a limited scope.
+The rows show the Service app controls and Cowork access controls. Microsoft calls the Service app's deployment and availability scopes independent, and says organisation-wide installation can override a limited scope.
 
 The spending-policy update API changes only a policy's display name, limits and billing methods; adding Cowork to a policy is a separate service-settings call. The Cowork plugin page also treats the plugin as manageable under Agents > Tools in the Microsoft 365 admin center, and says the Customer Service integration is enabled by default and can be disabled in the Microsoft 365 admin center. Dynamics 365 security roles, which decide record access, are managed in Dynamics 365 rather than in these rows.
 
@@ -220,14 +225,8 @@ cost: Variable. Cowork is billed by usage in Copilot Credits, and the plugin als
 impact: Medium. Service representatives and their supervisors notice it; other users are unaffected unless the Service app is also assigned to them.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; controls[1].governs; Governance controls table / admin-path: Agents > All agents > Registry > Service > Users > Available to controls both availability and installation targets. | Found: Installed to or Installed for identifies preinstallation targets. Available to controls who can install or use the app. These scopes are independent. | Fix: Narrow controls[1].governs and the matching table label to 'Which users can install or use the Service app and its Customer Service plugin'. Keep the existing Available to path; it is correct for availability, not preinstallation. | Source: https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app
-- [contradicted, blocker] Governance controls: first paragraph / absence: No Customer Service plugin setting inside Cowork is documented beyond the Service app's scopes. | Found: Go to Customize and search for Service. Turn on the toggle. | Fix: Replace the first sentence with 'The rows show the Service app controls and Cowork access controls.' The existing user-toggle and integration-control descriptions should remain; do not assert that no other setting is documented. | Source: https://learn.microsoft.com/dynamics365/customer-service/use/use-copilot-cowork-service-skills
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The Cowork policy control is under Copilot > Cost Management > Configuration > + Add spending policy > Select agents and services. | Found: On the Scope user and group step, choose Specific groups and select the security group. On the Select agents and services step, select Cowork. | Fix: Set controls[0].ui.path and its rendered path to 'Copilot > Cost Management > Configuration > + Add spending policy > Scope user and group > Specific groups > Select agents and services'. Retain the note to select Cowork. | Source: https://learn.microsoft.com/copilot/cowork/cowork-admin-governance
-- [supported, minor] controls[1].api; controls[1].note; Governance controls table / command: PATCH /beta/copilot/admin/catalog/packages/{id} updates package availability and deployment. | Found: availableTo | Enum value specifying which users or groups within the tenant can access this package. Required if updating allowedUsersAndGroups. acquireUsersAndGroups | Users/groups for whom the package is deployed. | Fix: Apply the availability-only narrowing in the controls[1].governs fix. The existing availableTo and allowedUsersAndGroups note then correctly describes the operation for the narrowed row; do not present those properties as setting installation targets. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update
-- [supported, minor] front matter: licensing.notes; Cost and licensing; rationale: cost / cost: Cowork consumption is measured in Copilot Credits. | Found: You can type /cost in Cowork to see the approximate Copilot Credit usage for a task, how many credits you have used this month, and how many remain. | Fix: Add 'Credit usage for Microsoft Copilot Cowork tasks' at https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-cost to sources to directly support the named meter. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-cost
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: The checklist names controls that have no corresponding controls-table row. | Found: Align Installed to and Available to to the pilot group; Review Cowork consumption and per-user limits; Search the Microsoft Purview audit log. The table lists Cowork access, Service availability and Service blocking only. | Fix: The checklist's Installed to, Dynamics security-role, per-user-limit and Purview audit steps have no corresponding table rows. Remove those instructions from the checklist; do not add unverified control rows.
+- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist asks administrators to confirm Customer Service MCP configuration, but no control row covers that configuration. | Found: confirm ... the Customer Service MCP configuration the Learn page says must be in place. / Controls: Cowork spending policies; Service app availability; Service app blocking. | Fix: Replace that checklist bullet with: 'Ask the Dynamics 365 administrator to confirm the Customer Service licensing for the pilot representatives.' Do not add a control row.
 -->

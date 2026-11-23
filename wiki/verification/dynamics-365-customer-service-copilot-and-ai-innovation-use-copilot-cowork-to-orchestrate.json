@@ -2,47 +2,52 @@
   "slug": "dynamics-365-customer-service-copilot-and-ai-innovation-use-copilot-cowork-to-orchestrate",
   "roadmapId": 576851,
   "title": "Dynamics 365 Customer Service: Customer Service skills in Copilot Cowork",
-  "status": "held",
-  "date": "2026-11-22",
-  "version": 1,
+  "status": "verified-with-gaps",
+  "date": "2026-11-23",
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-22",
-    "reasons": [
-      "2 blocking findings (claims 64, 70)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 81,
-    "confirmed": 78,
+    "claims": 84,
+    "confirmed": 83,
     "unconfirmed": 0,
-    "contradicted": 3,
-    "blocker": 2,
+    "contradicted": 1,
+    "blocker": 0,
     "major": 0,
-    "minor": 4
+    "minor": 1
   },
-  "summary": "Hold: the Service app availability control is incorrectly described as also controlling installation, although Microsoft documents those as independent scopes. The page also says no additional plugin setting is documented despite documenting the user's own toggle and Microsoft's integration control. Most behaviour, licensing and roadmap facts are supported.",
+  "summary": "The roadmap facts, licensing statements and all six control surfaces are supported by Microsoft's documentation. The page correctly reports the differing descriptions of plugin activation; the checklist's MCP configuration check has no corresponding control row.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: status; What's changing",
+      "where": "front matter: products; title; summary",
       "type": "record",
-      "claim": "The roadmap status is Launched.",
+      "claim": "This is a Dynamics 365 Customer Service capability in Microsoft Copilot.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Customer Service\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The general availability target is June CY2026.",
@@ -53,7 +58,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 4,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The preview target is May CY2026.",
@@ -64,7 +69,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The release phases are General Availability and Preview.",
@@ -75,7 +80,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
@@ -86,7 +91,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists the Web platform.",
@@ -97,32 +102,10 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "front matter: products",
-      "type": "record",
-      "claim": "The products are Microsoft Copilot (Microsoft 365) and Dynamics 365 Customer Service.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Customer Service\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 8,
-      "where": "front matter: roadmapModified",
+      "where": "What's changing: first paragraph",
       "type": "record",
-      "claim": "The roadmap record was modified at 2026-10-16T19:09:47.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-10-16T19:09:47\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap says the plugin is available out of the box for service representatives.",
+      "claim": "The roadmap describes the plugin as available out of the box for service representatives.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "The plugin in Copilot Cowork is available out of the box for service representatives.",
@@ -130,8 +113,8 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "What's changing; Open questions",
+      "n": 9,
+      "where": "What's changing: first and third paragraphs; Open questions",
       "type": "record",
       "claim": "The roadmap says representatives use the skills after an administrator enables the plugin in Cowork settings.",
       "status": "supported",
@@ -141,10 +124,10 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing",
+      "n": 10,
+      "where": "What's changing: capability list",
       "type": "record",
-      "claim": "The roadmap lists case prioritisation and enrichment.",
+      "claim": "The roadmap lists prioritising and enriching cases.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Prioritizes and enriches cases: Surfaces highest-attention cases with suggested next actions.",
@@ -152,8 +135,8 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing",
+      "n": 11,
+      "where": "What's changing: capability list",
       "type": "record",
       "claim": "The roadmap lists flagging cases whose severity mismatches urgency signals.",
       "status": "supported",
@@ -163,8 +146,8 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "What's changing",
+      "n": 12,
+      "where": "What's changing: capability list",
       "type": "record",
       "claim": "The roadmap lists a one-screen case brief at intake.",
       "status": "supported",
@@ -174,10 +157,10 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing",
+      "n": 13,
+      "where": "What's changing: capability list",
       "type": "record",
-      "claim": "The roadmap lists likely root causes and ranked resolution suggestions.",
+      "claim": "The roadmap lists likely root-cause and ranked resolution suggestions.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Summarizes root cause and resolution: Proposes likely cause and ranked next-step resolutions.",
@@ -185,8 +168,8 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "What's changing",
+      "n": 14,
+      "where": "What's changing: capability list",
       "type": "record",
       "claim": "The roadmap lists knowledge article matching.",
       "status": "supported",
@@ -196,8 +179,8 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "n": 15,
+      "where": "What's changing: capability list; Risk assessment: Autonomy & actions",
       "type": "record",
       "claim": "The roadmap lists template-based customer email drafts for representative review.",
       "status": "supported",
@@ -207,10 +190,10 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "What's changing",
+      "n": 16,
+      "where": "What's changing: capability list",
       "type": "record",
-      "claim": "The roadmap lists assembling escalation packets for the next owner.",
+      "claim": "The roadmap lists escalation packets for the next owner.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Handles escalations and handoffs: Detects triggers and assembles escalation packet for next owner.",
@@ -218,10 +201,10 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "Scope",
+      "n": 17,
+      "where": "Scope: first paragraph",
       "type": "record",
-      "claim": "The roadmap describes enablement by admins, makers or marketers for end users.",
+      "claim": "The roadmap describes the feature as enabled by admins, makers or marketers for end users.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Enabled by admins/makers/marketers for end users",
@@ -229,10 +212,10 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "title; summary; Why it matters",
+      "n": 18,
+      "where": "summary; What's changing; Why it matters",
       "type": "behaviour",
-      "claim": "The Customer Service plugin runs delegated case workflows in Copilot Cowork.",
+      "claim": "The Customer Service plugin lets representatives delegate case workflows in Copilot Cowork.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-copilot-cowork-service-skills",
       "quote": "Use the plugin for Dynamics 365 Customer Service in Microsoft Copilot Cowork to delegate end-to-end case workflows.",
@@ -240,8 +223,8 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing",
+      "n": 19,
+      "where": "What's changing: second paragraph",
       "type": "behaviour",
       "claim": "Customer Service skills are delivered through the Service app.",
       "status": "supported",
@@ -251,8 +234,8 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing; Why it matters; Governance guidance",
+      "n": 20,
+      "where": "What's changing; Why it matters; Governance guidance: Before rollout",
       "type": "behaviour",
       "claim": "The Service app might already be installed in the organisation.",
       "status": "supported",
@@ -262,21 +245,21 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What's changing",
+      "n": 21,
+      "where": "What's changing: second paragraph",
       "type": "admin-path",
-      "claim": "A representative opens Cowork, goes to Customize, searches for Service and turns on its toggle.",
+      "claim": "A representative enables Service by opening Cowork, going to Customize, searching for Service and turning on its toggle.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-copilot-cowork-service-skills",
-      "quote": "Open Cowork with the assigned work account.\nGo to Customize and search for Service.\nTurn on the toggle.",
+      "quote": "1. Open Cowork with the assigned work account.\n2. Go to Customize and search for Service.\n3. Turn on the toggle.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing; Scope; Governance guidance",
+      "n": 22,
+      "where": "What's changing; Scope; Governance guidance: At rollout",
       "type": "admin-path",
-      "claim": "A representative selects or confirms the environment using Settings in the Service plugin.",
+      "claim": "The representative selects or confirms the Customer Service environment through Settings in the Service plugin.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-copilot-cowork-service-skills",
       "quote": "Select or confirm the Customer Service environment by using the Settings option in the Service plugin.",
@@ -284,10 +267,21 @@
       "fix": null
     },
     {
-      "n": 24,
-      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "n": 23,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
       "type": "behaviour",
-      "claim": "Tasks are grounded in live Dynamics 365 case data and Microsoft 365 emails, meetings and chats.",
+      "claim": "Tasks are grounded in live Dynamics 365 case data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-copilot-cowork-service-skills",
+      "quote": "Every task is grounded in live Dynamics 365 case data and Microsoft 365 context such as emails, meetings, chats that requires no manual lookup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Tasks also use Microsoft 365 context such as emails, meetings and chats.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-copilot-cowork-service-skills",
       "quote": "Every task is grounded in live Dynamics 365 case data and Microsoft 365 context such as emails, meetings, chats that requires no manual lookup.",
@@ -298,7 +292,7 @@
       "n": 25,
       "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance; rationale: risk",
       "type": "behaviour",
-      "claim": "Checkpoints let representatives review and approve proposed updates and actions before commitment to Dynamics 365.",
+      "claim": "Checkpoints let representatives review and approve proposed field updates and actions before commitment to Dynamics 365.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-copilot-cowork-service-skills",
       "quote": "Checkpoints let representatives review and approve proposed field updates and actions before anything is committed to Dynamics 365.",
@@ -320,7 +314,7 @@
       "n": 27,
       "where": "Risk assessment: Data exposure; rationale: risk",
       "type": "applicability",
-      "claim": "Cowork operates within the existing Dynamics 365 and Microsoft 365 permissions.",
+      "claim": "Cowork operates within the existing Dynamics 365 and Microsoft 365 permissions of its users or groups.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-copilot-cowork-service-skills",
       "quote": "Cowork operates within the Dynamics 365 and Microsoft 365 permissions that are already in place per user or groups persona.",
@@ -329,9 +323,53 @@
     },
     {
       "n": 28,
+      "where": "What's changing: third paragraph; Governance controls",
+      "type": "default",
+      "claim": "The Cowork plugin management page says Customer Service and Sales integrations are enabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
+      "quote": "Dynamics 365 Customer Service and Sales integrations are enabled by default and can be disabled in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing: third paragraph; Governance controls",
+      "type": "behaviour",
+      "claim": "The Cowork plugin management page says those integrations can be disabled in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
+      "quote": "Dynamics 365 Customer Service and Sales integrations are enabled by default and can be disabled in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "An unambiguous overall arrival state for the Service plugin is not established by the sources, whose activation descriptions differ.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Customer Service Copilot Cowork default enabled Service plugin administrator toggle Dataverse settings. Read service-skills, manage-service-app, cowork-manage-plugins and data-platform-intelligence; admin enablement, user toggle and integration default describe different gates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters: second paragraph",
+      "type": "absence",
+      "claim": "No source says this feature changes existing behaviour without someone acting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Customer Service Copilot Cowork default enabled Service plugin administrator toggle Dataverse settings. Read the roadmap, service-skills, manage-service-app and cowork-manage-plugins; acquisition and activation are conditional on installation, deployment or user action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
       "where": "summary; Why it matters; Scope; rationale: impact",
       "type": "applicability",
-      "claim": "Service app assignment, host access and Dynamics 365 data rights are distinct prerequisites for representatives.",
+      "claim": "Service app assignment governs receipt of the app and permission to install or use it.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
       "quote": "Service app assignment and Microsoft Entra groups | Determines who receives the app and who is allowed to install or use it. Deployment and availability scopes are independent.",
@@ -339,10 +377,10 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "Why it matters; Governance guidance",
+      "n": 33,
+      "where": "summary; Why it matters; Scope; Governance guidance: Before rollout",
       "type": "applicability",
-      "claim": "Any spending policy in the user's scope that selects Cowork grants Cowork access.",
+      "claim": "Any user in scope of a spending policy selecting Cowork has Cowork access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
       "quote": "Any user in the scope of a spending policy that selects Cowork can use Cowork, regardless of how small the credit limit is.",
@@ -350,10 +388,10 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "Why it matters; Risk assessment: Security & identity; Scope; Governance controls",
+      "n": 34,
+      "where": "summary; Why it matters; Risk assessment: Security & identity; Scope; Governance controls",
       "type": "applicability",
-      "claim": "Dynamics 365 security roles determine which service records, tools and actions users can access.",
+      "claim": "Dynamics 365 security roles determine access to service environments, tools, records and actions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
       "quote": "Dynamics 365 security roles and data access | Environments, tools, records, and actions a user can access.",
@@ -361,7 +399,7 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 35,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Microsoft advises reviewing destination-service terms and organisational data policies before processing service information elsewhere.",
@@ -372,32 +410,43 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 36,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "Dynamics 365 plugins use Microsoft Entra ID authentication.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
-      "quote": "Dynamics 365 plugins (Customer Service, Sales, and ERP) use Microsoft Entra ID authentication",
+      "quote": "Dynamics 365 plugins (Customer Service, Sales, and ERP) use Microsoft Entra ID authentication and require users to select the Dynamics 365 environment they want to connect to.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
+      "n": 37,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Administrators cannot sign in on users' behalf; each user completes connector sign-in or consent.",
+      "claim": "Administrators cannot sign in to plugin connectors on users' behalf.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
-      "quote": "You can't sign in on behalf of your users. Each user must complete the sign-in or consent flow themselves the first time they use that connector.",
+      "quote": "You can't sign in on behalf of your users.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
+      "n": 38,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Each user completes the connector sign-in or consent flow themselves.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
+      "quote": "Each user must complete the sign-in or consent flow themselves the first time they use that connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
       "where": "Risk assessment: Security & identity",
       "type": "role",
-      "claim": "Microsoft says not to grant administrator roles to make the plugin appear.",
+      "claim": "Microsoft advises against granting administrator roles just to make the plugin appear.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
       "quote": "Don't grant administrator roles to users to make the plugin appear.",
@@ -405,7 +454,7 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 40,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "The Service app packages Service Agent and Customer Service plugins for supported Copilot experiences.",
@@ -416,18 +465,18 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Risk assessment: Change & support; controls[2].note; Governance guidance",
+      "n": 41,
+      "where": "Risk assessment: Change & support; controls[2].note; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Blocking or uninstalling Service affects its shared package and can also affect Service Agent.",
+      "claim": "Removing or blocking the shared Service app can affect Service Agent as well as the Cowork plugin.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
-      "quote": "The action targets the shared app package, not only one host or skill.",
+      "quote": "If you remove Service, it can affect more than one experience. ... Blocking prevents installation and use and removes the app from users who already installed it.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
+      "n": 42,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "Installing the Service app does not enable Cowork.",
@@ -438,9 +487,9 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 43,
       "where": "Risk assessment: Change & support",
-      "type": "behaviour",
+      "type": "applicability",
       "claim": "Installing the Service app does not grant Dynamics 365 data access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-copilot-cowork-service-skills",
@@ -449,10 +498,10 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 44,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "An environment selected in another Copilot experience might not apply to Cowork.",
+      "claim": "An environment selection from another Copilot experience might not apply to Cowork.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-copilot-cowork-service-skills",
       "quote": "A selection in another Copilot experience might not apply to Cowork.",
@@ -460,43 +509,43 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 45,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Representatives need Cowork access under applicable organisational licensing and spending policy.",
+      "claim": "Representatives need Cowork access under the organisation's applicable licensing and spending policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-copilot-cowork-service-skills",
-      "quote": "you need access to Copilot Cowork under your organization's applicable licensing and spending policy",
+      "quote": "To use Customer Service skills, you need access to Copilot Cowork under your organization's applicable licensing and spending policy",
       "severity": null,
       "fix": null
     },
     {
-      "n": 41,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "n": 46,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost; Governance guidance",
       "type": "licensing",
       "claim": "Representatives need applicable Dynamics 365 Customer Service licensing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-copilot-cowork-service-skills",
-      "quote": "applicable Dynamics 365 Customer Service licensing",
+      "quote": "applicable Dynamics 365 Customer Service licensing, and permission to the intended Customer Service environment and records.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
+      "n": 47,
       "where": "front matter: licensing.notes; Cost and licensing; Open questions",
       "type": "absence",
       "claim": "The Customer Service skills page does not name a specific Customer Service licence.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: '\"Customer Service\" \"Cowork\" \"credit\" licensing rate'; opened use-copilot-cowork-service-skills and manage-service-app. Prerequisites say 'applicable Dynamics 365 Customer Service licensing' without a named plan.",
+      "quote": "Searched: Customer Service skills Copilot Cowork licensing Copilot Credits rate approval MCP tools. Read use-copilot-cowork-service-skills in full; its prerequisites say 'applicable Dynamics 365 Customer Service licensing' without a SKU.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
-      "where": "Cost and licensing; Governance guidance",
+      "n": 48,
+      "where": "Cost and licensing; Governance guidance: Before rollout",
       "type": "licensing",
-      "claim": "The plugin management page requires Microsoft 365 Copilot licences assigned to Cowork plugin users.",
+      "claim": "The plugin management page requires Microsoft 365 Copilot licences for users of Cowork plugins.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
       "quote": "Users who use Cowork plugins must have Microsoft 365 Copilot licenses assigned.",
@@ -504,10 +553,10 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 49,
       "where": "Cost and licensing",
       "type": "role",
-      "claim": "Installing Service from Microsoft Marketplace requires tenant-administrator-equivalent permissions.",
+      "claim": "Installing Service from Microsoft Marketplace requires permissions equivalent to the tenant administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
       "quote": "To install the Service app from Microsoft Marketplace, you need permissions equivalent to the tenant administrator and a paid license for using its capabilities.",
@@ -515,43 +564,32 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 50,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Installing Service from Marketplace requires a paid licence for using its capabilities.",
+      "claim": "The Service app installation prerequisites name a paid licence for using its capabilities.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
-      "quote": "a paid license for using its capabilities.",
+      "quote": "To install the Service app from Microsoft Marketplace, you need permissions equivalent to the tenant administrator and a paid license for using its capabilities.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 46,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The licensing model combines user licences with consumption billing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
-      "quote": "Users who use Cowork plugins must have Microsoft 365 Copilot licenses assigned.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
+      "n": 51,
       "where": "front matter: cost; licensing.notes; Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "Cowork uses usage-based billing, making cost variable.",
+      "claim": "Cowork is billed through usage-based consumption measured in Copilot Credits.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
-      "quote": "Cowork uses a usage-based billing model.",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-cost",
+      "quote": "When you use usage-based features in Microsoft Copilot, that usage is measured in credits. These features are available in experiences such as Chat, Cowork, Code, and Autopilot.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
+      "n": 52,
       "where": "Cost and licensing: Meter",
       "type": "cost",
-      "claim": "Model responses, tool and skill calls, image generation and browser tasks count towards consumption.",
+      "claim": "Model responses, tool and skill calls, image generation and browser tasks count toward consumption.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
       "quote": "Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.",
@@ -559,10 +597,10 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "Cost and licensing; Governance guidance: After rollout",
-      "type": "admin-path",
-      "claim": "Administrators see usage and set user or group limits in Microsoft 365 admin center cost management.",
+      "n": 53,
+      "where": "Cost and licensing: Meter",
+      "type": "behaviour",
+      "claim": "Administrators see usage in the Microsoft 365 admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
       "quote": "Admins see usage in the Microsoft 365 admin center and can set per-user or per-group limits.",
@@ -570,21 +608,32 @@
       "fix": null
     },
     {
-      "n": 50,
-      "where": "Cost and licensing: Limits; Governance guidance",
-      "type": "applicability",
-      "claim": "A low credit limit does not block Cowork access.",
+      "n": 54,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Administrators can set per-user or per-group consumption limits.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
-      "quote": "A low credit limit doesn't block access.",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "Admins see usage in the Microsoft 365 admin center and can set per-user or per-group limits.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 51,
+      "n": 55,
+      "where": "Cost and licensing: Limits; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "A low credit limit does not block Cowork access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
+      "quote": "A policy with a limit of one credit still grants access. To remove access for a user, remove them from every spending policy that includes Cowork. A low credit limit doesn't block access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
       "where": "Cost and licensing: Limits",
-      "type": "behaviour",
-      "claim": "Credit limits are spending safeguards rather than real-time gates because enforcement is asynchronous.",
+      "type": "cost",
+      "claim": "Credit limits are spending safeguards rather than real-time access gates because enforcement is asynchronous.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
       "quote": "Credit limits are a spending safeguard, not a real-time access gate. Credit consumption and limit enforcement are evaluated asynchronously",
@@ -592,21 +641,21 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 57,
       "where": "Cost and licensing: Limits; rationale: cost",
       "type": "absence",
-      "claim": "The Customer Service skills Learn page publishes no plugin-specific credit rate.",
+      "claim": "The Customer Service plugin's Learn page publishes no plugin-specific credit rate.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: '\"Customer Service\" \"Cowork\" \"credit\" licensing rate'; read use-copilot-cowork-service-skills in full and Cowork governance billing. The skills page names no credit rate.",
+      "quote": "Searched: Customer Service skills Copilot Cowork licensing Copilot Credits rate approval MCP tools. Read service-skills, MCP tools overview and Copilot Credit usage; the service-skills page contains no credit rate.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 53,
-      "where": "Cost and licensing: Indirect costs; Governance guidance: After rollout",
-      "type": "applicability",
-      "claim": "Purview audit logs capture interactions with Cowork and its plugins under Copilot activities.",
+      "n": 58,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "Purview audit entries for Cowork and plugin interactions appear under Copilot activities.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
       "quote": "Microsoft Purview audit logs capture Copilot activities for your organization, including interactions with Cowork and its plugins. Audit entries appear under Copilot activities in Microsoft Purview.",
@@ -614,7 +663,7 @@
       "fix": null
     },
     {
-      "n": 54,
+      "n": 59,
       "where": "Cost and licensing: Indirect costs",
       "type": "cost",
       "claim": "Audit Standard provides those logs at no extra cost.",
@@ -625,19 +674,19 @@
       "fix": null
     },
     {
-      "n": 55,
-      "where": "Scope",
+      "n": 60,
+      "where": "Scope: second paragraph",
       "type": "role",
-      "claim": "Plugin management requires a tenant administrator or the Copilot administrator role.",
+      "claim": "Plugin administrators must be tenant administrators or hold the Copilot administrator role.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
-      "quote": "You must be a tenant administrator, or have the Copilot administrator role.",
+      "quote": "Microsoft 365 admin center access: You must be a tenant administrator, or have the Copilot administrator role.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 56,
-      "where": "Scope",
+      "n": 61,
+      "where": "Scope: second paragraph",
       "type": "role",
       "claim": "A read-only role is insufficient for Service installation or consent.",
       "status": "supported",
@@ -647,10 +696,10 @@
       "fix": null
     },
     {
-      "n": 57,
-      "where": "Scope",
+      "n": 62,
+      "where": "Scope: second paragraph",
       "type": "behaviour",
-      "claim": "Cowork selects the Dynamics 365 environment automatically when only one is available.",
+      "claim": "Cowork selects the Dynamics environment automatically if only one is available and otherwise asks the user to choose.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
       "quote": "If only one environment is available, Cowork selects it automatically. If multiple environments are available, Cowork prompts the user to choose one.",
@@ -658,120 +707,98 @@
       "fix": null
     },
     {
-      "n": 58,
-      "where": "Scope",
+      "n": 63,
+      "where": "Scope: second paragraph",
       "type": "behaviour",
       "claim": "Users can create and install custom skills stored in OneDrive.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-copilot-cowork-service-skills",
-      "quote": "You can also create and install custom skills stored in your OneDrive.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "Governance guidance: Before rollout; Open questions",
-      "type": "applicability",
-      "claim": "Required Customer Service MCP configuration must be in place.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-copilot-cowork-service-skills",
-      "quote": "Ask your administrator to verify that the Service app is installed and assigned to you or an effective Microsoft Entra group, and that the required Customer Service MCP configuration is in place.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "Governance guidance; Governance controls",
-      "type": "behaviour",
-      "claim": "Service deployment and availability scopes are independent.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
-      "quote": "Installed to or Installed for identifies preinstallation targets. Available to controls who can install or use the app. These scopes are independent.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Organisation-wide installation can override a limited availability scope.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
-      "quote": "Preinstallation can include users outside the availability scope, and organization-wide installation can override a limited scope.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 62,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The Cowork policy control is under Copilot > Cost Management > Configuration > + Add spending policy > Select agents and services.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
-      "quote": "On the Scope user and group step, choose Specific groups and select the security group.\nOn the Select agents and services step, select Cowork.",
-      "severity": "minor",
-      "fix": "Set controls[0].ui.path and its rendered path to 'Copilot > Cost Management > Configuration > + Add spending policy > Scope user and group > Specific groups > Select agents and services'. Retain the note to select Cowork."
-    },
-    {
-      "n": 63,
-      "where": "controls[0].api; controls[0].note; Governance controls table",
-      "type": "command",
-      "claim": "POST /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings adds a service using serviceId and state.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create",
-      "quote": "Create a new spendingPolicyServiceSetting object to add a service to an existing spending policy.\nRequired properties are serviceId and state.",
+      "quote": "Custom skills: You can also create and install custom skills stored in your OneDrive.",
       "severity": null,
       "fix": null
     },
     {
       "n": 64,
-      "where": "controls[1].ui; controls[1].governs; Governance controls table",
-      "type": "admin-path",
-      "claim": "Agents > All agents > Registry > Service > Users > Available to controls both availability and installation targets.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
-      "quote": "Installed to or Installed for identifies preinstallation targets. Available to controls who can install or use the app. These scopes are independent.",
-      "severity": "blocker",
-      "fix": "Narrow controls[1].governs and the matching table label to 'Which users can install or use the Service app and its Customer Service plugin'. Keep the existing Available to path; it is correct for availability, not preinstallation."
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Entitlement combines applicable Cowork licensing, Customer Service licensing and consumption billing, supporting the mixed model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-copilot-cowork-service-skills",
+      "quote": "To use Customer Service skills, you need access to Copilot Cowork under your organization's applicable licensing and spending policy, applicable Dynamics 365 Customer Service licensing",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 65,
-      "where": "controls[1].api; controls[1].note; Governance controls table",
-      "type": "command",
-      "claim": "PATCH /beta/copilot/admin/catalog/packages/{id} updates package availability and deployment.",
+      "where": "controls[0].ui; rendered controls table",
+      "type": "admin-path",
+      "claim": "The listed Microsoft 365 admin center spending-policy wizard route reaches the step where Cowork is selected.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
-      "quote": "availableTo | Enum value specifying which users or groups within the tenant can access this package. Required if updating allowedUsersAndGroups.\nacquireUsersAndGroups | Users/groups for whom the package is deployed.",
-      "severity": "minor",
-      "fix": "Apply the availability-only narrowing in the controls[1].governs fix. The existing availableTo and allowedUsersAndGroups note then correctly describes the operation for the narrowed row; do not present those properties as setting installation targets."
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "go to Copilot > Cost Management > Configuration and select + Add spending policy. ... On the Scope user and group step, choose Specific groups ... On the Select agents and services step, select Cowork.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 66,
-      "where": "controls[2].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Agents > All agents > Registry > Service > Block blocks the Service app organisation-wide.",
+      "where": "controls[0].api; rendered controls table; Governance controls",
+      "type": "command",
+      "claim": "POST /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings adds a service to a spending policy.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
-      "quote": "To prevent organization-wide use, open the Service app details, select Block, and then review and confirm the action.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create",
+      "quote": "Create a new spendingPolicyServiceSetting object to add a service to an existing spending policy. ... POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/3f9e2c1a-0000-0000-0000-00000000c21b/serviceSettings",
       "severity": null,
       "fix": null
     },
     {
       "n": 67,
-      "where": "controls[2].api; Governance controls table",
+      "where": "controls[0].note; rendered controls table",
       "type": "command",
-      "claim": "POST /beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package.",
+      "claim": "The service-settings request body sets serviceId and state.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "Block a Copilot package to prevent its usage.\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create",
+      "quote": "Required properties are serviceId and state.",
       "severity": null,
       "fix": null
     },
     {
       "n": 68,
-      "where": "controls[1].note; controls[2].note",
+      "where": "controls[1].ui; rendered controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Agents > All agents > Registry > Service > Users > Available to governs who can install or use Service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
+      "quote": "Open the Service app details in Agents > All agents > Registry, and then select Users. ... Edit Available to. ... Available to controls who can install or use the app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[1].api; rendered controls table",
+      "type": "command",
+      "claim": "PATCH /beta/copilot/admin/catalog/packages/{id} updates a Copilot package's availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
+      "quote": "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} ... availableTo ... Enum value specifying which users or groups within the tenant can access this package.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[1].note; rendered controls table",
+      "type": "command",
+      "claim": "The package update request can set availableTo and allowedUsersAndGroups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
+      "quote": "allowedUsersAndGroups ... Users/groups for whom the package is available. ... availableTo ... Required if updating allowedUsersAndGroups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "controls[1].note; controls[2].note; rendered controls table",
       "type": "licensing",
-      "claim": "The Package Management API requires a Microsoft Agent 365 licence.",
+      "claim": "Access to the Package Management API requires a Microsoft Agent 365 licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
       "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
@@ -779,32 +806,65 @@
       "fix": null
     },
     {
-      "n": 69,
-      "where": "controls[1].note; controls[2].note; Open questions",
-      "type": "absence",
-      "claim": "The cited package references do not name the Service app.",
+      "n": 72,
+      "where": "controls[2].ui; rendered controls table",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Agents > All agents > Registry > Service > Block prevents organisation-wide Service app use.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: '\"Service app\" \"copilotPackage\" Graph package'; read copilotpackage, copilotpackagedetail-update and copilotpackage-block. They describe packages, availability and blocking without naming Service.",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
+      "quote": "In Agents > All agents > Registry, select Service ... To prevent organization-wide use, open the Service app details, select Block ... Blocking prevents installation and use",
       "severity": null,
       "fix": null
     },
     {
-      "n": 70,
-      "where": "Governance controls: first paragraph",
-      "type": "absence",
-      "claim": "No Customer Service plugin setting inside Cowork is documented beyond the Service app's scopes.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-copilot-cowork-service-skills",
-      "quote": "Go to Customize and search for Service.\nTurn on the toggle.",
-      "severity": "blocker",
-      "fix": "Replace the first sentence with 'The rows show the Service app controls and Cowork access controls.' The existing user-toggle and integration-control descriptions should remain; do not assert that no other setting is documented."
+      "n": 73,
+      "where": "controls[2].api; rendered controls table",
+      "type": "command",
+      "claim": "POST /beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage. ... POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 71,
-      "where": "Governance controls: second paragraph",
+      "n": 74,
+      "where": "controls[].note; rendered controls table",
+      "type": "command",
+      "claim": "The three printed API operations use the beta version.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "controls[1].note; controls[2].note; Open questions",
+      "type": "absence",
+      "claim": "The cited package update and block references do not specifically name the Service app.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Service app Copilot Cowork package Microsoft Graph copilot admin catalog packages Service. Read package update, block, resource and list references; they document packages, including tools and agents, but do not name Service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Governance controls; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Policy updates change the name, limits and billing methods; adding a service uses the separate service-settings call.",
+      "claim": "Service app deployment and availability scopes are independent, and organisation-wide installation can override a limited scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
+      "quote": "These scopes are independent. Preinstallation can include users outside the availability scope, and organization-wide installation can override a limited scope. ... Changing only Available to isn't sufficient to narrow a broader deployment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The spending-policy update operation changes the display name, limits and billing methods rather than service selection.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
       "quote": "The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
@@ -812,62 +872,18 @@
       "fix": null
     },
     {
-      "n": 72,
-      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
-      "type": "absence",
-      "claim": "A single overall arrival default is not established across the conflicting roadmap and Learn descriptions.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: '\"Customer Service\" \"Cowork\" plugin administrator setting default enabled'; read skills, manage-service-app, cowork-manage-plugins and Dataverse intelligence. Sources describe admin enablement, a user toggle, and default-enabled integration separately; no reconciled arrival rule was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
-      "where": "What's changing; Governance controls",
-      "type": "default",
-      "claim": "The Cowork plugin page says Customer Service and Sales integrations are enabled by default and can be disabled in the admin center.",
+      "n": 78,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "The Cowork plugin page also places plugin management under Microsoft 365 admin center > Agents > Tools.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
-      "quote": "Dynamics 365 Customer Service and Sales integrations are enabled by default and can be disabled in the Microsoft 365 admin center.",
+      "quote": "Manage plugins in Microsoft 365 admin center > Agents > Tools.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 74,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Cowork consumption is measured in Copilot Credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-cost",
-      "quote": "You can type /cost in Cowork to see the approximate Copilot Credit usage for a task, how many credits you have used this month, and how many remain.",
-      "severity": "minor",
-      "fix": "Add 'Credit usage for Microsoft Copilot Cowork tasks' at https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-cost to sources to directly support the named meter."
-    },
-    {
-      "n": 75,
-      "where": "Governance guidance; Governance controls table",
-      "type": "consistency",
-      "claim": "The checklist names controls that have no corresponding controls-table row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Align Installed to and Available to to the pilot group; Review Cowork consumption and per-user limits; Search the Microsoft Purview audit log. The table lists Cowork access, Service availability and Service blocking only.",
-      "severity": "minor",
-      "fix": "The checklist's Installed to, Dynamics security-role, per-user-limit and Purview audit steps have no corresponding table rows. Remove those instructions from the checklist; do not add unverified control rows."
-    },
-    {
-      "n": 76,
-      "where": "Risk assessment: Autonomy & actions; Open questions",
-      "type": "absence",
-      "claim": "The Customer Service skills page does not enumerate which tool calls skip approval.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Customer Service plugin Copilot Cowork default enabled admin settings Dataverse integration licensing credit rate MCP tool approval'; read skills and mcp-tools-overview. Neither lists Cowork service calls that skip approval; skills says calls 'might require user approval'.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 77,
+      "n": 79,
       "where": "Governance guidance: At rollout",
       "type": "behaviour",
       "claim": "Microsoft advises testing with the user's regular account rather than an administrator account.",
@@ -878,54 +894,65 @@
       "fix": null
     },
     {
-      "n": 78,
-      "where": "Governance controls",
-      "type": "admin-path",
-      "claim": "The Cowork plugin management page places plugin management under Microsoft 365 admin center > Agents > Tools.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
-      "quote": "Manage plugins in Microsoft 365 admin center > Agents > Tools.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 79,
-      "where": "controls[0].note; controls[1].note; controls[2].note",
-      "type": "availability",
-      "claim": "The three printed API calls use the documented beta version.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create",
-      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 80,
-      "where": "Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Changing only Available to is insufficient to narrow a broader Service app deployment.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
-      "quote": "Changing only Available to isn't sufficient to narrow a broader deployment.",
-      "severity": null,
-      "fix": null
+      "where": "Governance guidance: Before rollout; controls",
+      "type": "consistency",
+      "claim": "The checklist asks administrators to confirm Customer Service MCP configuration, but no control row covers that configuration.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "confirm ... the Customer Service MCP configuration the Learn page says must be in place. / Controls: Cowork spending policies; Service app availability; Service app blocking.",
+      "severity": "minor",
+      "fix": "Replace that checklist bullet with: 'Ask the Dynamics 365 administrator to confirm the Customer Service licensing for the pilot representatives.' Do not add a control row."
     },
     {
       "n": 81,
-      "where": "controls[1].api; controls[2].api",
-      "type": "applicability",
-      "claim": "The package availability and blocking operations are relevant to the Service app's packaged Cowork plugin, without the references naming Service specifically.",
+      "where": "Governance guidance: Before rollout; Open questions",
+      "type": "behaviour",
+      "claim": "The Customer Service skills prerequisites require Customer Service MCP configuration to be in place.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
-      "quote": "Plugins use the same M365 app package format as Teams apps, Copilot agents, and Office add-ins. You manage them with the same admin tools you use for other Microsoft 365 apps.",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-copilot-cowork-service-skills",
+      "quote": "Ask your administrator to verify that the Service app is installed and assigned to you or an effective Microsoft Entra group, and that the required Customer Service MCP configuration is in place.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Cost and licensing: Licences; Scope",
+      "type": "applicability",
+      "claim": "Representatives need permission to the intended Customer Service environment and records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-copilot-cowork-service-skills",
+      "quote": "applicable Dynamics 365 Customer Service licensing, and permission to the intended Customer Service environment and records.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "absence",
+      "claim": "The Customer Service skills page does not enumerate which service-related calls skip approval.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Customer Service\" \"Cowork\" \"approval\" \"tool calls\". Read service-skills and MCP tools overview; service-skills says calls 'might require user approval' without a per-call approval list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-10-16T19:09:47.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-16T19:09:47\"",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-22T20:51:57.945Z",
+    "at": "2026-11-23T02:05:35.097Z",
     "summary": {
-      "links": 11,
+      "links": 12,
       "unreachable": 0,
       "uiPaths": 3,
       "uiPathsWithMissingWords": 0,
@@ -961,6 +988,11 @@
       },
       {
         "url": "https://learn.microsoft.com/copilot/cowork/cowork-access",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-cost",
         "ok": true,
         "status": 200
       },
@@ -1002,6 +1034,8 @@
           "Cost Management",
           "Configuration",
           "+ Add spending policy",
+          "Scope user and group",
+          "Specific groups",
           "Select agents and services"
         ],
         "missing": []
@@ -1018,7 +1052,7 @@
       {
         "index": 1,
         "side": "ui",
-        "governs": "Which users the Service app (and so the Customer Service plugin) is available to and installed for",
+        "governs": "Which users can install or use the Service app and its Customer Service plugin",
         "docs": "https://learn.microsoft.com/dynamics365/customer-service/use/manage-service-app",
         "reachable": true,
         "segments": [
@@ -1034,7 +1068,7 @@
       {
         "index": 1,
         "side": "api",
-        "governs": "Which users the Service app (and so the Customer Service plugin) is available to and installed for",
+        "governs": "Which users can install or use the Service app and its Customer Service plugin",
         "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
         "reachable": true,
         "token": "/beta/copilot/admin",
@@ -1067,5 +1101,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-22",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

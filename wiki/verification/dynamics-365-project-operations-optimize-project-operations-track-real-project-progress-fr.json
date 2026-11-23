@@ -1,0 +1,671 @@
+{
+  "slug": "dynamics-365-project-operations-optimize-project-operations-track-real-project-progress-fr",
+  "roadmapId": 576798,
+  "title": "Dynamics 365 Project Operations: approved Field Service time updates project task progress",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "1 blocking finding (claim 28)"
+    ]
+  },
+  "counts": {
+    "claims": 49,
+    "confirmed": 47,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "The roadmap facts, integration controls and licensing statements are supported. The approval guidance omits a required qualification: Project Approver Admin bypasses approver validation but still requires security-role access to related tables such as Project.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; Scope; controls[0].note; rationale",
+      "type": "record",
+      "claim": "Approved Field Service time contributes to Project Operations WBS task progress when the integration is enabled and time is captured against a project task.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Approved Field Service time now contributes directly to task-level WBS execution metrics in Project Operations when time is captured against a project task.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: defaultState; What's changing; Why it matters",
+      "type": "default",
+      "claim": "The feature is enabled automatically where the integration is enabled, supporting defaultState on.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature is only available when the Field Service and Project Operations integration is enabled. ... Enabled for admins/makers/marketers automatically",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Execution calculations occur on leaf tasks and roll up to summary tasks and the project root.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Because these calculations occur at the leaf task level, their impact rolls up automatically to summary tasks and the project root.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; rationale: risk",
+      "type": "record",
+      "claim": "The enhancement introduces no new execution logic or formulas and applies native Project Operations rules to approved field labour.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This enhancement doesn't introduce new execution logic or formulas. It enables existing Project Operations WBS effort tracking behavior to include Field Service execution when time is captured against project tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Learn says approved time entries are the only signal used to update WBS task execution progress.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-time",
+      "quote": "Approved time entries are the only signal used to update task execution progress in the Work Breakdown Structure (WBS).",
+      "severity": "minor",
+      "fix": "Narrow 'only approved entries move task progress' to 'Only approved time contributes actual effort to task progress.' The cited project-tracking-overview page also says updating Remaining Effort during reprojection recalculates EAC and progress percentage; add that qualification to the absolute statement in What's changing."
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Approving time reduces remaining effort by the approved hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-time",
+      "quote": "The system reduces the remaining effort based on the approved hours.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Approval automatically recalculates effort completed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-time",
+      "quote": "The project automatically recalculates metrics such as effort completed, percent complete, and estimate at completion.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Approval automatically recalculates percent complete.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-time",
+      "quote": "The project automatically recalculates metrics such as effort completed, percent complete, and estimate at completion.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Approval automatically recalculates estimate at completion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-time",
+      "quote": "The project automatically recalculates metrics such as effort completed, percent complete, and estimate at completion.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Effort tracking and Cost tracking views show progress at project root, summary and leaf task levels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/project-operations/project-management/project-tracking-overview",
+      "quote": "Tracking data in the Effort tracking and Cost tracking views shows the progress and cost consumption at the project root node, summary tasks, and leaf node tasks levels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Submitted but unapproved time does not affect task effort completed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/project-operations/field-service-integration/project-operations-integration-project-task",
+      "quote": "Submitted but unapproved time entries don't affect project task effort completed hours, project progress, or project actual hours until approval.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Why it matters; Governance guidance",
+      "type": "behaviour",
+      "claim": "Submitted but unapproved time does not affect project progress.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/project-operations/field-service-integration/project-operations-integration-project-task",
+      "quote": "Submitted but unapproved time entries don't affect project task effort completed hours, project progress, or project actual hours until approval.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Submitted but unapproved time does not affect project actual hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/project-operations/field-service-integration/project-operations-integration-project-task",
+      "quote": "Submitted but unapproved time entries don't affect project task effort completed hours, project progress, or project actual hours until approval.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters; Risk assessment; rationale: impact",
+      "type": "behaviour",
+      "claim": "Approved time entries count towards overall project actual hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/project-operations/field-service-integration/project-operations-integration-project-task",
+      "quote": "Approved time entries are also included in the overall actual hours for the project.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters; Cost and licensing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Approved time creates actual labour cost.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-time",
+      "quote": "After approval, time entries generate full financial impact on the project, including: Actual labor cost",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Why it matters; Cost and licensing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Approved time generates unbilled sales under project pricing rules.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-time",
+      "quote": "After approval, time entries generate full financial impact on the project, including: ... Unbilled sales based on project pricing rules",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Technicians submit Field Service time and it flows to Project Operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-time",
+      "quote": "After technicians enter and submit time in Field Service for work associated with a project or project task, the time entries flow to Project Operations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "The time entry page describes no new data store for this behaviour.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Field Service Project Operations approved time task progress data storage new data store. Read project-operations-integration-time in full; its description of time-entry flow, project progress and financial impact names no new data store.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment; Governance guidance; Open questions",
+      "type": "behaviour",
+      "claim": "Time entries currently do not appear in work order-level financial summaries or totals.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/project-operations/field-service-integration/project-operations-integration-project-task",
+      "quote": "Currently, time entries don't appear in work order-level financial summaries or work order financial totals.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "role",
+      "claim": "The time entry page specifies project team membership and a Project Approver Admin field set to Yes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-time",
+      "quote": "To approve time entries, a user must be a team member on the project and have the Project Approver Admin field on their team member record set to Yes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity; Governance controls; Open questions",
+      "type": "role",
+      "claim": "The approvals security page calls the team-member field Project Approver.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/project-operations/approvals/approvals-security",
+      "quote": "a user must be a team member on the project and have the Project Approver field on their team member record set to yes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "role",
+      "claim": "The Project Approver Admin security role bypasses team-member validation and allows approval of all entries without a related-table access qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/project-operations/approvals/approvals-security",
+      "quote": "You must have access to the relevant related tables, such as Project, via security roles assigned to you.",
+      "severity": "blocker",
+      "fix": "Add after the approval-role sentence: 'Approvers, including users with Project Approver Admin, must also have access to relevant related tables such as Project through their assigned security roles.' This qualification is stated at https://learn.microsoft.com/dynamics365/project-operations/approvals/approvals-security."
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Time off entered in Field Service does not affect project financials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-time",
+      "quote": "Time off entered in Field Service doesn't affect the project's financials.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Field Service scheduling changes do not update project task dates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/project-operations/field-service-integration/project-operations-integration-project-task",
+      "quote": "Changes made during scheduling in Field Service don't update project task dates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Managing project tasks in Project Operations requires a Project Operations licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-projects",
+      "quote": "Use Project Operations to manage tasks as it requires a Project Operations license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.notes; controls[1].note; Cost and licensing; Governance controls",
+      "type": "licensing",
+      "claim": "The user installing the integration package needs at least one Project Operations licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-install",
+      "quote": "To download and install the Dynamics 365 Field Service and Project Operations integration package, the installing user must have at least one Project Operations license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The entitlement model is included in the Project Operations licence already required for task management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-projects",
+      "quote": "Use Project Operations to manage tasks as it requires a Project Operations license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The project task and work order integration page names no licence or meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Project Operations Field Service approved time task progress licensing price meter; read project-operations-integration-project-task in full. It describes task progress, actuals and task-based billing but names no licence or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No separate price or meter is published for this approved-time tracking behaviour.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Project Operations Field Service approved time task progress licensing price meter; Dynamics 365 Project Operations licensing Field Service integration effort tracking licence meter pricing. Read task, time, projects and install pages; no feature-specific price or meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "The integration package includes a recurring flow running under its installing user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-install",
+      "quote": "The Field Service and Project Operations Integration package includes a flow that runs regularly under the user who installs the package.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft asks administrators to confirm appropriate Power Automate licensing for the installing user and recurring flow usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-install",
+      "quote": "Review the Types of Power Automate licenses and confirm that the installing user and recurring flow usage are licensed appropriately for your environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "Integration installation and enablement require a Field Service administrator or system administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-install",
+      "quote": "Prerequisites: You have a Field Service administrator role or system administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The install page specifies Field Service minimum version 8.8.150.63.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-install",
+      "quote": "You have Field Service minimum version 8.8.150.63.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The install page specifies Project Operations minimum version 4.172.3603.1.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-install",
+      "quote": "You have Project Operations minimum version 4.172.3603.1.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Creating work orders from a project task requires leaf-level WBS tasks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/project-operations/field-service-integration/project-operations-integration-project-task",
+      "quote": "To create work orders from a project task in Project Operations, the project must meet the following criteria: ... The project tasks are created at the leaf task level in the work breakdown structure (WBS).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Field Service > Settings > Features > Field Service Integration with Project Operations reaches the integration toggle.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-install",
+      "quote": "In Field Service, go to the Settings area. On the Features tab, turn on the Field Service Integration with Project Operations toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft documents no API operation that sets the Field Service Integration with Project Operations toggle.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Field Service Project Operations integration toggle API msdyn_fieldservicesetting enable integration project operations; enable toggle Dataverse Web API entity attribute. Read install page; searched entire Field Service Setting reference for project and integration, with no matching column.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Power Platform admin center > Manage > Dynamics 365 Apps > Dynamics 365 Field Service and Project Operations Integration reaches the integration package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-install",
+      "quote": "Select Manage > Dynamics 365 Apps > Dynamics 365 Field Service and Project Operations Integration. Select Install and follow the prompts.",
+      "severity": "minor",
+      "fix": "Extend controls[1].ui.path to 'Manage > Dynamics 365 Apps > Dynamics 365 Field Service and Project Operations Integration > Install', as documented at https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-install."
+    },
+    {
+      "n": 45,
+      "where": "controls[1].api; controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "pac application install --environment-id <environment-id> --application-name <application-name> is documented for installing Dataverse applications from Microsoft Marketplace generally.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/developer/cli/reference/application",
+      "quote": "Commands for listing and installing available Dataverse applications from Microsoft Marketplace. ... pac application install --environment-id 00000000-0000-0000-0000-000000000000 --application-name MSFT_EmployeeIdeas",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "summary; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No separately documented setting excludes approved Field Service time from WBS effort tracking while retaining the integration.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Project Operations Field Service approved time WBS effort tracking separate setting disable. Read task, time and Project time task tracking pages; the latter controls real-time versus delayed synchronization, not exclusion of approved Field Service time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The Approvals view contains submitted time awaiting approval.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/project-operations/approvals/approvals-overview",
+      "quote": "You can find these records in the Approvals view under the Projects area of the sitemap. ... Go to the Approvals page and select Expenses, Time, Material Usage, or Recalls.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/dynamics365/project-operations/approvals/approvals-overview to sources, titled 'Approvals overview'."
+    },
+    {
+      "n": 48,
+      "where": "Governance guidance: Before rollout",
+      "type": "consistency",
+      "claim": "The checklist tells readers to inventory project approvers and Project Approver Admin role holders, but no control row covers approval permissions.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "List the project approvers and the people holding the Project Approver Admin role ...; controls contains only integration enablement and package installation.",
+      "severity": "minor",
+      "fix": "Remove the checklist bullet beginning 'List the project approvers and the people holding the Project Approver Admin role'; it has no corresponding controls row. Do not add a row as part of this correction."
+    },
+    {
+      "n": 49,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The effort tracking page applies to Project Operations Integrated with ERP and Project Operations Core.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/project-operations/project-management/project-tracking-overview",
+      "quote": "Applies To: Project Operations Integrated with ERP, Project Operations Core",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T02:05:36.640Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=576798",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/project-operations/field-service-integration/project-operations-integration-project-task",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-time",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/project-operations/project-management/project-tracking-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/project-operations/approvals/approvals-security",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-install",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-projects",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/developer/cli/reference/application",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/field-service/developer/reference/entities/msdyn_fieldservicesetting",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether the Field Service integration with Project Operations is turned on",
+        "docs": "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-install",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Features",
+          "Field Service Integration with Project Operations"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether the integration package is installed in an environment",
+        "docs": "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-install",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Dynamics 365 Apps",
+          "Dynamics 365 Field Service and Project Operations Integration"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether the integration package is installed in an environment",
+        "docs": "https://learn.microsoft.com/power-platform/developer/cli/reference/application",
+        "reachable": true,
+        "token": "pac application install",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

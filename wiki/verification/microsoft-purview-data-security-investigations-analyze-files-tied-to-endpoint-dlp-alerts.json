@@ -1,0 +1,1086 @@
+{
+  "slug": "microsoft-purview-data-security-investigations-analyze-files-tied-to-endpoint-dlp-alerts",
+  "roadmapId": 558547,
+  "title": "Microsoft Purview: analyse endpoint DLP evidence files in Data Security Investigations",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 83: severity blocker on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "1 blocking finding (claim 28)"
+    ]
+  },
+  "counts": {
+    "claims": 86,
+    "confirmed": 80,
+    "unconfirmed": 1,
+    "contradicted": 5,
+    "blocker": 1,
+    "major": 1,
+    "minor": 10
+  },
+  "summary": "Hold: the search instructions omit the Summary navigation step needed to reach the Search tab. The access rationale also incorrectly excludes Reviewers, who can read investigation data and run analysis. The roadmap facts, billing requirements and three tabulated portal routes are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; front matter: products",
+      "type": "record",
+      "claim": "The feature belongs to Microsoft Purview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-09-24T22:58:55.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-24T22:58:55\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing: first paragraph",
+      "type": "record",
+      "claim": "The roadmap describes launching DSI from endpoint DLP alerts to speed analysis of exfiltrated content.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Speed up analysis of exfiltrated content by launching Data Security Investigations (DSI) from endpoint Data Loss Prevention (DLP) alerts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Open questions: endpoints query field",
+      "type": "record",
+      "claim": "The roadmap names time range, users and endpoints as example endpoint DLP query fields.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "In DSI, define your endpoint DLP query (for example, time range, users, and endpoints).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "Investigators can query captured endpoint DLP files in DSI and add them to an investigation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations",
+      "quote": "Data Security Investigations integrates with endpoint DLP evidence collection, allowing investigators to query captured endpoint data and add it to an investigation scope for AI-powered analysis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The capability is admin-opt-in and requires administrative configuration before use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Before you can use Data Security Investigations in your organization, you must configure both billing models.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: licensing.model, licensing.notes, cost; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "DSI uses consumption billing for stored data and AI compute capacity, supporting the variable cost rating.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Billing in Data Security Investigations is based solely on the combination of the amount of stored data and the associated computing capacity needed for AI analysis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "DSI does not require a dedicated enterprise plan or licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations",
+      "quote": "However, you don't need a dedicated enterprise plan or license to use Data Security Investigations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The evidence collection getting-started page links Microsoft 365 licensing guidance without naming a Microsoft 365 plan for evidence collection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: licensing requirements in dlp-copy-matched-items-get-started; read its Microsoft 365 Enterprise Plans and Service Descriptions links. No Microsoft 365 plan is named there; Entra P1/P2 is separately mentioned for custom RBAC.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0].ui; Governance controls: first table row",
+      "type": "admin-path",
+      "claim": "The Purview route to the evidence collection control is Settings > Data Loss Prevention > Endpoint DLP settings > Setup evidence collection for file activities on devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-copy-matched-items-get-started",
+      "quote": "Choose Data Loss Prevention. Select Endpoint DLP settings. Expand Setup evidence collection for file activities on devices and set the toggle to On.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].api; Governance controls: first table row",
+      "type": "absence",
+      "claim": "No automation for enabling endpoint DLP evidence collection with Microsoft-managed storage is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: endpoint DLP evidence collection PowerShell; evidence collection Set-PolicyConfig. Read getting-started, Set-DlpComplianceRule and Set-PolicyConfig; searched both references for evidence, collect and storage. No setting operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].note; Governance controls; Governance guidance",
+      "type": "applicability",
+      "claim": "The evidence collection toggle must be On for endpoint evidence to be available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-copy-matched-items-get-started",
+      "quote": "Expand Setup evidence collection for file activities on devices and set the toggle to On.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "summary; controls[0].note; Scope; Governance guidance; rationale: risk",
+      "type": "applicability",
+      "claim": "DSI endpoint evidence queries require Microsoft-managed evidence storage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "Microsoft-managed storage is configured for evidence collection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].note; Scope; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "The DLP rule must select Collect original file as evidence for all selected file activities on Endpoint in Incident reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-copy-matched-items-get-started",
+      "quote": "In Incident reports, select Collect original file as evidence for all selected file activities on Endpoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[1].ui; Governance controls: second table row",
+      "type": "admin-path",
+      "claim": "The DSI permissions page gives Settings > Roles and groups > Role groups > Data Security Investigations Admins > Edit > Choose users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "Select Settings in the upper-right corner of the page, select Roles and groups, then select Role groups in the left navigation.",
+      "severity": "minor",
+      "fix": "Keep the cited DSI route, but add: 'The general Purview permissions page instead labels the navigation Settings > Roles and scopes > Role groups.' Cite https://learn.microsoft.com/purview/purview-permissions#manage-role-groups, which uses that label."
+    },
+    {
+      "n": 22,
+      "where": "controls[1].api; Governance controls: second table row and final paragraph",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\" adds a member to a management role group and grants its assigned permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "The Identity parameter specifies the role group to add a member to. The Member parameter specifies who you want to add to the role group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[1].note; Governance controls",
+      "type": "absence",
+      "claim": "The Add-RoleGroupMember reference does not name DSI role groups.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Data Security Investigations Add-RoleGroupMember; read the complete Add-RoleGroupMember reference. It describes management role groups and contains no Data Security Investigations role-group names.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[2].ui; Governance controls: third table row",
+      "type": "admin-path",
+      "claim": "The usage dashboard is reached in Purview through Data Security Investigations > Usage dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Go to Data Security Investigations in the Microsoft Purview portal ... Select Usage dashboard in the left-navigation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[2].api; Governance controls: third table row",
+      "type": "absence",
+      "claim": "No DSI usage-dashboard API or cmdlet is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Data Security Investigations usage dashboard API storage compute usage REST PowerShell. Read billing dashboard and export documentation; results showed unrelated Azure Stack and Graph storage reports, not DSI usage automation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[2].note; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "The Pay-as-you-go usage dashboard is restricted to DSI Admins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Only users assigned the Data Security Investigations Admin role can access the Pay-as-you-go usage dashboard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[2].note; Governance controls",
+      "type": "absence",
+      "claim": "The usage dashboard reports usage rather than providing a documented spending cap.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Data Security Investigations usage dashboard API storage compute usage REST PowerShell; Data Security Investigations budget stop. Read billing dashboard, best practices and stop-billing sections; no dashboard cap documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing: second paragraph",
+      "type": "admin-path",
+      "claim": "Inside an investigation, the instructions go directly to the Search tab and Endpoint DLP without selecting Summary.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "2. Select Summary from the navigation options at the top of the page. 3. On the Search tab, select Endpoint DLP.",
+      "severity": "blocker",
+      "fix": "Replace 'Inside an investigation, on the Search tab, an investigator selects Endpoint DLP' with 'In the Microsoft Purview portal, open Data Security Investigations and an investigation, select Summary, then on the Search tab select Endpoint DLP.'"
+    },
+    {
+      "n": 29,
+      "where": "What's changing: search parameters; Governance guidance",
+      "type": "behaviour",
+      "claim": "Endpoint DLP search requires a date range.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "Date range (required): Specify a start and end date for the endpoint DLP events to query.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing: search parameters; Governance guidance",
+      "type": "behaviour",
+      "claim": "Selecting users for an endpoint DLP search is optional.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "Users (optional): Select one or more users to narrow the search to endpoint DLP events for specific users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing: search results",
+      "type": "behaviour",
+      "claim": "Search displays a pre-ingestion estimate of matched alerts, users, actions and policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "Review the pre-ingestion estimate, which includes a summary of matched alerts, users, actions, and policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing: Add to scope",
+      "type": "behaviour",
+      "claim": "Selecting Add to scope adds the content associated with search results to the investigation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "Select Add to scope to add the content associated with the search results to your investigation scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Processing starts after items are added to scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "After you add items to scope, Data Security Investigations starts processing the results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Open questions: endpoints query field",
+      "type": "absence",
+      "claim": "The Learn endpoint search instructions list no endpoint filter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Data Security Investigations endpoint DLP launch alert endpoint filter search date users. Read the complete endpoint section of data-security-investigations-search; its parameter list contains Date range and Users, not endpoints.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Open questions: launch from alert",
+      "type": "absence",
+      "claim": "Learn does not describe launching this endpoint search from an individual DLP alert.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Data Security Investigations endpoint DLP launch alert endpoint filter search date users. Read DSI search and overview; inspected Learn results for DLP alert investigations. No individual-alert launch to this search was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing: evidence sources",
+      "type": "behaviour",
+      "claim": "Evidence includes policy-matched files from USB copying, printing, cloud uploads and unauthorised app access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "This data includes files that matched endpoint DLP policies when users attempted activities such as copying to USB, printing, uploading to cloud services, or accessing files with unauthorized apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing: supported DLP scenarios",
+      "type": "availability",
+      "claim": "This search covers endpoint DLP only, not browser or network DLP.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "This feature queries data from endpoint DLP policies only. Browser DLP, network DLP, and non-endpoint DLP scenarios aren't supported for this search option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters: first paragraph",
+      "type": "behaviour",
+      "claim": "Learn describes aggregating events as an alternative to triaging endpoint alerts individually, including analysis of mass-exfiltration patterns.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations",
+      "quote": "Instead of triaging individual endpoint DLP alerts one by one, investigators can aggregate endpoint events and analyze them collectively to detect patterns such as mass exfiltration or coordinated data theft.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "DSI ingests the file content associated with endpoint DLP events, not just the alert.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "Data Security Investigations ingests the file content associated with endpoint DLP events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "After addition to scope, endpoint evidence data is static within the investigation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "After you add items to scope, the data is static within the investigation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure; Governance guidance: delete investigations",
+      "type": "behaviour",
+      "claim": "Copied investigation data remains stored until the investigation is deleted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-privacy-faq",
+      "quote": "This data is stored until Data Security Investigations administrators or investigators delete the investigation.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/purview/data-security-investigations-privacy-faq to sources for the statement that copied data remains stored until investigation deletion."
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Some endpoint metadata, including per-event device details, is not preserved in investigation scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "Some contextual metadata from endpoint DLP, such as per-event device details, isn't preserved in the investigation scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Learn directs investigators to the DLP Alerts dashboard or Activity explorer for detailed per-event context.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "For detailed per-event context, use the DLP Alerts dashboard or Activity explorer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "DSI cannot query endpoint evidence that has expired from the evidence store.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "If endpoint DLP evidence collection data is no longer available in the evidence store due to retention expiration, Data Security Investigations can't query it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Endpoint evidence can change in the evidence store before ingestion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "Endpoint DLP evidence collection data can change in the evidence store before you add it to your investigation scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Data exposure; Governance guidance: first search",
+      "type": "behaviour",
+      "claim": "Endpoint searches returning more than approximately 3,000 items may be incomplete.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "Endpoint DLP evidence collection searches that return more than approximately 3,000 items might not return complete results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].note; Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Querying endpoint evidence requires Insider Risk Management role-group membership in addition to standard DSI permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "In addition to the standard Data Security Investigations permissions, you must also be a member of the Insider Risk Management role group and View-Only DLP Compliance Management role to query from endpoint evidence collection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].note; Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Querying endpoint evidence also requires the View-Only DLP Compliance Management role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "you must also be a member of the Insider Risk Management role group and View-Only DLP Compliance Management role to query from endpoint evidence collection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Compliance Administrator members automatically receive the DSI Admin role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "Compliance Administrator | Data Security Investigation Admin | Full administrative access",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Organization Management members automatically receive DSI Admin and Contributor roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "Organization Management | Data Security Investigation Admin, Data Security Investigation Contributor | Administrative and contributor access",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Searching does not act on devices or files.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Data Security Investigations search does not modify source files devices retention investigation deleted. Read search and overview; search describes querying evidence, but no passage explicitly guarantees no actions on devices or files.",
+      "severity": "major",
+      "fix": "Replace 'Searching does not act on devices or files' with 'Endpoint DLP search queries data stored by evidence collection.' The latter is stated at https://learn.microsoft.com/purview/data-security-investigations-search."
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Autonomy & actions; Cost and licensing: AI capacity",
+      "type": "cost",
+      "claim": "Add to scope consumes compute units, with cost influenced by data size and extracted text.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Add to scope (including data preparation for AI analysis) | Size of data and extracted text",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Analysts configure and run categorization after Add to scope completes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-ai-analysis",
+      "quote": "When you first open the Analysis page, items aren't categorized. ... Add to scope must complete before you can configure categorization.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/purview/data-security-investigations-ai-analysis#use-categorization for the statement that analysts run categorization afterwards."
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Analysts run examination after Add to scope completes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-personal-data",
+      "quote": "Add to scope must complete before you can configure examinations. ... Select Examine to start the AI analysis.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/purview/data-security-investigations-personal-data#analyze-data-for-personal-data for the documented analyst-initiated examination workflow."
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Evidence may appear late because availability depends on device connectivity and upload timing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "Evidence collection data might not appear immediately after a policy match. Availability depends on device connectivity and upload timing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Change & support; Governance guidance: audit",
+      "type": "behaviour",
+      "claim": "DSI activities are automatically logged in the unified audit log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations",
+      "quote": "Data Security Investigations activities are automatically logged in the unified audit log.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing: Storage meter; rationale: cost",
+      "type": "cost",
+      "claim": "Storage uses pay-as-you-go billing per GB per month across all investigations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "You pay for storage on a gigabyte (GB) per month basis for stored data associated with all investigations in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing: Storage meter",
+      "type": "cost",
+      "claim": "Storage charges start when items are added to investigation scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Data storage charges start when you add items to the scope of an investigation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing: Storage meter; Governance guidance: deletion",
+      "type": "cost",
+      "claim": "Deleting an investigation stops charges for its associated data storage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "When you delete an investigation, you stop paying for the associated data storage amount. The charges are prorated to the number of days the data was stored in the billing cycle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing: Storage meter",
+      "type": "cost",
+      "claim": "The billing article links to a storage-meter pricing page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "For more data storage rates and pricing, see Data Security Investigations storage meter pricing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "summary; Why it matters; Cost and licensing: Setup",
+      "type": "applicability",
+      "claim": "Both storage-meter billing and AI-capacity billing must be configured before DSI can be used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Before you can use Data Security Investigations in your organization, you must configure both billing models.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Cost and licensing: Setup",
+      "type": "licensing",
+      "claim": "Billing configuration requires an Azure subscription in the same tenant as Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "An Azure subscription in the same tenant as Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Cost and licensing: Setup",
+      "type": "applicability",
+      "claim": "Billing configuration requires an Azure resource group in that subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "An Azure resource group in that subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Cost and licensing: Setup",
+      "type": "role",
+      "claim": "Billing configuration requires the Global Administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "The Global Administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Cost and licensing: Setup",
+      "type": "role",
+      "claim": "Billing configuration requires resource-group Owner or Contributor.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "The resource group Owner or Contributor role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Cost and licensing: Controls on spend",
+      "type": "applicability",
+      "claim": "Microsoft recommends Azure budgets and spending-threshold alerts for DSI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Create budgets for the Data Security Investigations resource group and meter level. Configure alerts when spending approaches defined thresholds.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Cost and licensing: Controls on spend; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "DSI has an in-product cost estimator on its page, which Microsoft recommends using before investigations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "On the Estimate storage and AI usage costs card, select Estimate costs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Cost and licensing: Controls on spend; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends monitoring per-investigation storage and compute spending with the usage dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+      "quote": "Use the usage dashboard to track storage and compute unit spending within Data Security Investigations in real time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Cost and licensing: Controls on spend",
+      "type": "absence",
+      "claim": "The billing article does not state that reaching an Azure budget stops DSI use.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Data Security Investigations budget stop. Read billing best practices and stop-billing instructions; budgets and alerts are described, but reaching a budget is not documented as stopping use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Cost and licensing: Indirect",
+      "type": "behaviour",
+      "claim": "Microsoft-managed evidence storage has a separate usage view under Endpoint DLP settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-copy-matched-items-get-started",
+      "quote": "Expand Setup evidence collection for file activities on devices. Click on View Usage button, a panel will open.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Scope: Users",
+      "type": "role",
+      "claim": "DSI Admins can create searches and add items to an investigation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "Create searches and add items to an investigation | Yes | Yes | No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Scope: Users; Governance guidance: At rollout",
+      "type": "role",
+      "claim": "DSI Investigators can create searches and add items to an investigation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "Create searches and add items to an investigation | Yes | Yes | No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Scope: Users",
+      "type": "role",
+      "claim": "DSI Reviewers cannot create searches or add items to an investigation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "Create searches and add items to an investigation | Yes | Yes | No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Scope: Prerequisites",
+      "type": "applicability",
+      "claim": "Devices must be onboarded to Microsoft Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "Devices are onboarded to Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Scope: Prerequisites",
+      "type": "applicability",
+      "claim": "An endpoint DLP policy must be configured and active.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-search",
+      "quote": "An endpoint DLP policy is configured and active in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Scope: Clouds and platforms",
+      "type": "availability",
+      "claim": "Evidence collection supports Windows 10/11 devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-copy-matched-items-get-started",
+      "quote": "Before you can use copy matched items you have to onboard Windows 10/11 devices or macOS devices (Preview) into Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Scope: Clouds and platforms",
+      "type": "availability",
+      "claim": "The evidence collection getting-started page marks macOS support as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-copy-matched-items-get-started",
+      "quote": "Windows 10/11 devices or macOS devices (Preview)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Governance guidance: At rollout",
+      "type": "role",
+      "claim": "Microsoft recommends keeping at least one member in Data Security Investigations Admins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "Always have at least one user in the Data Security Investigations Admins role group",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Governance controls: final paragraph",
+      "type": "role",
+      "claim": "Global admins must be assigned to a listed DSI role group to create and access investigations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+      "quote": "Global admins must be assigned to one of the listed role groups for Data Security Investigations to create and access investigations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "Open questions: general availability or preview",
+      "type": "absence",
+      "claim": "The Learn search page does not label its endpoint section as preview or generally available.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Data Security Investigations endpoint DLP launch alert endpoint filter search date users; evidence collection PowerShell Microsoft storage. Read the search section, which has no preview label; dlp-copy-matched-items-learn explicitly calls the search option preview.",
+      "severity": "minor",
+      "fix": "Replace the second Open questions bullet with 'The roadmap lists General Availability and Preview, and the search page has no preview label; the evidence collection overview still calls the DSI endpoint search option preview.' Cite https://learn.microsoft.com/purview/dlp-copy-matched-items-learn."
+    },
+    {
+      "n": 81,
+      "where": "Open questions: Microsoft-managed evidence retention",
+      "type": "absence",
+      "claim": "The evidence collection getting-started page gives no managed-store retention period.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft-managed evidence retention Purview; read getting-started and dlp-copy-matched-items-learn. Getting-started has no managed retention period; the overview gives a 180-day maximum and a separate 30 days on Purview/180 days on Defender XDR row.",
+      "severity": "minor",
+      "fix": "Remove the third Open questions bullet. Its narrow statement about the getting-started page is true, but the linked overview publishes retention information at https://learn.microsoft.com/purview/dlp-copy-matched-items-learn#storing-evidence-when-sensitive-information-is-detected."
+    },
+    {
+      "n": 82,
+      "where": "Open questions: separate endpoint Add to scope rate",
+      "type": "absence",
+      "claim": "A compute-unit rate specific to adding endpoint evidence to scope is not separately published in the researched documentation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Data Security Investigations add to scope rate compute units. Read billing and search; inspected scope and AI-analysis excerpts. Billing lists size of data and extracted text as cost variables, not a separate endpoint-evidence rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "rationale: impact",
+      "type": "role",
+      "claim": "Only admins and investigators with DSI roles see or use the capability.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/data-security-investigations-privacy-faq",
+      "quote": "Only Data Security Investigations Administrators, Investigators, and Reviewers have access to this data in your organization.",
+      "severity": "minor",
+      "fix": "Replace the impact rationale with 'Low. Investigation data is accessible to Data Security Investigations Administrators, Investigators and Reviewers; only Admins and Investigators can create searches and add items.' Cite https://learn.microsoft.com/purview/data-security-investigations-privacy-faq and the existing permissions source."
+    },
+    {
+      "n": 84,
+      "where": "Governance guidance: Before rollout, cost estimator; Governance controls",
+      "type": "consistency",
+      "claim": "The governance checklist names the cost estimator, but the controls table has no corresponding row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Before rollout: 'Estimate storage and compute cost with the in-product cost estimator'. Table rows cover evidence collection, role groups and the usage dashboard, not the estimator.",
+      "severity": "minor",
+      "fix": "Remove 'Estimate storage and compute cost with the in-product cost estimator on the Data Security Investigations page, and' from the first Before rollout bullet, leaving the advice to agree an Azure subscription owner."
+    },
+    {
+      "n": 85,
+      "where": "Governance guidance: After rollout, audit; Governance controls",
+      "type": "consistency",
+      "claim": "The governance checklist tells readers to check the unified audit log, but the controls table has no audit row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "After rollout: 'Check the unified audit log for DSI activity by investigators.' The controls table contains no audit-log control.",
+      "severity": "minor",
+      "fix": "Remove the final After rollout bullet, 'Check the unified audit log for DSI activity by investigators.' The supported activity-logging fact can remain in Risk assessment."
+    },
+    {
+      "n": 86,
+      "where": "Governance guidance: After rollout, deletion; Governance controls",
+      "type": "consistency",
+      "claim": "The governance checklist tells readers to delete investigations to stop storage charges, but the controls table has no deletion control.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "After rollout: 'Delete finished investigations to stop storage charges and remove the copied file content.' Table rows do not include investigation deletion.",
+      "severity": "minor",
+      "fix": "Remove the After rollout bullet, 'Delete finished investigations to stop storage charges and remove the copied file content.' The supported deletion and storage-charge facts can remain in the other sections."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T02:05:37.776Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=558547",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-investigations-search",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-investigations",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-copy-matched-items-get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether endpoint DLP evidence files are collected and available to query",
+        "docs": "https://learn.microsoft.com/purview/dlp-copy-matched-items-get-started",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Data Loss Prevention",
+          "Endpoint DLP settings",
+          "Setup evidence collection for file activities on devices"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Who can create investigations and add endpoint DLP evidence to scope",
+        "docs": "https://learn.microsoft.com/purview/data-security-investigations-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and groups",
+          "Role groups",
+          "Data Security Investigations Admins",
+          "Edit",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Who can create investigations and add endpoint DLP evidence to scope",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Tracking storage and compute unit spend per investigation",
+        "docs": "https://learn.microsoft.com/purview/data-security-investigations-billing",
+        "reachable": true,
+        "segments": [
+          "Data Security Investigations",
+          "Usage dashboard"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

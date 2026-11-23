@@ -103,15 +103,17 @@ changes:
     note: "Corrected after the check: licensing model set to consumption, and the Entra consent note now says that programmatically granted permissions take effect immediately without review."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 48 statements confirmed"
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
 version: 4
 verification:
-  status: "verified"
-  date: "2026-11-16"
+  status: "verified-with-gaps"
+  date: "2026-11-23"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 48
+  claims: 53
+  confirmed: 53
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -198,4 +200,13 @@ The tenant toggle is a single switch with no per-group scoping; the per-app boun
 risk: High. Live transcripts can contain sensitive spoken content and speaker names, and the setting takes effect on 14 November 2026, with organiser-tenant rules deciding access.
 cost: Variable. No separate transcript-specific licence or rate is documented as of November 2026; Work IQ uses consumption billing, so agents consuming transcripts may use Copilot Credits.
 impact: Medium. Meeting participants are affected indirectly; admins and app owners must act.
+-->
+
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Cost and licensing / cost: Learn states a separate spending policy is not required for Work IQ. | Found: Work IQ uses consumption billing. A separate spending policy isn't required for Work IQ. | Fix: Replace the spending-policy clause with: 'For Work IQ in Copilot Studio, Learn says a separate spending policy is not required. For direct Work IQ API integrations, Microsoft's migration guide instructs administrators to assign users to a spending policy that includes Work IQ API.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/migrate-retrieval-api#prepare-work-iq, which says 'assign the migration users to a spending policy that includes Work IQ API'. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Microsoft Entra admin center > Entra ID > App registrations > app > API permissions reaches app permissions. | Found: Browse to Entra ID > App registrations, and then select your client application (not your web API). Select API permissions, then Add a permission and select My APIs in the sidebar. | Fix: The path stops on the correct page but not at the consent control. For the tenant-registered apps this row describes, set ui.path and the rendered path to 'Entra ID > App registrations > All applications > app > Manage > API permissions > Grant admin consent', using the already-cited https://learn.microsoft.com/entra/identity/enterprise-apps/grant-admin-consent#grant-admin-consent-in-app-registrations-pane. | Source: https://learn.microsoft.com/entra/identity-platform/quickstart-configure-app-access-web-apis
+- [supported, minor] controls[1].api; Governance controls table / command: POST https://graph.microsoft.com/v1.0/oauth2PermissionGrants with clientId, consentType AllPrincipals, resourceId and scope grants delegated tenant-wide consent. | Found: POST https://graph.microsoft.com/v1.0/oauth2PermissionGrants Request body { "clientId": "00001111-aaaa-2222-bbbb-3333cccc4444", "consentType": "AllPrincipals", "resourceId": "a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1", "scope": "User.Read.All Group.Read.All" } | Fix: Set api.call and the rendered call to 'POST https://graph.microsoft.com/v1.0/oauth2PermissionGrants'. Add to the note: 'The request body sets clientId, consentType (AllPrincipals), resourceId, and scope to grant delegated tenant-wide consent.' | Source: https://learn.microsoft.com/entra/identity/enterprise-apps/grant-admin-consent
+- [supported, minor] controls[2].ui; Governance controls table / admin-path: Teams admin center > Meetings > Meeting policies > policy > Recording & transcription reaches the transcription policy section. | Found: In the left navigation of the Teams admin center, go to Meetings > Meeting policies. Select an existing policy or create a new one. Go to the Recording & transcription section | Fix: Set ui.path and the rendered path to 'Meetings > Meeting policies > policy > Recording & transcription > Transcription'. Add https://learn.microsoft.com/microsoftteams/meeting-transcription-captions#meetings to sources and use it for ui.docs; it documents 'Toggle Transcription On or Off'. The cited Copilot page supplies the Recording & transcription section. | Source: https://learn.microsoft.com/microsoftteams/copilot-teams-transcription#manage-copilot-for-teams-meetings-and-events
 -->

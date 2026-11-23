@@ -48,18 +48,21 @@ changes:
     note: "First briefing for this item, covering the January 2027 rollout window in MC1269864."
   - date: "2026-11-16"
     note: "Corrected the claim that Learn has nothing on these sections: Graph beta lists MutedChats and MeetingChats, and After rollout now compares behaviour with the notice."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 2 of 52 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-16"
+  date: "2026-11-23"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 52
-  confirmed: 51
-  unconfirmed: 1
+  confirmed: 50
+  unconfirmed: 2
   contradicted: 0
   attempts: 0
+  hash: "044e7b834371d8a4860f77a81aff7107"
 ---
 
 ## What's changing
@@ -156,7 +159,11 @@ cost: Low. The only cost the sources show is admin and helpdesk time to communic
 impact: High. MC1269864 says all Teams users are affected and that muted chats move out of the main list into a separate section by default, which changes what every user sees.
 -->
 
-<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: Chats are moved by the user's own drag and drop. | Found: Searched: Teams organize chat move chats drag drop sections; Teams chat drag sections organize. Read MC1269864, teamworkSection and Learn search excerpts. The notice describes dragging sections; no passage read establishes dragging chats for these sections. | Fix: Replace the bullet with: 'No change: chats are grouped automatically according to the muted-chat and meeting-chat rules described above; users can drag and drop the sections to reorder them.' MC1269864 documents section reordering, not moving chats by drag and drop.
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: Chats are moved by the user's own drag and drop in these sections. | Found: Searched: Teams muted meeting chats sections drag drop chats move sections badge counts; "Muted chats" "sections" "Teams". Read MC1269864 and teamworkSection; move action excerpt. The notice documents dragging sections, not dragging chats in these system sections. | Fix: Replace the Autonomy & actions bullet with: 'No change: chats are grouped automatically according to the muted-chat and meeting-chat rules described above; users can drag and drop the sections to reorder them.'
+- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: Nothing acts on a user's behalf. | Found: Searched: Teams Muted chats Meeting chats system sections autonomous actions on user's behalf. Read MC1269864, roadmap and teamworkSection; search returned unrelated supervised-chat and Graph chat excerpts. No source states this categorical claim. | Fix: Remove 'Nothing acts on a user's behalf.' The replacement bullet specified for the drag-and-drop finding already confines the description to the documented automatic grouping and user-controlled section reordering.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost / licensing: Licensing is unknown and not yet published for the new sections. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to 'included'. Replace the licensing notes and the Cost and licensing opening paragraph with: 'Users need a Microsoft Teams licence to use Teams, except when joining meetings anonymously, as stated in Manage Teams licenses. No licence or meter specific to these sections is published at the time of writing (November 2026).' Cite https://learn.microsoft.com/microsoftteams/user-access. Replace 'licensing is not yet published' in the cost rationale with 'feature-specific licensing is not yet published'. Replace the licensing open question with 'Will Microsoft publish a licence or meter specific to these sections? Watch the roadmap item and Learn.' | Source: https://learn.microsoft.com/microsoftteams/user-access
 -->

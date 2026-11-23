@@ -100,18 +100,20 @@ changes:
     note: "Corrected after verification: cost rating raised from low to medium because the Copilot licence is documented as an add-on prerequisite; added the sensitivity labels source."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 70 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-16"
+  status: "held"
+  date: "2026-11-23"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 65
+  claims: 70
+  confirmed: 69
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "90ca6e3403fff2521a8c1b46a585a867"
 ---
 
@@ -203,9 +205,11 @@ cost: Medium. Organisers and attendees who view the summary need a Copilot licen
 impact: High. It is automatically available to Copilot-licensed organisers and attendees whose meeting policy has Copilot enabled, so most Copilot users in a tenant can meet it.
 -->
 
-<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Open questions: automatic sensitivity labels / absence: Whether sensitivity labels can be automatically applied to the summary documents is an open documentation question. | Found: Auto-labeling for SharePoint and OneDrive: PDF documents and Office files for Word (.docx), PowerPoint (.pptx), and Excel (.xlsx) are supported. These files can be auto-labeled at rest before or after the auto-labeling policies are created. | Fix: Remove the open question 'Whether sensitivity labels can be auto-applied to the summary documents.' Microsoft documents service-side auto-labeling for Word (.docx) files stored in OneDrive at https://learn.microsoft.com/purview/apply-sensitivity-label-automatically; summary documents are explicitly Word files in OneDrive. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].api; Governance guidance: At rollout; Governance controls: expiry row / command: Set-CsTeamsMeetingPolicy -Identity <policy> -IntelligentRecapDocxFileExpirationDays 180 configures summary expiry. | Found: The following example sets the default expiration time to 180 days. Set-CsTeamsMeetingPolicy -Identity <policyname> -IntelligentRecapDocxFileExpirationDays 180 | Fix: Add this qualification after the controls table: 'The feature article documents -IntelligentRecapDocxFileExpirationDays for expiry, but the Set-CsTeamsMeetingPolicy reference still says this feature has not been fully released and the setting will have no effect.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy#-intelligentrecapdocxfileexpirationdays. | Source: https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#configure-expiration-for-ai-summary-documents
-- [supported, minor] controls[1].api; Governance guidance: Before rollout; Governance controls: Intelligent recap row / command: Set-CsTeamsMeetingPolicy -Identity <policy> -AllowIntelligentRecap $false turns off intelligent recap. | Found: To turn off intelligent recap, use the Set-CsTeamsMeetingPolicy cmdlet and set the -AllowIntelligentRecap parameter to $false. | Fix: Add this qualification after the controls table: 'The feature article documents -AllowIntelligentRecap $false to disable recap, but the Set-CsTeamsMeetingPolicy reference still says this feature has not been fully released and the setting will have no effect.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy#-allowintelligentrecap. | Source: https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#manage-intelligent-recap-without-saving-transcripts
+- [supported, minor] controls[0].api; Governance guidance: At rollout; Governance controls: expiry row / command: Set-CsTeamsMeetingPolicy -Identity <policy> -IntelligentRecapDocxFileExpirationDays 180 sets summary expiry to 180 days. | Found: The following example sets the default expiration time to 180 days. Set-CsTeamsMeetingPolicy -Identity <policyname> -IntelligentRecapDocxFileExpirationDays 180 | Fix: Add after the controls table: 'The feature article documents -IntelligentRecapDocxFileExpirationDays for expiry, but the Set-CsTeamsMeetingPolicy reference still says this feature has not been fully released and the setting will have no effect.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy#-intelligentrecapdocxfileexpirationdays. | Source: https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#configure-expiration-for-ai-summary-documents
+- [supported, minor] controls[1].api; Governance guidance: Before rollout; Governance controls: intelligent recap row / command: Set-CsTeamsMeetingPolicy -Identity <policy> -AllowIntelligentRecap $false turns off intelligent recap. | Found: To turn off intelligent recap, use the Set-CsTeamsMeetingPolicy cmdlet and set the -AllowIntelligentRecap parameter to $false. | Fix: Add after the controls table: 'The feature article documents -AllowIntelligentRecap $false to disable recap, but the Set-CsTeamsMeetingPolicy reference still says this feature has not been fully released and the setting will have no effect.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy#-allowintelligentrecap. | Source: https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#manage-intelligent-recap-without-saving-transcripts
 -->

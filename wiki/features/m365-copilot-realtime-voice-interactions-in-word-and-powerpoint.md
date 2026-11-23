@@ -22,7 +22,7 @@ licensing:
 audiences: ["m365-admin","security","change-adoption"]
 tags: ["m365-copilot","word","powerpoint","speech","real-time","user-experience"]
 sources:
-  - title: "Microsoft 365 Roadmap: item 487852"
+  - title: "Microsoft 365 Roadmap 487852"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=487852"
     kind: "roadmap"
   - title: "2025 Microsoft 365 Copilot release notes"
@@ -43,6 +43,9 @@ sources:
   - title: "copilotAdminSetting resource type"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/resources/copilotadminsetting"
     kind: "learn"
+  - title: "Data, privacy, and security for web search in Microsoft Copilot and Microsoft Copilot Chat"
+    url: "https://learn.microsoft.com/copilot/plan/manage-public-web-access"
+    kind: "learn"
 videos: []
 related: []
 controls:
@@ -53,26 +56,30 @@ controls:
     note: "Microsoft Learn documents no such switch at the time of writing (November 2026). For voice in Microsoft Copilot, a different surface, Microsoft documents no feature-specific toggle either."
 confidence: "medium"
 created: "2026-11-22"
-updated: "2026-11-22"
+updated: "2026-11-23"
 roadmapModified: "2026-11-06T23:04:41"
 changes:
   - date: "2026-11-22"
     note: "New briefing: roadmap item 487852 (realtime voice in Word and PowerPoint, In development, targeted December CY2026); no admin control, default or voice-specific licence is documented yet."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 51 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after the independent check: removed an unsupported usage-ranking claim, replaced the enterprise-commitments gap with Microsoft's documented enterprise data protection, and clarified web grounding and optional connected experiences."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 57 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-22"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-23"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 49
-  unconfirmed: 1
+  claims: 57
+  confirmed: 56
+  unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "da4c39a5e1c5053a3f0a84c43f836746"
+  attempts: 0
+  hash: "327154c3a22846597aee148662ab2883"
 ---
 
 ## What's changing
@@ -85,7 +92,7 @@ Microsoft Learn has no page for this item at the time of writing (November 2026)
 
 ## Why it matters
 
-Voice adds a spoken input path to Copilot in two of the most widely used apps, and the roadmap text says Copilot will "understand the content within your document or presentation". For a service owner the questions are who is entitled, whether voice can be switched off for a group, and what is kept from a spoken session. Microsoft has not stated a default for this item and has published no voice-specific control for Word or PowerPoint, so plan on no source saying existing behaviour changes, but expect users to ask for it as the December CY2026 target approaches.
+Voice adds a spoken input path to Copilot in Word and PowerPoint, and the roadmap text says Copilot will "understand the content within your document or presentation". For a service owner the questions are who is entitled, whether voice can be switched off for a group, and what is kept from a spoken session. Microsoft has not stated a default for this item and has published no voice-specific control for Word or PowerPoint, so plan on no source saying existing behaviour changes, but expect users to ask for it as the December CY2026 target approaches.
 
 The nearest documented behaviour is for voice in Microsoft Copilot (the Copilot app and Windows experience), not Word or PowerPoint. Use it as a prompt for questions to put to Microsoft, not as a description of this feature.
 
@@ -96,8 +103,8 @@ The nearest documented behaviour is for voice in Microsoft Copilot (the Copilot 
 - For voice in Microsoft Copilot, Microsoft states that "Text transcripts from voice chats are stored and managed like regular Copilot conversations, so your existing retention, eDiscovery, and audit policies apply to the transcript content. No user or Copilot audio is stored." Confirm that the same holds in Word and PowerPoint before relying on it.
 
 **Security & identity**
-- Microsoft states that voice in Microsoft Copilot adheres to the same enterprise commitments as text interactions. Whether that statement is extended to voice in Word and PowerPoint has not been published.
-- Voice in Microsoft Copilot can ground answers in the web as well as work data; the page says web grounding can be disabled by turning off optional connected experiences, which also disables web grounding for other Copilot experiences. Whether voice in Word and PowerPoint uses web grounding is not yet documented.
+- Microsoft states that voice in Microsoft Copilot adheres to the same enterprise commitments as text interactions. Microsoft documents enterprise data protection for Copilot Basic and Premium experiences when users sign in with Microsoft Entra accounts ([Microsoft Copilot overview](https://learn.microsoft.com/copilot/plan/copilot-overview)).
+- Voice in Microsoft Copilot can ground answers in the web as well as work data. The Windows guidance says turning off optional connected experiences disables web grounding for voice and other Copilot experiences. The web-search guidance distinguishes the admin policy from users' privacy settings: users turning off optional connected experiences does not disable web search ([web search in Microsoft Copilot](https://learn.microsoft.com/copilot/plan/manage-public-web-access)). Whether voice in Word and PowerPoint uses web grounding is not yet documented.
 
 **Autonomy & actions**
 - The roadmap text describes talking with Copilot and understanding content; it does not describe voice-triggered edits or actions. Treat any action beyond answering as unconfirmed until Microsoft documents it.
@@ -164,11 +171,8 @@ cost: Low. No meter or voice-specific licence is published, so the known cost is
 impact: Medium. Users with Copilot in Word and PowerPoint would notice a new way to talk to it, and the roadmap gives no default, so help desks may field questions about microphones and noise.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: Word and PowerPoint are two of the most widely used apps. | Found: Searched: Word PowerPoint most widely used Microsoft 365 apps. Read Copilot overview and service description; these list supported/popular apps but provide no usage ranking establishing this comparison. | Fix: Replace 'in two of the most widely used apps' with 'in Word and PowerPoint'.
-- [contradicted, blocker] Risk assessment: Security & identity / absence: Whether enterprise security and privacy commitments extend to voice in Word and PowerPoint has not been published. | Found: Copilot Chat (Basic), Microsoft 365 Copilot (Basic), and Microsoft 365 Copilot (Premium) are protected by Enterprise Data Protection (EDP) when you sign in with Microsoft Entra accounts. | Fix: Replace 'Whether that statement is extended to voice in Word and PowerPoint has not been published.' with 'Microsoft documents enterprise data protection for Copilot Basic and Premium experiences when users sign in with Microsoft Entra accounts.' Cite https://learn.microsoft.com/copilot/plan/copilot-overview. Keep the separate question about this item's audio storage implementation. | Source: https://learn.microsoft.com/copilot/plan/copilot-overview
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity / applicability: Turning off optional connected experiences disables web grounding for voice and other Copilot experiences. | Found: turning off optional connected experiences will disable web grounding for not only voice, but other Copilot experiences (including text Copilot) as well. | Fix: Replace the clause about disabling web grounding with 'The Windows guidance says turning off optional connected experiences disables web grounding for voice and other Copilot experiences. The web-search guidance distinguishes the admin policy from users' privacy settings: users turning off optional connected experiences does not disable web search.' Add https://learn.microsoft.com/copilot/plan/manage-public-web-access as a source. | Source: https://learn.microsoft.com/windows/client-management/manage-windows-copilot
+- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist asks readers to review reporting and audit processes, but these have no row in the controls table. | Found: Review whether voice use in Word and PowerPoint appears in your existing Copilot reporting and audit processes, and record any gap. The table contains only: A feature-specific switch for voice in Word and PowerPoint. | Fix: Remove the After rollout bullet beginning 'Review whether voice use in Word and PowerPoint appears in your existing Copilot reporting and audit processes': it names monitoring controls without a controls-table row.
 -->

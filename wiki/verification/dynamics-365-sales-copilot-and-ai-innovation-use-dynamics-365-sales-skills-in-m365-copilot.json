@@ -1,0 +1,1094 @@
+{
+  "slug": "dynamics-365-sales-copilot-and-ai-innovation-use-dynamics-365-sales-skills-in-m365-copilot",
+  "roadmapId": 576850,
+  "title": "Dynamics 365 Sales: sales skills in Microsoft 365 Copilot Cowork",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "3 blocking findings (claims 62, 64, 70)"
+    ]
+  },
+  "counts": {
+    "claims": 80,
+    "confirmed": 76,
+    "unconfirmed": 0,
+    "contradicted": 4,
+    "blocker": 3,
+    "major": 0,
+    "minor": 8
+  },
+  "summary": "Hold: the spending-policy routes omit the Identity policy-type choice, and the Sales access route starts inside administrator settings without explaining how to open them. The roadmap facts, Sales licence requirements and usage-based billing are supported; several governance qualifications need clarification. Instruction-like text in an MCP documentation sample was treated as source material, not followed.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "Dynamics 365 Sales skills are available inside Microsoft Copilot Cowork.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "Sales skills in Microsoft Copilot Cowork help you drive better outcomes across your sales organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap lists Microsoft Copilot (Microsoft 365) and Dynamics 365 Sales.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Sales\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope: Clouds and platforms",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope: Clouds and platforms",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: targetDate; What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The roadmap General Availability target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\", \"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate; What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The roadmap Preview date is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Scope: Rollout; Open questions",
+      "type": "record",
+      "claim": "The roadmap says the Sales plugin is installed by default and available to everyone with Cowork access.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The Dynamics 365 Sales plugin is installed by default in Copilot Cowork and available to all users who have access to Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The roadmap says the feature is enabled for end users automatically.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enabled for end users automatically",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Sales skills combine Dynamics 365 Sales data with Microsoft 365 email, meeting, calendar and collaboration context.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "By combining customer, opportunity, account, lead, activity, and pipeline information with emails, meetings, calendars, and collaboration signals, Cowork can help users understand what has changed",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Sellers can request deal catch-ups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "Deal catch-up | Quickly understand changes and updates to your deals with a comprehensive summary of what's new.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Sellers can request pipeline and forecast reviews.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "Team pipeline review | Analyze team pipeline health, velocity, and forecast accuracy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Sellers can request meeting preparation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "Meeting preparation | Automatically prepare for customer meetings by pulling relevant account, opportunity, and activity context.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Sellers can request outreach drafts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "Draft outreach | Generate personalized customer communications and outreach templates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Sellers can request competitive strategy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "Competitive strategy | Analyze competitive threats and develop counter-strategies for your deals.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn lists 18 sales skills.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "Business case composer; Competitive strategy; CRM data hygiene; Customer engagement strategy; Deal catch-up; Deal desk; Draft outreach; Executive deal review; Forecast rollup; Meeting preparation; Pipeline prioritizer; Post-meeting follow-up",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The skills are packaged across the Sales and Sales for Cowork plugins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "The following table lists the skills included in the Sales and Sales for Cowork plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "CRM-agnostic sales skills also work with uploaded data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "Some sales skills are CRM-agnostic and work with uploaded data as well.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The Sales capability is on by default for eligible users without an administrator configuring access restrictions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "By default, all eligible users have access unless you configure access restrictions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: licensing; What's changing; Cost and licensing; Scope; rationales",
+      "type": "licensing",
+      "claim": "The Sales plugin requires a Sales Enterprise or Sales Premium licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "A Sales Enterprise or Sales Premium license to use the Sales plugin in Copilot Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope: Users and licences",
+      "type": "licensing",
+      "claim": "Users also need an appropriate licence to access Microsoft Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "An appropriate license to access Microsoft Copilot.",
+      "severity": "minor",
+      "fix": "Keep the Sales page's requirement, and add: 'The Cowork plugin administration page also says users of Cowork plugins must have Microsoft 365 Copilot licences assigned.' Cite https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins#prerequisites."
+    },
+    {
+      "n": 23,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "CRM-agnostic sales skills require an appropriate Microsoft Copilot access licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "For CRM-agnostic sales skills, you need an appropriate license to access Microsoft Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Scope: Users and licences",
+      "type": "licensing",
+      "claim": "Users without a CRM licence can use the Sales for Cowork plugin for CRM-agnostic skills.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "If you don't have a CRM license, turn on the Sales for Cowork toggle to access CRM-agnostic sales skills.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Open questions",
+      "type": "admin-path",
+      "claim": "Learn tells users to enable Sales under Customize in Cowork.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "In Microsoft Copilot, select the Cowork tab. Select Customize from the left navigation pane. Turn on the toggle for Sales to enable the plugin for Dynamics 365 Sales.",
+      "severity": "minor",
+      "fix": "Replace the installation-versus-toggle open question with: 'The Sales page says the Sales app, which includes the Sales plugin, is automatically installed for eligible organisations and users based on their licence; it separately instructs users to enable Sales under Customize. Confirm the user-facing enabled state in your tenant.' Installation and user enablement are separate steps, not mutually exclusive accounts. Source: https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills#prerequisites."
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A user whose Sales plugin is not installed does not see Sales in the plugin list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "If the plugin isn't installed, you won't see the Sales option in the plugin list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Risk assessment: Data exposure; controls[4].governs; rationale: risk",
+      "type": "applicability",
+      "claim": "The Sales plugin accesses Dynamics 365 Sales data through the Dataverse MCP server.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "The Sales plugin in Copilot Cowork uses this server to access your Dynamics 365 Sales data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Cowork prompts the user to select a Dynamics 365 environment on the first sales prompt.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "When you enter a sales-specific prompt in Cowork for the first time, it prompts you to select the Dynamics 365 environment from which to pull the data.",
+      "severity": "minor",
+      "fix": "Add: 'The Cowork plugin administration page says Cowork selects the environment automatically if only one is available, and prompts when multiple environments are available.' Cite https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins#dynamics-365-connectors."
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Cowork remembers the chosen Dynamics 365 environment for later prompts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "Cowork remembers your selection for future prompts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "The Sales documentation says Cowork requests confirmation before updating records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "It asks you to confirm before executing any actions such as updating records, sending emails, or creating tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The Sales documentation says Cowork requests confirmation before sending emails.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "It asks you to confirm before executing any actions such as updating records, sending emails, or creating tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The Sales documentation says Cowork requests confirmation before creating tasks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "It asks you to confirm before executing any actions such as updating records, sending emails, or creating tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Open questions",
+      "type": "behaviour",
+      "claim": "Learn says Cowork does not take consequential actions autonomously, while the briefing leaves automated Sales-task approval open.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "Cowork doesn't take any consequential actions autonomously.",
+      "severity": "minor",
+      "fix": "After the Sales page's confirmation statement add: 'The Cowork administration page says automated tasks use the same governance as interactive conversations; approval is requested by default before emailing, posting messages or changing a shared system, but users can pre-authorize actions when creating a task.' Replace the automated-task open question with 'Confirm whether sellers have pre-authorized actions in their automated Cowork tasks.' Cite https://learn.microsoft.com/copilot/cowork/cowork-admin-governance#automated-tasks."
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Identity and access controls govern what users can discover and use in Sales skills.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "Identity and access controls determine what users can discover and use, while business logic and approval requirements remain in effect during execution.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Tenant Sales access settings do not install applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "These settings control access only. They don't install apps, assign licenses, connect to a CRM environment, or grant access to CRM data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[3].note; Governance controls",
+      "type": "licensing",
+      "claim": "Tenant Sales access settings do not assign licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "These settings control access only. They don't install apps, assign licenses, connect to a CRM environment, or grant access to CRM data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Tenant Sales access settings do not connect users to a CRM environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "These settings control access only. They don't install apps, assign licenses, connect to a CRM environment, or grant access to CRM data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[3].note; Risk assessment: Data exposure; Governance controls",
+      "type": "applicability",
+      "claim": "Tenant Sales access settings do not grant access to CRM data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "These settings control access only. They don't install apps, assign licenses, connect to a CRM environment, or grant access to CRM data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Tenant Sales access settings do not override licensing, environment or security requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "Tenant access settings don't grant access to CRM data and don't override licensing, environment, or security requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Assigned Dynamics 365 security roles and privileges determine which CRM records users can access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "Users can access only the CRM environments, records, tables, and fields permitted by their assigned security roles and privileges.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Dynamics 365 plugins authenticate through Microsoft Entra ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
+      "quote": "Dynamics 365 plugins (Customer Service, Sales, and ERP) use Microsoft Entra ID authentication",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Learn describes Sales skills activity as auditable end to end.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "All activity is auditable from end to end.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Security & identity; Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Microsoft Purview audit logs capture Cowork and plugin interactions under Copilot activities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
+      "quote": "Microsoft Purview audit logs capture Copilot activities for your organization, including interactions with Cowork and its plugins. Audit entries appear under Copilot activities in Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Cowork supports automated tasks running without a person present.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "Users can create automated tasks that run without a person present: scheduled prompts that run at a set time, and event-driven tasks that run when a matching email or Teams message arrives.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "summary; Why it matters; Cost and licensing; front matter: licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Cowork is billed based on usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "Cowork requires an appropriate license for access and is also billed based on usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "cost",
+      "claim": "Cowork usage charges are not part of a fixed licence plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "Charges aren't part of a fixed license plan",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Charges vary with token usage, which depends on prompt, task duration and underlying model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "they vary based on token usage, which depends on factors such as the user prompt, task duration, and underlying model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Usage-based Copilot features, including Cowork, consume credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-copilot-credits-cost",
+      "quote": "When you use usage-based features in Microsoft Copilot, that usage is measured in credits. These features are available in experiences such as Chat, Cowork, Code, and Autopilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The organisation manages the applicable monthly credit limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-copilot-credits-cost",
+      "quote": "Your organization manages the monthly credit limits that apply to your usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "The pages read do not state a credit rate specific to Sales skills in Cowork.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot Cowork Dynamics 365 Sales skills credit rate pricing'; '\"Cowork\" \"Sales\" \"credits\" \"rate\" pricing licensing'. Read Sales skills, Cowork governance, credit usage and licensing search excerpts; no Sales-skills-specific rate found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Change & support; Cost and licensing; Governance controls; controls[0].governs",
+      "type": "applicability",
+      "claim": "A spending policy selecting Cowork grants Cowork access to users within its scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "Users in the scope of a spending policy that selects Cowork can use Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "applicability",
+      "claim": "The Cowork entry under Agents > All Agents no longer controls who can use Cowork.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "The Cowork agent entry is still visible under Agents > All Agents, but any configuration on it has no effect on who can use Cowork. Access is granted only through a spending policy that selects Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].note; Cost and licensing",
+      "type": "cost",
+      "claim": "A very low credit limit still permits users to open Cowork and start work until the limit is reached.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
+      "quote": "Setting a very low credit limit doesn't prevent access. A user can still open Cowork and start work until the limit is reached.",
+      "severity": "minor",
+      "fix": "Add to controls[1].note and the cost paragraph: 'Credit consumption and limit enforcement are asynchronous, so users might start additional tasks after reaching their limit before enforcement takes effect; use policy scope to control access.' Source: https://learn.microsoft.com/copilot/cowork/cowork-access#decide-who-can-access-cowork."
+    },
+    {
+      "n": 54,
+      "where": "Scope: Prerequisites; Governance guidance: Before rollout; Cost and licensing",
+      "type": "applicability",
+      "claim": "The Dataverse MCP server must be enabled in the environment used by the Sales plugin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "Ensure that the Dataverse MCP server is enabled for your environment. The Sales plugin in Copilot Cowork uses this server to access your Dynamics 365 Sales data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "The Sales app must be installed and available for the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "Ensure that the Sales app is installed and available for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Scope: Prerequisites; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "The Sales plugin must not be blocked under Microsoft 365 admin center > Agents > Tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "Ensure that the Sales plugin and the Dynamics 365 Sales MCP component aren't blocked in the Microsoft 365 admin center, under Agents > Tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope: Prerequisites; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "The Dynamics 365 Sales MCP component must not be blocked under Microsoft 365 admin center > Agents > Tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "Ensure that the Sales plugin and the Dynamics 365 Sales MCP component aren't blocked in the Microsoft 365 admin center, under Agents > Tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Scope: Prerequisites",
+      "type": "applicability",
+      "claim": "Learn lists the Copilot Cowork, Copilot Code, and Microsoft Scout toggle in Sales administrator settings as a prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "Ensure that the Copilot Cowork, Copilot Code, and Microsoft Scout toggle is enabled in Sales agent administrator settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance guidance: Before rollout; At rollout; controls[3].governs",
+      "type": "applicability",
+      "claim": "Dynamics 365 Sales plugin access can be restricted with Microsoft Entra security groups through Allow access and Restrict access lists.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "Set access restrictions: Use Microsoft Entra security groups to control access. If you select Set access restrictions, configure one or both of the following lists: Allow access",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Access setting changes can take up to 15 minutes to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "Access setting changes can take up to 15 minutes to take effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Administrators can see Cowork usage in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "Admins see usage in the Microsoft 365 admin center and can set per-user or per-group limits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[0].ui; Governance controls: Cowork access row",
+      "type": "admin-path",
+      "claim": "The Cowork access route is Copilot > Cost Management > Configuration > Add spending policy > Select agents and services > Cowork.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits",
+      "quote": "Create and name the policy and then choose Identity as the scope. Use this option when you need to manage usage by users or groups for a supported service.",
+      "severity": "blocker",
+      "fix": "Replace controls[0].ui.path and its rendered route with 'Copilot > Cost Management > Configuration > Add spending policy > Identity > Select agents and services > Cowork'. The existing Cowork governance citation supports the last steps; also cite https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits#policy-scope for the policy-type choice."
+    },
+    {
+      "n": 63,
+      "where": "controls[0].api; controls[0].note; Governance controls: Cowork access row",
+      "type": "command",
+      "claim": "POST /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings adds a governed service to an existing spending policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create",
+      "quote": "Create a new spendingPolicyServiceSetting object to add a service to an existing spending policy. Required properties are serviceId and state. POST /copilot/costManagement/spendingPolicies/{id}/serviceSettings",
+      "severity": "minor",
+      "fix": "Keep the beta call. Replace controls[0].note with 'Adds Cowork to an existing policy through request-body serviceId: cowork and state: enabled. A service setting has no effect while the parent policy is disabled or provisioning. Beta API.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/resources/spendingpolicyservicesetting, which documents cowork and state; the create page's example does use another serviceId."
+    },
+    {
+      "n": 64,
+      "where": "controls[1].ui; Governance controls: credit limits row",
+      "type": "admin-path",
+      "claim": "The Cowork credit-limit route is Copilot > Cost Management > Configuration > Add spending policy > Set limits and alerts.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits",
+      "quote": "Create and name the policy and then choose Identity as the scope. Select the agents and services that users and groups in this policy can access.",
+      "severity": "blocker",
+      "fix": "Replace controls[1].ui.path and its rendered route with 'Copilot > Cost Management > Configuration > Add spending policy > Identity > Select agents and services > Cowork > Set limits and alerts'. Retain the existing note identifying policy-level and per-user limits; the Cowork selection is documented at https://learn.microsoft.com/copilot/cowork/cowork-admin-governance#migrating-from-frontier-or-preview-access-control."
+    },
+    {
+      "n": 65,
+      "where": "controls[1].api; controls[1].note; Governance controls: credit limits row",
+      "type": "command",
+      "claim": "PATCH /beta/copilot/costManagement/spendingPolicies/{id} changes periodLimit or perUserLimit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "PATCH /copilot/costManagement/spendingPolicies/{id}. The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[2].ui; Governance controls: plugin availability row",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Agents > Tools > plugin > Users > Block blocks that plugin for the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
+      "quote": "select Agents > Tools. Find the plugin you want to manage and go to the Users tab. Select Block: No users in your tenant can access the plugin.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[2].api; controls[2].note; Governance controls; Open questions",
+      "type": "command",
+      "claim": "POST /beta/copilot/admin/catalog/packages/{id}/block blocks a package, with a caveat that the reference does not explicitly name the Sales plugin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage. POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": "minor",
+      "fix": "Keep the call and Agent 365 licence qualifier. Replace the applicability caveat with 'Blocks the identified Copilot package; the package resource includes tools with AgentConnectors and AgentSkills element types.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/resources/copilotpackage. Replace the API open question with 'Identify the Sales plugin package in the tenant catalog before using the block call.'"
+    },
+    {
+      "n": 68,
+      "where": "controls[2].note; Scope: Roles",
+      "type": "role",
+      "claim": "Managing Cowork plugins requires tenant administrator access or the Copilot administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
+      "quote": "Microsoft 365 admin center access: You must be a tenant administrator, or have the Copilot administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[2].note; Governance controls",
+      "type": "licensing",
+      "claim": "The Package Management API requires a Microsoft Agent 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[3].ui; Governance controls: Sales plugin access row",
+      "type": "admin-path",
+      "claim": "The Sales plugin group-access route starts at Sales agent administrator settings > Tenant > Access settings > Allow access to Dynamics 365 Sales plugins.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/administrator-settings-sales-app",
+      "quote": "You can access the administrator settings in the Sales agent in Outlook and Teams. On the left navigation pane, select Sales. Select the Settings tab.",
+      "severity": "blocker",
+      "fix": "Set controls[3].ui.surface to 'Outlook or Teams (Sales personal app)' and path to 'Sales > Settings > Tenant > Access settings > Allow access to Dynamics 365 Sales plugins > Who can use this feature? > Set access restrictions > Allow access or Restrict access'. Add https://learn.microsoft.com/microsoft-sales-copilot/administrator-settings-sales-app#access-administrator-settings to sources for opening settings; retain the access-settings-apps docs URL for the control's final steps."
+    },
+    {
+      "n": 71,
+      "where": "controls[3].api; Governance controls",
+      "type": "absence",
+      "claim": "No API is documented for the tenant Sales plugin access setting at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Dynamics 365 Sales plugins tenant access settings API Dataverse organization table Allow access Cowork'; '\"Sales plugins\" \"Dataverse\" \"table\" access settings API'. Read access-settings-apps; searched Organization and AIPluginUserSetting references: no matching tenant control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "controls[3].note; Scope: Roles",
+      "type": "role",
+      "claim": "The tenant Sales access setting requires Global Administrator, Exchange Administrator or Power Platform Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "You must have one of the following Microsoft Entra roles: Global Administrator; Exchange Administrator; Power Platform Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "controls[4].ui; Governance controls: Dataverse MCP row",
+      "type": "admin-path",
+      "claim": "The environment MCP switch is under Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > Dataverse Model Context Protocol > Allow MCP clients to interact with Dataverse MCP server.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
+      "quote": "Select Manage > Environments. Select the Environment Name ... select Settings. Under Settings, select Product > Features. ... Dataverse Model Context Protocol ... Allow MCP clients to interact with Dataverse MCP server",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "controls[4].api; Governance controls",
+      "type": "absence",
+      "claim": "No API is documented for the environment-wide Dataverse MCP server switch at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Dataverse MCP server enable disable environment setting Power Platform API pac admin PowerShell organization table'; '\"Allow MCP clients to interact\" \"API\"'. Read MCP configuration, pac governance and Dataverse CLI excerpts; searched Organization reference: only client allowlisting found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "controls[4].note; Scope: Roles",
+      "type": "role",
+      "claim": "Accessing Dataverse MCP environment settings requires the Power Platform administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
+      "quote": "Power Platform administrator role in order to access Dataverse MCP server environment settings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "controls[4].note; Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "Disabling the Dataverse MCP server stops all tools and agents relying on that server.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
+      "quote": "Disabling the Dataverse MCP Server stops all tools and agents that rely on it. Any ongoing development or AI integration testing using MCP is also interrupted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed, combining Sales user licensing with Cowork access licensing and consumption charges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "A Sales Enterprise or Sales Premium license to use the Sales plugin in Copilot Cowork. Cowork requires an appropriate license for access and is also billed based on usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The governance checklist names monitoring controls that do not have corresponding controls-table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review credit use ... using the usage views ... Search the Microsoft Purview audit log for Copilot activities. The table contains spending-policy access, credit limits, plugin blocking, Sales access and the MCP switch, but no usage-report or audit-search row.",
+      "severity": "minor",
+      "fix": "Remove the two After rollout checklist bullets about usage views and Purview audit search, which have no controls-table rows. Keep the independently supported monitoring facts in the risk and cost discussion; do not add new control rows during correction."
+    },
+    {
+      "n": 79,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The variable cost rating reflects Cowork's metered Copilot Credit usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-copilot-credits-cost",
+      "quote": "When you use usage-based features in Microsoft Copilot, that usage is measured in credits. These features are available in experiences such as Chat, Cowork, Code, and Autopilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Sellers can orchestrate sales work spanning Sales data and Microsoft 365 context through one request.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+      "quote": "Although the experience is simple for sellers—one request, one result—it is supported by a governed agentic flow.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T02:05:37.304Z",
+    "summary": {
+      "links": 12,
+      "unreachable": 0,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=576850",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/sales/use-copilot-cowork-sales-skills",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/cowork/cowork-access",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-copilot-credits-cost",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who can use Cowork at all, through a spending policy that selects Cowork",
+        "docs": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost Management",
+          "Configuration",
+          "Add spending policy",
+          "Select agents and services",
+          "Cowork"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Who can use Cowork at all, through a spending policy that selects Cowork",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create",
+        "reachable": true,
+        "token": "/beta/copilot/costManagement",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Credit limits for Cowork usage in a spending policy",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost Management",
+          "Configuration",
+          "Add spending policy",
+          "Set limits and alerts"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Credit limits for Cowork usage in a spending policy",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+        "reachable": true,
+        "token": "/beta/copilot/costManagement",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether the Sales plugin is available to users in Cowork",
+        "docs": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Tools",
+          "plugin",
+          "Users",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether the Sales plugin is available to users in Cowork",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Which users or groups can access Dynamics 365 Sales plugins in Cowork",
+        "docs": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+        "reachable": true,
+        "segments": [
+          "Access settings",
+          "Allow access to Dynamics 365 Sales plugins"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Whether the Dataverse MCP server the Sales plugin uses is on for an environment",
+        "docs": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Product",
+          "Features",
+          "Dataverse Model Context Protocol",
+          "Allow MCP clients to interact with Dataverse MCP server"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

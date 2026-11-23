@@ -1,0 +1,592 @@
+{
+  "slug": "microsoft-purview-data-loss-prevention-show-remote-machine-information-on-file-copy-to-rem",
+  "roadmapId": 526791,
+  "title": "Microsoft Purview DLP: show remote machine information for file copies to Remote Desktop",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "3 blocking findings (claims 18, 31, 33)"
+    ]
+  },
+  "counts": {
+    "claims": 40,
+    "confirmed": 36,
+    "unconfirmed": 1,
+    "contradicted": 3,
+    "blocker": 3,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold: the PowerShell reference confirms a general Endpoint DLP parameter but does not establish that the printed call configures RDP restrictions. The briefing also omits Windows Server prerequisites and incorrectly says the parameter reference gives only its type. The roadmap facts and the cautiously stated gaps about the new information check out.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Why it matters; rationale: risk and impact",
+      "type": "record",
+      "claim": "The roadmap describes administrators seeing destination machine information when a user copies a sensitive file to a remote machine through RDP.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Admin should be able to see destination machine information when end-user copy a sensitive file to a remote machine through RDP.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; changes",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The preview date is December CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"December CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is January CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Open questions",
+      "type": "record",
+      "claim": "The record lists General Availability and Preview as release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only listed cloud; GCC, GCC High and DoD are not listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-09-30T23:31:03.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-30T23:31:03\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The record does not assign its release phases to particular parts of the feature.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; changes; Open questions",
+      "type": "absence",
+      "claim": "Learn does not yet describe where or how this item's destination machine information appears.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview DLP remote desktop machine information activity explorer; Purview RDP destination machine. Opened endpoint-dlp-learn-about, dlp-policy-reference, data-classification-activity-explorer and dlp-alerts-dashboard-get-started; none describes this new information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
+      "type": "default",
+      "claim": "Neither the record nor Learn states what the remote machine information does on arrival, so its default is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Endpoint DLP RDP destination remote machine information default enable setting licensing 526791; Purview RDP destination default enabled setting PowerShell. Read roadmap, endpoint-dlp-learn-about, activity explorer and DLP Alerts dashboard; no item-specific default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No item-specific on/off setting is documented on the Endpoint DLP, activity explorer or DLP alerts pages.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview destination machine information RDP Set-PolicyConfig enable disable; Purview RDP destination default enabled setting PowerShell. Opened Endpoint DLP, activity explorer, DLP alerts, Set-PolicyConfig and Get-PolicyConfig; no switch for this information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "Cost and licensing; rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "Microsoft publishes no price or meter specific to this item.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview remote machine information enable default licence price; Purview Endpoint DLP RDP destination remote machine information licensing 526791. Read roadmap, Endpoint DLP getting-started and Purview service description; no item-specific price or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No separate licence specific to the remote machine information is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview remote machine information enable default licence price; Purview Endpoint DLP RDP destination remote machine information licensing 526791. Opened Endpoint DLP getting-started and Purview service description; Endpoint DLP entitlement is listed, no separate entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not state whether this item covers every device type supporting the RDP activity.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview DLP remote desktop machine information activity explorer; Purview Endpoint DLP RDP destination remote machine information 526791. Read roadmap, Endpoint DLP support table and policy reference; activity support is documented, item-specific device coverage is not.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Scope; Why it matters",
+      "type": "absence",
+      "claim": "Who can see the new remote machine information is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview DLP remote desktop machine information activity explorer; Purview Endpoint DLP RDP destination remote machine information 526791. Read roadmap and permissions sections of activity explorer and DLP Alerts dashboard; no permission specific to the new information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; rationale: risk",
+      "type": "behaviour",
+      "claim": "Endpoint DLP's Copy or move using RDP detects attempts to copy an item to a remote desktop session.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "Copy or move using RDP | Detects when a user attempts to copy an item to a remote desktop session.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "The RDP activity is supported on onboarded Windows 10, Windows 11 and Windows Server 2019 and later devices without further stated qualifications.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "By default, Endpoint DLP isn't enabled for Windows servers when they're initially onboarded. Before you can see Endpoint DLP events for your servers in Activity Explorer, you must first Enable Endpoint DLP for Windows Servers.",
+      "severity": "blocker",
+      "fix": "Qualify the Windows Server statement in What's changing and Scope: 'Windows servers require Enable Endpoint DLP for Windows Servers after onboarding; Domain Controllers and Server Core installations are not supported.' Cite https://learn.microsoft.com/purview/endpoint-dlp-learn-about. This qualifies the existing activity, not the new item's coverage."
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Copy or move using RDP is not supported on macOS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "Copy or move using RDP | Detects when users copy or move protected files from an onboarded Windows device to another location using RDP. This isn't supported for macOS.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].governs; Risk assessment: Security & identity; Governance controls",
+      "type": "applicability",
+      "claim": "The existing DLP rule action can audit or restrict copying to a remote desktop session.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "Copy or move using RDP | Detects when a user attempts to copy an item to a remote desktop session. | Supported | Supported | Not supported | Auditable and restrictable",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Data exposure; Scope; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "Accessing the DLP Alerts dashboard requires Manage alerts and either DLP Compliance Management or View-Only DLP Compliance Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-dashboard-get-started",
+      "quote": "To access the DLP alert management dashboard, you need the Manage alerts role and either of these two roles: DLP Compliance Management; View-Only DLP Compliance Management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[1].governs; Risk assessment: Change & support; Cost and licensing; Governance controls",
+      "type": "behaviour",
+      "claim": "Activity explorer receives its activity information from the Microsoft 365 unified audit logs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
+      "quote": "The activity information comes from the Microsoft 365 unified audit logs. It's transformed and then made available in the activity explorer UI.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Activity explorer is not real time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
+      "quote": "Activity explorer isn't a real-time view. Because its data comes from the Microsoft 365 unified audit log, activities appear on the same schedule as audit records — not the moment they occur.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "DLP alerts also draw on telemetry that first enters the Microsoft 365 audit logs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-learn-about-dlp#viewing-policy-application-results",
+      "quote": "The telemetry goes into the Microsoft 365 audit Logs first, is processed, and makes its way to different reporting tools.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/purview/dlp-learn-about-dlp#viewing-policy-application-results to sources for the statement that DLP alerts draw on the audit log."
+    },
+    {
+      "n": 25,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Endpoint DLP is included in the named Microsoft 365 E5/A5/G5, Microsoft Purview Suite and Microsoft 365 E5/A5/F5/G5 Information Protection & Governance plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance | Endpoint Data Loss Prevention (DLP) | Included",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Endpoint DLP getting-started page refers readers to Microsoft 365 licensing guidance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-getting-started",
+      "quote": "SKU/subscriptions licensing: For information on licensing, see Microsoft 365 Enterprise Plans; Microsoft 365 Service Descriptions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing",
+      "type": "default",
+      "claim": "Audit logging is generally on by default for Microsoft 365 organisations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Audit logging is on by default for Microsoft 365 organizations. However, when you set up a new Microsoft 365 organization, verify the auditing status for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing",
+      "type": "default",
+      "claim": "Audit logging is not enabled by default for Small and Medium Business licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Auditing isn't enabled by default for Small and Medium Business (SMB) licenses, including Microsoft 365 Business Basic, Business Standard, and Business Premium.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing",
+      "type": "default",
+      "claim": "Audit logging is not enabled by default for unmanaged tenants using enterprise licence free trials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Additionally, unmanaged tenants that use free trials of enterprise licenses don't have auditing enabled by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The printed Microsoft Purview custom-policy path reaches the Copy or move using RDP activity control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-edlp-scan-fails",
+      "quote": "Select Full directory under Admin units. Scope the location to Devices only. Create a rule where: ... In Actions: Select Audit or restrict activities on devices. ... Select Apply restrictions to specific activity ... Copy or move using RDP",
+      "severity": "minor",
+      "fix": "Restore the omitted scope choices: 'Data Loss Prevention > Policies > Create policy > Enterprise applications & devices > Custom > Custom policy > Admin units > Full directory > Devices > rule > Actions > Audit or restrict activities on devices > Apply restrictions to specific activity > Copy or move using RDP'. Keep the note that this follows the custom-policy example, not its scan-failure condition."
+    },
+    {
+      "n": 31,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-DlpComplianceRule -Identity <ComplianceRuleIdParameter> -EndpointDlpRestrictions <PswsHashtable[]> is documented as the automation for auditing or restricting RDP copies.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: EndpointDlpRestrictions RDP; EndpointDlpRestrictions RemoteDesktop Rdp Setting; RDP Set-DlpComplianceRule. Opened Set-DlpComplianceRule, Get-PolicyConfig and Set-PolicyConfig; parameters exist, but no RDP setting mapping or statement that this operation sets the RDP control.",
+      "severity": "blocker",
+      "fix": "Set controls[0].api to null. The reference documents general Endpoint DLP restrictions but does not document the setting that selects Copy or move using RDP. Do not invent a Setting value or describe the generic parameter as a verified RDP operation."
+    },
+    {
+      "n": 32,
+      "where": "controls[0].note; Governance controls table",
+      "type": "command",
+      "claim": "Set-DlpComplianceRule is available only in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+      "quote": "This cmdlet is available only in Security & Compliance PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].note; Governance controls table",
+      "type": "command",
+      "claim": "The Set-DlpComplianceRule reference gives only the EndpointDlpRestrictions parameter type.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+      "quote": "The EndpointDlpRestrictions parameter specifies the restricted endpoints for Endpoint DLP. This parameter uses the following syntax: @(@{\"Setting\"=\"<Setting>\"; \"Value\"=\"<Value>\"},...). The available values for <Value> are: Audit, Block, Ignore, or Warn.",
+      "severity": "blocker",
+      "fix": "Remove 'the reference gives the parameter type only' from controls[0].note and its rendered table note. The current reference gives syntax, action values, examples and an Entra role requirement, although it does not identify the RDP Setting value."
+    },
+    {
+      "n": 34,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Audit > Start recording user and admin activity turns on auditing when it is disabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Select the Audit solution card. ... If auditing isn't turned on for your organization, a banner is displayed prompting you to start recording user and admin activity. Select the Start recording user and admin activity banner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true turns on auditing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Use PowerShell to turn on auditing ... Connect to Exchange Online PowerShell. Run the following PowerShell command to turn on auditing. Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[1].note; Governance controls table",
+      "type": "role",
+      "claim": "Turning auditing on or off requires the Audit Logs role in Exchange Online.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "You must be assigned the Audit Logs role in Exchange Online to turn auditing on or off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[1].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "The Start recording user and admin activity banner appears when auditing is not already on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "If auditing isn't turned on for your organization, a banner is displayed prompting you to start recording user and admin activity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "The roadmap description names no screen, field, policy setting, licence or specific Endpoint DLP activity name.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Admin should be able to see destination machine information when end-user copy a sensitive file to a remote machine through RDP.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance guidance: Before rollout",
+      "type": "consistency",
+      "claim": "The checklist asks readers to check device onboarding and alert-access roles, but neither control appears in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm which devices are onboarded ... List the roles that review DLP alerts ... Controls table: Whether a DLP rule audits or restricts copies ... Whether the unified audit log records activity",
+      "severity": "minor",
+      "fix": "The 'Confirm which devices are onboarded' and 'List the roles that review DLP alerts' checklist steps have no corresponding control rows. Remove those checklist instructions rather than adding unverified rows; retain the supported device and role facts in Scope."
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity and Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes information visibility for administrators, not autonomous actions or changes to blocking.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Admin should be able to see destination machine information when end-user copy a sensitive file to a remote machine through RDP.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T02:05:37.093Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=526791",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-policy-reference",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/endpoint-dlp-getting-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-alerts-dashboard-get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-create-policy-edlp-scan-fails",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a DLP rule audits or restricts copies to a remote desktop session",
+        "docs": "https://learn.microsoft.com/purview/dlp-create-policy-edlp-scan-fails",
+        "reachable": true,
+        "segments": [
+          "Data Loss Prevention",
+          "Policies",
+          "Create policy",
+          "Enterprise applications & devices",
+          "Custom",
+          "Custom policy",
+          "Actions",
+          "Audit or restrict activities on devices",
+          "Apply restrictions to specific activity",
+          "Copy or move using RDP"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether a DLP rule audits or restricts copies to a remote desktop session",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+        "reachable": true,
+        "token": "Set-DlpComplianceRule",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether the unified audit log records activity, which activity explorer reads",
+        "docs": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Start recording user and admin activity"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether the unified audit log records activity, which activity explorer reads",
+        "docs": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "reachable": true,
+        "token": "Set-AdminAuditLogConfig",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

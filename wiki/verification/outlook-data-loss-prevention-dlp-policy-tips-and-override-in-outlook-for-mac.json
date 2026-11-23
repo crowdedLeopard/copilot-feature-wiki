@@ -1,0 +1,754 @@
+{
+  "slug": "outlook-data-loss-prevention-dlp-policy-tips-and-override-in-outlook-for-mac",
+  "roadmapId": 558689,
+  "title": "Outlook for Mac: DLP policy tips and override",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 53: severity major on a rationale: risk rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "1 blocking finding (claim 47)"
+    ]
+  },
+  "counts": {
+    "claims": 55,
+    "confirmed": 52,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 6
+  },
+  "summary": "Hold: the Purview override path skips policy-tip selections that the cited procedure requires. The roadmap facts and off-by-default setting are supported, but the assertion that this feature adds no new data access is not documented.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Outlook for Mac now supports DLP policy tips and override.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Outlook: Data Loss Prevention (DLP) Policy Tips & Override in Outlook for Mac",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says sensitive content triggers inline tips or pop-ups based on admin-configured rules.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When sensitive content is detected, users are alerted with inline tips or pop-ups, based on admin-configured rules.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is November CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"November CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The record lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Mac is the platform listed by the roadmap.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-10-06T22:56:31.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-06T22:56:31\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "The Android, iOS and macOS reference documents commonly used predicates and exceptions, advanced classifiers and override capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref",
+      "quote": "Outlook for Android, iOS, and macOS now supports data loss prevention (DLP) policy tips with commonly used predicates and exceptions, advanced classifiers, and override capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "default",
+      "claim": "The Mac policy-tip UI is disabled by default and requires an administrator to enable it, supporting admin-opt-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref",
+      "quote": "Policy Tip UI is turned off by default in Outlook for Android, iOS, and macOS ... To enable Policy Tip UI to appear ... you must enable the policy ... in the Microsoft 365 Apps Admin Center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft says the disabled default allows testing and user training before deployment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref",
+      "quote": "Policy Tip UI is turned off by default in Outlook for Android, iOS, and macOS to allow for administrators to test and perform user training prior to deployment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing; controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "Enable Purview Data Loss Prevention (DLP) policy tips in Outlook controls whether Mac policy tips are shown.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref",
+      "quote": "Enable Purview Data Loss Prevention (DLP) policy tips in Outlook | (default) Disabled policy tips aren't shown Enabled policy tips are shown",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Scope; controls[0].scope and note; Governance guidance; rationale: impact",
+      "type": "applicability",
+      "claim": "The policy-tip setting can target individuals or groups rather than every Mac user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref",
+      "quote": "You can target policies to individuals or groups, so you can test and deploy policy tip UI as needed through your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The platform reference lists all actions and information types for email communications as supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref",
+      "quote": "All actions and information types for email communications are supported.",
+      "severity": "minor",
+      "fix": "After this sentence add: 'The general policy-tip support matrix instead describes Outlook Mac conditions and actions as a subset and sensitive information types as varying by version and licence.' Both pages are already cited; the differing matrix is at https://learn.microsoft.com/purview/dlp-policy-tips-reference."
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "All custom sensitive information types are supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref",
+      "quote": "All custom SITs are supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "All exact data match sensitive information types are supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref",
+      "quote": "All EDM SITs are supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "All sensitivity labels are supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref",
+      "quote": "All sensitivity labels are supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "All retention labels are supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref",
+      "quote": "All retention labels are supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "All trainable classifiers are supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref",
+      "quote": "All trainable classifiers are supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; controls[1].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The platform reference does not document a Mac oversharing dialog or a separate Mac override configuration path.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook Mac DLP policy tips licensing minimum version oversharing dialog metered price. Opened dlp-outlook-mobile-policy-tip-ref, dlp-osp-get-started and dlp-ol365-win32-policy-tips; the platform reference's dialog section names Android and iOS, not Mac.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment; Open questions",
+      "type": "behaviour",
+      "claim": "The troubleshooting article says Mac policy tips are unsupported, in conflict with the platform reference.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/data-loss-prevention/data-loss-prevention-policy-tips",
+      "quote": "Policy tips are currently not supported for Outlook for Mac iOS clients.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "summary; Why it matters; controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "Administrators configure the override option per DLP rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "The override option is per rule, and it overrides all of the actions in the rule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters; Risk assessment",
+      "type": "behaviour",
+      "claim": "An override overrides all actions in the rule and allows the user to proceed past its restriction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "The override option is per rule, and it overrides all of the actions in the rule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Overriding the most restrictive matched rule also overrides other rules the content matched.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "If the policy tips in the most restrictive rule allow people to override the rule, then overriding this rule also overrides any other rules that the content matched.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "A required business justification for overriding a policy is logged.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "Require the person to enter a business justification for overriding the policy. This information is logged",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Logged business justifications can be viewed in DLP reports in the portal's Reports section.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "This information is logged and you can view it in the DLP reports in the Reports section of the portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Cloud Policy offers policies for Windows, macOS, iOS and Android, but not every setting is available on every operating system.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "Policy settings are available for devices running Windows, macOS, iOS, and Android, although not all policy settings are available for all operating systems.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].note; Scope; Governance guidance: At rollout",
+      "type": "role",
+      "claim": "Office Apps Administrator is recommended, and Security Administrator or Global Administrator can also manage Cloud Policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "You can use the following built-in Microsoft Entra roles for accessing and managing the feature: ... Office Apps Administrator (Recommended) ... Security Administrator ... Global Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "The cited procedure lists Compliance administrator, Compliance data administrator, Information Protection, Information Protection Admin and Security administrator role groups for creating and deploying DLP policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-osp-get-started",
+      "quote": "The account you use to create and deploy policies must be a member of one of the following role groups ... Compliance administrator ... Compliance data administrator ... Information Protection ... Information Protection Admin ... Security administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The pages read describe no new permission or identity specific to this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook Mac DLP policy tips new permissions identity automated actions data access. Opened the mobile policy-tip reference, Cloud Policy overview and oversharing setup page; no new feature-specific permission or identity is described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The user chooses whether to override when a rule permits it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "For each rule in a DLP policy, you can configure policy tips to: ... Allow the person to override the DLP policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Autonomy & actions; Governance controls",
+      "type": "behaviour",
+      "claim": "DLP rules define the actions applied on matches.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
+      "quote": "DLP rules define sensitive information to be protected and the actions to take on rule matches.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The cited pages describe no additional automated action introduced by Mac policy tips beyond the DLP rule's actions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook Mac DLP policy tips new permissions identity automated actions data access. Opened dlp-outlook-mobile-policy-tip-ref, dlp-use-notifications-and-policy-tips and dlp-osp-get-started; no additional Mac-tip-specific automated action was described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "BlockAccess must be true for the documented justification override option to appear.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "make sure BlockAccess is set to true and BlockAccessScope has appropriate value. Otherwise, the policy tip comes up but the user doesn't find an option to override the email with justification.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The Android, iOS and macOS reference has a Licensing requirements heading but no licence list beneath it.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook Mac DLP policy tips licensing minimum version oversharing dialog metered price. Opened dlp-outlook-mobile-policy-tip-ref: Licensing requirements is immediately followed by Policy tips supported in Outlook for Android, iOS, and macOS.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; Governance guidance; Open questions",
+      "type": "licensing",
+      "claim": "The reference matrix says Outlook Mac support varies by version and licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-tips-reference",
+      "quote": "Outlook Mac ... Sensitive information types supported ... Varies by version and license. ... Conditions and actions supported ... Subset.",
+      "severity": "minor",
+      "fix": "Replace 'The Mac reference says support varies by version and licence' in licensing.notes with 'The general policy-tip support matrix says Outlook Mac sensitive information type support varies by version and licence'. In Cost and licensing replace 'Its support matrix says policy tip support on Outlook Mac \"Varies by version and license\"' with 'The general policy-tip support matrix says sensitive information type support on Outlook Mac \"Varies by version and license\"'. The matrix is at https://learn.microsoft.com/purview/dlp-policy-tips-reference."
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "A Mac-specific licence list and an explicit allocation of Mac policy tips to the cited E3 or advanced tiers are not published in the pages checked.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook Mac DLP policy tips licensing minimum version oversharing dialog metered price; Outlook Mac policy tips licensing meter. Opened mobile reference, general matrix, Purview service description and Win32 reference; no explicit Mac-specific tier list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing; front matter: licensing.notes",
+      "type": "licensing",
+      "claim": "The listed Microsoft 365 enterprise plans, Business Premium, SharePoint Online Plan 2, OneDrive for Business Plan 2 and Exchange Online Plan 2 are among the licences listed for the general DLP service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2), Exchange Online Plan 2",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Advanced Outlook for Microsoft 365 policy tips are licensed through Microsoft 365 E5/A5/G5, Microsoft Purview Suite or the listed Information Protection & Governance plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5 ... Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW ... Microsoft 365 E5/A5/F5/G5 Information Protection & Governance",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Advanced Outlook policy-tip support adds conditions, advanced classifiers and the oversharing dialog.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "For advanced DLP policy tip support, which makes additional DLP conditions, advanced classifiers, oversharing dialog, and more available",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The oversharing setup page says oversharing pop-ups require Microsoft 365 E5.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-osp-get-started",
+      "quote": "Oversharing pop-ups require a Microsoft 365 E5 subscription, along with a version of Outlook that supports oversharing pop-ups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No Mac policy-tip meter or separate per-use price is documented in the sources checked as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview billing policy tips Outlook Exchange Online per use charges pricing; Outlook Mac policy tips licensing meter. Opened Purview service description, purview-billing-models and Mac reference; no Mac policy-tip meter or per-use price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope; Governance guidance: After rollout; Open questions",
+      "type": "absence",
+      "claim": "The Android, iOS and macOS policy-tip reference gives no minimum Outlook for Mac version.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook Mac DLP policy tips licensing minimum version oversharing dialog metered price. Read dlp-outlook-mobile-policy-tip-ref in full; it gives no minimum Mac build. Also opened the general support matrix and the separate Win32 reference.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Cloud Policy route runs through Customization, Policy Management, a policy configuration and Configure Settings to the named DLP policy-tip setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "Under Customization, select Policy Management. ... On the Configure Settings page, select the policies that you want to include in the policy configuration.",
+      "severity": "minor",
+      "fix": "Use the fully documented creation route: 'Customization > Policy Management > Policy configurations > Create > Choose the scope > Configure Settings > Enable Purview Data Loss Prevention (DLP) policy tips in Outlook'. The overview supplies the wizard route and the existing docs URL supplies the final policy setting; retain both existing sources."
+    },
+    {
+      "n": 46,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No documented PowerShell or Graph operation for configuring this Cloud Policy setting was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Cloud Policy service Microsoft 365 Apps policy configurations Microsoft Graph API PowerShell configure settings; Cloud Policy Graph API; Microsoft Graph officeCloudPolicies configure policy PowerShell. Opened Cloud Policy overview; no configuration call found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The cited Purview procedure reaches Allow override from M365 services directly after User notifications.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/dlp-osp-get-started",
+      "quote": "Set the User notifications toggle to On. Select Policy tips > Show the policy tip as a dialog for the end user before send (available for Exchange workload only). If already selected, uncheck the Allow override from M365 services option.",
+      "severity": "blocker",
+      "fix": "Replace the path with 'Data loss prevention > Policies > + Create policy > Custom > Custom > Full directory > Exchange email > Define policy settings > Create or customize advanced DLP rules > Create rule > User notifications > Policy tips > Show the policy tip as a dialog for the end user before send (available for Exchange workload only) > Allow override from M365 services', as documented at https://learn.microsoft.com/purview/dlp-osp-get-started. Retain the note identifying this as the oversharing procedure rather than a separate documented Mac dialog path."
+    },
+    {
+      "n": 48,
+      "where": "controls[1].api; Governance controls table and prose",
+      "type": "command",
+      "claim": "New-DlpComplianceRule with Name, Policy, BlockAccess $true and NotifyAllowOverride WithJustification creates a DLP rule configured for override with justification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
+      "quote": "Use the New-DlpComplianceRule to create data loss prevention (DLP) rules ... The NotifyAllowOverride parameter specifies the notification override options ... WithJustification: Allows overrides with justification.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "WithoutJustification disables the justification buttons in the documented oversharing configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-osp-get-started",
+      "quote": "\"WithJustification\" enables justification radio buttons, \"WithoutJustification\" disables them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls: final paragraph",
+      "type": "command",
+      "claim": "Learn describes NotifyAllowOverride values WithoutJustification, WithJustification and FalsePositives as requiring BlockAccess true.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "If you set the NotifyAllowOverride action to WithoutJustification or WithJustification or FalsePositives, make sure BlockAccess is set to true and BlockAccessScope has appropriate value.",
+      "severity": "minor",
+      "fix": "Replace this sentence with 'Learn says that for NotifyAllowOverride set to WithoutJustification or WithJustification, BlockAccess must be true and BlockAccessScope must have an appropriate value.' The notification page writes FalsePositives, but the cited New-DlpComplianceRule reference lists FalsePositive instead; removing the disputed value avoids teaching an invalid parameter value."
+    },
+    {
+      "n": 51,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is included within qualifying product licences rather than a separately identified Mac policy-tip add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Which licenses provide the rights for a user to benefit from the service? ... Microsoft 365 E5/A5/G5/E3/A3/G3 ... For advanced DLP policy tip support ... these licenses are required for each scoped user",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "The Mac setting is documented as controlling the tip UI, not as changing which DLP rules are evaluated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook Mac DLP policy tips new permissions identity automated actions data access. Read mobile reference and oversharing setup: the setting is described under Enable Policy Tips UI to Appear; no change to rule evaluation is described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "rationale: risk",
+      "type": "behaviour",
+      "claim": "The feature adds no new data access.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Outlook Mac DLP policy tips new permissions identity automated actions data access. Opened mobile policy-tip reference, notification reference, oversharing setup and Cloud Policy overview; none states that Mac policy tips add no new data access.",
+      "severity": "minor",
+      "fix": "Remove 'and adds no new data access' from the risk rationale. Keep the supported disabled-default rationale."
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist asks administrators to review DLP reports, but the controls table contains no reporting row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "After rollout: 'Review override and justification records in the DLP reports in the Reports section'. Controls table: 'Whether DLP policy tips appear' and 'Whether a DLP rule lets users override'; no reporting row.",
+      "severity": "minor",
+      "fix": "The After rollout DLP-report review step has no controls-table row. Do not add a row during correction; remove that checklist bullet to align the checklist with the existing table, leaving the supported reporting explanation in Why it matters."
+    },
+    {
+      "n": 55,
+      "where": "Governance controls: paragraph after table",
+      "type": "behaviour",
+      "claim": "The DLP rule determines the policy-tip text, which can be default or custom text.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "For each rule in a DLP policy, you can configure policy tips to: ... You can use the default text (see the tables below) or enter custom text about your organization's specific policies.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T02:05:39.571Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=558689",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-policy-tips-reference",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-osp-get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/data-loss-prevention/data-loss-prevention-policy-tips",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether DLP policy tips appear in Outlook for Mac",
+        "docs": "https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref",
+        "reachable": true,
+        "segments": [
+          "Customization",
+          "Policy Management",
+          "policy configuration",
+          "Configure Settings",
+          "Enable Purview Data Loss Prevention  policy tips in Outlook"
+        ],
+        "missing": [
+          "policy configuration",
+          "Configure Settings",
+          "Enable Purview Data Loss Prevention  policy tips in Outlook"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether a DLP rule lets users override its policy tip, and whether a justification is required",
+        "docs": "https://learn.microsoft.com/purview/dlp-osp-get-started",
+        "reachable": true,
+        "segments": [
+          "Data loss prevention",
+          "Policies",
+          "+ Create policy",
+          "Custom",
+          "Custom",
+          "Full directory",
+          "Exchange email",
+          "Define policy settings",
+          "Create or customize advanced DLP rules",
+          "Create rule",
+          "User notifications",
+          "Allow override from M365 services"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether a DLP rule lets users override its policy tip, and whether a justification is required",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
+        "reachable": true,
+        "token": "New-DlpComplianceRule",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

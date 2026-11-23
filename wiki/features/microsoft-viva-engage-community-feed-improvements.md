@@ -49,10 +49,12 @@ roadmapModified: "2026-10-30T22:08:34"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item, using the roadmap record and Microsoft's notice MC1187781 as updated on 2026-10-29 (rollout moved to November 2026)."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 48 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-16"
+  date: "2026-11-23"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
@@ -61,6 +63,7 @@ verification:
   unconfirmed: 0
   contradicted: 0
   attempts: 0
+  hash: "b79a7aa83a9b52d37edb5c6aff267461"
 ---
 
 ## What's changing
@@ -157,7 +160,9 @@ cost: Low. The only cost the sources show is admin and communications time; Micr
 impact: High. It changes the default view of every community for all Viva Engage users in the organisation, so anyone who relied on the old default will notice.
 -->
 
-<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] What's changing; Scope; Governance guidance: After rollout / date: Rollout completion is expected by the end of November 2026, previously the end of October, but the checklist presents that timing as firm. | Found: expect to complete by the end of November 2026 (previously end of October). | Fix: In Governance guidance, replace 'once the rollout completes at the end of November 2026' with 'once the rollout completes, which Microsoft expects by the end of November 2026'.
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] What's changing; Scope; Governance guidance: After rollout / date: Microsoft expects rollout to finish by the end of November 2026, but the after-rollout checklist presents completion then as firm. | Found: expect to complete by the end of November 2026 (previously end of October). | Fix: Replace 'Check that internal guidance matches the experience once the rollout completes at the end of November 2026.' with 'Check that internal guidance matches the experience once the rollout completes, which Microsoft expects by the end of November 2026.'
+- [supported, minor] front matter: licensing.model and notes; Cost and licensing; Open questions / licensing: The licensing model is unknown because no licence specific to this feed change is published. | Found: Viva Engage Core or Yammer enterprise | Engage core experiences and the Answers in Viva core experiences Example: Communities, storyline | Microsoft 365 | Fix: Set licensing.model to 'included' and cite https://learn.microsoft.com/en-us/viva/engage/setup. Replace the licensing notes and opening Cost and licensing explanation with: 'Communities are part of Viva Engage Core, which comes with Microsoft 365. If Viva Engage licensing is enforced, each user needs a Microsoft 365 license and a Viva Engage Core Service Plan; without enforcement, users can still access the Core experience. No licence specific to this feed-default change is published.' Replace the licensing open question with 'Will Microsoft publish any licensing requirement specific to this feed-default change?' | Source: https://learn.microsoft.com/en-us/viva/engage/setup
 -->

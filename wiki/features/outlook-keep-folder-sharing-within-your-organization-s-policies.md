@@ -64,18 +64,21 @@ changes:
     note: "Corrected the Default definition, the full Cloud Policy procedure and client coverage; added Cloud Policy timing and roles."
   - date: "2026-11-16"
     note: "Corrected the Cloud Policy licensing qualification for Microsoft 365 Apps for business and volume-licensed Office, and limited the individual-user statement to what the roadmap says."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 55 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-16"
+  date: "2026-11-23"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 56
+  claims: 55
+  confirmed: 55
   unconfirmed: 0
   contradicted: 0
   attempts: 0
+  hash: "fbf985d6f4934d3c783d1374bc623f91"
 ---
 
 ## What's changing
@@ -176,7 +179,10 @@ cost: Low. The only cost the sources show is admin time to check restrictions an
 impact: Low. Only users who edit the Default or Anonymous entry on a folder, and only where a restriction is enabled, will notice the setting is locked; individual-user permissions are unaffected.
 -->
 
-<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] controls[0].note; Governance controls table / admin-path: After creating a policy configuration and enabling the three settings, select Update. | Found: Create a new policy configuration, and select the applicable scope. [...] To apply the policy configuration, select Update. | Fix: Acknowledge the documentation difference in the control note: the folder-permission article says Update, but https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy says select Create for a new configuration, and Review and publish > Update when changing an existing configuration. | Source: https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The existing folder-permission Cloud Policy control is reached in Microsoft 365 Apps admin center through Customization > Policy Management. | Found: To view a list of policy configurations, select Customization > Policy Management. | Fix: Complete controls[0].ui.path as 'Customization > Policy Management > Create > Start with the basics > Choose the scope > Configure Settings'. Retain the note naming the three settings to enable. The remaining route is documented at https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy, which is already cited. | Source: https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions
+- [supported, minor] controls[0].note; Governance controls table / admin-path: After creating the folder-permission policy configuration, the procedure says to select Update. | Found: To apply the policy configuration, select Update. | Fix: Replace the note's final 'select Update' with 'The folder-permission article says to select Update; the Cloud Policy overview says Create for a new configuration and Review and publish > Update for changes to an existing configuration.' The differing instructions are at https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy. | Source: https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions
+- [supported, minor] front matter: licensing.model and notes; Cost and licensing; rationale: cost / licensing: Feature-specific licensing is not yet published, represented by the licensing model unknown. | Found: To use the Outlook for Windows desktop app (either the classic or new version) with a Microsoft 365 organizational email address, you need to purchase a plan that includes the desktop versions of the Microsoft 365 apps. | Fix: Set licensing.model to 'included'. Replace licensing.notes with 'Outlook for Windows with a Microsoft 365 organisational email address requires a plan that includes desktop Microsoft 365 apps, such as Microsoft 365 Business Standard or Microsoft 365 Business Premium. Once an account with a qualifying licence is added, secondary accounts need not include desktop apps. Feature-specific licensing and a meter for this item are not yet published (November 2026).' Cite https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options and use the same product-level qualification in Cost and licensing; retain the low cost rating. | Source: https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options
 -->

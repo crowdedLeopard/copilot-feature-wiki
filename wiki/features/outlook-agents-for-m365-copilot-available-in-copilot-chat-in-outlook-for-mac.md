@@ -14,8 +14,8 @@ previewDate: null
 risk: "medium"
 cost: "variable"
 impact: "medium"
-defaultState: "unknown"
-action: "review"
+defaultState: "on"
+action: "act-now"
 licensing:
   model: "mixed"
   notes: "Learn's page on agents in Copilot Chat says agents grounded in instructions and public websites are included with Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) and (Premium); agents using shared tenant data are pay-as-you-go for Basic licences."
@@ -79,29 +79,33 @@ controls:
       kind: "powershell"
       call: "Update-M365TeamsApp -Id <app id> -AppAssignmentType Everyone"
       docs: "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp"
-    note: "The reference describes the cmdlet as updating the Microsoft Teams app. Changes can take up to 24 hours to apply."
+    note: "The reference describes the cmdlet as updating the Microsoft Teams app. Changes can take up to 24 hours to apply. Before migration to unified app management, also allow agents under Integrated apps in the Microsoft 365 admin center."
 confidence: "medium"
 created: "2026-11-22"
-updated: "2026-11-22"
+updated: "2026-11-23"
 roadmapModified: "2026-10-08T23:04:12"
 changes:
   - date: "2026-11-22"
     note: "First briefing for the Outlook for Mac item: launched on the roadmap, no Learn page for the Mac client yet, with the agent block, availability and pay-as-you-go rules that Learn documents for Copilot Chat."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 50 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after the independent check: default state is now on, per Learn; availability guidance covers organisations not yet migrated to unified app management; action is act-now; billing-report checklist items removed."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 44 statements confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-22"
-  version: 1
+  status: "verified"
+  date: "2026-11-23"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 46
+  claims: 44
+  confirmed: 44
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "822178a7e840dd4fe9567a71803602a6"
+  contradicted: 0
+  attempts: 0
+  hash: "1ff3317e2303b72f3adf03632d8eb65c"
 ---
 
 ## What's changing
@@ -116,7 +120,7 @@ Microsoft Learn has no page for the Mac item. Its release notes list roadmap ID 
 
 Agents that carry knowledge sources and actions are now reachable from the mailbox client that Mac users keep open all day. The governance work is the same as for Teams or the Microsoft 365 Copilot app: decide which agents your tenant makes available, to whom, and whether any of them can generate metered charges.
 
-Microsoft has not stated what happens on arrival for Outlook for Mac, so the default state is shown as not stated. Learn does say that included agents are available by default and are found in the store according to your existing store settings for Teams and Microsoft 365 apps, so treat the settings you already hold as the thing that decides what Mac users see.
+Included declarative agents are available by default according to existing Teams and Microsoft 365 app store settings. Pay-as-you-go agents are off by default for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) users. Treat the settings you already hold as the thing that decides what Mac users see.
 
 ## Risk assessment
 
@@ -144,21 +148,19 @@ The Package Management API in the controls table needs a Microsoft Agent 365 lic
 
 The roadmap item covers Outlook for Mac, in Current Channel and General Availability, in the Worldwide (Standard Multi-Tenant) cloud. Other clouds are not listed on the roadmap item.
 
-The licence rules above apply by licence type: Copilot Chat (Basic), Microsoft 365 Copilot (Basic) and Microsoft 365 Copilot (Premium). Agent availability is set per agent in the Teams admin center or, for tenants on unified agent and app management, in either that centre or the Integrated apps page of the Microsoft 365 admin center.
+The licence rules above apply by licence type: Copilot Chat (Basic), Microsoft 365 Copilot (Basic) and Microsoft 365 Copilot (Premium). Before migration to unified app management, allow apps and Copilot agents in both Teams admin center and Microsoft 365 admin center > Integrated apps; after migration, either admin centre can manage availability.
 
 ## Governance guidance
 
 ### Before rollout
 - Review the agents listed under Agents > All agents in the Microsoft 365 admin center and block any that should not be offered to Outlook users.
-- Confirm in the Teams admin center which users and groups each agent is available to, and tighten any that are assigned to everyone without a reason.
-- Ask your billing owner whether a pay-as-you-go billing policy is connected for Microsoft Copilot Chat, because agents using shared tenant data are metered for Basic licences.
+- Confirm which users and groups each agent is available to, in the Teams admin center and, before migration to unified app management, also under Integrated apps in the Microsoft 365 admin center, and tighten any that are assigned to everyone without a reason.
 
 ### At rollout
 - Tell Mac users which agents are approved for Outlook and who to ask for access to others.
 - Allow for up to 24 hours, and in rare cases up to six days, before an availability change reaches the client.
 
 ### After rollout
-- Compare usage with the Copilot Credits report that the pay-as-you-go setup page points to, if a billing policy is connected.
 - Re-check this page when Microsoft Learn publishes a page or release note for agents in Copilot Chat in Outlook for Mac.
 
 ## Governance controls
@@ -169,7 +171,7 @@ The licence rules above apply by licence type: Copilot Chat (Basic), Microsoft 3
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether an agent is blocked for the whole organisation, including in Outlook</strong><br><small>Tenant</small><br><small class="controls__note">Beta (preview) API; needs a Microsoft Agent 365 licence. Blocking a SharePoint or Foundry agent affects only Copilot Chat.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users and groups can use each agent</strong><br><small>Group</small><br><small class="controls__note">The reference describes the cmdlet as updating the Microsoft Teams app. Changes can take up to 24 hours to apply.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › app › Users and groups › Select to manage who this app is installed for or available to in your organization › Availability › Edit availability › Available to <a href="https://learn.microsoft.com/microsoftteams/app-centric-management" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app id&gt; -AppAssignmentType Everyone</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users and groups can use each agent</strong><br><small>Group</small><br><small class="controls__note">The reference describes the cmdlet as updating the Microsoft Teams app. Changes can take up to 24 hours to apply. Before migration to unified app management, also allow agents under Integrated apps in the Microsoft 365 admin center.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › app › Users and groups › Select to manage who this app is installed for or available to in your organization › Availability › Edit availability › Available to <a href="https://learn.microsoft.com/microsoftteams/app-centric-management" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app id&gt; -AppAssignmentType Everyone</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -179,7 +181,7 @@ The Update-M365TeamsApp reference describes the cmdlet as a Microsoft Teams app 
 
 ## Open questions
 
-- What does an Outlook for Mac user see on arrival, and does it follow your existing store and availability settings? Microsoft has not stated the default for this client; watch the Microsoft 365 Copilot release notes and Message center.
+- Does Outlook for Mac present agents the same way as other Copilot Chat surfaces? Learn documents the default for included agents in Copilot Chat but has no page on the Mac client; watch the Microsoft 365 Copilot release notes and Message center.
 - Will Microsoft Learn publish a page or release note for roadmap item 486696, as it has for the Windows item 481559?
 - When will the Package Management API block operation move from beta to a version Microsoft supports in production?
 - Does Outlook for Mac offer the same agent types as classic Outlook for Windows? Watch the Learn release notes for the answer.
@@ -188,14 +190,4 @@ The Update-M365TeamsApp reference describes the cmdlet as a Microsoft Teams app 
 risk: Medium. Declarative agents can carry custom knowledge and actions, and this item puts them in a mailbox client; the block and availability controls cover it but need someone to configure them.
 cost: Variable. Agents grounded in instructions and public websites are included with Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) and (Premium); agents using shared tenant data are billed by metered consumption (pay-as-you-go) on Basic licences.
 impact: Medium. The people who notice are users of Copilot Chat in Outlook for Mac; the roadmap item covers the Mac client and no other platform.
--->
-
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: defaultState; Why it matters; Open questions / default: The default state is unknown because Microsoft has not stated what happens on arrival for agents in Copilot Chat in Outlook for Mac. | Found: These agents are available by default and are found in the store based on your existing store settings for Teams and Microsoft 365 apps. Pay-as-you-go agents are turned off by default for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) users | Fix: Set defaultState to on. Replace the default-unknown statements with: 'Included declarative agents are available by default according to existing Teams and Microsoft 365 app store settings. Pay-as-you-go agents are off by default for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) users.' Cite https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat. Keep only the narrower open question about the Mac-specific user interface. | Source: https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat
-- [contradicted, blocker] Scope; controls[1].note; Governance guidance: Before rollout / applicability: Teams admin center availability assignments suffice to govern these agents without requiring unified app management. | Found: If your organization isn't migrated to unified app management, allow apps and Copilot agents in Teams admin center and under the Integrated apps page in Microsoft 365 admin center. | Fix: Replace the Scope availability sentence with: 'Before migration to unified app management, allow apps and Copilot agents in both Teams admin center and Microsoft 365 admin center > Integrated apps; after migration, either admin centre can manage availability.' Add the same qualification to controls[1].note and its existing availability-review checklist bullet. Cite https://learn.microsoft.com/microsoftteams/app-centric-management. | Source: https://learn.microsoft.com/microsoftteams/app-centric-management
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout and After rollout; Governance controls / consistency: The checklist asks readers to check a billing policy connection and the Copilot Credits Report, neither of which has a controls-table row. | Found: Ask your billing owner whether a pay-as-you-go billing policy is connected for Microsoft Copilot Chat. Compare usage with the Copilot Credits report. The table contains only agent blocking and user/group availability. | Fix: Remove the billing-policy connection checklist bullet under Before rollout and the Copilot Credits report checklist bullet under After rollout; neither control has a table row. Keep the verified billing facts in Cost and licensing.
-- [contradicted, minor] front matter: action / consistency: The review action rating treats this launched, available-by-default capability as changing nothing until an administrator or maker chooses it. | Found: These agents are available by default and are found in the store based on your existing store settings for Teams and Microsoft 365 apps. | Fix: Set action to act-now: the item is launched, included agents are available by default, the briefing rates risk medium, and it identifies existing blocking and availability decisions to take. | Source: https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat
 -->

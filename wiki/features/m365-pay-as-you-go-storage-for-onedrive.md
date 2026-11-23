@@ -94,18 +94,21 @@ roadmapModified: "2026-10-06T22:56:31"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item: documents the OneDrive Storage pay-as-you-go service, its set-up path, meter, budget behaviour and per-user limit controls."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 73 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-16"
+  date: "2026-11-23"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 71
+  claims: 73
+  confirmed: 72
   unconfirmed: 1
   contradicted: 0
   attempts: 0
+  hash: "4081fab66548405b5aba3aafaaff045a"
 ---
 
 ## What's changing
@@ -205,8 +208,15 @@ cost: Variable. Metered per GB per month of OneDrive data above each account's l
 impact: Low. Administrators set it up, and only the users whose storage limit is raised see more space; users who stay within their licensed quota notice nothing.
 -->
 
-<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [unsupported, major] Risk assessment: Data exposure / behaviour: The service introduces no new data access and does not change who can read OneDrive content. | Found: Searched: "OneDrive Storage" permissions sharing "pay-as-you-go". Opened add-storage-space and pay-as-you-go-setup-billing-node; read OneDrive service and Graph overview search excerpts. None states this service leaves access permissions unchanged. | Fix: Replace 'No new data access: the service changes how much a user's own OneDrive can hold, not who can read it' with 'Microsoft documents additional storage above licensed quotas; the cited setup documentation does not discuss changes to content-access permissions.' Keep the billing-region sentence.
-- [supported, minor] Governance guidance: Before rollout / admin-path: Administrators can identify accounts near their quota using the Active users > OneDrive > Storage used view. | Found: In the left pane, select Users, and then select Active users. Select the user. Select the OneDrive tab. Next to "Storage used," look at the max value | Fix: Expand the abbreviated checklist path to 'Users > Active users > user > OneDrive > Storage used'. The omitted user-selection step is required; the full per-user control row already includes it. | Source: https://learn.microsoft.com/onedrive/set-default-storage-space
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, major] Risk assessment: Data exposure / behaviour: The service introduces no new data access and does not change who can read a user's OneDrive content. | Found: Searched: "OneDrive Storage" "permissions" "pay-as-you-go". Read add-storage-space, Billing-node setup and pay-as-you-go-services; Graph OneDrive search excerpts discuss general sharing but do not state this service leaves permissions unchanged. | Fix: Replace 'No new data access: the service changes how much a user's own OneDrive can hold, not who can read it' with 'Microsoft documents additional storage above licensed quotas; the cited setup documentation does not discuss changes to content-access permissions.' Keep the billing-region sentence.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance controls: connection row / admin-path: The service can be connected at Microsoft 365 admin center > Billing > Pay-as-you-go > Services > Connect a policy. | Found: go to Billing > Pay-as-you-go. On the Pay-as-you-go page, select the Services tab. For the service that you want to connect, in the Billing policy column, select Connect a policy. | Fix: Extend controls[0].ui.path and the matching table path to 'Billing > Pay-as-you-go > Services > Connect a policy > policy > Connection status'. The cited page says to find the policy in the side panel and set its Connection status toggle to Connected. | Source: https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node
+- [supported, minor] controls[1].ui; Governance controls: per-user row / admin-path: The per-user control is at Microsoft 365 admin center > Users > Active users > user > OneDrive > Storage used > Edit. | Found: expand Users and select Active users. Select the user whose storage you want to change. Go to the OneDrive tab. Under Storage used, select Edit. Choose the Maximum storage for this user option and set the storage limit. | Fix: Extend controls[1].ui.path and the matching table path to 'Users > Active users > user > OneDrive > Storage used > Edit > Maximum storage for this user'. The existing path reaches the correct pane but stops before the option already named in the note. | Source: https://learn.microsoft.com/sharepoint/change-user-storage
+- [supported, minor] controls[2].ui; Governance controls: budget row / admin-path: Budget preferences are at Microsoft 365 admin center > Billing > Pay-as-you-go > policy > Budget > Settings. | Found: go to Billing > Pay-as-you-go. On the Pay-as-you-go page, select the policy that you want to manage. In the policy panel, select the Budget tab. To configure your budget and alert preferences, select Settings. | Fix: Extend controls[2].ui.path and the matching table path to 'Billing > Pay-as-you-go > policy > Budget > Settings > Send email alerts > Add more' for the spending-alert threshold control. The cited page places additional alert thresholds under Send email alerts. | Source: https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node
+- [supported, minor] controls[3].ui; Governance controls: default storage row / admin-path: The existing tenant default OneDrive storage setting is at SharePoint admin center > Settings > Storage limit. | Found: Go to Settings in the new SharePoint admin center... Select the OneDrive Storage limit setting. In the Default storage limit box, enter the default storage amount (in GB), and then select Save. | Fix: Extend controls[3].ui.path and the matching table path to 'Settings > Storage limit > Default storage limit'. The existing path reaches the pane that contains the control. | Source: https://learn.microsoft.com/onedrive/set-default-storage-space
+- [supported, minor] Governance guidance: Before rollout / admin-path: The Active users > OneDrive > Storage used view in the Microsoft 365 admin center lets administrators inspect users' storage. | Found: In the left pane, select Users, and then select Active users. Select the user. Select the OneDrive tab. Next to "Storage used," look at the max value | Fix: Replace the abbreviated checklist path with 'Users > Active users > user > OneDrive > Storage used'. The table already supplies the user-selection step. | Source: https://learn.microsoft.com/onedrive/set-default-storage-space
+- [supported, minor] Governance guidance: At rollout / admin-path: Billing policies are created at Billing > Pay-as-you-go. | Found: Sign in to the Microsoft 365 admin center, and then go to Billing > Pay-as-you-go. On the Billing policies tab, select Add a billing policy. | Fix: Expand the policy-creation path in the checklist to 'Billing > Pay-as-you-go > Billing policies > Add a billing policy'. The existing abbreviated path stops on the page listing the policies. | Source: https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node
 -->

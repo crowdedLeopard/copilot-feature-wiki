@@ -69,26 +69,30 @@ controls:
     note: "Blunt fallback: stops event creation and running scheduled events; it does not govern layouts."
 confidence: "medium"
 created: "2026-11-22"
-updated: "2026-11-22"
+updated: "2026-11-23"
 roadmapModified: "2026-10-06T22:56:31"
 changes:
   - date: "2026-11-22"
     note: "New briefing: launched layout options (Speaker focused, Content focused, Content only) for sharing content in Manage what attendees see in Teams events."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 40 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected two statements the check held: removed the claim that the roadmap states no prerequisite other than the licence, and reworded the licence as one lever rather than the one lever."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 41 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
-  date: "2026-11-22"
-  version: 1
+  date: "2026-11-23"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 40
-  confirmed: 38
-  unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "8668565aaaa32da8b2e1b145434a9942"
+  claims: 41
+  confirmed: 39
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 2
+  hash: "5b58a0fcac606d0793f632449c434836"
 ---
 
 ## What's changing
@@ -103,7 +107,7 @@ The roadmap status is Launched, with a target of August CY2026 and release phase
 
 This reaches event organisers and presenters without an administrator switching anything on: the roadmap says they will see the updated layout options, and no source asks administrators to act. Microsoft Learn documents no admin setting for the layouts at the time of writing (November 2026), so the practical work is telling the people who run events what has changed.
 
-The licence is the one lever an administrator holds. The roadmap ties the feature to a Teams Enterprise licence, so organisers on other licences should not expect to see it. Support teams should expect questions from organisers who run events on mobile, because the record and its description differ on platforms.
+Licensing is one lever an administrator holds. The roadmap ties the feature to a Teams Enterprise licence, so organisers on other licences should not expect to see it. Support teams should expect questions from organisers who run events on mobile, because the record and its description differ on platforms.
 
 ## Risk assessment
 
@@ -134,7 +138,7 @@ The same page says Teams Premium licences purchased after April 2026 don't direc
 
 **Platforms:** the description says Teams for Windows desktop and Mac desktop; the record's platform list names Android, Desktop, iOS and Mac.
 
-**Rollout:** status Launched, target August CY2026, release phases General Availability and Targeted Release. No prerequisite other than the licence is stated in the roadmap item.
+**Rollout:** status Launched, target August CY2026, release phases General Availability and Targeted Release.
 
 ## Governance guidance
 
@@ -183,14 +187,9 @@ cost: None. The Teams events licensing overview lists Manage what attendees see 
 impact: Medium. Event organisers and presenters with production tools notice it, because it changes the layout choices in Manage what attendees see; attendees see only the resulting layout.
 -->
 
-<!-- verifier-findings (2026-11-22, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope: Rollout / record: No prerequisite other than the licence is stated in the roadmap item. | Found: Organizers and presenters who have access to production tools will see updated layout options when sharing content in the "Manage what attendees see" experience for Teams events. | Fix: Remove 'No prerequisite other than the licence is stated in the roadmap item.' The Scope: Who paragraph already states the roadmap's production-tool access condition.
-- [contradicted, blocker] Why it matters; Governance controls / consistency: Licensing is the one lever an administrator holds. | Found: The licence is the one lever an administrator holds. The two Events policies rows are the blunt controls that exist. They decide whether users with the policy can create events of each type, not which layout organisers see. | Fix: Replace 'The licence is the one lever an administrator holds.' with 'Licensing is one lever an administrator holds.' The existing controls table already explains the separate event-creation controls, verified at https://learn.microsoft.com/microsoftteams/set-up-events.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / absence: No Microsoft Learn page describes the three layouts at the time of writing. | Found: Searched: '"Speaker focused" "Content only" Teams events layout' and '"Manage what attendees see" "layout" "Content" events'; opened events-licensing and plan-events. Microsoft Support, rather than Learn, describes the layouts. | Fix: Replace the final two sentences of the second What's changing paragraph with 'Microsoft Learn's licensing overview describes spotlighting. Microsoft Support also describes town hall layouts as Speaker focus, Content focus and Content only; the roadmap calls the first two Speaker focused and Content focused.' Cite https://support.microsoft.com/teams/meetings/manage-what-attendees-see-in-microsoft-teams.
-- [supported, minor] controls[0].note; Risk assessment: Autonomy & actions / behaviour: A person with production-tool access chooses the layout during the event. | Found: To customize your town hall screen, select Customize screen in the event window. When you select a customization, the changes will be applied automatically. | Fix: Cite https://support.microsoft.com/teams/meetings/manage-what-attendees-see-in-microsoft-teams for the organiser's in-event layout choice. | Source: https://support.microsoft.com/teams/meetings/manage-what-attendees-see-in-microsoft-teams
-- [supported, minor] Risk assessment: Data exposure / behaviour: Content only shows only the shared content. | Found: Focus on content in a town hall Content only: Shows only the shared content. | Fix: Cite https://support.microsoft.com/teams/meetings/manage-what-attendees-see-in-microsoft-teams for the Content only description. | Source: https://support.microsoft.com/teams/meetings/manage-what-attendees-see-in-microsoft-teams
-- [supported, minor] rationale: impact; Risk assessment: Data exposure / behaviour: Attendees see the resulting layout rather than the production controls. | Found: Customize the main stage for the attendees in your town hall event by choosing a layout, background, and name tag color. Only people who have control over production tools can customize the event screen. | Fix: Cite https://support.microsoft.com/teams/meetings/manage-what-attendees-see-in-microsoft-teams for the distinction between attendee output and production controls. | Source: https://support.microsoft.com/teams/meetings/manage-what-attendees-see-in-microsoft-teams
+- [contradicted, blocker] What's changing: second paragraph / behaviour: Microsoft Learn describes Manage what attendees see in events only as letting organisers decide who to spotlight. | Found: An enhancement to the 'Manage what attendees see' feature now allows organizers and presenters to control when shared content is visible to attendees. This capability is available for meetings, webinars, and town halls. | Fix: Replace 'Microsoft Learn describes Manage what attendees see in events only as letting organisers decide who to spotlight' with 'The Teams events licensing overview describes Manage what attendees see as letting organisers decide who to spotlight'. Keep the following absence claim about the three layouts. | Source: https://learn.microsoft.com/officeupdates/teams-admin#april-24,-2025
+- [unsupported, major] Risk assessment: Data exposure / behaviour: Content only shows the shared content rather than presenter video. | Found: Searched: Teams Content only layout presenter video; Teams events content sharing layouts Content only; Manage what attendees see Content only hides presenter video. Read Learn results and events-licensing; roadmap names the layout but does not explain it. | Fix: Remove 'while Content only shows the content' from the Data exposure bullet. Retain the supported statement about Speaker focused showing presenter video alongside shared content.
 -->

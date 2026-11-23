@@ -63,18 +63,20 @@ changes:
     note: "Corrected: auditing under the site user now applies only where table auditing is enabled; enablement path fixed; risk set to low and action to review for an opt-in control."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 37 statements not yet confirmed"
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 42 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-16"
+  status: "held"
+  date: "2026-11-23"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 37
-  confirmed: 36
+  claims: 42
+  confirmed: 40
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "4e15fe6a38469f37fb73e95fe3f38aa7"
 ---
 
@@ -157,8 +159,10 @@ cost: Low. Learn says the created system users need no extra licensing and acces
 impact: Medium. Site makers and administrators see new system user and security role records. Existing role definitions continue to work, but teams should verify visitor access, plug-ins and column security on a test site.
 -->
 
-<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[0].api; Governance controls / absence: Microsoft has not documented an automation control for enhanced authorization on a site as of November 2026. | Found: `Update`Event: True | `PATCH` /powerpagesites(*powerpagesiteid*) ... Writable columns/attributes ... enhancedauthorization ... enhancedauthorization Choices/Options ... 0 | Disabled ... 1 | Migration in progress ... 2 | Migration Failed ... 3 | Enabled | Fix: Replace controls[0].api with kind rest, call 'PATCH /powerpagesites(<powerpagesiteid>)', and docs 'https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/powerpagesite'. Add the note 'The request body sets enhancedauthorization; documented values are 0 (Disabled), 1 (Migration in progress), 2 (Migration Failed), and 3 (Enabled). The reference documents updating the site-state field, not the migration workflow.' Replace 'no equivalent automation control was found as of November 2026' with 'The Dataverse Site table reference documents updating the enhancedauthorization field through PATCH /powerpagesites(<powerpagesiteid>).' Keep the rendered table consistent and cite that reference. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/powerpagesite
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every control that the governance checklist asks readers to review or check is represented in the controls table. | Found: Checklist: "Review Web API column permissions and plan column security profiles" and "Check that auditing is enabled". Table rows: "Enhanced authorization for a site" and "Tenant or environment enforcement of enhanced authorization". | Fix: The before-rollout steps covering Web API column permissions, column security profiles and Dataverse table auditing have no corresponding controls-table rows. No additional row is requested by this correction.
+- [contradicted, minor] Governance guidance; Governance controls / consistency / consistency: Every control the governance checklist tells readers to review or check appears in the controls table. | Found: Checklist: 'Review Web API column permissions and plan column security profiles'; 'Check that auditing is enabled'; 'Verify access for each web role'. Table: 'Enhanced authorization for a site'; 'Tenant or environment enforcement of enhanced authorization'. | Fix: The checklist steps concerning Web API column permissions, column security profiles, table auditing and web-role access have no corresponding controls-table rows. This finding does not request adding rows.
 -->
