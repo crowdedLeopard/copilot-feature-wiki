@@ -31,6 +31,9 @@ sources:
   - title: "Manage websites from the Power Platform admin center"
     url: "https://learn.microsoft.com/power-pages/admin/power-platform-admin-center"
     kind: "learn"
+  - title: "Site (powerpagesite) table/entity reference (Microsoft Dataverse)"
+    url: "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/powerpagesite"
+    kind: "learn"
   - title: "Enhanced authorization for a site (Power Pages)"
     url: "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse#enable-enhanced-authorization"
     kind: "learn"
@@ -43,14 +46,18 @@ controls:
       surface: "Power Pages"
       path: "environment > site > ... > Admin center > Edit (next to site details) > Enable Enhanced Authorization"
       docs: "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse#enable-enhanced-authorization"
-    api: null
+    api:
+      kind: "rest"
+      call: "PATCH /powerpagesites(<powerpagesiteid>)"
+      docs: "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/powerpagesite"
+    note: "The request body sets enhancedauthorization; documented values are 0 (Disabled), 1 (Migration in progress), 2 (Migration Failed), and 3 (Enabled). The reference documents updating the site-state field, not the migration workflow."
   - governs: "Tenant or environment enforcement of enhanced authorization"
     scope: "tenant"
     ui: null
     api: null
 confidence: "high"
 created: "2026-11-15"
-updated: "2026-11-16"
+updated: "2026-11-23"
 roadmapModified: "2026-10-16T19:08:35"
 changes:
   - date: "2026-11-15"
@@ -65,19 +72,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 37 statements not yet confirmed"
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 42 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-23"
+    note: "Corrected: the Dataverse Site table reference documents updating enhancedauthorization through PATCH /powerpagesites; the site control now has an API side."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 44 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 42
-  confirmed: 40
+  claims: 44
+  confirmed: 43
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "4e15fe6a38469f37fb73e95fe3f38aa7"
+  contradicted: 1
+  attempts: 0
+  hash: "1321017027167ce94024dbd3addb881f"
 ---
 
 ## What's changing
@@ -140,12 +151,12 @@ Power Pages sites in the Worldwide cloud. Requires the minimum Power Pages Core 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Enhanced authorization for a site</strong><br><small>Site</small></td><td data-label="Admin UI"><strong>Power Pages</strong><br>environment › site › ... › Admin center › Edit (next to site details) › Enable Enhanced Authorization <a href="https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse#enable-enhanced-authorization" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Enhanced authorization for a site</strong><br><small>Site</small><br><small class="controls__note">The request body sets enhancedauthorization; documented values are 0 (Disabled), 1 (Migration in progress), 2 (Migration Failed), and 3 (Enabled). The reference documents updating the site-state field, not the migration workflow.</small></td><td data-label="Admin UI"><strong>Power Pages</strong><br>environment › site › ... › Admin center › Edit (next to site details) › Enable Enhanced Authorization <a href="https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse#enable-enhanced-authorization" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /powerpagesites(&lt;powerpagesiteid&gt;)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/powerpagesite" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tenant or environment enforcement of enhanced authorization</strong><br><small>Tenant</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-Microsoft documents per-site enablement in the Power Pages admin center; no equivalent automation control was found as of November 2026. Once on, access is evaluated through Dataverse security roles and column security profiles as well as web roles and table permissions, so review both models before enabling on a production site. Power Platform administrators can list all sites in the tenant and open site details in the Power Platform admin center. No tenant-wide enhanced-authorization report or enforcement policy was found in Microsoft's documentation as of November 2026.
+Microsoft documents per-site enablement in the Power Pages admin center. The Dataverse Site table reference documents updating the enhancedauthorization field through PATCH /powerpagesites(<powerpagesiteid>). Once on, access is evaluated through Dataverse security roles and column security profiles as well as web roles and table permissions, so review both models before enabling on a production site. Power Platform administrators can list all sites in the tenant and open site details in the Power Platform admin center. No tenant-wide enhanced-authorization report or enforcement policy was found in Microsoft's documentation as of November 2026.
 
 ## Open questions
 
@@ -159,10 +170,8 @@ cost: Low. Learn says the created system users need no extra licensing and acces
 impact: Medium. Site makers and administrators see new system user and security role records. Existing role definitions continue to work, but teams should verify visitor access, plug-ins and column security on a test site.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls / absence: Microsoft has not documented an automation control for enhanced authorization on a site as of November 2026. | Found: `Update`Event: True | `PATCH` /powerpagesites(*powerpagesiteid*) ... Writable columns/attributes ... enhancedauthorization ... enhancedauthorization Choices/Options ... 0 | Disabled ... 1 | Migration in progress ... 2 | Migration Failed ... 3 | Enabled | Fix: Replace controls[0].api with kind rest, call 'PATCH /powerpagesites(<powerpagesiteid>)', and docs 'https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/powerpagesite'. Add the note 'The request body sets enhancedauthorization; documented values are 0 (Disabled), 1 (Migration in progress), 2 (Migration Failed), and 3 (Enabled). The reference documents updating the site-state field, not the migration workflow.' Replace 'no equivalent automation control was found as of November 2026' with 'The Dataverse Site table reference documents updating the enhancedauthorization field through PATCH /powerpagesites(<powerpagesiteid>).' Keep the rendered table consistent and cite that reference. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/powerpagesite
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance; Governance controls / consistency / consistency: Every control the governance checklist tells readers to review or check appears in the controls table. | Found: Checklist: 'Review Web API column permissions and plan column security profiles'; 'Check that auditing is enabled'; 'Verify access for each web role'. Table: 'Enhanced authorization for a site'; 'Tenant or environment enforcement of enhanced authorization'. | Fix: The checklist steps concerning Web API column permissions, column security profiles, table auditing and web-role access have no corresponding controls-table rows. This finding does not request adding rows.
+- [contradicted, minor] Governance guidance; Governance controls table / consistency: The checklist asks readers to review permission and auditing controls that have no rows in the controls table. | Found: Review Web API column permissions and plan column security profiles. Check that auditing is enabled ... Verify access for each web role. Review audit logs ... Table rows: Enhanced authorization for a site; Tenant or environment enforcement of enhanced authorization. | Fix: Remove the checklist bullets 'Review Web API column permissions and plan column security profiles', 'Check that auditing is enabled on the Dataverse tables whose site-user entries you intend to rely on', 'Verify access for each web role', and 'Review audit logs for site-user entries on tables where auditing is enabled'. These controls have no table rows; do not add rows during correction.
 -->

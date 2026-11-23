@@ -1,0 +1,956 @@
+{
+  "slug": "m365-copilot-user-can-use-hubspot-connector-in-researcher",
+  "roadmapId": 501292,
+  "title": "Microsoft 365 Copilot: HubSpot connector in the Researcher agent",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "4 blocking findings (claims 18, 34, 39, 42)",
+      "4 major findings"
+    ]
+  },
+  "counts": {
+    "claims": 74,
+    "confirmed": 65,
+    "unconfirmed": 4,
+    "contradicted": 5,
+    "blocker": 4,
+    "major": 4,
+    "minor": 8
+  },
+  "summary": "Hold: Microsoft's prerequisites page explicitly says connector grounding is included with Microsoft 365 Copilot and no extra charges apply, whereas the briefing treats that charge information as unpublished. The visibility rules also omit the individual-connector override in one passage, and the claims about specific HubSpot record types are not documented.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The HubSpot connector lets Researcher use third-party HubSpot information to enrich generated responses.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The HubSpot connector allows users using the Researcher agent to be able to leverage 3rd party information from HubSpot to enrich generated responses with relevant information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is November CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-13T23:01:05.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-13T23:01:05\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "HubSpot is listed as a federated connector in the Connectors Gallery's CRM category.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "CRM | Amperity, Business Applications, Clarify, D365 Customer Insights MCP, HubSpot, Intercom, Meridian, Salesforce (preview), Success.co, Zoho CRM",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Federated connectors fetch live data dynamically through Model Context Protocol.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Use Model Context Protocol (MCP) to fetch data in real time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Security & identity; rationale: risk",
+      "type": "behaviour",
+      "claim": "Federated connector access uses the user's identity and source-system permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "The authenticated user's identity and permissions in the source system govern tool access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Federated connectors do not index external data into Microsoft 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "No data is indexed into Microsoft 365. Responses are fetched dynamically from the data source via MCP.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Governance guidance: At rollout; rationale: impact",
+      "type": "behaviour",
+      "claim": "Users discover the connector's data source in Researcher's Sources menu.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Users can discover the data source in the Sources menu in the Researcher agent, in deep research mode in Microsoft 365 Copilot chat, and in Copilot Chat where available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Users authenticate to a federated source with their own credentials when prompted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Users authenticate by using their own credentials when prompted to connect to the data sources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Researcher does not support write, update or delete actions and federated connectors remain read-only there.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "The Researcher agent doesn't support write, update, or delete actions. Federated Copilot connectors remain read-only in this experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "Microsoft's release notes list this item under November 4, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#november-4,-2026",
+      "quote": "## November 4, 2026 ... User can use HubSpot Connector in Researcher [Web] ... Roadmap ID: 501292",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: defaultState; summary; Why it matters; Open questions; rationale: risk",
+      "type": "default",
+      "claim": "Microsoft has not stated whether the HubSpot connector is available by default on arrival.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview#admin-experience-and-controls",
+      "quote": "Federated connectors are enabled by default for a tenant. ... When a Microsoft-published federated connector first appears in the admin center, it's available only to admins for seven calendar days before it's available to users.",
+      "severity": "blocker",
+      "fix": "Replace the blanket absence in the summary, Why it matters, Open questions and risk rationale with: 'Earlier preview documentation described federated connectors, including HubSpot, as enabled by default after a seven-calendar-day admin review window; the current overview instead describes availability through publisher-type, User access and connector settings.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview. Retain defaultState unknown for the current arrival state rather than treating the historical preview default as a current commitment."
+    },
+    {
+      "n": 19,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "Microsoft-built federated connectors are available by default when the Microsoft publisher option is selected and the user is in User access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Microsoft-built federated connectors are available by default when you select Allow agents and plugins built by Microsoft in Agent and plugin access and include the user in User access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters",
+      "type": "availability",
+      "claim": "External-publisher connectors require the external publisher option or individual admin enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Connectors from external publishers are available only when you select Allow agents and plugins built by external publishers, or when an admin turns on the individual connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters; Open questions",
+      "type": "absence",
+      "claim": "The current overview does not identify HubSpot's publisher type.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'HubSpot federated connector Researcher default publisher seven calendar days contacts deals notes'; read current overview and preview search excerpts. Current gallery lists HubSpot without a publisher; preview text lists it under Microsoft-published connectors.",
+      "severity": "minor",
+      "fix": "Narrow the open question to the current publisher classification and add: 'Earlier preview documentation listed HubSpot under Microsoft-published federated connectors.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview."
+    },
+    {
+      "n": 22,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Copilot accesses only source data the user already has permission to see.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Copilot only accesses data the user already has permission to see and makes changes the user is already permitted to make.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The HubSpot connector retrieves contacts into Researcher responses.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'HubSpot Researcher connector contacts deals customer notes supported tools configuration'; read overview and release notes. Contact-table results describe Lakeflow Connect, not the Researcher federated connector.",
+      "severity": "major",
+      "fix": "Remove 'contacts' from the parenthetical list; the verified replacement for the whole sentence is 'Researcher can retrieve relevant HubSpot information through the connector, within the user's source-system permissions.'"
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The HubSpot connector retrieves deals into Researcher responses.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'HubSpot Researcher connector contacts deals customer notes supported tools configuration'; read overview and release notes. Deal-table results concern Lakeflow Connect, not Researcher.",
+      "severity": "major",
+      "fix": "Remove 'deals' from the parenthetical list; use 'Researcher can retrieve relevant HubSpot information through the connector, within the user's source-system permissions.'"
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The HubSpot connector retrieves customer notes into Researcher responses.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'HubSpot Researcher connector contacts deals customer notes supported tools configuration'; read overview and release notes. Neither specifies customer notes for this connector.",
+      "severity": "major",
+      "fix": "Remove 'customer notes' from the parenthetical list; use 'Researcher can retrieve relevant HubSpot information through the connector, within the user's source-system permissions.'"
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The connector can retrieve whatever the user can open in HubSpot.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'HubSpot Researcher connector contacts deals customer notes supported tools configuration'; read overview and release notes. Source permissions bound access, but no text says the connector exposes every record the user can open.",
+      "severity": "major",
+      "fix": "Remove 'whatever the user can open in HubSpot'; use 'Researcher can retrieve relevant HubSpot information through the connector, within the user's source-system permissions.'"
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Federated connector settings and source permissions govern this live access rather than indexing settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Are managed and governed by admins in the Microsoft 365 admin center. ... Don't index external data into Microsoft 365. ... The source system enforces all permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Federated connectors use OAuth 2.0 for secure access and authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "OAuth 2.0 and encrypted communication ensure secure access and authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Federated connector communication is encrypted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "OAuth 2.0 and encrypted communication ensure secure access and authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "An MCP server restricting incoming traffic by source IP must allow Microsoft 365 Copilot's static egress addresses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "If your MCP server restricts incoming traffic by source IP address, configure its firewall to allow the static egress IP addresses used by Microsoft 365 Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Write, update and delete tools are part of a connector and are not separately enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Write, update, and delete tools are part of the connector and aren't enabled separately.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "date",
+      "claim": "Earlier preview documentation described a seven-calendar-day admin-only review window for Microsoft-published connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview#admin-experience-and-controls",
+      "quote": "When a Microsoft-published federated connector first appears in the admin center, it's available only to admins for seven calendar days before it's available to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "The currently fetched overview and management pages do not repeat the seven-day review window.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'HubSpot federated connector Researcher default publisher seven calendar days contacts deals notes'; read complete current overview and management page. Seven-day text appears in preview search excerpts, not the current fetched pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Change & support; Scope",
+      "type": "availability",
+      "claim": "The risk paragraph makes an allowed publisher type mandatory for visibility, although Scope allows individual enablement.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "The connector's publisher type is allowed in Agent and plugin access, or an admin turned on the connector individually.",
+      "severity": "blocker",
+      "fix": "In Risk assessment: Change & support, replace 'only when its publisher type is allowed' with 'only when its publisher type is allowed or an admin has turned on the connector individually'. Keep the remaining enabled, User access, staged rollout and licence conditions."
+    },
+    {
+      "n": 35,
+      "where": "summary; licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "Federated connectors require Microsoft 365 Copilot add-on licensing or Microsoft 365 E7 for tenants and users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Federated Copilot connectors are available only to tenants and users with a Microsoft 365 Copilot add-on license (or Microsoft 365 E7).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Copilot Studio licences do not support federated Copilot connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "They aren't supported with Copilot Studio licenses or Microsoft 365 Copilot pay-as-you-go.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 Copilot pay-as-you-go does not support federated Copilot connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "They aren't supported with Copilot Studio licenses or Microsoft 365 Copilot pay-as-you-go.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The prerequisites list a Microsoft 365 Copilot add-on licence for every user who queries a federated source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "A Microsoft 365 Copilot add-on license for every user who queries the federated source. For an eligibility matrix, see Licensing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The HubSpot connector's entitlement model is add-on rather than included in the licence Copilot already needs.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Microsoft 365 Copilot is an add-on to Microsoft 365. If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
+      "severity": "blocker",
+      "fix": "Set licensing.model to 'included'. Keep the Microsoft 365 Copilot add-on or Microsoft 365 E7 requirement in licensing.notes, and add 'Connector grounding in Copilot is included for organisations with Microsoft 365 Copilot licences, and no extra charges apply' with https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites."
+    },
+    {
+      "n": 40,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft publishes no separate HubSpot-specific meter or numeric price.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'HubSpot federated connector Copilot pricing meter Copilot Credits charge licensing'; read prerequisites, overview and billing search excerpts. No HubSpot-specific meter or numeric price found; prerequisites explicitly include connector grounding without extra charges.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "A Copilot Credits rate specific to the HubSpot connector is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'HubSpot federated connector Copilot pricing meter Copilot Credits charge licensing'; read prerequisites and billing-rate search excerpts. No HubSpot-specific Copilot Credits rate was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not published whether connector use carries an extra charge beyond the Copilot licence.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
+      "severity": "blocker",
+      "fix": "Replace the rationale's 'Microsoft Learn publishes no separate charge or meter for the HubSpot connector' with 'Microsoft says connector grounding in Copilot is included for organisations with Microsoft 365 Copilot licences and no extra charges apply'. State the same qualification in Cost and licensing and remove the open question about charges beyond that licence. Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites. The narrower absence of a HubSpot-specific numeric rate can remain."
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The cited Microsoft pages do not state the cost of a HubSpot subscription.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'HubSpot federated connector Copilot pricing meter Copilot Credits charge licensing'; read overview, prerequisites and release-note excerpts. These sources state no HubSpot subscription price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].note; Scope",
+      "type": "role",
+      "claim": "The management page names Global Administrator as a role for managing federated connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "To manage federated connectors, you need one of the following administrator roles: Global Administrator; Search Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].note; Scope",
+      "type": "role",
+      "claim": "The management page names Search Administrator as a role for managing federated connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "To manage federated connectors, you need one of the following administrator roles: Global Administrator; Search Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope",
+      "type": "role",
+      "claim": "The prerequisites page says an AI administrator configures and deploys Copilot connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "To configure and deploy Copilot connectors, you must be an AI administrator in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Publisher-type availability is controlled at Microsoft 365 admin center > Agents > Settings > Agent and plugin access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "In the Microsoft 365 admin center, go to Agents > Settings > Agent and plugin access. ... Clear the publisher types you want to block.",
+      "severity": "minor",
+      "fix": "Extend controls[0].ui.path to 'Agents > Settings > Agent and plugin access > publisher type' so it ends at the deciding option. The documented options are 'Allow agents and plugins built by Microsoft', 'Allow agents and plugins built by your organization' and 'Allow agents and plugins built by external publishers'."
+    },
+    {
+      "n": 48,
+      "where": "controls[0].api; Governance controls table; Governance controls",
+      "type": "absence",
+      "claim": "No documented automation operation was found for Agent and plugin access publisher-type settings.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Graph API federated connectors Agent plugin access User access enable disable staged rollout Tools block unblock admin settings'; read management, overview and custom-connector FAQ excerpts. No operation for this setting found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Clearing a publisher type sets its existing connectors' staged rollout to No users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "When you clear an option, existing connectors of that type remain visible to admins in Copilot connectors > Your connections, but their staged rollout is set to No users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].governs; Why it matters",
+      "type": "applicability",
+      "claim": "Clearing a publisher type also controls future connectors of that type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "Connectors of that type released later aren't available to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].ui; Governance controls table; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The tenant-wide User access ceiling is at Microsoft 365 admin center > Agents > Settings > User access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "User access | Agents > Settings > User access | Tenant-wide ceiling on who can use any agent or plugin, including MOS connector packages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[1].api; Governance controls table; Governance controls",
+      "type": "absence",
+      "claim": "No documented automation operation was found for connector User access settings.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Graph API federated connectors Agent plugin access User access enable disable staged rollout Tools block unblock admin settings'; read management, overview and custom-connector FAQ excerpts. No User access operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].note; Governance controls table",
+      "type": "default",
+      "claim": "All users is the default User access option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "All users (default) | Connector-level staging decides who gets each connector. New connectors are available to all users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[1].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "User access offers Specific users or groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "Specific users or groups | Only these users can use any connector. Connector staging can narrow but not widen this population.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "User access offers No users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "No users | No user can use connectors, regardless of connector-level settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1].note; controls[3].note; Scope; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "User access always limits connector audiences, and staged rollout can narrow but not widen that population.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "Only these users can use any connector. Connector staging can narrow but not widen this population. ... User access always applies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[2].ui; Governance controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "An individual connector's enable control is reached through Copilot connectors > Your connections > connector.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Admins can manage federated Copilot connectors ... by choosing Copilot connectors > Your connections. ... Screenshot of the HubSpot connector in the admin center with Staged rollout and Enable/disable data source highlighted.",
+      "severity": "minor",
+      "fix": "Extend controls[2].ui.path to 'Copilot connectors > Your connections > connector > Enable/disable data source'. The cited overview's HubSpot screenshot caption identifies that control; the current path stops on its pane."
+    },
+    {
+      "n": 58,
+      "where": "controls[2].api; Governance controls table; Governance controls",
+      "type": "absence",
+      "claim": "No documented automation operation was found to enable or disable the HubSpot federated connector.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'HubSpot federated connectors Microsoft Graph PowerShell API enable disable staged rollout administrative configuration'; read overview, management and custom-connector FAQ excerpts. No enable/disable API for this connector found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[3].ui; Governance controls table; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Staged rollout is set through Copilot connectors > Your connections > Staged rollout > Add staging.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Limit a connector to specific users or Microsoft Entra ID groups by choosing Add staging in the Staged rollout column.",
+      "severity": "minor",
+      "fix": "Use 'Copilot connectors > Your connections > connector > Staged rollout > Add staging' in controls[3].ui.path; 'connector' identifies the target row whose Staged rollout column is being used."
+    },
+    {
+      "n": 60,
+      "where": "controls[3].api; Governance controls table; Governance controls",
+      "type": "absence",
+      "claim": "No documented automation operation was found to stage the HubSpot connector to users or groups.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'HubSpot federated connectors Microsoft Graph PowerShell API enable disable staged rollout administrative configuration'; read management, overview and custom-connector FAQ excerpts. Entra authentication staged-rollout APIs are not connector audience settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[3].governs; controls[3].note; Governance controls table",
+      "type": "applicability",
+      "claim": "Connector staged rollout limits availability to specific users or Microsoft Entra ID groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Limit a connector to specific users or Microsoft Entra ID groups by choosing Add staging in the Staged rollout column.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[4].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Tool-level and connector-level blocking is documented at Microsoft 365 admin center > Agents > Tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "Tools block / unblock | Agents > Tools | Tool-level and connector-level blocking.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[4].api; Governance controls table; Governance controls",
+      "type": "absence",
+      "claim": "No documented automation operation was found for federated-connector Tools block/unblock settings.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'site:learn.microsoft.com/graph federated connector staged rollout user access agent plugin access settings API block tools'; read management, overview and custom-connector FAQ excerpts. No applicable block/unblock API found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[4].note; Governance controls table",
+      "type": "applicability",
+      "claim": "The documented general Tools blocking control is not specifically confirmed for HubSpot in the management page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "Control | Location | What it does for connectors ... Tools block / unblock | Agents > Tools | Tool-level and connector-level blocking.",
+      "severity": "minor",
+      "fix": "Replace controls[4].note with 'Microsoft describes this as Tools block / unblock for tool-level and connector-level blocking of federated connectors.' The table already gives its reach in this connector class; a HubSpot-specific confirmation caveat is unnecessary."
+    },
+    {
+      "n": 65,
+      "where": "Governance controls; Why it matters",
+      "type": "behaviour",
+      "claim": "An individual connector setting takes precedence over bulk Agent and plugin access settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "A setting you make on an individual connector takes precedence over the bulk Agent and plugin access setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance controls; Governance guidance: After rollout",
+      "type": "date",
+      "claim": "Connector-setting changes can take up to 10 minutes to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "Changes can take up to 10 minutes to take effect across Microsoft 365 experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "No additional HubSpot-specific setting beyond the listed connector controls was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'HubSpot Researcher connector contacts deals customer notes supported tools configuration' and 'HubSpot federated connectors Microsoft Graph PowerShell API enable disable staged rollout administrative configuration'; read overview, management and FAQ excerpts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "applicability",
+      "claim": "Admins can audit federated connector activity in Microsoft Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Can read data and, where a connector provides the tools, create, update, or delete data with the user's approval. Admins can audit activity in Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The overview names Purview audit without providing an audit navigation path.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'HubSpot Researcher connector Microsoft Purview audit activity path'; read full overview and audit search excerpts. Overview names Purview but provides no audit navigation path; returned connector-log guides concern Power Platform.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Microsoft advises reviewing connector capabilities and privacy terms against acceptable-use rules.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Before enabling or continuing to use a connector that exposes write, update, or delete tools, review the connector's capabilities, privacy terms, and third-party agreements against your organization's security, compliance, and acceptable-use requirements.",
+      "severity": "minor",
+      "fix": "Remove 'as Microsoft advises for connectors' from the checklist item, leaving the review as the wiki's advice. Microsoft's stated recommendation is qualified to connectors exposing write, update or delete tools, while this Researcher experience is read-only."
+    },
+    {
+      "n": 71,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Connector publishers can add or change tools over time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "The actions available through a connector depend on the tools exposed by the connector publisher. Publishers can add or change tools over time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Some connectors expose an admin-centre tool view that administrators can review.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "View a connector's tools in the admin center (Coming soon) ... For connectors that support this feature, the details page in the Microsoft 365 admin center includes a Tools section",
+      "severity": "minor",
+      "fix": "Replace 'check the connector's tools in the admin centre where that view is available' with 'check the connector's tools in the admin centre where that view is available; Microsoft labels this admin tool view Coming soon'."
+    },
+    {
+      "n": 73,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Users can turn off the source in Researcher.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Users can disable the data source at any time by turning off the source in Researcher or by managing the source in Copilot Chat settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance guidance: After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to review Purview audit, but the controls table contains no audit row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review Microsoft Purview audit for connector activity; Microsoft says admins can audit federated connector activity there. ... The five controls rows cover publisher access, User access, enablement, staged rollout and blocking, not audit.",
+      "severity": "minor",
+      "fix": "Remove the 'Review Microsoft Purview audit for connector activity' checklist bullet. Keep the verified statement about Purview auditing in Governance controls; do not add an unverified audit path or a new controls row."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T03:15:55.046Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=501292",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which publisher types of federated connectors are available, including future ones",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Settings",
+          "Agent and plugin access"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Tenant-wide ceiling on which users can use any agent, plugin or connector",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Settings",
+          "User access"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether an individual connector such as HubSpot is enabled",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+        "reachable": true,
+        "segments": [
+          "Copilot connectors",
+          "Your connections"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Which users or groups get an individual connector (staged rollout)",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+        "reachable": true,
+        "segments": [
+          "Copilot connectors",
+          "Your connections",
+          "Staged rollout",
+          "Add staging"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Tool-level and connector-level blocking",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Tools"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

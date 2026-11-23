@@ -52,6 +52,9 @@ sources:
   - title: "Set-DlpComplianceRule"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule"
     kind: "learn"
+  - title: "Learn about data loss prevention"
+    url: "https://learn.microsoft.com/purview/dlp-learn-about-dlp#viewing-policy-application-results"
+    kind: "learn"
 videos: []
 related: ["endpoint-dlp","auditing","microsoft-purview-data-loss-prevention-new-guided-experience-to-diagnose-and-resolve-dlp-i"]
 controls:
@@ -61,11 +64,8 @@ controls:
       surface: "Microsoft Purview portal"
       path: "Data Loss Prevention > Policies > Create policy > Enterprise applications & devices > Custom > Custom policy > rule > Actions > Audit or restrict activities on devices > Apply restrictions to specific activity > Copy or move using RDP"
       docs: "https://learn.microsoft.com/purview/dlp-create-policy-edlp-scan-fails"
-    api:
-      kind: "powershell"
-      call: "Set-DlpComplianceRule -Identity <ComplianceRuleIdParameter> -EndpointDlpRestrictions <PswsHashtable[]>"
-      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule"
-    note: "Existing control for the RDP activity, not for the new information. Security & Compliance PowerShell only; the reference gives the parameter type only. Path follows the page's custom-policy example."
+    api: null
+    note: "Existing control for the RDP activity, not for the new information. Path follows the page's custom-policy example, not its scan-failure condition."
   - governs: "Whether the unified audit log records activity, which activity explorer reads"
     scope: "tenant"
     ui:
@@ -86,26 +86,30 @@ changes:
     note: "First briefing: roadmap status Launched; Learn does not yet describe where the remote machine information appears."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 40 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after the independent check: qualified Windows Server support, removed the unsupported PowerShell call for the RDP row, and dropped two checklist steps without matching control rows."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 55 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 40
-  confirmed: 36
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "a646e476ba6bb3f6284c516f84002b04"
+  claims: 55
+  confirmed: 54
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "4a6ce39f3096de4c0c95b97e93bee7ec"
 ---
 
 ## What's changing
 
 The roadmap item says an administrator should be able to see destination machine information when an end user copies a sensitive file to a remote machine through RDP (Remote Desktop Protocol). That is the whole description: it names no screen, field, policy setting or licence.
 
-Microsoft Learn does not describe this item at the time of writing (November 2026), so the behaviour above is the roadmap's description. Learn documents the activity it most likely relates to: Endpoint DLP's **Copy or move using RDP**, which "detects when a user attempts to copy an item to a remote desktop session". It is supported on Windows 10, Windows 11 and Windows Server 2019 and later, and is not supported on macOS. The roadmap item does not name this activity, so treat the link as the wiki's reading.
+Microsoft Learn does not describe this item at the time of writing (November 2026), so the behaviour above is the roadmap's description. Learn documents the activity it most likely relates to: Endpoint DLP's **Copy or move using RDP**, which "detects when a user attempts to copy an item to a remote desktop session". It is supported on Windows 10, Windows 11 and Windows Server 2019 and later, and is not supported on macOS. Windows servers require Enable Endpoint DLP for Windows Servers after onboarding; Domain Controllers and Server Core installations are not supported. The roadmap item does not name this activity, so treat the link as the wiki's reading.
 
 The roadmap record gives the status as Launched, with a preview date of December CY2025 and a target date of January CY2026. The release phases are General Availability and Preview, the cloud is Worldwide (Standard Multi-Tenant) and the platform is listed as Web. The record does not say which release phase applies to which part, whether the information is on by default, or where administrators will see it.
 
@@ -142,16 +146,14 @@ DLP alerts and activity explorer draw on the unified audit log, so check that au
 
 The roadmap record lists the Worldwide (Standard Multi-Tenant) cloud only and the platform as Web. It does not list GCC, GCC High or DoD; that is a record fact, not a statement that the item is unavailable there.
 
-Learn documents the RDP activity for onboarded Windows 10, Windows 11 and Windows Server 2019 and later devices, and not for macOS. Whether this item covers every device type that supports the activity is not stated.
+Learn documents the RDP activity for onboarded Windows 10, Windows 11 and Windows Server 2019 and later devices, and not for macOS. Windows servers require Enable Endpoint DLP for Windows Servers after onboarding; Domain Controllers and Server Core installations are not supported. Whether this item covers every device type that supports the activity is not stated.
 
 Administrators reading DLP alerts need the Manage alerts role plus DLP Compliance Management or View-Only DLP Compliance Management. Who sees the new information is not stated.
 
 ## Governance guidance
 
 ### Before rollout
-- Confirm which devices are onboarded and in scope of a DLP policy that includes **Copy or move using RDP**, because the roadmap item gives no other trigger.
 - Check that auditing is on in the Microsoft Purview portal, since activity explorer data comes from the unified audit log.
-- List the roles that review DLP alerts and confirm they hold the roles the alerts dashboard requires.
 
 ### At rollout
 - Open a recent RDP-related event in the DLP Alerts dashboard and in activity explorer to see whether destination machine information is present.
@@ -168,7 +170,7 @@ Administrators reading DLP alerts need the Manage alerts role plus DLP Complianc
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether a DLP rule audits or restricts copies to a remote desktop session</strong><br><small>Tenant</small><br><small class="controls__note">Existing control for the RDP activity, not for the new information. Security &amp; Compliance PowerShell only; the reference gives the parameter type only. Path follows the page's custom-policy example.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Loss Prevention › Policies › Create policy › Enterprise applications &amp; devices › Custom › Custom policy › rule › Actions › Audit or restrict activities on devices › Apply restrictions to specific activity › Copy or move using RDP <a href="https://learn.microsoft.com/purview/dlp-create-policy-edlp-scan-fails" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-DlpComplianceRule -Identity &lt;ComplianceRuleIdParameter&gt; -EndpointDlpRestrictions &lt;PswsHashtable[]&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether a DLP rule audits or restricts copies to a remote desktop session</strong><br><small>Tenant</small><br><small class="controls__note">Existing control for the RDP activity, not for the new information. Path follows the page's custom-policy example, not its scan-failure condition.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Loss Prevention › Policies › Create policy › Enterprise applications &amp; devices › Custom › Custom policy › rule › Actions › Audit or restrict activities on devices › Apply restrictions to specific activity › Copy or move using RDP <a href="https://learn.microsoft.com/purview/dlp-create-policy-edlp-scan-fails" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether the unified audit log records activity, which activity explorer reads</strong><br><small>Tenant</small><br><small class="controls__note">Needs the Audit Logs role in Exchange Online. The banner appears only if auditing is not already on.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Start recording user and admin activity <a href="https://learn.microsoft.com/purview/audit-log-enable-disable" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true</code> <a href="https://learn.microsoft.com/purview/audit-log-enable-disable" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -191,14 +193,11 @@ cost: Low. The only cost the sources show is admin time. Endpoint DLP is listed 
 impact: Low. The roadmap says administrators will see the information, so DLP admins and alert investigators notice it; end users are not mentioned.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing; Scope / availability: The RDP activity is supported on onboarded Windows 10, Windows 11 and Windows Server 2019 and later devices without further stated qualifications. | Found: By default, Endpoint DLP isn't enabled for Windows servers when they're initially onboarded. Before you can see Endpoint DLP events for your servers in Activity Explorer, you must first Enable Endpoint DLP for Windows Servers. | Fix: Qualify the Windows Server statement in What's changing and Scope: 'Windows servers require Enable Endpoint DLP for Windows Servers after onboarding; Domain Controllers and Server Core installations are not supported.' Cite https://learn.microsoft.com/purview/endpoint-dlp-learn-about. This qualifies the existing activity, not the new item's coverage. | Source: https://learn.microsoft.com/purview/endpoint-dlp-learn-about
-- [unsupported, blocker] controls[0].api; Governance controls table / command: Set-DlpComplianceRule -Identity <ComplianceRuleIdParameter> -EndpointDlpRestrictions <PswsHashtable[]> is documented as the automation for auditing or restricting RDP copies. | Found: Searched: EndpointDlpRestrictions RDP; EndpointDlpRestrictions RemoteDesktop Rdp Setting; RDP Set-DlpComplianceRule. Opened Set-DlpComplianceRule, Get-PolicyConfig and Set-PolicyConfig; parameters exist, but no RDP setting mapping or statement that this operation sets the RDP control. | Fix: Set controls[0].api to null. The reference documents general Endpoint DLP restrictions but does not document the setting that selects Copy or move using RDP. Do not invent a Setting value or describe the generic parameter as a verified RDP operation.
-- [contradicted, blocker] controls[0].note; Governance controls table / command: The Set-DlpComplianceRule reference gives only the EndpointDlpRestrictions parameter type. | Found: The EndpointDlpRestrictions parameter specifies the restricted endpoints for Endpoint DLP. This parameter uses the following syntax: @(@{"Setting"="<Setting>"; "Value"="<Value>"},...). The available values for <Value> are: Audit, Block, Ignore, or Warn. | Fix: Remove 'the reference gives the parameter type only' from controls[0].note and its rendered table note. The current reference gives syntax, action values, examples and an Entra role requirement, although it does not identify the RDP Setting value. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing / behaviour: DLP alerts also draw on telemetry that first enters the Microsoft 365 audit logs. | Found: The telemetry goes into the Microsoft 365 audit Logs first, is processed, and makes its way to different reporting tools. | Fix: Add https://learn.microsoft.com/purview/dlp-learn-about-dlp#viewing-policy-application-results to sources for the statement that DLP alerts draw on the audit log. | Source: https://learn.microsoft.com/purview/dlp-learn-about-dlp#viewing-policy-application-results
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Microsoft Purview custom-policy path reaches the Copy or move using RDP activity control. | Found: Select Full directory under Admin units. Scope the location to Devices only. Create a rule where: ... In Actions: Select Audit or restrict activities on devices. ... Select Apply restrictions to specific activity ... Copy or move using RDP | Fix: Restore the omitted scope choices: 'Data Loss Prevention > Policies > Create policy > Enterprise applications & devices > Custom > Custom policy > Admin units > Full directory > Devices > rule > Actions > Audit or restrict activities on devices > Apply restrictions to specific activity > Copy or move using RDP'. Keep the note that this follows the custom-policy example, not its scan-failure condition. | Source: https://learn.microsoft.com/purview/dlp-create-policy-edlp-scan-fails
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks readers to check device onboarding and alert-access roles, but neither control appears in the controls table. | Found: Confirm which devices are onboarded ... List the roles that review DLP alerts ... Controls table: Whether a DLP rule audits or restricts copies ... Whether the unified audit log records activity | Fix: The 'Confirm which devices are onboarded' and 'List the roles that review DLP alerts' checklist steps have no corresponding control rows. Remove those checklist instructions rather than adding unverified rows; retain the supported device and role facts in Scope.
+- [supported, minor] What's changing / behaviour: RDP stands for Remote Desktop Protocol. | Found: The Microsoft Remote Desktop Protocol (RDP) provides remote display and input capabilities over network connections for Windows-based applications running on a server. | Fix: Add https://learn.microsoft.com/windows/win32/termserv/remote-desktop-protocol to sources for the expansion of RDP as Remote Desktop Protocol. | Source: https://learn.microsoft.com/windows/win32/termserv/remote-desktop-protocol
+- [supported, minor] What's changing; Scope / availability: The documented RDP activity supports Windows Server 2019 and later. | Found: Endpoint DLP allows you to onboard devices running Windows Server 2019 and later versions. ... Installing the supported Windows Server KBs disables the Classification feature on the server. | Fix: After the Windows Server qualification in What's changing and Scope, add: 'Installing the supported Windows Server KBs disables classification; Endpoint DLP still protects files classified before those KBs were installed, with Microsoft Defender version 4.18.23100 or later.' Source: https://learn.microsoft.com/purview/endpoint-dlp-learn-about. | Source: https://learn.microsoft.com/purview/endpoint-dlp-learn-about
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Purview custom-policy path reaches Copy or move using RDP under Actions. | Found: Select Full directory under Admin units. Scope the location to Devices only. Create a rule where: ... In Actions: Select Audit or restrict activities on devices. ... Select Apply restrictions to specific activity ... Copy or move using RDP | Fix: Expand controls[0].ui.path and its rendered copy to 'Data Loss Prevention > Policies > Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom policy > Admin units > Full directory > Devices > rule > Actions > Audit or restrict activities on devices > Apply restrictions to specific activity > Copy or move using RDP'. These are omitted headings and scope choices, not an incorrect printed step. Retain the note excluding the example's scan-failure condition. Source: https://learn.microsoft.com/purview/dlp-create-policy-edlp-scan-fails. | Source: https://learn.microsoft.com/purview/dlp-create-policy-edlp-scan-fails
+- [contradicted, minor] rationale: impact / record: End users are not mentioned in the roadmap description. | Found: Admin should be able to see destination machine information when end-user copy a sensitive file to a remote machine through RDP. | Fix: Replace the impact rationale with 'Low. The roadmap says administrators should see the destination machine information when an end user copies a sensitive file through RDP; it describes no end-user-facing change.' Keep the low impact rating.
 -->

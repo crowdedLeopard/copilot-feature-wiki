@@ -40,6 +40,9 @@ sources:
   - title: "Enable sensitivity labels for files in SharePoint and OneDrive"
     url: "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files"
     kind: "learn"
+  - title: "Set-CsTeamsMeetingPolicy"
+    url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy"
+    kind: "learn"
   - title: "Expiry of recap documents for non-transcribed meetings (Teams admin center)"
     url: "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#configure-expiration-for-ai-summary-documents"
     kind: "learn"
@@ -83,7 +86,7 @@ controls:
     note: "Other -Copilot values on the Learn page: EnabledWithTranscript (the default), EnabledWithTranscriptDefaultOn and Disabled."
 confidence: "high"
 created: "2026-11-13"
-updated: "2026-11-16"
+updated: "2026-11-23"
 roadmapModified: "2026-11-04T00:02:09"
 changes:
   - date: "2026-11-13"
@@ -102,19 +105,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 70 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-23"
+    note: "Removed the open question on auto-applying sensitivity labels, which Microsoft documents for Word files in OneDrive; noted that the PowerShell reference says the recap settings have no effect yet."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 78 statements not yet confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 69
+  claims: 78
+  confirmed: 77
   unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "90ca6e3403fff2521a8c1b46a585a867"
+  attempts: 0
+  hash: "53b29b17517f0906cac06ae0c6d0d40a"
 ---
 
 ## What's changing
@@ -193,9 +200,10 @@ Eligible users can use it without a separate administrator rollout; organisers t
 
 The expiry is the control that matters for data minimisation: it sets how long the summary document stays in the organiser's OneDrive (120 days by default). Both settings are meeting policy settings, and the Copilot meeting policy page says policies can be applied to groups or individual users. The full parameter list is in the [Set-CsTeamsMeetingPolicy reference](https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy). The feature article says AI summary documents support Purview eDiscovery and legal hold.
 
+The feature article documents -IntelligentRecapDocxFileExpirationDays for expiry and -AllowIntelligentRecap $false to disable recap, but the Set-CsTeamsMeetingPolicy reference still says this feature has not been fully released and the setting will have no effect ([-IntelligentRecapDocxFileExpirationDays](https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy#-intelligentrecapdocxfileexpirationdays), [-AllowIntelligentRecap](https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy#-allowintelligentrecap)).
+
 ## Open questions
 
-- Whether sensitivity labels can be auto-applied to the summary documents.
 - Behaviour when the organiser's account is deleted before the summary expires, including whether Recap access continues.
 - Government cloud availability.
 
@@ -205,11 +213,9 @@ cost: Medium. Organisers and attendees who view the summary need a Copilot licen
 impact: High. It is automatically available to Copilot-licensed organisers and attendees whose meeting policy has Copilot enabled, so most Copilot users in a tenant can meet it.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Open questions: automatic sensitivity labels / absence: Whether sensitivity labels can be automatically applied to the summary documents is an open documentation question. | Found: Auto-labeling for SharePoint and OneDrive: PDF documents and Office files for Word (.docx), PowerPoint (.pptx), and Excel (.xlsx) are supported. These files can be auto-labeled at rest before or after the auto-labeling policies are created. | Fix: Remove the open question 'Whether sensitivity labels can be auto-applied to the summary documents.' Microsoft documents service-side auto-labeling for Word (.docx) files stored in OneDrive at https://learn.microsoft.com/purview/apply-sensitivity-label-automatically; summary documents are explicitly Word files in OneDrive. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].api; Governance guidance: At rollout; Governance controls: expiry row / command: Set-CsTeamsMeetingPolicy -Identity <policy> -IntelligentRecapDocxFileExpirationDays 180 sets summary expiry to 180 days. | Found: The following example sets the default expiration time to 180 days. Set-CsTeamsMeetingPolicy -Identity <policyname> -IntelligentRecapDocxFileExpirationDays 180 | Fix: Add after the controls table: 'The feature article documents -IntelligentRecapDocxFileExpirationDays for expiry, but the Set-CsTeamsMeetingPolicy reference still says this feature has not been fully released and the setting will have no effect.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy#-intelligentrecapdocxfileexpirationdays. | Source: https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#configure-expiration-for-ai-summary-documents
-- [supported, minor] controls[1].api; Governance guidance: Before rollout; Governance controls: intelligent recap row / command: Set-CsTeamsMeetingPolicy -Identity <policy> -AllowIntelligentRecap $false turns off intelligent recap. | Found: To turn off intelligent recap, use the Set-CsTeamsMeetingPolicy cmdlet and set the -AllowIntelligentRecap parameter to $false. | Fix: Add after the controls table: 'The feature article documents -AllowIntelligentRecap $false to disable recap, but the Set-CsTeamsMeetingPolicy reference still says this feature has not been fully released and the setting will have no effect.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy#-allowintelligentrecap. | Source: https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#manage-intelligent-recap-without-saving-transcripts
+- [supported, minor] controls[2].note; Governance controls: parameter reference / command: EnabledWithTranscriptDefaultOn is another documented Copilot parameter value. | Found: On with transcript saved by default | EnabledWithTranscriptDefaultOn. The Set-CsTeamsMeetingPolicy reference instead lists: Possible values are: Enabled; EnabledWithTranscript. | Fix: Append to controls[2].note: 'The Set-CsTeamsMeetingPolicy reference lists only Enabled and EnabledWithTranscript, unlike the Copilot guidance cited here.' Reference: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy#-copilot. | Source: https://learn.microsoft.com/microsoftteams/copilot-teams-transcription
+- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist asks readers to check summaries in eDiscovery, but the controls table has no row for that control. | Found: Sample summaries in eDiscovery to confirm indexing and hold behaviour meet expectations. The controls table covers only summary expiry, intelligent recap on/off and Copilot in meetings and events. | Fix: Remove 'Sample summaries in eDiscovery to confirm indexing and hold behaviour meet expectations.' from Governance guidance > After rollout; that checklist control has no table row. Keep the supported eDiscovery and legal-hold facts elsewhere.
 -->

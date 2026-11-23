@@ -2,39 +2,33 @@
   "slug": "power-pages-design-studio-unify-power-pages-authorization-by-merging-web-role-with-dataver",
   "roadmapId": 576750,
   "title": "Power Pages: enhanced authorisation maps web roles and site users to Dataverse security",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-23",
-  "version": 3,
+  "version": 4,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-23",
-    "reasons": [
-      "1 blocking finding (claim 30)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 42,
-    "confirmed": 40,
+    "claims": 44,
+    "confirmed": 43,
     "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 1,
+    "contradicted": 1,
+    "blocker": 0,
     "major": 0,
     "minor": 1
   },
-  "summary": "The briefing is held because it says enhanced authorization has no documented automation control, while Microsoft documents a writable enhancedauthorization field and a Dataverse Web API update operation for the site. The roadmap facts, enablement path, licensing and qualified auditing statements are supported. The governance checklist also names controls missing from the table.",
+  "summary": "The briefing passes: the roadmap facts, site enablement path, licensing and authorization behaviour are supported. The Site table reference confirms the PATCH operation and enhancedauthorization field despite the automatic pre-check. A minor checklist/table mismatch remains for permission and auditing controls.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: products; title",
+      "where": "front matter: products; Scope",
       "type": "record",
-      "claim": "The feature concerns Power Pages.",
+      "claim": "The feature is for Power Pages.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"products\": [\"Power Pages\"]",
@@ -45,7 +39,7 @@
       "n": 2,
       "where": "front matter: status",
       "type": "record",
-      "claim": "The roadmap status is in development.",
+      "claim": "The roadmap status is in-development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -54,39 +48,6 @@
     },
     {
       "n": 3,
-      "where": "front matter: releasePhase",
-      "type": "record",
-      "claim": "The roadmap lists General Availability and Preview release phases.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "front matter: clouds; Scope",
-      "type": "record",
-      "claim": "The roadmap lists the Worldwide (Standard Multi-Tenant) cloud.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: platforms",
-      "type": "record",
-      "claim": "The roadmap lists Web as the platform.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "General availability is targeted for November CY2026.",
@@ -97,13 +58,46 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 4,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview target is July CY2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
       "severity": null,
       "fix": null
     },
@@ -120,75 +114,9 @@
     },
     {
       "n": 9,
-      "where": "front matter: defaultState; Scope; rationale: risk",
-      "type": "default",
-      "claim": "Enhanced authorization is admin-opt-in per site, so the standard model continues until enablement.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
-      "quote": "When you enable enhanced authorization, permission evaluation shifts directly to Dataverse. ... Select the Enable Enhanced Authorization check box and save.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "Enhanced authorization is included under existing Power Pages licensing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
-      "quote": "These system users are managed internally, don't provide direct access to Dataverse, and don't require additional licensing. Access continues to be governed by Power Pages licensing.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "behaviour",
-      "claim": "The created system users are managed internally.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
-      "quote": "These system users are managed internally",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "front matter: licensing.notes",
-      "type": "availability",
-      "claim": "The created system users do not provide direct access to Dataverse.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
-      "quote": "These system users are managed internally, don't provide direct access to Dataverse, and don't require additional licensing.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "The created system users require no additional licensing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
-      "quote": "These system users are managed internally, don't provide direct access to Dataverse, and don't require additional licensing.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Access continues to be governed by Power Pages licensing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
-      "quote": "Access continues to be governed by Power Pages licensing.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
       "where": "What's changing; Governance controls",
       "type": "behaviour",
-      "claim": "Power Pages continues to use contacts and web roles to define access.",
+      "claim": "Power Pages continues to use contacts and web roles to define access with enhanced authorization.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
       "quote": "When enhanced authorization is enabled, Power Pages continues to use site users (contacts) and web roles to define access.",
@@ -196,10 +124,10 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "title; summary; What's changing; Why it matters; rationale: impact",
+      "n": 10,
+      "where": "title; summary; What's changing; rationale: impact",
       "type": "behaviour",
-      "claim": "Each contact maps to a corresponding Dataverse system user when enhanced authorization is enabled.",
+      "claim": "Each contact is mapped to a corresponding Dataverse system user.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
       "quote": "With enhanced authorization enabled, each contact is mapped to a corresponding system user in Dataverse.",
@@ -207,10 +135,10 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "title; summary; What's changing; Why it matters; rationale: impact",
+      "n": 11,
+      "where": "title; summary; What's changing; rationale: impact",
       "type": "behaviour",
-      "claim": "Each web role maps to a corresponding Dataverse security role.",
+      "claim": "Each web role is associated with a corresponding Dataverse security role.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
       "quote": "Each web role is associated with a corresponding Dataverse security role",
@@ -218,10 +146,10 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "summary; What's changing; Risk assessment: Data exposure; Governance controls",
+      "n": 12,
+      "where": "summary; What's changing; Risk assessment; Governance controls",
       "type": "behaviour",
-      "claim": "Dataverse evaluates permissions directly based on the site user's roles.",
+      "claim": "Permission evaluation shifts directly to Dataverse based on the site user's roles.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
       "quote": "When you enable enhanced authorization, permission evaluation shifts directly to Dataverse. In this model, Dataverse evaluates permissions based on the site user's roles",
@@ -229,10 +157,10 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "What's changing; Risk assessment: Data exposure",
+      "n": 13,
+      "where": "What's changing; Risk assessment",
       "type": "behaviour",
-      "claim": "Dataverse returns only the records the site user is allowed to access.",
+      "claim": "Dataverse returns only records that the site user is permitted to access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
       "quote": "Dataverse evaluates permissions based on the site user's roles and returns only the records the user is allowed to access.",
@@ -240,10 +168,10 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 14,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The standard model checks permissions inside Power Pages after retrieving data through an elevated application user.",
+      "claim": "The standard model checks permissions in Power Pages after retrieval using an elevated application user.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
       "quote": "In the standard authorization model, Power Pages evaluates table and record permissions after data retrieval from Dataverse by using the Power Pages application user that runs with elevated privilege",
@@ -251,10 +179,10 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 15,
       "where": "What's changing; Why it matters",
       "type": "behaviour",
-      "claim": "Enhanced authorization removes the extra Power Pages permission-checking layer.",
+      "claim": "Enhanced authorization removes the extra permission-checking layer in Power Pages.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
       "quote": "This change removes the extra permission checking layer at Power Pages and ensures alignment with Dataverse's native security model.",
@@ -262,10 +190,10 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 16,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Dataverse operations use impersonation to execute on behalf of the site user instead of the application user.",
+      "claim": "Dataverse operations execute on behalf of the site user through impersonation rather than the application user.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
       "quote": "Dataverse operations execute on behalf of the site user by using impersonation rather than the application user.",
@@ -273,10 +201,10 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: risk",
+      "n": 17,
+      "where": "What's changing; Risk assessment; Governance guidance; rationale: risk",
       "type": "behaviour",
-      "claim": "Plug-ins run as the calling user unless explicitly configured otherwise.",
+      "claim": "Registered plug-ins run as the calling user unless explicitly configured otherwise.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
       "quote": "If any plugin is registered, it runs as the calling user unless explicitly configured otherwise.",
@@ -284,10 +212,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 18,
       "where": "summary; What's changing; Why it matters; Governance guidance",
       "type": "behaviour",
-      "claim": "With auditing enabled on a Dataverse table, Power Pages operations track under the respective site user.",
+      "claim": "When table auditing is enabled, operations from the Power Pages site track under the respective site user.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
       "quote": "When auditing is enabled on a Dataverse table, any operation performed from the Power Pages site tracks under the respective site user.",
@@ -295,8 +223,8 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "n": 19,
+      "where": "What's changing; Risk assessment; Governance guidance",
       "type": "behaviour",
       "claim": "Power Pages Web API column-level permissions are bypassed with enhanced authorization.",
       "status": "supported",
@@ -306,10 +234,10 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "What's changing; Risk assessment: Data exposure; Governance controls; rationale: risk",
+      "n": 20,
+      "where": "What's changing; Risk assessment; Governance controls; rationale: risk",
       "type": "applicability",
-      "claim": "Dataverse column security profiles apply instead of the Power Pages Web API column permissions.",
+      "claim": "Dataverse column security profiles apply instead of Power Pages Web API column permissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
       "quote": "Column level permissions that you configure in the Power Pages for Web API are bypassed, and Dataverse column security profiles are used instead.",
@@ -317,21 +245,21 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "What's changing; Scope; Governance guidance: Before rollout",
-      "type": "availability",
-      "claim": "Enablement requires Power Pages Core version 1.1.2605.258 or later.",
+      "n": 21,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Enabling the feature requires Power Pages Core version 1.1.2605.258 or later.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
-      "quote": "To enable enhanced authorization, your environment must run supported versions of the Power Pages platform solutions: ... Power Pages Core: version 1.1.2605.258 or later",
+      "quote": "Power Pages Core: version 1.1.2605.258 or later",
       "severity": null,
       "fix": null
     },
     {
-      "n": 28,
-      "where": "What's changing; Scope; Governance guidance: Before rollout",
-      "type": "availability",
-      "claim": "Enablement requires Dataverse Base Portal version 9.3.2605.265 or later.",
+      "n": 22,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Enabling the feature requires Dataverse Base Portal version 9.3.2605.265 or later.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
       "quote": "Dataverse Base Portal: version 9.3.2605.265 or later",
@@ -339,54 +267,142 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "controls[0].ui; What's changing; Governance controls",
+      "n": 23,
+      "where": "controls[0].ui; What's changing; Scope; Governance controls",
       "type": "admin-path",
-      "claim": "The site control is at Power Pages > environment > site > ... > Admin center > Edit (next to site details) > Enable Enhanced Authorization.",
+      "claim": "The site control is reached in Power Pages through environment > site > ... > Admin center > Edit (next to site details) > Enable Enhanced Authorization.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse#enable-enhanced-authorization",
-      "quote": "Sign in to Power Pages and select the environment. ... selecting the ellipsis (...) next to the site and selecting Admin center in the drop-down. ... Select Edit next to the site details. ... Select the Enable Enhanced Authorization check box and save.",
+      "quote": "Sign in to Power Pages and select the environment. Open the Power Pages Admin center by selecting the ellipsis (...) next to the site and selecting Admin center in the drop-down. Select Edit next to the site details. Select the Enable Enhanced Authorization check box and save.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].api; Governance controls; changes: latest note",
+      "type": "command",
+      "claim": "PATCH /powerpagesites(<powerpagesiteid>) is the documented Site table update operation, with enhancedauthorization named as the request-body property.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/powerpagesite",
+      "quote": "`Update`Event: True | `PATCH` /powerpagesites(*powerpagesiteid*)See Update; Writable columns/attributes: content, datamodelversion, enhancedauthorization",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The Site table reference documents the writable enhancedauthorization field, not a migration workflow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/powerpagesite",
+      "quote": "Writable columns/attributes: These columns/attributes return true for either IsValidForCreate or IsValidForUpdate (usually both). Listed by SchemaName. enhancedauthorization",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].note",
+      "type": "behaviour",
+      "claim": "enhancedauthorization value 0 is Disabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/powerpagesite",
+      "quote": "enhancedauthorization Choices/Options: 0 | Disabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[0].note",
+      "type": "behaviour",
+      "claim": "enhancedauthorization value 1 is Migration in progress.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/powerpagesite",
+      "quote": "enhancedauthorization Choices/Options: 1 | Migration in progress",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].note",
+      "type": "behaviour",
+      "claim": "enhancedauthorization value 2 is Migration Failed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/powerpagesite",
+      "quote": "enhancedauthorization Choices/Options: 2 | Migration Failed",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].note",
+      "type": "behaviour",
+      "claim": "enhancedauthorization value 3 is Enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/powerpagesite",
+      "quote": "enhancedauthorization Choices/Options: 3 | Enabled",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
-      "where": "controls[0].api; Governance controls",
-      "type": "absence",
-      "claim": "Microsoft has not documented an automation control for enhanced authorization on a site as of November 2026.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/powerpagesite",
-      "quote": "`Update`Event: True | `PATCH` /powerpagesites(*powerpagesiteid*) ... Writable columns/attributes ... enhancedauthorization ... enhancedauthorization Choices/Options ... 0 | Disabled ... 1 | Migration in progress ... 2 | Migration Failed ... 3 | Enabled",
-      "severity": "blocker",
-      "fix": "Replace controls[0].api with kind rest, call 'PATCH /powerpagesites(<powerpagesiteid>)', and docs 'https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/powerpagesite'. Add the note 'The request body sets enhancedauthorization; documented values are 0 (Disabled), 1 (Migration in progress), 2 (Migration Failed), and 3 (Enabled). The reference documents updating the site-state field, not the migration workflow.' Replace 'no equivalent automation control was found as of November 2026' with 'The Dataverse Site table reference documents updating the enhancedauthorization field through PATCH /powerpagesites(<powerpagesiteid>).' Keep the rendered table consistent and cite that reference."
+      "where": "front matter: defaultState; Scope; rationale: risk",
+      "type": "default",
+      "claim": "Enhanced authorization is admin-opt-in per site; existing authorization remains until it is enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
+      "quote": "When you enable enhanced authorization, permission evaluation shifts directly to Dataverse. Open the Power Pages Admin center ... Select the Enable Enhanced Authorization check box and save.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 31,
-      "where": "controls[1]; Governance controls",
-      "type": "absence",
-      "claim": "Microsoft has not documented tenant or environment enforcement of enhanced authorization through an admin UI or API.",
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The feature is included under Power Pages licensing and its system users require no additional licensing.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Power Pages enhanced authorization tenant environment enforce policy report enable security Dataverse'; '\"enhanced authorization\" \"tenant\" \"policy\" Power Pages'. Read enhanced-authorization steps, Site table reference, pac power-pages and site-visibility governance search results.",
+      "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
+      "quote": "These system users are managed internally, don't provide direct access to Dataverse, and don't require additional licensing. Access continues to be governed by Power Pages licensing.",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
-      "where": "Governance controls",
-      "type": "absence",
-      "claim": "No tenant-wide enhanced-authorization report was found in Microsoft's documentation as of November 2026.",
+      "where": "front matter: licensing.notes; Cost and licensing; Why it matters",
+      "type": "behaviour",
+      "claim": "The created system users are managed internally.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Power Pages enhanced authorization tenant-wide report enforcement policy'. Read Power Pages inventory, CoE governance and pac power-pages search excerpts; opened Site table reference and site-management documentation. No tenant-wide enhanced-authorization report was documented.",
+      "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
+      "quote": "These system users are managed internally",
       "severity": null,
       "fix": null
     },
     {
       "n": 33,
-      "where": "Risk assessment: Security & identity",
+      "where": "front matter: licensing.notes",
       "type": "behaviour",
-      "claim": "Multiple system users may be created for one contact across sites.",
+      "claim": "The created system users do not provide direct Dataverse access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
+      "quote": "These system users are managed internally, don't provide direct access to Dataverse, and don't require additional licensing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Site access continues to be governed by Power Pages licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
+      "quote": "Access continues to be governed by Power Pages licensing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment; Why it matters; Governance guidance",
+      "type": "behaviour",
+      "claim": "Multiple system users can be created for a contact that accesses more than one site.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
       "quote": "Multiple system user records can be created for a single contact if the same user has access to more than one site.",
@@ -394,32 +410,21 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "Risk assessment: Change & support; sources",
-      "type": "availability",
-      "claim": "Microsoft Learn documents enhanced authorization as a preview feature.",
+      "n": 36,
+      "where": "rationale: impact; Governance controls",
+      "type": "behaviour",
+      "claim": "Existing role definitions continue to work through their mapping to Dataverse security roles.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
-      "quote": "This is a preview feature.",
+      "quote": "Permissions defined in web roles (such as table and column access) are reflected in these security roles. This mapping ensures that existing role definitions continue to work while enabling enforcement through Dataverse.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
+      "n": 37,
       "where": "Risk assessment: Change & support",
       "type": "record",
-      "claim": "Microsoft says no maker changes are required.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Configuration: No changes required for makers; existing data security configurations remain intact.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Risk assessment: Change & support",
-      "type": "record",
-      "claim": "Microsoft says no migration is required for existing contact and web role records.",
+      "claim": "Microsoft says no migration is required.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "No Migration Required: Existing contact and web role records automatically sync with system user and security role tables.",
@@ -427,32 +432,32 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "rationale: impact",
-      "type": "behaviour",
-      "claim": "Existing role definitions continue to work with Dataverse enforcement.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
-      "quote": "This mapping ensures that existing role definitions continue to work while enabling enforcement through Dataverse.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 38,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Permissions defined through web roles, including table access, are reflected in Dataverse security roles.",
+      "where": "Risk assessment: Change & support",
+      "type": "record",
+      "claim": "Microsoft says no changes are required for makers.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
-      "quote": "Permissions defined in web roles (such as table and column access) are reflected in these security roles",
+      "source": "roadmap record",
+      "quote": "Configuration: No changes required for makers; existing data security configurations remain intact.",
       "severity": null,
       "fix": null
     },
     {
       "n": 39,
+      "where": "Risk assessment: Change & support; sources",
+      "type": "availability",
+      "claim": "Learn describes enhanced authorization as a preview feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
+      "quote": "This is a preview feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
       "where": "Governance controls",
       "type": "role",
-      "claim": "Power Platform administrators can view the list of all sites in the tenant.",
+      "claim": "Power Platform administrators can list all websites in their tenant.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/admin/power-platform-admin-center",
       "quote": "If you are a service administrator (Dynamics 365 administrator or Power Platform administrator), you can view the list of all websites in your tenant.",
@@ -460,48 +465,59 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 41,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Administrators can open site details from the Power Platform admin center.",
+      "claim": "Administrators can open website details from the Power Platform admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/admin/power-platform-admin-center",
-      "quote": "Select a website. ... Select the ellipse ..., and then select Manage. ... From here you can configure website details",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "front matter: cost; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "The change has low incremental cost, with testing and solution-update effort rather than additional licensing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse",
-      "quote": "These system users ... don't require additional licensing. Access continues to be governed by Power Pages licensing. ... If your environment runs an earlier version, update the Power Pages solutions before proceeding.",
+      "quote": "Select a website. Select the ellipse ..., and then select Manage. ... From here you can configure website details",
       "severity": null,
       "fix": null
     },
     {
       "n": 42,
-      "where": "Governance guidance; Governance controls / consistency",
+      "where": "controls[1].ui; controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "No tenant-wide or environment-wide enhanced-authorization enforcement control is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages enhanced authorization tenant environment enforce all sites policy report Power Platform API pac admin; Power Pages enhanced authorization tenant-wide report enforce environment policy enhancedauthorization. Read feature, Site table, admin-center and CLI excerpts; no such policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "No tenant-wide enhanced-authorization report is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages enhanced authorization tenant-wide report enforce environment policy enhancedauthorization. Read feature, Site table, admin-center, CoE inventory and Power Pages inventory excerpts; generic site inventories exist, but no enhanced-authorization-specific tenant report was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance guidance; Governance controls table",
       "type": "consistency",
-      "claim": "Every control the governance checklist tells readers to review or check appears in the controls table.",
+      "claim": "The checklist asks readers to review permission and auditing controls that have no rows in the controls table.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Checklist: 'Review Web API column permissions and plan column security profiles'; 'Check that auditing is enabled'; 'Verify access for each web role'. Table: 'Enhanced authorization for a site'; 'Tenant or environment enforcement of enhanced authorization'.",
+      "quote": "Review Web API column permissions and plan column security profiles. Check that auditing is enabled ... Verify access for each web role. Review audit logs ... Table rows: Enhanced authorization for a site; Tenant or environment enforcement of enhanced authorization.",
       "severity": "minor",
-      "fix": "The checklist steps concerning Web API column permissions, column security profiles, table auditing and web-role access have no corresponding controls-table rows. This finding does not request adding rows."
+      "fix": "Remove the checklist bullets 'Review Web API column permissions and plan column security profiles', 'Check that auditing is enabled on the Dataverse tables whose site-user entries you intend to rely on', 'Verify access for each web role', and 'Review audit logs for site-user entries on tables where auditing is enabled'. These controls have no table rows; do not add rows during correction."
     }
   ],
   "precheck": {
-    "at": "2026-11-23T02:05:42.898Z",
+    "at": "2026-11-23T03:15:50.171Z",
     "summary": {
-      "links": 4,
+      "links": 5,
       "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
-      "apiCalls": 0,
-      "apiCallsNotOnPage": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -517,6 +533,11 @@
       },
       {
         "url": "https://learn.microsoft.com/power-pages/admin/power-platform-admin-center",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/powerpagesite",
         "ok": true,
         "status": 200
       },
@@ -539,6 +560,15 @@
           "Enable Enhanced Authorization"
         ],
         "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Enhanced authorization for a site",
+        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/powerpagesite",
+        "reachable": true,
+        "token": "PATCH /powerpagesites(<powerpagesiteid>)",
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -553,6 +583,12 @@
     {
       "date": "2026-11-16",
       "status": "verified-with-gaps",
+      "version": 3,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-23",
+      "status": "held",
       "version": 3,
       "model": "gpt-6.1-sol"
     }

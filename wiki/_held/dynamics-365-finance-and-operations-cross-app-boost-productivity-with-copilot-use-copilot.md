@@ -55,6 +55,12 @@ sources:
   - title: "What is Dataverse intelligence? (preview)"
     url: "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-intelligence"
     kind: "learn"
+  - title: "Create spendingPolicyServiceSetting"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create"
+    kind: "learn"
+  - title: "spendingPolicyServiceSetting resource type"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/resources/spendingpolicyservicesetting"
+    kind: "learn"
   - title: "Which users can use Copilot Cowork, and so the ERP apps plugin (Microsoft Graph)"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
     kind: "learn"
@@ -74,7 +80,7 @@ controls:
       kind: "graph"
       call: "POST /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
-    note: "Beta API; adds a service to an existing policy and needs the policy's If-Match ETag. A low credit limit does not block access; scope does."
+    note: "Beta API; adds a service to an existing policy and needs the policy's If-Match ETag. The request body sets serviceId to cowork and state to enabled. A low credit limit does not block access; scope does."
   - governs: "Whether the plugin is available to all users, to specific users or groups, or blocked"
     scope: "tenant"
     ui:
@@ -103,19 +109,23 @@ changes:
     note: "New briefing: the Dynamics 365 ERP apps plugin for Copilot Cowork, its prerequisites, Copilot Credit billing and the admin controls."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 90 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected the Cowork ERP MCP billing rate and premium exemptions, the environment requirement (Tier 2 or above, or a Unified Developer Environment), and the checklist; added the spending-policy request body."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 98 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 90
-  confirmed: 87
+  claims: 98
+  confirmed: 96
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "10c7b7d4b9ed076d9c9c1572ec94c7d9"
+  contradicted: 2
+  attempts: 2
+  hash: "33ac560d1ba6176c184ba553476263da"
 ---
 
 ## What's changing
@@ -147,14 +157,14 @@ The default state is admin-opt-in: Learn lists Cowork enablement, usage-based bi
 - Cowork asks for approval before acting, and users can choose Always allow to skip later prompts for similar actions in that conversation. Train finance users to read the proposed ERP change before approving.
 
 **Change & support**
-- The plugin needs a supported environment (minimum version, Tier 2 or above, not CHE or on-premises). Learn's troubleshooting table covers 'Your admin has disabled this plugin', 'No compatible Dynamics environment found' and 'Unable to connect'.
+- The plugin needs a supported environment meeting the minimum version requirement: Tier 2 or above, or a Unified Developer Environment; CHE and on-premises environments are not supported. Learn's troubleshooting table covers 'Your admin has disabled this plugin', 'No compatible Dynamics environment found' and 'Unable to connect'.
 - The MCP server is unavailable during environment downtime, such as servicing windows, so requests fail then.
 
 ## Cost and licensing
 
 Each user needs an active Microsoft 365 Copilot licence and a qualifying Dynamics 365 licence for finance and operations apps; Finance and Supply Chain Management are among the qualifying licences. Environment, sandbox, storage or capacity add-ons and licences for other Dynamics 365 products do not qualify (enable page). Administrator deployment does not bypass any of these requirements.
 
-Cowork is billed by usage in Copilot Credits: model responses, tool and skill calls and other activities count towards consumption (Cowork admin page). The use page says calls to the ERP MCP server can consume Copilot Credits under the current MCP licensing rules, with exemptions for qualifying premium licences. The MCP licensing section gives 0.1 Copilot Credits per tool call for agents on clients other than Copilot Studio and exempts Dynamics 365 Finance Premium and Supply Chain Management Premium users for those clients; that section does not name Cowork, so confirm how it applies before budgeting.
+Cowork is billed by usage in Copilot Credits: model responses, tool and skill calls and other activities count towards consumption (Cowork admin page). The use page says calls to the ERP MCP server can consume Copilot Credits under the current MCP licensing rules, with exemptions for qualifying premium licences. The Cowork ERP use page applies these MCP licensing rules: ERP MCP tool execution on clients other than Copilot Studio costs 0.1 Copilot Credits per tool call, with Dynamics 365 Finance Premium and Dynamics 365 Supply Chain Management Premium users exempt from tool execution billing; Cowork orchestration consumption is separate.
 
 Cowork, Copilot Studio agents and Work IQ API can draw on a shared tenant credit pool, so ERP-driven usage competes with them. Spending limits are set in the spending policy (see the controls table); the Cowork access page calls credit limits a spending safeguard rather than a real-time access gate, and says limit enforcement is evaluated asynchronously.
 
@@ -173,19 +183,15 @@ Cowork, Copilot Studio agents and Work IQ API can draw on a shared tenant credit
 ### Before rollout
 - Identify which users hold both a Microsoft 365 Copilot licence and a qualifying finance and operations apps licence, and which environments meet the version and tier requirements.
 - Decide who receives Cowork by scoping the spending policy that selects Cowork, and set per-user limits there (access and spend controls are the first row of the table).
-- Review the ERP security roles, duties and privileges of the pilot group, because the plugin exposes only what those roles permit.
 - Check that the Dataverse data setting is enabled for the pilot users, and allow up to one hour for it to propagate; in EU countries with Works Council requirements Learn says Dataverse might be disabled by default.
 
 ### At rollout
 - Deploy the plugin to a pilot security group from the Microsoft 365 admin center, or leave it in the store for users to acquire, and block it where it is not wanted.
-- Confirm in each pilot environment that the Cowork client ID 6ab48b67-cd74-4ad4-81af-5932984589be is allowed on the Allowed MCP clients page.
 - Ask each pilot user to configure the Finance & Operations connector and sign in, since administrators cannot sign in for them.
 - Brief finance approvers to read each proposed ERP change before approving and to treat Always allow with care.
 
 ### After rollout
-- Review Copilot Credit consumption and the Cowork usage dashboard against the spending policy's limits.
-- Search the Microsoft Purview audit log under Copilot activities for plugin interactions.
-- Revisit ERP role assignments for pilot users whose Cowork use shows access they do not need.
+- Review Copilot Credit consumption against the spending policy's limits.
 
 ## Governance controls
 
@@ -194,7 +200,7 @@ Cowork, Copilot Studio agents and Work IQ API can draw on a shared tenant credit
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users can use Copilot Cowork, and so the ERP apps plugin</strong><br><small>Group</small><br><small class="controls__note">Beta API; adds a service to an existing policy and needs the policy's If-Match ETag. A low credit limit does not block access; scope does.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › policy › Select agents and services › Cowork <a href="https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-admin-governance" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users can use Copilot Cowork, and so the ERP apps plugin</strong><br><small>Group</small><br><small class="controls__note">Beta API; adds a service to an existing policy and needs the policy's If-Match ETag. The request body sets serviceId to cowork and state to enabled. A low credit limit does not block access; scope does.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › policy › Select agents and services › Cowork <a href="https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-admin-governance" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether the plugin is available to all users, to specific users or groups, or blocked</strong><br><small>Tenant</small><br><small class="controls__note">Needs a tenant or Copilot administrator. The Users tab also offers Available to all users and Available to specific users or groups. The API needs a Microsoft Agent 365 licence; confirm the plugin's package id.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › plugin › Users › Block <a href="https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-manage-plugins" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether Dataverse data is available to Microsoft Copilot, which the plugin requires</strong><br><small>Tenant</small><br><small class="controls__note">AI administrator or Global administrator. Changes can take up to one hour to propagate. Another Learn page labels it 'Business Applications data in Work IQ available to Copilot'.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › Dataverse data available in Microsoft Copilot <a href="https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
@@ -208,7 +214,6 @@ Inside the finance and operations environment, the Allowed MCP clients page (Sys
 
 ## Open questions
 
-- What Copilot Credit rate applies to Dynamics 365 ERP MCP tool calls made through Cowork: does the 0.1 credit per tool call that the MCP licensing section gives for clients other than Copilot Studio apply, and are Finance Premium and Supply Chain Management Premium users exempt in Cowork? Watch the MCP licensing section and the Cowork billing pages.
 - Is the Cowork client already allowed by default on each environment, as the security page says, or must administrators add it as the enable page says? Watch both pages for alignment.
 - The roadmap lists Preview alongside General Availability and limits the preview to selected customers; does the plugin carry any preview limits for action coverage that Learn does not yet describe? Watch the roadmap item and the enable page.
 - Which label will the tenant setting carry, 'Dataverse data available in Microsoft Copilot' or 'Business Applications data in Work IQ available to Copilot'? Check the Microsoft 365 admin center Copilot settings in your tenant.
@@ -222,9 +227,8 @@ impact: Medium. Only users who hold both licences and are given Cowork access no
 <!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing; Open questions: first bullet / applicability: Whether the published other-client MCP execution rate and premium exemptions apply in Cowork remains unresolved. | Found: Calls to the Dynamics 365 ERP MCP server can consume Copilot Credits according to the current MCP licensing rules, with applicable exemptions for qualifying premium licenses. Learn more in Licensing. | Fix: Remove the first Open questions bullet. Replace the final sentence of the MCP billing paragraph with: 'The Cowork ERP use page applies these MCP licensing rules: ERP MCP tool execution on clients other than Copilot Studio costs 0.1 Copilot Credits per tool call, with Dynamics 365 Finance Premium and Dynamics 365 Supply Chain Management Premium users exempt from tool execution billing; Cowork orchestration consumption is separate.' Cite https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/copilot/use-copilot-cowork-erp and https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/copilot-mcp#licensing. | Source: https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/copilot/use-copilot-cowork-erp
-- [contradicted, blocker] Risk assessment: Change & support / availability: The plugin needs a Tier 2 or above environment, without the Unified Developer Environment exception given later in Scope. | Found: The environment must be Tier 2 or above, or a Unified Developer Environment. Cloud Hosted Environments (CHE) and on-premises environments aren't supported. | Fix: Replace the first sentence of the Change & support bullet with: 'The plugin needs a supported environment meeting the minimum version requirement: Tier 2 or above, or a Unified Developer Environment; CHE and on-premises environments are not supported.' | Source: https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp
+- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: An existing policy's Cowork selection is at Copilot > Cost Management > Configuration > policy > Select agents and services > Cowork. | Found: Select the spending policy you want to edit. ... The spending policy details fly-out opens, where you can modify its settings. This includes: ... Agents and services | Fix: Replace controls[0].ui.path with 'Copilot > Cost Management > Configuration > policy > Agents and services > Cowork' and set its docs to https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits. Add that URL to sources. The existing-policy editor uses 'Agents and services'; 'Select agents and services' is a creation-wizard step. | Source: https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].api / command: POST /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings adds Cowork as a governed service to an existing policy. | Found: Create a new spendingPolicyServiceSetting object to add a service to an existing spending policy. ... Required properties are serviceId and state. | Fix: Keep the call. Add to controls[0].note: 'The request body sets serviceId to cowork and state to enabled.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create and https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/resources/spendingpolicyservicesetting. The existing overview documents the operation, but these additional references supply its request contract and Cowork service category. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create
-- [contradicted, minor] Governance guidance; Governance controls / consistency: The governance checklist directs readers to review controls that are absent from the controls table. | Found: Review the ERP security roles, duties and privileges of the pilot group ... Confirm ... Allowed MCP clients ... Review ... Cowork usage dashboard ... Search the Microsoft Purview audit log. The table contains only Cowork access, plugin availability and the Dataverse setting. | Fix: The ERP security-role review, Allowed MCP clients check, Cowork usage-dashboard review and Purview audit search have no controls-table rows. Remove those checklist bullets, including the later ERP role reassessment bullet, to satisfy the checklist/table rule without adding unverified rows; retain the existing explanatory prose.
+- [supported, minor] controls[2].ui; Governance controls table; Open questions / admin-path: The enable page gives Microsoft 365 admin center > Copilot > Settings > Dataverse data available in Microsoft Copilot. | Found: Go to the Microsoft 365 Admin Center. ... Navigate to Copilot > Settings. ... Enable Dataverse data available in Microsoft Copilot. | Fix: Keep the path supported by the enable page. Add to controls[2].note: 'The Work IQ default-settings page gives Copilot > Settings > View all > Business Applications data in Work IQ available to Copilot.' Cite https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings, which supplies that alternative route. | Source: https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/enable-copilot-cowork-erp
+- [contradicted, minor] Governance guidance: Before rollout; controls[0] / consistency: The checklist presents the first control row as the control for setting per-user spending limits, although the row configures Cowork service access. | Found: set per-user limits there (access and spend controls are the first row of the table). ... governs: Which users can use Copilot Cowork ... The request body sets serviceId to cowork and state to enabled. | Fix: Replace the second Before rollout bullet with: 'Decide who receives Cowork by scoping the spending policy that selects Cowork (the access control is the first row of the table).' This removes the checklist instruction whose spending-limit control has no row; do not add a row.
 -->

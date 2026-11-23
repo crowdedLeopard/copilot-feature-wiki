@@ -25,6 +25,9 @@ sources:
   - title: "Microsoft 365 Roadmap 543427"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=543427"
     kind: "roadmap"
+  - title: "Microsoft 365 Roadmap 515172"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=515172"
+    kind: "roadmap"
   - title: "Auto-archiving in Exchange Online"
     url: "https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving"
     kind: "learn"
@@ -101,19 +104,23 @@ changes:
     note: "First briefing for roadmap item 543427, the GCC, GCC High and DoD listing of Exchange Online auto-archiving; Learn gives 96% where the roadmap says 95%."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 71 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Correction: added the Records Management check for E5 archive limits, removed the holds and retention policies checklist step that had no controls row, and cited roadmap item 515172."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 83 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 69
+  claims: 83
+  confirmed: 83
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "c808c6380b07cd5aa9a22a60b05e864b"
+  contradicted: 0
+  attempts: 0
+  hash: "bcf46f06e8f2a47bf3e83631b7b05526"
 ---
 
 ## What's changing
@@ -149,7 +156,7 @@ Learn describes the per-mailbox setting as enabled by default, so a tenant that 
 
 ## Cost and licensing
 
-Learn's auto-archiving page says the licence requirements are the same as for time-based archiving, and points to the Microsoft 365 licensing guidance for email archiving. That guidance, in the Purview service description, lists the licences that provide user rights to enable an archive mailbox: an archive limited to 50 GB with Exchange Online Plan 1 or Office 365 E1; limited to 1.5 TB with Exchange Online Archiving, Exchange Online Plan 2, Microsoft 365 E3/A3/G3, Microsoft 365 Business Premium or Office 365 E3/A3/G3; and limited to 3 TB with Microsoft 365 E5/A5/G5, Office 365 E5/A5/G5 and the Microsoft Purview Suite family.
+Learn's auto-archiving page says the licence requirements are the same as for time-based archiving, and points to the Microsoft 365 licensing guidance for email archiving. That guidance, in the Purview service description, lists the licences that provide user rights to enable an archive mailbox: an archive limited to 50 GB with Exchange Online Plan 1 or Office 365 E1; limited to 1.5 TB with Exchange Online Archiving, Exchange Online Plan 2, Microsoft 365 E3/A3/G3, Microsoft 365 Business Premium or Office 365 E3/A3/G3; and limited to 3 TB with Microsoft 365 E5/A5/G5, Office 365 E5/A5/G5 and the Microsoft Purview Suite family. For E5 licences, verify that Records Management is selected and remains enabled in the user's licence settings ([Learn about archive mailboxes](https://learn.microsoft.com/purview/archive-mailboxes)).
 
 The auto-archiving page states no separate price or meter. Indirect costs are admin time and the archive storage that moved items consume. Auto-archiving does not provision archive mailboxes, so users without one need one enabled first.
 
@@ -172,7 +179,6 @@ The auto-archiving page states no separate price or meter. Indirect costs are ad
 ### At rollout
 - Confirm which cloud and release your tenant is in, since the Learn page does not state cloud availability.
 - Apply the chosen threshold and any per-mailbox exceptions before the first mailboxes cross it.
-- Check holds and retention policies cover the archive mailbox for users who will be auto-archived.
 
 ### After rollout
 - Run Export-MailboxDiagnosticLogs with -ComponentName MRM on sample mailboxes to confirm what was archived and why.
@@ -208,13 +214,4 @@ All documented automation is Exchange Online PowerShell; Microsoft Learn documen
 risk: Medium. Learn says auto-archiving is enabled by default per mailbox and moves the oldest items to the archive without a user or admin step; the threshold and per-mailbox switches are documented, but only in PowerShell.
 cost: Low. Learn's Pricing section gives the same licence requirements as time-based archiving and states no separate price or meter; the cost is admin time and an archive-capable licence for each affected user.
 impact: Medium. Users whose primary mailbox crosses the threshold and who have an archive mailbox find their oldest items under Online Archive; mailboxes below the threshold, or without an archive, see no move.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: 3 TB tier / licensing: Microsoft 365 E5/A5/G5 and Office 365 E5/A5/G5 provide a 3 TB archive limit without any stated service-plan qualification. | Found: For E5 licenses, verify that **Records Management** is selected and remains enabled in the user's license settings. | Fix: After the archive-limit sentence, add: 'For E5 licences, verify that Records Management is selected and remains enabled in the user's licence settings.' Cite https://learn.microsoft.com/purview/archive-mailboxes. | Source: https://learn.microsoft.com/purview/archive-mailboxes
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / record: Roadmap item 515172 lists this feature for Worldwide (Standard Multi-Tenant). | Found: "id": 515172, "title": "Microsoft Purview: Data Lifecycle Management-Auto-Archive for Exchange Online", "clouds": [ "Worldwide (Standard Multi-Tenant)" ] | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=515172 to sources, titled 'Microsoft 365 Roadmap 515172', with kind roadmap.
-- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The checklist tells readers to check holds and retention policies, but these controls have no table row. | Found: Check holds and retention policies cover the archive mailbox for users who will be auto-archived. ... Table rows cover threshold, mailbox enablement, archive enablement, auto-expanding archiving and diagnostics, not holds or retention policies. | Fix: Remove the At rollout checklist bullet 'Check holds and retention policies cover the archive mailbox for users who will be auto-archived.' It names controls absent from the table; do not add a row as part of this correction.
 -->

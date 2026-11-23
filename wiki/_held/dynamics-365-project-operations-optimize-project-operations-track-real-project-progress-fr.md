@@ -37,6 +37,9 @@ sources:
   - title: "Security and approvals"
     url: "https://learn.microsoft.com/dynamics365/project-operations/approvals/approvals-security"
     kind: "learn"
+  - title: "Approvals overview"
+    url: "https://learn.microsoft.com/dynamics365/project-operations/approvals/approvals-overview"
+    kind: "learn"
   - title: "Install the Field Service integration with Project Operations"
     url: "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-install"
     kind: "learn"
@@ -64,7 +67,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Manage > Dynamics 365 Apps > Dynamics 365 Field Service and Project Operations Integration"
+      path: "Manage > Dynamics 365 Apps > Dynamics 365 Field Service and Project Operations Integration > Install"
       docs: "https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-install"
     api:
       kind: "pac-cli"
@@ -80,24 +83,28 @@ changes:
     note: "First briefing: approved Field Service time now updates Project Operations WBS task progress when the integration is enabled."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 49 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after verification: added the related-table access requirement for approvers, qualified the approved-time statements with reprojection, extended the install path to Install, added the Approvals overview source and removed an approver-inventory checklist step."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 71 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 49
-  confirmed: 47
+  claims: 71
+  confirmed: 69
   unconfirmed: 0
   contradicted: 2
-  attempts: 1
-  hash: "1a93454363d179340241bdacc7f4bfe9"
+  attempts: 2
+  hash: "323df7d90a339904fb51c6f3694f6fe1"
 ---
 
 ## What's changing
 
-Approved time entries captured in Dynamics 365 Field Service now count towards task progress in the Project Operations work breakdown structure (WBS). This applies when the Field Service and Project Operations integration is enabled and the time is captured against a project task. Microsoft Learn states that approved time entries are the only signal used to update task execution progress in the WBS: when project managers approve time entries, the system reduces remaining effort by the approved hours and recalculates effort completed, percent complete and estimate at completion.
+Approved time entries captured in Dynamics 365 Field Service now count towards task progress in the Project Operations work breakdown structure (WBS). This applies when the Field Service and Project Operations integration is enabled and the time is captured against a project task. Microsoft Learn states that approved time entries are the only signal used to update task execution progress in the WBS: when project managers approve time entries, the system reduces remaining effort by the approved hours and recalculates effort completed, percent complete and estimate at completion. Learn's effort tracking page adds that a project manager can also reproject effort by updating Remaining Effort on a task, which recalculates the task's estimate at completion and progress percentage.
 
 The calculation happens on leaf tasks, and Learn says the Effort tracking and Cost tracking views show progress at the project root, summary and leaf task levels. The roadmap item states that no new execution logic or formulas are introduced: field labour is handled under the same native rules as time entered directly in Project Operations. Submitted but unapproved time entries do not affect task effort completed, project progress or project actual hours until they are approved.
 
@@ -105,7 +112,7 @@ The roadmap item lists the status as Launched with a target date of July CY2026,
 
 ## Why it matters
 
-Project health figures now depend on how quickly field time is approved. Because only approved entries move task progress, a backlog of unapproved Field Service time leaves effort completed, percent complete and schedule indicators behind the real work. Approval is also a financial event: Learn says approved time generates actual labour cost and unbilled sales based on project pricing rules, and that approved entries are included in the project's actual hours.
+Project health figures now depend on how quickly field time is approved. Because only approved time contributes actual effort to task progress, a backlog of unapproved Field Service time leaves effort completed, percent complete and schedule indicators behind the real work. Approval is also a financial event: Learn says approved time generates actual labour cost and unbilled sales based on project pricing rules, and that approved entries are included in the project's actual hours.
 
 For service owners this means progress reporting and billing inputs share one approval step, owned by project approvers rather than dispatchers. The roadmap states the behaviour is enabled automatically where the integration is enabled, so organisations already running the integration should expect their effort tracking views to reflect approved field time and should tell project managers.
 
@@ -116,7 +123,7 @@ For service owners this means progress reporting and billing inputs share one ap
 - Learn states that time entries currently do not appear in work order-level financial summaries or work order financial totals, so work order totals and project actuals can differ.
 
 **Security & identity**
-- Approval gates progress. Learn's time entry page says approvers must be team members on the project with the Project Approver Admin field on their team member record set to Yes. Learn's approvals security page words the requirement as the Project Approver field, and says the Project Approver Admin security role bypasses the team-member validation and allows approval of all entries.
+- Approval gates progress. Learn's time entry page says approvers must be team members on the project with the Project Approver Admin field on their team member record set to Yes. Learn's approvals security page words the requirement as the Project Approver field, and says the Project Approver Admin security role bypasses the team-member validation and allows approval of all entries. Approvers, including users with Project Approver Admin, must also have access to relevant related tables such as Project through their assigned security roles.
 
 **Autonomy & actions**
 - Learn describes progress updating when project managers approve time entries. It does not describe the feature acting without an approval.
@@ -145,8 +152,7 @@ Approved time creates actual labour cost and, under project pricing rules, unbil
 
 ### Before rollout
 - Confirm in Power Platform admin center whether the Field Service and Project Operations integration package is installed in each environment, and in Field Service whether its toggle is on.
-- List the project approvers and the people holding the Project Approver Admin role for projects that receive Field Service time, using the approvals security page.
-- Tell project managers that only approved time updates task progress, and agree an approval turnaround.
+- Tell project managers that only approved time contributes actual effort to task progress, and agree an approval turnaround.
 
 ### At rollout
 - Compare effort completed, percent complete and estimate at completion on a sample project before and after a batch of Field Service time is approved.
@@ -165,7 +171,7 @@ Approved time creates actual labour cost and, under project pricing rules, unbil
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether the Field Service integration with Project Operations is turned on</strong><br><small>Environment</small><br><small class="controls__note">Needs a Field Service administrator or system administrator role. The roadmap item says this feature is available only when the integration is enabled.</small></td><td data-label="Admin UI"><strong>Field Service</strong><br>Settings › Features › Field Service Integration with Project Operations <a href="https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-install" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether the integration package is installed in an environment</strong><br><small>Environment</small><br><small class="controls__note">The pac command is documented for Dataverse applications from Microsoft Marketplace in general. The installing user needs at least one Project Operations licence.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Dynamics 365 Apps › Dynamics 365 Field Service and Project Operations Integration <a href="https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-install" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac application install --environment-id &lt;environment-id&gt; --application-name &lt;application-name&gt;</code> <a href="https://learn.microsoft.com/power-platform/developer/cli/reference/application" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the integration package is installed in an environment</strong><br><small>Environment</small><br><small class="controls__note">The pac command is documented for Dataverse applications from Microsoft Marketplace in general. The installing user needs at least one Project Operations licence.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Dynamics 365 Apps › Dynamics 365 Field Service and Project Operations Integration › Install <a href="https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-install" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac application install --environment-id &lt;environment-id&gt; --application-name &lt;application-name&gt;</code> <a href="https://learn.microsoft.com/power-platform/developer/cli/reference/application" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -189,10 +195,9 @@ impact: Medium. Project managers and time approvers on projects that use the int
 <!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity; Governance controls / role: The Project Approver Admin security role bypasses team-member validation and allows approval of all entries without a related-table access qualification. | Found: You must have access to the relevant related tables, such as Project, via security roles assigned to you. | Fix: Add after the approval-role sentence: 'Approvers, including users with Project Approver Admin, must also have access to relevant related tables such as Project through their assigned security roles.' This qualification is stated at https://learn.microsoft.com/dynamics365/project-operations/approvals/approvals-security. | Source: https://learn.microsoft.com/dynamics365/project-operations/approvals/approvals-security
+- [contradicted, blocker] rationale: risk; What's changing / consistency: The risk rationale says progress moves only when a project approver approves submitted time. | Found: Rationale: 'progress moves only when a project approver approves time'. What's changing: 'a project manager can also reproject effort by updating Remaining Effort on a task, which recalculates the task's estimate at completion and progress percentage.' | Fix: Replace the risk rationale with: 'Low. The roadmap says no new execution logic or formulas are added, and Field Service time contributes actual effort only after approval.' This narrows the claim to the verified time-entry mechanism without denying the manual reprojection documented at https://learn.microsoft.com/dynamics365/project-operations/project-management/project-tracking-overview.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Why it matters; Risk assessment; Governance guidance / behaviour: Learn says approved time entries are the only signal used to update WBS task execution progress. | Found: Approved time entries are the only signal used to update task execution progress in the Work Breakdown Structure (WBS). | Fix: Narrow 'only approved entries move task progress' to 'Only approved time contributes actual effort to task progress.' The cited project-tracking-overview page also says updating Remaining Effort during reprojection recalculates EAC and progress percentage; add that qualification to the absolute statement in What's changing. | Source: https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-time
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Power Platform admin center > Manage > Dynamics 365 Apps > Dynamics 365 Field Service and Project Operations Integration reaches the integration package. | Found: Select Manage > Dynamics 365 Apps > Dynamics 365 Field Service and Project Operations Integration. Select Install and follow the prompts. | Fix: Extend controls[1].ui.path to 'Manage > Dynamics 365 Apps > Dynamics 365 Field Service and Project Operations Integration > Install', as documented at https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-install. | Source: https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-install
-- [supported, minor] Governance guidance: After rollout / behaviour: The Approvals view contains submitted time awaiting approval. | Found: You can find these records in the Approvals view under the Projects area of the sitemap. ... Go to the Approvals page and select Expenses, Time, Material Usage, or Recalls. | Fix: Add https://learn.microsoft.com/dynamics365/project-operations/approvals/approvals-overview to sources, titled 'Approvals overview'. | Source: https://learn.microsoft.com/dynamics365/project-operations/approvals/approvals-overview
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist tells readers to inventory project approvers and Project Approver Admin role holders, but no control row covers approval permissions. | Found: List the project approvers and the people holding the Project Approver Admin role ...; controls contains only integration enablement and package installation. | Fix: Remove the checklist bullet beginning 'List the project approvers and the people holding the Project Approver Admin role'; it has no corresponding controls row. Do not add a row as part of this correction.
+- [supported, minor] What's changing; Risk assessment: Change & support; Governance guidance: At rollout / behaviour: Approval automatically recalculates estimate at completion as approved field time arrives. | Found: The project automatically recalculates metrics such as effort completed, percent complete, and estimate at completion. | Fix: After the approval-recalculation sentence, add: 'The Project time task tracking page also documents Delayed update: Remaining Effort, Effort Completed and Effort Estimate at Complete are not updated with approved time until a Project for the Web session is opened.' Cite https://learn.microsoft.com/dynamics365/project-operations/project-management/project-time-task-tracking. This qualifies the timing of the sample-project comparison without changing the approval requirement. | Source: https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-time
+- [supported, minor] Why it matters; Cost and licensing; Governance guidance: At rollout / behaviour: Approved time creates unbilled sales based on project pricing rules. | Found: After approval, time entries generate full financial impact on the project, including: Actual labor cost; Unbilled sales based on project pricing rules | Fix: Qualify each unbilled-sales statement with: 'For Time and Material contract lines, approved transactions create cost and unbilled sales actuals; Fixed Price contract lines create cost actuals only.' The already-cited https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-projects gives this narrower billing-method rule, unlike the time-entry page's general statement. | Source: https://learn.microsoft.com/dynamics365/field-service/project-operations-integration-time
+- [contradicted, minor] Governance guidance: After rollout; controls / consistency: The checklist tells readers to review the Approvals view, but the controls table has no approval-review row. | Found: Checklist: 'Review the Approvals view for submitted Field Service time that is still waiting'. Controls rows cover only integration enablement and integration-package installation. | Fix: Remove the After rollout bullet 'Review the Approvals view for submitted Field Service time that is still waiting, since it holds back task progress.' This removes the checklist/table mismatch without adding an unverified control row.
 -->

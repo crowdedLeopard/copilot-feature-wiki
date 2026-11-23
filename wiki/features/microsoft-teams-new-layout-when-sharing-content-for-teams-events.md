@@ -80,26 +80,30 @@ changes:
     note: "Corrected two statements the check held: removed the claim that the roadmap states no prerequisite other than the licence, and reworded the licence as one lever rather than the one lever."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 41 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-23"
+    note: "Corrected two statements the check held: attributed the 'decide who to spotlight' description to the Teams events licensing overview, and removed the unsupported description of the Content only layout."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 44 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 41
-  confirmed: 39
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 2
-  hash: "5b58a0fcac606d0793f632449c434836"
+  claims: 44
+  confirmed: 44
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "b6ea658bd1bbb150853434aecbe2fa32"
 ---
 
 ## What's changing
 
 Organisers and presenters who have access to production tools in Teams events see updated layout options when they share content in **Manage what attendees see**. The three layouts are Speaker focused, Content focused and Content only. The roadmap item says the new Speaker focused layout puts presenter video alongside the shared content so the presenter is easier to see.
 
-The roadmap item says the feature is for organisers of Teams events who have a Teams Enterprise licence, and describes it as available on Teams for Windows desktop and Mac desktop. The record's platform list also names Android and iOS, so the two parts of the record differ on mobile. Microsoft Learn describes Manage what attendees see in events only as letting organisers decide who to spotlight, and no Learn page describes the three layouts at the time of writing (November 2026). What follows about their behaviour is therefore the roadmap's description.
+The roadmap item says the feature is for organisers of Teams events who have a Teams Enterprise licence, and describes it as available on Teams for Windows desktop and Mac desktop. The record's platform list also names Android and iOS, so the two parts of the record differ on mobile. The Teams events licensing overview describes Manage what attendees see as letting organisers decide who to spotlight, and no Learn page describes the three layouts at the time of writing (November 2026). What follows about their behaviour is therefore the roadmap's description.
 
 The roadmap status is Launched, with a target of August CY2026 and release phases General Availability and Targeted Release. The record lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD. No Message Center post was supplied for this item.
 
@@ -112,7 +116,7 @@ Licensing is one lever an administrator holds. The roadmap ties the feature to a
 ## Risk assessment
 
 **Data exposure**
-- The layouts decide what attendees see on screen. Speaker focused shows presenter video alongside shared content, while Content only shows the content; an organiser who picks the wrong one can show a presenter's camera that they meant to leave out. The roadmap describes no new data access and no change to who can attend.
+- The layouts decide what attendees see on screen. Speaker focused shows presenter video alongside shared content; an organiser who picks the wrong layout can show a presenter's camera that they meant to leave out. The roadmap describes no new data access and no change to who can attend.
 
 **Security & identity**
 - No change is described. The options appear only for organisers and presenters who have access to production tools, per the roadmap description.
@@ -185,11 +189,4 @@ The two Events policies rows are the blunt controls that exist. They decide whet
 risk: Low. The layouts change what attendees see on screen when content is shared; the roadmap describes no new data access, and only organisers and presenters with production tools see the options.
 cost: None. The Teams events licensing overview lists Manage what attendees see among the Advanced event features that Enterprise licences provide, and lists no separate price or meter for it.
 impact: Medium. Event organisers and presenters with production tools notice it, because it changes the layout choices in Manage what attendees see; attendees see only the resulting layout.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing: second paragraph / behaviour: Microsoft Learn describes Manage what attendees see in events only as letting organisers decide who to spotlight. | Found: An enhancement to the 'Manage what attendees see' feature now allows organizers and presenters to control when shared content is visible to attendees. This capability is available for meetings, webinars, and town halls. | Fix: Replace 'Microsoft Learn describes Manage what attendees see in events only as letting organisers decide who to spotlight' with 'The Teams events licensing overview describes Manage what attendees see as letting organisers decide who to spotlight'. Keep the following absence claim about the three layouts. | Source: https://learn.microsoft.com/officeupdates/teams-admin#april-24,-2025
-- [unsupported, major] Risk assessment: Data exposure / behaviour: Content only shows the shared content rather than presenter video. | Found: Searched: Teams Content only layout presenter video; Teams events content sharing layouts Content only; Manage what attendees see Content only hides presenter video. Read Learn results and events-licensing; roadmap names the layout but does not explain it. | Fix: Remove 'while Content only shows the content' from the Data exposure bullet. Retain the supported statement about Speaker focused showing presenter video alongside shared content.
 -->

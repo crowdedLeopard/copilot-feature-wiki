@@ -64,7 +64,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Data policy > policy > Prebuilt Connectors > connector > Configure connector > Connector endpoints"
+      path: "Security > Data and privacy > Data policy > policy > Edit policy > Prebuilt Connectors > connector > Configure connector > Connector endpoints"
       docs: "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering"
     api:
       kind: "powershell"
@@ -78,7 +78,7 @@ controls:
     note: "Not yet on Learn; the roadmap says existing Power Platform policies will apply."
 confidence: "low"
 created: "2026-11-14"
-updated: "2026-11-16"
+updated: "2026-11-23"
 roadmapModified: "2026-10-26T23:15:50"
 changes:
   - date: "2026-11-14"
@@ -97,19 +97,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 44 statements confirmed"
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 45 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-23"
+    note: "Corrected the admin path for connector endpoint filtering: it now starts at Security > Data and privacy > Data policy and includes the Edit policy step."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 49 statements not yet confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 45
-  confirmed: 44
+  claims: 49
+  confirmed: 49
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "c98f094dd8526cf433692bbdf4d0f26e"
+  contradicted: 0
+  attempts: 0
+  hash: "4bad043d3d99d04de200a2e1f04a865b"
 ---
 
 ## What's changing
@@ -173,7 +177,7 @@ Makers and developers of Power Pages sites; tenants that use the on-premises dat
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Which connectors may be used in an environment</strong><br><small>Environment</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to native Power Pages connector APIs.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy <a href="https://learn.microsoft.com/power-platform/admin/connector-action-control" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpPolicy -NewPolicy $NewPolicy</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Allowed endpoints for HTTP and other endpoint-configurable connectors</strong><br><small>Environment</small><br><small class="controls__note">Preview. General control, not confirmed for this feature. Needs Endpoint configurable = Yes; evaluates static designer endpoints, not runtime-bound ones.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Data policy › policy › Prebuilt Connectors › connector › Configure connector › Connector endpoints <a href="https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-PowerAppDlpPolicyConnectorConfigurations -TenantId $TenantId -PolicyName $PolicyName -NewDlpPolicyConnectorConfigurations $ConnectorConfigurations</code> <a href="https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering#powershell-support-for-endpoint-filtering" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Allowed endpoints for HTTP and other endpoint-configurable connectors</strong><br><small>Environment</small><br><small class="controls__note">Preview. General control, not confirmed for this feature. Needs Endpoint configurable = Yes; evaluates static designer endpoints, not runtime-bound ones.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › policy › Edit policy › Prebuilt Connectors › connector › Configure connector › Connector endpoints <a href="https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-PowerAppDlpPolicyConnectorConfigurations -TenantId $TenantId -PolicyName $PolicyName -NewDlpPolicyConnectorConfigurations $ConnectorConfigurations</code> <a href="https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering#powershell-support-for-endpoint-filtering" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Power Pages-specific control for connector APIs</strong><br><small>Site</small><br><small class="controls__note">Not yet on Learn; the roadmap says existing Power Platform policies will apply.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -196,12 +200,10 @@ cost: Low. The only cost the sources show is planning and administration time; l
 impact: Medium. It affects teams that build external sites on enterprise data, and the visitors who use them.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: Power Platform admin center > Data policy > policy > Prebuilt Connectors > connector > Configure connector > Connector endpoints is the endpoint-filtering route. | Found: On the navigation pane, select Security ... select Data and privacy ... select Data policy. ... Select an existing policy on the command bar and then select Edit policy | Fix: Replace controls[1].ui.path and the rendered route with 'Security > Data and privacy > Data policy > policy > Edit policy > Prebuilt Connectors > connector > Configure connector > Connector endpoints'. The navigation and Edit policy step are documented at https://learn.microsoft.com/power-platform/admin/connector-action-control; the final steps are documented at the existing endpoint-filtering URL. | Source: https://learn.microsoft.com/power-platform/admin/connector-action-control
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model, licensing.notes; Cost and licensing / licensing: Licensing specific to native connector APIs is unpublished, so the licensing model is unknown. | Found: Power Pages (formerly Power Apps portals) licensing is capacity based and offers two types of capacities based on user type: Authenticated users per website/month and Anonymous users per website/month. | Fix: Set licensing.model to mixed. Replace licensing.notes with 'Power Pages uses Authenticated users per website/month and Anonymous users per website/month capacity subscriptions or pay-as-you-go meters. Additional licensing specific to native connector APIs is not yet published.' Replace the opening 'Not yet published.' in Cost and licensing with 'Additional licensing specific to native connector APIs is not yet published.' Keep the existing licensing FAQ citation. | Source: https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-pages
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Power Platform admin center > Security > Data and privacy > Data policy > New Policy reaches connector governance. | Found: select Security ... select Data and privacy ... select Data policy ... select New Policy to create a new policy to configure. | Fix: Extend controls[0].ui.path and the rendered route to 'Security > Data and privacy > Data policy > New Policy > Prebuilt connectors > connector > Block'. Cite https://learn.microsoft.com/power-platform/admin/prevent-data-loss for connector classification; its walkthrough documents the Pre-built connectors page and the Block action for blockable connectors. State in the row note that only blockable connectors can be blocked. | Source: https://learn.microsoft.com/power-platform/admin/connector-action-control
-- [supported, minor] controls[0].api; Governance controls table / command: New-DlpPolicy -NewPolicy $NewPolicy creates the data policy that determines connector use. | Found: Creates a new DLP policy in the tenant by using the NewPolicy DLPPolicyDefinition object. ... New-DlpPolicy -NewPolicy $NewPolicy ... Creates a new policy with the $NewPolicy object. | Fix: Keep the call. Add https://learn.microsoft.com/power-platform/admin/data-loss-prevention-sdk to sources: it documents creating policies that classify connectors into Business, Non-business and Blocked groups. Add to the row note: 'Creates a policy from the supplied policy definition; connector classifications must be included in that definition.' | Source: https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest
+- [supported, minor] front matter: licensing.model; licensing.notes / licensing: The licensing model is unknown because licensing specific to native connector APIs is not published. | Found: Power Pages (formerly Power Apps portals) licensing is capacity based and offers two types of capacities based on user type: Authenticated users per website/month and Anonymous users per website/month. | Fix: Set licensing.model to included for a new option inside the licensed product. Replace licensing.notes with 'Power Pages website licensing is capacity based: Authenticated users per website/month and Anonymous users per website/month. Additional licensing specific to native connector APIs is not yet published as of November 2026.' Keep the cited Power Platform licensing FAQ. | Source: https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-pages
+- [supported, minor] controls[0].ui; Governance controls: first row / admin-path: Security > Data and privacy > Data policy > New Policy is the Power Platform admin center route into connector-policy configuration. | Found: On the navigation pane, select Security, and then on the Security pane, select Data and privacy. ... On the Data protection and privacy page, select Data policy. ... select New Policy to create a new policy to configure. | Fix: Extend controls[0].ui.path and the rendered first row to 'Security > Data and privacy > Data policy > New Policy > Prebuilt connectors', reaching the page with connector controls rather than stopping at the wizard entry. Add https://learn.microsoft.com/power-platform/admin/prevent-data-loss to sources and use it for this side's docs. | Source: https://learn.microsoft.com/power-platform/admin/connector-action-control
+- [supported, minor] controls[0].api; Governance controls: first row / command: New-DlpPolicy -NewPolicy $NewPolicy can create a data policy with connector classifications. | Found: $newPolicy = CreatePolicyObject -EnvironmentType "AllEnvironments" -PolicyDisplayName $PolicyDisplayName $response = New-DlpPolicy -NewPolicy $newPolicy ... connectorGroups = CreateConnectorGroups | Fix: Keep the call and reference URL. Add https://learn.microsoft.com/power-platform/admin/data-loss-prevention-sdk to sources: its Microsoft sample creates policies that classify connectors into Business, Non-business and Blocked groups, and the linked sample supplies connectorGroups in the NewPolicy object. | Source: https://github.com/microsoft/PowerApps-Samples/blob/master/powershell/admin-center/Microsoft.PowerApps.Administration.PowerShell.Samples.psm1
 -->

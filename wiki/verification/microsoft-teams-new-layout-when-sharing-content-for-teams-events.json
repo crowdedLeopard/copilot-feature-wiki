@@ -2,39 +2,44 @@
   "slug": "microsoft-teams-new-layout-when-sharing-content-for-teams-events",
   "roadmapId": 564613,
   "title": "Microsoft Teams: new content-sharing layouts for Teams events",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-23",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-22",
-    "reasons": [
-      "1 blocking finding (claim 18)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 41,
-    "confirmed": 39,
-    "unconfirmed": 1,
-    "contradicted": 1,
-    "blocker": 1,
-    "major": 1,
+    "claims": 44,
+    "confirmed": 44,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
     "minor": 0
   },
-  "summary": "Hold: the briefing incorrectly says Microsoft Learn describes Manage what attendees see only as spotlighting people; Microsoft's release notes also describe controlling shared content. The roadmap facts, licensing and event-policy controls check out, but the stated Content only behaviour is not supported by the sources checked.",
+  "summary": "The briefing passes: its layout description, availability and licensing agree with the roadmap and the cited Microsoft documentation. Both event-policy paths and PowerShell commands are documented, and independent searches found no administrator control specifically for these layouts.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; rationale: impact",
+      "where": "title; front matter: products",
       "type": "record",
-      "claim": "Teams events receive updated content-sharing layout options in Manage what attendees see.",
+      "claim": "The change is a new content-sharing layout experience for Microsoft Teams events.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Teams: New layout when sharing content for Teams events",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Scope; Risk assessment; rationale: risk and impact",
+      "type": "record",
+      "claim": "Event organisers with access to production tools are an audience for the updated layout options.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Organizers and presenters who have access to production tools will see updated layout options when sharing content in the \"Manage what attendees see\" experience for Teams events.",
@@ -42,21 +47,32 @@
       "fix": null
     },
     {
-      "n": 2,
-      "where": "summary; What's changing; Scope; Risk assessment; rationale: risk",
+      "n": 3,
+      "where": "summary; What's changing; Scope; Risk assessment; rationale: risk and impact",
       "type": "record",
-      "claim": "The audience for the options is organisers and presenters with access to production tools.",
+      "claim": "Presenters with access to production tools are an audience for the updated layout options.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Organizers and presenters who have access to production tools will see updated layout options when sharing content",
+      "quote": "Organizers and presenters who have access to production tools will see updated layout options when sharing content in the \"Manage what attendees see\" experience for Teams events.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 3,
-      "where": "What's changing; Governance guidance; changes",
+      "n": 4,
+      "where": "What's changing; Governance guidance; rationale: risk and impact",
       "type": "record",
-      "claim": "The three layouts are Speaker focused, Content focused and Content only.",
+      "claim": "The updated options appear when sharing content in Manage what attendees see for Teams events.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Organizers and presenters who have access to production tools will see updated layout options when sharing content in the \"Manage what attendees see\" experience for Teams events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "summary; What's changing; Governance guidance; changes",
+      "type": "record",
+      "claim": "The three available layouts are Speaker focused, Content focused and Content only.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "The available layouts are \"Speaker focused\", \"Content focused\", and \"Content only\".",
@@ -64,7 +80,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 6,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "record",
       "claim": "The new Speaker focused layout prioritises presenter video alongside shared content for greater visibility.",
@@ -75,10 +91,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 7,
       "where": "summary; licensing.notes; What's changing; Why it matters; Cost and licensing; Scope",
       "type": "record",
-      "claim": "The roadmap makes the feature available to Teams events organisers with a Teams Enterprise licence.",
+      "claim": "The roadmap identifies Teams events organisers with a Teams Enterprise licence as eligible for this feature.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This feature is available for Teams events organizers with a Teams Enterprise license.",
@@ -86,10 +102,10 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "What's changing; Scope: Platforms; Governance guidance",
+      "n": 8,
+      "where": "What's changing; Scope; Risk assessment: Change & support; Governance guidance",
       "type": "record",
-      "claim": "The roadmap description names Teams for Windows desktop and Mac desktop.",
+      "claim": "The roadmap description names Teams for Windows desktop as a supported surface.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This feature is available on Teams for Windows desktop and Mac desktop.",
@@ -97,30 +113,19 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "front matter: platforms; What's changing; Scope; Open questions",
-      "type": "record",
-      "claim": "The record's platform list is Android, Desktop, iOS and Mac.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "What's changing; Why it matters; Risk assessment; Scope; Open questions",
-      "type": "record",
-      "claim": "The platform list includes mobile platforms that the description does not name.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\"]; This feature is available on Teams for Windows desktop and Mac desktop.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 9,
-      "where": "front matter: status; What's changing; Scope: Rollout",
+      "where": "What's changing; Scope; Risk assessment: Change & support; Governance guidance",
+      "type": "record",
+      "claim": "The roadmap description names Teams for Mac desktop as a supported surface.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature is available on Teams for Windows desktop and Mac desktop.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: status; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap status is Launched.",
       "status": "supported",
@@ -130,8 +135,8 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "front matter: targetDate; What's changing; Scope: Rollout",
+      "n": 11,
+      "where": "front matter: targetDate; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap target is August CY2026.",
       "status": "supported",
@@ -141,10 +146,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 12,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "No preview date is supplied in the roadmap record.",
+      "claim": "The roadmap record supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -152,8 +157,8 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "front matter: releasePhase; What's changing; Scope: Rollout",
+      "n": 13,
+      "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
       "claim": "The release phases are General Availability and Targeted Release.",
       "status": "supported",
@@ -163,10 +168,10 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "front matter: clouds; What's changing; Scope: Clouds",
+      "n": 14,
+      "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The listed clouds are Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
@@ -174,10 +179,65 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 15,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC High.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: platforms; What's changing; Scope; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The structured platform list names Android, Desktop, iOS and Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Why it matters; Scope; Governance guidance; Open questions",
+      "type": "record",
+      "claim": "The structured record includes Android and iOS, while the description names only Windows and Mac desktop.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\"]; This feature is available on Teams for Windows desktop and Mac desktop.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-10-06T22:56:31.",
+      "claim": "The roadmap record was modified at 2026-10-06T22:56:31.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-10-06T22:56:31\"",
@@ -185,87 +245,32 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "front matter: products",
-      "type": "record",
-      "claim": "The product is Microsoft Teams.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Teams\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "front matter: defaultState; Why it matters",
-      "type": "default",
-      "claim": "The updated options reach their intended organisers and presenters without an administrator enabling the change.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Organizers and presenters who have access to production tools will see updated layout options when sharing content in the \"Manage what attendees see\" experience for Teams events.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "controls[0]; summary; Why it matters; Governance controls",
-      "type": "absence",
-      "claim": "No admin UI setting or PowerShell parameter is documented for controlling the new content-sharing layouts.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams layouts Manage what attendees see admin PowerShell default; Set-CsTeamsMeetingPolicy layout attendees. Read set-up-events, plan-meetings, plan-events and Set-CsTeamsEventsPolicy; no layout selector policy found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing: second paragraph",
-      "type": "behaviour",
-      "claim": "Microsoft Learn describes Manage what attendees see in events only as letting organisers decide who to spotlight.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/officeupdates/teams-admin#april-24,-2025",
-      "quote": "An enhancement to the 'Manage what attendees see' feature now allows organizers and presenters to control when shared content is visible to attendees. This capability is available for meetings, webinars, and town halls.",
-      "severity": "blocker",
-      "fix": "Replace 'Microsoft Learn describes Manage what attendees see in events only as letting organisers decide who to spotlight' with 'The Teams events licensing overview describes Manage what attendees see as letting organisers decide who to spotlight'. Keep the following absence claim about the three layouts."
-    },
-    {
-      "n": 19,
-      "where": "What's changing: second paragraph",
-      "type": "absence",
-      "claim": "No Microsoft Learn page describes these three named layouts at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams Speaker focused Content focused Content only; Teams events content sharing layouts Content only; Teams events Speaker focused organizers. Read Learn results, events-licensing and plan-events; none describes this trio.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "Why it matters: first paragraph",
-      "type": "absence",
-      "claim": "The sources do not ask administrators to act to enable these layouts.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams layouts Manage what attendees see admin PowerShell default; Teams events layout Speaker focused licensing default. Read roadmap, events-licensing, set-up-events and plan-events; no layout enablement action stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 21,
-      "where": "Risk assessment: Data exposure; rationale: risk",
-      "type": "record",
-      "claim": "The roadmap description specifies no new data access.",
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Teams events licensing overview describes Manage what attendees see as allowing organisers to decide who to spotlight.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "The new Speaker focused layout prioritizes presenter video alongside shared content for greater visibility.",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "Organizers can decide who to spotlight during an event while others are hidden from view.",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "Risk assessment: Data exposure",
-      "type": "record",
-      "claim": "The roadmap description specifies no change to who can attend.",
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "No Microsoft Learn page describes these three content-sharing layouts at the time of writing in November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Speaker focused Content focused Content only layout documentation; Teams events layout Manage what attendees see organizer choose. Read events-licensing, plan-events, plan-meetings and returned excerpts; none describes the three layouts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The updated layout options reach eligible organisers and presenters without an administrator enabling the change.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Organizers and presenters who have access to production tools will see updated layout options when sharing content in the \"Manage what attendees see\" experience for Teams events.",
@@ -273,43 +278,98 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "controls[0].note; Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "A person chooses among the layout options when sharing content during the event.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Organizers and presenters who have access to production tools will see updated layout options when sharing content",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 24,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The roadmap mentions no autonomous action.",
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No supplied or located source asks administrators to enable these updated layouts.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "Organizers and presenters who have access to production tools will see updated layout options when sharing content",
+      "source": null,
+      "quote": "Searched: Speaker focused Teams events default automatically admin; Teams events sharing layouts admin policy. Read the roadmap, plan-events, plan-meetings, set-up-events and policy references; no enablement instruction for these layouts was found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 25,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Content only shows the shared content rather than presenter video.",
-      "status": "unsupported",
+      "where": "controls[0].ui and api; summary; Why it matters; Governance controls",
+      "type": "absence",
+      "claim": "No administrator UI setting or PowerShell parameter specifically governs which of these content-sharing layouts organisers can choose.",
+      "status": "supported",
       "source": null,
-      "quote": "Searched: Teams Content only layout presenter video; Teams events content sharing layouts Content only; Manage what attendees see Content only hides presenter video. Read Learn results and events-licensing; roadmap names the layout but does not explain it.",
-      "severity": "major",
-      "fix": "Remove 'while Content only shows the content' from the Data exposure bullet. Retain the supported statement about Speaker focused showing presenter video alongside shared content."
+      "quote": "Searched: Teams events Manage what attendees see sharing layouts admin policy Set-CsTeamsMeetingPolicy Set-CsTeamsEventsPolicy parameter. Read plan-events, plan-meetings and set-up-events; searched both cmdlet references for layout, attendeessee and production. No layout control found.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 26,
-      "where": "Cost and licensing: first paragraph",
+      "where": "controls[0].note; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "These are layout options for organisers and presenters to use when sharing content during an event.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Organizers and presenters who have access to production tools will see updated layout options when sharing content in the \"Manage what attendees see\" experience for Teams events. The available layouts are \"Speaker focused\", \"Content focused\", and \"Content only\".",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap description describes no new data access.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Searched: read the entire roadmap description for new data access. It describes layout options, presenter video alongside shared content, licensing and desktop availability; it contains no new data-access mechanism.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The roadmap description describes no change to who can attend.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Searched: read the entire roadmap description for attendee eligibility changes. It describes layout options for organisers and presenters with production tools, but gives no change to who can attend.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "No security or identity change is described in the roadmap.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Searched: read the entire roadmap description for security and identity changes. It identifies production-tool access and a Teams Enterprise licence as scope, without describing any security or identity change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap mentions no new activity that runs autonomously.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Searched: read the entire roadmap description for autonomous activity. It describes updated layout options when sharing content and contains no autonomous action or background process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Users need a licence from the Advanced event features category for the full Teams events feature set.",
+      "claim": "Manage what attendees see is included among the Advanced event features provided by eligible Enterprise licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "Organizers with a license in the Advanced event features category have all foundational event capabilities plus the following advanced event features. | Manage what attendees see | Organizers can decide who to spotlight during an event while others are hidden from view.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Users need a licence from the Advanced event features category to access the full Teams events feature set.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
       "quote": "To access the full set of Teams events features, users must have a license from the Advanced event features category.",
@@ -317,21 +377,10 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
-      "type": "licensing",
-      "claim": "Manage what attendees see is listed among Advanced event features.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
-      "quote": "Organizers with a license in the Advanced event features category have all foundational event capabilities plus the following advanced event features. ... Manage what attendees see",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
+      "n": 33,
       "where": "licensing.notes; Cost and licensing; Governance guidance: Before rollout",
       "type": "licensing",
-      "claim": "The Enterprise Advanced event features licences are Office 365 E1, E3, E5 and Microsoft 365 E3, E5, E7.",
+      "claim": "The licensing overview's Enterprise Advanced event features category lists Office 365 E1, E3, E5 and Microsoft 365 E3, E5, E7.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
       "quote": "| Enterprise | Not applicable | Office 365 E1, E3, E5Microsoft 365 E3, E5, E7 |",
@@ -339,21 +388,10 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "front matter: licensing.model",
+      "n": 34,
+      "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The feature is included with the Enterprise entitlement identified in the roadmap and events licensing overview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
-      "quote": "Advanced event features: These licenses provide the full Teams events feature set. They include the foundational capabilities plus advanced features such as event workflows, customization, production controls, monitoring, insights",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "Cost and licensing: second paragraph",
-      "type": "licensing",
-      "claim": "Teams Premium licences purchased after April 2026 do not directly provide these event capabilities.",
+      "claim": "Teams Premium licences purchased after April 2026 do not directly provide access to these advanced event capabilities.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
       "quote": "Teams Premium licenses purchased after April 2026 don't directly provide access to these capabilities.",
@@ -361,43 +399,54 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 35,
       "where": "licensing.notes; Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "The Teams events licensing overview lists no separate price or meter for Manage what attendees see.",
+      "claim": "The Teams events licensing overview lists no separate price for Manage what attendees see.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams events layout Speaker focused licensing default; Teams events licensing overview. Read the full events-licensing page, including its Advanced event features table and limits; no price or meter is given for Manage what attendees see.",
+      "quote": "Searched: Teams events Manage what attendees see layouts licensing price meter Speaker focused. Read the entire events-licensing page; it lists Manage what attendees see under Advanced event features but states no separate price for it.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 32,
+      "n": 36,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The Teams events licensing overview lists no separate meter for Manage what attendees see.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams events Manage what attendees see layouts licensing price meter Speaker focused. Read the entire events-licensing page and relevant returned licensing excerpts; the page names no separate meter for Manage what attendees see.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
       "where": "front matter: cost; rationale: cost",
       "type": "cost",
-      "claim": "The cost rating of none rests on this layout option being included in the Enterprise events feature set.",
+      "claim": "The cost rating is none because the relevant event capability is included in the eligible Enterprise licences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
-      "quote": "Organizers with a license in the Advanced event features category have all foundational event capabilities plus the following advanced event features.",
+      "quote": "Organizers with a license in the Advanced event features category have all foundational event capabilities plus the following advanced event features. | Manage what attendees see | Organizers can decide who to spotlight during an event while others are hidden from view.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
+      "n": 38,
       "where": "controls[1].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Teams admin center > Meetings > Events policies > policy > Events up to 1k attendees governs creation of events with up to 1,000 attendees.",
+      "claim": "Teams admin center > Meetings > Events policies > policy > Events up to 1k attendees controls creation of events with up to 1,000 attendees, such as webinars.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "In the left navigation of the Teams admin center, go to Meetings > Events policies. Select an existing policy or create a new one. ... turn the Events up to 1k attendees toggle On or Off.",
+      "quote": "In the left navigation of the Teams admin center, go to Meetings > Events policies. Select an existing policy or create a new one. For events with up to 1,000 attendees, such as webinars, turn the Events up to 1k attendees toggle On or Off.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
+      "n": 39,
       "where": "controls[1].api; Governance controls table",
       "type": "command",
-      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -AllowWebinars Disabled prevents the assigned organisers creating events with up to 1,000 attendees.",
+      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -AllowWebinars Disabled prevents organisers assigned that policy from creating events with up to 1,000 attendees.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
       "quote": "To prevent organizers with this policy from creating events with up to 1,000 attendees, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowWebinars Disabled",
@@ -405,21 +454,21 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 40,
       "where": "controls[2].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Teams admin center > Meetings > Events policies > policy > Events optimized for a large audience governs creation of events optimised for large audiences.",
+      "claim": "Teams admin center > Meetings > Events policies > policy > Events optimized for a large audience controls creation of events optimised for large audiences, such as town halls.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "In the left navigation of the Teams admin center, go to Meetings > Events policies. Select an existing policy or create a new one. ... turn the Events optimized for a large audience toggle On or Off.",
+      "quote": "In the left navigation of the Teams admin center, go to Meetings > Events policies. Select an existing policy or create a new one. For events optimized for large audiences, such as town halls, turn the Events optimized for a large audience toggle On or Off.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
+      "n": 41,
       "where": "controls[2].api; Governance controls table",
       "type": "command",
-      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled prevents the assigned organisers creating events optimised for large audiences.",
+      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled prevents organisers assigned that policy from creating events optimised for large audiences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
       "quote": "To prevent organizers with this policy from creating events optimized for large audiences, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled",
@@ -427,10 +476,10 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 42,
       "where": "controls[1].note; controls[2].note; Governance controls",
       "type": "behaviour",
-      "claim": "Turning the event-creation setting Off after scheduling prevents the user running or starting the event.",
+      "claim": "Changing these event-creation policy settings to Off after an event is scheduled prevents the user from running or starting the event.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
       "quote": "If you change the value to Off after a user schedules an event, they can't run or start the event.",
@@ -438,30 +487,8 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "controls[1].note; controls[2].note; Governance controls",
-      "type": "applicability",
-      "claim": "The two event-creation controls decide whether events can be created, not which sharing layout is offered.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
-      "quote": "Controls whether users with this policy can create events with up to 1,000 attendees, such as webinars. ... Controls whether users with this policy can create events optimized for large audiences, such as town halls.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "controls[1].scope; controls[2].scope; Governance guidance",
-      "type": "applicability",
-      "claim": "Events policy controls apply to the users assigned the policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps",
-      "quote": "User-level policy for tenant admin to configure options for customizing Teams events experiences. Use this cmdlet to update an existing policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Governance controls: final sentence",
+      "n": 43,
+      "where": "Governance controls",
       "type": "behaviour",
       "claim": "The Set-CsTeamsEventsPolicy reference describes the policy as still in preview.",
       "status": "supported",
@@ -471,8 +498,8 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "Governance controls: first paragraph",
+      "n": 44,
+      "where": "Governance controls",
       "type": "behaviour",
       "claim": "Plan for Teams meetings lists Manage what attendees see as having no administrator control in meetings.",
       "status": "supported",
@@ -483,7 +510,7 @@
     }
   ],
   "precheck": {
-    "at": "2026-11-23T02:05:36.245Z",
+    "at": "2026-11-23T03:15:52.324Z",
     "summary": {
       "links": 5,
       "unreachable": 0,
@@ -573,6 +600,12 @@
       "date": "2026-11-22",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-23",
+      "status": "held",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

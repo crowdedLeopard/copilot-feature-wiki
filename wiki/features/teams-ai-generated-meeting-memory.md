@@ -25,7 +25,7 @@ sources:
   - title: "Microsoft 365 Roadmap 558933"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=558933"
     kind: "roadmap"
-  - title: "MC1429018"
+  - title: "MC1429018: (Updated) Microsoft Teams: Meeting memory file generation"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1429018"
     kind: "message-center"
   - title: "Memory for Microsoft Teams Meetings"
@@ -63,15 +63,15 @@ controls:
       docs: "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings"
     api:
       kind: "powershell"
-      call: "Set-CsTeamsMeetingPolicy -Identity <policy> -AllowMeetingKnowledgeGeneration <Boolean>"
+      call: "Set-CsTeamsMeetingPolicy -Identity <policy> -AllowMeetingKnowledgeGeneration <Boolean> -KnowledgeGenerationMeetingTypes <AllMeetings|TranscribedMeetings|None>"
       docs: "https://learn.microsoft.com/powershell/module/teams/set-csteamsmeetingpolicy"
-    note: "On for all meetings, Only for meetings with transcription, or Off. The cmdlet reference warns the feature is not fully released, so the setting currently has no effect."
-  - governs: "Inspecting and removing generated memory for a meeting"
+    note: "The reference warns the feature is not fully released, so the setting currently has no effect. The meeting-type choice applies only when AllowIntelligentRecap and AllowMeetingKnowledgeGeneration are both $True."
+  - governs: "Removing generated memory for a meeting"
     scope: "other"
     ui: null
     api:
       kind: "powershell"
-      call: "Get-AIGeneratedKnowledgeContainer -ThreadId <id>; Remove-AIGeneratedKnowledge -ThreadId <id>"
+      call: "Remove-AIGeneratedKnowledge -ThreadId <id>"
       docs: "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings"
   - governs: "Copilot in meetings and events"
     scope: "user"
@@ -94,10 +94,10 @@ controls:
       kind: "powershell"
       call: "New-RetentionComplianceRule -Name <rule> -Policy <existing-policy> -RetentionDuration <days> -RetentionComplianceAction <Keep|Delete|KeepAndDelete>"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule?view=exchange-ps"
-    note: "Security & Compliance PowerShell. Requires an existing policy scoped to the memory container URL."
+    note: "Security & Compliance PowerShell; needs an existing policy scoped to the memory container URL. Wizard: keep Full directory, choose Static, select SharePoint classic and communication sites and include the container URLs."
 confidence: "high"
 created: "2026-11-13"
-updated: "2026-11-16"
+updated: "2026-11-23"
 roadmapModified: "2026-11-03T00:14:11"
 changes:
   - date: "2026-11-13"
@@ -116,19 +116,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 77 statements confirmed"
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 80 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-23"
+    note: "Corrected the meeting memory policy call to include -KnowledgeGenerationMeetingTypes, narrowed the removal row to Remove-AIGeneratedKnowledge, added the retention wizard steps and removed expiry steps from the checklist."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 98 statements not yet confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 80
-  confirmed: 78
+  claims: 98
+  confirmed: 98
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "c277ad489108d26e3f1710fb57a5163d"
+  contradicted: 0
+  attempts: 0
+  hash: "ae0c732089f0999407f7417a6feb7a73"
 ---
 
 ## What's changing
@@ -179,7 +183,7 @@ For compliance and records teams the questions are concrete: is a `.meeting` fil
 ## Governance guidance
 
 ### Before rollout
-- Decide, with legal and records, whether memory should be On for all meetings, Only for meetings with transcription, or Off, and what expiry applies.
+- Decide, with legal and records, whether memory should be On for all meetings, Only for meetings with transcription, or Off.
 - Classify `.meeting` files in your retention schedule and decide whether a Purview policy should target the memory containers.
 - Prepare staff communications explaining what is retained and for how long.
 
@@ -189,7 +193,6 @@ For compliance and records teams the questions are concrete: is a `.meeting` fil
 
 ### After rollout
 - Test an eDiscovery search against a known meeting's container URL.
-- Review expiry annually alongside transcript and recording retention.
 - Watch for Information Barriers support and for rollout date changes.
 
 ## Governance controls
@@ -199,10 +202,10 @@ For compliance and records teams the questions are concrete: is a `.meeting` fil
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether meeting memory is generated and for which meetings</strong><br><small>User</small><br><small class="controls__note">On for all meetings, Only for meetings with transcription, or Off. The cmdlet reference warns the feature is not fully released, so the setting currently has no effect.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Meeting memory <a href="https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy&gt; -AllowMeetingKnowledgeGeneration &lt;Boolean&gt;</code> <a href="https://learn.microsoft.com/powershell/module/teams/set-csteamsmeetingpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Inspecting and removing generated memory for a meeting</strong></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-AIGeneratedKnowledgeContainer -ThreadId &lt;id&gt;; Remove-AIGeneratedKnowledge -ThreadId &lt;id&gt;</code> <a href="https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether meeting memory is generated and for which meetings</strong><br><small>User</small><br><small class="controls__note">The reference warns the feature is not fully released, so the setting currently has no effect. The meeting-type choice applies only when AllowIntelligentRecap and AllowMeetingKnowledgeGeneration are both $True.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Meeting memory <a href="https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy&gt; -AllowMeetingKnowledgeGeneration &lt;Boolean&gt; -KnowledgeGenerationMeetingTypes &lt;AllMeetings|TranscribedMeetings|None&gt;</code> <a href="https://learn.microsoft.com/powershell/module/teams/set-csteamsmeetingpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Removing generated memory for a meeting</strong></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Remove-AIGeneratedKnowledge -ThreadId &lt;id&gt;</code> <a href="https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Copilot in meetings and events</strong><br><small>User</small><br><small class="controls__note">The Copilot guide lists these four values; the Set-CsTeamsMeetingPolicy reference currently lists only Enabled and EnabledWithTranscript.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Recording &amp; transcription › Copilot <a href="https://learn.microsoft.com/microsoftteams/copilot-teams-transcription#manage-copilot-for-teams-meetings-and-events" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy&gt; -Copilot Enabled|EnabledWithTranscript|EnabledWithTranscriptDefaultOn|Disabled</code> <a href="https://learn.microsoft.com/microsoftteams/copilot-teams-transcription#manage-copilot-for-teams-meetings-and-events" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Retention of memory containers</strong><br><small>Tenant</small><br><small class="controls__note">Security &amp; Compliance PowerShell. Requires an existing policy scoped to the memory container URL.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Policies › Retention policies › New retention policy <a href="https://learn.microsoft.com/purview/create-retention-policies#create-and-configure-a-retention-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RetentionComplianceRule -Name &lt;rule&gt; -Policy &lt;existing-policy&gt; -RetentionDuration &lt;days&gt; -RetentionComplianceAction &lt;Keep|Delete|KeepAndDelete&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Retention of memory containers</strong><br><small>Tenant</small><br><small class="controls__note">Security &amp; Compliance PowerShell; needs an existing policy scoped to the memory container URL. Wizard: keep Full directory, choose Static, select SharePoint classic and communication sites and include the container URLs.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Policies › Retention policies › New retention policy <a href="https://learn.microsoft.com/purview/create-retention-policies#create-and-configure-a-retention-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RetentionComplianceRule -Name &lt;rule&gt; -Policy &lt;existing-policy&gt; -RetentionDuration &lt;days&gt; -RetentionComplianceAction &lt;Keep|Delete|KeepAndDelete&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -222,12 +225,9 @@ cost: Low. Compliance review, configuration and communication are the known cost
 impact: High. Memory generation begins four weeks after the controls arrive, for eligible meetings with Intelligent Recap enabled and a Copilot-licensed invitee, so most recapped meetings are affected unless an admin changes the default.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; rendered controls table / command: Set-CsTeamsMeetingPolicy -Identity <policy> -AllowMeetingKnowledgeGeneration <Boolean> controls both whether memory is generated and which meetings generate it. | Found: -KnowledgeGenerationMeetingTypes: Specifies which meetings organized by users assigned this policy can generate an AI-generated meeting knowledge file. AllMeetings: Allow generation for all meetings; TranscribedMeetings: Allow generation only for meetings with transcription. | Fix: Replace controls[0].api.call and its rendered equivalent with 'Set-CsTeamsMeetingPolicy -Identity <policy> -AllowMeetingKnowledgeGeneration <Boolean> -KnowledgeGenerationMeetingTypes <AllMeetings|TranscribedMeetings|None>'. Add to its note: 'The meeting-type choice applies only when AllowIntelligentRecap and AllowMeetingKnowledgeGeneration are both $True.' Keep the existing unreleased/no-effect warning. Reference: https://learn.microsoft.com/powershell/module/teams/set-csteamsmeetingpolicy. | Source: https://learn.microsoft.com/powershell/module/teams/set-csteamsmeetingpolicy
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].api; Governance guidance; rendered controls table / command: Get-AIGeneratedKnowledgeContainer -ThreadId <id> finds the memory container URL and Remove-AIGeneratedKnowledge -ThreadId <id> deletes meeting memory. | Found: Get-AIGeneratedKnowledgeContainer -ThreadId <String> -CallId <String> ... Remove-AIGeneratedKnowledge -ThreadId <String> -CallId <String> | Fix: Make controls[1].api.call a single operation: 'Remove-AIGeneratedKnowledge -ThreadId <id>', and update its rendered equivalent. Keep the already documented Get-AIGeneratedKnowledgeContainer procedure in the governance guidance. | Source: https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings
-- [supported, minor] controls[3].ui; rendered controls table / admin-path: Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy is the entry route for configuring memory retention. | Found: Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies. 2. Select New retention policy to start the Create retention policy configuration | Fix: Keep the documented entry path, but add to controls[3].note: 'This opens the retention-policy wizard. Keep Full directory on Assign admin units; choose Static on Choose the type of retention policy to create; on Choose locations select SharePoint classic and communication sites and include the memory container URLs; configure retention on Decide if you want to retain content, delete it, or both.' These steps are documented at https://learn.microsoft.com/purview/create-retention-policies and the memory location at https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings. | Source: https://learn.microsoft.com/purview/create-retention-policies#create-and-configure-a-retention-policy
-- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The checklist tells administrators to decide and review memory expiry, but the controls table has no memory-expiry row. | Found: Decide ... what expiry applies. / Review expiry annually alongside transcript and recording retention. / The Learn page ... gives no navigation path for it, so it is not a row in the table. | Fix: The checklist steps 'Decide ... what expiry applies' and 'Review expiry annually alongside transcript and recording retention' name memory expiry without a corresponding controls row. Remove those expiry-specific checklist clauses; retain the existing documented expiry explanation in the body. Do not add a control row as part of this correction.
+- [supported, minor] licensing.notes; What's changing / behaviour: TAP means Technology Adoption Program. | Found: New updates for the Teams desktop client are released twice a month after thorough internal testing and validation through our Technology Adoption Program (TAP). | Fix: Add https://learn.microsoft.com/microsoftteams/teams-client-update#teams-client-updates-timeline to sources for the expanded program name, or use 'Teams TAP program' in the licensing notes and rollout paragraph. | Source: https://learn.microsoft.com/microsoftteams/teams-client-update#teams-client-updates-timeline
+- [supported, minor] controls[3].ui / admin-path: Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy reaches the Purview retention-policy wizard. | Found: Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies. 2. Select New retention policy to start the Create retention policy configuration | Fix: Extend controls[3].ui.path and the rendered path to 'Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Assign admin units > Full directory > Choose the type of retention policy to create > Static > Choose locations > SharePoint classic and communication sites > Decide if you want to retain content, delete it, or both'. Keep the note about including container URLs. The current route is correct but stops at the wizard entrance. | Source: https://learn.microsoft.com/purview/create-retention-policies
 -->

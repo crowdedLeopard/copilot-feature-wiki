@@ -93,18 +93,20 @@ changes:
     note: "Corrected the cost rating to medium and replaced the claim that no price is published with the published per-user Viva plan pricing page."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 82 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-16"
+  status: "held"
+  date: "2026-11-23"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 66
+  claims: 82
+  confirmed: 80
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "8bd0083d76c3d4bdad4703b63d07ed92"
 ---
 
@@ -212,8 +214,11 @@ cost: Medium. Leaders need premium Viva licensing, and recipients need the Commu
 impact: Medium. Leaders, their delegates and the people they message notice it; other users see no change to how announcements are delivered.
 -->
 
-<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Why it matters: final sentence / applicability: Because no new targeting switch is documented, the available controls are the ones deciding who is a leader and who is a delegate manager. | Found: Admins can override the default and limit this option to specific users. This setting controls who has a storyline feed on their user profile and who can create new storyline posts. | Fix: Replace the final sentence of Why it matters with 'Microsoft documents no targeting-specific tenant switch; review leader and delegate assignments alongside the existing storyline creator restriction.' The existing creator restriction is documented at https://learn.microsoft.com/viva/engage/eac-storyline and already appears in controls[2]. | Source: https://learn.microsoft.com/viva/engage/eac-storyline
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: Every control the governance checklist asks readers to check has a controls-table row. | Found: Check department, job title, country and manager values ... in Microsoft Entra ID or Organizational Data in Microsoft; the controls table covers leaders, delegates, storyline creators, the activity log and the targeting switch, but not organisational-data maintenance. | Fix: The organisational-data validation step has no corresponding control row. Remove this checklist bullet; retain the notice's organisational-data advice in Why it matters.
+- [supported, minor] controls[0].ui; Governance controls table; Why it matters / admin-path: Audience management is reached through Feature management > Leadership identification and audiences > Manage leaders > leader (pencil icon) > Manage audiences. | Found: On the Manage leaders list, find the leader’s row and select the pencil icon ... The Manage audiences page appears ... To define an audience, select the Add new audience button | Fix: For configuring audiences, extend the path to 'Feature management > Leadership identification and audiences > Manage leaders > leader (pencil icon) > Manage audiences > Add new audience'. Keep the existing note about Entire organization, whose toggle is on Manage audiences. | Source: https://learn.microsoft.com/viva/engage/leadership-identification
+- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: Every control the governance checklist tells readers to check appears in the controls table. | Found: Check department, job title, country and manager values ... in Microsoft Entra ID or Organizational Data in Microsoft; the table contains leaders, delegates, storyline creators, the activity log and a targeting switch, but no organizational-data maintenance row. | Fix: Remove the first Before rollout checklist bullet about checking organizational attributes, which has no controls-table row. Retain the notice's organizational-data advice in Why it matters; do not add a control row.
 -->

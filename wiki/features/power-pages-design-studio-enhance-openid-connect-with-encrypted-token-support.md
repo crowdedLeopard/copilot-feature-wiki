@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "on"
 action: "prepare"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for this feature. Learn says Power Pages licensing is capacity based, by authenticated users per website per month and anonymous users per website per month."
+  model: "included"
+  notes: "Power Pages uses Authenticated user capacity subscriptions or the Authenticated user pay-as-you-go meter for authenticated website access. A separate licence or price specific to encrypted-ID-token support is not yet published."
 audiences: ["power-platform-admin","security","maker"]
 tags: ["power-pages","design-studio","authentication","end-user-authentication","identity-providers","encryption"]
 sources:
@@ -40,6 +40,9 @@ sources:
   - title: "Power Platform licensing FAQs"
     url: "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq"
     kind: "learn"
+  - title: "Set up site authentication"
+    url: "https://learn.microsoft.com/power-pages/security/authentication/configure-site#edit-an-identity-provider"
+    kind: "learn"
   - title: "Microsoft Power Platform CLI support for Power Pages"
     url: "https://learn.microsoft.com/power-pages/configure/power-platform-cli"
     kind: "learn"
@@ -56,15 +59,15 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Manage > Products > Power Pages > Settings > Authentication > OpenID Connect > environment > Manage"
+      path: "Manage > Products > Power Pages > Settings > Authentication > OpenID Connect > environment > Manage > site preference"
       docs: "https://learn.microsoft.com/power-pages/security/external-auth-control"
     api: null
-    note: "Protocol controls are prerelease. They restrict the OpenID Connect protocol, not encrypted tokens; Microsoft has not confirmed they apply to this feature."
+    note: "Protocol controls are prerelease. They govern OpenID Connect providers on targeted sites; this is a protocol control, not a documented encryption-specific switch."
   - governs: "OpenID Connect provider configuration on a site, including Registration claims mapping and Login claims mapping"
     scope: "site"
     ui:
       surface: "Power Pages design studio"
-      path: "Security > Identity providers"
+      path: "Security > Identity providers > provider > Edit configuration > Registration claims mapping / Login claims mapping"
       docs: "https://learn.microsoft.com/power-pages/security/authentication/openid-provider"
     api:
       kind: "pac-cli"
@@ -78,7 +81,7 @@ controls:
     note: "Not documented at the time of writing (November 2026)."
 confidence: "low"
 created: "2026-11-16"
-updated: "2026-11-16"
+updated: "2026-11-23"
 roadmapModified: "2026-10-14T22:53:09"
 changes:
   - date: "2026-11-16"
@@ -91,19 +94,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 42 statements not yet confirmed"
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 47 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-23"
+    note: "Correction: narrowed the JWKS statement, said the OpenID Connect governance control is a protocol control that blocks sign-in through that protocol, extended two admin paths, and read licensing as included in Power Pages capacity licensing."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 62 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 45
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "43f59f4a3367147f8f610ab961814431"
+  claims: 62
+  confirmed: 62
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "e9ccdb64e1309425151b255b7a859c8e"
 ---
 
 ## What's changing
@@ -132,7 +139,7 @@ If nobody acts, existing sign-in is unchanged according to the roadmap. Because 
 **Security & identity**
 
 - Encrypted tokens are described as an addition to signed tokens. How a site treats an unencrypted token once a provider is set up for encryption is not documented, so do not assume unencrypted tokens are rejected.
-- Where Power Pages holds the decryption key, and who rotates it, is not documented. Today's documented model needs only the provider's public JWKS URI to verify signatures.
+- Where Power Pages holds the decryption key, and who rotates it, is not documented. The current OpenID Connect FAQ requires a public JWKS URI endpoint where the provider publishes keys to verify ID-token signatures.
 
 **Autonomy & actions**
 
@@ -141,13 +148,13 @@ If nobody acts, existing sign-in is unchanged according to the roadmap. Because 
 **Change & support**
 
 - Learn says changes to a site's authentication settings might take a few minutes to be reflected, so retest sign-in after any provider change.
-- Blocking the OpenID Connect protocol in the Power Platform admin center stops users signing in with it. That control is the existing way to restrict the protocol; Learn does not say it governs token encryption.
+- Blocking the OpenID Connect protocol in the Power Platform admin center stops users signing in with it. That control is the existing way to restrict the protocol; Learn documents a protocol control, not an encryption-specific switch.
 
 ## Cost and licensing
 
-Microsoft has not published licensing or pricing for this feature, and the roadmap record names no licence or meter.
+A licence or price specific to this feature is not yet published, and the roadmap record names no licence or meter.
 
-Power Pages as a whole is licensed on capacity: the Power Platform licensing FAQ describes authenticated users per website per month and anonymous users per website per month. Neither that page nor the roadmap says encrypted tokens change the count or the charge, so treat any effect as Not yet published.
+Power Pages as a whole is licensed on capacity: the Power Platform licensing FAQ describes authenticated users per website per month and anonymous users per website per month. It names the Authenticated user capacity subscription and the Authenticated user pay-as-you-go meter for authenticated users. Neither that page nor the roadmap says encrypted tokens change the count or the charge, so treat any effect as Not yet published.
 
 The cost the sources show is indirect: admin and maker time to reconfigure a provider and retest sign-in.
 
@@ -183,8 +190,8 @@ The cost the sources show is indirect: admin and maker time to reconfigure a pro
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether makers can configure OpenID Connect identity providers on a site</strong><br><small>Environment</small><br><small class="controls__note">Protocol controls are prerelease. They restrict the OpenID Connect protocol, not encrypted tokens; Microsoft has not confirmed they apply to this feature.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Products › Power Pages › Settings › Authentication › OpenID Connect › environment › Manage <a href="https://learn.microsoft.com/power-pages/security/external-auth-control" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>OpenID Connect provider configuration on a site, including Registration claims mapping and Login claims mapping</strong><br><small>Site</small><br><small class="controls__note">Existing settings; Learn documents no encrypted-token option here. The PAC CLI call uploads prepared site configuration, not an encryption-specific switch.</small></td><td data-label="Admin UI"><strong>Power Pages design studio</strong><br>Security › Identity providers <a href="https://learn.microsoft.com/power-pages/security/authentication/openid-provider" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac pages upload --path &quot;&lt;site-folder&gt;&quot; --modelVersion 2</code> <a href="https://learn.microsoft.com/power-platform/developer/cli/reference/pages#pac-pages-upload" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether makers can configure OpenID Connect identity providers on a site</strong><br><small>Environment</small><br><small class="controls__note">Protocol controls are prerelease. They govern OpenID Connect providers on targeted sites; this is a protocol control, not a documented encryption-specific switch.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Products › Power Pages › Settings › Authentication › OpenID Connect › environment › Manage › site preference <a href="https://learn.microsoft.com/power-pages/security/external-auth-control" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>OpenID Connect provider configuration on a site, including Registration claims mapping and Login claims mapping</strong><br><small>Site</small><br><small class="controls__note">Existing settings; Learn documents no encrypted-token option here. The PAC CLI call uploads prepared site configuration, not an encryption-specific switch.</small></td><td data-label="Admin UI"><strong>Power Pages design studio</strong><br>Security › Identity providers › provider › Edit configuration › Registration claims mapping / Login claims mapping <a href="https://learn.microsoft.com/power-pages/security/authentication/openid-provider" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac pages upload --path &quot;&lt;site-folder&gt;&quot; --modelVersion 2</code> <a href="https://learn.microsoft.com/power-platform/developer/cli/reference/pages#pac-pages-upload" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch or setting for accepting encrypted ID tokens</strong><br><small>Site</small><br><small class="controls__note">Not documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -193,7 +200,7 @@ No Microsoft page documents a setting for encrypted ID tokens at the time of wri
 
 The PAC CLI call in the second row uploads prepared website configuration from a local folder, which includes site settings such as a provider's. It is not an encryption-specific switch.
 
-The Power Platform admin center setting decides whether makers can configure OpenID Connect providers at all. Learn marks the protocol controls as prerelease. Blocking the protocol stops users signing in through it, so agree the change with site owners first. It does not restrict encryption.
+The Power Platform admin center setting decides whether makers can configure OpenID Connect providers at all, through a site preference that Learn describes as all sites in the environment, all sites except specific sites, specific sites, or none of the sites. Learn marks the protocol controls as prerelease. Blocking the protocol stops users signing in through it, so agree the change with site owners first. This is a protocol control, not a documented encryption-specific switch; blocking OpenID Connect prevents sign-in through that protocol.
 
 ## Open questions
 
@@ -205,18 +212,12 @@ The Power Platform admin center setting decides whether makers can configure Ope
 
 <!-- rationale
 risk: Low. The roadmap says existing sign-in flows do not change, and the feature accepts a stricter token format; no Microsoft page yet documents any new data access or a way to switch it off.
-cost: Low. Licensing for this feature is not yet published; the only cost the sources show is admin and maker time to reconfigure a provider, on top of Power Pages capacity licensing.
+cost: Low. A licence or price specific to this feature is not yet published; the only cost the sources show is admin and maker time to reconfigure a provider, on top of Power Pages capacity licensing.
 impact: Low. Site makers and identity administrators notice it when connecting a provider that encrypts ID tokens; the roadmap says sign-in flows are not changed for existing users.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Security & identity / behaviour: Today's documented signature-verification model needs only the provider's public JWKS URI. | Found: Searched: "Power Pages" "OpenID Connect" encryption key algorithms prerequisites pricing licensing. Opened openid-faqs and openid-provider; they require public signing keys and discovery metadata but do not state the exclusive 'only' requirement. | Fix: Replace 'Today's documented model needs only the provider's public JWKS URI to verify signatures.' with 'The current OpenID Connect FAQ requires a public JWKS URI endpoint where the provider publishes keys to verify ID-token signatures.' Keep the existing FAQ citation.
-- [contradicted, blocker] Governance controls: final sentence; Risk assessment: Change & support / applicability: The OpenID Connect governance control does not restrict encryption, and Learn does not say it governs token encryption. | Found: When a governance setting that blocks an authentication option takes effect, users can no longer sign in or register by using that authentication option. | Fix: Replace 'It does not restrict encryption.' with 'This is a protocol control, not a documented encryption-specific switch; blocking OpenID Connect prevents sign-in through that protocol.' Replace 'Learn does not say it governs token encryption.' with 'Learn documents a protocol control, not an encryption-specific switch.' The control's documented reach includes OIDC sign-in regardless of token format, rather than permitting encrypted sign-in to bypass a protocol block. | Source: https://learn.microsoft.com/power-pages/security/external-auth-control
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls / admin-path: The governance control is reached at Power Platform admin center > Manage > Products > Power Pages > Settings > Authentication > OpenID Connect > environment > Manage. | Found: Under Authentication, select the authentication option you want to manage. Select an environment, and then select Manage. Choose the sites where makers can configure the authentication option. | Fix: Extend the path to 'Manage > Products > Power Pages > Settings > Authentication > OpenID Connect > environment > Manage > site preference' and say the preference chooses all sites, all except selected sites, specific sites, or none. The cited operational page supports this route; the release-plan page https://learn.microsoft.com/power-platform/release-plan/2025wave2/power-pages/manage-external-authentication-provider-governance instead gives 'Manage > Power Pages > Governance settings > Authentication providers', so retain the operational route and note that the release plan uses different labels. | Source: https://learn.microsoft.com/power-pages/security/external-auth-control
-- [supported, minor] controls[1].ui; Governance guidance: Before rollout; Governance controls / admin-path: Power Pages design studio > Security > Identity providers reaches the page for configuring OpenID Connect providers and claims mappings. | Found: In your Power Pages site, select Security > Identity providers. | Fix: For editing an existing provider, extend the path to 'Security > Identity providers > provider > Edit configuration > Registration claims mapping / Login claims mapping'. The provider is selected using More Commands, an omitted icon permitted by the standard. Add https://learn.microsoft.com/power-pages/security/authentication/configure-site#edit-an-identity-provider to sources for the edit step; the currently cited openid-provider page documents the mapping settings. The shorter path can remain in the inventory checklist. | Source: https://learn.microsoft.com/power-pages/security/authentication/openid-provider
-- [supported, minor] controls[0].note; Governance controls: row 1 / applicability: The correctly documented protocol control is not confirmed to apply to encrypted-ID-token support. | Found: Each protocol control determines whether makers can configure identity providers that use that protocol on the targeted sites. | Fix: Replace 'They restrict the OpenID Connect protocol, not encrypted tokens; Microsoft has not confirmed they apply to this feature.' with 'They govern OpenID Connect providers on targeted sites; this is a protocol control, not a documented encryption-specific switch.' Keep the prerelease qualification. | Source: https://learn.microsoft.com/power-pages/security/external-auth-control
-- [supported, minor] front matter: licensing.model and notes; Cost and licensing; rationale: cost / licensing: Licensing is unknown because no requirement specific to encrypted-ID-token support is published. | Found: The Authenticated user capacity subscription license can be purchased for the anticipated number of unique, authenticated users. | Fix: Set licensing.model to 'included' for this new option inside Power Pages. Replace the notes with 'Power Pages uses Authenticated user capacity subscriptions or the Authenticated user pay-as-you-go meter for authenticated website access. A separate licence or price specific to encrypted-ID-token support is not yet published.' Retain the existing licensing FAQ citation and narrow the opening licensing sentence and rationale to the absence of a feature-specific requirement. | Source: https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq
+- [supported, minor] controls[1].ui; Governance controls: second row / admin-path: Existing OpenID Connect provider claims mappings are reached in design studio through Security > Identity providers > provider > Edit configuration > Registration claims mapping / Login claims mapping. | Found: Additional settings in Power Pages Registration claims mapping and Login claims mapping | Fix: In controls[1].ui.path and the rendered row, use 'Security > Identity providers > provider > More Commands (...) > Edit configuration > Additional settings > Registration claims mapping / Login claims mapping'. The editing route is documented at the already-cited https://learn.microsoft.com/power-pages/security/authentication/configure-site#edit-an-identity-provider; the setting labels are at https://learn.microsoft.com/power-pages/security/authentication/openid-provider. | Source: https://learn.microsoft.com/power-pages/security/authentication/openid-provider
 -->

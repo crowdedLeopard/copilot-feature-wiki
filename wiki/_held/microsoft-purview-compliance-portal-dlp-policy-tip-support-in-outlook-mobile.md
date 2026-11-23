@@ -25,6 +25,9 @@ sources:
   - title: "Microsoft 365 Roadmap 491017"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=491017"
     kind: "roadmap"
+  - title: "Microsoft 365 Roadmap 491016"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=491016"
+    kind: "roadmap"
   - title: "Data loss prevention policy tip reference for Outlook for Android, iOS, and macOS"
     url: "https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref"
     kind: "learn"
@@ -46,7 +49,7 @@ sources:
   - title: "Resolve issues that affect DLP policy tips"
     url: "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/data-loss-prevention/data-loss-prevention-policy-tips"
     kind: "learn"
-  - title: "Whether a DLP rule shows a policy tip and what it says (PowerShell)"
+  - title: "New-DlpComplianceRule"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule"
     kind: "learn"
 videos: []
@@ -57,14 +60,14 @@ controls:
     ui:
       surface: "Microsoft 365 Apps admin center"
       path: "Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Enable Purview Data Loss Prevention (DLP) policy tips in Outlook"
-      docs: "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy"
+      docs: "https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref"
     api: null
     note: "Default Disabled. Role: Office Apps Administrator recommended. Setting named on the Outlook mobile policy tip reference page."
   - governs: "Whether a DLP rule shows a policy tip and what it says"
     scope: "other"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Data loss prevention > Policies > + Create policy > Custom > Custom > Create or customize advanced DLP rules > Create rule > User notifications"
+      path: "Data loss prevention > Policies > + Create policy > Custom > Custom > Admin units > Full directory > Exchange email > Define policy settings > Create or customize advanced DLP rules > Create rule > User notifications > Policy tips"
       docs: "https://learn.microsoft.com/purview/dlp-osp-get-started"
     api:
       kind: "powershell"
@@ -80,19 +83,23 @@ changes:
     note: "First briefing for the US Government (GCC, GCC High, DoD) roadmap item: Outlook mobile DLP policy tips are off by default and enabled through a Cloud Policy setting."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 65 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Correction: controls row 1 now links the mobile reference page, row 2 gives the full Purview portal route, the default email policy tip text is corrected, and the risk rationale no longer says anything about data paths."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 68 statements contradicted, 2 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 61
+  claims: 68
+  confirmed: 66
   unconfirmed: 2
-  contradicted: 2
-  attempts: 1
-  hash: "fe02353dc8abdac48bfe1027c0b431cd"
+  contradicted: 0
+  attempts: 2
+  hash: "f44a646b476b0edfd533470aa9aa5ec3"
 ---
 
 ## What's changing
@@ -126,7 +133,7 @@ The benefit is that a sender sees the conflict while still writing, on the devic
 - When content matches several rules, only the policy tip from the most restrictive rule with the highest priority is shown, so the tip a user sees on mobile may not come from the rule you expect.
 
 **Change & support**
-- Default tip text for Outlook messages is "Your email message conflicts with a policy in your organization." Custom policy tip text is plain text of up to 256 characters, with no HTML or tokens, so brief the help desk on what users will read.
+- Default tip text for Outlook messages is "Your email conflicts with a policy in your organization." Custom policy tip text is plain text of up to 256 characters, with no HTML or tokens, so brief the help desk on what users will read.
 - Cloud Policy delivers settings to Windows, macOS, iOS and Android devices, although not every setting is available on every operating system.
 
 ## Cost and licensing
@@ -172,8 +179,8 @@ The benefit is that a sender sees the conflict while still writing, on the devic
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether DLP policy tips appear in Outlook for Android and iOS for chosen users</strong><br><small>Group</small><br><small class="controls__note">Default Disabled. Role: Office Apps Administrator recommended. Setting named on the Outlook mobile policy tip reference page.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Start with the basics › Choose the scope › Configure Settings › Enable Purview Data Loss Prevention (DLP) policy tips in Outlook <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether a DLP rule shows a policy tip and what it says</strong><br><small class="controls__note">Policy tips are configured per rule. Page shows the wizard for Exchange email; tip text is plain text up to 256 characters.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Custom › Custom › Create or customize advanced DLP rules › Create rule › User notifications <a href="https://learn.microsoft.com/purview/dlp-osp-get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpComplianceRule -Name &lt;rule name&gt; -Policy &lt;policy name&gt; -NotifyUser Owner -NotifyPolicyTipCustomText &quot;&lt;text&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether DLP policy tips appear in Outlook for Android and iOS for chosen users</strong><br><small>Group</small><br><small class="controls__note">Default Disabled. Role: Office Apps Administrator recommended. Setting named on the Outlook mobile policy tip reference page.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Start with the basics › Choose the scope › Configure Settings › Enable Purview Data Loss Prevention (DLP) policy tips in Outlook <a href="https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether a DLP rule shows a policy tip and what it says</strong><br><small class="controls__note">Policy tips are configured per rule. Page shows the wizard for Exchange email; tip text is plain text up to 256 characters.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Custom › Custom › Admin units › Full directory › Exchange email › Define policy settings › Create or customize advanced DLP rules › Create rule › User notifications › Policy tips <a href="https://learn.microsoft.com/purview/dlp-osp-get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpComplianceRule -Name &lt;rule name&gt; -Policy &lt;policy name&gt; -NotifyUser Owner -NotifyPolicyTipCustomText &quot;&lt;text&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -189,7 +196,7 @@ Cloud Policy roles are Office Apps Administrator (recommended), Security Adminis
 - Does the availability of this feature differ between the Worldwide item (491016) and this US Government item (491017) beyond the dates on the roadmap? Watch the roadmap entries and the mobile reference page.
 
 <!-- rationale
-risk: Low. Learn says the policy tip UI is turned off by default in Outlook mobile, so nothing new reaches users until an administrator enables the Cloud Policy setting; the feature adds a warning, not a new data path.
+risk: Low. Learn says the policy tip UI is turned off by default in Outlook mobile, so nothing new reaches users until an administrator enables the Cloud Policy setting.
 cost: Medium. Advanced policy tip support needs a licence for each scoped user (Microsoft 365 E5/A5/G5, a Purview suite or the E5 Information Protection & Governance add-on); no separate meter is published.
 impact: Medium. Only the users or groups an administrator targets will see tips in Outlook for Android and iOS, so the people who notice are those in the scope you choose.
 -->
@@ -197,12 +204,10 @@ impact: Medium. Only the users or groups an administrator targets will see tips 
 <!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[0].ui / admin-path: The linked Cloud Policy overview documents the printed creation path through Configure Settings to 'Enable Purview Data Loss Prevention (DLP) policy tips in Outlook'. | Found: Searched: Cloud Policy service Enable Purview DLP policy tips Outlook Microsoft Graph PowerShell API policy configuration. Opened overview-cloud-policy and dlp-outlook-mobile-policy-tip-ref: the overview gives the wizard but never names the deciding setting; the mobile page does. | Fix: Keep the path, which is supported by the two cited pages together, but change controls[0].ui.docs and the rendered row's Learn link to https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref, which documents the control's own setting. Retain the Cloud Policy overview in sources for the wizard steps.
-- [contradicted, blocker] controls[1].ui / admin-path: The policy-creation route reaches the tip control via Custom > Custom > Create or customize advanced DLP rules > Create rule > User notifications without a location choice. | Found: Select Full directory under Admin units. Select only the Exchange email location. Select Next. On the Define policy settings page, select Create or customize advanced DLP rules. | Fix: Replace the front-matter and rendered route with 'Data loss prevention > Policies > + Create policy > Custom > Custom > Admin units > Full directory > Exchange email > Define policy settings > Create or customize advanced DLP rules > Create rule > User notifications > Policy tips' in Microsoft Purview portal, citing https://learn.microsoft.com/purview/dlp-osp-get-started. | Source: https://learn.microsoft.com/purview/dlp-osp-get-started
-- [contradicted, blocker] Risk assessment: Change & support / behaviour: The default policy tip text for Outlook messages is 'Your email message conflicts with a policy in your organization.' | Found: Default text for policy tips in email ... Your email conflicts with a policy in your organization. | Fix: Replace the sentence's quoted text with 'Your email conflicts with a policy in your organization.' The version containing 'message' belongs to the article's default email notification table, not its policy tip table. | Source: https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips
+- [unsupported, blocker] front matter: licensing.model / licensing: Outlook mobile policy tips have a mixed licensing model based on the desktop advanced-policy-tip suites and add-ons. | Found: Searched: Outlook mobile DLP policy tips licensing requirements; Outlook mobile policy tips license meter. Read mobile reference, support matrix, desktop reference and service description; desktop licence alternatives are published, but mobile entitlement via those alternatives is not stated. | Fix: Set licensing.model to 'included' on the documented product-level prerequisite, and replace notes with: 'Cloud Policy supports most Microsoft 365 subscription plans that include Microsoft 365 Apps; each targeted user needs a supported licence. A licence list specific to Outlook mobile policy tips is not yet published.' Cite https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy. Do not describe the desktop suite/add-on alternatives as established mobile entitlement.
+- [unsupported, blocker] summary; Governance guidance: Before rollout; rationale: cost / licensing: Every Outlook mobile user scoped for advanced policy tips must hold one of the desktop E5-level licences in the Purview service description. | Found: Searched: Outlook mobile DLP policy tips licensing requirements. Read mobile reference ('necessary licenses'), mobile support matrix ('Varies by version and license'), desktop reference and service description; the explicit advanced licence list is headed Outlook for Microsoft 365. | Fix: Remove 'Advanced tips need E5-level licences' from the summary. Replace the first Before rollout bullet with: 'Check that Cloud Policy supports each targeted user's plan; confirm the mobile advanced-policy-tip licence requirement before expanding the pilot.' Replace the cost rationale with: 'Low. Known costs are admin time, pilot testing and user communication; licensing specific to advanced Outlook mobile policy tips is not yet published.' Set cost to 'low'. Keep the existing desktop licence list only as explicitly labelled background, not a mandatory mobile requirement.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Scope / record: The same feature has a separate roadmap item numbered 491016. | Found: "id": 491016; "title": "Microsoft Purview Compliance Portal: DLP Policy Tip Support in Outlook Mobile" | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=491016 to sources as a roadmap source titled 'Microsoft 365 Roadmap 491016'; its record supports the separate item's status, target, preview and cloud.
-- [supported, minor] title; summary; What's changing; Scope / behaviour: Outlook for Android and iOS supports Purview DLP policy tips, and the mobile reference also covers macOS. | Found: Outlook for Android, iOS, and macOS now supports data loss prevention (DLP) policy tips with commonly used predicates and exceptions, advanced classifiers, and override capabilities. | Fix: Add: 'The mobile reference documents support for Android, iOS and macOS, although the troubleshooting article still says policy tips are not supported for "Outlook for Mac iOS clients".' The conflicting article is https://learn.microsoft.com/troubleshoot/microsoft-365/purview/data-loss-prevention/data-loss-prevention-policy-tips. | Source: https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref
-- [supported, minor] What's changing; Risk assessment: Data exposure / behaviour: The mobile reference says all actions and information types for email communications are supported. | Found: All actions and information types for email communications are supported. | Fix: Add: 'The general support matrix describes Outlook mobile conditions and actions as a subset and links to the Outlook for Microsoft 365 reference, whereas the mobile reference says all actions and information types for email communications are supported.' Cite https://learn.microsoft.com/purview/dlp-policy-tips-reference. | Source: https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref
-- [unsupported, minor] rationale: risk / behaviour: The feature introduces no new data path. | Found: Searched: Outlook mobile DLP policy tips new data access data processing data path warning. Opened mobile policy tip reference and notifications reference; they document tips and rule actions, not whether enabling mobile tips introduces a new data path. | Fix: Remove 'not a new data path' from the risk rationale. Keep the supported explanation that the policy tip UI is off by default until an administrator enables it.
+- [supported, minor] title; summary; What's changing; Scope / behaviour: Outlook for Android, iOS and macOS supports DLP policy tips. | Found: Outlook for Android, iOS, and macOS now supports data loss prevention (DLP) policy tips | Fix: Add: 'The mobile reference documents support, but the cited troubleshooting article still says "Policy tips are currently not supported for Outlook for Mac iOS clients" (https://learn.microsoft.com/troubleshoot/microsoft-365/purview/data-loss-prevention/data-loss-prevention-policy-tips).' | Source: https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref
+- [supported, minor] What's changing; Risk assessment: Data exposure / behaviour: The mobile page states that all actions and information types for email communications are supported. | Found: All actions and information types for email communications are supported. | Fix: Add: 'The general support matrix instead describes Outlook Mobile conditions and actions as "Subset" and sensitive information type support as "Varies by version and license" (https://learn.microsoft.com/purview/dlp-policy-tips-reference); the mobile reference gives the broader statement.' | Source: https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref
+- [supported, minor] Cost and licensing; licensing.notes; rationale: cost / licensing: The service description lists E5/A5/G5, the named Purview suites, and E5/A5/F5/G5 Information Protection & Governance as alternative licences for advanced policy tips for Outlook for Microsoft 365. | Found: Microsoft 365 E5/A5/G5; Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW; Microsoft 365 E5/A5/F5/G5 Information Protection & Governance | Fix: Add to the desktop licensing paragraph: 'The oversharing setup guide instead states that oversharing pop-ups require a Microsoft 365 E5 subscription (https://learn.microsoft.com/purview/dlp-osp-get-started), while the service description lists these alternatives.' Keep this explicitly scoped to Outlook for Microsoft 365. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
 -->

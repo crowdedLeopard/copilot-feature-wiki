@@ -67,7 +67,7 @@ controls:
       kind: "powershell"
       call: "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\""
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember"
-    note: "The signed-in admin needs the Role Management role. The portal page also offers Choose groups. Role Management is an existing role, not the new view-only role."
+    note: "The signed-in admin needs the Role Management role. The portal page also offers Choose groups; security groups are supported only in Microsoft 365 commercial cloud organizations. Role Management is not the new role."
   - governs: "Switch to grant or withhold the new view-only role separately from Global Reader and Security Reader"
     scope: "tenant"
     ui: null
@@ -86,19 +86,23 @@ changes:
     note: "Corrected after the independent check: risk rationale no longer says permissions are unchanged, action is now review, licensing now reflects existing Purview licence requirements, and two control rows give fuller path and request-body detail."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 42 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-23"
+    note: "Corrected after the independent check: removed an unsupported claim about where the addition would show, added the commercial-cloud limit on security groups, and narrowed the description of Global Reader's reach."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 48 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-23"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 42
-  confirmed: 40
-  unconfirmed: 1
+  claims: 48
+  confirmed: 47
+  unconfirmed: 0
   contradicted: 1
-  attempts: 2
-  hash: "23cfe540b9031fbb619ccdfcfc881aa5"
+  attempts: 3
+  hash: "8340568b43e4ea284618ebe0417fa1d0"
 ---
 
 ## What's changing
@@ -111,7 +115,7 @@ The roadmap record gives the status as Launched, the release phase as General Av
 
 ## Why it matters
 
-Role assignments show who holds privileged access, so visibility of them is itself sensitive. Microsoft says the Global Reader Entra role can "view all settings and administrative information across Microsoft 365", and that Security Reader members have read-only access to many security features. Adding a role that lists role group members extends what those two roles can see, without changing what they can change.
+Role assignments show who holds privileged access, so visibility of them is itself sensitive. Microsoft describes Global Reader as able to read settings and administrative information across Microsoft 365 services, with documented limitations, and says Security Reader members have read-only access to many security features. Adding a role that lists role group members extends what those two roles can see, without changing what they can change.
 
 Microsoft has not stated whether tenants must do anything for the role to take effect, so no source says existing behaviour changes for administrators who do not act. The practical decision is who you are content to let see the full list of role assignments, and whether your Global Reader and Security Reader membership is as short as it should be.
 
@@ -140,7 +144,7 @@ The only cost the sources show is indirect: admin time to review who holds Globa
 
 The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD, the Web platform and General Availability, with the status Launched and a target of July CY2026.
 
-The roadmap says the role is added to Global Reader and Security Reader in Purview and Entra, and that it covers the Purview and Defender portals. Learn's Purview permissions page maps the Entra roles Global Reader and Security Reader to Purview role groups of the same names, which is where the addition would show. Learn lists the Role Management role as held by the Organization Management and Purview Administrators role groups on the roles and role groups page, while the Purview permissions page says it is assigned only to Organization Management; the two pages disagree and both are reported here.
+The roadmap says the role is added to Global Reader and Security Reader in Purview and Entra, and that it covers the Purview and Defender portals. Learn's Purview permissions page maps the Entra roles Global Reader and Security Reader to Purview role groups of the same names. Learn lists the Role Management role as held by the Organization Management and Purview Administrators role groups on the roles and role groups page, while the Purview permissions page says it is assigned only to Organization Management; the two pages disagree and both are reported here.
 
 ## Governance guidance
 
@@ -165,7 +169,7 @@ The roadmap says the role is added to Global Reader and Security Reader in Purvi
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Who holds Global Reader and Security Reader, the roles the new view-only role is added to</strong><br><small>Tenant</small><br><small class="controls__note">Requires at least Privileged Role Administrator. The request body sets roleDefinitionId to the Global Reader or Security Reader role definition ID and principalId to the assignee object ID; directoryScopeId is / for tenant scope.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Identity › Roles &amp; admins › role › Add assignments <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Who can manage Purview role group membership (members of role groups holding the Role Management role)</strong><br><small>Tenant</small><br><small class="controls__note">The signed-in admin needs the Role Management role. The portal page also offers Choose groups. Role Management is an existing role, not the new view-only role.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › Role groups for Microsoft Purview solutions › role group › Edit › Edit members of the role group › Choose users <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who can manage Purview role group membership (members of role groups holding the Role Management role)</strong><br><small>Tenant</small><br><small class="controls__note">The signed-in admin needs the Role Management role. The portal page also offers Choose groups; security groups are supported only in Microsoft 365 commercial cloud organizations. Role Management is not the new role.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › Role groups for Microsoft Purview solutions › role group › Edit › Edit members of the role group › Choose users <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch to grant or withhold the new view-only role separately from Global Reader and Security Reader</strong><br><small>Tenant</small><br><small class="controls__note">No separate setting is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -190,8 +194,5 @@ impact: Low. Only administrators who hold Global Reader or Security Reader, and 
 <!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Scope: 'which is where the addition would show' / behaviour: The new role would appear in the mapped Global Reader and Security Reader Purview role groups. | Found: Searched: Purview view-only role management Global Reader Security Reader; read purview-permissions and searched scc-permissions for the new role. Mapping is documented, but neither page nor the roadmap describes how this addition appears in the portal. | Fix: Delete ', which is where the addition would show' from the Scope sentence; retain the documented mapping only.
-- [contradicted, blocker] controls[1].note: Choose groups; rendered controls table / availability: The portal also offers Choose groups without a cloud restriction stated in this government-inclusive briefing. | Found: On Edit members of the role group, select Choose users or Choose groups. Important: Security groups are supported only in Microsoft 365 commercial cloud organizations. | Fix: Replace 'The portal page also offers Choose groups.' in controls[1].note and the rendered note with 'The portal page also offers Choose groups; security groups are supported only in Microsoft 365 commercial cloud organizations.' Keep the Choose users path unchanged. Source: https://learn.microsoft.com/purview/purview-permissions#add-users-or-groups-to-a-microsoft-purview-built-in-role-group. | Source: https://learn.microsoft.com/purview/purview-permissions
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters; rationale: risk / role: Microsoft describes Global Reader as able to view all settings and administrative information across Microsoft 365. | Found: Global Reader | The read-only version of the Global administrator role. View all settings and administrative information across Microsoft 365. | Fix: Replace the quoted breadth with 'Microsoft describes Global Reader as able to read settings and administrative information across Microsoft 365 services, with documented limitations.' Cite https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference#global-reader, which lists exceptions including Defender content search and Secure Score and several Teams admin center areas. | Source: https://learn.microsoft.com/purview/purview-permissions
+- [contradicted, blocker] Governance guidance: Before rollout, first bullet / role: The access-review advice treats Global Reader and Security Reader as roles providing read access to every setting. | Found: The primary difference between Global Reader and Security Reader is that a Global Reader can access **configuration and settings**. | Fix: Replace the first Before rollout bullet with: 'Review who holds Global Reader and Security Reader in the Microsoft Entra admin center, and remove accounts that no longer need their assigned reader role.' Security Reader is not an every-setting reader, and the cited Entra reference also documents Global Reader limitations. | Source: https://learn.microsoft.com/defender-office-365/scc-permissions
 -->
