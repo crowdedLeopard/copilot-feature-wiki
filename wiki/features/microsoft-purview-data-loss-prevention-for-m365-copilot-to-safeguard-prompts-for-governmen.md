@@ -4,7 +4,7 @@ slug: "microsoft-purview-data-loss-prevention-for-m365-copilot-to-safeguard-prom
 roadmapId: 561892
 topic: "governance"
 products: ["Microsoft Purview"]
-summary: "A Purview DLP rule can stop Microsoft 365 Copilot and Copilot Chat answering prompts that contain chosen sensitive information types. Launched for GCC, GCC High and DoD; administrators must create the rule."
+summary: "A Purview DLP rule can stop Microsoft 365 Copilot and Copilot Chat answering prompts that contain chosen sensitive information types. Launched for GCC, GCC High and DoD; blocking requires administrator-enabled enforcement."
 status: "launched"
 releasePhase: ["General Availability"]
 clouds: ["GCC","GCC High","DoD"]
@@ -24,6 +24,9 @@ tags: ["purview","dlp","m365-copilot","copilot-chat","sensitive-information-type
 sources:
   - title: "Learn about using Microsoft Purview Data Loss Prevention to protect interactions with Microsoft 365 Copilot, Copilot Chat, and Cowork"
     url: "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about"
+    kind: "learn"
+  - title: "Learn about the default data loss prevention policy for Microsoft 365 Copilot location"
+    url: "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-default-policy"
     kind: "learn"
   - title: "Microsoft Purview service description"
     url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
@@ -57,19 +60,23 @@ changes:
     note: "New briefing: Purview DLP rule action that stops Copilot answering prompts containing sensitive information types, launched on the roadmap for GCC, GCC High and DoD."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 64 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after verification: added Microsoft's default policy (simulation mode, blocking needs enforce mode), and removed claims that rule creation is mandatory, that nothing screens prompts, and that the rule takes no action on data."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 69 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 58
-  unconfirmed: 1
-  contradicted: 5
-  attempts: 1
-  hash: "befe14a6bed65123512358ec6716af57"
+  claims: 69
+  confirmed: 69
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "d0c94f5574a44e2e061a70ebf8ab1c9a"
 ---
 
 ## What's changing
@@ -82,7 +89,7 @@ The roadmap item lists status Launched, release phase General Availability, targ
 
 ## Why it matters
 
-For a government-cloud tenant, this is the control that looks at what a user types into Copilot before Copilot answers. Without a rule, nothing in this control screens prompts, so national identifiers, card numbers or custom identifiers typed into Copilot are exposed to whatever Copilot would do with them, including grounding on Microsoft 365 data. No source says existing behaviour changes when the item arrives.
+For a government-cloud tenant, this is the control that looks at what a user types into Copilot before Copilot answers. Microsoft documents a default policy that detects sensitive prompts in simulation mode but does not block them. Check whether that policy is present in your tenant before creating another policy; blocking requires changing the policy to enforce mode.
 
 The practical decision is whether your tenant has SITs worth blocking in prompts and whether you accept that a blocked user gets no answer at all. That is a stronger outcome than the web-search rule, which only removes one grounding source. Decide which SITs, test in simulation mode, and agree a user message with your compliance team before you turn it on.
 
@@ -101,7 +108,7 @@ The practical decision is whether your tenant has SITs worth blocking in prompts
 
 **Autonomy & actions**
 
-- No change: the rule stops a response; it adds no capability and takes no action on data.
+- The rule prevents Copilot from returning a response to a prompt containing the chosen sensitive information types.
 
 **Change & support**
 
@@ -156,7 +163,7 @@ A price or meter specific to the Processing prompts action is not yet published.
 </tbody>
 </table>
 
-One control governs this feature: the DLP rule action. Learn describes no tenant-wide switch for it; the control is a rule inside a policy at the Copilot location, and the portal wording for the action varies on the page (Prevent Copilot and Cowork from processing content in the actions table, Restrict Copilot from processing content in the worked example).
+One control governs this feature: the DLP rule action. The control is a rule inside a policy at the Copilot location, and the portal wording for the action varies on the page (Prevent Copilot and Cowork from processing content in the actions table, Restrict Copilot from processing content in the worked example).
 
 Microsoft Learn documents no PowerShell call for the Processing prompts action at the time of writing (November 2026). The New-DlpComplianceRule reference documents -RestrictWebGrounding for blocking web grounding, which is a different action, and gives -RestrictAccess no description.
 
@@ -170,21 +177,7 @@ Rule changes can take up to four hours to reach Copilot. Learn also documents a 
 - Will DLP evaluate text extracted from uploaded files in prompts? Learn says it does not today.
 
 <!-- rationale
-risk: Low. This is a new control that restricts nothing until an administrator creates a DLP rule for it; left at its default, prompts are not screened for sensitive data by this control.
+risk: Low. Blocking requires administrator-enabled enforcement; Microsoft's documented default policy detects sensitive prompts in simulation mode but does not block them.
 cost: Low. The Microsoft Purview service description lists DLP to safeguard prompts as included, so the cost Microsoft's pages show is administrator time to build and test the rule.
 impact: Low. Administrators set it up, and only users whose typed prompts match the chosen sensitive information types are told the request cannot be completed.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters: No source says existing behaviour changes / absence: No source says existing behaviour changes when this capability arrives. | Found: Microsoft created a default DLP policy called Default DLP policy - Protect sensitive M365 Copilot interactions. ... The default policy detects sensitive information types (SIT) in user prompts. | Fix: Replace the sentence with 'Microsoft documents a default policy that detects sensitive prompts in simulation mode; check whether that policy is present in your tenant. Blocking requires changing the policy to enforce mode.' Cite https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-default-policy; do not claim a government-cloud rollout date for this default policy. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-default-policy
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The rule adds no capability and takes no action on data. | Found: Searched: Microsoft Purview DLP Copilot processing prompts rule autonomous actions modify data. Read the Copilot DLP location page and search excerpts; they describe preventing processing, not the broader assertion that the rule takes no action on data. | Fix: Replace 'No change: the rule stops a response; it adds no capability and takes no action on data' with 'The rule prevents Copilot from returning a response to a prompt containing the chosen sensitive information types.'
-- [contradicted, blocker] summary: administrators must create the rule / default: Administrators must create a rule to use this prompt-blocking control. | Found: Microsoft created a default DLP policy called Default DLP policy - Protect sensitive M365 Copilot interactions. ... If you want to block processing of the prompt, you must change the state of the policy to enforce mode. | Fix: Replace 'administrators must create the rule' in the summary with 'blocking requires administrator-enabled enforcement'. A new custom rule is a documented option, not a mandatory prerequisite where Microsoft's default policy is present. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-default-policy
-- [contradicted, blocker] Why it matters: Without a rule; rationale: risk / default: Until an administrator creates a DLP rule, prompts are not screened for sensitive data by this control. | Found: The default policy detects sensitive information types (SIT) in user prompts. ... The policy is in simulation mode by default, which means it doesn't block the prompt but generates an alert and sends an email to the admin (if configured). | Fix: Replace the first Why it matters paragraph's unconfigured-state assertion with 'Microsoft documents a default policy that detects sensitive prompts in simulation mode but does not block them. Check whether it is present in your tenant before creating another policy.' Replace the risk rationale with 'Low. Blocking requires administrator-enabled enforcement; Microsoft's documented default policy detects sensitive prompts in simulation mode but does not block them.' Cite https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-default-policy. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-default-policy
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Microsoft Purview portal route leads from Data Loss Prevention and custom policy creation to the Processing prompts rule action. | Found: Go to Data Loss Prevention > Policies and select + Create policy. Select the Custom template, then Custom policy. On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. Add a rule | Fix: Include the rule-selection step: 'Data Loss Prevention > Policies > + Create policy > Custom > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork > rule > Prevent Copilot and Cowork from processing content > Processing prompts'. Retain the note specifying the Content contains > Sensitive information types condition. The cited page supplies both the policy route and the final action. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
-- [supported, minor] front matter: defaultState; rationale: risk / default: Blocking prompt processing requires administrator-enabled enforcement, so the blocking control is admin-opt-in. | Found: If you want to block processing of the prompt, you must change the state of the policy to enforce mode. | Fix: Keep defaultState as admin-opt-in for blocking, and cite https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-default-policy. Describe the default as 'The default policy detects sensitive prompts in simulation mode; blocking requires changing the policy to enforce mode.' | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-default-policy
-- [contradicted, minor] Governance controls: tenant-wide switch; controls / consistency: The page records every explicit control absence in the controls table. | Found: Learn describes no tenant-wide switch for it; controls contains only Whether Copilot answers prompts that contain chosen sensitive information types. | Fix: The sentence asserting no separate tenant-wide switch has no corresponding both-null control row. Remove 'Learn describes no tenant-wide switch for it' and keep the documented statement that the control is a rule inside a policy.
-- [contradicted, minor] Governance guidance: Before rollout and At rollout; controls / consistency: Every checklist control has a corresponding controls-table row. | Found: Assign the policy author a role from the Learn list ... run it in simulation mode first ... Keep any sensitivity-label rule in a separate rule from the SIT rule. The table has only the prompt-blocking action. | Fix: The policy-author role assignment, simulation-mode selection and sensitivity-label-rule checklist steps have no corresponding control rows. This is a checklist/table coverage finding; do not add unverified paths or commands.
 -->

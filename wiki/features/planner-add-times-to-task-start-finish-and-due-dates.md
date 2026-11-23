@@ -61,8 +61,11 @@ controls:
       surface: "Teams admin center"
       path: "Teams apps > Manage apps > Planner > Block"
       docs: "https://learn.microsoft.com/microsoftteams/manage-planner-app"
-    api: null
-    note: "Blocks Planner in Teams, not on the web; does not govern the new settings. Update-M365TeamsApp exists, but its reference describes the -IsBlocked $true example as unblocking the app: use the Block control, not an inferred value."
+    api:
+      kind: "powershell"
+      call: "Update-M365TeamsApp -Id <app-id> -IsBlocked <boolean>"
+      docs: "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp"
+    note: "Blocks Planner in Teams, not on the web; does not govern the new settings. The reference documents -IsBlocked as Boolean, but describes examples using both $true and $false as unblocking; confirm the intended value before use."
   - governs: "Plan time zone, working hours and default task times for this feature"
     scope: "other"
     ui: null
@@ -84,19 +87,23 @@ changes:
     note: "Corrected after verification: added the beta Planner plan calendar settings and the Graph call that updates them, fixed the Teams app blocking row and the licensing model, and updated the open questions."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 66 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-23"
+    note: "Corrected after verification: the Teams app row now gives the Update-M365TeamsApp cmdlet and its documented -IsBlocked caveat instead of saying no automation is documented."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 63 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 65
+  claims: 63
+  confirmed: 63
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "4fc87bc11bf19c2a5d3221da7bb631f0"
+  contradicted: 0
+  attempts: 0
+  hash: "d1209a7089628f376a69f8db84261bf1"
 ---
 
 ## What's changing
@@ -163,7 +170,7 @@ The roadmap describes the settings as per plan (a plan's time zone and working h
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether the Planner app is available in Teams (coarse alternative; not specific to times on tasks)</strong><br><small>Tenant</small><br><small class="controls__note">Blocks Planner in Teams, not on the web; does not govern the new settings. Update-M365TeamsApp exists, but its reference describes the -IsBlocked $true example as unblocking the app: use the Block control, not an inferred value.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Planner › Block <a href="https://learn.microsoft.com/microsoftteams/manage-planner-app" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether the Planner app is available in Teams (coarse alternative; not specific to times on tasks)</strong><br><small>Tenant</small><br><small class="controls__note">Blocks Planner in Teams, not on the web; does not govern the new settings. The reference documents -IsBlocked as Boolean, but describes examples using both $true and $false as unblocking; confirm the intended value before use.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Planner › Block <a href="https://learn.microsoft.com/microsoftteams/manage-planner-app" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app-id&gt; -IsBlocked &lt;boolean&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Plan time zone, working hours and default task times for this feature</strong><br><small class="controls__note">The beta request body sets calendar.timeZone and calendar.workDayDefaults.startTime/endTime. Beta APIs are not supported for production use, and this operation currently lists no supported delegated or application permissions.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/planner/plans_v2/{planId}</code> <a href="https://learn.microsoft.com/graph/api/plan-update?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -183,10 +190,4 @@ The Teams app control hides the Planner app from Teams users. It does not turn o
 risk: Low. The roadmap describes a change to how task dates are entered and shown, with no new data sources or autonomous actions; the main exposure is confusion over which time zone a deadline is in.
 cost: Low. Learn lists Planner licences but no licence or meter for this feature, so the only cost the sources show is admin time and user communication; a feature-specific licence rule is not yet published.
 impact: Medium. People who set or read task dates in Planner on the web or in Teams would see times, a plan time zone and working hours once it ships; Microsoft has not stated whether it is on by default.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls table / absence: Automation for changing the Planner app's Teams availability or app state is not yet documented. | Found: This cmdlet updates app state and app available values for the Microsoft Teams app. ... Update-M365TeamsApp -Id <String> [-IsBlocked <Boolean>] ... -IsBlocked: The state of the app in the tenant. | Fix: Set controls[0].api to kind powershell, call 'Update-M365TeamsApp -Id <app-id> -IsBlocked <boolean>', docs 'https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp'. Replace the note's final sentence with 'The reference documents -IsBlocked as Boolean, but describes examples using both $true and $false as unblocking; confirm the intended value before using this cmdlet, or use the documented Block control.' Do not infer a blocking Boolean value from the parameter name. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp
 -->

@@ -12,7 +12,7 @@ platforms: ["Web"]
 targetDate: "August CY2026"
 previewDate: null
 risk: "low"
-cost: "low"
+cost: "medium"
 impact: "low"
 defaultState: "admin-opt-in"
 action: "review"
@@ -63,19 +63,23 @@ changes:
     note: "New briefing: Launched item-level report for EEEU and Everyone permissions, with its admin path, PowerShell call, role and licence conditions."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 60 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after verification: cost raised to medium, read-only and no-cleanup assurances replaced with Microsoft's point-in-time wording, full report route given, checklist steps labelled as prerequisites or follow-up."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 56
-  unconfirmed: 2
-  contradicted: 2
-  attempts: 1
-  hash: "6a36458f05e2757e942bcdc793d85aa5"
+  claims: 63
+  confirmed: 62
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "292f8cbeefc1623d85362f4431f36714"
 ---
 
 ## What's changing
@@ -102,10 +106,10 @@ If nobody runs it, nothing changes in your tenant: no source says it runs by its
 
 **Security & identity**
 - Standard SharePoint administrators and Global administrators cannot view file properties across sites they do not own, per the page. Limit the SharePoint Advanced Management Administrator role to the people who will triage findings.
-- The report is read-only listing; it does not remove access. Remediation is separate and the Data access governance page names restricted access control, the Change history report and Site access review as options.
+- The report captures the permission state of these groups at a specific point in time; Microsoft describes remediation as a subsequent action. The Data access governance page names restricted access control, the Change history report and Site access review as options.
 
 **Autonomy & actions**
-- No change: running the report starts no automated cleanup. Microsoft's page says you can fix findings through scripting.
+- The report captures the permission state of these groups at a specific point in time; Microsoft describes remediation as a subsequent action. Microsoft's page says you can fix findings through scripting.
 
 **Change & support**
 - Reports can be run again every 30 days, so schedule runs deliberately rather than regenerating during a clean-up.
@@ -136,7 +140,7 @@ The pages read state no separate price or meter for this report. Indirect cost i
 - Decide where the downloaded CSV will be stored and who may open it, since it lists item URLs.
 
 ### At rollout
-- Run the report for **Everyone except external users** first, then for **Everyone**, from SharePoint admin center > Reports > Data access governance.
+- Run the report for **Everyone except external users** first, then for **Everyone**, from SharePoint admin center > Reports > Data access governance > Snapshot reports > Sites and files shared via special SharePoint groups > View reports > Content shared with the selected group > Run report.
 - Download the ZIP and check the row count against the 1 million row limit.
 - Filter on SiteId or ParentGroupName to separate public-site membership from single files shared directly with the group.
 
@@ -158,7 +162,9 @@ The pages read state no separate price or meter for this report. Indirect cost i
 
 The report is run by the SharePoint Advanced Management Administrator role, which a Global administrator must assign; the page gives no other switch that turns the report on or off. The UI and PowerShell routes run the same report: the cmdlet's DetailedEEEUParameterSet takes only -ReportEntity and -ReportType, with no workload parameter.
 
-The report does not change permissions. Microsoft's Data access governance page lists restricted access control, the Change history report and Site access review as remedial actions for what the reports find. Those are existing controls for acting on findings, not controls over the report itself.
+The report captures the permission state of these groups at a specific point in time; Microsoft describes remediation as a subsequent action. Microsoft's Data access governance page lists restricted access control, the Change history report and Site access review as remedial actions for what the reports find. Those are existing controls for acting on findings, not controls over the report itself.
+
+The role assignment, the prerequisite site permissions report and the remedial options in the checklist above are prerequisites or follow-up actions documented in the cited Learn pages, not controls located by this table.
 
 ## Open questions
 
@@ -167,18 +173,13 @@ The report does not change permissions. Microsoft's Data access governance page 
 - Does the 30-day rerun interval apply to each report separately (EEEU and Everyone) or to the pair? Watch the report's Learn page.
 
 <!-- rationale
-risk: Low. The report only lists where Everyone or Everyone except external users hold access; it changes no permissions. The exposure it reveals already exists, and the CSV it produces contains item URLs.
-cost: Low. Microsoft's prerequisites page ties SharePoint Advanced Management to a Copilot licence in the tenant, the Plan 1 add-on or Microsoft 365 E7; the main cost is admin time to run it and act on results.
-impact: Low. Only administrators who hold the SharePoint Advanced Management Administrator role see the report; end users are not notified or changed by it.
+risk: Low. The report lists where Everyone or Everyone except external users hold access as a point-in-time snapshot; Microsoft describes remediation as a later action. The exposure it reveals already exists, and the CSV it produces contains item URLs.
+cost: Medium. Tenants without an existing qualifying entitlement may need a Microsoft Copilot licence or the SharePoint Advanced Management Plan 1 add-on. For tenants already entitled, the work is admin time to run the report and act on findings.
+impact: Low. Only administrators who hold the SharePoint Advanced Management Administrator role see the report.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment; Governance controls; rationale: risk and impact / behaviour: Running the report is read-only, changes no permissions and starts no automated cleanup. | Found: Searched: SharePoint detailed EEEU Everyone snapshot report read only permission changes automatic remediation notifications. Read the report page, DAG overview and PowerShell guidance/reference; none explicitly guarantees no permission writes or automated cleanup. | Fix: Replace the read-only/no-permission-change/no-automated-cleanup assurances in Risk assessment, Governance controls and the rationales with: 'The report captures the permission state of these groups at a specific point in time; Microsoft describes remediation as a subsequent action.' Source: https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report.
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: An unqualified low-cost rating, meaning indirect costs only, fits all the documented licensing routes. | Found: cost: "low"; licensing.model: "mixed"; 'a subscription that includes SharePoint K, P1 or P2 plus the SharePoint Advanced Management Plan 1 add-on'. The standard defines low as 'indirect cost only: admin time, communications, training'. | Fix: Set cost to 'medium'. Replace the cost rationale with: 'Medium. Tenants without an existing qualifying entitlement may need a Microsoft Copilot licence or the SharePoint Advanced Management Plan 1 add-on. For tenants already entitled, the work is admin time to run the report and act on findings.' Keep the published licensing conditions unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [unsupported, minor] rationale: impact / behaviour: End users are not notified when the report runs. | Found: Searched: "sites and files" "report" "notifications"; SharePoint detailed EEEU Everyone snapshot report read only permission changes automatic remediation notifications. Read the report page, DAG overview and PowerShell guidance; no end-user notification guarantee was stated. | Fix: Remove 'end users are not notified or changed by it' from the impact rationale. Retain 'Low. Only administrators who hold the SharePoint Advanced Management Administrator role see the report.'
-- [supported, minor] Governance guidance: At rollout / admin-path: SharePoint admin center > Reports > Data access governance is the starting route for running these reports. | Found: In the SharePoint admin center, in the navigation pane, expand Reports, and then select Data access governance. Under Snapshot reports, in the Sites and files shared via special SharePoint groups section, select View reports. | Fix: Expand the abbreviated route to: 'SharePoint admin center > Reports > Data access governance > Snapshot reports > Sites and files shared via special SharePoint groups > View reports > Content shared with the selected group > Run report'. The full route in controls[0].ui is already correct. | Source: https://learn.microsoft.com/sharepoint/data-access-governance-detailed-eeeu-everyone-permissions-report
-- [contradicted, minor] Governance guidance compared with controls / consistency: The controls table covers all the controls the governance checklist asks administrators to set or check. | Found: Checklist: 'Ask a Global administrator to assign ... the role'; 'Generate the site permissions ... report once'; 'using the remedial options'. Table: only 'Running the item-level report for Everyone except external users or Everyone'. | Fix: The role assignment, prerequisite site-permissions report generation and referenced remedial options have no table rows. Do not add rows in this correction; label these checklist steps as prerequisites or follow-up actions documented in the cited Learn pages, rather than controls located by this table.
+- [contradicted, minor] Governance guidance: Before rollout and After rollout; Governance controls / consistency: The checklist tells readers to assign the role, generate the prerequisite report and remediate permissions, but these actions have no controls-table rows. | Found: Ask a Global administrator to assign ... Generate the site permissions for your organization report once ... Remove or narrow the permissions ... [Table: Running the item-level report for Everyone except external users or Everyone] | Fix: Remove the Before rollout bullets beginning 'Ask a Global administrator' and 'Generate the site permissions', and the After rollout bullet beginning 'Remove or narrow the permissions'. Their prerequisite and remediation facts already remain in the body; do not add controls rows in this correction.
 -->

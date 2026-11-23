@@ -60,19 +60,23 @@ changes:
     note: "New briefing: DLP can block listed external domains or users on SharePoint and OneDrive; Learn still says public preview while the roadmap says Launched."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 48 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected the New-DlpComplianceRule BlockAccessScope descriptions, the policy location wording, and the impact rationale."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 49 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 44
-  unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "60c569346def3e3c29b5d1e4ac9a35e4"
+  claims: 49
+  confirmed: 47
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 0
+  hash: "b6f2febd6859e035afa670d5a40a649c"
 ---
 
 ## What's changing
@@ -152,9 +156,9 @@ The Learn scenario builds the rule as a custom policy under **Enterprise applica
 </tbody>
 </table>
 
-The only documented admin surface is the Microsoft Purview portal rule editor. Microsoft Learn documents no PowerShell parameter or API operation for the domain and user lists at the time of writing (November 2026). `New-DlpComplianceRule` documents `-BlockAccessScope` values of All, PerUser and PerAnonymousUser, which are scopes for blocking everyone, external users or Anyone-link users, not lists of domains or users.
+The only documented admin surface is the Microsoft Purview portal rule editor. Microsoft Learn documents no PowerShell parameter or API operation for the domain and user lists at the time of writing (November 2026). `New-DlpComplianceRule` documents `-BlockAccessScope` values of All (everyone except the owner and last modifier), PerUser (external users) and PerAnonymousUser (people using the Anyone with the link option in SharePoint and OneDrive); these are blocking scopes, not domain or user lists.
 
-The policy must include the SharePoint sites and OneDrive accounts locations. Roles are those in the Scope section. For existing alternatives, the Learn scenario's **Block only people outside your organization** blocks every external recipient and **Block everyone** covers internal users; neither lets you name specific external domains.
+Select the SharePoint sites and/or OneDrive accounts locations that you intend this policy to cover. Roles are those in the Scope section. For existing alternatives, the Learn scenario's **Block only people outside your organization** blocks every external recipient and **Block everyone** covers internal users; neither lets you name specific external domains.
 
 ## Open questions
 
@@ -166,16 +170,15 @@ The policy must include the SharePoint sites and OneDrive accounts locations. Ro
 <!-- rationale
 risk: Low. The action blocks nothing until an admin adds it to a DLP rule, so the exposure left at default is whatever sharing allows today. Learn lists preview gaps: image files are not protected.
 cost: Low. The only cost the sources show is admin time to build and test rules; Microsoft lists DLP for SharePoint and OneDrive under its existing Microsoft 365 licences and publishes no separate price for this action.
-impact: Low. Compliance admins configure it, and only external people on a block list notice, when a matching file stops opening for them. Learn says user notifications are not supported for this action.
+impact: Low. Compliance admins configure it. External collaborators can notice when a matching file stops opening; Learn notes that users in neither list are also blocked by default when a file matches both an allow rule and a block rule. User notifications are not supported.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls / command: New-DlpComplianceRule BlockAccessScope offers All, PerUser and PerAnonymousUser for blocking everyone, external users and Anyone-link users respectively. | Found: All: Blocks access to everyone except the owner and the last modifier. PerUser: Blocks access to external users. PerAnonymousUser: Blocks access to people through the "Anyone with the link" option in SharePoint and OneDrive. | Fix: Replace the sentence with '`New-DlpComplianceRule` documents `-BlockAccessScope` values of All (everyone except the owner and last modifier), PerUser (external users) and PerAnonymousUser (people using the Anyone with the link option in SharePoint and OneDrive); these are blocking scopes, not domain or user lists.' Use https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule
-- [contradicted, blocker] Governance controls: policy locations / applicability: The policy must include both SharePoint sites and OneDrive accounts. | Found: Every policy is scoped to one or more locations, such as Exchange, SharePoint in Microsoft 365, Teams, and Devices. | Fix: Replace 'The policy must include the SharePoint sites and OneDrive accounts locations' with 'Select the SharePoint sites and/or OneDrive accounts locations that you intend this policy to cover.' The scenario selects both to cover both workloads, not as a universal requirement. The scope rule is at https://learn.microsoft.com/purview/dlp-create-deploy-policy and this action's supported locations are at https://learn.microsoft.com/purview/dlp-policy-reference. | Source: https://learn.microsoft.com/purview/dlp-create-deploy-policy
+- [unsupported, major] Risk assessment: Security & identity / behaviour: A person using a different address or a different domain is not covered by an entry for the original one. | Found: Searched: Purview DLP block specific external domain user SMTP different address block domain user matching. Opened dlp-policy-reference and dlp-create-policy-spo-odb-external; neither states this generalization about alternate identities. | Fix: Remove 'A person using a different address or a different domain is not covered by an entry for the original one;' and retain the advice that the list needs maintaining as partners and guests change.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Purview portal path reaches the specific-external-domain-or-user action through Data loss prevention, Policies, Create policy, Enterprise applications & devices, Custom and Create rule. | Found: Select Custom from both the Categories list and the Regulations list. On the Customize advanced DLP rules page, select + Create rule. | Fix: Expand the abbreviated route to 'Data loss prevention > Policies > Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom > Define policy settings > Create or customize advanced DLP rules > Customize advanced DLP rules > Create rule > Actions > Restrict access or encrypt the content in Microsoft 365 locations > Block users from receiving email or accessing shared SharePoint, OneDrive > Block access for specific external domains or users'. The source's numbered variant steps also omit the Block users grouping, so its omission alone is not evidence of an unusable route. Use https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external. | Source: https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external
-- [contradicted, minor] rationale: impact / consistency: Only external people on a block list notice the change when a matching file stops opening. | Found: rationale: "only external people on a block list notice"; Risk assessment: "users in neither list are blocked by default where a file matches both kinds of rule". | Fix: Replace the factual portion of the impact rationale with 'Compliance admins configure it. External collaborators can notice when a matching file stops opening; Learn notes that users in neither list are also blocked by default when a file matches both an allow rule and a block rule. User notifications are not supported.' Keep the low impact judgement; the correction concerns the factual limitation, not the rating. See https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external.
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: The checklist names controls not represented in the controls table. | Found: Checklist: choose sensitive information types or sensitivity labels; keep a broader block; leave the policy off; turn on alerts. Table: only 'Which external domains or users a DLP rule blocks from SharePoint and OneDrive files'. | Fix: The Before rollout content-condition and broader-block steps, and the At rollout policy-state and admin-alert steps have no corresponding control rows. This is a table/checklist coverage finding, not a request to add control rows.
+- [supported, minor] What's changing; Governance guidance: Before rollout / behaviour: Domain IS NOT and User IS NOT can add allow entries that override a block entry. | Found: (Optional) Use Domain IS NOT or User IS NOT to add allow entries that override a block entry. | Fix: The cited procedure supports this wording, but its following note says block wins when an entry appears in both lists. Replace the first Before rollout bullet with 'List the external domains and guest addresses to block, and any proposed allow entries; test overlaps because Learn says block wins when an entry is in both lists.' | Source: https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Microsoft Purview portal route reaches the specific external domain or user action in a custom policy. | Found: Select Custom from both the Categories list and the Regulations list. On the Define policy settings page, the Create or customize advanced DLP rules option should already be selected. | Fix: Expand the path to 'Data loss prevention > Policies > Create policy > Enterprise applications & devices > Categories: Custom > Regulations: Custom > Assign admin units > Choose where to apply the policy > Define policy settings > Create or customize advanced DLP rules > Customize advanced DLP rules > Create rule > Actions > Restrict access or encrypt the content in Microsoft 365 locations > Block access for specific external domains or users'. The omitted policy-scope selections and preselected advanced-rules option do not invalidate the printed route. | Source: https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external
+- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: Every control the governance checklist asks the reader to configure appears in the controls table. | Found: Checklist: 'Turn on alerts to admins for the rule'. The only controls row covers 'Which external domains or users a DLP rule blocks from SharePoint and OneDrive files'. | Fix: The checklist step 'Turn on alerts to admins for the rule' has no corresponding controls-table row. Remove this configuration instruction from the checklist; retain the supported statement that alerting is available.
 -->

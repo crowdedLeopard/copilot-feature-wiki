@@ -1,0 +1,651 @@
+{
+  "slug": "microsoft-viva-viva-glint-copilot-admin-configuration-assistance",
+  "roadmapId": 567320,
+  "title": "Viva Glint: Copilot admin configuration assistant for how-to guidance",
+  "status": "verified-with-gaps",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 50,
+    "confirmed": 49,
+    "unconfirmed": 1,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 1,
+    "minor": 3
+  },
+  "summary": "The roadmap facts, guidance-only behavior and documented Copilot access controls are supported. The licensing notes should name the existing product subscription, and the admin path should continue to the On or Off choice. The statement that administrators are often HR or people-analytics staff rather than IT is not supported by the sources checked.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing; title; summary",
+      "type": "behaviour",
+      "claim": "The Viva Glint admin configuration assistant is built on Microsoft Copilot and embedded in the Viva Glint admin experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/copilot-viva-glint-admin",
+      "quote": "The Viva Glint admin configuration assistant is an AI-powered experience, built on Microsoft Copilot, that is embedded directly in the Viva Glint admin experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; summary; Why it matters",
+      "type": "behaviour",
+      "claim": "Administrators can ask configuration and how-to questions in plain language and receive conversational, step-by-step guidance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/copilot-viva-glint-admin",
+      "quote": "Ask in plain language—for example, \"How do I add missing survey takers?\"—and the assistant will guide you to the right steps and settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; summary",
+      "type": "record",
+      "claim": "The roadmap says responses include deep links to configuration pages.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Responses will include deep links to configuration pages streamlining navigation and discoverability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Answers include source attribution and links to the Microsoft Learn documentation on which guidance is based.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/copilot-viva-glint-admin",
+      "quote": "Every answer is grounded in trusted sources and includes source attribution so you can verify the guidance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; summary",
+      "type": "behaviour",
+      "claim": "The assistant opens in a collapsible side pane similar to Copilot in Microsoft Edge and Microsoft Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/copilot-viva-glint-admin",
+      "quote": "The assistant opens in a collapsible side pane, similar to Copilot in Microsoft Edge and Microsoft Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Suggested prompts adapt to the admin page the user is on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/copilot-viva-glint-admin",
+      "quote": "The configuration assistant surfaces suggested prompts that adapt to the admin page you're on, so relevant questions are one click away.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A typed question can contain up to 500 characters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/copilot-viva-glint-admin",
+      "quote": "Select one of the suggested prompts, or type your own question in the entry field (up to 500 characters).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "summary; What's changing; Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "The assistant provides guidance only and does not change the tenant, programs, users, data or settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/copilot-viva-glint-admin",
+      "quote": "The Viva Glint admin configuration assistant provides guidance only. It does not make changes to your tenant, programs, users, data, or settings. You remain in control of every action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The assistant cannot manage users, roles or permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/copilot-viva-glint-admin",
+      "quote": "The configuration assistant provides guidance and can't: ... Manage users, roles, or permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The assistant cannot modify or export survey data or comments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/copilot-viva-glint-admin",
+      "quote": "The configuration assistant provides guidance and can't: ... Modify or export survey data or comments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The assistant cannot take proactive or autonomous actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/copilot-viva-glint-admin",
+      "quote": "The configuration assistant provides guidance and can't: ... Take proactive or autonomous actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The assistant cannot report on the tenant's current configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/copilot-viva-glint-admin",
+      "quote": "The configuration assistant provides guidance and can't: ... Report on your tenant's current configuration or program status.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Open questions; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap says the assistant is only available to Viva Glint users with Admin permissions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Only available for Viva Glint users with Admin permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope; Governance guidance; Open questions; rationale: impact",
+      "type": "role",
+      "claim": "Learn identifies Viva Glint service admins and users with Admin permissions, such as survey designers, as the audience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/copilot-viva-glint-admin",
+      "quote": "Viva Glint service admins and users with admin permissions—such as survey designers—who already have access to the Viva Glint admin experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters; Scope",
+      "type": "behaviour",
+      "claim": "The assistant helps administrators responsible for configuring surveys, nudges, people data, roles or reporting settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/copilot-viva-glint-admin",
+      "quote": "Anyone responsible for configuring surveys, nudges, people data, roles, or reporting settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "licensing.notes; controls[1].note; Risk assessment; Cost and licensing; Scope; Governance controls",
+      "type": "role",
+      "claim": "Using the assistant requires existing access to the Viva Glint admin experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/copilot-viva-glint-admin",
+      "quote": "You must have access to the Viva Glint admin experience to use the configuration assistant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: defaultState; summary; Why it matters; Open questions",
+      "type": "default",
+      "claim": "Microsoft has not stated the admin configuration assistant's default enablement state.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Glint admin configuration assistant default enabled disable turn off admin switch PowerShell API; \"Viva Glint\" \"admin configuration assistant\" \"default\". Opened assistant, Copilot introduction, access and VFAM pages; no assistant-specific arrival default stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[1]; summary; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No separate admin UI switch or PowerShell/API control for the admin configuration assistant is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Glint admin configuration assistant default enabled disable turn off admin switch PowerShell API; \"Viva Glint\" \"admin configuration assistant\" \"PowerShell\" \"disable\". Opened assistant, mac-copilot-access, manage-access-policies and VFAM feature table; no dedicated switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No licence specific to the admin configuration assistant is published, and its own Learn page names none.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Glint admin configuration assistant licensing license pricing meter credits; \"Viva Glint\" \"admin configuration assistant\" \"license\". Opened assistant, Copilot introduction/access and Viva Glint licensing pages; product licensing found, no separate assistant licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No meter, credit rate or charge specific to the assistant is published, and its own Learn page names no meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Glint admin configuration assistant licensing license pricing meter credits; \"Viva Glint\" \"admin configuration assistant\" \"license\". Opened assistant, Copilot introduction/access and Viva Glint licensing pages; no assistant meter, credit rate or separate charge found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.model and licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The assistant uses the existing product entitlement, represented by licensing.model included.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/glint-order-teams",
+      "quote": "The purchase of a Viva Suite or Viva Glint subscription plan is required for using Microsoft Viva Glint.",
+      "severity": "minor",
+      "fix": "Keep licensing.model as included. Add to licensing.notes and Cost and licensing: 'Using Viva Glint requires a Viva Suite or Viva Glint subscription plan; no licence specific to the admin configuration assistant is published.' Cite https://learn.microsoft.com/viva/glint/setup/glint-order-teams in sources."
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Copilot in Viva Glint access pages require Viva Glint, Microsoft Viva Suite or Microsoft Viva Workplace Analytics and Employee Feedback licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access",
+      "quote": "A license for Viva Glint, Microsoft Viva Suite, or Microsoft Viva Workplace Analytics and Employee Feedback is required to access Copilot in Viva Glint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Those Copilot in Viva Glint pages say a Microsoft Copilot licence is not required.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access",
+      "quote": "A license for Microsoft Copilot is not required to access Copilot in Viva Glint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The org-wide Copilot in Viva Glint control is reached through Settings > Viva > Viva Glint > Manage settings for Microsoft Copilot in Viva Glint > Org-wide setting > Manage in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access",
+      "quote": "In the Manage Microsoft Copilot in Viva Glint pane, select Manage in the Org-wide setting section. ... Choose On.",
+      "severity": "minor",
+      "fix": "Extend the front-matter and rendered-table path to 'Settings > Viva > Viva Glint > Manage settings for Microsoft Copilot in Viva Glint > Org-wide setting > Manage > On / Off', matching the cited page's enable and disable procedures."
+    },
+    {
+      "n": 30,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Add-VivaModuleFeaturePolicy -ModuleId VivaGlint -FeatureId <featureId> -Name <policyName> -IsFeatureEnabled $false -Everyone creates a tenant-wide policy disabling the selected feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/manage-access-policies",
+      "quote": "Glint | VivaGlint ... Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId Reflection -Name UsersAndGroups -IsFeatureEnabled $false ... If you want to disable the feature for all users, use the -Everyone parameter instead.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].note; Governance controls table and prose",
+      "type": "role",
+      "claim": "Microsoft 365 Global Administrators, Viva Glint Tenant Administrators and AI Administrators can manage the Copilot in Viva Glint access setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access",
+      "quote": "This feature can be managed by: ... Microsoft 365 Global Administrators ... Viva Glint Tenant Administrators ... AI Administrators",
+      "severity": "minor",
+      "fix": "Retain the roles from the feature-specific access page. Add: 'The general VFAM feature table lists only Global admin for Glint, while the feature-specific access page also lists Viva Glint Tenant Administrators and AI Administrators.' The differing table is at https://learn.microsoft.com/viva/feature-access-management."
+    },
+    {
+      "n": 32,
+      "where": "controls[0].governs and note; Cost and licensing; Governance guidance; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The cited Copilot introduction and access pages discuss Highlights and comment summarisation without explicitly identifying the admin configuration assistant as covered.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Glint admin configuration assistant default enabled disable turn off admin switch PowerShell API. Read copilot-admin-intro, mac-copilot-access, assistant and VFAM pages; introduction describes two feedback features and no page explicitly links the assistant to the VFAM setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].note; Governance controls table",
+      "type": "command",
+      "claim": "Get-VivaModuleFeature supplies the feature ID used with the VivaGlint module.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/manage-access-policies",
+      "quote": "Use the Get-VivaModuleFeature PowerShell cmdlet to get a list of all of the features available in a specific Microsoft 365 app and their associated IDs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].note; Governance guidance; Governance controls table",
+      "type": "behaviour",
+      "claim": "Copilot in Viva Glint access policy changes can take up to 24 hours to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access",
+      "quote": "Changes to Copilot access policies in the Microsoft 365 admin center can take up to 24 hours to take effect for users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft advises avoiding additional changes to the same Copilot access policy within 24 hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access",
+      "quote": "Avoid making additional changes to the same policy within 24 hours of an initial change, as successive changes may not apply as expected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Custom Copilot in Viva Glint policies override the organization-wide setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access",
+      "quote": "Custom policies override the organization-wide setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The assistant does not collect, access or process customer organisation data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/copilot-viva-glint-admin",
+      "quote": "It does not collect, access, or process customer organization data or survey response data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The assistant does not collect, access or process survey response data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/copilot-viva-glint-admin",
+      "quote": "It does not collect, access, or process customer organization data or survey response data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The assistant currently provides guidance based on product documentation and user-selected context within Viva Glint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/copilot-viva-glint-admin",
+      "quote": "It currently provides guidance based on product documentation and user-selected context within the Viva Glint experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Change & support; rationale: risk",
+      "type": "behaviour",
+      "claim": "Microsoft warns that AI-generated responses may be inaccurate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/copilot-viva-glint-admin",
+      "quote": "AI-generated responses may not always be accurate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Each response includes a reminder about possible inaccuracies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/copilot-viva-glint-admin",
+      "quote": "AI-generated responses may not always be accurate. Each response includes a reminder to this effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The assistant will not stop an administrator making a change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/copilot-viva-glint-admin",
+      "quote": "The configuration assistant won't stop you from making a change—it can only tell you how.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Learn identifies launching surveys, changing confidentiality settings, changing user data and deleting content as examples of hard-to-reverse actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/copilot-viva-glint-admin",
+      "quote": "Before you perform actions that are hard to reverse (such as launching a survey, updating confidentiality settings, changing user data, or deleting content), review the steps carefully and confirm they match your intent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The assistant offers thumbs up and thumbs down controls to rate responses and improve answer quality.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/copilot-viva-glint-admin",
+      "quote": "Use the thumbs up / thumbs down controls to rate a response. Your feedback helps improve answer quality.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope: Rollout",
+      "type": "absence",
+      "claim": "The assistant's Learn page does not describe the rollout mechanism or the pre-arrival experience.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Glint admin configuration assistant rollout roles permissions full list. Read the full assistant page, including Access and FAQ; it describes opening the assistant after availability but gives no rollout mechanism or pre-arrival state.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "Microsoft provides examples of eligible admin roles rather than a complete assistant-specific role list.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Glint admin configuration assistant rollout roles permissions full list. Read assistant Who/FAQ and Learn excerpts for Key roles and Set up User Roles; service admins and survey designers are examples, with no exhaustive assistant-specific role mapping.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Viva Glint administrators are often HR or people-analytics staff rather than IT.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Viva Glint service administrators typically HR people analytics team IT. Read Key roles, data-stakeholder planning and learning-path excerpts; they identify HR and IT stakeholders but do not establish which teams usually hold administrator roles.",
+      "severity": "major",
+      "fix": "Remove 'often HR or people-analytics staff rather than IT' from the first paragraph of Why it matters."
+    },
+    {
+      "n": 48,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-08-28T21:59:29.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-08-28T21:59:29\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The supplied roadmap record has no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Open questions",
+      "type": "default",
+      "claim": "Learn says Copilot in Viva Glint is enabled by default, without separately stating the admin configuration assistant's default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/copilot-admin-intro",
+      "quote": "Copilot in Viva Glint is enabled by default. Administrators manage access through Viva Feature Access Management (VFAM) in the Microsoft 365 admin center (MAC).",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T09:37:28.381Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=567320",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/glint/copilot/copilot-viva-glint-admin",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/glint/copilot/copilot-admin-intro",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/manage-access-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/feature-access-management",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Access to Microsoft Copilot in Viva Glint (Learn does not say it covers the admin assistant)",
+        "docs": "https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Viva",
+          "Viva Glint",
+          "Manage settings for Microsoft Copilot in Viva Glint",
+          "Org-wide setting",
+          "Manage"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Access to Microsoft Copilot in Viva Glint (Learn does not say it covers the admin assistant)",
+        "docs": "https://learn.microsoft.com/viva/manage-access-policies",
+        "reachable": true,
+        "token": "Add-VivaModuleFeaturePolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

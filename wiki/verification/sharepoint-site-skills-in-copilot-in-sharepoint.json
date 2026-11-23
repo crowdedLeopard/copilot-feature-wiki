@@ -1,0 +1,972 @@
+{
+  "slug": "sharepoint-site-skills-in-copilot-in-sharepoint",
+  "roadmapId": 570155,
+  "title": "SharePoint: edit, version, restore and copy site skills in Copilot in SharePoint",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "4 blocking findings (claims 39, 55, 70, 73)"
+    ]
+  },
+  "counts": {
+    "claims": 76,
+    "confirmed": 71,
+    "unconfirmed": 2,
+    "contradicted": 3,
+    "blocker": 4,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold for corrections to automation and permissions claims. Microsoft documents file APIs that can edit the stored skill instructions, while the briefing reports no automation; it also extends the documented permission to create skills into an unverified permission to restore them. The audit-documentation gap needs to distinguish dedicated skill events from documented SharePoint file events.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; title",
+      "type": "record",
+      "claim": "The roadmap plans enhanced site-skill management including editing, versions, publishing, restoration and cross-site duplication.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The feature introduces enhanced Site Skills management capabilities, including skill editing, version control, publishing, restoration, and cross-site duplication",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and no US Government cloud.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The record names no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap record specifies no administrator action.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "enabling organizations to govern and reuse skills more effectively across SharePoint sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap was modified at 2026-08-31T23:13:25.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-08-31T23:13:25\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Restricted Content Discovery is at SharePoint admin center > Sites > Active sites > site > Settings > Restrict content from Microsoft Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "In the SharePoint admin center, expand Sites and select Active sites. Select the site you want to configure. Open the Settings tab, and then turn Restrict content from Microsoft Copilot on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-SPOSite -Identity <site-url> -RestrictContentOrgWideSearch $true enables Restricted Content Discovery for a site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Set-SPOSite -Identity <site-url> -RestrictContentOrgWideSearch $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].note; Why it matters; Governance controls",
+      "type": "applicability",
+      "claim": "Restricted Content Discovery prevents Copilot in SharePoint and AI actions appearing on the restricted site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "If it's enabled on a site, Copilot in SharePoint and AI actions don't appear on that site. This rule applies regardless of your other availability settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "By default only SharePoint administrators can manage Restricted Content Discovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "By default, only SharePoint administrators can manage Restricted Content Discovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[1].ui; What's changing; Governance guidance",
+      "type": "admin-path",
+      "claim": "Site owners reach site-skill management through Settings > Site skills on the SharePoint site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "Create site skills through Copilot chat or from the Site skills page by selecting Settings > Site skills. Site owners can use the Site skills page",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; controls[1].governs",
+      "type": "behaviour",
+      "claim": "The Site skills page supports upload, review, edit, enable, disable, copy, replace, restore, download and delete for site owners.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "Site owners can use the Site skills page to upload, review, edit, enable, disable, copy, replace, restore, download, and delete site skills.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[1].note; What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Within the documented management UI, edit, replace, download and version restore are available only in the Skill detail page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "Some actions, including edit, replace, download, and version restore, are available only in the Skill detail page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "Opening a skill and selecting its Versions tab permits reviewing or restoring an earlier version.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "To review or restore an earlier version, open the skill and select the Versions tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Restoring a previous skill version creates a new current version.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "Restoring an earlier version creates a new current version",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "A skill-version restore preserves existing version history.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "Restoring an earlier version creates a new current version and doesn't overwrite the existing version history.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment; Open questions",
+      "type": "absence",
+      "claim": "Learn does not document a separate publishing step corresponding to the roadmap's publishing capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com \"site skills\" \"publish\"; opened learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills in full. Creation has draft review and save; management has no separate publish step.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "A site skill is a Markdown file stored at /Agent Assets/Skills/<skill-name>/SKILL.md in the site's Agent Assets library.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "Site skills are Markdown (.md) files stored in the site's Agent Assets library under /Agent Assets/Skills/<skill-name>/SKILL.md.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Scope",
+      "type": "role",
+      "claim": "The site admin owns and manages site skills.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "The site admin owns and manages these skills.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "A site skill can load only on its associated site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "A site skill can load only on its associated site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "default",
+      "claim": "New and uploaded skills are enabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "New and uploaded skills are enabled by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "Skills cannot connect to external systems.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "Skills can't connect to external systems or execute custom code.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "Skills cannot execute custom code.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "Skills can't connect to external systems or execute custom code.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "Skills act within the runner's existing permissions, including when a skill is copied to another site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "Neither personal nor site skills expand user permissions. A skill can act only on sites and content that the person running it already has permission to access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Learn labels Copilot in SharePoint as currently in public preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "Copilot in SharePoint is currently in public preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Scope",
+      "type": "date",
+      "claim": "Learn states that general availability begins rolling out on September 30, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "General availability begins rolling out on September 30, 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Capabilities may appear after the GA start date as rollout progresses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "Capabilities might appear in your tenant after that date as the rollout progresses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Site skills turn repeatable workflows into reusable shared processes for a site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "Skills extend Copilot in SharePoint by turning a repeatable, multistep workflow into a reusable asset. Skills can support an individual's way of working or a shared process on a SharePoint site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Access to skill instructions is governed as access to files in the Agent Assets library.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "you can apply standard SharePoint file governance to site skill files, such as permissions, retention, sensitivity labels, and auditing, the same way you would for other content stored in SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Standard SharePoint permissions can be applied to skill files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "you can apply standard SharePoint file governance to site skill files, such as permissions, retention, sensitivity labels, and auditing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Standard SharePoint retention governance can be applied to skill files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "you can apply standard SharePoint file governance to site skill files, such as permissions, retention, sensitivity labels, and auditing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Standard SharePoint sensitivity-label governance can be applied to skill files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "you can apply standard SharePoint file governance to site skill files, such as permissions, retention, sensitivity labels, and auditing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Standard SharePoint file auditing applies to site-skill files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "you can apply standard SharePoint file governance to site skill files, such as permissions, retention, sensitivity labels, and auditing, the same way you would for other content stored in SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance; rationale: risk",
+      "type": "role",
+      "claim": "By default anyone with Edit permission on the site can create a site skill.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "By default, any user with Edit permissions on the site can create a site skill",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity; Scope; rationale: risk",
+      "type": "role",
+      "claim": "By default anyone with View permission on the site can use a site skill.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "any user with View permissions can use it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Any user permitted to create a site skill can also edit and restore its versions through the management experience.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: SharePoint Copilot site skills edit restore permissions site members Edit Skill detail; SharePoint restore previous version permissions Edit Contribute version history. Read skills page: Edit is specified for creation; management actions are attributed to site owners.",
+      "severity": "blocker",
+      "fix": "Replace 'Edit and version restore let any such creator change what Copilot does for everyone on the site' with 'Learn documents skill editing and version restore for site owners.' Keep the separately supported creation and use permissions."
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Breaking permission inheritance on the Agent Assets library and applying more restrictive permissions can change the default creation and use model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "If you need a different model, you can break permission inheritance on the Agent Assets library and apply more restrictive permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Skills can write SharePoint list content within the runner's permissions, as illustrated by Microsoft's contract-review example.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "If a contract isn't valid, add the document name to the Invalid Contracts list. Create the list with relevant columns if it doesn't exist.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing: Licence; Scope; rationale: impact",
+      "type": "licensing",
+      "claim": "Users need an active Microsoft 365 Copilot licence to use Copilot in SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "Users must have an active Microsoft 365 Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Create and manage skills is included with the Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "Included with the Microsoft 365 Copilot license ... Create and manage skills",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing: Licence",
+      "type": "cost",
+      "claim": "Included everyday capabilities are provided at no extra cost.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "Everyday Copilot in SharePoint capabilities are included with this license at no extra cost",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing: Licence",
+      "type": "default",
+      "claim": "Everyday capabilities require no opt-in step.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "Everyday Copilot in SharePoint capabilities are included with this license at no extra cost, and no opt-in step is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "front matter: licensing.notes; Cost and licensing: Meter; rationale: cost",
+      "type": "cost",
+      "claim": "Advanced work requires usage-based billing and consumes Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "Advanced work requires usage-based billing and consumes Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: licensing.notes; Risk assessment; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Skills in scheduled AI automations are an example of advanced work requiring Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "Requires Copilot Credits ... Build multistep, complex AI workflows, such as skills in scheduled AI automations",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing: Meter; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Advanced work needs usage-based billing enabled through a spending policy covering Advanced work in SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "users need usage-based billing enabled through a spending policy in the Microsoft 365 admin center and available Copilot Credits. ... Under Agents and services, select Advanced work in SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Credit consumption varies with the task's type and complexity and the content involved.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "Copilot Credit consumption varies based on the type and complexity of the task and nature and volume of the content involved.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "front matter: licensing.notes; Cost and licensing: Not yet published",
+      "type": "absence",
+      "claim": "No distinct Copilot Credits rate is published for site-skill editing, versioning, restore or cross-site copy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot SharePoint skills editing versioning restore copy Copilot Credits rate pricing. Read skills, Get started, usage-based billing overview and billing-rate search excerpts; none gives a distinct site-skill management rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing: Not yet published",
+      "type": "record",
+      "claim": "The roadmap record names no licence for this item.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The feature introduces enhanced Site Skills management capabilities, including skill editing, version control, publishing, restoration, and cross-site duplication",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "GCC, GCC High, DoD, air-gapped Office 365 and Microsoft 365 operated by 21Vianet do not currently support Copilot in SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "Microsoft 365 Government—GCC, GCC High, DoD, Office 365 air-gapped cloud environments, and Microsoft 365 operated by 21Vianet don't currently support Copilot in SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Users need access to a SharePoint site where Copilot in SharePoint is available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "Access to a SharePoint site where Copilot in SharePoint is available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Personal skills are stored in their owner's OneDrive, rather than being the site skills described by this roadmap item.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "Personal skills are stored in the skill owner's OneDrive and are available to the owner across supported Copilot in SharePoint experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].api; controls[1].note; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no API for managing site skills, including their editing.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/api/driveitem-put-content?view=graph-rest-1.0",
+      "quote": "Provide the contents of a new file or update the contents of an existing file in a single API call. ... PUT /drives/{drive-id}/items/{item-id}/content",
+      "severity": "blocker",
+      "fix": "Replace controls[1].api with kind 'graph', call 'PUT /v1.0/drives/{drive-id}/items/{item-id}/content', docs 'https://learn.microsoft.com/graph/api/driveitem-put-content?view=graph-rest-1.0'. Replace the no-API note with 'The API replaces the existing SKILL.md file contents; it is not a dedicated skill lifecycle API. Preserve the skill file format. Sensitivity-labeled files require delegated authentication for content replacement.' The skills page explicitly documents direct .md editing; do not claim this API enables or disables skills. Add the Graph reference to sources and update the rendered row."
+    },
+    {
+      "n": 56,
+      "where": "controls[2].ui; controls[2].api; summary; Why it matters; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "There is no documented separate tenant-level admin switch for turning site skills on or off.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot SharePoint site skills tenant admin controls enable disable default availability publishing; SharePoint site skills management PowerShell cmdlet site skill enable disable API. Read skills and Get started: 'There are no separate admin controls to turn skills on or off.'",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[3].ui; Governance controls table; Cost and licensing",
+      "type": "admin-path",
+      "claim": "The spending-policy route is Copilot > Cost management > Add spending policy > Agents and services > Advanced work in SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "Under Access scope, choose whether the policy applies to all users or to specific security groups. ... Under Agents and services, select Advanced work in SharePoint. ... Set Limits and alerts for the policy",
+      "severity": "minor",
+      "fix": "Expand controls[3].ui.path and the rendered route to 'Copilot > Cost management > Add spending policy > Access scope > Agents and services > Advanced work in SharePoint > Limits and alerts'. The current route correctly reaches the wizard but omits the scope section and ends before the limits named by the row."
+    },
+    {
+      "n": 58,
+      "where": "controls[3].api; Governance controls table",
+      "type": "command",
+      "claim": "PATCH /beta/copilot/costManagement/spendingPolicies/{id} updates spending-policy limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "APIs under the /beta version are subject to change. ... PATCH /copilot/costManagement/spendingPolicies/{id}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[3].note; Governance controls table",
+      "type": "command",
+      "claim": "The beta update API accepts periodLimit, perUserLimit and billingMethods as updatable request-body properties.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[3].note; Governance controls table",
+      "type": "absence",
+      "claim": "The cited spending-policy update reference does not name the services covered by a policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot SharePoint skills editing versioning restore copy Copilot Credits rate pricing; read spendingpolicy-update in full and usage-based billing overview. The update reference names properties, permissions and billing instruments, but no covered service names.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "The arrival default of the roadmap's enhanced management controls is not stated, distinct from the enabled default of individual newly created skills.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot SharePoint site skills tenant admin controls enable disable default availability publishing. Read roadmap, skills and Get started: existing skill creation defaults are stated, but arrival behaviour of the roadmap's enhanced management and publishing controls is not.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The mixed licensing model reflects included skill management alongside usage-based advanced work involving skills.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "Copilot in SharePoint uses a hybrid business model. Everyday individual productivity is included with the Microsoft 365 Copilot license. Advanced work requires usage-based billing and consumes Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The preview availability parameters including KnowledgeAgentScope belong to Set-SPOTenant and are retiring.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "Copilot in SharePoint is retiring the PowerShell commands used to opt tenants and sites in or out during preview ... KnowledgeAgentScope ... Use the existing KnowledgeAgent parameters in Set-SPOTenant",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance controls",
+      "type": "date",
+      "claim": "Existing preview PowerShell availability settings are honored until November 1, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "Existing PowerShell settings remain in effect until November 1, 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "After November 1, 2026, availability is managed using Site AI settings and Restricted Content Discovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "After November 1, 2026, manage availability by using Site AI settings and Restricted Content Discovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "The Site AI settings panel opens through Settings > Site AI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "To open the panel, go to Settings > Site AI.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Site owners manage Site AI settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "The Site AI settings panel lets site owners manage how users interact with AI on their site, including Copilot in SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Site AI settings can hide the Copilot button for site visitors only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "Hide the Copilot button on site pages for site visitors only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Site AI settings are not documented as a separate skills control.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot SharePoint site skills tenant admin controls enable disable default availability publishing. Read skills, Get started and Restricted Content Discovery: Site AI controls entry points and document processing; no separate skills setting or existing-skill lifecycle on restriction is described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Permissions on the Agent Assets library are the only documented way to change who can create or use site skills.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot SharePoint site skills permissions Agent Assets library only control restrict create use. Read skills governance and prerequisites plus site-access search excerpts. Learn documents library permissions, but does not state their exclusivity over site-access controls.",
+      "severity": "blocker",
+      "fix": "Replace the sentence with 'Learn documents breaking permission inheritance on the Agent Assets library and applying more restrictive permissions to change the default creation and use model.'"
+    },
+    {
+      "n": 71,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Spending policies govern credit-consuming advanced work rather than the included skill editing and management capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "Everyday individual productivity is included with the Microsoft 365 Copilot license. Advanced work requires usage-based billing and consumes Copilot Credits. ... Create and manage skills",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The Site skills list displays name, source, status, last modified date and creator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+      "quote": "The page lists each skill's name, source, status, last modified date, and creator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance guidance: After rollout; Open questions",
+      "type": "absence",
+      "claim": "Audit event names for skill actions are not documented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "Modified file | FileModified | User or system account modifies the content or the properties of a document on a site.",
+      "severity": "blocker",
+      "fix": "Narrow the checklist clause to 'dedicated site-skill lifecycle audit event names are not yet documented as of November 2026'. Narrow the open question to 'Will Microsoft publish dedicated site-skill lifecycle audit events beyond standard SharePoint file auditing?' The skills page expressly applies standard file auditing to skill files; generic file event names are documented."
+    },
+    {
+      "n": 74,
+      "where": "Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Administrators can monitor advanced-work Copilot Credits consumption in Cost management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits",
+      "quote": "In the Microsoft admin center, Copilot > Cost management, admins can monitor Copilot Credit consumption and manage spending associated with the supported services",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits to sources for the monitoring instruction."
+    },
+    {
+      "n": 75,
+      "where": "Governance guidance; Governance controls table",
+      "type": "consistency",
+      "claim": "The governance checklist directs readers to controls that are missing from the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Plan to break permission inheritance on the Agent Assets library ... Search the Microsoft Purview audit log ... Watch Copilot Credits consumption in Cost management",
+      "severity": "minor",
+      "fix": "The checklist steps for Agent Assets permission inheritance, Purview audit searching and credit-consumption monitoring have no corresponding control rows."
+    },
+    {
+      "n": 76,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The skills page does not describe what happens to existing skills on sites subject to Restricted Content Discovery.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot SharePoint site skills tenant admin controls enable disable default availability publishing. Read learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills in full: no treatment of existing skills on restricted sites is given.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T09:37:30.879Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=570155",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether Copilot in SharePoint and its AI entry points appear on a site",
+        "docs": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+        "reachable": true,
+        "segments": [
+          "Sites",
+          "Active sites",
+          "Settings",
+          "Restrict content from Microsoft Copilot"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether Copilot in SharePoint and its AI entry points appear on a site",
+        "docs": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+        "reachable": true,
+        "token": "Set-SPOSite",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which site skills exist, are enabled, edited, restored or copied on a site",
+        "docs": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-skills",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Site skills"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Spending limits for advanced work in Copilot in SharePoint",
+        "docs": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost management",
+          "Add spending policy",
+          "Agents and services",
+          "Advanced work in SharePoint"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Spending limits for advanced work in Copilot in SharePoint",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+        "reachable": true,
+        "token": "/beta/copilot/costManagement",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

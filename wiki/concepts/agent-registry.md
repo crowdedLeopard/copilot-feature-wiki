@@ -5,7 +5,7 @@ slug: "agent-registry"
 summary: "The agent registry is the Microsoft 365 admin center inventory of agents in a tenant, with owners, risk signals and actions to block, install, delete or reassign them. It shows what exists and lets administrators act on it."
 created: "2026-11-23"
 updated: "2026-11-23"
-version: 1
+version: 2
 tags: ["agent-registry","agent-365","agent-governance","agents","admin-controls"]
 covers: []
 sources:
@@ -31,7 +31,7 @@ sources:
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-roles-perms"
     kind: "learn"
   - title: "Agent Registry convergence with Microsoft Agent 365"
-    url: "https://learn.microsoft.com/entra/agent-id/identity-platform/agent-registry-convergence"
+    url: "https://learn.microsoft.com/entra/agent-id/agent-registry-convergence"
     kind: "learn"
   - title: "Agent 365 Package Management API overview"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview"
@@ -47,6 +47,18 @@ sources:
     kind: "learn"
   - title: "Audit log activities"
     url: "https://learn.microsoft.com/purview/audit-log-activities"
+    kind: "learn"
+  - title: "Supported Agent resources for Tenant Configuration Management (preview)"
+    url: "https://learn.microsoft.com/graph/utcm-agent-resources"
+    kind: "learn"
+  - title: "Supported resources for remediation and applyOnce (preview)"
+    url: "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources"
+    kind: "learn"
+  - title: "Create configurationMonitor"
+    url: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta&preserve-view=true"
+    kind: "learn"
+  - title: "Manage Microsoft Foundry agent availability as an administrator"
+    url: "https://learn.microsoft.com/azure/foundry/control-plane/govern-agent-infrastructure-entra-admin"
     kind: "learn"
 related: ["m365-copilot-agent-lifecycle-management-rules","microsoft-agent-365-registry-sync","agent-identity","app-management","plugins","auditing"]
 controls:
@@ -67,8 +79,11 @@ controls:
       surface: "Microsoft 365 admin center"
       path: "Agents > Settings > User access"
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings"
-    api: null
-    note: "Options: All users (the default), No users, Specific users or groups."
+    api:
+      kind: "graph"
+      call: "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors"
+      docs: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta&preserve-view=true"
+    note: "UI options: All users (the default), No users, Specific users or groups. The preview API supports everyone or noOne only; request details are under the table."
   - governs: "Bulk lifecycle rules, such as blocking ownerless agents without usage"
     scope: "tenant"
     ui:
@@ -114,18 +129,22 @@ changes:
     note: "New concept page: what the agent registry lists, which licences and roles apply, and where to block, reassign and sync agents."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 106 statements contradicted, 2 unconfirmed; taken offline until corrected"
+  - date: "2026-11-23"
+    note: "Corrected after the independent check: User access now lists its preview Graph automation, draft-agent visibility and two overstated claims are narrowed, Foundry block and delete behaviour added, and two checklist items without a table row removed."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 114 statements not yet confirmed"
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 106
-  confirmed: 101
-  unconfirmed: 2
-  contradicted: 3
-  attempts: 1
-  hash: "a9ef9fdd861a667874def257e639148a"
+  claims: 114
+  confirmed: 114
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "f51f805be9deb4640f257d278905c642"
 ---
 
 ## What it is
@@ -153,7 +172,7 @@ The registry also summarises total agents, agents without owners and unmanaged a
 
 ## Why it matters
 
-The registry is where an administrator can see an agent that nobody announced, and the one place its block, delete and ownership actions are documented together. Without checking it, ownerless agents, duplicate entries and unmanaged agents stay invisible: Microsoft notes that shared agents become ownerless when their creator is deleted from the organisation.
+The registry is where an administrator can see an agent that nobody announced, and a central place to review its block, delete and ownership actions. Checking it helps identify ownerless agents, duplicate entries and unmanaged agents: Microsoft notes that shared agents become ownerless when their creator is deleted from the organisation.
 
 It also decides how far an action reaches. A block applies to the selected agent across the organisation, and user access settings decide who may use agents at all. Read the limits below before treating a block as a full shutdown, and see [Agent and app management](/concepts/app-management/) and [Plugins](/concepts/plugins/) for the neighbouring controls.
 
@@ -172,13 +191,13 @@ Controls that apply to agents through Microsoft Entra, such as Conditional Acces
 ## Risks and limits
 
 - **A block is per agent, not per plugin.** If an agent is in a plugin, Microsoft says not to assume the action applies to the plugin package, its skills, shared MCP servers or connections, and that blocking does not necessarily revoke connected-service permissions or credentials. Manage those under **Agents** > **Tools**.
-- **A block does not reach every host.** Blocking an agent created with SharePoint or Microsoft Foundry only affects its availability in Microsoft Copilot Chat.
+- **A block does not reach every host.** Blocking an agent created with SharePoint only affects its availability in Microsoft Copilot Chat. For Foundry, the agent-actions page says a block affects only Copilot Chat, but Foundry guidance says Block disables the agent for agents created on or after October 23, 2026 at 16:00 UTC; older agents bypass that enforcement through a legacy exception.
 - **Duplicate-looking rows are separate records.** Blocking or removing one entry for a Copilot Studio agent does not remove the other.
-- **Connected platforms sync by hand.** Agent 365 does not sync on a schedule, and an agent removed from the source platform is not guaranteed to disappear from the registry. Stale entries stay until someone removes them.
+- **Connected platforms sync by hand.** Agent 365 does not sync on a schedule, and an agent removed from the source platform is not guaranteed to disappear from the registry. Stale entries may remain and need manual removal.
 - **Observability collection starts on.** New connections have **Collect agent observability data** enabled by default, which can generate charges at the source platform. The feature is part of the Frontier preview.
-- **Delete is recoverable for 30 days; permanent delete is not.** A deleted agent is kept for 30 days and can be restored in that window. Permanently deleting removes the agent and its resources and cannot be undone.
+- **Delete is recoverable for 30 days; permanent delete is not.** A deleted agent is kept for 30 days and can be restored in that window. Permanently deleting removes the agent and its resources and cannot be undone. For Foundry, separate guidance says governance deletion does not automatically delete Azure resources; infrastructure deletion is a separate action.
 - **Reassigning ownership removes the old owner's access.** The previous owner loses all access, including read rights.
-- **The inventory lags and has gaps.** Risk counts can be up to an hour behind the security portals, and only draft agents from Copilot Studio are visible.
+- **The inventory lags and has gaps.** Risk counts can be up to an hour behind the security portals, and draft-agent visibility is currently limited to Copilot Studio; drafts from Agent Builder, Foundry and SharePoint are not currently visible.
 
 ## Governance controls
 
@@ -188,7 +207,7 @@ Controls that apply to agents through Microsoft Entra, such as Conditional Acces
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Blocking or unblocking an agent for the whole organisation</strong><br><small>Agent</small><br><small class="controls__note">Preview. Needs Agent 365 licence and delegated CopilotPackages.ReadWrite.All. Acts on the selected agent, not its plugin.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users or groups can access agents and plugins</strong><br><small>Tenant</small><br><small class="controls__note">Options: All users (the default), No users, Specific users or groups.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users or groups can access agents and plugins</strong><br><small>Tenant</small><br><small class="controls__note">UI options: All users (the default), No users, Specific users or groups. The preview API supports everyone or noOne only; request details are under the table.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta&amp;preserve-view=true" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Bulk lifecycle rules, such as blocking ownerless agents without usage</strong><br><small>Tenant</small><br><small class="controls__note">Apply template is a one-time bulk operation, not a scheduled rule.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › Agent management rules › Add rule <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Connections that sync agents from external platforms into the registry</strong><br><small>Tenant</small><br><small class="controls__note">Agent 365 AI administrator creates the connection; the platform administrator supplies key-based credentials.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All Agents › Connected platforms › Manage › + Connect a platform <a href="https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Reassigning ownership of an agent</strong><br><small>Agent</small><br><small class="controls__note">Preview. The request body sets userId. UI reassigns only Agent Builder and Copilot Studio shared agents.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Assign new owner <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/reassign</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-reassign" rel="noopener" class="controls__docs">Learn</a></td></tr>
@@ -196,9 +215,11 @@ Controls that apply to agents through Microsoft Entra, such as Conditional Acces
 </tbody>
 </table>
 
-**Roles.** Microsoft Entra admin roles control access. AI Administrator and Global Administrator can install, modify and approve; Global Reader and AI Reader can view the registry but are not authorised to manage configurations. The Package Management API works with the AI Administrator role.
+**Roles.** Microsoft Entra admin roles control access. AI Administrator and Global Administrator can install, modify and approve; Global Reader and AI Reader can view the registry but are not authorised to manage configurations.
 
 **Limits of those roles.** AI Administrators are not authorised to configure Conditional Access or Microsoft Entra access package policies. Managing agent identities needs the Agent ID Administrator role.
+
+**User access API (preview).** The Tenant Configuration Management (TCM) preview supports everyone or noOne, not specific users or groups. The request sets mode to applyOnce and baseline.resources to resourceType microsoft.agent.useraccess, resourceVersion 1, with properties.valueObject.userAssignmentCategory. It needs delegated ConfigurationMonitoring.ReadWrite.All for the calling app, delegated CopilotPolicySettings.ReadWrite for the TCM service principal and AI Administrator for the signed-in user. TCM is available only in the global service.
 
 **Other settings.** The **Agent and plugin access** setting on the Agent settings page controls which types of agents and plugins users can view and install; Microsoft says users still see Microsoft-built agents when it is off but cannot install them. See [Plugins](/concepts/plugins/).
 
@@ -211,28 +232,19 @@ Controls that apply to agents through Microsoft Entra, such as Conditional Acces
 - Open **Agents** > **All agents** > **Registry** and read the totals for agents without owners and unmanaged agents.
 - Filter for duplicate-looking entries before blocking, so you act on the right record.
 - Review the **User access** setting and confirm whether it is still on its default of all users.
-- List who holds AI Administrator and Global Administrator, since those roles can manage agents.
 - Review any agent management rules for what they block, reject or reassign before running them.
 - List your connected platforms, re-run **Sync agents** before any review, and remove entries for agents deleted at source.
-- Search the audit log for BlockedAgent and DeletedAgent to see who has acted on agents.
 
 ## Open questions
 
-- Does Microsoft document an API for the **User access** and agent management rules settings? None was found at the time of writing (November 2026).
+- An API for selecting specific users or groups in User access was not found at the time of writing (November 2026); TCM preview documents everyone and noOne.
+- Does Microsoft document an API for the agent management rules settings? None was found at the time of writing (November 2026).
 - Does Microsoft document an API for creating or syncing connected platform connections?
 - When will the block, unblock and reassign calls move from `/beta` to a supported version?
 - How will the Microsoft Entra and Microsoft 365 admin center views of an agent be reconciled when an agent has no Entra Agent ID?
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].api; Open questions / absence: Microsoft has not documented automation for the tenant User access setting. | Found: These resources also support remediation and applyOnce. ... userAssignmentCategory ... Specifies whether all users or no users can access agents and plugins. ... everyone, noOne | Fix: Replace controls[1].api with graph call 'POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors', docs https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta&preserve-view=true. Add to the note: 'TCM preview supports everyone or noOne, not specific users or groups. The request sets mode to applyOnce and baseline.resources to resourceType microsoft.agent.useraccess, resourceVersion 1, with properties.valueObject.userAssignmentCategory. Requires delegated ConfigurationMonitoring.ReadWrite.All for the calling app, delegated CopilotPolicySettings.ReadWrite for the TCM service principal, and AI Administrator for the signed-in user; global service only.' Cite https://learn.microsoft.com/graph/utcm-agent-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. Replace the Open questions sentence with 'An API for selecting specific users or groups in User access was not found at the time of writing (November 2026); TCM preview documents everyone and noOne.' | Source: https://learn.microsoft.com/graph/utcm-agent-resources
-- [unsupported, major] Why it matters / behaviour: The registry is the one place its block, delete and ownership actions are documented together. | Found: Searched: Microsoft agents block delete ownership management other portals ownerless unmanaged inventory. Read agent-actions, agent-365-overview and results for Power Platform inventory, Copilot Agent Kit inventory and Foundry governance; none states the registry is the only documented place. | Fix: Replace 'and the one place its block, delete and ownership actions are documented together' with 'and a central place to review its block, delete and ownership actions'.
-- [unsupported, major] Why it matters / behaviour: Without checking the registry, ownerless agents, duplicate entries and unmanaged agents stay invisible. | Found: Searched: Microsoft agents block delete ownership management other portals ownerless unmanaged inventory. Read agent-registry-overview, agent-365-overview and Entra registry convergence; none says these agents remain invisible unless the registry is checked. | Fix: Replace 'Without checking it, ownerless agents, duplicate entries and unmanaged agents stay invisible' with 'Checking it helps identify ownerless agents, duplicate entries and unmanaged agents'.
-- [contradicted, blocker] Risks and limits: The inventory lags / behaviour: Only draft agents from Copilot Studio are visible. | Found: Currently, you can only view draft agents from Copilot Studio. Support for draft agents from other platforms, such Agent Builder, Foundry, and SharePoint, aren't currently available. | Fix: Replace 'only draft agents from Copilot Studio are visible' with 'draft-agent visibility is currently limited to Copilot Studio; drafts from Agent Builder, Foundry and SharePoint are not currently visible'. The source limits which platforms expose drafts, not visibility to drafts alone; agent-registry-overview also documents published Copilot Studio entries. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-365-overview
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risks and limits: A block does not reach every host / applicability: Blocking a Microsoft Foundry-created agent only affects availability in Microsoft Copilot Chat. | Found: However, blocking an agent that you created by using SharePoint or Microsoft Foundry only impacts its availability in Microsoft Copilot Chat. | Fix: Replace the Foundry part with 'The agent-actions page says a Foundry block affects only Copilot Chat, but Foundry guidance says Agent 365 Block disables runtime for agents created on or after October 23, 2026 at 16:00 UTC; older agents bypass that enforcement through a legacy exception.' Cite https://learn.microsoft.com/azure/foundry/control-plane/govern-agent-infrastructure-entra-admin alongside agent-actions. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
-- [supported, minor] Risks and limits: Connected platforms sync by hand / behaviour: Stale entries stay until someone removes them. | Found: Deletion reconciliation isn't guaranteed. ... Confirm the current behavior with your platform administrator, and remove the agent from the registry manually if it's no longer needed. | Fix: Replace 'Stale entries stay until someone removes them' with 'Stale entries may remain and need manual removal'. The source describes a lack of guaranteed reconciliation, not a guarantee that every stale entry persists. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms
-- [supported, minor] Risks and limits: Delete is recoverable / behaviour: Permanent deletion removes the agent and its associated resources. | Found: Permanently deleting an agent removes the agent and its associated resources and can't be undone. | Fix: Append 'For Foundry, separate guidance says governance deletion does not automatically delete Azure resources; infrastructure deletion is a separate action.' Cite https://learn.microsoft.com/azure/foundry/control-plane/govern-agent-infrastructure-entra-admin. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
-- [contradicted, minor] What to check; Governance controls table / consistency: Every control the checklist asks readers to take stock of has a corresponding table row. | Found: List who holds AI Administrator and Global Administrator ... Search the audit log for BlockedAgent and DeletedAgent ... The table covers blocking, User access, rules, connections, reassignment and inventory, but not role assignments or audit searches. | Fix: Remove the checklist bullets 'List who holds AI Administrator and Global Administrator, since those roles can manage agents' and 'Search the audit log for BlockedAgent and DeletedAgent to see who has acted on agents'. Their role and audit facts can remain in Governance controls; do not add unverified table rows.
+- [supported, minor] controls[1].api / command: POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors can apply the User access setting using the request details below the table. | Found: POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors ... An active applyOnce monitor runs in the background on behalf of the signed-in administrator and then becomes inactive. | Fix: Append to controls[1].note: 'Set mode to applyOnce and baseline.resources to microsoft.agent.useraccess, resourceVersion 1; properties.valueObject.userAssignmentCategory sets everyone or noOne.' The cited create reference and https://learn.microsoft.com/graph/utcm-agent-resources document these fields; the prose already gives them. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta&preserve-view=true
 -->

@@ -55,6 +55,9 @@ sources:
   - title: "copilotPackage: block"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
     kind: "learn"
+  - title: "Update Copilot package"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update"
+    kind: "learn"
   - title: "Using MCP tools with Agents"
     url: "https://learn.microsoft.com/agent-framework/agents/tools/local-mcp-tools"
     kind: "learn"
@@ -94,14 +97,17 @@ controls:
       surface: "Microsoft 365 admin center"
       path: "Copilot > Connectors > Your Connections > connector > Staged Rollout > Edit"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout"
-    api: null
-    note: "Works within the User access population. The staged rollout page lists limits of 100 users and 15 Microsoft 365 groups."
-  - governs: "Blocking individual connectors and their tools"
+    api:
+      kind: "graph"
+      call: "PATCH /beta/copilot/admin/catalog/packages/{id}"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update"
+    note: "Works within User access. For packaged connectors, availableTo sets package availability and is required with allowedUsersAndGroups. Beta; needs Microsoft Agent 365. Not installation or remote-service permission."
+  - governs: "Blocking connectors delivered as plugin packages"
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Agents > Tools"
-      docs: "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors"
+      path: "Agents > Tools > Plugins > plugin > Block"
+      docs: "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers"
     api:
       kind: "graph"
       call: "POST /beta/copilot/admin/catalog/packages/{id}/block"
@@ -120,19 +126,23 @@ changes:
     note: "Corrected after verification: added the beta Graph package-block API to the blocking row, fixed which settings must allow a user, narrowed the data-leaving and sign-in statements, and set action to review."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 100 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-23"
+    note: "Corrected after verification: staged-rollout row now cites the Graph beta package update API, blocking path completed, granular tool-control reach qualified, default wording narrowed, and After rollout checks moved out of the checklist."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 117 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-23"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 100
-  confirmed: 98
+  claims: 117
+  confirmed: 115
   unconfirmed: 0
   contradicted: 2
-  attempts: 2
-  hash: "a9980c62de8c81b20e06287f51be66f0"
+  attempts: 3
+  hash: "13d7a491882d8744102397421df21617"
 ---
 
 ## What's changing
@@ -147,7 +157,7 @@ The roadmap record gives the status as Launched, with a target date of April CY2
 
 ## Why it matters
 
-This puts live access to non-Microsoft systems inside the Copilot experience your users already have. Microsoft has not stated what a tenant looks like on arrival: Learn says Microsoft-built connectors are available by default when their publisher type is allowed and the user is included in User access, and also says an admin must enable a connector and make it available. Treat the position in your tenant as something to check, not assume.
+This puts live access to non-Microsoft systems inside the Copilot experience your users already have. The current federated connectors overview does not state a new tenant's publisher-type selections: Learn says Microsoft-built connectors are available by default when their publisher type is allowed and the user is included in User access, and also says an admin must enable a connector and make it available. Treat the position in your tenant as something to check, not assume.
 
 The practical decision is which publisher types and which connectors your users should have, and whether write-capable connectors are acceptable. Write actions export Customer Data to the connected system, a third party whose terms are not Microsoft's, so security and compliance owners should be part of that decision before users start connecting sources.
 
@@ -163,7 +173,7 @@ The practical decision is which publisher types and which connectors your users 
 
 **Autonomy & actions**
 - Write, update and delete tools default to Needs approval, so Copilot asks each time. Users can choose Allow for conversation or Always allow per tool, and a new or changed publisher tool returns to Needs approval.
-- Learn says write tools are part of the connector and are not enabled separately, so the admin choice is whether to allow a connector at all, or to block it or its tools under Agents > Tools.
+- Learn says write tools are part of the connector and are not enabled separately, so the admin choice is whether to allow a connector at all, or to block it or its tools under Agents > Tools. The separate Agent 365 guidance says granular tool controls are rolling out and apply only to supported MCP servers registered on Agent 365; runtime enforcement is for supported tools and experiences using its Tooling Gateway. Do not assume that reach for every federated connector.
 
 **Change & support**
 - Publishers can add or change tools over time, so a connector's capabilities can change after you approve it. Learn advises updating user and help-desk guidance that actions run with the user's own permissions in the third-party service.
@@ -201,9 +211,7 @@ The practical decision is which publisher types and which connectors your users 
 - Tell users and the help desk that Copilot actions run with the user's own permissions in the third-party service, and that write actions ask for approval.
 
 ### After rollout
-- Sign in as a test user and check Microsoft 365 Copilot Chat > ... > Settings > Sources to confirm what users see; allow up to 10 minutes for changes.
-- When available, review the connector's Tools list to identify create, update and delete tools, and re-check after publishers change tools; Learn currently marks the admin-centre tool list as coming soon.
-- Use Microsoft Purview to review connector activity, and confirm which events it records.
+- Re-check Agent and plugin access, User access and each connector's staged rollout when you add or change a connector, since a setting on an individual connector takes precedence over the bulk Agent and plugin access setting.
 
 ## Governance controls
 
@@ -215,22 +223,24 @@ The practical decision is which publisher types and which connectors your users 
 <tr><td data-label="Control"><strong>Which publisher types of federated connectors are available, including future ones</strong><br><small>Tenant</small><br><small class="controls__note">Clearing a type sets its connectors' staged rollout to No users; an individual connector setting takes precedence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › Agent and plugin access <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which users can use any agent, plugin or connector (tenant-wide ceiling)</strong><br><small>Tenant</small><br><small class="controls__note">Options: All users (default), Specific users or groups, No users. Connector staging can narrow but not widen it.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether an individual federated connector is turned on</strong><br><small>Tenant</small><br><small class="controls__note">Enable or disable pauses a connector without removing its configuration.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Your connections › connector › Enable / Disable <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which users or groups get an individual connector</strong><br><small>Group</small><br><small class="controls__note">Works within the User access population. The staged rollout page lists limits of 100 users and 15 Microsoft 365 groups.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Your Connections › connector › Staged Rollout › Edit <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Blocking individual connectors and their tools</strong><br><small>Tenant</small><br><small class="controls__note">Beta package-level blocking requires a Microsoft Agent 365 licence; it blocks the selected package, not individual tools or a shared remote connector used by other packages.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users or groups get an individual connector</strong><br><small>Group</small><br><small class="controls__note">Works within User access. For packaged connectors, availableTo sets package availability and is required with allowedUsersAndGroups. Beta; needs Microsoft Agent 365. Not installation or remote-service permission.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Your Connections › connector › Staged Rollout › Edit <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/admin/catalog/packages/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Blocking connectors delivered as plugin packages</strong><br><small>Tenant</small><br><small class="controls__note">Beta package-level blocking requires a Microsoft Agent 365 licence; it blocks the selected package, not individual tools or a shared remote connector used by other packages.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Plugins › plugin › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-All rows are set in the Microsoft 365 admin center. Learn gives roles of Global Administrator or Search Administrator on the manage page and AI administrator on the prerequisites and staged rollout pages.
+All rows are set in the Microsoft 365 admin center. Learn gives roles of Global Administrator or Search Administrator on the manage page and AI administrator on the prerequisites and staged rollout pages. The staged rollout page lists limits of 100 users and 15 Microsoft 365 groups.
 
 Learn says a setting on an individual connector takes precedence over the bulk Agent and plugin access setting, and that User access always applies. For a user to see a connector, the publisher type must be allowed or the connector turned on individually, the connector must be enabled, and the user must be in User access, the staged rollout and hold a Microsoft 365 Copilot licence.
 
-No separate switch for write, update and delete tools is documented: Learn says they are part of the connector. Agents > Tools offers tool-level and connector-level blocking, but the steps were not read. No API is documented for the tenant-wide publisher-type or User access settings, or connector-specific enablement and staging; package-level blocking has a beta Graph API. The Agent 365 Package Management API describes block and unblock for agents and tools such as MCP servers. The After rollout checks of Sources, the connector Tools list and Microsoft Purview activity have no control rows in this table.
+No separate switch for write, update and delete tools is documented: Learn says they are part of the connector. Agents > Tools offers tool-level and connector-level blocking, but the Agent 365 guidance says granular tool controls are rolling out and apply only to supported MCP servers registered on Agent 365, so do not assume that reach for every federated connector. No API is documented for the tenant-wide publisher-type or User access settings, or connector-specific enablement. Graph beta documents package user availability for connectors distributed as plugins; a direct connector Staged Rollout operation is not documented. Package-level blocking has a beta Graph API. The Agent 365 Package Management API describes block and unblock for agents and tools such as MCP servers.
+
+Separate from the table, a few checks sit outside it. Sign in as a test user and check Microsoft 365 Copilot Chat > ... > Settings > Sources to confirm what users see, allowing up to 10 minutes for changes. Learn currently marks the admin-centre connector Tools list as coming soon; when it is available, use it to identify create, update and delete tools. Microsoft Purview can be used to review connector activity; confirm which events it records.
 
 ## Open questions
 
 - Does a new tenant start with all three Agent and plugin access options selected, and are Microsoft-built connectors available to users before an admin acts? Watch the Learn pages Manage federated connectors and Federated connectors overview.
 - Which Microsoft Purview audit events record connector reads and write actions? Learn says admins can audit activity in Microsoft Purview but the overview names no events.
-- Is there automation (Microsoft Graph or PowerShell) for Agent and plugin access, User access, connector enablement and staged rollout? Learn documents none at the time of writing.
+- Is there automation (Microsoft Graph or PowerShell) for Agent and plugin access, User access and connector enablement? Learn documents none at the time of writing. Graph beta documents package user availability for connectors distributed as plugins; a direct connector Staged Rollout operation is not documented.
 - Which connectors and experiences remain in preview? The roadmap lists both General Availability and Preview, and Learn marks the Salesforce connector as preview.
 
 <!-- rationale
@@ -242,10 +252,6 @@ impact: Medium. Users with a Microsoft 365 Copilot licence see the connectors in
 <!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[3].api; rendered controls table; Governance controls; Open questions / absence: No automation is documented for choosing which users or groups get an individual federated connector. | Found: allowedUsersAndGroups | Users/groups for whom the package is available. availableTo | Enum value specifying which users or groups within the tenant can access this package. Required if updating allowedUsersAndGroups. | Fix: For connectors delivered as plugin packages, set controls[3].api to graph, call 'PATCH /beta/copilot/admin/catalog/packages/{id}', docs 'https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update'. Add to its note: 'For packaged connectors, availableTo sets package availability and is required when setting allowedUsersAndGroups. This beta API requires Microsoft Agent 365; package availability is not installation or remote-service permission.' Replace the blanket staging-API absence in Governance controls and Open questions with 'Graph beta documents package user availability for connectors distributed as plugins; a direct connector Staged Rollout operation is not documented.' Do not claim that this endpoint sets a standalone connector's staging field. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: defaultState; Why it matters; Scope; Open questions; rationale: risk / default: The current documentation does not establish the new-tenant publisher selections or an unqualified arrival default. | Found: Searched: federated connectors default tenant Allow agents and plugins selected; read overview, manage, agent-settings and custom setup. Current pages give conditional defaults, not initial selections; an indexed early-preview excerpt says enabled by default. | Fix: Keep unknown, but qualify 'Microsoft has not stated' as 'The current overview does not state a new tenant's publisher-type selections; an indexed early-access preview version described connectors as enabled by default.' The differing excerpt is at https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview#admin-experience-and-controls.
-- [supported, minor] controls[4].ui; rendered controls table; Risk assessment; Governance controls / admin-path: Agents > Tools in the Microsoft 365 admin center is the place to block connectors and tools. | Found: Tools block / unblock | Agents > Tools | Tool-level and connector-level blocking. | Fix: The path stops on the right management page. For the package blocking that the API documents, give the complete path 'Agents > Tools > Plugins > plugin > Block', with docs 'https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers'. Keep the package-scope qualifier; do not present that route as an individual-tool toggle. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors
-- [supported, minor] Risk assessment: Autonomy & actions; Governance controls / absence: Write tools are part of the connector rather than separately enabled, while Agents > Tools offers blocking. | Found: Write, update, and delete tools are part of the connector and aren't enabled separately. Tools block / unblock | Agents > Tools | Tool-level and connector-level blocking. | Fix: Qualify the tool-level blocking statement with: 'The separate Agent 365 guidance says granular tool controls are rolling out and apply only to supported MCP servers registered on Agent 365; runtime enforcement is for supported tools and experiences using its Tooling Gateway. Do not assume that reach for every federated connector.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers. Keep the overview's statement about tools not being separately enabled. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The Sources, connector Tools-list and Microsoft Purview checklist checks have no corresponding control rows. | Found: After rollout: 'check ... Settings > Sources'; 'review the connector's Tools list'; 'Use Microsoft Purview to review connector activity'. Governance controls: 'The After rollout checks ... have no control rows in this table.' | Fix: Remove these three checks from the governance checklist, retaining any desired advice as prose outside it. Merely acknowledging the missing rows does not meet the checklist rule; do not add new control rows as part of this correction.
+- [contradicted, blocker] controls[0].api; Governance controls row 1 and automation paragraph; Open questions / absence: No API or automation is documented for tenant-wide connector publisher-type access. | Found: These resources also support remediation and applyOnce. ... areMicrosoftAppsAllowed ... areTenantScopedAppsAllowed ... areISVAppsAllowed | Fix: Set controls[0].api to kind graph, call 'POST /beta/admin/configurationManagement/configurationMonitors', docs 'https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta'. Add to its note: 'TCM preview: mode=applyOnce applies a baseline.resources entry with resourceType=microsoft.agent.allowedagenttypes, resourceVersion=1 and properties.valueObject.areMicrosoftAppsAllowed, areTenantScopedAppsAllowed and areISVAppsAllowed for the publisher choices. It requires delegated ConfigurationMonitoring.ReadWrite.All for the caller, delegated CopilotPolicySettings.ReadWrite for the TCM service principal, and AI Administrator for the signed-in user.' Cite https://learn.microsoft.com/graph/utcm-agent-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. Replace the publisher-type automation absence in Governance controls and Open questions with 'Graph beta Tenant Configuration Management applyOnce documents automation for publisher-type access.' Update the rendered row to agree. | Source: https://learn.microsoft.com/graph/utcm-agent-resources#allowedagenttypes-resource-type
+- [contradicted, blocker] controls[1].api; Governance controls row 2 and automation paragraph; Open questions / absence: No API or automation is documented for tenant-wide User access. | Found: userAssignmentCategory | Write | String | Specifies whether all users or no users can access agents and plugins. | everyone, noOne | Fix: Set controls[1].api to kind graph, call 'POST /beta/admin/configurationManagement/configurationMonitors', docs 'https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta'. Add to its note: 'TCM preview: mode=applyOnce applies a baseline.resources entry with resourceType=microsoft.agent.useraccess, resourceVersion=1 and properties.valueObject.userAssignmentCategory set to everyone or noOne. This schema does not document specific-user/group assignment. It requires delegated ConfigurationMonitoring.ReadWrite.All for the caller, delegated CopilotPolicySettings.ReadWrite for the TCM service principal, and AI Administrator for the signed-in user.' Cite https://learn.microsoft.com/graph/utcm-agent-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. Replace the User access automation absence in Governance controls and Open questions with 'Graph beta Tenant Configuration Management applyOnce documents all-users or no-users access; specific-user/group targeting is not documented in that schema.' Update the rendered row to agree. | Source: https://learn.microsoft.com/graph/utcm-agent-resources#useraccess-resource-type
 -->

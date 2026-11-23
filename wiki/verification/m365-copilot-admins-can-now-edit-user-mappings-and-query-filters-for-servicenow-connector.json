@@ -1,0 +1,750 @@
+{
+  "slug": "m365-copilot-admins-can-now-edit-user-mappings-and-query-filters-for-servicenow-connector",
+  "roadmapId": 503590,
+  "title": "Microsoft 365 Copilot connectors: edit ServiceNow user mapping and query filters on a published connection",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "2 blocking findings (claims 18, 50)"
+    ]
+  },
+  "counts": {
+    "claims": 59,
+    "confirmed": 57,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 2,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "The briefing assumes an admin-opt-in default that Microsoft's description of the editing capability does not explicitly establish, and its Copilot Studio licensing statement omits the Microsoft 365 prerequisite. The editing capability and roadmap details are supported, but the query-filter guidance should also disclose Microsoft's conflicting connector FAQ.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes support for connection edits to ServiceNow user mapping and query filter.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Support connection edit of user mapping, query filter for ServiceNow",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The general availability target is March CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"March CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The preview target is February CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"February CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-07-23T23:27:16.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-07-23T23:27:16\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "title; summary; What's changing; Why it matters; controls[0]",
+      "type": "behaviour",
+      "claim": "Administrators can edit a published ServiceNow connector's user mapping without recreating the connection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Previously, once the ServiceNow connector was configured, user mappings and query filters could not be changed without recreating the connection. Now, admins can edit these settings directly within the connector configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "title; summary; What's changing; Why it matters; controls[0]",
+      "type": "behaviour",
+      "claim": "Administrators can edit a published ServiceNow connector's query filter without recreating the connection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Previously, once the ServiceNow connector was configured, user mappings and query filters could not be changed without recreating the connection. Now, admins can edit these settings directly within the connector configuration.",
+      "severity": "minor",
+      "fix": "After the existing documentation-conflict paragraph in What's changing, add: \"The connector FAQ also conflicts with the release notes and manage page: it says editing a query string after publishing isn't supported and requires a new connection.\" Cite and add to sources https://learn.microsoft.com/microsoft-365/copilot/connectors/frequently-asked-questions, whose 'Can I edit the query string after the connection is published?' answer says exactly that."
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Before this change, changing ServiceNow user mappings required recreating the connection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Previously, once the ServiceNow connector was configured, user mappings and query filters could not be changed without recreating the connection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Before this change, changing ServiceNow query filters required recreating the connection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Previously, once the ServiceNow connector was configured, user mappings and query filters could not be changed without recreating the connection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Open questions",
+      "type": "date",
+      "claim": "The release notes list this item under July 29, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "## July 29, 2026\nUpdates released between July 15, 2026, and July 29, 2026.\nAdmins can now edit user mappings and query filters for ServiceNow Connector",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].ui; What's changing; Governance guidance; Governance controls",
+      "type": "admin-path",
+      "claim": "The Microsoft 365 admin center route to the connection is Copilot > Connectors > Your Connections > connection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Go to Copilot > Connectors > Your Connections.\nSelect the connection that you want to modify.",
+      "severity": "minor",
+      "fix": "The row stops on the correct connection page. Complete controls[0].ui.path and the rendered table path as 'Copilot > Connectors > Your Connections > connection > Edit connection', combining the cited manage page's navigation with 'Select the ServiceNow connector and choose Edit connection' at https://learn.microsoft.com/microsoft-365/copilot/release-notes."
+    },
+    {
+      "n": 16,
+      "where": "What's changing; controls[0].note",
+      "type": "admin-path",
+      "claim": "The release notes tell administrators to select the ServiceNow connector and choose Edit connection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Select the ServiceNow connector and choose 'Edit connection.'",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "summary; controls[0].note; Scope; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "An AI administrator role is required to access and manage Copilot connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "To access and manage your Microsoft 365 Copilot connectors, you must be an AI administrator for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk, impact",
+      "type": "default",
+      "claim": "The change is admin-opt-in and nothing changes in a tenant until an AI administrator edits a connection.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '503590 default'; 'Microsoft 365 ServiceNow connection edit user mapping query filter default rollout admin opt in'. Read the roadmap, release notes, manage-connector and ServiceNow Knowledge deployment pages; none explicitly states this change's arrival default.",
+      "severity": "blocker",
+      "fix": "Set defaultState to 'unknown'. Replace 'Nothing changes until an AI administrator edits the connection' in the summary with 'Microsoft has not stated what happens on arrival'. Replace the opening of the second paragraph of Why it matters with 'Microsoft has not stated this change's arrival default; no source says existing connection behaviour changes. Review existing ServiceNow connections against current needs.' In the risk rationale replace 'and nothing changes until an administrator makes one' with 'and no source says existing connection behaviour changes on arrival'. Remove the impact rationale's assertion that end users see a difference only if an edit is made; retain 'Low. This is an administrator-side connection-editing capability.' The documented manual editing procedure does not itself establish a rollout default."
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Published connections from Microsoft support editing their name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Edit a published connection | Connectors by Microsoft: Name and description",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Published connections from Microsoft support editing their description.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Edit a published connection | Connectors by Microsoft: Name and description",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Published connections from Microsoft support editing connection settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Edit a published connection | Connectors by Microsoft: Connection settings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The manage page lists property labels as editable on published connections from Microsoft.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Edit a published connection | Connectors by Microsoft: Property labels",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The manage page lists schema as editable on published connections from Microsoft.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Edit a published connection | Connectors by Microsoft: Schema",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Published connections from Microsoft support editing the refresh schedule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Edit a published connection | Connectors by Microsoft: Refresh schedule",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; controls[0].governs",
+      "type": "behaviour",
+      "claim": "The manage page lists ServiceNow advanced criteria as editable on a published connection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Query string (ServiceNow) ✔️ Advanced criteria (ServiceNow) ✔️ User mapping (ServiceNow)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "summary; What's changing; Why it matters; Risk assessment; Cost and licensing; rationale: cost",
+      "type": "behaviour",
+      "claim": "Editing a connection might trigger a full crawl where applicable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Editing a connection might trigger a full crawl, where applicable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Editing during the initial full crawl does not trigger another full crawl.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "However, during the initial full crawl, editing the connection doesn't trigger another full crawl.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Changes made during the initial full crawl apply during the next scheduled full crawl.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Changes made during the first crawl are applied during the next scheduled full crawl.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Scope; Open questions",
+      "type": "absence",
+      "claim": "The manage page labels the editable settings ServiceNow without specifying Knowledge, Catalog or Tickets.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft 365 ServiceNow connectors edit user mapping query filter Knowledge Catalog Tickets published'. Opened manage-connector and its operations table: the three settings say '(ServiceNow)' without a subtype.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "ServiceNow Knowledge's query string is a customizable setting under Custom setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment",
+      "quote": "To customize settings, on the connector page in the admin center, choose Custom setup.\nCustomize content settings\nQuery string",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing",
+      "type": "default",
+      "claim": "The ServiceNow Knowledge query string defaults to active=true^workflow_state=published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment",
+      "quote": "ServiceNow uses the following default filter: `active=true^workflow_state=published`.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure; Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "The query filter determines which ServiceNow content is indexed and can be narrowed to specific articles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment",
+      "quote": "You can modify this filter to index only specific articles based on your organizational needs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Risk assessment: Security & identity; Governance guidance; Open questions",
+      "type": "behaviour",
+      "claim": "The identity-mapping page says mappings cannot change after publication, conflicting with the manage page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/map-non-entra-id",
+      "quote": "You can't change your mapping after the connection is published.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "ServiceNow Knowledge has an access-permissions setting separate from identity mapping, offering Everyone or Only people with access to this data source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment",
+      "quote": "Access permissions\nThe ServiceNow Knowledge Copilot connector supports the following user search permissions:\n- Everyone\n- Only people with access to this data source (default)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Choosing Everyone makes indexed data appear in search results for all users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment",
+      "quote": "If you choose Everyone, indexed data appears in the search results for all users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity; rationale: risk",
+      "type": "behaviour",
+      "claim": "User mapping matches non-Entra identities in a data source's access control list to Microsoft Entra identities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/map-non-entra-id",
+      "quote": "This article describes how to map non-Microsoft Entra ID identities to your Microsoft Entra identities. Mapping identities allows people in your access control list (ACL) with non-Microsoft Entra ID identities to view connector responses scoped to them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "A mapping can fail to resolve some users to Microsoft Entra users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/map-non-entra-id",
+      "quote": "If the mapping you provide doesn't map all users, a failure can occur.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The mapping preview displays five sampled users from the data source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/map-non-entra-id",
+      "quote": "The preview shows five random users and their mappings from your data source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The mapping preview indicates with Success or Failed whether the formula resolves to a Microsoft Entra user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/map-non-entra-id",
+      "quote": "It also indicates whether the output of the formula resolves to a Microsoft Entra user in your tenant via a Success or Failed icon.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The identity-mapping page supports only one mapping for all users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/map-non-entra-id",
+      "quote": "Only one mapping is supported for all users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Conditional mappings are not supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/map-non-entra-id",
+      "quote": "Conditional mappings aren't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap change is an administrator's connection edit, not a new agent or autonomous action.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Support connection edit of user mapping, query filter for ServiceNow",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No licence specific to editing a connection is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft 365 Copilot connectors editing published connection licensing pricing'; 'ServiceNow editing connection license'. Opened connector prerequisites, manage-connector and release notes; found product entitlements, not an editing-specific licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft publishes no separate price for editing a connection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft 365 Copilot connectors editing published connection licensing pricing'; 'ServiceNow connector edit connection licensing price license editing user mapping query filter'. Read prerequisites, manage-connector and release notes; no editing-specific price found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Indexing synced connector data incurs no extra cost for tenants with Microsoft 365 licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing; Scope",
+      "type": "behaviour",
+      "claim": "ServiceNow is a prebuilt synced connector.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "In addition, for prebuilt synced connectors (such as Google Drive, Confluence, ServiceNow), you must have admin access to the external service",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 (any plan) supports synced connectors for Microsoft Search, but not Copilot grounding or agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "License | Synced connectors - Microsoft Search | Synced connectors - Copilot grounding and agents | Federated connectors\nMicrosoft 365 (any plan) | ✅ | ❌ | ❌",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 with the Microsoft 365 Copilot add-on supports synced connector Microsoft Search, Copilot grounding and agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "License | Synced connectors - Microsoft Search | Synced connectors - Copilot grounding and agents | Federated connectors\nMicrosoft 365 + Microsoft 365 Copilot add-on | ✅ | ✅ | ✅",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 E7 supports synced connector Microsoft Search, Copilot grounding and agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "License | Synced connectors - Microsoft Search | Synced connectors - Copilot grounding and agents | Federated connectors\nMicrosoft 365 E7 | ✅ | ✅ | ✅",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "A Copilot Studio licence supports synced connector agents, with no Microsoft 365 prerequisite stated for that option.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Your tenant must have Microsoft 365 licenses.\nMicrosoft 365 + Copilot Studio license | ✅ | Agents only (no Copilot grounding) | ❌",
+      "severity": "blocker",
+      "fix": "Replace 'a Copilot Studio licence or Microsoft 365 Copilot pay-as-you-go supports agents only' with 'Microsoft 365 with a Copilot Studio licence, or Microsoft 365 Copilot pay-as-you-go, supports agents but not Copilot grounding'. This preserves the Microsoft 365 prerequisite in the licensing table at https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites."
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 Copilot pay-as-you-go supports agents rather than Copilot grounding for synced connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Microsoft 365 Copilot pay-as-you-go | ✅ | Agents only (no Copilot grounding) | ❌",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "For an organisation with Microsoft 365 Copilot licences, connector grounding in Copilot is included without extra charges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "If your organization has Microsoft 365 Copilot licenses, connector grounding in Copilot is included, and no extra charges apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Scope; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Prebuilt synced connectors such as ServiceNow require admin access to the external service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "In addition, for prebuilt synced connectors (such as Google Drive, Confluence, ServiceNow), you must have admin access to the external service",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The admin center's published-connection edit operation for partner connectors supports name and description only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Edit a published connection | Connectors by partners: ✔️ Name ✔️ Description",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Connection state is shown on Your Connections, and Ready means there is no active crawl.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "You can view the connection state for your deployed connectors on the Your Connections tab in the admin center.\nReady - The connection is ready, and there's no active crawl running against it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "An administrator can validate a known indexed ServiceNow Knowledge article and its user permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment",
+      "quote": "When the connection status is Ready, you can validate the connection by providing the `sys_id` of any knowledge article and verifying its user permissions. For more information, see Search and validate indexed content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Graph externalConnection update reference lists configuration, description and name as the updatable properties, not ServiceNow mapping or query string.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-update?view=graph-rest-1.0",
+      "quote": "The following properties can be updated.\nconfiguration: Specifies additional application IDs that are allowed to manage the connection and to index content in the connection.\ndescription: Description of the connection\nname: The display name of the connection",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No API or automation operation is documented for editing a ServiceNow connector's query string, advanced criteria or user mapping.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'ServiceNow connector edit connection user mapping query filter Microsoft Graph beta API PowerShell'; 'Microsoft Graph external connectors ServiceNow connection configuration query string user mapping update API'. Read externalConnection update v1.0/beta; neither exposes these settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed, reflecting different synced connector entitlements across Microsoft 365, Copilot add-on, E7, Copilot Studio and pay-as-you-go options.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "The surfaces available to your users (Microsoft Search, Microsoft 365 Copilot grounding, Copilot Chat agents) and the connector types you can deploy depend on your organization's licensing.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T09:37:23.816Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=503590",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/map-non-entra-id",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/servicenow-knowledge-deployment",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-update?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Edit a published ServiceNow connection's query string, advanced criteria and user mapping",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Connectors",
+          "Your Connections",
+          "connection"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -15,7 +15,7 @@ risk: "medium"
 cost: "low"
 impact: "high"
 defaultState: "on"
-action: "prepare"
+action: "act-now"
 licensing:
   model: "included"
   notes: "Learn states that Copilot memory is available to Copilot Chat users with and without a Microsoft Copilot license. The page names no separate licence, price or meter for memory."
@@ -63,19 +63,23 @@ changes:
     note: "New briefing: Copilot memory uses chat history, with the Graph control for Enhanced personalization and the September 2026 rollout timeline."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 57 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected the discovery statement (custom instructions are not discoverable), the Graph role wording, the action rating (now act-now) and removed an untabled eDiscovery checklist step."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 69 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 53
+  claims: 69
+  confirmed: 69
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "f95547dc59d63f07e9fc25b1ab6e73b0"
+  contradicted: 0
+  attempts: 0
+  hash: "fbf7e3e2241636a6c722bebee75aac52"
 ---
 
 ## What's changing
@@ -97,7 +101,7 @@ The decision for administrators is whether the default suits the organisation. L
 **Data exposure**
 - Chat history becomes an input to personalisation. Microsoft's notice MC1158329 states that this changes how existing customer data is processed to generate contextual replies. Learn says memories sit in the user's Exchange mailbox in a hidden folder and follow the same security and compliance policies as other mailbox data, such as Customer Lockbox and encryption at rest.
 - Learn says retention policies and retention labels configured in Purview do not apply to Copilot memory, and that there are no admin controls to enforce retention rules specifically for Copilot memory. A "delete after three months" policy for Copilot Chat interactions does not delete users' memories.
-- Learn says admins can search users' memory data with Microsoft Purview eDiscovery or Content Search (item class IPM.Contact, in the CopilotMemory folder) and can delete it through Microsoft Graph Explorer in combination with Purview.
+- Learn says admins can search users' saved memories and memories inferred from chat history with Microsoft Purview eDiscovery or Content Search (item class IPM.Contact, in the CopilotMemory folder) and can delete memory data through Microsoft Graph Explorer in combination with Purview. Custom instructions are not discoverable through these tools; the user can manually export them through Settings > Personalization.
 
 **Security & identity**
 - The Enhanced personalization control can be changed through Microsoft Graph by an admin holding the PeopleSettings.ReadWrite.All permission; for delegated access the least privileged supported Microsoft Entra role is People Administrator. Limit who holds that role and permission, because it decides whether memory is available to every user.
@@ -129,7 +133,7 @@ The indirect cost is admin and communication time: updating internal documentati
 
 ### Before rollout
 - Confirm whether your tenant leaves Enhanced personalization on, and decide whether any group should have it disabled, using the Microsoft Graph setting in the controls table.
-- Agree who holds the People Administrator role or the PeopleSettings.ReadWrite.All permission, since that is what changes the control.
+- Agree who can change the control: delegated access requires PeopleSettings.ReadWrite.All and a supported Microsoft Entra role, with People Administrator the least privileged; application access requires PeopleSettings.ReadWrite.All.
 - Tell the compliance team that Purview retention policies and labels do not apply to Copilot memory and that memory actions are not written to the Purview audit log, per Learn.
 - Update user guidance and training material for the redesigned Memory settings page, which Microsoft's notice names as the optional preparation.
 
@@ -139,7 +143,6 @@ The indirect cost is admin and communication time: updating internal documentati
 - Confirm that tenants or users who already turned Memory off still have it off, as Microsoft's notice says existing settings are respected.
 
 ### After rollout
-- Test eDiscovery for a pilot user's memory data (item class IPM.Contact), so the team knows how to answer a data subject request, as Learn describes.
 - Re-read the Learn page and MC1158329 when General Availability completes, because the page still marks the feature as in preview.
 - Review whether any group exception set through the Graph setting is still needed.
 
@@ -169,14 +172,4 @@ Users have their own controls in Settings > Personalization for Custom instructi
 risk: Medium. Copilot now draws on chat history to personalise replies, which Microsoft's notice says changes how existing customer data is processed, and the documented tenant control is a beta Graph API with no admin centre path.
 cost: Low. The only cost the sources show is admin time and user communication; the Learn page names no separate licence or meter for Copilot memory.
 impact: High. Microsoft's notice says the change applies to all Copilot Chat users in tenants where Memory is enabled, and the Learn page says Enhanced personalization is turned on by default.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure; Governance guidance: After rollout / applicability: Administrators can search users' memory data with eDiscovery or Content Search to answer a data subject request. | Found: Saved memories and inferred memories from your chat history are discoverable using eDiscovery and Microsoft Graph Explorer. Custom instructions aren't accessible, but can manually be exported by the user through Settings > Personalization. | Fix: Add this qualification to the discovery sentence and the data subject request checklist item: 'Custom instructions are not discoverable through these tools; the user can manually export them through Settings > Personalization.' This qualification is stated at https://learn.microsoft.com/copilot/manage/copilot-personalization-memory. | Source: https://learn.microsoft.com/copilot/manage/copilot-personalization-memory
-- [contradicted, blocker] Governance guidance: Before rollout, second bullet / role: Holding the People Administrator role or the PeopleSettings.ReadWrite.All permission is what changes the control. | Found: Delegated (work or school account) | PeopleSettings.ReadWrite.All ... For delegated access using work or school accounts, the admin must be assigned a supported Microsoft Entra role. | Fix: Replace the bullet with: 'Agree who can change the control: delegated access requires PeopleSettings.ReadWrite.All and a supported Microsoft Entra role, with People Administrator the least privileged; application access requires PeopleSettings.ReadWrite.All.' See https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta. | Source: https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] front matter: action / consistency: The prepare action rating fits an on-by-default, medium-risk change whose roadmap status is Rolling out. | Found: action: "prepare"; status: "rolling-out"; risk: "medium"; defaultState: "on". The standard defines act-now for rolling-out changes that reach users automatically and need a decision with medium-or-higher risk or cost. | Fix: Set action to 'act-now': the record still says Rolling out, the documented default is on, and the page identifies a medium-risk decision about whether to disable memory.
-- [contradicted, minor] Governance guidance: After rollout, first bullet; controls / consistency: Every control the governance checklist asks readers to test appears in the controls table. | Found: 'Test eDiscovery for a pilot user's memory data (item class IPM.Contact)' appears in the checklist, but the controls table contains only Enhanced personalization. | Fix: The After rollout instruction to test eDiscovery has no corresponding controls row. Remove that checklist item; retain the qualified discovery information in Risk assessment. Do not add a new control row as part of this correction.
 -->

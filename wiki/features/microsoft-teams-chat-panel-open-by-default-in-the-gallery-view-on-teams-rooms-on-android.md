@@ -37,6 +37,9 @@ sources:
   - title: "Settings available for remote management in Teams Rooms Pro management portal"
     url: "https://learn.microsoft.com/microsoftteams/rooms/device-settings-available"
     kind: "learn"
+  - title: "Managing settings for Teams devices"
+    url: "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings"
+    kind: "learn"
   - title: "Microsoft Teams Rooms on Windows and Teams Android device security"
     url: "https://learn.microsoft.com/microsoftteams/rooms/security#software-security"
     kind: "learn"
@@ -45,9 +48,12 @@ related: ["microsoft-teams-modernized-gallery-view-in-teams-rooms-on-android","m
 controls:
   - governs: "Default chat panel behaviour in Gallery view on Teams Rooms on Android"
     scope: "other"
-    ui: null
+    ui:
+      surface: "Microsoft Teams Rooms Pro Management portal"
+      path: "Rooms > device > Settings"
+      docs: "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings"
     api: null
-    note: "Release notes: a local device setting, and Teams Rooms Pro management portal for this release's settings. The Android settings list gives no label for it at the time of writing (November 2026)."
+    note: "This path reaches the device settings page; the Android chat-default label is not yet documented. Needs a signed-in device and Rooms Management permissions, and Teams Admin Agent 1.0.0.202606082157 or greater (June 2026 release notes)."
 confidence: "medium"
 created: "2026-11-23"
 updated: "2026-11-23"
@@ -61,19 +67,23 @@ changes:
     note: "Corrected after verification: replaced the role and prerequisite absences and the 'only documented control' statement with what Learn says, and raised impact to high."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 36 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-23"
+    note: "Corrected after verification: the controls table now gives the Teams Rooms Pro Management portal route to device settings; Android chat-default label still not documented."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 37 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 36
-  confirmed: 35
+  claims: 37
+  confirmed: 37
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "9ce88a0ee92ddeeed96df8891a9aea6a"
+  contradicted: 0
+  attempts: 0
+  hash: "5f531af3b975e3acfd2d137a068b790e"
 ---
 
 ## What's changing
@@ -138,11 +148,11 @@ The release arrived with Teams Rooms on Android app build 1449/1.0.96.2026129709
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Default chat panel behaviour in Gallery view on Teams Rooms on Android</strong><br><small class="controls__note">Release notes: a local device setting, and Teams Rooms Pro management portal for this release's settings. The Android settings list gives no label for it at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Default chat panel behaviour in Gallery view on Teams Rooms on Android</strong><br><small class="controls__note">This path reaches the device settings page; the Android chat-default label is not yet documented. Needs a signed-in device and Rooms Management permissions, and Teams Admin Agent 1.0.0.202606082157 or greater (June 2026 release notes).</small></td><td data-label="Admin UI"><strong>Microsoft Teams Rooms Pro Management portal</strong><br>Rooms › device › Settings <a href="https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The June 2026 release notes name a local device setting for this default, and also say settings for this release are managed through the Teams Rooms Pro management portal; the Android settings list does not yet give this setting's label. Its Android settings page says the full settings list documentation is coming soon, so the table shows no admin-centre path or API. The Teams Rooms Pro Management portal's settings page lists "Open Chat by Default" for Teams Rooms on Windows only; do not assume it applies to Android.
+The June 2026 release notes name a local device setting for this default, and also say settings for this release are managed through the Teams Rooms Pro management portal. The table gives the portal's route to a device's settings page; the Android settings list does not yet give this setting's label, and its Android settings page says the full settings list documentation is coming soon. Microsoft Learn documents no API for this setting at the time of writing (November 2026). The Teams Rooms Pro Management portal's settings page lists "Open Chat by Default" for Teams Rooms on Windows only; do not assume it applies to Android.
 
 Teams Android devices use a local device administrator account to access device settings; obtain its initial username and password from the device manufacturer.
 
@@ -156,10 +166,4 @@ Teams Android devices use a local device administrator account to access device 
 risk: Low. The change only alters whether the chat panel is open when a meeting starts on a room device; users can close it with one touch, and Microsoft's notes document a local device setting to change the default.
 cost: Low. The only cost the sources show is admin time to decide on the default and tell room users. The Teams Rooms licence comparison lists Meeting chat as a Teams Rooms Pro feature, and no separate meter for this change is published.
 impact: High. This changes the default starting layout for people using Teams Rooms on Android in Gallery and Large Gallery meetings.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui and api; Governance controls: rendered table and lead / absence: No UI or automation control is documented for the Android chat-panel default, so there is nothing to configure on either surface yet. | Found: IT admins can change the chat panel default behavior using a local device setting. Management of settings related to features in this release and future releases is only available within the Teams Rooms Pro management portal | Fix: Replace controls[0].ui with surface 'Microsoft Teams Rooms Pro Management portal', path 'Rooms > device > Settings', docs 'https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings', and cite that page. Keep api null. Replace the row note with 'This path reaches the device settings page; the Android chat-default setting label is not yet documented. Settings management requires a signed-in device and Rooms Management permissions. The June 2026 release notes require Teams Admin Agent 1.0.0.202606082157 or greater.' Do not use the Windows-only 'Open Chat by Default' label for Android. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note?tabs=Android
 -->

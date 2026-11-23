@@ -4,7 +4,7 @@ slug: "microsoft-purview-role-groups-ui-enhancements"
 roadmapId: 562033
 topic: "governance"
 products: ["Microsoft Purview"]
-summary: "The Purview portal's Role groups page now lets admins look up permissions by roles and memberships. It is launched; the roadmap states no admin action, but check who can open the page."
+summary: "The Purview portal's Role groups page now lets admins look up permissions by roles and memberships. It is launched; the roadmap does not state whether admin action is required, but check who can open the page."
 status: "launched"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)","GCC","GCC High","DoD"]
@@ -27,6 +27,9 @@ sources:
     kind: "roadmap"
   - title: "Permissions in the Microsoft Purview portal"
     url: "https://learn.microsoft.com/purview/purview-permissions"
+    kind: "learn"
+  - title: "Roles and role groups in Microsoft Defender for Office 365 and Microsoft Purview"
+    url: "https://learn.microsoft.com/defender-office-365/scc-permissions"
     kind: "learn"
   - title: "Add-RoleGroupMember"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember"
@@ -62,19 +65,23 @@ changes:
     note: "First briefing for this item: the Role groups lookup by roles and memberships, its Launched status, and what Learn does and does not yet document."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 40 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected the summary to say the roadmap does not state whether admin action is required, and the Scope text on the Role groups access requirement; added the roles reference's Role Management assignment."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 38 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 40
+  claims: 38
   confirmed: 38
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "35ccfdfef12155bcd9420d88f78950ef"
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "c797f64e3eee0382bd30fee2c0833b8c"
 ---
 
 ## What's changing
@@ -115,7 +122,7 @@ The only cost the sources show is indirect: admin time to review who holds the *
 
 The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD, with the release phases General Availability and Preview and the status Launched. It lists no platforms.
 
-Learn says that to view **Role groups** in the **Roles and scopes** area, users need to be a global administrator or to hold the *Role Management* role, which it says is "assigned only to the *Organization Management* role group". That requirement is documented for viewing Role groups; Learn does not say whether it also covers the new lookup.
+Learn says that to view **Role groups** in the **Roles and scopes** area, users need to be a global administrator or to hold the *Role Management* role, which it says is "assigned only to the *Organization Management* role group". That requirement governs access to the Role groups page containing the lookup; Microsoft has not documented any additional requirement specific to the lookup. Microsoft's roles reference instead says Role Management is assigned to Organization Management and Purview Administrators by default.
 
 ## Governance guidance
 
@@ -157,13 +164,4 @@ The permissions page says security groups are supported only in Microsoft 365 co
 risk: Low. The roadmap describes a lookup on an existing admin page, and Learn says viewing Role groups already needs global administrator or the Role Management role. Microsoft has not stated whether the lookup adds any access.
 cost: Low. The roadmap names no licence or meter, so the only cost the sources show is admin time to review who can open the page. A licence specific to this change is not yet published.
 impact: Low. Only administrators who can already open Role groups in the Purview portal are in view; end users do not see the page.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] summary / record: The roadmap states no admin action. | Found: Searched: the complete roadmap record for an admin-action statement; its description only says the page now allows permission lookups. Also searched 'Purview Role groups UI enhancements 562033 default rollout admin action disable PowerShell'; no such statement found. | Fix: Replace 'the roadmap states no admin action' with 'the roadmap does not state whether admin action is required'. This preserves the distinction between silence and an explicit no-action instruction and agrees with Why it matters.
-- [contradicted, blocker] Scope: last sentence / applicability: Learn does not establish whether the Role groups page's access requirement covers the new lookup on that page. | Found: To view Role groups in the Roles and scopes area in the Microsoft Purview portal, users need to be a global administrator or need to be assigned the Role Management role. | Fix: Replace 'That requirement is documented for viewing Role groups; Learn does not say whether it also covers the new lookup.' with 'That requirement governs access to the Role groups page containing the lookup; Microsoft has not documented any additional requirement specific to the lookup.' The page-wide access requirement is stated at https://learn.microsoft.com/purview/purview-permissions. | Source: https://learn.microsoft.com/purview/purview-permissions
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Scope; controls[0].governs; Governance guidance: Before rollout / role: The permissions page says Role Management is assigned only to Organization Management. | Found: Role Management role (assigned only to the Organization Management role group). | Fix: After the attributed statement in Scope, add: 'Microsoft's roles reference instead says Role Management is assigned to Organization Management and Purview Administrators by default.' Cite https://learn.microsoft.com/defender-office-365/scc-permissions#role-groups-in-microsoft-defender-for-office-365-and-microsoft-purview, which states both groups. Retain the attribution to the permissions page rather than silently choosing between the sources. | Source: https://learn.microsoft.com/purview/purview-permissions
 -->

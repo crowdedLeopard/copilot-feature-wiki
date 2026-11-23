@@ -2,41 +2,33 @@
   "slug": "microsoft-purview-data-loss-prevention-block-external-domain-user-action-in-dlp-for-sharep",
   "roadmapId": 557191,
   "title": "Microsoft Purview DLP: block named external domains or users from SharePoint and OneDrive files",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-23",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
-  "notes": [
-    "claim 47: severity blocker on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
-  ],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-23",
-    "reasons": [
-      "2 blocking findings (claims 45, 46)"
-    ]
-  },
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
   "counts": {
-    "claims": 48,
-    "confirmed": 44,
-    "unconfirmed": 0,
-    "contradicted": 4,
-    "blocker": 2,
-    "major": 0,
+    "claims": 49,
+    "confirmed": 47,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 1,
     "minor": 3
   },
-  "summary": "Hold: the impact rationale says only block-listed external people are affected, although Microsoft's rule notes also describe blocking people in neither list. The briefing also overstates the required policy locations and omits the owner and last-modifier exceptions when describing the PowerShell All scope. Roadmap facts and the reported public-preview limitations are supported.",
+  "summary": "The briefing passes: the roadmap facts, licensing, roles and documented blocking controls are supported. Remove the unsupported generalization about using a different address, clarify the conflicting guidance on allow entries, and expand the abbreviated portal route.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing",
+      "where": "summary; What's changing; title",
       "type": "record",
-      "claim": "Roadmap 557191 describes Microsoft Purview DLP policies blocking SharePoint and OneDrive file access for specific external domains or individual users.",
+      "claim": "Admins can configure Purview DLP policies to block SharePoint and OneDrive file access for specific external domains or individual users.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "With this enhancement, admins can configure DLP policies that block file access for specific external domains or individual users.",
@@ -113,7 +105,7 @@
       "n": 8,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap record was modified at 2026-08-10T22:43:02.",
+      "claim": "The roadmap record was modified on 2026-08-10T22:43:02.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-08-10T22:43:02\"",
@@ -122,53 +114,20 @@
     },
     {
       "n": 9,
-      "where": "summary; What's changing; controls[0].note",
-      "type": "availability",
-      "claim": "Learn still describes Block access for specific external domains or users as public preview, despite the roadmap's Launched status.",
+      "where": "What's changing; Scope; controls[0].note",
+      "type": "applicability",
+      "claim": "The specific external domain or user sub-option applies only to SharePoint and OneDrive.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
-      "quote": "This variant uses the same scenario as the main SharePoint and OneDrive external sharing policy but swaps the action to demonstrate the Block access for specific external domains or users suboption, available in public preview for SharePoint and OneDrive only.",
+      "quote": "the Block access for specific external domains or users suboption, available in public preview for SharePoint and OneDrive only.",
       "severity": null,
       "fix": null
     },
     {
       "n": 10,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The printed Purview portal path reaches the specific-external-domain-or-user action through Data loss prevention, Policies, Create policy, Enterprise applications & devices, Custom and Create rule.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
-      "quote": "Select Custom from both the Categories list and the Regulations list. On the Customize advanced DLP rules page, select + Create rule.",
-      "severity": "minor",
-      "fix": "Expand the abbreviated route to 'Data loss prevention > Policies > Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom > Define policy settings > Create or customize advanced DLP rules > Customize advanced DLP rules > Create rule > Actions > Restrict access or encrypt the content in Microsoft 365 locations > Block users from receiving email or accessing shared SharePoint, OneDrive > Block access for specific external domains or users'. The source's numbered variant steps also omit the Block users grouping, so its omission alone is not evidence of an unusable route. Use https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external."
-    },
-    {
-      "n": 11,
-      "where": "controls[0].api; Governance controls prose; Open questions",
-      "type": "absence",
-      "claim": "At the time of writing, no documented PowerShell parameter or API operation sets this action's domain and user lists; the documented editor is the Purview portal.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: DLP external domains PowerShell RestrictAccess; SharePoint OneDrive DLP external domains user lists Microsoft Graph REST API Set-DlpComplianceRule parameters. Read scenario, policy reference, New-/Set-DlpComplianceRule; no documented list-setting contract found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "front matter: defaultState; summary; rationale: risk",
-      "type": "default",
-      "claim": "The action is admin-opt-in: its blocking requires an administrator to configure the rule action.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
-      "quote": "Turn it on | All targeted location instances | - All configured actions are enforced on user activities",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
       "where": "What's changing; controls[0].note",
       "type": "admin-path",
-      "claim": "The named sub-option belongs to Restrict access or encrypt the content in Microsoft 365 locations, under Block users from receiving email or accessing shared SharePoint, OneDrive.",
+      "claim": "The sub-option belongs under Restrict access or encrypt the content in Microsoft 365 locations and Block users from receiving email or accessing shared SharePoint, OneDrive.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
       "quote": "Action: Restrict access or encrypt the content in Microsoft 365 locations > Block users from receiving email or accessing shared SharePoint, OneDrive > Block access for specific external domains or users",
@@ -176,32 +135,10 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing; Scope; controls[0].note",
-      "type": "applicability",
-      "claim": "The sub-option is available for SharePoint and OneDrive only.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
-      "quote": "For SharePoint and OneDrive locations only, you can also block access for specific external domains or user SMTPs (in public preview).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "controls[0].scope; Governance controls table",
-      "type": "applicability",
-      "claim": "This is a tenant-level DLP control whose policy can be scoped to selected sites and accounts.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "By default, Exchange Online emails, SharePoint sites, and OneDrive accounts are enabled locations (workloads) for these DLP features for all users within the tenant.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
+      "n": 11,
       "where": "What's changing; controls[0].note",
-      "type": "admin-path",
-      "claim": "Restricted domains are entered using Domain IS.",
+      "type": "behaviour",
+      "claim": "Restricted domains are entered with Domain IS.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
       "quote": "Add each restricted domain by using Domain IS (for example, adatum.com).",
@@ -209,10 +146,10 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "What's changing; controls[0].note",
-      "type": "admin-path",
-      "claim": "Restricted users are entered using User IS.",
+      "n": 12,
+      "where": "What's changing; Risk assessment: Security & identity; controls[0].note",
+      "type": "behaviour",
+      "claim": "Restricted users are entered by SMTP address with User IS.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
       "quote": "Add each restricted user by using User IS (for example, j.doe@firstupconsultants.com).",
@@ -220,54 +157,43 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 13,
       "where": "What's changing; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "Domain IS NOT defines allow entries for domains that would otherwise match a block list.",
+      "claim": "Domain IS NOT and User IS NOT can add allow entries that override a block entry.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
-      "quote": "(Optional) Use Domain IS NOT or User IS NOT to explicitly allow specific domains or users that would otherwise match a block list.",
-      "severity": null,
-      "fix": null
+      "quote": "(Optional) Use Domain IS NOT or User IS NOT to add allow entries that override a block entry.",
+      "severity": "minor",
+      "fix": "The cited procedure supports this wording, but its following note says block wins when an entry appears in both lists. Replace the first Before rollout bullet with 'List the external domains and guest addresses to block, and any proposed allow entries; test overlaps because Learn says block wins when an entry is in both lists.'"
     },
     {
-      "n": 19,
-      "where": "What's changing; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "User IS NOT defines allow entries for users that would otherwise match a block list.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
-      "quote": "(Optional) Use Domain IS NOT or User IS NOT to explicitly allow specific domains or users that would otherwise match a block list.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
+      "n": 14,
       "where": "What's changing; Risk assessment: Data exposure",
-      "type": "behaviour",
+      "type": "applicability",
       "claim": "Internal users and domains cannot be blocked with this sub-option.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
-      "quote": "Internal users and domains can't be blocked with this suboption; use Block everyone for internal users.",
+      "quote": "Internal users and domains can't be blocked with this suboption",
       "severity": null,
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing; Risk assessment; Governance controls",
+      "n": 15,
+      "where": "What's changing; Risk assessment: Data exposure; Governance controls",
       "type": "applicability",
-      "claim": "Learn directs administrators to Block everyone for internal-user restrictions.",
+      "claim": "Learn directs administrators to Block everyone for internal restrictions.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
-      "quote": "Internal users and domains can't be blocked with this sub-option; continue to use Block everyone for internal users.",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
+      "quote": "use Block everyone for internal users.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 22,
+      "n": 16,
       "where": "What's changing; Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "If a user or domain appears in both allow and block lists, the block takes effect.",
+      "claim": "Block takes effect when a user or domain appears in both allow and block lists.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
       "quote": "if a user or domain appears in both allow and block lists, the block takes effect (most restrictive wins).",
@@ -275,8 +201,8 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing; Risk assessment; Governance guidance",
+      "n": 17,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance",
       "type": "behaviour",
       "claim": "Alerting is supported for this action.",
       "status": "supported",
@@ -286,10 +212,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 18,
       "where": "What's changing; Why it matters; Risk assessment; rationale: impact",
       "type": "behaviour",
-      "claim": "User notification, including policy tips, is not supported for this action.",
+      "claim": "User notifications, including policy tips, are not supported for this action.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
       "quote": "User notification and override capability are not supported for this action.",
@@ -297,7 +223,7 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 19,
       "where": "What's changing; Why it matters; Risk assessment; Open questions",
       "type": "behaviour",
       "claim": "User override capability is not supported for this action.",
@@ -308,8 +234,19 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "What's changing; Risk assessment; Governance guidance; rationale: risk",
+      "n": 20,
+      "where": "summary; What's changing; controls[0].note; Open questions",
+      "type": "availability",
+      "claim": "Learn still describes the sub-option as public preview, unlike the Launched roadmap status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "Block access for specific external domains or users (in public preview)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
       "type": "behaviour",
       "claim": "Image files are not protected by this sub-option during public preview.",
       "status": "supported",
@@ -319,10 +256,10 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "What's changing; Risk assessment; Cost and licensing; Governance guidance",
+      "n": 22,
+      "where": "What's changing; Risk assessment: Change & support; Cost and licensing",
       "type": "behaviour",
-      "claim": "Multiple audit records can be generated for certain actions on a blocked file by a blocked user during preview.",
+      "claim": "Certain actions on a blocked file by a blocked user can generate multiple audit records during preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
       "quote": "multiple audit records can be generated for certain actions on a blocked file by a blocked user.",
@@ -330,54 +267,10 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "Why it matters; Governance controls",
-      "type": "applicability",
-      "claim": "Block only people outside your organization is the existing alternative for blocking all external recipients.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
-      "quote": "We need to block all sharing of SharePoint and OneDrive items to all external recipients... Action: Restrict access or encrypt the content in Microsoft 365 locations > Block users from receiving email or accessing shared SharePoint, OneDrive > Block only people outside your organization",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "Risk assessment: Security & identity",
+      "n": 23,
+      "where": "Risk assessment: Change & support; Open questions; rationale: impact",
       "type": "behaviour",
-      "claim": "The entries identify an external domain or user SMTP address, rather than a person independently of the address they use.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
-      "quote": "The Block access for specific external domains or users sub-option lets you block external access by domain (for example, partner.com) or by user SMTP (for example, user@example.com).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "The configured action denies matching-file access to the configured external users or domains.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
-      "quote": "Access is denied when a configured external user or domain attempts to open, preview, or download the file.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Risk assessment: Change & support; Open questions",
-      "type": "behaviour",
-      "claim": "The scenario describes evaluation per rule, whereas the policy reference's SharePoint section says across all matching rules.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
-      "quote": "If a file matches both an allow rule and a block rule, evaluation is across all matching rules",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Risk assessment: Change & support; Open questions",
-      "type": "behaviour",
-      "claim": "Both cited rule notes say users in neither list are blocked by default if a file matches both an allow rule and a block rule.",
+      "claim": "Learn says users in neither list are blocked by default when a file matches both an allow rule and a block rule.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
       "quote": "If a file matches both an allow rule and a block rule, evaluation is per rule — allowed users and domains are permitted, blocked users and domains are denied, and users in neither list are blocked by default.",
@@ -385,10 +278,21 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Open questions; Why it matters",
+      "n": 24,
+      "where": "Risk assessment: Change & support; Open questions",
       "type": "behaviour",
-      "claim": "The Learn scenario's intent statement says other external recipients are allowed, and the briefing reports the tension with the rule notes.",
+      "claim": "The scenario says evaluation is per rule, while the policy reference also uses across all matching rules.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "If a file matches both an allow rule and a block rule, evaluation is across all matching rules — allowed users and domains are permitted, blocked users and domains are denied, and users in neither list are blocked by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters; Open questions",
+      "type": "behaviour",
+      "claim": "The scenario's intent statement says other external recipients are allowed.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
       "quote": "All other external recipients are allowed.",
@@ -396,76 +300,109 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "Cost and licensing; front matter: licensing.notes",
-      "type": "licensing",
-      "claim": "Microsoft 365 E5/A5/G5/E3/A3/G3, Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2) and Exchange Online Plan 2 provide rights to the DLP service.",
+      "n": 26,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "A person using a different address or a different domain is not covered by an entry for the original one.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Purview DLP block specific external domain user SMTP different address block domain user matching. Opened dlp-policy-reference and dlp-create-policy-spo-odb-external; neither states this generalization about alternate identities.",
+      "severity": "major",
+      "fix": "Remove 'A person using a different address or a different domain is not covered by an entry for the original one;' and retain the advice that the list needs maintaining as partners and guests change."
+    },
+    {
+      "n": 27,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The control is admin-opt-in: enforcement requires an administrator to configure the rule action.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "Which licenses provide the rights for a user to benefit from the service? Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2), Exchange Online Plan 2",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "Any item that makes it through the conditions filter has any actions that are defined in the rule applied to it. You have to configure the required options to support the action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The printed Microsoft Purview portal route reaches the specific external domain or user action in a custom policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
+      "quote": "Select Custom from both the Categories list and the Regulations list. On the Define policy settings page, the Create or customize advanced DLP rules option should already be selected.",
+      "severity": "minor",
+      "fix": "Expand the path to 'Data loss prevention > Policies > Create policy > Enterprise applications & devices > Categories: Custom > Regulations: Custom > Assign admin units > Choose where to apply the policy > Define policy settings > Create or customize advanced DLP rules > Customize advanced DLP rules > Create rule > Actions > Restrict access or encrypt the content in Microsoft 365 locations > Block access for specific external domains or users'. The omitted policy-scope selections and preselected advanced-rules option do not invalidate the printed route."
+    },
+    {
+      "n": 29,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No documented PowerShell parameter or API operation sets the specific SharePoint and OneDrive domain and user lists.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: DlpComplianceRule external domains Block SharePoint OneDrive parameters; Set-DlpComplianceRule domain BlockAccessScope; DLP external domains Graph API. Read New-/Set-DlpComplianceRule, including RestrictAccess and MipRestrictAccess: no list-setting syntax is documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "New-DlpComplianceRule has a BlockAccessScope parameter specifying the scope of the block action, rather than domain or user lists.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
+      "quote": "The BlockAccessScope parameter specifies the scope of the block access action. Valid values are:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "BlockAccessScope All blocks everyone except the owner and last modifier.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
+      "quote": "All: Blocks access to everyone except the owner and the last modifier.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "BlockAccessScope PerUser blocks external users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
+      "quote": "PerUser: Blocks access to external users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "BlockAccessScope PerAnonymousUser blocks access through Anyone with the link in SharePoint and OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
+      "quote": "PerAnonymousUser: Blocks access to people through the \"Anyone with the link\" option in SharePoint and OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope; Governance controls; controls[0].note",
+      "type": "applicability",
+      "claim": "Administrators select the SharePoint sites and OneDrive accounts policy locations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
+      "quote": "Choose where to apply the policy. Ensure that the SharePoint sites and OneDrive accounts locations are selected.",
       "severity": null,
       "fix": null
     },
     {
       "n": 35,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Office 365 E5/A5/G5/E3/A3/G3 provides rights to the DLP service.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "Office 365 E5/A5/G5/E3/A3/G3",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW provide rights to the DLP service.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "The licensing model is included within the documented DLP service licences, rather than a separately documented entitlement for this action.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "Users benefit from DLP for Exchange Online, SharePoint Online, and OneDrive for Business when their emails and files are being inspected for sensitive information, as configured in the organization's DLP policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "absence",
-      "claim": "No licence specific to the external-domain-or-user action is published, and the scenario and policy reference name no licence for the sub-option itself.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Purview DLP block specific external domains users licensing price billing meter; Block access for specific external domains or users licensing price meter default API. Read scenario, policy reference and service description; found service licences, no action-specific entitlement.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No separate price or meter for this action is published at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Purview DLP block specific external domains users licensing price billing meter; Block access for specific external domains or users licensing price meter default API. Read scenario, policy reference and service description; no action-specific price or meter found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
       "where": "Scope; Governance controls",
       "type": "role",
-      "claim": "Learn lists Compliance administrator, Compliance data administrator, Information Protection, Information Protection Admin and Security administrator as role groups for creating and deploying DLP policies.",
+      "claim": "The creating and deploying account must belong to Compliance administrator, Compliance data administrator, Information Protection, Information Protection Admin or Security administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
       "quote": "The account you use to create and deploy policies must be a member of one of these role groups: Compliance administrator; Compliance data administrator; Information Protection; Information Protection Admin; Security administrator",
@@ -473,7 +410,7 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 36,
       "where": "Scope",
       "type": "admin-path",
       "claim": "The scenario creates a Custom policy under Enterprise applications & devices.",
@@ -484,10 +421,10 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 37,
       "where": "Scope",
       "type": "behaviour",
-      "claim": "The variant keeps the main external-sharing scenario's conditions, exclusions, incident reports and administrative scope.",
+      "claim": "The variant retains the main scenario's administrative scope, conditions, exclusions and incident reports.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
       "quote": "All other mapping rows from the main SharePoint and OneDrive external sharing scenario — administrative scope, conditions, exclusions, incident reports, user notifications, and user overrides — are unchanged.",
@@ -495,10 +432,10 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 38,
       "where": "Governance guidance: Before rollout",
-      "type": "applicability",
-      "claim": "The Learn scenario uses Social Security numbers, credit card data and the Confidential sensitivity label to identify sensitive content.",
+      "type": "behaviour",
+      "claim": "The scenario uses Social Security numbers, credit card data and the Confidential sensitivity label as content criteria.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
       "quote": "We need to block sharing of SharePoint and OneDrive items containing social security numbers, credit card data, or the \"Confidential\" sensitivity label",
@@ -506,10 +443,10 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 39,
       "where": "Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Learn instructs administrators to leave the policy off while building it.",
+      "claim": "Microsoft's procedure says to leave the policy off while building it.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
       "quote": "For this policy creation procedure, leave the policy turned off. Change these settings when you deploy the policy.",
@@ -517,52 +454,118 @@
       "fix": null
     },
     {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The service description covers DLP for Exchange Online, SharePoint Online and OneDrive for Business.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft Purview Data Loss Prevention: Data Loss Prevention (DLP) for Exchange Online, SharePoint Online, and OneDrive for Business",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The listed qualifying licences include Microsoft 365 E5/A5/G5/E3/A3/G3, Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2) and Exchange Online Plan 2.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2), Exchange Online Plan 2",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Office 365 E5/A5/G5/E3/A3/G3 provides rights to the service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Office 365 E5/A5/G5/E3/A3/G3",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW provide rights to the service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The action is included within the DLP service's existing licensing model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Users benefit from DLP for Exchange Online, SharePoint Online, and OneDrive for Business when their emails and files are being inspected for sensitive information, as configured in the organization's DLP policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 45,
-      "where": "Governance controls",
-      "type": "command",
-      "claim": "New-DlpComplianceRule BlockAccessScope offers All, PerUser and PerAnonymousUser for blocking everyone, external users and Anyone-link users respectively.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
-      "quote": "All: Blocks access to everyone except the owner and the last modifier. PerUser: Blocks access to external users. PerAnonymousUser: Blocks access to people through the \"Anyone with the link\" option in SharePoint and OneDrive.",
-      "severity": "blocker",
-      "fix": "Replace the sentence with '`New-DlpComplianceRule` documents `-BlockAccessScope` values of All (everyone except the owner and last modifier), PerUser (external users) and PerAnonymousUser (people using the Anyone with the link option in SharePoint and OneDrive); these are blocking scopes, not domain or user lists.' Use https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule."
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No licence specific to this sub-option is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview specific external domains license pricing meter default; Block access for specific external domains or users licensing price API PowerShell. Read the scenario, policy reference and Purview service description: only service-level licensing was found.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 46,
-      "where": "Governance controls: policy locations",
-      "type": "applicability",
-      "claim": "The policy must include both SharePoint sites and OneDrive accounts.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
-      "quote": "Every policy is scoped to one or more locations, such as Exchange, SharePoint in Microsoft 365, Teams, and Devices.",
-      "severity": "blocker",
-      "fix": "Replace 'The policy must include the SharePoint sites and OneDrive accounts locations' with 'Select the SharePoint sites and/or OneDrive accounts locations that you intend this policy to cover.' The scenario selects both to cover both workloads, not as a universal requirement. The scope rule is at https://learn.microsoft.com/purview/dlp-create-deploy-policy and this action's supported locations are at https://learn.microsoft.com/purview/dlp-policy-reference."
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate price or meter for this action is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview specific external domains license pricing meter default; Block access for specific external domains or users licensing price API PowerShell. Read scenario, policy reference, service description and billing-model search excerpts; no action-specific charge found.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 47,
-      "where": "rationale: impact",
-      "type": "consistency",
-      "claim": "Only external people on a block list notice the change when a matching file stops opening.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "rationale: \"only external people on a block list notice\"; Risk assessment: \"users in neither list are blocked by default where a file matches both kinds of rule\".",
-      "severity": "minor",
-      "fix": "Replace the factual portion of the impact rationale with 'Compliance admins configure it. External collaborators can notice when a matching file stops opening; Learn notes that users in neither list are also blocked by default when a file matches both an allow rule and a block rule. User notifications are not supported.' Keep the low impact judgement; the correction concerns the factual limitation, not the rating. See https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external."
+      "where": "Why it matters; Governance controls",
+      "type": "applicability",
+      "claim": "Block only people outside your organization is the existing blanket external blocking alternative.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "Access to a sensitive file is blocked as soon as it's uploaded, regardless of whether the document is shared or not for all guests.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 48,
-      "where": "Governance guidance; Governance controls table",
+      "where": "controls[0].scope; Governance controls table",
+      "type": "applicability",
+      "claim": "The DLP control is tenant-level, with policy-selected locations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Admins can customize locations (workloads), include users, and exclude users in the Microsoft Purview compliance portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: At rollout; Governance controls",
       "type": "consistency",
-      "claim": "The checklist names controls not represented in the controls table.",
+      "claim": "Every control the governance checklist asks the reader to configure appears in the controls table.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Checklist: choose sensitive information types or sensitivity labels; keep a broader block; leave the policy off; turn on alerts. Table: only 'Which external domains or users a DLP rule blocks from SharePoint and OneDrive files'.",
+      "quote": "Checklist: 'Turn on alerts to admins for the rule'. The only controls row covers 'Which external domains or users a DLP rule blocks from SharePoint and OneDrive files'.",
       "severity": "minor",
-      "fix": "The Before rollout content-condition and broader-block steps, and the At rollout policy-state and admin-alert steps have no corresponding control rows. This is a table/checklist coverage finding, not a request to add control rows."
+      "fix": "The checklist step 'Turn on alerts to admins for the rule' has no corresponding controls-table row. Remove this configuration instruction from the checklist; retain the supported statement that alerting is available."
     }
   ],
   "precheck": {
-    "at": "2026-11-23T07:58:57.029Z",
+    "at": "2026-11-23T09:37:25.774Z",
     "summary": {
       "links": 6,
       "unreachable": 0,
@@ -627,5 +630,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-23",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

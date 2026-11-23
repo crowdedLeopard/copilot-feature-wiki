@@ -40,8 +40,14 @@ sources:
   - title: "Manage Microsoft Copilot in Teams calls"
     url: "https://learn.microsoft.com/microsoftteams/copilot-teams-calling-transcription"
     kind: "learn"
+  - title: "Microsoft Teams Premium licensing"
+    url: "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams"
+    kind: "learn"
   - title: "Microsoft 365 Roadmap item 569017"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=569017"
+    kind: "roadmap"
+  - title: "Microsoft 365 Roadmap item 578871"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=578871"
     kind: "roadmap"
   - title: "Whether call queue calls are recorded and transcribed (PowerShell)"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate"
@@ -99,19 +105,23 @@ changes:
     note: "First briefing for this item: covers the Queues app Recap tab for recorded call queue calls, the licences the Queues app needs, and the recording template that controls recording."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 58 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected the SharePoint site administrator requirement for recording templates, the impact rationale and the transcription wording; removed two checklist items with no controls row."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 54
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "3009285228a43a1fa13d2851427679a8"
+  claims: 63
+  confirmed: 63
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "a84b2bc7bac65fb248284c651bc640c8"
 ---
 
 ## What's changing
@@ -159,7 +169,7 @@ The intelligent recap admin page asks for a Teams Premium licence or a Microsoft
 
 **Users.** Teams users who hold Teams Phone and Teams Premium licences, are voice enabled and are in at least one call queue (Learn). The roadmap does not say which users see the Recap tab beyond that.
 
-**Clouds and platforms.** The roadmap lists Worldwide (Standard Multi-Tenant), GCC and GCC High, and the platforms Desktop and Mac. Learn says the Queues app is supported on Teams desktop, Mac, Virtualized Desktop Infrastructure, Teams phones, iOS and Android, and not on web clients, and that it is available in Commercial, GCC, GCC High and DoD environments. Recap for call queue calls on mobile is a separate roadmap item: see /features/microsoft-teams-intelligent-call-recap-for-call-queue-calls-on-mobile/.
+**Clouds and platforms.** The roadmap lists Worldwide (Standard Multi-Tenant), GCC and GCC High, and the platforms Desktop and Mac. Learn says the Queues app is supported on Teams desktop, Mac, Virtualized Desktop Infrastructure, Teams phones (touch devices only), iOS and Android, and not on web clients, and that it is available in Commercial, GCC, GCC High and DoD environments. Recap for call queue calls on mobile is a separate roadmap item: see /features/microsoft-teams-intelligent-call-recap-for-call-queue-calls-on-mobile/.
 
 **Prerequisites for recorded queue calls.** Learn's automatic recording template for call queues requires conference mode on the call queue, Shared Call History enabled and explicit recording consent set to Off. Recording needs a template assigned to the queue; see /features/microsoft-teams-automatic-recording-and-transcription-for-teams-call-queues/.
 
@@ -169,8 +179,7 @@ The intelligent recap admin page asks for a Teams Premium licence or a Microsoft
 
 ### Before rollout
 - Check which queue agents and supervisors hold Teams Phone and Teams Premium licences in the Microsoft 365 admin center, because those licences gate the Queues app.
-- Review the Automatic Recording template assigned to each call queue: whether call recording and transcription are on, and which recordings agents can access.
-- Confirm that the Teams administrators who manage queue templates are administrators of the SharePoint site the template uses.
+- Review the Automatic Recording template assigned to each call queue: whether call recording and transcription are on.
 - Ask Microsoft through Message center or your account team whether Recap on queue calls is on by default, and which licence covers it.
 
 ### At rollout
@@ -196,7 +205,7 @@ The intelligent recap admin page asks for a Teams Premium licence or a Microsoft
 </tbody>
 </table>
 
-The table separates what Microsoft documents from what it does not. The automatic recording template controls whether queue calls are recorded and transcribed, which the roadmap names as the condition for a recap; Learn does not say the template governs the Recap tab itself. Creating the template needs a Teams administrator who is also a SharePoint site administrator for the template's site (Learn).
+The table separates what Microsoft documents from what it does not. The automatic recording template controls whether queue calls are recorded and transcribed. The roadmap says recaps are for recorded call queue calls; it does not specify transcription as a prerequisite. Learn does not say the template governs the Recap tab itself. The Teams administrator who creates the automatic recording template becomes the SharePoint site administrator of its associated site. Assigning the template to a call queue or managing its authorized users requires the Teams administrator to also be a SharePoint site administrator for that site (Learn).
 
 The licence row needs at least the License Administrator or User Administrator role (Learn). The org-wide Microsoft apps switch is a blunt tool: Learn says turning off the Queues app this way also turns off Insights and Tasks.
 
@@ -212,18 +221,11 @@ Learn documents Teams calling policies as controlling Copilot in one-to-one and 
 <!-- rationale
 risk: Medium. The Recap tab adds AI-generated summaries and follow-up actions on recorded customer calls; who can see a recap is not documented, and no separate Recap switch is documented.
 cost: Medium. Queues app users need Teams Phone and a Teams Premium licence per Learn; no price or meter specific to the Recap tab is published.
-impact: Medium. Call queue agents and supervisors who open recorded calls in the Queues app are the people who see a new Recap tab; other users are not affected.
+impact: Medium. The change concerns recorded call queue calls viewed in the Queues app; Microsoft has not documented which roles can see a recap.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: paragraph after table / role: Creating an automatic recording template requires a Teams administrator who is already a SharePoint site administrator for the template's site. | Found: The Teams administrator creating the automatic recording template becomes the SharePoint site admin of the template's associated site. | Fix: Replace 'Creating the template needs a Teams administrator who is also a SharePoint site administrator for the template's site (Learn).' with 'The Teams administrator who creates the automatic recording template becomes the SharePoint site administrator of its associated site. Assigning the template to a call queue or managing its authorized users requires the Teams administrator to also be a SharePoint site administrator for that site (Learn).' Source: https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic. | Source: https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic
-- [contradicted, blocker] rationale: impact; Risk assessment: Security & identity; Scope: Users / consistency: The impact rationale asserts that agents and supervisors see the new Recap tab and other users are unaffected, while the body says the recap audience is not documented. | Found: rationale: 'Call queue agents and supervisors who open recorded calls in the Queues app are the people who see a new Recap tab; other users are not affected.' Body: 'Which roles see recaps is not documented.' | Fix: Replace the impact rationale with 'Medium. The change concerns recorded call queue calls viewed in the Queues app; Microsoft has not documented which roles can see a recap.' Keep the medium impact judgement and the existing audience caveat in the body.
-- [unsupported, blocker] Governance controls: paragraph after table / record: The roadmap names queue calls being recorded and transcribed as the condition for a recap. | Found: Searched: "call queue" "recap" "transcription" "Copilot" "policy"; read the complete roadmap description, intelligent recap and automatic recording setup. The roadmap says recorded call queue calls, without specifying transcription as a recap prerequisite. | Fix: Replace 'The automatic recording template controls whether queue calls are recorded and transcribed, which the roadmap names as the condition for a recap; Learn does not say the template governs the Recap tab itself.' with 'The automatic recording template controls whether queue calls are recorded and transcribed. The roadmap says recaps are for recorded call queue calls; it does not specify transcription as a prerequisite. Learn does not say the template governs the Recap tab itself.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model; rationale: cost / licensing: The documented Queues app entitlement involves an add-on license. | Found: Microsoft Teams Premium is a Teams add-on license that allows organizations with Microsoft 365 subscriptions to enhance their Teams experience | Fix: Add https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams to sources as the evidence that Teams Premium is an add-on. Keep the existing qualification that queue-call recap-specific licensing is not published. | Source: https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams
-- [supported, minor] Scope: Clouds and platforms / availability: The surrounding Queues app supports desktop, Mac, VDI, Teams phones, iOS and Android, but not web. | Found: The Queues app is currently supported on Teams desktop, Mac, and Virtualized Desktop Infrastructure (VDI) clients, Teams phones (touch devices only), and iOS and Android mobile clients. It's not supported on web clients. | Fix: In the surrounding-app platform list, replace 'Teams phones' with 'Teams phones (touch devices only)'. This does not change this roadmap item's Desktop and Mac scope. | Source: https://learn.microsoft.com/microsoftteams/manage-queues-app
-- [supported, minor] Scope: Clouds and platforms / record: Intelligent call recap for call queue calls on mobile is a separate roadmap item. | Found: "id": 578871, "title": "Microsoft Teams: Intelligent call recap for call queue calls on Mobile", "platforms": ["Android", "iOS"] | Fix: Add the Microsoft 365 Roadmap item 578871 URL, https://www.microsoft.com/microsoft-365/roadmap?id=578871, to sources. The separate mobile record was read directly; the related wiki page is not evidence. | Source: https://www.microsoft.com/microsoft-365/roadmap?id=578871
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks readers to review agents' recording access and SharePoint site administrator membership, but neither setting has a corresponding controls-table row. | Found: Checklist: 'which recordings agents can access' and 'administrators of the SharePoint site the template uses'. Table: recording/transcription, user licenses, app availability and a separate Recap switch. | Fix: Remove ', and which recordings agents can access' from the recording-template checklist bullet and remove the separate SharePoint site administrator checklist bullet. Keep the verified recording-access explanation and the corrected administrator requirement in the prose; do not add control rows.
+- [supported, minor] Scope: Clouds and platforms / availability: The Queues app management page lists desktop, Mac, VDI, touch Teams phones, iOS and Android support, but not web support. | Found: The Queues app is currently supported on Teams desktop, Mac, and Virtualized Desktop Infrastructure (VDI) clients, Teams phones (touch devices only), and iOS and Android mobile clients. It's not supported on web clients. | Fix: After the Queues app platform sentence, add: 'Microsoft's Teams Premium overview platform table still lists Mobile as No for the Queues app, conflicting with the management page.' Cite https://learn.microsoft.com/microsoftteams/enhanced-teams-experience#platform-support-for-queues-app, whose Queues app row says 'Mobile | No'. | Source: https://learn.microsoft.com/microsoftteams/manage-queues-app
 -->

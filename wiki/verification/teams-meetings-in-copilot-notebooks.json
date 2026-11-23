@@ -1,0 +1,719 @@
+{
+  "slug": "teams-meetings-in-copilot-notebooks",
+  "roadmapId": 560706,
+  "title": "Copilot Notebooks: add Teams meetings as references",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "2 blocking findings (claims 16, 25)"
+    ]
+  },
+  "counts": {
+    "claims": 54,
+    "confirmed": 51,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: Microsoft documents a preview Graph route for changing the Notebooks Cloud Policy, contrary to the reported automation gap. The page also overstates disabling the policy: Microsoft says existing items can still be viewed and edited with permission.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists the feature as Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Android, Desktop, iOS and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only listed roadmap cloud; US Government clouds are not listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: products; What's changing",
+      "type": "record",
+      "claim": "The roadmap names OneNote and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"OneNote\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The listed release phases are Current Channel, General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"Current Channel\", \"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Why it matters; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes meeting references as grounding Copilot on project discussions and decisions for outputs such as presentations and briefs.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "enabling users to ground Copilot on the discussions, decisions, and context that drive their work",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; summary; What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Users can add Teams meetings linking transcripts, notes, chats and shared files as Copilot Notebooks references.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Copilot notebooks now include Teams meetings as knowledge sources, allowing users to link meeting transcripts, notes, chats, and shared files within their notebooks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The release-notes entry for Teams Meetings in Copilot Notebooks is dated August 25, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#august-25,-2026",
+      "quote": "## August 25, 2026\n### OneNote\n1. **Teams Meetings in Copilot Notebooks** [Android, Windows, iOS, Web]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The release notes say notebooks previously supported only files as references.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Previously, notebooks only supported files as references.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope: Users and Prerequisites",
+      "type": "admin-path",
+      "claim": "The user opens a Copilot notebook in Microsoft 365, selects Add reference and chooses a Teams meeting from recent meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Open a Copilot notebook in Microsoft 365.\nSelect 'Add reference' and choose a Teams meeting from your recent meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: defaultState; summary; rationale: impact",
+      "type": "default",
+      "claim": "Adding meeting references is user-opt-in: each user chooses the meeting to add.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Select 'Add reference' and choose a Teams meeting from your recent meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "Microsoft has not stated an admin-side default specific to meeting references.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Notebooks meetings admin default; meeting references admin switch policy Graph PowerShell. Read cpcn-admin-configuration, release-notes and utcm-copilot-resources: the published default is for whole-Notebooks creation, not a separate meeting-reference setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The Notebooks policy is at Microsoft 365 Apps admin center > Customization > Policy Management > policy configuration > Choose the scope > Configure Settings > Create and view Copilot Pages and Copilot Notebooks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Select Customization from the left pane. Select Policy Management. Create a new policy configuration or edit an existing one. From the Choose the scope dropdown list ... In Configure Settings ... Create and view Copilot Pages and Copilot Notebooks",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0].api; Open questions",
+      "type": "absence",
+      "claim": "No PowerShell or Graph route to the Notebooks Cloud Policy setting is documented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "These resources also support remediation and applyOnce.\nControls whether users can create and view Copilot Pages and Copilot Notebooks through Microsoft 365 Copilot Chat and Copilot Actions.",
+      "severity": "blocker",
+      "fix": "Replace the automation gap with the documented preview Graph route: kind graph, call 'POST /beta/admin/configurationManagement/configurationMonitors', docs https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta. The note must say: 'Preview, tenant-level policies only; fails if the target setting is configured in any group-level policy. Use mode applyOnce and a baseline resourceType microsoft.copilot.copilotpagesnotebooks, resourceVersion 1, with properties.value set to the string \"0\" to disable or \"1\" to enable. AI Administrator is the least-privileged signed-in role; the calling app needs delegated ConfigurationMonitoring.ReadWrite.All and the TCM service principal needs delegated CopilotPolicySettings.ReadWrite.' Cite https://learn.microsoft.com/graph/utcm-copilot-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. Remove the Open questions wording that asks whether Microsoft will publish a Graph route to this setting."
+    },
+    {
+      "n": 17,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Meeting transcription is controlled at Teams admin center > Meetings > Meeting policies > policy > Transcription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "In the left navigation of the Teams admin center, go to Meetings > Meeting policies. Select the policy that you want to edit or create a new one. Toggle Transcription On or Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowTranscription $false disables meeting transcription for the selected policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/teams/set-csteamsmeetingpolicy",
+      "quote": "-AllowTranscription\nDetermines whether post-meeting captions and transcriptions are allowed in a user's meetings. Set this to TRUE to allow. Set this to FALSE to prohibit.\n-Identity\nSpecify the name of the policy being created.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[2].ui and api; summary; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "No separate UI or API switch specifically for meeting references in Copilot Notebooks is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Notebooks Teams meetings references admin switch policy Graph PowerShell. Read cpcn-admin-configuration, release-notes, utcm-copilot-resources and utcm-remediation-applyonce-resources; settings cover whole Notebooks, not meeting references.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "The admin policies page lists creation and code-preview settings, neither specific to meeting references.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Copilot Pages and Copilot Notebooks creation | Cloud Policy: Create and view Copilot Pages and Copilot Notebooks\nCode previews in Copilot Chat and Copilot Pages | Cloud Policy: Enable code previews for AI-generated content in Microsoft Copilot Chat and Copilot Pages",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].governs and note; Governance controls",
+      "type": "applicability",
+      "claim": "The Cloud Policy governs Notebooks as a whole rather than meeting references alone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "IT administrators can control creation and use of Copilot Pages and Copilot Notebooks through Cloud Policy settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].note; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Disabling the policy hides the Notebooks module in the Microsoft Copilot app for users in scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "the Notebooks module is hidden, preventing users from accessing existing Notebooks through the Copilot App.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Change & support; Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Disabling the Notebooks creation policy prevents users from creating new notebooks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "When creation is disabled, users are unable to create new Copilot Pages or Notebooks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].note; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Disabling the creation policy does not delete existing items.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Existing Copilot Pages and Notebooks aren't deleted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Using the Notebooks policy removes every other Notebooks capability for users in scope.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Existing Copilot Pages and Notebooks aren't deleted. Users can still view and edit existing items if they have permission.",
+      "severity": "blocker",
+      "fix": "Replace 'so using it also removes every other Notebooks capability for the users in scope' with 'disabling it prevents new notebooks and hides the Notebooks module in the Microsoft Copilot app, but existing items are not deleted and can still be viewed and edited with permission'."
+    },
+    {
+      "n": 26,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The Cloud Policy can be scoped to all users or a selected group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "From the Choose the scope dropdown list, choose either All users or select the group for which you want to apply the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Priority ordering decides which Cloud Policy configuration applies to overlapping users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "If two or more policy configurations are applicable to the same set of users, the one with the higher priority is applied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Policy changes take up to 90 minutes to be reflected when policy configurations already existed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "If there were existing policy configurations before the change, the change takes up to 90 minutes to be reflected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Policy changes take up to 24 hours to be reflected when no policy configurations previously existed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "If there were no policy configurations before the change, the change takes up to 24 hours to be reflected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The admin policies page documents a two-group Cloud Policy pattern to enable Notebooks for a subset of users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Create Group A containing the users you want to enable the policy for. Assign the Cloud Policy to this group and set it to Enabled. Create Group B that includes All users. Assign the same Cloud Policy to this group and set it to Disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing; Cost and licensing; Scope; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "The requirements page says Notebooks users need the Microsoft Copilot or Copilot Chat licence, supporting an included licensing model for this capability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements",
+      "quote": "### Copilot Notebooks\nUsers need the Microsoft Copilot or Copilot Chat license.",
+      "severity": "minor",
+      "fix": "Retain the attributed requirements-page statement and included model, but add: 'Microsoft documentation differs: the Graph TCM resource reference says Copilot Notebooks also require a Microsoft 365 Copilot license.' Cite https://learn.microsoft.com/graph/utcm-copilot-resources#copilotpagesnotebooks-resource-type. Do not present Copilot Chat eligibility as settled across both sources."
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.notes; Cost and licensing: Meter; rationale: cost",
+      "type": "absence",
+      "claim": "No separate licence, meter or price specifically for meeting references is published as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Notebooks meeting references licensing pricing meter charge. Read cpcn-requirements, Microsoft Copilot licensing, release-notes and search excerpts for pay-as-you-go meters; none states separate meeting-reference pricing or entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Notebooks are stored in the user-owned SharePoint Embedded container shared with Loop My workspace.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Copilot Pages (.page files) and Copilot Notebooks are stored in the same user-owned SharePoint Embedded container used by Loop My workspace.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure; Cost and licensing; Governance guidance: After rollout",
+      "type": "cost",
+      "claim": "Notebook storage counts toward the organisation's SharePoint quota.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Storage counts toward your organization's overall SharePoint quota.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "There is no admin control to set quota limits on individual Notebooks containers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary",
+      "quote": "Limitation: There's no admin control to set quota limits on individual containers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "Copilot Notebooks can be shared.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-permission",
+      "quote": "Copilot Notebooks can be shared.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The permissions page says notebook recipients gain access to files referenced in the notebook.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-permission",
+      "quote": "Anyone you share with gains access to all the files referenced in the notebook.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Access to linked files is granted automatically where possible rather than unconditionally.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-permission",
+      "quote": "Access to linked files is granted automatically where possible. Some linked files might remain restricted if permissions can't be updated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Copilot Notebooks do not support external sharing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-permission",
+      "quote": "Copilot Notebooks don't support external sharing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing; Risk assessment: Data exposure; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "Meeting-specific permission and shared-notebook access behaviour is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Notebooks meeting references permissions sharing copied linked transcript prerequisites government GCC; Copilot Notebooks meetings permissions transcript. Read cpcn-permission and release-notes: sharing rules describe referenced files, not meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "The underlying details of which meeting material is copied or linked when a meeting is added are not described.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Notebooks meeting references permissions sharing copied linked transcript prerequisites government GCC. Read release-notes and cpcn-permission: release notes call content linked but do not explain copying, storage or permission mechanics for meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope: Prerequisites; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented what content, such as a transcript, a meeting needs to contain to be added.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Notebooks meeting references permissions sharing copied linked transcript prerequisites government GCC; Copilot Notebooks Teams transcription recording policies meeting references. Read release-notes and meeting-transcription-captions; no meeting-reference prerequisite is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Conditional Access applies to the whole Microsoft Copilot app, not Notebooks alone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary",
+      "quote": "Because Copilot Pages and Copilot Notebooks are features of the Microsoft Copilot app, Conditional Access applies to the entire app at m365.cloud.microsoft.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Information Barriers are not supported for content stored in the SharePoint Embedded containers used by Notebooks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary",
+      "quote": "Information Barriers are not supported for content stored in SharePoint Embedded containers. Copilot Pages and Copilot Notebooks use SharePoint Embedded for storage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Copilot Notebooks have no container sensitivity labels because their container is shared with Copilot Pages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary",
+      "quote": "Copilot Notebooks don't have container sensitivity labels because they share a container with all Copilot Pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "Purview eDiscovery supports Copilot Notebooks content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary",
+      "quote": "Purview eDiscovery: Supported for search/collection, review (Premium license required), and export as HTML (Premium license required) or original format.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "Retention policies configured for all SharePoint sites are enforced for Copilot Notebooks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary",
+      "quote": "Retention policies from Microsoft Purview Data Lifecycle Management configured for all SharePoint sites are enforced for all Copilot Pages and Copilot Notebooks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Copilot Notebooks activity is covered by audit logs searchable in Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary",
+      "quote": "Audit logs: Available for all events. Retained, exportable, and streamable to third-party tools. Search in Purview",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Copilot Notebooks create and update .pod files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary",
+      "quote": "Copilot Notebooks create and update .pod files to manage content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Users without a OneDrive site cannot create notebooks if OneDrive creation is disabled for them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "If your organization disabled the creation of OneDrive, regardless of the setting noted here, these people in your organization can't create Copilot Pages or Copilot Notebooks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Scope: Clouds and platforms",
+      "type": "absence",
+      "claim": "The cited documentation does not state whether meeting references are available in US Government clouds.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Notebooks meeting references permissions sharing copied linked transcript prerequisites government GCC. Read release-notes and cpcn documentation; government-cloud search excerpts describe Copilot generally, not this meeting-reference feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[1].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented transcription or recording policies as deciding which meetings Notebooks can reference.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Notebooks Teams transcription recording policies meeting references. Read meeting-transcription-captions and release-notes; search results describe Copilot in Teams meetings, not policy enforcement on Notebooks references.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The release notes describe user-selected meeting references and do not describe an autonomous action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Notebooks Teams meetings references admin switch policy Graph PowerShell. Read the meeting-reference entry in release-notes: it describes Open, Add reference, choose and review steps, with no autonomous operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: Before rollout and After rollout; controls",
+      "type": "consistency",
+      "claim": "The governance checklist asks readers to check retention, eDiscovery, audit and SharePoint storage controls that have no corresponding controls-table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "confirm that retention, eDiscovery and audit settings cover SharePoint Embedded containers; Search the Microsoft Purview audit log; Watch SharePoint storage. The table contains only Notebooks policy, Teams transcription and the meeting-reference switch gap.",
+      "severity": "minor",
+      "fix": "The retention, eDiscovery, audit and SharePoint-storage checklist steps lack control rows. Without adding rows, remove the Before rollout bullet asking owners to confirm retention, eDiscovery and audit settings and the After rollout bullets asking readers to search the audit log and watch storage. Keep the separately supported explanatory facts in the risk and cost sections."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T09:37:29.352Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=560706",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/loop/cpcn-requirements",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/loop/cpcn-permission",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether users can create and use Copilot Notebooks, including adding meeting references",
+        "docs": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+        "reachable": true,
+        "segments": [
+          "Customization",
+          "Policy Management",
+          "policy configuration",
+          "Choose the scope",
+          "Configure Settings",
+          "Create and view Copilot Pages and Copilot Notebooks"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether users can transcribe Teams meetings",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Transcription"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether users can transcribe Teams meetings",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

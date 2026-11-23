@@ -1,0 +1,723 @@
+{
+  "slug": "microsoft-purview-data-loss-prevention-enriched-audit-data-for-matched-rules",
+  "roadmapId": 562051,
+  "title": "Microsoft Purview DLP: matched sender, recipient, subject and attachment conditions in Exchange Online alerts",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "1 blocking finding (claim 47)"
+    ]
+  },
+  "counts": {
+    "claims": 54,
+    "confirmed": 51,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 1,
+    "minor": 1
+  },
+  "summary": "Hold: the auditing-default statement omits Microsoft's exception for unmanaged tenants using free enterprise trials, where auditing must be enabled manually. The feature details, licensing background and control paths are supported, but the assurance that rule actions do not change needs narrower wording.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview as release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "title; front matter: products",
+      "type": "record",
+      "claim": "The feature belongs to Microsoft Purview Data Loss Prevention.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"title\": \"Microsoft Purview: Data Loss Prevention - Enriched Audit Data for Matched Rules\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing: roadmap description",
+      "type": "record",
+      "claim": "The roadmap says the audit records previously showed only Sensitive Information Type matches.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Previously, these records only showed Sensitive Information Type matches.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing: roadmap description; Open questions",
+      "type": "record",
+      "claim": "The roadmap describes extending audit data to sender domain, subject keywords, attachment type or recipient information.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature aims to extend that to sender domain, subject keywords, attachment type, or recipient information. Now they will be visible in alerts and Activity Explorer providing data enrichment to the administrators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Why it matters; Scope; rationale: risk",
+      "type": "behaviour",
+      "claim": "Exchange Online DLP alerts and corresponding Activity Explorer events show every non-SIT condition contributing to a policy match.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-conditions-and-actions",
+      "quote": "When an Exchange Online DLP policy matches a message, the DLP alert and the corresponding Activity Explorer event surface enhanced detail for every non-sensitive information type (SIT) condition that contributed to the match.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The enhanced detail includes the name of the matched condition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
+      "quote": "Condition name: The specific policy condition that was matched, for example, Sender domain is or Attachment's file extension is.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Why it matters; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The enhanced detail includes the actual matched value, such as contoso.com or .docx.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
+      "quote": "Matched value: The actual value that triggered the condition match, for example, contoso.com or .docx.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The source field identifies where in the message the match was found, such as the header, envelope or attachment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
+      "quote": "Source: The part of the message where the match was found, for example, the message header, envelope, or attachment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing: condition categories",
+      "type": "behaviour",
+      "claim": "Supported categories cover sender, recipient, attachment, content, header and message property conditions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-conditions-and-actions",
+      "quote": "This applies to all condition categories listed in the preceding sections: Senders, Recipients, Message subject or body, Attachments, Message headers, and Message properties.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Sender domain is is a supported condition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
+      "quote": "Sender conditions: Sender is, Sender domain is, Sender address contains words, Sender address matches patterns, Sender is a member of, Sender IP address is, Sender AD attribute",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Recipient domain is is a supported condition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
+      "quote": "Recipient conditions: Recipient is, Recipient domain is, Recipient address contains words, Recipient address matches patterns, Recipient is a member of, Recipient AD attribute",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Attachment's file extension is is a supported condition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
+      "quote": "Condition name: The specific policy condition that was matched, for example, Sender domain is or Attachment's file extension is.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Subject contains words is a supported condition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
+      "quote": "Message property conditions: Message size over, Message type is, Message importance is, Subject contains words, Subject matches patterns, Subject or body contains words, Subject or body matches patterns, Has sender overridden the policy tip",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing: location of detail",
+      "type": "behaviour",
+      "claim": "The enhanced conditions appear on the Activity Explorer event detail flyout.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
+      "quote": "Enhanced matched condition details appear on the event detail flyout for Exchange DLP events in Activity Explorer and the DLP Alerts dashboard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Why it matters; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Other matched conditions appears within a DLP alert's Events tab.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-dashboard-get-started",
+      "quote": "In the Events tab, open Details to see Other matched conditions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Open questions",
+      "type": "availability",
+      "claim": "The Learn sections for enhanced matched conditions remain marked preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-conditions-and-actions",
+      "quote": "Enhanced matched conditions in alerts and Activity Explorer (preview)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
+      "type": "default",
+      "claim": "Microsoft has not stated whether the enhanced detail is on by default.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Exchange\" \"enhanced matched conditions\" \"default\"; opened the Exchange conditions reference, Activity Explorer, alerts dashboard and roadmap record. None specifies the enhanced detail's default state.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "summary; Governance controls; Open questions; front matter: changes",
+      "type": "absence",
+      "claim": "No setting to turn the enhanced detail on or off is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Exchange enhanced matched conditions admin setting turn on off portal; \"Purview\" \"enhanced matched conditions\" enable disable Set-DlpComplianceRule. Opened conditions, Activity Explorer, alerts and Set-DlpComplianceRule; no dedicated switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: licensing.model; rationale: cost",
+      "type": "licensing",
+      "claim": "Entitlement follows the existing DLP and Activity Explorer licences rather than a separately documented feature add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "While Data classification analytics (Content & Activity Explorer interfaces) requires E5/A5/G5 licensing, the underlying data aggregation continues for E3/A3/G3 tenants to support analytics and compliance scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The service description lists the quoted Microsoft 365, SharePoint, OneDrive and Exchange plans as providing rights to DLP for Exchange, SharePoint and OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2), Exchange Online Plan 2",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "The service description says the Activity Explorer interface requires E5/A5/G5 licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "While Data classification analytics (Content & Activity Explorer interfaces) requires E5/A5/G5 licensing, the underlying data aggregation continues for E3/A3/G3 tenants to support analytics and compliance scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Underlying data aggregation continues for E3/A3/G3 tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "the underlying data aggregation continues for E3/A3/G3 tenants to support analytics and compliance scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No licence specific to the enhanced matched-condition detail is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Purview\" \"enhanced matched conditions\" licensing price meter; opened the Purview service description, billing models, Activity Explorer, Exchange conditions and alerts dashboard. No licence specific to the enhancement was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No price specific to the enhanced matched-condition detail is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Purview\" \"enhanced matched conditions\" licensing price meter; opened the Purview service description, billing models and the enhancement's Learn sections. No price specific to this detail was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter is documented for the enhancement as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Purview\" \"enhanced matched conditions\" licensing price meter; opened the Purview service description and billing models, including its pay-as-you-go capability tables. No meter for enhanced Exchange matched conditions was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Scope; Risk assessment: Security & identity; Governance guidance; controls[0].governs; controls[1].governs",
+      "type": "applicability",
+      "claim": "Activity Explorer's activity information comes from the Microsoft 365 unified audit log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
+      "quote": "The activity information comes from the Microsoft 365 unified audit logs. It's transformed and then made available in the activity explorer UI.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Activity Explorer reports on up to 30 days of data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
+      "quote": "Activity explorer reports on up to 30 days worth of data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Activity Explorer is not real time, and Microsoft advises allowing 60 to 90 minutes for Exchange activity to appear.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
+      "quote": "For core services (Exchange, SharePoint, OneDrive, and Teams), allow 60 to 90 minutes after an activity for it to appear in activity explorer. Other services can take longer, and Microsoft doesn't guarantee a specific time for an activity to become available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope; Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Accessing the DLP alert management dashboard requires Manage alerts and either DLP Compliance Management or View-Only DLP Compliance Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-dashboard-get-started",
+      "quote": "To access the DLP alert management dashboard, you need the Manage alerts role and either of these two roles: DLP Compliance Management; View-Only DLP Compliance Management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope; Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "Activity Explorer's permitted role groups include Information Protection, Information Protection Investigators and Information Protection Analysts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
+      "quote": "Microsoft Purview role groups: Information Protection; Information Protection Investigators; Information Protection Analysts",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure; Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "The matched-condition views expose matched message values to the analysts with access to those views.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
+      "quote": "Matched value: The actual value that triggered the condition match, for example, contoso.com or .docx.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure; Cost and licensing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The organization's audit log retention policy controls how long an alert remains visible in the console.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-dashboard-get-started",
+      "quote": "Your organization's audit log retention policy configuration controls how long an alert remains visible in the console.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity; rationale: impact",
+      "type": "absence",
+      "claim": "Microsoft describes no change to mail evaluation or sender and recipient behaviour for this enhancement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Exchange enhanced matched conditions DLP does not change rule actions enforcement; opened the roadmap, Exchange conditions reference, Activity Explorer and alerts dashboard. Their enhancement descriptions discuss match detail, not changed mail processing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "No autonomous action is described for this enhancement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Exchange\" \"enhanced matched conditions\" rule actions evaluation; opened the roadmap, Exchange conditions reference, Activity Explorer and alerts dashboard. The enhancement is described as surfacing match details, without an autonomous action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The enhancement does not add or change rule actions.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Exchange enhanced matched conditions DLP does not change rule actions enforcement; opened the Exchange conditions reference, Activity Explorer and alerts dashboard. None explicitly states that rule actions are unchanged.",
+      "severity": "major",
+      "fix": "Replace 'The feature adds detail to alerts and events and does not add or change rule actions.' with 'Microsoft describes the feature as adding detail to alerts and events; it describes no change to rule actions.'"
+    },
+    {
+      "n": 41,
+      "where": "Why it matters: second paragraph",
+      "type": "absence",
+      "claim": "No source says the enhancement changes behaviour for policies that do not match.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Exchange\" \"enhanced matched conditions\" rule actions evaluation; opened the roadmap, Exchange conditions reference, Activity Explorer and alerts dashboard. The enhancement descriptions concern conditions contributing to a policy match, not unmatched policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Audit > Start recording user and admin activity turns auditing on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Select the Audit solution card. If the Audit solution card isn't displayed, select View all solutions and then select Audit from the Core section. ... Select the Start recording user and admin activity banner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true turns auditing on in Exchange Online PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Complete the following steps to turn on auditing by using Exchange Online PowerShell: ... Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].scope; controls[0].governs; Governance controls",
+      "type": "applicability",
+      "claim": "The auditing control governs organization-wide recording of user and administrator activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "When you turn on auditing in the Microsoft Purview portal, the audit log records user and admin activity from your organization",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Turning auditing on or off requires the Audit Logs role in Exchange Online.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "You must be assigned the Audit Logs role in Exchange Online to turn auditing on or off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls: final paragraph",
+      "type": "role",
+      "claim": "Compliance Management and Organization Management hold the Exchange Online Audit Logs role by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "By default, the Compliance Management and Organization Management role groups on the Permissions page in the Exchange admin center have this role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].note; Governance controls: rendered first row",
+      "type": "default",
+      "claim": "Auditing is on by default for Microsoft 365 organizations other than those using SMB licences.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Additionally, unmanaged tenants that use free trials of enterprise licenses don't have auditing enabled by default. In both these cases, you must manually enable auditing for your organization.",
+      "severity": "blocker",
+      "fix": "In controls[0].note and the rendered first-row note, replace the default sentence with 'Auditing is on by default for Microsoft 365 organisations except those using SMB licences and unmanaged tenants using free trials of enterprise licences; these exceptions require manual enablement.'"
+    },
+    {
+      "n": 48,
+      "where": "controls[0].note; Governance guidance: Before rollout",
+      "type": "default",
+      "claim": "SMB licences, including Microsoft 365 Business Premium, do not have auditing enabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Auditing isn't enabled by default for Small and Medium Business (SMB) licenses, including Microsoft 365 Business Basic, Business Standard, and Business Premium.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "behaviour",
+      "claim": "Turning auditing off causes both Purview audit searches and Search-UnifiedAuditLog to return no results.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "When you turn off auditing, searches of the audit log in Microsoft Purview return no results. Running the Search-UnifiedAuditLog cmdlet in Exchange Online PowerShell also returns no results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Audit > Search reaches the audit-search page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Select the Audit solution card. If the Audit solution card isn't displayed, select View all solutions and then select Audit from the Core section. ... On the Search page, configure the following search criteria as applicable:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].api; Governance guidance: After rollout; Open questions",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog searches the unified audit log from Exchange Online PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "The underlying cmdlet used to search the audit log is an Exchange Online cmdlet, which is Search-UnifiedAuditLog. ... You have to run this cmdlet in Exchange Online PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Searching audit logs requires Audit Logs or View-Only Audit Logs permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "You must be assigned the Audit Logs or View-Only Audit Logs roles in the Microsoft Purview portal to search the audit log. ... To access audit cmdlets, you must be assigned the Audit Logs or View-Only Audit Logs roles in the Exchange admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "The audit-search control reads records rather than configuring enhanced matched conditions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "That means you can use this cmdlet to search the audit log instead of using the search tool on the Audit page in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "Every control that the governance checklist asks readers to review has a corresponding controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review who holds the Manage alerts, DLP Compliance Management and Activity Explorer roles ... check the audit log retention policy that governs it. The table contains only auditing enablement and audit search.",
+      "severity": "minor",
+      "fix": "The Before rollout checklist steps to review alert/Activity Explorer role assignments and check audit log retention have no corresponding controls-table rows. Remove those two checklist steps if retaining the current table; this finding does not request additional rows."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T09:37:26.562Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=562051",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-exchange-conditions-and-actions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-alerts-dashboard-get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-search",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether the unified audit log, the data source for Activity Explorer, records activity",
+        "docs": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Start recording user and admin activity"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether the unified audit log, the data source for Activity Explorer, records activity",
+        "docs": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "reachable": true,
+        "token": "Set-AdminAuditLogConfig",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Searching the audit records that feed Activity Explorer",
+        "docs": "https://learn.microsoft.com/purview/audit-search",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Search"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Searching the audit records that feed Activity Explorer",
+        "docs": "https://learn.microsoft.com/purview/audit-search",
+        "reachable": true,
+        "token": "Search-UnifiedAuditLog",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
