@@ -40,17 +40,20 @@ sources:
   - title: "Viva Glint licensing"
     url: "https://learn.microsoft.com/viva/glint/setup/glint-order-teams"
     kind: "learn"
+  - title: "Set up multiple Viva Glint experiences in your tenant"
+    url: "https://learn.microsoft.com/viva/glint/setup/multi-glint-exp-overview"
+    kind: "learn"
 videos: []
 related: ["microsoft-viva-import-hris-data-in-viva-glint-from-microsoft-admin-center"]
 controls:
   - governs: "Whether survey responses and identifiable data are retained or erased for deleted users"
-    scope: "tenant"
+    scope: "other"
     ui:
       surface: "Viva Glint admin dashboard"
       path: "Configuration > Service Configuration > General Settings > User Data > Retain survey responses and identifiable data for deleted users"
       docs: "https://learn.microsoft.com/viva/glint/setup/manage-general-settings"
     api: null
-    note: "Platform-level; applies to all requests and survey programs. On (default) retains; Off erases. Changes apply going forward, not retrospectively."
+    note: "Scope: Viva Glint instance. Applies to all requests and survey programs in the instance. On (default) retains; Off erases. Changes apply going forward, not retrospectively."
   - governs: "Manual deletion of a user and their data"
     scope: "user"
     ui:
@@ -60,13 +63,13 @@ controls:
     api: null
     note: "What happens to the data afterwards follows the User Data control above. Deletion is irreversible once the 30-day soft-delete period ends."
   - governs: "How long Glint holds survey data, separate from deleted-user handling"
-    scope: "tenant"
+    scope: "other"
     ui:
       surface: "Viva Glint admin dashboard"
       path: "Configuration > Service Configuration > General Settings > User Data > Data retention policy"
       docs: "https://learn.microsoft.com/viva/glint/setup/manage-general-settings"
     api: null
-    note: "Existing control, not specific to deleted users. Default is until the subscription ends; a custom period is 6 to 1000 months."
+    note: "Scope: Viva Glint instance. Existing control, not specific to deleted users. Default is until the subscription ends; a custom period is 6 to 1000 months."
 confidence: "high"
 created: "2026-11-23"
 updated: "2026-11-23"
@@ -76,26 +79,30 @@ changes:
     note: "New briefing on the Viva Glint control for retaining or erasing survey and identifiable data for deleted users."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 55 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected scope to the Viva Glint instance, the Data retention policy description and the soft-delete update qualification; removed the Activity Audit Log checklist step."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 66 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 52
-  unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "1c84560b2aa1a9029acb587820ed6fec"
+  claims: 66
+  confirmed: 65
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 2
+  hash: "da3414dcceb4daf883a29479816d90c1"
 ---
 
 ## What's changing
 
 Viva Glint now has a User Data control, **Retain survey responses and identifiable data for deleted users**, that decides what happens to a person's Glint data once they are deleted. The roadmap item says service administrators can choose to retain or delete survey and relevant identifiable user data for users deleted manually from Glint or through signals received from Microsoft Entra. The roadmap status is Launched, with a target of September CY2026, at General Availability.
 
-Microsoft Learn documents two values. **On** (the default) retains all survey responses and identifiable data for deleted users, including first and last name, email address and employee ID. **Off** erases all data related to the requester, including survey responses. The setting is platform-wide and applies to all requests equally. A deleted user's employee record stays soft-deleted for 30 days and can be updated back to the status in the HRIS file in that period; after it, all data related to the employee is permanently deleted in line with this control.
+Microsoft Learn documents two values. **On** (the default) retains all survey responses and identifiable data for deleted users, including first and last name, email address and employee ID. **Off** erases all data related to the requester, including survey responses. The setting is platform-wide and applies to all requests equally. A deleted user's employee record stays soft-deleted for 30 days and can be updated back to the status in the HRIS file in that period; after it, all data related to the employee is permanently deleted in line with this control. The update depends on the separate **Disregard Employee IDs of previously deleted employees** control: Off permits the update when uploaded employee IDs and email addresses match; On, the default, excludes those records from uploads.
 
 Learn also describes the Entra side. Its pages say processing of delete signals from Microsoft Entra was paused until September 30, 2026, that live processing starts again from October 1, 2026, and that historical delete signals from June 2025 to September 2026 are then processed under the same setting. The FAQ says that from September 1, 2026 Microsoft offers only retain or erase, with no option to de-identify deleted users while keeping their responses. The pages carry the pause note as of November 2026.
 
@@ -129,7 +136,7 @@ That page and the General Settings page publish no separate licence, meter or pr
 
 ## Scope
 
-The roadmap lists Worldwide (Standard Multi-Tenant) and GCC, on the Web platform, at General Availability. The setting applies to the whole Viva Glint platform for the tenant, not per survey program, and changes apply to users deleted from the point of feature release onward, not retrospectively, according to Learn.
+The roadmap lists Worldwide (Standard Multi-Tenant) and GCC, on the Web platform, at General Availability. The setting applies to all survey programs in the selected Viva Glint instance. Multiple experiences in one tenant have independent in-app settings ([Learn](https://learn.microsoft.com/viva/glint/setup/multi-glint-exp-overview)). Changes apply to users deleted from the point of feature release onward, not retrospectively, according to Learn.
 
 It covers users deleted manually in Glint (People > Actions > Delete User) and, per Learn, delete signals from Microsoft Entra ID and Data Subject Requests. Learn names Viva Glint Admins, as data controllers, as the people who choose the value.
 
@@ -147,7 +154,6 @@ It covers users deleted manually in Glint (People > Actions > Delete User) and, 
 
 ### After rollout
 - Review the Active and Inactive user lists for people who should show as Deleted but have not been deleted, as the Learn FAQ advises.
-- Check the Activity Audit Log in the Service Configuration section after a manual deletion; Learn says the event shows a status of Success and details of Deleted.
 - Revisit the Learn pages for confirmation that live Entra delete signal processing has restarted.
 
 ## Governance controls
@@ -157,13 +163,13 @@ It covers users deleted manually in Glint (People > Actions > Delete User) and, 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether survey responses and identifiable data are retained or erased for deleted users</strong><br><small>Tenant</small><br><small class="controls__note">Platform-level; applies to all requests and survey programs. On (default) retains; Off erases. Changes apply going forward, not retrospectively.</small></td><td data-label="Admin UI"><strong>Viva Glint admin dashboard</strong><br>Configuration › Service Configuration › General Settings › User Data › Retain survey responses and identifiable data for deleted users <a href="https://learn.microsoft.com/viva/glint/setup/manage-general-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether survey responses and identifiable data are retained or erased for deleted users</strong><br><small class="controls__note">Scope: Viva Glint instance. Applies to all requests and survey programs in the instance. On (default) retains; Off erases. Changes apply going forward, not retrospectively.</small></td><td data-label="Admin UI"><strong>Viva Glint admin dashboard</strong><br>Configuration › Service Configuration › General Settings › User Data › Retain survey responses and identifiable data for deleted users <a href="https://learn.microsoft.com/viva/glint/setup/manage-general-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Manual deletion of a user and their data</strong><br><small>User</small><br><small class="controls__note">What happens to the data afterwards follows the User Data control above. Deletion is irreversible once the 30-day soft-delete period ends.</small></td><td data-label="Admin UI"><strong>Viva Glint admin dashboard</strong><br>Configuration › Employees › People › user › Actions › Delete User <a href="https://learn.microsoft.com/viva/glint/setup/raw-data-request-response" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>How long Glint holds survey data, separate from deleted-user handling</strong><br><small>Tenant</small><br><small class="controls__note">Existing control, not specific to deleted users. Default is until the subscription ends; a custom period is 6 to 1000 months.</small></td><td data-label="Admin UI"><strong>Viva Glint admin dashboard</strong><br>Configuration › Service Configuration › General Settings › User Data › Data retention policy <a href="https://learn.microsoft.com/viva/glint/setup/manage-general-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>How long Glint holds survey data, separate from deleted-user handling</strong><br><small class="controls__note">Scope: Viva Glint instance. Existing control, not specific to deleted users. Default is until the subscription ends; a custom period is 6 to 1000 months.</small></td><td data-label="Admin UI"><strong>Viva Glint admin dashboard</strong><br>Configuration › Service Configuration › General Settings › User Data › Data retention policy <a href="https://learn.microsoft.com/viva/glint/setup/manage-general-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-Learn describes one setting for this behaviour, and it is platform-wide: there is no per-program or per-user value documented. The **Data retention policy** control is separate. It sets how long Glint holds survey data (by default until the subscription ends, or a custom period of 6 to 1000 months) and is not a rule for deleted users, so it does not replace the control above.
+Learn describes one setting for this behaviour, and it applies to all survey programs in the selected Viva Glint instance: there is no per-program or per-user value documented. The **Data retention policy** control is separate. It sets how long Glint holds survey data (by default until the subscription ends, or a custom period of 6 to 1000 months) and applies to all Glint survey data; it does not replace the separate decision whether to retain or erase data when a user is deleted.
 
 Microsoft Learn documents no API for these settings at the time of writing (November 2026), so changes are made in the Viva Glint admin dashboard.
 
@@ -183,9 +189,5 @@ impact: Low. Viva Glint admins configure it; survey takers and report readers no
 <!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope; controls[0].scope; controls[2].scope; Governance controls: Tenant labels / applicability: The retention settings apply to the whole tenant. | Found: Microsoft Viva Glint supports the ability to install multiple instances of Viva Glint to one Microsoft Entra tenant. | Each Viva Glint experience allows Viva Glint Admins to independently manage: 1. In-app settings | Fix: Set controls[0].scope and controls[2].scope to 'other', and replace their rendered 'Tenant' labels with 'Viva Glint instance'. Replace 'The setting applies to the whole Viva Glint platform for the tenant, not per survey program' with 'The setting applies to all survey programs in the selected Viva Glint instance. Multiple experiences in one tenant have independent in-app settings.' Cite https://learn.microsoft.com/viva/glint/setup/multi-glint-exp-overview. | Source: https://learn.microsoft.com/viva/glint/setup/multi-glint-exp-overview
-- [contradicted, blocker] Governance controls / applicability: The Data retention policy is not a rule for deleted users. | Found: This will apply to all Glint survey data including programs, 360 data, associated reporting conversations, actions, and more. | When the retention period is met, applicable Glint survey data is permanently deleted. | Fix: Replace 'and is not a rule for deleted users, so it does not replace the control above' with 'and applies to all Glint survey data; it does not replace the separate decision whether to retain or erase data when a user is deleted'. Source: https://learn.microsoft.com/viva/glint/setup/manage-general-settings#data-retention-policy. | Source: https://learn.microsoft.com/viva/glint/setup/manage-general-settings
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / behaviour: During soft-delete, the employee record can be updated back to the status supplied in the HRIS file. | Found: During this period, the employee record can be modified from its soft-deleted state and updated to the status provided in the HRIS file. | **Off** | Update the already soft deleted records with the status provided in the HRIS file. | Fix: Qualify that sentence with: 'This depends on the separate Disregard Employee IDs of previously deleted employees control: Off permits the update when uploaded employee IDs and email addresses match; On, the default, excludes those records from uploads.' Source: https://learn.microsoft.com/viva/glint/setup/manage-general-settings#disregard-employee-ids-of-previously-deleted-employees. | Source: https://learn.microsoft.com/viva/glint/setup/manage-general-settings
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: Every control the checklist tells readers to check is represented in the controls table. | Found: Check the Activity Audit Log in the Service Configuration section after a manual deletion. | The controls table lists deleted-user retention, manual user deletion and Data retention policy, but not Activity Audit Log. | Fix: Remove the Activity Audit Log checklist bullet from Governance guidance: After rollout; that checklist control has no corresponding table row.
+- [unsupported, blocker] Why it matters: first sentence / applicability: This setting decides whether a deletion in an HR system reaches survey data in Glint. | Found: Searched: Viva Glint HRIS employee data upload deleted status deleting users HR system data retention. Read manage-general-settings, delete-user-data, delete-user-data-faq and raw-data-request-response; they establish Glint/Entra deletion, not propagation of HR-system deletions. | Fix: Replace the first sentence of Why it matters with: 'This setting decides what happens to survey data when a user is deleted manually in Glint or through a Microsoft Entra delete signal.' These routes are documented at https://learn.microsoft.com/viva/glint/setup/raw-data-request-response and in the roadmap record.
 -->

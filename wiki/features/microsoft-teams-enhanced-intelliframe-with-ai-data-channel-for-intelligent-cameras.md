@@ -79,19 +79,23 @@ changes:
     note: "New briefing: enhanced IntelliFrame with an AI data channel, targeted for January CY2027, on by default per MC1442614."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 69 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected the Data exposure bullet to say MC1442614 describes on-device AI metadata processing, and attributed the mid-January 2027 rollout to MC1442614."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 69 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 69
-  confirmed: 68
+  confirmed: 69
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "f2a84c6a86c1c680a94db71a2124b227"
+  contradicted: 0
+  attempts: 0
+  hash: "f1b4027cd8d407fae92b72b13d651666"
 ---
 
 ## What's changing
@@ -114,7 +118,7 @@ The part that needs a decision is people recognition. Learn documents it as depe
 
 **Data exposure**
 
-- The new data path is AI metadata sent from the camera through a dedicated data channel. MC1442614 says to review it against your organisation's policies, but Microsoft has not said what the metadata contains or where it is processed, so confirm that before you sign off.
+- The new data path is AI metadata sent from the camera through a dedicated data channel. MC1442614 says AI metadata is processed directly on the device and asks organisations to review the feature against their policies; the notice does not specify the metadata contents or its destination after transmission.
 - Name labels rely on face profiles. Learn says the Teams service matches the participant on video to their enrolled face profile, and that everyone who is not face-enrolled is treated as a participant.
 
 **Security & identity**
@@ -128,7 +132,7 @@ The part that needs a decision is people recognition. Learn documents it as depe
 
 **Change & support**
 
-- Remote participants and room users will see different framing and labels from mid-January 2027. MC1442614 recommends informing AV and meeting room support teams.
+- MC1442614 targets the Worldwide rollout beginning mid-January 2027, when remote participants and room users would start seeing improved framing and labels. MC1442614 recommends informing AV and meeting room support teams.
 - Eligibility depends on Pro licensing, an IC 2.0 camera and a supported app version, so expect questions from rooms that do not get it.
 
 ## Cost and licensing
@@ -188,7 +192,7 @@ The recognition page documents two ways to set recognition and recommends device
 ## Open questions
 
 - Does the enhanced IntelliFrame run when a room's Face Recognition device setting is Off, and do the recognition settings or meeting policy govern the new people labels? MC1442614 says labels are on by default, while the recognition page lists the setting as Off. Watch Message center and the Teams Rooms Learn pages.
-- What AI metadata crosses the data channel, where is it processed, and is any of it retained? Watch the notice and the IntelliFrame page for a data handling section.
+- What AI metadata crosses the data channel, what is its destination after transmission, and is any of it retained? Watch the notice and the IntelliFrame page for a data handling section.
 - Which cameras and Teams Rooms on Windows app versions count as supported for this feature? MC1442614 points to aka.ms/teamsdevices.
 - Will Microsoft add a tenant-wide or per-room switch for the AI data channel before the January 2027 rollout?
 
@@ -198,10 +202,8 @@ cost: Low. The roadmap item says the capabilities are available with Teams Rooms
 impact: Medium. Only rooms with Teams Rooms Pro and certified AI-capable cameras change, but in-room and remote participants in those rooms all see the new framing and labels.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure; Open questions / absence: Microsoft has not said where the enhanced IntelliFrame AI metadata is processed. | Found: By processing AI metadata directly on the device and sending it through a dedicated data channel rather than relying only on cloud processing | Fix: Replace the first Data exposure bullet with: 'The new data path is AI metadata sent from the camera through a dedicated data channel. MC1442614 says AI metadata is processed directly on the device and asks organisations to review the feature against their policies; the notice does not specify the metadata contents or its destination after transmission.' In Open questions, replace 'where is it processed' with 'what is its destination after transmission'. The current assertion also conflicts with the on-device processing already described in What's changing.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Scope; Risk assessment: Change & support / date: Worldwide general availability begins mid-January 2027, previously mid-October 2026. | Found: General Availability (Worldwide): Beginning mid-January 2027 (previously mid-October 2026) | Fix: In Risk assessment, replace 'Remote participants and room users will see different framing and labels from mid-January 2027.' with 'MC1442614 targets the Worldwide rollout beginning mid-January 2027, when remote participants and room users would start seeing improved framing and labels.' Keep the accurately attributed rollout window elsewhere.
+- [supported, minor] controls[1].api; Governance controls table / command: Set-CsTeamsAIPolicy -Identity Global -EnrollFace Disabled disables face enrollment through the global Teams AI policy. | Found: Set-CsTeamsAIPolicy -Identity Global -EnrollFace Disabled Set Teams AI policy "EnrollFace" value to "Disabled" for global as default. | Fix: Add https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy to sources and use it as controls[1].api.docs; it gives the exact printed call and its parameter reference. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy
 -->

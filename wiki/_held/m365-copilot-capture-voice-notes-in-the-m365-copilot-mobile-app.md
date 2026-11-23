@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "review"
 licensing:
   model: "add-on"
-  notes: "The roadmap says voice notes need a Microsoft 365 Copilot licence, which Microsoft describes as an add-on plan with specific licensing prerequisites. No price specific to voice notes is published."
+  notes: "The roadmap says voice notes need a Microsoft 365 Copilot licence, which Microsoft describes as an add-on plan with specific licensing prerequisites; Microsoft also says Copilot is available with Microsoft 365 E7. No price specific to voice notes is published."
 audiences: ["m365-admin","security","end-user","change-adoption"]
 tags: ["m365-copilot","mobile","licensing","adoption"]
 sources:
@@ -45,6 +45,12 @@ sources:
     kind: "learn"
   - title: "Assign Microsoft 365 licenses to user accounts with PowerShell"
     url: "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell"
+    kind: "learn"
+  - title: "Microsoft Intune Protected Apps"
+    url: "https://learn.microsoft.com/intune/app-management/ref-protected-apps"
+    kind: "learn"
+  - title: "Manage Collaboration Experiences in Microsoft 365 (Office) for iOS and Android With Microsoft Intune"
+    url: "https://learn.microsoft.com/intune/app-management/configuration/configure-microsoft-365-mobile"
     kind: "learn"
 videos: []
 related: ["onenote-multimodal-capture-in-copilot-notebooks-windows","m365-copilot-multiple-voice-styles-in-m365-copilot-voice-chats"]
@@ -74,19 +80,23 @@ changes:
     note: "First briefing: the roadmap lists voice notes in the Microsoft 365 Copilot mobile app as Launched; Microsoft Learn has no feature page yet."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 41 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after the independent check: added Intune app protection and the Copilot app blocking options, narrowed the licence-removal statement, and added the Microsoft 365 E7 licensing sentence."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 48 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 41
-  confirmed: 38
+  claims: 48
+  confirmed: 46
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "5aaaf01fb4712fe4b2ad6a7c112c267d"
+  contradicted: 2
+  attempts: 2
+  hash: "acfb2fbea8b241a3028aa4ec1dbf811d"
 ---
 
 ## What's changing
@@ -101,7 +111,7 @@ The roadmap record shows status Launched, with a preview target of July CY2026 a
 
 This is a new way for spoken, often unscripted conversation to enter your tenant's Copilot experience from personal phones. The content is meeting-room or corridor talk, which can include other people, customers and sensitive topics, so the questions that matter are where the output is stored, how long it is kept and which of your existing controls reach it. Microsoft has not yet answered those for this feature.
 
-Microsoft has not stated what happens on arrival, so do not assume users are opted in or that they need to switch it on. Treat it as something licensed mobile users may already have, and decide what guidance to give them. The only lever Microsoft documents today that clearly applies is whether a user holds the Copilot licence.
+Microsoft has not stated what happens on arrival, so do not assume users are opted in or that they need to switch it on. Treat it as something licensed mobile users may already have, and decide what guidance to give them. Licence assignment governs access to licensed Copilot capabilities; Microsoft also documents blocking the Copilot app across web, desktop and mobile, or blocking the mobile app alone.
 
 ## Risk assessment
 
@@ -111,7 +121,7 @@ Microsoft has not stated what happens on arrival, so do not assume users are opt
 
 **Security & identity**
 - The roadmap ties the feature to a Microsoft 365 Copilot licence. The control Microsoft documents for who holds that licence is licence assignment (see the controls table).
-- Whether mobile app protection or device management policies cover the feature is not stated; confirm with Microsoft before relying on them.
+- Microsoft documents Intune app protection for the Microsoft Copilot mobile app on Android and iOS. Feature-specific handling of voice-note recordings and output is not yet documented.
 
 **Autonomy & actions**
 - The roadmap description speaks of capturing and structuring discussions. It describes no automatic actions in other apps, and none should be assumed.
@@ -121,7 +131,7 @@ Microsoft has not stated what happens on arrival, so do not assume users are opt
 
 ## Cost and licensing
 
-The roadmap says voice notes need a Microsoft 365 Copilot licence. Microsoft's service description page calls Microsoft 365 Copilot "an add-on plan with specific licensing prerequisites", and Microsoft's Copilot requirements page says users need a Microsoft Copilot licence and a qualifying prerequisite licence (see the sources).
+The roadmap says voice notes need a Microsoft 365 Copilot licence. Microsoft's service description page calls Microsoft 365 Copilot "an add-on plan with specific licensing prerequisites", and Microsoft's Copilot requirements page says users need a Microsoft Copilot licence and a qualifying prerequisite licence (see the sources). The License options for Microsoft Copilot page also says Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible plans.
 
 No price, meter or Copilot Credits rate specific to voice notes is published at the time of writing, and no spending control applies to it that Microsoft documents. Indirect costs are admin time to assign licences and communicate to users.
 
@@ -161,7 +171,7 @@ Admin roles: assigning licences requires at least the License Administrator or U
 </tbody>
 </table>
 
-The licence is the only control in the table that Microsoft documents as applying to this feature, and it applies because the roadmap names the Copilot licence as the prerequisite. Removing the licence from a user is a blunt tool: it removes Copilot as a whole, not just voice notes. Microsoft Learn's Copilot settings page for the Microsoft 365 admin center lists no setting for voice notes at the time of writing (November 2026).
+The licence is the only control in the table that Microsoft documents as applying to this feature, and it applies because the roadmap names the Copilot licence as the prerequisite. Removing the licence from a user is a blunt tool: it removes entitlement to licensed Copilot capabilities, not just voice notes; eligible users can still access Copilot Chat without that licence. Microsoft Learn's Copilot settings page for the Microsoft 365 admin center lists no setting for voice notes at the time of writing (November 2026).
 
 Licence assignment requires at least the License Administrator or User Administrator role.
 
@@ -170,7 +180,7 @@ Licence assignment requires at least the License Administrator or User Administr
 - Where are voice notes and their structured output stored, and do retention policies, sensitivity labels and eDiscovery reach them? Watch the Microsoft 365 Copilot release notes and Learn for a feature page.
 - Does voice notes appear automatically for licensed users, or does each user turn it on? Microsoft has not stated the default.
 - Will Microsoft add an admin setting to turn voice notes off separately from Copilot as a whole?
-- Do Intune app protection or other mobile management policies apply to voice notes in the Microsoft 365 Copilot mobile app?
+- How do the app's protection settings handle voice-note recordings and output?
 
 <!-- rationale
 risk: Medium. The feature turns spoken offline discussions into structured, searchable content, and Microsoft has not yet published where that content is kept or which controls cover it.
@@ -181,9 +191,8 @@ impact: Medium. Licensed users on Android and iOS notice it, and the roadmap rec
 <!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity; Open questions / applicability: Whether mobile app protection or device management policies cover the feature is not stated. | Found: They include all Microsoft 365 mobile applications, such as Edge, Outlook, OneDrive, Microsoft 365 (Office), or Teams, as this ensures that users can access and manipulate work or school data within any Microsoft app in a secure fashion. | Fix: Replace the risk bullet with: 'Microsoft documents Intune app protection for the Microsoft Copilot mobile app on Android and iOS. Feature-specific handling of voice-note recordings and output is not yet documented.' Cite https://learn.microsoft.com/intune/app-management/ref-protected-apps. Narrow the final open question to: 'How do the app's protection settings handle voice-note recordings and output?' | Source: https://learn.microsoft.com/intune/app-management/configuration/configure-microsoft-365-mobile
-- [contradicted, blocker] Why it matters / absence: Whether a user holds the Copilot licence is the only documented lever that clearly applies. | Found: If you wish to restrict usage of Copilot in your organization, use the Integrated Apps settings to block it across web, desktop, and mobile. Alternatively, block the Microsoft Copilot mobile app to restrict access to Copilot on mobile only. | Fix: Replace the sentence with: 'Licence assignment governs access to licensed Copilot capabilities; Microsoft also documents blocking the Copilot app across web, desktop and mobile, or blocking the mobile app alone.' Cite https://learn.microsoft.com/intune/app-management/configuration/configure-microsoft-365-mobile. Do not describe licence assignment as the only available control. | Source: https://learn.microsoft.com/intune/app-management/configuration/configure-microsoft-365-mobile
-- [contradicted, blocker] Governance controls / licensing: Removing a user's Copilot licence removes Copilot as a whole. | Found: Microsoft Copilot license: Required for licensed Microsoft Copilot capabilities ... Not required for eligible users [Microsoft Copilot Chat]. | Fix: Replace 'it removes Copilot as a whole, not just voice notes' with 'it removes entitlement to licensed Copilot capabilities, not just voice notes; eligible users can still access Copilot Chat without that licence'. Cite https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements. | Source: https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements
+- [contradicted, blocker] Why it matters; Risk assessment: Data exposure; Open questions; rationale: risk / absence: Microsoft has not stated whether retention controls reach the content produced by this Copilot feature. | Found: A hidden folder in the user's mailbox stores user prompts and Copilot responses. You can search this content by using eDiscovery, monitor it by using Communication Compliance, and manage it by using retention policies. | Fix: Replace the broad retention-coverage gap with: 'Microsoft documents retention policies and eDiscovery for Copilot prompts and responses; handling of voice-note recordings and feature-specific saved artifacts is not yet documented.' Cite https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing. Narrow the corresponding Why it matters, risk rationale and Open questions wording to recordings and feature-specific artifacts. | Source: https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing
+- [contradicted, blocker] front matter: cost; Cost and licensing; rationale: cost / consistency: The low cost rating says the known cost is indirect licence-assignment and communication time only despite the documented add-on licence requirement. | Found: cost: "low"; licensing.model: "add-on". Cost rationale: 'the known cost is licence assignment and admin time.' Cost and licensing: 'Microsoft 365 Copilot "an add-on plan with specific licensing prerequisites"'. | Fix: Set cost to 'medium' and replace the cost rationale with: 'Medium. Voice notes require the Microsoft 365 Copilot entitlement, available through an add-on or Microsoft 365 E7. Tenants that already hold the required entitlement mainly face licence-assignment and communication time; no separate voice-notes price or meter is published.' Keep indirect-only costs qualified to tenants already entitled.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing / licensing: Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites. | Found: Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites. | Fix: Add to licensing notes and the licensing paragraph: 'The License options for Microsoft Copilot page also says Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible plans.' Cite https://learn.microsoft.com/copilot/plan/copilot-license-options, already in sources. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot
+- [supported, minor] title; summary; What's changing; Scope / behaviour: The app is described using its previous name, Microsoft 365 Copilot. | Found: Microsoft 365 Copilot is now named Microsoft Copilot, and Microsoft 365 Copilot Chat is now named Microsoft Copilot Chat. | Fix: Use 'Microsoft Copilot mobile app (formerly Microsoft 365 Copilot)' on first mention and 'Microsoft Copilot mobile app' thereafter, while retaining the roadmap's original title and licence wording when explicitly quoting it. | Source: https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements
 -->

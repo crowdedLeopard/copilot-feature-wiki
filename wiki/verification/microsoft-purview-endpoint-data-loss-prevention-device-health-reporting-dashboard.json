@@ -1,0 +1,772 @@
+{
+  "slug": "microsoft-purview-endpoint-data-loss-prevention-device-health-reporting-dashboard",
+  "roadmapId": 561033,
+  "title": "Microsoft Purview Endpoint DLP: device health reporting dashboard (GCC, GCC High and DoD)",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "2 blocking findings (claims 2, 15)"
+    ]
+  },
+  "counts": {
+    "claims": 60,
+    "confirmed": 57,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: the summary says nothing needs configuring, although Microsoft does not state the dashboard's arrival or enablement behaviour. The instructions for View devices also omit the category selection needed to reach a filtered device list; the roadmap details, licensing background and main portal paths are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; rationale: risk",
+      "type": "behaviour",
+      "claim": "Microsoft Purview has a device health reporting dashboard for Endpoint DLP administrators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "The device health reporting dashboard in Microsoft Purview gives compliance and security administrators a centralized view of device readiness for Endpoint Data Loss Prevention (Endpoint DLP).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; Why it matters; Open questions",
+      "type": "default",
+      "claim": "Nothing needs configuring to use the dashboard.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Purview Endpoint DLP device health reporting dashboard default enable automatically configuration; \"device health\" \"Purview\" \"dashboard\" \"enable\". Opened dashboard documentation; no arrival statement. Body says Microsoft has not stated what happens on arrival.",
+      "severity": "blocker",
+      "fix": "Replace 'Admins in three roles can use it; nothing needs configuring.' with 'Access requires one of three admin roles; Microsoft has not stated its arrival or enablement behaviour.' Keep defaultState as unknown."
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The dashboard identifies devices potentially unable to receive or enforce Endpoint DLP policies because of configuration, connectivity or version issues.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "The dashboard helps you find devices that might not be ready to receive or enforce Endpoint DLP policies because of configuration, connectivity, or version issues.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes viewing health across all devices and quickly identifying devices not ready for policy updates.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This dashboard will allow admins to view the device health across all their devices to ensure the system is healthy and ready to receive policy updates and quickly identify devices that are not ready.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The dashboard has four sections covering onboarding, policy-update readiness, last-seen activity and feature readiness.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "Device onboarding; Device readiness to receive policy updates; Last time devices were seen online; Device readiness for feature",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Device onboarding shows the total number of onboarded devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "Provides an overview of onboarded devices, including: total onboarded devices, onboarded devices running Endpoint DLP, onboarded devices with configuration issues.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Device onboarding shows onboarded devices running Endpoint DLP.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "onboarded devices running Endpoint DLP",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Device onboarding shows onboarded devices with configuration issues.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "onboarded devices with configuration issues",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Device readiness to receive policy updates flags offline status during the past day.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "Shows devices that may not be ready to receive future Endpoint DLP policy updates because of: offline status during the past day",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Device readiness to receive policy updates identifies outdated Microsoft Defender Antivirus versions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "outdated Microsoft Defender Antivirus versions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Device readiness to receive policy updates identifies configuration issues.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "Shows devices that may not be ready to receive future Endpoint DLP policy updates because of: offline status during the past day, outdated Microsoft Defender Antivirus versions, configuration issues.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Last time devices were seen online uses separate non-cumulative last-seen buckets of 24 hours, 3 days, 7 days and 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "Devices are grouped into separate, non-cumulative buckets based on their latest Last seen timestamp, including devices seen in the last 24 hours, 3 days, 7 days, and 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope: Out of scope; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Device readiness for feature currently supports Just-in-time protection and Paste to supported browsers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "Currently, this section supports readiness reporting for: Just-in-time protection, Paste to supported browsers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Scope: Out of scope; Open questions",
+      "type": "behaviour",
+      "claim": "Microsoft says additional Endpoint DLP features will be added to the feature-readiness section in future releases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "Additional Endpoint DLP features will be added to this section in future releases.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "Selecting View devices in a section opens a filtered list of matching devices.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "select View devices to open a side pane with device categories, then select a category to open a filtered list of matching devices.",
+      "severity": "blocker",
+      "fix": "Replace the sentence with 'Selecting View devices in a section opens a side pane with device categories; select a category to open a filtered list of matching devices.'"
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Scope; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "The dashboard includes devices reporting within the past 30 days, excluding devices silent for longer than that window.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "The dashboard displays data from devices that reported within the past 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: clouds; title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "Roadmap item 561033 lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Roadmap item 561033 lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "Roadmap item 561033 lists General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "Roadmap item 561033 is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "Roadmap item 561033 has a target of July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "Roadmap item 561033 has no preview date in the record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: roadmapModified; What's changing",
+      "type": "record",
+      "claim": "Roadmap item 561033 was last modified on 2026-09-04, at 22:03:41.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-04T22:03:41\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Microsoft lists the same device health reporting dashboard under a separate roadmap item, 559267.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "559267: Microsoft Purview: Endpoint Data Loss Prevention - Device Health Reporting Dashboard. This dashboard will allow admins to view the device health across all their devices",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Roadmap item 559267 lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "559267: \"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 559267 is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "559267: \"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 559267 has a target of May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "559267: \"targetDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 559267 has a preview date of April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "559267: \"previewDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Learn says the dashboard consolidates device health insights and reduces manual troubleshooting across multiple pages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "It consolidates device health insights, reducing manual troubleshooting across multiple pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Readiness indicators do not confirm that a device failed to receive a policy update.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "These indicators don't confirm whether a device failed to receive a policy update",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Readiness indicators highlight devices potentially at risk of not receiving future policy updates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "but instead highlight devices that may be at risk of not receiving future updates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: defaultState; Why it matters; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft has not stated the dashboard's default or arrival behaviour.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Endpoint DLP device health reporting dashboard default enable automatically configuration; \"device health\" \"Purview\" \"dashboard\" \"enable\". Read roadmap and dashboard page: roles, device prerequisites and opening path, but no default or rollout enablement statement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters; rationale: risk",
+      "type": "absence",
+      "claim": "No source says the dashboard changes existing Endpoint DLP behaviour.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Endpoint DLP device health reporting dashboard default enable automatically configuration. Read dashboard page, roadmap records and What's new in Microsoft Purview June 2026 excerpt: monitoring and readiness reporting, not a change to existing enforcement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "summary; controls[0].note; Scope; Risk assessment; rationale: impact",
+      "type": "role",
+      "claim": "Dashboard access requires Compliance Administrator, Security Administrator or Global Administrator, rather than ordinary end-user access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "To access the device health reporting dashboard, you must have one of the following roles: Compliance Administrator; Security Administrator; Global Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Microsoft advises using the least-privileged role that meets the need.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "Use the least-privileged role that meets your needs. For most organizations, the Compliance Administrator or Security Administrator role is sufficient.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].note; Scope; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Devices must be onboarded to Endpoint DLP.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "Devices must also: Be onboarded to Endpoint DLP",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].note; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Devices must actively report device telemetry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "Be actively reporting device telemetry",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The per-device attributes include a Valid user value.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Valid user | This indicates if the currently logged on user has a corresponding Entra ID account and is in scope of a DLP policy that's targeted at Devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "DeviceInfo's DlpInfo column can contain a DlpUpn property identifying the associated user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "DlpUpn | string | User principal name (UPN) associated with the device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Outdated Microsoft Defender Antivirus versions can prevent devices receiving Endpoint DLP policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "Outdated Microsoft Defender Antivirus versions can prevent devices from receiving Endpoint DLP policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Devices offline for extended periods may miss critical policy updates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "Devices offline for extended periods may miss critical policy updates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Learn describes monitoring posture and investigating individual devices, rather than autonomous remediation by the dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "Use the dashboard to monitor device posture at scale, find misconfigured devices, detect devices that might not receive Endpoint DLP policy updates, and validate readiness before deploying new features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The readiness indicators do not confirm that an unflagged device holds the latest policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "These indicators don't confirm whether a device failed to receive a policy update, but instead highlight devices that may be at risk of not receiving future updates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Policy sync status on the Devices page provides per-device confirmation of receipt of the latest policy version.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "The Policy sync status shows you if the device received the latest policy version, or if the corresponding policies synced successfully to the device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Endpoint DLP is included in Microsoft 365 E5/A5/G5, the named Purview and Defender suites, and Microsoft 365 E5/A5/F5/G5 Information Protection & Governance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance | Endpoint Data Loss Prevention (DLP) | Included",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The dashboard page's Before you begin lists roles and device requirements but no dashboard-specific licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "To access the device health reporting dashboard, you must have one of the following roles: Compliance Administrator; Security Administrator; Global Administrator. Devices must also: Be onboarded to Endpoint DLP; Be actively reporting device telemetry",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft publishes no separate price or meter for the dashboard at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Endpoint DLP device health reporting dashboard licensing price meter. Read dashboard page and Endpoint DLP licensing table in Purview service description; searched service description for device health/dashboard. No dashboard-specific price or meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[0].ui; Governance controls table; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The dashboard is reached in the Microsoft Purview portal through Settings > Device onboarding > Device report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "Go to the Microsoft Purview portal. Select Settings > Device onboarding > Device report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft documents no API for the dashboard itself; the portal is its documented access route.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview device health reports dashboard API Graph PowerShell Security Compliance Get-DlpDevice; \"Endpoint DLP\" \"device report\" \"PowerShell\" \"API\"; \"Security & Compliance PowerShell\" \"device\" \"health\" \"DLP\". Read dashboard and troubleshooting pages; no dashboard API found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].ui; Governance controls table; Risk assessment: Change & support",
+      "type": "admin-path",
+      "claim": "Settings > Device onboarding > Devices in the Microsoft Purview portal is the route to per-device configuration and policy sync status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Sign in to the Microsoft Purview portal > Settings (gear icon in the upper right corner) > Device onboarding > Devices. Select a device to open the details pane for more information on the policy sync status.",
+      "severity": "minor",
+      "fix": "Extend controls[1].ui.path to 'Settings > Device onboarding > Devices > device'. The printed path correctly reaches the device list but omits selecting the device to open its details."
+    },
+    {
+      "n": 51,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "DeviceInfo | where DlpInfo != \"\" is a documented advanced hunting query for Endpoint DLP device data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Sample query: DeviceInfo | where DlpInfo != \"\" | project DlpInfo",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[1].note; Governance controls; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The DeviceInfo table in Microsoft Defender advanced hunting provides the same Endpoint DLP device data as the Purview device view.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "In addition to viewing device attributes in the Microsoft Purview portal, you can access the same Endpoint DLP device data through the DeviceInfo table in Advanced hunting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The DlpInfo column contains Endpoint DLP device information in JSON format.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "The DlpInfo column contains Endpoint Data Loss Prevention device information in JSON format.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "DlpInfo can be queried to report on device configuration status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "The JSON object can be used to query and report on device configuration status",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "DlpInfo can be queried to report on policy synchronisation status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "The JSON object can be used to query and report on device configuration status, policy synchronization status",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "DlpInfo can be queried to report on Endpoint DLP enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Endpoint DLP enablement, and other configuration details for onboarded devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "The advanced hunting query retrieves device information rather than changing a configuration setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "To retrieve device attribute data: Go to the Microsoft Defender portal; Navigate to Investigation & response > Hunting > Advanced hunting; Query the DeviceInfo table",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Learn does not say that the dashboard reads from DeviceInfo.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview device health reports dashboard API Graph PowerShell Security Compliance Get-DlpDevice; \"Endpoint DLP\" \"device report\" \"PowerShell\" \"API\". Read dashboard and troubleshooting pages: DeviceInfo is tied to device attributes, not identified as the dashboard's source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn advises regularly reviewing the dashboard and investigating devices that have not reported recently.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "Review the dashboard regularly. Frequent checks help you catch device health trends before they become widespread issues. Investigate devices that haven't reported recently.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance guidance: Before rollout, first bullet",
+      "type": "consistency",
+      "claim": "The checklist asks administrators to take stock of role assignments without a corresponding role-assignment control row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm which of your administrators hold the Compliance Administrator, Security Administrator or Global Administrator role. Controls list dashboard viewing and per-device status, not role assignments.",
+      "severity": "minor",
+      "fix": "Remove the checklist bullet beginning 'Confirm which of your administrators hold'. Keep the verified role requirement and least-privilege advice in Scope and Risk assessment."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T05:12:33.743Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=561033",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=559267",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Viewing device onboarding and readiness in the device health reporting dashboard",
+        "docs": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Device onboarding",
+          "Device report"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Per-device configuration status and policy sync status (today's alternative to the dashboard)",
+        "docs": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Device onboarding",
+          "Devices"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Per-device configuration status and policy sync status (today's alternative to the dashboard)",
+        "docs": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+        "reachable": true,
+        "token": "DeviceInfo |",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

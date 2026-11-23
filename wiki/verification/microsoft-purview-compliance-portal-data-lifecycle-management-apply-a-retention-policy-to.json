@@ -1,0 +1,754 @@
+{
+  "slug": "microsoft-purview-compliance-portal-data-lifecycle-management-apply-a-retention-policy-to",
+  "roadmapId": 486828,
+  "title": "Microsoft Purview: apply a retention policy to Microsoft Planner content",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "2 blocking findings (claims 13, 35)"
+    ]
+  },
+  "counts": {
+    "claims": 58,
+    "confirmed": 55,
+    "unconfirmed": 2,
+    "contradicted": 1,
+    "blocker": 2,
+    "major": 1,
+    "minor": 1
+  },
+  "summary": "Hold: the sources do not establish that existing plans remain unaffected until an administrator creates a policy. The roadmap gives group-associated plans as an example, not an exclusive scope restriction. The general retention controls and licensing are documented, and the briefing correctly reports Learn's disagreement with the roadmap.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap introduces Purview Data Lifecycle Management retention policies for Planner content, such as tasks in group-associated plans.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Compliance admins can now create a retention policy to manage content located in Microsoft Planner such as tasks for plans associated with an Microsoft 365 Group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; Scope; changes",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record has no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The record lists General Availability and Preview without assigning either to a particular part.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed; no US Government cloud is listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-09-09T22:36:54.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-09T22:36:54\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The record carries no more-info link.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"moreInfoLink\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "Scope: Users and licences",
+      "type": "record",
+      "claim": "The roadmap names no licence requirement.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Introducing Data lifecycle management capabilities for Microsoft Planner. Compliance admins can now create a retention policy to manage content located in Microsoft Planner such as tasks for plans associated with an Microsoft 365 Group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The record provides no further details about how the policy works.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Introducing Data lifecycle management capabilities for Microsoft Planner. Compliance admins can now create a retention policy to manage content located in Microsoft Planner such as tasks for plans associated with an Microsoft 365 Group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes an admin-created policy and mentions no agent or automated decision.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Compliance admins can now create a retention policy to manage content located in Microsoft Planner such as tasks for plans associated with an Microsoft 365 Group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The default is admin-opt-in: nothing is retained or deleted and existing plans do not change until an admin creates a policy.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Planner retention default admin policy enabled. Read the roadmap, Planner security/privacy/compliance, create-retention-policies and get-started-with-data-lifecycle-management. They describe policy creation, not Planner's arrival default or treatment by existing policies.",
+      "severity": "blocker",
+      "fix": "Set defaultState to \"unknown\". Replace \"Nothing starts until an admin creates one\" in the summary with \"Microsoft has not stated what happens on arrival\". Replace the first two sentences of the second Why it matters paragraph with \"Microsoft has not stated what happens on arrival; no source says existing plans will change.\" Replace the risk rationale's assertion that nothing is retained or deleted until setup with \"The arrival default is not stated, so this rating assumes today's behaviour continues.\""
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Retention policies are included in the named qualifying Purview/Microsoft 365 licences, with no separately identified Planner entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "For organization-wide, location-wide, or include/exclude retention policies, the following licenses provide user rights:\n- Microsoft 365 E5/A5/G5/E3/A3/G3, Business Premium",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "Purview Data Lifecycle Management uses retention policies to retain or delete content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
+      "quote": "Create retention policies for the workloads you identified, specifying retention settings and actions that are required by your organization policies or industry regulations",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "summary; What's changing; Governance guidance; Open questions; changes",
+      "type": "behaviour",
+      "claim": "Planner's compliance page still states that retention policy is not currently supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-security-privacy-compliance",
+      "quote": "Retention policy isn't currently supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; controls[0].governs; Governance guidance; Governance controls",
+      "type": "absence",
+      "claim": "The cited retention-policy creation page lists no Planner location.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner retention policy Purview. Read all of create-retention-policies, including its location list and all-other-services wizard instructions. Planner is not listed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "How to select Planner content, including whether the Microsoft 365 Groups location selects it, is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner retention policy Purview; Planner retention policy license billing meter New-RetentionCompliancePolicy PlannerLocation. Read Planner compliance, planner-in-purview, create-retention-policies and the cmdlet syntax and Applications/ModernGroupLocation parameters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope: Plans; Open questions",
+      "type": "absence",
+      "claim": "Learn does not document which Planner plan types a retention policy covers.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com/planner OR site:learn.microsoft.com/purview Planner retention policy. Read Planner compliance, planner-in-purview, create-retention-policies and retention. The plan-type coverage found is for eDiscovery, not retention policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Governance guidance: After rollout; Open questions",
+      "type": "absence",
+      "claim": "Learn does not document what Planner retention deletion does to tasks, comments and attachments.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner retention policy Purview PlannerLocation licensing billing delete tasks; Planner retention policy Purview. Read Planner compliance, planner-in-purview, create-retention-policies and retention. Only Planner eDiscovery preservation behaviour was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Each Planner plan lives in a container.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-security-privacy-compliance",
+      "quote": "Within Planner, each Plan is inside a container, and access to the plan is defined by the container.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Members of the group container can see the contents of its plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-security-privacy-compliance",
+      "quote": "For example, if the Plan is inside a Modern Group, then the members of the Group can see the contents of the Plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Basic-plan data is stored in Azure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-security-privacy-compliance",
+      "quote": "The data of a basic plan, such as the titles and descriptions of tasks, are stored in Azure, encrypted at rest and in transit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters; Open questions",
+      "type": "behaviour",
+      "claim": "Planner file attachments are stored in SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-security-privacy-compliance",
+      "quote": "File attachments are stored in SharePoint and Conversations are stored in Exchange.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters; Open questions",
+      "type": "behaviour",
+      "claim": "Planner conversations and task comments are stored in Exchange.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-in-purview",
+      "quote": "Attachments on tasks are stored in SharePoint and comments are stored in Exchange.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "General retention settings support retain-only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "Retain-only: Retain content forever or for a specified period of time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "General delete-only retention permanently deletes content after a specified period.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "Delete-only: Permanently delete content after a specified period of time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "General retention settings support retain-then-delete.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "Retain and then delete: Retain content for a specified period of time and then permanently delete it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Setting up a retention policy does not widen who can read plan content.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: retention policies do not change permissions access content Planner. Read get-started-with-data-lifecycle-management, Planner compliance and planner-in-purview. Not requiring content access to configure a policy does not establish its effect on readership.",
+      "severity": "major",
+      "fix": "Replace the bullet with \"Learn says the person configuring retention policies doesn't require access to the content.\" Remove the inference about whether configuring a Planner policy changes who can read the content."
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Data exposure; Governance controls: Roles",
+      "type": "role",
+      "claim": "The person configuring retention policies does not require access to the content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
+      "quote": "The person configuring these policies and labels doesn't require access to the content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].note; Risk assessment; Scope; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "Learn recommends the Compliance Administrator role group for creating and managing retention policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
+      "quote": "To grant permissions for this limited administration, we recommend that you add users to the Compliance Administrator admin role group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].note; Risk assessment; Scope; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "A custom role group with the Retention Management role is an alternative for retention administration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
+      "quote": "Alternatively to using this default role, you can create a new role group and add the Retention Management role to this group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "View-Only Retention Management is the read-only role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
+      "quote": "For a read-only role, use View-Only Retention Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Planner's own page says there are no special administrative roles for Planner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-security-privacy-compliance",
+      "quote": "There are no special administrative roles for Planner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The roadmap limits scope to plans associated with a Microsoft 365 Group.",
+      "status": "contradicted",
+      "source": "roadmap record",
+      "quote": "manage content located in Microsoft Planner such as tasks for plans associated with an Microsoft 365 Group.",
+      "severity": "blocker",
+      "fix": "Replace \"The roadmap limits scope to plans associated with a Microsoft 365 Group\" with \"The roadmap names tasks for plans associated with a Microsoft 365 Group as an example; it does not state an exclusive scope.\""
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Change & support",
+      "type": "availability",
+      "claim": "The Planner Purview page excludes personal, Loop, premium, shared-channel and private-channel plans from its documented eDiscovery capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-in-purview",
+      "quote": "Unsupported: Personal (roster) plans, plans in Loop components, premium plans (formerly projects), Shared and Private channel Plans (LWG backed Plans).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "Whether those eDiscovery plan-type exclusions also apply to retention policies is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner retention policy Purview; site:learn.microsoft.com/planner OR site:learn.microsoft.com/purview Planner retention policy. Read planner-in-purview, Planner compliance and create-retention-policies. No retention-policy exclusion list was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "Microsoft 365 E5/A5/G5/E3/A3/G3 and Business Premium provide user rights for organisation-wide, location-wide or include/exclude retention policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "For organization-wide, location-wide, or include/exclude retention policies, the following licenses provide user rights:\n- Microsoft 365 E5/A5/G5/E3/A3/G3, Business Premium",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "Microsoft Purview Suite is among the licences providing those retention-policy rights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "- Microsoft Purview Suite/EDU/GOV/FLW",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "Office 365 E5/A5/G5/E3/A3/G3 also provide those retention-policy rights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "- Office 365 E5/A5/G5/E3/A3/G3",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The service description lists additional qualifying licences for Exchange, SharePoint/OneDrive and Teams retention locations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "If the retention policy location is an Exchange mailbox, then the following licenses also provide user rights:\n- Exchange Plan 2\n- Exchange Online Archiving",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No Planner-specific retention-policy licence is published in the examined licensing documentation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner retention license billing pay-as-you-go. Read service-description Licensing for retention policies, Planner compliance, get-started-with-data-lifecycle-management and purview-billing-models. No Planner-specific retention licence was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "Planner's page says Purview integration requires an appropriate Purview licence, giving E5 as an example.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-security-privacy-compliance",
+      "quote": "Purview integration depends on an appropriate license for Purview (like the E5 license).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Pay-as-you-go setup is required for retention policies including Microsoft Copilot experiences, Enterprise AI apps and Other AI apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
+      "quote": "You must set up pay-as-you-go billing to create retention policies that include the locations Microsoft Copilot experiences, Enterprise AI apps, and Other AI apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing: Meter; Indirect cost; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No Planner-specific retention meter or rate is published in the examined billing documentation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner retention license billing pay-as-you-go; Planner retention billing meter pay-as-you-go. Read get-started-with-data-lifecycle-management and purview-billing-models, including the DLM meter for AI interactions. Neither names a Planner retention meter or rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The general retention-policy creation route is Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies.\nSelect New retention policy to start the Create retention policy configuration",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "New-RetentionCompliancePolicy -Name <policy name> identifies the general operation that creates a named retention policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy",
+      "quote": "Use the New-RetentionCompliancePolicy cmdlet to create new retention policies and new retention label policies in the Microsoft Purview compliance portal.\nThe Name parameter specifies the unique name of the retention policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "New-RetentionCompliancePolicy is used in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy",
+      "quote": "This cmdlet is available only in Security & Compliance PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The cmdlet reference lists no Planner-specific location parameter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner retention policy license billing meter New-RetentionCompliancePolicy PlannerLocation. Read all three syntax sets and the Applications parameter in New-RetentionCompliancePolicy. No Planner-specific parameter or Planner application value is listed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "ModernGroupLocation specifies Microsoft 365 Groups included in the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy",
+      "quote": "The ModernGroupLocation parameter specifies the Microsoft 365 Groups to include in the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls: Today's alternative",
+      "type": "applicability",
+      "claim": "The Planner Purview page documents eDiscovery holds for Planner plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-in-purview",
+      "quote": "For Planner data, select the SharePoint site associated with the plan and check the box for Planner tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls: Today's alternative",
+      "type": "behaviour",
+      "claim": "The Planner Purview page says a task will not be deleted when a hold is applied.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-in-purview",
+      "quote": "When a hold is applied, the task won't be deleted and is copied to the Preservation Hold Library of the SharePoint site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls: Today's alternative",
+      "type": "behaviour",
+      "claim": "The held task is copied to the SharePoint site's Preservation Hold Library.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-in-purview",
+      "quote": "When a hold is applied, the task won't be deleted and is copied to the Preservation Hold Library of the SharePoint site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls: Today's alternative",
+      "type": "behaviour",
+      "claim": "An eDiscovery hold is distinct from a retention policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "Although retention settings and holds that you create with an eDiscovery case can both prevent data from being permanently deleted, they are designed for different scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls: Today's alternative",
+      "type": "behaviour",
+      "claim": "An eDiscovery hold has no configured retention period and depends on administrator action to end preservation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "The start and end of the preservation period isn't configurable but dependent on individual administrator actions, without an option to automatically delete content when the hold is released.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Conflicting Microsoft information can leave help-desk and compliance staff with different positions on Planner retention.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-security-privacy-compliance",
+      "quote": "Retention policy isn't currently supported.",
+      "severity": "minor",
+      "fix": "Replace \"Two Learn pages disagree\" with \"The roadmap and Planner's compliance page disagree\". The other cited Learn page omits Planner rather than stating that Planner retention launched."
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Whether Planner retention supports retain-only, delete-only and retain-then-delete is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner retention policy Purview; Planner retention policy Purview PlannerLocation licensing billing delete tasks. Read Planner compliance, planner-in-purview, create-retention-policies and retention. General retention actions are documented, but no Planner policy options were found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Retention policy administration is governed from Purview rather than through special Planner administrative roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
+      "quote": "Members of your compliance team who will create and manage retention policies and retention labels need permissions to the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T05:12:30.088Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=486828",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/planner/planner-security-privacy-compliance",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/planner/planner-in-purview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/create-retention-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/retention",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Creating a retention policy, the route for any Planner retention (no Planner location is named on the pages read)",
+        "docs": "https://learn.microsoft.com/purview/create-retention-policies",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Data Lifecycle Management",
+          "Policies",
+          "Retention policies",
+          "New retention policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Creating a retention policy, the route for any Planner retention (no Planner location is named on the pages read)",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy",
+        "reachable": true,
+        "token": "New-RetentionCompliancePolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

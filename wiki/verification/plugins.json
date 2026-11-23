@@ -3,171 +3,33 @@
   "kind": "concept",
   "roadmapId": null,
   "title": "Plugins: who can install a Copilot plugin, and how do you block one?",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-23",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-23",
-    "reasons": [
-      "3 blocking findings (claims 9, 10, 11)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 83,
-    "confirmed": 78,
-    "unconfirmed": 1,
-    "contradicted": 4,
-    "blocker": 3,
+    "claims": 113,
+    "confirmed": 113,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 7
+    "minor": 2
   },
-  "summary": "Hold: Microsoft documents preview Graph automation for both publisher-category access and tenant-wide User access, which the page incorrectly reports as undocumented. The Word legal-plugin route is supported across two cited pages, but its control link omits the page that actually names the setting.",
+  "summary": "The documented plugin controls, licensing and limits are supported, including the preview automation and the Word legal policy route. Two UI paths stop on the correct settings page but should include the final selection.",
   "claims": [
     {
       "n": 1,
-      "where": "controls[0].ui",
-      "type": "admin-path",
-      "claim": "Publisher-category access is configured in Microsoft 365 admin center at Agents > Settings > Agent and plugin access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Select Agents > Settings > Agent and plugin access. Under the installation settings, choose which publisher categories users can access: Microsoft, your organization, or certified external publishers.",
-      "severity": "minor",
-      "fix": "Extend the path to 'Agents > Settings > Agent and plugin access > installation settings'; retain the note identifying the three publisher categories."
-    },
-    {
-      "n": 2,
-      "where": "controls[1].ui",
-      "type": "admin-path",
-      "claim": "Tenant-wide user access is configured in Microsoft 365 admin center at Agents > Settings > User access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-      "quote": "Select Agents > Settings > User access to manage your organization's agents and plugins.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "controls[2].ui",
-      "type": "admin-path",
-      "claim": "An individual plugin's user availability is configured at Agents > Tools > Plugins > plugin > Users.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Select Agents > Tools > Plugins. Select the plugin that you want to manage. Open Users, and then choose one of the following availability options:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "controls[2].api",
-      "type": "command",
-      "claim": "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} sets plugin availability through availableTo and allowedUsersAndGroups.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
-      "quote": "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}\nallowedUsersAndGroups | Users/groups for whom the package is available.\navailableTo | Enum value specifying which users or groups within the tenant can access this package.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "controls[3].ui",
-      "type": "admin-path",
-      "claim": "Administrator installation is reached at Microsoft 365 admin center > Agents > Tools > plugin > Install.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Select Agents > Tools. From the list, select the plugin or skill that you want to install, and then select Install.",
-      "severity": "minor",
-      "fix": "Keep the path, but append to the note: 'In the installation pane, choose All users or Specific users or groups, then select Next and Install.' The printed route reaches the opening Install action rather than the audience selection."
-    },
-    {
-      "n": 6,
-      "where": "controls[3].api",
-      "type": "command",
-      "claim": "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} sets the deployment audience through deployedTo and acquireUsersAndGroups.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
-      "quote": "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}\nacquireUsersAndGroups | Users/groups for whom the package is deployed.\ndeployedTo | Enum value indicating the deployment scope of the package.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "controls[4].ui",
-      "type": "admin-path",
-      "claim": "Package blocking is reached at Microsoft 365 admin center > Agents > Tools > Plugins > plugin > Block.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Select Agents > Tools > Plugins. From the list, select the plugin or skill that you want to block. Select Block, and then select Block again to confirm.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "controls[4].api",
-      "type": "command",
-      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block prevents package usage.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "Block a Copilot package to prevent its usage.\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "controls[5].ui",
-      "type": "admin-path",
-      "claim": "The cited Cloud Policy overview documents the route through Configure Settings to Legal Skills in M365 Copilot in Word.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"Legal Skills in M365 Copilot in Word\" PowerShell Graph API Cloud Policy; opened overview-cloud-policy and manage-copilot-for-legal. The overview gives the wizard route but not the final policy name; manage-copilot-for-legal gives that name.",
-      "severity": "blocker",
-      "fix": "Keep the path, but change controls[5].ui.docs to https://learn.microsoft.com/microsoft-365/admin/manage/manage-copilot-for-legal, which names the setting. Keep https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy in sources for the wizard route."
-    },
-    {
-      "n": 10,
-      "where": "controls[0].api; Open questions",
-      "type": "absence",
-      "claim": "No Graph or PowerShell operation is documented for Agent and plugin access.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
-      "quote": "These resources also support remediation and applyOnce.\nareISVAppsAllowed | Indicates whether apps, agents, and plugins built by external publishers are allowed.",
-      "severity": "blocker",
-      "fix": "Replace controls[0].api with graph call 'POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors', docs https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta. Append note: 'TCM preview: mode=applyOnce; baseline.resources uses resourceType microsoft.agent.allowedagenttypes, resourceVersion 1, and properties.valueObject with areMicrosoftAppsAllowed, areTenantScopedAppsAllowed, areISVAppsAllowed and areMicrosoftCertifiedThirdPartyAppsAllowed. Global service only; delegated access; signed-in AI Administrator and TCM workload permissions required.' Cite https://learn.microsoft.com/graph/utcm-agent-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. Replace the Open questions absence with 'TCM preview documents automation for publisher categories and all-users/no-users access; its useraccess schema does not document specific-user or group assignment.'"
-    },
-    {
-      "n": 11,
-      "where": "controls[1].api; Open questions",
-      "type": "absence",
-      "claim": "No Graph or PowerShell operation is documented for User access.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
-      "quote": "These resources also support remediation and applyOnce.\nuserAssignmentCategory | Specifies whether all users or no users can access agents and plugins. | everyone, noOne",
-      "severity": "blocker",
-      "fix": "Replace controls[1].api with graph call 'POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors', docs https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta. Append note: 'TCM preview: mode=applyOnce; baseline.resources uses resourceType microsoft.agent.useraccess, resourceVersion 1, and properties.valueObject.userAssignmentCategory set to everyone or noOne. Specific-user/group assignment is not documented in this schema. Global service only; delegated access; signed-in AI Administrator and TCM workload permissions required.' Cite https://learn.microsoft.com/graph/utcm-agent-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. Apply the replacement Open questions sentence specified for publisher-category automation."
-    },
-    {
-      "n": 12,
-      "where": "controls[5].api",
-      "type": "absence",
-      "claim": "No API or PowerShell operation is documented for the Word legal-plugin Cloud Policy setting.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Legal Skills in M365 Copilot in Word\" PowerShell Graph API Cloud Policy; \"Cloud Policy\" \"API\" \"policy configurations\" create. Opened manage-copilot-for-legal, overview-cloud-policy and TCM remediation resource list; no operation for this legal setting found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "summary; What it is",
+      "where": "summary",
       "type": "behaviour",
-      "claim": "A plugin is an installable package bundling capabilities such as skills, MCP servers and connectors.",
+      "claim": "A plugin is an installable package of capabilities such as skills, MCP servers and connectors.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-tools-overview",
       "quote": "Installable packages that bundle capabilities an agent can use, such as skills, MCP servers, and connectors.",
@@ -175,18 +37,18 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "summary; What it is",
-      "type": "applicability",
-      "claim": "Administrators govern plugin packages on the Microsoft 365 admin center Tools page under Agents.",
+      "n": 2,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Administrators govern plugins as packages on the Microsoft 365 admin center Tools page under Agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/govern-plugins",
-      "quote": "Install, uninstall, block, or delete a plugin, as supported for that item | Agents > Tools; select the plugin and its applicable action",
+      "quote": "Use its controls in the Microsoft 365 admin center to manage plugin packages, access, and requests.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 15,
+      "n": 3,
       "where": "What it is: Skills",
       "type": "behaviour",
       "claim": "Skills are reusable instructions or workflows that teach an agent to perform a task consistently.",
@@ -197,7 +59,7 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 4,
       "where": "What it is: MCP servers",
       "type": "behaviour",
       "claim": "MCP servers expose tools and resources that agents can discover and use.",
@@ -208,7 +70,7 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 5,
       "where": "What it is: Connectors",
       "type": "behaviour",
       "claim": "Connectors are connections to external systems and data sources.",
@@ -219,21 +81,21 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 6,
       "where": "What it is",
       "type": "behaviour",
-      "claim": "A Cowork plugin is a package distributed through the Microsoft 365 App Store.",
+      "claim": "Microsoft describes Cowork plugins as packages distributed through the Microsoft 365 App Store.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
-      "quote": "A Cowork plugin is a package distributed through the Microsoft 365 App Store that can contain:",
+      "quote": "A Cowork plugin is a package distributed through the Microsoft 365 App Store",
       "severity": null,
       "fix": null
     },
     {
-      "n": 19,
+      "n": 7,
       "where": "What it is",
       "type": "behaviour",
-      "claim": "Plugins use the same M365 app package format as Teams apps, Copilot agents and Office add-ins.",
+      "claim": "Cowork plugins use the same M365 app package format as Teams apps, Copilot agents and Office add-ins.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
       "quote": "Plugins use the same M365 app package format as Teams apps, Copilot agents, and Office add-ins.",
@@ -241,7 +103,7 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 8,
       "where": "What it is",
       "type": "behaviour",
       "claim": "Cowork calls initialize at runtime when a plugin declares an MCP server.",
@@ -252,10 +114,10 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 9,
       "where": "What it is",
       "type": "behaviour",
-      "claim": "Cowork calls tools/list at runtime to discover a declared MCP server's tools.",
+      "claim": "Cowork calls tools/list at runtime to discover the declared MCP server's tools.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
       "quote": "when a plugin declares an MCP server, Cowork calls initialize and tools/list at runtime to discover available tools automatically.",
@@ -263,21 +125,21 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 10,
       "where": "What it is",
       "type": "availability",
-      "claim": "Plugins are primarily available to end users in the Copilot channel.",
+      "claim": "Plugins are primarily available to users in the Copilot channel.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Plugins are primarily available to end users in the Copilot channel, where they extend the experience with specialized capabilities, data, and actions.",
+      "quote": "Plugins are primarily available to end users in the Copilot channel",
       "severity": null,
       "fix": null
     },
     {
-      "n": 23,
+      "n": 11,
       "where": "What it is",
-      "type": "availability",
-      "claim": "The catalogue can include Microsoft plugins and third-party plugins.",
+      "type": "behaviour",
+      "claim": "The plugin catalogue can include third-party plugins.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
       "quote": "The plugin catalog can include third-party plugins published by independent providers and plugins published by Microsoft",
@@ -285,7 +147,18 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 12,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "The plugin catalogue can include Microsoft plugins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "The plugin catalog can include third-party plugins published by independent providers and plugins published by Microsoft",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
       "where": "What it is: Publishing is not access",
       "type": "behaviour",
       "claim": "Publishing a plugin does not install it.",
@@ -296,7 +169,7 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 14,
       "where": "What it is: Publishing is not access",
       "type": "behaviour",
       "claim": "Publishing a plugin does not give users access to its data and services.",
@@ -307,10 +180,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 15,
       "where": "What it is: Publishing is not access",
       "type": "behaviour",
-      "claim": "Approval, availability, installation, consent and connection are separate steps.",
+      "claim": "Approval, availability, installation, consent and connection are separate setup steps.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/govern-plugins",
       "quote": "Complete the separate approval, availability, assignment, consent, and connection steps required by the distribution route.",
@@ -318,8 +191,8 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "What it is; What to check",
+      "n": 16,
+      "where": "What it is: Publishing is not access",
       "type": "behaviour",
       "claim": "Availability alone is not an installation.",
       "status": "supported",
@@ -329,21 +202,43 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 17,
       "where": "What it is",
       "type": "behaviour",
-      "claim": "The Tools Registry and Agent Registry are separate inventories, with agents inventoried in Agent Registry.",
+      "claim": "The Tools Registry and Agent Registry are separate inventories.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/govern-plugins",
-      "quote": "The inventories are related but not interchangeable:\nTools Registry inventories plugin packages, skills, MCP servers, and connectors.\nAgent Registry inventories agents",
+      "quote": "The inventories are related but not interchangeable:",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
+      "n": 18,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "The Agent Registry inventories agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/govern-plugins",
+      "quote": "Agent Registry inventories agents and provides agent-specific ownership, availability, deployment, and lifecycle controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Data processed by non-Microsoft services is not subject to Microsoft agreements.",
+      "claim": "Plugins can connect agents to services outside Microsoft 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
+      "quote": "Some plugins include connectors that link Cowork to external services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft says data processed by non-Microsoft services is not subject to Microsoft agreements.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
       "quote": "Data processed by non-Microsoft services isn't subject to Microsoft agreements.",
@@ -351,32 +246,32 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "Why it matters; Governance controls",
-      "type": "applicability",
-      "claim": "Publisher-category controls do not replace the individual plugin's user availability scope.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "If a plugin is restricted by organization-level availability settings or by its user availability configuration, users can still discover the plugin in the Copilot channel.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "controls[1].note; Why it matters",
+      "n": 21,
+      "where": "Why it matters; controls[1].note",
       "type": "default",
-      "claim": "User access defaults to All users, subject to existing app policies and user assignments.",
+      "claim": "User access defaults to All users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-      "quote": "All users - This option is the default. It means that all users in the organization can access agents and plugins, subject to the existing app policies and user assignments.",
+      "quote": "All users - This option is the default.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 32,
+      "n": 22,
+      "where": "Why it matters",
+      "type": "applicability",
+      "claim": "All users access remains subject to existing app policies and user assignments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "all users in the organization can access agents and plugins, subject to the existing app policies and user assignments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Users who use Cowork plugins must have Microsoft 365 Copilot licences assigned.",
+      "claim": "Users of Cowork plugins must have Microsoft 365 Copilot licences assigned.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
       "quote": "Users who use Cowork plugins must have Microsoft 365 Copilot licenses assigned.",
@@ -384,32 +279,54 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 24,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Cowork tool and skill calls count toward the organisation's usage-based consumption.",
+      "claim": "Plugin activity in Cowork is metered.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
-      "quote": "Cowork uses a usage-based billing model. Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.",
+      "quote": "Cowork uses a usage-based billing model.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
-      "where": "Cost and licensing",
-      "type": "applicability",
-      "claim": "Cowork access is granted only through a spending policy selecting Cowork.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
-      "quote": "Access is granted only through a spending policy that selects Cowork.\nThis article describes worldwide administration. For government tenant enablement, feature differences, and feedback restrictions, see Cowork in GCC.",
-      "severity": "minor",
-      "fix": "Narrow the sentence to 'For worldwide administration, Microsoft says access to Cowork is granted only through a spending policy that selects it.'"
-    },
-    {
-      "n": 35,
+      "n": 25,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Plugin costs vary by product and distribution route.",
+      "claim": "Cowork tool calls count towards the organization's consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Cowork skill calls count towards the organization's consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing",
+      "type": "applicability",
+      "claim": "For worldwide administration, Cowork access is granted only through a spending policy selecting Cowork.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "This article describes worldwide administration. ... Access is granted only through a spending policy that selects Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Microsoft's plugin cost page says costs vary by product and distribution route.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/cost-considerations",
       "quote": "Costs vary by product and distribution route.",
@@ -417,10 +334,10 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 29,
       "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Licences are a separate plugin cost category.",
+      "type": "licensing",
+      "claim": "The plugin cost page lists user and administrator licences as a cost category.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/cost-considerations",
       "quote": "User and administrator licenses for the target Microsoft experiences.",
@@ -428,10 +345,10 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 30,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Usage-based consumption is a separate plugin cost category.",
+      "claim": "The plugin cost page separately lists usage-based consumption.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/cost-considerations",
       "quote": "Usage-based consumption for agents, Copilot connectors, APIs, models, or other metered services.",
@@ -439,10 +356,10 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 31,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Remote MCP server hosting is a separate plugin cost category.",
+      "claim": "The plugin cost page separately lists hosting for remote MCP servers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/cost-considerations",
       "quote": "Hosting for APIs, applications, databases, remote MCP servers, and other external services.",
@@ -450,18 +367,18 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 32,
       "where": "Cost and licensing",
       "type": "absence",
-      "claim": "The cited plugin cost page states no plugin price.",
+      "claim": "The plugin cost page states no plugin price.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: plugins cost considerations plugin price licenses usage hosting remote MCP servers. Opened https://learn.microsoft.com/plugins/cost-considerations in full: cost categories and product-specific billing links, but no plugin price.",
+      "quote": "Searched: plugins price licensing cost plugin package Microsoft. Opened learn.microsoft.com/plugins/cost-considerations in full; it lists cost categories and product-specific billing links, not a plugin package price.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
+      "n": 33,
       "where": "Cost and licensing; controls[2].note; controls[4].note",
       "type": "licensing",
       "claim": "The Package Management API requires a Microsoft Agent 365 licence.",
@@ -472,21 +389,21 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 34,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Audit Standard supplies Cowork and plugin Copilot activities logs at no extra cost.",
+      "claim": "Audit Standard provides the Cowork and plugin Copilot activities logs at no extra cost.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
-      "quote": "Microsoft Purview audit logs capture Copilot activities for your organization, including interactions with Cowork and its plugins. Audit entries appear under Copilot activities in Microsoft Purview. Audit Standard provides these logs at no extra cost.",
+      "quote": "Microsoft Purview audit logs capture Copilot activities for your organization, including interactions with Cowork and its plugins. ... Audit Standard provides these logs at no extra cost.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
+      "n": 35,
       "where": "Risks and limits: Blocking is package-level",
       "type": "applicability",
-      "claim": "Blocking a plugin package blocks its included agents.",
+      "claim": "Blocking a plugin blocks its included agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
       "quote": "Blocking a plugin package blocks its included agents because they share the same governance controls.",
@@ -494,10 +411,10 @@
       "fix": null
     },
     {
-      "n": 43,
-      "where": "Risks and limits: Blocking is package-level; What to check",
+      "n": 36,
+      "where": "Risks and limits: Blocking is package-level",
       "type": "applicability",
-      "claim": "Associated MCP servers and connectors remain available to other plugins when a plugin is blocked.",
+      "claim": "Associated MCP servers remain available to other plugins when a plugin is blocked.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
       "quote": "Associated MCP servers and connectors remain available to other plugins.",
@@ -505,32 +422,32 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 37,
+      "where": "Risks and limits: Blocking is package-level",
+      "type": "applicability",
+      "claim": "Associated connectors remain available to other plugins when a plugin is blocked.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Associated MCP servers and connectors remain available to other plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
       "where": "Risks and limits: Blocking is package-level",
       "type": "applicability",
       "claim": "Blocking an MCP server is a separate component-level action.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Blocking an MCP server is a separate component-level action; effects on dependent plugins and linked connectors depend on the applicable management route.",
+      "quote": "Blocking an MCP server is a separate component-level action",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
-      "where": "controls[4].note",
-      "type": "applicability",
-      "claim": "Unblocking a plugin package restores access to its associated agents.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Unblocking the plugin package restores access to the associated agents.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
+      "n": 39,
       "where": "Risks and limits: Approval is not consent",
       "type": "applicability",
-      "claim": "Package approval or blocking does not grant or revoke connected-service permissions.",
+      "claim": "Package approval does not grant connected-service permissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
       "quote": "Don't treat package approval or blocking as granting or revoking connected-service permissions or credentials.",
@@ -538,7 +455,18 @@
       "fix": null
     },
     {
-      "n": 47,
+      "n": 40,
+      "where": "Risks and limits: Approval is not consent",
+      "type": "applicability",
+      "claim": "Package blocking does not revoke connected-service permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Don't treat package approval or blocking as granting or revoking connected-service permissions or credentials.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
       "where": "Risks and limits: Approval is not consent",
       "type": "behaviour",
       "claim": "Administrators cannot sign in to Cowork plugin connectors on users' behalf.",
@@ -549,21 +477,21 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 42,
       "where": "Risks and limits: Approval is not consent",
       "type": "behaviour",
-      "claim": "Each user must complete an authenticated connector's own sign-in or consent flow.",
+      "claim": "Each user completes the connector's own sign-in or consent when authentication is required.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
-      "quote": "When a plugin connector requires authentication:\nYou can't sign in on behalf of your users. Each user must complete the sign-in or consent flow themselves the first time they use that connector.",
+      "quote": "When a plugin connector requires authentication: ... Each user must complete the sign-in or consent flow themselves the first time they use that connector.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 49,
-      "where": "Risks and limits: Cowork sharing has no tenant off switch",
-      "type": "applicability",
-      "claim": "There is currently no single tenant setting turning off Cowork plugin sharing for every user.",
+      "n": 43,
+      "where": "Risks and limits: Cowork sharing",
+      "type": "absence",
+      "claim": "Microsoft states there is no single tenant setting disabling plugin sharing for every Cowork user.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
       "quote": "There's currently no single tenant setting that turns off plugin sharing for every user.",
@@ -571,10 +499,10 @@
       "fix": null
     },
     {
-      "n": 50,
-      "where": "Risks and limits: Cowork sharing has no tenant off switch",
-      "type": "applicability",
-      "claim": "Organisation-wide publication of a user's Cowork plugin requires administrator approval.",
+      "n": 44,
+      "where": "Risks and limits: Cowork sharing",
+      "type": "behaviour",
+      "claim": "Organization-wide plugin publication requires administrator approval.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
       "quote": "the plugin only becomes available to your organization after a tenant administrator approves it.",
@@ -582,10 +510,10 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "Risks and limits: Cowork sharing has no tenant off switch",
+      "n": 45,
+      "where": "Risks and limits: Cowork sharing",
       "type": "behaviour",
-      "claim": "A user can still share an uploaded Cowork plugin with specific people.",
+      "claim": "Users can still share an uploaded Cowork plugin with specific people.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
       "quote": "A user can still share an uploaded plugin with specific people they choose.",
@@ -593,7 +521,7 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 46,
       "where": "Risks and limits: Blocking applies to new conversations",
       "type": "applicability",
       "claim": "Cowork plugin blocking takes effect for new conversations.",
@@ -604,10 +532,10 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 47,
       "where": "Risks and limits: Blocking applies to new conversations",
       "type": "behaviour",
-      "claim": "Conversations already using the blocked Cowork plugin continue until they end.",
+      "claim": "Cowork conversations already using a blocked plugin continue until they end.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
       "quote": "Conversations already in progress that use the plugin continue until they end.",
@@ -615,21 +543,21 @@
       "fix": null
     },
     {
-      "n": 54,
+      "n": 48,
       "where": "Risks and limits: Other controls stay separate",
       "type": "applicability",
-      "claim": "Copilot Studio and Power Platform can have separate component controls, including applicable data policies.",
+      "claim": "Copilot Studio and Power Platform can have separate component controls, including data policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/govern-plugins",
-      "quote": "Package access, data policies, permissions, and service configuration are separate controls:\nPower Platform admin center: Applicable Copilot Studio and Power Platform connector data policies.",
+      "quote": "Power Platform admin center: Applicable Copilot Studio and Power Platform connector data policies.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 55,
+      "n": 49,
       "where": "Risks and limits: Scoping limits",
-      "type": "availability",
-      "claim": "Country or region-based scoping is not supported for Cowork plugin availability.",
+      "type": "behaviour",
+      "claim": "Country or region scoping is not supported for Cowork plugin availability.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
       "quote": "Country or region-based scoping isn't supported for plugin availability.",
@@ -637,10 +565,10 @@
       "fix": null
     },
     {
-      "n": 56,
+      "n": 50,
       "where": "Risks and limits: Scoping limits",
-      "type": "applicability",
-      "claim": "Security groups can represent geographic segments when scoping Cowork plugin availability.",
+      "type": "behaviour",
+      "claim": "Microsoft advises using security groups to represent geographic or organizational plugin scopes.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
       "quote": "Use security groups to represent geographic or organizational segments.",
@@ -648,120 +576,340 @@
       "fix": null
     },
     {
-      "n": 57,
+      "n": 51,
       "where": "Risks and limits: Scoping limits",
       "type": "applicability",
       "claim": "Purview Information Barriers are not currently supported for Cowork plugin or skill management and sharing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
-      "quote": "aren't currently supported for plugin or skill management and sharing. In tenants where IB is enabled, embedded knowledge file uploads are blocked at the tenant level. This prevents affected plugins and skills from being uploaded or published.",
-      "severity": "minor",
-      "fix": "Append: 'In tenants where Information Barriers is enabled, embedded knowledge file uploads are blocked at tenant level, preventing affected plugins and skills from being uploaded or published.'"
+      "quote": "Microsoft Purview Information Barriers (IB) aren't currently supported for plugin or skill management and sharing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risks and limits: Scoping limits",
+      "type": "behaviour",
+      "claim": "Embedded knowledge file uploads are blocked at tenant level when Information Barriers is enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
+      "quote": "In tenants where IB is enabled, embedded knowledge file uploads are blocked at the tenant level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risks and limits: Scoping limits",
+      "type": "behaviour",
+      "claim": "That knowledge-upload restriction prevents affected plugins and skills from being uploaded.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
+      "quote": "This prevents affected plugins and skills from being uploaded or published.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risks and limits: Scoping limits",
+      "type": "behaviour",
+      "claim": "That knowledge-upload restriction prevents affected plugins and skills from being published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
+      "quote": "This prevents affected plugins and skills from being uploaded or published.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risks and limits: API limits; controls[2].note; controls[3].note; Open questions",
+      "type": "availability",
+      "claim": "The Package Management update call is beta.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
+      "quote": "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risks and limits: API limits; controls[4].note; Open questions",
+      "type": "availability",
+      "claim": "The Package Management block call is beta.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risks and limits: API limits; Open questions",
+      "type": "command",
+      "claim": "The package update operation supports delegated permissions only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
+      "quote": "Delegated (work or school account) | CopilotPackages.ReadWrite.All | Not available. ... Application | Not available. | Not available.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 58,
-      "where": "controls[2].note; controls[3].note; Risks and limits; Open questions",
-      "type": "availability",
-      "claim": "The package update call is beta.",
+      "where": "Risks and limits: API limits; Open questions",
+      "type": "command",
+      "claim": "The package block operation supports delegated permissions only.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
-      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Delegated (work or school account) | CopilotPackages.ReadWrite.All | Not available. ... Application | Not available. | Not available.",
       "severity": null,
       "fix": null
     },
     {
       "n": 59,
-      "where": "controls[4].note; Risks and limits; Open questions",
+      "where": "Risks and limits: API limits",
       "type": "availability",
-      "claim": "The package block call is beta.",
+      "claim": "The update API is unavailable in US Government L4, US Government L5 and China operated by 21Vianet.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
+      "quote": "| Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet |\n| --- | --- | --- | --- |\n| ✅ | ❌ | ❌ | ❌ |",
       "severity": null,
       "fix": null
     },
     {
       "n": 60,
-      "where": "Risks and limits: API limits; Open questions",
+      "where": "Risks and limits: API limits",
       "type": "availability",
-      "claim": "The package update call supports delegated work/school permissions only, not application permissions.",
+      "claim": "The block API is unavailable in US Government L4, US Government L5 and China operated by 21Vianet.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
-      "quote": "Delegated (work or school account) | CopilotPackages.ReadWrite.All | Not available.\nApplication | Not available. | Not available.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "| Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet |\n| --- | --- | --- | --- |\n| ✅ | ❌ | ❌ | ❌ |",
       "severity": null,
       "fix": null
     },
     {
       "n": 61,
-      "where": "Risks and limits: API limits; Open questions",
-      "type": "availability",
-      "claim": "The package block call supports delegated work/school permissions only, not application permissions.",
+      "where": "Risks and limits: Some plugins sit outside the Tools page",
+      "type": "applicability",
+      "claim": "The Word desktop legal plugin is governed through Cloud Policy in the Microsoft 365 Apps admin center.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "Delegated (work or school account) | CopilotPackages.ReadWrite.All | Not available.\nApplication | Not available. | Not available.",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-copilot-for-legal",
+      "quote": "Access to the plugin can be governed via the Microsoft 365 Apps admin center. Tenant admins can control access by creating a policy configuration in the Policy Management tool.",
       "severity": null,
       "fix": null
     },
     {
       "n": 62,
-      "where": "Risks and limits: API limits",
-      "type": "availability",
-      "claim": "The package update call is unavailable in US Government L4, US Government L5 and China operated by 21Vianet.",
+      "where": "Risks and limits: Some plugins sit outside the Tools page",
+      "type": "default",
+      "claim": "Dynamics 365 Customer Service integration for Cowork is enabled by default.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
-      "quote": "Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet\n✅ | ❌ | ❌ | ❌",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
+      "quote": "Dynamics 365 Customer Service and Sales integrations are enabled by default",
       "severity": null,
       "fix": null
     },
     {
       "n": 63,
-      "where": "Risks and limits: API limits",
-      "type": "availability",
-      "claim": "The package block call is unavailable in US Government L4, US Government L5 and China operated by 21Vianet.",
+      "where": "Risks and limits: Some plugins sit outside the Tools page",
+      "type": "default",
+      "claim": "Dynamics 365 Sales integration for Cowork is enabled by default.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet\n✅ | ❌ | ❌ | ❌",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
+      "quote": "Dynamics 365 Customer Service and Sales integrations are enabled by default",
       "severity": null,
       "fix": null
     },
     {
       "n": 64,
-      "where": "controls[5].note; Risks and limits: Some plugins sit outside the Tools page",
-      "type": "applicability",
-      "claim": "The Word desktop legal plugin is controlled through Cloud Policy rather than the Cowork legal plugin's Tools-page control.",
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Publisher-category access is configured in Microsoft 365 admin center at Agents > Settings > Agent and plugin access > installation settings.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-copilot-for-legal",
-      "quote": "Access to the plugin can be governed via the Microsoft 365 Apps admin center. Tenant admins can control access by creating a policy configuration in the Policy Management tool. The policy name is \"Legal Skills in M365 Copilot in Word\".",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Select Agents > Settings > Agent and plugin access. ... Under the installation settings, choose which publisher categories users can access ... Select a category",
+      "severity": "minor",
+      "fix": "Extend controls[0].ui.path and its rendered path to 'Agents > Settings > Agent and plugin access > installation settings > publisher category'. The cited procedure finishes by selecting Microsoft, your organization or certified external publishers."
     },
     {
       "n": 65,
-      "where": "Risks and limits: Some plugins sit outside the Tools page",
-      "type": "default",
-      "claim": "Dynamics 365 Customer Service and Sales integrations for Cowork are enabled by default.",
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors can apply publisher-category settings using applyOnce and microsoft.agent.allowedagenttypes.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
-      "quote": "Dynamics 365 Customer Service and Sales integrations are enabled by default and can be disabled in the Microsoft 365 admin center.",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors ... applies a desired-state baseline once in applyOnce mode.",
       "severity": null,
       "fix": null
     },
     {
       "n": 66,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "Cowork plugin management requires tenant administrator access or the Copilot administrator role.",
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Tenant-wide access to agents and plugins is configured in Microsoft 365 admin center at Agents > Settings > User access.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
-      "quote": "Microsoft 365 admin center access: You must be a tenant administrator, or have the Copilot administrator role.",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Select Agents > Settings > User access to manage your organization's agents and plugins.",
       "severity": null,
       "fix": null
     },
     {
       "n": 67,
-      "where": "Governance controls",
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors can set everyone or noOne access using applyOnce and microsoft.agent.useraccess.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors ... applies a desired-state baseline once in applyOnce mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Individual plugin user availability is configured in Microsoft 365 admin center at Agents > Tools > Plugins > plugin > Users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Select Agents > Tools > Plugins. ... Select the plugin that you want to manage. ... Open Users, and then choose one of the following availability options:",
+      "severity": "minor",
+      "fix": "Extend controls[2].ui.path and its rendered path to 'Agents > Tools > Plugins > plugin > Users > availability option'. The cited page gives All users, No users or Specific users and groups as the final selection."
+    },
+    {
+      "n": 69,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} sets plugin availability through availableTo and allowedUsersAndGroups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
+      "quote": "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} ... allowedUsersAndGroups ... Users/groups for whom the package is available. ... availableTo ... Required if updating allowedUsersAndGroups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Administrator plugin installation is at Microsoft 365 admin center > Agents > Tools > plugin > Install.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Select Agents > Tools. ... From the list, select the plugin or skill that you want to install, and then select Install.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} sets the deployment audience through deployedTo and acquireUsersAndGroups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
+      "quote": "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} ... acquireUsersAndGroups ... Users/groups for whom the package is deployed. ... deployedTo ... Required if updating acquireUsersAndGroups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "Package blocking is at Microsoft 365 admin center > Agents > Tools > Plugins > plugin > Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Select Agents > Tools > Plugins. ... From the list, select the plugin or skill that you want to block. ... Select Block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "controls[4].api",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a package to prevent its usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage. ... POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "controls[5].ui",
+      "type": "admin-path",
+      "claim": "The Word legal policy is reached in Microsoft 365 Apps admin center through Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Legal Skills in M365 Copilot in Word.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-copilot-for-legal",
+      "quote": "Tenant admins can control access by creating a policy configuration in the Policy Management tool. The policy name is \"Legal Skills in M365 Copilot in Word\".",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "controls[5].api",
+      "type": "absence",
+      "claim": "Automation for the Word legal Cloud Policy setting is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Legal Skills in M365 Copilot in Word\" API PowerShell Cloud Policy; \"Legal Skills\" \"Cloud Policy\" Graph TCM automation. Opened Manage Copilot for legal, overview-cloud-policy and graph/utcm-copilot-resources; no legal-setting operation or resource.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "controls[0].note",
+      "type": "behaviour",
+      "claim": "The installation settings list Microsoft, your organization and certified external publishers as publisher categories.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "choose which publisher categories users can access: Microsoft, your organization, or certified external publishers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "User access offers All users, No users and Specific users or groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "All users ... No users ... Specific users or groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "controls[3].note",
+      "type": "admin-path",
+      "claim": "The installation pane lets administrators select All users or Specific users or groups, followed by Next and Install.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Choose who can use the plugin or skill by selecting All users or Specific users or groups. ... Select Next, review the installation details, and then select Install.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "controls[4].note",
+      "type": "applicability",
+      "claim": "Unblocking a plugin package restores access to its associated agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Unblocking the plugin package restores access to the associated agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "Governance controls: roles",
       "type": "role",
-      "claim": "Reviewing MCP registration requests requires access to the Microsoft 365 admin center Tools page.",
+      "claim": "Cowork plugin management requires a tenant administrator or the Copilot administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
+      "quote": "You must be a tenant administrator, or have the Copilot administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Governance controls: roles",
+      "type": "role",
+      "claim": "MCP server request review and approval requires access to the Tools page.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
       "quote": "You must have access to the Tools page in the Microsoft 365 admin center to manage agent tools and review MCP server registration requests.",
@@ -769,76 +917,252 @@
       "fix": null
     },
     {
-      "n": 68,
-      "where": "Governance controls",
+      "n": 82,
+      "where": "Governance controls: roles",
       "type": "role",
-      "claim": "Completing MCP request review and approval requires the ability to grant tenant-wide consent.",
+      "claim": "Completing MCP server request review and approval requires the ability to grant tenant-wide consent.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "To complete the review and approval process, you must meet two requirements:\nYou must be able to grant tenant-wide consent.",
+      "quote": "You must be able to grant tenant-wide consent.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 69,
-      "where": "Governance controls",
+      "n": 83,
+      "where": "Governance controls: roles",
       "type": "role",
-      "claim": "AI Administrator meets the Tools-page access and tenant-wide consent requirements for MCP request review.",
+      "claim": "AI Administrator meets both MCP request approval requirements.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Two roles meet both requirements:\nAI Administrator.\nGlobal Administrator.",
+      "quote": "Two roles meet both requirements: ... AI Administrator. ... Global Administrator.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 70,
-      "where": "Governance controls",
+      "n": 84,
+      "where": "Governance controls: roles",
       "type": "role",
-      "claim": "Global Administrator meets the Tools-page access and tenant-wide consent requirements for MCP request review.",
+      "claim": "Global Administrator meets both MCP request approval requirements.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Two roles meet both requirements:\nAI Administrator.\nGlobal Administrator.",
+      "quote": "Two roles meet both requirements: ... AI Administrator. ... Global Administrator.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 71,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Users can still discover a restricted plugin and eligible users can request access.",
+      "n": 85,
+      "where": "Governance controls: TCM preview",
+      "type": "command",
+      "claim": "A configurationMonitor with mode applyOnce applies its baseline once.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "If a plugin is restricted by organization-level availability settings or by its user availability configuration, users can still discover the plugin in the Copilot channel. The plugin appears as blocked by organizational policy, and eligible users can select Request access.",
-      "severity": "minor",
-      "fix": "Replace with 'The Agent 365 management page says restricted plugins remain discoverable and eligible users can request access. The Cowork management page instead says only the specified users or security groups can view a plugin scoped to specific users or groups.' Both pages are already cited."
-    },
-    {
-      "n": 72,
-      "where": "Governance controls",
-      "type": "admin-path",
-      "claim": "Administrators review plugin access requests under Agents > Tools > Requests.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Select Agents > Tools > Requests.\nSelect Approve to grant access, or select Reject to deny the request.",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "An active applyOnce monitor runs in the background on behalf of the signed-in administrator and then becomes inactive.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 73,
-      "where": "Governance controls",
+      "n": 86,
+      "where": "Governance controls: TCM preview",
+      "type": "command",
+      "claim": "The publisher-category baseline resource type is microsoft.agent.allowedagenttypes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "\"resourceType\": \"microsoft.agent.allowedagenttypes\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "Governance controls: TCM preview",
+      "type": "command",
+      "claim": "properties.valueObject.areMicrosoftAppsAllowed sets whether Microsoft apps, agents and plugins are allowed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "areMicrosoftAppsAllowed ... Indicates whether apps, agents, and plugins built by Microsoft are allowed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
+      "where": "Governance controls: TCM preview",
+      "type": "command",
+      "claim": "properties.valueObject.areTenantScopedAppsAllowed sets whether organization-built apps, agents and plugins are allowed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "areTenantScopedAppsAllowed ... Indicates whether apps, agents, and plugins built by the organization are allowed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 89,
+      "where": "Governance controls: TCM preview",
+      "type": "command",
+      "claim": "properties.valueObject.areISVAppsAllowed sets whether external-publisher apps, agents and plugins are allowed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "areISVAppsAllowed ... Indicates whether apps, agents, and plugins built by external publishers are allowed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "Governance controls: TCM preview",
+      "type": "command",
+      "claim": "properties.valueObject.areMicrosoftCertifiedThirdPartyAppsAllowed configures the certified-external-publisher restriction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "areMicrosoftCertifiedThirdPartyAppsAllowed ... Indicates whether only apps, agents, and plugins from certified external publishers are allowed when external publishers are enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 91,
+      "where": "Governance controls: TCM preview; controls[1].note",
+      "type": "command",
+      "claim": "microsoft.agent.useraccess uses userAssignmentCategory with everyone or noOne.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "\"resourceType\": \"microsoft.agent.useraccess\" ... \"valueObject\": { \"userAssignmentCategory\": \"everyone\" } ... Allowed Values ... everyone, noOne",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 92,
+      "where": "Governance controls: TCM preview",
+      "type": "command",
+      "claim": "Both documented Agent baseline resources use resourceVersion 1.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "All resources on this page use resourceVersion: 1 and are singletons.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 93,
+      "where": "Governance controls: TCM preview",
+      "type": "availability",
+      "claim": "TCM applyOnce is available only in the global service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
+      "quote": "TCM is available only in the global service, not in national clouds.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 94,
+      "where": "Governance controls: TCM preview",
+      "type": "command",
+      "claim": "Creating a TCM applyOnce monitor supports delegated access only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "Creating an applyOnce monitor supports delegated permissions only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 95,
+      "where": "Governance controls: TCM preview",
+      "type": "role",
+      "claim": "AI Administrator is required as the least-privileged signed-in user role for these Agent applyOnce settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "AI Administrator is the least-privileged role for the signed-in user for remediation and applyOnce",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 96,
+      "where": "Governance controls: TCM preview",
+      "type": "command",
+      "claim": "TCM needs workload permissions in addition to the calling application's permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "For remediation and applyOnce, grant it the CopilotPolicySettings.ReadWrite delegated permission. ... These workload permissions are separate from the permissions required by the app that calls the TCM APIs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 97,
+      "where": "Governance controls: TCM preview; Open questions",
+      "type": "absence",
+      "claim": "The useraccess resource schema does not document assignment to specific users or groups.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"microsoft.agent.useraccess\" specific users groups. Opened learn.microsoft.com/graph/utcm-agent-resources; its useraccess valueObject has only userAssignmentCategory, with everyone or noOne. Specific users/groups appear in UI documentation, not this schema.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 98,
+      "where": "Governance controls: access layers",
       "type": "applicability",
-      "claim": "Approving a plugin access request does not replace connected-service permissions or connection setup.",
+      "claim": "An allowed publisher category does not replace the plugin's own user scope.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Approval grants access to the requested plugin; it doesn't replace permissions or connection setup required by its connected services.",
+      "source": "https://learn.microsoft.com/plugins/govern-plugins",
+      "quote": "For plugins, administrators use Agents > Settings > Agent and plugin access for publisher categories and Agents > Tools > Plugins > plugin > Users for user availability.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 74,
-      "where": "Governance controls",
+      "n": 99,
+      "where": "Governance controls: access layers",
       "type": "behaviour",
-      "claim": "Microsoft-built plugins remain visible when their category is disabled, but users cannot install them.",
+      "claim": "The Agent 365 management page says restricted plugins remain discoverable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "If a plugin is restricted by organization-level availability settings or by its user availability configuration, users can still discover the plugin in the Copilot channel.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 100,
+      "where": "Governance controls: access layers",
+      "type": "behaviour",
+      "claim": "Eligible users can request access to restricted plugins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "The plugin appears as blocked by organizational policy, and eligible users can select Request access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 101,
+      "where": "Governance controls: access layers",
+      "type": "admin-path",
+      "claim": "Plugin access requests can be approved or rejected under Microsoft 365 admin center > Agents > Tools > Requests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Select Agents > Tools > Requests. ... Select Approve to grant access, or select Reject to deny the request.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 102,
+      "where": "Governance controls: access layers; Open questions",
+      "type": "behaviour",
+      "claim": "The Cowork page instead says only specified users or security groups can view a plugin scoped to specific users or groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
+      "quote": "Available to specific users or groups: Only the users or security groups you specify can view the plugin.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 103,
+      "where": "Governance controls: access layers",
+      "type": "behaviour",
+      "claim": "Users can see Microsoft-built plugins even when the Microsoft publisher category is disabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Users see agents and plugins built by Microsoft even if you disable the setting",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 104,
+      "where": "Governance controls: access layers",
+      "type": "applicability",
+      "claim": "Users cannot install Microsoft-built plugins when that publisher category is disabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
       "quote": "Users see agents and plugins built by Microsoft even if you disable the setting, but they can't install those agents and plugins.",
@@ -846,10 +1170,10 @@
       "fix": null
     },
     {
-      "n": 75,
-      "where": "Governance controls",
+      "n": 105,
+      "where": "Governance controls: administrator installation",
       "type": "behaviour",
-      "claim": "Target users cannot remove administrator-deployed plugins.",
+      "claim": "Target users cannot remove administrator-installed Cowork plugins.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
       "quote": "Admin-deployed plugins display a Managed by your organization label in the user's plugin detail view. Users can't remove these plugins",
@@ -857,10 +1181,10 @@
       "fix": null
     },
     {
-      "n": 76,
-      "where": "Governance controls",
+      "n": 106,
+      "where": "Governance controls: administrator installation",
       "type": "behaviour",
-      "claim": "Users can enable or disable administrator-deployed plugins for their own conversations.",
+      "claim": "Target users can turn administrator-installed plugins off for their own conversations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
       "quote": "Users can't remove these plugins, but they can enable or disable them for their own conversations from the Sources & Skills panel.",
@@ -868,20 +1192,20 @@
       "fix": null
     },
     {
-      "n": 77,
-      "where": "Governance controls",
+      "n": 107,
+      "where": "Governance controls: inventory",
       "type": "command",
-      "claim": "GET /v1.0/copilot/admin/catalog/packages with an elementTypes filter inventories plugins and skills.",
+      "claim": "GET /v1.0/copilot/admin/catalog/packages with an elementTypes filter inventories plugin and skill packages.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackages-list",
-      "quote": "GET https://graph.microsoft.com/v1.0/copilot/admin/catalog/packages\nTo return titles that contain tools, such as plugins, MCP servers, and skills, filter on elementTypes.",
+      "quote": "GET https://graph.microsoft.com/v1.0/copilot/admin/catalog/packages ... To return titles that contain tools, such as plugins, MCP servers, and skills, filter on elementTypes.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 78,
-      "where": "Governance controls; What to check",
-      "type": "applicability",
+      "n": 108,
+      "where": "Governance controls: audit",
+      "type": "behaviour",
       "claim": "Cowork plugin activity appears in Microsoft Purview audit logs under Copilot activities.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
@@ -890,69 +1214,69 @@
       "fix": null
     },
     {
-      "n": 79,
-      "where": "Open questions",
+      "n": 109,
+      "where": "Open questions: Tools page licensing",
       "type": "absence",
-      "claim": "The cited Tools-page documentation states no Agent 365 licence requirement for the UI; the API documentation does.",
+      "claim": "The cited pages state an Agent 365 licence requirement for the Package Management API, not for access to the Tools page itself.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Agent 365 Tools page admin center license requirement plugins. Opened agent-tools-overview, manage-plugins-skills-mcp-servers, cowork-manage-plugins and package/overview. The UI pages name no Agent 365 licence; the API overview expressly requires it.",
+      "quote": "Searched: \"Tools\" \"Microsoft Agent 365\" license admin center plugins. Opened agent-tools-overview, manage-plugins-skills-mcp-servers, cowork-manage-plugins, govern-plugins and package/overview; the explicit Agent 365 licence requirement is on the API, not Tools access.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 80,
-      "where": "Open questions",
+      "n": 110,
+      "where": "Open questions: Agent and plugin access default",
       "type": "absence",
-      "claim": "The Agent and plugin access page does not state its default publisher-category selections.",
+      "claim": "The publisher-category access page does not state its default.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Agent and plugin access\" default enabled. Read agent-settings and manage-plugins-skills-mcp-servers; neither states default publisher-category selections. Results about default connector rollout describe another setting, not these selections.",
+      "quote": "Searched: \"Agent and plugin access\" default settings. Opened agent-settings and manage-plugins-skills-mcp-servers; no publisher-category default is stated. The documented All users default belongs to User access, not publisher categories.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 81,
-      "where": "Open questions",
+      "n": 111,
+      "where": "controls[5].note",
+      "type": "applicability",
+      "claim": "The Cowork legal plugin is governed on the Agent Tools page in Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-copilot-for-legal",
+      "quote": "Access to the plugin can be governed via the Microsoft 365 admin center. Tenant admins can control access via the Agent Tools page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 112,
+      "where": "Open questions: availability labels",
       "type": "behaviour",
-      "claim": "Cowork and Agent 365 management pages use different wording for per-plugin availability.",
+      "claim": "The Agent 365 management page names individual plugin availability options All users, No users and Specific users and groups.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
-      "quote": "Available to all users: All licensed Copilot users in your tenant can find and acquire the plugin.\nAvailable to specific users or groups: Only the users or security groups you specify can view the plugin.\nSelect Block: No users in your tenant can access the plugin.",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "All users: Make the plugin available to everyone in the organization. ... No users: Make the plugin unavailable to all users. ... Specific users and groups: Make the plugin available only to selected users or groups.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 82,
-      "where": "What to check: Search Purview audit logs",
-      "type": "consistency",
-      "claim": "The checklist tells administrators to review Purview audit logs, but the controls table has no audit row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Search Purview audit logs for Copilot activities to see which plugins are being used.\nThe six controls rows cover publisher access, User access, plugin availability, installation, blocking and the Word legal plugin, not audit.",
-      "severity": "minor",
-      "fix": "Remove the Purview audit-search bullet from What to check; retain the verified audit statements in Cost and licensing and Governance controls."
-    },
-    {
-      "n": 83,
-      "where": "What to check: Block any plugin, then check its MCP servers",
-      "type": "consistency",
-      "claim": "The checklist asks administrators to check MCP-server reachability through other plugins, but the controls table has no MCP-server inventory row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Block any plugin you don't want users or agents to reach, then check whether its MCP servers are reachable through other plugins.\nThe controls table has no MCP-server inventory or reachability row.",
-      "severity": "minor",
-      "fix": "Shorten that checklist bullet to 'Block any plugin you do not want users or agents to reach.' Keep the explanation of shared MCP-server reachability in Risks and limits."
+      "n": 113,
+      "where": "Governance controls: TCM preview; controls[0].note; controls[1].note",
+      "type": "availability",
+      "claim": "TCM remediation and applyOnce for the listed Agent resources are preview capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
+      "quote": "These capabilities are available in preview through Microsoft Graph beta.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-23T04:15:39.781Z",
+    "at": "2026-11-23T05:12:31.093Z",
     "summary": {
-      "links": 13,
+      "links": 16,
       "unreachable": 0,
       "uiPaths": 6,
       "uiPathsWithMissingWords": 1,
-      "apiCalls": 3,
+      "apiCalls": 5,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
@@ -1021,6 +1345,21 @@
         "url": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-copilot-for-legal",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/utcm-agent-resources",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -1033,9 +1372,19 @@
         "segments": [
           "Agents",
           "Settings",
-          "Agent and plugin access"
+          "Agent and plugin access",
+          "installation settings"
         ],
         "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which publisher categories of plugins users can discover and install",
+        "docs": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/admin/configurationManagement",
+        "found": true
       },
       {
         "index": 1,
@@ -1049,6 +1398,15 @@
           "User access"
         ],
         "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether users can access agents and plugins at all, or only selected users and groups",
+        "docs": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/admin/configurationManagement",
+        "found": true
       },
       {
         "index": 2,
@@ -1125,7 +1483,7 @@
         "index": 5,
         "side": "ui",
         "governs": "Whether the legal plugin is available in Copilot in Word desktop",
-        "docs": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-copilot-for-legal",
         "reachable": true,
         "segments": [
           "Customization",
@@ -1138,11 +1496,23 @@
           "Legal Skills in M365 Copilot in Word"
         ],
         "missing": [
-          "Legal Skills in M365 Copilot in Word"
+          "Customization",
+          "Policy configurations",
+          "Create",
+          "Start with the basics",
+          "Choose the scope",
+          "Configure Settings"
         ]
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-23",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

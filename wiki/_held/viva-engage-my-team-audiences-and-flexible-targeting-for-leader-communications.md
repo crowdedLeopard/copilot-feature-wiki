@@ -66,7 +66,7 @@ controls:
       path: "Feature management > Storyline > Advanced Settings > Edit > Specify storyline creators"
       docs: "https://learn.microsoft.com/viva/engage/eac-storyline"
     api: null
-    note: "Limits who has a storyline and can create storyline posts. Microsoft has not confirmed it restricts announcement targeting."
+    note: "Limits who has a storyline and can create storyline posts. It controls who can create storyline posts, rather than providing a separate audience-targeting setting."
   - governs: "Review of changes to leaders and their audiences"
     scope: "tenant"
     ui:
@@ -99,19 +99,9 @@ changes:
     note: "Corrected after the independent check: Why it matters now points to the existing storyline creator restriction, the first control path ends at Add new audience, and the organisational-data checklist bullet is removed."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 80 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
-verification:
-  status: "held"
-  date: "2026-11-23"
-  version: 4
-  model: "gpt-6.1-sol"
-  engine: "copilot"
-  claims: 80
-  confirmed: 79
-  unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "47c34cd87165fa4c9935da0454f12ee3"
+  - date: "2026-11-23"
+    note: "Corrected the claim about controls: the storyline creator setting does restrict who can post, and the gap is a separate control for My Team or publish-time targeting."
+version: 5
 ---
 
 ## What's changing
@@ -193,13 +183,13 @@ No separate price, credit rate or meter for flexible targeting is documented at 
 <tbody>
 <tr><td data-label="Control"><strong>Which leaders exist and which audiences each can reach</strong><br><small>User</small><br><small class="controls__note">Existing control for pre-configured audiences. Microsoft has not said it governs My Team or publish-time targeting. Only admin roles can enable Entire organization.</small></td><td data-label="Admin UI"><strong>Viva Engage admin center</strong><br>Feature management › Leadership identification and audiences › Manage leaders › leader (pencil icon) › Manage audiences › Add new audience <a href="https://learn.microsoft.com/viva/engage/leadership-identification" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Who can act for a leader and configure the leader's audiences</strong><br><small>User</small><br><small class="controls__note">Set by the leader in the Engage app in Teams. Delegate managers can configure the leader's audiences.</small></td><td data-label="Admin UI"><strong>Viva Engage (leader)</strong><br>ellipsis (...) menu next to your profile picture › Delegate management <a href="https://learn.microsoft.com/viva/engage/leadership-identification" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Who can post to a storyline</strong><br><small>Tenant</small><br><small class="controls__note">Limits who has a storyline and can create storyline posts. Microsoft has not confirmed it restricts announcement targeting.</small></td><td data-label="Admin UI"><strong>Viva Engage admin center</strong><br>Feature management › Storyline › Advanced Settings › Edit › Specify storyline creators <a href="https://learn.microsoft.com/viva/engage/eac-storyline" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Who can post to a storyline</strong><br><small>Tenant</small><br><small class="controls__note">Limits who has a storyline and can create storyline posts. It controls who can create storyline posts, rather than providing a separate audience-targeting setting.</small></td><td data-label="Admin UI"><strong>Viva Engage admin center</strong><br>Feature management › Storyline › Advanced Settings › Edit › Specify storyline creators <a href="https://learn.microsoft.com/viva/engage/eac-storyline" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Review of changes to leaders and their audiences</strong><br><small>Tenant</small><br><small class="controls__note">Covers the past 30 days. Not documented to include audiences chosen at publish time.</small></td><td data-label="Admin UI"><strong>Viva Engage admin center</strong><br>Feature management › Leadership identification and audiences › Manage leaders › activity log <a href="https://learn.microsoft.com/viva/engage/leadership-identification" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Tenant-wide switch for My Team and publish-time targeting</strong><br><small>Tenant</small><br><small class="controls__note">No such control is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The controls that exist today govern leaders, delegates and storyline in general. Microsoft has not documented a control that switches off or restricts My Team or publish-time targeting, and the last row states that gap. A search of Microsoft Learn for a PowerShell, Graph or other API for leader audiences returned nothing at the time of writing (November 2026), so the API side of each row is not documented.
+The controls that exist today govern leaders, delegates and storyline in general. Microsoft has not documented a separate control for My Team or publish-time audience selection, and the last row states that gap. A search of Microsoft Learn for a PowerShell, Graph or other API for leader audiences returned nothing at the time of writing (November 2026), so the API side of each row is not documented.
 
 Roles that can edit leader audiences are listed on the Learn page: Engage admin, verified admin, network admin, corporate communicator, and the leader or the leader's delegate managers. Only the first four can enable **Entire organization**. Storyline settings are managed by Engage administrators.
 
@@ -215,13 +205,4 @@ Roles that can edit leader audiences are listed on the Learn page: Engage admin,
 risk: Medium. Leaders and delegates choose recipients at the moment of posting, using people data you maintain, and Microsoft documents no tenant switch for the new targeting at the time of writing (November 2026).
 cost: Medium. Leaders need premium Viva licensing, and recipients need the Communities and Communications service plan for Outlook and Teams notifications; confirm existing entitlements before rollout.
 impact: Medium. Leaders, their delegates and the people they message notice it; other users see no change to how announcements are delivered.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: paragraph after table / absence: Microsoft has not documented a control that switches off or restricts My Team or publish-time targeting. | Found: This setting controls who has a storyline feed on their user profile and who can create new storyline posts. When you disable storyline for a user, the user can't create new storyline posts | Fix: Replace this sentence with 'Microsoft has not documented a separate control for My Team or publish-time audience selection, and the last row states that gap.' Existing creator restrictions at https://learn.microsoft.com/viva/engage/eac-storyline do restrict who can create the posts; the absence must concern a separate targeting control, not controls generally. | Source: https://learn.microsoft.com/viva/engage/eac-storyline
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; rendered Governance controls / admin-path: Leaders reach delegate management through the ellipsis menu next to their profile picture in the Engage app in Teams. | Found: In the Engage Teams application, select the ellipsis (...) menu next to your profile picture in the upper-right corner to see the list of options. Select Delegate management. | Fix: The path is correct but stops on the configuration page. Keep it and append to the note: 'Add the person's name, choose delegate or delegate manager, and enable the storyline toggle if the delegate needs to post announcements on the leader's storyline.' These remaining steps are at https://learn.microsoft.com/viva/engage/leadership-identification. | Source: https://learn.microsoft.com/viva/engage/leadership-identification
-- [supported, minor] controls[2].note / applicability: The row caveats whether the documented storyline creator restriction restricts announcement targeting. | Found: When you disable storyline for a user, the user can't create new storyline posts and the Storyline tab no longer appears on their user profile. | Fix: Replace 'Microsoft has not confirmed it restricts announcement targeting' with 'It controls who can create storyline posts, rather than providing a separate audience-targeting setting.' The documented reach is at https://learn.microsoft.com/viva/engage/eac-storyline. | Source: https://learn.microsoft.com/viva/engage/eac-storyline
 -->

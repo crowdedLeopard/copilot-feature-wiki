@@ -1,0 +1,640 @@
+{
+  "slug": "m365-copilot-branded-footer-in-the-m365-copilot-app",
+  "roadmapId": 555852,
+  "title": "Microsoft 365 Copilot app: admin-approved branded footer on the Chat screen",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "3 blocking findings (claims 26, 37, 49)",
+      "4 major findings"
+    ]
+  },
+  "counts": {
+    "claims": 49,
+    "confirmed": 42,
+    "unconfirmed": 4,
+    "contradicted": 3,
+    "blocker": 3,
+    "major": 4,
+    "minor": 5
+  },
+  "summary": "Hold: the briefing incorrectly makes a publicly hosted HTTPS logo mandatory, although Microsoft also permits uploading the default-theme logo. It also implies a separate hosting cost for the Office 365 CDN, which Microsoft says is included in the SharePoint Online subscription. The roadmap facts, default state and main configuration steps are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap item is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is August CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists Android, Desktop, iOS, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The record associates the item with Microsoft 365, Microsoft 365 app and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft 365\", \"Microsoft 365 app\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-05T23:03:05.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-05T23:03:05\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap description pairs the footer logo with a fixed Approved by label.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "display it in the footer of the Chat screen, paired with a fixed label: “Approved by”.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "title; summary; What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "Administrators can display the organisation's logo and an optional label at the bottom of the Chat screen in the Microsoft 365 Copilot app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+      "quote": "You can display your organization's logo and an optional label at the bottom of the Chat screen in the Microsoft 365 Copilot app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft describes the footer as helping users identify their organisation's trusted, work-managed Copilot experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+      "quote": "The branded footer helps users identify their organization's trusted, work-managed Copilot experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationales",
+      "type": "default",
+      "claim": "The footer is off by default and requires an administrator to enable it, supporting admin-opt-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+      "quote": "The footer is turned off by default. ... Select Add your brand to Copilot Chat footer area.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[1].note; What's changing; Scope; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "The footer uses the logo configured on the Logos page of the default theme.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+      "quote": "It uses the logo configured on the Logos page for your organization's default theme.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Governance controls",
+      "type": "applicability",
+      "claim": "Other theme settings do not apply to the footer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+      "quote": "Other theme settings don't apply to the footer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].note; What's changing; Scope; Governance controls",
+      "type": "availability",
+      "claim": "The Copilot Chat footer option is available only for the default theme.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+      "quote": "Copilot Chat | Add your organization's logo and an optional label to the footer in the Microsoft 365 Copilot app. This option is available for the default theme only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment; Scope; Governance controls; rationale: impact",
+      "type": "availability",
+      "claim": "The enabled footer applies to all users rather than a selected group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+      "quote": "The branded footer uses your organization's default theme and applies to all users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment; Scope; Governance controls; Open questions",
+      "type": "availability",
+      "claim": "Administrators cannot currently target different footer logos to specific user groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+      "quote": "You can't currently target different logos to specific user groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].note; What's changing; Governance guidance; Open questions",
+      "type": "behaviour",
+      "claim": "Footer style offers No label, Approved by, Provided by and Managed by.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+      "quote": "In the Footer style dropdown, select one of the following options: No label; Approved by; Provided by; Managed by",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].note; Risk assessment; Cost and licensing; Scope; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "Only global admins can customise company themes, including enabling this default-theme footer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+      "quote": "Only global admins can customize company themes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].note; Risk assessment; Scope",
+      "type": "role",
+      "claim": "Global readers have read-only access to company themes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+      "quote": "Global readers have read-only access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].ui; Governance controls table; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The Microsoft 365 admin center path through Settings, Org Settings, Organization profile, Custom themes, Default Theme and Copilot Chat reaches Add your brand to Copilot Chat footer area.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+      "quote": "Settings > Org Settings ... Organization profile ... Custom themes ... Select your Default Theme. ... Open the Copilot Chat page. ... Select Add your brand to Copilot Chat footer area. ... In the Footer style dropdown",
+      "severity": "minor",
+      "fix": "For the label-setting part of this row, extend the path to 'Settings > Org Settings > Organization profile > Custom themes > Default Theme > Copilot Chat > Add your brand to Copilot Chat footer area > Footer style'. The current path correctly reaches the enabling toggle."
+    },
+    {
+      "n": 22,
+      "where": "controls[1].ui; Governance controls table; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Settings > Org Settings > Organization profile > Custom themes > Default Theme > Logos in the Microsoft 365 admin center reaches the page holding the footer's logo setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+      "quote": "Settings > Org Settings ... Organization profile ... Custom themes ... select Default Theme ... On the Logos page, you can add your logos ... Default logo: Add a URL location that points to your logo.",
+      "severity": "minor",
+      "fix": "Extend controls[1].ui.path to 'Settings > Org Settings > Organization profile > Custom themes > Default Theme > Logos > Default logo'. The present path stops on the correct page."
+    },
+    {
+      "n": 23,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no automation for enabling the branded footer or setting its label.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 organization custom themes Copilot Chat branded footer PowerShell Microsoft Graph API logo automation; Copilot Chat branded footer API switch dark. Read the theme page and Graph organizationalBranding reference; no footer-setting operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no automation for setting the Microsoft 365 default-theme logo used by this footer.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 theme PowerShell logo Set theme; Microsoft Graph organizationalBranding resource sign-in branding Microsoft 365 custom theme logo. Read theme Logos section and Graph reference; results concern SharePoint site themes, AD FS or Entra sign-in branding.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "At the time of writing Microsoft Learn documents no PowerShell, Graph or other API for Microsoft 365 organisation themes, so the two controls are described as portal-only.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 organization custom themes Copilot Chat branded footer PowerShell Microsoft Graph API logo automation; Microsoft 365 theme PowerShell logo Set theme. Read the theme page and Graph organizationalBranding reference; no matching theme API documented.",
+      "severity": "minor",
+      "fix": "Replace 'so both controls are portal-only' with 'so no automation is documented for either control'. A documentation search establishes what is documented, not that other implementations are impossible."
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "The logo must be an anonymously accessible HTTPS image URL.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+      "quote": "Add an HTTPS image url that allows anonymous access and doesn't require authentication. For default theme, you also have an option to upload a logo image that is less than 10kb.",
+      "severity": "blocker",
+      "fix": "Replace the mandatory-URL statement with 'If you configure the logo by URL, it must use HTTPS and allow anonymous access without authentication. For the default theme, Microsoft also permits uploading a logo image smaller than 10kb.' Change the checklist to 'If the logo is configured by URL, confirm it uses HTTPS and allows anonymous access, and that you are happy for that hosted image to be publicly retrievable.'"
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "A logo hosted at the required anonymously accessible URL is publicly retrievable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+      "quote": "Add an HTTPS image url that allows anonymous access and doesn't require authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[1].note; Risk assessment: Security & identity; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The default-theme logo is shared by the navigation-bar theme and the enabled footer, so changing that logo also changes the footer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+      "quote": "Any theme appears in the top navigation bar for everyone in the organization as part of the Microsoft 365 suite header. If you enable the branded Copilot Chat footer for the default theme, its logo and selected label also appear at the bottom of the Chat screen",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "No label displays the footer logo without a label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+      "quote": "You can display your organization's logo and an optional label ... In the Footer style dropdown, select one of the following options: No label",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: licensing.model and notes",
+      "type": "licensing",
+      "claim": "Included is the licensing model for this new display option inside Copilot Chat, with an eligible Microsoft 365 subscription named as the product entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Microsoft Copilot Chat is available to users with an eligible Microsoft 365 subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft Copilot Chat is available to users with an eligible Microsoft 365 subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Microsoft Copilot Chat is available to users with an eligible Microsoft 365 subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "A Microsoft Copilot licence is required for licensed Microsoft Copilot capabilities but not for eligible Copilot Chat users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Microsoft Copilot license | Required for licensed Microsoft Copilot capabilities | Not required for eligible users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The theme page lists no licence specific to the footer.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Copilot Chat branded footer licensing price meter dark alternate logo platform group targeting tenant switch. Read the complete theme page and Copilot requirements page; the theme page names no footer-specific licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The theme page publishes no meter, price or credit rate for the footer.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Copilot Chat branded footer licensing price meter dark alternate logo platform group targeting tenant switch. Read the complete theme page, including Copilot Chat and Logos sections; it contains no footer price, credit rate or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "The theme page suggests Azure Blob Storage or Office 365 Content Delivery Network as hosting locations for logo URLs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+      "quote": "Follow these steps for uploading logos to Azure Blob Storage or the Office 365 Content Delivery Network with SharePoint Online.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Using Azure Blob Storage to host the logo can incur storage and access costs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/storage/blobs/blob-storage-estimate-costs",
+      "quote": "This article helps you estimate the cost to store, upload, download, and work with data in Azure Blob Storage.",
+      "severity": "minor",
+      "fix": "Narrow the Azure part of the hosting sentence to 'Hosting a logo in Azure Blob Storage can incur storage and access costs' and cite https://learn.microsoft.com/azure/storage/blobs/blob-storage-estimate-costs. Do not add the illustrative prices from that article."
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Using Office 365 Content Delivery Network for the logo adds a hosting cost borne by the organisation.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/use-microsoft-365-cdn-with-spo?view=o365-worldwide",
+      "quote": "The Office 365 CDN service is included as part of your SharePoint Online subscription.",
+      "severity": "blocker",
+      "fix": "Remove 'or Office 365 Content Delivery Network' from the claim that hosting is an additional cost. If retaining a statement about its cost, use 'The Office 365 CDN service is included as part of your SharePoint Online subscription' and cite https://learn.microsoft.com/microsoft-365/enterprise/use-microsoft-365-cdn-with-spo."
+    },
+    {
+      "n": 38,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft Learn says Microsoft 365 Copilot and Microsoft 365 Copilot Chat are now named Microsoft Copilot and Microsoft Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Microsoft 365 Copilot is now named Microsoft Copilot, and Microsoft 365 Copilot Chat is now named Microsoft Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "The theme page does not say whether the footer selects the alternate dark-theme logo.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat branded footer API switch dark; Microsoft 365 Copilot Chat branded footer licensing price meter dark alternate logo platform group targeting tenant switch. Read the theme page's Logos, Colors and Copilot Chat sections; no footer dark-logo selection stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "The theme page does not describe the footer platform by platform.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Copilot Chat branded footer licensing price meter dark alternate logo platform group targeting tenant switch. Read the complete theme page; its footer section gives no separate Mac, mobile, desktop or web behaviour.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Open questions",
+      "type": "behaviour",
+      "claim": "The alternate theme logo is intended to be optimised for Microsoft 365 dark themes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+      "quote": "Your alternate logo should be optimized for use in Microsoft 365 dark themes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "No separate tenant footer switch beyond the Copilot Chat toggle is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat branded footer API switch dark; Microsoft 365 Copilot Chat branded footer licensing price meter dark alternate logo platform group targeting tenant switch. Read theme page and Copilot admin-center search excerpts; no separate footer switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Microsoft Graph organizationalBranding documents Microsoft Entra sign-in branding rather than this Microsoft 365 theme footer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/organizationalbranding?view=graph-rest-1.0",
+      "quote": "Organizations can customize their Microsoft Entra sign-in pages which appear when users sign in to their organization's tenant-specific apps, or when Microsoft Entra ID identifies the user's tenant from their username.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/graph/api/resources/organizationalbranding?view=graph-rest-1.0 for the distinction between Graph sign-in branding and the theme footer."
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The footer reads a logo but reads no user or tenant data.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Copilot branded footer logo data access permissions sign-in autonomous actions security change; Copilot footer data sign in branding. Read theme page and Copilot privacy/security search excerpts; none specifies the footer's complete data reads.",
+      "severity": "major",
+      "fix": "Replace 'The footer reads a logo, not user or tenant data' with 'The footer displays the logo configured on the default theme's Logos page'."
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The branded footer does not change who can sign in.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Copilot branded footer logo data access permissions sign-in autonomous actions security change; Copilot footer data sign in branding. Read theme page, Copilot requirements and security excerpts; no passage states this footer-specific sign-in effect.",
+      "severity": "major",
+      "fix": "Remove 'it does not change who can sign in' from the sentence. Retain the advice to treat the footer as a visual cue."
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The branded footer does not change what Copilot can reach.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Copilot branded footer logo data access permissions sign-in autonomous actions security change. Read theme page and Copilot privacy/security excerpts; general permission boundaries are stated, but no passage states the footer's effect on data reach.",
+      "severity": "major",
+      "fix": "Remove 'or what Copilot can reach' from the sentence. Keep 'The branded footer is a logo and label' and the advice not to treat it as proof that a response is safe."
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The footer takes no action.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Copilot branded footer logo data access permissions sign-in autonomous actions security change. Read theme page and Copilot privacy/security excerpts; no passage specifies that the footer takes no action.",
+      "severity": "major",
+      "fix": "Replace 'No change: the footer displays an image and a label and takes no action' with 'Microsoft describes the footer as displaying the organisation's logo and an optional label'."
+    },
+    {
+      "n": 48,
+      "where": "Scope: Prerequisite; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Microsoft instructs administrators to confirm the default-theme logo is configured before enabling the footer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+      "quote": "Select your Default Theme. ... On the Logos page, confirm that your organization's logo is configured. ... Open the Copilot Chat page. ... Select Add your brand to Copilot Chat footer area.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "rationale: cost; Cost and licensing",
+      "type": "consistency",
+      "claim": "The cost rationale says admin time is the only cost shown, while the body also identifies logo-hosting costs.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "The only cost the sources show is admin time to configure the default theme ... Logo hosting is your own cost if you use an Azure Blob Storage or Office 365 Content Delivery Network location",
+      "severity": "blocker",
+      "fix": "Replace the cost rationale with 'Low. Admin time is needed to configure the default theme; optional Azure Blob Storage logo hosting can also incur costs. The theme page names no licence or meter for the footer.' Apply the separate hosting correction so the body does not imply an additional Office 365 CDN service charge."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T05:12:30.410Z",
+    "summary": {
+      "links": 3,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=555852",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether the branded footer shows on the Copilot Chat screen, and its label",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Org Settings",
+          "Organization profile",
+          "Custom themes",
+          "Default Theme",
+          "Copilot Chat",
+          "Add your brand to Copilot Chat footer area"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which logo the footer displays",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Org Settings",
+          "Organization profile",
+          "Custom themes",
+          "Default Theme",
+          "Logos"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -1,0 +1,760 @@
+{
+  "slug": "microsoft-purview-insider-risk-management-ability-to-preview-content-in-insider-risk-manag",
+  "roadmapId": 557189,
+  "title": "Microsoft Purview Insider Risk Management: preview content in alerts without creating a case",
+  "status": "verified-with-gaps",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 59,
+    "confirmed": 56,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 0,
+    "major": 1,
+    "minor": 3
+  },
+  "summary": "The roadmap facts, alert-access controls and documented preview limitations are supported. The assertion that the first content review previously required a case is not established by the sources. Minor corrections should name the product licence and reconcile the governance checklist with the controls table.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing; title; summary",
+      "type": "record",
+      "claim": "The roadmap announces previewing relevant files in an alert's Activity explorer with appropriate permissions, without creating a case.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Insider Risk Management is excited to announce the ability to preview content directly within an IRM alert without having to create a case. Users with appropriate permissions will be able to preview relevant files referenced directly within activity explorer in each alert.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; summary; What's changing; Risk assessment",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC High.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-08-28T21:59:29.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-08-28T21:59:29\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; summary; Risk assessment; changes",
+      "type": "behaviour",
+      "claim": "Microsoft Learn labels Content preview as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "#### Content preview (preview)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; summary; Risk assessment; Scope; rationale: risk",
+      "type": "behaviour",
+      "claim": "Investigators can preview related content in Activity explorer for supported alert activities without creating a case.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "For supported activities, investigators can preview related content directly within Activity explorer to quickly validate risk without creating a case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Content preview helps determine whether an activity contains sensitive data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "Content preview (preview) enables early triage by helping investigators determine whether an activity contains sensitive data, represents a false positive, or requires escalation to a full investigation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Content preview helps identify false positives.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "Content preview (preview) enables early triage by helping investigators determine whether an activity contains sensitive data, represents a false positive, or requires escalation to a full investigation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Content preview helps determine whether to escalate to a full investigation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "Content preview (preview) enables early triage by helping investigators determine whether an activity contains sensitive data, represents a false positive, or requires escalation to a full investigation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Activity explorer is available for alerts in both the Standard and Triage Agent dashboard views.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "You can investigate these types of activities by using User activity reports or with the Triage Agent in Insider Risk Management and Standard alert dashboards. ... The Activity explorer tab is available for alerts in both dashboard views.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Supported SharePoint activities include file accessed, file download and full file sync download.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "SharePoint: File accessed, file download, full file sync download",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Supported OneDrive for Business activities include file accessed, file download and full file sync download.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "OneDrive for Business: File accessed, file download, full file sync download",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; summary; Risk assessment; Scope",
+      "type": "behaviour",
+      "claim": "Content preview supports Exchange email sent hygiene events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "Exchange: Email sent (hygiene events), Data loss prevention rule matches",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment; Scope",
+      "type": "behaviour",
+      "claim": "Content preview supports Exchange data loss prevention rule matches.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "Exchange: Email sent (hygiene events), Data loss prevention rule matches",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Content preview does not support state-change activities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "Content preview isn't supported for activities that represent state changes, permission changes, deletions, or signal-only events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Content preview does not support permission-change activities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "Content preview isn't supported for activities that represent state changes, permission changes, deletions, or signal-only events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "Content preview does not support deletion activities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "Content preview isn't supported for activities that represent state changes, permission changes, deletions, or signal-only events. Examples include: ... File or folder deletion and recycle bin events",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Content preview does not support signal-only events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "Content preview isn't supported for activities that represent state changes, permission changes, deletions, or signal-only events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "Unsupported endpoint activities include file deletion, copying, printing and USB transfers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "Endpoint activities (such as file deletion, copying, printing, or USB transfers)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "Browser and removable media events do not support Content preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "Browser or removable media events",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Metadata-only events do not support Content preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "Metadata-only events (user or group changes, Power BI export or deletion events)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Renamed files do not support Content preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "Files that have been renamed",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters: first sentence",
+      "type": "behaviour",
+      "claim": "Before this change, the first look at underlying content occurred at the case stage rather than the alert stage.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management content preview previously case first content review. Read activities and content-explorer passages. They document case content review and the new alert preview, but do not establish that all earlier first content review required a case.",
+      "severity": "major",
+      "fix": "Replace the first sentence with: 'This brings content review into the alert stage without creating a case.'"
+    },
+    {
+      "n": 31,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "Insider Risk Management users are pseudonymised by default.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Built with privacy by design, users are pseudonymized by default, and role-based access controls and audit logs are in place to help ensure user-level privacy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters; Risk assessment; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Insider Risk Management role-group permissions govern access to its alert-handling tools, without establishing the exact Content preview permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "To use any of the Insider Risk Management-related tools in the Microsoft Purview portal, users need the appropriate permissions. The easiest way to assign roles is to add the user to the appropriate role group on the Role groups page",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "The Insider Risk Management role group can access and investigate alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "| Actions | Insider Risk Management | Insider Risk Management Admins | Insider Risk Management Analysts | Insider Risk Management Investigators | Insider Risk Management Auditors | Insider Risk Management Approvers | ... | Access & investigate alerts | Yes | No | Yes | Yes | No | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "The Insider Risk Management Analysts role group can access and investigate alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "| Actions | Insider Risk Management | Insider Risk Management Admins | Insider Risk Management Analysts | Insider Risk Management Investigators | Insider Risk Management Auditors | Insider Risk Management Approvers | ... | Access & investigate alerts | Yes | No | Yes | Yes | No | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "The Insider Risk Management Investigators role group can access and investigate alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "| Actions | Insider Risk Management | Insider Risk Management Admins | Insider Risk Management Analysts | Insider Risk Management Investigators | Insider Risk Management Auditors | Insider Risk Management Approvers | ... | Access & investigate alerts | Yes | No | Yes | Yes | No | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment; Governance controls",
+      "type": "role",
+      "claim": "The Insider Risk Management Admins role group does not have Access & investigate alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "| Actions | Insider Risk Management | Insider Risk Management Admins | Insider Risk Management Analysts | Insider Risk Management Investigators | Insider Risk Management Auditors | Insider Risk Management Approvers | ... | Access & investigate alerts | Yes | No | Yes | Yes | No | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].note; Risk assessment; Scope; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The precise role groups or additional permissions required for Content preview are not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management content preview permissions roles investigators analysts. Read permissions and activities; the table distinguishes alert access and Content Explorer, but has no Content preview row or explicit mapping.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Administrative units restrict administrators' access to Insider Risk Management settings, policies and user data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "After you assign admin units to members of role groups, those members become restricted administrators and have limited access to Insider Risk Management settings, policies, and user data in the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Restricted administrators cannot access alerts for users assigned through security or distribution groups added in administrative units.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Restricted administrators can't access alerts for the users assigned to them through security groups or distribution groups added in administrative units.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Content preview is a reviewer content-reading action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "For supported activities, investigators can preview related content directly within Activity explorer to quickly validate risk without creating a case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Confirming an alert, creating a case and dismissing an alert are separate from reviewing its content preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "Act on the alert. You can either confirm and create a case for an alert or dismiss and resolve the alert.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "No autonomous action is described for Content preview.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management content preview autonomous automatic actions. Read activities' Content preview and triage steps; preview is described as investigators reviewing content, not as an autonomous action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].note; Risk assessment; Governance guidance; Governance controls table",
+      "type": "behaviour",
+      "claim": "Role-group permissions may take up to 30 minutes to apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "After configuring your role groups, it might take up to 30 minutes for the role group permissions to apply to assigned users across your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Alert-access role membership is managed in Microsoft Purview portal at Settings > Roles and groups > Roles groups > Insider Risk Management > Edit > Choose users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Select Settings in the upper-right corner of the page, select Roles and groups, then select Roles groups in the left navigation pane. ... Select the Insider Risk Management role group, then select Edit. ... Select Choose users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].api; Governance controls table; Governance guidance",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\" adds a user to the identified management role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. ... The Identity parameter specifies the role group to add a member to. ... The Member parameter specifies who you want to add to the role group. ... User ID or user principal name (UPN)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].ui and api; summary; Risk assessment; Governance controls",
+      "type": "absence",
+      "claim": "No separate tenant switch for Content preview is documented in the admin UI or through an API or PowerShell command.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management content preview enable disable setting PowerShell Graph default; Insider Risk Management content preview PowerShell. Read settings, activities and permissions. No separate UI switch or operation setting a Content preview switch was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "default",
+      "claim": "The default state is unknown: Microsoft has not stated whether Content preview arrives enabled for all tenants or needs enabling.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management content preview by default; content preview enable disable setting PowerShell Graph default. Read roadmap, activities and settings. Activity explorer has a generic enabling note; none states Content preview's arrival default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Content preview is included as an option inside the licensed Insider Risk Management product.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, and Microsoft 365 E5/A5/F5/G5 Insider Risk Management | ... | Insider Risk Management | Included |",
+      "severity": "minor",
+      "fix": "Keep licensing.model as 'included'. Add this sentence to the licensing notes and Cost and licensing: 'Insider Risk Management is included in Microsoft 365 E5/A5/G5 and the other plans listed in Microsoft's Purview service description.' Add https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description to sources. Keep the narrower statement that no licence or meter specific to Content preview is published."
+    },
+    {
+      "n": 49,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft offers Insider Risk Management as part of a wide selection of Microsoft 365 licensing subscriptions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-plan",
+      "quote": "Microsoft offers Insider Risk Management as part of a wide selection of Microsoft 365 licensing subscriptions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Administrators must verify a supported subscription and assign appropriate licences to users to access and use Insider Risk Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "To access and use Insider Risk Management, administrators need to verify their organization has a supported subscription and assign the appropriate licenses to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Some Insider Risk Management indicators require enabling the pay-as-you-go billing model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "Some indicators included in Insider Risk Management are only available if you enable the pay-as-you-go billing model for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No licence or pay-as-you-go meter specific to Content preview is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management content preview licensing billing meter; Microsoft Purview Insider Risk Management billing models content preview meter licensing. Read activities, configure, plan, billing models and service description. None names a Content preview licence or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Scope: Prerequisites; Open questions",
+      "type": "behaviour",
+      "claim": "Learn says Activity explorer is accessible in alert management when the organisation enables the feature and users trigger events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "Users can access Activity explorer in the alert management area when their organization enables the feature and after the users trigger events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls",
+      "type": "default",
+      "claim": "The Insider Risk Management audit log is enabled automatically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-audit-log",
+      "quote": "Your organization automatically enables the Insider Risk Management audit log and you can't disable it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Insider Risk Management audit log cannot be disabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-audit-log",
+      "quote": "Your organization automatically enables the Insider Risk Management audit log and you can't disable it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls; Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "The Insider Risk Management audit log documents Alerts as a category and supports reviewing role-group users' actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-audit-log",
+      "quote": "By using this audit log, you can independently review the actions of users assigned to one or more Insider Risk Management role groups. ... Category: Category of the item modified. Values are Policies, Cases, Users, Alerts, Settings, and Notice templates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls; Governance guidance: After rollout; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not document whether opening a Content preview is recorded in the Insider Risk Management audit log.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Insider Risk Management content preview audit log. Read audit-log and activities pages. The audit page lists Alerts and describes case content-download logging, but does not identify a Content preview audit event.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance guidance: Before rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist asks readers to check administrative-unit scoping, but that control is absent from the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "check how administrative units limit restricted administrators. ... Table controls: Who can access and investigate Insider Risk Management alerts; A separate switch for Content preview in Activity explorer.",
+      "severity": "minor",
+      "fix": "The Before rollout instruction to check administrative-unit scoping has no corresponding controls-table row. Remove that checklist bullet; retain the documented administrative-unit explanation in Risk assessment and Governance controls."
+    },
+    {
+      "n": 59,
+      "where": "Governance guidance: After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist asks readers to check the Insider Risk Management audit log, but that control is absent from the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check the Insider Risk Management audit log for alert-related activity by reviewers ... Table controls: Who can access and investigate Insider Risk Management alerts; A separate switch for Content preview in Activity explorer.",
+      "severity": "minor",
+      "fix": "The After rollout instruction to check the Insider Risk Management audit log has no corresponding controls-table row. Remove that checklist bullet; retain the audit-log facts and the open question about Content preview logging."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T05:12:35.635Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=557189",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-plan",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-audit-log",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who can access and investigate Insider Risk Management alerts",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and groups",
+          "Roles groups",
+          "Insider Risk Management",
+          "Edit",
+          "Choose users"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Who can access and investigate Insider Risk Management alerts",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

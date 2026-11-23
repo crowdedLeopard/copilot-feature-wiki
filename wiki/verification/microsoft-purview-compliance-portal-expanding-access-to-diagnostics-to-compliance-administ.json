@@ -2,39 +2,33 @@
   "slug": "microsoft-purview-compliance-portal-expanding-access-to-diagnostics-to-compliance-administ",
   "roadmapId": 500396,
   "title": "Microsoft Purview: Diagnostics open to Compliance Administrator, Security Administrator and Organization Management",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-23",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-23",
-    "reasons": [
-      "2 blocking findings (claims 38, 41)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 44,
-    "confirmed": 41,
-    "unconfirmed": 1,
-    "contradicted": 2,
-    "blocker": 2,
+    "claims": 53,
+    "confirmed": 52,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 0,
     "major": 0,
-    "minor": 6
+    "minor": 3
   },
-  "summary": "The roadmap details and the documented diagnostics largely check out. However, the statement that nothing needs configuring is not established, and the instructions for reviewing Entra roles omit the Global Administrator requirement for viewing that section of Purview.",
+  "summary": "The briefing accurately reports the roadmap and distinguishes it from the diagnostic-specific permissions on Microsoft Learn. The role-group path and PowerShell call are supported; minor corrections concern a missing path heading, the licensing model's understatement of the general licence requirement, and an Entra-role checklist step without a controls-table row.",
   "claims": [
     {
       "n": 1,
       "where": "title; summary; What's changing; Scope; rationale: risk and impact",
       "type": "record",
-      "claim": "Diagnostics access expands beyond Global Admin to Compliance Administrator, Security Administrator and Organization Management.",
+      "claim": "The roadmap expands Diagnostics access to Compliance Administrator, Security Administrator and Organization Management.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "We are expanding the access to Diagnostics beyond Global Admin to: Compliance Administrator, Security Administrator and Organization Management",
@@ -43,9 +37,31 @@
     },
     {
       "n": 2,
+      "where": "summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "The access expansion is beyond the previous Global Admin restriction.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We are expanding the access to Diagnostics beyond Global Admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The record gives no further description of the access expansion.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We are expanding the access to Diagnostics beyond Global Admin to: Compliance Administrator, Security Administrator and Organization Management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
       "where": "front matter: status; What's changing; Scope",
       "type": "record",
-      "claim": "The item is Launched.",
+      "claim": "The roadmap status is Launched.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
@@ -53,7 +69,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 5,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The general availability target is December CY2025.",
@@ -64,7 +80,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 6,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The preview target is October CY2025.",
@@ -75,7 +91,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 7,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
@@ -86,7 +102,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 8,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists the Web platform.",
@@ -97,10 +113,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 9,
       "where": "front matter: releasePhase; Scope",
       "type": "record",
-      "claim": "The release phases are General Availability and Preview.",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -108,142 +124,98 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "What's changing; Risk assessment: Data exposure and Autonomy & actions",
-      "type": "record",
-      "claim": "The record describes only expanded role access, not a new data source, autonomous action or further mechanism.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "We are expanding the access to Diagnostics beyond Global Admin to: Compliance Administrator, Security Administrator and Organization Management",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "licensing.notes; Cost and licensing; rationale: cost",
-      "type": "record",
-      "claim": "The roadmap record names no licence or meter.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "We are expanding the access to Diagnostics beyond Global Admin to: Compliance Administrator, Security Administrator and Organization Management",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 10,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Purview role-group membership is managed at Settings > Roles and scopes > Role groups > role group > Edit > Choose users.",
+      "where": "front matter: products and roadmapModified",
+      "type": "record",
+      "claim": "The Microsoft Purview roadmap record was modified at 2026-09-16T22:57:03.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-permissions",
-      "quote": "On Role groups for Microsoft Purview solutions, select a Microsoft Purview role group you want to add users to. Select Edit on the control bar. ... On Edit members of the role group, select Choose users or Choose groups.",
-      "severity": "minor",
-      "fix": "Use 'Settings > Roles and scopes > Role groups > role group > Edit > Edit members of the role group > Choose users' in controls[0].ui.path and the rendered table. The omitted step is the heading containing the control."
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-16T22:57:03\", \"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 11,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\" adds the specified user to a management role group.",
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Purview self-help diagnostics are available on Solutions pages and in the Help pane.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
-      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. ... The Identity parameter specifies the role group to add a member to. ... User ID or user principal name (UPN)",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Self-help diagnostics that relate to Microsoft Purview are available in the following locations: Microsoft Purview portal On Solutions pages In the Help pane",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
-      "where": "front matter: defaultState; Why it matters",
-      "type": "absence",
-      "claim": "Microsoft has not stated the arrival default or a required administrator action for this specific access expansion.",
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Information Protection Solutions-page diagnostics require Compliance Administrator or Security Administrator.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview self-help diagnostics 500396 automatic rollout no action required Organization Management; Purview Diagnostics Organization Management default enable disable. Read the roadmap and self-help diagnostics page; neither specifies this item's arrival default.",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run the Information Protection diagnostics, you need to have either of the following roles: Compliance Administrator Security Administrator",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
-      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "A Diagnostics-specific licence requirement is not yet published, so the licensing model is unknown.",
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Compliance Administrator and Security Administrator are among the accepted roles for DLP Solutions-page diagnostics.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview self-help diagnostics license pricing prerequisites. Opened self-help diagnostics and Purview service description; searched the latter for diagnostic (no matches). It gives general licensing obligations but no Diagnostics-specific entitlement.",
-      "severity": "minor",
-      "fix": "Keep the Diagnostics-specific gap, but add to licensing.notes and Cost and licensing: 'Microsoft's Purview service description says users with a Purview role assigned for use in the portal require a licence; a Diagnostics-specific entitlement is not yet published.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description."
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run the DLP diagnostics, you need to have any of the following roles: Compliance Administrator Security Administrator Organization Configuration View-Only Configuration Security Reader",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 14,
-      "where": "licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The self-help diagnostics page lists role requirements, but no licence prerequisite for running Diagnostics.",
+      "where": "What's changing; Why it matters; Open questions",
+      "type": "role",
+      "claim": "Learn still lists Global admin as the minimum role for Help-pane DLP policy and rule configuration diagnostics.",
       "status": "supported",
       "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
-      "quote": "To run the Information Protection diagnostics, you need to have either of the following roles: ... To run the DLP diagnostics, you need to have any of the following roles:",
+      "quote": "DLP policy and rule configuration | Troubleshoots common issues that affect a DLP policy and rule configuration. ... | Global admin",
       "severity": null,
       "fix": null
     },
     {
       "n": 15,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Self-help Purview diagnostics run from Solutions pages and the Help pane.",
+      "where": "What's changing; Why it matters; Open questions",
+      "type": "role",
+      "claim": "Learn lists Global admin as the minimum role for Help-pane Sensitivity label configuration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
-      "quote": "Self-help diagnostics that relate to Microsoft Purview are available in the following locations: ... Microsoft Purview portal ... On Solutions pages ... In the Help pane",
+      "quote": "Sensitivity label configuration | Troubleshoots common issues that affect a sensitivity label. Checks whether a sensitivity label is correctly configured for use in various workloads. | Global admin",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "What's changing; Scope",
+      "where": "What's changing; Why it matters; Open questions",
       "type": "role",
-      "claim": "Information Protection Solutions diagnostics require Compliance Administrator or Security Administrator.",
+      "claim": "Learn lists Global Admin as the minimum role for Help-pane Validate Audit configuration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
-      "quote": "To run the Information Protection diagnostics, you need to have either of the following roles: Compliance Administrator; Security Administrator",
-      "severity": "minor",
-      "fix": "After the current role requirements, add: 'Another Microsoft Learn page at https://learn.microsoft.com/troubleshoot/microsoft-365/diagnostics/purview-compliance-diagnostics still says Solutions diagnostics require a Microsoft 365 global administrator.' Cite that page as well; do not replace the current requirements."
+      "quote": "Validate Audit configuration | Validates general Audit Configuration. Checks Audit logs for a user and identifies configuration issues. | Global Admin",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 17,
-      "where": "What's changing; Scope",
-      "type": "role",
-      "claim": "DLP Solutions diagnostics accept Compliance Administrator and Security Administrator among their roles.",
+      "where": "What's changing; Scope; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn does not identify which diagnostics gain access through this particular roadmap change.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
-      "quote": "To run the DLP diagnostics, you need to have any of the following roles: Compliance Administrator; Security Administrator; Organization Configuration; View-Only Configuration; Security Reader",
+      "source": null,
+      "quote": "Searched: Purview Diagnostics expanding access 500396 default automatically enable disable Organization Management; Purview Diagnostics Organization Management Organization Configuration access roles 500396. Read self-help diagnostics and portal permissions; neither maps diagnostic changes to this item.",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
-      "where": "What's changing; Open questions",
-      "type": "role",
-      "claim": "Help diagnostics for DLP policy and rule configuration, Sensitivity label configuration and Validate Audit configuration list Global admin as their minimum role.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
-      "quote": "DLP policy and rule configuration ... Global admin ... Sensitivity label configuration ... Global admin ... Validate Audit configuration ... Global Admin",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing; Scope; Open questions",
-      "type": "absence",
-      "claim": "Microsoft Learn does not identify which diagnostics specifically gain access through roadmap item 500396.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview self-help diagnostics 500396 automatic rollout no action required Organization Management; Purview Diagnostics Organization Management default enable disable. Opened the cited diagnostics page; it lists current roles without mapping this roadmap expansion to particular diagnostics.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Diagnostics can fix some configuration issues.",
+      "claim": "The diagnostics can fix some configuration issues.",
       "status": "supported",
       "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
       "quote": "Although the diagnostics can fix some configuration issues, they don't make changes to your tenant without your consent.",
@@ -251,7 +223,7 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 19,
       "where": "What's changing; Risk assessment: Autonomy & actions; rationale: risk",
       "type": "behaviour",
       "claim": "Diagnostics do not change the tenant without consent.",
@@ -262,10 +234,10 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What's changing; Scope; Governance guidance: At rollout",
+      "n": 20,
+      "where": "What's changing; Scope; Governance guidance",
       "type": "availability",
-      "claim": "Solutions diagnostics are rolling out gradually and may not be available in every organisation.",
+      "claim": "Solutions-page diagnostics are being rolled out gradually and might not yet be available in every organisation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
       "quote": "Diagnostics on Solutions pages are being rolled out gradually and might not yet be available in your organization.",
@@ -273,43 +245,43 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "Why it matters",
-      "type": "role",
-      "claim": "Some diagnostics for DLP policies, sensitivity labels and audit configuration depended on Global Admin access.",
+      "n": 21,
+      "where": "Risk assessment: Data exposure; Why it matters",
+      "type": "behaviour",
+      "claim": "Solutions-page diagnostics check Microsoft Purview configuration settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
-      "quote": "To run these diagnostics, you must meet the minimum role requirement that's listed in the table. ... DLP policy and rule configuration ... Global admin ... Sensitivity label configuration ... Global admin ... Validate Audit configuration ... Global Admin",
+      "quote": "When you select a diagnostic on a Solutions page, the diagnostic runs the Check-PurviewConfig cmdlet to check your organization's configuration settings in Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Data exposure",
+      "type": "command",
+      "claim": "The diagnostic tables name Get-DlpCompliancePolicy and Get-label among the cmdlets used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "A DLP rule didn't apply or it was applied unexpectedly to an email message in Exchange Online. | Upload the message trace log (.csv) to review the DLP rules applied to email messages. | Get-DlpCompliancePolicy Get-label",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Some diagnostics accept a file path.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "When entering the file path, make sure that you provide the full file path, not a sharing link.",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "Risk assessment: Data exposure; Why it matters",
-      "type": "behaviour",
-      "claim": "Diagnostics inspect Purview tenant configuration through cmdlets including Get-DlpCompliancePolicy and Get-label.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
-      "quote": "the diagnostic runs the Check-PurviewConfig cmdlet to check your organization's configuration settings in Microsoft Purview. Then, the diagnostic calls the appropriate cmdlet that's listed in the following table ... Get-label ... Get-DlpCompliancePolicy",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Some diagnostics require a file path as input.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
-      "quote": "Checks a file's properties and classification to determine whether autolabeling was applied. When entering the file path, make sure that you provide the full file path, not a sharing link.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Some diagnostics accept a message trace log in CSV format.",
+      "claim": "Some diagnostics accept an uploaded message trace log in CSV format.",
       "status": "supported",
       "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
       "quote": "Upload the message trace log (.csv) to review the DLP rules applied to email messages.",
@@ -317,32 +289,43 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 25,
       "where": "Risk assessment: Security & identity; Why it matters",
       "type": "role",
-      "claim": "The additional roles have narrower product responsibilities than Global Administrator.",
+      "claim": "Compliance and security roles have a narrower administrative remit than Global Administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-permissions",
-      "quote": "Global Administrator ... Access to all administrative features in all Microsoft 365 services. ... Compliance Administrator ... manage eDiscovery cases, and maintain data governance policies ... Security Administrator ... managing security policies",
+      "quote": "Compliance Administrator | Help your organization stay compliant with any regulatory requirements ... Security Administrator | Control your organization's overall security ... Global Administrator | Access to all administrative features in all Microsoft 365 services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity; controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Compliance Administrator is listed as a Microsoft Entra role in the Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Entra role | Description | Mapped Purview role groups ... Compliance Administrator | Help your organization stay compliant with any regulatory requirements",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity; controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Security Administrator is listed as a Microsoft Entra role in the Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Security Administrator | Control your organization's overall security by managing security policies, reviewing security analytics and reports across Microsoft 365 products",
       "severity": null,
       "fix": null
     },
     {
       "n": 28,
-      "where": "controls[0].note; Risk assessment: Security & identity",
-      "type": "role",
-      "claim": "Compliance Administrator and Security Administrator are Microsoft Entra roles displayed in Purview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-permissions",
-      "quote": "The roles that appear in the Microsoft Entra ID section of the Roles and scopes area are Microsoft Entra roles ... Compliance Administrator ... Security Administrator",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "controls[0].note; Governance controls prose",
+      "where": "Risk assessment: Security & identity; Governance controls",
       "type": "admin-path",
-      "claim": "Managing members of an Entra role uses Manage members in Microsoft Entra ID and redirects away from Purview.",
+      "claim": "Managing members of the Entra roles from Purview redirects to Microsoft Entra ID.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-permissions",
       "quote": "To manage members of a Microsoft Entra role, select Manage members in Microsoft Entra ID. This choice redirects you to the Azure management portal.",
@@ -350,8 +333,8 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "controls[0].governs; Risk assessment: Security & identity; Governance controls",
+      "n": 29,
+      "where": "Risk assessment: Security & identity; controls[0]; Governance guidance; Governance controls",
       "type": "role",
       "claim": "Organization Management is a Purview role group.",
       "status": "supported",
@@ -361,32 +344,32 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "controls[0].note; Risk assessment: Security & identity; Governance controls",
+      "n": 30,
+      "where": "Risk assessment: Security & identity; Governance controls",
       "type": "role",
-      "claim": "Editing Purview role groups requires Role Management, which the permissions page says is assigned only to Organization Management.",
+      "claim": "Learn says the Role Management role is assigned only to Organization Management.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-permissions",
-      "quote": "Role Management role (assigned only to the Organization Management role group). The Role Management role allows users to view, create, and modify role groups. ... Sign in ... using credentials for an admin account assigned the Role management role.",
+      "quote": "users need to be a global administrator or need to be assigned the Role Management role (assigned only to the Organization Management role group).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Change & support; Scope; Governance guidance; Open questions",
+      "type": "role",
+      "claim": "The self-help diagnostics page gives diagnostic-specific role lists and names Organization Configuration rather than Organization Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "To run the DLP diagnostics, you need to have any of the following roles: Compliance Administrator Security Administrator Organization Configuration View-Only Configuration Security Reader",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
-      "where": "Governance controls prose",
-      "type": "role",
-      "claim": "Viewing role groups requires Global administrator or Role Management.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-permissions",
-      "quote": "To view Role groups in the Roles and scopes area in the Microsoft Purview portal, users need to be a global administrator or need to be assigned the Role Management role",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Microsoft Support agents cannot assist with Help pane diagnostics.",
+      "claim": "Microsoft Support agents cannot assist with diagnostics in the Help pane.",
       "status": "supported",
       "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
       "quote": "Microsoft Support agents can't provide assistance for diagnostics that appear in the Help pane.",
@@ -394,10 +377,10 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 33,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Users can report Help diagnostic issues through its Feedback link.",
+      "claim": "Users can report Help-pane diagnostic issues through the diagnostic's Feedback link.",
       "status": "supported",
       "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
       "quote": "If you encounter any issues, you can use the Feedback link within the diagnostic to report the issue.",
@@ -405,10 +388,21 @@
       "fix": null
     },
     {
+      "n": 34,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Help-pane diagnostics are unavailable in GCC High and DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Diagnostics in the Help pane aren't available in the following environments: GCC High, DoD, and Microsoft 365 operated by 21Vianet.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 35,
       "where": "Scope",
       "type": "availability",
-      "claim": "Help pane diagnostics are unavailable in GCC High, DoD and Microsoft 365 operated by 21Vianet.",
+      "claim": "Help-pane diagnostics are unavailable in Microsoft 365 operated by 21Vianet.",
       "status": "supported",
       "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
       "quote": "Diagnostics in the Help pane aren't available in the following environments: GCC High, DoD, and Microsoft 365 operated by 21Vianet.",
@@ -417,108 +411,207 @@
     },
     {
       "n": 36,
-      "where": "Governance controls prose",
-      "type": "absence",
-      "claim": "Learn documents no separate Purview setting to enable or disable self-help Diagnostics for a role.",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "record",
+      "claim": "The roadmap record names no licence or meter.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview Diagnostics turn off disable setting PowerShell; Purview Diagnostics Organization Management default enable disable. Opened self-help diagnostics, Purview permissions and Add-RoleGroupMember; results describe role requirements, not a separate self-help Diagnostics switch.",
+      "source": "roadmap record",
+      "quote": "We are expanding the access to Diagnostics beyond Global Admin to: Compliance Administrator, Security Administrator and Organization Management",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
-      "where": "Governance controls prose; controls[0].governs",
-      "type": "applicability",
-      "claim": "Role membership governs access to the documented diagnostics.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The self-help diagnostics page lists role requirements and names no licence prerequisite for running the diagnostics.",
       "status": "supported",
       "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
-      "quote": "To run the Information Protection diagnostics, you need to have either of the following roles: ... To run the DLP diagnostics, you need to have any of the following roles: ... Organization Configuration",
+      "quote": "To run the Information Protection diagnostics, you need to have either of the following roles: Compliance Administrator Security Administrator",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
-      "where": "summary",
-      "type": "default",
-      "claim": "Nothing needs configuring for administrators holding the newly entitled roles to gain access.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Purview self-help diagnostics 500396 automatic rollout no action required Organization Management; Purview Diagnostics Organization Management default enable disable. Read the roadmap, self-help diagnostics and permissions pages; none states no configuration is required for this expansion.",
-      "severity": "blocker",
-      "fix": "Replace 'Administrators holding those roles gain access; nothing needs configuring, but check who holds them' with 'Microsoft has not stated the arrival default; check who holds these roles.' This also reconciles the summary with defaultState: unknown."
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Purview service description requires a licence for users with a Purview role assigned for use in the portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Any user benefiting from the service requires a license. ... Users with a Purview role assigned for use in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 39,
-      "where": "Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "Information Protection diagnostics can be checked under Purview Solutions > Information Protection.",
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A Diagnostics-specific entitlement or meter is not yet published.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
-      "quote": "Solutions > Information Protection > Diagnostics",
-      "severity": "minor",
-      "fix": "Give the full route 'Solutions > Information Protection > Diagnostics' in the test-account instruction."
+      "source": null,
+      "quote": "Searched: Purview self-help diagnostics license pricing entitlement Diagnostics role prerequisites. Read self-help diagnostics in full; searched the Purview service description for diagnostic and licensing requirements. Found general user licensing, but no Diagnostics-specific entitlement or meter.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 40,
-      "where": "Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "DLP diagnostics can be checked under Purview Solutions > Data Loss Prevention.",
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is unknown despite the published general requirement for licensed Purview portal role holders.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
-      "quote": "Solutions > Data Loss Prevention > Diagnostics",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Any user benefiting from the service requires a license. ... Users with a Purview role assigned for use in the Microsoft Purview portal.",
       "severity": "minor",
-      "fix": "Give the full route 'Solutions > Data Loss Prevention > Diagnostics' in the test-account instruction."
+      "fix": "Set licensing.model to \"per-user\" to reflect the published general user entitlement. Keep the existing qualification that a Diagnostics-specific entitlement is not yet published; do not name a Diagnostics SKU or claim inclusion in a particular plan."
     },
     {
       "n": 41,
-      "where": "Governance guidance: Before rollout, first bullet",
-      "type": "role",
-      "claim": "The reader can review Entra role holders through Purview's Roles and scopes area without a stated Global Administrator prerequisite.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/purview/purview-permissions",
-      "quote": "The roles that appear in the Microsoft Entra ID section of the Roles and scopes area are Microsoft Entra roles, and global administrators can see this section.",
-      "severity": "blocker",
-      "fix": "Replace the first Before rollout bullet with 'Ask a Global Administrator to review Compliance Administrator and Security Administrator holders in Microsoft Purview portal > Settings > Roles and scopes > Microsoft Entra ID > admin role, using the role panel details.'"
+      "where": "front matter: defaultState; summary; Why it matters",
+      "type": "default",
+      "claim": "Microsoft has not stated the arrival default for this access expansion.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Diagnostics expanding access 500396 default automatically enable disable Organization Management; Purview self-help diagnostics enable disable admin switch default role membership. Read roadmap, self-help diagnostics and portal permissions; no arrival default for this change.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 42,
-      "where": "Governance guidance: Before rollout; Governance controls table",
-      "type": "consistency",
-      "claim": "The checklist asks readers to review Entra role membership, but the only control row explicitly covers Purview role groups instead.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Check which accounts hold Compliance Administrator and Security Administrator in Microsoft Entra ID ... the row below governs the Organization Management role group and the other Purview role groups.",
-      "severity": "minor",
-      "fix": "The Before rollout instruction to review Compliance Administrator and Security Administrator in Microsoft Entra ID has no corresponding controls row; the existing row covers Purview role groups. Do not present that row as the Entra membership control."
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No source states that an administrator must take action for this access expansion.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Diagnostics expanding access 500396 default automatically enable disable Organization Management. Read roadmap description, self-help diagnostics and portal permissions; no mandatory enablement or administrator action for this roadmap change.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 43,
-      "where": "Scope; Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "The cited diagnostics page lists different role requirements by diagnostic and names Organization Configuration rather than Organization Management.",
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Purview role-group membership is edited at Settings > Roles and scopes > Role groups > role group > Edit > Edit members of the role group > Choose users.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
-      "quote": "Information Protection ... Compliance Administrator; Security Administrator ... DLP ... Organization Configuration ... DLP policy and rule configuration ... Global admin",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Select Role groups. On Role groups for Microsoft Purview solutions, select a Microsoft Purview role group you want to add users to. Select Edit on the control bar. On Edit members of the role group, select Choose users or Choose groups.",
+      "severity": "minor",
+      "fix": "Set controls[0].ui.path to \"Settings > Roles and scopes > Role groups > Role groups for Microsoft Purview solutions > role group > Edit > Edit members of the role group > Choose users\". The omitted text is a page heading, not a missing navigation choice."
+    },
+    {
+      "n": 44,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\" adds the identified user to the role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. ... The Identity parameter specifies the role group to add a member to. ... User ID or user principal name (UPN)",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "Microsoft has published no Diagnostics-specific meter or direct charge in the researched documentation; administrator time is the known cost considered by the briefing.",
+      "n": 45,
+      "where": "controls[0].note; Governance controls table",
+      "type": "role",
+      "claim": "Editing Purview role groups requires the Role Management role.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview self-help diagnostics licensing requirements price meter; Purview self-help diagnostics license pricing prerequisites. Opened self-help diagnostics and Purview service description, searched the latter for diagnostic (no matches); no self-help Diagnostics meter was identified.",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Sign in to the Microsoft Purview portal by using credentials for an admin account assigned the Role management role.",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "A Global Administrator can review Entra role holders at Microsoft Purview portal > Settings > Roles and scopes > Microsoft Entra ID > admin role, using role panel details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "The roles that appear in the Microsoft Entra ID section of the Roles and scopes area are Microsoft Entra roles, and global administrators can see this section. ... selecting an admin role and viewing the role panel details.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Viewing Purview role groups requires Global administrator or the Role Management role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "To view Role groups in the Roles and scopes area in the Microsoft Purview portal, users need to be a global administrator or need to be assigned the Role Management role",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Information Protection diagnostics are at Microsoft Purview portal > Solutions > Information Protection > Diagnostics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "You can find these diagnostics on the following portal pages: Solutions > Information Protection > Diagnostics",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "DLP diagnostics are at Microsoft Purview portal > Solutions > Data Loss Prevention > Diagnostics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics",
+      "quote": "Solutions > Data Loss Prevention > Diagnostics",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Learn documents no separate per-role switch for Purview self-help Diagnostics; the documented access requirements are roles.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview self-help diagnostics enable disable admin switch default role membership. Read self-help diagnostics and portal permissions. Found diagnostic role requirements, not a per-role Diagnostics switch; results for always-on endpoint diagnostics describe a different feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap record describes no autonomous action.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We are expanding the access to Diagnostics beyond Global Admin to: Compliance Administrator, Security Administrator and Organization Management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap record describes no new data source.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We are expanding the access to Diagnostics beyond Global Admin to: Compliance Administrator, Security Administrator and Organization Management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist asks for an Entra role-membership review, but the controls table covers Purview role groups rather than Entra membership.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Ask a Global Administrator to review Compliance Administrator and Security Administrator holders ... the row above governs the Organization Management role group and the other Purview role groups, not Entra role membership.",
+      "severity": "minor",
+      "fix": "Remove the first Before rollout bullet beginning \"Ask a Global Administrator to review Compliance Administrator and Security Administrator holders\". This checklist step has no corresponding control row; do not add a row as part of the correction."
     }
   ],
   "precheck": {
-    "at": "2026-11-23T04:15:41.991Z",
+    "at": "2026-11-23T05:12:31.209Z",
     "summary": {
-      "links": 4,
+      "links": 5,
       "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
@@ -546,6 +639,11 @@
         "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -561,6 +659,7 @@
           "Role groups",
           "role group",
           "Edit",
+          "Edit members of the role group",
           "Choose users"
         ],
         "missing": []
@@ -577,5 +676,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-23",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

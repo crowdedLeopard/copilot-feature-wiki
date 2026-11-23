@@ -68,7 +68,7 @@ controls:
     scope: "group"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot connectors > Your connections > connector > Staged rollout > Add staging"
+      path: "Copilot connectors > Your connections > Staged rollout > Add staging"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview"
     api: null
     note: "Limits a connector to specific users or Microsoft Entra ID groups, within the User access population."
@@ -93,19 +93,23 @@ changes:
     note: "Corrected after verification: licensing is now included with the Copilot licence, the default-state wording cites earlier preview documentation, and unsupported HubSpot data examples are removed."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 69 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-23"
+    note: "Corrected the admin path for per-connector staged rollout: Add staging is in the Staged rollout column of Your connections, not inside a connector's pane."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 61 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 69
-  confirmed: 68
-  unconfirmed: 1
+  claims: 61
+  confirmed: 61
+  unconfirmed: 0
   contradicted: 0
-  attempts: 2
-  hash: "e02fbe97b426824a0d492665fb6bec53"
+  attempts: 0
+  hash: "9862281605edd15135be56c6bed0fda9"
 ---
 
 ## What's changing
@@ -181,7 +185,7 @@ To manage federated connectors, Microsoft's management page says you need the Gl
 <tr><td data-label="Control"><strong>Which publisher types of federated connectors are available, including future ones</strong><br><small>Tenant</small><br><small class="controls__note">Clearing a publisher type sets that type's connectors' staged rollout to No users. Roles named on the page: Global Administrator or Search Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › Agent and plugin access › publisher type <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Tenant-wide ceiling on which users can use any agent, plugin or connector</strong><br><small>Tenant</small><br><small class="controls__note">Options: All users (default), Specific users or groups, No users. Connector staging can narrow but not widen this population.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether an individual connector such as HubSpot is enabled</strong><br><small>Tenant</small><br><small class="controls__note">The connector's pane has an enable or disable control; the page's table calls it Enable / Disable.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot connectors › Your connections › connector › Enable/disable data source <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which users or groups get an individual connector (staged rollout)</strong><br><small>Group</small><br><small class="controls__note">Limits a connector to specific users or Microsoft Entra ID groups, within the User access population.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot connectors › Your connections › connector › Staged rollout › Add staging <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users or groups get an individual connector (staged rollout)</strong><br><small>Group</small><br><small class="controls__note">Limits a connector to specific users or Microsoft Entra ID groups, within the User access population.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot connectors › Your connections › Staged rollout › Add staging <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Tool-level and connector-level blocking</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft describes this as Tools block / unblock for tool-level and connector-level blocking of federated connectors.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -200,10 +204,4 @@ No row gives an API because Microsoft Learn documents no API for these connector
 risk: Medium. HubSpot data can reach Researcher answers under each user's own HubSpot permissions, and existing connector controls cover it, but the current pages do not state whether it is available by default on arrival.
 cost: Low. The connector needs a Microsoft 365 Copilot add-on licence (or Microsoft 365 E7) that users must already hold; Microsoft says connector grounding in Copilot is included for organisations with Microsoft 365 Copilot licences and no extra charges apply.
 impact: Medium. Sales, marketing and other HubSpot users with a Copilot licence notice it in Researcher's Sources menu; admins see a new connector in Your connections.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[3].ui; Governance controls / admin-path: Add staging is reached by opening a connector, then Staged rollout, then Add staging. | Found: Searched: HubSpot Add staging Staged rollout connector. Read overview, staged-rollout and custom-connector management excerpts. Overview places Add staging in the list's Staged rollout column; no passage gives Add staging after opening a connector's Staged rollout pane. | Fix: Replace controls[3].ui.path and its rendered copy with 'Copilot connectors > Your connections > Staged rollout > Add staging'. The cited overview says to choose Add staging in the Staged rollout column; retain the note identifying the connector's users or groups. https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview
 -->
