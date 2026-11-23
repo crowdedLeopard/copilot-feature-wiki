@@ -102,19 +102,23 @@ changes:
     note: "Corrected the label-deletion guidance to include confirming the label is no longer visible before deleting it, and removed a default-label pointer to the publishing-policy row."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 76 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-23"
+    note: "Added the Standard/Plan 1 licence requirement for Information Protection for Office 365 and AIP, and removed the checklist step that chose Engage and SharePoint default labels from the label settings row."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 92 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 76
-  confirmed: 74
+  claims: 92
+  confirmed: 92
   unconfirmed: 0
-  contradicted: 2
-  attempts: 3
-  hash: "fb36703e12ed21bb6028444a397856a8"
+  contradicted: 0
+  attempts: 0
+  hash: "af6c7348af673f7c9d776a7304feadc9"
 ---
 
 ## What's changing
@@ -153,7 +157,7 @@ If nobody acts, Microsoft's pages say labels are not available to select until t
 
 ## Cost and licensing
 
-A user needs a licence that includes sensitivity labelling. The Microsoft Purview service description lists Manual Sensitivity Labeling as Included for Microsoft 365 E5/A5/G5/E3/A3/G3/F1/F3/Business Premium, OneDrive for Business (Plan 2), Enterprise Mobility + Security E3/E5, Office 365 E5/A5/E3/A3, and AIP Plan 1 and Plan 2. The same page says sensitivity labeling, including automatic or policy-based labeling, requires a Microsoft 365 E5 licence or Microsoft 365 Information Protection and Governance (IPG). Check which statement applies to your plans. Admins also need a licence to manage sensitivity labels.
+A user needs a licence that includes sensitivity labelling. The Microsoft Purview service description lists Manual Sensitivity Labeling as Included for Microsoft 365 E5/A5/G5/E3/A3/G3/F1/F3/Business Premium, OneDrive for Business (Plan 2), Enterprise Mobility + Security E3/E5, Office 365 E5/A5/E3/A3, and AIP Plan 1 and Plan 2. For Information Protection for Office 365 and AIP, a Standard/Plan 1 licence must also be assigned alongside a Premium/Plan 2 licence; for example, an AIP P2 user must also have AIP P1 assigned. The same page says sensitivity labeling, including automatic or policy-based labeling, requires a Microsoft 365 E5 licence or Microsoft 365 Information Protection and Governance (IPG). Check which statement applies to your plans. Admins also need a licence to manage sensitivity labels.
 
 Configuring labels for Microsoft 365 groups needs at least one active Microsoft Entra ID P1 licence in the tenant. The Viva Engage page names no licence. The indirect cost is admin time to design labels, pilot them and brief community admins.
 
@@ -169,7 +173,7 @@ Learn lists these conditions for labelling Microsoft 365 groups: the label's sco
 
 ### Before rollout
 - Check whether sensitivity labels are already enabled for containers in your tenant by reading the EnableMIPLabels setting (first row of the controls table); it is a prerequisite for labelling communities.
-- Decide the Privacy and External user access settings for each label that has the Groups & sites scope, and choose which label is the Engage default and which is the SharePoint site default (label settings: second row).
+- Decide the Privacy and External user access settings for each label that has the Groups & sites scope (label settings: second row).
 - Pilot with a label policy that applies to a few test users, wait for replication, then create a test community with the label. Learn's pilot steps use a team, group or SharePoint site, so adapt them for Engage.
 
 ### At rollout
@@ -211,12 +215,9 @@ cost: Low. The Purview service description lists Manual Sensitivity Labeling as 
 impact: Medium. Community admins and anyone creating a Viva Engage community see the label choices and the default label; members see the label in the community banner.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: Manual Sensitivity Labeling plan list / licensing: Manual Sensitivity Labeling is included for the listed Microsoft 365, OneDrive, EMS, Office 365 and AIP plans without stating the additional Standard/Plan 1 assignment requirement for Premium/Plan 2. | Found: A standard/Plan 1 license must be assigned in addition to the premium/P2 license for users to have access to sensitivity labeling for Information Protection for Office 365 and AIP, even if the premium licenses/Plan 2 are assigned. | Fix: Keep the plan list, but immediately append: 'For Information Protection for Office 365 and AIP, a Standard/Plan 1 licence must also be assigned alongside a Premium/Plan 2 licence; for example, an AIP P2 user must also have AIP P1 assigned.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui / admin-path: Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels reaches the page for configuring labels. | Found: Sign in to the Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels | Fix: The path is correct but stops on the labels page. For classic labels extend it to 'Solutions > Information Protection > Sensitivity labels > + Create a label > Define the scope for this label > Groups & sites > Define protection settings for groups and sites > Privacy and external user access settings > Privacy and external user access'. For modern labels use '+ Create > Label' instead of '+ Create a label'. These steps are documented by the cited create-sensitivity-labels page and https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites; both are already cited. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
-- [supported, minor] controls[2].ui / admin-path: Microsoft Purview portal > Solutions > Information Protection > Publishing policies reaches the page for publishing policies. | Found: Sign in to the Microsoft Purview portal > Solutions > Information Protection > Publishing policies. On the Label policies page, select Publish label to start the Create policy configuration. | Fix: Extend the path to 'Solutions > Information Protection > Publishing policies > Publish label > Choose sensitivity labels to publish > Choose sensitivity labels to publish' to reach the selector for labels included in the policy, as documented at https://learn.microsoft.com/purview/create-sensitivity-labels. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
-- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist's instruction to choose Engage and SharePoint default labels is not represented by a matching controls-table row. | Found: Choose which label is the Engage default and which is the SharePoint site default (label settings: second row). ... Second row: Privacy and guest access ... Third row: Labels included in a publishing policy. | Fix: Remove 'and choose which label is the Engage default and which is the SharePoint site default' from the Before rollout checklist item. The existing second row governs label privacy and guest settings, not the policy's default-label selection; do not add a row.
+- [supported, minor] controls[1].ui; controls[1].note; Governance controls table / admin-path: Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels reaches the labels page for configuring privacy and guest access. | Found: Sign in to the Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels | Fix: The path stops on the correct page. Extend it for an existing label to 'Solutions > Information Protection > Sensitivity labels > label > Edit label > Define the scope for this label > Groups & sites > Define protection settings for groups and sites > Privacy and external user access settings > Privacy'. The same wizard also has the External user access control. The first part is documented at https://learn.microsoft.com/purview/create-sensitivity-labels and the wizard settings at https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites; both are already cited. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
+- [supported, minor] controls[2].ui; controls[2].note; Governance controls table / admin-path: Microsoft Purview portal > Solutions > Information Protection > Publishing policies reaches the page for publishing selected labels to users and groups. | Found: Sign in to the Microsoft Purview portal > Solutions > Information Protection > Publishing policies. On the Label policies page, select Publish label to start the Create policy configuration. | Fix: Extend controls[2].ui.path to 'Solutions > Information Protection > Publishing policies > Publish label > Choose sensitivity labels to publish'. This completes the route to choosing the labels included in the policy, as documented at https://learn.microsoft.com/purview/create-sensitivity-labels. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
 -->

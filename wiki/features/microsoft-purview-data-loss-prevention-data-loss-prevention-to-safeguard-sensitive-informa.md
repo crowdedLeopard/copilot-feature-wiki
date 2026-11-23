@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "admin-opt-in"
 action: "review"
 licensing:
-  model: "mixed"
-  notes: "The Microsoft 365 Copilot service description says Microsoft Purview controls require a Purview licence, available as part of Microsoft 365 G3/G5 or as a standalone. A rate or entitlement specific to the web-search action is not yet published."
+  model: "included"
+  notes: "The Microsoft Purview service description lists DLP to safeguard prompts as included and available to all users of Microsoft Copilot and Copilot Chat, including the Microsoft 365 G3 and Office 365 G3 plan columns. A separate price or meter for Performing Web Searches is not yet published."
 audiences: ["security","compliance","m365-admin","service-owner"]
 tags: ["purview","dlp","m365-copilot","copilot-chat","web-search","web-grounding","sensitive-information-types","gcc","gcc-high","dod"]
 sources:
@@ -60,19 +60,23 @@ changes:
     note: "New briefing: Purview DLP rule action that blocks Copilot external web search for prompts containing sensitive information types, launched for GCC, GCC High and DoD."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 52 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected licensing to included per the Purview service description, narrowed the SIT coverage statement, and removed the licence-row question and three checklist steps with no controls-table row."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 53 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 48
+  claims: 53
+  confirmed: 53
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "dba3c226e40b6d7c5644e13c867e08ca"
+  contradicted: 0
+  attempts: 0
+  hash: "a443db4ced4f7472b844910a5aa770e3"
 ---
 
 ## What's changing
@@ -95,7 +99,7 @@ Microsoft's Copilot service description says web grounding isn't enabled by defa
 
 **Data exposure**
 
-- A rule built from the steps above prevents prompt text that matches the chosen SITs from being sent to external search providers for that request. Coverage is only as wide as the SITs you choose, so a prompt containing data your SITs do not describe still reaches web search.
+- A rule built from the steps above prevents prompt text that matches the chosen SITs from being sent to external search providers for that request. Coverage is only as wide as the SITs you choose, so data outside the configured SITs is not covered by this rule.
 - Files uploaded into a prompt are not scanned: DLP checks only the text typed into the prompt. Treat file upload as a separate path to cover with other controls.
 - The Learn page lists the web-search action only with the **Content contains** > **Sensitive information types** condition. Sensitivity labels are listed with a different action, which prevents Copilot processing labelled files and emails.
 
@@ -116,9 +120,9 @@ Microsoft's Copilot service description says web grounding isn't enabled by defa
 
 ## Cost and licensing
 
-The Microsoft 365 Copilot service description states for Microsoft Purview controls: "Requires license for Microsoft Purview, available as part of Microsoft 365 G3/G5 or as a standalone." The Learn page for the Copilot DLP location has a Licensing section that links to Microsoft 365 Enterprise Plans and Microsoft 365 Service Descriptions and names no entitlement itself.
+The Microsoft 365 Copilot service description states for Microsoft Purview controls: "Requires license for Microsoft Purview, available as part of Microsoft 365 G3/G5 or as a standalone." The more specific [Microsoft Purview service description](https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description) lists DLP to safeguard prompts as included and available to all users of Microsoft Copilot and Copilot Chat. The Learn page for the Copilot DLP location has a Licensing section that links to Microsoft 365 Enterprise Plans and Microsoft 365 Service Descriptions and names no entitlement itself.
 
-A price, meter or entitlement specific to the Performing Web Searches action is not yet published. The Purview service description lists DLP to restrict Copilot from processing files and emails and DLP to safeguard prompts as separate rows, without saying where this action sits.
+A separate price or meter for the Performing Web Searches action is not yet published.
 
 The indirect cost is administrator time: building and testing the rule, choosing SITs, and answering user questions.
 
@@ -136,21 +140,18 @@ The indirect cost is administrator time: building and testing the rule, choosing
 
 ### Before rollout
 
-- Confirm whether web search is turned on for Copilot in your government-cloud tenant, because the Copilot service description says web grounding isn't enabled by default for government clouds.
 - Choose the built-in or custom sensitive information types that represent data that must never reach external web search, with your compliance team.
 - Assign the policy author a role from the list on the Learn page, such as Purview Data Security AI Admin, rather than Global Administrator.
 
 ### At rollout
 
 - Create a Custom DLP policy at the Microsoft Copilot, Copilot Chat, and Copilot Cowork location, with a rule that uses the sensitive information types condition and the Performing Web Searches action (first row of the controls table).
-- Run the policy in simulation mode first; Microsoft says simulation mode is available for Microsoft 365 Copilot.
 - Keep sensitivity-label rules in a separate rule from the SIT rule, because one rule cannot use both conditions.
 - Allow up to four hours after saving before judging whether the rule takes effect.
 
 ### After rollout
 
 - Test with a sample prompt that contains a chosen SIT and confirm Copilot answers from internal sources only.
-- Review DLP alerts, which Microsoft says are supported for this location, and tune the SIT list if matches are too wide or too narrow.
 - Tell users that uploaded files are not scanned, so file-based prompts need separate handling.
 
 ## Governance controls
@@ -171,22 +172,10 @@ Rule changes can take up to four hours to reach Copilot. The PowerShell call add
 ## Open questions
 
 - Does Microsoft document GCC, GCC High and DoD availability of the Performing Web Searches action specifically? The Learn page for the Copilot DLP location is silent on clouds; watch that page and the Microsoft Purview government service descriptions.
-- Which Purview licence row covers this action: DLP for prompts or DLP to restrict Copilot from processing files and emails? Watch the Microsoft Purview service description.
 - Is the user told when web search is skipped for a prompt? The Learn page says Copilot continues with internal sources but does not describe a user message for this action.
 
 <!-- rationale
 risk: Low. This is a new control that restricts nothing until an administrator creates and turns on a DLP rule, and Microsoft documents web grounding as not enabled by default in government clouds.
 cost: Low. The only cost the sources show is admin time to build the rule; Microsoft Purview controls for Copilot need a Purview licence, and a price or meter for this action is not yet published.
 impact: Low. Administrators configure it, and only users whose typed prompts match the chosen sensitive information types lose web search for that request.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model / licensing: The licensing model for this prompt-protection control is mixed. | Found: Purview Data Loss Prevention (DLP) to safeguard prompts | Included* | Included* | Included* | Included* | Included* . *Purview DLP for prompts is available to all users of Microsoft Copilot and Copilot Chat | Fix: Set licensing.model to included. Replace the notes with: 'The Microsoft Purview service description lists DLP to safeguard prompts as included and available to all users of Microsoft Copilot and Copilot Chat, including the Microsoft 365 G3 and Office 365 G3 plan columns. A separate price or meter for Performing Web Searches is not yet published.' | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
-- [contradicted, blocker] front matter: licensing.notes; Cost and licensing; Open questions / absence: Entitlement for the web-search prompt safeguard is unpublished because Microsoft does not say which DLP licensing row covers it. | Found: DLP for Microsoft Copilot and Copilot Chat as a location allows organizations to identify and restrict the use of sensitive content in Copilot grounding and Copilot interactions based on sensitive information types and sensitivity labels. | Fix: Replace the entitlement gap and the question asking which licence row applies with: 'The Microsoft Purview service description lists DLP to safeguard prompts as included and available to all users of Microsoft Copilot and Copilot Chat.' Keep only the narrower unpublished separate price and meter statements. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
-- [contradicted, blocker] Risk assessment: Data exposure / behaviour: A prompt containing data not described by the chosen SITs still reaches web search. | Found: If the IT admin disables web search, the Web content toggle isn't available to the user and web search is disabled. If a user turns off the Web content toggle, web content isn't included in Copilot responses. | Fix: Replace 'so a prompt containing data your SITs do not describe still reaches web search' with 'so data outside the configured SITs is not covered by this rule'. | Source: https://learn.microsoft.com/copilot/plan/manage-public-web-access#controls-available-to-manage-web-search
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.notes; Cost and licensing; Scope; rationale: cost / licensing: The Copilot service description says Purview controls require a Purview licence, available in Microsoft 365 G3/G5 or standalone. | Found: Requires license for Microsoft Purview, available as part of Microsoft 365 G3/G5 or as a standalone. | Fix: After quoting this general requirement, add: 'The more specific Microsoft Purview service description lists DLP to safeguard prompts as included and available to all users of Microsoft Copilot and Copilot Chat.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description . | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot
-- [contradicted, minor] Governance guidance; Governance controls / consistency: The checklist asks administrators to check web-search availability, use simulation mode and review DLP alerts, but the table contains only the DLP web-search rule action. | Found: Confirm whether web search is turned on ... Run the policy in simulation mode first ... Review DLP alerts ... One control governs this feature: the DLP rule action. | Fix: The checklist's web-search availability check, simulation-mode instruction and DLP-alert review have no corresponding controls-table rows. To retain the existing table without adding rows, remove those three checklist bullets.
 -->

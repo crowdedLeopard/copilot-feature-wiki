@@ -12,7 +12,7 @@ platforms: ["Web"]
 targetDate: "March CY2026"
 previewDate: "December CY2025"
 risk: "low"
-cost: "medium"
+cost: "low"
 impact: "low"
 defaultState: "admin-opt-in"
 action: "review"
@@ -49,6 +49,9 @@ sources:
   - title: "Audit records of changes to Cloud Policy configurations (Microsoft Purview portal)"
     url: "https://learn.microsoft.com/purview/audit-search"
     kind: "learn"
+  - title: "Send email notifications and show policy tips for DLP policies"
+    url: "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips"
+    kind: "learn"
 videos: []
 related: ["microsoft-purview-compliance-portal-dlp-policy-tip-support-in-outlook-mobile","outlook-purview-dlp-wait-on-send-support-for-outlook-mobile-apps","outlook-purview-data-loss-prevention-support-for-calendar-events-in-outlook-mobile-apps","cloud-policy","auditing"]
 controls:
@@ -70,7 +73,7 @@ controls:
       kind: "powershell"
       call: "Set-DlpComplianceRule -Identity <rule name> -NotifyPolicyTipDisplayOption Dialog"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule"
-    note: "Path ends at the policy list; the rule's policy tip option is set inside the policy. The cmdlet runs in Security & Compliance PowerShell; the Dialog value is documented as exchange only."
+    note: "Path stops at the policy list; the rule option is Policy tips > Show the policy tip as a dialog for the end user before send (available for Exchange workload only), with User notifications set to On."
   - governs: "Audit records of changes to Cloud Policy configurations"
     scope: "tenant"
     ui:
@@ -91,19 +94,23 @@ changes:
     note: "New briefing for the Worldwide roadmap item: policy tip UI is off by default and enabled per user or group in the Microsoft 365 Apps admin center."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 56 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after the independent check: the override-justification wording now applies to the default oversharing dialog, an unsupported claim about senders' first encounter was removed, cost is rated low, and the DLP rule note names the documented option."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 53
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "b64125ff6d8e123be2483fe8d4c8bf4f"
+  claims: 67
+  confirmed: 66
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "ed2209cf433157cf57944fe3f04e79d1"
 ---
 
 ## What's changing
@@ -118,14 +125,14 @@ The roadmap record for item 491016 has status Launched, release phase General Av
 
 ## Why it matters
 
-This is a control to adopt, not a change that lands on users by itself: Learn documents the tip UI as off by default, so existing mobile users see nothing new until an administrator enables the setting. Plan the enablement, because a tip that appears on a phone is the first time many senders meet a DLP rule that has so far only acted on desktop or web mail.
+This is a control to adopt, not a change that lands on users by itself: Learn documents the tip UI as off by default, so existing mobile users see nothing new until an administrator enables the setting. Plan the enablement and user communication before showing policy tips on mobile.
 
 The practical value is consistency: a rule that warns or asks for an override in Outlook on other clients can be seen on Android and iOS once the setting is on for that user. The gaps to plan around are the documented lack of Wait-to-Send on mobile and the difference between the mobile page and the support matrix on which conditions show tips.
 
 ## Risk assessment
 
 **Data exposure**
-- The mobile page describes a sender-facing display: a policy tip and, on Android and iOS, an oversharing dialog with warning, override or block actions. Where a rule allows an override, the dialog uses 'a noncustomizable set of justification options', so check which override reasons your users will see before enabling it.
+- The mobile page describes a sender-facing display: a policy tip and, on Android and iOS, an oversharing dialog with warning, override or block actions. For the default oversharing dialog, when applicable, Learn describes a noncustomizable set of justification options to override the policy; check which override reasons your users will see before enabling it.
 - Tips depend on existing DLP rules; they do not replace enforcement. The rule's actions are set in the DLP policy (see the DLP rule row in the controls table).
 
 **Security & identity**
@@ -180,7 +187,7 @@ Clouds and platforms: the roadmap record lists Worldwide (Standard Multi-Tenant)
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether DLP policy tips appear in Outlook for Android, iOS and macOS, and for which users or groups</strong><br><small>Group</small><br><small class="controls__note">Default is Disabled. Roles per Learn: Office Apps Administrator, Security Administrator or Global Administrator. Steps to the policy are on the Cloud Policy overview page.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Configure Settings › Enable Purview Data Loss Prevention (DLP) policy tips in Outlook <a href="https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether a DLP rule's policy tip also shows as a popup dialog</strong><br><small>Tenant</small><br><small class="controls__note">Path ends at the policy list; the rule's policy tip option is set inside the policy. The cmdlet runs in Security &amp; Compliance PowerShell; the Dialog value is documented as exchange only.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies <a href="https://learn.microsoft.com/purview/dlp-osp-get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-DlpComplianceRule -Identity &lt;rule name&gt; -NotifyPolicyTipDisplayOption Dialog</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether a DLP rule's policy tip also shows as a popup dialog</strong><br><small>Tenant</small><br><small class="controls__note">Path stops at the policy list; the rule option is Policy tips &gt; Show the policy tip as a dialog for the end user before send (available for Exchange workload only), with User notifications set to On.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies <a href="https://learn.microsoft.com/purview/dlp-osp-get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-DlpComplianceRule -Identity &lt;rule name&gt; -NotifyPolicyTipDisplayOption Dialog</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Audit records of changes to Cloud Policy configurations</strong><br><small>Tenant</small><br><small class="controls__note">Learn says Cloud Policy supports Purview auditing, tracked when auditing is enabled. Needs the Audit Logs or View-Only Audit Logs role.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog</code> <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -198,17 +205,14 @@ The DLP rule controls what a tip says and what a user can do; the Cloud Policy s
 
 <!-- rationale
 risk: Low. Microsoft Learn says the policy tip UI is turned off by default in Outlook for Android, iOS and macOS, so nothing is shown until an administrator enables the policy setting for chosen users or groups.
-cost: Medium. Microsoft's Purview service description lists per-user licences (Microsoft 365 E5/A5/G5, Microsoft Purview Suite, Information Protection & Governance) for advanced policy tips in Outlook for Microsoft 365; the mobile page names none.
+cost: Low. The known cost is administrator time to pilot and communicate the change; the mobile page does not name the required licences, and it does not state whether the advanced Outlook for Microsoft 365 licence list applies unchanged to mobile.
 impact: Low. Learn documents the tip UI as off by default, so only users an administrator targets would notice it.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure / behaviour: Where a rule allows an override, the dialog uses a noncustomizable set of justification options. | Found: Customized oversharing dialog You can choose to tailor your oversharing dialog with a customized title, body, and dynamic variables like %%MatchedRecipientsList%%, and justification options. | Fix: Replace the sentence with: "For the default oversharing dialog, when applicable, Learn describes a noncustomizable set of justification options to override the policy; check which override reasons your users will see before enabling it." The default-dialog qualification is stated at https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref. | Source: https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref
-- [unsupported, major] Why it matters / behaviour: A mobile tip will be the first encounter many senders have with a rule that has so far acted only on desktop or web mail. | Found: Searched: '"DLP policy" "first time" "mobile" policy tips composing sender'; opened the mobile policy-tip reference, policy-tip support matrix and oversharing setup page. None establishes senders' prior encounters or rules having acted only on desktop/web mail. | Fix: Replace the sentence with: "Plan the enablement and user communication before showing policy tips on mobile."
-- [contradicted, blocker] front matter: cost; rationale: cost; Cost and licensing / consistency: Medium is the supported cost rating for this mobile feature because advanced Outlook for Microsoft 365 tips require E5-tier licenses. | Found: cost: "medium" ... Whether the Outlook for Microsoft 365 list applies unchanged to mobile is not stated on that page. ... The indirect cost is administrator time to pilot and user communication. | Fix: Set cost to "low". Replace the cost rationale with: "Low. The known cost is administrator time to pilot and communicate the change; the mobile page does not name the required licences, and it does not state whether the advanced Outlook for Microsoft 365 licence list applies unchanged to mobile." Keep the qualified desktop license list in Cost and licensing. The schema requires low when licensing is unresolved and the known cost is administrator time.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui / admin-path: Microsoft Purview portal > Data loss prevention > Policies is the documented starting page for configuring a DLP rule's popup dialog. | Found: Sign in to the Microsoft Purview portal > Data loss prevention > Policies ... Select Policy tips > Show the policy tip as a dialog for the end user before send (available for Exchange workload only). | Fix: Retain the accurate policy-list path, but replace its note's first sentence with: "Path stops at the policy list; the documented rule option is Policy tips > Show the policy tip as a dialog for the end user before send (available for Exchange workload only), with User notifications set to On." See https://learn.microsoft.com/purview/dlp-osp-get-started. | Source: https://learn.microsoft.com/purview/dlp-osp-get-started
-- [supported, minor] Governance controls / behaviour: The DLP rule determines policy-tip text and permitted user actions. | Found: For each rule in a DLP policy, you can configure policy tips to: ... You can use the default text (see the tables below) or enter custom text about your organization's specific policies. ... Allow the person to override the DLP policy. | Fix: Add https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips to sources for the description of DLP-rule notifications and policy-tip content. The UI on/off setting is already supported by the cited mobile reference. | Source: https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips
+- [supported, minor] controls[0].ui; Governance controls table; What's changing / admin-path: The setting is reached in Microsoft 365 Apps admin center through Customization > Policy Management > policy configuration > Configure Settings > Enable Purview Data Loss Prevention (DLP) policy tips in Outlook. | Found: Under Customization, select Policy Management. ... Open the configuration details of the policy configuration you want to change by selecting it. ... On the Configure Settings page, select the policies that you want to include in the policy configuration. | Fix: Insert the omitted page heading: 'Customization > Policy Management > Policy configurations > policy configuration > Configure Settings > Enable Purview Data Loss Prevention (DLP) policy tips in Outlook'. The Cloud Policy overview supplies the route and is already cited; https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref supplies the exact setting name and remains a valid docs link. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
+- [supported, minor] controls[1].ui; Governance controls table; Governance controls / admin-path: Microsoft Purview portal > Data loss prevention > Policies is the documented start of the route to the rule's oversharing dialog option. | Found: Sign in to the Microsoft Purview portal > Data loss prevention > Policies ... Set the User notifications toggle to On. Select Policy tips > Show the policy tip as a dialog for the end user before send (available for Exchange workload only). | Fix: Replace the early-stopping creation route with 'Data loss prevention > Policies > + Create policy > Categories > Custom > Regulations > Custom > Admin units > Full directory > Exchange email > Define policy settings > Create or customize advanced DLP rules > Create rule > User notifications > On > Policy tips > Show the policy tip as a dialog for the end user before send (available for Exchange workload only)', as documented at https://learn.microsoft.com/purview/dlp-osp-get-started. Retain the existing note that this example is for Outlook for Microsoft 365. | Source: https://learn.microsoft.com/purview/dlp-osp-get-started
+- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist asks administrators to review DLP override and notification choices without a row governing those choices. | Found: Checklist: 'keep the DLP rule's override and notification choices under review.' The DLP row governs only 'Whether a DLP rule's policy tip also shows as a popup dialog'. | Fix: Remove ', and keep the DLP rule's override and notification choices under review' from the After rollout bullet. Retain 'Widen the targeted groups once pilot feedback is in.' The correction does not require another control row.
 -->

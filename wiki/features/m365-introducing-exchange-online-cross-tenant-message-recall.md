@@ -62,19 +62,23 @@ changes:
     note: "First briefing for this item: cross-tenant recall is off by default and controlled by the receiving tenant's allow list, set with Set-CrossTenantRecallConfiguration."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 50 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Correction: removed the claim that existing recall settings' interaction is undocumented, and the message trace checklist step that had no controls row."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 51 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 48
+  claims: 51
+  confirmed: 51
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "0c50e6bbddde5fb6ce166af70cb5f754"
+  contradicted: 0
+  attempts: 0
+  hash: "2c0f2548ceba3374a3ad362471e3bd82"
 ---
 
 ## What's changing
@@ -141,7 +145,6 @@ Microsoft documents the feature as disabled by default, so if nobody acts, the d
 
 ### After rollout
 - Review the allow list on a set schedule and remove tenant IDs for partners you no longer work with (control row 2).
-- Use message trace to investigate a disputed recall, because Learn says recall reports are built from message trace data and that recalls don't show in mailbox audit logs.
 - Check Message center and the Learn recall page for changes to cross-tenant recall.
 
 ## Governance controls
@@ -160,7 +163,7 @@ Both controls are parameters of `Set-CrossTenantRecallConfiguration` and sit wit
 
 The two controls work together: Learn gives the enable switch as off by default, and the blog says no cross-tenant recall occurs until an admin adds at least one tenant to the allow list. The allow list holds tenant IDs, and entries are added or removed in the same parameter.
 
-The existing recall settings for your own tenant (enable or disable, recall of read messages, recipient notifications, maximum recallable message age) are described on the same Learn page. They are separate settings from these two; how they interact with cross-tenant recall is not described there.
+The existing recall settings for your own tenant (enable or disable, recall of read messages, recipient notifications, maximum recallable message age) are described on the same Learn page.
 
 ## Open questions
 
@@ -175,10 +178,8 @@ cost: Low. The recall page and the Exchange Online service description publish n
 impact: Low. Admins who opt in and the users of allow-listed partner tenants notice it; users in tenants that do nothing see no change on the documented default.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: final paragraph / absence: How existing recall settings interact with cross-tenant recall is not described. | Found: the recall is honored and processed like a standard recall against the Contoso recipient’s mailbox. Admins can control several settings: Enable or disable the new cloud recall feature. Whether to recall messages that were already read. Optional recall notifications for recipients: | Fix: Remove 'They are separate settings from these two; how they interact with cross-tenant recall is not described there.' The general cloud recall controls are documented on this Learn page, and the already-cited blog explicitly states that enabled receiving-tenant recipient notifications apply to cross-tenant recalls. Keep the narrower open question about whose maximum recallable message age controls an inbound recall. | Source: https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout / consistency: The message trace investigation step names a governance control without a corresponding controls-table row. | Found: Use message trace to investigate a disputed recall ... The controls table contains only cross-tenant recall enablement and the allowed sender tenant list. | Fix: The 'Use message trace to investigate a disputed recall' checklist step has no corresponding controls-table row. Remove that checklist bullet; the supported message trace advice already remains in Risk assessment.
+- [supported, minor] What's changing: final paragraph / date: The blog says deployment started in mid-August and was due to complete by mid-September. | Found: Cross-Tenant Message Recall will start to deploy to worldwide, GCC, GCC High, DoD and Microsoft 365 operated by 21Vianet starting mid-August, completing by mid-September. | Fix: Replace the sentence with: "The blog post targeted deployment to start in mid-August and complete by mid-September 2026." | Source: https://techcommunity.microsoft.com/blog/exchange/cross-tenant-message-recall-in-exchange-online/4535800
 -->

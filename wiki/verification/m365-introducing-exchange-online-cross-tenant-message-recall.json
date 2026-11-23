@@ -2,36 +2,41 @@
   "slug": "m365-introducing-exchange-online-cross-tenant-message-recall",
   "roadmapId": 561330,
   "title": "Exchange Online: cross-tenant message recall, controlled by an allow list",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-23",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-23",
-    "reasons": [
-      "1 blocking finding (claim 41)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 50,
-    "confirmed": 48,
+    "claims": 51,
+    "confirmed": 51,
     "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
     "minor": 1
   },
-  "summary": "The roadmap details, default and two PowerShell controls are supported. However, the page overstates the uncertainty about existing recall controls: Learn describes cross-tenant recalls as standard recalls and documents controls for that service, while the cited blog explicitly confirms recipient notifications apply.",
+  "summary": "The briefing's receiving-tenant controls, disabled default and licensing context are supported by Microsoft's documentation. The blog's deployment window should be described as its published plan rather than confirmation that deployment started.",
   "claims": [
     {
       "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "Exchange Online supports cross-tenant message recall controlled by an allow list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
+      "quote": "With Cross-Tenant Message Recall, a tenant admin can add other Microsoft 365 tenants to an allow list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap item is Launched.",
@@ -42,7 +47,7 @@
       "fix": null
     },
     {
-      "n": 2,
+      "n": 3,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is August CY2026.",
@@ -53,10 +58,10 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 4,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The record specifies no preview date.",
+      "claim": "The roadmap supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -64,7 +69,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The release phase is General Availability.",
@@ -75,7 +80,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "front matter: clouds; Scope; Open questions",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
@@ -86,7 +91,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
       "where": "front matter: platforms; Scope",
       "type": "record",
       "claim": "The roadmap lists Android, Desktop, iOS, Mac and Web.",
@@ -97,10 +102,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 8,
       "where": "front matter: products",
       "type": "record",
-      "claim": "The roadmap product is Microsoft 365.",
+      "claim": "The roadmap associates this change with Microsoft 365.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"products\": [\"Microsoft 365\"]",
@@ -108,10 +113,10 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 9,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap was modified on 2026-09-14T23:03:47.",
+      "claim": "The roadmap modification timestamp is 2026-09-14T23:03:47.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-09-14T23:03:47\"",
@@ -119,10 +124,21 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "What's changing: opening paragraph",
+      "n": 10,
+      "where": "What's changing: first paragraph",
+      "type": "behaviour",
+      "claim": "Before this enhancement, message recall worked only within one tenant.",
+      "status": "supported",
+      "source": "https://techcommunity.microsoft.com/blog/exchange/cross-tenant-message-recall-in-exchange-online/4535800",
+      "quote": "Until now, all these capabilities shared one boundary: Message Recall only worked within a single tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing: roadmap quotation",
       "type": "record",
-      "claim": "The roadmap describes extending recall beyond the previous within-organisation boundary to organisations that allow-list the sender's tenant.",
+      "claim": "The roadmap describes recall to other organisations that add the sender's tenant to their recall allow list.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Today, you can recall messages only within your organization. Cross-tenant recall will let you recall messages sent to other organizations that add your tenant to their recall allow list.",
@@ -130,32 +146,43 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "title; summary; What's changing; Why it matters; Risk assessment; rationales",
-      "type": "behaviour",
-      "claim": "Senders in an allow-listed Microsoft 365 tenant can recall messages they sent to recipients in the receiving tenant.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
-      "quote": "Once a tenant is on the list, senders from those allow-listed tenants can recall messages they’ve sent to recipients in the receiving tenant",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What's changing; Scope; Governance controls; rationales",
-      "type": "role",
-      "claim": "The receiving tenant's administrator controls the allow list.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
-      "quote": "Control sits with the receiving tenant – the organization whose users received the messages. A cross-tenant recall is only honoured when the receiving tenant’s admin has explicitly allow-listed the sender’s tenant.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 12,
+      "where": "summary; What's changing; Scope; Governance controls",
+      "type": "role",
+      "claim": "The receiving tenant's administrator controls cross-tenant recall.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
+      "quote": "Control sits with the receiving tenant – the organization whose users received the messages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing; Risk assessment; rationale: risk",
+      "type": "applicability",
+      "claim": "A cross-tenant recall is honoured only when the receiving administrator has explicitly allow-listed the sender's tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
+      "quote": "A cross-tenant recall is only honoured when the receiving tenant’s admin has explicitly allow-listed the sender’s tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Senders in allow-listed tenants can recall messages they sent to recipients in the receiving tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
+      "quote": "Once a tenant is on the list, senders from those allow-listed tenants can recall messages they’ve sent to recipients in the receiving tenant – just as they would for an intra-tenant recall.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
       "where": "What's changing: second paragraph",
       "type": "behaviour",
-      "claim": "A recall fails when the sender's tenant is not allow-listed.",
+      "claim": "If the sender's tenant is not allow-listed, the recall fails.",
       "status": "supported",
       "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
       "quote": "If Fabrikam isn't on Contoso’s allow list, the recall fails.",
@@ -163,10 +190,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 16,
       "where": "What's changing: second paragraph",
       "type": "behaviour",
-      "claim": "The sender's recall status report explains that the message cannot be recalled across organisations.",
+      "claim": "The sender's recall status report says the message cannot be recalled across organisations when the sender's tenant is not allow-listed.",
       "status": "supported",
       "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
       "quote": "The Fabrikam sender sees in the recall status report that the message can’t be recalled across organizations.",
@@ -174,43 +201,21 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing: second paragraph; Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "A sender initiates a cross-tenant recall as for an intra-tenant recall, and it is processed like a standard recall.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
-      "quote": "A sender at Fabrikam recalls a message they previously sent to a recipient at Contoso. Because Contoso allow-listed Fabrikam, the recall is honored and processed like a standard recall against the Contoso recipient’s mailbox.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters; controls[0].note; rationales",
-      "type": "default",
-      "claim": "Cross-tenant recall is admin-opt-in: disabled by default until the receiving administrator enables it and adds a trusted tenant.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
-      "quote": "First, enable or disable cross-tenant message recall for the receiving tenant. Set this parameter to `$True` to turn on the capability. Set it to `$False` (default) to turn it off:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing; Governance controls",
-      "type": "default",
-      "claim": "The Exchange blog also says no cross-tenant recall occurs until an administrator adds at least one tenant to the allow list.",
-      "status": "supported",
-      "source": "https://techcommunity.microsoft.com/blog/exchange/cross-tenant-message-recall-in-exchange-online/4535800",
-      "quote": "The feature is disabled by default; no cross-tenant recall occurs until an admin adds at least one tenant to the allow list.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 17,
+      "where": "What's changing: second paragraph",
+      "type": "behaviour",
+      "claim": "An authorised cross-tenant recall is processed like a standard recall against the receiving mailbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
+      "quote": "Because Contoso allow-listed Fabrikam, the recall is honored and processed like a standard recall against the Contoso recipient’s mailbox.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
       "where": "What's changing; Scope; Governance controls",
       "type": "behaviour",
-      "claim": "The cross-tenant settings are configured through Exchange Online PowerShell.",
+      "claim": "The cross-tenant settings are configured using Exchange Online PowerShell.",
       "status": "supported",
       "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
       "quote": "Admins can configure these settings by using Exchange Online PowerShell.",
@@ -218,142 +223,54 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "controls[0].api; rendered Governance controls row 1",
-      "type": "command",
-      "claim": "Set-CrossTenantRecallConfiguration -CrossTenantRecallEnabled $true enables cross-tenant recall for the receiving tenant.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
-      "quote": "Set this parameter to `$True` to turn on the capability.\nSet-CrossTenantRecallConfiguration -CrossTenantRecallEnabled <$true | $false>",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 19,
-      "where": "controls[1].api; rendered Governance controls row 2",
-      "type": "command",
-      "claim": "Set-CrossTenantRecallConfiguration -AllowedSenderTenantIds @{Add=\"<tenantId 1>\",\"<tenantId 2>\"} adds the specified sender tenant IDs to the allow list.",
+      "where": "front matter: defaultState; summary; controls[0].note; What's changing; Why it matters; rationales",
+      "type": "default",
+      "claim": "Cross-tenant recall is disabled by default and requires receiving-administrator opt-in.",
       "status": "supported",
       "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
-      "quote": "Add the tenant IDs of the organizations you trust to perform recalls:\nSet-CrossTenantRecallConfiguration -AllowedSenderTenantIds @{Add=\"<tenantId 1>\",\"<tenantId 2>\"}; {Remove=\"<tenantId 1>\",\"<tenantId 2>\"}",
+      "quote": "First, enable or disable cross-tenant message recall for the receiving tenant. Set this parameter to `$True` to turn on the capability. Set it to `$False` (default) to turn it off:",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "controls[0].ui; Governance controls",
-      "type": "absence",
-      "claim": "No admin UI control for enabling cross-tenant recall is documented.",
+      "where": "What's changing; Governance controls",
+      "type": "default",
+      "claim": "The Exchange blog says no cross-tenant recall occurs until an administrator adds at least one tenant to the allow list.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Exchange Online cross-tenant message recall Set-CrossTenantRecallConfiguration licensing admin center settings; \"CrossTenantRecallEnabled\" \"AllowedSenderTenantIds\" \"admin center\". Read Learn recall page and Exchange blog; both document PowerShell, not a cross-tenant UI route.",
+      "source": "https://techcommunity.microsoft.com/blog/exchange/cross-tenant-message-recall-in-exchange-online/4535800",
+      "quote": "The feature is disabled by default; no cross-tenant recall occurs until an admin adds at least one tenant to the allow list.",
       "severity": null,
       "fix": null
     },
     {
       "n": 21,
-      "where": "controls[1].ui; Governance controls",
-      "type": "absence",
-      "claim": "No admin UI control for the cross-tenant recall allow list is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"CrossTenantRecallEnabled\" \"AllowedSenderTenantIds\" \"admin center\". Read Learn Work with cloud-based message recall and the Exchange cross-tenant recall blog; neither gives an admin UI route for this allow list.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "controls[0].note; Scope; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "The Learn recall page does not state the specific admin role required for Set-CrossTenantRecallConfiguration.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Set-CrossTenantRecallConfiguration\" \"role\" permissions. Read the complete Learn recall page and Exchange Online permissions search excerpt. The recall page names tenant admins but no specific RBAC role for this cmdlet.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "controls[1].note; Risk assessment: Security & identity; Governance controls",
-      "type": "behaviour",
-      "claim": "Allow-list entries are tenant IDs.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
-      "quote": "Add the tenant IDs of the organizations you trust to perform recalls:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "controls[1].note; Governance controls; Governance guidance: After rollout",
-      "type": "command",
-      "claim": "AllowedSenderTenantIds supports removing tenant IDs as well as adding them.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
-      "quote": "Specify external tenants to add or remove from the allowed list.\nSet-CrossTenantRecallConfiguration -AllowedSenderTenantIds @{Add=\"<tenantId 1>\",\"<tenantId 2>\"}; {Remove=\"<tenantId 1>\",\"<tenantId 2>\"}",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "controls[1].note; Scope; Governance guidance: Before rollout",
-      "type": "command",
-      "claim": "The sending tenant's administrator can retrieve its tenant ID with Get-ConnectionInformation | fl TenantID.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
-      "quote": "The administrator of the sending tenant can retrieve the tenant ID by running the following command:\nGet-ConnectionInformation | fl TenantID",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "Risk assessment: Security & identity",
-      "type": "applicability",
-      "claim": "Allow-listing governs inbound recalls, and each organisation independently chooses which external tenants to trust.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
-      "quote": "Allow-listing governs inbound recalls into the receiving tenant. Each organization decides independently which external tenants it trusts to recall messages from its mailboxes.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
       "where": "What's changing: third paragraph",
       "type": "date",
       "claim": "The Exchange blog was published in July 2026 and updated in September 2026.",
       "status": "supported",
       "source": "https://techcommunity.microsoft.com/blog/exchange/cross-tenant-message-recall-in-exchange-online/4535800",
-      "quote": "Jul 10, 2026\nUpdated Sep 15, 2026",
+      "quote": "Jul 10, 2026 ... Updated Sep 15, 2026",
       "severity": null,
       "fix": null
     },
     {
-      "n": 28,
+      "n": 22,
       "where": "What's changing: final paragraph",
       "type": "date",
-      "claim": "The blog gives a deployment window from mid-August to mid-September 2026.",
+      "claim": "The blog says deployment started in mid-August and was due to complete by mid-September.",
       "status": "supported",
       "source": "https://techcommunity.microsoft.com/blog/exchange/cross-tenant-message-recall-in-exchange-online/4535800",
       "quote": "Cross-Tenant Message Recall will start to deploy to worldwide, GCC, GCC High, DoD and Microsoft 365 operated by 21Vianet starting mid-August, completing by mid-September.",
-      "severity": null,
-      "fix": null
+      "severity": "minor",
+      "fix": "Replace the sentence with: \"The blog post targeted deployment to start in mid-August and complete by mid-September 2026.\""
     },
     {
-      "n": 29,
-      "where": "Scope: Clouds and platforms",
-      "type": "availability",
-      "claim": "The blog includes Microsoft 365 operated by 21Vianet in its deployment list.",
-      "status": "supported",
-      "source": "https://techcommunity.microsoft.com/blog/exchange/cross-tenant-message-recall-in-exchange-online/4535800",
-      "quote": "Cross-Tenant Message Recall will start to deploy to worldwide, GCC, GCC High, DoD and Microsoft 365 operated by 21Vianet",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
+      "n": 23,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "applicability",
-      "claim": "If enabled in the receiving tenant, recipient recall notifications apply to cross-tenant recalls.",
+      "claim": "Receiving-tenant recipient recall notifications apply to cross-tenant recalls when enabled.",
       "status": "supported",
       "source": "https://techcommunity.microsoft.com/blog/exchange/cross-tenant-message-recall-in-exchange-online/4535800",
       "quote": "If the receiving tenant has enabled recipient recall notifications, those notifications apply to cross-tenant recalls as well.",
@@ -361,19 +278,8 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "Risk assessment: Autonomy & actions; Governance controls",
-      "type": "behaviour",
-      "claim": "Recipient recall notifications are optional.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
-      "quote": "Optional recall notifications for recipients:\nFor all recalled messages\nFor read recalled messages only",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Why it matters; Risk assessment: Data exposure; Governance guidance; rationale: risk",
+      "n": 24,
+      "where": "Why it matters; Risk assessment: Data exposure; Governance guidance",
       "type": "behaviour",
       "claim": "The recall agent attempts to hard-delete the original message from recipient mailboxes.",
       "status": "supported",
@@ -383,8 +289,8 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "n": 25,
+      "where": "Risk assessment: Data exposure; Governance guidance",
       "type": "behaviour",
       "claim": "Recalled messages in mailboxes with Litigation Hold or In-Place Hold show up in eDiscovery.",
       "status": "supported",
@@ -394,10 +300,54 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 26,
+      "where": "controls[1].note; Risk assessment: Security & identity; Governance controls",
+      "type": "behaviour",
+      "claim": "The allow list contains tenant IDs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
+      "quote": "Specify external tenants to add or remove from the allowed list. Add the tenant IDs of the organizations you trust to perform recalls:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Allow-listing governs inbound recalls into the receiving tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
+      "quote": "Allow-listing governs inbound recalls into the receiving tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Each organisation independently decides which external tenants it trusts to recall its mail.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
+      "quote": "Each organization decides independently which external tenants it trusts to recall messages from its mailboxes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "The system continues attempting a recall for up to 24 hours.",
+      "claim": "A sender in the external tenant initiates each recall.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
+      "quote": "A sender at Fabrikam recalls a message they previously sent to a recipient at Contoso.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The recall system continues attempting recall for up to 24 hours.",
       "status": "supported",
       "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
       "quote": "The system continues to recall for up to 24 hours.",
@@ -405,21 +355,32 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Risk assessment: Change & support; Governance guidance: After rollout; Open questions",
+      "n": 31,
+      "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Recalls do not appear in mailbox audit logs at the time described by Learn.",
+      "claim": "Recipient recall notifications are optional.",
       "status": "supported",
       "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
-      "quote": "Do recalls show up in the mailbox audit logs?\nNo, not at this time.",
+      "quote": "Optional recall notifications for recipients:",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Governance guidance: After rollout; Risk assessment: Change & support",
+      "n": 32,
+      "where": "Risk assessment: Change & support; Open questions",
       "type": "behaviour",
-      "claim": "Recall reports use message trace data, and message trace can verify recall status.",
+      "claim": "Recalls do not appear in mailbox audit logs at the time described by Learn.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
+      "quote": "Do recalls show up in the mailbox audit logs? No, not at this time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Message trace and the sender's recall report can be used to verify recall status.",
       "status": "supported",
       "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
       "quote": "Recall reports build their information based on message trace data. If you don't receive the recall report or if it doesn't update properly, use message trace to verify the recall status.",
@@ -427,43 +388,32 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 34,
       "where": "Risk assessment: Change & support; Scope: Limits",
       "type": "availability",
-      "claim": "Recall works between Exchange Online tenants, not outside the Exchange Online boundary or from cloud mailboxes to on-premises Exchange mailboxes.",
+      "claim": "Cloud mailboxes cannot recall messages sent to on-premises Exchange mailboxes in hybrid setups.",
       "status": "supported",
       "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
-      "quote": "You can't recall messages over the internet, or across organizations outside Exchange Online boundary. For hybrid customers, you also can't recall messages sent to the on-premises Exchange environment from cloud mailboxes.",
+      "quote": "For hybrid customers, you also can't recall messages sent to the on-premises Exchange environment from cloud mailboxes.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Scope: Limits",
+      "n": 35,
+      "where": "Risk assessment: Change & support; Scope: Limits",
       "type": "availability",
-      "claim": "Recall does not work in Outlook for Windows in Online mode or with multiple Exchange accounts configured in the profile.",
+      "claim": "Cross-tenant recall operates between two tenants in Exchange Online, not over the internet or outside the Exchange Online boundary.",
       "status": "supported",
       "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
-      "quote": "Message Recall doesn't work in Outlook for Windows under the following conditions:\nOutlook is in Online mode.\nMultiple Exchange accounts are configured in the Outlook profile.",
+      "quote": "The new message recall feature works within the confines of an organization or Cross-Tenant (between two tenants in Exchange Online ...). You can't recall messages over the internet, or across organizations outside Exchange Online boundary.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
-      "where": "Scope: Clouds and platforms",
-      "type": "availability",
-      "claim": "Recall can be initiated in Classic Outlook, New Outlook, Outlook on the web, Outlook for Mac and Outlook for Android/iOS.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
-      "quote": "You can trigger Message Recall in the Classic Outlook, New Outlook, Outlook on the web, Outlook for Mac, and Outlook for Android/iOS.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
+      "n": 36,
       "where": "front matter: licensing.model and notes; Cost and licensing",
       "type": "licensing",
-      "claim": "The included licensing model rests on Exchange Online's existing subscription requirement for each accessing user.",
+      "claim": "Cross-tenant recall is a capability inside licensed Exchange Online; each user accessing the service must be assigned a subscription plan.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-service-description",
       "quote": "Each user who accesses the Exchange Online service must be assigned to a subscription plan, and each user subscription has its own mailbox.",
@@ -471,52 +421,19 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "Governance controls: final paragraph",
-      "type": "absence",
-      "claim": "How existing recall settings interact with cross-tenant recall is not described.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
-      "quote": "the recall is honored and processed like a standard recall against the Contoso recipient’s mailbox.\nAdmins can control several settings:\nEnable or disable the new cloud recall feature.\nWhether to recall messages that were already read.\nOptional recall notifications for recipients:",
-      "severity": "blocker",
-      "fix": "Remove 'They are separate settings from these two; how they interact with cross-tenant recall is not described there.' The general cloud recall controls are documented on this Learn page, and the already-cited blog explicitly states that enabled receiving-tenant recipient notifications apply to cross-tenant recalls. Keep the narrower open question about whose maximum recallable message age controls an inbound recall."
-    },
-    {
-      "n": 42,
-      "where": "Governance guidance: After rollout",
-      "type": "consistency",
-      "claim": "The message trace investigation step names a governance control without a corresponding controls-table row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Use message trace to investigate a disputed recall ...\nThe controls table contains only cross-tenant recall enablement and the allowed sender tenant list.",
-      "severity": "minor",
-      "fix": "The 'Use message trace to investigate a disputed recall' checklist step has no corresponding controls-table row. Remove that checklist bullet; the supported message trace advice already remains in Risk assessment."
-    },
-    {
-      "n": 43,
+      "n": 37,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "No licence or price specific to cross-tenant recall is published in the cited documentation.",
+      "claim": "Microsoft publishes no separate licence, price or meter specific to cross-tenant recall.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"cross-tenant\" \"recall\" \"licensing\" \"price\" \"meter\"; Exchange Online cross-tenant message recall Set-CrossTenantRecallConfiguration licensing admin center settings. Read the complete recall page, Exchange Online service description and Exchange blog; no cross-tenant-specific licence or price.",
+      "quote": "Searched: cross tenant message recall licensing price meter subscription Exchange Online. Read the recall Learn page, Exchange Online service description and Exchange cross-tenant recall blog; none names a separate cross-tenant recall licence, price or meter.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
-      "where": "front matter: licensing.notes; Cost and licensing: Meter; rationale: cost",
-      "type": "absence",
-      "claim": "No meter specific to cross-tenant recall is documented at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"cross-tenant\" \"recall\" \"licensing\" \"price\" \"meter\". Read the complete Learn recall page, Exchange Online service description and Exchange cross-tenant recall blog. No recall usage meter or billing unit was documented.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "front matter: licensing.notes; Cost and licensing: Licence",
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "The recall page names the Premium Encryption in Office 365 service plan for recalling encrypted messages.",
       "status": "supported",
@@ -526,46 +443,123 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 39,
       "where": "Cost and licensing: Indirect cost",
       "type": "record",
-      "claim": "The roadmap record lists no charge or add-on.",
+      "claim": "The roadmap record lists no charge and no add-on.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "We're enhancing the Exchange Online Message Recall feature to add support for cross-tenant recalls. Today, you can recall messages only within your organization.",
+      "quote": "We're enhancing the Exchange Online Message Recall feature to add support for cross-tenant recalls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[0].api; rendered controls table; Governance controls",
+      "type": "command",
+      "claim": "Set-CrossTenantRecallConfiguration -CrossTenantRecallEnabled $true enables cross-tenant recall for the receiving tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
+      "quote": "Set this parameter to `$True` to turn on the capability. ... Set-CrossTenantRecallConfiguration -CrossTenantRecallEnabled <$true | $false>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[1].api; controls[1].note; rendered controls table; Governance controls",
+      "type": "command",
+      "claim": "Set-CrossTenantRecallConfiguration -AllowedSenderTenantIds @{Add=\"<tenantId 1>\",\"<tenantId 2>\"} adds sender tenant IDs; the parameter also supports removal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
+      "quote": "Specify external tenants to add or remove from the allowed list. ... Set-CrossTenantRecallConfiguration -AllowedSenderTenantIds @{Add=\"<tenantId 1>\",\"<tenantId 2>\"}; {Remove=\"<tenantId 1>\",\"<tenantId 2>\"}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].note; Scope; Governance guidance",
+      "type": "command",
+      "claim": "The sending tenant's administrator can supply its tenant ID using Get-ConnectionInformation | fl TenantID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
+      "quote": "The administrator of the sending tenant can retrieve the tenant ID by running the following command: Get-ConnectionInformation | fl TenantID",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].ui; controls[1].ui; Governance controls",
+      "type": "absence",
+      "claim": "No admin UI path is documented for the cross-tenant enable switch or sender tenant allow list.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: cross tenant message recall Exchange admin center UI CrossTenantRecallEnabled AllowedSenderTenantIds. Read recall Learn page and cross-tenant blog; search also returned EAC overview. Cross-tenant configuration is documented in PowerShell, not an admin UI.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].note; Scope; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The recall Learn page does not name the Exchange role required to run Set-CrossTenantRecallConfiguration.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Set-CrossTenantRecallConfiguration permissions role AllowedSenderTenantIds CrossTenantRecallEnabled. Read recall Learn page and cross-tenant blog; they say tenant administrator without naming a management role. Search found no specific role reference.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope: Clouds and platforms",
+      "type": "availability",
+      "claim": "The blog includes Microsoft 365 operated by 21Vianet in its deployment plan.",
+      "status": "supported",
+      "source": "https://techcommunity.microsoft.com/blog/exchange/cross-tenant-message-recall-in-exchange-online/4535800",
+      "quote": "Cross-Tenant Message Recall will start to deploy to worldwide, GCC, GCC High, DoD and Microsoft 365 operated by 21Vianet starting mid-August, completing by mid-September.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope: Clouds and platforms",
+      "type": "behaviour",
+      "claim": "Recall can be triggered in Classic Outlook, New Outlook, Outlook on the web, Outlook for Mac and Outlook for Android/iOS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
+      "quote": "You can trigger Message Recall in the Classic Outlook, New Outlook, Outlook on the web, Outlook for Mac, and Outlook for Android/iOS.",
       "severity": null,
       "fix": null
     },
     {
       "n": 47,
-      "where": "summary; Why it matters; rationale: impact",
-      "type": "default",
-      "claim": "If the receiving administrator does nothing, cross-tenant recall remains disabled and users see no change from this capability.",
+      "where": "Scope: Limits",
+      "type": "behaviour",
+      "claim": "Message recall does not work in Outlook for Windows in Online mode.",
       "status": "supported",
-      "source": "https://techcommunity.microsoft.com/blog/exchange/cross-tenant-message-recall-in-exchange-online/4535800",
-      "quote": "The feature is disabled by default; no cross-tenant recall occurs until an admin adds at least one tenant to the allow list.",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
+      "quote": "Message Recall doesn't work in Outlook for Windows under the following conditions: Outlook is in Online mode.",
       "severity": null,
       "fix": null
     },
     {
       "n": 48,
-      "where": "Why it matters: second paragraph",
-      "type": "absence",
-      "claim": "The documentation supplied for this optional capability sets no administrator deadline.",
+      "where": "Scope: Limits",
+      "type": "behaviour",
+      "claim": "Message recall does not work in Outlook for Windows when multiple Exchange accounts are configured in the profile.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"cross-tenant message recall\" \"commercial\" \"GCC High\" deadline. Read the roadmap, full Learn recall page and Exchange blog. They describe default-disabled configuration and a deployment window, not an act-by deadline; no Message Center post was supplied.",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
+      "quote": "Message Recall doesn't work in Outlook for Windows under the following conditions: ... Multiple Exchange accounts are configured in the Outlook profile.",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
-      "where": "Open questions: commercial-to-government recall",
-      "type": "absence",
-      "claim": "The cited documentation does not resolve recall between a commercial tenant and a GCC High or DoD tenant.",
+      "where": "Governance controls: final paragraph",
+      "type": "behaviour",
+      "claim": "Learn describes an existing setting to enable or disable cloud message recall.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"cross-tenant message recall\" \"commercial\" \"GCC High\" deadline. Read Learn recall and the Exchange blog, including its unanswered commercial/GCC High question. Deployment cloud lists do not state whether cross-cloud tenant pairs can recall.",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
+      "quote": "Admins can control several settings: Enable or disable the new cloud recall feature.",
       "severity": null,
       "fix": null
     },
@@ -573,16 +567,27 @@
       "n": 50,
       "where": "Governance controls: final paragraph",
       "type": "behaviour",
-      "claim": "Learn documents existing controls for cloud recall enablement, read-message recall, recipient notifications and maximum recallable message age.",
+      "claim": "Learn describes an existing setting governing recall of read messages.",
       "status": "supported",
       "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
-      "quote": "Admins can control several settings:\nEnable or disable the new cloud recall feature.\nWhether to recall messages that were already read.\nOptional recall notifications for recipients:\nMaximum recallable message age",
+      "quote": "Admins can control several settings: ... Whether to recall messages that were already read.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls: final paragraph",
+      "type": "behaviour",
+      "claim": "Learn describes an existing maximum recallable message age setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall",
+      "quote": "The new Maximum Recallable Message Age setting restricts recalling older messages, with a default setting of 365 days.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-23T06:06:25.615Z",
+    "at": "2026-11-23T07:02:21.625Z",
     "summary": {
       "links": 4,
       "unreachable": 0,
@@ -636,5 +641,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-23",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

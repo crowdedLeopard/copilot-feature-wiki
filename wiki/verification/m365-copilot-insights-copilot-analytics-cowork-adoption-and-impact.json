@@ -4,10 +4,10 @@
   "title": "Microsoft Viva: Cowork adoption and impact in the Consumption Dashboard and Copilot Dashboard",
   "status": "held",
   "date": "2026-11-23",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,25 +16,36 @@
     "reason": "failed",
     "since": "2026-11-23",
     "reasons": [
-      "2 blocking findings (claims 29, 83)"
+      "1 blocking finding (claim 43)"
     ]
   },
   "counts": {
-    "claims": 90,
-    "confirmed": 85,
-    "unconfirmed": 1,
-    "contradicted": 4,
-    "blocker": 2,
+    "claims": 92,
+    "confirmed": 91,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 1,
     "major": 0,
-    "minor": 8
+    "minor": 2
   },
-  "summary": "Hold: the consumption query is described as returning daily data without mentioning that it defaults to weekly grouping. The page also sends administrators to a feature-access page that does not supply the identification feature ID it promises; the documented identification and manager-setting paths and the roadmap facts otherwise check out.",
+  "summary": "The reporting features and control routes are supported, and the briefing correctly flags conflicting export and access documentation. The licensing guidance omits the minimum of 50 assigned Viva Insights service-plan licenses required for advanced analysis, which could leave analysts unable to run the recommended queries.",
   "claims": [
     {
       "n": 1,
+      "where": "front matter: roadmapId",
+      "type": "record",
+      "claim": "This briefing concerns roadmap item 567005.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 567005",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
       "where": "front matter: products; title",
       "type": "record",
-      "claim": "The roadmap item concerns Microsoft Viva and Microsoft Copilot (Microsoft 365).",
+      "claim": "The listed products are Microsoft Viva and Microsoft Copilot (Microsoft 365).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"products\": [\"Microsoft Viva\", \"Microsoft Copilot (Microsoft 365)\"]",
@@ -42,7 +53,7 @@
       "fix": null
     },
     {
-      "n": 2,
+      "n": 3,
       "where": "front matter: status; summary; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap status is Launched.",
@@ -53,8 +64,8 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "front matter: releasePhase; What's changing; Risk assessment",
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The roadmap release phase is General Availability.",
       "status": "supported",
@@ -64,7 +75,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
       "where": "front matter: targetDate; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap target is July CY2026.",
@@ -75,10 +86,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap record supplies no preview date.",
+      "claim": "The roadmap gives no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -86,7 +97,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
       "where": "front matter: clouds; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
@@ -97,7 +108,7 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 8,
       "where": "front matter: platforms; Scope",
       "type": "record",
       "claim": "The roadmap lists the Web platform.",
@@ -108,7 +119,7 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 9,
       "where": "front matter: roadmapModified",
       "type": "record",
       "claim": "The roadmap modification timestamp is 2026-09-11T22:10:10.",
@@ -119,10 +130,10 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 10,
       "where": "What's changing; Open questions",
       "type": "record",
-      "claim": "The roadmap says Cowork adoption and impact insights are accessible from the AI Cost dashboard and Copilot dashboard.",
+      "claim": "The roadmap places Cowork adoption and impact insights in the AI Cost dashboard and Copilot dashboard.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Deeper insights into Cowork adoption and impact accessible from the new AI Cost dashboard and Copilot dashboard.",
@@ -130,7 +141,7 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 11,
       "where": "What's changing",
       "type": "record",
       "claim": "The roadmap includes export capability.",
@@ -141,10 +152,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 12,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap says analysts can query all metrics with the new AI cost query in advanced insights.",
+      "claim": "The roadmap says analysts can query all metrics using the new AI cost query in advanced insights.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "All metrics can be queried by analysts with the new AI cost query in advanced insights.",
@@ -152,24 +163,13 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "summary; What's changing; Why it matters",
-      "type": "behaviour",
-      "claim": "The Consumption Dashboard in Viva Insights contains Cowork usage and assisted-value insights.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
-      "quote": "At the top of the page, cards summarize Copilot Cowork usage trends and assisted value: Cowork active users; Cowork Credit usage; and Average tasks per user.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 13,
-      "where": "What's changing; Open questions",
-      "type": "date",
-      "claim": "The October 06, 2026 Copilot release notes describe the same Cowork analytics change.",
+      "where": "What's changing; title; summary",
+      "type": "behaviour",
+      "claim": "Cowork adoption and impact metrics have been added to the Consumption Dashboard.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#october-06,-2026",
-      "quote": "## October 06, 2026\nWhat changed: The Consumption dashboard and Copilot dashboard now include expanded metrics on Cowork adoption and its impact. Analysts can export data and use the new Consumption query in advanced insights to explore all metrics.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "The Consumption dashboard and Copilot dashboard now include expanded metrics on Cowork adoption and its impact.",
       "severity": null,
       "fix": null
     },
@@ -177,37 +177,70 @@
       "n": 14,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The Cowork page has a Cowork active users card.",
+      "claim": "Learn calls the dashboard the Consumption Dashboard.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
-      "quote": "cards summarize Copilot Cowork usage trends and assisted value: Cowork active users; Cowork Credit usage; and Average tasks per user.",
+      "quote": "The Consumption Dashboard in Insights helps your organization understand how Copilot Credits and GitHub AI Credits are consumed across agents, services, and users.",
       "severity": null,
       "fix": null
     },
     {
       "n": 15,
       "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The Cowork page has a Cowork Credit usage card.",
+      "type": "date",
+      "claim": "The Microsoft 365 Copilot release notes describe this change under October 06, 2026.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
-      "quote": "cards summarize Copilot Cowork usage trends and assisted value: Cowork active users; Cowork Credit usage; and Average tasks per user.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "October 06, 2026\nUpdates released between September 22, 2026, and October 06, 2026.\nCopilot Analytics - Cowork adoption and impact",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "What's changing",
+      "where": "What's changing; Open questions",
       "type": "behaviour",
-      "claim": "The Cowork page has an Average tasks per user card.",
+      "claim": "The release notes say credit usage is available through the Consumption query and Cowork usage through the Person query.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
-      "quote": "cards summarize Copilot Cowork usage trends and assisted value: Cowork active users; Cowork Credit usage; and Average tasks per user.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "All metrics can be queried by analysts with the new Consumption query (credit usage data) and through the Person query (Cowork usage data) in advanced insights.",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Cowork page has a Cowork active users card.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "At the top of the page, cards summarize Copilot Cowork usage trends and assisted value: Cowork active users; Cowork Credit usage; and Average tasks per user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Cowork page has a Cowork Credit usage card.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "Cowork active users; Cowork Credit usage; and Average tasks per user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Cowork page has an Average tasks per user card.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "Cowork active users; Cowork Credit usage; and Average tasks per user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
       "where": "What's changing; Why it matters",
       "type": "behaviour",
       "claim": "Cowork charts break usage down by task category.",
@@ -218,10 +251,10 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 21,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Cowork charts distinguish user-initiated and automatically scheduled tasks.",
+      "claim": "The Cowork page distinguishes user-initiated and automatically scheduled tasks.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
       "quote": "This section also breaks down the percentage of tasks that are user-initiated versus automatically scheduled using Copilot Cowork",
@@ -229,10 +262,10 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 22,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Cowork usage can be broken down by group, job function, organization or policy.",
+      "claim": "Cowork usage can be broken down by group, job function, organisation or policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
       "quote": "View by - Break the trend down by group, job function, organization, or policy",
@@ -240,21 +273,10 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 23,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Cowork tasks and Cowork sessions measure different activities.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
-      "quote": "Copilot Cowork tasks and Cowork sessions measure different types of activity. \"Tasks\" count tasks completed by Cowork, while \"sessions\" count Cowork sessions for those tasks.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing; Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Multiple Cowork tasks, particularly scheduled tasks, can map to one billed session.",
+      "claim": "Cowork tasks and sessions differ because multiple tasks, particularly scheduled tasks, can map to one billed session.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
       "quote": "Multiple Cowork tasks, particularly scheduled tasks, can map to one billed session, so the totals might be different.",
@@ -262,46 +284,24 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 24,
       "where": "What's changing; summary; Why it matters",
       "type": "behaviour",
       "claim": "Cowork assisted hours estimate employee hours that benefited from Cowork.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/advanced/reference/metrics#microsoft-copilot-metrics",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/reference/metrics",
       "quote": "Cowork assisted hours | Estimate of employee hours that benefited from Copilot Cowork during the selected time period.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Dashboard export is available at daily and weekly levels.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-ai-cost-metrics",
-      "quote": "Exports are available at the daily and weekly level, to help you build custom cost reports, reviews, and analyses outside the dashboard.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The dashboard export downloads as a .zip file.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-ai-cost-metrics",
-      "quote": "The export downloads as a .zip file named based on the export type, date, and time.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 25,
-      "where": "What's changing",
+      "where": "What's changing; Governance guidance",
       "type": "behaviour",
-      "claim": "Each dashboard export .zip contains two .csv files.",
+      "claim": "User-level credit metrics can be exported at daily or weekly level.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-ai-cost-metrics",
-      "quote": "Each .zip file contains two .csv files, which join on PeopleHistoricalId: PersonServiceCreditsMetrics.csv - credit consumption metrics; PeopleMetaData.csv - people metadata",
+      "quote": "You can download user-level credit usage (AI cost) metrics using the Consumption Dashboard's data export feature.\nExports are available at the daily and weekly level",
       "severity": null,
       "fix": null
     },
@@ -309,7 +309,18 @@
       "n": 26,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The export includes a ServiceName column that can identify Copilot Cowork.",
+      "claim": "A dashboard export downloads as a .zip containing two .csv files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-ai-cost-metrics",
+      "quote": "Each .zip file contains two .csv files, which join on PeopleHistoricalId",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The export ServiceName column can contain Copilot Cowork.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-ai-cost-metrics",
       "quote": "ServiceName | The AI capability used, such as Copilot Cowork, WorkIQ, Researcher, BizChat, Deepwork, Outlook, or WXP",
@@ -317,10 +328,10 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "What's changing: consumption query path",
+      "n": 28,
+      "where": "What's changing: consumption query route",
       "type": "admin-path",
-      "claim": "The consumption query is reached in the Viva Insights web app through Create analysis > Create custom query > Consumption query.",
+      "claim": "In the Viva Insights web app, the query route is Create analysis > Create custom query > Consumption query.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/ai-cost-query",
       "quote": "In the Viva Insights web app, on the left, select Create analysis. Select Create custom query, then select Consumption query.",
@@ -328,10 +339,10 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 29,
       "where": "What's changing; Open questions",
       "type": "behaviour",
-      "claim": "The consumption query has four preselected credit-consumption metrics.",
+      "claim": "The consumption query starts with four preselected consumption metrics.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/ai-cost-query",
       "quote": "Total Copilot Credits used | number\nSession count | number\nUser limit | number\nSpending policy limit | number",
@@ -339,54 +350,76 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "What's changing: consumption query output granularity",
-      "type": "behaviour",
-      "claim": "Following the printed consumption-query route returns the metrics per person, service and day.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/ai-cost-query",
-      "quote": "Source data is PersonId, ServiceId, and MetricDate (one row per person, per service, per day). By default, consumption queries are grouped by week. To change this to day or month, select More Settings under the Description box.",
-      "severity": "blocker",
-      "fix": "Replace 'which returns four preselected credit metrics per person, service and day, with no other metric categories added' with 'which has four preselected consumption metrics and cannot add other metric categories. Its source data is per person, service and day, but queries are grouped by week by default; for daily grouping, select More Settings under the Description box and set Group by to Day.' Source: https://learn.microsoft.com/viva/insights/advanced/analyst/ai-cost-query."
-    },
-    {
       "n": 30,
-      "where": "What's changing; Open questions",
+      "where": "What's changing",
       "type": "behaviour",
       "claim": "Other metric categories cannot be added to the consumption query.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/ai-cost-query",
-      "quote": "You can't add other metric categories. To remove a metric, select the \"X\" on it.",
+      "quote": "You can't add other metric categories.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "What's changing; Open questions: Copilot Dashboard metrics",
-      "type": "absence",
-      "claim": "The Copilot Dashboard guide and metrics reference do not enumerate Cowork metrics on the Copilot Dashboard itself.",
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Consumption query source data is per person, service and day.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Cowork assisted hours Copilot Credits metrics Copilot dashboard person query; searched fetched Copilot Dashboard guide for Cowork/consumption; read metrics Cowork table. Neither lists specific Cowork metrics there; release notes say both dashboards include expanded Cowork metrics.",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/ai-cost-query",
+      "quote": "Source data is PersonId, ServiceId, and MetricDate (one row per person, per service, per day).",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
-      "where": "What's changing; Risk assessment; Scope; Open questions",
-      "type": "availability",
-      "claim": "The Learn export page still marks the feature as public preview.",
+      "where": "What's changing",
+      "type": "default",
+      "claim": "Consumption queries are grouped by week by default.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-ai-cost-metrics",
-      "quote": "This feature is for public preview customers only. Features in preview might not be complete and could undergo changes before becoming available in the broader release.",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/ai-cost-query",
+      "quote": "By default, consumption queries are grouped by week.",
       "severity": null,
       "fix": null
     },
     {
       "n": 33,
+      "where": "What's changing: daily grouping",
+      "type": "admin-path",
+      "claim": "Daily grouping is set through More Settings under Description, then Group by > Day.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/ai-cost-query",
+      "quote": "To change this to day or month, select More Settings under the Description box.\nMore settings: Next to Group by, select Day.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "The dashboard guide and metrics reference do not identify specific Cowork metrics on the Copilot Dashboard itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Dashboard Cowork metrics person query assisted hours; searched fetched copilot-dashboard for Cowork (no matches) and metrics for Cowork (Consumption Dashboard column only). Release notes announce both dashboards without naming the Copilot Dashboard's Cowork metrics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Risk assessment; Scope; Open questions",
+      "type": "availability",
+      "claim": "The export page still labels the feature public preview despite the roadmap's General Availability phase.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-ai-cost-metrics",
+      "quote": "Export AI cost metrics from the Consumption Dashboard (preview)\nThis feature is for public preview customers only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
       "where": "Why it matters; Cost and licensing; Governance guidance; rationale: cost",
       "type": "cost",
-      "claim": "Dashboard credit figures are for reference, not official billing.",
+      "claim": "Dashboard credit figures are for reference rather than official billing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
       "quote": "Credit usage information in this dashboard is for reference only.",
@@ -394,7 +427,7 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 37,
       "where": "Why it matters; Cost and licensing; Governance guidance",
       "type": "cost",
       "claim": "Official Copilot Credits billing and detailed charges are in the Microsoft 365 admin center.",
@@ -405,32 +438,21 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Why it matters; Scope: separate Cowork switch and rollout step",
-      "type": "absence",
-      "claim": "No separate admin switch or rollout step for the Cowork reporting views is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Viva Insights Cowork enable dashboard control; read Consumption Dashboard, export, manager settings, dashboard settings and VFAM pages. They document app access, identification and manager settings, not a separate Cowork-reporting enablement switch.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "front matter: defaultState; Why it matters; Scope",
+      "n": 38,
+      "where": "Why it matters; Scope",
       "type": "default",
-      "claim": "The reporting experience is on for its eligible audience by default, within the on-by-default Viva Insights web app.",
+      "claim": "The Viva Insights web app is on by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
-      "quote": "The Viva Insights web app is on by default. The AI admin can turn the Viva Insights web app on or off at the tenant, group, or user level",
+      "quote": "The Viva Insights web app is on by default.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
+      "n": 39,
       "where": "Why it matters",
       "type": "default",
-      "claim": "Export is on by default for eligible tenants and users.",
+      "claim": "The export feature is on by default for eligible tenants and users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-ai-cost-metrics",
       "quote": "The feature is on by default for eligible tenants and users.",
@@ -438,32 +460,164 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Risk assessment: Data exposure; Governance guidance: At rollout; rationale: risk",
-      "type": "default",
-      "claim": "Export uses hashed person identifiers unless an administrator enables identifiable export for the viewer.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-ai-cost-metrics",
-      "quote": "Personal identifiers are available with hashed IDs, unless your administrator has enabled identifiable export for you. If your administrator has enabled identifiable export, the export also includes identifiable fields.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Risk assessment: Data exposure; What's changing; Why it matters",
-      "type": "behaviour",
-      "claim": "The dashboard export's consumption file is user-level, with one row per person, service and date.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-ai-cost-metrics",
-      "quote": "File 1 - Credit consumption metrics (PersonServiceCreditsMetrics.csv)\nOne row per person, service, and date.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 40,
+      "where": "Why it matters; Scope",
+      "type": "absence",
+      "claim": "No separate Cowork reporting switch or rollout-enablement step is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Insights Cowork Consumption Dashboard enable disable feature access control. Opened ai-cost-dashboard, manager-settings, manage-settings-copilot-dashboard and viva/feature-access-management; found app, manager and identification controls, no separate Cowork reporting switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The reporting change is on for its eligible viewing audience without a separate admin enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-ai-cost-metrics",
+      "quote": "The feature is on by default for eligible tenants and users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The views are included within the applicable existing Viva Insights or Copilot licensing rather than a published Cowork-view add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements",
+      "quote": "Microsoft Copilot plans also include manager, leader, and advanced analysis for all employees who have an assigned Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "Assigned Copilot licenses include manager, leader and advanced analysis, with no minimum assigned-license qualification stated in the briefing.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements",
+      "quote": "At least 50 assigned Viva Insights licenses are required to access advanced analysis and the Microsoft Copilot Dashboard. This minimum threshold can be achieved through a combination of licenses.",
+      "severity": "blocker",
+      "fix": "Append to licensing.notes and the Licence paragraph: 'For advanced analysis, including consumption queries, Microsoft requires at least 50 assigned Viva Insights service-plan licenses, which can be a combination of Copilot and Viva Insights licenses.' Cite https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements. Do not apply this threshold to basic Copilot Dashboard access, whose own guide gives a different threshold."
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Viva Insights requires applicable licensing and a Microsoft 365 or Office 365 tenant with Exchange Online Plan 1 or Plan 2.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements",
+      "quote": "Viva Insights requires the applicable Viva Insights licensing and a Microsoft 365 or Office 365 tenant with Exchange Online Plan 1 or Plan 2.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No licence specific to the Cowork reporting views is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Consumption Dashboard Cowork views licensing pricing meter license; Viva Insights Consumption Dashboard Cowork licensing minimum 50 advanced analysis. Read dashboard, export, query, environment requirements and billing pages; found general licensing, no Cowork-view-specific licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing: Licence; rationale: cost",
+      "type": "absence",
+      "claim": "The Consumption Dashboard guide lists access roles but names no licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "Consumption insights are available to Insights Analysts with global partition access, Managers, and Microsoft 365 Global Administrators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The Copilot Dashboard is available to business or enterprise Microsoft 365 or Office 365 customers with an active Exchange Online account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "The Microsoft Copilot Dashboard in Viva Insights is available to any customer with a Microsoft 365 or Office 365 subscription for business or enterprise, and who has an active Exchange Online account.",
+      "severity": "minor",
+      "fix": "After this sentence add: 'Its guide says data processing requires 50 assigned Viva Insights licenses or one assigned Copilot license, whereas the environment requirements page still states 50 assigned licenses for advanced analysis and the Copilot Dashboard.' Both URLs are already cited; keep the advanced-analysis requirement distinct from basic dashboard access."
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing: Meter; rationale: cost",
+      "type": "absence",
+      "claim": "No separate meter for using these reporting views is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Consumption Dashboard Cowork views licensing pricing meter license. Read ai-cost-dashboard, export-ai-cost-metrics, ai-cost-query, environment-requirements and cowork-admin-governance; billing describes Cowork activities, not viewing or exporting analytics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Copilot Credits are the common currency for eligible Microsoft services with usage-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/reference/metrics",
+      "quote": "Copilot Credits are the common currency for eligible Microsoft services with usage-based billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing: Caps",
+      "type": "behaviour",
+      "claim": "The dashboard displays spending policy limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "Spending limit | The credit limit defined by the policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing: Caps",
+      "type": "behaviour",
+      "claim": "The dashboard displays the number of users near or at policy limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "# of users near or at their limit | Users in your group at or near their spending limit",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing: Caps",
+      "type": "behaviour",
+      "claim": "The Consumption Dashboard displays spending limits rather than setting them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/reference/metrics",
+      "quote": "Spending policy limit | The maximum number of Copilot Credits that a spending policy, or the group of users it applies to, can use per month. This limit is set in the Microsoft 365 admin center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The dashboard export includes licensed and unlicensed users.",
+      "claim": "The exported credit-consumption file has one row per person, service and date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-ai-cost-metrics",
+      "quote": "One row per person, service, and date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The export includes licensed and unlicensed users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-ai-cost-metrics",
       "quote": "Includes both licensed and unlicensed users.",
@@ -471,10 +625,10 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 55,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The export includes a spending-policy limit.",
+      "claim": "The export contains spending policy limits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-ai-cost-metrics",
       "quote": "SpendingPolicyLimit | Credit limit set for the spending policy",
@@ -482,10 +636,10 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 56,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The export includes an individual user limit.",
+      "claim": "The export contains individual user limits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-ai-cost-metrics",
       "quote": "UserLimit | Credit limit set for the individual user",
@@ -493,10 +647,10 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 57,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The export includes credits consumed for the person, service and date.",
+      "claim": "The export contains credits used.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-ai-cost-metrics",
       "quote": "TotalCreditsUsed | Credits consumed by the person for that service on that date",
@@ -504,32 +658,32 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "Risk assessment: Data exposure; Governance controls; summary",
-      "type": "applicability",
-      "claim": "A dedicated VFAM policy governs who can identify users and view identified outputs.",
+      "n": 58,
+      "where": "Risk assessment; Governance guidance; rationale: risk",
+      "type": "default",
+      "claim": "Exported person identifiers are hashed unless an administrator enables identifiable export for the recipient.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/identification-copilot-analytics",
-      "quote": "Access is governed by a dedicated Viva Feature Access Management (VFAM) policy, so administrators decide exactly who in the organization can identify users and view identified outputs.",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-ai-cost-metrics",
+      "quote": "Personal identifiers are available with hashed IDs, unless your administrator has enabled identifiable export for you. If your administrator has enabled identifiable export, the export also includes identifiable fields.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
-      "where": "controls[0].governs; Governance controls",
+      "n": 59,
+      "where": "controls[0].governs; Risk assessment; Governance controls",
       "type": "applicability",
-      "claim": "Identification policies apply to Consumption Dashboard insights and data export.",
+      "claim": "Identification VFAM policies govern named-user outputs for Consumption Dashboard insights and exports.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/identification-copilot-analytics",
-      "quote": "Identification is available for the following Viva Insights features: Consumption Dashboard data export and Consumption Dashboard insights",
+      "quote": "Identification is available for the following Viva Insights features:\nConsumption Dashboard data export and Consumption Dashboard insights\nAccess is governed by a dedicated Viva Feature Access Management (VFAM) policy",
       "severity": null,
       "fix": null
     },
     {
-      "n": 46,
+      "n": 60,
       "where": "controls[0].note; Risk assessment; Governance controls",
       "type": "role",
-      "claim": "Only a Microsoft 365 Global Administrator or AI Administrator can create and manage identification policies, using either UI or PowerShell.",
+      "claim": "Only Microsoft 365 Global Administrators or AI Administrators can create and manage identification policies, using either UI or PowerShell.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/identification-copilot-analytics",
       "quote": "Only a Microsoft 365 Global Administrator or an AI Administrator can create and manage identification access policies. Either role can perform every step, in both the Microsoft 365 admin center and PowerShell.",
@@ -537,8 +691,8 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "controls[0].ui; Governance controls table row 1",
+      "n": 61,
+      "where": "controls[0].ui",
       "type": "admin-path",
       "claim": "Identification is reached in the Microsoft 365 admin center through Settings > Org settings > Viva feature access > Viva Insights > identification feature.",
       "status": "supported",
@@ -548,32 +702,43 @@
       "fix": null
     },
     {
-      "n": 48,
-      "where": "controls[0].api; Governance controls table row 1",
+      "n": 62,
+      "where": "controls[0].api",
       "type": "command",
-      "claim": "Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId <FeatureId> -Name <PolicyName> -IsFeatureEnabled $true creates an enabling feature-access policy using Exchange Online PowerShell.",
+      "claim": "Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId <FeatureId> -Name <PolicyName> -IsFeatureEnabled $true creates a feature-enabling policy in Exchange Online PowerShell.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-vivamodulefeaturepolicy",
-      "quote": "Add-VivaModuleFeaturePolicy\n-FeatureId <String>\n-IsFeatureEnabled <Boolean>\n-ModuleId <String>\n-Name <String>\nThe IsFeatureEnabled parameter specifies whether or not the feature is enabled by the policy. Valid values are: $true: The feature is enabled by the policy.",
+      "quote": "Add-VivaModuleFeaturePolicy\n-FeatureId <String>\n-IsFeatureEnabled <Boolean>\n-ModuleId <String>\n-Name <String>\n$true: The feature is enabled by the policy.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 49,
+      "n": 63,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Get-VivaModuleFeature returns the FeatureId needed by Add-VivaModuleFeaturePolicy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-vivamodulefeaturepolicy",
+      "quote": "To view details about the features in a Viva module that support feature access controls, use the Get-VivaModuleFeature cmdlet. The FeatureId value is returned in the output of the cmdlet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
       "where": "controls[0].scope; Governance controls",
       "type": "applicability",
-      "claim": "Identification policies can be scoped to users, groups or the tenant.",
+      "claim": "Identification policies can target groups, users or the tenant.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/identification-copilot-analytics",
-      "quote": "Group or user level | Pilots, phased rollouts, and specific cohorts. Targets Microsoft Entra groups or individual users.\nTenant level | A global default applied to everyone in the organization.",
+      "quote": "VFAM lets you enable or disable specific Microsoft 365 and Viva features for chosen groups, users, or your whole tenant",
       "severity": null,
       "fix": null
     },
     {
-      "n": 50,
-      "where": "controls[0].note; Governance controls table row 1",
+      "n": 65,
+      "where": "controls[0].note",
       "type": "behaviour",
-      "claim": "A group or user identification policy allows up to 20 users or groups in total.",
+      "claim": "A group or user identification policy can target up to 20 users or groups.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/identification-copilot-analytics",
       "quote": "Up to 20 users/groups per policy; up to 10 policies per feature.",
@@ -581,21 +746,54 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "controls[0].note; Governance controls table row 1",
+      "n": 66,
+      "where": "controls[0].note",
       "type": "behaviour",
-      "claim": "There can be one tenant-wide identification policy per feature.",
+      "claim": "Identification permits one tenant-wide policy per feature.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/identification-copilot-analytics",
-      "quote": "Tenant level | A global default applied to everyone in the organization. | One tenant-wide policy per feature.",
+      "quote": "One tenant-wide policy per feature.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 52,
+      "n": 67,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Manager consumption access is set in the Viva Insights Admin portal through Settings > Manager settings > Grant managers scoped access to Consumption insights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings",
+      "quote": "Sign in to the Viva Insights Admin portal with your admin credentials.\nOn the left, select Settings, then Manager settings.\nOptionally, select Grant managers scoped access to Consumption insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No automation operation for the manager-specific consumption-insights setting is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Insights Manager settings Consumption insights PowerShell Microsoft Graph API configure access; site:learn.microsoft.com/graph Viva Insights manager settings consumption insights API; site:learn.microsoft.com/powershell Viva Insights Grant managers scoped access Consumption insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[1].governs; controls[1].scope; Governance controls",
+      "type": "applicability",
+      "claim": "The manager setting governs team-scoped consumption dashboard and export access, subject to the export page's narrower current role list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings",
+      "quote": "When you select this, you'll allow managers with the minimum team size to access their team-scoped data in the Consumption Dashboard and export data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
       "where": "controls[1].note; Governance controls",
       "type": "role",
-      "claim": "A Viva Insights Administrator or AI admin configures manager settings.",
+      "claim": "Viva Insights Administrators or AI admins configure manager settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings",
       "quote": "Applies to: Viva Insights Administrator, AI admin",
@@ -603,43 +801,21 @@
       "fix": null
     },
     {
-      "n": 53,
-      "where": "controls[1].ui; Governance controls table row 2",
-      "type": "admin-path",
-      "claim": "In the Viva Insights Admin portal, Settings > Manager settings leads to Grant managers scoped access to Consumption insights.",
+      "n": 71,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "Managers need teams of five or more.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings",
-      "quote": "Sign in to the Viva Insights Admin portal with your admin credentials. On the left, select Settings, then Manager settings.\nOptionally, select Grant managers scoped access to Consumption insights.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "controls[1].governs; controls[1].scope; Governance guidance",
-      "type": "applicability",
-      "claim": "Manager settings govern team-scoped Consumption Dashboard and export access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings",
-      "quote": "When you select this, you'll allow managers with the minimum team size to access their team-scoped data in the Consumption Dashboard and export data.",
+      "quote": "Only managers whose team size meets or exceeds the Minimum team size setting can access insights in the Viva Insights web app. The minimum team size must be set to at least five.",
       "severity": "minor",
-      "fix": "Append to controls[1].note: 'The manager-settings page includes export in this permission, but the export page currently limits export to global-partition analysts and Microsoft 365 Global Administrators and says manager export will be available by the end of July.' Preserve the existing discussion of this documentation discrepancy. Source: https://learn.microsoft.com/viva/insights/org-team-insights/export-ai-cost-metrics."
+      "fix": "Replace 'team of five or more' in the note and rendered table with 'team must meet the configured Minimum team size, which is at least five and includes the manager'. This preserves five as the lower bound without presenting it as every tenant's configured threshold."
     },
     {
-      "n": 55,
-      "where": "controls[1].api; Governance controls table row 2",
-      "type": "absence",
-      "claim": "No API or PowerShell operation for granting managers scoped Consumption insights is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Consumption manager PowerShell Graph Viva Insights manager settings API; Viva Insights manager Consumption API PowerShell -auto-enablement. Read manager settings, dashboard settings, VFAM and roles excerpts. No operation for this manager permission was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
+      "n": 72,
       "where": "controls[1].note; Governance controls",
       "type": "applicability",
-      "claim": "Granting Consumption insights to managers also requires granting Copilot insights.",
+      "claim": "Manager consumption-insights access also requires Copilot-insights access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings",
       "quote": "You can't grant managers scoped access to Consumption insights if you don't grant them access to Copilot insights.",
@@ -647,21 +823,10 @@
       "fix": null
     },
     {
-      "n": 57,
-      "where": "controls[1].note; Governance controls table row 2",
+      "n": 73,
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Manager eligibility requires meeting a minimum team size set to at least five.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings",
-      "quote": "Only managers whose team size meets or exceeds the Minimum team size setting can access insights in the Viva Insights web app. The minimum team size must be set to at least five.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "Governance controls: manager settings",
-      "type": "behaviour",
-      "claim": "Manager-setting changes apply after one hour.",
+      "claim": "Manager setting changes apply after one hour.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings",
       "quote": "Changes to these settings will apply after one hour.",
@@ -669,54 +834,21 @@
       "fix": null
     },
     {
-      "n": 59,
+      "n": 74,
       "where": "Risk assessment: Security & identity; Scope; rationale: impact",
       "type": "role",
-      "claim": "Insights Analysts with global partition access can view organization-wide consumption insights.",
+      "claim": "Insights Analysts with global partition access can view the dashboard for the entire organisation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
-      "quote": "Insights Analysts with global partition access | Yes, scoped to the entire organization | Yes, scoped to the entire organization",
+      "quote": "Insights Analysts with global partition access | Yes, scoped to the entire organization\nManagers | Yes, scoped to their group\nMicrosoft 365 Global Administrators | Yes, scoped to the entire organization",
       "severity": null,
       "fix": null
     },
     {
-      "n": 60,
-      "where": "Risk assessment: Security & identity; Scope; rationale: impact",
+      "n": 75,
+      "where": "Risk assessment: Security & identity; Scope",
       "type": "role",
-      "claim": "Managers can view Consumption Dashboard insights scoped to their group.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
-      "quote": "Managers | Yes, scoped to their group | No",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
-      "where": "Risk assessment: Security & identity; Scope; rationale: impact",
-      "type": "role",
-      "claim": "Microsoft 365 Global Administrators can view the Consumption Dashboard scoped to the entire organization.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
-      "quote": "Microsoft 365 Global Administrators | Yes, scoped to the entire organization | No",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 62,
-      "where": "Scope; Governance guidance: Before rollout",
-      "type": "role",
-      "claim": "Global-partition Insights Analysts can run consumption queries.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
-      "quote": "Run queries with consumption metrics (excluding GitHub data)\nInsights Analysts with global partition access | Yes, scoped to the entire organization",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
-      "where": "Risk assessment: Security & identity",
-      "type": "role",
-      "claim": "Analysts in partitions other than the global partition cannot run consumption queries.",
+      "claim": "Analysts in non-global partitions cannot run consumption queries.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
       "quote": "Insights Analysts with access to a partition other than the global partition can't run queries with consumption metrics.",
@@ -724,21 +856,21 @@
       "fix": null
     },
     {
-      "n": 64,
+      "n": 76,
       "where": "Risk assessment: Security & identity; Governance controls",
       "type": "applicability",
-      "claim": "Removing an analyst from the global partition removes access to all experiences in that partition.",
+      "claim": "Removing an analyst from the global partition removes consumption-insights access and all other experiences in that partition.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
-      "quote": "If you remove an analyst from the global partition, they lose access to all experiences in the global partition.",
+      "quote": "To remove access to consumption insights for specific analysts, remove them from the global partition.\nIf you remove an analyst from the global partition, they lose access to all experiences in the global partition.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 65,
+      "n": 77,
       "where": "Risk assessment: Security & identity; Open questions",
       "type": "default",
-      "claim": "The Consumption Dashboard page says consumption insights are enabled for all managers by default.",
+      "claim": "The consumption guide says consumption insights are enabled for all managers by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
       "quote": "By default, consumption insights are enabled for all managers.",
@@ -746,21 +878,109 @@
       "fix": null
     },
     {
-      "n": 66,
-      "where": "Risk assessment: Security & identity; Open questions",
-      "type": "behaviour",
-      "claim": "The manager-settings page presents granting Consumption insights as an optional selection.",
+      "n": 78,
+      "where": "Scope; controls[1].note; Open questions",
+      "type": "role",
+      "claim": "The export page currently limits export to global-partition analysts and Microsoft 365 Global Administrators.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings",
-      "quote": "Optionally, select Grant managers scoped access to Consumption insights.",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-ai-cost-metrics",
+      "quote": "Data export is currently only available to the following roles:\nAnalysts with global partition access.\nMicrosoft 365 Global Administrators.\nData export for Managers will be available by the end of July.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 67,
+      "n": 79,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "applicability",
+      "claim": "The unified exclusion list applies to Consumption Dashboard aggregates only when its policy is turned on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "Your organization might want to exclude certain users from being included in the aggregated insights in the Microsoft Copilot Dashboard, Agent Dashboard, Consumption Dashboard\nTo use an exclusion list, you must turn on the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The most recent consumption data is available up to one to two days before the current date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/ai-cost-query",
+      "quote": "The most recent credit consumption data is available up to one to two days before the current date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Export freshness depends on whether daily or weekly export is selected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-ai-cost-metrics",
+      "quote": "Data usually reflects activity from 2 - 8 days before the export date, depending on weekly processing cycles.\nData usually reflects activity up to two days before the export date, but timing might vary.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "On the Microsoft 365 services page, consumption data is currently available only for Copilot Cowork and the Work IQ API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "Consumption data is currently available only for Copilot Cowork and the Work IQ API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The consumption guide says the Consumption Dashboard is unavailable to users with access to the Microsoft Copilot and Agent Dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "The Consumption Dashboard is not available for users who have access to the Microsoft Copilot and Agent Dashboard in the Viva Insights web app",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The delegation guide separately permits Consumption Dashboard delegation through Combined access, available to leaders with company-level and group-manager access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/delegate-access",
+      "quote": "To provide delegate access to the Consumption Dashboard together with company-level features, assign delegates \"Combined access.\"\nCombined access is available only if you have both company-level and group manager access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Turning off the Viva Insights web app control disables the entire app, including the Copilot Dashboard, Copilot Analytics reports and advanced analysis.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "Turning this control off disables the entire app, which includes the Microsoft Copilot Dashboard, Copilot Analytics reports, and advanced analysis and admin tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "rationale: cost; Why it matters",
+      "type": "cost",
+      "claim": "Underlying Cowork activities are billed on a usage basis, separate from the reporting views.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance#usage-based-billing",
+      "quote": "Cowork uses a usage-based billing model. Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
       "where": "Risk assessment: Security & identity",
       "type": "applicability",
-      "claim": "Users can ask their tenant admin to add them to the exclusion list to exclude them from Consumption Dashboard analysis.",
+      "claim": "Users can ask their tenant admin to exclude them from analysis in the Consumption Dashboard.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
       "quote": "To be excluded from analysis in the Consumption Dashboard, users can ask their tenant admin to add them to the exclusion list.",
@@ -768,30 +988,41 @@
       "fix": null
     },
     {
-      "n": 68,
-      "where": "Risk assessment: Security & identity; Governance guidance: At rollout; Governance controls",
-      "type": "applicability",
-      "claim": "The unified exclusion-list policy must be turned on for the list to apply.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
-      "quote": "Create a unified exclusion list for the Copilot Dashboard, Agent Dashboard, Consumption Dashboard, and Viva Insights (hide users from aggregates)\nTo use an exclusion list, you must turn on the policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
-      "where": "Scope; Governance guidance: Before rollout",
+      "n": 88,
+      "where": "Risk assessment: Security & identity; Scope; rationale: impact",
       "type": "role",
-      "claim": "The export page currently limits export to analysts with global partition access and Microsoft 365 Global Administrators.",
+      "claim": "Managers can access the Consumption Dashboard scoped to their group.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-ai-cost-metrics",
-      "quote": "Data export is currently only available to the following roles: Analysts with global partition access. Microsoft 365 Global Administrators.",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "Managers | Yes, scoped to their group | No",
       "severity": null,
       "fix": null
     },
     {
-      "n": 70,
-      "where": "Scope; Open questions; Governance guidance: After rollout",
+      "n": 89,
+      "where": "Risk assessment: Security & identity; Scope; rationale: impact",
+      "type": "role",
+      "claim": "Microsoft 365 Global Administrators can access the Consumption Dashboard scoped to the entire organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "Microsoft 365 Global Administrators | Yes, scoped to the entire organization | No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "Scope; What's changing; summary",
+      "type": "role",
+      "claim": "Insights Analysts with global partition access can run consumption queries scoped to the entire organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
+      "quote": "Insights Analysts with global partition access | Yes, scoped to the entire organization | Yes, scoped to the entire organization",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 91,
+      "where": "Scope; Open questions; controls[1].note",
       "type": "date",
       "claim": "The export page says manager export will be available by the end of July.",
       "status": "supported",
@@ -801,230 +1032,21 @@
       "fix": null
     },
     {
-      "n": 71,
-      "where": "Scope: consumption data coverage",
-      "type": "availability",
-      "claim": "The Consumption Dashboard page says consumption data is currently available only for Copilot Cowork and Work IQ API.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
-      "quote": "Microsoft 365 services page\nConsumption data is currently available only for Copilot Cowork and the Work IQ API.",
-      "severity": "minor",
-      "fix": "Replace the sentence with 'For its Microsoft 365 services page, the Consumption Dashboard guide says consumption data is currently available only for Copilot Cowork and the Work IQ API.' This preserves the source's scope without suggesting that its separate GitHub page has no consumption data."
-    },
-    {
-      "n": 72,
-      "where": "Scope: users with Copilot and Agent Dashboard access",
-      "type": "availability",
-      "claim": "The Consumption Dashboard guide says the dashboard is unavailable to users who have access to the Copilot and Agent Dashboard.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
-      "quote": "The Consumption Dashboard is not available for users who have access to the Microsoft Copilot and Agent Dashboard in the Viva Insights web app",
-      "severity": "minor",
-      "fix": "After this sentence, add: 'The delegation FAQ separately says Combined access can give delegates access to the Consumption Dashboard, so the documentation is not consistent on delegated access.' Cite https://learn.microsoft.com/viva/insights/org-team-insights/delegate-access#faqs, which says: 'To give a delegate access, assign the \"Combined access\" scope, which is available if you have both company-level and group access.'"
-    },
-    {
-      "n": 73,
-      "where": "Risk assessment: Change & support",
+      "n": 92,
+      "where": "Risk assessment: Security & identity; Open questions",
       "type": "behaviour",
-      "claim": "The latest credit-consumption data can lag the current date by one to two days.",
+      "claim": "The manager settings guide presents granting manager consumption access as an optional selection.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/ai-cost-query",
-      "quote": "The most recent credit consumption data is available up to one to two days before the current date.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 74,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Export data timing varies between daily and weekly export options.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-ai-cost-metrics",
-      "quote": "Data usually reflects activity from 2 - 8 days before the export date, depending on weekly processing cycles.\nData usually reflects activity up to two days before the export date, but timing might vary.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 75,
-      "where": "Cost and licensing: Caps",
-      "type": "behaviour",
-      "claim": "The dashboard displays spending-policy limits and numbers of users near or at those limits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/ai-cost-dashboard",
-      "quote": "Spending limit | The credit limit defined by the policy\n# of users near or at their limit | Users in your group at or near their spending limit",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 76,
-      "where": "Cost and licensing: Meter; rationale: cost",
-      "type": "absence",
-      "claim": "No separate meter for using these reporting views is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Consumption Dashboard pricing meter; Viva Insights Consumption Dashboard pricing licensing cost export consumption query. Read dashboard, export, query, environment requirements and Cowork usage-based billing excerpt. No meter for viewing or exporting these reports was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 77,
-      "where": "Cost and licensing: Meter",
-      "type": "cost",
-      "claim": "Copilot Credits are the common currency for eligible Microsoft services with usage-based billing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/advanced/reference/metrics#microsoft-copilot-metrics",
-      "quote": "Copilot Credits are the common currency for eligible Microsoft services with usage-based billing.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 78,
-      "where": "front matter: licensing.notes; Cost and licensing: Licence",
-      "type": "absence",
-      "claim": "The Consumption Dashboard guide names access roles but does not itself name a license requirement.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Consumption Dashboard license Cowork; read the complete Consumption Dashboard guide, including Who can access the dashboard and Manage access to consumption insights. It names roles but no license prerequisite.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 79,
-      "where": "front matter: licensing.notes; Cost and licensing: Licence",
-      "type": "licensing",
-      "claim": "The Copilot Dashboard guide says it is available with a business or enterprise Microsoft 365 or Office 365 subscription and an active Exchange Online account.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
-      "quote": "The Microsoft Copilot Dashboard in Viva Insights is available to any customer with a Microsoft 365 or Office 365 subscription for business or enterprise, and who has an active Exchange Online account.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 80,
-      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; Open questions",
-      "type": "licensing",
-      "claim": "The licensing model is unknown despite the published licensing for the surrounding Viva Insights product.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements",
-      "quote": "Microsoft Copilot plans also include manager, leader, and advanced analysis for all employees who have an assigned Copilot license.",
-      "severity": "minor",
-      "fix": "Set licensing.model to 'included'. Add to licensing.notes and the Licence paragraph: 'The general Viva Insights requirement is applicable Viva Insights licensing and a Microsoft 365 or Office 365 tenant with Exchange Online Plan 1 or Plan 2. Microsoft Copilot plans include manager, leader, and advanced analysis for employees assigned a Copilot license; a license specific to the Cowork views is not yet published.' Cite https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements. Searches for Consumption Dashboard license Cowork and Consumption Dashboard pricing/licensing found no Cowork-view-specific entitlement; this is the standard's minor product-level licensing understatement, not evidence of a new reporting charge."
-    },
-    {
-      "n": 81,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "The reporting change adds no documented change to Cowork's action capabilities.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Viva Insights Consumption Dashboard reporting does not change Cowork access capabilities; read dashboard, query and export pages. Their documented operations monitor consumption or extract data; no change to Cowork action capabilities is described.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 82,
-      "where": "Risk assessment: Autonomy & actions; Cost and licensing: Caps",
-      "type": "absence",
-      "claim": "The reporting views do not document a control that grants Cowork access or sets its spending limits.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Viva Insights Consumption Dashboard reporting does not change Cowork access capabilities. Read dashboard/query/export and Determine access controls for Copilot Cowork excerpt: Cowork access is controlled through spending-policy scope; dashboard fields display existing policy limits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 83,
-      "where": "Governance controls: identification feature ID",
-      "type": "command",
-      "claim": "The Feature access management page linked by the identification guide supplies the identification policy's feature ID.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Viva identification FeatureId consumption dashboard. Read identification guide, feature-access-management and Add-VivaModuleFeaturePolicy. The feature-access page has no identification row or identification FeatureId; the cmdlet reference points to Get-VivaModuleFeature.",
-      "severity": "blocker",
-      "fix": "Replace 'The feature ID for the identification policy is on the Feature access management page that Learn links' with 'The Add-VivaModuleFeaturePolicy reference says to obtain FeatureId using Get-VivaModuleFeature.' Source: https://learn.microsoft.com/powershell/module/exchangepowershell/add-vivamodulefeaturepolicy. Do not invent an identification FeatureId."
-    },
-    {
-      "n": 84,
-      "where": "Governance controls: separate controls",
-      "type": "applicability",
-      "claim": "Turning off the Viva Insights web app disables the entire app, including Copilot Dashboard, Copilot Analytics reports and advanced analysis.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
-      "quote": "Turning this control off disables the entire app, which includes the Microsoft Copilot Dashboard, Copilot Analytics reports, and advanced analysis and admin tools.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 85,
-      "where": "Governance guidance: At rollout; controls",
-      "type": "consistency",
-      "claim": "The checklist instructs administrators to review and enable the exclusion-list policy, but the controls table has no exclusion-list row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Review the unified exclusion list on the dashboard settings page ... and turn the policy on if you create one.\nControls table: identification policy; manager consumption access.",
-      "severity": "minor",
-      "fix": "The At rollout exclusion-list instruction has no matching controls row. Remove that checklist bullet; retain the existing separate-controls paragraph and its dashboard-settings link. Do not add a new control row as part of this correction."
-    },
-    {
-      "n": 86,
-      "where": "Governance guidance: Before rollout and After rollout; controls",
-      "type": "consistency",
-      "claim": "The checklist tells administrators to decide and review analyst access, but the controls table has no analyst-access row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Decide who in your tenant holds the Insights Analyst role with global partition access\nReview who holds identification, analyst and manager access each quarter.\nControls table: identification policy; manager consumption access.",
-      "severity": "minor",
-      "fix": "The Before rollout analyst-access step and the After rollout analyst-access review have no matching controls row. Remove the Before rollout analyst-role bullet and replace the quarterly-review bullet with 'Review who holds identification and manager access each quarter.' Retain the separate-controls note about removing analysts from the global partition; do not add a row."
-    },
-    {
-      "n": 87,
-      "where": "front matter: impact; rationale: impact",
-      "type": "consistency",
-      "claim": "Impact is low because the audience consists of analysts, managers and Global Administrators.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "impact: \"low\"\nLow. Learn lists Insights Analysts with global partition access, Managers and Microsoft 365 Global Administrators as the audience\nAssessment scale: medium: specific roles such as makers, analysts or one business unit.",
-      "severity": "minor",
-      "fix": "Set impact to 'medium' and replace its rationale with 'Medium. The reporting change reaches specific roles: Insights Analysts with global partition access, Managers and Microsoft 365 Global Administrators, rather than most users.' The verified audience matches the standard's specific-role definition."
-    },
-    {
-      "n": 88,
-      "where": "rationale: cost; Cost and licensing: Meter",
-      "type": "cost",
-      "claim": "The Cowork usage represented by the reported credits has usage-based billing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance#usage-based-billing",
-      "quote": "Cowork uses a usage-based billing model. Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/copilot/cowork/cowork-admin-governance#usage-based-billing to sources for the underlying Cowork billing premise. Do not change the reporting feature's cost to metered: the cited passage meters Cowork activity, not these views."
-    },
-    {
-      "n": 89,
-      "where": "Open questions: person query",
-      "type": "behaviour",
-      "claim": "The release notes say a Person query can include Cowork usage metrics.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#october-06,-2026",
-      "quote": "Use the export option or run the Consumption query or Person query including Cowork usage metrics in advanced insights for detailed analysis.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 90,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "A license specific to the Cowork reporting views is not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Consumption Dashboard license Cowork; Consumption Dashboard pricing licensing cost export consumption query. Read dashboard, export prerequisites, query, Copilot Dashboard and environment requirements. Found general Viva Insights licensing, not a Cowork-view-specific license.",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/manager-settings",
+      "quote": "Optionally, select Grant managers scoped access to Consumption insights.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-23T06:06:28.132Z",
+    "at": "2026-11-23T07:02:25.172Z",
     "summary": {
-      "links": 11,
+      "links": 15,
       "unreachable": 0,
       "uiPaths": 2,
       "uiPathsWithMissingWords": 0,
@@ -1087,6 +1109,26 @@
         "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-vivamodulefeaturepolicy",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/org-team-insights/delegate-access",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance#usage-based-billing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/org-team-insights/delegate-access#faqs",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -1130,5 +1172,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-23",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

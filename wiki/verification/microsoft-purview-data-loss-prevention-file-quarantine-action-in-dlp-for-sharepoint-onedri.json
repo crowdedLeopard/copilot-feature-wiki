@@ -1,0 +1,1157 @@
+{
+  "slug": "microsoft-purview-data-loss-prevention-file-quarantine-action-in-dlp-for-sharepoint-onedri",
+  "roadmapId": 557190,
+  "title": "Microsoft Purview DLP: quarantine files in SharePoint and OneDrive",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "3 blocking findings (claims 55, 69, 70)"
+    ]
+  },
+  "counts": {
+    "claims": 92,
+    "confirmed": 88,
+    "unconfirmed": 1,
+    "contradicted": 3,
+    "blocker": 3,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: the policy wizard path omits the advanced-rule choice, and the PowerShell reference does not establish that the proposed parameter enables file quarantine. The statement that the tombstone is users' only guidance also conflicts with documented optional policy tips. Roadmap details, licensing wording, and most quarantine behaviour are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; What's changing",
+      "type": "record",
+      "claim": "The change is a Microsoft Purview DLP file quarantine action for SharePoint and OneDrive.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview: Data Loss Prevention – File Quarantine Action in DLP for SharePoint/OneDrive",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is March CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"March CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap was modified at 2026-08-17T22:52:47.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-08-17T22:52:47\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: defaultState; summary; Why it matters; rationales",
+      "type": "default",
+      "claim": "The control is admin-opt-in and does not quarantine files until an administrator configures a policy with the action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "When you configure a DLP policy with the quarantine action, files that match the policy rule are:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "The get-started page says DLP file quarantine for SharePoint and OneDrive is only available for E5 licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-get-started",
+      "quote": "DLP file quarantine for SharePoint and OneDrive is only available for E5 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Licensing is included in the E5 licenses named by the feature's prerequisites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-get-started",
+      "quote": "DLP file quarantine for SharePoint and OneDrive is only available for E5 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The get-started page links to Microsoft 365 Enterprise Plans and Microsoft 365 service-description licensing guidance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-get-started",
+      "quote": "For information on licensing, see:\n- Microsoft 365 Enterprise Plans\n- Microsoft 365 Service Descriptions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: licensing.notes; Cost and licensing: Meter; rationale: cost",
+      "type": "absence",
+      "claim": "The get-started page lists licensing and Microsoft Entra roles as prerequisites but names no separate meter or price for this action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: DLP SharePoint OneDrive file quarantine E5 licensing add-on; read the complete quarantine get-started page, its Licensing and Permissions sections, and Microsoft Purview service description; no action-specific meter or price on the get-started page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Cost and licensing: Not yet published; Open questions",
+      "type": "absence",
+      "claim": "The get-started page does not state whether E5-equivalent add-on licenses cover this quarantine action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: DLP file quarantine SharePoint OneDrive E5 Microsoft Purview Suite licensing add-on; read get-started, linked licensing guidance and Purview service description. The feature page says E5; general DLP licensing lists add-ons but does not name quarantine.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; summary",
+      "type": "behaviour",
+      "claim": "A matching file is removed from its original SharePoint or OneDrive location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "Removed from the original SharePoint or OneDrive location.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; summary",
+      "type": "behaviour",
+      "claim": "A matching file is moved to an admin-defined SharePoint quarantine site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "Moved to an admin-defined quarantine site in SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "summary; What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Quarantine removes access from everyone, including the file owner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "It removes access from everyone, including the file owner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing: roadmap description",
+      "type": "record",
+      "claim": "The roadmap describes moving a file to a restricted admin-controlled location while preserving it for review.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "automatically moves the file to a restricted, admin‑controlled & defined quarantine location—instantly removing access for all users while preserving the file for review and investigation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment; rationale: impact",
+      "type": "behaviour",
+      "claim": "A tombstone text file replaces the quarantined file at the original location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "Replaced at the original location with a tombstone text file that contains an admin-configured message.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing: sequence; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "All existing permissions and sharing links are removed before the file move.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "1. Permission removal — All existing permissions and sharing links on the file are removed.\n2. File move — A system account moves the file",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing: sequence; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "A system account performs the move to the quarantine site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "A system account moves the file from the original location to the configured admin quarantine site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing: sequence",
+      "type": "behaviour",
+      "claim": "The move preserves the original folder structure in the quarantine site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "The folder structure of the original location is preserved in the quarantine site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing: sequence",
+      "type": "behaviour",
+      "claim": "The tombstone uses the original file's name with a .txt extension.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "Uses the original file's name with a `.txt` extension.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The tombstone displays an administrator-configured message that can name a contact.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "Displays an admin-configured message. Administrators configure this message in DLP settings. For example, the message might instruct the file owner to contact a specific email address for assistance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The tombstone includes the quarantined file's relative path.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "Includes the relative path of the quarantined file within the quarantine site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The tombstone does not disclose the full quarantine folder path to the file owner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "The full quarantine folder path isn't disclosed to the file owner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing: sequence; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Quarantining creates an audit record containing the quarantine file location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "An audit record is created that includes the quarantine file location.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing: sequence; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "A DLP rule match event in Activity explorer includes the quarantine file location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "Review Activity Explorer. | A DLP rule match event appears with quarantine file location details.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing: sequence; Risk assessment; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "DLP alerts include the quarantine file location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "DLP alerts include the quarantine file location, the file owner, and the original file path.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "DLP alerts identify the file owner and original file path.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "DLP alerts include the quarantine file location, the file owner, and the original file path.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing; Scope: Files",
+      "type": "applicability",
+      "claim": "The quarantine action applies to files created or modified after the policy using it is turned on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "The quarantine action only applies to files that are created or modified after the policy with the quarantine action is turned on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing",
+      "type": "applicability",
+      "claim": "Files that existed before activation are not evaluated for quarantine, subject to the on-demand classification exception given in Scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "Files that existed before the policy was activated aren't evaluated for the quarantine action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft explains the eligibility restriction as avoiding large accidental quarantines that are difficult to reverse because restore is manual.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "This design prevents a situation where a broadly scoped policy accidentally quarantines a large number of existing files, which would be difficult to reverse because file restore is a manual process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing",
+      "type": "applicability",
+      "claim": "Designating a SharePoint quarantine site automatically excludes its contents from DLP rule evaluation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "Once you designate a SharePoint site as the quarantine location, the contents of that site are automatically excluded from DLP rule evaluation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Open questions; front matter: changes",
+      "type": "availability",
+      "claim": "The Learn overview still marks its described features as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "The features described in this article are in preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing; Open questions",
+      "type": "availability",
+      "claim": "The Learn get-started page still marks its described features as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-get-started",
+      "quote": "The features described in this article are in preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Open questions",
+      "type": "availability",
+      "claim": "The Learn policy walkthrough still marks its described features as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "The features described in this article are in preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Learn calls quarantine the most restrictive DLP action available for SharePoint and OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "File quarantine is the most restrictive DLP action available for SharePoint and OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Blocking alone prevents sharing but leaves the file in place.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "Blocking prevents sharing but leaves the file in place. Quarantine removes the file entirely from the original location.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Why it matters; Risk assessment; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Restoring a quarantined file does not restore its original sharing permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "Original sharing permissions aren't restored. The file owner or admin must reconfigure sharing permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Why it matters; Risk assessment",
+      "type": "behaviour",
+      "claim": "Only the latest file version is restored.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "Only the latest file version is restored. Previous versions aren't preserved through the quarantine and restore process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Why it matters; Risk assessment; Cost and licensing; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Administrators restore quarantined files manually.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "All file restore is a manual process. Administrators decide when and whether to restore a quarantined file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "absence",
+      "claim": "Learn documents no automated file restore.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "There's no automated file restore for quarantined files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "There is no restore action available in the Microsoft Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "There's no restore action available in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Autonomy & actions; Change & support",
+      "type": "behaviour",
+      "claim": "The same DLP rule does not re-quarantine a restored file even if the file or rule changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "The same DLP rule won't re-quarantine the restored file, even if the file is modified or the policy rule is updated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "Other DLP rules continue to apply to restored files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "Other DLP rules continue to apply normally to the restored file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Learn describes the quarantine site as containing highly sensitive files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-get-started",
+      "quote": "Because the quarantine site contains highly sensitive files",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Microsoft instructs administrators to restrict quarantine-site access to administrators managing quarantine.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "Make sure the site is accessible only by the administrators who manage quarantine operations. Don't share it with information workers or general users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "Data Classification List Viewer is a recommended permission for quarantine-site administrators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-get-started",
+      "quote": "the administrator who manages it should also have the following data classification permissions:\n- Data Classification List Viewer",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "Data Classification Content Viewer is a recommended permission for quarantine-site administrators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-get-started",
+      "quote": "the administrator who manages it should also have the following data classification permissions:\n- Data Classification Content Viewer",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Microsoft recommends using the account-selection criteria of the two Data Classification viewer roles for quarantine administrators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-get-started",
+      "quote": "you should use the same criteria when selecting accounts for administering this feature as you do for selecting accounts to be members of the Data Classification List Viewer and Data Classification Content Viewer roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Security & identity; Scope; Governance controls",
+      "type": "role",
+      "claim": "Configuring and managing quarantine requires one of the Entra roles Compliance administrator, Security administrator or Compliance data administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-get-started",
+      "quote": "To configure and manage DLP file quarantine, you need one of the following Microsoft Entra ID roles:\n- Compliance administrator\n- Security administrator\n- Compliance data administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "A maximum of 200,000 items per tenant may be processed for quarantine in a 24-hour period, with excess items possibly processed later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "A maximum of 200,000 items per tenant within a 24-hour period may be processed for quarantine. Items exceeding this limit may be processed at a later time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Quarantine may not complete for paths longer than 350 characters, with no tombstone created and no quarantine action applied.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "File quarantine may not be completed for files with file path lengths greater than 350 characters. In such cases, the tombstone file will not be created, resulting in the quarantine action not being applied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The tombstone message is the only guidance file owners get.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "Under User notifications, set the toggle to On if you want to notify users through policy tips.",
+      "severity": "blocker",
+      "fix": "Replace 'The message in the tombstone is the only guidance they get, so write it to name a contact' with 'Write the tombstone message to name a contact.' The documented optional policy tips mean the tombstone need not be the only guidance."
+    },
+    {
+      "n": 56,
+      "where": "Scope: Locations",
+      "type": "applicability",
+      "claim": "The quarantine destination must be a SharePoint site in the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "The quarantine destination must be a SharePoint site in your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope: Locations",
+      "type": "applicability",
+      "claim": "A subsite cannot be used as the quarantine destination.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "You can't use a subsite or a OneDrive location.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Scope: Locations",
+      "type": "applicability",
+      "claim": "A OneDrive location cannot be used as the quarantine destination.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "You can't use a subsite or a OneDrive location.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Scope: Locations",
+      "type": "behaviour",
+      "claim": "Selecting a subsite sends quarantined files to its containing site instead.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "If you select a subsite, quarantined files are moved to the site that contains the subsite instead.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Scope: Locations",
+      "type": "applicability",
+      "claim": "Any SharePoint site template can be used for quarantine.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "You can use any SharePoint site template.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Scope: Files",
+      "type": "applicability",
+      "claim": "Quarantine supports all file types supported by DLP for SharePoint and OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "File quarantine supports all file types that DLP supports for SharePoint and OneDrive locations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Scope: Files",
+      "type": "applicability",
+      "claim": "Quarantine is not available as an on-demand classification action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "The quarantine action is not available as an on-demand classification action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Scope: Files",
+      "type": "applicability",
+      "claim": "An on-demand classification result can trigger quarantine if it matches a DLP rule for the first time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "files that are scanned and classified by an on-demand scan can trigger the quarantine action if the classification result matches a DLP policy rule for the first time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Scope: Related features",
+      "type": "applicability",
+      "claim": "Endpoint DLP auto-quarantine is separate and applies to files on Windows and macOS devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "DLP file quarantine for SharePoint and OneDrive is separate from these related features:\n- Endpoint DLP auto-quarantine — Applies only to files on Windows and macOS devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Scope: Related features",
+      "type": "applicability",
+      "claim": "Microsoft Defender for Cloud Apps has a separate file-quarantine capability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "Microsoft Defender for Cloud Apps file quarantine — A similar quarantine capability that exists in Microsoft Defender for Cloud Apps (MDA).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Scope: Prerequisites; controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The quarantine destination and tombstone settings must be configured before the wizard allows selecting the action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "Before you can select the quarantine action in a DLP policy, you must configure the quarantine folder path and tombstone file message in DLP settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends a dedicated quarantine site without active business content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "Don't use a site that contains active business content. Create a dedicated site for quarantine purposes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Administrators are responsible for the quarantine site's access control and lifecycle management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "Administrators are responsible for access control and lifecycle management of the quarantine site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[0].ui; Governance controls: row 1",
+      "type": "admin-path",
+      "claim": "The printed policy-creation path reaches Create rule after Custom policy without specifying the advanced-rule policy-settings choice.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "On the Define policy settings page, make sure the Create or customize advanced DLP rules option is selected.\nSelect Next.\nSelect + Create rule.",
+      "severity": "blocker",
+      "fix": "Replace the UI path in front matter and the rendered table with 'Data loss prevention > Policies > Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom policy > Define policy settings > Create or customize advanced DLP rules > Create rule > Actions > Add an action > Restrict access or encrypt the content in Microsoft 365 locations > Block everyone and move file to quarantine location', as documented at https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine. Retain the note specifying SharePoint sites and OneDrive accounts."
+    },
+    {
+      "n": 70,
+      "where": "controls[0].api; Governance controls: row 1 and PowerShell paragraph",
+      "type": "command",
+      "claim": "Set-DlpComplianceRule -Identity <rule> -SharepointMoveToQuarantineLocation $true configures the rule to quarantine matching SharePoint and OneDrive files.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Set-DlpComplianceRule SharepointMoveToQuarantineLocation Identity Boolean; \"SharepointMoveToQuarantineLocation\" quarantine true. Read Set-DlpComplianceRule reference and quarantine walkthrough: parameter is Boolean but description is a placeholder; no enabling semantics stated.",
+      "severity": "blocker",
+      "fix": "Set controls[0].api to null and render that side as 'Not yet documented'. Replace the PowerShell paragraph with 'At the time of writing (November 2026), the Set-DlpComplianceRule reference lists SharepointMoveToQuarantineLocation as Boolean but does not describe its behaviour; no verified call for configuring this action is documented.' Remove the instruction to test the proposed enabling call."
+    },
+    {
+      "n": 71,
+      "where": "controls[0].note; Governance controls; Open questions",
+      "type": "command",
+      "claim": "The Set-DlpComplianceRule reference lists SharepointMoveToQuarantineLocation as Boolean with an unfilled description.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+      "quote": "### -SharepointMoveToQuarantineLocation\n{{ Fill SharepointMoveToQuarantineLocation Description }}\n| Type: | Boolean |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "controls[1].ui; Governance controls: row 2",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Data loss prevention > Settings > File quarantine reaches the page holding destination and tombstone controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "Go to Data loss prevention > Settings.\nSelect File quarantine.\nUnder Quarantine folder path, select a SharePoint site from the list of available sites.",
+      "severity": "minor",
+      "fix": "Extend controls[1].ui.path and the rendered path to 'Data loss prevention > Settings > File quarantine > Quarantine folder path'. Keep the note 'Set Quarantine folder path and Replacement file message' to identify the second setting on that page."
+    },
+    {
+      "n": 73,
+      "where": "controls[1].note; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Quarantine folder path selects the receiving SharePoint site on the File quarantine page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "Under Quarantine folder path, select a SharePoint site from the list of available sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "controls[1].note; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Replacement file message sets the tombstone's text on the File quarantine page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "Under Replacement file message, provide the text content for the tombstone file that replaces each quarantined file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "controls[1].api; Governance controls: row 2",
+      "type": "absence",
+      "claim": "No documented automation call sets the quarantine destination or replacement message.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: DLP file quarantine settings Quarantine folder path Replacement file message PowerShell Set-DlpCompliancePolicy Set-PolicyConfig; \"file quarantine\" \"Set-PolicyConfig\"; \"ReplacementFileMessage\" DLP. Read quarantine walkthrough and searched both cmdlet references: no relevant setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "controls[2].ui; Governance controls: row 3",
+      "type": "admin-path",
+      "claim": "Audit > Search in the Microsoft Purview portal reaches audit search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Select the Audit solution card.\nOn the Search page, configure the following search criteria as applicable:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "controls[2].api; Governance controls: row 3",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog searches the audit log and is a read control for investigation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "The underlying cmdlet used to search the audit log is an Exchange Online cmdlet, which is Search-UnifiedAuditLog. That means you can use this cmdlet to search the audit log instead of using the search tool",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "controls[2].note; Governance controls",
+      "type": "role",
+      "claim": "Audit search requires Audit Logs or View-Only Audit Logs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "You must be assigned the Audit Logs or View-Only Audit Logs roles in the Microsoft Purview portal to search the audit log.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "controls[2].note; Governance controls: row 3",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog runs in Exchange Online PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "You have to run this cmdlet in Exchange Online PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Data classification > Activity explorer in the Microsoft Purview portal shows quarantine-related DLP events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-get-started",
+      "quote": "Open the Microsoft Purview portal and go to Data classification > Activity explorer.\nFilter for DLP policy rule match events related to your quarantine policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Data loss prevention > Alerts in the Microsoft Purview portal shows quarantine alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-get-started",
+      "quote": "Open the Microsoft Purview portal and go to Data loss prevention > Alerts.\nReview alerts for policies that use the quarantine action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "controls[0].note; Governance guidance: At rollout; Cost and licensing",
+      "type": "behaviour",
+      "claim": "The quarantine action supports simulation mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "Simulation mode is supported for the quarantine action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft advises reviewing simulated policy matches in Activity explorer and the DLP alerts dashboard before turning the policy on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "Use simulation mode to evaluate the impact of the policy before you turn it on. Review the policy matches in Activity Explorer and the DLP alerts dashboard to verify that the policy targets the files you expect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The walkthrough enables admin alerts and selects an alert every time an activity matches the rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+      "quote": "Make sure the Send an alert to admins when a rule match occurs toggle is set to On.\nSelect Send alert every time an activity matches the rule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "Governance guidance: After rollout; controls[2].governs",
+      "type": "behaviour",
+      "claim": "Manual restore uses audit logs to identify the original path and moves the file from quarantine back to that location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-get-started",
+      "quote": "Identify the original file path by using audit logs or the DLP alert details.\nMove the file from the quarantine site back to the original location.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Manual restore includes deleting the tombstone from the original location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-get-started",
+      "quote": "Delete the tombstone text file from the original location.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "Governance controls: first paragraph",
+      "type": "absence",
+      "claim": "The sources document no separate tenant-wide switch for this quarantine action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: DLP SharePoint OneDrive file quarantine tenant enable disable switch automatic restore approval audit operation. Read all three quarantine pages and searched Set-DlpCompliancePolicy and Set-PolicyConfig references; no separate tenant-wide switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
+      "where": "Governance controls: first paragraph; Risk assessment: Autonomy & actions",
+      "type": "applicability",
+      "claim": "The action automatically enforces a configured DLP rule against files matching its scoped locations and conditions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+      "quote": "When a file in a SharePoint or OneDrive location matches a DLP policy rule that has the quarantine action configured, the following sequence occurs:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 89,
+      "where": "Open questions: audit operation",
+      "type": "absence",
+      "claim": "The cited quarantine documentation does not identify the audit operation name for file quarantine.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"file quarantine\" \"audit\" \"operation\" SharePoint Purview; audit-log-activities quarantine SharePoint. Read three quarantine pages; searched Audit log activities for quarantine. Named operations found concern Defender or email, not this DLP action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "Governance guidance; Governance controls",
+      "type": "consistency",
+      "claim": "Every control the governance checklist asks readers to set or review is represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Review simulated matches in Activity explorer'; 'Turn on alerts for the rule'; 'Review quarantine alerts'. Table: quarantine rule action, quarantine destination/message, audit search only.",
+      "severity": "minor",
+      "fix": "The Activity explorer review, per-match admin-alert configuration, and DLP-alert review steps have no corresponding controls-table rows. Record these as checklist/table omissions; this finding does not request additional rows."
+    },
+    {
+      "n": 91,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The Learn quarantine pages describe no approval step before automatic quarantine enforcement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: DLP SharePoint OneDrive file quarantine tenant enable disable switch automatic restore approval audit operation. Read the overview's enforcement sequence, get-started prerequisites and policy walkthrough: no pre-quarantine approval step described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 92,
+      "where": "Governance controls: PowerShell paragraph",
+      "type": "absence",
+      "claim": "The Learn quarantine walkthrough documents the wizard route but no automation call for the action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Set-DlpComplianceRule SharepointMoveToQuarantineLocation Identity Boolean; DLP file quarantine settings PowerShell. Read the complete Create a DLP policy to quarantine files in SharePoint and OneDrive walkthrough: portal steps only, no automation call.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T07:02:27.840Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=557190",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-learn",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-spo-odb-quarantine-get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-search",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a DLP rule quarantines matching SharePoint and OneDrive files",
+        "docs": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+        "reachable": true,
+        "segments": [
+          "Data loss prevention",
+          "Policies",
+          "Create policy",
+          "Enterprise applications & devices",
+          "Custom",
+          "Custom policy",
+          "Create rule",
+          "Actions",
+          "Add an action",
+          "Restrict access or encrypt the content in Microsoft 365 locations"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether a DLP rule quarantines matching SharePoint and OneDrive files",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+        "reachable": true,
+        "token": "Set-DlpComplianceRule",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which SharePoint site receives quarantined files and what the tombstone file says",
+        "docs": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-quarantine",
+        "reachable": true,
+        "segments": [
+          "Data loss prevention",
+          "Settings",
+          "File quarantine"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Finding the original path and activity of quarantined files in the audit log",
+        "docs": "https://learn.microsoft.com/purview/audit-search",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Search"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Finding the original path and activity of quarantined files in the audit log",
+        "docs": "https://learn.microsoft.com/purview/audit-search",
+        "reachable": true,
+        "token": "Search-UnifiedAuditLog",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

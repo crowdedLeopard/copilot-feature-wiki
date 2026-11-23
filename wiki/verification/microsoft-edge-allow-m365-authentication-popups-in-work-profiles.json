@@ -1,0 +1,664 @@
+{
+  "slug": "microsoft-edge-allow-m365-authentication-popups-in-work-profiles",
+  "roadmapId": 561035,
+  "title": "Microsoft Edge: allow Microsoft 365 authentication pop-ups in work profiles",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "2 blocking findings (claims 45, 46)",
+      "3 major findings"
+    ]
+  },
+  "counts": {
+    "claims": 50,
+    "confirmed": 44,
+    "unconfirmed": 3,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 3,
+    "minor": 1
+  },
+  "summary": "Hold: the briefing incorrectly says no admin centre control or API is documented, although Microsoft documents Intune configuration and Graph setting updates. The policy paths, registry settings and default are supported, but the assurances about unchanged data access and storage are not.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; front matter: products",
+      "type": "record",
+      "claim": "The item concerns Microsoft Edge allowing Microsoft 365 authentication pop-ups in work profiles.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Edge: Allow M365 authentication popups in work profiles",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026, not a confirmed release date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\", \"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) only.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-09-08T22:57:21.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-08T22:57:21\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap gives microsoft.com, cloud.microsoft and microsoft365.com as examples of sites opening these pop-ups.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "some Microsoft 365 sites (for example, microsoft.com, cloud.microsoft, and microsoft365.com) may open authentication pop-up windows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap names login.microsoftonline.com, login.live.com and login.microsoft.com as example endpoints.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft sign-in endpoints such as login.microsoftonline.com, login.live.com, or login.microsoft.com.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says these pop-ups are required to complete sign-in.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "These pop-ups are required to complete sign-in.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap says Edge now allows authentication pop-ups from Microsoft first party services by default.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Edge now allows authentication pop-up windows from Microsoft first party services by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap names M365AuthPopupsInWorkEnabled as the availability control.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Admins can control availability to this feature using the M365AuthPopupsInWorkEnabled policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; controls[0].governs; What's changing; Risk assessment; rationale: risk and impact",
+      "type": "behaviour",
+      "claim": "M365AuthPopupsInWorkEnabled controls whether Microsoft 365 authentication pop-ups bypass the blocker in work profiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365authpopupsinworkenabled",
+      "quote": "This policy controls whether Microsoft Edge allows Microsoft 365 authentication pop-ups to bypass the pop-up blocker in work profiles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Governance guidance",
+      "type": "default",
+      "claim": "The default is on: enabled or not configured allows the authentication pop-ups without admin action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365authpopupsinworkenabled",
+      "quote": "If you enable this policy or don't configure it, Microsoft 365 authentication pop-ups are allowed in work profiles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "summary; What's changing; Risk assessment; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Disabling the policy makes these pop-ups follow default settings like other pop-ups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365authpopupsinworkenabled",
+      "quote": "If you disable this policy, Microsoft 365 authentication pop-ups follow the default settings like other pop-ups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope; Governance guidance; front matter: changes",
+      "type": "availability",
+      "claim": "The policy supports Windows with Edge version 148 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365authpopupsinworkenabled",
+      "quote": "Windows: ≥ 148",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope; Governance guidance; front matter: changes",
+      "type": "availability",
+      "claim": "The policy supports macOS with Edge version 148 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365authpopupsinworkenabled",
+      "quote": "macOS: ≥ 148",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].note; What's changing; Risk assessment; Scope",
+      "type": "availability",
+      "claim": "M365AuthPopupsInWorkEnabled is not supported on Android.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365authpopupsinworkenabled",
+      "quote": "Android: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].note; What's changing; Risk assessment; Scope",
+      "type": "availability",
+      "claim": "M365AuthPopupsInWorkEnabled is not supported on iOS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365authpopupsinworkenabled",
+      "quote": "iOS: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "The policy page names microsoft.com, cloud.microsoft and visualstudio.com as example sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365authpopupsinworkenabled",
+      "quote": "some Microsoft 365 sites (for example, microsoft.com, cloud.microsoft, and visualstudio.com) may open authentication pop-ups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "behaviour",
+      "claim": "The policy page describes pop-ups to login.microsoftonline.com, login.live.com and login.microsoft.com.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365authpopupsinworkenabled",
+      "quote": "may open authentication pop-ups to login.microsoftonline.com, login.live.com, or login.microsoft.com.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft's policy page says the pop-ups are required to complete sign-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365authpopupsinworkenabled",
+      "quote": "These pop-ups are required to complete sign-in.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].scope and note; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "The authentication pop-up policy applies per profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365authpopupsinworkenabled",
+      "quote": "Per Profile: Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "behaviour",
+      "claim": "The policy can be mandatory but cannot be recommended.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365authpopupsinworkenabled",
+      "quote": "Can be mandatory: Yes\nCan be recommended: No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "applicability",
+      "claim": "The policy does not apply to a profile signed in with a Microsoft account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365authpopupsinworkenabled",
+      "quote": "Applies to a profile that is signed in with a Microsoft account: No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "M365AuthPopupsInWorkEnabled is a Boolean policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365authpopupsinworkenabled",
+      "quote": "Data type\n- Boolean",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Scope: Rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "The policy supports Dynamic Policy Refresh.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365authpopupsinworkenabled",
+      "quote": "Dynamic Policy Refresh: Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Group Policy exposes Administrative Templates > Microsoft Edge > Identity and sign-in > Allow M365 authentication popups in work profiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365authpopupsinworkenabled",
+      "quote": "Group Policy (ADMX) info\nGP name: Allow M365 authentication popups in work profiles\nGP path (Mandatory): Administrative Templates/Microsoft Edge/Identity and sign-in",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "The registry control is SOFTWARE\\Policies\\Microsoft\\Edge, value M365AuthPopupsInWorkEnabled, type REG_DWORD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365authpopupsinworkenabled",
+      "quote": "Registry settings\nPath (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\nValue name: M365AuthPopupsInWorkEnabled\nValue type: REG\\_DWORD",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The macOS preference key is M365AuthPopupsInWorkEnabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365authpopupsinworkenabled",
+      "quote": "Mac information and settings\nPreference Key name: M365AuthPopupsInWorkEnabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].ui; Governance controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "Group Policy exposes Administrative Templates > Microsoft Edge > Content settings > Default pop-up window setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/defaultpopupssetting",
+      "quote": "Group Policy (ADMX) info\nGP name: Default pop-up window setting\nGP path (Mandatory): Administrative Templates/Microsoft Edge/Content settings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "The registry control is SOFTWARE\\Policies\\Microsoft\\Edge, value DefaultPopupsSetting, type REG_DWORD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/defaultpopupssetting",
+      "quote": "Registry settings\nPath (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\nValue name: DefaultPopupsSetting\nValue type: REG\\_DWORD",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].governs, scope and note; Governance controls",
+      "type": "applicability",
+      "claim": "DefaultPopupsSetting is an existing per-profile control allowing or blocking pop-ups on all sites, not a selective Microsoft 365 authentication exemption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/defaultpopupssetting",
+      "quote": "You can allow them on all websites ('AllowPopups') or block them on all sites ('BlockPopups').\nWindows: ≥ 77\nPer Profile: Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support",
+      "type": "default",
+      "claim": "When DefaultPopupsSetting is not configured, pop-up windows are blocked by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/defaultpopupssetting",
+      "quote": "If you don't configure this policy, pop-up windows are blocked by default, and users can change this setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Users can change the pop-up setting when DefaultPopupsSetting is not configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/defaultpopupssetting",
+      "quote": "If you don't configure this policy, pop-up windows are blocked by default, and users can change this setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A licence requirement for this feature is not yet published, so the licensing model is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge policy M365AuthPopupsInWorkEnabled licensing price meter enterprise policies requirements; Microsoft Edge for Business licensing free browser license requirements. Opened the policy, Edge for Business and Edge management service pages; none names an entitlement for this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The policy page and roadmap name no licence, meter or price for this policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge M365AuthPopupsInWorkEnabled licensing price meter enterprise policies requirements. Read the complete M365AuthPopupsInWorkEnabled policy page and roadmap record; neither names a licence, meter or price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn does not state how Edge determines the complete set of Microsoft first party sites for this exemption.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: M365AuthPopupsInWorkEnabled first party sites data storage authentication popups; M365AuthPopupsInWorkEnabled Microsoft first party services full list sites criteria. Read policy, Intune What's new and Edge release notes; they give examples, not matching criteria or an exhaustive list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "No new data is read.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: M365AuthPopupsInWorkEnabled data read stored privacy first party services list. Opened the policy and Intune What's new; they describe pop-up permission and sign-in, not whether additional data is read.",
+      "severity": "major",
+      "fix": "Remove 'No new data is read or stored.' Neither cited source establishes that assurance."
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "No new data is stored.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: M365AuthPopupsInWorkEnabled data read stored privacy first party services list. Opened the policy and Intune What's new; neither states that this change stores no new data.",
+      "severity": "major",
+      "fix": "Remove 'No new data is read or stored.' Neither cited source establishes that assurance."
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The policy does not change what Microsoft 365 sites can reach.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: M365AuthPopupsInWorkEnabled data read stored privacy first party services list. Read the policy and Intune What's new; they establish the pop-up exemption, but do not state an unchanged data-access boundary.",
+      "severity": "major",
+      "fix": "Remove '; it does not change what the Microsoft 365 sites can reach'. Keep the supported statement that the policy changes whether Edge lets a pop-up window open."
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The supplied sources describe a sign-in pop-up policy, not an agent or automated action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: M365AuthPopupsInWorkEnabled agent automated action roles prerequisites. Read the complete policy and roadmap description; neither describes an agent or an autonomous action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope: Roles and prerequisites",
+      "type": "absence",
+      "claim": "The policy page names no administrator role or separate prerequisite.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: M365AuthPopupsInWorkEnabled agent automated action roles prerequisites. Read the complete policy page: it gives supported browser versions and policy settings, but no administrator role or separate prerequisites section.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls: final paragraph",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no admin centre switch for this pop-up policy.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new",
+      "quote": "To see and configure these settings in Intune, create a Windows settings catalog profile\nMicrosoft Edge > Identity and sign-in > Allow M365 authentication popups in work profiles",
+      "severity": "blocker",
+      "fix": "Remove the sentence 'Microsoft Learn documents no admin centre switch or API for this policy at the time of writing (November 2026); the registry value and the macOS preference key are the documented automation surfaces.' Microsoft documents this setting in the Intune Windows settings catalog; the sentence is also ambiguous about which pop-up policy it means."
+    },
+    {
+      "n": 46,
+      "where": "Governance controls: final paragraph",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no API for this pop-up policy.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationsetting-update?view=graph-rest-beta",
+      "quote": "Update the properties of a deviceManagementConfigurationSetting object.\nPATCH /deviceManagement/configurationPolicies/{deviceManagementConfigurationPolicyId}/settings/{deviceManagementConfigurationSettingId}\nsettingInstance",
+      "severity": "blocker",
+      "fix": "Remove the same 'no admin centre switch or API' sentence. Microsoft documents Graph updates of Intune configuration settings, and its Intune documentation includes M365AuthPopupsInWorkEnabled in that settings catalog. Do not infer that no API exists from the policy reference listing registry and macOS settings."
+    },
+    {
+      "n": 47,
+      "where": "Scope: Rollout",
+      "type": "behaviour",
+      "claim": "A deployed policy applies its configured settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365authpopupsinworkenabled",
+      "quote": "If you enable this policy or don't configure it, Microsoft 365 authentication pop-ups are allowed in work profiles.\nIf you disable this policy, Microsoft 365 authentication pop-ups follow the default settings like other pop-ups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: impact; rationale: impact",
+      "type": "consistency",
+      "claim": "An impact rating of medium fits the stated change to default browser behaviour.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "impact: \"medium\"\nimpact: Medium. Behaviour changes by default for people signed in to Edge with a work account",
+      "severity": "minor",
+      "fix": "Set impact to 'high' and change the rationale's opening 'Medium.' to 'High.' The schema defines high impact as 'most users, or a change to default behaviour'; the stated rationale explicitly describes the latter."
+    },
+    {
+      "n": 49,
+      "where": "What's changing; Open questions",
+      "type": "availability",
+      "claim": "Microsoft Learn already publishes the policy for version 148 despite the roadmap's In development status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365authpopupsinworkenabled",
+      "quote": "M365AuthPopupsInWorkEnabled\nSupported versions\nWindows: ≥ 148\nmacOS: ≥ 148",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap's site and endpoint lists are examples rather than exhaustive lists.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "some Microsoft 365 sites (for example, microsoft.com, cloud.microsoft, and microsoft365.com) may open authentication pop-up windows to Microsoft sign-in endpoints such as login.microsoftonline.com, login.live.com, or login.microsoft.com.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T07:02:23.541Z",
+    "summary": {
+      "links": 3,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 2,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365authpopupsinworkenabled",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/defaultpopupssetting",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=561035",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether Microsoft 365 authentication pop-ups bypass the pop-up blocker in work profiles",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365authpopupsinworkenabled",
+        "reachable": true,
+        "segments": [
+          "Administrative Templates",
+          "Microsoft Edge",
+          "Identity and sign-in",
+          "Allow M365 authentication popups in work profiles"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether Microsoft 365 authentication pop-ups bypass the pop-up blocker in work profiles",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/m365authpopupsinworkenabled",
+        "reachable": true,
+        "token": "Registry: SOFTWARE\\Policies\\Microsoft\\Edge,",
+        "found": false
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether websites in general can show pop-up windows (existing control, not specific to sign-in pop-ups)",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/defaultpopupssetting",
+        "reachable": true,
+        "segments": [
+          "Administrative Templates",
+          "Microsoft Edge",
+          "Content settings",
+          "Default pop-up window setting"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether websites in general can show pop-up windows (existing control, not specific to sign-in pop-ups)",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/defaultpopupssetting",
+        "reachable": true,
+        "token": "Registry: SOFTWARE\\Policies\\Microsoft\\Edge,",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

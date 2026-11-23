@@ -1,37 +1,42 @@
 # Lint report
 
-Generated 2026-11-23T06:28:48.843Z. 679 briefings, 28 concepts, 0 quarantined.
-Independent check: 232 verified, 475 verified with gaps, 0 awaiting correction (live under grace), 0 not yet checked, 0 stale; 19 held and not published.
+Generated 2026-11-23T07:26:56.150Z. 688 briefings, 28 concepts, 0 quarantined.
+Independent check: 234 verified, 482 verified with gaps, 0 awaiting correction (live under grace), 0 not yet checked, 0 stale; 24 held and not published.
 
 ## Errors (0)
 
-## Warnings (24)
+## Warnings (29)
 - _held/agent-365-control-plane-for-agents.md: held (parked since 2026-11-16, 6 attempts): 4 blocking findings (claims 30, 71, 73, 75)
+- _held/classifiers.md: held (failed since 2026-11-23, 1 attempt): 4 blocking findings (claims 19, 24, 49, 87)
 - _held/copilot-studio-computer-use-for-web-browsing-on-microsoft-copilot-harness.md: held (parked since 2026-11-16, 6 attempts): 5 blocking findings (claims 28, 48, 64, 66, 73)
 - _held/copilot-studio-mcp-tools-in-agents.md: held (parked since 2026-11-16, 6 attempts): 6 blocking findings (claims 20, 50, 51, 52, 68, 72)
 - _held/dataverse-agent-users-entra-agent-identity.md: held (parked since 2026-11-16, 6 attempts): 2 blocking findings (claims 33, 49)
 - _held/facilitator.md: held (parked since 2026-11-22, 4 attempts): 1 blocking finding (claim 14)
 - _held/m365-admin-center-cross-tenant-orchestrated-migration.md: held (parked since 2026-11-16, 6 attempts): 4 blocking findings (claims 25, 53, 59, 70)
-- _held/m365-copilot-ask-copilot-about-highlighted-response-content.md: held (failed since 2026-11-23, 1 attempt): 3 blocking findings (claims 57, 58, 59)
-- _held/m365-copilot-insights-copilot-analytics-cowork-adoption-and-impact.md: held (failed since 2026-11-23, 1 attempt): 2 blocking findings (claims 29, 83)
-- _held/m365-copilot-work-iq-apis-pay-as-you-go-usage.md: held (failed since 2026-11-23, 1 attempt): 4 blocking findings (claims 33, 34, 75, 79)
-- _held/m365-introducing-exchange-online-cross-tenant-message-recall.md: held (failed since 2026-11-23, 1 attempt): 1 blocking finding (claim 41)
+- _held/m365-copilot-enhanced-personalization-with-memory-in-copilot.md: held (failed since 2026-11-23, 1 attempt): 3 blocking findings (claims 41, 47, 55)
+- _held/m365-copilot-federated-copilot-connectors.md: held (failed since 2026-11-23, 1 attempt): 2 blocking findings (claims 10, 51)
+- _held/m365-copilot-insights-copilot-analytics-cowork-adoption-and-impact.md: held (failed since 2026-11-23, 2 attempts): 1 blocking finding (claim 43)
+- _held/m365-copilot-new-rich-answer-cards.md: held (failed since 2026-11-23, 1 attempt): 2 blocking findings (claims 35, 36)
+- _held/microsoft-clipchamp-upgraded-music-selection-for-copilot-ai-videos.md: held (failed since 2026-11-23, 1 attempt): 1 blocking finding (claim 70)
 - _held/microsoft-copilot-studio-conversational-configuration-of-connectors-in-copilot-studio.md: held (parked since 2026-11-18, 5 attempts): 2 blocking findings (claims 28, 70)
-- _held/microsoft-purview-compliance-portal-dlp-policy-tip-support-in-outlook-mobile-491016.md: held (failed since 2026-11-23, 1 attempt): 2 blocking findings (claims 31, 52)
-- _held/microsoft-purview-compliance-portal-information-protection-sensitivity-label-support-in-en.md: held (failed since 2026-11-23, 3 attempts): 1 blocking finding (claim 44)
-- _held/microsoft-purview-data-loss-prevention-data-loss-prevention-to-safeguard-sensitive-informa.md: held (failed since 2026-11-23, 1 attempt): 3 blocking findings (claims 13, 15, 46)
+- _held/microsoft-edge-allow-m365-authentication-popups-in-work-profiles.md: held (failed since 2026-11-23, 1 attempt): 2 blocking findings (claims 45, 46); 3 major findings
+- _held/microsoft-purview-compliance-portal-data-loss-prevention-decoupling-of-policy-tips-394279.md: held (failed since 2026-11-23, 1 attempt): 1 blocking finding (claim 14)
+- _held/microsoft-purview-data-loss-prevention-actionable-email-notifications-for-enhanced-inciden.md: held (failed since 2026-11-23, 1 attempt): 3 blocking findings (claims 27, 32, 33)
+- _held/microsoft-purview-data-loss-prevention-file-quarantine-action-in-dlp-for-sharepoint-onedri.md: held (failed since 2026-11-23, 1 attempt): 3 blocking findings (claims 55, 69, 70)
 - _held/microsoft-purview-integration-with-entra-gsa-internet-access-to-enable-sensitive-file-filt.md: held (parked since 2026-11-18, 5 attempts): 2 blocking findings (claims 68, 73)
-- _held/microsoft-teams-use-copilot-chat-after-a-call-in-queues-app.md: held (failed since 2026-11-23, 2 attempts): 4 blocking findings (claims 55, 56, 57, 58)
+- _held/microsoft-teams-chat-panel-open-by-default-in-the-gallery-view-on-teams-rooms-on-android.md: held (failed since 2026-11-23, 1 attempt): 3 blocking findings (claims 24, 25, 26)
+- _held/microsoft-teams-profanity-filter-is-disabled-by-default-for-captions.md: held (failed since 2026-11-23, 1 attempt): 2 blocking findings (claims 38, 42); 5 major findings
+- _held/microsoft-teams-use-copilot-chat-after-a-call-in-queues-app.md: held (failed since 2026-11-23, 3 attempts): 2 blocking findings (claims 24, 60)
+- _held/planner-add-times-to-task-start-finish-and-due-dates.md: held (failed since 2026-11-23, 1 attempt): 5 blocking findings (claims 14, 20, 31, 37, 46)
 - _held/power-apps-manage-model-driven-app-ai-features-from-consolidated-settings.md: held (parked since 2026-11-18, 6 attempts): 8 blocking findings (claims 24, 26, 27, 28, 29, 80, 81, 82)
 - _held/retention.md: held (parked since 2026-11-18, 4 attempts): 4 blocking findings (claims 71, 73, 77, 115)
-- _held/sharepoint-esignature-for-m365-recipient-groups.md: held (failed since 2026-11-23, 2 attempts): 1 blocking finding (claim 42)
 - features/m365-copilot-copilot-in-sharepoint.md: status drift. Briefing says cancelled, roadmap says launched (queued for refresh)
 - concepts/app-management.md: body link to missing concepts/facilitator
 - concepts/ediscovery.md: body link to missing concepts/retention
 - concepts/meeting-transcripts.md: body link to missing concepts/retention
 - concepts/sensitivity-labels.md: body link to missing concepts/retention
 
-## Info (630)
+## Info (638)
 - features/access-rounded-corners-on-access-form-controls.md: control "Administrator switch for rounded corners on Access form controls" has neither an admin UI nor an API documented
 - features/access-rounded-corners-on-access-form-controls.md: low confidence, roadmap text only
 - features/copilot-studio-purview-information-protection-labelled-files.md: control "Separate tenant or agent switch for labelled-file uploads" has neither an admin UI nor an API documented
@@ -58,6 +63,7 @@ Independent check: 232 verified, 475 verified with gaps, 0 awaiting correction (
 - features/m365-copilot-add-agents-and-skills-from-the-plus-menu.md: control "Separate switch for the Agents and Skills plus-menu entry" has neither an admin UI nor an API documented
 - features/m365-copilot-ai-and-copilot-upskilling-nudges-in-microsoft-teams-by-learning-agent.md: control "A separate switch for Learning Agent nudges in Teams" has neither an admin UI nor an API documented
 - features/m365-copilot-app-blocks.md: control "Switch for App Blocks alone" has neither an admin UI nor an API documented
+- features/m365-copilot-ask-copilot-about-highlighted-response-content.md: control "Switch for highlighted-response questions alone" has neither an admin UI nor an API documented
 - features/m365-copilot-audio-overview-updates-in-copilot-notebooks.md: control "Separate switch for audio overview in Copilot Notebooks" has neither an admin UI nor an API documented
 - features/m365-copilot-build-interactive-reports-and-dashboards-with-pages.md: control "Tenant-wide switch for the new interactive reports and dashboards capability" has neither an admin UI nor an API documented
 - features/m365-copilot-capture-voice-notes-in-the-m365-copilot-mobile-app.md: control "Switch that turns voice notes on or off for the tenant or for groups" has neither an admin UI nor an API documented
@@ -339,6 +345,7 @@ Independent check: 232 verified, 475 verified with gaps, 0 awaiting correction (
 - features/purview-retention-last-accessed-sharepoint-onedrive.md: control "Last-accessed start option in the retention policy wizard" has neither an admin UI nor an API documented
 - features/sharepoint-copilot-search-in-sharepoint-and-onedrive.md: control "Deferring the updated search experience at tenant and site level" has neither an admin UI nor an API documented
 - features/sharepoint-cross-post-sharepoint-news-to-engage.md: control "Tenant-wide switch for SharePoint News to Engage cross-posting" has neither an admin UI nor an API documented
+- features/sharepoint-esignature-for-m365-recipient-groups.md: control "A separate switch for recipient groups" has neither an admin UI nor an API documented
 - features/sharepoint-governance-reviews-dashboard-for-site-owners.md: control "Whether the Governance Reviews Dashboard is available to site owners" has neither an admin UI nor an API documented
 - features/universal-print-audit-logging.md: control "Separate switch for Universal Print audit records" has neither an admin UI nor an API documented
 - features/visio-desktop-model-context-protocol-mcp-server.md: control "Whether the Visio Desktop MCP server is available" has neither an admin UI nor an API documented
@@ -398,9 +405,9 @@ Independent check: 232 verified, 475 verified with gaps, 0 awaiting correction (
 - features/m365-copilot-access-sharepoint-agents-in-the-m365-copilot-app.md: orphan (no inbound related links)
 - features/m365-copilot-add-agents-and-skills-from-the-plus-menu.md: orphan (no inbound related links)
 - features/m365-copilot-ai-and-copilot-upskilling-nudges-in-microsoft-teams-by-learning-agent.md: orphan (no inbound related links)
+- features/m365-copilot-ask-copilot-about-highlighted-response-content.md: orphan (no inbound related links)
 - features/m365-copilot-branded-footer-in-the-m365-copilot-app.md: orphan (no inbound related links)
 - features/m365-copilot-capture-voice-notes-in-the-m365-copilot-mobile-app.md: orphan (no inbound related links)
-- features/m365-copilot-code-blocks-in-m365-copilot.md: orphan (no inbound related links)
 - features/m365-copilot-copilot-app-mode-handoffs.md: orphan (no inbound related links)
 - features/m365-copilot-copilot-chat-agent-mode-in-word-enables-conversational-support-to-create-edit.md: orphan (no inbound related links)
 - features/m365-copilot-copilot-code.md: orphan (no inbound related links)
@@ -434,9 +441,10 @@ Independent check: 232 verified, 475 verified with gaps, 0 awaiting correction (
 - features/m365-copilot-use-copilot-to-make-on-canvas-edits-on-pages.md: orphan (no inbound related links)
 - features/m365-copilot-user-can-use-hubspot-connector-in-researcher.md: orphan (no inbound related links)
 - features/m365-copilot-when-using-agent-mode-in-word-you-will-be-able-to-manually-select-which-model.md: orphan (no inbound related links)
+- features/m365-copilot-work-iq-apis-pay-as-you-go-usage.md: orphan (no inbound related links)
 - features/m365-copilot-work-iq-apis-researcher-agent-access.md: orphan (no inbound related links)
-- features/m365-copilot-work-iq-apis-unified-rest-endpoint-for-agents-and-workflows.md: orphan (no inbound related links)
 - features/m365-frontier-expands-to-public-previews-in-teams-outlook-onedrive-and-sharepoint.md: orphan (no inbound related links)
+- features/m365-introducing-exchange-online-cross-tenant-message-recall.md: orphan (no inbound related links)
 - features/manage-workforce-requests-in-m365-copilot.md: orphan (no inbound related links)
 - features/microsoft-clipchamp-copilot-video-creation-updates.md: orphan (no inbound related links)
 - features/microsoft-copilot-microsoft-m365-copilot-chat-can-now-better-match-search-results-from-tex.md: orphan (no inbound related links)
@@ -478,13 +486,15 @@ Independent check: 232 verified, 475 verified with gaps, 0 awaiting correction (
 - features/microsoft-purview-compliance-manager-ai-powered-regulatory-templates.md: orphan (no inbound related links)
 - features/microsoft-purview-compliance-portal-communication-compliance-enhanced-policy-conditions.md: orphan (no inbound related links)
 - features/microsoft-purview-compliance-portal-data-lifecycle-management-apply-a-retention-policy-to.md: orphan (no inbound related links)
+- features/microsoft-purview-compliance-portal-data-loss-prevention-actionable-email-notifications-fo.md: orphan (no inbound related links)
 - features/microsoft-purview-compliance-portal-data-loss-prevention-dlp-policy-tip-support-in-outlook.md: orphan (no inbound related links)
+- features/microsoft-purview-compliance-portal-dlp-policy-tip-support-in-outlook-mobile-491016.md: orphan (no inbound related links)
 - features/microsoft-purview-compliance-portal-ediscovery-premium-hold-reports-u-s-government-clouds.md: orphan (no inbound related links)
 - features/microsoft-purview-compliance-portal-ediscovery-premium-hold-reports.md: orphan (no inbound related links)
 - features/microsoft-purview-compliance-portal-endpoint-data-loss-prevention-endpoint-dlp-shows-full.md: orphan (no inbound related links)
 - features/microsoft-purview-compliance-portal-expanding-access-to-diagnostics-to-compliance-administ.md: orphan (no inbound related links)
 - features/microsoft-purview-compliance-portal-information-protection-scan-existing-files-in-sharepoi.md: orphan (no inbound related links)
-- features/microsoft-purview-compliance-portal-information-protection-sensitivity-label-grouping-mode.md: orphan (no inbound related links)
+- features/microsoft-purview-compliance-portal-information-protection-sensitivity-label-support-in-en.md: orphan (no inbound related links)
 - features/microsoft-purview-compliance-portal-insider-risk-management-collection-policies-impact-on.md: orphan (no inbound related links)
 - features/microsoft-purview-compliance-portal-optical-character-recognition-ocr-support-for-sharepoi.md: orphan (no inbound related links)
 - features/microsoft-purview-compliance-portal-scanner-data-export-for-custom-reporting.md: orphan (no inbound related links)
@@ -501,9 +511,11 @@ Independent check: 232 verified, 475 verified with gaps, 0 awaiting correction (
 - features/microsoft-purview-data-loss-prevention-adaptive-scopes-for-dlp-for-sharepoint.md: orphan (no inbound related links)
 - features/microsoft-purview-data-loss-prevention-apply-purview-network-data-security-dlp-policies-to.md: orphan (no inbound related links)
 - features/microsoft-purview-data-loss-prevention-collection-and-dlp-policies-for-intune-policy-manag.md: orphan (no inbound related links)
+- features/microsoft-purview-data-loss-prevention-data-loss-prevention-to-safeguard-sensitive-informa.md: orphan (no inbound related links)
 - features/microsoft-purview-data-loss-prevention-dlp-policy-change-insights-with-security-copilot.md: orphan (no inbound related links)
 - features/microsoft-purview-data-loss-prevention-export-dlp-and-label-policy-configurations.md: orphan (no inbound related links)
 - features/microsoft-purview-data-loss-prevention-file-testing-against-sensitive-information-classifi.md: orphan (no inbound related links)
+- features/microsoft-purview-data-loss-prevention-granular-classification-error-controls-exchange-onl.md: orphan (no inbound related links)
 - features/microsoft-purview-data-loss-prevention-reusable-global-list-for-exchange-online.md: orphan (no inbound related links)
 - features/microsoft-purview-data-loss-prevention-show-remote-machine-information-on-file-copy-to-rem.md: orphan (no inbound related links)
 - features/microsoft-purview-data-loss-prevention-user-based-aggregation-of-dlp-alerts-564765.md: orphan (no inbound related links)
@@ -640,6 +652,7 @@ Independent check: 232 verified, 475 verified with gaps, 0 awaiting correction (
 - features/sharepoint-advanced-management-inactive-files-policy.md: orphan (no inbound related links)
 - features/sharepoint-changes-to-the-faq-web-part-authoring-experience.md: orphan (no inbound related links)
 - features/sharepoint-cross-post-sharepoint-news-to-engage.md: orphan (no inbound related links)
+- features/sharepoint-esignature-for-m365-recipient-groups.md: orphan (no inbound related links)
 - features/sharepoint-get-relevant-information-from-lists-in-knowledge-agent.md: orphan (no inbound related links)
 - features/sharepoint-governance-reviews-dashboard-for-site-owners.md: orphan (no inbound related links)
 - features/sharepoint-power-automate-trigger-and-action-for-forms-in-sharepoint.md: orphan (no inbound related links)

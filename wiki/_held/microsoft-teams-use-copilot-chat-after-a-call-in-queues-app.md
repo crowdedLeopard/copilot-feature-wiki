@@ -90,19 +90,23 @@ changes:
     note: "Corrected licensing: Microsoft's general Teams Phone requirements name a Microsoft Copilot licence for Copilot in calls; fixed the recording template cmdlet parameters, path and role note; removed checklist steps without control rows."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 63 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-23"
+    note: "Corrected: Copilot access requires a recorded call and Copilot availability for the user; removed the open question on retention, search and audit of Copilot interactions."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 64 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-23"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 59
-  unconfirmed: 0
-  contradicted: 4
-  attempts: 2
-  hash: "aaaaa1de78680ac623e49eb30a4aec46"
+  claims: 64
+  confirmed: 62
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 3
+  hash: "ec63d9dcb1b3b4e7c4d141004fe61a2f"
 ---
 
 ## What's changing
@@ -136,7 +140,7 @@ Microsoft has not stated what happens on arrival for tenants that do nothing, or
 
 **Change & support**
 
-- The Queues app is enabled by default for voice-enabled users with Teams Phone and Teams Premium licences, so users who already have the app will find the option inside a screen they use. Expect questions from agents about which calls show a Recap tab: Copilot is tied to recorded calls.
+- The Queues app is enabled by default for voice-enabled users with Teams Phone and Teams Premium licences; Copilot access additionally requires a recorded call and Copilot availability for the user. Expect questions from agents about which calls show a Recap tab: Copilot is tied to recorded calls.
 - The Queues app is not supported on web clients, and the roadmap record lists Desktop and Mac for this feature.
 
 ## Cost and licensing
@@ -203,19 +207,18 @@ The Manage Queues app page does not mention Copilot. It documents a blunt option
 - Does the Copilot setting in the Teams calling policy, documented for 1:1 and PSTN calls, apply to Copilot on queue calls in the Queues app?
 - Is there an admin setting that turns off Copilot in the Recap tab alone, and what happens on arrival for licensed users when nobody acts?
 - Do calls recorded with Compliance Recording for Call Queue appear in the Queues app with a Recap tab and Copilot, or only calls from Automatic Recording for Call Queue?
-- Where are the questions and answers from the Copilot sidecar retained, and can compliance teams search or audit them?
 
 <!-- rationale
 risk: Medium. Copilot Chat answers questions about recorded customer calls, so the existing recording-access settings now also decide who can query call content; Microsoft Learn documents no switch specific to this feature.
 cost: Medium. The Queues app needs Teams Phone and Teams Premium licences, and Microsoft's general Teams Phone requirements name a Microsoft Copilot licence for Copilot in VoIP and PSTN calls; no feature-specific meter is published.
-impact: Medium. Call queue agents and authorised users (leads and supervisors) who use the Queues app on desktop or Mac will see it; most Teams users will not.
+impact: Medium. This targets call queue agents and authorised users who have Copilot available and access to recorded calls in the Queues app on desktop or Mac.
 -->
 
 <!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Change & support; rationale: impact / availability: Users who already have the Queues app, including agents and authorised users on desktop or Mac, will see the Copilot option. | Found: Access to Copilot is tied to recorded calls and requires Copilot availability for the user. | Fix: Replace 'so users who already have the app will find the option inside a screen they use' with 'Copilot access additionally requires a recorded call and Copilot availability for the user'. Replace the impact rationale's first sentence with 'Medium. This targets call queue agents and authorised users who have Copilot available and access to recorded calls in the Queues app on desktop or Mac.' | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes
-- [contradicted, blocker] Open questions: questions and answers retention / absence: Where Copilot sidecar questions and answers are retained remains unpublished. | Found: Retention policies for AI apps include user prompts and responses for Microsoft 365 Copilot ... Data from generative AI messages is stored in a hidden folder in the mailbox of the user who runs the AI app. | Fix: Remove the retention part of the final open question: https://learn.microsoft.com/purview/retention-policies-copilot already states that Microsoft 365 Copilot prompts and responses have compliance copies in a hidden folder in the user's Exchange mailbox. | Source: https://learn.microsoft.com/purview/retention-policies-copilot
-- [contradicted, blocker] Open questions: compliance search / absence: Whether compliance teams can search Copilot sidecar questions and answers remains undocumented. | Found: Messages stored in mailboxes, including the hidden folders, are searchable by eDiscovery tools. Until messages are permanently deleted from the SubstrateHolds folder, they remain searchable by eDiscovery tools. | Fix: Remove 'can compliance teams search' from the final open question: https://learn.microsoft.com/purview/retention-policies-copilot documents eDiscovery search of compliance copies until permanent deletion. | Source: https://learn.microsoft.com/purview/retention-policies-copilot
-- [contradicted, blocker] Open questions: auditing / absence: Whether compliance teams can audit Copilot sidecar interactions remains undocumented. | Found: The system automatically logs these activities as part of Audit (Standard). If your organization enables auditing, you don't need to take extra steps to configure auditing support for Copilot and AI applications. | Fix: Remove the auditing part of the final open question, leaving no final question after the retention and search corrections: https://learn.microsoft.com/purview/audit-copilot documents automatic logging of Microsoft Copilot interactions when organisation auditing is enabled. | Source: https://learn.microsoft.com/purview/audit-copilot
+- [unsupported, blocker] Why it matters; rationale: risk / applicability: Existing recording-access settings now decide who can query call content with Copilot. | Found: Searched: Queues app Copilot Recap permissions recorded call access scope compliance recording; "Queues" "Copilot" "permissions". Read release-notes, aa-cq-plan-recording, recording-template setup and Teams Phone support; none states that recording ACLs govern this Copilot sidecar. | Fix: Replace the last sentence of Why it matters' first paragraph with 'Review recording access and Copilot entitlement before piloting the feature.' Replace the risk rationale with 'Medium. Copilot Chat answers questions about recorded customer calls; access requires a recorded call and Copilot availability for the user, while Learn documents no switch specific to this feature.' Keep the pilot-based expectation in Data exposure as advice, not a verified permissions mechanism.
+- [contradicted, blocker] Governance guidance: Before rollout, first bullet / admin-path: The Automatic Recording templates path is where administrators list call queues with assigned recording templates. | Found: Assign the template to the call queue: go to Voice > Call queue. Select the call queue you want to have automatic recording for. On the Templates tab, scroll to find the Automatic recording template section. | Fix: Replace the first Before rollout bullet with 'Review automatic recording templates and their agent-access choices (Teams admin center > Voice > Templates and resources > Templates > Automatic Recording).' This removes the incorrect claim that the templates page lists queue assignments. | Source: https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Teams admin center > Voice > Templates and resources > Templates > Automatic Recording > Add reaches the page for recording, transcription and agent-access choices. | Found: Select Automatic Recording as the template type. Select Add to create a new Automatic Recording template. Call recording is enabled by default. Transcription is enabled by default. Select which call recordings call queue representatives (agents) can access. | Fix: Extend controls[0].ui.path to 'Voice > Templates and resources > Templates > Automatic Recording > Add > Call recording'. Keep the note explaining that transcription and agent access are also set on this page. The cited setup page gives these controls after Add. | Source: https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic
 -->

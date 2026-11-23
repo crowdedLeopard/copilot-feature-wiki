@@ -4,7 +4,7 @@ slug: "m365-copilot-ask-copilot-about-highlighted-response-content"
 roadmapId: 522616
 topic: "m365-copilot"
 products: ["Microsoft Copilot (Microsoft 365)"]
-summary: "Microsoft is rolling out a web feature that lets users highlight part of a Copilot response and ask about that selection alone. Microsoft has not stated its default or licensing; no admin setting is documented."
+summary: "Microsoft is rolling out a web feature that lets users highlight part of a Copilot response and ask about that selection alone. Microsoft has not stated its default or licensing; no setting for highlighted-response questions alone is documented."
 status: "rolling-out"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -65,32 +65,36 @@ changes:
     note: "First briefing for roadmap item 522616: rolling out on the web, with the default, licensing and any feature-specific admin control not yet stated."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 62 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-23"
+    note: "Corrected after the independent check: the whole-app block is no longer described as the only documented control, the enterprise data protection scope is stated, and the no-data-source claim is attributed to the roadmap."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 66 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-23"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 58
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "30c2f828335b53782232256749f03f10"
+  claims: 66
+  confirmed: 66
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "a4f077728fc2a622718eeab688aed135"
 ---
 
 ## What's changing
 
 The roadmap item describes a way to highlight a sentence, paragraph or table in a Copilot response and ask Copilot to work on that selection alone. The roadmap lists focused explanations, concise summaries, quick translations and next steps as examples. The selection is previewed in the prompt, so the user can edit it before sending.
 
-Microsoft Learn does not describe this feature at the time of writing (November 2026): the Microsoft 365 Copilot release notes carry no entry for roadmap ID 522616. What this page says about behaviour is therefore the roadmap's description. Microsoft has not stated whether the feature is on by default, which licences or Copilot experiences (Microsoft Copilot or Copilot Chat) get it, or whether an admin setting governs it.
+Microsoft Learn does not describe this feature at the time of writing (November 2026): the Microsoft 365 Copilot release notes carry no entry for roadmap ID 522616. What this page says about behaviour is therefore the roadmap's description. Microsoft has not stated whether the feature is on by default, which licences or Copilot experiences (Microsoft Copilot or Copilot Chat) get it, or whether a setting for highlighted-response questions alone is available.
 
 The roadmap record gives the status as Rolling out, the target date as September CY2026, the release phase as General Availability and the platform as Web. It lists Worldwide (Standard Multi-Tenant) as the cloud. The record was last modified on 22 September 2026. The release notes page describes Copilot features as introduced through a safe deployment model, rolling out to a subset of users in a tenant before expanding, so users in one tenant may not see the option at the same time.
 
 ## Why it matters
 
-This is a change to how users write prompts, not a new data source, so the practical effects are in support and training: users may ask where the option is, and staged availability can make one team see it before another. On the evidence available it does not need a decision from an administrator today.
+The roadmap describes a change to how users write prompts and names no new data source, so the practical effects are in support and training: users may ask where the option is, and staged availability can make one team see it before another. On the evidence available it does not need a decision from an administrator today.
 
 If nobody acts, Microsoft has not stated what happens on arrival, and no source says existing behaviour changes. The roadmap's claim that Copilot works only on the selection is Microsoft's description of intent. Check it in a pilot before telling users that a highlighted question limits what Copilot draws on.
 
@@ -98,7 +102,7 @@ If nobody acts, Microsoft has not stated what happens on arrival, and no source 
 
 **Data exposure**
 - The roadmap says the highlighted selection is previewed in the prompt and can be edited before sending, and that Copilot works on that selection. The roadmap describes no new data source for this feature.
-- Microsoft's enterprise data protection page says prompts and responses in Microsoft Copilot and Copilot Chat are protected by the Data Protection Addendum and Product Terms. Whether that page's controls apply to this feature has not been separately stated, and the page says the specific controls vary with the subscription plan.
+- Microsoft's enterprise data protection page says prompts and responses in Microsoft Copilot and Copilot Chat are protected by the Data Protection Addendum and Product Terms. That page covers customer data, including prompts and responses, for users of Microsoft Copilot and Copilot Chat, and the page says the specific controls vary with the subscription plan.
 
 **Security & identity**
 - No change described: the roadmap names no new permission, connector or identity for the feature. The enterprise data protection page says Copilot respects the organisation's identity model and permissions and inherits sensitivity labels, applies retention policies and supports audit of interactions.
@@ -108,7 +112,7 @@ If nobody acts, Microsoft has not stated what happens on arrival, and no source 
 
 **Change & support**
 - Expect questions from users about the new option and about why colleagues see it first, because Microsoft describes Copilot features as rolling out to a subset of users within a tenant before expanding.
-- The only documented admin control that removes Copilot's web chat is the whole-app block in Integrated Apps (see the controls table). It does not separate this feature from the rest of Copilot.
+- The controls table documents the whole-app block in Integrated Apps. It does not separate this feature from the rest of Copilot.
 
 ## Cost and licensing
 
@@ -149,7 +153,7 @@ Users in scope are those using Copilot on the web. The requirements page says bo
 </tbody>
 </table>
 
-The only documented control that affects this feature is blunt. Microsoft's Manage Copilot Chat page says blocking Copilot through Integrated Apps is a tenant-wide control that can be scoped to specific users or groups, including licensed users, and that it blocks Copilot in the Microsoft Copilot app, Teams, Outlook and Copilot Chat on the web. The Integrated Apps page says that when you block an app it is blocked for all users in your organisation. Those two pages differ on scoping, so confirm what your tenant's pane offers.
+The whole-app block documented here is blunt. Microsoft's Manage Copilot Chat page says blocking Copilot through Integrated Apps is a tenant-wide control that you can scope to specific users or groups, including licensed users, and that it blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web. The Integrated Apps page says that when you block an app it is blocked for all users in your organisation. Those two pages differ on scoping, so confirm what your tenant's pane offers. The Integrated Apps page also says the app is blocked only in the Microsoft Copilot application and Outlook, while Teams continues to honor the current setting for Teams apps made in the Teams admin center; the two pages differ on Teams reach as well as scoping.
 
 The Integrated Apps page says its controls are available to Global Administrators and that settings for the Copilot app apply to both Microsoft Copilot and Copilot Chat. That page does not mention this feature. The second row records that Microsoft Learn documents no switch for highlighted-response questions at the time of writing (November 2026).
 
@@ -166,13 +170,9 @@ cost: Low. The only cost the sources show is admin and communication time; Micro
 impact: Medium. Users of Copilot on the web would see a new way to act on a response; Microsoft has not said which licences or Copilot experiences get it, or whether it arrives switched on.
 -->
 
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure / absence: Whether enterprise data protection controls apply to this feature remains unconfirmed without a separate statement. | Found: Enterprise data protection (EDP) refers to controls and commitments, under the Data Protection Addendum (DPA) and Product Terms, that apply to customer data for users of Microsoft Copilot and Microsoft Copilot Chat. | Fix: Replace 'Whether that page's controls apply to this feature has not been separately stated' with 'That page covers customer data, including prompts and responses, for users of Microsoft Copilot and Copilot Chat'. Keep the existing qualification that specific controls vary with the subscription plan. | Source: https://learn.microsoft.com/copilot/plan/enterprise-data-protection
-- [contradicted, blocker] Risk assessment: Change & support; Governance controls / absence: The whole-app block is the only documented control affecting this feature or removing access to its web chat. | Found: To prevent access to the Copilot app for unlicensed users, including US government customers, don't deploy the Copilot app to these users. | Fix: Change 'The only documented admin control that removes Copilot's web chat is the whole-app block in Integrated Apps' to 'The controls table documents the whole-app block in Integrated Apps'. Change 'The only documented control that affects this feature is blunt' to 'The whole-app block documented here is blunt'. Other general access and enterprise data protection controls are documented, so do not claim exclusivity. | Source: https://learn.microsoft.com/copilot/manage/manage-copilot-chat
-- [contradicted, blocker] summary; What's changing / absence: No admin setting is documented and Microsoft has not stated whether an admin setting governs the feature. | Found: This setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web for all users. | Fix: Replace summary's 'no admin setting is documented' with 'no setting for highlighted-response questions alone is documented'. In What's changing, replace 'or whether an admin setting governs it' with 'or whether a setting for highlighted-response questions alone is available'. This preserves the confirmed narrow absence without denying the whole-app setting already documented in the table. | Source: https://learn.microsoft.com/copilot/manage/manage-copilot-chat
-- [unsupported, major] Why it matters / behaviour: This change is not a new data source. | Found: Searched: 'Ask Copilot highlighted response 522616 default licensing admin', 'highlighted response licensing price meter default admin setting'; opened release notes, Manage Copilot Chat and enterprise data protection; no feature-specific statement rules out a new data source. | Fix: Replace 'This is a change to how users write prompts, not a new data source' with 'The roadmap describes a change to how users write prompts and names no new data source'.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: Before rollout; Governance controls / applicability: Manage Copilot Chat says the Integrated Apps block also blocks Copilot in Teams. | Found: This setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web for all users. | Fix: Add: 'The Integrated Apps page also says the app is blocked only in the Microsoft Copilot application and Outlook, while Teams continues to honor Teams admin center settings; the two pages differ on Teams reach as well as scoping.' Cite https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365. | Source: https://learn.microsoft.com/copilot/manage/manage-copilot-chat
+- [supported, minor] summary; What's changing; Cost and licensing; licensing.notes; rationale: cost / absence: Microsoft has not published feature-specific licensing, although general product requirements are documented. | Found: Searched: '"highlighted response" Copilot licensing' and 'Copilot highlighted response selection ask default admin disable setting license prerequisite price meter'; read requirements and licensing search excerpts. No feature-specific entitlement is stated. | Fix: In the summary replace 'Microsoft has not stated its default or licensing' with 'Microsoft has not stated its default or feature-specific licensing'. General product licensing is documented and is already given in licensing.notes and Cost and licensing.
+- [supported, minor] Governance guidance: Before rollout, first bullet / admin-path: Microsoft 365 admin center > Settings > Integrated Apps reaches the page where the Copilot app's blocked status can be checked. | Found: Select Settings, then select Integrated Apps. Select the Available Apps or Blocked Apps list. Here you can view the status of all apps | Fix: Replace the abbreviated checklist path with 'Microsoft 365 admin center > Settings > Integrated Apps > Blocked Apps' to check whether Copilot is blocked, as documented at https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365#how-to-see-the-available-and-blocked-apps-in-your-organization. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365
 -->

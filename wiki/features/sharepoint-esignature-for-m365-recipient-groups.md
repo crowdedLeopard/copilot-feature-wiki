@@ -67,7 +67,7 @@ controls:
     scope: "site"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Settings > Org settings > Pay-as-you-go services > Settings > Document & image services > eSignature > Where can eSignature be used?"
+      path: "Settings > Org settings > Pay-as-you-go services > Settings > Document & image services > eSignature > Where can eSignature be used? > All sites or Selected sites (up to 100)"
       docs: "https://learn.microsoft.com/microsoft-365/documentprocessing/esignature-setup"
     api: null
     note: "Choose All sites or Selected sites (up to 100)."
@@ -89,7 +89,7 @@ controls:
       kind: "powershell"
       call: "Search-UnifiedAuditLog -StartDate <date> -EndDate <date> -Operations <operation names>"
       docs: "https://learn.microsoft.com/powershell/module/exchange/search-unifiedauditlog"
-    note: "Audit Logs or View-Only Audit Logs role. Run the cmdlet in Exchange Online PowerShell. Learn does not say whether events identify the signing group member."
+    note: "Audit Logs or View-Only Audit Logs role; run the cmdlet in Exchange Online PowerShell. Results include a User field for the account that performed the activity; group-specific audit details are not yet documented."
   - governs: "A separate switch for recipient groups"
     scope: "tenant"
     ui: null
@@ -108,19 +108,23 @@ changes:
     note: "Corrected after the independent check: reworded the external-guest question, aligned the Scope rollout wording, removed a misleading row reference and set action to act-now."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 65 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-23"
+    note: "Corrected after the independent check: audit search results include a User field for the account that performed the activity, and only group-specific audit details remain undocumented; the site-scope path now ends at the All sites or Selected sites choice."
+  - date: "2026-11-23"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 79 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-23"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 64
+  claims: 79
+  confirmed: 79
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "c713118ef1b292bf72720b56039a6ec9"
+  contradicted: 0
+  attempts: 0
+  hash: "9ba3899fae86ffa655e064197e2ade92"
 ---
 
 ## What's changing
@@ -152,7 +156,7 @@ Microsoft states the feature is on by default and needs no admin action, so in t
 
 **Change & support**
 - Requests are created from Word on Desktop, which Learn says is available on the Microsoft 365 Beta, Current and Monthly Enterprise Channels, and which also needs the Allow the use of eSignature for Microsoft Word policy or its registry alternative.
-- Support teams get "who signed?" questions. eSignature writes events such as "Document was signed by the recipient" to the Purview audit log; whether those events show which group member signed is not documented.
+- Support teams get "who signed?" questions. eSignature writes events such as "Document was signed by the recipient" to the Purview audit log. Purview audit search results include a User field identifying the account that performed the activity; group-specific audit details are not yet documented.
 
 ## Cost and licensing
 
@@ -197,9 +201,9 @@ Indirect costs are admin time to brief requesters and helpdesk time for question
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether people in the organisation can use eSignature at all</strong><br><small>Tenant</small><br><small class="controls__note">SharePoint Administrator or Global Administrator role. Clearing the check box turns eSignature off; it is not a recipient-groups switch.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Org settings › Pay-as-you-go services › Settings › Document &amp; image services › eSignature › Let people in your organization use eSignature <a href="https://learn.microsoft.com/microsoft-365/documentprocessing/esignature-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which SharePoint sites can use eSignature</strong><br><small>Site</small><br><small class="controls__note">Choose All sites or Selected sites (up to 100).</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Org settings › Pay-as-you-go services › Settings › Document &amp; image services › eSignature › Where can eSignature be used? <a href="https://learn.microsoft.com/microsoft-365/documentprocessing/esignature-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which SharePoint sites can use eSignature</strong><br><small>Site</small><br><small class="controls__note">Choose All sites or Selected sites (up to 100).</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Org settings › Pay-as-you-go services › Settings › Document &amp; image services › eSignature › Where can eSignature be used? › All sites or Selected sites (up to 100) <a href="https://learn.microsoft.com/microsoft-365/documentprocessing/esignature-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether Word on Desktop can start eSignature requests</strong><br><small>Tenant</small><br><small class="controls__note">Also needs the Allow the use of eSignature for Microsoft Word Office group policy (Cloud Policy service, Intune or Group Policy) or the registry alternative Learn gives. Learn lists Beta, Current and Monthly Enterprise Channels.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Org settings › Pay-as-you-go services › Settings › Document &amp; image services › eSignature › Which apps can use eSignature? › Word (Desktop) <a href="https://learn.microsoft.com/microsoft-365/documentprocessing/esignature-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Audit records of eSignature activity, including signing</strong><br><small>Tenant</small><br><small class="controls__note">Audit Logs or View-Only Audit Logs role. Run the cmdlet in Exchange Online PowerShell. Learn does not say whether events identify the signing group member.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog -StartDate &lt;date&gt; -EndDate &lt;date&gt; -Operations &lt;operation names&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchange/search-unifiedauditlog" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Audit records of eSignature activity, including signing</strong><br><small>Tenant</small><br><small class="controls__note">Audit Logs or View-Only Audit Logs role; run the cmdlet in Exchange Online PowerShell. Results include a User field for the account that performed the activity; group-specific audit details are not yet documented.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog -StartDate &lt;date&gt; -EndDate &lt;date&gt; -Operations &lt;operation names&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchange/search-unifiedauditlog" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>A separate switch for recipient groups</strong><br><small>Tenant</small><br><small class="controls__note">Not yet documented on either surface; the notice says the feature is enabled by default and respects existing tenant policies.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -211,7 +215,7 @@ The Org settings changes need the SharePoint Administrator or Global Administrat
 ## Open questions
 
 - Do people added to a recipient group slot count toward the 10 recipients allowed in each request, and does a group change the $2.00 per-request charge? Watch the pay-as-you-go pricing page and MC1290821.
-- Will audit events for a group request show which member signed, and what happens to the other members' notifications and access once one has signed? Watch the eSignature Learn pages and the Purview audit activities list.
+- What additional group-specific details will audit events contain, and what happens to the other members' notifications and access once one has signed? Watch the eSignature Learn pages and the Purview audit activities list.
 - Can group members be external guests, and how do the existing external-signing requirements and Conditional Access policies affect them?
 - Will there be an admin setting to turn off recipient groups separately from eSignature, given that Microsoft describes the feature as on by default?
 - Will the General Availability rollout in December 2026 hold, given that the notice has already moved the dates from early September?
@@ -220,12 +224,4 @@ The Org settings changes need the SharePoint Administrator or Global Administrat
 risk: Low. The change stays inside eSignature's existing sharing and sign-in rules, and Microsoft's notice says it respects existing tenant policies; the open point is who counts as the signer when a group signs.
 cost: Variable. eSignature is billed through pay-as-you-go at a published $2.00 per signature request; Microsoft publishes no separate meter or rate for recipient groups.
 impact: Medium. People who create eSignature requests in Word Desktop notice it; users who only sign, and tenants that have not set up eSignature, are not the audience Microsoft's notice names.
--->
-
-<!-- verifier-findings (2026-11-23, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Change & support; controls[3].note; Open questions / absence: Whether eSignature audit events show which group member signed is not documented. | Found: When a user or admin performs an audited activity, the system generates an audit record ... User: The user account that performed the activity. | Fix: Replace the signer-identification absence in Risk assessment and controls[3].note with 'Purview audit search results include a User field identifying the account that performed the activity; group-specific audit details are not yet documented.' In Open questions, replace 'Will audit events for a group request show which member signed' with 'What additional group-specific details will audit events contain'. https://learn.microsoft.com/purview/audit-search documents the User field, and https://learn.microsoft.com/microsoft-365/documentprocessing/esignature-overview documents recipient-signing audit events. | Source: https://learn.microsoft.com/purview/audit-search
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; controls[1].note / admin-path: Site scope is configured at Settings > Org settings > Pay-as-you-go services > Settings > Document & image services > eSignature > Where can eSignature be used?, with All sites or Selected sites up to 100. | Found: On the eSignature panel, in the Where can eSignature be used? section, select All sites or Selected sites (up to 100). | Fix: Extend controls[1].ui.path to 'Settings > Org settings > Pay-as-you-go services > Settings > Document & image services > eSignature > Where can eSignature be used? > All sites or Selected sites (up to 100)' as documented at https://learn.microsoft.com/microsoft-365/documentprocessing/esignature-setup. The current path stops on the correct panel. | Source: https://learn.microsoft.com/microsoft-365/documentprocessing/esignature-setup
 -->

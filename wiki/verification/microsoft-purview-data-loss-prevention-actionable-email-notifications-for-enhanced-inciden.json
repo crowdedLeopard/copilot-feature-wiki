@@ -1,0 +1,740 @@
+{
+  "slug": "microsoft-purview-data-loss-prevention-actionable-email-notifications-for-enhanced-inciden",
+  "roadmapId": 527831,
+  "title": "Microsoft Purview DLP: remediation actions inside email notifications",
+  "status": "held",
+  "date": "2026-11-23",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-23",
+    "reasons": [
+      "3 blocking findings (claims 27, 32, 33)"
+    ]
+  },
+  "counts": {
+    "claims": 55,
+    "confirmed": 50,
+    "unconfirmed": 2,
+    "contradicted": 3,
+    "blocker": 3,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: the PowerShell reference lists the remediation parameter but does not document what it sets, so the proposed automation is not verified. The policy creation path omits a required template choice, and the assurance that external parties cannot use the actions is not supported. The roadmap facts and the documented notification actions otherwise check out.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is January CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap was modified at 2026-08-14T21:56:10.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-08-14T21:56:10\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "title; summary; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "Microsoft Purview DLP lets end users initiate remediation from their mailbox for OneDrive and SharePoint files that caused a policy match.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This new feature allows end users to take remediation actions directly from their mailbox, streamlining the remediation process. The end users will be able take remediation actions on files on OneDrive and SharePoint that caused a policy match.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing; Why it matters; Governance guidance",
+      "type": "behaviour",
+      "claim": "Admins can add remediation controls to customized notification emails.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "Admins can add controls to customized email notifications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: defaultState; summary; Scope; rationale: impact",
+      "type": "default",
+      "claim": "The actions are admin-opt-in: admins select them when configuring the notification to make them available to users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "To make these options available to your users in notification emails, select them when you configure the email notification.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "Custom notifications are configured per rule when creating or editing a rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "You can create a custom email notification template for end user email notifications for each rule. Then send it instead of sending the default email notification.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Stop sharing file removes any sharing access and links on the file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "Stop sharing file: Removes any sharing access and links on the file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Delete file deletes the file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "Delete file: Deletes the file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Apply sensitivity or retention label opens the file's OneDrive or SharePoint location so the user can apply the label rather than applying it itself.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "Apply sensitivity or retention label on the file: Opens the OneDrive or SharePoint folder or site where the file is located so the user can apply the sensitivity or the retention label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Security & identity; rationale: risk",
+      "type": "behaviour",
+      "claim": "Override the policy requires a business justification and overrides the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "Override the policy: Requires the end user to add business justification and overrides the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Report false positive requires justification and notifies the admin via the audit log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "Report false positive: Requires the end user to enter the justification and notifies the admin via audit log.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Report unable to take action requires justification and notifies the admin via the audit log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "Report unable to take action: Requires the end user to enter the justification and notifies the admin via audit log.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Cost and licensing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Only markdown can format the email body when actions are added.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "If you add actions that users can take to email, only markdown can be used to format the email body.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope: Locations",
+      "type": "availability",
+      "claim": "Custom email notification templates are available for Exchange, SharePoint and OneDrive scoped policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "This option is available for policies scoped to the Exchange, SharePoint, and OneDrive locations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Scope; Risk assessment; front matter: changes",
+      "type": "availability",
+      "claim": "Learn marks actionable email notifications for OneDrive and SharePoint as preview, unlike the roadmap's Launched status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "Actionable email notifications for OneDrive and SharePoint workloads are in preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Notification emails are sent unprotected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "Notification emails are sent unprotected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The notification body supports the %%Filename%% token.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "%%Filename%% | For SharePoint and OneDrive matches, this token shows the document name. For Exchange, it shows the email attachment name.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The %%MatchedSITAndSurroundingcontext%% token inserts matched sensitive information types and redacted values.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "%%MatchedSITAndSurroundingcontext%% | The matched SITs and the redacted values.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Per-rule notification recipients can include the content owner, last modifier, site owner or a specific user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "These people can include the owner of the content, the person who last modified the content, the owner of the site where the content is stored, or a specific user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Notifications can be sent only to individual recipients, not groups or distribution lists.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "You can send email notifications only to individual recipients, not to groups or distribution lists.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "External senders receive a templated notification without full details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "External senders receive only a templatized notification without full details to prevent any unintended loss of information about the policy configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure",
+      "type": "availability",
+      "claim": "Actions are not a route for external parties.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"actionable email notifications\" \"external\" users recipients; \"actionable email notifications\" override permissions recovery GCC automation. Opened dlp-use-notifications-and-policy-tips: its external-sender note does not establish who can use SharePoint/OneDrive actions.",
+      "severity": "blocker",
+      "fix": "Remove ', so actions are not a route for external parties'. Keep only 'External senders receive a templated notification without full details.'"
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Only new content triggers an email notification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "Only new content triggers an email notification.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Editing existing content triggers policy tips rather than notification emails and their action buttons.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "Editing existing content triggers policy tips, but not email notifications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Governance guidance: After rollout; Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "Override, false-positive and unable-to-act actions are recorded with operation DLPInfo and record type ComplianceDLPSharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "Override, Report false positive, Report unable to take action: Activities - operation names = DLPInfo, Record types = ComplianceDLPSharePoint",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Governance guidance: After rollout; controls[1]",
+      "type": "applicability",
+      "claim": "Delete, stop-sharing and apply-label actions appear in unified audit logs with record type SharepointFileOperation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "Actions details in unified audit logs: Delete, Stop share, Apply label: Record types = SharepointFileOperation",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The creation route to notification settings contains a single Custom choice after Enterprise applications & devices.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
+      "quote": "Select Custom from both the Categories list and the Regulations list.",
+      "severity": "blocker",
+      "fix": "Replace the path with 'Data loss prevention > Policies > + Create policy > Enterprise applications & devices > Custom (Categories) > Custom (Regulations) > Create or customize advanced DLP rules > + Create rule > User Notifications > Preview and edit notification email'. The final button is documented at https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips, which is already cited. Retain the note that actions are selected when configuring that email."
+    },
+    {
+      "n": 33,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-DlpComplianceRule -Identity <rule> -NotifyEmailOnedriveRemediationActions <value> configures the remediation actions offered by notification emails.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"NotifyEmailOnedriveRemediationActions\"; Purview DLP actionable email notifications licensing price meter NotifyEmailOnedriveRemediationActions external recipients. Opened Set-DlpComplianceRule: the parameter has a type and a placeholder description, but no documented effect.",
+      "severity": "blocker",
+      "fix": "Set controls[0].api to null and remove its rendered call. Retain only the existing note that the reference lists -NotifyEmailOnedriveRemediationActions without explaining what it sets; do not present it as verified automation for this control."
+    },
+    {
+      "n": 34,
+      "where": "controls[0].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The Set-DlpComplianceRule reference lists NotifyEmailOnedriveRemediationActions but does not describe its effect.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"NotifyEmailOnedriveRemediationActions\". Opened and searched Set-DlpComplianceRule for that parameter and Identity: its description is '{{ Fill NotifyEmailOnedriveRemediationActions Description }}'; search excerpts for New-DlpComplianceRule also give no effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Audit > Search in the Microsoft Purview portal reaches audit search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Sign in to the Microsoft Purview portal. Select the Audit solution card. ... On the Search page, configure the following search criteria as applicable:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[1].api; controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog is a read-only audit search command run in Exchange Online PowerShell, not a command to restrict or reverse remediation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "The underlying cmdlet used to search the audit log is an Exchange Online cmdlet, which is Search-UnifiedAuditLog. ... You have to run this cmdlet in Exchange Online PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Audit search requires the Audit Logs or View-Only Audit Logs roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "You must be assigned the Audit Logs or View-Only Audit Logs roles in the Microsoft Purview portal to search the audit log. ... To access audit cmdlets, you must be assigned the Audit Logs or View-Only Audit Logs roles in the Exchange admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Scope: Roles; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "The policy creation and deployment account must belong to Compliance administrator, Compliance data administrator, Information Protection, Information Protection Admin or Security administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+      "quote": "The account you use to create and deploy policies must be a member of one of these role groups: Compliance administrator; Compliance data administrator; Information Protection; Information Protection Admin; Security administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance guidance: Before rollout",
+      "type": "command",
+      "claim": "Get-AdminAuditLogConfig in Exchange Online PowerShell can check whether audit log search is on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Get-AdminAuditLogConfig | Format-List UnifiedAuditLogIngestionEnabled ... The value of True for the UnifiedAuditLogIngestionEnabled property indicates that audit log search is turned on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.model; licensing.notes; rationale: cost",
+      "type": "licensing",
+      "claim": "The included licensing model describes this new option within licensed Purview DLP for Exchange, SharePoint and OneDrive, including Microsoft 365 E3 and E5.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Which licenses provide the rights for a user to benefit from the service? Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2), Exchange Online Plan 2",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The service description lists Microsoft 365 E5/A5/G5/E3/A3/G3, Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2) and Exchange Online Plan 2 for this DLP service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2), Exchange Online Plan 2",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The service description also lists Office 365 E5/A5/G5/E3/A3/G3 and Microsoft Purview Suite for this DLP service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Office 365 E5/A5/G5/E3/A3/G3; Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No license specific to actionable email notifications is published at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"actionable email notifications\" licensing pricing meter; Purview DLP actionable email notifications licensing price meter. Opened notifications, policy deployment and Purview service description; found general DLP plans but no actionable-notification-specific license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No price specific to actionable email notifications is published at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"actionable email notifications\" licensing pricing meter; Purview DLP actionable email notifications licensing price meter. Opened notifications and Purview service description; neither states a feature-specific price and search returned no relevant price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to actionable email notifications is published at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"actionable email notifications\" licensing pricing meter; Purview DLP actionable email notifications licensing price meter. Opened notifications and Purview service description; neither names a notification meter and searches supplied no applicable meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope: Clouds and platform; Open questions",
+      "type": "absence",
+      "claim": "The cited notification page names no cloud for these actions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"actionable email notifications\" override permissions recovery GCC automation. Read the full dlp-use-notifications-and-policy-tips page; it specifies OneDrive and SharePoint workloads but no GCC, GCC High, DoD or other cloud availability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The notification page does not describe recovery after Delete file.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"actionable email notifications\" override permissions recovery GCC automation. Read the full notifications page: it says 'Delete file: Deletes the file', without a recovery procedure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Why it matters; summary",
+      "type": "absence",
+      "claim": "No source says existing notification emails automatically acquire actions without administrator configuration.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview DLP actionable email notifications licensing price meter NotifyEmailOnedriveRemediationActions external recipients. Read roadmap and notifications page; the latter says admins select the options when configuring emails, not that existing emails change automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: Before rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist tells readers to check audit ingestion, but the controls table contains only remediation configuration and audit record search.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm that audit log search is on by running Get-AdminAuditLogConfig ... Table rows: 'Which remediation actions a DLP rule's email notification offers to users'; 'Audit records of actions users take from notification emails'.",
+      "severity": "minor",
+      "fix": "Remove the Before rollout bullet beginning 'Confirm that audit log search is on'. It names an ingestion-setting check that has no corresponding control row; the existing audit search row is read-only monitoring."
+    },
+    {
+      "n": 50,
+      "where": "front matter: risk; rationale: risk",
+      "type": "consistency",
+      "claim": "The risk rating is Medium even though the verified admin-opt-in capability exposes no new actions until an admin configures it.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "defaultState: \"admin-opt-in\"; risk: \"medium\"; rationale: 'Medium. Users can delete a file, remove its sharing or override the policy from an email'. The scale rates nothing happening until admin opt-in as low.",
+      "severity": "minor",
+      "fix": "Set risk to 'low' and replace its rationale with 'Low. The remediation actions are unavailable until an admin selects them in the notification configuration. Before opting in, review destructive actions and recipients because notification emails are sent unprotected.'"
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "No agent or automated remediation is described for these user-operated email actions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"actionable email notifications\" override permissions recovery GCC automation. Read the full notifications page; its actionable-notifications section describes controls that users operate directly from email, not an agent or automated remediation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The notification page itself names no license for actionable email notifications.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"actionable email notifications\" licensing pricing meter. Read the full dlp-use-notifications-and-policy-tips page; its actionable-notifications section and surrounding notification guidance name no license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The notification page itself names no meter for actionable email notifications.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"actionable email notifications\" licensing pricing meter. Read the full dlp-use-notifications-and-policy-tips page; it names no billing meter for actionable email notifications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].note; Governance controls",
+      "type": "admin-path",
+      "claim": "Preview and edit notification email opens custom notification editing when creating or editing a policy rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "Select Preview and edit notification email to create a customized template when you edit or create a rule in a policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The notification page gives no further navigation labels for selecting the remediation actions inside the email configuration.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview DLP actionable email notifications licensing price meter NotifyEmailOnedriveRemediationActions external recipients. Read the full notifications page; after Preview and edit notification email it says to select actions when configuring the notification, without further menu labels.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-23T07:02:25.676Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=527831",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-search",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which remediation actions a DLP rule's email notification offers to users",
+        "docs": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
+        "reachable": true,
+        "segments": [
+          "Data loss prevention",
+          "Policies",
+          "+ Create policy",
+          "Enterprise applications & devices",
+          "Custom",
+          "Create or customize advanced DLP rules",
+          "+ Create rule",
+          "User Notifications"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which remediation actions a DLP rule's email notification offers to users",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+        "reachable": true,
+        "token": "Set-DlpComplianceRule",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Audit records of actions users take from notification emails",
+        "docs": "https://learn.microsoft.com/purview/audit-search",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Search"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Audit records of actions users take from notification emails",
+        "docs": "https://learn.microsoft.com/purview/audit-search",
+        "reachable": true,
+        "token": "Search-UnifiedAuditLog",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
