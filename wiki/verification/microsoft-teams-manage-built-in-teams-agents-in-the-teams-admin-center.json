@@ -2,39 +2,36 @@
   "slug": "microsoft-teams-manage-built-in-teams-agents-in-the-teams-admin-center",
   "roadmapId": 564766,
   "title": "Microsoft Teams: manage built-in Teams agents from a dedicated admin centre page",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-24",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
-  "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-24",
-    "reasons": [
-      "2 blocking findings (claims 29, 52)"
-    ]
-  },
+  "notes": [
+    "claim 59: severity blocker on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page",
+    "the verifier wrote \"hold\" but listed no blocker and fewer than three majors; the claims decide, so the page is not held"
+  ],
+  "hold": null,
   "counts": {
-    "claims": 55,
-    "confirmed": 51,
+    "claims": 60,
+    "confirmed": 59,
     "unconfirmed": 0,
-    "contradicted": 4,
-    "blocker": 2,
+    "contradicted": 1,
+    "blocker": 0,
     "major": 0,
-    "minor": 4
+    "minor": 1
   },
-  "summary": "The admin paths and roadmap details are supported, but the briefing overstates what restricting agent availability protects. Users who cannot interact with Channel Agent can still see its messages, and unlicensed users can see Facilitator output, contrary to the cost rationale's assumption about everyone who sees the agents.",
+  "summary": "The admin paths, licensing statements and roadmap details are supported. The impact rationale still implies that restricting agent availability stops users seeing agents, although Microsoft says users not enabled for Channel Agent can still see its presence and messages. Availability must be described as controlling interaction, not visibility.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; Scope; controls[0].note; changes",
+      "where": "title; summary; What's changing; controls[0].note; Governance controls",
       "type": "behaviour",
-      "claim": "Channel Agent, Facilitator and other built-in Teams agents are managed on the dedicated Built-in Teams agents page rather than Manage apps.",
+      "claim": "Built-in Teams agents now have a dedicated Teams admin center page instead of being managed through Manage apps.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
       "quote": "Built-in Teams agents like Channel Agent, Facilitator, and other built-in agents available across chats, channels, and meetings are managed from the Built-In Teams agents page, not the Manage apps page.",
@@ -43,17 +40,61 @@
     },
     {
       "n": 2,
-      "where": "What's changing; Scope; Governance guidance; rationale: impact",
-      "type": "record",
-      "claim": "The roadmap describes centralized management of built-in agents across chats, channels and meetings, controlling availability for users and groups.",
+      "where": "summary; What's changing; Scope: Agents covered",
+      "type": "behaviour",
+      "claim": "Channel Agent and Facilitator are examples of built-in Teams agents.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "Admins will be able to manage Teams built-in agents across core Teams experiences, including chats, channels, and meetings, through a dedicated experience in the Teams admin center. From a centralized location, admins can control agents’ availability for users and groups.",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "Examples include Channel Agent, Facilitator, and other built-in agents.",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
+      "where": "What's changing; Scope; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "The managed built-in agents span chats, channels and meetings.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Admins will be able to manage Teams built-in agents across core Teams experiences, including chats, channels, and meetings, through a dedicated experience in the Teams admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Administrators can centrally control agent availability for users and groups.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "From a centralized location, admins can control agents’ availability for users and groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Scope; rationale: risk",
+      "type": "default",
+      "claim": "Built-in agents are enabled by default for licensed users, so defaultState is on.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "These agents will be enabled by default for licensed users and managed independently from org-wide Microsoft app settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "The org-wide Microsoft apps setting no longer controls built-in Teams agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "These agents are no longer controlled by the Microsoft apps setting. You now manage them from the dedicated Built-in Teams agents page in the Teams admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is Launched.",
@@ -64,7 +105,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 8,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is July CY2026.",
@@ -75,10 +116,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 9,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The release phase is General Availability.",
+      "claim": "The roadmap release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\"]",
@@ -86,7 +127,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 10,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and GCC.",
@@ -97,10 +138,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 11,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Android, Desktop, iOS and Mac.",
+      "claim": "The roadmap platforms are Android, Desktop, iOS and Mac.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\"]",
@@ -108,10 +149,10 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 12,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap gives no preview target date.",
+      "claim": "The roadmap does not specify a preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -119,43 +160,21 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters; Scope; rationale: risk",
-      "type": "default",
-      "claim": "Built-in agents are enabled by default for licensed users, as stated by the roadmap.",
+      "n": 13,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-07-28T22:43:45.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "These agents will be enabled by default for licensed users and managed independently from org-wide Microsoft app settings.",
+      "quote": "\"modified\": \"2026-07-28T22:43:45\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 10,
-      "where": "summary; What's changing; Why it matters; Risk assessment; Governance controls; rationale: risk",
-      "type": "applicability",
-      "claim": "The org-wide Microsoft apps setting no longer controls built-in Teams agents.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
-      "quote": "These agents are no longer controlled by the Microsoft apps setting. You now manage them from the dedicated Built-in Teams agents page in the Teams admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What's changing; Risk assessment; Scope; Governance guidance; controls[0].governs",
-      "type": "behaviour",
-      "claim": "Edit availability allows each agent to be available to everyone, specific users or groups, or no one.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
-      "quote": "To change who can use an agent, select one or more agents and choose Edit availability. You can make an agent available to everyone, to specific users or groups, or to no one.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "controls[0].ui; Governance controls table",
+      "n": 14,
+      "where": "controls[0].ui; Governance controls table; Governance guidance",
       "type": "admin-path",
-      "claim": "The availability control is at Teams admin center > Teams apps > Built-in Teams agents > agent > Edit availability.",
+      "claim": "Agent availability is changed at Teams admin center > Teams apps > Built-in Teams agents > agent > Edit availability.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
       "quote": "Sign in to the Teams admin center and go to Teams apps > Built-in Teams agents. To change who can use an agent, select one or more agents and choose Edit availability.",
@@ -163,32 +182,54 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "controls[0].api; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Microsoft Learn documents no PowerShell or Graph operation that sets availability on the Built-in Teams agents page.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Built-in Teams agents availability PowerShell Update-M365TeamsApp Microsoft Graph; Built-in Teams agents Graph availability. Read manage-apps and Update-M365TeamsApp; neither documents this setting's automation. Graph registry search results describe inventory reads.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "controls[0].note; Risk assessment; Cost and licensing; Scope; Governance guidance",
-      "type": "role",
-      "claim": "The management page requires the Teams Administrator role.",
+      "n": 15,
+      "where": "controls[0].governs; What's changing; Risk assessment; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Edit availability can make an agent available to everyone.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
-      "quote": "To use Teams admin center, you must have a Teams Administrator role. Some admins with a higher privilege role can accomplish agent and app governance tasks",
+      "quote": "You can make an agent available to everyone, to specific users or groups, or to no one.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 15,
+      "n": 16,
+      "where": "controls[0].governs; What's changing; Risk assessment; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Edit availability can make an agent available to specific users or groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "You can make an agent available to everyone, to specific users or groups, or to no one.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].governs; What's changing; Risk assessment; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Edit availability can make an agent available to no one.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "You can make an agent available to everyone, to specific users or groups, or to no one.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].note; Risk assessment: Security & identity; Cost and licensing; Scope; Governance guidance",
+      "type": "role",
+      "claim": "The manage-apps page specifies the Teams Administrator role for Teams admin center management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "To use Teams admin center, you must have a Teams Administrator role. Some admins with a higher privilege role can accomplish agent and app governance tasks but we recommend using the lower privilege role where possible.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
       "where": "Risk assessment: Security & identity",
       "type": "role",
-      "claim": "Learn recommends using the lower-privilege role where possible.",
+      "claim": "Microsoft recommends using the lower-privilege role where possible.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
       "quote": "Some admins with a higher privilege role can accomplish agent and app governance tasks but we recommend using the lower privilege role where possible.",
@@ -196,10 +237,21 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "controls[1].ui; Risk assessment; Governance guidance; Governance controls table",
+      "n": 20,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No PowerShell or Microsoft Graph operation for the Built-in Teams agents page is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams built-in Teams agents Edit availability PowerShell Microsoft Graph availability; Microsoft Graph beta built-in Teams agent availability policy admin. Read manage-apps and Graph Teams API overview search excerpts; no matching availability operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[1].ui; Risk assessment: Autonomy & actions; Governance guidance",
       "type": "admin-path",
-      "claim": "The tenant Channel Agent auto-creation toggle is at Teams admin center > Teams apps > Agent settings > auto-creation.",
+      "claim": "Channel Agent auto-creation is controlled at Teams admin center > Teams apps > Agent settings > auto-creation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
       "quote": "Sign in to the Teams admin center. In the left rail navigation, select Teams apps > Agent settings. Toggle auto-creation to On or Off.",
@@ -207,21 +259,21 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 22,
       "where": "controls[1].api; Governance controls table",
       "type": "absence",
-      "claim": "Microsoft has not documented an automation operation for the Channel Agent auto-creation toggle.",
+      "claim": "No automation equivalent for the Channel Agent auto-creation toggle is documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Channel Agent auto-creation PowerShell Graph Agent settings; Channel Agent auto-creation Set-Cs. Read set-up-channel-agent-teams and Set-CsAgent. The former gives UI steps; the latter describes an AI Agent private preview, not this tenant toggle.",
+      "quote": "Searched: Channel Agent auto-creation Teams Agent settings PowerShell Set-CsTeamsAIPolicy; \"Channel Agent\" \"auto-creation\" \"PowerShell\". Read set-up-channel-agent-teams, Set-CsTeamsChannelsPolicy and New-CsTeamsAIPolicy search excerpts; no auto-creation parameter.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 18,
-      "where": "What's changing; Cost and licensing; controls[1].note",
+      "n": 23,
+      "where": "controls[1].note; What's changing; Cost and licensing",
       "type": "availability",
-      "claim": "The Channel Agent setup page marks the feature as public preview.",
+      "claim": "The Channel Agent setup page marks Channel Agent as public preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
       "quote": "The following feature is currently in public preview. Features in preview might not be complete and could undergo changes before becoming available in the public release.",
@@ -229,40 +281,51 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 24,
       "where": "What's changing; Risk assessment: Change & support; Open questions",
-      "type": "admin-path",
-      "claim": "The Channel Agent setup page still directs admins to Manage apps to allow or block Channel Agent, unlike the manage-apps page.",
+      "type": "behaviour",
+      "claim": "The Channel Agent setup page still tells admins to allow or block Channel Agent through Manage apps.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "In the left rail navigation, select Teams apps > Manage apps. In the apps list's search box, search for Channel Agent. Select Channel Agent from the app list. In the Actions menu, select Allow or Block",
+      "quote": "In the left rail navigation, select Teams apps > Manage apps. In the apps list's search box, search for Channel Agent. Select Channel Agent from the app list. In the Actions menu, select Allow or Block, to allow or block the overall app.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 20,
-      "where": "Why it matters: Learn pages agree agents are allowed by default",
-      "type": "default",
-      "claim": "The Channel Agent setup page says Channel Agents are allowed by default.",
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Channel Agent setup page says Channel Agents are blocked if all apps are blocked.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
       "quote": "Channel Agents are allowed by default. However, if all apps are blocked for your organization, Channel Agents are also blocked.",
-      "severity": "minor",
-      "fix": "Add to the existing discussion of documentation differences: 'The Channel Agent setup page also says Channel Agents are blocked if all apps are blocked, whereas manage-apps says the Microsoft apps setting no longer controls built-in agents.' Keep both statements attributed to their respective cited pages."
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 21,
-      "where": "Why it matters: Learn pages agree agents are allowed by default",
-      "type": "default",
-      "claim": "The Facilitator setup page says Facilitator is allowed by default.",
+      "n": 26,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Facilitator setup page still gives Manage apps instructions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "In the left rail navigation, select Teams apps > Manage apps. In the apps list's search box, search for Facilitator. Select Facilitator from the app list. In the actions menu, select Allow or Block.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Facilitator setup page says Facilitator is blocked if all apps are blocked.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "Facilitator is allowed by default. However, if all apps are blocked for your organization, Facilitator is also blocked.",
-      "severity": "minor",
-      "fix": "Add to the documentation-differences paragraph: 'The Facilitator setup page likewise says Facilitator is blocked if all apps are blocked and still gives Manage apps instructions.' Cite https://learn.microsoft.com/microsoftteams/facilitator-teams."
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 22,
+      "n": 28,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Channel Agent uses the channel's messages as knowledge.",
@@ -273,7 +336,7 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 29,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Channel Agent uses the channel's SharePoint files as knowledge.",
@@ -284,10 +347,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 30,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Channel Agent can gather knowledge from standard meetings and channel meetings.",
+      "claim": "Channel Agent can gather knowledge from channel and standard meetings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
       "quote": "Channel Agents can be added to both standard meetings and channel meetings to gather knowledge.",
@@ -295,10 +358,10 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 31,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Meeting transcription is a Channel Agent knowledge source.",
+      "claim": "Meeting transcription is among Channel Agent's knowledge sources.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
       "quote": "The information a Channel Agent can access is currently limited to searching the web, channel messages, channel files, channel meetings, standard meetings, and meeting transcription.",
@@ -306,84 +369,62 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Channel Agent will not use files the requesting user cannot access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "It won't use files that the requesting user doesn't have access to",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "Risk assessment: Data exposure",
-      "type": "applicability",
-      "claim": "Channel Agent will not use files whose sensitivity labels prevent extraction.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "It won't use files that the requesting user doesn't have access to, files whose sensitivity labels prevent extractions, or files with DLP policies that prevent AI-usage.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "Risk assessment: Data exposure",
-      "type": "applicability",
-      "claim": "Channel Agent will not use files with DLP policies that prevent AI use.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "It won't use files that the requesting user doesn't have access to, files whose sensitivity labels prevent extractions, or files with DLP policies that prevent AI-usage.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "Risk assessment: Data exposure, first bullet",
-      "type": "applicability",
-      "claim": "Limiting availability through Edit availability controls who can reach the channel data through Channel Agent.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "Users who aren't enabled for Channel Agents can view the agent’s presence and messages, but they can't interact with the agent.",
-      "severity": "blocker",
-      "fix": "Replace 'Limiting who gets the agent through Edit availability is the control on who can reach this data through it' with 'Edit availability controls who can interact with the agent; users who are not enabled can still view its presence and messages.' The existing cited Channel Agent page states this distinction."
-    },
-    {
-      "n": 30,
-      "where": "Risk assessment: Data exposure, second bullet",
-      "type": "behaviour",
-      "claim": "Channel Agent output does not inherit the sensitivity label's controls.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "the output doesn't inherit the controls of the sensitivity label itself",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Risk assessment: Data exposure, second bullet",
-      "type": "behaviour",
-      "claim": "Sensitivity-labelled Channel Agent output does not prevent further sharing of the information.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "the output doesn't inherit the controls of the sensitivity label itself and doesn't prevent the information from being further shared.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 32,
-      "where": "Risk assessment: Security & identity",
+      "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Users not enabled for Channel Agent can view its presence and messages.",
+      "claim": "Channel Agent does not use files the requesting user cannot access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "Users who aren't enabled for Channel Agents can view the agent’s presence and messages",
+      "quote": "It won't use files that the requesting user doesn't have access to, files whose sensitivity labels prevent extractions, or files with DLP policies that prevent AI-usage.",
       "severity": null,
       "fix": null
     },
     {
       "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Channel Agent does not use files whose sensitivity labels prevent extraction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "It won't use files that the requesting user doesn't have access to, files whose sensitivity labels prevent extractions, or files with DLP policies that prevent AI-usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Channel Agent does not use files whose DLP policies prevent AI use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "It won't use files that the requesting user doesn't have access to, files whose sensitivity labels prevent extractions, or files with DLP policies that prevent AI-usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure; controls[0].governs",
+      "type": "applicability",
+      "claim": "Availability controls who can interact with Channel Agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "Users who aren't enabled for Channel Agents can view the agent’s presence and messages, but they can't interact with the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure; Security & identity",
+      "type": "behaviour",
+      "claim": "Users not enabled for Channel Agent can still view its presence and messages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "Users who aren't enabled for Channel Agents can view the agent’s presence and messages, but they can't interact with the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "Users not enabled for Channel Agent cannot interact with it.",
@@ -394,19 +435,41 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "default",
-      "claim": "Channel Agent is automatically added by default to new channels created by eligible users, with the EDU exception stated in Governance controls.",
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Channel Agent output based on labelled information does not inherit the sensitivity label's controls.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "By default, for any new channel that an eligible user creates, a Channel Agent is automatically added to the channel. ... Auto-creation will be default Off for EDU tenants.",
+      "quote": "The agent visually indicates the sensitivity label above its response; however, the output doesn't inherit the controls of the sensitivity label itself and doesn't prevent the information from being further shared.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Governance controls: final sentence",
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "That output does not prevent the information being shared further.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "The output doesn't inherit the controls of the sensitivity label itself and doesn't prevent the information from being further shared.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Autonomy & actions; controls[1].governs",
+      "type": "default",
+      "claim": "Channel Agent is automatically added by default to new channels created by eligible users, with the EDU exception stated in Governance controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "By default, for any new channel that an eligible user creates, a Channel Agent is automatically added to the channel.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance controls",
       "type": "default",
       "claim": "Channel Agent auto-creation defaults to Off for EDU tenants.",
       "status": "supported",
@@ -416,10 +479,10 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 42,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Channel Agents help with assigning tasks and due dates.",
+      "claim": "Channel Agent can help assign tasks.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
       "quote": "These agents adopt the channel’s name and help with common tasks—such as flagging important deadlines that are buried in conversations, summarizing progress with succinct status reports, assigning tasks and due dates",
@@ -427,10 +490,32 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 43,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Channel Agent can help assign due dates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "These agents adopt the channel’s name and help with common tasks—such as flagging important deadlines that are buried in conversations, summarizing progress with succinct status reports, assigning tasks and due dates",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
       "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The manage-apps page names no licence for the Built-in Teams agents admin page.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Built-in Teams agents admin center licensing price meter credit rate. Read manage-apps in full, including role requirements and Manage built-in Teams agents; it names no licence for that admin page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: licensing.model",
       "type": "licensing",
-      "claim": "Facilitator is included with a Microsoft Copilot license and subject to available capacity.",
+      "claim": "The agents' entitlement is included with the Copilot licence described in the licensing notes.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "Facilitator is included with a Microsoft Copilot license and subject to available capacity.",
@@ -438,21 +523,43 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Cost and licensing: Facilitator prerequisites",
+      "n": 46,
+      "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Facilitator requires an eligible Microsoft 365 base licence.",
+      "claim": "Facilitator is included with a Microsoft Copilot license.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-      "quote": "Users must meet all of the following requirements: ... An eligible Microsoft 365 base license.",
+      "quote": "Facilitator is included with a Microsoft Copilot license and subject to available capacity.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
-      "where": "Cost and licensing: Facilitator prerequisites",
+      "n": 47,
+      "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Facilitator requires an eligible Teams licence.",
+      "claim": "Facilitator's inclusion is subject to available capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Facilitator is included with a Microsoft Copilot license and subject to available capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Facilitator requires an eligible Microsoft 365 base licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Users must meet all of the following requirements: Licensing requirements - An eligible Microsoft 365 base license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Facilitator requires a Teams licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "Have an eligible Microsoft Teams license. Teams licenses might be included in your Microsoft 365 subscription. If you have Microsoft 365 (no Teams) licenses, you need to purchase separate Teams licenses.",
@@ -460,8 +567,8 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "Cost and licensing: Facilitator prerequisites",
+      "n": 50,
+      "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Facilitator requires a Microsoft Copilot licence.",
       "status": "supported",
@@ -471,21 +578,21 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "Cost and licensing: Channel Agent prerequisites",
+      "n": 51,
+      "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Channel Agent requires an eligible Microsoft 365 base licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-      "quote": "Users must meet all of the following requirements: ... An eligible Microsoft 365 base license.",
+      "quote": "Users must meet all of the following requirements: Licensing requirements - An eligible Microsoft 365 base license.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Cost and licensing: Channel Agent prerequisites",
+      "n": 52,
+      "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Channel Agent requires an eligible Teams licence.",
+      "claim": "Channel Agent requires a Teams licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
       "quote": "Have an eligible Microsoft Teams license. Teams licenses might be included in your Microsoft 365 subscription. If you have Microsoft 365 (no Teams) licenses, you need to purchase separate Teams licenses.",
@@ -493,7 +600,7 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 53,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "Channel Agent requires a Microsoft Copilot licence.",
@@ -504,87 +611,43 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The licensing model is included in the agents' existing product licensing rather than a separately licensed admin page.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-      "quote": "Facilitator is included with a Microsoft Copilot license and subject to available capacity.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "absence",
-      "claim": "The manage-apps page names no licence for the Built-in Teams agents admin page.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams admin center licensing requirements administrator license manage agents; Built-in Teams agents price license. Read manage-apps in full, including role requirements and Manage built-in Teams agents; it names no licence prerequisite for that page.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
+      "n": 54,
       "where": "Cost and licensing",
       "type": "absence",
       "claim": "No meter for the Built-in Teams agents admin page is published as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Built-in Teams agents licensing price meter credits list default availability; Built-in Teams agents price license. Read manage-apps, facilitator-teams and set-up-channel-agent-teams; results discuss other agents' billing, not a meter for this admin page.",
+      "quote": "Searched: Built-in Teams agents admin center licensing price meter credit rate. Read manage-apps, both agent setup pages, Microsoft Copilot licensing, and billing search excerpts; no meter for the admin page was documented.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
+      "n": 55,
       "where": "Cost and licensing",
       "type": "absence",
       "claim": "No price for the Built-in Teams agents admin page is published as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Built-in Teams agents licensing price meter credits list default availability; Built-in Teams agents price license. Read manage-apps, facilitator-teams and set-up-channel-agent-teams; no result states a separate price for this admin page.",
+      "quote": "Searched: Built-in Teams agents admin center licensing price meter credit rate. Read manage-apps, both agent setup pages, Microsoft Copilot licensing, and billing search excerpts; no price for the admin page was documented.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
+      "n": 56,
       "where": "Cost and licensing",
       "type": "absence",
       "claim": "No credit rate for the Built-in Teams agents admin page is published as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Built-in Teams agents licensing price meter credits list default availability. Read manage-apps and the two agent setup pages; search excerpts on Copilot Credits concern other billed services, not administration on this page.",
+      "quote": "Searched: Built-in Teams agents admin center licensing price meter credit rate. Read manage-apps, both agent setup pages, Microsoft Copilot licensing, and billing search excerpts; no credit rate for the admin page was documented.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 49,
-      "where": "Scope: Agents covered; Governance guidance; Open questions",
-      "type": "absence",
-      "claim": "The cited pages do not give a complete fixed list of built-in agents beyond the named examples.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Built-in Teams agents default list; Built-in Teams agents licensing price meter credits list default availability. Read manage-apps and both setup pages; manage-apps names Channel Agent, Facilitator and other built-in agents without an exhaustive list.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "Open questions: exact per-agent default availability",
-      "type": "absence",
-      "claim": "The exact per-agent availability settings on the new page are not stated beyond the roadmap's licensed-user default.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Built-in Teams agents default list; Built-in Teams agents licensing price meter credits list default availability. Read manage-apps and both setup pages; these give availability options or allowed-by-default statements, not each agent's initial selection on the new page.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
+      "n": 57,
       "where": "Scope: Release channel",
       "type": "availability",
-      "claim": "Admins can view and manage only agents deployed in the same release channel as their tenant.",
+      "claim": "Administrators can view and manage only agents deployed in the same release channel as their tenant.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
       "quote": "You can only view and manage agents and apps that are deployed in the same release channel as your tenant is.",
@@ -592,57 +655,46 @@
       "fix": null
     },
     {
-      "n": 52,
-      "where": "rationale: cost",
-      "type": "licensing",
-      "claim": "The agents' own licences are already held by the users who see them.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-      "quote": "Unlicensed users can't prompt Facilitator, but they can see others' prompts to Facilitator and Facilitator's responses. Unlicensed users can see Facilitator's notes in meetings.",
-      "severity": "blocker",
-      "fix": "Replace the cost rationale with 'Low. Reviewing the admin page and communicating availability decisions take admin time; Facilitator and Channel Agent interaction have the licence requirements described in Cost and licensing.' Do not equate seeing agent output with holding its licence."
-    },
-    {
-      "n": 53,
-      "where": "Governance controls: org-wide Microsoft apps setting path",
-      "type": "admin-path",
-      "claim": "Org-wide app settings is reached under Manage apps > Actions, and contains the Microsoft apps setting.",
+      "n": 58,
+      "where": "Scope: Agents covered; Governance guidance: After rollout; Open questions",
+      "type": "absence",
+      "claim": "The cited pages do not provide an exhaustive list of built-in agents beyond their examples.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
-      "quote": "On Manage apps page, under the Actions menu, select Org-wide app settings. ... Under Microsoft apps, a single control automatically enables users to install and use any available agents and apps by default.",
+      "source": null,
+      "quote": "Searched: Teams Built-in Teams agents list agents default availability Channel Agent Facilitator. Read manage-apps and both setup pages; apps-in-teams and AI overview search excerpts list examples, not an exhaustive Built-in Teams agents inventory.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 54,
-      "where": "front matter: action",
-      "type": "consistency",
-      "claim": "The prepare action rating fits a launched, default-on change rated medium risk that requires an availability decision.",
+      "n": 59,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "Licensed users see the agents unless an administrator limits who can use them.",
       "status": "contradicted",
-      "source": "page",
-      "quote": "status: launched; defaultState: on; risk: medium; action: prepare. The standard assigns act-now when a default-reaching change is launched and there is a control to set or decision to take with medium-or-higher risk or cost.",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
+      "quote": "Users who aren't enabled for Channel Agents can view the agent’s presence and messages, but they can't interact with the agent.",
       "severity": "minor",
-      "fix": "Set action to 'act-now': the item is already launched, agents are enabled by default for licensed users, and the briefing asks admins to decide availability to address its medium risk."
+      "fix": "Replace the impact rationale with: \"Medium. Admins see a new page; licensed users have access to use built-in agents unless an admin limits who can use them.\" This describes availability rather than promising that restrictions hide agent presence or messages."
     },
     {
-      "n": 55,
-      "where": "Governance guidance: Before rollout, Microsoft apps checklist item",
-      "type": "consistency",
-      "claim": "Every control the governance checklist asks readers to review has a controls-table row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Before rollout: 'Check how your tenant has used the org-wide Microsoft apps setting'. The controls table has rows for built-in-agent availability and Channel Agent auto-creation, but no Microsoft apps row.",
-      "severity": "minor",
-      "fix": "Replace that checklist item with 'Record that the org-wide Microsoft apps setting no longer governs built-in agents.' This removes the instruction to review a control without a table row; do not add a row."
+      "n": 60,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "On Manage apps, the Microsoft apps setting is under Actions > Org-wide app settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "On Manage apps page, under the Actions menu, select Org-wide app settings. You can then configure the settings in the pane. Under Microsoft apps, a single control automatically enables users to install and use any available agents and apps by default.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-24T07:39:39.397Z",
+    "at": "2026-11-24T11:32:40.953Z",
     "summary": {
       "links": 4,
-      "unreachable": 3,
+      "unreachable": 0,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 2,
+      "uiPathsWithMissingWords": 0,
       "apiCalls": 0,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
@@ -650,18 +702,18 @@
     "linkChecks": [
       {
         "url": "https://learn.microsoft.com/microsoftteams/manage-apps",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://www.microsoft.com/microsoft-365/roadmap?id=564766",
@@ -675,37 +727,36 @@
         "side": "ui",
         "governs": "Who can use each built-in Teams agent (everyone, specific users or groups, no one)",
         "docs": "https://learn.microsoft.com/microsoftteams/manage-apps",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Teams apps",
           "Built-in Teams agents",
           "Edit availability"
         ],
-        "missing": [
-          "Teams apps",
-          "Built-in Teams agents",
-          "Edit availability"
-        ]
+        "missing": []
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Whether a Channel Agent is automatically created in new channels",
         "docs": "https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Teams apps",
           "Agent settings",
           "auto-creation"
         ],
-        "missing": [
-          "Teams apps",
-          "Agent settings",
-          "auto-creation"
-        ]
+        "missing": []
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-24",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

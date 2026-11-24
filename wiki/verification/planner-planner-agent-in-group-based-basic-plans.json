@@ -2,47 +2,52 @@
   "slug": "planner-planner-agent-in-group-based-basic-plans",
   "roadmapId": 511820,
   "title": "Planner: Planner Agent in group-based basic plans",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-24",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-24",
-    "reasons": [
-      "1 blocking finding (claim 20)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 46,
-    "confirmed": 45,
+    "claims": 50,
+    "confirmed": 49,
     "unconfirmed": 0,
     "contradicted": 1,
-    "blocker": 1,
+    "blocker": 0,
     "major": 0,
-    "minor": 0
+    "minor": 2
   },
-  "summary": "Hold: the note about turning Planner Agent on for all users omits an existing security-group restriction. Microsoft documents that AllowPlannerCopilot set to true still restricts access when a group ID is configured; the other commands, licence requirement and roadmap facts are supported.",
+  "summary": "The briefing passes: Microsoft documentation supports the Planner PowerShell controls, their security-group behaviour and the Copilot licence requirement. The default and a separate feature-specific price or meter remain undocumented; two small checklist corrections would improve the governance instructions.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; Scope; rationale: impact",
+      "where": "title; front matter: products",
       "type": "record",
-      "claim": "Planner Agent is available for Microsoft 365 Copilot licensed users in all group-based Planner plans, including basic plans.",
+      "claim": "This item concerns Planner Agent in group-based basic plans, under Planner and Microsoft Copilot (Microsoft 365).",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Planner Agent will now be available for M365 Copilot licensed users in all group-based Planner plans, including basic plans.",
+      "quote": "\"title\": \"Planner: Planner Agent in group-based basic plans\"; \"products\": [\"Planner\", \"Microsoft Copilot (Microsoft 365)\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
+      "where": "summary; What's changing; Scope; rationale: risk and impact",
+      "type": "record",
+      "claim": "Planner Agent is available to Microsoft 365 Copilot licensed users in all group-based Planner plans, including basic plans.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"; \"description\": \"Planner Agent will now be available for M365 Copilot licensed users in all group-based Planner plans, including basic plans.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
       "where": "front matter: status; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap status is Launched.",
@@ -53,7 +58,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 4,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target date is March CY2026.",
@@ -64,7 +69,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview date is March CY2025.",
@@ -75,10 +80,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists General Availability, Preview and Targeted Release.",
+      "claim": "The roadmap phases are General Availability, Preview and Targeted Release.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\", \"Targeted Release\"]",
@@ -86,7 +91,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed on the roadmap item.",
@@ -97,7 +102,7 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 8,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap platforms are Desktop, Mac and Web.",
@@ -108,41 +113,52 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: products",
+      "n": 9,
+      "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The record identifies Planner and Microsoft Copilot (Microsoft 365) as the products.",
+      "claim": "The roadmap modification timestamp is 2026-06-05T22:00:28.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\"Planner\", \"Microsoft Copilot (Microsoft 365)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The Copilot release notes describe Planner Agent as previously limited to premium plans and now available in all group-based plans.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#august-11,-2026",
-      "quote": "Planner Agent, previously limited to premium plans, is now available in all group-based Planner plans for users with a Microsoft 365 Copilot license.",
+      "quote": "\"modified\": \"2026-06-05T22:00:28\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 10,
-      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "The Planner Agent features basic plans gain include task execution and status reporting.",
+      "claim": "The Copilot release notes say Planner Agent was previously limited to premium plans.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#august-11,-2026",
-      "quote": "This expands access to Planner Agent features such as task execution and status reporting within basic plans, enhancing productivity without requiring plan upgrades.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Planner Agent, previously limited to premium plans, is now available in all group-based Planner plans for users with a Microsoft 365 Copilot license.",
       "severity": null,
       "fix": null
     },
     {
       "n": 11,
-      "where": "What's changing; Risk assessment",
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Basic plans gain Planner Agent task execution.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "This expands access to Planner Agent features such as task execution and status reporting within basic plans, enhancing productivity without requiring plan upgrades.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Basic plans gain Planner Agent status reporting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "This expands access to Planner Agent features such as task execution and status reporting within basic plans, enhancing productivity without requiring plan upgrades.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Basic plans are now unified plans.",
       "status": "supported",
@@ -152,10 +168,10 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing; Cost and licensing; Risk assessment",
+      "n": 14,
+      "where": "What's changing; Risk assessment: Change & support; Cost and licensing",
       "type": "licensing",
-      "claim": "Premium capabilities in unified plans increasingly depend on each user's assigned licence.",
+      "claim": "Premium capabilities are increasingly available in unified plans based on each user's assigned licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/planner-for-admins",
       "quote": "Premium capabilities are increasingly available in unified plans based on the licenses assigned to individual users.",
@@ -163,10 +179,10 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "What's changing; Risk assessment",
+      "n": 15,
+      "where": "What's changing; Risk assessment: Data exposure",
       "type": "licensing",
-      "claim": "Members of a unified plan need not hold the same licence.",
+      "claim": "A unified plan does not require every member to hold the same licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/planner-for-admins",
       "quote": "A unified plan doesn't require every member of the plan to have the same license. Users can collaborate in the same plan, while the capabilities available to each user depend on their assigned license.",
@@ -174,10 +190,10 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing; Cost and licensing; rationale: cost",
+      "n": 16,
+      "where": "front matter: licensing.model and notes; Cost and licensing; controls[2].note; rationale: cost and impact",
       "type": "licensing",
-      "claim": "Planner for admins says Microsoft Copilot includes premium and AI-powered capabilities such as Planner Agent.",
+      "claim": "Planner Agent requires a Microsoft Copilot licence assigned to the user, and is a capability included with that licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/planner-for-admins",
       "quote": "For example, users with Microsoft Copilot can use premium and AI-powered capabilities included with that license, such as Planner Agent, Goals, task scheduling, task history, and task dependencies.",
@@ -185,120 +201,54 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 17,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Planner Agent chat is a distinct capability from Planner Agent task execution and status reporting.",
+      "claim": "Planner Agent chat is a separate capability from the task execution and status reporting experience.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
-      "quote": "The Planner Agent automates plan creation and task execution for teams. The Planner Agent chat in premium plans (previously \"Copilot in Planner\") offers an in-app natural language chat experience",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "Why it matters",
-      "type": "licensing",
-      "claim": "Planner basic capabilities are included in qualifying Microsoft 365 plans.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/planner/planner-for-admins",
-      "quote": "Which Microsoft 365 plans include Planner and its basic capabilities? Planner in Microsoft 365 is included with the following subscription plans:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "front matter: defaultState; summary; Why it matters; Open questions",
-      "type": "default",
-      "claim": "Microsoft has not stated the untouched tenant default for Planner Agent or AllowPlannerCopilot.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Planner AllowPlannerCopilot default tenant PlannerCopilotAllowedGroupId default'; opened turn-off-planner-agent, planner-for-admins and manage-copilot-agents-integrated-apps. The matrix describes configured values, not an untouched tenant's value.",
+      "quote": "This article contains instructions for how to restrict access to the Planner Agent experience for task execution and status reporting in both basic and premium plans as well as the Planner Agent chat in premium plans only.",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
-      "where": "controls[0].ui; Governance controls; rationale: risk",
-      "type": "absence",
-      "claim": "No admin UI switch for Planner Agent in Planner is documented; the documented switch is PowerShell.",
+      "where": "Why it matters",
+      "type": "licensing",
+      "claim": "Planner basic capabilities are included in qualifying Microsoft 365 subscription plans.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Planner Agent in Planner basic plans admin center disable restrict security group UI AllowPlannerCopilot default enabled'; opened turn-off-planner-agent and manage-copilot-agents-integrated-apps. Results distinguish the Planner app from Copilot agents and the Cowork plugin.",
+      "source": "https://learn.microsoft.com/planner/planner-for-admins",
+      "quote": "Which Microsoft 365 plans include Planner and its basic capabilities? Planner in Microsoft 365 is included with the following subscription plans: Microsoft 365 Business Basic",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
-      "where": "controls[0].api; summary; Governance controls",
-      "type": "command",
-      "claim": "Set-PlannerConfiguration -AllowPlannerCopilot $false turns Planner Agent off for all users.",
+      "where": "front matter: defaultState; summary; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated the tenant default for Planner Agent in basic plans when nobody changes AllowPlannerCopilot.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
-      "quote": "To turn off Planner Agent and Planner Agent chat for all users: Set-PlannerConfiguration -AllowPlannerCopilot $false",
+      "source": null,
+      "quote": "Searched: Planner Agent AllowPlannerCopilot default enabled admin center UI restrict security group. Read turn-off-planner-agent, planner-for-admins, the service description and release notes; none states the initial Planner policy value. Copilot agent-store defaults concern another surface.",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "controls[0].note; Governance controls table",
-      "type": "command",
-      "claim": "Setting AllowPlannerCopilot to $true turns Planner Agent on for all users without further qualification.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
-      "quote": "$true | $null (00000000-0000-0000-0000-000000000000) | 'ON' for all users; $true | valid security group ID | 'ON' for users in the security group only (or nested members); $true | invalid security group ID | 'OFF' for all users",
-      "severity": "blocker",
-      "fix": "Replace '$true turns it on for all users.' in controls[0].note and its rendered table note with 'With PlannerCopilotAllowedGroupId set to $null, $true turns it on for all users.' The qualification is documented at https://learn.microsoft.com/planner/turn-off-planner-agent."
+      "where": "controls[0].note; Why it matters; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Planner administration requires downloading and loading the Planner Tenant Admin PowerShell module.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/prerequisites-for-powershell",
+      "quote": "Download the Planner Tenant Admin PowerShell file. Unzip it to a location you can access from PowerShell. After unblocking your plannertenantadmin.psm1, do the following to load the Planner Tenant Admin PowerShell module:",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 21,
-      "where": "controls[1].ui",
-      "type": "absence",
-      "claim": "No admin UI for restricting Planner Agent in Planner to a security group is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Planner Agent in Planner basic plans admin center disable restrict security group UI AllowPlannerCopilot default enabled'; opened turn-off-planner-agent and manage-copilot-agents-integrated-apps. No UI for PlannerCopilotAllowedGroupId was documented.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "controls[1].api; summary; Risk assessment; Governance guidance",
-      "type": "command",
-      "claim": "Set-PlannerConfiguration -AllowPlannerCopilot $true -PlannerCopilotAllowedGroupId <security group id> restricts access to a security group.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
-      "quote": "To turn on Planner Agent and Planner Agent chat for a specific security group: Set-PlannerConfiguration -AllowPlannerCopilot $true -PlannerCopilotAllowedGroupId <security group id>",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "controls[1].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The allowed security group includes members of nested groups.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
-      "quote": "Users who are members of the specified security group, including those in nested groups, will have access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "controls[1].note; Risk assessment; Governance controls",
-      "type": "behaviour",
-      "claim": "An invalid security group ID denies access to all users even with AllowPlannerCopilot set to $true.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
-      "quote": "If the Security Group ID is invalid, no users will have access, even if AllowPlannerCopilot is set to $true.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "controls[0].note; Why it matters; Scope; Governance guidance; Governance controls",
+      "where": "controls[0].note; Why it matters; Scope; Governance guidance; Governance controls; rationale: risk",
       "type": "role",
-      "claim": "A global admin is required to run Planner Tenant Admin PowerShell commands.",
+      "claim": "A global admin is required to run the Planner Tenant Admin PowerShell commands.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/prerequisites-for-powershell",
       "quote": "You must be a global admin to run the Planner Tenant Admin Powershell Commands.",
@@ -306,13 +256,57 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "controls[0].note; Why it matters; Scope; Governance guidance",
+      "n": 22,
+      "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Planner admin commands require downloading and loading the Planner Tenant Admin PowerShell module.",
+      "claim": "Learn describes Planner Agent as built on Microsoft's security, compliance and privacy approach and links to Copilot privacy guidance.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/planner/prerequisites-for-powershell",
-      "quote": "Download the Planner Tenant Admin PowerShell file. Unzip it to a location you can access from PowerShell. ... This will import a module with all available cmdlets.",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "Planner Agent and Planner Agent chat in premium plans are built on Microsoft's comprehensive approach to security, compliance, and privacy. For more information about security and privacy in Microsoft Copilot, see Data, Privacy, and Security for Microsoft Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Planner for admins describes Copilot and Planner Agent as helping identify risks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-for-admins",
+      "quote": "Keep work moving with Copilot and the Planner Agent. Identify and address risks, communicate progress, and drive work forward, while turning meeting discussions into actionable tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Planner for admins describes Copilot and Planner Agent as helping address risks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-for-admins",
+      "quote": "Keep work moving with Copilot and the Planner Agent. Identify and address risks, communicate progress, and drive work forward, while turning meeting discussions into actionable tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Planner for admins describes Copilot and Planner Agent as helping communicate progress.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-for-admins",
+      "quote": "Keep work moving with Copilot and the Planner Agent. Identify and address risks, communicate progress, and drive work forward, while turning meeting discussions into actionable tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Planner for admins describes Copilot and Planner Agent as helping drive work forward.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-for-admins",
+      "quote": "Keep work moving with Copilot and the Planner Agent. Identify and address risks, communicate progress, and drive work forward, while turning meeting discussions into actionable tasks.",
       "severity": null,
       "fix": null
     },
@@ -320,7 +314,7 @@
       "n": 27,
       "where": "controls[0].note; Risk assessment; Governance guidance; Governance controls",
       "type": "behaviour",
-      "claim": "Planner policy changes may take up to one hour to become effective.",
+      "claim": "Planner policy changes may take up to one hour to apply.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
       "quote": "The policy changes may require up to an hour to become effective.",
@@ -329,97 +323,9 @@
     },
     {
       "n": 28,
-      "where": "controls[2].ui; Governance guidance: Before rollout",
-      "type": "admin-path",
-      "claim": "Licence assignment is at Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
-      "quote": "In the admin center, go to the Users > Active users page. ... Select the row of the user ... In the right pane, select Licenses and Apps. ... Expand the Licenses section, select the boxes for the licenses that you want to assign",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "controls[2].api",
-      "type": "command",
-      "claim": "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @() assigns a user licence.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
-      "quote": "To assign a license to a user, use the following command in PowerShell. Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "controls[2].note; Governance controls",
-      "type": "role",
-      "claim": "Assigning licences requires at least a License or User Administrator.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
-      "quote": "You must be at least a License or User Administrator to assign licenses.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "front matter: licensing.model; licensing.notes; controls[2]; Cost and licensing; rationale: impact",
-      "type": "licensing",
-      "claim": "Access to Planner Agent in Planner requires a Microsoft Copilot licence assigned to the individual user.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
-      "quote": "Users must have the following license to access Planner Agent in Planner: A Microsoft Copilot license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "A separate Planner Agent price or meter specific to basic plans is not published in the cited licensing and admin documentation.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Planner Agent basic plans pricing billing meter Copilot credits Microsoft 365 Copilot included'; opened microsoft-planner-service-description and turn-off-planner-agent. Read release notes and usage-based billing search excerpts; no separate basic-plan Planner Agent price or meter stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The Planner service description has a Microsoft 365 Copilot licence column.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description",
-      "quote": "| Capability | Feature name | Microsoft Planner Included in Microsoft 365 | Planner Plan 1 | Planner and Project Plan 3 | Microsoft 365 Copilot |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Learn describes Planner Agent as built on Microsoft's security, compliance and privacy approach.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
-      "quote": "Planner Agent and Planner Agent chat in premium plans are built on Microsoft’s comprehensive approach to security, compliance, and privacy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Planner for admins describes Copilot and Planner Agent as helping identify risks, communicate progress and drive work forward.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/planner/planner-for-admins",
-      "quote": "Keep work moving with Copilot and the Planner Agent. Identify and address risks, communicate progress, and drive work forward, while turning meeting discussions into actionable tasks.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Turning off Planner Agent disables Facilitator's document authoring skill.",
+      "claim": "Turning off Planner Agent also disables Facilitator's document authoring skill.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
       "quote": "Turning off Planner Agent will also disable document authoring skill of Facilitator.",
@@ -427,10 +333,164 @@
       "fix": null
     },
     {
+      "n": 29,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "All other Facilitator skills are unaffected by turning off Planner Agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "All other Facilitator skills remain unaffected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A separate price specific to Planner Agent in basic plans is not published in the cited product documentation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner Agent basic plans pricing meter Copilot Credits license. Read Planner service description, turn-off-planner-agent, planner-for-admins and release notes. These specify Copilot entitlement but no separate basic-plan Agent price; results for Studio and Cowork concern different products.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A meter specific to Planner Agent in basic plans is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner Agent basic plans pricing meter Copilot Credits license. Read Planner service description and turn-off-planner-agent. The service description notes metered Graph APIs, not a Planner Agent meter; search excerpts for Studio and Cowork billing do not describe this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].ui; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "No admin UI is documented for the Planner Agent tenant-wide on/off policy in Planner.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner Agent AllowPlannerCopilot default enabled admin center UI restrict security group; Planner Agent PlannerCopilotAllowedGroupId admin UI security group Microsoft 365 admin center. Read turn-off-planner-agent and manage-copilot-agents-integrated-apps; no UI for the Planner policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].api; summary; Governance controls",
+      "type": "command",
+      "claim": "Set-PlannerConfiguration -AllowPlannerCopilot $false turns off Planner Agent for all users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "To turn off Planner Agent and Planner Agent chat for all users: Set-PlannerConfiguration -AllowPlannerCopilot $false",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].note",
+      "type": "behaviour",
+      "claim": "With PlannerCopilotAllowedGroupId set to $null, AllowPlannerCopilot $true turns Planner Agent on for all users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "| $true | $null (00000000-0000-0000-0000-000000000000) | 'ON' for all users |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[1].ui; Governance controls",
+      "type": "absence",
+      "claim": "No admin UI is documented for setting the Planner Agent allowed security group in Planner.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner Agent PlannerCopilotAllowedGroupId admin UI security group Microsoft 365 admin center. Read turn-off-planner-agent and manage-copilot-agents-integrated-apps; group selection for this Planner policy is documented in PowerShell, not UI. Cowork plugin controls are a different experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[1].api; Risk assessment; Governance guidance; Governance controls",
+      "type": "command",
+      "claim": "Set-PlannerConfiguration -AllowPlannerCopilot $true -PlannerCopilotAllowedGroupId <security group id> restricts Planner Agent to the specified security group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "To turn on Planner Agent and Planner Agent chat for a specific security group: Set-PlannerConfiguration -AllowPlannerCopilot $true -PlannerCopilotAllowedGroupId <security group id>",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 37,
-      "where": "Scope: Administration; Governance guidance; Governance controls; Open questions",
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Members of nested groups are included in the allowed security-group scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "Users who are members of the specified security group, including those in nested groups, will have access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[1].note; Risk assessment; Governance controls",
+      "type": "behaviour",
+      "claim": "An invalid security group ID disables access for all users even when AllowPlannerCopilot is $true.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "If the Security Group ID is invalid, no users will have access, even if AllowPlannerCopilot is set to $true.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "User licence assignment is at Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "In the admin center, go to the Users > Active users page. Select the row of the user that you want to assign a license to. In the right pane, select Licenses and Apps. Expand the Licenses section, select the boxes for the licenses that you want to assign",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @() assigns the specified licence to the user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "To assign a license to a user, use the following command in PowerShell. Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[2].note; Governance controls",
+      "type": "role",
+      "claim": "Licence assignment requires at least a License or User Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "You must be at least a License or User Administrator to assign licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "command",
+      "claim": "Get-PlannerConfiguration reports the current AllowPlannerCopilot and PlannerCopilotAllowedGroupId values.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "To verify your settings, run the following command: Get-PlannerConfiguration. AllowPlannerCopilot: True or False; PlannerCopilotAllowedGroupId: Displays the Security Group ID when these features are turned on for your organization",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope: Administration",
       "type": "applicability",
-      "claim": "The Planner Agent admin instructions cover task execution and status reporting in both basic and premium plans.",
+      "claim": "The Planner PowerShell instructions apply to task execution and status reporting in both basic and premium plans.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
       "quote": "This article contains instructions for how to restrict access to the Planner Agent experience for task execution and status reporting in both basic and premium plans",
@@ -438,21 +498,10 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Governance guidance: Before rollout; Governance controls",
-      "type": "command",
-      "claim": "Get-PlannerConfiguration shows the current AllowPlannerCopilot and PlannerCopilotAllowedGroupId settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
-      "quote": "To verify your settings, run the following command: Get-PlannerConfiguration ... AllowPlannerCopilot: True or False ... PlannerCopilotAllowedGroupId: Displays the Security Group ID when these features are turned on for your organization",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
+      "n": 44,
       "where": "Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "The security group used for restricting Planner Agent must exist in Microsoft Entra ID.",
+      "claim": "The allowed security-group ID must correspond to an existing group in Microsoft Entra ID.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
       "quote": "Ensure the Security Group ID is valid and corresponds to an existing group in Microsoft Entra ID.",
@@ -460,10 +509,10 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "Governance controls",
+      "n": 45,
+      "where": "Governance controls; Open questions",
       "type": "applicability",
-      "claim": "The Planner Agent admin page directs readers to Manage agents in the Microsoft 365 admin center for Planner Agent in Microsoft Copilot.",
+      "claim": "The Planner admin page directs readers to Microsoft 365 admin center agent management for Planner Agent in Microsoft Copilot.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
       "quote": "For information on how to manage the Planner Agent in Microsoft Copilot, please see Manage agents in the Microsoft 365 admin center.",
@@ -471,18 +520,18 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 46,
       "where": "Governance controls",
       "type": "absence",
       "claim": "The cited Manage agents in the Microsoft 365 admin center page does not mention Planner.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Planner Agent in Planner basic plans admin center disable restrict security group UI AllowPlannerCopilot default enabled'; opened and read the complete manage-copilot-agents-integrated-apps page. It does not name Planner.",
+      "quote": "Searched: Planner Agent PlannerCopilotAllowedGroupId admin UI security group Microsoft 365 admin center. Opened and read the full manage-copilot-agents-integrated-apps page: no Planner reference; it describes Copilot agents generally rather than the Planner policy.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
+      "n": 47,
       "where": "Open questions",
       "type": "behaviour",
       "claim": "Learn says Planner Agent plans to provide the same auditing capabilities as premium plans.",
@@ -493,59 +542,48 @@
       "fix": null
     },
     {
-      "n": 43,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap record's modified timestamp is 2026-06-05T22:00:28.",
+      "n": 48,
+      "where": "Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Users > Active users is the starting page for identifying a user's Copilot licence.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-06-05T22:00:28\"",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "In the admin center, go to the Users > Active users page. Select the row of the user that you want to assign a license to. In the right pane, select Licenses and Apps. Expand the Licenses section",
+      "severity": "minor",
+      "fix": "Replace the abbreviated path in the first Before rollout bullet with 'Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses', matching controls[2].ui and https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users."
     },
     {
-      "n": 44,
+      "n": 49,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist tells readers to inspect current Planner policy values without a corresponding inspection row in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Run Get-PlannerConfiguration and record the AllowPlannerCopilot and PlannerCopilotAllowedGroupId values before changing anything. The table contains two Set-PlannerConfiguration rows and one licence-assignment row, but no configuration-inspection row.",
+      "severity": "minor",
+      "fix": "Remove the 'Run Get-PlannerConfiguration and record the AllowPlannerCopilot and PlannerCopilotAllowedGroupId values before changing anything' checklist bullet. Retain the supported Get-PlannerConfiguration explanation in Governance controls; do not add a row."
+    },
+    {
+      "n": 50,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The Planner service description says unified-plan features available to each user depend on their licence.",
+      "claim": "The Planner service description includes a Microsoft 365 Copilot licence column and states that unified-plan features depend on each user's licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description",
-      "quote": "The features available to each user in a unified plan depend on their license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "The Planner Agent admin page links to Data, Privacy, and Security for Microsoft Copilot.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
-      "quote": "For more information about security and privacy in Microsoft Copilot, see Data, Privacy, and Security for Microsoft Copilot.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Facilitator's other skills remain unaffected when Planner Agent is turned off.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
-      "quote": "All other Facilitator skills remain unaffected.",
+      "quote": "| Capability | Feature name | Microsoft Planner Included in Microsoft 365 | Planner Plan 1 | Planner and Project Plan 3 | Microsoft 365 Copilot | ... The features available to each user in a unified plan depend on their license.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-24T07:39:39.236Z",
+    "at": "2026-11-24T11:32:46.184Z",
     "summary": {
       "links": 9,
-      "unreachable": 6,
+      "unreachable": 5,
       "uiPaths": 1,
-      "uiPathsWithMissingWords": 1,
+      "uiPathsWithMissingWords": 0,
       "apiCalls": 3,
-      "apiCallsNotOnPage": 3,
+      "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -566,8 +604,8 @@
       },
       {
         "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/planner/prerequisites-for-powershell",
@@ -586,13 +624,13 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -619,31 +657,33 @@
         "side": "ui",
         "governs": "Which users hold the Microsoft Copilot licence Planner Agent requires",
         "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Users",
           "Active users",
           "Licenses and Apps",
           "Licenses"
         ],
-        "missing": [
-          "Users",
-          "Active users",
-          "Licenses and Apps",
-          "Licenses"
-        ]
+        "missing": []
       },
       {
         "index": 2,
         "side": "api",
         "governs": "Which users hold the Microsoft Copilot licence Planner Agent requires",
         "docs": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
-        "reachable": false,
+        "reachable": true,
         "token": "Set-MgUserLicense",
-        "found": false
+        "found": true
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-24",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

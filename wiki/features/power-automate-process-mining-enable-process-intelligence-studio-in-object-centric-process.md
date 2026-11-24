@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "on"
 action: "none"
 licensing:
-  model: "unknown"
-  notes: "Additional licensing for this change is not yet published; the documented Power Automate process mining licensing remains the baseline."
+  model: "included"
+  notes: "Process mining capabilities are included in Power Automate Premium; additional licensing specific to this change is not yet published."
 audiences: ["maker","service-owner","power-platform-admin"]
 tags: ["power-automate","process-mining","object-centric","process-intelligence","analytics"]
 sources:
@@ -61,6 +61,18 @@ sources:
   - title: "Who may allocate add-on capacity (Power Platform admin center)"
     url: "https://learn.microsoft.com/power-platform/admin/capacity-add-on#control-who-can-allocate-add-on-capacity"
     kind: "learn"
+  - title: "pac admin"
+    url: "https://learn.microsoft.com/power-platform/developer/cli/reference/admin#pac-admin-update-tenant-settings"
+    kind: "learn"
+  - title: "Overview of process mining and task mining in Power Automate"
+    url: "https://learn.microsoft.com/power-automate/process-advisor-overview#licensing"
+    kind: "learn"
+  - title: "Share process mining processes"
+    url: "https://learn.microsoft.com/power-automate/process-mining-share"
+    kind: "learn"
+  - title: "Set-TenantSettings"
+    url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-tenantsettings"
+    kind: "learn"
 videos: []
 related: []
 controls:
@@ -69,16 +81,20 @@ controls:
     ui: null
     api:
       kind: "power-platform-api"
-      call: "PATCH https://api.powerplatform.com/licensing/environments/{environmentId}/allocations?api-version=2024-10-01 with body {\"currencyAllocations\":[{\"currencyType\":\"ProcessMiningDataStorage\",\"allocated\":<count>}]}"
+      call: "PATCH https://api.powerplatform.com/licensing/environments/{environmentId}/allocations?api-version=2024-10-01"
       docs: "https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation/patch-currency-allocation-by-environment"
+    note: "The request body sets currencyAllocations with currencyType ProcessMiningDataStorage and allocated."
   - governs: "Who may allocate add-on capacity"
     scope: "tenant"
     ui:
       surface: "Power Platform admin center"
       path: "Settings > Power Platform settings > Tenant settings > Add-on capacity assignments > Only specific admins"
       docs: "https://learn.microsoft.com/power-platform/admin/capacity-add-on#control-who-can-allocate-add-on-capacity"
-    api: null
-    note: "The preview list-tenantsettings documentation defines disableCapacityAllocationByEnvironmentAdmins, but the Set-TenantSettings reference does not document a PowerShell call for this setting."
+    api:
+      kind: "pac-cli"
+      call: "pac admin update-tenant-settings --setting-name disableCapacityAllocationByEnvironmentAdmins --setting-value true"
+      docs: "https://learn.microsoft.com/power-platform/developer/cli/reference/admin#pac-admin-update-tenant-settings"
+    note: "The preview list-tenantsettings page defines disableCapacityAllocationByEnvironmentAdmins. At the time of writing (November 2026) the Set-TenantSettings reference documents no PowerShell call for it."
   - governs: "Switch for Process Intelligence Studio or object-centric models"
     scope: "environment"
     ui: null
@@ -86,7 +102,7 @@ controls:
     note: "Access follows Power Automate environment roles and the storage location of the event log."
 confidence: "medium"
 created: "2026-11-15"
-updated: "2026-11-17"
+updated: "2026-11-24"
 roadmapModified: "2026-10-16T19:08:49"
 changes:
   - date: "2026-11-15"
@@ -109,19 +125,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 43 statements not yet confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 46 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 5
+  - date: "2026-11-24"
+    note: "Added the pac CLI command for restricting who may allocate add-on capacity, set the licence model to included from Power Automate Premium, and moved the allocation request body into a note."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 46 statements not yet confirmed"
+version: 6
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 5
+  version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 46
   confirmed: 45
   unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "f7d196f87ca1dd2000fb873ac8fc894a"
+  attempts: 0
+  hash: "9d8169dd814fd702294e0eb1fa0cf4c5"
 ---
 
 ## What's changing
@@ -152,7 +172,7 @@ If the roadmap plan holds, teams analysing multi-object processes get the same w
 
 ## Cost and licensing
 
-Additional licensing for this change is not yet published; the documented Power Automate process mining licensing remains the baseline. Process mining has its own licensing in Power Automate, and OCPM data sits in Azure Data Lake or OneLake, which carries storage cost. Confirm current licence terms on Learn.
+Process mining capabilities are included in Power Automate Premium; additional licensing specific to this change is not yet published ([licensing section](https://learn.microsoft.com/power-automate/process-advisor-overview#licensing)). Process mining has its own licensing in Power Automate, and OCPM data sits in Azure Data Lake or OneLake, which carries storage cost. Confirm current licence terms on Learn.
 
 ## Scope
 
@@ -176,8 +196,8 @@ Power Automate Process Mining users in the Worldwide cloud, on the web. The road
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Process mining capacity allocated to an environment</strong><br><small>Environment</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PATCH https://api.powerplatform.com/licensing/environments/{environmentId}/allocations?api-version=2024-10-01 with body {&quot;currencyAllocations&quot;:[{&quot;currencyType&quot;:&quot;ProcessMiningDataStorage&quot;,&quot;allocated&quot;:&lt;count&gt;}]}</code> <a href="https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation/patch-currency-allocation-by-environment" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Who may allocate add-on capacity</strong><br><small>Tenant</small><br><small class="controls__note">The preview list-tenantsettings documentation defines disableCapacityAllocationByEnvironmentAdmins, but the Set-TenantSettings reference does not document a PowerShell call for this setting.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Settings › Power Platform settings › Tenant settings › Add-on capacity assignments › Only specific admins <a href="https://learn.microsoft.com/power-platform/admin/capacity-add-on#control-who-can-allocate-add-on-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Process mining capacity allocated to an environment</strong><br><small>Environment</small><br><small class="controls__note">The request body sets currencyAllocations with currencyType ProcessMiningDataStorage and allocated.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PATCH https://api.powerplatform.com/licensing/environments/{environmentId}/allocations?api-version=2024-10-01</code> <a href="https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation/patch-currency-allocation-by-environment" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who may allocate add-on capacity</strong><br><small>Tenant</small><br><small class="controls__note">The preview list-tenantsettings page defines disableCapacityAllocationByEnvironmentAdmins. At the time of writing (November 2026) the Set-TenantSettings reference documents no PowerShell call for it.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Settings › Power Platform settings › Tenant settings › Add-on capacity assignments › Only specific admins <a href="https://learn.microsoft.com/power-platform/admin/capacity-add-on#control-who-can-allocate-add-on-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac admin update-tenant-settings --setting-name disableCapacityAllocationByEnvironmentAdmins --setting-value true</code> <a href="https://learn.microsoft.com/power-platform/developer/cli/reference/admin#pac-admin-update-tenant-settings" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch for Process Intelligence Studio or object-centric models</strong><br><small>Environment</small><br><small class="controls__note">Access follows Power Automate environment roles and the storage location of the event log.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -196,13 +216,8 @@ cost: Low, provisional. No change to licensing is stated; existing Power Automat
 impact: Medium. The roadmap says it is enabled automatically for admins, makers and marketers, and it affects specific roles: process analysts and process owners.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].api; Governance controls table / absence: Automation for restricting who may allocate add-on capacity is not yet documented. | Found: pac admin update-tenant-settings: Update tenant settings. --setting-name: Name of the setting to be updated. --setting-value: Value of the setting to be updated. | Fix: Replace controls[1].api null with kind pac-cli, call 'pac admin update-tenant-settings --setting-name disableCapacityAllocationByEnvironmentAdmins --setting-value true', and docs https://learn.microsoft.com/power-platform/developer/cli/reference/admin#pac-admin-update-tenant-settings; update the table to match. The existing cited https://learn.microsoft.com/power-platform/admin/list-tenantsettings#definitions defines this Boolean as disabling capacity allocation by environment administrators. Add the CLI reference to sources. The narrow Set-TenantSettings-reference caveat may remain, but it does not justify reporting all automation absent. | Source: https://learn.microsoft.com/power-platform/developer/cli/reference/admin#pac-admin-update-tenant-settings
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure / applicability: Access to process analytics follows process sharing permissions. | Found: Adding a viewer to a process shares analytics and insights with other people. A viewer can perform the following actions: ... View the process analytics | Fix: Add https://learn.microsoft.com/power-automate/process-mining-share to sources for the statement about process permissions. | Source: https://learn.microsoft.com/power-automate/process-mining-share
-- [supported, minor] front matter: licensing.model / licensing: Feature-specific licensing is unknown, while documented process mining licensing is the baseline. | Found: The Power Automate Premium license is a per-user license ... Process mining capabilities: Enable you to create a process ... view the analytics report in the web | Fix: Set licensing.model to included. Use the note: 'Process mining capabilities are included in Power Automate Premium; additional licensing specific to this change is not yet published.' Cite https://learn.microsoft.com/power-automate/process-advisor-overview#licensing. Only product-level licensing is documented, so unknown understates the published entitlement. | Source: https://learn.microsoft.com/power-automate/process-advisor-overview
-- [supported, minor] controls[0].api; Governance controls table / command: The printed PATCH call and currencyAllocations body allocate ProcessMiningDataStorage capacity using API version 2024-10-01. | Found: PATCH https://api.powerplatform.com/licensing/environments/{environmentId}/allocations?api-version=2024-10-01; currencyAllocations; allocated: integer (int32); currencyType: ExternalCurrencyType; ProcessMiningDataStorage | Fix: Replace the call, in front matter and the rendered table, with 'PATCH https://api.powerplatform.com/licensing/environments/{environmentId}/allocations?api-version=2024-10-01'. Add the note: 'The request body sets currencyAllocations with currencyType ProcessMiningDataStorage and allocated.' The printed body keys are correct, but the standard puts them in the note. | Source: https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation/patch-currency-allocation-by-environment
-- [supported, minor] controls[1].note; Governance controls table / absence: The Set-TenantSettings reference does not document a PowerShell call specifically for disableCapacityAllocationByEnvironmentAdmins. | Found: Searched: 'disableCapacityAllocationByEnvironmentAdmins update tenant settings API Set-TenantSettings'. Read the full Set-TenantSettings reference: RequestBody and ApiVersion parameters; WalkMeOptOut example; no capacity-allocation property. | Fix: Date this narrow reference-check statement 'at the time of writing (November 2026)' and add https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-tenantsettings to sources.
+- [contradicted, minor] front matter: action; Governance guidance; rationale: impact / consistency: An action rating of none fits this automatically enabled workspace change. | Found: action: "none"; "The roadmap says it is enabled automatically for admins, makers and marketers"; "Create shared templates for common analyses, and name an owner for each template that teams will share." | Fix: Set action to prepare: the roadmap says enablement is automatic, and the briefing recommends decisions about shared templates and ownership before users adopt the changed workspace.
 -->

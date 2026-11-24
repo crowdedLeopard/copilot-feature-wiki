@@ -59,7 +59,7 @@ controls:
       kind: "powershell"
       call: "Set-PlannerConfiguration -AllowPlannerCopilot $false"
       docs: "https://learn.microsoft.com/planner/turn-off-planner-agent"
-    note: "Needs a global admin and the Planner Tenant Admin PowerShell module. Changes may take up to 1 hour. $true turns it on for all users."
+    note: "Needs a global admin and the Planner Tenant Admin PowerShell module. Changes may take up to 1 hour. With PlannerCopilotAllowedGroupId set to $null, $true turns it on for all users."
   - governs: "Which security group can use Planner Agent"
     scope: "group"
     ui: null
@@ -88,19 +88,23 @@ changes:
     note: "First briefing for this item: Planner Agent in group-based basic plans, with the Planner PowerShell controls and the Copilot licence gate."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 46 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected the first control's note: $true turns Planner Agent on for all users only when PlannerCopilotAllowedGroupId is $null."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 46
-  confirmed: 45
+  claims: 50
+  confirmed: 49
   unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "e0b28beb92a5bb42e1e8ad5d945148c1"
+  attempts: 0
+  hash: "9b93bc82c4bad83a1104312d1ab8daef"
 ---
 
 ## What's changing
@@ -181,7 +185,7 @@ Microsoft has not stated what happens on arrival if nobody acts, so base the adv
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Planner Agent is on or off for all users</strong><br><small>Tenant</small><br><small class="controls__note">Needs a global admin and the Planner Tenant Admin PowerShell module. Changes may take up to 1 hour. $true turns it on for all users.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PlannerConfiguration -AllowPlannerCopilot $false</code> <a href="https://learn.microsoft.com/planner/turn-off-planner-agent" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Planner Agent is on or off for all users</strong><br><small>Tenant</small><br><small class="controls__note">Needs a global admin and the Planner Tenant Admin PowerShell module. Changes may take up to 1 hour. With PlannerCopilotAllowedGroupId set to $null, $true turns it on for all users.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PlannerConfiguration -AllowPlannerCopilot $false</code> <a href="https://learn.microsoft.com/planner/turn-off-planner-agent" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which security group can use Planner Agent</strong><br><small>Group</small><br><small class="controls__note">Nested group members are included. An invalid group ID turns the agent off for all users.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PlannerConfiguration -AllowPlannerCopilot $true -PlannerCopilotAllowedGroupId &lt;security group id&gt;</code> <a href="https://learn.microsoft.com/planner/turn-off-planner-agent" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which users hold the Microsoft Copilot licence Planner Agent requires</strong><br><small>User</small><br><small class="controls__note">Requires at least a License or User Administrator. This is the licence gate, not a Planner Agent switch.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Users › Active users › user › Licenses and Apps › Licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -204,8 +208,9 @@ cost: Low. Microsoft Learn names a Microsoft Copilot licence as the requirement 
 impact: Medium. Users with a Microsoft 365 Copilot licence who work in group-based basic plans gain Planner Agent; users without that licence do not.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].note; Governance controls table / command: Setting AllowPlannerCopilot to $true turns Planner Agent on for all users without further qualification. | Found: $true | $null (00000000-0000-0000-0000-000000000000) | 'ON' for all users; $true | valid security group ID | 'ON' for users in the security group only (or nested members); $true | invalid security group ID | 'OFF' for all users | Fix: Replace '$true turns it on for all users.' in controls[0].note and its rendered table note with 'With PlannerCopilotAllowedGroupId set to $null, $true turns it on for all users.' The qualification is documented at https://learn.microsoft.com/planner/turn-off-planner-agent. | Source: https://learn.microsoft.com/planner/turn-off-planner-agent
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Governance guidance: Before rollout / admin-path: Microsoft 365 admin center > Users > Active users is the starting page for identifying a user's Copilot licence. | Found: In the admin center, go to the Users > Active users page. Select the row of the user that you want to assign a license to. In the right pane, select Licenses and Apps. Expand the Licenses section | Fix: Replace the abbreviated path in the first Before rollout bullet with 'Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses', matching controls[2].ui and https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist tells readers to inspect current Planner policy values without a corresponding inspection row in the controls table. | Found: Run Get-PlannerConfiguration and record the AllowPlannerCopilot and PlannerCopilotAllowedGroupId values before changing anything. The table contains two Set-PlannerConfiguration rows and one licence-assignment row, but no configuration-inspection row. | Fix: Remove the 'Run Get-PlannerConfiguration and record the AllowPlannerCopilot and PlannerCopilotAllowedGroupId values before changing anything' checklist bullet. Retain the supported Get-PlannerConfiguration explanation in Governance controls; do not add a row.
 -->

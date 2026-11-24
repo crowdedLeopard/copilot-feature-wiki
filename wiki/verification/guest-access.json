@@ -3,39 +3,33 @@
   "kind": "concept",
   "roadmapId": null,
   "title": "Guest access: who can your tenant invite, and what can guests reach?",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-24",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-24",
-    "reasons": [
-      "4 blocking findings (claims 29, 36, 59, 89)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 95,
-    "confirmed": 88,
-    "unconfirmed": 1,
-    "contradicted": 6,
-    "blocker": 4,
-    "major": 1,
-    "minor": 10
+    "claims": 97,
+    "confirmed": 96,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 0,
+    "minor": 2
   },
-  "summary": "Hold: Microsoft documents a beta API for the domain invitation list and explicitly states the US Government invitation default, so neither is wholly undocumented. The page also overstates how long existing guests retain access and understates the available workforce guest add-ons.",
+  "summary": "The guest-access mechanism, licensing statements and control calls are supported by Microsoft documentation. The invitation path stops early in the documented procedure, and the checklist names cross-tenant device trust without a corresponding control row; these are minor corrections.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What it is",
+      "where": "summary",
       "type": "behaviour",
-      "claim": "Guest access uses Microsoft Entra B2B collaboration, part of External ID, to share tenant applications and resources with external guests.",
+      "claim": "Guest access uses Microsoft Entra B2B collaboration, part of Microsoft Entra External ID, to share tenant resources with external people.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/what-is-b2b",
       "quote": "Microsoft Entra External ID includes collaboration capabilities that allow your workforce to work securely with business partners and guests.",
@@ -44,12 +38,12 @@
     },
     {
       "n": 2,
-      "where": "What it is: How it works",
+      "where": "What it is",
       "type": "behaviour",
-      "claim": "Partners use their own identities and credentials whether or not they have a Microsoft Entra account.",
+      "claim": "Invited partners sign in with their own identities and credentials.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/what-is-b2b",
-      "quote": "The partner uses their own identities and credentials, whether or not they have a Microsoft Entra account.",
+      "quote": "A simple invitation and redemption process lets partners use their own credentials to access your company's resources.",
       "severity": null,
       "fix": null
     },
@@ -57,7 +51,18 @@
       "n": 3,
       "where": "What it is: How it works",
       "type": "behaviour",
-      "claim": "After invitation redemption or self-service sign-up, the guest is represented in the directory as a user object.",
+      "claim": "Partners do not need a Microsoft Entra account to collaborate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/what-is-b2b",
+      "quote": "The partner uses their own identities and credentials, whether or not they have a Microsoft Entra account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "Guests who redeem an invitation or complete self-service sign-up are represented by user objects in the resource directory.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/what-is-b2b",
       "quote": "Once the guest redeems their invitation or completes sign-up, they're represented in your directory as a user object.",
@@ -65,7 +70,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
       "where": "What it is: How it works",
       "type": "behaviour",
       "claim": "B2B collaboration users typically have user type Guest.",
@@ -76,10 +81,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "What it is: How it works",
       "type": "behaviour",
-      "claim": "The guest user principal name contains #EXT#.",
+      "claim": "These guest user principal names contain #EXT#.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/what-is-b2b",
       "quote": "their user principal name contains the #EXT# identifier.",
@@ -87,7 +92,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
       "where": "What it is: How it works",
       "type": "default",
       "claim": "B2B collaboration is enabled by default.",
@@ -98,21 +103,21 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "What it is: setting-set table",
+      "n": 8,
+      "where": "What it is: settings table",
       "type": "applicability",
-      "claim": "External collaboration settings govern who can send guest invitations.",
+      "claim": "External collaboration settings govern who can invite guests.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/external-id/what-is-b2b",
-      "quote": "Use external collaboration settings to define who can invite external users into your organization as guests.",
+      "source": "https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure",
+      "quote": "External collaboration settings let you specify what roles in your organization can invite external users for B2B collaboration.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 8,
-      "where": "What it is: setting-set table",
+      "n": 9,
+      "where": "What it is: settings table",
       "type": "applicability",
-      "claim": "External collaboration settings govern the domains that can receive guest invitations.",
+      "claim": "External collaboration settings govern which domains can receive invitations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure",
       "quote": "You can use collaboration restrictions to allow or deny invitations to the domains you specify.",
@@ -120,10 +125,10 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "What it is: setting-set table",
+      "n": 10,
+      "where": "What it is: settings table",
       "type": "applicability",
-      "claim": "External collaboration settings restrict what guests can see in the directory.",
+      "claim": "External collaboration settings govern how much of the directory guests can see.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure",
       "quote": "Microsoft Entra External ID allows you to restrict what external guest users can see in your Microsoft Entra directory.",
@@ -131,21 +136,32 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "What it is: setting-set table",
+      "n": 11,
+      "where": "What it is: settings table",
       "type": "applicability",
-      "claim": "Cross-tenant access settings govern inbound and outbound authentication with external Microsoft Entra tenants.",
+      "claim": "Cross-tenant access settings govern authentication with other Microsoft Entra tenants.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/what-is-b2b",
-      "quote": "Cross-tenant access settings control whether users can authenticate with external Microsoft Entra tenants. They apply to both inbound and outbound B2B collaboration.",
+      "quote": "Cross-tenant access settings control whether users can authenticate with external Microsoft Entra tenants.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What it is: setting-set table",
+      "n": 12,
+      "where": "What it is: settings table",
       "type": "applicability",
-      "claim": "Cross-tenant B2B access can be scoped to specific users, groups and applications.",
+      "claim": "Cross-tenant access settings govern both inbound and outbound B2B collaboration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/what-is-b2b",
+      "quote": "They apply to both inbound and outbound B2B collaboration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What it is: settings table",
+      "type": "behaviour",
+      "claim": "Cross-tenant access can be scoped to users, groups and applications.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/what-is-b2b",
       "quote": "Manage inbound and outbound B2B collaboration, and scope access to specific users, groups, and applications.",
@@ -153,10 +169,10 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What it is: How it works; Governance controls: Interaction",
+      "n": 14,
+      "where": "What it is: How it works",
       "type": "behaviour",
-      "claim": "Where external collaboration restrictions and cross-tenant access settings both apply, the most restrictive setting applies.",
+      "claim": "The most restrictive external collaboration or cross-tenant setting applies where both govern an invitation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/what-is-b2b",
       "quote": "In this case, the most restrictive setting applies. Your external collaboration settings prevent your users from sending invitations to users at adatum.com.",
@@ -164,10 +180,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 15,
       "where": "What it is: How it works",
       "type": "behaviour",
-      "claim": "Blocking an organization's domain prevents new invitations even if cross-tenant access permits that organization.",
+      "claim": "A blocked domain prevents new invitations even if cross-tenant access permits that organisation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/what-is-b2b",
       "quote": "You allow B2B collaboration with Fabrikam in your cross-tenant access settings, but then you add fabrikam.com to your blocked domains in your external collaboration settings. Your users can't invite new Fabrikam business guests",
@@ -175,10 +191,10 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 16,
       "where": "What it is: How it works",
       "type": "behaviour",
-      "claim": "Existing guests can continue B2B collaboration when their domain is subsequently blocked for invitations.",
+      "claim": "Existing guests can continue working when their domain is subsequently blocked for invitations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/what-is-b2b",
       "quote": "existing Fabrikam guests can continue using B2B collaboration.",
@@ -186,18 +202,18 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 17,
       "where": "What it is: Where guests are used",
-      "type": "behaviour",
-      "claim": "Teams guest access adds an outside person to a team.",
+      "type": "applicability",
+      "claim": "Teams guest access adds an outside person to a team using a B2B guest account.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/communicate-with-users-from-other-organizations",
-      "quote": "Use guest access to add a person from outside your organization to a team",
+      "quote": "Guests are added to your organization's Microsoft Entra ID as B2B collaboration users.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 16,
+      "n": 18,
       "where": "What it is: Where guests are used",
       "type": "behaviour",
       "claim": "Teams external access lets users find, call and chat with people who have Microsoft identities.",
@@ -208,10 +224,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 19,
       "where": "What it is: Where guests are used",
       "type": "behaviour",
-      "claim": "Teams external access does not confer team membership.",
+      "claim": "Teams external access does not give team membership.",
       "status": "supported",
       "source": "https://learn.microsoft.com/security/zero-trust/zero-trust-identity-device-access-policies-guest-access",
       "quote": "External user access includes invitations, calls, chats, and meetings, but doesn't include team membership and access to the resources of the team.",
@@ -219,10 +235,10 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 20,
       "where": "What it is: Where guests are used",
       "type": "behaviour",
-      "claim": "Teams external access does not grant access to team resources.",
+      "claim": "Teams external access does not give access to team resources.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/communicate-with-users-from-other-organizations",
       "quote": "| Access Teams resources | No | Yes |",
@@ -230,10 +246,10 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 21,
       "where": "What it is: Where guests are used",
       "type": "applicability",
-      "claim": "Enabling SharePoint and OneDrive integration lets them use Microsoft Entra B2B for authentication.",
+      "claim": "SharePoint and OneDrive can use B2B authentication when their integration is enabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/what-is-b2b",
       "quote": "You can enable integration with SharePoint and OneDrive to share files, folders, list items, document libraries, and sites with people outside your organization, while using Microsoft Entra B2B for authentication and management.",
@@ -241,21 +257,21 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "Why it matters; Risks and limits: Open invitations by default",
+      "n": 22,
+      "where": "Why it matters; Risks and limits: Open invitations",
       "type": "default",
-      "claim": "By default every user, including guests, can invite external users.",
+      "claim": "Outside US Government, allowInvitesFrom defaults to everyone, allowing members and guests to invite more guests.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure",
-      "quote": "By default, all users in your organization, including B2B collaboration guest users, can invite external users to B2B collaboration.",
-      "severity": "minor",
-      "fix": "Qualify both default statements: 'By default, everyone, including guests, can invite external users except in US Government, where allowInvitesFrom defaults to none.' The cited collaboration page gives the general default, but https://learn.microsoft.com/graph/api/resources/authorizationpolicy?view=graph-rest-1.0 states the US Government exception."
+      "source": "https://learn.microsoft.com/graph/api/resources/authorizationpolicy?view=graph-rest-1.0",
+      "quote": "Allow everyone in the organization, including guests, to invite guests. The default setting for all cloud environments except US Government.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 21,
+      "n": 23,
       "where": "Why it matters",
       "type": "default",
-      "claim": "Invitations can go to any domain at the documented domain-list default.",
+      "claim": "Invitations can be sent to any domain by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/allow-deny-list",
       "quote": "By default, the Allow invitations to be sent to any domain (most inclusive) setting is enabled.",
@@ -263,46 +279,24 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "External ID billing uses MAU, counting unique external users who authenticate within a calendar month.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/external-id/external-identities-pricing",
-      "quote": "The basic External ID billing model is based on monthly active users (MAU), which is the count of unique external users who authenticate to your tenants within a calendar month.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "The External ID MAU model applies to all guest users.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/external-id/external-identities-pricing",
-      "quote": "The MAU billing model for External ID applies to all guest users.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 24,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "For B2B collaboration, MAU billing applies only to external users with UserType Guest, not organizational Member users.",
+      "where": "Why it matters; Risks and limits: Open invitations",
+      "type": "default",
+      "claim": "US Government defaults allowInvitesFrom to none.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/external-id/external-identities-pricing",
-      "quote": "For B2B collaboration, the MAU billing model applies only to external users who have a UserType value of Guest. It doesn't apply to users who originate from within the organization and have a UserType value of Member.",
+      "source": "https://learn.microsoft.com/graph/api/resources/authorizationpolicy?view=graph-rest-1.0",
+      "quote": "none | Prevent everyone, including admins, from inviting guests. Default setting for US Government.",
       "severity": null,
       "fix": null
     },
     {
       "n": 25,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "The External ID FAQ states that the core offering is free for the first 50,000 MAU.",
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The none invitation setting prevents everyone, including administrators, from inviting guests.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/external-id/customers/faq-customers",
-      "quote": "The Microsoft Entra External ID core offering is free for the first 50,000 MAU.",
+      "source": "https://learn.microsoft.com/graph/api/resources/authorizationpolicy?view=graph-rest-1.0",
+      "quote": "Prevent everyone, including admins, from inviting guests.",
       "severity": null,
       "fix": null
     },
@@ -310,6 +304,50 @@
       "n": 26,
       "where": "Cost and licensing",
       "type": "cost",
+      "claim": "External ID billing uses MAU, the unique external users who authenticate to the tenants within a calendar month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/external-identities-pricing",
+      "quote": "The basic External ID billing model is based on monthly active users (MAU), which is the count of unique external users who authenticate to your tenants within a calendar month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The External ID MAU billing model applies to all guest users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/external-identities-pricing",
+      "quote": "The MAU billing model for External ID applies to all guest users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "For B2B collaboration, MAU billing applies to external users with UserType Guest, not Member.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/external-identities-pricing",
+      "quote": "For B2B collaboration, the MAU billing model applies only to external users who have a UserType value of Guest.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Microsoft's External ID FAQ states that the core offering is free for the first 50,000 MAU.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/customers/faq-customers",
+      "quote": "The Microsoft Entra External ID core offering is free for the first 50,000 MAU.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing",
+      "type": "licensing",
       "claim": "External ID requires an Azure subscription for billing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/external-identities-pricing",
@@ -318,10 +356,10 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 31,
       "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "A workforce tenant must be linked to an Azure subscription.",
+      "type": "licensing",
+      "claim": "The workforce tenant must be linked to an Azure subscription.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/external-identities-pricing",
       "quote": "Microsoft Entra workforce tenants must be linked to an Azure subscription for proper billing and access to features.",
@@ -329,7 +367,7 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 32,
       "where": "Cost and licensing",
       "type": "cost",
       "claim": "Premium add-on charges are additional to basic MAU billing.",
@@ -340,21 +378,10 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "Cost and licensing: Premium add-ons",
-      "type": "cost",
-      "claim": "Two premium add-ons apply to guests in workforce tenants: ID Governance and GSA for Guests.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/entra/external-id/external-identities-pricing",
-      "quote": "| SMS Phone Authentication | Workforce, External | Transaction-based | Additional charges for each SMS-based authentication event",
-      "severity": "blocker",
-      "fix": "Change 'Two apply to guests in workforce tenants' to 'Two MAU-based add-ons apply to guests in workforce tenants'. This narrows the claim to the two named MAU add-ons without denying the documented transaction-based SMS add-on."
-    },
-    {
-      "n": 30,
-      "where": "Cost and licensing: Premium add-ons",
-      "type": "cost",
-      "claim": "ID Governance is a MAU-based add-on for guests in workforce tenants.",
+      "n": 33,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "ID Governance is a MAU-based add-on for guest users in workforce tenants.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/external-identities-pricing",
       "quote": "| ID Governance | Workforce | MAU-based | Govern guest users with premium features in Microsoft Entra ID Governance.",
@@ -362,10 +389,10 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "Cost and licensing: Premium add-ons",
-      "type": "cost",
-      "claim": "GSA for Guests is a MAU-based add-on for workforce tenants.",
+      "n": 34,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "GSA for Guests is a MAU-based add-on for guests in workforce tenants.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/external-identities-pricing",
       "quote": "| GSA for Guests | Workforce | MAU-based | Global Secure Access (GSA) coverage for guest users in workforce tenants. |",
@@ -373,18 +400,18 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Cost and licensing; Open questions: rates",
+      "n": 35,
+      "where": "Cost and licensing; Open questions",
       "type": "cost",
-      "claim": "Learn directs readers to the External ID pricing page at aka.ms/ExternalIDPricing for current basic and add-on prices.",
+      "claim": "Learn directs readers to aka.ms/ExternalIDPricing for current basic and add-on prices.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/external-identities-pricing",
-      "quote": "Premium add-on charges are in addition to the basic MAU billing. For the latest information about add-on pricing, see External ID pricing.",
+      "quote": "For the latest pricing details, see External ID pricing.\nFor the latest information about add-on pricing, see External ID pricing.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
+      "n": 36,
       "where": "Cost and licensing; controls[5].note",
       "type": "licensing",
       "claim": "Conditional Access requires access to Microsoft Entra ID P1 or P2.",
@@ -395,21 +422,10 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "Cost and licensing",
+      "n": 37,
+      "where": "Risks and limits: Lists are not retroactive",
       "type": "behaviour",
-      "claim": "Most guest policies use Conditional Access.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: 'B2B collaboration most guest policies use Conditional Access'; read the B2B MFA tutorial, Conditional Access users/groups reference, and Authentication and Conditional Access for External ID. They describe support and recommendations, not prevalence.",
-      "severity": "major",
-      "fix": "Remove 'which most guest policies use' from the Conditional Access licensing sentence."
-    },
-    {
-      "n": 35,
-      "where": "Risks and limits: Lists are not retroactive; controls[2].note",
-      "type": "applicability",
-      "claim": "The domain invitation list does not apply to external users who already redeemed their invitation.",
+      "claim": "The domain invitation list does not apply to guests who already redeemed invitations and does not revoke their access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/allow-deny-list",
       "quote": "The list doesn't apply to external users who already redeemed the invitation.",
@@ -417,21 +433,10 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 38,
       "where": "Risks and limits: Lists are not retroactive",
       "type": "behaviour",
-      "claim": "Existing guests keep access until their accounts are removed.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/entra/external-id/cross-tenant-access-settings-b2b-collaboration",
-      "quote": "Changing the default inbound or outbound settings to Block access could block existing business-critical access to apps in your organization or partner organizations.",
-      "severity": "blocker",
-      "fix": "Replace 'existing guests keep access until their accounts are removed' with 'the domain invitation list does not revoke access from guests who already redeemed'. This limits the statement to the list rather than implying that account removal is the only way to revoke access."
-    },
-    {
-      "n": 37,
-      "where": "Risks and limits: Lists are not retroactive",
-      "type": "behaviour",
-      "claim": "A pending invitation fails at redemption if the domain is subsequently blocked.",
+      "claim": "A pending invitation fails at redemption if the invited user's domain is subsequently blocked.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/allow-deny-list",
       "quote": "If a user invitation is in a pending state, and you set a policy that blocks their domain, the user's attempt to redeem the invitation fails.",
@@ -439,21 +444,21 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Risks and limits: Domain lists cover Entra invitations only",
+      "n": 39,
+      "where": "Risks and limits: Domain lists",
       "type": "applicability",
-      "claim": "The Entra invitation domain list works independently of SharePoint and OneDrive allow or block lists.",
+      "claim": "The Entra domain invitation list is independent of the SharePoint and OneDrive sharing lists.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/allow-deny-list",
-      "quote": "This list works independently from OneDrive and SharePoint Online allow/block lists.",
+      "quote": "This list works independently from OneDrive and SharePoint Online allow/block lists. If you want to restrict individual file sharing in SharePoint Online, you need to set up an allow or block list for OneDrive and SharePoint Online.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
+      "n": 40,
       "where": "Risks and limits: Domain lists; controls[2].note",
       "type": "behaviour",
-      "claim": "An organization can configure an allow list or a block list, but not both.",
+      "claim": "An organisation can configure either an allow list or a block list, not both.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/allow-deny-list",
       "quote": "You can create either an allow list or a block list. You can't set up both types of lists.",
@@ -461,10 +466,10 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "Risks and limits: Domain lists cover Entra invitations only",
+      "n": 41,
+      "where": "Risks and limits: Domain lists",
       "type": "behaviour",
-      "claim": "Switching between allow-list and block-list policies discards the existing configuration.",
+      "claim": "Switching between allow and block lists discards the existing configuration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/allow-deny-list",
       "quote": "Switching from one policy to another discards the existing policy configuration.",
@@ -472,41 +477,41 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "Risks and limits: Cross-tenant access is not an invitation block",
-      "type": "applicability",
-      "claim": "Inbound cross-tenant access settings do not stop invitations being sent.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/architecture/5-secure-access-b2b",
-      "quote": "Cross-tenant access settings, inbound access does not prevent users from sending invitations, nor prevent them from being redeemed.",
-      "severity": "minor",
-      "fix": "Replace the bullet's first sentence with: 'Microsoft's architecture guide says inbound cross-tenant access controls application access and token issuance rather than invitation or redemption, but the configuration guide says cross-tenant settings are checked at invitation and Block access can prevent invitations.' Cite https://learn.microsoft.com/entra/architecture/5-secure-access-b2b and https://learn.microsoft.com/entra/external-id/cross-tenant-access-settings-b2b-collaboration together to expose the documented disagreement."
-    },
-    {
       "n": 42,
-      "where": "Risks and limits: Cross-tenant access is not an invitation block",
-      "type": "applicability",
-      "claim": "Inbound cross-tenant access settings do not prevent invitation redemption.",
+      "where": "Risks and limits: Microsoft's pages differ",
+      "type": "behaviour",
+      "claim": "The architecture guide says inbound cross-tenant access controls application access and token issuance, not invitation or redemption.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/architecture/5-secure-access-b2b",
-      "quote": "Cross-tenant access settings, inbound access does not prevent users from sending invitations, nor prevent them from being redeemed.",
+      "quote": "Cross-tenant access settings, inbound access does not prevent users from sending invitations, nor prevent them from being redeemed. However, it does control application access and whether a token is issued to the Guest User.",
       "severity": null,
       "fix": null
     },
     {
       "n": 43,
-      "where": "Risks and limits: Cross-tenant access is not an invitation block",
-      "type": "applicability",
-      "claim": "Inbound cross-tenant access settings control application access and whether a token is issued to the guest.",
+      "where": "Risks and limits: Microsoft's pages differ; Governance controls: Interaction",
+      "type": "behaviour",
+      "claim": "The configuration guide says domain lists and cross-tenant access settings are checked at invitation.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/architecture/5-secure-access-b2b",
-      "quote": "However, it does control application access and whether a token is issued to the Guest User.",
+      "source": "https://learn.microsoft.com/entra/external-id/cross-tenant-access-settings-b2b-collaboration",
+      "quote": "Both allow/block list and cross-tenant access settings are checked at the time of invitation.",
       "severity": null,
       "fix": null
     },
     {
       "n": 44,
-      "where": "Risks and limits: Cross-tenant access is not an invitation block",
+      "where": "Risks and limits: Microsoft's pages differ",
+      "type": "behaviour",
+      "claim": "The configuration guide says inbound B2B Block access can prevent invitations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/cross-tenant-access-settings-b2b-collaboration",
+      "quote": "Block access: Blocks the users and groups specified under Applies to from being invited to B2B collaboration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risks and limits: Microsoft's pages differ",
       "type": "applicability",
       "claim": "Cross-tenant access settings apply to Microsoft Entra tenants.",
       "status": "supported",
@@ -516,10 +521,10 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "Risks and limits: Cross-tenant access is not an invitation block",
+      "n": 46,
+      "where": "Risks and limits: Microsoft's pages differ",
       "type": "applicability",
-      "claim": "External collaboration settings control access for partners not using Microsoft Entra ID.",
+      "claim": "External collaboration settings control partners who do not use Microsoft Entra ID.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/architecture/5-secure-access-b2b",
       "quote": "To control access for partners not using Microsoft Entra ID, use external collaboration settings.",
@@ -527,10 +532,10 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "Risks and limits: Cross-tenant access is not an invitation block",
+      "n": 47,
+      "where": "Risks and limits: Microsoft's pages differ",
       "type": "behaviour",
-      "claim": "Changing a cross-tenant default to Block access could block existing business-critical access.",
+      "claim": "Changing cross-tenant defaults to Block access can cut existing business-critical access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/cross-tenant-access-settings-b2b-collaboration",
       "quote": "Changing the default inbound or outbound settings to Block access could block existing business-critical access to apps in your organization or partner organizations.",
@@ -538,10 +543,10 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Risks and limits: Device policies lock guests out",
+      "n": 48,
+      "where": "Risks and limits: Device policies",
       "type": "behaviour",
-      "claim": "Only one organization can manage a device.",
+      "claim": "Only one organisation can manage a device.",
       "status": "supported",
       "source": "https://learn.microsoft.com/security/zero-trust/zero-trust-identity-device-access-policies-guest-access",
       "quote": "Only one organization can manage a device.",
@@ -549,19 +554,30 @@
       "fix": null
     },
     {
-      "n": 48,
-      "where": "Risks and limits: Device policies; What to check: Conditional Access",
+      "n": 49,
+      "where": "Risks and limits: Device policies",
       "type": "applicability",
-      "claim": "Device-compliance Conditional Access policies block guests unless they are excluded.",
+      "claim": "Device-compliance policies can block guests.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/security/zero-trust/zero-trust-identity-device-access-policies-guest-access",
-      "quote": "If you don't exclude guests and external users from policies that require device compliance, these policies block these users.",
-      "severity": "minor",
-      "fix": "Replace the consequence with: 'Device-compliance policies can block guests, but cross-tenant device trust can accept compliance claims from their home tenant without excluding them.' Change the checklist clause to 'check guest exclusions or cross-tenant device trust for device-compliance policies'. The cited Zero Trust page gives the exclusion advice; https://learn.microsoft.com/entra/external-id/authentication-conditional-access documents device trust as an alternative."
+      "source": "https://learn.microsoft.com/entra/external-id/authentication-conditional-access",
+      "quote": "If device compliance is required but can't be evaluated, access is blocked for both B2B collaboration and B2B direct connect users.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 49,
-      "where": "Risks and limits: Targeting all users includes guests",
+      "n": 50,
+      "where": "Risks and limits: Device policies; What to check",
+      "type": "applicability",
+      "claim": "Inbound cross-tenant device trust can accept home-tenant compliance claims instead of excluding guests from device-compliance requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/authentication-conditional-access",
+      "quote": "Grant controls - Require compliant device | Supported, requires configuring your inbound trust settings to accept compliant device claims from the external organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risks and limits: Targeting all users",
       "type": "applicability",
       "claim": "Conditional Access All users includes B2B guests.",
       "status": "supported",
@@ -571,10 +587,10 @@
       "fix": null
     },
     {
-      "n": 50,
-      "where": "Risks and limits: Turning Teams guest access off leaves the accounts",
+      "n": 52,
+      "where": "Risks and limits: Turning Teams guest access off",
       "type": "behaviour",
-      "claim": "Turning off Teams guest access makes existing guests lose access to their team.",
+      "claim": "Turning Teams guest access off removes existing guests' access to their teams.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-guests",
       "quote": "If you turn guest access off in Teams, existing guests lose access to their team.",
@@ -582,10 +598,10 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "Risks and limits: Turning Teams guest access off leaves the accounts",
+      "n": 53,
+      "where": "Risks and limits: Turning Teams guest access off",
       "type": "behaviour",
-      "claim": "Turning off Teams guest access does not remove existing guests from the team.",
+      "claim": "Turning Teams guest access off does not remove existing guest accounts from teams.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-guests",
       "quote": "However, they are not removed from the team.",
@@ -593,10 +609,10 @@
       "fix": null
     },
     {
-      "n": 52,
-      "where": "Risks and limits: Turning Teams guest access off leaves the accounts",
+      "n": 54,
+      "where": "Risks and limits: Turning Teams guest access off",
       "type": "behaviour",
-      "claim": "Guests remain visible to team members after Teams guest access is turned off.",
+      "claim": "Those guests remain visible to team members.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-guests",
       "quote": "They are still visible to people in the team",
@@ -604,208 +620,164 @@
       "fix": null
     },
     {
-      "n": 53,
-      "where": "Risks and limits: Turning Teams guest access off leaves the accounts",
+      "n": 55,
+      "where": "Risks and limits: Turning Teams guest access off",
       "type": "behaviour",
-      "claim": "Guests can still be mentioned after Teams guest access is turned off.",
+      "claim": "Those guests can still be mentioned.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-guests",
-      "quote": "can be @mentioned.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "controls[0].ui",
-      "type": "admin-path",
-      "claim": "Guest invitation permissions are at Microsoft Entra admin center > Entra ID > External Identities > External collaboration settings > Guest invite settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure",
-      "quote": "Browse to Entra ID > External Identities > External collaboration settings. Under Guest invite settings, choose the appropriate settings:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "controls[0].api",
-      "type": "command",
-      "claim": "PATCH /v1.0/policies/authorizationPolicy sets guest invitation permissions through allowInvitesFrom with the four named values.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/authorizationpolicy-update",
-      "quote": "PATCH https://graph.microsoft.com/v1.0/policies/authorizationPolicy\nIndicates who can invite external users to the organization. The possible values are: none, adminsAndGuestInviters, adminsGuestInvitersAndAllMembers, everyone.",
+      "quote": "and can be @mentioned.",
       "severity": null,
       "fix": null
     },
     {
       "n": 56,
-      "where": "controls[1].ui",
+      "where": "controls[0].ui",
       "type": "admin-path",
-      "claim": "Guest directory visibility is at Microsoft Entra admin center > Entra ID > External Identities > External collaboration settings > Guest user access.",
+      "claim": "Guest invitation settings are at Microsoft Entra admin center > Entra ID > External Identities > External collaboration settings > Guest invite settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure",
-      "quote": "Browse to Entra ID > External Identities > External collaboration settings. Under Guest user access, choose the level of access you want guest users to have:",
+      "quote": "Browse to Entra ID > External Identities > External collaboration settings.\nUnder Guest invite settings, choose the appropriate settings:",
       "severity": null,
       "fix": null
     },
     {
       "n": 57,
-      "where": "controls[1].api",
+      "where": "controls[0].api",
       "type": "command",
-      "claim": "PATCH /v1.0/policies/authorizationPolicy sets guest directory access through guestUserRoleId for User, Guest User or Restricted Guest User.",
+      "claim": "PATCH /v1.0/policies/authorizationPolicy sets invitation permissions through allowInvitesFrom with the four listed values.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/authorizationpolicy-update",
-      "quote": "PATCH https://graph.microsoft.com/v1.0/policies/authorizationPolicy\nUser (a0b1b346-4d3e-4e8b-98f8-753987be4970), Guest User (10dae51f-b6af-4016-8d66-8c2a99b929b3), and Restricted Guest User (2af84b1e-32c8-42b7-82bc-daa82404023b).",
+      "quote": "allowInvitesFrom | allowInvitesFrom | Indicates who can invite external users to the organization. The possible values are: none, adminsAndGuestInviters, adminsGuestInvitersAndAllMembers, everyone.",
       "severity": null,
       "fix": null
     },
     {
       "n": 58,
-      "where": "controls[2].ui",
-      "type": "admin-path",
-      "claim": "The invitation domain list is at Microsoft Entra admin center > Entra ID > External Identities > External collaboration settings > Collaboration restrictions.",
+      "where": "controls[0].note; Governance controls: Roles",
+      "type": "role",
+      "claim": "Guest Inviter lets named users invite guests when only specific administrator roles may invite.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/external-id/allow-deny-list",
-      "quote": "Browse to Entra ID > External Identities > External collaboration settings. Under Collaboration restrictions, select Deny invitations to the specified domains.",
-      "severity": "minor",
-      "fix": "The path stops on the right settings page. Complete the block-list route as 'Entra ID > External Identities > External collaboration settings > Collaboration restrictions > Deny invitations to the specified domains > Target domains'; the allow-list option on the same page is 'Allow invitations only to the specified domains (most restrictive)'."
+      "source": "https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure",
+      "quote": "Users with the Guest Inviter role are able to invite guests even when the option Only users assigned to specific admin roles can invite guest users is selected (under Guest invite settings).",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 59,
-      "where": "controls[2].api",
-      "type": "absence",
-      "claim": "Microsoft has not documented an API for the B2B invitation domain allow or block list.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/graph/api/resources/b2bmanagementpolicy?view=graph-rest-beta",
-      "quote": "Represents Microsoft Entra B2B features in Microsoft Entra External ID for workforce tenants, including restricting/allowing which domains can be used to invite users",
-      "severity": "blocker",
-      "fix": "Replace null with kind 'graph', call 'PATCH /beta/policies/b2bManagementPolicies/{b2bManagementPolicyId}', and docs 'https://learn.microsoft.com/graph/api/b2bmanagementpolicy-update?view=graph-rest-beta'. Add to the note: 'The request body updates definition, the JSON-string collection defining the policy. This API is beta, is not supported for production applications, and is available in the global service only.' Keep the narrower v1.0 question."
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Directory visibility settings are at Microsoft Entra admin center > Entra ID > External Identities > External collaboration settings > Guest user access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure",
+      "quote": "Browse to Entra ID > External Identities > External collaboration settings.\nUnder Guest user access, choose the level of access you want guest users to have:",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 60,
-      "where": "controls[3].ui",
-      "type": "admin-path",
-      "claim": "Default inbound cross-tenant access settings are reached through the printed Cross-tenant access settings > Default settings > Inbound access settings > Edit inbound defaults route.",
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "PATCH /v1.0/policies/authorizationPolicy configures guest directory access through guestUserRoleId.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/external-id/cross-tenant-access-settings-b2b-collaboration",
-      "quote": "Browse to Entra ID > External Identities > Cross-tenant access settings, then select Cross-tenant access settings.\nOn the Default settings tab, under Inbound access settings, select Edit inbound defaults.",
-      "severity": "minor",
-      "fix": "The route reaches the inbound settings pane, not the final B2B control. Complete it as 'Entra ID > External Identities > Cross-tenant access settings > Cross-tenant access settings > Default settings > Inbound access settings > Edit inbound defaults > B2B collaboration > External users and groups > Access status'."
+      "source": "https://learn.microsoft.com/graph/api/authorizationpolicy-update",
+      "quote": "PATCH https://graph.microsoft.com/v1.0/policies/authorizationPolicy\n\nguestUserRoleId | Guid | Represents role templateId for the role that should be granted to guest user.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 61,
-      "where": "controls[3].api",
-      "type": "command",
-      "claim": "PATCH /v1.0/policies/crossTenantAccessPolicy/default configures default inbound and outbound B2B collaboration access.",
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "guestUserRoleId supports the User, Guest User and Restricted Guest User roles.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/crosstenantaccesspolicyconfigurationdefault-update",
-      "quote": "PATCH https://graph.microsoft.com/v1.0/policies/crossTenantAccessPolicy/default\nb2bCollaborationInbound\nb2bCollaborationOutbound",
-      "severity": "minor",
-      "fix": "Keep the call and append to controls[3].note: 'The request body sets b2bCollaborationInbound and b2bCollaborationOutbound.'"
+      "source": "https://learn.microsoft.com/graph/api/resources/authorizationpolicy?view=graph-rest-1.0",
+      "quote": "Currently following roles are supported: User (a0b1b346-4d3e-4e8b-98f8-753987be4970), Guest User (10dae51f-b6af-4016-8d66-8c2a99b929b3), and Restricted Guest User (2af84b1e-32c8-42b7-82bc-daa82404023b).",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 62,
-      "where": "controls[4].ui",
+      "where": "controls[2].ui",
       "type": "admin-path",
-      "claim": "Inviting a guest starts at Microsoft Entra admin center > Entra ID > Users > New user > Invite external user.",
+      "claim": "The domain block list is at Microsoft Entra admin center > Entra ID > External Identities > External collaboration settings > Collaboration restrictions > Deny invitations to the specified domains > Target domains.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/external-id/b2b-tutorial-require-mfa",
-      "quote": "Browse to Entra ID > Users. Select New user and then Invite external user.",
+      "source": "https://learn.microsoft.com/entra/external-id/allow-deny-list",
+      "quote": "Browse to Entra ID > External Identities > External collaboration settings.\nUnder Collaboration restrictions, select Deny invitations to the specified domains.\nUnder Target domains, enter the name of one of the domains that you want to block.",
       "severity": null,
       "fix": null
     },
     {
       "n": 63,
-      "where": "controls[4].api",
+      "where": "controls[2].api",
       "type": "command",
-      "claim": "POST /v1.0/invitations creates an individual guest invitation.",
+      "claim": "PATCH /beta/policies/b2bManagementPolicies/{b2bManagementPolicyId} updates the domain policy through definition.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/invitation-post",
-      "quote": "POST https://graph.microsoft.com/v1.0/invitations\ninvitedUserEmailAddress | string | The email address of the user you're inviting.",
-      "severity": "minor",
-      "fix": "Keep the call and append to controls[4].note: 'The request body names the guest through invitedUserEmailAddress; resetRedemption resets an existing guest invitation.'"
+      "source": "https://learn.microsoft.com/graph/api/b2bmanagementpolicy-update?view=graph-rest-beta",
+      "quote": "PATCH /policies/b2bManagementPolicies/{b2bManagementPolicyId}\n\ndefinition | String collection | A string collection containing a JSON string that defines the rules and settings for a policy.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 64,
-      "where": "controls[5].ui",
-      "type": "admin-path",
-      "claim": "The printed Microsoft Entra Conditional Access policy route reaches the Guest or external users assignment.",
+      "where": "controls[2].note",
+      "type": "availability",
+      "claim": "The b2bManagementPolicy API is beta and not supported for production applications.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/external-id/b2b-tutorial-require-mfa",
-      "quote": "Browse to Entra ID > Conditional Access > Policies. Select New policy.\nUnder Assignments, select Users or workload identities.\nUnder Include, choose Select users and groups, and then select Guest or external users.",
+      "source": "https://learn.microsoft.com/graph/api/b2bmanagementpolicy-update?view=graph-rest-beta",
+      "quote": "APIs under the /beta version in Microsoft Graph are subject to change. Use of these APIs in production applications is not supported.",
       "severity": null,
       "fix": null
     },
     {
       "n": 65,
-      "where": "controls[5].api",
-      "type": "command",
-      "claim": "POST /v1.0/identity/conditionalAccess/policies creates a Conditional Access policy that can target guest or external users.",
+      "where": "controls[2].note",
+      "type": "availability",
+      "claim": "The b2bManagementPolicy update API is available only in the global service.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/resources/conditionalaccessusers?view=graph-rest-1.0",
-      "quote": "includeGuestsOrExternalUsers | conditionalAccessGuestsOrExternalUsers | Internal guests or external users included in the policy scope. Optionally populated.",
-      "severity": "minor",
-      "fix": "Keep the method and path, which the cited creation reference documents. Append to controls[5].note: 'The request body targets guests through conditions.users.includeGuestsOrExternalUsers.'"
+      "source": "https://learn.microsoft.com/graph/api/b2bmanagementpolicy-update?view=graph-rest-beta",
+      "quote": "| Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet |\n| ✅ | ❌ | ❌ | ❌ |",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 66,
-      "where": "controls[6].ui",
+      "where": "controls[2].note",
       "type": "admin-path",
-      "claim": "Teams guest access is configured at Teams admin center > Users > Guest access > Guest access.",
+      "claim": "The alternative allow-list option is Allow invitations only to the specified domains.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-guests",
-      "quote": "Sign in to the Microsoft Teams admin center. Select Users > Guest access. Set Guest access to On.",
+      "source": "https://learn.microsoft.com/entra/external-id/allow-deny-list",
+      "quote": "Under Collaboration restrictions, select Allow invitations only to the specified domains (most restrictive).",
       "severity": null,
       "fix": null
     },
     {
       "n": 67,
-      "where": "controls[6].api",
-      "type": "command",
-      "claim": "MicrosoftTeams PowerShell Set-CsTeamsClientConfiguration -AllowGuestUser $true enables guest access to the Teams client.",
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Inbound B2B defaults are reached through the listed Cross-tenant access settings, Default settings, Edit inbound defaults, B2B collaboration, External users and groups and Access status route.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsclientconfiguration",
-      "quote": "[-AllowGuestUser <Boolean>]\nIf $true, guests in your tenant will be able to access the Teams client. Note that this setting has a core dependency on Guest Access being enabled in your Office 365 tenant.",
+      "source": "https://learn.microsoft.com/entra/external-id/cross-tenant-access-settings-b2b-collaboration",
+      "quote": "Browse to Entra ID > External Identities > Cross-tenant access settings, then select Cross-tenant access settings.\nDefault settings: To modify default inbound settings, select the Default settings tab, and then under Inbound access settings, select Edit inbound defaults.",
       "severity": null,
       "fix": null
     },
     {
       "n": 68,
-      "where": "controls[0].note; Governance controls: Roles",
-      "type": "role",
-      "claim": "Guest Inviter permits named users to invite when Guest invite settings allow only specific admin roles.",
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "PATCH /v1.0/policies/crossTenantAccessPolicy/default configures defaults through b2bCollaborationInbound and b2bCollaborationOutbound.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure",
-      "quote": "Users with the Guest Inviter role are able to invite guests even when the option Only users assigned to specific admin roles can invite guest users is selected",
+      "source": "https://learn.microsoft.com/graph/api/crosstenantaccesspolicyconfigurationdefault-update",
+      "quote": "PATCH https://graph.microsoft.com/v1.0/policies/crossTenantAccessPolicy/default\n\nb2bCollaborationInbound | crossTenantAccessPolicyB2BSetting\nb2bCollaborationOutbound | crossTenantAccessPolicyB2BSetting",
       "severity": null,
       "fix": null
     },
     {
       "n": 69,
-      "where": "Governance controls: Roles",
-      "type": "role",
-      "claim": "Portal external collaboration settings require an updating role such as Global Administrator or External Identity Provider Administrator.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure",
-      "quote": "In the Microsoft Entra admin center, you need a role that can update external collaboration settings, such as Global Administrator or External Identity Provider Administrator.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 70,
-      "where": "Governance controls: Roles",
-      "type": "role",
-      "claim": "The allow or block list tutorial signs in as Global Administrator.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/external-id/allow-deny-list",
-      "quote": "Sign in to the Microsoft Entra admin center as a Global Administrator.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 71,
       "where": "controls[3].note; Governance controls: Roles",
       "type": "role",
-      "claim": "The portal cross-tenant access procedure requires at least Security Administrator.",
+      "claim": "The portal procedure for cross-tenant access settings requires at least Security Administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/cross-tenant-access-settings-b2b-collaboration",
       "quote": "Sign in to the Microsoft Entra admin center as at least a Security Administrator.",
@@ -813,10 +785,10 @@
       "fix": null
     },
     {
-      "n": 72,
+      "n": 70,
       "where": "controls[3].note",
       "type": "admin-path",
-      "claim": "Organization-specific cross-tenant access settings are under Organizational settings.",
+      "claim": "Organisation-specific cross-tenant access settings are under Organizational settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/cross-tenant-access-settings-b2b-collaboration",
       "quote": "Browse to Entra ID > External Identities > Cross-tenant access settings, then select Organizational settings.",
@@ -824,10 +796,32 @@
       "fix": null
     },
     {
+      "n": 71,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "An individual guest invitation starts at Microsoft Entra admin center > Entra ID > Users > New user > Invite external user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/b2b-tutorial-require-mfa",
+      "quote": "Browse to Entra ID > Users.\nSelect New user and then Invite external user.\nUnder Identity on the Basics tab, enter the email address of the external user.\nSelect Review + invite to automatically send the invitation to the guest user.",
+      "severity": "minor",
+      "fix": "Extend controls[4].ui.path and its rendered table path to 'Entra ID > Users > New user > Invite external user > Basics > Identity > Review + invite'. The existing steps are correct but stop on the invitation form before the invitation action."
+    },
+    {
+      "n": 72,
+      "where": "controls[4].api",
+      "type": "command",
+      "claim": "POST /v1.0/invitations invites an external user identified by invitedUserEmailAddress.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/invitation-post",
+      "quote": "POST https://graph.microsoft.com/v1.0/invitations\n\ninvitedUserEmailAddress | string | The email address of the user you're inviting.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 73,
       "where": "controls[4].note",
       "type": "behaviour",
-      "claim": "The invitation API can reset redemption status for a guest who already redeemed.",
+      "claim": "The invitation API can also reset redemption status for a guest who already redeemed an invitation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/invitation-post",
       "quote": "Use this API to create a new invitation or reset the redemption status for a guest user who already redeemed their invitation.",
@@ -836,20 +830,31 @@
     },
     {
       "n": 74,
-      "where": "Governance controls: Roles",
-      "type": "role",
-      "claim": "The portal invitation tutorial requires at least User Administrator.",
+      "where": "controls[5].ui",
+      "type": "admin-path",
+      "claim": "The listed Conditional Access policy creation route reaches Include > Select users and groups > Guest or external users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/b2b-tutorial-require-mfa",
-      "quote": "Sign in to the Microsoft Entra admin center as at least a User Administrator.",
+      "quote": "Browse to Entra ID > Conditional Access > Policies.\nSelect New policy.\nUnder Assignments, select Users or workload identities.\nUnder Include, choose Select users and groups, and then select Guest or external users.",
       "severity": null,
       "fix": null
     },
     {
       "n": 75,
+      "where": "controls[5].api",
+      "type": "command",
+      "claim": "POST /v1.0/identity/conditionalAccess/policies creates a Conditional Access policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-policies",
+      "quote": "POST https://graph.microsoft.com/v1.0/identity/conditionalAccess/policies\n\nIn the request body, supply a JSON representation of a conditionalAccessPolicy object.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
       "where": "controls[5].note; Governance controls: Roles",
       "type": "role",
-      "claim": "The portal Conditional Access tutorial requires at least Conditional Access Administrator.",
+      "claim": "The portal procedure to create Conditional Access policies requires at least Conditional Access Administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/b2b-tutorial-require-mfa",
       "quote": "Sign in to the Microsoft Entra admin center as at least a Conditional Access Administrator.",
@@ -857,21 +862,87 @@
       "fix": null
     },
     {
-      "n": 76,
-      "where": "Governance controls: Interaction",
-      "type": "behaviour",
-      "claim": "Domain invitation restrictions and cross-tenant access settings are checked at invitation.",
+      "n": 77,
+      "where": "controls[6].ui",
+      "type": "admin-path",
+      "claim": "Teams guest access is configured at Teams admin center > Users > Guest access > Guest access.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/external-id/allow-deny-list",
-      "quote": "Both allow/block list and cross-tenant access settings are checked at the time of invitation.",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-guests",
+      "quote": "Sign in to the Microsoft Teams admin center.\nSelect Users > Guest access.\nSet Guest access to On.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 77,
-      "where": "Governance controls: Interaction; Why it matters",
+      "n": 78,
+      "where": "controls[6].api",
+      "type": "command",
+      "claim": "The MicrosoftTeams cmdlet Set-CsTeamsClientConfiguration -AllowGuestUser $true allows guests to access the Teams client.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsclientconfiguration",
+      "quote": "Designates whether or not guest users in your organization will have access to the Teams client. If $true, guests in your tenant will be able to access the Teams client.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "controls[6].note",
+      "type": "admin-path",
+      "claim": "Guest Screen sharing is configurable on the same Teams Guest access page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-guests",
+      "quote": "Screen sharing– This setting controls the availability of screen sharing for guests.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "controls[6].note",
+      "type": "admin-path",
+      "claim": "Guest Meet now in channels is configurable on the same Teams Guest access page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-guests",
+      "quote": "Meet now in channels – Turn this setting On to allow guests to use the Meet Now feature in Microsoft Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "External collaboration portal settings require a role such as Global Administrator or External Identity Provider Administrator that can update them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure",
+      "quote": "In the Microsoft Entra admin center, you need a role that can update external collaboration settings, such as Global Administrator or External Identity Provider Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "The domain allow or block list portal procedure specifies Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/allow-deny-list",
+      "quote": "Sign in to the Microsoft Entra admin center as a Global Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "The guest invitation portal tutorial specifies at least User Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/b2b-tutorial-require-mfa",
+      "quote": "Sign in to the Microsoft Entra admin center as at least a User Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "Governance controls: Interaction",
       "type": "applicability",
-      "claim": "Teams guest settings, SharePoint settings and Microsoft 365 group settings are separate controls alongside Entra settings.",
+      "claim": "Teams guest access also depends on separate settings in Entra ID, Microsoft 365 Groups and SharePoint.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/set-up-guests",
       "quote": "Guest access in Teams also requires configuring other settings in Microsoft 365, including settings in Microsoft Entra ID, Microsoft 365 Groups, and SharePoint.",
@@ -879,32 +950,32 @@
       "fix": null
     },
     {
-      "n": 78,
+      "n": 85,
       "where": "Governance controls: Not in the table",
       "type": "admin-path",
-      "claim": "External collaboration settings contain guest self-service sign-up.",
+      "claim": "External collaboration settings include guest self-service sign-up settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure",
-      "quote": "Browse to Entra ID > External Identities > External collaboration settings. Under Enable guest self-service sign up via user flows, select Yes",
+      "quote": "Browse to Entra ID > External Identities > External collaboration settings.\nUnder Enable guest self-service sign up via user flows, select Yes",
       "severity": null,
       "fix": null
     },
     {
-      "n": 79,
+      "n": 86,
       "where": "Governance controls: Not in the table",
       "type": "admin-path",
-      "claim": "External collaboration settings contain External user leave settings.",
+      "claim": "External collaboration settings include External user leave settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure",
-      "quote": "Browse to Entra ID > External Identities > External collaboration settings. Under External user leave settings, you can control whether external users can remove themselves from your organization.",
+      "quote": "Browse to Entra ID > External Identities > External collaboration settings.\nUnder External user leave settings, you can control whether external users can remove themselves from your organization.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 80,
+      "n": 87,
       "where": "Governance controls: Not in the table",
       "type": "behaviour",
-      "claim": "External user leave settings are available only after privacy information is added to the tenant.",
+      "claim": "External user leave settings are unavailable until tenant privacy information is added.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure",
       "quote": "You can configure External user leave settings only if you have added your privacy information to your Microsoft Entra tenant. Otherwise, this setting will be unavailable.",
@@ -912,21 +983,10 @@
       "fix": null
     },
     {
-      "n": 81,
-      "where": "Governance controls: Not in the table",
-      "type": "admin-path",
-      "claim": "Access reviews are under Entra ID > ID Governance > Access reviews.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/external-id/auditing-and-reporting",
-      "quote": "The Access reviews feature is available in Microsoft Entra ID under ID Governance > Access reviews.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 82,
+      "n": 88,
       "where": "Governance controls: Not in the table",
       "type": "applicability",
-      "claim": "Access reviews verify whether guests still need resource access.",
+      "claim": "Access reviews periodically check whether guests still need resource access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/auditing-and-reporting",
       "quote": "You can use access reviews to periodically verify whether guest users still need access to your resources.",
@@ -934,10 +994,21 @@
       "fix": null
     },
     {
-      "n": 83,
+      "n": 89,
+      "where": "Governance controls: Not in the table",
+      "type": "admin-path",
+      "claim": "Access reviews are at Entra ID > ID Governance > Access reviews.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/auditing-and-reporting",
+      "quote": "The Access reviews feature is available in Microsoft Entra ID under ID Governance > Access reviews.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
       "where": "Governance controls: Not in the table",
       "type": "behaviour",
-      "claim": "The Sponsors field identifies who is responsible for a guest.",
+      "claim": "The Sponsors field records who is responsible for a guest.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/auditing-and-reporting",
       "quote": "The Sponsors field on the user account displays who is responsible for the guest user.",
@@ -945,8 +1016,8 @@
       "fix": null
     },
     {
-      "n": 84,
-      "where": "Governance controls: Watching; What to check: audit logs",
+      "n": 91,
+      "where": "Governance controls: Watching",
       "type": "admin-path",
       "claim": "Entra audit logs are at Entra ID > Monitoring & health > Audit logs.",
       "status": "supported",
@@ -956,10 +1027,10 @@
       "fix": null
     },
     {
-      "n": 85,
-      "where": "Governance controls: Watching; What to check: audit logs",
+      "n": 92,
+      "where": "Governance controls: Watching",
       "type": "behaviour",
-      "claim": "Invite external user is an Entra UserManagement audit activity.",
+      "claim": "Invite external user is an Entra audit activity under UserManagement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/monitoring-health/reference-audit-activities",
       "quote": "| UserManagement | Invite external user |",
@@ -967,10 +1038,10 @@
       "fix": null
     },
     {
-      "n": 86,
+      "n": 93,
       "where": "Governance controls: Watching",
       "type": "behaviour",
-      "claim": "Redeem external user invite is an Entra UserManagement audit activity.",
+      "claim": "Redeem external user invite is an Entra audit activity under UserManagement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/identity/monitoring-health/reference-audit-activities",
       "quote": "| UserManagement | Redeem external user invite |",
@@ -978,10 +1049,10 @@
       "fix": null
     },
     {
-      "n": 87,
+      "n": 94,
       "where": "Governance controls: Watching",
       "type": "behaviour",
-      "claim": "A B2B resource-tenant sign-in generates logs in both the home and resource tenants.",
+      "claim": "A B2B sign-in to a resource tenant generates sign-in logs in both the home and resource tenants.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure",
       "quote": "When a B2B user signs into a resource tenant to collaborate, a sign-in log is generated in both the home tenant and the resource tenant.",
@@ -989,102 +1060,47 @@
       "fix": null
     },
     {
-      "n": 88,
-      "where": "Open questions: US Government",
-      "type": "default",
-      "claim": "The authorizationPolicy update reference says everyone is the default except in US Government.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/authorizationpolicy-update",
-      "quote": "everyone is the default setting for all cloud environments except US Government.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 89,
-      "where": "Open questions: US Government",
-      "type": "absence",
-      "claim": "The US Government guest invitation default remains an unanswered question.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/graph/api/resources/authorizationpolicy?view=graph-rest-1.0",
-      "quote": "| none | Prevent everyone, including admins, from inviting guests. Default setting for US Government. |",
-      "severity": "blocker",
-      "fix": "Replace the US Government question with 'For US Government, allowInvitesFrom defaults to none, preventing everyone, including admins, from inviting guests.' Cite https://learn.microsoft.com/graph/api/resources/authorizationpolicy?view=graph-rest-1.0. The absence on the collaboration overview does not make the value unpublished."
-    },
-    {
-      "n": 90,
-      "where": "Open questions: supported v1.0 domain-list API",
-      "type": "absence",
-      "claim": "A supported v1.0 Graph API for the domain invitation allow or block list is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Microsoft Graph B2B collaboration domain allow block list b2bManagementPolicy update v1.0 beta'; '\"b2bManagementPolicies\" \"v1.0\" domain restrictions'. Read allow-deny-list and b2bManagementPolicy resource/update references: relevant operations are beta.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 91,
-      "where": "Open questions: supported v1.0 domain-list API",
-      "type": "behaviour",
-      "claim": "b2bManagementPolicy describes B2B domain invitation restrictions and is a beta resource.",
+      "n": 95,
+      "where": "Open questions; controls[2].api",
+      "type": "applicability",
+      "claim": "The beta b2bManagementPolicy resource describes restrictions on domains used to invite guests.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/resources/b2bmanagementpolicy?view=graph-rest-beta",
-      "quote": "APIs under the /beta version in Microsoft Graph are subject to change. Use of these APIs in production applications is not supported.\nincluding restricting/allowing which domains can be used to invite users",
+      "quote": "Represents Microsoft Entra B2B features in Microsoft Entra External ID for workforce tenants, including restricting/allowing which domains can be used to invite users",
       "severity": null,
       "fix": null
     },
     {
-      "n": 92,
-      "where": "What to check: Search the Entra audit logs",
+      "n": 96,
+      "where": "What to check: Conditional Access",
       "type": "consistency",
-      "claim": "The checklist directs readers to inspect Entra audit logs, but the controls table has no audit-log row.",
+      "claim": "The checklist names cross-tenant device trust for review, but the controls table has no device-trust row.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Search the Entra audit logs for Invite external user to see who has been inviting guests.\nThe seven controls rows cover invitations, directory visibility, domains, cross-tenant access, individual invitations, Conditional Access and Teams; none covers audit logs.",
+      "quote": "check guest exclusions or cross-tenant device trust for device-compliance policies.\nThe request body sets b2bCollaborationInbound and b2bCollaborationOutbound.",
       "severity": "minor",
-      "fix": "Remove the audit-log bullet from What to check; retain the documented audit-log information in Governance controls: Watching. This corrects the checklist/table mismatch without adding an unverified control row."
+      "fix": "Replace the checklist bullet with 'Confirm a Conditional Access policy targets Guest or external users, and check guest exclusions for device-compliance policies.' The device-trust review has no corresponding table row; no new row is requested."
     },
     {
-      "n": 93,
-      "where": "sources",
-      "type": "consistency",
-      "claim": "Some verified facts and their qualifications rely on Microsoft pages missing from the sources list.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "sources includes authorizationpolicy-update and the beta b2bManagementPolicy resource, but omits the authorizationPolicy resource, beta b2bManagementPolicy update, conditionalAccessUsers resource and Authentication and Conditional Access for External ID.",
-      "severity": "minor",
-      "fix": "Add these sources together: https://learn.microsoft.com/graph/api/resources/authorizationpolicy?view=graph-rest-1.0 ; https://learn.microsoft.com/graph/api/b2bmanagementpolicy-update?view=graph-rest-beta ; https://learn.microsoft.com/graph/api/resources/conditionalaccessusers?view=graph-rest-1.0 ; https://learn.microsoft.com/entra/external-id/authentication-conditional-access ."
-    },
-    {
-      "n": 94,
-      "where": "controls[6].note",
-      "type": "admin-path",
-      "claim": "Meet now in channels and Screen sharing guest capabilities are configured on the Teams Guest access page.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/set-up-guests",
-      "quote": "Under Calling, Meeting, and Messaging, select On or Off for each capability\nScreen sharing\nMeet now in channels",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 95,
-      "where": "What to check: Search the Entra audit logs",
+      "n": 97,
+      "where": "controls[5].note",
       "type": "behaviour",
-      "claim": "Entra audit logs can identify who has been inviting guests.",
+      "claim": "The policy's conditions.users.includeGuestsOrExternalUsers property includes guests or external users in the policy scope.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/monitoring-health/reference-audit-activities",
-      "quote": "Audit logs can be used to determine who made a change to service, user, group, or other item.\n| UserManagement | Invite external user |",
+      "source": "https://learn.microsoft.com/graph/api/resources/conditionalaccessusers?view=graph-rest-1.0",
+      "quote": "includeGuestsOrExternalUsers | conditionalAccessGuestsOrExternalUsers | Internal guests or external users included in the policy scope. Optionally populated.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-24T07:39:36.731Z",
+    "at": "2026-11-24T11:32:41.567Z",
     "summary": {
-      "links": 20,
+      "links": 24,
       "unreachable": 0,
       "uiPaths": 7,
       "uiPathsWithMissingWords": 0,
-      "apiCalls": 6,
+      "apiCalls": 7,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
@@ -1101,6 +1117,11 @@
       },
       {
         "url": "https://learn.microsoft.com/graph/api/authorizationpolicy-update",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/authorizationpolicy?view=graph-rest-1.0",
         "ok": true,
         "status": 200
       },
@@ -1141,6 +1162,16 @@
       },
       {
         "url": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/conditionalaccessusers?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/external-id/authentication-conditional-access",
         "ok": true,
         "status": 200
       },
@@ -1186,6 +1217,11 @@
       },
       {
         "url": "https://learn.microsoft.com/graph/api/resources/b2bmanagementpolicy?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/b2bmanagementpolicy-update?view=graph-rest-beta",
         "ok": true,
         "status": 200
       }
@@ -1247,9 +1283,20 @@
           "Entra ID",
           "External Identities",
           "External collaboration settings",
-          "Collaboration restrictions"
+          "Collaboration restrictions",
+          "Deny invitations to the specified domains",
+          "Target domains"
         ],
         "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Which domains can receive guest invitations (allow or block list)",
+        "docs": "https://learn.microsoft.com/graph/api/b2bmanagementpolicy-update?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/policies/b2bManagementPolicies",
+        "found": true
       },
       {
         "index": 3,
@@ -1264,7 +1311,10 @@
           "Cross-tenant access settings",
           "Default settings",
           "Inbound access settings",
-          "Edit inbound defaults"
+          "Edit inbound defaults",
+          "B2B collaboration",
+          "External users and groups",
+          "Access status"
         ],
         "missing": []
       },
@@ -1353,5 +1403,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-24",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

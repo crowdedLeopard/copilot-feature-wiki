@@ -132,19 +132,23 @@ changes:
     note: "Corrected after verification: removed the unpublished Teams admin center navigation path for Allow users to report meetings, and completed the Defender Submissions and Teams Protection reports paths."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 107 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 5
+  - date: "2026-11-24"
+    note: "Corrected after verification: the Why it matters paragraph now says existing tenants must enable Defender monitoring for reports to show on the User reported tab."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 98 statements confirmed"
+version: 6
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-24"
-  version: 5
+  version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 107
-  confirmed: 106
+  claims: 98
+  confirmed: 98
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "a19227c39892207f34b95ef9d748ada0"
+  contradicted: 0
+  attempts: 0
+  hash: "489013efc33e317153267eabb4439cc7"
 ---
 
 ## What's changing
@@ -161,7 +165,7 @@ The roadmap record gives status Launched and a target of September CY2026, with 
 
 This gives your security team a new signal for meeting-borne social engineering, such as an impersonator joining a call, and it arrives without anyone choosing it. Eligible users on supported clients, with an online Teams mailbox, can submit a report from the first meeting after rollout, so the question is no longer whether to enable it but whether anyone is ready to receive the reports.
 
-If nobody acts, reports land in the Defender portal and Teams admin center with no agreed owner, users get no guidance on when to use **Report a concern** or **Not a concern**, and, where the destination is set to include Microsoft, meeting and participant metadata is copied for review. Settle who triages reports, where they are sent and what users are told before the queue fills.
+Existing tenants need to enable Defender monitoring for submitted reports to show correctly on the **User reported** tab; without preparation, users get no guidance on when to use **Report a concern** or **Not a concern**, and, where the destination is set to include Microsoft, meeting and participant metadata is copied for review. Settle who triages reports, where they are sent and what users are told before the queue fills.
 
 ## Risk assessment
 
@@ -260,10 +264,4 @@ No supported command for changing the built-in alert policies that reported meet
 risk: Medium. The option is on by default and, when reports go to Microsoft, copies meeting and participant metadata for review; Microsoft documents a Teams setting, a Defender destination setting and a PowerShell parameter that cover it.
 cost: Low. Microsoft's pages tie meeting reporting to Defender for Office 365 Plan 1 or Plan 2, or Defender XDR, and publish no separate price or meter for it; the known cost is triage time.
 impact: High. Microsoft's notice says the capability is enabled by default, so eligible users on supported clients see Report a concern in meetings without any admin action; reporting needs an online Teams mailbox.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters: second paragraph / default: If nobody acts, reports land in the Defender portal and Teams admin center. | Found: In the Microsoft Defender portal: On by default for new tenants. Existing tenants need to enable it. ... it also needs to be turned on in the Defender portal for user reported items to show up correctly on the User reported tab on the Submissions page. | Fix: Replace 'If nobody acts, reports land in the Defender portal and Teams admin center with no agreed owner' with 'Existing tenants need to enable Defender monitoring for submitted reports to show correctly on the User reported tab; without preparation'. Keep the remaining warning about missing user guidance and copying metadata when Microsoft is a destination. This carries the monitoring qualification stated at https://learn.microsoft.com/defender-office-365/submissions-teams. | Source: https://learn.microsoft.com/defender-office-365/submissions-teams
 -->

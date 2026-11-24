@@ -46,8 +46,8 @@ sources:
   - title: "OneLake tenant settings"
     url: "https://learn.microsoft.com/fabric/admin/service-admin-portal-onelake"
     kind: "learn"
-  - title: "Tenants - List Tenant Settings"
-    url: "https://learn.microsoft.com/rest/api/fabric/admin/tenants/list-tenant-settings"
+  - title: "Tenants - Update Tenant Setting"
+    url: "https://learn.microsoft.com/rest/api/fabric/admin/tenants/update-tenant-setting"
     kind: "learn"
   - title: "Understand Microsoft Fabric licenses and capacity"
     url: "https://learn.microsoft.com/fabric/enterprise/licenses"
@@ -68,7 +68,7 @@ controls:
     scope: "maker"
     ui:
       surface: "Power Automate (maker)"
-      path: "Process mining > Start here > Object-centric process mining > Process name > Data source > Azure Data Lake or OneLake > Continue > Choose where to export > Continue or Skip export"
+      path: "Process mining > Start here > Object-centric process mining > Data source > Azure Data Lake or OneLake > Continue > Choose where to export > Continue or Skip export"
       docs: "https://learn.microsoft.com/power-automate/object-centric-ingest-event-log"
     api: null
     note: "Maker-side choice in the ingest wizard. Microsoft Learn documents no API for it at the time of writing (November 2026)."
@@ -80,12 +80,12 @@ controls:
       docs: "https://learn.microsoft.com/fabric/admin/service-admin-portal-onelake"
     api:
       kind: "rest"
-      call: "GET https://api.fabric.microsoft.com/v1/admin/tenantsettings"
-      docs: "https://learn.microsoft.com/rest/api/fabric/admin/tenants/list-tenant-settings"
-    note: "Prerequisite on the custom-workspace report page; not confirmed for the OCPM export. REST call lists settings; Fabric administrator or service principal."
+      call: "POST https://api.fabric.microsoft.com/v1/admin/tenantsettings/{tenantSettingName}/update"
+      docs: "https://learn.microsoft.com/rest/api/fabric/admin/tenants/update-tenant-setting"
+    note: "Prerequisite for connecting a workspace to the process mining capability. The request body sets enabled. Fabric administrator or service principal."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-24"
 roadmapModified: "2026-10-22T23:45:50"
 changes:
   - date: "2026-11-17"
@@ -102,19 +102,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 86 statements not yet confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 89 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-24"
+    note: "Corrected after the independent check: OneLake row now shows the Update Tenant Setting call, not a read-only list call; custom-workspace prerequisites stated as Microsoft gives them; wizard path drops the process name field; F-capacity billing notes the one-minute minimum."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 92 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 89
-  confirmed: 87
+  claims: 92
+  confirmed: 92
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "891e24d662591740a87e00aa6b72b841"
+  contradicted: 0
+  attempts: 0
+  hash: "dc6f1dd784331d5bd96b993c49f20513"
 ---
 
 ## What's changing
@@ -140,7 +144,7 @@ The default state is user-opt-in: the export is a step each maker chooses or ski
 - The ingest page requires the event log in Azure Data Lake Gen2 or OneLake; the export creates a semantic model on Fabric Lakehouse delta tables.
 
 **Security & identity**
-- The page for customising a report with your own Fabric workspace lists prerequisites: the OneLake setting **Users can access data stored in OneLake with apps external to the Fabric** switched on, and the Process Insights Prod service principal added as workspace admin. The OCPM pages do not say whether these apply to the OCPM export, so confirm before granting workspace admin to a service principal on a shared workspace.
+- Microsoft's custom-workspace guidance requires the external-app OneLake setting to be on and Process Insights Prod to have admin access when connecting a workspace to the process mining capability ([custom Fabric workspace page](https://learn.microsoft.com/power-automate/process-mining-fabric-workspace)).
 - For an existing workspace, the same page says the maker's account needs at least Contributor access.
 
 **Autonomy & actions**
@@ -156,7 +160,7 @@ The default state is user-opt-in: the export is a step each maker chooses or ski
 
 Microsoft's licensing pages say process mining is licensed as part of Power Automate and that a Power BI licence is required for report customisation ([overview](https://learn.microsoft.com/power-automate/process-advisor-overview)). Each Power Automate Premium licence adds 50 MB of process mining capacity to a tenant-wide pool up to 100 GB; beyond that the Process Mining add-on is needed. The licensing FAQ gives the add-on list price as $5,000 (USD) for 100 GB of data stored a month, with Power Automate Premium as the prerequisite ([FAQ](https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq)). The FAQ also says Power BI licences aren't included in Power Automate Process Mining. The overview names a Power BI Premium licence for report customisation, while the FAQ lists Power BI Pro, per user or Premium capacity, so the two pages differ.
 
-Fabric and Power BI platform licensing applies to the Lakehouse, semantic model and report ([Fabric licences](https://learn.microsoft.com/fabric/enterprise/licenses)). Fabric supports F capacities, trial capacities and eligible P capacities with Fabric enabled. F capacities are bought through Azure, which bills per second with no commitment and offers a yearly reservation. Creating Power BI items in a workspace other than My workspace and sharing them requires Power BI Pro, Premium Per User (PPU) or an individual trial. The OCPM pages do not name a separate export-specific licence or meter.
+Fabric and Power BI platform licensing applies to the Lakehouse, semantic model and report ([Fabric licences](https://learn.microsoft.com/fabric/enterprise/licenses)). Fabric supports F capacities, trial capacities and eligible P capacities with Fabric enabled. F capacities are bought through Azure, which bills per second with a one-minute minimum, with no commitment, and offers a yearly reservation. Creating Power BI items in a workspace other than My workspace and sharing them requires Power BI Pro, Premium Per User (PPU) or an individual trial. The OCPM pages do not name a separate export-specific licence or meter.
 
 ## Scope
 
@@ -166,7 +170,7 @@ The roadmap lists the Worldwide (Standard Multi-Tenant) cloud and the Web platfo
 
 ### Before rollout
 - Decide which Fabric workspaces makers may export to.
-- Check the OneLake setting **Users can access data stored in OneLake with apps external to Fabric** in the Fabric tenant settings, and confirm with Microsoft whether it applies to the OCPM export.
+- Check the OneLake setting **Users can access data stored in OneLake with apps external to Fabric** in the Fabric tenant settings; the custom-workspace guidance requires it to be on when connecting a workspace to the process mining capability.
 - Confirm that the workspace a maker picks runs on a Fabric capacity, and that people who create and share Power BI items there hold Power BI Pro, PPU or an individual trial, as the Fabric licensing page sets out.
 
 ### At rollout
@@ -183,14 +187,14 @@ The roadmap lists the Worldwide (Standard Multi-Tenant) cloud and the Web platfo
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether a process is exported to a Fabric workspace, and which workspace</strong><br><small>Maker</small><br><small class="controls__note">Maker-side choice in the ingest wizard. Microsoft Learn documents no API for it at the time of writing (November 2026).</small></td><td data-label="Admin UI"><strong>Power Automate (maker)</strong><br>Process mining › Start here › Object-centric process mining › Process name › Data source › Azure Data Lake or OneLake › Continue › Choose where to export › Continue or Skip export <a href="https://learn.microsoft.com/power-automate/object-centric-ingest-event-log" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether apps external to Fabric can read data stored in OneLake</strong><br><small>Tenant</small><br><small class="controls__note">Prerequisite on the custom-workspace report page; not confirmed for the OCPM export. REST call lists settings; Fabric administrator or service principal.</small></td><td data-label="Admin UI"><strong>OneLake catalog (Microsoft Fabric)</strong><br>Govern › Configurations › Tenant settings › Users can access data stored in OneLake with apps external to Fabric <a href="https://learn.microsoft.com/fabric/admin/service-admin-portal-onelake" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>GET https://api.fabric.microsoft.com/v1/admin/tenantsettings</code> <a href="https://learn.microsoft.com/rest/api/fabric/admin/tenants/list-tenant-settings" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether a process is exported to a Fabric workspace, and which workspace</strong><br><small>Maker</small><br><small class="controls__note">Maker-side choice in the ingest wizard. Microsoft Learn documents no API for it at the time of writing (November 2026).</small></td><td data-label="Admin UI"><strong>Power Automate (maker)</strong><br>Process mining › Start here › Object-centric process mining › Data source › Azure Data Lake or OneLake › Continue › Choose where to export › Continue or Skip export <a href="https://learn.microsoft.com/power-automate/object-centric-ingest-event-log" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether apps external to Fabric can read data stored in OneLake</strong><br><small>Tenant</small><br><small class="controls__note">Prerequisite for connecting a workspace to the process mining capability. The request body sets enabled. Fabric administrator or service principal.</small></td><td data-label="Admin UI"><strong>OneLake catalog (Microsoft Fabric)</strong><br>Govern › Configurations › Tenant settings › Users can access data stored in OneLake with apps external to Fabric <a href="https://learn.microsoft.com/fabric/admin/service-admin-portal-onelake" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST https://api.fabric.microsoft.com/v1/admin/tenantsettings/{tenantSettingName}/update</code> <a href="https://learn.microsoft.com/rest/api/fabric/admin/tenants/update-tenant-setting" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The export is a maker-side choice in the ingest wizard; Microsoft Learn documents no administrator setting for the export step at the time of writing (November 2026). The OneLake tenant setting is documented as a prerequisite on the custom-workspace report page, and Microsoft has not confirmed that it governs the OCPM export. Microsoft Learn lists the Power Platform administrator and Fabric administrator roles as having control over organisation-wide Fabric settings ([Fabric admin roles](https://learn.microsoft.com/fabric/admin/roles)); the REST call lists settings and does not change them.
+The export is a maker-side choice in the ingest wizard; Microsoft Learn documents no administrator setting for the export step at the time of writing (November 2026). Microsoft's custom-workspace guidance requires the external-app OneLake setting to be on and Process Insights Prod to have admin access when connecting a workspace to the process mining capability. Microsoft Learn lists the Power Platform administrator and Fabric administrator roles as having control over organisation-wide Fabric settings ([Fabric admin roles](https://learn.microsoft.com/fabric/admin/roles)); the Update Tenant Setting call requires a Fabric administrator or a service principal.
 
-Controls that sit on the published model include the **Keep your Direct Lake data up to date** flag in the semantic model's **Settings** screen, which needs **Take over** first, and Fabric workspace access. Learn lists the Process Insights Prod service principal as a workspace admin requirement on the custom-workspace page; whether the OCPM export uses it is not stated.
+Controls that sit on the published model include the **Keep your Direct Lake data up to date** flag in the semantic model's **Settings** screen, which needs **Take over** first, and Fabric workspace access. Learn lists the Process Insights Prod service principal as a workspace admin requirement on the custom-workspace page.
 
 ## Open questions
 
@@ -198,20 +202,15 @@ Controls that sit on the published model include the **Keep your Direct Lake dat
 - Is the export generally available or in preview? The roadmap lists both phases and the ingest page links to the export as "(preview)".
 - Does the export carry an additional OCPM-specific charge or meter beyond Fabric and Power BI platform licensing? Watch the Power Platform licensing FAQ.
 - Does the roadmap's configurable publishing schedule exist, or is the default automatic refresh the only mechanism described?
-- Do the custom-workspace prerequisites (OneLake setting, Process Insights Prod as workspace admin) apply to the OCPM export?
 
 <!-- rationale
 risk: Medium. The export copies process data, including mapped financial attributes, into a maker-selected Fabric workspace whose roles grant implicit semantic-model permissions.
-cost: Variable. The export uses Fabric capacity; F-capacity compute is billed through Azure per second, with reservation options. The OCPM pages do not identify a separate export-specific meter.
+cost: Variable. The export uses Fabric capacity; F-capacity compute is billed through Azure per second with a one-minute minimum, with reservation options. The OCPM pages do not identify a separate export-specific meter.
 impact: Medium. Makers who own object-centric processes and analysts who build Power BI reports on the model notice it; other users do not.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].api; Governance controls table / command: GET https://api.fabric.microsoft.com/v1/admin/tenantsettings is the automation equivalent for controlling external-app access to OneLake. | Found: Returns a list of the tenant settings. ... GET https://api.fabric.microsoft.com/v1/admin/tenantsettings | Fix: Remove the GET call from controls[1].api and the rendered automation cell: it only reads settings and cannot configure this control. The existing prose may retain it as a read-only inspection operation, explicitly not an automation equivalent. | Source: https://learn.microsoft.com/rest/api/fabric/admin/tenants/list-tenant-settings
-- [contradicted, blocker] Governance controls; Security & identity; controls[1].note; Open questions / absence: Microsoft has not confirmed that its custom-workspace prerequisites govern the OCPM export. | Found: To connect the workspace to the process mining capability and then customize the default report (or create a new one), you need to: ... Ensure that ... option is switched on ... Assign admin access rights on the workspace to Process Insights service principal. | Fix: Remove the assertions that Microsoft has not confirmed applicability, and the corresponding applicability question. Replace the governance prose with: 'Microsoft's custom-workspace guidance requires the external-app OneLake setting to be on and Process Insights Prod to have admin access when connecting a workspace to the process mining capability.' In the row note retain only 'Prerequisite for connecting a workspace to the process mining capability.' This states the documented reach without inferring an OCPM-specific mechanism. | Source: https://learn.microsoft.com/power-automate/process-mining-fabric-workspace
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Power Automate maker path reaches Choose where to export and its Continue or Skip export choice. | Found: On the navigation pane to the left, select Process mining > Start here. ... Select Object-centric process mining. ... Under the Data source heading, select Azure Data Lake or OneLake and select Continue. | Fix: Use 'Process mining > Start here > Object-centric process mining > Data source > Azure Data Lake or OneLake > Continue > Choose where to export > Continue or Skip export' in controls[0].ui and the rendered table. Process name is a field to fill, not a navigation step. | Source: https://learn.microsoft.com/power-automate/object-centric-ingest-event-log
-- [supported, minor] Cost and licensing; rationale: cost / cost: Azure bills F-capacity compute per second. | Found: Pricing is regional, and Azure bills per second with a one-minute minimum. | Fix: Add 'with a one-minute minimum' immediately after 'per second' in Cost and licensing and the cost rationale, as stated at https://learn.microsoft.com/fabric/enterprise/licenses. | Source: https://learn.microsoft.com/fabric/enterprise/licenses
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Power Automate maker path reaches the optional export decision and the workspace-selection wizard. | Found: In the Choose where to export step, select Continue to set up the export of OCPM semantic model in your Fabric workspace, or Skip export. To set up the Fabric workspace: Select from the list of available Fabric workspaces. | Fix: For the workspace-selection route use 'Process mining > Start here > Object-centric process mining > Data source > Azure Data Lake or OneLake > Continue > Choose where to export > Continue > fabric workspace'. Keep 'Skip export' as the alternative in the note. The current route stops on the right wizard step before selecting the workspace; see https://learn.microsoft.com/power-automate/object-centric-ingest-event-log. | Source: https://learn.microsoft.com/power-automate/object-centric-ingest-event-log
 -->

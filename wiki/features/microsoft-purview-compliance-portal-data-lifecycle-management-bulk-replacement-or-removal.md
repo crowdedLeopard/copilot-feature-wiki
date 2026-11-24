@@ -52,6 +52,9 @@ sources:
   - title: "driveItem: removeRetentionLabel"
     url: "https://learn.microsoft.com/graph/api/driveitem-removeretentionlabel?view=graph-rest-1.0"
     kind: "learn"
+  - title: "Auto-Apply Retention Labels in SharePoint"
+    url: "https://learn.microsoft.com/purview/auto-apply-retention-labels-scenario"
+    kind: "learn"
 videos: []
 related: ["microsoft-purview-data-lifecycle-management-hard-delete-capability-for-onedrive-and-sharep","microsoft-purview-compliance-portal-data-lifecycle-management-introduction-of-secure-workf"]
 controls:
@@ -95,19 +98,23 @@ changes:
     note: "Correction: record-label wording now says the record must be locked in SharePoint and OneDrive, background framing reworded, one unmatched checklist step removed, and item 392457 added as a source."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 67 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-24"
+    note: "Corrected the After rollout audit step to the documented item-level event and gave the per-item Graph call with its v1.0 version; added the KQL source."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 68 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-24"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 65
-  unconfirmed: 2
+  claims: 68
+  confirmed: 68
+  unconfirmed: 0
   contradicted: 0
-  attempts: 2
-  hash: "f78ad552ad81b33957dc1a3a892b46de"
+  attempts: 0
+  hash: "9ae08d0d88e35fd158c8b5f30fa223ac"
 ---
 
 ## What's changing
@@ -167,7 +174,7 @@ The roadmap says the action works tenant-wide or on targeted content selected wi
 - Tell the help desk which labels may change and when.
 
 ### After rollout
-- Search the audit log for the "Changed retention label for a file" activity after each run and compare the count with the expected scope.
+- For existing SharePoint and OneDrive item-level label changes, search the audit log for "Changed retention label for a file"; confirm the bulk action's documented audit coverage before using event counts to validate a run.
 - Review role group membership again after each run to confirm that only intended admins can change labels.
 
 ## Governance controls
@@ -185,7 +192,7 @@ The roadmap says the action works tenant-wide or on targeted content selected wi
 
 No tenant switch, role or API for bulk replacement is documented yet, so the first row records the gap. The two rows below are existing controls that apply to retention labels in general: they do not confirm that the new action honours them.
 
-One per-item route exists today. The Microsoft Graph operation driveItem: removeRetentionLabel, `DELETE /drives/{drive-id}/items/{item-id}/retentionLabel`, removes the retention label from one SharePoint or OneDrive item; see [the Graph reference](https://learn.microsoft.com/graph/api/driveitem-removeretentionlabel?view=graph-rest-1.0). It is not a bulk action.
+One per-item route exists today. The Microsoft Graph operation driveItem: removeRetentionLabel, `DELETE /v1.0/drives/{drive-id}/items/{item-id}/retentionLabel`, removes the retention label from one SharePoint or OneDrive item; see [the Graph reference](https://learn.microsoft.com/graph/api/driveitem-removeretentionlabel?view=graph-rest-1.0). It is not a bulk action.
 
 Adding members to a Purview role group needs the Role Management role. Searching the audit log needs the Audit Logs or View-Only Audit Logs role. Whether the audit log records the bulk action under the same activity as a single change is not yet published.
 
@@ -201,13 +208,4 @@ Adding members to a Purview role group needs the Role Management role. Searching
 risk: Medium. The roadmap describes admins replacing or removing retention labels across a whole tenant, which changes what retention applies to content; how record labels are treated is not yet documented.
 cost: Low. The only cost the sources show is admin time and the Purview licences already needed for retention labels; a licence or price specific to this feature is not yet published.
 impact: Low. The roadmap describes an action that admins run from the Purview portal; end users are not asked to do anything, though labels visible in their apps may change.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Governance guidance: After rollout; controls[2].note / applicability: Searching Changed retention label for a file after each bulk run allows its count to be compared with the full expected scope. | Found: Searched: Purview bulk retention label removal scheduling approval preview undo audit Changed retention label for a file restricted administrators. Read retention auditing and audit-search: the event covers SharePoint/OneDrive item changes, not a documented complete count for bulk runs. | Fix: Replace the After rollout bullet with: 'For existing SharePoint and OneDrive item-level label changes, search the audit log for "Changed retention label for a file"; confirm the bulk action's documented audit coverage before using event counts to validate a run.' The existing event is documented at https://learn.microsoft.com/purview/retention#auditing-retention-configuration-and-actions.
-- [unsupported, blocker] Governance controls: per-item Graph route / command: DELETE /drives/{drive-id}/items/{item-id}/retentionLabel is a complete Graph call to remove one item's label. | Found: Searched: opened driveitem-removeretentionlabel?view=graph-rest-1.0. The HTTP-request section gives the operation suffix, but its executable example uses https://graph.microsoft.com/v1.0/drives/.../items/.../retentionLabel; the briefing omits the required API version. | Fix: Replace the inline call with 'DELETE /v1.0/drives/{drive-id}/items/{item-id}/retentionLabel', retaining the existing Graph reference and the statement that it removes one item's label, not a bulk action.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / behaviour: KQL means Keyword Query Language. | Found: Use Keyword Query Language (KQL) to auto-apply the retention labels that you created. KQL is the language used to build search queries. | Fix: Add https://learn.microsoft.com/purview/auto-apply-retention-labels-scenario to sources for the expansion of KQL. | Source: https://learn.microsoft.com/purview/auto-apply-retention-labels-scenario#auto-apply-retention-labels-to-documents
 -->

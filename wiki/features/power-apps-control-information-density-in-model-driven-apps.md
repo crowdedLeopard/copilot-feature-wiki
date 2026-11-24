@@ -79,7 +79,7 @@ controls:
       kind: "rest"
       call: "POST <organization URI>/api/data/v9.2/SaveSettingValue"
       docs: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue"
-    note: "Maker-side. Display density is in the Settings dialog in the app designer; Off is enum value 0. Save and publish the app. Body sets AppUniqueName, SettingName (setting definition unique name) and Value."
+    note: "Maker-side. In Settings, Features lists generally available settings and Upcoming lists preview settings; edit Display density on the applicable tab. Off is enum value 0. Save and publish. Body sets AppUniqueName, SettingName, Value."
 confidence: "high"
 created: "2026-11-17"
 updated: "2026-11-24"
@@ -103,19 +103,23 @@ changes:
     note: "Corrected the app-designer route (Solutions > solution > app > Edit > Settings) in the app row and the header refresh prerequisite; licensing now follows the Power Apps licensing FAQ; SaveSettingValue calls show the POST path only."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 66 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-24"
+    note: "Corrected after verification: removed the statement that Learn describes no way to force a density, since Display density set to Off applies Comfortable; added the Features and Upcoming tabs to the app row note."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 66 statements not yet confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 66
-  confirmed: 65
+  confirmed: 66
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "f0756a14d519e84aa2c55794d89d3472"
+  contradicted: 0
+  attempts: 0
+  hash: "c4a8d48d93f23825f078ad9f877dafe8"
 ---
 
 ## What's changing
@@ -198,13 +202,13 @@ No meter is documented for this feature at the time of writing (November 2026).
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Environment default display density for all model-driven apps</strong><br><small>Environment</small><br><small class="controls__note">Needs Solution preview on in Solutions; if Solution preview off is shown, select it. If Display density is not in the solution, first Add existing &gt; More &gt; Setting. Body sets SettingName and Value; omit AppUniqueName.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Solutions › solution › Display density › Edit setting value › Setting environment value › New value <a href="https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-configure-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST &lt;organization URI&gt;/api/data/v9.2/SaveSettingValue</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>App default display density, and whether display density is off for an app</strong><br><small>App</small><br><small class="controls__note">Maker-side. Display density is in the Settings dialog in the app designer; Off is enum value 0. Save and publish the app. Body sets AppUniqueName, SettingName (setting definition unique name) and Value.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Solutions › solution › app › Edit › Settings <a href="https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST &lt;organization URI&gt;/api/data/v9.2/SaveSettingValue</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>App default display density, and whether display density is off for an app</strong><br><small>App</small><br><small class="controls__note">Maker-side. In Settings, Features lists generally available settings and Upcoming lists preview settings; edit Display density on the applicable tab. Off is enum value 0. Save and publish. Body sets AppUniqueName, SettingName, Value.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Solutions › solution › app › Edit › Settings <a href="https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST &lt;organization URI&gt;/api/data/v9.2/SaveSettingValue</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 Both rows rest on the general Power Apps settings mechanism: a setting has a default value, an optional environment value and an optional app value, and an app value overrides the environment value. The appearance page names no API for density specifically; the **SaveSettingValue** action is documented generally for setting app and organisation-level overrides, and the setting's unique name is not given on the pages read.
 
-A user's personal choice overrides both rows unless the maker has set **Display density** to **Off**. Learn does not describe a way to force a density on users who have not chosen **Auto**. The header and navigation refresh that density depends on is enabled by makers in Power Apps (maker), as set out under Scope.
+A user's personal choice overrides both rows unless the maker has set **Display density** to **Off**. The header and navigation refresh that density depends on is enabled by makers in Power Apps (maker), as set out under Scope.
 
 ## Open questions
 
@@ -219,10 +223,8 @@ cost: Low. The Learn page and the roadmap item name no licence or meter for disp
 impact: Low. The documented default is Comfortable, so most users see a difference only if an environment or app default is changed or they pick Cozy or Compact themselves in Personal settings.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls / absence: Learn does not describe a way to force a density on users who have not chosen Auto. | Found: When display density is off: The app uses Comfortable density. The display density options are hidden from users. Any stored display density preference for the user is ignored. | Fix: Remove 'Learn does not describe a way to force a density on users who have not chosen Auto.' The preceding sentence already gives the correct Off exception; the documented Off setting forces Comfortable even when a user has a different stored preference. | Source: https://learn.microsoft.com/power-apps/user/appearance-settings
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui / admin-path: Power Apps (maker) > Solutions > solution > app > Edit > Settings reaches the dialog holding the app density setting. | Found: In the app designer select Settings on the command bar. When you select Settings from the command bar, select Features to enable or disable model-driven app features for the app. | Fix: Keep the route, which correctly reaches Settings. Add to its note: 'In Settings, Features displays generally available settings and Upcoming displays preview settings; select the applicable tab and edit Display density.' This is documented at https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-configure-settings#setting-app-value. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties
+- [supported, minor] controls[1].ui; Governance controls: app row / admin-path: The app's Display density control is reached through Power Apps > Solutions > solution > app > Edit > Settings. | Found: In the app designer select Settings on the command bar. When you select Settings from the command bar, select Features to enable or disable model-driven app features for the app. | Fix: Extend controls[1].ui.path and the matching table path to 'Solutions > solution > app > Edit > Settings > Features or Upcoming > Display density'. The existing note correctly explains which tab applies; the settings guide at https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-configure-settings documents those tabs, and https://learn.microsoft.com/power-apps/user/appearance-settings names Display density. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties
 -->

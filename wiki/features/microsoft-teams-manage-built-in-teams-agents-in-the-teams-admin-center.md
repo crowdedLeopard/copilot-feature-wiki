@@ -15,7 +15,7 @@ risk: "medium"
 cost: "low"
 impact: "medium"
 defaultState: "on"
-action: "prepare"
+action: "act-now"
 licensing:
   model: "included"
   notes: "The roadmap item says the agents are enabled by default for licensed users. The Facilitator page says it is included with a Microsoft Copilot license; the Channel Agent page lists a Copilot licence as a prerequisite. The admin page itself names no licence."
@@ -62,19 +62,23 @@ changes:
     note: "New briefing: built-in Teams agents are managed from the Built-in Teams agents page in the Teams admin center, separate from the Microsoft apps setting."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 55 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected: Edit availability now described as controlling who can interact with Channel Agent; cost rationale no longer says users already hold the agents' licences; action set to act-now; added the all-apps-blocked difference; replaced the Microsoft apps checklist item."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 51
+  claims: 60
+  confirmed: 59
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "c7d8b68009477900d3b4c7f7a06becce"
+  contradicted: 1
+  attempts: 0
+  hash: "f2940fa62e7b7c9d658c9ceb2d549a7b"
 ---
 
 ## What's changing
@@ -83,7 +87,7 @@ Teams built-in agents, such as Channel Agent and Facilitator, are now managed fr
 
 The roadmap item says the agents are enabled by default for licensed users and managed independently of org-wide Microsoft app settings. Learn agrees on the second point: built-in agents are "no longer controlled by the Microsoft apps setting". On the page, an admin selects one or more agents and chooses **Edit availability** to make them available to everyone, to specific users or groups, or to no one.
 
-The roadmap record gives the status as Launched, with a target of July CY2026 and General Availability as the release phase. It lists Worldwide (Standard Multi-Tenant) and GCC, on Android, Desktop, iOS and Mac. The Channel Agent setup page is still marked as public preview and still tells admins to allow or block Channel Agent on **Manage apps**; the two Learn pages differ, and this briefing follows the manage-apps page for where built-in agents are managed.
+The roadmap record gives the status as Launched, with a target of July CY2026 and General Availability as the release phase. It lists Worldwide (Standard Multi-Tenant) and GCC, on Android, Desktop, iOS and Mac. The Channel Agent setup page is still marked as public preview and still tells admins to allow or block Channel Agent on **Manage apps**; the two Learn pages differ, and this briefing follows the manage-apps page for where built-in agents are managed. The Channel Agent setup page also says Channel Agents are blocked if all apps are blocked, whereas manage-apps says the Microsoft apps setting no longer controls built-in agents. The Facilitator setup page likewise says Facilitator is blocked if all apps are blocked and still gives **Manage apps** instructions.
 
 ## Why it matters
 
@@ -94,7 +98,7 @@ The practical view: treat the Built-in Teams agents page as a new control surfac
 ## Risk assessment
 
 **Data exposure**
-- Channel Agent uses channel messages, the channel's SharePoint files, channel and standard meetings and meeting transcription as knowledge, according to its setup page. That page also says it does not use files the requesting user cannot access and does not use files whose sensitivity labels prevent extraction or whose DLP policies prevent AI use. Limiting who gets the agent through **Edit availability** is the control on who can reach this data through it.
+- Channel Agent uses channel messages, the channel's SharePoint files, channel and standard meetings and meeting transcription as knowledge, according to its setup page. That page also says it does not use files the requesting user cannot access and does not use files whose sensitivity labels prevent extraction or whose DLP policies prevent AI use. **Edit availability** controls who can interact with the agent; users who are not enabled can still view its presence and messages.
 - The same page says labelled output does not inherit the label's controls and does not prevent the information being shared further.
 
 **Security & identity**
@@ -126,7 +130,7 @@ No meter, price or credit rate for the Built-in Teams agents page is published a
 
 ### Before rollout
 - Inventory which built-in agents appear on the **Built-in Teams agents** page and which groups should have each one.
-- Check how your tenant has used the org-wide **Microsoft apps** setting, because it no longer governs built-in agents.
+- Record that the org-wide **Microsoft apps** setting no longer governs built-in agents.
 - Confirm the Teams Administrator role holders who will manage the page.
 - Tell support and champions that Channel Agent and Facilitator can appear in channels, chats and meetings for licensed users.
 
@@ -163,18 +167,12 @@ The **Built-in Teams agents** page replaces **Manage apps** for these agents; th
 
 <!-- rationale
 risk: Medium. Built-in agents are on by default for licensed users, and the org-wide Microsoft apps setting no longer governs them, so an existing block there no longer covers them.
-cost: Low. The only cost shown for the page itself is admin time; the agents' own licences (a Microsoft Copilot licence on the Facilitator page) are already held by the users who see them.
+cost: Low. Reviewing the admin page and communicating availability decisions take admin time; Facilitator and Channel Agent interaction have the licence requirements described in Cost and licensing.
 impact: Medium. Admins see a new page; licensed users in chats, channels and meetings see the agents unless an admin limits who can use them.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure, first bullet / applicability: Limiting availability through Edit availability controls who can reach the channel data through Channel Agent. | Found: Users who aren't enabled for Channel Agents can view the agent’s presence and messages, but they can't interact with the agent. | Fix: Replace 'Limiting who gets the agent through Edit availability is the control on who can reach this data through it' with 'Edit availability controls who can interact with the agent; users who are not enabled can still view its presence and messages.' The existing cited Channel Agent page states this distinction. | Source: https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams
-- [contradicted, blocker] rationale: cost / licensing: The agents' own licences are already held by the users who see them. | Found: Unlicensed users can't prompt Facilitator, but they can see others' prompts to Facilitator and Facilitator's responses. Unlicensed users can see Facilitator's notes in meetings. | Fix: Replace the cost rationale with 'Low. Reviewing the admin page and communicating availability decisions take admin time; Facilitator and Channel Agent interaction have the licence requirements described in Cost and licensing.' Do not equate seeing agent output with holding its licence. | Source: https://learn.microsoft.com/microsoftteams/facilitator-teams
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters: Learn pages agree agents are allowed by default / default: The Channel Agent setup page says Channel Agents are allowed by default. | Found: Channel Agents are allowed by default. However, if all apps are blocked for your organization, Channel Agents are also blocked. | Fix: Add to the existing discussion of documentation differences: 'The Channel Agent setup page also says Channel Agents are blocked if all apps are blocked, whereas manage-apps says the Microsoft apps setting no longer controls built-in agents.' Keep both statements attributed to their respective cited pages. | Source: https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams
-- [supported, minor] Why it matters: Learn pages agree agents are allowed by default / default: The Facilitator setup page says Facilitator is allowed by default. | Found: Facilitator is allowed by default. However, if all apps are blocked for your organization, Facilitator is also blocked. | Fix: Add to the documentation-differences paragraph: 'The Facilitator setup page likewise says Facilitator is blocked if all apps are blocked and still gives Manage apps instructions.' Cite https://learn.microsoft.com/microsoftteams/facilitator-teams. | Source: https://learn.microsoft.com/microsoftteams/facilitator-teams
-- [contradicted, minor] front matter: action / consistency: The prepare action rating fits a launched, default-on change rated medium risk that requires an availability decision. | Found: status: launched; defaultState: on; risk: medium; action: prepare. The standard assigns act-now when a default-reaching change is launched and there is a control to set or decision to take with medium-or-higher risk or cost. | Fix: Set action to 'act-now': the item is already launched, agents are enabled by default for licensed users, and the briefing asks admins to decide availability to address its medium risk.
-- [contradicted, minor] Governance guidance: Before rollout, Microsoft apps checklist item / consistency: Every control the governance checklist asks readers to review has a controls-table row. | Found: Before rollout: 'Check how your tenant has used the org-wide Microsoft apps setting'. The controls table has rows for built-in-agent availability and Channel Agent auto-creation, but no Microsoft apps row. | Fix: Replace that checklist item with 'Record that the org-wide Microsoft apps setting no longer governs built-in agents.' This removes the instruction to review a control without a table row; do not add a row.
+- [contradicted, minor] rationale: impact / behaviour: Licensed users see the agents unless an administrator limits who can use them. | Found: Users who aren't enabled for Channel Agents can view the agent’s presence and messages, but they can't interact with the agent. | Fix: Replace the impact rationale with: "Medium. Admins see a new page; licensed users have access to use built-in agents unless an admin limits who can use them." This describes availability rather than promising that restrictions hide agent presence or messages. | Source: https://learn.microsoft.com/microsoftteams/set-up-channel-agent-teams
 -->

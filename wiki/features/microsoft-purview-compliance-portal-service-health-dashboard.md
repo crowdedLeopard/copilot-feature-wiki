@@ -4,7 +4,7 @@ slug: "microsoft-purview-compliance-portal-service-health-dashboard"
 roadmapId: 497944
 topic: "governance"
 products: ["Microsoft Purview"]
-summary: "Microsoft plans a dashboard in the Purview portal that shows outages, service issues and advisories for Purview, Microsoft 365 and Azure services. Read-only; no admin action is documented yet."
+summary: "Microsoft plans a dashboard in the Purview portal that shows outages, service issues and advisories for Purview, Microsoft 365 and Azure services. No admin action is documented yet."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -55,7 +55,7 @@ controls:
       kind: "graph"
       call: "GET /v1.0/admin/serviceAnnouncement/healthOverviews"
       docs: "https://learn.microsoft.com/graph/api/serviceannouncement-list-healthoverviews"
-    note: "Read-only. Service Support admin and Helpdesk admin roles can view service health. Does not cover the planned Purview dashboard."
+    note: "Read-only. Service Support admin and Helpdesk admin roles can view service health. Microsoft has not documented how these existing service health controls relate to the planned Purview dashboard."
 confidence: "medium"
 created: "2026-11-24"
 updated: "2026-11-24"
@@ -65,19 +65,23 @@ changes:
     note: "First briefing: roadmap-only description of a planned Purview portal service health dashboard; Learn does not document it yet."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 46 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Correction: removed the unsupported 'read-only' description of the planned dashboard and reworded how the existing service health controls relate to it."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 52 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 46
-  confirmed: 43
-  unconfirmed: 2
-  contradicted: 1
-  attempts: 1
-  hash: "1f99e24c2350f8f62953a17ebbc7b780"
+  claims: 52
+  confirmed: 52
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "0be40eacae3bf3b2496d4fb051863184"
 ---
 
 ## What's changing
@@ -152,11 +156,11 @@ Users, roles and prerequisites are not documented. The roadmap addresses "a Micr
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Access to the service health dashboard in the Purview portal</strong><br><small>Tenant</small><br><small class="controls__note">No setting is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Viewing Microsoft 365 service health today (existing page, not the Purview dashboard)</strong><br><small>Tenant</small><br><small class="controls__note">Read-only. Service Support admin and Helpdesk admin roles can view service health. Does not cover the planned Purview dashboard.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Health › Service health <a href="https://learn.microsoft.com/microsoft-365/enterprise/view-service-health" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET /v1.0/admin/serviceAnnouncement/healthOverviews</code> <a href="https://learn.microsoft.com/graph/api/serviceannouncement-list-healthoverviews" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Viewing Microsoft 365 service health today (existing page, not the Purview dashboard)</strong><br><small>Tenant</small><br><small class="controls__note">Read-only. Service Support admin and Helpdesk admin roles can view service health. Microsoft has not documented how these existing service health controls relate to the planned Purview dashboard.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Health › Service health <a href="https://learn.microsoft.com/microsoft-365/enterprise/view-service-health" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET /v1.0/admin/serviceAnnouncement/healthOverviews</code> <a href="https://learn.microsoft.com/graph/api/serviceannouncement-list-healthoverviews" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-No setting for this dashboard is documented at the time of writing (November 2026). The only service health controls that Learn documents are those of the existing Microsoft 365 service health page and Microsoft Graph, shown in the table as today's alternative; they do not govern the Purview dashboard.
+No setting for this dashboard is documented at the time of writing (November 2026). The table shows the existing Microsoft 365 service health page and Microsoft Graph as documented alternatives. Microsoft has not documented how these existing service health controls relate to the planned Purview dashboard.
 
 The Graph call reads service health for a tenant and sets nothing. Microsoft Graph lists ServiceHealth.Read.All as the permission for it.
 
@@ -172,12 +176,4 @@ The Graph call reads service health for a tenant and sets nothing. Microsoft Gra
 risk: Low. The roadmap describes a view of outages and advisories, not a change to data, identity or actions; its default state is not stated, so this rates today's behaviour continuing.
 cost: Low. The roadmap names no licence or meter and Microsoft has not published licensing for this dashboard, so the only known cost is admin time to learn where service status now lives.
 impact: Low. The roadmap addresses Microsoft Purview users who want service status; it describes no change for end users.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] summary / behaviour: The planned Purview dashboard is read-only. | Found: Searched: Microsoft Purview portal service health dashboard read only incidents advisories services data. Opened Purview portal overview and read roadmap description. The roadmap promises viewing, but neither source states that the dashboard is read-only. | Fix: Remove 'Read-only;' from the summary. The roadmap documents viewing outages, service issues and advisories but does not exclude other actions.
-- [unsupported, blocker] controls[1].note; Governance controls; rendered controls table / applicability: The existing Microsoft 365 service health controls and Graph do not cover or govern the planned Purview dashboard. | Found: Searched: Microsoft Purview service health dashboard access setting PowerShell Graph API serviceAnnouncement. Opened Graph list healthOverviews and Purview portal overview. Neither states whether the new dashboard uses or is governed by existing service health access. | Fix: Replace 'Does not cover the planned Purview dashboard' in the row note and 'they do not govern the Purview dashboard' in the prose with 'Microsoft has not documented how these existing service health controls relate to the planned Purview dashboard.'
-- [contradicted, blocker] Governance controls / behaviour: The only service health controls Learn documents are those of the existing Microsoft 365 service health page and Microsoft Graph. | Found: Use the Service Health dashboard to create and manage Service Health alerts, which proactively notify you when service issues affect you. | Fix: Replace 'The only service health controls that Learn documents are those of the existing Microsoft 365 service health page and Microsoft Graph, shown in the table as today's alternative' with 'The table shows the existing Microsoft 365 service health page and Microsoft Graph as documented alternatives.' Retain the separate applicability qualification only as corrected above. | Source: https://learn.microsoft.com/azure/service-health/service-health-portal-update
 -->

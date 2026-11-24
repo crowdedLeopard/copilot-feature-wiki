@@ -1,0 +1,892 @@
+{
+  "slug": "m365-copilot-graph-api-copilot-for-m365-usage",
+  "roadmapId": 396562,
+  "title": "Microsoft 365 Copilot: usage reports in the Microsoft Graph API",
+  "status": "held",
+  "date": "2026-11-24",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "1 blocking finding (claim 41)"
+    ]
+  },
+  "counts": {
+    "claims": 67,
+    "confirmed": 65,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "Hold: the briefing attributes per-app last activity dates to both user-detail functions, but the by-date function returns activity flags and counts instead. The roadmap facts, access controls and concealment setting are supported; the by-date preview qualification and a few control details also need small corrections.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: roadmapId, products; title",
+      "type": "record",
+      "claim": "This briefing concerns roadmap item 396562, Graph API Copilot usage, for Microsoft 365 Admin Center and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 396562; \"title\": \"Microsoft Copilot (Microsoft365): Graph API - Copilot for Microsoft 365 usage\"; \"products\": [\"Microsoft 365 Admin Center\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The general availability target is November CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The preview target is September CY2024.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"September CY2024\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap was modified at 2026-02-02T22:00:38.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-02-02T22:00:38\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; summary",
+      "type": "record",
+      "claim": "The roadmap describes tenant-level enabled-user counts in the Graph API.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "including tenant-level count of enabled users and active users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; summary",
+      "type": "record",
+      "claim": "The roadmap describes tenant-level active-user counts in the Graph API.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "including tenant-level count of enabled users and active users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; summary; Why it matters",
+      "type": "record",
+      "claim": "The roadmap describes last activity dates per user, overall and per Microsoft 365 app.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "as well as last activity date per user (all up and per Microsoft 365 app)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "The roadmap says the API metrics will match the admin center Copilot usage report for customized reporting and analytics.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Metrics included in the Graph API will match those available in the Copilot for Microsoft 365 usage report in the Microsoft 365 admin center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; summary; changes",
+      "type": "behaviour",
+      "claim": "Copilot usage reports are available as Microsoft Graph REST APIs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/resources/copilotreportroot",
+      "quote": "Copilot usage reports APIs are available as standard REST APIs under the Microsoft Graph namespace.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn calls the admin center report the Microsoft Copilot usage report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage",
+      "quote": "The Microsoft Copilot usage report provides a summary of how users adopt, retain, and engage with Microsoft Copilot and its associated enabled apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "getMicrosoft365CopilotUserCountSummary provides aggregated active and enabled users for a specified period.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/resources/copilotreportroot",
+      "quote": "Get the aggregated number of active and enabled users of Microsoft 365 Copilot for a specified time period.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "getMicrosoft365CopilotUserCountTrend provides the daily trend of active and enabled users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/resources/copilotreportroot",
+      "quote": "Get the trend in the daily number of active and enabled users of Microsoft 365 Copilot for a specified time period.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "getMicrosoft365CopilotUsageUserDetail provides the most recent activity data for users enabled for Microsoft 365 Copilot apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/resources/copilotreportroot",
+      "quote": "Get the most recent activity data for enabled users of Microsoft 365 Copilot apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "getMicrosoft365CopilotUsageUserDetailByDate provides user-level usage for one selected date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetailbydate",
+      "quote": "APIs under the `/beta` version are subject to change. Use of these APIs in production applications is not supported.\n\nGet user-level Microsoft 365 Copilot usage detail for all reported users on a single selected date.",
+      "severity": "minor",
+      "fix": "Change the by-date description to 'getMicrosoft365CopilotUsageUserDetailByDate (beta preview; user-level usage for one selected date)' and cite https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetailbydate."
+    },
+    {
+      "n": 19,
+      "where": "What's changing; changes; Governance guidance: At rollout",
+      "type": "command",
+      "claim": "The current Copilot usage functions use the /copilot/reports route.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetail",
+      "quote": "GET https://graph.microsoft.com/v1.0/copilot/reports/getMicrosoft365CopilotUsageUserDetail(period={period}, version={version})",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The count summary includes enabled and active users for Teams, Word and PowerPoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusercountsummary",
+      "quote": "Microsoft Teams Enabled Users\n- Microsoft Teams Active Users\n- Word Enabled Users\n- Word Active Users\n- PowerPoint Enabled Users\n- PowerPoint Active Users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The count summary includes enabled and active users for Outlook, Excel and OneNote.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusercountsummary",
+      "quote": "Outlook Enabled Users\n- Outlook Active Users\n- Excel Enabled Users\n- Excel Active Users\n- OneNote Enabled Users\n- OneNote Active Users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The count summary includes enabled and active users for Loop, Copilot Chat and Edge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusercountsummary",
+      "quote": "Loop Enabled Users\n- Loop Active Users\n- Any App Enabled Users\n- Any App Active Users\n- Copilot Chat Enabled Users\n- Copilot Chat Active Users\n- Edge Enabled Users\n- Edge Active Users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The period-based user detail report includes last activity dates per app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetail",
+      "quote": "Microsoft Teams Copilot Last Activity Date\n- Word Copilot Last Activity Date\n- Excel Copilot Last Activity Date\n- PowerPoint Copilot Last Activity Date\n- Outlook Copilot Last Activity Date\n- OneNote Copilot Last Activity Date\n- Loop Copilot Last Activity Date",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The current period values are D7, D28, D90, D180 and ALL.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetail",
+      "quote": "The supported values are `D7`, `D28`, `D90`, `D180`, `ALL`.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The v1.0 period-based reference returns a CSV stream.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetail",
+      "quote": "If successful, this function returns a `200 OK` response code and a stream in the response body. The contents of the stream are a CSV file with the requested report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The beta user detail reference returns JSON.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetail",
+      "quote": "If successful, this function returns a `200 OK` response code and a JSON representation of the requested report in the response body.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "type": "behaviour",
+      "claim": "The older beta /reports function directs callers to /copilot going forward.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/reportroot-getmicrosoft365copilotusageuserdetail?view=graph-rest-beta",
+      "quote": "Going forward, use the Microsoft 365 Copilot usage APIs under the `/copilot` URL path segment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The older beta /reports function lists D30 rather than D28.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/reportroot-getmicrosoft365copilotusageuserdetail?view=graph-rest-beta",
+      "quote": "The supported values are: `D7`, `D30`, `D90`, `D180`, `ALL`.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Cost and licensing; Scope; Open questions",
+      "type": "licensing",
+      "claim": "The user detail API returns usage data only for users with a Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetail",
+      "quote": "This API only returns usage data for users who have a Microsoft 365 Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Scope; Open questions",
+      "type": "behaviour",
+      "claim": "Unlicensed Copilot Chat usage is not available through Microsoft Graph reports APIs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetail",
+      "quote": "Unlicensed Copilot Chat usage data isn't available through Microsoft Graph reports APIs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "The user detail reference points to the admin center Copilot Chat usage report for unlicensed usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetail",
+      "quote": "View unlicensed usage in the Microsoft 365 Admin Center Copilot Chat Usage report",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The reference points to the Microsoft Purview audit log for unlicensed Copilot Chat audit data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetail",
+      "quote": "Access audit data through Microsoft Purview Audit Log",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "command",
+      "claim": "The reference names Search-UnifiedAuditLog and the Office 365 Management Activity API as programmatic export alternatives.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetail",
+      "quote": "Export programmatically using `Search-UnifiedAuditLog` (PowerShell) or the Office 365 Management Activity API",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "The Copilot usage API references list the global service as available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetail",
+      "quote": "| Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet |\n| --- | --- | --- | --- |\n| ✅ | ❌ | ❌ | ❌ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Scope; Open questions",
+      "type": "availability",
+      "claim": "The references list US Government L4, US Government L5 (DOD) and China operated by 21Vianet as unavailable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetail",
+      "quote": "| Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet |\n| --- | --- | --- | --- |\n| ✅ | ❌ | ❌ | ❌ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft's usage overview describes identifying people who barely use a service and might not need a licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "you can see who uses a service to the fullest extent and who barely uses it and might not need a Microsoft 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk, impact",
+      "type": "default",
+      "claim": "API access is admin-opt-in because an administrator must consent to the reporting application before it can access reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/reportroot-authorization",
+      "quote": "The Microsoft Entra tenant administrator must explicitly grant consent to your application. This is required both for application-level authorization and user delegated authorization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters; Risk assessment: Security & identity; Scope; controls[0].note",
+      "type": "role",
+      "claim": "For delegated calls the signed-in user must belong to a supported Microsoft Entra limited administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/reportroot-authorization",
+      "quote": "In addition to the app having been granted the required permissions, the user must be a member of a Microsoft Entra ID limited administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity; Scope; Governance controls; controls[0].note",
+      "type": "behaviour",
+      "claim": "Application-level authorization permits report access without a signed-in user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/reportroot-authorization",
+      "quote": "Application-level authorization - Allows an app to read all service usage reports without a signed-in user. The permissions granted to the application determine authorization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "The period-based user detail report contains display name and user principal name fields.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetail",
+      "quote": "Report Refresh Date\n- User Principal Name\n- Display Name\n- Report Period",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The user detail functions return last activity dates per app, including the by-date user detail function.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetailbydate",
+      "quote": "| `isActiveInWord` | Boolean | Activity in Microsoft Word. |\n| `reportRefreshDate` | Date | Date when the report data was refreshed. |\n| `reportSelectedDate` | Date | Date selected by the request. |",
+      "severity": "blocker",
+      "fix": "Replace 'The user detail functions return per-user activity: display name, user principal name and last activity dates per app.' with 'getMicrosoft365CopilotUsageUserDetail returns display name, user principal name and last activity dates per app.' The by-date response schema instead lists activity flags and counts, with report refresh and selected dates."
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "default",
+      "claim": "Usage reports conceal user information by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "By default, all reports hide user information such as usernames, display names, groups, and sites to help companies support local privacy laws.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure; Scope; Governance controls; controls[1]",
+      "type": "applicability",
+      "claim": "The organization-wide concealment setting applies to Microsoft 365 usage reports in the admin center, Microsoft Graph and Power BI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "This setting also applies to the Microsoft 365 usage reports in Microsoft Graph and Power BI",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Microsoft describes data accessible through the reports API as sensitive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/reportroot-authorization",
+      "quote": "Reports data that is accessible via the Microsoft Graph reports API is sensitive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Data exposure; Governance guidance: At rollout; rationale: risk",
+      "type": "role",
+      "claim": "Reports.Read.All is the delegated and application permission for the Copilot usage functions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetail",
+      "quote": "| Delegated (work or school account) | Reports.Read.All | Not available. |\n| Delegated (personal Microsoft account) | Not supported. | Not supported. |\n| Application | Reports.Read.All | Not available. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Security & identity; controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Global Reader and Usage Summary Reports Reader have tenant-level access only, without detailed metrics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/reportroot-authorization",
+      "quote": "The Global Reader and Usage Summary Reports Reader roles will only have access to tenant-level data, without visibility into detailed metrics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Autonomy & actions; rationale: impact",
+      "type": "command",
+      "claim": "The reporting functions are read-only GET operations with no request body.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetail",
+      "quote": "GET https://graph.microsoft.com/v1.0/copilot/reports/getMicrosoft365CopilotUsageUserDetail(period={period}, version={version})\n\nDon't supply a request body for this method.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Change & support",
+      "type": "date",
+      "claim": "Copilot activity reporting typically becomes available within 48 hours of the end of the activity day in UTC.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage",
+      "quote": "For Copilot activity on a given day, the report typically becomes available within 48 hours of the end of that day (in UTC).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "front matter: licensing.model, notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The Copilot APIs overview includes usage reports and describes a Microsoft 365 Copilot per-user licence requirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/copilot-apis-overview",
+      "quote": "Microsoft 365 Copilot license - Required for each user who accesses Microsoft 365 Copilot functionality via these APIs. This license provides access to the AI capabilities that power the APIs.",
+      "severity": "minor",
+      "fix": "Replace the general requirement sentence in the licensing notes and Cost and licensing with 'The Copilot APIs overview lists the usage reports API and requires a Microsoft 365 Copilot licence for each user who accesses Microsoft 365 Copilot functionality via these APIs.' Retain the narrower uncertainty about reports-API caller entitlement."
+    },
+    {
+      "n": 50,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The documentation does not separately state whether the reports API's calling application or administrator itself needs a Copilot licence.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft 365 Copilot API licensing usage reports administrator per user license'; opened Copilot APIs overview and usage user detail permissions. Overview states a general per-user functionality requirement; reports reference specifies licensed reported users, not separate caller entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "front matter: licensing.notes; Cost and licensing: Meter; rationale: cost",
+      "type": "absence",
+      "claim": "No separate price, meter or credit rate is published for the Copilot adoption usage reports endpoints as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Copilot usage reports\" \"price\" \"license\"'; opened APIs overview, usage detail and summary references, pay-as-you-go meters and usage-based billing overview. Published meters cover other AI services; none names these adoption-report calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope",
+      "type": "role",
+      "claim": "The authorization page lists Company, Exchange, SharePoint, Lync, Teams Service and Teams Communications Administrators, Global Reader, Usage Summary Reports Reader and Reports Reader.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/reportroot-authorization",
+      "quote": "Company Administrator, Exchange Administrator, SharePoint Administrator, Lync Administrator, Teams Service Administrator, Teams Communications Administrator, Global Reader, Usage Summary Reports Reader, or Reports Reader.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Scope",
+      "type": "role",
+      "claim": "The Copilot user detail reference also lists AI Administrator as a delegated role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetail",
+      "quote": "For delegated permissions to allow apps to read service usage reports on behalf of a user, the tenant administrator must assign the user one of the following Microsoft Entra ID limited administrator roles:\n\n- Company Administrator\n- AI Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Scope",
+      "type": "admin-path",
+      "claim": "The admin center Copilot report is at Reports > Usage > Microsoft Copilot > Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage",
+      "quote": "On the Usage page, under Reports, select Microsoft Copilot, and then select Copilot.\n5. On the report page, select the Usage tab to view adoption and usage metrics.",
+      "severity": "minor",
+      "fix": "Replace the prose path with 'Microsoft 365 admin center > Reports > Usage > Reports > Microsoft Copilot > Copilot > Usage'. If Reports is hidden in navigation, select Show all first. This adds the documented Reports heading and reaches the Usage tab rather than stopping on the report page."
+    },
+    {
+      "n": 55,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Enabled Users means unique users in the organization with Microsoft Copilot licences over the selected timeframe.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage",
+      "quote": "Enabled Users shows the total number of unique users in your organization with Microsoft Copilot licenses over the selected timeframe.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[0].ui; Governance guidance: Before rollout; Governance controls table",
+      "type": "admin-path",
+      "claim": "Roles are assigned in Microsoft Entra admin center through Identity > Users > All users > user > Assigned roles > Add assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/reportroot-authorization",
+      "quote": "Sign in to the Microsoft Entra admin center.\n2. Expand the Identity menu > Users > select All users.\n3. Select the user.\n4. Choose Assigned roles, and then Add assignment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "POST /v1.0/roleManagement/directory/roleAssignments assigns a Microsoft Entra directory role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments",
+      "quote": "POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments\nContent-type: application/json\n\n{\n    \"@odata.type\": \"#microsoft.graph.unifiedRoleAssignment\",\n    \"roleDefinitionId\": \"c2cf284d-6c41-4e6b-afac-4b80928c9034\",",
+      "severity": "minor",
+      "fix": "Keep the method and path. Add to controls[0].note: 'The request body sets roleDefinitionId to the reporting role being assigned to the user identified by principalId.' These deciding properties are documented on https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments."
+    },
+    {
+      "n": 58,
+      "where": "controls[1].ui; Governance controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "The concealment control is in Microsoft 365 admin center at Settings > Org settings > Services > Reports > Conceal user, group, and site names in all reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Select Org Settings.\n4. On the Services tab, select Reports.\n5. In the Reports panel, uncheck the checkbox next to Conceal user, group, and site names in all reports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[1].api, note; Governance controls table",
+      "type": "command",
+      "claim": "PATCH /v1.0/admin/reportSettings updates tenant report concealment through displayConcealedNames, where true conceals names.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/adminreportsettings-update",
+      "quote": "PATCH https://graph.microsoft.com/v1.0/admin/reportSettings\n\nIf set to `true`, all reports conceal user information such as usernames, groups, and sites. If `false`, all reports show identifiable information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "ReportSettings.ReadWrite.All is the permission to update report concealment settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/adminreportsettings-update",
+      "quote": "| Delegated (work or school account) | ReportSettings.ReadWrite.All | Not available. |\n| Delegated (personal Microsoft account) | Not supported. | Not supported. |\n| Application | ReportSettings.ReadWrite.All | Not available. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Beta versions of the Copilot usage APIs are subject to change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetail",
+      "quote": "APIs under the `/beta` version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance guidance: At rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to grant Reports.Read.All consent, but the table covers delegated role assignment and concealment rather than application consent.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Register the reporting app and ask a tenant administrator to grant consent for Reports.Read.All.\n\nWhich users can read Copilot usage reports through the API (Microsoft Entra role)\n\nWhether usage reports conceal user, group and site names",
+      "severity": "minor",
+      "fix": "Add after the consent checklist step: 'Application consent is a separate access requirement; the controls table covers delegated user roles and report concealment, not the consent procedure.' Do not add a control row."
+    },
+    {
+      "n": 63,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no switch that turns the Copilot usage reports API off on its own as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'disable Copilot usage reports API tenant switch copilot reports admin settings'; '\"Copilot\" \"reports\" \"disable\" \"Reports.Read.All\"'. Opened reports authorization, adminReportSettings and Copilot usage references; no separate API off switch was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "The older beta /reports Copilot function's documentation gives no retirement date.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'getMicrosoft365CopilotUsageUserDetail reports beta retirement date deprecated copilot'. Opened the old beta /reports reference and read its migration note and function reference; no retirement date was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Showing identifiable user information in reports is logged in the Microsoft Purview portal audit log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Showing identifiable user information is a logged event in the Microsoft Purview portal audit log.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "The usage reports overview says Global administrators can change the setting to display concealed information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Global administrators can update the settings to display concealed information if your organization's privacy practices allow it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Open questions",
+      "type": "availability",
+      "claim": "The admin center usage reports overview lists the Microsoft Copilot usage report as available in GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "| Report | Public | GCC | GCC-High | DoD | Microsoft 365 operated by 21Vianet |\n| Microsoft Copilot usage | Yes | Yes | Yes | Yes | N/A^2^ |",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-24T11:32:37.648Z",
+    "summary": {
+      "links": 11,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=396562",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/resources/copilotreportroot",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetail",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusercountsummary",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/reportroot-getmicrosoft365copilotusageuserdetail?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/copilot-apis-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/reportroot-authorization",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/adminreportsettings-update",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users can read Copilot usage reports through the API (Microsoft Entra role)",
+        "docs": "https://learn.microsoft.com/graph/reportroot-authorization",
+        "reachable": true,
+        "segments": [
+          "Identity",
+          "Users",
+          "All users",
+          "Assigned roles",
+          "Add assignment"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which users can read Copilot usage reports through the API (Microsoft Entra role)",
+        "docs": "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments",
+        "reachable": true,
+        "token": "/v1.0/roleManagement/directory",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether usage reports conceal user, group and site names",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Org settings",
+          "Services",
+          "Reports",
+          "Conceal user, group, and site names in all reports"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether usage reports conceal user, group and site names",
+        "docs": "https://learn.microsoft.com/graph/api/adminreportsettings-update",
+        "reachable": true,
+        "token": "/v1.0/admin/reportSettings",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -1,0 +1,786 @@
+{
+  "slug": "microsoft-defender-for-office-365-admins-can-hunt-on-calls-in-microsoft-teams",
+  "roadmapId": 531761,
+  "title": "Microsoft Defender for Office 365: hunt on Microsoft Teams calls and meetings",
+  "status": "held",
+  "date": "2026-11-24",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "2 blocking findings (claims 33, 40)"
+    ]
+  },
+  "counts": {
+    "claims": 61,
+    "confirmed": 59,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 2,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: Microsoft explicitly includes CallActivityEvents in the ISOC 90-day retention benefit, so its retention eligibility is not an open question. The briefing also promises no change for end users despite correctly saying that Microsoft has not stated the arrival default. The roadmap facts and Plan 2 licensing are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap says security admins with Defender for Office 365 Plan 2 can hunt on Teams calls and meetings in their organisation.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Security admins with Defender for Office 365 Plan 2 can hunt on calls and meetings made inside Microsoft Teams for their organization",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; Risk assessment; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is March CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"March CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Web\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-02-27T23:15:13.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-02-27T23:15:13\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing; Scope",
+      "type": "behaviour",
+      "claim": "CallActivityEvents is an advanced hunting table for activities during Teams calls and meetings in the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/mdo-support-teams-about",
+      "quote": "You can hunt across activities performed during Microsoft Teams calls and meetings using the CallActivityEvents advanced hunting table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The table is populated by Defender for Office 365 records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-callactivityevents-table",
+      "quote": "This advanced hunting table is populated by records from Microsoft Defender for Office 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Change & support; Scope",
+      "type": "behaviour",
+      "claim": "Queries using the table do not work or return results without Defender for Office 365 deployed in Microsoft Defender.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-callactivityevents-table",
+      "quote": "If your organization hasn't deployed the service in Microsoft Defender, queries that use the table don't work or return any results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "ActivityType records the type of activity performed during a call.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-callactivityevents-table",
+      "quote": "ActivityType | string | Type of activity performed during the call",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The table includes the activity status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-callactivityevents-table",
+      "quote": "ActivityStatus | string | Success or failure of the activity performed",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The table includes an activity timestamp.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-callactivityevents-table",
+      "quote": "ActivityTimestamp | datetime | Date and time when the activity was recorded",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The table includes the activity initiator's user principal name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-callactivityevents-table",
+      "quote": "ActivityInitiatorUpn | string | User principal name of the participant who initiated the activity",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The table includes an ActivityRecipientUpn column identifying the recipient's account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-callactivityevents-table",
+      "quote": "ActivityRecipientUpn | string | Unique identifier for the account of the activity recipient",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The table includes the activity initiator's display name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-callactivityevents-table",
+      "quote": "ActivityInitiatorDisplayName | string | Display name of the participant who initiated the activity",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing: recipient display names",
+      "type": "behaviour",
+      "claim": "The table includes the activity recipient's display name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/azure-monitor/reference/tables/callactivityevents#columns",
+      "quote": "ActivityRecipientDisplayName | string | Display name of the activity recipient on Teams client platform.",
+      "severity": "minor",
+      "fix": "Narrow 'the initiator's and recipient's user principal names, display names and phone numbers' to 'the initiator's user principal name and display name, the recipient's account identifier, and both participants' phone numbers'. The cited XDR schema describes ActivityRecipientDisplayName as the recipient's Teams client platform, unlike the Azure Monitor reference at https://learn.microsoft.com/azure/azure-monitor/reference/tables/callactivityevents#columns."
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The table includes the activity initiator's phone number.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-callactivityevents-table",
+      "quote": "ActivityInitiatorPhoneNumber | string | Third-party or Microsoft Teams phone number of the caller's account",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The table includes the activity recipient's phone number.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-callactivityevents-table",
+      "quote": "ActivityRecipientPhoneNumber | string | Third-party or Microsoft Teams phone number of the activity recipient",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The table includes the call's join URL.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-callactivityevents-table",
+      "quote": "CallJoinUrl | string | Link that participants use to join the call",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The table includes the call's name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-callactivityevents-table",
+      "quote": "CallName | string | Name of the call as displayed in the calendar invite",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The table includes the call's scheduling type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-callactivityevents-table",
+      "quote": "CallSchedulingType | string | Type of scheduling for the call, such as Adhoc, Scheduled, or Recurring",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The table includes the activity initiator's tenant name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-callactivityevents-table",
+      "quote": "ActivityInitiatorTenantDisplayName | string | Name of the organization that the activity initiator belongs to",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The table includes the activity initiator's tenant region.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-callactivityevents-table",
+      "quote": "ActivityInitiatorTenantRegion | string | Geographical region of the tenant that the activity initiator belongs to",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The table includes the initiator's Teams client platform.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-callactivityevents-table",
+      "quote": "ActivityInitiatorPlatformCategory | string | Category of the activity initiator's client platform; possible values: Desktop, Mobile, Web",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; summary: new query table",
+      "type": "date",
+      "claim": "Learn lists CallActivityEvents as a new capability under October 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/defender-for-office-365-whats-new",
+      "quote": "October 2026\nHunt across activities in Microsoft Teams calls and meetings: The CallActivityEvents table in Microsoft Defender XDR advanced hunting contains details about activities performed during Microsoft Teams calls and meetings in your organization",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft says the table helps investigate suspicious call activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/defender-for-office-365-whats-new",
+      "quote": "helping security teams investigate suspicious call activity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Hunting on Teams calls and meetings is included in Defender for Office 365 Plan 2 and Microsoft 365 E5.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/mdo-support-teams-about",
+      "quote": "Microsoft 365 E5 and Defender for Office 365 Plan 2 extend Teams protection with a set of extra capabilities designed to disrupt the attack chain:\nHunting on Teams calls and meetings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing: Licence; front matter: licensing.notes",
+      "type": "licensing",
+      "claim": "The Teams protection comparison table marks advanced hunting on Teams calls and meetings in Plan 2, not Plan 1 or all Teams licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/mdo-support-teams-about",
+      "quote": "| Feature | All Teamslicenses | Defender for Office 365Plan 1 | Defender for Office 365Plan 2 |\n| Advanced hunting on Teams calls and meetings |  |  | ![](media/feature_present_icon.png) |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.notes; Cost and licensing: Meter",
+      "type": "absence",
+      "claim": "The Teams protection page publishes no separate price or meter for this hunting capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: CallActivityEvents Teams calls advanced hunting default enabled rollout automated actions price meter. Opened mdo-support-teams-about and advanced-hunting-callactivityevents-table; the Teams protection page gives licensing but no separate price or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "absence",
+      "claim": "Microsoft has not stated what this feature does on arrival, so its default state is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: CallActivityEvents Teams calls hunting enable disable admin setting default rollout. Read roadmap, mdo-support-teams-about, advanced-hunting-callactivityevents-table, advanced-hunting-overview and Teams SecOps search excerpt; no feature arrival default stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "summary: nothing is switched on for users; rationale: impact",
+      "type": "default",
+      "claim": "Nothing is switched on for users and end users see nothing new.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: CallActivityEvents Teams calls hunting enable disable admin setting default rollout. Read roadmap, mdo-support-teams-about, advanced-hunting-callactivityevents-table and advanced-hunting-overview; none states no end-user change on arrival.",
+      "severity": "blocker",
+      "fix": "Replace 'It is a new query table, so nothing is switched on for users; review who holds hunting access.' with 'Microsoft has not stated what happens on arrival; review who holds hunting access.' Replace the impact rationale with 'Low. The documented capability is aimed at security operations staff who run advanced hunting queries; Microsoft has not stated what happens on arrival.' Keep defaultState unknown."
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Hunting queries read data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-overview",
+      "quote": "Advanced hunting is a query-based threat hunting tool that you use to explore up to 30 days of raw Defender data",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "absence",
+      "claim": "The roadmap and Learn describe no automatic action on calls or end-user change for this item.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: CallActivityEvents Teams calls advanced hunting default enabled rollout automated actions price meter. Read roadmap, table schema, Teams protection and What's new; they describe hunting, not an automatic call action or end-user change for this item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "Advanced hunting queries can be reused to build custom detection rules.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-overview",
+      "quote": "You can use the same threat hunting queries to build custom detection rules.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Custom detection rules run automatically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-overview",
+      "quote": "These rules run automatically to check for and then respond to suspected breach activity, misconfigured machines, and other findings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure; Cost and licensing: Indirect costs; Open questions",
+      "type": "behaviour",
+      "claim": "Native Defender data has up to 30 days of advanced hunting retention by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-overview",
+      "quote": "Advanced hunting supports up to 30 days of native Defender data retention by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure; Cost and licensing: Indirect costs",
+      "type": "licensing",
+      "claim": "Supported Defender data has up to 90 days of retention with an eligible ISOC licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-overview",
+      "quote": "With ISOC, customers who have an eligible Microsoft Defender Suite, Microsoft 365 E5, or Microsoft 365 E7 license receive 90 days of included retention for supported Microsoft Defender data, Azure Activity data, and Office 365 Activity data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure; Open questions: ISOC retention",
+      "type": "absence",
+      "claim": "Whether CallActivityEvents is covered by the 90-day ISOC retention benefit is undocumented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/defender-xdr/integrated-security-operations-data-billing-retention",
+      "quote": "Starting November 15, 2026, eligible customers receive up to 90 days of included retention for supported Microsoft Defender data.\nThe following tables and data sources are currently included:\nMicrosoft Defender for Office 365\nCallActivityEvents",
+      "severity": "blocker",
+      "fix": "Replace 'Which of these applies to this table is an open question.' with 'Microsoft lists CallActivityEvents among the tables included in the up-to-90-day ISOC retention benefit for eligible customers, starting November 15, 2026.' Remove the ISOC-retention open question and cite https://learn.microsoft.com/defender-xdr/integrated-security-operations-data-billing-retention."
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "The advanced hunting overview sets a 100,000-row result limit per query.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-overview",
+      "quote": "Result set | 100,000 rows | Every query | Each query can return up to 100,000 records.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "The advanced hunting overview sets a 10-minute timeout per query.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-overview",
+      "quote": "Timeout | 10 minutes | Every query | Each query can run for up to 10 minutes. If it doesn't complete within 10 minutes, the service displays an error.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Advanced hunting requires assigned permissions, with URBAC, Email & collaboration role groups, Exchange Online role groups and Entra roles listed as access options.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-overview",
+      "quote": "You need to be assigned permissions before you can run advanced hunting queries. You have the following options:\nMicrosoft Defender unified role-based access control (URBAC)\nEmail & collaboration permissions in the Microsoft Defender portal\nExchange Online permissions\nMicrosoft Entra permissions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The overview lists Global Administrator as granting full read access to advanced hunting data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-overview",
+      "quote": "Membership in one of the following Microsoft Entra roles grants full read access to all advanced hunting data:\nGlobal Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The overview lists Security Administrator as granting full read access to advanced hunting data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-overview",
+      "quote": "Membership in one of the following Microsoft Entra roles grants full read access to all advanced hunting data:\nGlobal Administrator\nSecurity Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The overview lists Security Reader as granting full read access to advanced hunting data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-overview",
+      "quote": "Membership in one of the following Microsoft Entra roles grants full read access to all advanced hunting data:\nGlobal Administrator\nSecurity Administrator\nSecurity Reader",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The overview lists Global Reader as granting full read access to advanced hunting data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-overview",
+      "quote": "Membership in one of the following Microsoft Entra roles grants full read access to all advanced hunting data:\nGlobal Administrator\nSecurity Administrator\nSecurity Reader\nGlobal Reader",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[0].note; Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "The overview names Email & collaboration metadata (read) for email and collaboration tables but does not name CallActivityEvents in its list.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: CallActivityEvents unified RBAC Email collaboration metadata read permissions; CallActivityEvents permission access raw data email collaboration metadata. Read advanced-hunting-overview Get access: its named tables omit CallActivityEvents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].governs and scope; Governance controls; Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Unified RBAC controls users' access to Defender advanced hunting data, including Teams collaboration data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/custom-permissions-details",
+      "quote": "Unless otherwise stated, all permissions are applicable to all supported workloads and will be applied to the data scope selected during the data source and assignment stage.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/defender-xdr/custom-permissions-details for the general reach of unified RBAC. Retain the narrower statement that the overview does not explicitly name CallActivityEvents."
+    },
+    {
+      "n": 50,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Defender portal path Permissions > Microsoft Defender XDR > Roles > Create custom role reaches the role-creation experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/create-custom-rbac-roles",
+      "quote": "On the Permissions page, under Microsoft Defender XDR, select Roles > Create custom role.",
+      "severity": "minor",
+      "fix": "Extend the path to 'Permissions > Microsoft Defender XDR > Roles > Create custom role > Choose permissions'. Add to the note: 'Select the required permissions on Choose permissions; then use Assign users and data sources > Add assignment to select employees and data sources.' These steps are documented at https://learn.microsoft.com/defender-xdr/create-custom-rbac-roles. Keep the caveat that the overview does not name CallActivityEvents."
+    },
+    {
+      "n": 51,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "POST /beta/roleManagement/defender/roleAssignments creates a Defender provider role assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/rbacapplicationmultiple-post-roleassignments?view=graph-rest-beta",
+      "quote": "To create role assignment for a Defender provider:\nPOST /roleManagement/defender/roleAssignments",
+      "severity": "minor",
+      "fix": "Keep the call and add to controls[0].note: 'The request body identifies the assigned role with roleDefinitionId and the users or groups with principalIds.' The cited create reference's examples name both properties."
+    },
+    {
+      "n": 52,
+      "where": "controls[0].note; Governance controls table",
+      "type": "role",
+      "claim": "The Defender role-assignment API requires RoleManagement.ReadWrite.Defender.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/rbacapplicationmultiple-post-roleassignments?view=graph-rest-beta",
+      "quote": "For Defender provider\nDelegated (work or school account) | RoleManagement.ReadWrite.Defender | Not available.\nApplication | RoleManagement.ReadWrite.Defender | Not available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].note; Governance controls prose",
+      "type": "behaviour",
+      "claim": "The documented Defender provider role-assignment call is a beta API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/rbacapplicationmultiple-post-roleassignments?view=graph-rest-beta",
+      "quote": "APIs under the /beta version in Microsoft Graph are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls: role assignment request body",
+      "type": "command",
+      "claim": "The role-assignment request body identifies a role definition and principals.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/rbacapplicationmultiple-post-roleassignments?view=graph-rest-beta",
+      "quote": "\"roleDefinitionId\": \"c2cf284d-6c41-4e6b-afac-4b80928c9034\",\n\"principalIds\": [\"f8ca5a85-489a-49a0-b555-0a6d81e56f0d\", \"c1518aa9-4da5-4c84-a902-a31404023890\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls: activation",
+      "type": "applicability",
+      "claim": "The unified RBAC model must be activated for the Defender portal to enforce its configured roles and assignments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/create-custom-rbac-roles",
+      "quote": "For the Microsoft Defender portal to start enforcing the permissions and assignments configured in your new or imported roles, you need to activate the new Microsoft Defender unified RBAC model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls: runHuntingQuery",
+      "type": "command",
+      "claim": "POST /v1.0/security/runHuntingQuery lets applications run advanced hunting queries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-security-runhuntingquery?view=graph-rest-1.0",
+      "quote": "Queries a specified set of event, activity, or entity data supported by Microsoft 365 Defender to proactively look for specific threats in your environment.\nPOST https://graph.microsoft.com/v1.0/security/runHuntingQuery",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls: runHuntingQuery permission",
+      "type": "role",
+      "claim": "ThreatHunting.Read.All permits the runHuntingQuery operation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-security-runhuntingquery?view=graph-rest-1.0",
+      "quote": "Delegated (work or school account) | ThreatHunting.Read.All | ThreatHunting.ReadWrite.All\nApplication | ThreatHunting.Read.All | ThreatHunting.ReadWrite.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls: runHuntingQuery table caveat",
+      "type": "absence",
+      "claim": "The runHuntingQuery reference does not explicitly name CallActivityEvents.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: CallActivityEvents permission access raw data email collaboration metadata. Opened the entire security-security-runhuntingquery v1.0 reference; it links to the advanced hunting schema but never explicitly names CallActivityEvents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Open questions: account types",
+      "type": "behaviour",
+      "claim": "The table schema names participant account types.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-callactivityevents-table",
+      "quote": "ActivityInitiatorAccountType | string | Classification of how the activity initiator is provisioned in the organization; possible values: Entra, consumer, Azure Communication Services, Public Switched Telephone Network, Unauthenticated",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Open questions: ActivityType",
+      "type": "absence",
+      "claim": "The table page does not publish a full list of ActivityType values.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: CallActivityEvents ActivityType values recorded external calls meetings coverage. Read the XDR table schema and Azure Monitor schema excerpts; ActivityType has a description but no enumeration of values.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Open questions: recorded calls and meetings",
+      "type": "absence",
+      "claim": "The documentation does not fully specify which external, phone-number or unauthenticated calls are recorded.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: CallActivityEvents ActivityType values recorded external calls meetings coverage. Read XDR table, Teams protection and Teams SecOps excerpt, and Azure Monitor schema excerpts; account types are named but complete capture coverage is not specified.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-24T11:32:40.255Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=531761",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/defender-office-365/mdo-support-teams-about",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/defender-xdr/advanced-hunting-callactivityevents-table",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/defender-office-365/defender-for-office-365-whats-new",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/defender-xdr/advanced-hunting-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/defender-xdr/create-custom-rbac-roles",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/rbacapplicationmultiple-post-roleassignments?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/security-security-runhuntingquery?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who can run advanced hunting queries over Defender data, including the Teams call table",
+        "docs": "https://learn.microsoft.com/defender-xdr/create-custom-rbac-roles",
+        "reachable": true,
+        "segments": [
+          "Permissions",
+          "Microsoft Defender XDR",
+          "Roles",
+          "Create custom role"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Who can run advanced hunting queries over Defender data, including the Teams call table",
+        "docs": "https://learn.microsoft.com/graph/api/rbacapplicationmultiple-post-roleassignments?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/roleManagement/defender",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

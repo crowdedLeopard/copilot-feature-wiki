@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "on"
 action: "act-now"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for the export itself. Microsoft Learn says work queue data in the automation center requires a Power Automate Premium licence, and lists a Premium licence as a prerequisite for work queues."
+  model: "included"
+  notes: "Work queue data in the automation center requires a Power Automate Premium licence; Microsoft has not published a licence specific to the CSV export. The Work queues overview lists a Premium licence as a prerequisite for work queues."
 audiences: ["power-platform-admin","maker","security","service-owner"]
 tags: ["power-automate","desktop-flows","data-export","security-roles","dataverse","monitoring","gcc","gcc-high","dod"]
 sources:
@@ -40,7 +40,7 @@ sources:
   - title: "Assign a security role to a user"
     url: "https://learn.microsoft.com/power-platform/admin/assign-security-roles"
     kind: "learn"
-  - title: "Which users can read work queue items (Dataverse security roles) (REST API)"
+  - title: "Work with Microsoft Entra ID group teams"
     url: "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team"
     kind: "learn"
   - title: "Requests limits and allocations"
@@ -57,9 +57,9 @@ controls:
       docs: "https://learn.microsoft.com/power-platform/admin/assign-security-roles"
     api:
       kind: "rest"
-      call: "POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref with body {\"@odata.id\":\"[Organization URI]/api/data/v9.0/roles(<role ID>)\"}"
+      call: "POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref"
       docs: "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team"
-    note: "General control: Microsoft has not confirmed it applies to the CSV export. The API page shows the call for a Microsoft Entra ID group user."
+    note: "Controls access to the automation center's underlying Dataverse data. The API page shows the call for a Microsoft Entra ID group user. The request body sets @odata.id to the role reference."
   - governs: "Switch to turn the work queue CSV export on or off"
     scope: "environment"
     ui: null
@@ -67,7 +67,7 @@ controls:
     note: "Microsoft Learn documents no such setting at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-24"
 roadmapModified: "2026-10-22T23:45:44"
 changes:
   - date: "2026-11-17"
@@ -80,19 +80,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 47 statements confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 59 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-24"
+    note: "Correction: stated that the automation center's work queue data is secured through Dataverse role-based access control, set licensing to included (Power Automate Premium), and moved the API request body to the note."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 63 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-24"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 58
+  claims: 63
+  confirmed: 63
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "8fb1da596c13df3a204b5f3a56792d7e"
+  contradicted: 0
+  attempts: 0
+  hash: "b09811abc19043f07a6e0765737f842a"
 ---
 
 ## What's changing
@@ -115,7 +119,7 @@ The wiki's view is that the useful decision is who should be able to read work q
 - The New work queue item panel on Microsoft Learn includes an **Input** value and **Processing notes**, so items can carry business data. Microsoft has not said which columns the CSV contains. Agree where downloaded CSV files should be stored and who should be allowed to receive them.
 
 **Security & identity**
-- The automation center page says its underlying data is secured through role-based access control, and that in standard Dataverse environments the necessary privileges are included in the default environment maker role. In the Default environment with a Dataverse database, all users automatically become environment makers. Microsoft has not confirmed that the export applies these privileges, so confirm this before relying on security roles to limit what can be downloaded.
+- The automation center page says its underlying data is secured through role-based access control, and that in standard Dataverse environments the necessary privileges are included in the default environment maker role. In the Default environment with a Dataverse database, all users automatically become environment makers. The automation center's underlying work queue data is secured through Dataverse role-based access control.
 
 **Autonomy & actions**
 - No change documented: the roadmap describes the export as an option that lets you download items. No Microsoft page describes an automated or scheduled export.
@@ -144,7 +148,7 @@ Users need access to the work queue tables: the Work queues overview lists the E
 
 ### At rollout
 - Tell work queue users that the export is available and where downloaded files should be stored.
-- Test the export with a user who has a narrow custom security role and record what that user can download, since Microsoft has not said whether the export follows security roles.
+- Test the export with a user who has a narrow custom security role and record what that user can download.
 
 ### After rollout
 - Review role assignments on the work queue tables at the cadence you use for other Dataverse data.
@@ -157,34 +161,23 @@ Users need access to the work queue tables: the Work queues overview lists the E
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users can read work queue items (Dataverse security roles)</strong><br><small>Environment</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to the CSV export. The API page shows the call for a Microsoft Entra ID group user.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Users + permissions › Users › user › Manage security roles <a href="https://learn.microsoft.com/power-platform/admin/assign-security-roles" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=&lt;user object ID&gt;)/systemuserroles_association/$ref with body {&quot;@odata.id&quot;:&quot;[Organization URI]/api/data/v9.0/roles(&lt;role ID&gt;)&quot;}</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users can read work queue items (Dataverse security roles)</strong><br><small>Environment</small><br><small class="controls__note">Controls access to the automation center's underlying Dataverse data. The API page shows the call for a Microsoft Entra ID group user. The request body sets @odata.id to the role reference.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Users + permissions › Users › user › Manage security roles <a href="https://learn.microsoft.com/power-platform/admin/assign-security-roles" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=&lt;user object ID&gt;)/systemuserroles_association/$ref</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch to turn the work queue CSV export on or off</strong><br><small>Environment</small><br><small class="controls__note">Microsoft Learn documents no such setting at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-Access to work queue data in the automation center is controlled through Dataverse security roles; assigning them needs a role with Read and Assign privileges on the Security Role table, which the System Administrator role has by default. This is a general control: Microsoft Learn documents it for the automation center's data and for limiting work queue use in API-based scenarios, but no page confirms that it applies to the CSV export.
+Access to work queue data in the automation center is controlled through Dataverse security roles; assigning them needs a role with Read and Assign privileges on the Security Role table, which the System Administrator role has by default. This control governs access to the automation center's underlying Dataverse data, and Microsoft Learn documents it for limiting work queue use in API-based scenarios.
 
 The second row states a gap: Microsoft Learn documents no setting that turns the export on or off. Until one is documented, removing access to the work queue tables is the documented way to limit who sees work queue items.
 
 ## Open questions
 
-- Does the export apply the Dataverse security roles of the person downloading it? Watch the automation center page on Microsoft Learn.
 - Which columns and how many rows does the CSV contain, and does it include item Input and Processing notes?
 - Will Microsoft provide an administrator setting to turn the export off, in the Power Platform admin center or elsewhere?
 - Is the download recorded in an audit log, and is any separate licence or limit attached to the export?
 
 <!-- rationale
-risk: Medium. Work queue items can hold business data in free-text fields, and the export puts a copy in a file outside Dataverse; Microsoft has not said whether the export follows the Dataverse security roles that protect the data.
+risk: Medium. Work queue items can hold business data in free-text fields, and the export puts a copy in a file outside Dataverse.
 cost: Low. No separate licence or meter for the export is published; work queue data in the automation center already requires a Power Automate Premium licence, so the visible cost is admin time.
 impact: Medium. Makers, operators and analysts who use work queues in the automation center will see the new option; administrators who do not use work queues will not notice it.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity; Governance guidance: At rollout; Governance controls; rationale: risk / absence: Microsoft has not confirmed that Dataverse security roles govern the work queue data downloaded by the CSV export. | Found: The automation center's underlying data is managed through Dataverse tables, secured through role-based access control (RBAC). | Fix: Replace the prose caveats that security roles may not apply to exported work queue data with 'The automation center's underlying work queue data is secured through Dataverse role-based access control.' In At rollout, use 'Test the export with a user who has a narrow custom security role and record what that user can download.' In the risk rationale, remove the clause beginning 'Microsoft has not said whether'. Remove the corresponding Open question about whether the person's Dataverse roles apply. Source: https://learn.microsoft.com/power-automate/automation-center-overview#required-permissions. | Source: https://learn.microsoft.com/power-automate/automation-center-overview
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].note; Governance controls: first row note / applicability: The correctly documented security roles control is presented as a general control not confirmed for the CSV export. | Found: The automation center's underlying data is managed through Dataverse tables, secured through role-based access control (RBAC). | Fix: Replace 'General control: Microsoft has not confirmed it applies to the CSV export.' in the row note with 'Controls access to the automation center's underlying Dataverse data.' The control's published reach includes the work queue data; retain the note about the API's Microsoft Entra ID group user example. | Source: https://learn.microsoft.com/power-automate/automation-center-overview
-- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown despite the published Power Automate Premium requirement for work queue data. | Found: Data under the Work queues tab is a premium feature, which requires a Power Automate Premium license. | Fix: Set licensing.model to 'included'. Replace the opening sentence of licensing.notes with 'Work queue data in the automation center requires a Power Automate Premium licence; Microsoft has not published a licence specific to the CSV export.' Retain the documented work queue prerequisite. Source: https://learn.microsoft.com/power-automate/automation-center-overview#data-and-visualization-strategy. | Source: https://learn.microsoft.com/power-automate/automation-center-overview
-- [supported, minor] controls[0].api; Governance controls: first row API and automation / command: The printed v9.0 POST systemuserroles_association/$ref call with an @odata.id role reference assigns a security role to a user. | Found: POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref Accept: application/json { "@odata.id":"[Organization URI]/api/data/v9.0/roles(<role ID>)" } | Fix: Set controls[0].api.call to 'POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref' and use that call in the rendered table. Add 'The request body sets @odata.id to the role reference.' to the row note. The existing body is correct but the standard puts the body property in the note. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team
 -->

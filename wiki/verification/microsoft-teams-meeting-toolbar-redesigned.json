@@ -1,0 +1,721 @@
+{
+  "slug": "microsoft-teams-meeting-toolbar-redesigned",
+  "roadmapId": 560321,
+  "title": "Microsoft Teams: redesigned meeting controls with pin, unpin and reorder",
+  "status": "held",
+  "date": "2026-11-24",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "3 blocking findings (claims 50, 51, 53)"
+    ]
+  },
+  "counts": {
+    "claims": 56,
+    "confirmed": 53,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 3,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "Hold: the app-pinning route omits the Edit step, and the PowerShell guidance softens Microsoft's explicit instruction not to use the cmdlet. The policy description also omits that meeting extensions follow the organiser's policy, not each attendee's policy. The rollout and default-state statements match Microsoft's supplied notice.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The redesigned Teams meeting toolbar lets users pin, unpin and reorder controls.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You can now customize the meeting toolbar by pinning, unpinning, and reordering controls to match how you work.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Raise Hand is grouped under Reactions to reduce mis-clicks.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Raise Hand is grouped under Reactions to reduce mis-clicks",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Leave is clearly separated on the right.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Leave is clearly separated on the right.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Desktop and Mac platforms.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-07-21T22:37:32.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-07-21T22:37:32\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Meeting controls will be centre-aligned.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "Meeting controls will be center‑aligned",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microphone, camera and share are grouped together.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "with microphone, camera, and share grouped together.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Less-used actions move into a reorganised More menu.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "Less‑used actions will move into a reorganized More menu.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Users personalise meeting controls using drag and drop.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "Users can personalize meeting controls by pinning, unpinning, and rearranging controls using drag and drop.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Scope; rationale: impact",
+      "type": "default",
+      "claim": "The redesign is on by default and reaches users without administrator enablement.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "The new experience is enabled by default and cannot be disabled at the tenant level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0]; summary; What's changing; Scope; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "There is no documented tenant-wide UI or automation switch to disable the redesigned meeting controls.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "The new experience is enabled by default and cannot be disabled at the tenant level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Users may opt in early during rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "During rollout, users may opt in early",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Governance guidance",
+      "type": "record",
+      "claim": "During rollout users can temporarily return to the previous experience from Teams settings.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "During rollout, users may opt in early and can temporarily return to the previous experience from Teams settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].note; Risk assessment: Change & support; Governance controls",
+      "type": "record",
+      "claim": "The opt-out toggle is controlled by individual users and cannot be managed at tenant level.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "The opt‑out toggle for the new meeting experience is controlled by individual users and cannot be managed at the tenant level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "type": "record",
+      "claim": "The opt-out is a temporary adoption aid that will be retired in a future release.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "This opt‑out is a temporary adoption aid and will be retired in a future release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Governance guidance: After rollout; Open questions",
+      "type": "record",
+      "claim": "Microsoft will give advance notice of opt-out retirement through a separate Message Center post.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "Microsoft will provide advance notice via a separate Message Center post before removal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "record",
+      "claim": "Pinned-control preferences do not sync across devices at launch.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "Meeting controls customization preferences (such as pinned controls) do not sync across devices at launch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Preferences persist across meetings on the same client.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "Preferences persist across meetings on the same client.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "Cross-device sync is planned for a future release.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "Cross‑device sync is planned for a future release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Governance controls",
+      "type": "record",
+      "claim": "Existing meeting app pinning policies continue to be honoured.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "Existing meeting app pinning policies will continue to be honored.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Why it matters; Risk assessment: Change & support; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Only two pinned apps display on the main in-meeting bar.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-app-setup-policies",
+      "quote": "The in-meeting bar displays only two agents and apps and the rest, if added, display under the More option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Additional pinned apps appear under More.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-app-setup-policies",
+      "quote": "If there are more than two apps, the other apps display in the More option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice includes Teams for Windows desktop, Mac desktop and the web.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "It applies to Teams for Windows desktop, Teams for Mac desktop, and Teams for the web.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice excludes consumer Teams, iOS, Android, Teams Rooms and Linux.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "Not in scope: Teams (consumer), iOS, Android, Teams Rooms, Linux",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Scope; Why it matters; rationale: impact",
+      "type": "record",
+      "claim": "All Teams work and school users joining meetings are affected.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "Who is affected: - All Teams work and school users joining meetings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: changes; What's changing",
+      "type": "record",
+      "claim": "The supplied notice was updated on 23 September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "Updated September 23, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice targets redesigned meeting controls for Targeted Release from late July to mid-August 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "Targeted Release: We will begin rolling out redesigned meeting controls in late July 2026 (previously early July) and expect to complete by mid-August 2026 (previously late July).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice gives Worldwide General Availability from mid-October to late October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "General Availability (Worldwide): We will begin rolling out in mid-October 2026 (previously late September) and expect to complete by late October 2026 (previously late September).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice gives GCC and GCC High rollout from late October to mid-December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "General Availability (GCC, GCC High): We will begin rolling out in late October 2026 (previously late September) and expect to complete by mid-December 2026 (previously late November).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice gives DoD rollout from mid-December 2026 to early January 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "General Availability (DoD): We will begin rolling out in mid-December 2026 (previously late November) and expect to complete by early January 2027 (previously late December 2026).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The same notice covers coordinated meeting-control and share-panel changes associated with roadmap IDs 560321 and 502520.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "we’re introducing two coordinated updates: redesigned meeting and sharing controls. This message is associated with Microsoft 365 Roadmap ID 560321 and 502520.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "summary; Why it matters",
+      "type": "record",
+      "claim": "Microsoft's notice requires no immediate administrator action.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "No immediate action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft recommends reviewing existing meeting app pinning policies and planning future policies around the two-app limit.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "Review existing Teams meeting app pinning policies and plan future policies around the two‑app limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Why it matters; Cost and licensing; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft recommends communicating the redesigned controls to users, helpdesk and internal support teams.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "Communicate ​the redesiged meeting control changes to users, helpdesk, and internal support teams ahead of the July 2026 rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Why it matters; Cost and licensing; rationale: cost",
+      "type": "record",
+      "claim": "Microsoft recommends updating internal documentation and training materials for the new layout and customisation options.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "Update internal documentation and training materials to reflect: - The new meeting controls layout.- User customization options.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft's notice identifies no compliance considerations.",
+      "status": "supported",
+      "source": "Message Center post MC1317197",
+      "quote": "No compliance considerations identified, review as appropriate for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The feature descriptions do not describe a new permission or identity mechanism.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams redesigned meeting controls permissions identity settings. Read roadmap, MC1317197, adoption page and Learn search excerpts on meeting policies and app permissions; none describes a new identity or permission mechanism for this redesign.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Security & identity; rationale: risk",
+      "type": "absence",
+      "claim": "Meeting roles and policy settings are not described as changing with the layout redesign.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams redesigned meeting controls permissions identity settings. Read roadmap, MC1317197, adoption page and Learn meeting-policy excerpts; no redesign-specific change to meeting roles or permissions is described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "No autonomous behaviour is described for the redesigned meeting controls.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams redesigned meeting controls permissions identity settings. Read roadmap, MC1317197 and adoption page; these describe user-operated layout and personalisation, not autonomous actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The roadmap, supplied notice and adoption page name no licence or charge specific to this redesign.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams redesigned meeting controls license meter; Teams licensing requirements each user Teams license meetings. Read roadmap, MC1317197, adoption page and Learn licensing excerpts; no redesign-specific licence or charge is named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "front matter: licensing.model; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing model is unknown because entitlement to the redesigned controls is not yet published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-access",
+      "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
+      "severity": "minor",
+      "fix": "Set licensing.model to included. Replace the entitlement statements and licensing open question with: 'Microsoft documents a Teams licence as the general requirement for organisational users, except when joining meetings anonymously; no licence or charge specific to this redesign is published.' Cite https://learn.microsoft.com/microsoftteams/user-access and use that wording in the notes, cost paragraph and cost rationale."
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No meter is documented specifically for the redesigned meeting controls as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams redesigned meeting controls license meter. Read adoption page, MC1317197 and Learn excerpts on licensing, Premium and API billing; none names a meter for this toolbar redesign.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The Teams adoption page offers IT Pro onboarding documentation for the redesigned meeting controls.",
+      "status": "supported",
+      "source": "https://adoption.microsoft.com/microsoft-teams/new-meeting-controls-experience",
+      "quote": "For Champions, IT Pros, and admins ... Download onboarding documentation",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The Teams adoption page offers an end-user visual guide.",
+      "status": "supported",
+      "source": "https://adoption.microsoft.com/microsoft-teams/new-meeting-controls-experience",
+      "quote": "How to use the redesigned meeting controls experience ... Download the visual guide",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].ui; Governance controls: rendered table",
+      "type": "admin-path",
+      "claim": "The editing route is Teams admin center > Teams apps > Setup policies > policy > Pinned apps > Add apps.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-app-setup-policies",
+      "quote": "Choose the policy you want to edit and then select Edit. ... Under Pinned apps, select Add apps.",
+      "severity": "blocker",
+      "fix": "Replace controls[1].ui.path and the rendered path with 'Teams apps > Setup policies > policy > Edit > Pinned apps > Add apps'. Keep the surface Teams admin center and the existing docs URL."
+    },
+    {
+      "n": 51,
+      "where": "controls[1].api; controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "Set-CsTeamsAppSetupPolicy -Identity <policy name> -AppPresetMeetingList <list> is presented as usable automation for meeting-app pinning, with only a recommendation to modify policies in the admin centre.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsappsetuppolicy",
+      "quote": "The existence of this cmdlet is being documented for completeness, but do not use this cmdlet. We require that all creation and modification of app setup polices",
+      "severity": "blocker",
+      "fix": "Keep the documented call, whose cmdlet and parameters exist, but replace the PowerShell qualifier in controls[1].note, the rendered note and the concluding paragraph with: 'Microsoft documents this cmdlet for completeness but explicitly says not to use it; all creation and modification of app setup policies, excluding assignment or removal from users, must happen in the Teams admin center.' Keep the existing reference URL."
+    },
+    {
+      "n": 52,
+      "where": "controls[1].note; Scope",
+      "type": "role",
+      "claim": "A Teams Administrator or administrator with a higher role can manage app setup policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-app-setup-policies",
+      "quote": "A Teams Administrator or an admin with a higher role can manage these policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].governs; controls[1].note; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Meeting-app pinning is described as governing users under a setup policy without qualifying which meetings follow that policy.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-app-setup-policies",
+      "quote": "When apps are pinned for specific users, the meeting extension is available only in meetings organized by users assigned the app setup policy. In those meetings, the meeting extension is also available to other participants.",
+      "severity": "blocker",
+      "fix": "Replace controls[1].governs and its rendered label with 'Which apps are pinned in meetings organised by users assigned a setup policy'. Add to its note: 'For policies assigned to specific users, meeting extensions are available only in meetings organised by those users and are also available to other participants.' Replace the pilot bullet with 'Confirm in meetings organised by pilot users assigned the policy that pinned apps appear in the main meeting bar or More menu as expected.'"
+    },
+    {
+      "n": 54,
+      "where": "controls[1].note; Governance controls",
+      "type": "absence",
+      "claim": "The documented app-pinning control is not a control over the redesigned layout of built-in meeting buttons.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams meeting controls redesign tenant policy PowerShell. Read MC1317197, app setup policy and Set-CsTeamsAppSetupPolicy references, and adoption page; app-pinning settings describe apps, not repositioning built-in meeting buttons.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "App setup policy changes can take a few hours to take effect after editing or assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-app-setup-policies",
+      "quote": "After you edit or assign a policy, it can take a few hours for changes to take effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "What's changing; Governance controls",
+      "type": "absence",
+      "claim": "No redesign-specific Microsoft Learn setting is documented; the sources describe app setup policies as the relevant existing admin-side pinning control.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: new meeting controls toolbar tenant disable settings Set-CsTeamsMeetingPolicy; Teams meeting controls redesign tenant policy PowerShell. Read adoption, app setup policy and cmdlet pages and Learn policy-reference excerpts; no redesign switch was documented.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-24T11:32:43.959Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 2,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=560321",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1317197",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://adoption.microsoft.com/microsoft-teams/new-meeting-controls-experience",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/teams-app-setup-policies",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsappsetuppolicy",
+        "ok": false,
+        "status": 429
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which apps are pinned to the in-meeting bar for users under a setup policy",
+        "docs": "https://learn.microsoft.com/microsoftteams/teams-app-setup-policies",
+        "reachable": false,
+        "segments": [
+          "Teams apps",
+          "Setup policies",
+          "Pinned apps",
+          "Add apps"
+        ],
+        "missing": [
+          "Teams apps",
+          "Setup policies",
+          "Pinned apps",
+          "Add apps"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which apps are pinned to the in-meeting bar for users under a setup policy",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsappsetuppolicy",
+        "reachable": false,
+        "token": "Set-CsTeamsAppSetupPolicy",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
