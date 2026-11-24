@@ -85,7 +85,21 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
   - date: "2026-11-24"
     note: "Licensing now states Viva Engage Core comes with Microsoft 365; attendee-policy, calendar-invitation and delivery-restriction checklist items removed (no control rows); retirement wording updated to the legacy live event option per updated MC1552394."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 66 statements not yet confirmed"
 version: 2
+verification:
+  status: "verified-with-gaps"
+  date: "2026-11-24"
+  version: 2
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 66
+  confirmed: 66
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "c57ed698650ee769d682bf88df880f19"
 ---
 
 ## What's changing
@@ -184,4 +198,10 @@ The events policy setting decides who can create Teams events optimised for a la
 risk: Medium. Attendees can post questions anonymously and events can reach large audiences, and Microsoft has not said which admin controls cover Engage events; the legacy live event creation option in Engage also ends on 7 December 2026.
 cost: Low. The only cost the sources show is admin and organiser time to move event creation. Viva Engage Core comes with Microsoft 365; licensing specific to the new event types is not yet published, and the Teams events licensing page covers Teams events.
 impact: Medium. Event organisers and communications teams notice first, because the legacy live event option in Engage is removed on 7 December 2026; attendees notice moderation and anonymous posting.
+-->
+
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].api; Governance controls / command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled prevents organisers with the policy from creating large-audience Teams events. | Found: To prevent organizers with this policy from creating events optimized for large audiences, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -AllowTownhalls Disabled | Fix: Keep the command. Add to controls[0].note: 'The PowerShell reference still labels this policy as preview.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps, which states 'Note that this policy is currently still in preview.' | Source: https://learn.microsoft.com/microsoftteams/set-up-events
 -->

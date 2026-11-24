@@ -81,15 +81,17 @@ changes:
     note: "Correction: narrowed the licensing gap to an additional leader-specific requirement and added the Viva Insights platform requirements; fixed the impact rationale; removed four checklist bullets that had no controls-table row."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 85 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 91 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 85
-  confirmed: 85
+  claims: 91
+  confirmed: 91
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -194,8 +196,11 @@ cost: Low. Neither the roadmap item nor Microsoft's notice names an additional l
 impact: Medium. Leaders, managers and delegates gain publishing; analysts already have it. Recipients receive an email notification and can access the report in the Viva Insights Reports tab.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Risk assessment: Autonomy & actions; rationale: impact / record: Recipients receive an email notification when a report is published to them. | Found: Recipients will receive an email notification when a report is published to them, and can access published reports from the Viva Insights Reports tab. | Fix: After the notification statement in What's changing, add: 'For existing analyst publishing, Learn qualifies security-group notifications: the group must be mail-enabled and allow external senders.' The qualification is at https://learn.microsoft.com/viva/insights/advanced/analyst/publish-reports under 'Publish'.
+- [supported, minor] What's changing; Risk assessment: Autonomy & actions; rationale: impact / record: Recipients receive an email notification when a report is published to them. | Found: Recipients will receive an email notification when a report is published to them, and can access published reports from the Viva Insights Reports tab. | Fix: After the notification sentence in What's changing, add: 'For existing analyst publishing, Learn qualifies security-group notifications: the group must be mail-enabled and allow external senders.' This qualification is documented at https://learn.microsoft.com/viva/insights/advanced/analyst/publish-reports under Publish.
+- [supported, minor] controls[0].ui / admin-path: Microsoft 365 admin center > Viva > Settings > Manage feature access > Create a policy reaches the publishing policy creation page. | Found: Select the Settings tab and select Manage feature access. Select Create a policy. Name the policy and select the app and feature for which you'd like to set the policy. Select the Access setting option and choose On or Off | Fix: Complete controls[0].ui.path and the rendered row as 'Viva > Settings > Manage feature access > Create a policy > Viva Insights > Report publish > Access setting'. The current path stops on the correct policy creation page; select the app and feature, then choose On or Off under Access setting, as documented at https://learn.microsoft.com/viva/control-access-admin-center. Report publish is the planned renamed feature label in MC1489942. | Source: https://learn.microsoft.com/viva/control-access-admin-center
+- [supported, minor] controls[1].ui / admin-path: Microsoft 365 admin center > Viva > Settings > Manage feature access > Create a policy reaches the Expanded publish report recipients policy creation page. | Found: Select the Settings tab and select Manage feature access. Select Create a policy. Name the policy and select the app and feature for which you'd like to set the policy. Select the Access setting option and choose On or Off | Fix: Complete controls[1].ui.path and the rendered row as 'Viva > Settings > Manage feature access > Create a policy > Viva Insights > Expanded publish report recipients > Access setting'. Choose On or Off under Access setting, as documented at https://learn.microsoft.com/viva/control-access-admin-center; the feature label is documented at https://learn.microsoft.com/viva/insights/advanced/analyst/publish-reports. | Source: https://learn.microsoft.com/viva/control-access-admin-center
+- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown, although the notes state existing Viva Insights platform requirements and limit the gap to an additional leader-specific requirement. | Found: Viva Insights requires the applicable Viva Insights licensing and a Microsoft 365 or Office 365 tenant with Exchange Online Plan 1 or Plan 2. | Fix: Set licensing.model to 'included' for this new option within the already licensed product. Retain the notes naming applicable Viva Insights licensing and a Microsoft 365 or Office 365 tenant with Exchange Online Plan 1 or Plan 2, and retain the narrower statement that an additional licence requirement specifically for leader publishing is not published. Source: https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements. | Source: https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements
 -->

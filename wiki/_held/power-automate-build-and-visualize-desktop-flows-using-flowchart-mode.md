@@ -58,7 +58,7 @@ controls:
     note: "Not documented at the time of writing (November 2026). The Windows registry settings on the governance page do not name flowchart mode."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-24"
 roadmapModified: "2026-10-06T22:56:31"
 changes:
   - date: "2026-11-18"
@@ -67,19 +67,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 49 statements confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 63 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Correction: the governance paragraph no longer lists copilot capabilities among the registry-controlled areas."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 67 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 62
-  unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "44cee59898699454d30a8f49298961f9"
+  claims: 67
+  confirmed: 66
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 2
+  hash: "3d141b02563fec949ddf5ef5fd3d1f58"
 ---
 
 ## What's changing
@@ -160,7 +164,7 @@ That page's feature list does not include flowchart mode, and a licence, credit 
 
 The only controls Microsoft documents for this feature sit in the designer and are chosen by the maker: the mode option in the **Create a flow** dialog and the **View** menu. They decide how a flow is displayed, not who may use the feature.
 
-At the time of writing (November 2026), the Learn page on governance in Power Automate for desktop lists registry settings for sign-in, updates, proxy, logging and copilot capabilities, and none names flowchart mode. The Windows registry settings that page documents are an existing way to restrict Power Automate for desktop as a whole; they do not govern flowchart mode specifically.
+At the time of writing (November 2026), the Learn page on governance in Power Automate for desktop lists registry settings for sign-in, updates, proxy and logging, and none names flowchart mode. The Windows registry settings that page documents are an existing way to restrict Power Automate for desktop as a whole; they do not govern flowchart mode specifically.
 
 ## Open questions
 
@@ -178,5 +182,5 @@ impact: Low. Makers who build desktop flows in Power Automate for desktop notice
 <!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: final paragraph / behaviour: The governance page lists Windows registry settings for Copilot capabilities. | Found: To prevent your users from using any copilot capability contact Microsoft Customer Support to disable all copilot functionality in your tenant. | Fix: Remove 'and copilot capabilities' from the list of registry-controlled areas. Replace that sentence with: 'At the time of writing (November 2026), the Learn page on governance in Power Automate for desktop lists registry settings for sign-in, updates, proxy and logging, and none names flowchart mode.' The cited governance page documents Copilot controls through tenant settings or Microsoft Customer Support, not registry entries. | Source: https://learn.microsoft.com/power-automate/desktop-flows/governance
+- [unsupported, blocker] controls[0].note; What's changing, second paragraph; Governance controls table / behaviour: Switching an existing flow back into sequence mode is also possible only when the flow has no errors. | Found: Searched: "flowchart mode" "sequence mode" errors switch. Read flowchart-flow-designer, especially Switch an existing flow between modes. Its prerequisite says "switch to flowchart mode only when the flow has no errors"; no passage states this restriction for switching to sequence mode. | Fix: Replace controls[0].note and its rendered table note with: 'Maker-side and preview. Existing flows switch with View > Flowchart mode or View > Sequence mode. Switching to flowchart mode requires a flow with no errors.' In What's changing replace the switching sentence with: 'An existing flow can be switched with View > Flowchart mode or View > Sequence mode. Switching to flowchart mode requires the flow to have no errors.' Source: https://learn.microsoft.com/power-automate/desktop-flows/flowchart-flow-designer.
 -->

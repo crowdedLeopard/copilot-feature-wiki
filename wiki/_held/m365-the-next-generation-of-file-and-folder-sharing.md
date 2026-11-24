@@ -17,8 +17,8 @@ impact: "high"
 defaultState: "on"
 action: "prepare"
 licensing:
-  model: "unknown"
-  notes: "Not yet published. Neither the roadmap item, Message Center post MC1454378 nor the Learn page on shareable links names a licence or meter for the hero link."
+  model: "included"
+  notes: "SharePoint users need an assigned license that includes SharePoint. OneDrive is included in Microsoft 365 and Office 365 plans, in SharePoint plans, or a standalone OneDrive plan. No requirement specific to the hero link is published."
 audiences: ["m365-admin","security","compliance","change-adoption"]
 tags: ["sharing","sharepoint","onedrive","oversharing","user-experience","powershell","microsoft-365-apps","gcc","gcc-high","dod"]
 sources:
@@ -34,8 +34,14 @@ sources:
   - title: "Manage sharing settings for SharePoint and OneDrive in Microsoft 365"
     url: "https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off"
     kind: "learn"
-  - title: "Change the default sharing link type for a site"
+  - title: "Change the default sharing link for a site"
     url: "https://learn.microsoft.com/sharepoint/change-default-sharing-link"
+    kind: "learn"
+  - title: "SharePoint service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description"
+    kind: "learn"
+  - title: "OneDrive service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description"
     kind: "learn"
   - title: "MC1454378: (Updated) Microsoft 365: The Next Generation of File & Folder Sharing"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1454378"
@@ -44,7 +50,7 @@ sources:
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=492622"
     kind: "roadmap"
 videos: []
-related: ["m365-expiration-for-access-on-sharing-main-links","sharepoint-admin-center-data-access-governance-permission-report-for-a-given-group"]
+related: []
 controls:
   - governs: "Default audience of the hero link for a site"
     scope: "site"
@@ -63,27 +69,27 @@ controls:
     scope: "tenant"
     ui:
       surface: "SharePoint admin center"
-      path: "Policies > Sharing"
+      path: "Policies > Sharing > External sharing"
       docs: "https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off"
     api:
       kind: "powershell"
       call: "Set-SPOTenant -SharingCapability <value>"
       docs: "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant"
-    note: "General control: Learn says hero link scopes depend on sharing policies, but no page maps each setting to a hero link scope."
+    note: "Available hero link scopes depend on the organization's sharing policies. Anyone needs anonymous links allowed at tenant level; if a site disables Anyone links, an Anyone default falls back to the next most restrictive value."
   - governs: "Default sharing link type for a site (legacy links)"
     scope: "site"
     ui:
       surface: "SharePoint admin center"
-      path: "Active sites > site > Sharing > Default sharing link type"
+      path: "Active sites > site > Sharing > Default sharing link type > Same as organization-level setting"
       docs: "https://learn.microsoft.com/sharepoint/change-default-sharing-link"
     api:
       kind: "powershell"
       call: "Set-SPOSite -Identity <site URL> -DefaultSharingLinkType <value>"
       docs: "https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite"
-    note: "Existing control. MC1454378 says default sharing link settings apply to legacy links and do not govern hero links."
+    note: "Existing control. Clear the checkbox, then choose the site's default sharing link setting. MC1454378 says default sharing link settings apply to legacy links and do not govern hero links."
 confidence: "high"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-24"
 roadmapModified: "2026-10-07T23:01:35"
 changes:
   - date: "2026-11-17"
@@ -96,19 +102,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 74 statements confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 74 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-24"
+    note: "Corrected after verification: removed an unsupported absence about hero link scopes, completed two admin paths and the sharing-policy note, and set licensing to the SharePoint and OneDrive plan licence."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 80 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-24"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 74
-  confirmed: 73
+  claims: 80
+  confirmed: 79
   unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "cafcd1a6124bc9a0f172f07ea4486463"
+  attempts: 2
+  hash: "4b91267c7585f29a5e23200179291850"
 ---
 
 ## What's changing
@@ -151,7 +161,7 @@ The point to plan for is that editing the hero link changes who can use links th
 
 ## Cost and licensing
 
-Microsoft has not published a licence requirement or meter for the hero link. The roadmap item, Message Center post MC1454378 and the Learn page [How shareable links work in OneDrive and SharePoint in Microsoft 365](https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization) name none, and no pay-as-you-go or credit meter is documented for it at the time of writing (November 2026). Licensing is therefore Not yet published.
+SharePoint users need an assigned licence that includes SharePoint, per the [SharePoint service description](https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description). The [OneDrive service description](https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description) says OneDrive is included in Microsoft 365 and Office 365 plans, in SharePoint plans, and can also be purchased as a standalone plan. No requirement specific to the hero link is published: the roadmap item, Message Center post MC1454378 and the Learn page [How shareable links work in OneDrive and SharePoint in Microsoft 365](https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization) name no separate licence or meter for it, and no pay-as-you-go or credit meter is documented for it at the time of writing (November 2026).
 
 The cost the sources do show is indirect: time to review sharing guidance and end-user documentation, to communicate the single-link model, and to evaluate site-level defaults, which are the preparation steps Microsoft's notice lists. Running `Set-SPOSite` requires the SharePoint Online administrator role plus site collection administrator rights, so budget for those administrators' time if you set per-site defaults.
 
@@ -194,8 +204,8 @@ The cost the sources do show is indirect: time to review sharing guidance and en
 <tbody>
 <tr><td data-label="Control"><strong>Default audience of the hero link for a site</strong><br><small>Site</small><br><small class="controls__note">Needs SharePoint Online admin and site collection admin. Default audience only. The Set-SPOSite reference omits DefaultMainLinkScope from its valid parameters for OneDrive and Groups site collections; support is unconfirmed.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOSite -Identity &lt;site URL&gt; -DefaultMainLinkScope &lt;OnlyPeopleAdded|Organization|Anyone&gt;</code> <a href="https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tenant-wide default audience of the hero link</strong><br><small>Tenant</small><br><small class="controls__note">MC1454378 says there is currently no tenant-wide equivalent. The Set-SPOTenant reference lists no main link parameter at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Organisation-level external sharing level</strong><br><small>Tenant</small><br><small class="controls__note">General control: Learn says hero link scopes depend on sharing policies, but no page maps each setting to a hero link scope.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Policies › Sharing <a href="https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -SharingCapability &lt;value&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Default sharing link type for a site (legacy links)</strong><br><small>Site</small><br><small class="controls__note">Existing control. MC1454378 says default sharing link settings apply to legacy links and do not govern hero links.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Active sites › site › Sharing › Default sharing link type <a href="https://learn.microsoft.com/sharepoint/change-default-sharing-link" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOSite -Identity &lt;site URL&gt; -DefaultSharingLinkType &lt;value&gt;</code> <a href="https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Organisation-level external sharing level</strong><br><small>Tenant</small><br><small class="controls__note">Available hero link scopes depend on the organization's sharing policies. Anyone needs anonymous links allowed at tenant level; if a site disables Anyone links, an Anyone default falls back to the next most restrictive value.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Policies › Sharing › External sharing <a href="https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -SharingCapability &lt;value&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Default sharing link type for a site (legacy links)</strong><br><small>Site</small><br><small class="controls__note">Existing control. Clear the checkbox, then choose the site's default sharing link setting. MC1454378 says default sharing link settings apply to legacy links and do not govern hero links.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Active sites › site › Sharing › Default sharing link type › Same as organization-level setting <a href="https://learn.microsoft.com/sharepoint/change-default-sharing-link" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOSite -Identity &lt;site URL&gt; -DefaultSharingLinkType &lt;value&gt;</code> <a href="https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -203,7 +213,7 @@ The site-level `DefaultMainLinkScope` default is the only control Microsoft docu
 
 MC1454378 says the default can be set at the site collection or OneDrive level, but the Set-SPOSite reference's list of valid parameters for a OneDrive for Business site collection does not include `DefaultMainLinkScope`. The Set-SPOSite reference also omits `DefaultMainLinkScope` from its list of valid parameters for Groups site collections; support for those sites is unconfirmed. Treat OneDrive support as unconfirmed until Microsoft clarifies.
 
-The organisation-level sharing row is a general control: Learn says the available hero link scopes depend on sharing policies, and the Set-SPOSite reference says `Anyone` needs anonymous links allowed at tenant level, but no page lists which setting removes which hero link scope. Each site's sharing setting must be the same as or more restrictive than the organisation's. The legacy default sharing link type row is listed because administrators use it today; the notice says it does not govern hero links.
+The organisation-level sharing row is a general control: Learn says the available hero link scopes depend on sharing policies, and the Set-SPOSite reference says `Anyone` needs anonymous links allowed at tenant level. Each site's sharing setting must be the same as or more restrictive than the organisation's. The legacy default sharing link type row is listed because administrators use it today; the notice says it does not govern hero links.
 
 ## Open questions
 
@@ -211,21 +221,16 @@ The organisation-level sharing row is a general control: Learn says the availabl
 - Which values are supported? MC1454378 lists `OnlyPeopleAdded` and `Organization`, while the Set-SPOSite reference also lists `Anyone`. Which is current?
 - Will Microsoft add a tenant-wide setting for the default hero link audience? The notice says there is currently none.
 - Which audit events record a change to a hero link's audience or permission, and where do they appear?
-- Will Microsoft publish a licence or meter for the hero link, or confirm that none applies? Watch the roadmap item and the Learn page on shareable links.
+- Will Microsoft publish a licence or meter specific to the hero link, or confirm that none applies? Watch the roadmap item and the Learn page on shareable links.
 
 <!-- rationale
 risk: Low. The hero link starts at Only people added to the file, which grants no access of its own, and the audiences users can pick depend on the organisation's existing sharing policies.
-cost: Low. The only cost the sources show is admin and communication time; Microsoft has not published a licence or meter for the hero link.
+cost: Low. The only cost the sources show is admin and communication time; no licence or meter specific to the hero link is published.
 impact: High. Microsoft's notice says all users who share or manage files and folders see the new dialog, which replaces how they copy, email and re-share links.
 -->
 
 <!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: final paragraph / absence: No page lists which setting removes which hero link scope. | Found: `Anyone` is only available if anonymous links are allowed at the tenant level. If `Anyone` is selected but the site has Anyone links disabled, the effective default falls back to the next most restrictive value. | Fix: Remove ', but no page lists which setting removes which hero link scope' from the final Governance controls paragraph. The paragraph already gives the documented relationship between tenant anonymous-link policy and Anyone, and the preceding paragraph gives the site-level fallback; retain those verified statements. | Source: https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model; Cost and licensing; rationale: cost / licensing: Licensing is unknown because Microsoft has not published a license requirement specific to the hero link. | Found: To access SharePoint, users in your organization need to be assigned a license that includes SharePoint. | Fix: Set licensing.model to included. Replace the licensing explanation with: 'SharePoint users need an assigned license that includes SharePoint. OneDrive is included in Microsoft 365 and Office 365 plans, in SharePoint plans, or a standalone OneDrive plan. No requirement specific to the hero link is published.' Cite https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description and https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description. Retain the narrower absence of a hero-link-specific meter. | Source: https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description
-- [supported, minor] controls[2].ui; Governance guidance: Before rollout / admin-path: SharePoint admin center > Policies > Sharing reaches the organization-level external sharing settings. | Found: In the SharePoint admin center, expand **Policies**, and then select **Sharing**. Under **External sharing**, set your sharing level for SharePoint and OneDrive. | Fix: Change controls[2].ui.path to 'Policies > Sharing > External sharing'. The current path stops on the correct page but omits the heading containing this control. | Source: https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off
-- [supported, minor] controls[3].ui / admin-path: SharePoint admin center > Active sites > site > Sharing > Default sharing link type reaches the site's legacy default link setting. | Found: In the left column, select a site. Select **Sharing** on the command bar. Under **Default sharing link type**, clear the **Same as organization-level setting** checkbox. | Fix: Change controls[3].ui.path to 'Active sites > site > Sharing > Default sharing link type > Same as organization-level setting'. State in the note: 'Clear the checkbox, then choose the site's default sharing link setting.' The printed path reaches the correct section but stops before its override control. | Source: https://learn.microsoft.com/sharepoint/change-default-sharing-link
-- [supported, minor] controls[2].note / absence: No complete mapping of each organization-level sharing setting to hero link scopes is given in the cited documentation. | Found: Searched: '"hero link" "sharing policies" Anyone organization settings'; read shareable-links, sharing settings and Set-SPOSite. Found the Anyone tenant restriction and site fallback, but not a complete setting-by-setting mapping for every hero link scope. | Fix: Replace controls[2].note with: 'Available hero link scopes depend on the organization's sharing policies. Anyone is available only if anonymous links are allowed at tenant level; if a site disables Anyone links, an Anyone default falls back to the next most restrictive value.' This states the documented reach instead of a broad caveat. The cited Set-SPOSite reference is already in sources.
+- [contradicted, blocker] controls[3].ui; controls[3].note; Governance controls table / admin-path: The legacy site-default control is reached through Active sites > site > Sharing > Default sharing link type > Same as organization-level setting, without a site-type qualification. | Found: To change the default link type for a Teams private or shared channel site, you must use the Set-SPOSite PowerShell cmdlet. | Fix: Keep the documented path, but add to controls[3].note: 'For Teams private or shared channel sites, use Set-SPOSite instead; the admin-centre route does not apply.' This qualification is stated at https://learn.microsoft.com/sharepoint/change-default-sharing-link. | Source: https://learn.microsoft.com/sharepoint/change-default-sharing-link
 -->

@@ -107,18 +107,20 @@ changes:
     note: "Corrected after the independent check: the summary now says the roadmap item lists Worldwide, and labelling progress now has its Get-AutoSensitivityLabelPolicy call."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 88 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 89 statements contradicted, 3 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-20"
+  status: "held"
+  date: "2026-11-24"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 88
-  confirmed: 88
-  unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  claims: 89
+  confirmed: 83
+  unconfirmed: 3
+  contradicted: 3
+  attempts: 1
   hash: "716018162e2ad50150973a77fe1153b5"
 ---
 
@@ -223,4 +225,18 @@ There is no separate switch for the feature itself: the policy does not exist un
 risk: Low. Microsoft's notice says the feature is opt-in and needs administrator configuration, so nothing is relabelled until a policy is created; once enabled it labels existing files at scale, which simulation lets you review first.
 cost: Low. Learn lists service-side auto-labeling as included with E5 and P2-tier licences and says E3 and Business Premium need an E5 or P2-tier add-on; no price or meter specific to this policy type is published. The known cost is admin time.
 impact: Low. Microsoft's notice says users are affected only if administrators enable and configure the policy; the people who notice are Purview and SharePoint administrators, then owners of the labelled libraries.
+-->
+
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] What's changing / record: Roadmap item 575283 targets December CY2026. | Found: 575283: "targetDate": "January CY2027", "modified": "2026-11-20T23:20:27" | Fix: Replace 'In development, target December CY2026' with 'In development, target January CY2027' for roadmap item 575283.
+- [contradicted, blocker] front matter: licensing.notes; Cost and licensing; rationale: cost / licensing: Learn's table gives service-side auto-labeling the same E5 or P2-tier SKUs as client-side auto-labeling. | Found: Check the **Client and service-side automatic sensitivity labeling** entry in the feature matrix linked below. Client-only entitlements don't establish service-side entitlement. | Fix: Replace the same-SKU assertion in licensing.notes, Cost and licensing and rationale: cost with: 'For service-side auto-labeling, use the Client and service-side automatic sensitivity labeling entry in Microsoft's licensing matrix; client-only entitlements do not establish service-side entitlement.' Cite https://learn.microsoft.com/purview/apply-sensitivity-label-automatically. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
+- [unsupported, blocker] Cost and licensing / licensing: The cited auto-labeling article lists Microsoft 365 E5 Compliance as including service-side auto-labeling. | Found: Searched: 'service-side Microsoft 365 E5 Compliance licensing'; read apply-sensitivity-label-automatically and the Purview service-description matrix. E5 Compliance appears in the client-side row, not the current service-side entitlement list. | Fix: Remove Microsoft 365 E5 Compliance from the service-side SKU list attributed to the auto-labeling article. Replace that list with 'Microsoft 365 E5 or Microsoft 365 E5 Information Protection and Governance, among the eligible subscriptions listed in the current licensing matrix.'
+- [unsupported, blocker] Cost and licensing / licensing: Standalone Azure Information Protection Premium P2 includes service-side auto-labeling. | Found: Searched: 'service-side Azure Information Protection Premium P2 license'; read auto-labeling article, Purview licensing matrix and AIP service-description search excerpt. P2 is named for client-side features; no passage establishes this service-side entitlement. | Fix: Remove 'Azure Information Protection Premium P2 (standalone)' from the service-side license list; the current article warns that client-only entitlement does not establish service-side entitlement.
+- [unsupported, blocker] front matter: licensing.notes; Cost and licensing; rationale: cost / licensing: E3 and Business Premium require an E5 or P2-tier add-on for this service-side feature. | Found: Searched: service-side auto-labeling licensing and P2 license; read the auto-labeling licensing section and Purview feature matrix. The article says to check an eligible subscription or add-on, not that any E5 or P2-tier add-on suffices. | Fix: Replace the E3/Business Premium sentence in licensing.notes, Cost and licensing and rationale: cost with: 'E3 or Business Premium manual-labeling entitlement does not include automatic labeling; check the licensing matrix for an eligible subscription or add-on for service-side auto-labeling.' Cite https://learn.microsoft.com/purview/apply-sensitivity-label-automatically.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model; Cost and licensing; rationale: cost / licensing: Service-side auto-labeling is included with an eligible licensed subscription. | Found: | Client and service-side automatic sensitivity labeling | Included | Included | | Fix: Keep licensing.model as 'included' and add https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling to sources. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
+- [supported, minor] controls[0].ui / admin-path: The creation route is Microsoft Purview portal > Solutions > Information Protection > Policies > Auto-labeling policies > + Create auto-labeling policy. | Found: **Solutions** > **Information Protection** > **Policies** > **Auto-labeling policies**. ... Select **+ Create auto-labeling policy**. | Fix: Keep the printed route, which correctly reaches policy creation. Extend controls[0].note to say: 'In the wizard, select the option to apply default sensitivity labels from SharePoint document libraries to existing files, then select specific SharePoint sites rather than All.' | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist tells readers to check library defaults, label publication, Office-file labeling integration and PDF support, but these controls have no table rows. | Found: Before rollout: check libraries with default labels; labels are published; sensitivity labels are enabled; PDFs require enabled labeling. Table: policy creation, activation, progress and auditing only. | Fix: Narrow the Before rollout checklist to the controls actually shown: retain 'Confirm auditing is on, because Learn's checklist makes it a requirement for simulation' and refer readers to Scope and Risk assessment for the other prerequisites instead of presenting them as additional checklist controls. Do not add table rows.
 -->

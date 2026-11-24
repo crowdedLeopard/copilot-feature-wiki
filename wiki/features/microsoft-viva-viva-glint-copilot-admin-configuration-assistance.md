@@ -68,17 +68,19 @@ changes:
     note: "First briefing for this item, written from the assistant's Learn page and the Copilot in Viva Glint access pages."
   - date: "2026-11-23"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 50 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 56 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-23"
+  date: "2026-11-24"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 49
+  claims: 56
+  confirmed: 54
   unconfirmed: 1
-  contradicted: 0
+  contradicted: 1
   attempts: 0
   hash: "a476fa4a07ea7f571b93a35f8ec76b62"
 ---
@@ -181,12 +183,13 @@ cost: Low. The only cost the sources show is admin time. The assistant's Learn p
 impact: Low. Learn describes the assistant as intended for administrators who run Viva Glint programs, and the roadmap says it is only available to users with Admin permissions.
 -->
 
-<!-- verifier-findings (2026-11-23, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: Viva Glint administrators are often HR or people-analytics staff rather than IT. | Found: Searched: Viva Glint service administrators typically HR people analytics team IT. Read Key roles, data-stakeholder planning and learning-path excerpts; they identify HR and IT stakeholders but do not establish which teams usually hold administrator roles. | Fix: Remove 'often HR or people-analytics staff rather than IT' from the first paragraph of Why it matters.
+- [unsupported, major] Why it matters / behaviour: Viva Glint admins are often HR or people-analytics staff rather than IT. | Found: Searched: Viva Glint service administrators typically HR people analytics staff IT key roles. Read role-definitions, set-up-user-roles and viva-glint-learning-paths-and-modules excerpts; none establishes which team usually holds admin roles. | Fix: Remove 'often HR or people-analytics staff rather than IT' from the first paragraph of Why it matters.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model and licensing.notes; Cost and licensing / licensing: The assistant uses the existing product entitlement, represented by licensing.model included. | Found: The purchase of a Viva Suite or Viva Glint subscription plan is required for using Microsoft Viva Glint. | Fix: Keep licensing.model as included. Add to licensing.notes and Cost and licensing: 'Using Viva Glint requires a Viva Suite or Viva Glint subscription plan; no licence specific to the admin configuration assistant is published.' Cite https://learn.microsoft.com/viva/glint/setup/glint-order-teams in sources. | Source: https://learn.microsoft.com/viva/glint/setup/glint-order-teams
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The org-wide Copilot in Viva Glint control is reached through Settings > Viva > Viva Glint > Manage settings for Microsoft Copilot in Viva Glint > Org-wide setting > Manage in the Microsoft 365 admin center. | Found: In the Manage Microsoft Copilot in Viva Glint pane, select Manage in the Org-wide setting section. ... Choose On. | Fix: Extend the front-matter and rendered-table path to 'Settings > Viva > Viva Glint > Manage settings for Microsoft Copilot in Viva Glint > Org-wide setting > Manage > On / Off', matching the cited page's enable and disable procedures. | Source: https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access
-- [supported, minor] controls[0].note; Governance controls table and prose / role: Microsoft 365 Global Administrators, Viva Glint Tenant Administrators and AI Administrators can manage the Copilot in Viva Glint access setting. | Found: This feature can be managed by: ... Microsoft 365 Global Administrators ... Viva Glint Tenant Administrators ... AI Administrators | Fix: Retain the roles from the feature-specific access page. Add: 'The general VFAM feature table lists only Global admin for Glint, while the feature-specific access page also lists Viva Glint Tenant Administrators and AI Administrators.' The differing table is at https://learn.microsoft.com/viva/feature-access-management. | Source: https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access
+- [supported, minor] front matter: licensing.model and licensing.notes; Cost and licensing / licensing: The assistant is an included option within the existing Viva Glint entitlement. | Found: The purchase of a Viva Suite or Viva Glint subscription plan is required for using Microsoft Viva Glint. | Fix: Keep licensing.model as included. Add to licensing.notes and Cost and licensing: 'Using Viva Glint requires a Viva Suite or Viva Glint subscription plan; no licence specific to the admin configuration assistant is published.' Cite https://learn.microsoft.com/viva/glint/setup/glint-order-teams in sources. | Source: https://learn.microsoft.com/viva/glint/setup/glint-order-teams
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The org-wide control is reached in Microsoft 365 admin center through Settings > Viva > Viva Glint > Manage settings for Microsoft Copilot in Viva Glint > Org-wide setting > Manage. | Found: Select Settings > Viva. ... Select Viva Glint and choose Manage settings for Microsoft Copilot in Viva Glint. ... select Manage in the Org-wide setting section. ... Choose On. | Fix: Extend controls[0].ui.path and the rendered table path to 'Settings > Viva > Viva Glint > Manage settings for Microsoft Copilot in Viva Glint > Org-wide setting > Manage > On / Off', as documented at https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access. | Source: https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access
+- [supported, minor] controls[0].note; Governance controls table and prose / role: Microsoft 365 Global Administrators, Viva Glint Tenant Administrators and AI Administrators can manage the Copilot access setting. | Found: This feature can be managed by: Microsoft 365 Global Administrators; Viva Glint Tenant Administrators; AI Administrators | Fix: Retain the feature-specific roles. Add: 'The general VFAM feature table lists only Global admin for Glint, while the feature-specific access page also lists Viva Glint Tenant Administrators and AI Administrators.' The differing cited page is https://learn.microsoft.com/viva/feature-access-management. | Source: https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist asks the reader to take stock of service admin and Admin permissions, but the controls table has no row for those existing role controls. | Found: Identify who holds Viva Glint service admin or Admin permissions ... Table rows: Access to Microsoft Copilot in Viva Glint; A switch for the Viva Glint admin configuration assistant on its own. | Fix: The first Before rollout step inventories Viva Glint admin-role access without a corresponding controls row. Remove that checklist bullet; do not add a control row.
 -->

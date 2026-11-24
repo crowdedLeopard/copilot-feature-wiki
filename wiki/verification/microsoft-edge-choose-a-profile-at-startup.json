@@ -2,39 +2,33 @@
   "slug": "microsoft-edge-choose-a-profile-at-startup",
   "roadmapId": 581721,
   "title": "Microsoft Edge: choose a profile at startup with a profile picker",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-24",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-24",
-    "reasons": [
-      "5 blocking findings (claims 27, 49, 51, 52, 53)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 54,
-    "confirmed": 49,
+    "claims": 61,
+    "confirmed": 61,
     "unconfirmed": 0,
-    "contradicted": 5,
-    "blocker": 5,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 4
+    "minor": 0
   },
-  "summary": "Hold: the briefing incorrectly says the Windows Group Policy and registry controls also apply on macOS, where Microsoft documents preference keys instead. It also understates the documented reach of the picker and profile-creation policies and describes targeted browser policies as tenant-wide controls.",
+  "summary": "The briefing passes: its roadmap facts, policy behaviour, Group Policy paths and registry settings are supported. The Windows configuration guide confirms the Computer Configuration steps flagged by the pre-check; whether the picker appears at startup by default and its feature-specific licensing remain unstated.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; Why it matters",
+      "where": "title; summary; What's changing; rationale: risk",
       "type": "record",
-      "claim": "Microsoft plans to introduce a profile picker at Edge startup.",
+      "claim": "Microsoft Edge plans to introduce a profile picker at startup.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Microsoft Edge is introducing a profile picker at startup, making it easier to begin each browsing session with the right profile.",
@@ -45,7 +39,7 @@
       "n": 2,
       "where": "summary; What's changing; Why it matters; rationale: impact",
       "type": "record",
-      "claim": "Users can choose among work, personal and other available profiles before opening the browser.",
+      "claim": "The planned picker lets users choose a work profile before opening the browser.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Users can choose among their work, personal, or other available profiles, add a new profile, or browse as a guest before opening the browser.",
@@ -54,7 +48,29 @@
     },
     {
       "n": 3,
-      "where": "summary; What's changing; Risk assessment: Security & identity",
+      "where": "summary; What's changing; Why it matters; rationale: impact",
+      "type": "record",
+      "claim": "The planned picker lets users choose a personal profile before opening the browser.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users can choose among their work, personal, or other available profiles, add a new profile, or browse as a guest before opening the browser.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; rationale: risk",
+      "type": "record",
+      "claim": "The planned picker also offers other available profiles.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users can choose among their work, personal, or other available profiles",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "summary; What's changing; Risk assessment: Security & identity; rationale: risk",
       "type": "record",
       "claim": "The planned picker offers adding a new profile.",
       "status": "supported",
@@ -64,10 +80,10 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "summary; What's changing; Risk assessment: Data exposure",
+      "n": 6,
+      "where": "summary; What's changing; Why it matters; Risk assessment: Data exposure; rationale: risk",
       "type": "record",
-      "claim": "The planned picker offers browsing as a guest.",
+      "claim": "The planned picker offers guest browsing before opening the browser.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Users can choose among their work, personal, or other available profiles, add a new profile, or browse as a guest before opening the browser.",
@@ -75,10 +91,10 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "summary; What's changing; Governance controls",
+      "n": 7,
+      "where": "summary; What's changing; Open questions",
       "type": "record",
-      "claim": "Show on startup is a user setting controlling whether the picker appears at launch.",
+      "claim": "A Show on startup setting lets users control whether the picker appears at launch.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "the Show on startup setting lets them control whether the picker appears at launch.",
@@ -86,8 +102,19 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "front matter: status; What's changing; Governance guidance",
+      "n": 8,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "The profile choice affects which profile holds browsing data and activities.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This helps users keep their browsing data and activities in the intended profile",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: status; What's changing; Governance guidance: After rollout",
       "type": "record",
       "claim": "The roadmap status is In development.",
       "status": "supported",
@@ -97,10 +124,10 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "front matter: targetDate; summary; What's changing",
+      "n": 10,
+      "where": "summary; front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "The roadmap target is February CY2027.",
+      "claim": "The roadmap target is February CY2027, not a committed release date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"February CY2027\"",
@@ -108,43 +135,54 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 11,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap release phase is General Availability.",
+      "claim": "The listed release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "quote": "\"releasePhase\": [ \"General Availability\" ]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 9,
+      "n": 12,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "claim": "The listed cloud is Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 10,
+      "n": 13,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap platform is Web.",
+      "claim": "The listed platform is Web.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
+      "quote": "\"platforms\": [ \"Web\" ]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 11,
+      "n": 14,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap record does not list GCC, GCC High or DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap supplies no preview date.",
+      "claim": "The roadmap gives no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -152,65 +190,54 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "Scope",
-      "type": "record",
-      "claim": "The roadmap does not list GCC, GCC High or DoD.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "Scope",
-      "type": "record",
-      "claim": "The roadmap does not state the Edge version carrying the picker.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Microsoft Edge is introducing a profile picker at startup, making it easier to begin each browsing session with the right profile.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "summary; What's changing",
-      "type": "record",
-      "claim": "The supplied material announces no required administrator action or Message Center notice.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "This helps users keep their browsing data and activities in the intended profile, while the Show on startup setting lets them control whether the picker appears at launch.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "record",
-      "claim": "The roadmap record names no licence for this feature.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Microsoft Edge is introducing a profile picker at startup, making it easier to begin each browsing session with the right profile.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 16,
-      "where": "Cost and licensing; rationale: cost",
+      "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap record names no meter for this feature.",
+      "claim": "The roadmap modification timestamp is 2026-11-24T00:13:11.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "This helps users keep their browsing data and activities in the intended profile, while the Show on startup setting lets them control whether the picker appears at launch.",
+      "quote": "\"modified\": \"2026-11-24T00:13:11\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "No Message Center post was supplied for this check.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: supplied task, pre-check and roadmap record for Message Center posts; none was supplied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "summary",
       "type": "record",
-      "claim": "The roadmap describes a user's choice and names no autonomous action or new data access.",
+      "claim": "The roadmap announces no required administrator action.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "the Show on startup setting lets them control whether the picker appears at launch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "rationale: risk",
+      "type": "record",
+      "claim": "The roadmap names no new data access.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This helps users keep their browsing data and activities in the intended profile",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes user choices and names no autonomous action.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Users can choose among their work, personal, or other available profiles, add a new profile, or browse as a guest before opening the browser.",
@@ -218,150 +245,150 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "controls[0].ui",
-      "type": "admin-path",
-      "claim": "The Group Policy path is Administrative Templates > Microsoft Edge > Profile settings > Profile picker availability.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/profilepickeravailability",
-      "quote": "GP name: Profile picker availability\nGP path (Mandatory): Administrative Templates/Microsoft Edge/Profile settings",
-      "severity": "minor",
-      "fix": "Use 'Computer Configuration > Policies > Administrative Templates > Microsoft Edge > Profile settings > Profile picker availability' for computer-scoped domain Group Policy. Cite https://learn.microsoft.com/deployedge/configure-microsoft-edge for the entry route; User Configuration is the alternative user scope."
-    },
-    {
-      "n": 19,
-      "where": "controls[0].api",
-      "type": "command",
-      "claim": "ProfilePickerAvailability is a REG_DWORD registry value under SOFTWARE\\Policies\\Microsoft\\Edge.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/profilepickeravailability",
-      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\nValue name: ProfilePickerAvailability\nValue type: REG\\_DWORD",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "controls[1].ui",
-      "type": "admin-path",
-      "claim": "The Group Policy path is Administrative Templates > Microsoft Edge > Enable guest mode.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/browserguestmodeenabled",
-      "quote": "GP name: Enable guest mode\nGP path (Mandatory): Administrative Templates/Microsoft Edge",
-      "severity": "minor",
-      "fix": "Use 'Computer Configuration > Policies > Administrative Templates > Microsoft Edge > Enable guest mode' for computer-scoped domain Group Policy. Cite https://learn.microsoft.com/deployedge/configure-microsoft-edge for the entry route; User Configuration is the alternative user scope."
-    },
-    {
       "n": 21,
-      "where": "controls[1].api",
-      "type": "command",
-      "claim": "BrowserGuestModeEnabled is a REG_DWORD registry value under SOFTWARE\\Policies\\Microsoft\\Edge.",
+      "where": "front matter: defaultState; What's changing; Why it matters; Open questions; rationales",
+      "type": "default",
+      "claim": "Whether the picker appears at startup by default is not stated, so defaultState is unknown.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/browserguestmodeenabled",
-      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\nValue name: BrowserGuestModeEnabled\nValue type: REG\\_DWORD",
+      "source": null,
+      "quote": "Searched: \"Microsoft Edge\" \"profile picker\" \"startup\" \"default\"; read roadmap, ProfilePickerAvailability and Beta release-note excerpts. Picker availability is documented, but default startup display is not.",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "controls[2].ui",
-      "type": "admin-path",
-      "claim": "The Group Policy path ends at Enable profile creation from the Identity flyout menu or the Settings page under Microsoft Edge.",
+      "where": "front matter: licensing; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "Microsoft has not published which licence covers this startup picker, so licensing.model is unknown.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/browseraddprofileenabled",
-      "quote": "GP name: Enable profile creation from the Identity flyout menu or the Settings page\nGP path (Mandatory): Administrative Templates/Microsoft Edge",
-      "severity": "minor",
-      "fix": "Use 'Computer Configuration > Policies > Administrative Templates > Microsoft Edge > Enable profile creation from the Identity flyout menu or the Settings page' for computer-scoped domain Group Policy. Cite https://learn.microsoft.com/deployedge/configure-microsoft-edge; User Configuration is the alternative user scope."
+      "source": null,
+      "quote": "Searched: Microsoft Edge startup profile picker licensing licence price charge requirements; Microsoft Edge for Business browser licensing prerequisites price free. Read picker policy and Edge for Business excerpts; no picker entitlement or generally required browser SKU was stated.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 23,
-      "where": "controls[2].api",
-      "type": "command",
-      "claim": "BrowserAddProfileEnabled is a REG_DWORD registry value under SOFTWARE\\Policies\\Microsoft\\Edge.",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "record",
+      "claim": "The roadmap record names no licence for the feature.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/browseraddprofileenabled",
-      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\nValue name: BrowserAddProfileEnabled\nValue type: REG\\_DWORD",
+      "source": "roadmap record",
+      "quote": "Microsoft Edge is introducing a profile picker at startup, making it easier to begin each browsing session with the right profile.",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "front matter: defaultState; What's changing; Why it matters; rationales",
-      "type": "default",
-      "claim": "Microsoft has not stated whether the picker is shown at launch by default.",
+      "where": "Cost and licensing; rationale: cost",
+      "type": "record",
+      "claim": "The roadmap record names no meter for the feature.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Edge startup profile picker Show on startup default ProfilePickerAvailability; Microsoft Edge \"Show on startup\" profile picker policy default guest. Read roadmap, ProfilePickerAvailability and privacy On startup; availability is stated, automatic display is not.",
+      "source": "roadmap record",
+      "quote": "This helps users keep their browsing data and activities in the intended profile, while the Show on startup setting lets them control whether the picker appears at launch.",
       "severity": null,
       "fix": null
     },
     {
       "n": 25,
-      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Microsoft has not published which licence covers the startup profile picker.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The cited picker, guest and add-profile policy pages state no licence requirement.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Edge for Business licensing requirements profile picker price charge; Microsoft Edge browser licensing free no additional cost profile picker. Read Microsoft Edge for Business, three cited policy pages, and install/identity requirement excerpts; no picker entitlement stated.",
+      "quote": "Searched: Microsoft Edge startup profile picker licensing licence price charge requirements; opened ProfilePickerAvailability, BrowserGuestModeEnabled and BrowserAddProfileEnabled in full. None states a licence requirement.",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "absence",
-      "claim": "The cited Learn policy pages state no licence requirement.",
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "No charge for the startup picker is documented at the time of writing, November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Edge for Business licensing requirements profile picker price charge. Opened ProfilePickerAvailability, BrowserGuestModeEnabled and BrowserAddProfileEnabled in full; none states a licence requirement.",
+      "quote": "Searched: Microsoft Edge startup profile picker licensing licence price charge requirements; Microsoft Edge for Business browser licensing prerequisites price free. Read roadmap, cited policy pages and returned product excerpts; no picker price or meter was found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "Microsoft Learn does not describe this startup profile-picker feature yet.",
-      "status": "contradicted",
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Windows Group Policy reaches Profile picker availability through Computer Configuration > Policies > Administrative Templates > Microsoft Edge > Profile settings.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/profilepickeravailability",
-      "quote": "This policy controls whether users can open the profile picker in Microsoft Edge. The profile picker lets users choose a profile to open and manage their profiles.",
-      "severity": "blocker",
-      "fix": "Replace the sentence with 'The roadmap describes the profile choices and Show on startup setting; Microsoft Learn documents the profile picker and its startup policy behaviour through ProfilePickerAvailability.' Keep the narrower absence concerning the Show on startup setting."
+      "quote": "GP name: Profile picker availability; GP path (Mandatory): Administrative Templates/Microsoft Edge/Profile settings. Windows guide: (Computer Configuration or User Configuration) > Policies > Administrative Templates > Microsoft Edge.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 28,
-      "where": "What's changing; Governance controls",
-      "type": "absence",
-      "claim": "Learn does not describe the Show on startup user setting or a policy setting that configures that preference.",
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "The registry control is ProfilePickerAvailability, REG_DWORD, under SOFTWARE\\Policies\\Microsoft\\Edge.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Edge \"Show on startup\" profile picker policy default guest. Read ProfilePickerAvailability, privacy On startup, and Initial Preferences excerpt; none names that preference. Picker availability policy is documented separately.",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/profilepickeravailability",
+      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge; Value name: ProfilePickerAvailability; Value type: REG\\_DWORD",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
-      "where": "controls[0].note; Governance controls; Open questions",
-      "type": "applicability",
-      "claim": "The picker policy is not confirmed by name for this roadmap item.",
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Windows Group Policy reaches Enable guest mode through Computer Configuration > Policies > Administrative Templates > Microsoft Edge.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/profilepickeravailability",
-      "quote": "the browser skips the profile picker at startup and follows its normal browser startup behavior.",
-      "severity": "minor",
-      "fix": "Replace 'Not confirmed by name for the roadmap feature' and the corresponding prose caveat with 'Controls availability of the profile picker, including at startup.' Remove the question asking whether this policy governs the picker; retain the question about configuring Show on startup."
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/browserguestmodeenabled",
+      "quote": "GP name: Enable guest mode; GP path (Mandatory): Administrative Templates/Microsoft Edge. Windows guide: (Computer Configuration or User Configuration) > Policies > Administrative Templates > Microsoft Edge.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 30,
-      "where": "summary; controls[0].governs; What's changing",
-      "type": "applicability",
-      "claim": "ProfilePickerAvailability controls whether users can open the profile picker.",
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "The registry control is BrowserGuestModeEnabled, REG_DWORD, under SOFTWARE\\Policies\\Microsoft\\Edge.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/profilepickeravailability",
-      "quote": "This policy controls whether users can open the profile picker in Microsoft Edge.",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/browserguestmodeenabled",
+      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge; Value name: BrowserGuestModeEnabled; Value type: REG\\_DWORD",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Windows Group Policy reaches Enable profile creation from the Identity flyout menu or the Settings page through Computer Configuration > Policies > Administrative Templates > Microsoft Edge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/browseraddprofileenabled",
+      "quote": "GP name: Enable profile creation from the Identity flyout menu or the Settings page; GP path (Mandatory): Administrative Templates/Microsoft Edge. Windows guide: (Computer Configuration or User Configuration) > Policies > Administrative Templates > Microsoft Edge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "The registry control is BrowserAddProfileEnabled, REG_DWORD, under SOFTWARE\\Policies\\Microsoft\\Edge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/browseraddprofileenabled",
+      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge; Value name: BrowserAddProfileEnabled; Value type: REG\\_DWORD",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "summary; controls[0].governs; What's changing; Governance controls",
+      "type": "applicability",
+      "claim": "ProfilePickerAvailability controls whether users can open the profile picker, including its startup behaviour.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/profilepickeravailability",
+      "quote": "This policy controls whether users can open the profile picker in Microsoft Edge. The profile picker lets users choose a profile to open and manage their profiles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Setting ProfilePickerAvailability to false makes the picker unavailable.",
@@ -372,7 +399,7 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 35,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Setting ProfilePickerAvailability to false hides the picker entry from the profile menu.",
@@ -383,8 +410,8 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "controls[0].note; What's changing; Risk assessment: Change & support",
+      "n": 36,
+      "where": "controls[0].note; What's changing; Risk assessment: Change & support; Governance controls",
       "type": "behaviour",
       "claim": "Setting ProfilePickerAvailability to false skips the startup picker and follows normal browser startup behaviour.",
       "status": "supported",
@@ -394,8 +421,8 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "controls[0].note; What's changing; Scope",
+      "n": 37,
+      "where": "controls[0].note; What's changing; Scope; Governance controls",
       "type": "availability",
       "claim": "ProfilePickerAvailability is supported on Windows from version 159.",
       "status": "supported",
@@ -405,8 +432,8 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "controls[0].note; What's changing; Scope",
+      "n": 38,
+      "where": "What's changing; Scope",
       "type": "availability",
       "claim": "ProfilePickerAvailability is supported on macOS from version 159.",
       "status": "supported",
@@ -416,7 +443,7 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 39,
       "where": "What's changing; Scope",
       "type": "availability",
       "claim": "ProfilePickerAvailability is not supported on Android.",
@@ -427,7 +454,7 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 40,
       "where": "What's changing; Scope",
       "type": "availability",
       "claim": "ProfilePickerAvailability is not supported on iOS.",
@@ -438,10 +465,10 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "controls[0].note; Scope",
+      "n": 41,
+      "where": "controls[0].note; Scope; Governance controls",
       "type": "behaviour",
-      "claim": "ProfilePickerAvailability can be mandatory.",
+      "claim": "ProfilePickerAvailability can be configured as a mandatory policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/profilepickeravailability",
       "quote": "Can be mandatory: Yes",
@@ -449,10 +476,10 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "controls[0].note; Scope",
+      "n": 42,
+      "where": "controls[0].note; Scope; Governance controls",
       "type": "behaviour",
-      "claim": "ProfilePickerAvailability cannot be recommended.",
+      "claim": "ProfilePickerAvailability cannot be configured as a recommended policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/profilepickeravailability",
       "quote": "Can be recommended: No",
@@ -460,7 +487,7 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 43,
       "where": "Scope",
       "type": "applicability",
       "claim": "ProfilePickerAvailability does not apply per profile.",
@@ -471,10 +498,10 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 44,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "ProfilePickerAvailability does not prevent profile switching through other entry points.",
+      "claim": "ProfilePickerAvailability does not prevent profile switching through other available entry points.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/profilepickeravailability",
       "quote": "This policy doesn't prevent users from switching profiles or creating profiles through other available entry points.",
@@ -482,10 +509,10 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 45,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "ProfilePickerAvailability does not prevent profile creation through other entry points.",
+      "claim": "ProfilePickerAvailability does not prevent profile creation through other available entry points.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/profilepickeravailability",
       "quote": "This policy doesn't prevent users from switching profiles or creating profiles through other available entry points.",
@@ -493,10 +520,10 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 46,
       "where": "Governance controls",
       "type": "applicability",
-      "claim": "Other profile policies continue to apply when the picker availability policy is used.",
+      "claim": "Other profile policies continue to apply alongside ProfilePickerAvailability.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/profilepickeravailability",
       "quote": "Other profile policies continue to apply.",
@@ -504,10 +531,21 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 47,
+      "where": "controls[1].governs; Risk assessment: Data exposure; Governance guidance",
+      "type": "applicability",
+      "claim": "BrowserGuestModeEnabled controls whether users can browse in guest profiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/browserguestmodeenabled",
+      "quote": "If you disable this policy, Microsoft Edge doesn't let users browse in guest profiles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Guest profiles do not import browsing data from existing profiles.",
+      "claim": "A guest profile does not import browsing data from existing profiles.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/browserguestmodeenabled",
       "quote": "In a guest profile, the browser doesn't import browsing data from existing profiles",
@@ -515,7 +553,7 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 49,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Guest browsing data is deleted when all guest profiles are closed.",
@@ -526,32 +564,21 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "controls[1].governs; Risk assessment: Data exposure; Governance guidance",
+      "n": 50,
+      "where": "controls[2].governs; Risk assessment: Security & identity; Governance guidance",
       "type": "applicability",
-      "claim": "BrowserGuestModeEnabled controls whether users may browse in guest profiles.",
+      "claim": "BrowserAddProfileEnabled applies to profile creation from the Microsoft Edge user interface.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/browserguestmodeenabled",
-      "quote": "If you disable this policy, Microsoft Edge doesn't let users browse in guest profiles.",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/browseraddprofileenabled",
+      "quote": "This policy applies to profile creation from the Microsoft Edge user interface.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Risk assessment: Data exposure; Why it matters",
-      "type": "behaviour",
-      "claim": "Browsing data in a personal profile is separate from browsing data in the work profile.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/legal/microsoft-edge/privacy",
-      "quote": "Profiles in Microsoft Edge allow you to separate your browsing data into independent profiles. Data associated with one profile is separate from data associated with other profiles.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "controls[2].governs; controls[2].note; Risk assessment: Security & identity",
+      "n": 51,
+      "where": "controls[2].note; Risk assessment: Security & identity; Governance controls",
       "type": "applicability",
-      "claim": "BrowserAddProfileEnabled governs Add profile on the Identity flyout menu and Settings page.",
+      "claim": "BrowserAddProfileEnabled covers Add profile on the Identity flyout menu and the Settings page.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/browseraddprofileenabled",
       "quote": "If you disable this policy, users cannot add new profiles from the Identity flyout menu or the Settings page.",
@@ -559,21 +586,10 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "Risk assessment: Security & identity",
-      "type": "absence",
-      "claim": "Whether BrowserAddProfileEnabled governs profile creation through the picker is not documented.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/browseraddprofileenabled",
-      "quote": "This policy applies to profile creation from the Microsoft Edge user interface.",
-      "severity": "blocker",
-      "fix": "Replace 'whether it also governs the picker's add-profile entry is not documented' with 'the policy page says it applies to profile creation from the Microsoft Edge user interface'. Keep the pilot advice about how disabled entries are displayed; the page does not describe their appearance."
-    },
-    {
-      "n": 50,
+      "n": 52,
       "where": "Governance controls",
       "type": "applicability",
-      "claim": "Microsoft advises configuring BrowserSignin and RestrictSigninToPattern to restrict profile use further.",
+      "claim": "The BrowserAddProfileEnabled reference recommends BrowserSignin and RestrictSigninToPattern to restrict profile use further.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/browseraddprofileenabled",
       "quote": "To further restrict profile use, configure the BrowserSignin and RestrictSigninToPattern policies.",
@@ -581,57 +597,112 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "Governance controls",
-      "type": "admin-path",
-      "claim": "All three policies are Group Policy or registry settings on Windows and macOS.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/deployedge/configure-microsoft-edge-on-mac",
-      "quote": "This article describes how to configure Microsoft Edge on macOS using a property list (.plist) file.",
-      "severity": "blocker",
-      "fix": "Replace with 'The table gives Windows Group Policy and registry settings. On macOS, Microsoft documents the preference keys ProfilePickerAvailability, BrowserGuestModeEnabled and BrowserAddProfileEnabled in a com.microsoft.Edge.plist file.' Cite https://learn.microsoft.com/deployedge/configure-microsoft-edge-on-mac and qualify each existing row's surfaces as Windows."
-    },
-    {
-      "n": 52,
-      "where": "Governance controls",
-      "type": "absence",
-      "claim": "None of these Edge browser policies is a Microsoft 365 admin centre setting.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
-      "quote": "The Microsoft Edge management service is a platform in the Microsoft 365 admin center that enables admins to easily configure Microsoft Edge browser settings for their organization.",
-      "severity": "blocker",
-      "fix": "Remove 'and none of them is a Microsoft 365 admin centre setting'. The Edge management service documents browser policy configuration in that centre; the briefing need not add a new control row or assert that each named policy appears in its current setting catalogue."
-    },
-    {
       "n": 53,
-      "where": "controls[0].scope; controls[1].scope; controls[2].scope; Governance controls table",
+      "where": "controls[0..2].scope and note; Governance controls table; Governance guidance",
       "type": "applicability",
-      "claim": "The listed Group Policy and registry controls have tenant scope.",
-      "status": "contradicted",
+      "claim": "The Windows policies can target computers or users through Group Policy or registry configuration rather than applying automatically tenant-wide.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/configure-microsoft-edge",
-      "quote": "You can scope policy settings to either the Computer Configuration or User Configuration by selecting the appropriate node as described below.",
-      "severity": "blocker",
-      "fix": "Set all three controls[].scope values to 'other' and add 'Applies to targeted Windows computers or users through Group Policy or registry configuration; not automatically tenant-wide' to their notes. Cite https://learn.microsoft.com/deployedge/configure-microsoft-edge."
+      "quote": "You can scope policy settings to either the Computer Configuration or User Configuration by selecting the appropriate node as described below. You can target different policy settings to specific OUs, or use WMI filters",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 54,
-      "where": "Cost and licensing",
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "On macOS, Edge policies use preference keys in a com.microsoft.Edge.plist file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/configure-microsoft-edge-on-mac",
+      "quote": "For a list of supported policies and their preference key names, see Microsoft Edge browser policies reference. The plist file name must be com.microsoft.Edge.plist.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The macOS preference key for picker availability is ProfilePickerAvailability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/profilepickeravailability",
+      "quote": "Preference Key name: ProfilePickerAvailability",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The macOS preference key for guest browsing is BrowserGuestModeEnabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/browserguestmodeenabled",
+      "quote": "Preference Key name: BrowserGuestModeEnabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The macOS preference key for profile creation is BrowserAddProfileEnabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/browseraddprofileenabled",
+      "quote": "Preference Key name: BrowserAddProfileEnabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "What's changing; Governance controls; Open questions",
       "type": "absence",
-      "claim": "No charge for the startup profile picker is documented at the time of writing.",
+      "claim": "Learn does not yet describe the Show on startup setting or a policy specifically configuring that setting.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Edge for Business licensing requirements profile picker price charge; Microsoft Edge browser licensing free no additional cost profile picker. Read Edge for Business, three policy references, and installation/identity excerpts; no picker price or meter stated.",
+      "quote": "Searched: \"Microsoft Edge\" \"profile picker\" \"Show on startup\"; Microsoft Edge startup profile picker \"Show on startup\" default policy. Opened ProfilePickerAvailability; read privacy, initial-preferences and release-note excerpts. No description of that setting or its own policy was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap record does not state which Edge version carries the picker.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Edge is introducing a profile picker at startup, making it easier to begin each browsing session with the right profile.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Risk assessment: Data exposure; Why it matters",
+      "type": "behaviour",
+      "claim": "Edge separates browsing data into independent profiles, so browsing in a personal profile is separate from the work profile's data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/legal/microsoft-edge/privacy",
+      "quote": "Profiles in Microsoft Edge allow you to separate your browsing data into independent profiles. Data associated with one profile is separate from data associated with other profiles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The signed-in work profile matters to organisational visibility into browsing activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/legal/microsoft-edge/privacy",
+      "quote": "When a user is signed in with a work profile, the user's organization has access to the following data:",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-24T02:35:55.993Z",
+    "at": "2026-11-24T03:56:41.832Z",
     "summary": {
-      "links": 5,
+      "links": 7,
       "unreachable": 0,
       "uiPaths": 3,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 3,
       "apiCalls": 3,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
@@ -661,6 +732,16 @@
         "url": "https://learn.microsoft.com/legal/microsoft-edge/privacy",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/configure-microsoft-edge",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/configure-microsoft-edge-on-mac",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -671,12 +752,16 @@
         "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/profilepickeravailability",
         "reachable": true,
         "segments": [
+          "Computer Configuration",
+          "Policies",
           "Administrative Templates",
           "Microsoft Edge",
           "Profile settings",
           "Profile picker availability"
         ],
-        "missing": []
+        "missing": [
+          "Computer Configuration"
+        ]
       },
       {
         "index": 0,
@@ -694,11 +779,15 @@
         "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/browserguestmodeenabled",
         "reachable": true,
         "segments": [
+          "Computer Configuration",
+          "Policies",
           "Administrative Templates",
           "Microsoft Edge",
           "Enable guest mode"
         ],
-        "missing": []
+        "missing": [
+          "Computer Configuration"
+        ]
       },
       {
         "index": 1,
@@ -716,11 +805,15 @@
         "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/browseraddprofileenabled",
         "reachable": true,
         "segments": [
+          "Computer Configuration",
+          "Policies",
           "Administrative Templates",
           "Microsoft Edge",
           "Enable profile creation from the Identity flyout menu or the Settings page"
         ],
-        "missing": []
+        "missing": [
+          "Computer Configuration"
+        ]
       },
       {
         "index": 2,
@@ -734,5 +827,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-24",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

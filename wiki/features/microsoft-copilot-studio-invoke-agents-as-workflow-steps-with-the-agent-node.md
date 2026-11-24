@@ -104,7 +104,7 @@ controls:
     note: "No setting dedicated to the agent node is documented at the time of writing (November 2026). Data policy and Work IQ MCP policy are described below the table."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-21"
+updated: "2026-11-24"
 roadmapModified: "2026-11-17T00:31:56"
 changes:
   - date: "2026-11-16"
@@ -233,19 +233,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 94 statements confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 88 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 34
+  - date: "2026-11-24"
+    note: "Corrected after verification: the Learn page identifies success criteria for workflow agents as a preview capability, replacing the statement that it names no preview part."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 95 statements not yet confirmed"
+version: 35
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 34
+  version: 35
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 88
-  confirmed: 87
+  claims: 95
+  confirmed: 94
   unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "db1b35a2b330beafc15f7c9fca2fc2a6"
+  attempts: 0
+  hash: "6b2ef67f4b9baf893d7572b02a132956"
 ---
 
 ## What's changing
@@ -254,7 +258,7 @@ The agent node lets a maker hand one step of a Copilot Studio workflow to an AI 
 
 The node takes one of two forms. **An existing agent** is a published agent that runs with the instructions, tools and knowledge it already has. **New agent for this workflow** is an inline agent scoped to the workflow: its instructions, optional tools (Model Context Protocol (MCP) servers and any Power Platform connector action), optional knowledge (public websites or SharePoint) and its output shape are configured in the node and travel with the workflow. The agent decides at run time which attached tools to call, in what order and with what arguments. Two optional settings are documented: **Work IQ**, which lets the agent use the running user's recent work activity (mail, Teams, calendar, OneDrive and SharePoint context), and **Request human assistance when unsure**, which makes the agent email the connection owner and wait for a reply before continuing.
 
-The roadmap item shows status Launched, with a target date of September CY2026 and a preview date of April CY2026. It lists General Availability and Preview as release phases, Worldwide (Standard Multi-Tenant) as the cloud and Web as the platform. The Learn page for the node does not say which part of the feature is still in preview, so the extent of each phase is unclear.
+The roadmap item shows status Launched, with a target date of September CY2026 and a preview date of April CY2026. It lists General Availability and Preview as release phases, Worldwide (Standard Multi-Tenant) as the cloud and Web as the platform. The Learn page identifies success criteria for workflow agents as a preview capability, but does not map the roadmap release phases to every node capability.
 
 ## Why it matters
 
@@ -349,8 +353,9 @@ cost: Variable. The node's usage is billed in Copilot Credits, drawn from an env
 impact: Medium. Makers who build workflows notice it first; the people who feed or receive a workflow's output see decisions made by an agent instead of a fixed rule.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing: final paragraph / absence: The Learn page for the node does not say which part of the feature is still in preview. | Found: For a new agent created inside a workflow, use **Success criteria** in the node's **Configure** tab to define the outcomes you expect. Learn more in [Set success criteria for workflow agents (preview)](agent-success-criteria). | Fix: Replace 'The Learn page for the node does not say which part of the feature is still in preview, so the extent of each phase is unclear.' with 'The Learn page identifies success criteria for workflow agents as a preview capability, but does not map the roadmap release phases to every node capability.' The node page explicitly links to 'Set success criteria for workflow agents (preview)' at https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-success-criteria. | Source: https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] sources: Microsoft 365 Roadmap 566998 / behaviour: Roadmap item 566998 lists the same agent-node capability again. | Found: Invoke agents as workflow steps with the agent node [Web] ... Roadmap ID: 562222 ... Invoke agents as workflow steps with the agent node [Web] ... Roadmap ID: 566998 | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/release-notes#november-17,-2026 to sources as 'Microsoft 365 Copilot release notes', kind learn, to support the statement that the two roadmap IDs describe the same capability. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes#november-17,-2026
+- [contradicted, minor] Governance guidance: After rollout; controls / consistency: The checklist asks readers to review the Workflows-page Credit usage (last 30 days) column without a corresponding controls-table row. | Found: Review the Credit usage (last 30 days) column on the Workflows page and the Agent flow actions line in the Power Platform admin center each month. The consumption row lists only the Power Platform admin center and its API. | Fix: Replace that checklist bullet with 'Review the **Agent flow actions** line in the Power Platform admin center each month.' This removes the checklist control with no row without adding a new row.
 -->

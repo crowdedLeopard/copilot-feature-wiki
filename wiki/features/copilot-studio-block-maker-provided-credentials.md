@@ -46,6 +46,9 @@ sources:
   - title: "Licensing for agents powered by the standard harness"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing"
     kind: "learn"
+  - title: "Organization table/entity reference (Microsoft Dataverse)"
+    url: "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization"
+    kind: "learn"
 videos: []
 related: ["agent-identity"]
 controls:
@@ -55,8 +58,11 @@ controls:
       surface: "Power Platform admin center"
       path: "Manage > Environments (or Environment groups) > environment > Settings > Product > Features > Copilot Studio agents > Control maker credential options"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication"
-    api: null
-    note: "Environment Admin for one environment; Power Platform Administrator or Global Admin for environment groups. Takes effect immediately for all tools in scope."
+    api:
+      kind: "rest"
+      call: "PATCH /organizations(<organizationid>)"
+      docs: "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization"
+    note: "Admin UI: Environment Admin for one environment; Power Platform Administrator or Global Admin for groups. API: for a Dataverse environment, the request body sets blockcopilotauthorauthentication to true to prevent maker credential reuse."
   - governs: "Sharing of agents that embed maker credentials (environment)"
     scope: "environment"
     ui:
@@ -102,19 +108,23 @@ changes:
     note: "Corrected after verification: the maker-side Authentication path now runs Agents > agent > Tools > tool > Details > Authentication; licensing now reflects Copilot Studio's product-level access requirements; the Threat detection path ends at the setting."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 63 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 5
+  - date: "2026-11-24"
+    note: "Corrected after verification: the credential setting now lists its Dataverse automation, PATCH /organizations(<organizationid>) with blockcopilotauthorauthentication; the no-automation statement, question and checklist step are removed."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 66 statements confirmed"
+version: 6
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-24"
-  version: 5
+  version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 62
+  claims: 66
+  confirmed: 66
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "0b92719b39c99fe9105420013a8c7f91"
+  contradicted: 0
+  attempts: 0
+  hash: "c177eb1b7cca6788f37dc4fb76bc3617"
 ---
 
 ## What's changing
@@ -184,7 +194,6 @@ The known indirect costs are maker time to reconfigure tools and help desk time 
 ### After rollout
 - Check with makers whose tools were set to their own credentials, since they might be prompted to change them before publishing.
 - Record which environments still allow maker-provided credentials and why.
-- Re-check the Learn page for a documented API or PowerShell equivalent before scripting this.
 
 ## Governance controls
 
@@ -193,20 +202,19 @@ The known indirect costs are maker time to reconfigure tools and help desk time 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which credential types makers may choose for agent tools</strong><br><small>Environment</small><br><small class="controls__note">Environment Admin for one environment; Power Platform Administrator or Global Admin for environment groups. Takes effect immediately for all tools in scope.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments (or Environment groups) › environment › Settings › Product › Features › Copilot Studio agents › Control maker credential options <a href="https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which credential types makers may choose for agent tools</strong><br><small>Environment</small><br><small class="controls__note">Admin UI: Environment Admin for one environment; Power Platform Administrator or Global Admin for groups. API: for a Dataverse environment, the request body sets blockcopilotauthorauthentication to true to prevent maker credential reuse.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments (or Environment groups) › environment › Settings › Product › Features › Copilot Studio agents › Control maker credential options <a href="https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /organizations(&lt;organizationid&gt;)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Sharing of agents that embed maker credentials (environment)</strong><br><small>Environment</small><br><small class="controls__note">General control: governs sharing and publishing only, not run time, and does not unshare existing agents. Modes: All sharing allowed, Safe sharing enforced.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Features › Sharing agents with embedded maker credentials <a href="https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Sharing of agents that embed maker credentials (environment or group)</strong><br><small>Environment group</small><br><small class="controls__note">Preview: the Learn page is prerelease documentation and subject to change. Configurable per environment or per environment group.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Threat detection › Sharing agent with embedded maker credentials › Environment groups (or Environments) › group or environment › Set up › Don't let makers share agents with their own credentials embedded (recommended) <a href="https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which credential a given tool uses</strong><br><small>Agent</small><br><small class="controls__note">Maker-side. Learn says By default, user authentication applies.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Agents › agent › Tools › tool › Details › Authentication <a href="https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The first row is the control this item describes; the others are neighbours and are not substitutes. The credential option is a Power Platform admin center setting, and Learn documents no PowerShell, REST or CLI call for it at the time of writing (November 2026).
+The first row is the control this item describes; the others are neighbours and are not substitutes. For a Dataverse environment, the request body sets blockcopilotauthorauthentication to true to prevent maker credential reuse.
 
 The sharing control governs publishing and sharing, not run time, and does not retroactively unshare agents. The credential option, in contrast, changes how every tool in scope authenticates. The maker-side **Authentication** field is where the choice is made; once the admin setting is saved, tools in scope require end-user credentials at run time.
 
 ## Open questions
 
-- Will the credential option setting get a PowerShell, Power Platform API or pac CLI equivalent, so enforcement can be scripted across environments? Watch the Learn page.
 - Is there a way to exempt a single autonomous agent that needs a non-user identity, given that Learn documents no exception? Watch the Learn page and Message center.
 - When will the roadmap status move from In development, given that the August CY2026 target has passed and Learn documents the setting?
 - Does the setting reach other clouds? The roadmap lists only Worldwide (Standard Multi-Tenant).
@@ -215,10 +223,4 @@ The sharing control governs publishing and sharing, not run time, and does not r
 risk: High. The default allows both End-user and Maker-provided credentials, so agents can keep acting with a maker's access for every user until an admin restricts it.
 cost: Low. The setting's prerequisites name admin permissions and no licence; environment groups need Managed Environments, whose licensing is published. Admin and maker time is the known cost.
 impact: Medium. Makers lose an option, and users of affected agents are asked to sign in to connected services where needed; autonomous and scheduled agents fail.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls; Open questions; Governance guidance: After rollout / absence: Microsoft Learn documents no PowerShell, REST or CLI operation for preventing maker-provided tool credentials. | Found: Update ... PATCH /organizations(organizationid) ... Writable columns/attributes ... BlockCopilotAuthorAuthentication ... Prevent makers from allowing end-users to use their credentials during authentication to use connectors, actions, flows, and triggers that are connected to an agent | Fix: Set controls[0].api to kind 'rest', call 'PATCH /organizations(<organizationid>)', docs 'https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization'. Add to its note: 'For a Dataverse environment, the request body sets blockcopilotauthorauthentication to true to prevent maker credential reuse.' Replace the no-automation prose with that sentence and remove the question and checklist instruction premised on no documented operation. The reference lists this Boolean as writable, describes the restriction, and documents Update; https://learn.microsoft.com/power-platform/developer/cli/reference/env#pac-env-update-settings also documents updating organization settings by name. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization
 -->

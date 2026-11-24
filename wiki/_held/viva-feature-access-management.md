@@ -106,17 +106,19 @@ changes:
     note: "Corrected the opt-out control (the admin centre documents opt-out, not soft disable), aligned admin centre paths to Learn, replaced the licensing sentence with advice, and added the nested-group and PowerShell version details."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 85 statements confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 91 statements contradicted, 0 unconfirmed; taken offline until corrected"
 verification:
-  status: "verified"
-  date: "2026-11-21"
+  status: "held"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 85
-  confirmed: 85
+  claims: 91
+  confirmed: 90
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "c00dc73f679813d3d7267e7718765306"
 ---
 
@@ -194,3 +196,9 @@ Policy creation requires a supported version of Microsoft 365 or a Viva Suite li
 - What default state applies to each feature? The feature table does not list it.
 - Which operation names do VFAM policy changes record in the Microsoft Purview audit log? The VFAM pages point to the change logs without naming events.
 - Can the admin center set soft disable? The pages document it through PowerShell (`IsUserOptedInByDefault`), and the admin center page does not mention it.
+
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Governance controls: Roles / role: Running the cmdlets requires the Global Administrators role or the role assigned at feature level. | Found: Currently, you need to be a member of the Global Administrators role to run this cmdlet. | Fix: Replace the first Roles sentence with: 'Running Add-VivaModuleFeaturePolicy requires the Global Administrators role or a role assigned at feature level. The Get-VivaModuleFeatureEnablement reference requires the Global Administrators role.' Cite https://learn.microsoft.com/powershell/module/exchange/get-vivamodulefeatureenablement for the second sentence and add it to sources. | Source: https://learn.microsoft.com/powershell/module/exchange/get-vivamodulefeatureenablement
+-->

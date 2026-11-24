@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published. The roadmap item and the Learn sharing settings page name no licence or meter for expiry on main links."
+  model: "included"
+  notes: "SharePoint users need an assigned licence that includes SharePoint. OneDrive is included in Microsoft 365 and Office 365 plans and SharePoint plans, or purchased standalone. Licensing specific to main-link expiration is not yet published."
 audiences: ["m365-admin","security","compliance","change-adoption"]
 tags: ["sharing","sharing-limits","onedrive","sharepoint","oversharing","data-governance","policy","powershell","gcc","gcc-high","dod"]
 sources:
@@ -31,6 +31,12 @@ sources:
   - title: "Set-SPOTenant"
     url: "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant"
     kind: "learn"
+  - title: "OneDrive service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description"
+    kind: "learn"
+  - title: "SharePoint service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description"
+    kind: "learn"
   - title: "Microsoft 365 Roadmap: Expiration for access on sharing main links"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=571399"
     kind: "roadmap"
@@ -41,7 +47,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "SharePoint admin center"
-      path: "Policies > Sharing"
+      path: "Policies > Sharing > Advanced settings for \"Anyone\" links > Link expiration"
       docs: "https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off"
     api:
       kind: "powershell"
@@ -58,7 +64,7 @@ controls:
     note: "General control: Learn does not confirm it governs main-link expiry. SharePoint Online administrator role. Admin centre setting not yet documented."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-24"
 roadmapModified: "2026-11-04T23:59:50"
 changes:
   - date: "2026-11-17"
@@ -67,19 +73,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 61 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected after verification: removed an unsupported claim about how files stay shared, aligned the impact rationale with the body, extended the Anyone-link admin path, added the SharePoint and OneDrive licence statement, and removed a checklist bullet that pointed to the wrong table row."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 63 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 58
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "6253500797f0f23af9262ca70caf2c5a"
+  claims: 63
+  confirmed: 63
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "caa111f7a8c8a38e7712119a7a92cc8c"
 ---
 
 ## What's changing
@@ -92,7 +102,7 @@ The roadmap lists the item as In development, with a target of February CY2027, 
 
 ## Why it matters
 
-Expiry on the main link would give administrators a way to limit how long a link keeps granting access, which is the usual route by which files stay shared after the work that needed them has finished. Learn notes that a link of the **Anyone** type can be forwarded and that anonymous use cannot be audited to a named user, and that a **People in your organization** link can be forwarded to other members of the directory, so a time limit narrows that exposure.
+Expiry on the main link would give administrators a way to limit how long a link keeps granting access. Learn notes that a link of the **Anyone** type can be forwarded and that anonymous use cannot be audited to a named user, and that a **People in your organization** link can be forwarded to other members of the directory, so a time limit narrows that exposure.
 
 Microsoft has not stated what happens on arrival if nobody acts, and no source says existing links will change. Plan on today's behaviour continuing until you set a policy, and use the lead time to decide a maximum duration for each link type and for OneDrive versus SharePoint, because the roadmap says the settings are separate.
 
@@ -113,7 +123,7 @@ Microsoft has not stated what happens on arrival if nobody acts, and no source s
 
 ## Cost and licensing
 
-No licence, price or meter is published for this feature. The roadmap item names none, and the Learn page on managing sharing settings for SharePoint and OneDrive ("Manage sharing settings for SharePoint and OneDrive in Microsoft 365") gives admin roles and settings without naming a licence for link expiration. Not yet published: whether any plan or add-on is required.
+SharePoint users need an assigned licence that includes SharePoint. OneDrive is included in Microsoft 365 and Office 365 plans and SharePoint plans, or purchased standalone. Licensing specific to main-link expiration is not yet published: the roadmap item names none, and the Learn page on managing sharing settings for SharePoint and OneDrive ("Manage sharing settings for SharePoint and OneDrive in Microsoft 365") gives admin roles and settings without naming a licence for link expiration.
 
 The cost the sources do show is admin time: choosing maximum durations, setting them in OneDrive and SharePoint separately, and telling users that links will lapse.
 
@@ -126,7 +136,6 @@ The roadmap says the user-facing expiry applies to **Anyone** and **People in yo
 ## Governance guidance
 
 ### Before rollout
-- Inventory which of your tenant's sharing settings allow **Anyone** links and what link type your teams use by default, in the SharePoint admin center (first row of the controls table).
 - Decide a maximum duration for each link type and for OneDrive and SharePoint separately, then compare it with the values the existing Set-SPOTenant parameters accept (second row of the controls table).
 - Draft user communication that explains that main-link access can lapse, and who to ask to restore it.
 
@@ -146,7 +155,7 @@ The roadmap says the user-facing expiry applies to **Anyone** and **People in yo
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Maximum lifetime of Anyone links, for SharePoint sites and OneDrive</strong><br><small>Tenant</small><br><small class="controls__note">General control: Learn does not confirm it governs main-link expiry. The admin centre page documents a Link expiration setting under advanced settings for Anyone links. SharePoint admin role.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Policies › Sharing <a href="https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -CoreAnyoneSharingLinkMaxExpirationInDays &lt;1-730&gt; -OneDriveAnyoneSharingLinkMaxExpirationInDays &lt;1-730&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Maximum lifetime of Anyone links, for SharePoint sites and OneDrive</strong><br><small>Tenant</small><br><small class="controls__note">General control: Learn does not confirm it governs main-link expiry. The admin centre page documents a Link expiration setting under advanced settings for Anyone links. SharePoint admin role.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Policies › Sharing › Advanced settings for &quot;Anyone&quot; links › Link expiration <a href="https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -CoreAnyoneSharingLinkMaxExpirationInDays &lt;1-730&gt; -OneDriveAnyoneSharingLinkMaxExpirationInDays &lt;1-730&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Maximum lifetime of organisation sharing links, for SharePoint sites and OneDrive</strong><br><small>Tenant</small><br><small class="controls__note">General control: Learn does not confirm it governs main-link expiry. SharePoint Online administrator role. Admin centre setting not yet documented.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -CoreOrganizationSharingLinkMaxExpirationInDays &lt;7-720&gt; -OneDriveOrganizationSharingLinkMaxExpirationInDays &lt;7-720&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -168,16 +177,5 @@ The admin centre page documents an expiry setting for **Anyone** links only. Mic
 <!-- rationale
 risk: Low. This is a new control, and no source says existing links or sharing behaviour change until an administrator sets a policy; the default is not stated.
 cost: Low. The only cost the sources show is admin time to set and communicate a policy; the roadmap item and the Learn sharing settings page name no licence or meter.
-impact: Medium. People who share files in OneDrive and SharePoint would see an expiry option, and recipients lose access when an enforced maximum duration passes.
--->
-
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters: first paragraph / behaviour: A link continuing to grant access is the usual route by which files stay shared after the work requiring sharing has finished. | Found: Searched: SharePoint OneDrive sharing links usual primary cause files remain shared after work finished oversharing. Read the returned Plan sharing and collaboration options excerpt and hero-link guidance; neither establishes this as the usual route. | Fix: Remove ', which is the usual route by which files stay shared after the work that needed them has finished' from the first sentence of Why it matters.
-- [contradicted, blocker] rationale: impact; Risk assessment: Data exposure / consistency: The impact rationale says recipients lose access when the enforced maximum passes, while the body says main-link expiry does not remove access granted another way. | Found: recipients lose access when an enforced maximum duration passes. / expiry of the main link does not by itself remove access granted another way. The roadmap says directly granted permissions are preserved. | Fix: Replace the impact rationale with: 'Medium. People who share files in OneDrive and SharePoint would see an expiry option, and access granted through the main link expires when an enforced maximum duration passes; directly granted permissions are preserved.' This preserves the roadmap's distinction between main-link access and other access.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls / admin-path: SharePoint admin center > Policies > Sharing leads to the page containing the Anyone-link maximum-expiration setting. | Found: In the SharePoint admin center, expand Policies, and then select Sharing. ... Advanced settings for "Anyone" links ... Link expiration - You can require all Anyone links to expire, and specify the maximum number of days allowed. | Fix: Extend controls[0].ui.path and its rendered table entry to 'Policies > Sharing > Advanced settings for "Anyone" links > Link expiration', as documented at https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off. | Source: https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off
-- [supported, minor] front matter: licensing.model; Cost and licensing; Open questions / licensing: Licensing is unknown because no license specific to main-link expiration has been published. | Found: OneDrive for work and school accounts is online storage space in the cloud that's provided for individual licensed users in an organization. ... OneDrive is included in Microsoft 365 and Office 365 plans, in SharePoint plans | Fix: Set licensing.model to 'included'. Replace the notes and the licensing paragraph with: 'SharePoint users need an assigned license that includes SharePoint. OneDrive is included in Microsoft 365 and Office 365 plans and SharePoint plans, or purchased standalone. Licensing specific to main-link expiration is not yet published.' Cite https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-service-description and https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description; retain the open question about feature-specific requirements. | Source: https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description
-- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: The checklist points to the first controls-table row for inventorying Anyone-link availability and default link types, but that row governs expiration instead. | Found: Inventory which of your tenant's sharing settings allow Anyone links and what link type your teams use by default ... (first row of the controls table). / Maximum lifetime of Anyone links, for SharePoint sites and OneDrive | Fix: Remove the first Before rollout bullet: its external-sharing and default-link-type controls have no corresponding table rows, and the first row covers expiration. Do not add rows as part of this correction.
+impact: Medium. People who share files in OneDrive and SharePoint would see an expiry option, and access granted through the main link expires when an enforced maximum duration passes; directly granted permissions are preserved.
 -->

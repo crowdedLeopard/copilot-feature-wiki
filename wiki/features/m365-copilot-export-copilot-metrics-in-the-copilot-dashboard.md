@@ -90,15 +90,17 @@ changes:
     note: "Correction: removed an unsupported sentence about whether disabling dashboard auto-enablement affects access assigned by admins or delegates."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 90 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 82 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 90
-  confirmed: 88
+  claims: 82
+  confirmed: 80
   unconfirmed: 0
   contradicted: 2
   attempts: 0
@@ -203,11 +205,11 @@ cost: Low. The only cost the sources show is admin time to review access and bri
 impact: Medium. Only people with company-level Copilot Dashboard access see the export option: senior leaders, admin-assigned users, delegates, analysts and Global Administrators. Managers with team-level views do not.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui / admin-path: The export policy is configured through Viva > Settings > Manage feature access > Create a policy > Access setting, with the note directing selection of Viva Insights and Copilot Metrics Export. | Found: Select Create a policy. ... Name the policy and select the app and feature for which you'd like to set the policy. ... Select the Access setting option and choose On or Off | Fix: Make the app and feature selection currently given in the note explicit in the route: 'Viva > Settings > Manage feature access > Create a policy > Viva Insights > Copilot Metrics Export > Access setting'. Keep the existing note that Learn calls the setting User-level export and insights. | Source: https://learn.microsoft.com/viva/control-access-admin-center
-- [supported, minor] controls[1].ui / admin-path: The web app policy uses Viva > Settings > Manage feature access > Create a policy > Access setting, with the note directing selection of the Viva Insights web app feature. | Found: Select Create a policy. ... Name the policy and select the app and feature for which you'd like to set the policy. ... Select the Access setting option and choose On or Off | Fix: Make the app and feature selection currently given in the note explicit in the route: 'Viva > Settings > Manage feature access > Create a policy > Viva Insights > Viva Insights web app > Access setting'. | Source: https://learn.microsoft.com/viva/control-access-admin-center
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist asks readers to check dashboard audit activities and VFAM change logs, but neither audit surface has a controls-table row. | Found: Review changes to dashboard access in the audit log ... Check the VFAM change logs in Microsoft Purview ... The controls table contains only the export policy and Viva Insights web app policy. | Fix: The two After rollout audit-check bullets have no corresponding controls-table row. Remove those checklist bullets; retain any audit background outside the checklist if desired. Do not add a control row as part of this correction.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks readers to take stock of company-level dashboard access assignments, but the table does not cover those assignments. | Found: List who holds company-level Copilot Dashboard access ... The table covers whether users can export and whether the whole web app is on; the prose says 'Who holds company-level access is decided elsewhere.' | Fix: The Before rollout access-assignment inventory step has no corresponding controls-table row. Remove it from the checklist and retain the already-supported Microsoft recommendation as background prose, without adding a row.
+- [supported, minor] controls[0].ui / admin-path: The export policy route is Viva > Settings > Manage feature access > Create a policy > Access setting, with the note directing selection of Viva Insights and Copilot Metrics Export. | Found: Select Create a policy. ... Name the policy and select the app and feature for which you'd like to set the policy. ... Select the Access setting option and choose On or Off | Fix: Include the app and feature selection already given in the note in the route: 'Viva > Settings > Manage feature access > Create a policy > Viva Insights > Copilot Metrics Export > Access setting'. Retain the note that Learn calls the setting User-level export and insights. See https://learn.microsoft.com/viva/control-access-admin-center. | Source: https://learn.microsoft.com/viva/control-access-admin-center
+- [supported, minor] controls[1].ui / admin-path: The web app policy route is Viva > Settings > Manage feature access > Create a policy > Access setting, with the note directing selection of the Viva Insights web app feature. | Found: Select Create a policy. ... Name the policy and select the app and feature for which you'd like to set the policy. ... Select the Access setting option and choose On or Off | Fix: Include the app and feature selection already given in the note in the route: 'Viva > Settings > Manage feature access > Create a policy > Viva Insights > Viva Insights web app > Access setting'. See https://learn.microsoft.com/viva/control-access-admin-center. | Source: https://learn.microsoft.com/viva/control-access-admin-center
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist directs administrators to inventory company-level dashboard access without a corresponding control row. | Found: List who holds company-level Copilot Dashboard access ... Who holds company-level access is decided elsewhere. ... The table covers export policies and the Viva Insights web app policy. | Fix: Remove the Before rollout bullet beginning 'List who holds company-level Copilot Dashboard access'. The access-assignment inventory has no corresponding controls-table row. Retain the supported Microsoft recommendation as background prose if desired; do not add a row in this correction.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist directs readers to check dashboard access audit activities and VFAM change logs without corresponding control rows. | Found: Review changes to dashboard access in the audit log ... Check the VFAM change logs in Microsoft Purview ... The controls table contains only export and web app policies. | Fix: Remove the After rollout bullets beginning 'Review changes to dashboard access in the audit log' and 'Check the VFAM change logs in Microsoft Purview'. Neither audit-check step has a controls-table row. Retain the supported audit background outside the checklist if desired; do not add rows in this correction.
 -->

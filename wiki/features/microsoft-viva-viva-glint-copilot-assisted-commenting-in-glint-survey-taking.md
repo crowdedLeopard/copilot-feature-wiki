@@ -65,15 +65,17 @@ changes:
     note: "Corrected after verification: removed the controls-table row that gave the existing Copilot in Viva Glint pane's path as the Survey Taking setting's location, which Microsoft does not document."
   - date: "2026-11-22"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 55 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 59 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-22"
+  date: "2026-11-24"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 54
+  claims: 59
+  confirmed: 58
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -173,8 +175,8 @@ cost: Low. The only cost the pages show is admin time and communications. Learn 
 impact: Low. Nobody sees the feature until an administrator turns the setting on; after that, the people who notice are survey takers who write comments.
 -->
 
-<!-- verifier-findings (2026-11-22, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: At rollout and After rollout; Governance controls / consistency: The checklist tells readers to enable and review the Survey Taking access setting without a matching controls-table row. | Found: Turn on the Copilot in Viva Glint Survey Taking setting for the pilot users or groups in the Microsoft 365 admin center. / Microsoft documents the setting but does not give its exact navigation path, so the table has no row for it | Fix: The At rollout step beginning 'Turn on the Copilot in Viva Glint Survey Taking setting' and the After rollout step beginning 'Review the scope' name an access control with no table row. Remove those checklist directives; retain the documented setting and navigation gap in Governance controls.
+- [contradicted, minor] Governance guidance: At rollout and After rollout; Governance controls / consistency: The checklist directs readers to enable and subsequently adjust the Survey Taking access setting, but the controls table has no matching row. | Found: Turn on the Copilot in Viva Glint Survey Taking setting for the pilot users or groups in the Microsoft 365 admin center. / Review the scope and widen or narrow it using the same setting / Microsoft documents the setting but does not give its exact navigation path, so the table has no row for it | Fix: Remove the At rollout bullet beginning 'Turn on the Copilot in Viva Glint Survey Taking setting' and the After rollout bullet beginning 'Review the scope'. They direct readers to configure an access control with no table row. Retain the documented setting and its navigation gap in Governance controls.
 -->

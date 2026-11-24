@@ -86,15 +86,17 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 97 statements not yet confirmed"
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 105 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 89 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
+  date: "2026-11-24"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 105
-  confirmed: 105
+  claims: 89
+  confirmed: 89
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -205,10 +207,12 @@ cost: Low. No separate price for the export is published; the notice requires at
 impact: Low. Only users with full company-level Agent Dashboard access can export; Microsoft says group managers limited to their own teams will not have access.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: Learn export description / behaviour: Learn documents week-level data for up to six months. | Found: Up to the past six months, subject to Agent 365 data availability | Fix: Qualify only the Learn export description as 'week-level data for up to six months, subject to Agent 365 data availability'. Keep the separately attributed notice's six-month statement unchanged. | Source: https://learn.microsoft.com/viva/insights/org-team-insights/export-agent-data
-- [supported, minor] What's changing: Learn export description / behaviour: Learn documents day-level data for up to 28 days. | Found: Up to the past 28 days of data, subject to Agent 365 data availability | Fix: Qualify the Learn export description as 'day-level data for up to 28 days, subject to Agent 365 data availability'. | Source: https://learn.microsoft.com/viva/insights/org-team-insights/export-agent-data
-- [supported, minor] controls[1].ui; Governance controls: second row / admin-path: The identification row uses the generic documented Viva > Settings > Manage feature access > Create a policy > app and feature > Access setting > Apply access settings to route. | Found: select Viva from the settings menu. ... Select the Settings tab and select Manage feature access. ... Select Create a policy. ... select the app and feature ... Select the Access setting ... under Apply access settings to. | Fix: Add to controls[1].note: 'Microsoft's identification overview gives alternative navigation: Settings > Viva > Feature access management; its methods table instead gives Settings > Org settings > Viva feature access (https://learn.microsoft.com/viva/insights/identification-copilot-analytics).' Keep the route supported by the cited generic policy guide. | Source: https://learn.microsoft.com/viva/control-access-admin-center
+- [supported, minor] What's changing: Learn week-level export / behaviour: Learn documents week-level export data for up to six months. | Found: Up to the past six months, subject to Agent 365 data availability | Fix: Qualify the Learn export description as 'week-level data for up to six months, subject to Agent 365 data availability'. Keep the separately attributed notice's six-month statement unchanged. | Source: https://learn.microsoft.com/viva/insights/org-team-insights/export-agent-data
+- [supported, minor] What's changing: Learn day-level export / behaviour: Learn documents day-level export data for up to 28 days. | Found: Up to the past 28 days of data, subject to Agent 365 data availability | Fix: Qualify the Learn export description as 'day-level data for up to 28 days, subject to Agent 365 data availability'. | Source: https://learn.microsoft.com/viva/insights/org-team-insights/export-agent-data
+- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown, qualified as no separate export licence published. | Found: Copilot Agent Dashboard: Your organization must have at least 50 Microsoft Copilot licenses assigned and have agent activity. | Fix: Set licensing.model to 'included': the Copilot Agent Dashboard's product-level licensing requirement is published. Retain the notes naming the notice's minimum of 50 Microsoft 365 Copilot licenses and the separately scoped Agent 365 requirement; retain the narrower uncertainty about a separate export price. | Source: https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard
+- [supported, minor] controls[1].ui / admin-path: The identification row uses the generic documented Viva > Settings > Manage feature access > Create a policy > app and feature > Access setting > Apply access settings to route. | Found: select Viva from the settings menu. ... Select the Settings tab and select Manage feature access. ... Select Create a policy. ... select the app and feature ... Select the Access setting ... under Apply access settings to. | Fix: Add to controls[1].note: 'Microsoft's identification overview gives alternative navigation: Settings > Viva > Feature access management; its methods table instead gives Settings > Org settings > Viva feature access (https://learn.microsoft.com/viva/insights/identification-copilot-analytics).' Keep the route supported by the generic policy guide. | Source: https://learn.microsoft.com/viva/control-access-admin-center
+- [supported, minor] controls[1].api / command: Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId <featureId> -Name <policyName> -IsFeatureEnabled $true -Everyone creates a tenant-wide policy enabling the selected identifiable-export feature. | Found: The IsFeatureEnabled parameter specifies whether or not the feature is enabled by the policy. Valid values are: $true: The feature is enabled by the policy. ... The Everyone switch specifies that the policy applies to all users in the organization. | Fix: Set controls[1].api.docs to 'https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy' and cite that cmdlet reference in sources; it explicitly documents the $true value and all printed parameters. Keep the call unchanged. | Source: https://learn.microsoft.com/en-us/powershell/module/exchange/add-vivamodulefeaturepolicy
 -->

@@ -40,6 +40,9 @@ sources:
   - title: "copilotPackage: block"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
     kind: "learn"
+  - title: "Manage agents in the Microsoft 365 admin center"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/manage-copilot-agents-integrated-apps"
+    kind: "learn"
 videos: []
 related: ["planner-planner-agent-in-copilot-v2-improvements","m365-copilot-planner-capabilities-in-copilot-chat-m365-copilot","planner-planner-agent-chat-in-basic-plans","planner-capabilities-in-microsoft-cowork","agent-registry"]
 controls:
@@ -71,19 +74,23 @@ changes:
     note: "First briefing for roadmap item 516576: Launched status, Microsoft Copilot licence requirement, and the two documented ways to restrict Planner Agent."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 48 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected how a security group ID and AllowPlannerCopilot interact, and removed the audit log checklist bullet that had no control row."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 48 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 48
-  confirmed: 46
+  confirmed: 48
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "74eb64559469d3d69ada660739b916ab"
+  contradicted: 0
+  attempts: 0
+  hash: "d31e6a2c7aa5db0dff73e0892b3836c4"
 ---
 
 ## What's changing
@@ -146,7 +153,6 @@ Roles: the Planner tenant admin PowerShell commands need a global admin, accordi
 ### After rollout
 - Run Get-PlannerConfiguration to confirm AllowPlannerCopilot and the group ID.
 - Check the Facilitator document authoring skill still behaves as intended if you turned Planner Agent off.
-- Watch Planner Premium audit log activities, which Learn says Planner Agent plans to match.
 
 ## Governance controls
 
@@ -162,7 +168,7 @@ Roles: the Planner tenant admin PowerShell commands need a global admin, accordi
 
 The Planner PowerShell setting and the Microsoft 365 admin center block are different controls. Learn scopes the PowerShell page to Planner Agent in Planner and points to the Microsoft 365 admin center for managing the Planner Agent in Microsoft Copilot, so do not assume the first covers the second.
 
-Planner PowerShell: a valid security group ID turns the feature on for those users only, and an invalid one turns it off for all users. The Package Management API behind the block call requires a Microsoft Agent 365 licence and is beta.
+Planner PowerShell: when AllowPlannerCopilot is $true, a valid security group ID restricts access to that group's users, including nested members; an invalid group ID denies access to all users. $false disables access regardless of the group ID. The Package Management API behind the block call requires a Microsoft Agent 365 licence and is beta.
 
 ## Open questions
 
@@ -177,11 +183,8 @@ cost: Low. Learn says users with a Microsoft Copilot licence get Planner Agent a
 impact: Medium. Microsoft Copilot licensed users who work in Planner plans are the people who see it; unlicensed users are not named as users of it on the pages read.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: final paragraph / behaviour: A valid security group ID turns the feature on for those users only. | Found: | $false | Not applicable | 'OFF' for all users | | $true | valid security group ID | 'ON' for users in the security group only (or nested members) | | Fix: Replace the sentence with: 'Planner PowerShell: when AllowPlannerCopilot is $true, a valid security group ID restricts access to that group's users, including nested members; an invalid group ID denies access to all users.' The behavior matrix at https://learn.microsoft.com/planner/turn-off-planner-agent also states that $false disables access regardless of the group ID. | Source: https://learn.microsoft.com/planner/turn-off-planner-agent
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].note; controls[1].note; Governance controls; Governance guidance: At rollout / applicability: The Planner page directs admins to Microsoft 365 agent management for Planner Agent in Microsoft Copilot, separately from its Planner PowerShell instructions. | Found: For information on how to manage the Planner Agent in Microsoft Copilot, please see Manage agents in the Microsoft 365 admin center. | Fix: Add https://learn.microsoft.com/microsoft-agent-365/admin/manage-copilot-agents-integrated-apps to sources with title 'Manage agents in the Microsoft 365 admin center'. This is the intervening page linked by the Planner article; it identifies Microsoft agents as manageable and links to agent governance. | Source: https://learn.microsoft.com/planner/turn-off-planner-agent
-- [contradicted, minor] Governance guidance: After rollout; controls / consistency: The checklist tells readers to watch Planner Premium audit log activities, but the controls table has no audit row. | Found: Watch Planner Premium audit log activities, which Learn says Planner Agent plans to match. The controls table lists only Planner availability and organisation-wide agent blocking. | Fix: Remove the 'Watch Planner Premium audit log activities' checklist bullet: it has no corresponding control row, and the cited Planner Agent page describes matching auditing as planned. Keep the existing audit question in Open questions.
+- [supported, minor] Scope / availability: The turn-off page documents Planner Agent in both basic and premium plans. | Found: the Planner Agent experience for task execution and status reporting in both basic and premium plans | Fix: Add to the Scope sentence: 'The Planner admin overview now calls basic plans unified plans.' Cite https://learn.microsoft.com/planner/planner-for-admins, which states 'Basic plans are now unified plans.' Keep the turn-off page's documented basic/premium scope. | Source: https://learn.microsoft.com/planner/turn-off-planner-agent
 -->

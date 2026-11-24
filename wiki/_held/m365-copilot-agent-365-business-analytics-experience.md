@@ -145,18 +145,20 @@ changes:
     note: "Correction after verification: licensing model changed to not yet published, with a note that the app's inclusion or separate licensing terms are not explicitly stated."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 98 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 107 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-24"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 98
-  confirmed: 98
+  claims: 107
+  confirmed: 105
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "bb1791c6f26ec061b5861e8ae5844189"
 ---
 
@@ -255,8 +257,12 @@ cost: Low. The only cost the sources show is admin time. The Frontier preview re
 impact: Medium. Executives, general managers and managers of larger teams are the audience.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: licensing.model; licensing.notes; Open questions / licensing: The app's licensing model is unknown and Microsoft has not explicitly stated its inclusion or separate licensing terms. | Found: The tenant must have at least 50 Copilot licenses assigned. An Agent 365 license is not required to access the app but is required to view data on third party agents. | Fix: Set licensing.model to "mixed" and replace the licensing notes with: "The Frontier preview requires at least 50 assigned Copilot licences in the tenant. An Agent 365 licence is not required to access the app but is required to view third-party agent data. Spending policies are a prerequisite for usage-based cost insights; the introduction specifies no separate app price." Add the Agent 365 licence distinction to Cost and licensing and narrow Open questions to future general-availability changes. Cite https://learn.microsoft.com/a365-business-analytics/introduction and https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365, whose table distinguishes included Microsoft-service analytics from premium non-Microsoft analytics. | Source: https://learn.microsoft.com/a365-business-analytics/introduction
+- [contradicted, blocker] rationale: cost; front matter: cost / cost: The only cost the sources show for this app is administration time. | Found: An Agent 365 license is not required to access the app but is required to view data on third party agents. | Fix: Replace the cost rationale with: "Low for core app access in a tenant meeting the 50-assigned-Copilot-licence prerequisite: allow for administration and finance time. The preview does not require an Agent 365 licence to access the app, but viewing third-party agent data requires that licence; the introduction specifies no separate app price." Retain low only with that core-access qualification, and include the same licence distinction in Cost and licensing. Cite https://learn.microsoft.com/a365-business-analytics/introduction. | Source: https://learn.microsoft.com/a365-business-analytics/introduction
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: cost; rationale: cost; Cost and licensing / cost: The low cost rating reflects known indirect administration effort, while no separate app price is specified. | Found: Tenant must have at least 50 Copilot licenses assigned. Spending policies for usage-based services must be set up for users to use these services and get cost insights. Admins can assign access and set up partitions | Fix: Append this sentence to the cost rationale: "The app's inclusion or separate licensing terms are not yet published." This makes the rationale explicitly state the licensing uncertainty, as required by the cost scale; retain the documented 50-assigned-Copilot-licence prerequisite. | Source: https://learn.microsoft.com/a365-business-analytics/introduction
+- [supported, minor] front matter: clouds; What's changing; Scope; Open questions / record: The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD. | Found: "clouds": ["Worldwide (Standard Multi-Tenant)", "GCC", "GCC High", "DoD"] | Fix: Retain the roadmap cloud list. Add to Scope: "The Microsoft Agent 365 service description separately lists GCC availability as No for the Business Analytics Frontier public preview features; the roadmap still lists GCC among its planned clouds." Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Business Analytics > Manage > Access management reaches access, export, identification and data-scope management. | Found: In Business Analytics, on the left, under Manage, select Access management. ... The home page provides entry points for managing access policies, permission sets, and partitions. | Fix: Retain the path to the management home page and append to controls[0].note: "To change export or identification, continue through Permission sets > Manage > permission set and edit its capability settings. To edit a custom access policy, select its Actions > Edit on the Access management home page." These continuations are documented at https://learn.microsoft.com/a365-business-analytics/manage/access. | Source: https://learn.microsoft.com/a365-business-analytics/manage/access
 -->

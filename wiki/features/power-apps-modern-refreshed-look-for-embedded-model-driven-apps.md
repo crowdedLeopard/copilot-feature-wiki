@@ -71,15 +71,17 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 45 statements not yet confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 48 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 54 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-24"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 47
+  claims: 54
+  confirmed: 53
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -174,9 +176,9 @@ cost: Low. Model-driven app users already need a licence with Power Apps premium
 impact: Medium. Users of model-driven app content shown inside another host on the semiannual channel see a different look without choosing it; the roadmap lists the feature scope as Users (always enabled).
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] rationale: risk / behaviour: Learn says the modern-look change does not affect data or permissions. | Found: There is no impact on app logic, data, or permissions. | Fix: Add https://learn.microsoft.com/power-platform/important-changes-coming#deprecation-of-the-classic-look-for-model-driven-apps to sources for the risk rationale's statement that Learn says the modern look does not change data or permissions. | Source: https://learn.microsoft.com/power-platform/important-changes-coming#deprecation-of-the-classic-look-for-model-driven-apps
+- [supported, minor] rationale: risk / behaviour: Learn says the modern-look change does not affect data. | Found: There is no impact on app logic, data, or permissions. | Fix: Add https://learn.microsoft.com/power-platform/important-changes-coming#deprecation-of-the-classic-look-for-model-driven-apps to sources for the risk rationale's statement that Learn says the modern look does not change data or permissions. | Source: https://learn.microsoft.com/power-platform/important-changes-coming#deprecation-of-the-classic-look-for-model-driven-apps
 - [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: Every control the governance checklist asks readers to inspect appears in the controls table. | Found: Check whether any app or user in those environments overrides the environment channel; see the note under the table for the order Learn gives. The controls table contains only the environment release channel. | Fix: Remove the Before rollout bullet beginning 'Check whether any app or user in those environments overrides the environment channel'; the app and user override checks have no corresponding controls-table rows. Retain the explanatory qualifications below the table.
 -->

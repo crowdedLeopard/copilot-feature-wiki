@@ -110,19 +110,23 @@ changes:
     note: "New briefing for the GCC, GCC High and DoD roadmap item; covers the Exchange Priority cleanup roles, approvers, licences and audit controls."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 91 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected: approver role requirements for all three stages and the licence statement now follow Learn; removed a checklist step with no controls row and an answered open question."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 80 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 91
-  confirmed: 86
+  claims: 80
+  confirmed: 80
   unconfirmed: 0
-  contradicted: 5
-  attempts: 1
-  hash: "61346df18a3a04ef7c9f3c771fc45ab1"
+  contradicted: 0
+  attempts: 0
+  hash: "2981d7f097be024ee63aff32a8902db9"
 ---
 
 ## What's changing
@@ -151,7 +155,7 @@ Microsoft has not stated what the default is in these clouds. The Learn page say
 
 **Security & identity**
 
-- Learn requires the Priority Cleanup Admin role to create policies, turn the feature on or off and give first-stage approval. The role is added automatically to the Organization Management role group, so anyone in that group can reach it without further assignment.
+- Learn requires the Priority Cleanup Admin role to create policies, turn the feature on or off and give first-stage approval. The first-stage approver needs Priority Cleanup Admin, Data Classification Content Viewer, Data Classification List Viewer and Disposition Management, assigned before policy creation. The Priority Cleanup Admin role is added automatically to the Organization Management role group, so anyone in that group can reach it without further assignment.
 - Learn requires three approvals for every item: a priority cleanup admin, a retention manager and an eDiscovery admin. It says the first-stage admin should be a different person from the policy creator but that this is not enforced, so separation of duties is a procedure to set.
 - Learn says approvers must be individual users and mail-enabled security groups are not supported.
 
@@ -167,7 +171,7 @@ Microsoft has not stated what the default is in these clouds. The Learn page say
 
 ## Cost and licensing
 
-Microsoft's Purview service description says that to use the Priority cleanup policy to apply labels that bypass existing retention or eDiscovery holds, the following licences provide user rights: Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW, Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection and Governance, and Office 365 E5/A5/G5. The page does not say whether the licence is needed by the administrators, the approvers or the users whose mailboxes are in scope.
+Microsoft's Purview service description says that to use the Priority cleanup policy to apply labels that bypass existing retention or eDiscovery holds, the following licences provide user rights: Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW, Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection and Governance, and Office 365 E5/A5/G5. Any user benefiting from the service requires a licence, including users with a Purview role assigned for portal use and the users associated with Exchange user mailboxes where a Purview policy or feature is used.
 
 No meter, price or storage charge for Priority cleanup is documented on the feature page or in the service description at the time of writing (November 2026). The indirect cost is people's time: Learn requires three approver stages, each with its own set of roles, and the policy creation fails if an approver lacks them.
 
@@ -199,7 +203,6 @@ Learn says the tenant-level control covers SharePoint and OneDrive as well as Ex
 ### After rollout
 
 - Search the audit log for the PriorityCleanupTagApplied and PriorityCleanupDelete operations and the Cleanup ID.
-- Review approvals on the Pending cleanups page and brief approvers that Relabel with an existing retention label is the alternative to approving disposal.
 - Re-read the Learn page when the roadmap status changes, because it is marked as preview.
 
 ## Governance controls
@@ -219,13 +222,12 @@ Learn says the tenant-level control covers SharePoint and OneDrive as well as Ex
 
 The tenant-level control is the only documented switch that stops new policies. It leaves existing policies running and deletable, but not modifiable, per Learn. It is shared with SharePoint and OneDrive.
 
-Roles are the main safeguard: Priority Cleanup Admin creates policies and gives first approval; Retention Management and the eDiscovery Administrator role cover the other approver stages. Learn does not enforce a different person for the creator and the first-stage approver. The portal route for audit search is the one Learn points to for monitoring. Microsoft Learn documents no API or PowerShell setting for the tenant switch at the time of writing (November 2026).
+Roles are the main safeguard. The first-stage approver needs Priority Cleanup Admin, Data Classification Content Viewer, Data Classification List Viewer and Disposition Management, assigned before policy creation. Retention approvers need Retention Management, Data Classification Content Viewer, Data Classification List Viewer and Disposition Management, assigned before policy creation. The policy wizard names eDiscovery Administrator, while Learn's detailed approver requirements list Search And Purge, Hold, Review, Data Classification Content Viewer, Data Classification List Viewer and Disposition Management; assign the listed requirements before policy creation. Learn does not enforce a different person for the creator and the first-stage approver. The portal route for audit search is the one Learn points to for monitoring. Microsoft Learn documents no API or PowerShell setting for the tenant switch at the time of writing (November 2026).
 
 ## Open questions
 
 - Is Priority cleanup for Exchange available in GCC, GCC High and DoD on the date the roadmap targets (November CY2026), and does the Learn page's preview note apply there? Watch Message center and the Learn page.
 - Is the tenant-level control on or off on arrival in these clouds? The Learn page says enabled by default, without naming clouds.
-- Whose licence is needed: the admins, the approvers or the users in scope? The service description says only that listed licences provide user rights.
 - Why does the roadmap describe a recurring exception while Learn lists Exchange use as rare? Confirm whether policies in these clouds can recur.
 - How does the feature in these clouds differ from the Worldwide roadmap item 392838, which targets January CY2027?
 
@@ -235,14 +237,9 @@ cost: Medium. Microsoft's service description lists Microsoft 365 E5/A5/G5 and s
 impact: Low. Priority cleanup admins and approvers handle it; end users see a Retention message bar in Outlook on items that a policy identifies.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: first-stage approver role summary; Risk assessment: Security & identity / role: The role summary presents Priority Cleanup Admin as the first-stage approver requirement without its mandatory companion roles. | Found: Priority cleanup admins | - Priority Cleanup admin- Data Classification Content Viewer- Data Classification List Viewer- Disposition Management | Fix: Qualify the first-stage approver sentence: 'The first-stage approver needs Priority Cleanup Admin, Data Classification Content Viewer, Data Classification List Viewer and Disposition Management, assigned before policy creation.' Cite https://learn.microsoft.com/purview/priority-cleanup-exchange#policy-approvers. | Source: https://learn.microsoft.com/purview/priority-cleanup-exchange
-- [contradicted, blocker] Governance controls: retention approver role summary / role: The role summary presents Retention Management as covering the retention approver stage without mandatory companion roles. | Found: Retention managers | - Retention Management- Data Classification Content Viewer- Data Classification List Viewer- Disposition Management | Fix: Replace the retention-stage role description with: 'Retention approvers need Retention Management, Data Classification Content Viewer, Data Classification List Viewer and Disposition Management, assigned before policy creation.' Cite https://learn.microsoft.com/purview/priority-cleanup-exchange#policy-approvers. | Source: https://learn.microsoft.com/purview/priority-cleanup-exchange
-- [contradicted, blocker] Governance controls: eDiscovery approver role summary / role: The role summary presents eDiscovery Administrator as covering the eDiscovery approver stage without the detailed mandatory roles. | Found: eDiscovery admins | - Search And Purge- Hold- Review- Data Classification Content Viewer- Data Classification List Viewer- Disposition Management | Fix: Replace the eDiscovery-stage role description with: 'The policy wizard names eDiscovery Administrator, while Learn's detailed approver requirements list Search And Purge, Hold, Review, Data Classification Content Viewer, Data Classification List Viewer and Disposition Management; assign the listed requirements before policy creation.' Cite https://learn.microsoft.com/purview/priority-cleanup-exchange#policy-approvers. | Source: https://learn.microsoft.com/purview/priority-cleanup-exchange
-- [contradicted, blocker] Cost and licensing; Open questions: whose licence / absence: The service description does not say whether administrators, approvers or mailbox users need licences. | Found: Users with a Purview role assigned for use in the Microsoft Purview portal. ... Exchange user mailboxes, OneDrive accounts, Teams chats, and devices are associated with a user account, so the user must have the required license assigned when a Purview policy or feature is used in these locations. | Fix: Replace the uncertainty sentence with: 'Any user benefiting from the service requires a licence, including users with a Purview role assigned for portal use and the users associated with Exchange user mailboxes where a Purview policy or feature is used.' Remove the Open questions bullet asking whose licence is needed. Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#which-users-need-a-license. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity; Cost and licensing; rationale: risk / behaviour: Learn requires three approvals for every Exchange item: a priority cleanup admin, a retention manager and an eDiscovery admin. | Found: Three approvals are always required, irrespective of which type of hold is applied to the item | Fix: Add: 'Learn's prerequisites say three approvals are always required, but its Approval process section describes retention-admin approval only for items with retention settings and eDiscovery-admin approval only for items on eDiscovery hold; confirm the actual approval requirements before use.' Cite https://learn.microsoft.com/purview/priority-cleanup-exchange#approval-process-for-a-priority-cleanup-policy. | Source: https://learn.microsoft.com/purview/priority-cleanup-exchange
-- [contradicted, minor] Governance guidance: After rollout; controls / consistency: The checklist instructs readers to review and act on Pending cleanups, but the controls table has no approval or relabelling row. | Found: Review approvals on the Pending cleanups page ... Relabel ...; controls table lists tenant availability, policy creation, role membership, audit enablement and audit search. | Fix: The After rollout checklist step 'Review approvals on the Pending cleanups page and brief approvers that Relabel with an existing retention label is the alternative to approving disposal' has no corresponding controls row. Remove that checklist bullet rather than adding an unverified row.
+- [supported, minor] What's changing / record: Roadmap item 392838 describes the same Exchange Priority cleanup feature for Worldwide (Standard Multi-Tenant). | Found: 392838: "clouds": ["Worldwide (Standard Multi-Tenant)"]; "The first release of Priority cleanup enables admins to create a recurring exception ... on Exchange workload." | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=392838 to sources as kind roadmap, titled Microsoft 365 Roadmap 392838; it supports the Worldwide item, target and preview date.
+- [supported, minor] Risk assessment: Security & identity; Cost and licensing; rationale: risk / role: Learn requires three approvals for every item: a priority cleanup admin, a retention manager and an eDiscovery admin. | Found: Three approvals are always required, irrespective of which type of hold is applied to the item: One priority cleanup admin approval. One retention manager approval. One eDiscovery admin approval. | Fix: After this statement add: 'The same Learn page's approval-process section instead describes retention-manager approval as conditional on retention settings and eDiscovery-admin approval as conditional on an eDiscovery hold; confirm the actual workflow before use.' | Source: https://learn.microsoft.com/purview/priority-cleanup-exchange
 -->

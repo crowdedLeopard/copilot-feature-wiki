@@ -61,16 +61,18 @@ changes:
     note: "Corrected after verification: licensing model set to not yet published, removed the unsupported portal-only claim, stated the preview status and added the Entra ID table reference."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 38 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 2 of 39 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-24"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 38
+  claims: 39
   confirmed: 36
-  unconfirmed: 1
+  unconfirmed: 2
   contradicted: 1
   attempts: 0
   hash: "c75e03e4929de7e9159ba16ef970ae42"
@@ -156,10 +158,12 @@ cost: Low. The point is to avoid buying licences for recipients; cost is admin e
 impact: Medium. Sales and service users who send email or schedule meetings with colleagues gain broader recipient lookup.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: There is no autonomous behaviour. | Found: Searched: Activities for users without licenses autonomous; opened add-unlicensed-users-activities. It describes record creation upon user selection and automatic updates on licensing, but does not state the categorical absence of autonomous behaviour. | Fix: Replace 'No autonomous behaviour.' with 'Dataverse creates a corresponding unlicensed-user record when someone selects a Microsoft Entra ID user for an activity.'
+- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: There is no autonomous behaviour. | Found: Searched: Dataverse add unlicensed users activities licensing pricing tenant default API organization settings pac env update-settings autonomous; Activities for users without licenses autonomous price. Opened add-unlicensed-users-activities; no categorical absence of autonomous behaviour is stated. | Fix: Replace 'No autonomous behaviour.' with 'Dataverse creates a corresponding unlicensed-user record when someone selects a Microsoft Entra ID user for an activity.'
+- [unsupported, major] Governance controls: final sentence / behaviour: The recipient lookup returns results only after users receive Entra table read permission through a security role. | Found: Searched: organization unlicensed activity recipients Entra. Opened add-unlicensed-users-activities and aaduser. Read permission is required before enabling the feature; the exact lookup-results behaviour is not stated. | Fix: Replace the final sentence with 'Before turning on the feature, grant all users in the tenant read permission on the Microsoft Entra ID table through existing security roles or a custom security role.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; At rollout; Governance controls table / consistency: Every control the governance checklist asks administrators to configure is represented in the controls table. | Found: Checklist: 'update existing roles or create a custom role with read on the Entra ID table' and 'Assign the read role to all users'. Table: only the environment recipient switch and the undocumented tenant-wide default. | Fix: The checklist's security-role read-permission configuration has no corresponding controls-table row. Record this coverage gap; do not add a row as part of this correction.
+- [supported, minor] front matter: licensing.model; licensing.notes; rationale: cost / licensing: Overall feature licensing is not yet published, represented by the unknown licensing model. | Found: Qualifying Dynamics 365 licenses include Power Apps and Power Automate use rights for extending and customizing the licensed Dynamics 365 application. These rights must be used in the context of the licensed Dynamics 365 application. | Fix: Set licensing.model to included. Replace 'Overall licensing for the feature is not yet published.' in the notes and rationale with 'Existing Dynamics 365 app licensing still applies to app users; recipients need no Dataverse or Power Apps licence. No feature-specific licence is published.' Cite https://learn.microsoft.com/power-platform/admin/pricing-billing-skus and https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-entity-licenses. | Source: https://learn.microsoft.com/power-platform/admin/pricing-billing-skus
+- [contradicted, minor] Governance guidance: Before rollout; At rollout; Governance controls table / consistency: Every configuration control in the governance checklist is represented in the controls table. | Found: Checklist: 'update existing roles or create a custom role with read on the Entra ID table'; 'Assign the read role to all users'. Table: recipient switch and undocumented tenant-wide default only. | Fix: The checklist's Entra table read-permission configuration has no corresponding controls-table row. Record this coverage gap; do not add a row as part of this correction.
 -->

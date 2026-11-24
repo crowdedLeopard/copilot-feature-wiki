@@ -3,7 +3,7 @@
   "roadmapId": 560595,
   "title": "Viva Glint: Rewrite with Copilot for survey comments",
   "status": "verified-with-gaps",
-  "date": "2026-11-22",
+  "date": "2026-11-24",
   "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
@@ -14,109 +14,21 @@
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 55,
-    "confirmed": 54,
+    "claims": 59,
+    "confirmed": 58,
     "unconfirmed": 0,
     "contradicted": 1,
     "blocker": 0,
     "major": 0,
     "minor": 1
   },
-  "summary": "The briefing passes: its roadmap facts, off-by-default access, licensing and privacy statements are supported by Microsoft's published text. The checklist names the Survey Taking access setting without a corresponding controls-table row; this is a minor completeness finding, not an incorrect navigation path.",
+  "summary": "The briefing passes: Microsoft's documentation supports its admin-opt-in default, licensing and feature behaviour, and the rollout facts match the roadmap. The PowerShell page updated on 23 November still does not publish this setting's featureId. One minor correction remains: the rollout checklist directs administrators to configure a control that has no matching table row.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: status; What's changing",
-      "type": "record",
-      "claim": "The roadmap status is Launched.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "front matter: targetDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap target is September CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"September CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap gives no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "front matter: releasePhase; What's changing",
-      "type": "record",
-      "claim": "The release phase is General Availability.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap platform is Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and GCC.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "front matter: products; title",
-      "type": "record",
-      "claim": "This is a Microsoft Viva feature for Viva Glint survey taking.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"title\": \"Microsoft Viva: Viva Glint - Copilot assisted commenting in Glint survey taking\", \"products\": [\"Microsoft Viva\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap record was modified at 2026-11-11T00:53:22.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-11T00:53:22\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "title; summary; What's changing; Risk assessment: Autonomy; rationale: risk",
+      "where": "Title; summary; What's changing; Risk assessment: Autonomy; Governance guidance; rationale: risk",
       "type": "behaviour",
-      "claim": "Rewrite with Copilot only rewrites comments the survey taker originally wrote, rather than writing comments for them.",
+      "claim": "Rewrite with Copilot only rewrites comments the survey taker originally wrote; it does not write comments for them.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
       "quote": "No. Rewrite with Copilot only provides rewritten versions of comments that the survey taker originally wrote.",
@@ -124,10 +36,10 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 2,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The feature offers alternative phrasing to improve clarity.",
+      "claim": "Copilot generates alternative phrasing of survey comments.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
       "quote": "When composing a survey comment, users can leverage Copilot to generate alternative phrasing that improves clarity, conciseness, or tone.",
@@ -135,10 +47,21 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 3,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The feature can adjust the comment's tone.",
+      "claim": "Rewrite with Copilot can improve comment clarity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
+      "quote": "Improve clarity and readability of survey comments",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Rewrite with Copilot can adjust comment tone.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
       "quote": "Adjust tone (for example, more professional or more casual)",
@@ -146,10 +69,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 5,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Microsoft describes reducing distinctive writing styles that could make comments recognisable.",
+      "claim": "Rewrite with Copilot aims to reduce distinctive writing styles that might make comments recognisable.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
       "quote": "Reduce distinctive writing styles that might make comments recognizable while aiming to preserve the writer's original intent",
@@ -157,18 +80,18 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 6,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Preserving the writer's intent is an aim rather than a guarantee.",
+      "claim": "Preserving the writer's intent is an aim, not an unconditional guarantee.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
-      "quote": "while aiming to preserve the writer's original intent",
+      "quote": "Reduce distinctive writing styles that might make comments recognizable while aiming to preserve the writer's original intent",
       "severity": null,
       "fix": null
     },
     {
-      "n": 14,
+      "n": 7,
       "where": "What's changing; Risk assessment: Autonomy; Governance guidance: At rollout",
       "type": "behaviour",
       "claim": "The survey taker chooses whether to use Rewrite with Copilot.",
@@ -179,7 +102,7 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 8,
       "where": "What's changing; Risk assessment: Autonomy",
       "type": "behaviour",
       "claim": "The survey taker chooses whether to accept a suggested rewrite.",
@@ -190,10 +113,10 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "summary; What's changing; Governance guidance; Governance controls",
+      "n": 9,
+      "where": "Summary; What's changing; Governance guidance: At rollout; Governance controls",
       "type": "admin-path",
-      "claim": "A dedicated setting named Copilot in Viva Glint Survey Taking in the Microsoft 365 admin center controls the feature.",
+      "claim": "A dedicated Microsoft 365 admin center setting titled Copilot in Viva Glint Survey Taking controls the feature.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
       "quote": "A dedicated setting titled Copilot in Viva Glint Survey Taking in the Microsoft 365 admin center controls the feature.",
@@ -201,21 +124,21 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 10,
       "where": "front matter: defaultState; summary; What's changing; Why it matters; Risk assessment; rationales",
       "type": "default",
-      "claim": "The default state is admin-opt-in: the setting starts off and survey takers need administrator enablement.",
+      "claim": "The default state is admin-opt-in: the setting is off by default and an administrator must enable it.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
-      "quote": "The setting is off by default. To use Copilot-assisted commenting, survey takers must meet the following requirements: Have Copilot enabled by their administrator (organization-wide or scoped access).",
+      "quote": "The setting is off by default. You can't enable or disable this feature for individual surveys or programs.\nTo ensure survey takers have access to the feature, admins should:\n- Enable Copilot in Viva Glint Survey Taking for the organization or for specific users or groups",
       "severity": null,
       "fix": null
     },
     {
-      "n": 18,
+      "n": 11,
       "where": "What's changing; Governance controls",
       "type": "behaviour",
-      "claim": "Survey Taking access can be managed independently of the existing Copilot in Viva Glint setting.",
+      "claim": "The Survey Taking setting can be managed independently of the existing Copilot in Viva Glint setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
       "quote": "Yes. A new setting controls the feature, and you can manage it independently from the existing Copilot in Viva Glint setting in the Microsoft 365 Admin Center.",
@@ -223,10 +146,10 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "controls[0].ui/api/note; What's changing; Scope; Governance controls",
-      "type": "absence",
-      "claim": "There is no per-survey or per-programme enable/disable control for Rewrite with Copilot on either surface.",
+      "n": 12,
+      "where": "controls[0].note; What's changing; Scope; Governance controls",
+      "type": "availability",
+      "claim": "The feature cannot be enabled or disabled for individual surveys or programmes.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
       "quote": "You can't enable or disable this feature for individual surveys or programs.",
@@ -234,54 +157,10 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing; Risk assessment: Security; Scope",
-      "type": "availability",
-      "claim": "Survey takers must authenticate into Glint with Microsoft Entra ID.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
-      "quote": "Be authenticated into Glint by using their Microsoft Entra ID (Azure AD).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing; Risk assessment: Security; Scope; Governance guidance: Before rollout",
-      "type": "availability",
-      "claim": "The feature is unavailable for surveys accessed through personalised links.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
-      "quote": "The feature is not available when: Surveys are accessed through personalized links.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "What's changing; Risk assessment: Security; Scope; Governance guidance: Before rollout",
-      "type": "availability",
-      "claim": "The feature is unavailable for surveys accessed using attribute-based authentication.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
-      "quote": "The feature is not available when: Surveys are accessed by using attribute-based authentication.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "Scope; Open questions",
-      "type": "availability",
-      "claim": "The feature page lists Copilot being disabled for the user or organisation as an unavailable case.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
-      "quote": "The feature is not available when: Copilot is disabled for the user or organization.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "summary; Scope; Governance guidance: pilot scope",
+      "n": 13,
+      "where": "Summary; Scope: Who sees it; Governance guidance: Before rollout and At rollout",
       "type": "applicability",
-      "claim": "Administrators can enable Survey Taking Copilot organisation-wide or for specific users or groups.",
+      "claim": "Administrators can enable Copilot in Viva Glint Survey Taking organisation-wide or for specific users or groups.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
       "quote": "Enable Copilot in Viva Glint Survey Taking for the organization or for specific users or groups",
@@ -289,7 +168,139 @@
       "fix": null
     },
     {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Security & identity; Scope; Governance guidance: Before rollout",
+      "type": "availability",
+      "claim": "Survey takers must authenticate into Glint with Microsoft Entra ID to use the feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
+      "quote": "Be authenticated into Glint by using their Microsoft Entra ID (Azure AD).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Security & identity; Scope; Governance guidance: Before rollout",
+      "type": "availability",
+      "claim": "The feature is unavailable when surveys are accessed through personalised links.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
+      "quote": "The feature is not available when:\n- Surveys are accessed through personalized links.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Security & identity; Scope; Governance guidance: Before rollout",
+      "type": "availability",
+      "claim": "The feature is unavailable when surveys use attribute-based authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
+      "quote": "The feature is not available when:\n- Surveys are accessed through personalized links.\n- Surveys are accessed by using attribute-based authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Scope: Not available; Open questions",
+      "type": "availability",
+      "claim": "The feature page lists Copilot being disabled for the user or organisation as a case where the feature is unavailable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
+      "quote": "The feature is not available when:\n- Surveys are accessed through personalized links.\n- Surveys are accessed by using attribute-based authentication.\n- Copilot is disabled for the user or organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 25,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Viva.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Viva\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
       "where": "What's changing",
       "type": "availability",
       "claim": "Copilot-assisted commenting supports all languages available in Viva Glint's survey experience.",
@@ -300,24 +311,13 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 27,
       "where": "What's changing",
       "type": "availability",
-      "claim": "The supported survey languages number more than 60.",
+      "claim": "Its language support includes more than 60 languages.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
-      "quote": "including more than 60 languages",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "Why it matters",
-      "type": "record",
-      "claim": "The roadmap frames reduced identifiable writing patterns and refinement effort as increasing perceived security.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "By increasing perceived security through reducing identifiable writing patterns and minimizing the effort required to refine feedback",
+      "quote": "Copilot-assisted commenting supports all languages available in Viva Glint's survey experience, including more than 60 languages.",
       "severity": null,
       "fix": null
     },
@@ -325,15 +325,37 @@
       "n": 28,
       "where": "Why it matters",
       "type": "record",
-      "claim": "The roadmap says the experience can encourage greater participation.",
+      "claim": "The roadmap frames reducing identifiable writing patterns as increasing perceived security.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "this experience can encourage greater participation",
+      "quote": "By increasing perceived security through reducing identifiable writing patterns and minimizing the effort required to refine feedback",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "The roadmap describes minimising the effort required to refine feedback.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "minimizing the effort required to refine feedback",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "The roadmap says the experience can encourage greater survey participation.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "this experience can encourage greater participation, longer responses, and more candid comments",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
       "where": "Why it matters",
       "type": "record",
       "claim": "The roadmap says the experience can encourage longer responses.",
@@ -344,7 +366,7 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 32,
       "where": "Why it matters",
       "type": "record",
       "claim": "The roadmap says the experience can encourage more candid comments.",
@@ -355,21 +377,10 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "Why it matters; Risk assessment: Data exposure; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Glint reports and exports do not identify rewritten comments, so survey owners cannot separate them through those outputs.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
-      "quote": "No. Survey reports and exports don't show whether Copilot was used to rewrite a survey taker's original comment.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
+      "n": 33,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Copilot temporarily uses the original comment text to generate rewrite suggestions.",
+      "claim": "The feature temporarily uses the original comment text to generate rewritten suggestions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
       "quote": "This feature temporarily uses the original text to generate rewritten suggestions.",
@@ -377,21 +388,21 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 34,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The original text used for rewriting is not retained after submission of the rewritten survey response.",
+      "claim": "Learn says the original text temporarily used for rewriting is not retained after the survey taker submits the response.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
-      "quote": "The text isn't retained after the user submits the rewritten survey response.",
+      "quote": "This feature temporarily uses the original text to generate rewritten suggestions. The text isn't retained after the user submits the rewritten survey response.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
+      "n": 35,
       "where": "Risk assessment: Data exposure; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Unaccepted rewrite suggestions are not saved as survey data.",
+      "claim": "Unaccepted suggestions are not saved as survey data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
       "quote": "Unaccepted suggestions aren't saved as part of the survey data. Only the final submitted comments are saved as part of survey results.",
@@ -399,7 +410,7 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 36,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Copilot-assisted commenting interactions are not used to train generative AI foundation models.",
@@ -410,10 +421,21 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 37,
+      "where": "Why it matters; Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Glint reports and exports do not show which comments were rewritten with Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
+      "quote": "No. Survey reports and exports don't show whether Copilot was used to rewrite a survey taker's original comment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Microsoft states that Copilot in Viva Glint features process raw responses, prompts and respondent attributes within the Microsoft 365 service boundary.",
+      "claim": "Microsoft says Copilot in Viva Glint features process raw survey responses, prompts and respondent user attributes within the Microsoft 365 service boundary.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/setup/copilot-privacy",
       "quote": "When using Copilot in Viva Glint features (such as comment summarization in Copilot in Viva Glint), raw survey responses, prompts, and respondent user attributes are processed entirely within the Microsoft 365 service boundary.",
@@ -421,7 +443,7 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 39,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Copilot in Viva Glint uses Microsoft-hosted models provided through Azure OpenAI Service.",
@@ -432,7 +454,7 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 40,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Microsoft says LLM processing is aligned with Viva Glint's data-residency commitments for the tenant region.",
@@ -443,10 +465,10 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "Risk assessment: Security; Scope: Guests",
+      "n": 41,
+      "where": "Risk assessment: Security & identity; Scope: Guests",
       "type": "availability",
-      "claim": "Copilot in Viva Glint is unavailable to Microsoft Entra cross-tenant guest users irrespective of org-wide or custom policies.",
+      "claim": "Copilot in Viva Glint is unavailable to Microsoft Entra cross-tenant guests irrespective of organisation-wide settings or custom policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access",
       "quote": "Cross-tenant guest users are evaluated separately from VFAM precedence. Copilot in Viva Glint is unavailable to these users regardless of the organization-wide setting or any custom policy.",
@@ -454,10 +476,10 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "Risk assessment: Change; Governance guidance: At rollout; Governance controls",
+      "n": 42,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout; Governance controls",
       "type": "behaviour",
-      "claim": "The Copilot access page says policy changes can take up to 24 hours to reach users.",
+      "claim": "The Copilot access page says policy changes can take up to 24 hours to affect users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access",
       "quote": "Changes to Copilot access policies in the Microsoft 365 admin center can take up to 24 hours to take effect for users.",
@@ -465,21 +487,21 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "Risk assessment: Change; Governance guidance: After rollout",
+      "n": 43,
+      "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Rewrite with Copilot uses Azure AI Content Safety harm categories and can show a potentially offensive input error.",
+      "claim": "Rewrite with Copilot follows Azure AI Content Safety harm categories and can show an error about potentially offensive input.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
-      "quote": "Why do some users see an error message about potentially offensive input? Rewrite with Copilot follows the harm categories used by Azure AI Content Safety to identify and handle potentially objectionable content.",
+      "quote": "Why do some users see an error message about potentially offensive input?\nRewrite with Copilot follows the harm categories used by Azure AI Content Safety to identify and handle potentially objectionable content.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Risk assessment: Change; Governance guidance: After rollout",
+      "n": 44,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Content-safety checks can produce false positives.",
+      "claim": "Potentially offensive input detection can produce false positives.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
       "quote": "In some instances, there might be false positives.",
@@ -487,8 +509,8 @@
       "fix": null
     },
     {
-      "n": 43,
-      "where": "Risk assessment: Change; Governance guidance: After rollout",
+      "n": 45,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
       "type": "behaviour",
       "claim": "Survey takers can report false positives using the feature's feedback option.",
       "status": "supported",
@@ -498,10 +520,21 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "front matter: licensing.model/notes; Cost and licensing; rationale: cost",
+      "n": 46,
+      "where": "front matter: licensing.model",
       "type": "licensing",
-      "claim": "Licensing is included under the published Copilot in Viva Glint requirement for Viva Glint, Microsoft Viva Suite or Microsoft Viva Workplace Analytics and Employee Feedback.",
+      "claim": "The licensing model is included, under the published product-level Copilot in Viva Glint licence requirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access",
+      "quote": "A license for Viva Glint, Microsoft Viva Suite, or Microsoft Viva Workplace Analytics and Employee Feedback is required to access Copilot in Viva Glint.\nA license for Microsoft Copilot is not required to access Copilot in Viva Glint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Learn requires a Viva Glint, Microsoft Viva Suite or Microsoft Viva Workplace Analytics and Employee Feedback licence to access Copilot in Viva Glint.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access",
       "quote": "A license for Viva Glint, Microsoft Viva Suite, or Microsoft Viva Workplace Analytics and Employee Feedback is required to access Copilot in Viva Glint.",
@@ -509,10 +542,10 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 48,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "A Microsoft Copilot licence is not required to access Copilot in Viva Glint.",
+      "claim": "A Microsoft Copilot licence is not required for Copilot in Viva Glint.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access",
       "quote": "A license for Microsoft Copilot is not required to access Copilot in Viva Glint.",
@@ -520,118 +553,129 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 49,
       "where": "front matter: licensing.notes; Cost and licensing; Open questions",
       "type": "absence",
-      "claim": "The Rewrite with Copilot page names no licence of its own and no separate requirement specific to survey takers is published.",
+      "claim": "The Rewrite with Copilot page names no separate licence, and no Copilot-assisted commenting licence requirement specific to survey takers is published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Viva Glint Rewrite Copilot survey takers license pricing credits consumption meter. Read Rewrite Comments, Manage Copilot access and Copilot privacy in full; results also included copilot-faqs and copilot-admin-intro. Only the general Glint licensing requirement was stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No consumption meter for Rewrite with Copilot is published on the cited feature or privacy pages or found in the targeted search.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Viva Glint Rewrite Copilot survey takers license pricing credits consumption meter. Read rewrite-comments-copilot-viva-glint, copilot-privacy and mac-copilot-access; search returned general Glint licensing and unrelated Studio/AI Builder meters, not a Glint rewrite meter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "No credit rate specific to this feature is published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Viva Glint Rewrite Copilot survey takers license pricing credits consumption meter. Read the Rewrite Comments and Copilot privacy pages; search excerpts for Glint access, FAQs and introduction gave licences, not credit rates for rewriting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "The Rewrite with Copilot and Copilot privacy pages publish no price for this feature.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Viva Glint Rewrite Copilot survey takers license pricing credits consumption meter. Read rewrite-comments-copilot-viva-glint and copilot-privacy in full; neither lists a feature price, and the search returned no Glint rewrite price.",
+      "quote": "Searched: \"Viva Glint\" \"Rewrite\" \"licence\" pricing survey taker. Opened Rewrite Comments, Copilot access/privacy and Viva Glint licensing; found product-level requirements, not a rewrite-specific survey-taker licence.",
       "severity": null,
       "fix": null
     },
     {
       "n": 50,
-      "where": "Governance guidance: At rollout; Governance controls; Open questions",
+      "where": "Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "Microsoft names the Survey Taking setting but does not document its exact navigation path.",
+      "claim": "No meter for this feature is documented in the feature or Copilot in Viva Glint privacy pages.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Viva Glint Survey Taking Rewrite Copilot setting navigation Microsoft 365 admin center enable disable individual survey program. Read Rewrite Comments, mac-copilot-access and VFAM; the path given is for the existing Glint setting, not the separately managed Survey Taking setting.",
+      "quote": "Searched: Viva Glint Rewrite with Copilot survey takers license licensing pricing meter credits consumption. Opened Rewrite Comments, Copilot access/privacy and Viva Glint licensing; none documents a commenting meter.",
       "severity": null,
       "fix": null
     },
     {
       "n": 51,
-      "where": "Governance controls; Open questions",
+      "where": "Cost and licensing",
       "type": "absence",
-      "claim": "The VFAM PowerShell documentation does not name a featureId for the Survey Taking setting.",
+      "claim": "A credit rate for Copilot-assisted commenting is not published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Viva Glint Survey Taking Copilot FeatureId PowerShell Get-VivaModuleFeature per survey program API. Read manage-access-policies and feature-access-management, plus Get-VivaModuleFeature search excerpt; they describe ID discovery, not a named Survey Taking featureId.",
+      "quote": "Searched: Viva Glint Rewrite with Copilot survey takers license licensing pricing meter credits consumption. Read Rewrite Comments and Copilot access/privacy; search returned Copilot Studio billing, not a Viva Glint rewrite rate.",
       "severity": null,
       "fix": null
     },
     {
       "n": 52,
-      "where": "Scope; Governance guidance: Before rollout; Governance controls",
-      "type": "role",
-      "claim": "The Copilot access page permits Microsoft 365 Global Administrators to manage Copilot in Viva Glint.",
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The Rewrite with Copilot and Copilot in Viva Glint privacy pages name no price for this feature.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access",
-      "quote": "Copilot in Viva Glint is enabled in the Microsoft 365 admin center. This feature can be managed by: Microsoft 365 Global Administrators",
+      "source": null,
+      "quote": "Searched: \"Viva Glint\" \"Rewrite\" \"licence\" pricing survey taker; Viva Glint Rewrite with Copilot survey takers license licensing pricing meter credits consumption. Opened Rewrite Comments, Copilot privacy and Viva Glint licensing; found no rewrite-specific price.",
       "severity": null,
       "fix": null
     },
     {
       "n": 53,
-      "where": "Scope; Governance guidance: Before rollout; Governance controls",
-      "type": "role",
-      "claim": "The Copilot access page permits Viva Glint Tenant Administrators to manage Copilot in Viva Glint.",
+      "where": "Governance guidance: At rollout; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not give the exact navigation path to the dedicated Copilot in Viva Glint Survey Taking setting.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access",
-      "quote": "This feature can be managed by: Microsoft 365 Global Administrators; Viva Glint Tenant Administrators; AI Administrators",
+      "source": null,
+      "quote": "Searched: Viva Glint Copilot Survey Taking Rewrite comments enable disable individual surveys programs admin center navigation Settings Viva. Opened Rewrite Comments, Copilot access and Control access admin center; found the setting name and general routes, not its exact dedicated-pane path.",
       "severity": null,
       "fix": null
     },
     {
       "n": 54,
-      "where": "Scope; Governance guidance: Before rollout; Governance controls",
-      "type": "role",
-      "claim": "The Copilot access page permits AI Administrators to manage Copilot in Viva Glint.",
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The Viva Feature Access Management PowerShell documentation does not name this setting's featureId in November 2026.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access",
-      "quote": "This feature can be managed by: Microsoft 365 Global Administrators; Viva Glint Tenant Administrators; AI Administrators",
+      "source": null,
+      "quote": "Searched: \"Viva Glint\" \"Survey Taking\" \"featureId\". Read manage-access-policies in Learn fetch and its updated 2026-11-23 web version, plus Get-VivaModuleFeature search excerpts; feature discovery is documented, not this setting's literal ID.",
       "severity": null,
       "fix": null
     },
     {
       "n": 55,
+      "where": "controls[0].ui and controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "No admin UI or API control is documented for enabling or disabling Rewrite with Copilot per survey or programme.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Glint Copilot Survey Taking Rewrite comments enable disable individual surveys programs admin center navigation Settings Viva. Read Rewrite Comments, Copilot access, feature-access-management and manage-access-policies; no per-survey UI or API found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The feature page links to Manage Copilot access in the Microsoft 365 admin center for guidance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/rewrite-comments-copilot-viva-glint",
+      "quote": "For detailed guidance, see Manage Copilot access in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope: Who configures it; Governance guidance: Before rollout; Governance controls",
+      "type": "role",
+      "claim": "The Copilot access page says Global Administrators, Viva Glint Tenant Administrators and AI Administrators can manage Copilot in Viva Glint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/copilot/mac-copilot-access",
+      "quote": "Copilot in Viva Glint is enabled in the Microsoft 365 admin center. This feature can be managed by:\n- Microsoft 365 Global Administrators\n- Viva Glint Tenant Administrators\n- AI Administrators",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-11-11T00:53:22.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-11T00:53:22\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
       "where": "Governance guidance: At rollout and After rollout; Governance controls",
       "type": "consistency",
-      "claim": "The checklist tells readers to enable and review the Survey Taking access setting without a matching controls-table row.",
+      "claim": "The checklist directs readers to enable and subsequently adjust the Survey Taking access setting, but the controls table has no matching row.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Turn on the Copilot in Viva Glint Survey Taking setting for the pilot users or groups in the Microsoft 365 admin center. / Microsoft documents the setting but does not give its exact navigation path, so the table has no row for it",
+      "quote": "Turn on the Copilot in Viva Glint Survey Taking setting for the pilot users or groups in the Microsoft 365 admin center. / Review the scope and widen or narrow it using the same setting / Microsoft documents the setting but does not give its exact navigation path, so the table has no row for it",
       "severity": "minor",
-      "fix": "The At rollout step beginning 'Turn on the Copilot in Viva Glint Survey Taking setting' and the After rollout step beginning 'Review the scope' name an access control with no table row. Remove those checklist directives; retain the documented setting and navigation gap in Governance controls."
+      "fix": "Remove the At rollout bullet beginning 'Turn on the Copilot in Viva Glint Survey Taking setting' and the After rollout bullet beginning 'Review the scope'. They direct readers to configure an access control with no table row. Retain the documented setting and its navigation gap in Governance controls."
     }
   ],
   "precheck": {
-    "at": "2026-11-22T04:02:10.098Z",
+    "at": "2026-11-24T03:56:46.546Z",
     "summary": {
       "links": 6,
       "unreachable": 0,
@@ -687,6 +731,12 @@
       "date": "2026-11-22",
       "status": "held",
       "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-22",
+      "status": "verified-with-gaps",
+      "version": 3,
       "model": "gpt-6.1-sol"
     }
   ]

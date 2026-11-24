@@ -83,15 +83,17 @@ changes:
     note: "First briefing: the day-level export is on by default for company-level dashboard users and shares the single Viva feature access control with the week-level export."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 86 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 82 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-21"
+  date: "2026-11-24"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 86
-  confirmed: 84
+  claims: 82
+  confirmed: 80
   unconfirmed: 0
   contradicted: 2
   attempts: 0
@@ -196,11 +198,11 @@ cost: Low. The only costs the sources show are admin time and a tenant prerequis
 impact: Medium. Leaders, delegates and analysts with company-level dashboard access see a new Export by day option; group managers with team-level views do not get it.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui / admin-path: The export policy path is Viva > Settings > Manage feature access > Create a policy > Access setting, with the app and feature choices supplied in the row note. | Found: Select the Settings tab and select Manage feature access. ... Select Create a policy. ... Name the policy and select the app and feature for which you'd like to set the policy. ... Select the Access setting option | Fix: Make the path self-contained by including the target app and feature already given in the note: 'Viva > Settings > Manage feature access > Create a policy > Viva Insights > Copilot Metrics Export > Access setting'. The printed steps are in the documented order; the note currently supplies the omitted target selection. | Source: https://learn.microsoft.com/viva/control-access-admin-center
-- [supported, minor] controls[1].ui / admin-path: The web-app policy path is Viva > Settings > Manage feature access > Create a policy > Access setting, with the web-app target supplied in the note. | Found: Select the Settings tab and select Manage feature access. ... Select Create a policy. ... Name the policy and select the app and feature for which you'd like to set the policy. ... Select the Access setting option | Fix: Make the path self-contained by including the target app and feature already given in the note: 'Viva > Settings > Manage feature access > Create a policy > Viva Insights > Viva Insights web app > Access setting'. The printed steps are in the documented order; the note currently supplies the omitted target selection. | Source: https://learn.microsoft.com/viva/control-access-admin-center
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks administrators to take stock of company-level dashboard access, but the table has no control row for assigning company-level access. | Found: List who holds company-level Copilot Dashboard access ... Table rows: Whether company-level dashboard users can export Copilot metrics; Whether the Viva Insights web app ... is on. | Fix: Narrow the first Before rollout bullet to the control already in the table: 'Review existing VFAM export policies for company-level dashboard users and decide which users or groups should be allowed to export; MC1222978 asks administrators to review these settings.' Do not add a control row.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist tells administrators to check VFAM audit logs in Microsoft Purview, but the table contains no audit-log row. | Found: Check the VFAM change logs in Microsoft Purview to see who created, changed or deleted feature access policies. ... Table rows cover export access and the Viva Insights web app only. | Fix: Remove the first After rollout checklist bullet about checking VFAM change logs in Microsoft Purview; there is no corresponding table row. Do not add a control row.
+- [supported, minor] controls[0].ui / admin-path: The export policy route is Viva > Settings > Manage feature access > Create a policy > Access setting, with the app and feature selection supplied in its note. | Found: select Viva from the settings menu. ... Select the Settings tab and select Manage feature access. ... Select Create a policy. ... select the app and feature ... Select the Access setting option | Fix: Make the target selection already supplied in the note part of the route: 'Viva > Settings > Manage feature access > Create a policy > Viva Insights > Copilot Metrics Export > Access setting'. Retain the note that Learn calls the setting 'User-level export and insights'. | Source: https://learn.microsoft.com/viva/control-access-admin-center
+- [supported, minor] controls[1].ui / admin-path: The web-app policy route is Viva > Settings > Manage feature access > Create a policy > Access setting, with the target web-app feature supplied in its note. | Found: Select the Settings tab and select Manage feature access. ... Select Create a policy. ... Name the policy and select the app and feature ... Select the Access setting option | Fix: Include the target selection already supplied in the note: 'Viva > Settings > Manage feature access > Create a policy > Viva Insights > Viva Insights web app > Access setting'. | Source: https://learn.microsoft.com/viva/control-access-admin-center
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks admins to inventory company-level dashboard access, but the table has no control row for that access assignment. | Found: List who holds company-level Copilot Dashboard access ... Table rows: Whether company-level dashboard users can export Copilot metrics; Whether the Viva Insights web app ... is on. | Fix: Replace the first Before rollout bullet with: 'Review existing VFAM export policies for company-level dashboard users and decide which users or groups should be allowed to export; MC1222978 asks administrators to review these settings.' Do not add a row.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist asks admins to inspect VFAM logs in Microsoft Purview, but the table has no corresponding audit-log row. | Found: Check the VFAM change logs in Microsoft Purview to see who created, changed or deleted feature access policies. ... Table rows cover export access and the Viva Insights web app only. | Fix: Remove the first After rollout bullet about checking VFAM change logs in Microsoft Purview. Do not add a row.
 -->

@@ -56,7 +56,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Insider Risk Management > Settings > Policy indicators > Built-in Indicators"
+      path: "Insider Risk Management > Settings > Policy indicators > Built-in Indicators > Microsoft Fabric indicators"
       docs: "https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators"
     api: null
     note: "The Fabric indicators are listed among the built-in indicators and need pay-as-you-go billing. Learn documents no API for this setting at the time of writing (November 2026)."
@@ -64,10 +64,10 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Settings > Account details"
+      path: "Settings > Account details > subscription > resource group"
       docs: "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement"
     api: null
-    note: "Global Administrator role only. The enablement page is marked preview. Learn documents no API for enablement at the time of writing (November 2026)."
+    note: "Global Administrator role only. Preview page; applies to organisations that are not current Azure Purview customers using the classic data governance pricing model. Learn documents no API for enablement (November 2026)."
   - governs: "Pay-as-you-go usage of Insider Risk Management indicators"
     scope: "tenant"
     ui:
@@ -96,19 +96,23 @@ changes:
     note: "First briefing for this item: Fabric and Power BI indicators in Insider Risk Management, their pay-as-you-go requirement, and where to control them."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 58 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Correction: removed the unsupported no-new-charge claim and the statement that the indicators do not stop label changes; named the two Purview role groups; extended two admin paths; qualified who the billing enablement procedure applies to; removed policy and threshold steps from the checklist."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 70 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 55
-  unconfirmed: 2
-  contradicted: 1
-  attempts: 1
-  hash: "396b69184461e860631734ed1ea699e5"
+  claims: 70
+  confirmed: 69
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 0
+  hash: "7f221533d485bb489c7516e990b30fdd"
 ---
 
 ## What's changing
@@ -125,7 +129,7 @@ The roadmap record shows status In development with a target of October CY2026, 
 
 This extends insider-risk detection from Microsoft 365 workloads to the analytics layer where large amounts of curated data sit. For a service owner, the decisions are whether Power BI and Lakehouse activity should feed IRM at all, who will be monitored, and who pays: the indicators are billed through pay-as-you-go, not covered by the per-user IRM licence alone.
 
-The default in Learn is that nothing is selected, so if nobody acts there is no new monitoring and no new charge. The risk is in switching it on without agreeing the privacy position, the billing subscription and the analyst workload first.
+The default in Learn is that nothing is selected, so if nobody acts there is no new monitoring. The risk is in switching it on without agreeing the privacy position, the billing subscription and the analyst workload first.
 
 ## Risk assessment
 
@@ -136,8 +140,8 @@ The default in Learn is that nothing is selected, so if nobody acts there is no 
 
 **Security & identity**
 
-- The indicators detect label downgrades and removal on Power BI or Lakehouse assets, which gives the security team a signal about protection being changed. They do not by themselves stop the change; Learn describes them as detections.
-- Configuration rights sit with the Insider Risk Management and Insider Risk Management Admins role groups, and with Global Administrator, Compliance Administrator and the two Purview equivalents.
+- The indicators detect label downgrades and removal on Power BI or Lakehouse assets, which gives the security team a signal about protection being changed. Learn describes these indicators as detections of changes to protection.
+- Configuration rights sit with the Insider Risk Management and Insider Risk Management Admins role groups, and with Global Administrator, Compliance Administrator and the Microsoft Purview Organization Management and Compliance Administrator role groups.
 
 **Autonomy & actions**
 
@@ -145,7 +149,7 @@ The default in Learn is that nothing is selected, so if nobody acts there is no 
 
 **Change & support**
 
-- Enabling pay-as-you-go billing needs a Global Administrator and an Azure subscription and resource group; the enablement page is marked preview. Plan who approves recurring Azure charges before an IRM administrator selects the indicators.
+- Enabling pay-as-you-go billing needs a Global Administrator and an Azure subscription and resource group; the enablement page is marked preview and applies to organisations that are not current Azure Purview customers using the classic data governance pricing model. Plan who approves recurring Azure charges before an IRM administrator selects the indicators.
 - More signals mean more alerts. Expect to tune thresholds and review the IRM pay-as-you-go usage report (row 3) after the first weeks.
 
 ## Cost and licensing
@@ -162,7 +166,7 @@ The default in Learn is that nothing is selected, so if nobody acts there is no 
 
 **Clouds, platform and phase.** The roadmap lists GCC, GCC High and DoD, platform Web and release phase General Availability, with status In development and a target of October CY2026.
 
-**Roles.** Configuring policies and settings is allowed for the Insider Risk Management and Insider Risk Management Admins role groups (Learn permissions page). Only a Global Administrator can enable pay-as-you-go billing.
+**Roles.** Configuring policies and settings is allowed for the Insider Risk Management and Insider Risk Management Admins role groups (Learn permissions page). Only a Global Administrator can enable pay-as-you-go billing through the enablement procedure, which applies to organisations that are not current Azure Purview customers using the classic data governance pricing model.
 
 **Prerequisites.** Pay-as-you-go billing enabled; for enablement, an Azure subscription and resource group in the same tenant as Microsoft Purview, and either the MIP_S_Exchange or EXCHANGE_S_FOUNDATION service plan.
 
@@ -177,13 +181,13 @@ The default in Learn is that nothing is selected, so if nobody acts there is no 
 ### At rollout
 
 - Select only the Microsoft Fabric indicators you need under Insider Risk Management > Settings > Policy indicators, so you do not process and pay for activity nobody will review.
-- Add the indicators to a data theft or data leaks policy and tell the analysts who work its alerts what the new alerts mean.
+- Tell the analysts who work IRM alerts what the new Fabric alerts mean.
 - Limit membership of the Insider Risk Management and Insider Risk Management Admins role groups to named people.
 
 ### After rollout
 
 - Review the Pay-as-you-go report under Insider Risk Management > Reports each month against the Azure bill and the estimate.
-- Compare alert volume from the Fabric indicators with analyst capacity and adjust the indicators or thresholds.
+- Compare alert volume from the Fabric indicators with analyst capacity.
 - Re-check the roadmap item and the Learn page for the status change from In development.
 
 ## Governance controls
@@ -193,8 +197,8 @@ The default in Learn is that nothing is selected, so if nobody acts there is no 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether the Microsoft Fabric policy indicators are available to Insider Risk Management policies</strong><br><small>Tenant</small><br><small class="controls__note">The Fabric indicators are listed among the built-in indicators and need pay-as-you-go billing. Learn documents no API for this setting at the time of writing (November 2026).</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Settings › Policy indicators › Built-in Indicators <a href="https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Enabling pay-as-you-go billing that the Fabric indicators need</strong><br><small>Tenant</small><br><small class="controls__note">Global Administrator role only. The enablement page is marked preview. Learn documents no API for enablement at the time of writing (November 2026).</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Account details <a href="https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether the Microsoft Fabric policy indicators are available to Insider Risk Management policies</strong><br><small>Tenant</small><br><small class="controls__note">The Fabric indicators are listed among the built-in indicators and need pay-as-you-go billing. Learn documents no API for this setting at the time of writing (November 2026).</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Settings › Policy indicators › Built-in Indicators › Microsoft Fabric indicators <a href="https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Enabling pay-as-you-go billing that the Fabric indicators need</strong><br><small>Tenant</small><br><small class="controls__note">Global Administrator role only. Preview page; applies to organisations that are not current Azure Purview customers using the classic data governance pricing model. Learn documents no API for enablement (November 2026).</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Account details › subscription › resource group <a href="https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Pay-as-you-go usage of Insider Risk Management indicators</strong><br><small>Tenant</small><br><small class="controls__note">A report that shows usage; it does not cap or stop it. Learn documents no API for this report at the time of writing (November 2026).</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Reports › Pay-as-you-go <a href="https://learn.microsoft.com/purview/insider-risk-management-reports" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Who can configure Insider Risk Management policies and settings</strong><br><small>Tenant</small><br><small class="controls__note">Covers IRM in general, not these indicators alone. The Insider Risk Management Admins role group also configures policies and settings.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and groups › Roles groups › Insider Risk Management › Edit › Choose users <a href="https://learn.microsoft.com/purview/insider-risk-management-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;Insider Risk Management&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -202,7 +206,7 @@ The default in Learn is that nothing is selected, so if nobody acts there is no 
 
 The indicator setting is global: Learn says the indicators you select on the Policy indicators settings page are the ones available to IRM policies. The Fabric indicators also depend on pay-as-you-go billing being enabled.
 
-Billing enablement needs the Global Administrator role, and the enablement page is marked preview. IRM configuration needs a role group or role listed on the permissions page, and four of those roles can also assign users to IRM role groups. The role-group row governs who can configure IRM generally, not these indicators alone.
+Billing enablement needs the Global Administrator role, and the enablement page is marked preview and applies to organisations that are not current Azure Purview customers using the classic data governance pricing model. IRM configuration needs a role group or role listed on the permissions page, and four of those roles can also assign users to IRM role groups. The role-group row governs who can configure IRM generally, not these indicators alone.
 
 ## Open questions
 
@@ -217,15 +221,8 @@ cost: Variable. Learn says the Microsoft Fabric indicators need pay-as-you-go bi
 impact: Low. Insider risk administrators and analysts see the change, and no indicator is selected until an administrator acts; monitored users' Fabric activity is the only thing that reaches wider.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Why it matters / cost: If nobody acts there is no new charge. | Found: Searched: Microsoft Fabric Insider Risk Management indicators disabled not selected no cost incurred; Fabric indicators charges disabled; read policy-indicators, billing-models and PAYG enablement. Explicit no-cost text concerns deselected generative AI apps, not Fabric indicators. | Fix: Remove 'and no new charge' from the sentence. Keep the documented statement that the indicators are disabled by default.
-- [unsupported, major] Risk assessment: Security & identity / behaviour: The Fabric indicators do not by themselves stop a sensitivity-label change. | Found: Searched: Microsoft Fabric indicators detect block; read policy-indicators and IRM workflow excerpts. They describe detecting label changes and producing alerts, but do not explicitly state that these indicators cannot stop label changes. | Fix: Replace 'They do not by themselves stop the change; Learn describes them as detections' with 'Learn describes these indicators as detections of changes to protection.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity / role: Two Microsoft Purview role groups also have IRM configuration permissions, described as the two Purview equivalents. | Found: Microsoft Purview Organization Management; Microsoft Purview Compliance Administrator | Fix: Replace 'the two Purview equivalents' with 'the Microsoft Purview Organization Management and Compliance Administrator role groups', as named at https://learn.microsoft.com/purview/insider-risk-management-permissions. | Source: https://learn.microsoft.com/purview/insider-risk-management-permissions
-- [supported, minor] controls[1].note; Risk assessment; Scope; Governance controls / role: Only a Global Administrator can perform the cited pay-as-you-go enablement procedure. | Found: Applies to: Organizations that aren't current Azure Purview customers using the classic data governance pricing model customers. ... Only an account in the Global Administrator role can enable the pay-as-you-go model | Fix: Add to controls[1].note: 'This procedure applies to organisations that are not current Azure Purview customers using the classic data governance pricing model.' Qualify the prose descriptions of this procedure the same way. | Source: https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement
-- [supported, minor] controls[0].ui; Governance controls table; governance and risk paths / admin-path: Microsoft Purview portal > Insider Risk Management > Settings > Policy indicators > Built-in Indicators reaches the page containing Fabric indicator selection. | Found: In the Microsoft Purview portal, go to Insider Risk Management > Settings > Policy indicators. ... select Policy indicators and then select the Built-in Indicators tab. | Fix: Extend controls[0].ui.path to 'Insider Risk Management > Settings > Policy indicators > Built-in Indicators > Microsoft Fabric indicators'. The cited page identifies that indicator group and instructs administrators to choose the indicators to activate. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Microsoft Purview portal > Settings > Account details reaches the documented pay-as-you-go enablement flow. | Found: Select Get Started in the ribbon menu to start the process. This can also be done from Settings > Account details. ... Select your active Azure subscription from the list. ... Select the resource group. | Fix: Extend controls[1].ui.path to 'Settings > Account details > subscription > resource group', retaining placeholders for the administrator's choices, as described at https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement. | Source: https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement
-- [contradicted, minor] Governance guidance: At rollout and After rollout / consistency: The checklist names policy-level indicator selection and threshold tuning that have no corresponding controls-table row. | Found: Add the indicators to a data theft or data leaks policy ... adjust the indicators or thresholds. The table covers global indicator availability, billing enablement, usage reports and role-group membership, not policy-level selection or thresholds. | Fix: The checklist steps 'Add the indicators to a data theft or data leaks policy' and 'adjust the indicators or thresholds' name controls absent from the table. Remove those control-setting instructions; do not add rows as part of this correction.
+- [unsupported, minor] rationale: impact / behaviour: Monitored users' Fabric activity is the only thing about the change that reaches wider than administrators and analysts. | Found: Searched: Microsoft Purview Insider Risk Management Microsoft Fabric indicators end user impact notifications viewing downloading monitoring. Read policy-indicators, reports, permissions and returned IRM overview excerpts. They describe monitoring, not an exhaustive list of wider effects. | Fix: Remove the clause "monitored users' Fabric activity is the only thing that reaches wider" from the impact rationale.
 -->

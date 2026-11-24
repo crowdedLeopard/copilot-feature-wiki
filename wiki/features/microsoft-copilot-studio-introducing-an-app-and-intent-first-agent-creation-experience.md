@@ -40,9 +40,6 @@ sources:
   - title: "Tutorial: Manage Copilot Credits allocations programmatically"
     url: "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations"
     kind: "learn"
-  - title: "New-DlpPolicy"
-    url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest"
-    kind: "learn"
   - title: "Govern Copilot Credit consumption for agents powered by the Microsoft Copilot harness"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/guidance/govern-credit-consumption"
     kind: "learn"
@@ -52,17 +49,6 @@ sources:
 videos: []
 related: ["data-policies","copilot-credits","mcp","copilot-studio-require-human-approval-for-tool-calls"]
 controls:
-  - governs: "Which tool connectors and knowledge-source endpoints makers can use"
-    scope: "environment"
-    ui:
-      surface: "Power Platform admin center"
-      path: "Security > Data and privacy > Data policy"
-      docs: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
-    api:
-      kind: "powershell"
-      call: "New-DlpPolicy -DisplayName <name> -EnvironmentType <type>"
-      docs: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest"
-    note: "Data policies apply to Copilot Studio agents in environments included in the policy scope. Microsoft has not yet documented how the new creation screens display policy restrictions."
   - governs: "Copilot Credits allocated to a maker environment, and whether it can draw from tenant capacity"
     scope: "environment"
     ui:
@@ -76,7 +62,7 @@ controls:
     note: "Environment capacity controls apply across Copilot Studio to credit-consuming workloads, regardless of harness; this creation flow's harness and building charges are not yet documented."
 confidence: "low"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-24"
 roadmapModified: "2026-09-02T22:56:59"
 changes:
   - date: "2026-11-17"
@@ -89,19 +75,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 65 statements not yet confirmed"
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 66 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-24"
+    note: "Corrected after verification: removed the data-policy control row (New-DlpPolicy creates a policy, it does not set connector rules) and narrowed the Data exposure statement to what Learn says about knowledge."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 64
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "e6f97d39979f0ccf1b4c036bb9edeb1e"
+  claims: 65
+  confirmed: 63
+  unconfirmed: 0
+  contradicted: 2
+  attempts: 0
+  hash: "7bd5052f3daee20e42bd1bf54add66e2"
 ---
 
 ## What's changing
@@ -123,7 +113,7 @@ Microsoft has not stated what happens on arrival, so plan on the assumption that
 ## Risk assessment
 
 **Data exposure**
-- Knowledge is the data an agent can access when answering questions, according to Learn's agent-creation page, so a unified tools-and-knowledge screen is where makers choose that access. The roadmap adds no new data source. Data policies apply to Copilot Studio agents in environments included in the policy scope. Microsoft has not yet documented how the new creation screens display policy restrictions.
+- Knowledge is the data an agent can access when answering questions, according to Learn's agent-creation page. The roadmap adds no new data source. Data policies apply to Copilot Studio agents in environments included in the policy scope. Microsoft has not yet documented how the new creation screens display policy restrictions.
 
 **Security & identity**
 - Learn says some tools require the maker to sign in or provide credentials. How the new flow handles authentication for the tools it configures is not described, so check which credential option makers are offered once it appears.
@@ -150,7 +140,7 @@ Who sees it first, the rollout mechanism, the roles that can use it and any prer
 
 ### Before rollout
 - Ask your makers which agents they build on the Microsoft Copilot harness and which on the standard harness, so you know who may see the new flow first.
-- Review the data policy that covers each maker environment (see the data policy row below), including which tool connectors and knowledge-source endpoints it blocks.
+- Review the data policy that covers each maker environment, including which tool connectors and knowledge-source endpoints it blocks.
 - Check the Copilot Credits allocation and the tenant-capacity draw setting for makers' environments (see the credits row below).
 
 ### At rollout
@@ -168,12 +158,11 @@ Who sees it first, the rollout mechanism, the roles that can use it and any prer
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which tool connectors and knowledge-source endpoints makers can use</strong><br><small>Environment</small><br><small class="controls__note">Data policies apply to Copilot Studio agents in environments included in the policy scope. Microsoft has not yet documented how the new creation screens display policy restrictions.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpPolicy -DisplayName &lt;name&gt; -EnvironmentType &lt;type&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Copilot Credits allocated to a maker environment, and whether it can draw from tenant capacity</strong><br><small>Environment</small><br><small class="controls__note">Environment capacity controls apply across Copilot Studio to credit-consuming workloads, regardless of harness; this creation flow's harness and building charges are not yet documented.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Manage Copilot Credits <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-These are existing controls. The new creation screens are not yet documented; existing data-policy and capacity controls retain their documented platform scope. The roadmap item names no admin setting for it.
+This is an existing control. The new creation screens are not yet documented; existing data-policy and capacity controls retain their documented platform scope. The roadmap item names no admin setting for it.
 
 The data policy page says to be a tenant admin or have the Environment Admin role. The Copilot Credits tutorial says to sign in with the Power Platform Administrator or Global Administrator role, or an equivalent role that can manage licensing and capacity. Environment capacity controls apply to all Copilot Studio workloads in the environment, not only agents on the Microsoft Copilot harness. If a published environment group rule (Cost controls - Draw from tenant credit pool) governs the tenant-capacity setting, the environment-level setting becomes read-only and programmatic requests cannot override it.
 
@@ -191,14 +180,12 @@ cost: Low. No licence or meter is published for this feature, so the only known 
 impact: Medium. Makers in Copilot Studio would see a different way to start and configure agents; end users and administrators are not described as affected.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Data exposure / behaviour: The planned unified tools-and-knowledge screen is where makers choose the agent's data access. | Found: Searched: "Copilot Studio" "app-first" agent creation authentication knowledge tools unified; "Copilot Studio" "intent-first". Read: roadmap record; Create a new agent; Add a tool; What's new. A unified experience is described, not one screen or its access-selection behaviour. | Fix: Replace the first sentence of Data exposure with: 'Knowledge is the data an agent can access when answering questions, according to Learn's agent-creation page.'
-- [contradicted, blocker] controls[0].api; Governance controls: data-policy row / command: New-DlpPolicy -DisplayName <name> -EnvironmentType <type> configures which tool connectors and knowledge-source endpoints makers can use. | Found: The New-DlpPolicy cmdlet creates a new DLP policy for the logged in admin's tenant. ... -DisplayName ... Creates the policy with the input display name. ... -EnvironmentType ... The type of the environment: trial, production, sandbox, default. | Fix: Remove the data-policy control row (controls[0] and its rendered table row), retaining the documented data-policy guidance in prose. The printed invocation creates a policy but specifies neither connector restrictions nor endpoint rules; do not present it as the operation that configures them or claim that policy automation is undocumented. | Source: https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model and notes; Cost and licensing; rationale: cost / licensing: Licensing is unknown because Microsoft has not published a licence specific to this feature. | Found: To use Copilot Studio, you need one of the following configurations: ... Copilot Studio user license (free). ... Copilot Studio authors ... Microsoft 365 Copilot license ... Copilot Studio trial license | Fix: Set licensing.model to included. Replace the opening licensing note with: 'This is a new creation option inside Copilot Studio. Product access requires a Copilot Studio user license (with a tenant prepaid pack subscription), the Copilot Studio authors role, a Microsoft 365 Copilot license, or a Copilot Studio trial license. No licence specific to this flow is published.' Cite https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing and retain the distinction between maker access and harness-dependent usage charges. | Source: https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing
-- [supported, minor] controls[0].ui; Governance controls: data-policy row / admin-path: Data-policy restrictions are reached in Power Platform admin center through Security > Data and privacy > Data policy. | Found: select Security, and then select Data and privacy. ... Select Data policy. The Data policies list appears. ... select the data policy and select Edit Policy. ... The Assign connectors page appears. | Fix: Extend the existing-policy route to 'Security > Data and privacy > Data policy > policy > Edit Policy > Add an environment > Assign connectors > connector > Block'. State in the row note that endpoint restrictions use 'Configure connector > Connector endpoints' instead of Block. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
-- [supported, minor] controls[1].ui; Governance controls: credits row / admin-path: Credit allocation and tenant-capacity draw are reached through Licensing > Products > Copilot Studio > Manage Copilot Credits. | Found: select Licensing. ... Under Products, select Copilot Studio, and then select Manage Copilot Credits. ... Select the environment ... Under Allocate capacity ... Under Capacity overages, select or clear Draw from the available capacity in my tenant | Fix: Extend the draw-setting path to 'Licensing > Products > Copilot Studio > Manage Copilot Credits > environment > Capacity overages > Draw from the available capacity in my tenant'. In the note, state that the same environment pane's Allocate capacity field sets the credit allocation. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
-- [supported, minor] controls[1].api; Governance controls: credits row / command: PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 writes environment credit allocations and tenant-pool draw settings. | Found: $apiBaseUrl = "https://api.powerplatform.com" ... $apiVersion = "2024-10-01" ... Invoke-RestMethod -Method Put ... -Uri "$apiBaseUrl/licensing/allocationsV2?api-version=$apiVersion" | Fix: Keep the call. Add to the row note: 'The request body identifies scope.environmentId and the MCSMessages entitlement; allocatedEntitlements[].allocation.quantity sets the allocation, and allocatedEntitlements[].enforcementRules with ruleType TenantPool and enabled sets tenant-capacity draw.' | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
+- [supported, minor] front matter: licensing.model and notes; Cost and licensing; rationale: cost / licensing: Licensing is unknown because no licence specific to this creation experience has been published. | Found: To use Copilot Studio, you need one of the following configurations: ... Copilot Studio user license (free) ... Copilot Studio authors ... Microsoft 365 Copilot license ... Copilot Studio trial license. | Fix: Set licensing.model to included. Replace the unpublished-licence wording with: 'This creation option sits inside Copilot Studio's existing access model. For standard-harness authoring, Learn lists a free Copilot Studio user license backed by a tenant prepaid Copilot Credit pack subscription, Copilot Studio authors access for applicable pay-as-you-go scenarios, a Microsoft 365 Copilot license, or a Copilot Studio trial license. No licence specific to the app-first flow is published.' Cite https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing. Keep the separate uncertainty about which harness this flow uses and its building charges. | Source: https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing
+- [supported, minor] controls[0].ui; Governance controls: table / admin-path: The allocation and tenant-capacity control is reached through Power Platform admin center > Licensing > Products > Copilot Studio > Manage Copilot Credits. | Found: In the navigation pane, select Licensing. Under Products, select Copilot Studio, and then select Manage Copilot Credits. ... Select the environment ... Under Allocate capacity ... Under Capacity overages, select or clear Draw from the available capacity in my tenant | Fix: The path stops on the correct control page. Extend it to 'Licensing > Products > Copilot Studio > Manage Copilot Credits > environment' and add to the note: 'Under Allocate capacity, enter the allocation; under Capacity overages, select or clear Draw from the available capacity in my tenant.' Use the same wording in the rendered table. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
+- [supported, minor] controls[0].api; Governance controls: table / command: PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 sets environment allocations and tenant-capacity draw. | Found: All programmatic examples in this article use API version 2024-10-01. ... $apiBaseUrl = "https://api.powerplatform.com" ... Invoke-RestMethod -Method Put ... "$apiBaseUrl/licensing/allocationsV2?api-version=$apiVersion" | Fix: Keep the call unchanged: the endpoint is present through variables in the documented PowerShell example. Add to the row note: 'The request body uses scope.environmentId and allocatedEntitlements with entitlementId MCSMessages; allocation.quantity sets credits, and enforcementRules with ruleType TenantPool and enabled sets tenant-capacity draw.' | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
+- [contradicted, minor] Governance guidance: Before rollout and After rollout; controls / consistency: The checklist instructs readers to review and test data policies without a corresponding controls-table row. | Found: Review the data policy that covers each maker environment ... confirm that a connector blocked by data policy cannot be added. ... The table contains only Copilot Credits allocated to a maker environment, and whether it can draw from tenant capacity. | Fix: Remove the Before rollout bullet beginning 'Review the data policy' and the After rollout bullet beginning 'Test creating an agent'. Those instructions name a control absent from the table; do not add a control row as part of this correction. Keep the verified data-policy scope statements elsewhere.
+- [contradicted, minor] Governance guidance: After rollout; controls / consistency: The checklist instructs readers to check consumption reporting without a corresponding controls-table row. | Found: Check credit consumption for those environments in the Power Platform admin center after makers start using it. ... The table contains only Copilot Credits allocated to a maker environment, and whether it can draw from tenant capacity. | Fix: Remove the After rollout bullet beginning 'Check credit consumption'. The allocation row does not document consumption reporting; do not add a row as part of this correction.
 -->

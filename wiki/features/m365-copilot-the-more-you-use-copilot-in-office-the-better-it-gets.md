@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "prepare"
 licensing:
   model: "included"
-  notes: "Microsoft's memory page says Copilot memory is available to Copilot Chat users with and without a Microsoft Copilot licence. That page is in preview and is not about the Office apps; a licence or meter specific to memory in them is not yet published."
+  notes: "Learn says Copilot memory is available to Copilot Chat users with and without a Microsoft Copilot licence (preview page). Learn documents Microsoft 365 Copilot (Basic) access to Copilot in Word, Excel, PowerPoint and OneNote without the add-on, and Microsoft 365 Copilot (Premium) as the full add-on experience; Office-app memory entitlement is not yet published."
 audiences: ["m365-admin","compliance","security","change-adoption"]
 tags: ["memory","personalisation","m365-copilot","word","excel","powerpoint","onenote","privacy"]
 sources:
@@ -34,6 +34,9 @@ sources:
   - title: "Configure Microsoft Copilot settings in the Microsoft 365 admin center"
     url: "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center"
     kind: "learn"
+  - title: "Microsoft Copilot overview"
+    url: "https://learn.microsoft.com/copilot/plan/copilot-overview"
+    kind: "learn"
   - title: "Microsoft 365 Roadmap item 580889"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=580889"
     kind: "roadmap"
@@ -47,7 +50,7 @@ controls:
       kind: "graph"
       call: "PATCH /beta/copilot/settings/people/enhancedpersonalization"
       docs: "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta"
-    note: "Beta. Request body sets isEnabledInOrganization and disabledForGroup. People Administrator is the least privileged role. Learn ties it to Copilot memory, not to Office-app memory."
+    note: "Beta. Request body sets isEnabledInOrganization and disabledForGroup. People Administrator is the least privileged role. Learn says Enhanced personalization controls Copilot memory; Office-app rollout is not yet documented."
   - governs: "Which information is added to Copilot memory"
     scope: "tenant"
     ui: null
@@ -72,19 +75,23 @@ changes:
     note: "New briefing on the roadmap item for memory in Copilot in Word, Excel, PowerPoint, OneNote and Workspaces, with the Enhanced personalization control."
   - date: "2026-11-24"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 55 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-24"
+    note: "Corrected after verification: replaced the claim that the tenant switch is the only documented memory control, narrowed the Office-app coverage wording, clarified the eDiscovery search step and added the Copilot (Basic) and (Premium) licence entitlement."
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-24"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 53
+  claims: 65
+  confirmed: 62
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "e48f7bb51a2f45fd3e03f257119633c6"
+  contradicted: 3
+  attempts: 0
+  hash: "22068eea0bb3adfeb5d7d4eec2316e0f"
 ---
 
 ## What's changing
@@ -123,7 +130,9 @@ Microsoft has not stated what happens on arrival for this Office-app feature. Th
 
 Microsoft's page on Copilot personalisation and memory says Copilot memory is available to Copilot Chat users with and without a Microsoft Copilot licence. The page is in preview and describes Copilot memory in general, not memory in Word, Excel, PowerPoint, OneNote or Workspaces.
 
-The cost known today is indirect: administrator time to review the Enhanced personalization control, update privacy notices and brief the service desk. A licence requirement or meter specific to memory in the Office apps is not yet published. The roadmap item names no licence.
+Microsoft's Copilot overview documents Microsoft 365 Copilot (Basic) access to Copilot in Word, Excel, PowerPoint and OneNote without the Copilot add-on licence, and Microsoft 365 Copilot (Premium) as the full add-on licensed experience. Entitlement specific to this Office-app memory rollout is not yet published.
+
+The cost known today is indirect: administrator time to review the Enhanced personalization control, update privacy notices and brief the service desk. A meter specific to memory in the Office apps is not yet published. The roadmap item names no licence.
 
 ## Scope
 
@@ -146,7 +155,7 @@ The roadmap does not say which users or licences receive it first. Learn's Enhan
 
 ### After rollout
 - Re-read the memory page and the roadmap item for the Office-app details, status moves and any Learn page specific to this feature.
-- Run a Purview eDiscovery search of the CopilotMemory folder for a test user to confirm that your team can find and export memory data.
+- Run a Purview eDiscovery search for item class IPM.Contact for a test user, export the results, and locate memory data in the CopilotMemory folder.
 - Review the control again before the target month of November CY2026 ends, as the roadmap's dates can move.
 
 ## Governance controls
@@ -156,16 +165,18 @@ The roadmap does not say which users or licences receive it first. Learn's Enhan
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Copilot memory (Enhanced personalization) is on for the tenant, with an optional group it is disabled for</strong><br><small>Tenant</small><br><small class="controls__note">Beta. Request body sets isEnabledInOrganization and disabledForGroup. People Administrator is the least privileged role. Learn ties it to Copilot memory, not to Office-app memory.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/settings/people/enhancedpersonalization</code> <a href="https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Copilot memory (Enhanced personalization) is on for the tenant, with an optional group it is disabled for</strong><br><small>Tenant</small><br><small class="controls__note">Beta. Request body sets isEnabledInOrganization and disabledForGroup. People Administrator is the least privileged role. Learn says Enhanced personalization controls Copilot memory; Office-app rollout is not yet documented.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/settings/people/enhancedpersonalization</code> <a href="https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which information is added to Copilot memory</strong><br><small>Tenant</small><br><small class="controls__note">Learn says admins can't restrict what type of information is added to Copilot memory.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Retention rules for Copilot memory</strong><br><small>Tenant</small><br><small class="controls__note">Learn says Purview retention policies and labels don't apply to Copilot memory.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Audit entries for memory and personalisation actions</strong><br><small>Tenant</small><br><small class="controls__note">Learn says these actions don't generate Purview audit log entries.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The tenant switch is the only control Learn documents for memory itself. It is a Microsoft Graph beta operation, and Learn documents no admin centre path for it at the time of writing (November 2026). Learn ties the control to Copilot memory; it does not say that it covers memory in the Office apps, so confirm in a pilot.
+Learn documents Enhanced personalization as the control for enabling or disabling Copilot memory. It is a Microsoft Graph beta operation, and Learn documents no admin centre path for it at the time of writing (November 2026). Learn says Enhanced personalization controls Copilot memory; confirm the Office-app experience in a pilot.
 
 Individual users also have switches for Custom instructions, Saved memories and Chat history under Settings > Personalization. Those are user choices, not tenant enforcement. The other rows record gaps Learn states: no restriction on what is added, no memory-specific retention control and no Purview audit entries.
+
+The eDiscovery search and Customer Lockbox checks in the governance guidance have no row in this table.
 
 ## Open questions
 
@@ -180,13 +191,10 @@ cost: Low. Learn says Copilot memory is available to Copilot Chat users with and
 impact: Medium. Users of Copilot in Word, Excel, PowerPoint, OneNote and Workspaces would notice responses shaped by their own history; the roadmap target is November CY2026.
 -->
 
-<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: paragraph after table / absence: The tenant switch is the only control Learn documents for memory itself. | Found: Admins can use eDiscovery and Microsoft Graph Explorer to search, export, and delete users' memory data. | Fix: Replace 'The tenant switch is the only control Learn documents for memory itself' with 'Learn documents Enhanced personalization as the control for enabling or disabling Copilot memory.' The existing source also documents administrator deletion of memory data, so do not claim that no other memory controls are documented. | Source: https://learn.microsoft.com/copilot/manage/copilot-personalization-memory
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model / licensing: Memory is treated as included within an existing Copilot entitlement rather than as a separately licensed feature. | Found: Copilot memory is available to Copilot Chat users with and without a Microsoft Copilot license. | Fix: Keep included, but name the product entitlement rather than relying only on the Copilot Chat memory statement. Add to the notes: 'Microsoft documents Microsoft 365 Copilot (Basic) access to Copilot in Word, Excel, PowerPoint and OneNote without the Copilot add-on, and Microsoft 365 Copilot (Premium) as the full add-on licensed experience; entitlement specific to this Office-app memory rollout is not yet published.' Cite https://learn.microsoft.com/copilot/plan/copilot-overview. | Source: https://learn.microsoft.com/copilot/manage/copilot-personalization-memory
-- [supported, minor] controls[0].note; Governance controls; Open questions / applicability: Learn ties Enhanced personalisation to Copilot memory but does not explicitly describe its reach in the named Office apps. | Found: Features controlled by enhanced personalization Copilot memory - Memory and personalization make Copilot personalized to you and your work. | Fix: Replace 'Learn ties it to Copilot memory, not to Office-app memory' in the row note with 'Learn says Enhanced personalization controls Copilot memory; Office-app rollout details are not yet documented.' In the paragraph after the table replace the sentence questioning the control's coverage with 'Learn says Enhanced personalization controls Copilot memory; confirm the Office-app experience in a pilot.' This preserves the genuine rollout gap without implying a documented exclusion from the general control's reach. | Source: https://learn.microsoft.com/graph/control-enhanced-personalization-privacy
-- [supported, minor] Governance guidance: After rollout, eDiscovery search / behaviour: Administrators can find and export memory data located in the CopilotMemory folder using eDiscovery. | Found: For Copilot memory, you need to search the item class <IPM.Contact>. | Fix: Replace the checklist instruction with 'Run a Purview eDiscovery search for item class IPM.Contact for a test user, export the results, and locate memory data in the CopilotMemory folder.' The cited memory page identifies CopilotMemory as the folder in the export, not the search condition; IPM.Contact also includes the user's contacts. | Source: https://learn.microsoft.com/copilot/manage/copilot-personalization-memory
-- [contradicted, minor] Governance guidance; Governance controls / consistency: The governance checklist's eDiscovery and Customer Lockbox checks are represented in the controls table. | Found: Checklist: 'confirm that memory held in a hidden mailbox folder fits your eDiscovery and Customer Lockbox process'; 'Run a Purview eDiscovery search'. Table rows cover Enhanced personalization, information types, retention and audit only. | Fix: The Before rollout eDiscovery and Customer Lockbox process check and the After rollout eDiscovery search have no corresponding controls-table row. Record this checklist/table gap; do not add rows as part of this correction.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist instructs an eDiscovery search without a corresponding controls-table row. | Found: Run a Purview eDiscovery search for item class IPM.Contact for a test user, export the results, and locate memory data in the CopilotMemory folder. / The eDiscovery search and Customer Lockbox checks in the governance guidance have no row in this table. | Fix: Remove the After rollout checklist bullet beginning 'Run a Purview eDiscovery search'. Keep the supported eDiscovery description in Risk assessment; do not add a controls row.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks the compliance team to check the Customer Lockbox process without a corresponding controls-table row. | Found: Ask the compliance team to confirm that memory held in a hidden mailbox folder fits your eDiscovery and Customer Lockbox process. / The eDiscovery search and Customer Lockbox checks in the governance guidance have no row in this table. | Fix: Remove the Before rollout checklist bullet beginning 'Ask the compliance team to confirm'. Keep the supported mailbox-protection description in Risk assessment; do not add a controls row.
+- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The checklist tells administrators to check user-level memory switches without a corresponding controls-table row. | Found: Check that users who are excluded see their Custom instructions, Saved memories and Chat history switches in Settings > Personalization as turned off. / The controls table contains only Enhanced personalization, information restrictions, retention rules and audit entries. | Fix: Remove the At rollout checklist bullet beginning 'Check that users who are excluded'. Keep the supported user-control description in Governance controls; do not add a controls row.
 -->

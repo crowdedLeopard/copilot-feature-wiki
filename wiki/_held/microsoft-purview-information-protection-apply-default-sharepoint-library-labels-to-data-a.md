@@ -109,18 +109,20 @@ changes:
     note: "Corrected after verification: risk lowered to Low because nothing happens until an admin creates the policy; target date aligned to the roadmap record (January CY2027); removed the unsupported policy checklist step."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
+  - date: "2026-11-24"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 64 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-21"
+  status: "held"
+  date: "2026-11-24"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 64
-  confirmed: 64
+  confirmed: 61
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "0108c3439d6f18f968073b8915251175"
 ---
 
@@ -213,9 +215,13 @@ cost: Medium. Learn documents this as service-side auto-labeling, which requires
 impact: Medium. Site admins who set library defaults and people who work in those libraries could see existing files take a label, with any protection that label carries.
 -->
 
-<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-24, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Risk assessment: Data exposure / behaviour: Labels with user-defined permissions do not support a default label for a library. | Found: Let users assign permissions when they apply the label and the checkbox In Word, PowerPoint, and Excel, prompt users to specify permissions is selected. | Fix: Replace 'labels with user-defined permissions' with 'labels configured with Let users assign permissions when they apply the label and with In Word, PowerPoint, and Excel, prompt users to specify permissions selected'. Keep the separate expiry and Double Key Encryption restrictions. | Source: https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label
+- [contradicted, blocker] Cost and licensing; rationale: cost / licensing: Tenants with E3 or Business Premium require an E5 / P2-tier add-on for this service-side capability. | Found: Client-only entitlements don't establish service-side entitlement. ... You have E3 or Business Premium. ... Check the feature matrix for an eligible subscription or add-on for the labeling method you intend to use. | Fix: Replace the E5 / P2-tier add-on statement in Cost and licensing and the cost rationale with 'E3 or Business Premium manual-labeling entitlement does not include automatic labeling; check the Purview service description for an eligible subscription or add-on for service-side automatic sensitivity labeling.' Do not imply that a client-only P2 entitlement covers service-side labeling. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
+- [contradicted, blocker] Cost and licensing / licensing: The library-default page lists its requirements but names no licence among them. | Found: An eligible premium subscription for library default labeling. Check the Apply default sensitivity labeling for SharePoint Document library entry ... including the applicable prerequisite licenses. | Fix: Replace the last sentence of the second Cost and licensing paragraph with 'The library-default page also requires an eligible premium subscription for library default labeling, including applicable prerequisite licenses; check the Apply default sensitivity labeling for SharePoint Document library entry in the Purview service description.' | Source: https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Scope / record: Roadmap item 559105 describes the same capability in a separate record. | Found: "id": 559105; "title": "Microsoft Purview: Information Protection - Apply default SharePoint library labels to data at rest" | Fix: Add a roadmap source titled 'Microsoft 365 Roadmap 559105' with URL https://www.microsoft.com/microsoft-365/roadmap?id=559105 for the Worldwide comparison.
-- [supported, minor] Why it matters / behaviour: An existing file could receive a label configured with markings or other settings. | Found: If the labels you select are configured to use visual markings (headers, footers, watermarks), these markings aren't applied to documents when you use auto-labeling. | Fix: Replace 'Once such a policy runs, a label with encryption, markings or other settings could appear on many existing files.' with 'Once such a policy runs, many eligible existing files could receive the library default label and its encryption. Visual markings are not applied to documents by auto-labeling.' | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
+- [supported, minor] What's changing; Scope / record: Roadmap item 559105 describes the same capability in a separate record. | Found: "id": 559105, "title": "Microsoft Purview: Information Protection - Apply default SharePoint library labels to data at rest" | Fix: Add a roadmap source titled 'Microsoft 365 Roadmap 559105' with URL https://www.microsoft.com/microsoft-365/roadmap?id=559105 for the comparison.
+- [supported, minor] Why it matters / behaviour: A label configured with markings or other settings could appear on many existing files when the policy runs. | Found: If the labels you select are configured to use visual markings (headers, footers, watermarks), these markings aren't applied to documents when you use auto-labeling. | Fix: Replace 'Once such a policy runs, a label with encryption, markings or other settings could appear on many existing files.' with 'Once such a policy runs, many eligible existing files could receive the library default label and its encryption. Visual markings are not applied to documents by auto-labeling.' | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
 -->

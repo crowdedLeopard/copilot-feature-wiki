@@ -1,0 +1,1230 @@
+{
+  "slug": "a2a",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "A2A (Agent2Agent protocol): how agents hand tasks to other agents, and where you can stop them",
+  "status": "held",
+  "date": "2026-11-24",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-24",
+    "reasons": [
+      "3 blocking findings (claims 66, 81, 82)"
+    ]
+  },
+  "counts": {
+    "claims": 88,
+    "confirmed": 83,
+    "unconfirmed": 3,
+    "contradicted": 2,
+    "blocker": 3,
+    "major": 2,
+    "minor": 4
+  },
+  "summary": "Hold: the page treats Power Platform data-policy coverage as an open question even though Microsoft documents policies covering Copilot Studio agents and custom connectors. The package-blocking command exists, but the documentation checked does not establish that it blocks an agent registered only through an A2A agent card.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "A2A is an open standard for communication and collaboration between agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-agent-agent-to-agent",
+      "quote": "The Agent2Agent (A2A) protocol is an open standard for communication and collaboration between agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "A2A enables one agent to send tasks to external agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-agent-agent-to-agent",
+      "quote": "It enables an orchestrator or agent to: - Send tasks to external agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "A2A provides structured metadata.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-agent-agent-to-agent",
+      "quote": "Provide rich, structured metadata.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "A2A returns agent responses in a predictable format.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-agent-agent-to-agent",
+      "quote": "Receive agent responses in a predictable format.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "A2A enables task delegation rather than merely calling APIs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-agent-agent-to-agent",
+      "quote": "By using A2A, Copilot Studio can delegate tasks to another agent, not just call APIs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What it is: Work IQ table row",
+      "type": "behaviour",
+      "claim": "Work IQ hosts Agent Cards.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/a2a/overview",
+      "quote": "Work IQ hosts Agent Cards for its available agents at the standard `/.well-known/agent-card.json` endpoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What it is: Work IQ table row",
+      "type": "behaviour",
+      "claim": "Work IQ A2A uses Microsoft Entra ID delegated authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/a2a/overview",
+      "quote": "Work IQ A2A uses Microsoft Entra ID delegated authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What it is: Work IQ table row",
+      "type": "behaviour",
+      "claim": "An app or agent can call Work IQ through A2A.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/a2a/overview",
+      "quote": "The Agent-to-Agent (A2A) protocol enables AI agents to communicate and collaborate with Work IQ.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What it is: Work IQ as an A2A agent",
+      "type": "behaviour",
+      "claim": "Work IQ supports A2A versions 1.0 and 0.3.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/a2a/overview",
+      "quote": "Work IQ supports both A2A version 1.0 and 0.3",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What it is: Work IQ as an A2A agent",
+      "type": "behaviour",
+      "claim": "The A2A-Version request header selects the Work IQ protocol version.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/a2a/overview",
+      "quote": "dispatched via the `A2A-Version` request header.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What it is: Work IQ as an A2A agent",
+      "type": "default",
+      "claim": "Work IQ defaults to A2A 0.3 when the version header is omitted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/a2a/overview",
+      "quote": "If the `A2A-Version` header is omitted, Work IQ defaults to 0.3 for backward compatibility.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What it is: Work IQ as an A2A agent",
+      "type": "behaviour",
+      "claim": "Work IQ supports SendMessage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/a2a/overview",
+      "quote": "Work IQ supports sending messages in synchronous mode (SendMessage)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What it is: Work IQ as an A2A agent",
+      "type": "behaviour",
+      "claim": "Work IQ supports SendStreamingMessage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/a2a/overview",
+      "quote": "and streaming mode (SendStreamingMessage).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What it is: Work IQ as an A2A agent",
+      "type": "behaviour",
+      "claim": "Work IQ supports GetTask for task management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/a2a/overview",
+      "quote": "Work IQ supports the GetTask, CancelTask, and SubscribeToTask methods for managing tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What it is: Work IQ as an A2A agent",
+      "type": "behaviour",
+      "claim": "Work IQ supports CancelTask for task management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/a2a/overview",
+      "quote": "Work IQ supports the GetTask, CancelTask, and SubscribeToTask methods for managing tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What it is: Work IQ as an A2A agent",
+      "type": "behaviour",
+      "claim": "Work IQ supports SubscribeToTask for task management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/a2a/overview",
+      "quote": "Work IQ supports the GetTask, CancelTask, and SubscribeToTask methods for managing tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What it is: Copilot Studio and connected agents; Open questions",
+      "type": "behaviour",
+      "claim": "Copilot Studio A2A connections use custom connector infrastructure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-agent-agent-to-agent",
+      "quote": "Because A2A connections use the custom connector infrastructure",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What it is: Copilot Studio and connected agents",
+      "type": "behaviour",
+      "claim": "Copilot Studio A2A messages carry a contextId.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-agent-agent-to-agent",
+      "quote": "A typical A2A message payload includes: - A unique `contextId`",
+      "severity": "minor",
+      "fix": "Replace 'Each message carries' with 'A typical A2A message payload includes', retaining the existing metadata list and full-history warning."
+    },
+    {
+      "n": 19,
+      "where": "What it is: Copilot Studio and connected agents",
+      "type": "behaviour",
+      "claim": "Copilot Studio A2A payloads include message IDs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-agent-agent-to-agent",
+      "quote": "Message IDs",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What it is: Copilot Studio and connected agents",
+      "type": "behaviour",
+      "claim": "Copilot Studio A2A payloads include locale information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-agent-agent-to-agent",
+      "quote": "Locale information",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What it is: Copilot Studio and connected agents; Risks and limits: Full chat history",
+      "type": "behaviour",
+      "claim": "Copilot Studio sends full chat history rather than only the latest user utterance in its A2A payload.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-agent-agent-to-agent",
+      "quote": "Full chat history, not just the latest user utterance",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What it is: Microsoft 365 connected agents table row",
+      "type": "behaviour",
+      "claim": "Primary agents can connect to declarative agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents",
+      "quote": "Primary agents can connect to declarative agents and agents that are available over the Agent2Agent (A2A) protocol.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What it is: Microsoft 365 connected agents table row",
+      "type": "behaviour",
+      "claim": "Primary agents can connect to agents available over A2A.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents",
+      "quote": "Primary agents can connect to declarative agents and agents that are available over the Agent2Agent (A2A) protocol.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What it is: Copilot Studio and connected agents",
+      "type": "applicability",
+      "claim": "External A2A connected agents must be registered in the Microsoft Agent 365 agent registry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/declarative-agent-connected-agent",
+      "quote": "You must register connected agents in the Microsoft Agent 365 agent registry.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What it is: Copilot Studio and connected agents",
+      "type": "behaviour",
+      "claim": "An external connected agent uses a registered A2A agent card.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/plugins/declarative-agent-connected-agent",
+      "quote": "The other agent must be a declarative agent or have a registered Agent2Agent agent card.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What it is: Copilot Studio and connected agents",
+      "type": "behaviour",
+      "claim": "An agent can connect to up to 10 other agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents",
+      "quote": "An agent can connect to up to 10 other agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What it is: Foundry table row",
+      "type": "behaviour",
+      "claim": "Foundry forwards natural-language queries to Work IQ as a peer agent through A2A.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/tools/work-iq",
+      "quote": "Foundry uses the Agent-to-Agent (A2A) protocol to forward the natural-language query to Work IQ as a peer agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What it is: Foundry table row",
+      "type": "availability",
+      "claim": "The Foundry Work IQ A2A tool is in preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/tools/work-iq",
+      "quote": "The built-in Work IQ tool (`work_iq_preview`) is in preview and calls the Work IQ A2A endpoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Apps or agents can reach Microsoft 365 data through Work IQ.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "The Work IQ API enables developers to build agentic and AI-powered applications that securely reason over Microsoft 365 data",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters; Governance controls",
+      "type": "applicability",
+      "claim": "Work IQ must be enabled before applications can use its permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/permissions",
+      "quote": "An organization administrator must enable Work IQ in your organization before these permissions can be used by applications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters; controls[1]; What to check",
+      "type": "applicability",
+      "claim": "WorkIQAgent.Ask requires administrator consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/permissions",
+      "quote": "### WorkIQAgent.Ask ... | AdminConsentRequired | - | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters; Risks and limits: Work IQ consent",
+      "type": "behaviour",
+      "claim": "WorkIQAgent.Ask includes read access to Microsoft 365 resources accessible to Work IQ agents, scoped to the user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/permissions",
+      "quote": "This includes read and write access to Microsoft 365 resources that are accessible to Work IQ agents and scoped to the signed-in user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters; Risks and limits: Work IQ consent",
+      "type": "behaviour",
+      "claim": "WorkIQAgent.Ask includes write access scoped to the signed-in user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/permissions",
+      "quote": "This includes read and write access to Microsoft 365 resources that are accessible to Work IQ agents and scoped to the signed-in user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "Microsoft has not documented a default for every inbound, external-connection and billing decision described here.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ connected agents Copilot Studio A2A default enabled authentication connections. Read Work IQ enablement/permissions, connected-agent management and Studio A2A setup; these do not state a default for every decision.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The pages consulted publish no price for the A2A protocol itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ A2A Copilot Credits rate price protocol; Work IQ A2A pricing credits per token rate licensing. Read Work IQ API/A2A overviews, Studio A2A setup, Foundry prerequisites and usage-based billing; charges are for services, not the protocol.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Work IQ API usage is paid through a usage-based model using Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Work IQ setup requires a Copilot Studio usage-based billing plan with an Azure subscription and resource group assigned.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+      "quote": "A usage-based billing plan set up in Copilot Studio with an Azure subscription and resource group assigned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The cited Copilot Studio page for adding an A2A agent names no licence.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: licence/license in the complete cited add-agent-agent-to-agent page, including its prerequisites. No licence is named on that page; this is not a claim that Copilot Studio requires none.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The cited Copilot Studio A2A setup page names no billing meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: billing/meter/credit in the complete cited add-agent-agent-to-agent page. None is named there. The separate Microsoft Copilot harness A2A page does mention Copilot Credits, but is not the page this narrow statement describes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing; controls[3].note; Governance controls",
+      "type": "licensing",
+      "claim": "Access to the Package Management API requires a Microsoft Agent 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risks and limits: Authentication can be None",
+      "type": "behaviour",
+      "claim": "Microsoft recommends proper authentication for production A2A deployments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-agent-agent-to-agent",
+      "quote": "For production scenarios, deploy the agent as a secure web app or containerized service by using proper authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risks and limits: Responsibility sits with you",
+      "type": "behaviour",
+      "claim": "People connecting agents outside Copilot Studio are responsible for their use, including data flows and permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-agent-agent-to-agent",
+      "quote": "When you connect to agents outside of Copilot Studio, you're responsible for the use of such agents. Considerations include ensuring: - Data flows, data handling, and data sharing ... - Appropriate permissions, boundaries, and approvals",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risks and limits: External connected agents can receive context",
+      "type": "behaviour",
+      "claim": "The primary agent decides what context to include in a prompt to an external connected agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents",
+      "quote": "the primary agent can include information from its context in the prompt it sends to the connected agent. The primary agent determines what information is needed",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risks and limits: Work IQ consent",
+      "type": "behaviour",
+      "claim": "Work IQ does not support application-only authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Application-only authentication isn't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risks and limits: Work IQ consent",
+      "type": "behaviour",
+      "claim": "Work IQ requests run as the signed-in user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Requests run in the context of the signed-in user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risks and limits: Foundry routes beyond its own boundary",
+      "type": "behaviour",
+      "claim": "Foundry-to-Work IQ request data might be processed outside the Azure compliance boundary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/tools/work-iq",
+      "quote": "When a Foundry agent calls Work IQ, request data goes beyond the Foundry service boundary and might be processed outside the Azure compliance boundary.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risks and limits: Blocking is not revocation; controls[3].note",
+      "type": "behaviour",
+      "claim": "Blocking an agent does not necessarily revoke connected-service permissions or credentials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Agent approval or blocking doesn't necessarily grant or revoke connected-service permissions or credentials.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance controls: second paragraph",
+      "type": "behaviour",
+      "claim": "Blocking an agent does not remove its connected services' credentials.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: agent registry blocking connected service credentials revoke permissions. Read agent-actions and connected-platform lifecycle excerpts; the former says 'doesn't necessarily ... revoke', not that credentials are never removed.",
+      "severity": "major",
+      "fix": "Replace the sentence with 'Blocking an agent does not necessarily revoke connected-service permissions or credentials.'"
+    },
+    {
+      "n": 49,
+      "where": "Risks and limits: Spend limits stop access",
+      "type": "behaviour",
+      "claim": "Users who hit a spending-policy limit lose access to covered agents and services for the rest of the month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "When users hit the limit, they lose access to agents and services for the rest of the month",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risks and limits: Spend limits stop access",
+      "type": "behaviour",
+      "claim": "Credits reset on the first of the month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "until credits reset on the first of the month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "POST /v1.0/servicePrincipals provisions Work IQ for the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+      "quote": "This section creates the Work IQ service principal in your organization ... Set the method to POST and the URL to `https://graph.microsoft.com/v1.0/servicePrincipals`.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[0].note; Governance controls; What to check",
+      "type": "role",
+      "claim": "The one-time Work IQ setup requires a Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+      "quote": "A user with Global Administrator role for the one-time Work IQ setup",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "The Work IQ enablement request sets appId.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+      "quote": "\"appId\": \"fdcc1f02-fc51-4226-8753-f668596af7f7\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].ui; controls[0].note",
+      "type": "absence",
+      "claim": "No admin-centre UI for provisioning Work IQ is documented; the listed interactive steps use Graph Explorer.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ enable tenant Microsoft Entra admin center create service principal UI. Read enable-work-iq and Foundry setup: despite the Admin center tab title, steps open Graph Explorer; the other method is Azure CLI.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Entra ID > Enterprise apps > All applications > application > Security > Permissions > Grant admin consent is the consent path.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/enterprise-apps/grant-admin-consent",
+      "quote": "Browse to Entra ID > Enterprise apps > All applications. ... select the application ... Select Permissions under Security. ... select Grant admin consent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "az ad app permission admin-consent --id <app-id> grants application and delegated admin consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/cli/azure/ad/app/permission",
+      "quote": "Grant Application & Delegated permissions through admin-consent. ... az ad app permission admin-consent --id ... Identifier uri, application id, or object id.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "The portal consent procedure uses at least Cloud Application Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/enterprise-apps/grant-admin-consent",
+      "quote": "Sign in to the Microsoft Entra admin center as at least a Cloud Application Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[1].note",
+      "type": "role",
+      "claim": "The Azure CLI admin-consent reference requires signing in as a global administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/cli/azure/ad/app/permission",
+      "quote": "You must login as a global administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Copilot > Cost Management > Configuration > spending policy > Spending limits reaches policy spending limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "go to Copilot > Cost Management. ... Select the Configuration tab. ... Select the spending policy you want to edit. ... modify its settings. This includes: ... Spending limits",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "PATCH /beta/copilot/costManagement/spendingPolicies/{id} updates spending limits through periodLimit and perUserLimit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/3f9e2c1a-0000-0000-0000-00000000c21b ... The following properties can be updated: `displayName`, `periodLimit`, `perUserLimit`, and `billingMethods`.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[2].note",
+      "type": "command",
+      "claim": "Updating a spending policy requires the If-Match header.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "| `If-Match` | The ETag of the spending policy. Required. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[2].governs; Governance controls; What to check",
+      "type": "applicability",
+      "claim": "Spending policies govern Work IQ API credit spending and access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits",
+      "quote": "In the Microsoft admin center, Copilot > Cost management, admins can monitor Copilot Credit consumption and manage spending associated with the supported services such as ... Work IQ API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[2].governs; controls[2].scope",
+      "type": "behaviour",
+      "claim": "Spending policies can target groups and set monthly policy and per-user limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "Give the policy a name and select the specific groups that the policy applies to. ... Select the monthly spending limit for this policy. ... Specify the maximum credit limit users can spend per month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Agents > All agents > Registry > agent > Block reaches the agent-blocking action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-details",
+      "quote": "Go to Agents > All agents. The agent Registry tab is selected. ... Select an agent from the Registry list. ... select specific actions for the agent, such as Install, Block, Uninstall",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "POST /beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage. ... POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[3].governs; What to check: block A2A agents",
+      "type": "applicability",
+      "claim": "The package-blocking operation blocks an agent registered only with an A2A agent card.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph copilot agentRegistrations block packages Agent2Agent agent card; \"agentRegistration\" \"block\"; \"copilotPackage\" \"A2A\". Read registration overview/create, package overview/block and registry actions; no registration-to-package blocking mapping was stated.",
+      "severity": "blocker",
+      "fix": "Change controls[3].governs to 'Whether a Copilot package is blocked for the organisation'. Replace the checklist bullet with 'Inspect the agent registry and block unapproved Copilot packages.' Retain the existing Open question about agents registered only through an A2A agent card."
+    },
+    {
+      "n": 67,
+      "where": "Governance controls: registry decides which agents users can install",
+      "type": "behaviour",
+      "claim": "Blocking an agent in the registry prevents members of the organisation from installing or using it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-details",
+      "quote": "Blocks the agent from members of your organization. They can't install or use the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "Agents > All agents > Researcher > Connected Agents > + Connect agents adds connections to Researcher.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents",
+      "quote": "go to Agents > All agents. ... Select Researcher or Sales, and then select the Connected Agents tab. ... Select + Connect agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[4].note; What to check",
+      "type": "behaviour",
+      "claim": "Sales uses the same connected-agent procedure as Researcher.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents",
+      "quote": "Select Researcher or Sales, and then select the Connected Agents tab. ... Select + Connect agents.",
+      "severity": "minor",
+      "fix": "Add to controls[4].note: 'The Sales-specific documentation instead labels the button Connect agents and says only declarative agents can be connected to Sales; see https://learn.microsoft.com/microsoft-sales-copilot/manage-connected-agents.'"
+    },
+    {
+      "n": 70,
+      "where": "controls[4].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Administrators can remove admin-added connections but cannot remove developer-configured connections.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents",
+      "quote": "From the Connected Agents list, select an agent that an admin added, and then select Remove. You can't remove an agent configured by the agent developer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "controls[4].api",
+      "type": "absence",
+      "claim": "No API for administrator-added Researcher or Sales connections is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Researcher Sales connected agents API add remove connections Microsoft Graph; Researcher Sales connected agents admin connections Graph API automate. Read connected-agent management and Graph registry excerpts; found UI steps and inventory APIs, not connection-setting operations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "controls[5].api",
+      "type": "command",
+      "claim": "POST /beta/copilot/agentRegistrations creates an external agent registration carrying an agent card.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/agent-registration/agentregistration-create",
+      "quote": "POST https://graph.microsoft.com/beta/copilot/agentRegistrations ... \"agentCard\": { \"name\": \"Contoso Travel Booking Agent\", \"version\": \"1.0.0\"",
+      "severity": "minor",
+      "fix": "Replace 'The body carries the agent card' in controls[5].note with 'The request body carries the agent card in agentCard.'"
+    },
+    {
+      "n": 73,
+      "where": "controls[5].note",
+      "type": "command",
+      "claim": "Agent registration creation supports delegated and application AgentRegistration.ReadWrite.All permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/agent-registration/agentregistration-create",
+      "quote": "| Delegated (work or school account) | AgentRegistration.ReadWrite.All | Not available. | ... | Application | AgentRegistration.ReadWrite.All | Not available. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "controls[5].ui",
+      "type": "absence",
+      "claim": "No admin UI for creating an external agentRegistration with an A2A agent card is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: agentRegistration agent card register Microsoft 365 admin center upload external A2A agent UI; Microsoft 365 agentRegistration agent card admin center registration UI. Read registration overview/create and registry upload excerpts; ZIP upload is not documented as agent-card registration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "controls[6].ui; What it is: Copilot Studio table row",
+      "type": "admin-path",
+      "claim": "Agents > Add agent > A2A agent is the Copilot Studio maker path for adding an external A2A agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-agent-agent-to-agent",
+      "quote": "Go to the Agents page for your main agent and select Add agent. ... Select A2A agent.",
+      "severity": "minor",
+      "fix": "Replace the path with 'agent > Agents > Add agent > A2A agent' and begin controls[6].note with 'For agents using the standard harness.' The cited page is explicitly scoped to that harness. If describing the Microsoft Copilot harness too, cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-agent-to-agent, which gives Build > Connected agents > Add > Add A2A agent."
+    },
+    {
+      "n": 76,
+      "where": "controls[6].note; Risks and limits: Authentication can be None",
+      "type": "behaviour",
+      "claim": "Copilot Studio offers None, API key and OAuth 2.0 authentication for A2A connections.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-agent-agent-to-agent",
+      "quote": "The options are: - None ... - API key ... - OAuth 2.0",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "controls[6].note",
+      "type": "behaviour",
+      "claim": "After authentication configuration, a connection is selected or created.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-agent-agent-to-agent",
+      "quote": "Select the desired connection from the list of available connections or create a new connection between your A2A agent and your Copilot Studio agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "controls[6].api",
+      "type": "absence",
+      "claim": "No automation operation for configuring the Copilot Studio A2A connected-agent relationship is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio A2A connected agents API botcomponent connector; Copilot Studio A2A connection create API automation custom connector reference. Read both harnesses' A2A setup pages and connector results; none documents an operation setting this agent relationship.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "controls[2].note",
+      "type": "availability",
+      "claim": "The spending-policy update API is beta.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "APIs under the `/beta` version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "What to check: application consent",
+      "type": "command",
+      "claim": "WorkIQ.Read is an administrator-consented delegated permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/permissions",
+      "quote": "### WorkIQ.Read ... | DisplayText | - | Read Microsoft 365 data through WorkIQ | ... | AdminConsentRequired | - | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Open questions: Power Platform data policies",
+      "type": "absence",
+      "claim": "Whether Power Platform data policies apply to Copilot Studio A2A connections is not documented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "These data policies apply to Copilot Studio agents in the environments included in the policy's scope.",
+      "severity": "blocker",
+      "fix": "Replace the first Open questions bullet with 'Power Platform data policies apply to Copilot Studio agents in the environments included in the policy scope. A2A connections use custom connector infrastructure; custom connectors can be classified as Blocked, Business or Non-Business.' Cite https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention and https://learn.microsoft.com/power-platform/admin/dlp-custom-connector-parity."
+    },
+    {
+      "n": 82,
+      "where": "Open questions: tenant-wide setting",
+      "type": "absence",
+      "claim": "A tenant-wide control over makers' use of A2A connections is an undocumented question.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/dlp-custom-connector-parity",
+      "quote": "Tenant admins can use the Power Platform admin center and PowerShell to classify custom connector by their Host URL endpoints using a pattern matching construct for tenant-level data policies.",
+      "severity": "blocker",
+      "fix": "Replace this bullet with 'Tenant-level data policies can classify custom connector host URL patterns as Blocked; the * pattern applies to all custom connectors. This is a custom-connector control, not a separate A2A switch.' Cite https://learn.microsoft.com/power-platform/admin/dlp-custom-connector-parity."
+    },
+    {
+      "n": 83,
+      "where": "Open questions: Work IQ A2A rate",
+      "type": "absence",
+      "claim": "A Copilot Credit rate specifically for a Work IQ A2A call remains unpublished in the documentation checked.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ A2A Copilot Credits rate price protocol; Work IQ A2A pricing credits per token rate licensing. Read API licensing, Foundry prerequisites, billing overview and licensing search results; these name Copilot Credits but no A2A-call rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "Open questions: Block and agent cards",
+      "type": "absence",
+      "claim": "The documentation checked does not establish whether Block applies to an agent registered only through an A2A agent card.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"agentRegistration\" \"block\"; \"copilotPackage\" \"A2A\". Read registration overview/create, package overview/block, and registry actions; none states how an A2A-only registration maps to the package-block action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "Why it matters: first sentence",
+      "type": "behaviour",
+      "claim": "A2A is not a store of data.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Agent2Agent A2A protocol data storage not a store of data. Read Studio A2A definition and Agent Framework A2A excerpts; they define communication and remote conversation state, but do not explicitly state this negative storage claim.",
+      "severity": "major",
+      "fix": "Remove ', not a store of data' from the first sentence."
+    },
+    {
+      "n": 86,
+      "where": "controls[3].note; Governance controls",
+      "type": "availability",
+      "claim": "The package-blocking API is beta.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "APIs under the `/beta` version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "controls[5].note",
+      "type": "availability",
+      "claim": "The agent-registration creation API is beta.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/agent-registration/agentregistration-create",
+      "quote": "APIs under the `/beta` version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
+      "where": "What to check: application consent",
+      "type": "command",
+      "claim": "WorkIQ.Act is an administrator-consented delegated permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/permissions",
+      "quote": "### WorkIQ.Act ... | DisplayText | - | Act on Microsoft 365 data through WorkIQ | ... | AdminConsentRequired | - | Yes |",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-24T03:56:36.754Z",
+    "summary": {
+      "links": 18,
+      "unreachable": 0,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 5,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/add-agent-agent-to-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/a2a/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/plugins/declarative-agent-connected-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/agent-registration/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/agent-registration/agentregistration-create",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/foundry/agents/how-to/tools/work-iq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/enterprise-apps/grant-admin-consent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/cli/azure/ad/app/permission",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-details",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether Work IQ, and so its A2A endpoint, is enabled in the tenant",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+        "reachable": true,
+        "token": "/v1.0/servicePrincipals",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which apps may call Work IQ agents on a user's behalf (admin consent for WorkIQAgent.Ask)",
+        "docs": "https://learn.microsoft.com/entra/identity/enterprise-apps/grant-admin-consent",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Enterprise apps",
+          "All applications",
+          "application",
+          "Security",
+          "Permissions",
+          "Grant admin consent"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which apps may call Work IQ agents on a user's behalf (admin consent for WorkIQAgent.Ask)",
+        "docs": "https://learn.microsoft.com/cli/azure/ad/app/permission",
+        "reachable": true,
+        "token": "az ad app",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Monthly policy limit and per-user limit for Copilot Credits spent on Work IQ API",
+        "docs": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost Management",
+          "Configuration",
+          "spending policy",
+          "Spending limits"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Monthly policy limit and per-user limit for Copilot Credits spent on Work IQ API",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+        "reachable": true,
+        "token": "/beta/copilot/costManagement",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Whether an agent, including one registered with an A2A agent card, is blocked for the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-details",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Registry",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Whether an agent, including one registered with an A2A agent card, is blocked for the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Which agents Researcher and Sales can invoke as connected agents",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Researcher",
+          "Connected Agents",
+          "+ Connect agents"
+        ],
+        "missing": []
+      },
+      {
+        "index": 5,
+        "side": "api",
+        "governs": "Registration of an external agent and its agent card for Microsoft 365 Copilot",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/agent-registration/agentregistration-create",
+        "reachable": true,
+        "token": "/beta/copilot/agentRegistrations",
+        "found": true
+      },
+      {
+        "index": 6,
+        "side": "ui",
+        "governs": "Whether a Copilot Studio agent delegates to an external A2A agent, and how it authenticates",
+        "docs": "https://learn.microsoft.com/microsoft-copilot-studio/add-agent-agent-to-agent",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Add agent",
+          "A2A agent"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
